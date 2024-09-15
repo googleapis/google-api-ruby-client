@@ -2129,6 +2129,58 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a Redis Cluster.
+      class RedisClusterInfo
+        include Google::Apis::Core::Hashable
+      
+        # Discovery endpoint IP address of a Redis Cluster.
+        # Corresponds to the JSON property `discoveryEndpointIpAddress`
+        # @return [String]
+        attr_accessor :discovery_endpoint_ip_address
+      
+        # Name of a Redis Cluster.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Name of the region in which the Redis Cluster is defined. For example, "us-
+        # central1".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # URI of a Redis Cluster network in format "projects/`project_id`/global/
+        # networks/`network_id`".
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Secondary endpoint IP address of a Redis Cluster.
+        # Corresponds to the JSON property `secondaryEndpointIpAddress`
+        # @return [String]
+        attr_accessor :secondary_endpoint_ip_address
+      
+        # URI of a Redis Cluster in format "projects/`project_id`/locations/`location`/
+        # clusters/`cluster_id`"
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovery_endpoint_ip_address = args[:discovery_endpoint_ip_address] if args.key?(:discovery_endpoint_ip_address)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @location = args[:location] if args.key?(:location)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @secondary_endpoint_ip_address = args[:secondary_endpoint_ip_address] if args.key?(:secondary_endpoint_ip_address)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # For display only. Metadata associated with a Cloud Redis Instance.
       class RedisInstanceInfo
         include Google::Apis::Core::Hashable
@@ -2538,6 +2590,11 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::ProxyConnectionInfo]
         attr_accessor :proxy_connection
       
+        # For display only. Metadata associated with a Redis Cluster.
+        # Corresponds to the JSON property `redisCluster`
+        # @return [Google::Apis::NetworkmanagementV1::RedisClusterInfo]
+        attr_accessor :redis_cluster
+      
         # For display only. Metadata associated with a Cloud Redis Instance.
         # Corresponds to the JSON property `redisInstance`
         # @return [Google::Apis::NetworkmanagementV1::RedisInstanceInfo]
@@ -2607,6 +2664,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @project_id = args[:project_id] if args.key?(:project_id)
           @proxy_connection = args[:proxy_connection] if args.key?(:proxy_connection)
+          @redis_cluster = args[:redis_cluster] if args.key?(:redis_cluster)
           @redis_instance = args[:redis_instance] if args.key?(:redis_instance)
           @route = args[:route] if args.key?(:route)
           @serverless_neg = args[:serverless_neg] if args.key?(:serverless_neg)

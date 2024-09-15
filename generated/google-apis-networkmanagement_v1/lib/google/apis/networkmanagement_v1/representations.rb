@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RedisClusterInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RedisInstanceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -859,6 +865,18 @@ module Google
         end
       end
       
+      class RedisClusterInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discovery_endpoint_ip_address, as: 'discoveryEndpointIpAddress'
+          property :display_name, as: 'displayName'
+          property :location, as: 'location'
+          property :network_uri, as: 'networkUri'
+          property :secondary_endpoint_ip_address, as: 'secondaryEndpointIpAddress'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class RedisInstanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -967,6 +985,8 @@ module Google
       
           property :project_id, as: 'projectId'
           property :proxy_connection, as: 'proxyConnection', class: Google::Apis::NetworkmanagementV1::ProxyConnectionInfo, decorator: Google::Apis::NetworkmanagementV1::ProxyConnectionInfo::Representation
+      
+          property :redis_cluster, as: 'redisCluster', class: Google::Apis::NetworkmanagementV1::RedisClusterInfo, decorator: Google::Apis::NetworkmanagementV1::RedisClusterInfo::Representation
       
           property :redis_instance, as: 'redisInstance', class: Google::Apis::NetworkmanagementV1::RedisInstanceInfo, decorator: Google::Apis::NetworkmanagementV1::RedisInstanceInfo::Representation
       
