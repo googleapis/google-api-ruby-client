@@ -555,9 +555,9 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] add_on_token
         #   Optional. Token that authorizes the request. The token is passed as a query
         #   parameter when the user is redirected from Classroom to the add-on's URL. The
@@ -570,7 +570,7 @@ module Google
         #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
         #   discovery-iframe).
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -760,9 +760,9 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   to create the attachment. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which to create the attachment. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
         # @param [String] add_on_token
         #   Optional. Token that authorizes the request. The token is passed as a query
@@ -772,7 +772,7 @@ module Google
         #   provided for partner-first attachment creation and the developer projects that
         #   created the attachment and its parent stream item do not match.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -812,13 +812,13 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -857,13 +857,13 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -902,7 +902,7 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial whose
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose
         #   attachments should be enumerated. This field is required, but is not marked as
         #   such while we are migrating from post_id.
         # @param [Fixnum] page_size
@@ -916,7 +916,7 @@ module Google
         #   token.
         # @param [String] post_id
         #   Optional. Identifier of the post under the course whose attachments to
-        #   enumerate. Deprecated, use item_id instead.
+        #   enumerate. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1138,9 +1138,9 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] add_on_token
         #   Optional. Token that authorizes the request. The token is passed as a query
         #   parameter when the user is redirected from Classroom to the add-on's URL. The
@@ -1153,7 +1153,7 @@ module Google
         #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
         #   discovery-iframe).
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1352,9 +1352,9 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   to create the attachment. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which to create the attachment. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
         # @param [String] add_on_token
         #   Optional. Token that authorizes the request. The token is passed as a query
@@ -1364,7 +1364,7 @@ module Google
         #   provided for partner-first attachment creation and the developer projects that
         #   created the attachment and its parent stream item do not match.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1404,13 +1404,13 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1449,13 +1449,13 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1494,7 +1494,7 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial whose
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose
         #   attachments should be enumerated. This field is required, but is not marked as
         #   such while we are migrating from post_id.
         # @param [Fixnum] page_size
@@ -1508,7 +1508,7 @@ module Google
         #   token.
         # @param [String] post_id
         #   Optional. Identifier of the post under the course whose attachments to
-        #   enumerate. Deprecated, use item_id instead.
+        #   enumerate. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1602,15 +1602,15 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] submission_id
         #   Required. Identifier of the student’s submission.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1651,16 +1651,16 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] submission_id
         #   Required. Identifier of the student's submission.
         # @param [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission] add_on_attachment_student_submission_object
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] update_mask
         #   Required. Mask that identifies which fields on the attachment to update. The
         #   update fails if invalid fields are specified. If a field supports empty values,
@@ -2201,9 +2201,9 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] add_on_token
         #   Optional. Token that authorizes the request. The token is passed as a query
         #   parameter when the user is redirected from Classroom to the add-on's URL. The
@@ -2216,7 +2216,7 @@ module Google
         #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
         #   discovery-iframe).
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2375,9 +2375,9 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   to create the attachment. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which to create the attachment. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
         # @param [String] add_on_token
         #   Optional. Token that authorizes the request. The token is passed as a query
@@ -2387,7 +2387,7 @@ module Google
         #   provided for partner-first attachment creation and the developer projects that
         #   created the attachment and its parent stream item do not match.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2427,13 +2427,13 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2472,13 +2472,13 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2517,7 +2517,7 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial whose
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose
         #   attachments should be enumerated. This field is required, but is not marked as
         #   such while we are migrating from post_id.
         # @param [Fixnum] page_size
@@ -2531,7 +2531,7 @@ module Google
         #   token.
         # @param [String] post_id
         #   Optional. Identifier of the post under the course whose attachments to
-        #   enumerate. Deprecated, use item_id instead.
+        #   enumerate. Deprecated, use `item_id` instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2629,7 +2629,7 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] add_on_token
         #   Optional. Token that authorizes the request. The token is passed as a query
         #   parameter when the user is redirected from Classroom to the add-on's URL. The
@@ -2642,9 +2642,9 @@ module Google
         #   developers.google.com/classroom/add-ons/get-started/iframes/attachment-
         #   discovery-iframe).
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2684,7 +2684,7 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [Google::Apis::ClassroomV1::AddOnAttachment] add_on_attachment_object
         # @param [String] add_on_token
         #   Optional. Token that authorizes the request. The token is passed as a query
@@ -2694,9 +2694,9 @@ module Google
         #   provided for partner-first attachment creation and the developer projects that
         #   created the attachment and its parent stream item do not match.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   to create the attachment. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which to create the attachment. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2736,13 +2736,13 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2781,13 +2781,13 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2827,9 +2827,9 @@ module Google
         #   Required. Identifier of the course.
         # @param [String] post_id
         #   Optional. Identifier of the post under the course whose attachments to
-        #   enumerate. Deprecated, use item_id instead.
+        #   enumerate. Deprecated, use `item_id` instead.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial whose
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose
         #   attachments should be enumerated. This field is required, but is not marked as
         #   such while we are migrating from post_id.
         # @param [Fixnum] page_size
@@ -2934,15 +2934,15 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] submission_id
         #   Required. Identifier of the student’s submission.
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2983,16 +2983,16 @@ module Google
         # @param [String] course_id
         #   Required. Identifier of the course.
         # @param [String] post_id
-        #   Optional. Deprecated, use item_id instead.
+        #   Optional. Deprecated, use `item_id` instead.
         # @param [String] attachment_id
         #   Required. Identifier of the attachment.
         # @param [String] submission_id
         #   Required. Identifier of the student's submission.
         # @param [Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission] add_on_attachment_student_submission_object
         # @param [String] item_id
-        #   Identifier of the announcement, courseWork, or courseWorkMaterial under which
-        #   the attachment is attached. This field is required, but is not marked as such
-        #   while we are migrating from post_id.
+        #   Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under
+        #   which the attachment is attached. This field is required, but is not marked as
+        #   such while we are migrating from post_id.
         # @param [String] update_mask
         #   Required. Mask that identifies which fields on the attachment to update. The
         #   update fails if invalid fields are specified. If a field supports empty values,
