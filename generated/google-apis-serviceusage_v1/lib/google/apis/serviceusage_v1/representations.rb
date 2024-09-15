@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExperimentalFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1173,6 +1179,13 @@ module Google
         end
       end
       
+      class ExperimentalFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rest_async_io_enabled, as: 'restAsyncIoEnabled'
+        end
+      end
+      
       class Field
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1585,6 +1598,7 @@ module Google
           property :ingest_delay, as: 'ingestDelay'
           property :launch_stage, as: 'launchStage'
           property :sample_period, as: 'samplePeriod'
+          collection :time_series_resource_hierarchy_level, as: 'timeSeriesResourceHierarchyLevel'
         end
       end
       
@@ -1718,6 +1732,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServiceusageV1::CommonLanguageSettings, decorator: Google::Apis::ServiceusageV1::CommonLanguageSettings::Representation
+      
+          property :experimental_features, as: 'experimentalFeatures', class: Google::Apis::ServiceusageV1::ExperimentalFeatures, decorator: Google::Apis::ServiceusageV1::ExperimentalFeatures::Representation
       
         end
       end
