@@ -106,8 +106,6 @@ module Google
         # Contact Cloud Channel support. Return value: A list of service email addresses.
         # @param [String] account
         #   Optional. Resource name of the account.
-        # @param [String] integrator
-        #   Optional. Resource name of the integrator.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of service accounts to return. The service may
         #   return fewer than this value. If unspecified, returns at most 100 service
@@ -134,12 +132,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_subscribers(account, integrator: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_account_subscribers(account, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+account}:listSubscribers', options)
           command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSubscribersResponse::Representation
           command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSubscribersResponse
           command.params['account'] = account unless account.nil?
-          command.query['integrator'] = integrator unless integrator.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2632,152 +2629,6 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists service accounts with subscriber privileges on the Cloud Pub/Sub topic
-        # created for this Channel Services account. Possible error codes: *
-        # PERMISSION_DENIED: The reseller account making the request and the provided
-        # reseller account are different, or the impersonated user is not a super admin.
-        # * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
-        # NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error
-        # related to a technical issue in the backend. Contact Cloud Channel support. *
-        # UNKNOWN: Any non-user error related to a technical issue in the backend.
-        # Contact Cloud Channel support. Return value: A list of service email addresses.
-        # @param [String] integrator
-        #   Optional. Resource name of the integrator.
-        # @param [String] account
-        #   Optional. Resource name of the account.
-        # @param [Fixnum] page_size
-        #   Optional. The maximum number of service accounts to return. The service may
-        #   return fewer than this value. If unspecified, returns at most 100 service
-        #   accounts. The maximum value is 1000; the server will coerce values above 1000.
-        # @param [String] page_token
-        #   Optional. A page token, received from a previous `ListSubscribers` call.
-        #   Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListSubscribers` must match the call that provided the
-        #   page token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSubscribersResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSubscribersResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_integrator_subscribers(integrator, account: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+integrator}:listSubscribers', options)
-          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSubscribersResponse::Representation
-          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListSubscribersResponse
-          command.params['integrator'] = integrator unless integrator.nil?
-          command.query['account'] = account unless account.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Registers a service account with subscriber privileges on the Cloud Pub/Sub
-        # topic for this Channel Services account. After you create a subscriber, you
-        # get the events through SubscriberEvent Possible error codes: *
-        # PERMISSION_DENIED: The reseller account making the request and the provided
-        # reseller account are different, or the impersonated user is not a super admin.
-        # * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
-        # INTERNAL: Any non-user error related to a technical issue in the backend.
-        # Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
-        # technical issue in the backend. Contact Cloud Channel support. Return value:
-        # The topic name with the registered service email address.
-        # @param [String] integrator
-        #   Optional. Resource name of the integrator.
-        # @param [String] account
-        #   Optional. Resource name of the account.
-        # @param [String] service_account
-        #   Required. Service account that provides subscriber access to the registered
-        #   topic.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RegisterSubscriberResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RegisterSubscriberResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def register_integrator(integrator, account: nil, service_account: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+integrator}:register', options)
-          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1RegisterSubscriberResponse::Representation
-          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1RegisterSubscriberResponse
-          command.params['integrator'] = integrator unless integrator.nil?
-          command.query['account'] = account unless account.nil?
-          command.query['serviceAccount'] = service_account unless service_account.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Unregisters a service account with subscriber privileges on the Cloud Pub/Sub
-        # topic created for this Channel Services account. If there are no service
-        # accounts left with subscriber privileges, this deletes the topic. You can call
-        # ListSubscribers to check for these accounts. Possible error codes: *
-        # PERMISSION_DENIED: The reseller account making the request and the provided
-        # reseller account are different, or the impersonated user is not a super admin.
-        # * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
-        # NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error
-        # related to a technical issue in the backend. Contact Cloud Channel support. *
-        # UNKNOWN: Any non-user error related to a technical issue in the backend.
-        # Contact Cloud Channel support. Return value: The topic name that unregistered
-        # the service email address. Returns a success response if the service email
-        # address wasn't registered with the topic.
-        # @param [String] integrator
-        #   Optional. Resource name of the integrator.
-        # @param [String] account
-        #   Optional. Resource name of the account.
-        # @param [String] service_account
-        #   Required. Service account to unregister from subscriber access to the topic.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1UnregisterSubscriberResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1UnregisterSubscriberResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def unregister_integrator(integrator, account: nil, service_account: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+integrator}:unregister', options)
-          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1UnregisterSubscriberResponse::Representation
-          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1UnregisterSubscriberResponse
-          command.params['integrator'] = integrator unless integrator.nil?
-          command.query['account'] = account unless account.nil?
-          command.query['serviceAccount'] = service_account unless service_account.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

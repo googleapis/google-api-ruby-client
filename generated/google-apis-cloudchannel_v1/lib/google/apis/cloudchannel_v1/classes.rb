@@ -457,12 +457,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Domain to fetch for Cloud Identity account customers, including
-        # domained and domainless.
+        # domain and team customers. For team customers, please use the domain for their
+        # emails.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
       
-        # Optional. Primary admin email to fetch for Cloud Identity account domainless
+        # Optional. Primary admin email to fetch for Cloud Identity account team
         # customer.
         # Corresponds to the JSON property `primaryAdminEmail`
         # @return [String]
@@ -1467,7 +1468,7 @@ module Google
         attr_accessor :overwrite_if_exists
         alias_method :overwrite_if_exists?, :overwrite_if_exists
       
-        # Optional. Customer's primary admin email.
+        # Required. Customer's primary admin email.
         # Corresponds to the JSON property `primaryAdminEmail`
         # @return [String]
         attr_accessor :primary_admin_email
@@ -2703,11 +2704,6 @@ module Google
       class GoogleCloudChannelV1RegisterSubscriberRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Resource name of the integrator.
-        # Corresponds to the JSON property `integrator`
-        # @return [String]
-        attr_accessor :integrator
-      
         # Required. Service account that provides subscriber access to the registered
         # topic.
         # Corresponds to the JSON property `serviceAccount`
@@ -2720,7 +2716,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @integrator = args[:integrator] if args.key?(:integrator)
           @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
@@ -3626,11 +3621,6 @@ module Google
       class GoogleCloudChannelV1UnregisterSubscriberRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Resource name of the integrator.
-        # Corresponds to the JSON property `integrator`
-        # @return [String]
-        attr_accessor :integrator
-      
         # Required. Service account to unregister from subscriber access to the topic.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -3642,7 +3632,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @integrator = args[:integrator] if args.key?(:integrator)
           @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
