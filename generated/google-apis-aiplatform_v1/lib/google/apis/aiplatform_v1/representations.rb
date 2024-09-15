@@ -718,6 +718,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1CreateNotebookExecutionJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1CreateNotebookRuntimeTemplateOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6716,6 +6722,16 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1CreateNotebookExecutionJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :notebook_execution_job, as: 'notebookExecutionJob', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJob, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJob::Representation
+      
+          property :notebook_execution_job_id, as: 'notebookExecutionJobId'
+          property :parent, as: 'parent'
+        end
+      end
+      
       class GoogleCloudAiplatformV1CreateNotebookRuntimeTemplateOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11807,6 +11823,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_queueing, as: 'allowQueueing'
           property :catch_up, as: 'catchUp'
+          property :create_notebook_execution_job_request, as: 'createNotebookExecutionJobRequest', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CreateNotebookExecutionJobRequest, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CreateNotebookExecutionJobRequest::Representation
+      
           property :create_pipeline_job_request, as: 'createPipelineJobRequest', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CreatePipelineJobRequest, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CreatePipelineJobRequest::Representation
       
           property :create_time, as: 'createTime'

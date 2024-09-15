@@ -3566,6 +3566,38 @@ module Google
         end
       end
       
+      # Request message for [NotebookService.CreateNotebookExecutionJob]
+      class GoogleCloudAiplatformV1CreateNotebookExecutionJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # NotebookExecutionJob represents an instance of a notebook execution.
+        # Corresponds to the JSON property `notebookExecutionJob`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJob]
+        attr_accessor :notebook_execution_job
+      
+        # Optional. User specified ID for the NotebookExecutionJob.
+        # Corresponds to the JSON property `notebookExecutionJobId`
+        # @return [String]
+        attr_accessor :notebook_execution_job_id
+      
+        # Required. The resource name of the Location to create the NotebookExecutionJob.
+        # Format: `projects/`project`/locations/`location``
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @notebook_execution_job = args[:notebook_execution_job] if args.key?(:notebook_execution_job)
+          @notebook_execution_job_id = args[:notebook_execution_job_id] if args.key?(:notebook_execution_job_id)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
       # Metadata information for NotebookService.CreateNotebookRuntimeTemplate.
       class GoogleCloudAiplatformV1CreateNotebookRuntimeTemplateOperationMetadata
         include Google::Apis::Core::Hashable
@@ -21853,6 +21885,11 @@ module Google
         attr_accessor :catch_up
         alias_method :catch_up?, :catch_up
       
+        # Request message for [NotebookService.CreateNotebookExecutionJob]
+        # Corresponds to the JSON property `createNotebookExecutionJobRequest`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CreateNotebookExecutionJobRequest]
+        attr_accessor :create_notebook_execution_job_request
+      
         # Request message for PipelineService.CreatePipelineJob.
         # Corresponds to the JSON property `createPipelineJobRequest`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CreatePipelineJobRequest]
@@ -21960,6 +21997,7 @@ module Google
         def update!(**args)
           @allow_queueing = args[:allow_queueing] if args.key?(:allow_queueing)
           @catch_up = args[:catch_up] if args.key?(:catch_up)
+          @create_notebook_execution_job_request = args[:create_notebook_execution_job_request] if args.key?(:create_notebook_execution_job_request)
           @create_pipeline_job_request = args[:create_pipeline_job_request] if args.key?(:create_pipeline_job_request)
           @create_time = args[:create_time] if args.key?(:create_time)
           @cron = args[:cron] if args.key?(:cron)
