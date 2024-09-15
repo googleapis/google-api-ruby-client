@@ -580,6 +580,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RowAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -779,10 +785,12 @@ module Google
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_type, as: 'backupType'
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::BigtableadminV2::EncryptionInfo, decorator: Google::Apis::BigtableadminV2::EncryptionInfo::Representation
       
           property :end_time, as: 'endTime'
           property :expire_time, as: 'expireTime'
+          property :hot_to_standard_time, as: 'hotToStandardTime'
           property :name, as: 'name'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :source_backup, as: 'sourceBackup'
@@ -1456,6 +1464,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cluster_ids, as: 'clusterIds'
+          property :row_affinity, as: 'rowAffinity', class: Google::Apis::BigtableadminV2::RowAffinity, decorator: Google::Apis::BigtableadminV2::RowAffinity::Representation
+      
         end
       end
       
@@ -1556,6 +1566,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
           property :table_id, as: 'tableId'
+        end
+      end
+      
+      class RowAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
