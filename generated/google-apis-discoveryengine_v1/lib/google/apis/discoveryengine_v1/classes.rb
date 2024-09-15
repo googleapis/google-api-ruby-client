@@ -474,6 +474,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequestAnswerGenerationSpec]
         attr_accessor :answer_generation_spec
       
+        # Deprecated: This field is deprecated. Streaming Answer API will be supported.
         # Asynchronous mode control. If enabled, the response will be returned with
         # answer/session resource name without final answer. The API users need to do
         # the polling to get the latest status of answer/session by calling
@@ -584,6 +585,19 @@ module Google
         attr_accessor :ignore_adversarial_query
         alias_method :ignore_adversarial_query?, :ignore_adversarial_query
       
+        # Optional. Specifies whether to filter out jail-breaking queries. The default
+        # value is `false`. Google employs search-query classification to detect jail-
+        # breaking queries. No summary is returned if the search query is classified as
+        # a jail-breaking query. A user might add instructions to the query to change
+        # the tone, style, language, content of the answer, or ask the model to act as a
+        # different entity, e.g. "Reply in the tone of a competing company's CEO". If
+        # this field is set to `true`, we skip generating summaries for jail-breaking
+        # queries and return fallback messages instead.
+        # Corresponds to the JSON property `ignoreJailBreakingQuery`
+        # @return [Boolean]
+        attr_accessor :ignore_jail_breaking_query
+        alias_method :ignore_jail_breaking_query?, :ignore_jail_breaking_query
+      
         # Specifies whether to filter out queries that have low relevance. If this field
         # is set to `false`, all search results are used regardless of relevance to
         # generate answers. If set to `true` or unset, the behavior will be determined
@@ -629,6 +643,7 @@ module Google
         def update!(**args)
           @answer_language_code = args[:answer_language_code] if args.key?(:answer_language_code)
           @ignore_adversarial_query = args[:ignore_adversarial_query] if args.key?(:ignore_adversarial_query)
+          @ignore_jail_breaking_query = args[:ignore_jail_breaking_query] if args.key?(:ignore_jail_breaking_query)
           @ignore_low_relevant_content = args[:ignore_low_relevant_content] if args.key?(:ignore_low_relevant_content)
           @ignore_non_answer_seeking_query = args[:ignore_non_answer_seeking_query] if args.key?(:ignore_non_answer_seeking_query)
           @include_citations = args[:include_citations] if args.key?(:include_citations)
@@ -939,6 +954,12 @@ module Google
         # @return [String]
         attr_accessor :content
       
+        # Document metadata contains the information of the document of the current
+        # chunk.
+        # Corresponds to the JSON property `documentMetadata`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata]
+        attr_accessor :document_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -947,6 +968,33 @@ module Google
         def update!(**args)
           @chunk = args[:chunk] if args.key?(:chunk)
           @content = args[:content] if args.key?(:content)
+          @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
+        end
+      end
+      
+      # Document metadata contains the information of the document of the current
+      # chunk.
+      class GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Title of the document.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Uri of the document.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1473,7 +1521,7 @@ module Google
         attr_accessor :snippet_info
       
         # Data representation. The structured JSON data for the document. It's populated
-        # from the struct data from the Document , or the Chunk in search result .
+        # from the struct data from the Document, or the Chunk in search result. .
         # Corresponds to the JSON property `structData`
         # @return [Hash<String,Object>]
         attr_accessor :struct_data
@@ -1688,10 +1736,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue]
         attr_accessor :matcher_value
       
-        # The status of the document.
-        # Corresponds to the JSON property `status`
+        # The state of the document.
+        # Corresponds to the JSON property `state`
         # @return [String]
-        attr_accessor :status
+        attr_accessor :state
       
         def initialize(**args)
            update!(**args)
@@ -1702,7 +1750,7 @@ module Google
           @data_ingestion_source = args[:data_ingestion_source] if args.key?(:data_ingestion_source)
           @last_refreshed_time = args[:last_refreshed_time] if args.key?(:last_refreshed_time)
           @matcher_value = args[:matcher_value] if args.key?(:matcher_value)
-          @status = args[:status] if args.key?(:status)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2915,10 +2963,10 @@ module Google
         attr_accessor :safe_search
         alias_method :safe_search?, :safe_search
       
-        # The resource name of the Serving Config to use. Format: `projects/`
-        # project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        # data_store_id`/servingConfigs/`serving_config_id`` If this is not set, the
-        # default serving config will be used.
+        # The resource name of the Serving Config to use. Format: `projects/`project`/
+        # locations/`location`/collections/`collection`/dataStores/`data_store_id`/
+        # servingConfigs/`serving_config_id`` If this is not set, the default serving
+        # config will be used.
         # Corresponds to the JSON property `servingConfig`
         # @return [String]
         attr_accessor :serving_config
@@ -3190,9 +3238,9 @@ module Google
         attr_accessor :model_version
       
         # Required. The fully qualified resource name of the model. Format: `projects/`
-        # project_number`/locations/`location`/collections/`collection`/dataStores/`
-        # data_store`/customTuningModels/`custom_tuning_model`` model must be an alpha-
-        # numerical string with limit of 40 characters.
+        # project`/locations/`location`/collections/`collection`/dataStores/`data_store`/
+        # customTuningModels/`custom_tuning_model``. Model must be an alpha-numerical
+        # string with limit of 40 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3265,6 +3313,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Stores information regarding the serving configurations at DataStore level.
+        # Corresponds to the JSON property `servingConfigDataStore`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfigDataStore]
+        attr_accessor :serving_config_data_store
+      
         # The solutions that the data store enrolls. Available solutions for each
         # industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `
         # SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is
@@ -3296,6 +3349,7 @@ module Google
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @name = args[:name] if args.key?(:name)
+          @serving_config_data_store = args[:serving_config_data_store] if args.key?(:serving_config_data_store)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
           @workspace_config = args[:workspace_config] if args.key?(:workspace_config)
@@ -3637,8 +3691,8 @@ module Google
         attr_accessor :joined
         alias_method :joined?, :joined
       
-        # The Document resource full name, of the form: `projects/`project_id`/locations/
-        # `location`/collections/`collection_id`/dataStores/`data_store_id`/branches/`
+        # The Document resource full name, of the form: `projects/`project`/locations/`
+        # location`/collections/`collection_id`/dataStores/`data_store_id`/branches/`
         # branch_id`/documents/`document_id``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3707,8 +3761,9 @@ module Google
         # parsing are supported. * `docx`: Override parsing config for DOCX files, only
         # digital parsing and layout parsing are supported. * `pptx`: Override parsing
         # config for PPTX files, only digital parsing and layout parsing are supported. *
-        # `xlsx`: Override parsing config for XLSX files, only digital parsing and
-        # layout parsing are supported.
+        # `xlsm`: Override parsing config for XLSM files, only digital parsing and
+        # layout parsing are supported. * `xlsx`: Override parsing config for XLSX files,
+        # only digital parsing and layout parsing are supported.
         # Corresponds to the JSON property `parsingConfigOverrides`
         # @return [Hash<String,Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig>]
         attr_accessor :parsing_config_overrides
@@ -3962,9 +4017,9 @@ module Google
       
         # Immutable. The fully qualified resource name of the engine. This field must be
         # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project_number`/locations/`location`/collections/`collection`/
-        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
-        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        # projects/`project`/locations/`location`/collections/`collection`/engines/`
+        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
+        # Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5370,9 +5425,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Full resource name of the project, for example `projects/`
-        # project_number``. Note that when making requests, project number and project
-        # id are both acceptable, but the server will always respond in project number.
+        # Output only. Full resource name of the project, for example `projects/`project`
+        # `. Note that when making requests, project number and project id are both
+        # acceptable, but the server will always respond in project number.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -6148,6 +6203,13 @@ module Google
       class GoogleCloudDiscoveryengineV1RecrawlUrisRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Full resource name of the SiteCredential, such as `projects/*/
+        # locations/*/collections/*/dataStores/*/siteSearchEngine/siteCredentials/*`.
+        # Only set to crawl private URIs.
+        # Corresponds to the JSON property `siteCredential`
+        # @return [String]
+        attr_accessor :site_credential
+      
         # Required. List of URIs to crawl. At most 10K URIs are supported, otherwise an
         # INVALID_ARGUMENT error is thrown. Each URI should match at least one
         # TargetSite in `site_search_engine`.
@@ -6161,6 +6223,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @site_credential = args[:site_credential] if args.key?(:site_credential)
           @uris = args[:uris] if args.key?(:uris)
         end
       end
@@ -6551,6 +6614,13 @@ module Google
         # @return [Float]
         attr_accessor :boost
       
+        # Specification for custom ranking based on customer specified attribute value.
+        # It provides more controls for customized ranking than the simple (condition,
+        # boost) combination above.
+        # Corresponds to the JSON property `boostControlSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpec]
+        attr_accessor :boost_control_spec
+      
         # An expression which specifies a boost condition. The syntax and supported
         # fields are the same as a filter expression. See SearchRequest.filter for
         # detail syntax and limitations. Examples: * To boost documents with document ID
@@ -6567,7 +6637,85 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boost = args[:boost] if args.key?(:boost)
+          @boost_control_spec = args[:boost_control_spec] if args.key?(:boost_control_spec)
           @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # Specification for custom ranking based on customer specified attribute value.
+      # It provides more controls for customized ranking than the simple (condition,
+      # boost) combination above.
+      class GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpec
+        include Google::Apis::Core::Hashable
+      
+        # The attribute type to be used to determine the boost amount. The attribute
+        # value can be derived from the field value of the specified field_name. In the
+        # case of numerical it is straightforward i.e. attribute_value =
+        # numerical_field_value. In the case of freshness however, attribute_value = (
+        # time.now() - datetime_field_value).
+        # Corresponds to the JSON property `attributeType`
+        # @return [String]
+        attr_accessor :attribute_type
+      
+        # The control points used to define the curve. The monotonic function (defined
+        # through the interpolation_type above) passes through the control points listed
+        # here.
+        # Corresponds to the JSON property `controlPoints`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint>]
+        attr_accessor :control_points
+      
+        # The name of the field whose value will be used to determine the boost amount.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # The interpolation type to be applied to connect the control points listed
+        # below.
+        # Corresponds to the JSON property `interpolationType`
+        # @return [String]
+        attr_accessor :interpolation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_type = args[:attribute_type] if args.key?(:attribute_type)
+          @control_points = args[:control_points] if args.key?(:control_points)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @interpolation_type = args[:interpolation_type] if args.key?(:interpolation_type)
+        end
+      end
+      
+      # The control points used to define the curve. The curve defined through these
+      # control points can only be monotonically increasing or decreasing(constant
+      # values are acceptable).
+      class GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint
+        include Google::Apis::Core::Hashable
+      
+        # Can be one of: 1. The numerical field value. 2. The duration spec for
+        # freshness: The value must be formatted as an XSD `dayTimeDuration` value (a
+        # restricted subset of an ISO 8601 duration value). The pattern for this is: `
+        # nDnM]`.
+        # Corresponds to the JSON property `attributeValue`
+        # @return [String]
+        attr_accessor :attribute_value
+      
+        # The value between -1 to 1 by which to boost the score if the attribute_value
+        # evaluates to the value specified above.
+        # Corresponds to the JSON property `boostAmount`
+        # @return [Float]
+        attr_accessor :boost_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_value = args[:attribute_value] if args.key?(:attribute_value)
+          @boost_amount = args[:boost_amount] if args.key?(:boost_amount)
         end
       end
       
@@ -6761,6 +6909,19 @@ module Google
         attr_accessor :ignore_adversarial_query
         alias_method :ignore_adversarial_query?, :ignore_adversarial_query
       
+        # Optional. Specifies whether to filter out jail-breaking queries. The default
+        # value is `false`. Google employs search-query classification to detect jail-
+        # breaking queries. No summary is returned if the search query is classified as
+        # a jail-breaking query. A user might add instructions to the query to change
+        # the tone, style, language, content of the answer, or ask the model to act as a
+        # different entity, e.g. "Reply in the tone of a competing company's CEO". If
+        # this field is set to `true`, we skip generating summaries for jail-breaking
+        # queries and return fallback messages instead.
+        # Corresponds to the JSON property `ignoreJailBreakingQuery`
+        # @return [Boolean]
+        attr_accessor :ignore_jail_breaking_query
+        alias_method :ignore_jail_breaking_query?, :ignore_jail_breaking_query
+      
         # Specifies whether to filter out queries that have low relevance. The default
         # value is `false`. If this field is set to `false`, all search results are used
         # regardless of relevance to generate answers. If set to `true`, only queries
@@ -6840,6 +7001,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ignore_adversarial_query = args[:ignore_adversarial_query] if args.key?(:ignore_adversarial_query)
+          @ignore_jail_breaking_query = args[:ignore_jail_breaking_query] if args.key?(:ignore_jail_breaking_query)
           @ignore_low_relevant_content = args[:ignore_low_relevant_content] if args.key?(:ignore_low_relevant_content)
           @ignore_non_summary_seeking_query = args[:ignore_non_summary_seeking_query] if args.key?(:ignore_non_summary_seeking_query)
           @include_citations = args[:include_citations] if args.key?(:include_citations)
@@ -7662,6 +7824,26 @@ module Google
           @citation_metadata = args[:citation_metadata] if args.key?(:citation_metadata)
           @references = args[:references] if args.key?(:references)
           @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
+      # Stores information regarding the serving configurations at DataStore level.
+      class GoogleCloudDiscoveryengineV1ServingConfigDataStore
+        include Google::Apis::Core::Hashable
+      
+        # If set true, the DataStore will not be available for serving search requests.
+        # Corresponds to the JSON property `disabledForServing`
+        # @return [Boolean]
+        attr_accessor :disabled_for_serving
+        alias_method :disabled_for_serving?, :disabled_for_serving
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled_for_serving = args[:disabled_for_serving] if args.key?(:disabled_for_serving)
         end
       end
       
@@ -9084,7 +9266,7 @@ module Google
         attr_accessor :snippet_info
       
         # Data representation. The structured JSON data for the document. It's populated
-        # from the struct data from the Document , or the Chunk in search result .
+        # from the struct data from the Document, or the Chunk in search result. .
         # Corresponds to the JSON property `structData`
         # @return [Hash<String,Object>]
         attr_accessor :struct_data
@@ -9686,9 +9868,9 @@ module Google
         attr_accessor :model_version
       
         # Required. The fully qualified resource name of the model. Format: `projects/`
-        # project_number`/locations/`location`/collections/`collection`/dataStores/`
-        # data_store`/customTuningModels/`custom_tuning_model`` model must be an alpha-
-        # numerical string with limit of 40 characters.
+        # project`/locations/`location`/collections/`collection`/dataStores/`data_store`/
+        # customTuningModels/`custom_tuning_model``. Model must be an alpha-numerical
+        # string with limit of 40 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -9782,6 +9964,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configuration for Natural Language Query Understanding.
+        # Corresponds to the JSON property `naturalLanguageQueryUnderstandingConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig]
+        attr_accessor :natural_language_query_understanding_config
+      
+        # Stores information regarding the serving configurations at DataStore level.
+        # Corresponds to the JSON property `servingConfigDataStore`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaServingConfigDataStore]
+        attr_accessor :serving_config_data_store
+      
         # The solutions that the data store enrolls. Available solutions for each
         # industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `
         # SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is
@@ -9816,6 +10008,8 @@ module Google
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @language_info = args[:language_info] if args.key?(:language_info)
           @name = args[:name] if args.key?(:name)
+          @natural_language_query_understanding_config = args[:natural_language_query_understanding_config] if args.key?(:natural_language_query_understanding_config)
+          @serving_config_data_store = args[:serving_config_data_store] if args.key?(:serving_config_data_store)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
           @workspace_config = args[:workspace_config] if args.key?(:workspace_config)
@@ -10001,8 +10195,9 @@ module Google
         # parsing are supported. * `docx`: Override parsing config for DOCX files, only
         # digital parsing and layout parsing are supported. * `pptx`: Override parsing
         # config for PPTX files, only digital parsing and layout parsing are supported. *
-        # `xlsx`: Override parsing config for XLSX files, only digital parsing and
-        # layout parsing are supported.
+        # `xlsm`: Override parsing config for XLSM files, only digital parsing and
+        # layout parsing are supported. * `xlsx`: Override parsing config for XLSX files,
+        # only digital parsing and layout parsing are supported.
         # Corresponds to the JSON property `parsingConfigOverrides`
         # @return [Hash<String,Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig>]
         attr_accessor :parsing_config_overrides
@@ -10248,9 +10443,9 @@ module Google
       
         # Immutable. The fully qualified resource name of the engine. This field must be
         # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project_number`/locations/`location`/collections/`collection`/
-        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
-        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        # projects/`project`/locations/`location`/collections/`collection`/engines/`
+        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
+        # Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -11418,6 +11613,26 @@ module Google
         end
       end
       
+      # Configuration for Natural Language Query Understanding.
+      class GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Mode of Natural Language Query Understanding. If this field is unset, the
+        # behavior defaults to NaturalLanguageQueryUnderstandingConfig.Mode.DISABLED.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
       # Metadata and configurations for a Google Cloud project in the service.
       class GoogleCloudDiscoveryengineV1alphaProject
         include Google::Apis::Core::Hashable
@@ -11427,9 +11642,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Full resource name of the project, for example `projects/`
-        # project_number``. Note that when making requests, project number and project
-        # id are both acceptable, but the server will always respond in project number.
+        # Output only. Full resource name of the project, for example `projects/`project`
+        # `. Note that when making requests, project number and project id are both
+        # acceptable, but the server will always respond in project number.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -12689,6 +12904,19 @@ module Google
         attr_accessor :ignore_adversarial_query
         alias_method :ignore_adversarial_query?, :ignore_adversarial_query
       
+        # Optional. Specifies whether to filter out jail-breaking queries. The default
+        # value is `false`. Google employs search-query classification to detect jail-
+        # breaking queries. No summary is returned if the search query is classified as
+        # a jail-breaking query. A user might add instructions to the query to change
+        # the tone, style, language, content of the answer, or ask the model to act as a
+        # different entity, e.g. "Reply in the tone of a competing company's CEO". If
+        # this field is set to `true`, we skip generating summaries for jail-breaking
+        # queries and return fallback messages instead.
+        # Corresponds to the JSON property `ignoreJailBreakingQuery`
+        # @return [Boolean]
+        attr_accessor :ignore_jail_breaking_query
+        alias_method :ignore_jail_breaking_query?, :ignore_jail_breaking_query
+      
         # Specifies whether to filter out queries that have low relevance. The default
         # value is `false`. If this field is set to `false`, all search results are used
         # regardless of relevance to generate answers. If set to `true`, only queries
@@ -12768,6 +12996,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ignore_adversarial_query = args[:ignore_adversarial_query] if args.key?(:ignore_adversarial_query)
+          @ignore_jail_breaking_query = args[:ignore_jail_breaking_query] if args.key?(:ignore_jail_breaking_query)
           @ignore_low_relevant_content = args[:ignore_low_relevant_content] if args.key?(:ignore_low_relevant_content)
           @ignore_non_summary_seeking_query = args[:ignore_non_summary_seeking_query] if args.key?(:ignore_non_summary_seeking_query)
           @include_citations = args[:include_citations] if args.key?(:include_citations)
@@ -13201,6 +13430,26 @@ module Google
         end
       end
       
+      # Stores information regarding the serving configurations at DataStore level.
+      class GoogleCloudDiscoveryengineV1alphaServingConfigDataStore
+        include Google::Apis::Core::Hashable
+      
+        # If set true, the DataStore will not be available for serving search requests.
+        # Corresponds to the JSON property `disabledForServing`
+        # @return [Boolean]
+        attr_accessor :disabled_for_serving
+        alias_method :disabled_for_serving?, :disabled_for_serving
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled_for_serving = args[:disabled_for_serving] if args.key?(:disabled_for_serving)
+        end
+      end
+      
       # External session proto definition.
       class GoogleCloudDiscoveryengineV1alphaSession
         include Google::Apis::Core::Hashable
@@ -13547,8 +13796,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The resource name of the engine that this tune applies to. Format: `
-        # projects/`project_number`/locations/`location_id`/collections/`collection_id`/
-        # engines/`engine_id``
+        # projects/`project`/locations/`location`/collections/`collection_id`/engines/`
+        # engine_id``
         # Corresponds to the JSON property `engine`
         # @return [String]
         attr_accessor :engine
@@ -14163,9 +14412,9 @@ module Google
         attr_accessor :model_version
       
         # Required. The fully qualified resource name of the model. Format: `projects/`
-        # project_number`/locations/`location`/collections/`collection`/dataStores/`
-        # data_store`/customTuningModels/`custom_tuning_model`` model must be an alpha-
-        # numerical string with limit of 40 characters.
+        # project`/locations/`location`/collections/`collection`/dataStores/`data_store`/
+        # customTuningModels/`custom_tuning_model``. Model must be an alpha-numerical
+        # string with limit of 40 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -14243,6 +14492,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configuration for Natural Language Query Understanding.
+        # Corresponds to the JSON property `naturalLanguageQueryUnderstandingConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig]
+        attr_accessor :natural_language_query_understanding_config
+      
+        # Stores information regarding the serving configurations at DataStore level.
+        # Corresponds to the JSON property `servingConfigDataStore`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaServingConfigDataStore]
+        attr_accessor :serving_config_data_store
+      
         # The solutions that the data store enrolls. Available solutions for each
         # industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `
         # SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is
@@ -14275,6 +14534,8 @@ module Google
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @language_info = args[:language_info] if args.key?(:language_info)
           @name = args[:name] if args.key?(:name)
+          @natural_language_query_understanding_config = args[:natural_language_query_understanding_config] if args.key?(:natural_language_query_understanding_config)
+          @serving_config_data_store = args[:serving_config_data_store] if args.key?(:serving_config_data_store)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
           @workspace_config = args[:workspace_config] if args.key?(:workspace_config)
@@ -14460,8 +14721,9 @@ module Google
         # parsing are supported. * `docx`: Override parsing config for DOCX files, only
         # digital parsing and layout parsing are supported. * `pptx`: Override parsing
         # config for PPTX files, only digital parsing and layout parsing are supported. *
-        # `xlsx`: Override parsing config for XLSX files, only digital parsing and
-        # layout parsing are supported.
+        # `xlsm`: Override parsing config for XLSM files, only digital parsing and
+        # layout parsing are supported. * `xlsx`: Override parsing config for XLSX files,
+        # only digital parsing and layout parsing are supported.
         # Corresponds to the JSON property `parsingConfigOverrides`
         # @return [Hash<String,Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig>]
         attr_accessor :parsing_config_overrides
@@ -14702,9 +14964,9 @@ module Google
       
         # Immutable. The fully qualified resource name of the engine. This field must be
         # a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        # projects/`project_number`/locations/`location`/collections/`collection`/
-        # engines/`engine`` engine should be 1-63 characters, and valid characters are /
-        # a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        # projects/`project`/locations/`location`/collections/`collection`/engines/`
+        # engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
+        # Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -15473,6 +15735,26 @@ module Google
         end
       end
       
+      # Configuration for Natural Language Query Understanding.
+      class GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Mode of Natural Language Query Understanding. If this field is unset, the
+        # behavior defaults to NaturalLanguageQueryUnderstandingConfig.Mode.DISABLED.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
       # Metadata and configurations for a Google Cloud project in the service.
       class GoogleCloudDiscoveryengineV1betaProject
         include Google::Apis::Core::Hashable
@@ -15482,9 +15764,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Full resource name of the project, for example `projects/`
-        # project_number``. Note that when making requests, project number and project
-        # id are both acceptable, but the server will always respond in project number.
+        # Output only. Full resource name of the project, for example `projects/`project`
+        # `. Note that when making requests, project number and project id are both
+        # acceptable, but the server will always respond in project number.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -16457,6 +16739,19 @@ module Google
         attr_accessor :ignore_adversarial_query
         alias_method :ignore_adversarial_query?, :ignore_adversarial_query
       
+        # Optional. Specifies whether to filter out jail-breaking queries. The default
+        # value is `false`. Google employs search-query classification to detect jail-
+        # breaking queries. No summary is returned if the search query is classified as
+        # a jail-breaking query. A user might add instructions to the query to change
+        # the tone, style, language, content of the answer, or ask the model to act as a
+        # different entity, e.g. "Reply in the tone of a competing company's CEO". If
+        # this field is set to `true`, we skip generating summaries for jail-breaking
+        # queries and return fallback messages instead.
+        # Corresponds to the JSON property `ignoreJailBreakingQuery`
+        # @return [Boolean]
+        attr_accessor :ignore_jail_breaking_query
+        alias_method :ignore_jail_breaking_query?, :ignore_jail_breaking_query
+      
         # Specifies whether to filter out queries that have low relevance. The default
         # value is `false`. If this field is set to `false`, all search results are used
         # regardless of relevance to generate answers. If set to `true`, only queries
@@ -16536,6 +16831,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ignore_adversarial_query = args[:ignore_adversarial_query] if args.key?(:ignore_adversarial_query)
+          @ignore_jail_breaking_query = args[:ignore_jail_breaking_query] if args.key?(:ignore_jail_breaking_query)
           @ignore_low_relevant_content = args[:ignore_low_relevant_content] if args.key?(:ignore_low_relevant_content)
           @ignore_non_summary_seeking_query = args[:ignore_non_summary_seeking_query] if args.key?(:ignore_non_summary_seeking_query)
           @include_citations = args[:include_citations] if args.key?(:include_citations)
@@ -16969,6 +17265,26 @@ module Google
         end
       end
       
+      # Stores information regarding the serving configurations at DataStore level.
+      class GoogleCloudDiscoveryengineV1betaServingConfigDataStore
+        include Google::Apis::Core::Hashable
+      
+        # If set true, the DataStore will not be available for serving search requests.
+        # Corresponds to the JSON property `disabledForServing`
+        # @return [Boolean]
+        attr_accessor :disabled_for_serving
+        alias_method :disabled_for_serving?, :disabled_for_serving
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled_for_serving = args[:disabled_for_serving] if args.key?(:disabled_for_serving)
+        end
+      end
+      
       # Verification information for target sites in advanced site search.
       class GoogleCloudDiscoveryengineV1betaSiteVerificationInfo
         include Google::Apis::Core::Hashable
@@ -17198,8 +17514,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The resource name of the engine that this tune applies to. Format: `
-        # projects/`project_number`/locations/`location_id`/collections/`collection_id`/
-        # engines/`engine_id``
+        # projects/`project`/locations/`location`/collections/`collection_id`/engines/`
+        # engine_id``
         # Corresponds to the JSON property `engine`
         # @return [String]
         attr_accessor :engine
