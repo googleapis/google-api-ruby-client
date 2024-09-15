@@ -158,9 +158,9 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # Optional. The annotation that will be assigned to the Event. This field can be
-        # left empty to provide reasons that apply to an event without concluding
-        # whether the event is legitimate or fraudulent.
+        # Optional. The annotation that is assigned to the Event. This field can be left
+        # empty to provide reasons that apply to an event without concluding whether the
+        # event is legitimate or fraudulent.
         # Corresponds to the JSON property `annotation`
         # @return [String]
         attr_accessor :annotation
@@ -462,8 +462,8 @@ module Google
         alias_method :express?, :express
       
         # Optional. Flag for enabling firewall policy config assessment. If this flag is
-        # enabled, the firewall policy will be evaluated and a suggested firewall action
-        # will be returned in the response.
+        # enabled, the firewall policy is evaluated and a suggested firewall action is
+        # returned in the response.
         # Corresponds to the JSON property `firewallPolicyEvaluation`
         # @return [Boolean]
         attr_accessor :firewall_policy_evaluation
@@ -600,7 +600,7 @@ module Google
         attr_accessor :include_recaptcha_script
       
         # A redirect action returns a 307 (temporary redirect) response, pointing the
-        # user to a ReCaptcha interstitial page to attach a token.
+        # user to a reCAPTCHA interstitial page to attach a token.
         # Corresponds to the JSON property `redirect`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction]
         attr_accessor :redirect
@@ -677,7 +677,7 @@ module Google
       end
       
       # A redirect action returns a 307 (temporary redirect) response, pointing the
-      # user to a ReCaptcha interstitial page to attach a token.
+      # user to a reCAPTCHA interstitial page to attach a token.
       class GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
         include Google::Apis::Core::Hashable
       
@@ -1274,9 +1274,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1Metrics
         include Google::Apis::Core::Hashable
       
-        # Metrics will be continuous and in order by dates, and in the granularity of
-        # day. Only challenge-based keys (CHECKBOX, INVISIBLE), will have challenge-
-        # based data.
+        # Metrics are continuous and in order by dates, and in the granularity of day.
+        # Only challenge-based keys (CHECKBOX, INVISIBLE) have challenge-based data.
         # Corresponds to the JSON property `challengeMetrics`
         # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>]
         attr_accessor :challenge_metrics
@@ -1287,8 +1286,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Metrics will be continuous and in order by dates, and in the granularity of
-        # day. All Key types should have score-based data.
+        # Metrics are continuous and in order by dates, and in the granularity of day.
+        # All Key types should have score-based data.
         # Corresponds to the JSON property `scoreMetrics`
         # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ScoreMetrics>]
         attr_accessor :score_metrics
@@ -1737,14 +1736,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge
-        # requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable
+        # requests for this site return nocaptcha if NOCAPTCHA, or an unsolvable
         # challenge if CHALLENGE.
         # Corresponds to the JSON property `testingChallenge`
         # @return [String]
         attr_accessor :testing_challenge
       
-        # Optional. All assessments for this Key will return this score. Must be between
-        # 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
+        # Optional. All assessments for this Key return this score. Must be between 0 (
+        # likely not legitimate) and 1 (likely legitimate) inclusive.
         # Corresponds to the JSON property `testingScore`
         # @return [Float]
         attr_accessor :testing_score
@@ -2248,7 +2247,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1WebKeySettings
         include Google::Apis::Core::Hashable
       
-        # Optional. If set to true, it means allowed_domains will not be enforced.
+        # Optional. If set to true, it means allowed_domains are not enforced.
         # Corresponds to the JSON property `allowAllDomains`
         # @return [Boolean]
         attr_accessor :allow_all_domains
@@ -2271,7 +2270,7 @@ module Google
       
         # Optional. Settings for the frequency and difficulty at which this key triggers
         # captcha challenges. This should only be specified for IntegrationTypes
-        # CHECKBOX and INVISIBLE.
+        # CHECKBOX and INVISIBLE and SCORE_AND_CHALLENGE.
         # Corresponds to the JSON property `challengeSecurityPreference`
         # @return [String]
         attr_accessor :challenge_security_preference

@@ -89,8 +89,8 @@ module Google
         
         # Creates an Assessment of the likelihood an event is legitimate.
         # @param [String] parent
-        #   Required. The name of the project in which the assessment will be created, in
-        #   the format `projects/`project``.
+        #   Required. The name of the project in which the assessment is created, in the
+        #   format `projects/`project``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Assessment] google_cloud_recaptchaenterprise_v1_assessment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -125,7 +125,7 @@ module Google
         # Enterprise actions can be executed. A project may have a maximum of 1000
         # policies.
         # @param [String] parent
-        #   Required. The name of the project this policy will apply to, in the format `
+        #   Required. The name of the project this policy applies to, in the format `
         #   projects/`project``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicy] google_cloud_recaptchaenterprise_v1_firewall_policy_object
         # @param [String] fields
@@ -265,7 +265,7 @@ module Google
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1FirewallPolicy] google_cloud_recaptchaenterprise_v1_firewall_policy_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields of the policy get updated. If the
-        #   mask is not present, all fields will be updated.
+        #   mask is not present, all fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -332,7 +332,7 @@ module Google
         
         # Adds an IP override to a key. The following restrictions hold: * The maximum
         # number of IP overrides per key is 100. * For any conflict (such as IP already
-        # exists or IP part of an existing IP range), an error will be returned.
+        # exists or IP part of an existing IP range), an error is returned.
         # @param [String] name
         #   Required. The name of the key to which the IP override is added, in the format
         #   `projects/`project`/keys/`key``.
@@ -368,8 +368,8 @@ module Google
         
         # Creates a new reCAPTCHA Enterprise key.
         # @param [String] parent
-        #   Required. The name of the project in which the key will be created, in the
-        #   format `projects/`project``.
+        #   Required. The name of the project in which the key is created, in the format `
+        #   projects/`project``.
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] google_cloud_recaptchaenterprise_v1_key_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -496,8 +496,8 @@ module Google
         
         # Returns the list of all keys that belong to a project.
         # @param [String] parent
-        #   Required. The name of the project that contains the keys that will be listed,
-        #   in the format `projects/`project``.
+        #   Required. The name of the project that contains the keys that is listed, in
+        #   the format `projects/`project``.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of keys to return. Default is 10. Max limit is
         #   1000.
@@ -618,7 +618,7 @@ module Google
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] google_cloud_recaptchaenterprise_v1_key_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields of the key get updated. If the mask
-        #   is not present, all fields will be updated.
+        #   is not present, all fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -650,9 +650,9 @@ module Google
         end
         
         # Removes an IP override from a key. The following restrictions hold: * If the
-        # IP isn't found in an existing IP override, a `NOT_FOUND` error will be
-        # returned. * If the IP is found in an existing IP override, but the override
-        # type does not match, a `NOT_FOUND` error will be returned.
+        # IP isn't found in an existing IP override, a `NOT_FOUND` error is returned. *
+        # If the IP is found in an existing IP override, but the override type does not
+        # match, a `NOT_FOUND` error is returned.
         # @param [String] name
         #   Required. The name of the key from which the IP override is removed, in the
         #   format `projects/`project`/keys/`key``.
