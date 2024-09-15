@@ -45,6 +45,18 @@ module Google
       # View display name, description, and other metadata for all Google Chat conversations owned by your organization
       AUTH_CHAT_ADMIN_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.admin.spaces.readonly'
 
+      # On their own behalf, apps in Google Chat can delete conversations and spaces and remove access to associated files
+      AUTH_CHAT_APP_DELETE = 'https://www.googleapis.com/auth/chat.app.delete'
+
+      # On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and spaces
+      AUTH_CHAT_APP_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.app.memberships'
+
+      # On their own behalf, apps in Google Chat can create conversations and spaces and see or update their metadata (including history settings and access settings)
+      AUTH_CHAT_APP_SPACES = 'https://www.googleapis.com/auth/chat.app.spaces'
+
+      # On their own behalf, apps in Google Chat can create conversations and spaces
+      AUTH_CHAT_APP_SPACES_CREATE = 'https://www.googleapis.com/auth/chat.app.spaces.create'
+
       # Private Service: https://www.googleapis.com/auth/chat.bot
       AUTH_CHAT_BOT = 'https://www.googleapis.com/auth/chat.bot'
 
