@@ -1275,6 +1275,26 @@ module Google
         end
       end
       
+      # Information about a backup that was used to restore a database.
+      class GoogleFirestoreAdminV1BackupSource
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the backup that was used to restore this database. Format:
+        # `projects/`project`/locations/`location`/backups/`backup``.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+        end
+      end
+      
       # Metadata for google.longrunning.Operation results from FirestoreAdmin.
       # BulkDeleteDocuments.
       class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
@@ -1549,6 +1569,11 @@ module Google
         # @return [String]
         attr_accessor :previous_id
       
+        # Information about the provenance of this database.
+        # Corresponds to the JSON property `sourceInfo`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceInfo]
+        attr_accessor :source_info
+      
         # The type of the database. See https://cloud.google.com/datastore/docs/
         # firestore-or-datastore for information about how to choose.
         # Corresponds to the JSON property `type`
@@ -1595,6 +1620,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @point_in_time_recovery_enablement = args[:point_in_time_recovery_enablement] if args.key?(:point_in_time_recovery_enablement)
           @previous_id = args[:previous_id] if args.key?(:previous_id)
+          @source_info = args[:source_info] if args.key?(:source_info)
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -2540,6 +2566,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Information about the provenance of this database.
+      class GoogleFirestoreAdminV1SourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Information about a backup that was used to restore a database.
+        # Corresponds to the JSON property `backup`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1BackupSource]
+        attr_accessor :backup
+      
+        # The associated long-running operation. This field may not be set after the
+        # operation has completed. Format: `projects/`project`/databases/`database`/
+        # operations/`operation``.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @operation = args[:operation] if args.key?(:operation)
         end
       end
       
