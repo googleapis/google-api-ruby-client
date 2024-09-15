@@ -332,6 +332,25 @@ module Google
         end
       end
       
+      # Fixed IOPS (input/output operations per second) parameters.
+      class FixedIops
+        include Google::Apis::Core::Hashable
+      
+        # Required. Maximum raw read IOPS.
+        # Corresponds to the JSON property `maxReadIops`
+        # @return [Fixnum]
+        attr_accessor :max_read_iops
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_read_iops = args[:max_read_iops] if args.key?(:max_read_iops)
+        end
+      end
+      
       # Instance represents the interface for SLM services to actuate the state of
       # control plane resources. Example Instance in JSON, where consumer-project-
       # number=123456, producer-project-id=cloud-sql: ```json Instance: ` "name": "
@@ -766,9 +785,35 @@ module Google
         end
       end
       
+      # IOPS per TB. Filestore defines TB as 1024^4 bytes (TiB).
+      class IopsPerTb
+        include Google::Apis::Core::Hashable
+      
+        # Required. Maximum read IOPS per TiB.
+        # Corresponds to the JSON property `maxReadIopsPerTb`
+        # @return [Fixnum]
+        attr_accessor :max_read_iops_per_tb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_read_iops_per_tb = args[:max_read_iops_per_tb] if args.key?(:max_read_iops_per_tb)
+        end
+      end
+      
       # A Filestore instance.
       class Instance
         include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates whether this instance's performance is configurable. If
+        # enabled, adjust it using the 'performance_config' field.
+        # Corresponds to the JSON property `configurablePerformanceEnabled`
+        # @return [Boolean]
+        attr_accessor :configurable_performance_enabled
+        alias_method :configurable_performance_enabled?, :configurable_performance_enabled
       
         # Output only. The time when the instance was created.
         # Corresponds to the JSON property `createTime`
@@ -824,6 +869,22 @@ module Google
         # Corresponds to the JSON property `networks`
         # @return [Array<Google::Apis::FileV1::NetworkConfig>]
         attr_accessor :networks
+      
+        # Used for setting the performance configuration. If the user doesn't specify
+        # PerformanceConfig, automatically provision the default performance settings as
+        # described in https://cloud.google.com/filestore/docs/performance. Larger
+        # instances will be linearly set to more IOPS. If the instance's capacity is
+        # increased or decreased, its performance will be automatically adjusted upwards
+        # or downwards accordingly (respectively).
+        # Corresponds to the JSON property `performanceConfig`
+        # @return [Google::Apis::FileV1::PerformanceConfig]
+        attr_accessor :performance_config
+      
+        # The enforced performance limits, calculated from the instance's performance
+        # configuration.
+        # Corresponds to the JSON property `performanceLimits`
+        # @return [Google::Apis::FileV1::PerformanceLimits]
+        attr_accessor :performance_limits
       
         # Immutable. The protocol indicates the access protocol for all shares in the
         # instance. This field is immutable and it cannot be changed after the instance
@@ -883,6 +944,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configurable_performance_enabled = args[:configurable_performance_enabled] if args.key?(:configurable_performance_enabled)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @deletion_protection_reason = args[:deletion_protection_reason] if args.key?(:deletion_protection_reason)
@@ -893,6 +955,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
+          @performance_config = args[:performance_config] if args.key?(:performance_config)
+          @performance_limits = args[:performance_limits] if args.key?(:performance_limits)
           @protocol = args[:protocol] if args.key?(:protocol)
           @replication = args[:replication] if args.key?(:replication)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -1421,6 +1485,74 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Used for setting the performance configuration. If the user doesn't specify
+      # PerformanceConfig, automatically provision the default performance settings as
+      # described in https://cloud.google.com/filestore/docs/performance. Larger
+      # instances will be linearly set to more IOPS. If the instance's capacity is
+      # increased or decreased, its performance will be automatically adjusted upwards
+      # or downwards accordingly (respectively).
+      class PerformanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Fixed IOPS (input/output operations per second) parameters.
+        # Corresponds to the JSON property `fixedIops`
+        # @return [Google::Apis::FileV1::FixedIops]
+        attr_accessor :fixed_iops
+      
+        # IOPS per TB. Filestore defines TB as 1024^4 bytes (TiB).
+        # Corresponds to the JSON property `iopsPerTb`
+        # @return [Google::Apis::FileV1::IopsPerTb]
+        attr_accessor :iops_per_tb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fixed_iops = args[:fixed_iops] if args.key?(:fixed_iops)
+          @iops_per_tb = args[:iops_per_tb] if args.key?(:iops_per_tb)
+        end
+      end
+      
+      # The enforced performance limits, calculated from the instance's performance
+      # configuration.
+      class PerformanceLimits
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The max read IOPS.
+        # Corresponds to the JSON property `maxReadIops`
+        # @return [Fixnum]
+        attr_accessor :max_read_iops
+      
+        # Output only. The max read throughput in bytes per second.
+        # Corresponds to the JSON property `maxReadThroughputBps`
+        # @return [Fixnum]
+        attr_accessor :max_read_throughput_bps
+      
+        # Output only. The max write IOPS.
+        # Corresponds to the JSON property `maxWriteIops`
+        # @return [Fixnum]
+        attr_accessor :max_write_iops
+      
+        # Output only. The max write throughput in bytes per second.
+        # Corresponds to the JSON property `maxWriteThroughputBps`
+        # @return [Fixnum]
+        attr_accessor :max_write_throughput_bps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_read_iops = args[:max_read_iops] if args.key?(:max_read_iops)
+          @max_read_throughput_bps = args[:max_read_throughput_bps] if args.key?(:max_read_throughput_bps)
+          @max_write_iops = args[:max_write_iops] if args.key?(:max_write_iops)
+          @max_write_throughput_bps = args[:max_write_throughput_bps] if args.key?(:max_write_throughput_bps)
         end
       end
       
