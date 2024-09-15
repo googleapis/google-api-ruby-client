@@ -885,6 +885,13 @@ module Google
         # @return [String]
         attr_accessor :medium
       
+        # Input only. JSON Metadata encoded as a string. This field is primarily used by
+        # Insights integrations with various telphony systems and must be in one of
+        # Insights' supported formats.
+        # Corresponds to the JSON property `metadataJson`
+        # @return [String]
+        attr_accessor :metadata_json
+      
         # Immutable. The resource name of the conversation. Format: projects/`project`/
         # locations/`location`/conversations/`conversation`
         # Corresponds to the JSON property `name`
@@ -951,6 +958,7 @@ module Google
           @latest_analysis = args[:latest_analysis] if args.key?(:latest_analysis)
           @latest_summary = args[:latest_summary] if args.key?(:latest_summary)
           @medium = args[:medium] if args.key?(:medium)
+          @metadata_json = args[:metadata_json] if args.key?(:metadata_json)
           @name = args[:name] if args.key?(:name)
           @obfuscated_user_id = args[:obfuscated_user_id] if args.key?(:obfuscated_user_id)
           @quality_metadata = args[:quality_metadata] if args.key?(:quality_metadata)
@@ -4608,6 +4616,13 @@ module Google
         # @return [String]
         attr_accessor :medium
       
+        # Input only. JSON Metadata encoded as a string. This field is primarily used by
+        # Insights integrations with various telphony systems and must be in one of
+        # Insights' supported formats.
+        # Corresponds to the JSON property `metadataJson`
+        # @return [String]
+        attr_accessor :metadata_json
+      
         # Immutable. The resource name of the conversation. Format: projects/`project`/
         # locations/`location`/conversations/`conversation`
         # Corresponds to the JSON property `name`
@@ -4674,6 +4689,7 @@ module Google
           @latest_analysis = args[:latest_analysis] if args.key?(:latest_analysis)
           @latest_summary = args[:latest_summary] if args.key?(:latest_summary)
           @medium = args[:medium] if args.key?(:medium)
+          @metadata_json = args[:metadata_json] if args.key?(:metadata_json)
           @name = args[:name] if args.key?(:name)
           @obfuscated_user_id = args[:obfuscated_user_id] if args.key?(:obfuscated_user_id)
           @quality_metadata = args[:quality_metadata] if args.key?(:quality_metadata)
