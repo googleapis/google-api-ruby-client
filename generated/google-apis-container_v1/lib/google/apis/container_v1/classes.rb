@@ -932,6 +932,12 @@ module Google
         # @return [String]
         attr_accessor :cluster_ipv4_cidr
       
+        # CompliancePostureConfig defines the settings needed to enable/disable features
+        # for the Compliance Posture.
+        # Corresponds to the JSON property `compliancePostureConfig`
+        # @return [Google::Apis::ContainerV1::CompliancePostureConfig]
+        attr_accessor :compliance_posture_config
+      
         # Which conditions caused the current cluster state.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
@@ -1369,6 +1375,7 @@ module Google
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
+          @compliance_posture_config = args[:compliance_posture_config] if args.key?(:compliance_posture_config)
           @conditions = args[:conditions] if args.key?(:conditions)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @cost_management_config = args[:cost_management_config] if args.key?(:cost_management_config)
@@ -1545,6 +1552,12 @@ module Google
         # Corresponds to the JSON property `desiredClusterAutoscaling`
         # @return [Google::Apis::ContainerV1::ClusterAutoscaling]
         attr_accessor :desired_cluster_autoscaling
+      
+        # CompliancePostureConfig defines the settings needed to enable/disable features
+        # for the Compliance Posture.
+        # Corresponds to the JSON property `desiredCompliancePostureConfig`
+        # @return [Google::Apis::ContainerV1::CompliancePostureConfig]
+        attr_accessor :desired_compliance_posture_config
       
         # ContainerdConfig contains configuration to customize containerd.
         # Corresponds to the JSON property `desiredContainerdConfig`
@@ -1886,6 +1899,7 @@ module Google
           @desired_autopilot_workload_policy_config = args[:desired_autopilot_workload_policy_config] if args.key?(:desired_autopilot_workload_policy_config)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
+          @desired_compliance_posture_config = args[:desired_compliance_posture_config] if args.key?(:desired_compliance_posture_config)
           @desired_containerd_config = args[:desired_containerd_config] if args.key?(:desired_containerd_config)
           @desired_cost_management_config = args[:desired_cost_management_config] if args.key?(:desired_cost_management_config)
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
@@ -1996,6 +2010,51 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # CompliancePostureConfig defines the settings needed to enable/disable features
+      # for the Compliance Posture.
+      class CompliancePostureConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of enabled compliance standards.
+        # Corresponds to the JSON property `complianceStandards`
+        # @return [Array<Google::Apis::ContainerV1::ComplianceStandard>]
+        attr_accessor :compliance_standards
+      
+        # Defines the enablement mode for Compliance Posture.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compliance_standards = args[:compliance_standards] if args.key?(:compliance_standards)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # Defines the details of a compliance standard.
+      class ComplianceStandard
+        include Google::Apis::Core::Hashable
+      
+        # Name of the compliance standard.
+        # Corresponds to the JSON property `standard`
+        # @return [String]
+        attr_accessor :standard
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @standard = args[:standard] if args.key?(:standard)
         end
       end
       
