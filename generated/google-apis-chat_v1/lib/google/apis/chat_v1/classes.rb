@@ -590,8 +590,7 @@ module Google
         end
       end
       
-      # Data for Chat space links. [Developer Preview](https://developers.google.com/
-      # workspace/preview).
+      # Data for Chat space links.
       class ChatSpaceLinkData
         include Google::Apis::Core::Hashable
       
@@ -4409,8 +4408,7 @@ module Google
       class RichLinkMetadata
         include Google::Apis::Core::Hashable
       
-        # Data for Chat space links. [Developer Preview](https://developers.google.com/
-        # workspace/preview).
+        # Data for Chat space links.
         # Corresponds to the JSON property `chatSpaceLinkData`
         # @return [Google::Apis::ChatV1::ChatSpaceLinkData]
         attr_accessor :chat_space_link_data
