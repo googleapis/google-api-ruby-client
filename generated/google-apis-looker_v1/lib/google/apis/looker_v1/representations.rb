@@ -391,6 +391,8 @@ module Google
           property :egress_public_ip, as: 'egressPublicIp'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::LookerV1::EncryptionConfig, decorator: Google::Apis::LookerV1::EncryptionConfig::Representation
       
+          property :fips_enabled, as: 'fipsEnabled'
+          property :gemini_enabled, as: 'geminiEnabled'
           property :ingress_private_ip, as: 'ingressPrivateIp'
           property :ingress_public_ip, as: 'ingressPublicIp'
           property :last_deny_maintenance_period, as: 'lastDenyMaintenancePeriod', class: Google::Apis::LookerV1::DenyMaintenancePeriod, decorator: Google::Apis::LookerV1::DenyMaintenancePeriod::Representation
