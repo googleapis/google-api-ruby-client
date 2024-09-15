@@ -30,7 +30,7 @@ module Google
       #    Discoveryengine = Google::Apis::DiscoveryengineV1 # Alias the module
       #    service = Discoveryengine::DiscoveryEngineService.new
       #
-      # @see https://cloud.google.com/discovery-engine/docs
+      # @see https://cloud.google.com/generative-ai-app-builder/docs/
       class DiscoveryEngineService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://discoveryengine.$UNIVERSE_DOMAIN$/"
 
@@ -1007,10 +1007,10 @@ module Google
         # request can be submitted to adjust this limit. If the Control to create
         # already exists, an ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`` or `projects/`project_number`/locations/`location_id`/
-        #   collections/`collection_id`/engines/`engine_id``.
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``
+        #   or `projects/`project`/locations/`location`/collections/`collection_id`/
+        #   engines/`engine_id``.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Control] google_cloud_discoveryengine_v1_control_object
         # @param [String] control_id
         #   Required. The ID to use for the Control, which will become the final component
@@ -1050,8 +1050,8 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Control to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
+        #   data_store_id`/controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1081,9 +1081,9 @@ module Google
         
         # Gets a Control.
         # @param [String] name
-        #   Required. The resource name of the Control to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   Required. The resource name of the Control to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1113,10 +1113,10 @@ module Google
         
         # Lists all Controls by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection_id`/dataStores/`data_store_id``
-        #   or `projects/`project_number`/locations/`location_id`/collections/`
-        #   collection_id`/engines/`engine_id``.
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection_id`/dataStores/`data_store_id`` or `projects/
+        #   `project`/locations/`location`/collections/`collection_id`/engines/`engine_id``
+        #   .
         # @param [String] filter
         #   Optional. A filter to apply on the list results. Supported features: * List
         #   all the products under the parent branch if filter is unset. Currently this
@@ -1200,9 +1200,9 @@ module Google
         # Converses a conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project_number`
-        #   /locations/`location_id`/collections/`collection`/dataStores/`data_store_id`/
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
+        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
         #   conversations/-` to activate auto session mode, which automatically creates a
         #   new conversation inside a ConverseConversation session.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ConverseConversationRequest] google_cloud_discoveryengine_v1_converse_conversation_request_object
@@ -1238,9 +1238,8 @@ module Google
         # Creates a Conversation. If the Conversation to create already exists, an
         # ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Conversation] google_cloud_discoveryengine_v1_conversation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1275,7 +1274,7 @@ module Google
         # NOT_FOUND error is returned.
         # @param [String] name
         #   Required. The resource name of the Conversation to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1307,7 +1306,7 @@ module Google
         # Gets a Conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1338,8 +1337,8 @@ module Google
         
         # Lists all Conversations by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
@@ -1976,9 +1975,8 @@ module Google
         # Creates a Session. If the Session to create already exists, an ALREADY_EXISTS
         # error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Session] google_cloud_discoveryengine_v1_session_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2013,7 +2011,7 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Session to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/sessions/`session_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2044,9 +2042,9 @@ module Google
         
         # Gets a Session.
         # @param [String] name
-        #   Required. The resource name of the Session to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/sessions/`session_id``
+        #   Required. The resource name of the Session to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
+        #   sessions/`session_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2076,8 +2074,8 @@ module Google
         
         # Lists all Sessions by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
@@ -2164,9 +2162,9 @@ module Google
         
         # Gets a Answer.
         # @param [String] name
-        #   Required. The resource name of the Answer to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/engines/`
-        #   engine_id`/sessions/`session_id`/answers/`answer_id``
+        #   Required. The resource name of the Answer to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine_id`/sessions/`
+        #   session_id`/answers/`answer_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2901,8 +2899,8 @@ module Google
         # first.
         # @param [String] parent
         #   Required. The resource name of the catalog under which the events are created.
-        #   The format is `projects/$`projectId`/locations/global/collections/`$
-        #   collectionId`/dataStores/$`dataStoreId``
+        #   The format is `projects/`project`/locations/global/collections/`collection`/
+        #   dataStores/`dataStore``.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeUserEventsRequest] google_cloud_discoveryengine_v1_purge_user_events_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3125,9 +3123,9 @@ module Google
         # @param [String] name
         #   Immutable. The fully qualified resource name of the engine. This field must be
         #   a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        #   projects/`project_number`/locations/`location`/collections/`collection`/
-        #   engines/`engine`` engine should be 1-63 characters, and valid characters are /
-        #   a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        #   projects/`project`/locations/`location`/collections/`collection`/engines/`
+        #   engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
+        #   Otherwise, an INVALID_ARGUMENT error is returned.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Engine] google_cloud_discoveryengine_v1_engine_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Engine to update. If an unsupported or
@@ -3166,10 +3164,10 @@ module Google
         # request can be submitted to adjust this limit. If the Control to create
         # already exists, an ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`` or `projects/`project_number`/locations/`location_id`/
-        #   collections/`collection_id`/engines/`engine_id``.
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``
+        #   or `projects/`project`/locations/`location`/collections/`collection_id`/
+        #   engines/`engine_id``.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Control] google_cloud_discoveryengine_v1_control_object
         # @param [String] control_id
         #   Required. The ID to use for the Control, which will become the final component
@@ -3209,8 +3207,8 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Control to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
+        #   data_store_id`/controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3240,9 +3238,9 @@ module Google
         
         # Gets a Control.
         # @param [String] name
-        #   Required. The resource name of the Control to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   Required. The resource name of the Control to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3272,10 +3270,10 @@ module Google
         
         # Lists all Controls by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection_id`/dataStores/`data_store_id``
-        #   or `projects/`project_number`/locations/`location_id`/collections/`
-        #   collection_id`/engines/`engine_id``.
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection_id`/dataStores/`data_store_id`` or `projects/
+        #   `project`/locations/`location`/collections/`collection_id`/engines/`engine_id``
+        #   .
         # @param [String] filter
         #   Optional. A filter to apply on the list results. Supported features: * List
         #   all the products under the parent branch if filter is unset. Currently this
@@ -3359,9 +3357,9 @@ module Google
         # Converses a conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project_number`
-        #   /locations/`location_id`/collections/`collection`/dataStores/`data_store_id`/
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
+        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
         #   conversations/-` to activate auto session mode, which automatically creates a
         #   new conversation inside a ConverseConversation session.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ConverseConversationRequest] google_cloud_discoveryengine_v1_converse_conversation_request_object
@@ -3397,9 +3395,8 @@ module Google
         # Creates a Conversation. If the Conversation to create already exists, an
         # ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Conversation] google_cloud_discoveryengine_v1_conversation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3434,7 +3431,7 @@ module Google
         # NOT_FOUND error is returned.
         # @param [String] name
         #   Required. The resource name of the Conversation to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3466,7 +3463,7 @@ module Google
         # Gets a Conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3497,8 +3494,8 @@ module Google
         
         # Lists all Conversations by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
@@ -3774,9 +3771,8 @@ module Google
         # Creates a Session. If the Session to create already exists, an ALREADY_EXISTS
         # error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Session] google_cloud_discoveryengine_v1_session_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3811,7 +3807,7 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Session to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/sessions/`session_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3842,9 +3838,9 @@ module Google
         
         # Gets a Session.
         # @param [String] name
-        #   Required. The resource name of the Session to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/sessions/`session_id``
+        #   Required. The resource name of the Session to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
+        #   sessions/`session_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3874,8 +3870,8 @@ module Google
         
         # Lists all Sessions by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
@@ -3962,9 +3958,9 @@ module Google
         
         # Gets a Answer.
         # @param [String] name
-        #   Required. The resource name of the Answer to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/engines/`
-        #   engine_id`/sessions/`session_id`/answers/`answer_id``
+        #   Required. The resource name of the Answer to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine_id`/sessions/`
+        #   session_id`/answers/`answer_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4876,10 +4872,10 @@ module Google
         # request can be submitted to adjust this limit. If the Control to create
         # already exists, an ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`` or `projects/`project_number`/locations/`location_id`/
-        #   collections/`collection_id`/engines/`engine_id``.
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``
+        #   or `projects/`project`/locations/`location`/collections/`collection_id`/
+        #   engines/`engine_id``.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Control] google_cloud_discoveryengine_v1_control_object
         # @param [String] control_id
         #   Required. The ID to use for the Control, which will become the final component
@@ -4919,8 +4915,8 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Control to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
+        #   data_store_id`/controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4950,9 +4946,9 @@ module Google
         
         # Gets a Control.
         # @param [String] name
-        #   Required. The resource name of the Control to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   Required. The resource name of the Control to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4982,10 +4978,10 @@ module Google
         
         # Lists all Controls by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection_id`/dataStores/`data_store_id``
-        #   or `projects/`project_number`/locations/`location_id`/collections/`
-        #   collection_id`/engines/`engine_id``.
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection_id`/dataStores/`data_store_id`` or `projects/
+        #   `project`/locations/`location`/collections/`collection_id`/engines/`engine_id``
+        #   .
         # @param [String] filter
         #   Optional. A filter to apply on the list results. Supported features: * List
         #   all the products under the parent branch if filter is unset. Currently this
@@ -5069,9 +5065,9 @@ module Google
         # Converses a conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project_number`
-        #   /locations/`location_id`/collections/`collection`/dataStores/`data_store_id`/
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
+        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
         #   conversations/-` to activate auto session mode, which automatically creates a
         #   new conversation inside a ConverseConversation session.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ConverseConversationRequest] google_cloud_discoveryengine_v1_converse_conversation_request_object
@@ -5107,9 +5103,8 @@ module Google
         # Creates a Conversation. If the Conversation to create already exists, an
         # ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Conversation] google_cloud_discoveryengine_v1_conversation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5144,7 +5139,7 @@ module Google
         # NOT_FOUND error is returned.
         # @param [String] name
         #   Required. The resource name of the Conversation to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5176,7 +5171,7 @@ module Google
         # Gets a Conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5207,8 +5202,8 @@ module Google
         
         # Lists all Conversations by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
@@ -5742,9 +5737,8 @@ module Google
         # Creates a Session. If the Session to create already exists, an ALREADY_EXISTS
         # error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Session] google_cloud_discoveryengine_v1_session_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5779,7 +5773,7 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Session to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/sessions/`session_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5810,9 +5804,9 @@ module Google
         
         # Gets a Session.
         # @param [String] name
-        #   Required. The resource name of the Session to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/sessions/`session_id``
+        #   Required. The resource name of the Session to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
+        #   sessions/`session_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5842,8 +5836,8 @@ module Google
         
         # Lists all Sessions by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
@@ -5930,9 +5924,9 @@ module Google
         
         # Gets a Answer.
         # @param [String] name
-        #   Required. The resource name of the Answer to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/engines/`
-        #   engine_id`/sessions/`session_id`/answers/`answer_id``
+        #   Required. The resource name of the Answer to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine_id`/sessions/`
+        #   session_id`/answers/`answer_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6444,8 +6438,8 @@ module Google
         # first.
         # @param [String] parent
         #   Required. The resource name of the catalog under which the events are created.
-        #   The format is `projects/$`projectId`/locations/global/collections/`$
-        #   collectionId`/dataStores/$`dataStoreId``
+        #   The format is `projects/`project`/locations/global/collections/`collection`/
+        #   dataStores/`dataStore``.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeUserEventsRequest] google_cloud_discoveryengine_v1_purge_user_events_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6697,7 +6691,7 @@ module Google
         # Ranks a list of text records based on the given input query.
         # @param [String] ranking_config
         #   Required. The resource name of the rank service config, such as `projects/`
-        #   project_num`/locations/`location_id`/rankingConfigs/default_ranking_config`.
+        #   project_num`/locations/`location`/rankingConfigs/default_ranking_config`.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1RankRequest] google_cloud_discoveryengine_v1_rank_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
