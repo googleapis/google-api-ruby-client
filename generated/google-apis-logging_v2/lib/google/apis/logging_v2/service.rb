@@ -3510,6 +3510,193 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a log scope.
+        # @param [String] parent
+        #   Required. The parent project in which to create the log scope "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
+        # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
+        # @param [String] log_scope_id
+        #   Required. A client-assigned identifier such as "log-scope". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods. First character has to be alphanumeric.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_location_log_scope(parent, log_scope_object = nil, log_scope_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/logScopes', options)
+          command.request_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.request_object = log_scope_object
+          command.response_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.response_class = Google::Apis::LoggingV2::LogScope
+          command.params['parent'] = parent unless parent.nil?
+          command.query['logScopeId'] = log_scope_id unless log_scope_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a log scope.
+        # @param [String] name
+        #   Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-
+        #   project/locations/global/logScopes/my-log-scope"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_location_log_scope(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a log scope.
+        # @param [String] name
+        #   Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/
+        #   [LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-project/
+        #   locations/global/logScopes/my-log-scope"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_location_log_scope(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.response_class = Google::Apis::LoggingV2::LogScope
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists log scopes.
+        # @param [String] parent
+        #   Required. The parent resource whose log scopes are to be listed: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListLogScopesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListLogScopesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_log_scopes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/logScopes', options)
+          command.response_representation = Google::Apis::LoggingV2::ListLogScopesResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListLogScopesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a log scope.
+        # @param [String] name
+        #   Output only. The resource name of the log scope.For example:projects/my-
+        #   project/locations/global/logScopes/my-log-scope
+        # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
+        # @param [String] update_mask
+        #   Optional. Field mask that specifies the fields in log_scope that need an
+        #   update. A field will be overwritten if, and only if, it is in the update mask.
+        #   name and output only fields cannot be updated.For a detailed FieldMask
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=description
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_location_log_scope(name, log_scope_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.request_object = log_scope_object
+          command.response_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.response_class = Google::Apis::LoggingV2::LogScope
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.
@@ -6726,6 +6913,193 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a log scope.
+        # @param [String] parent
+        #   Required. The parent project in which to create the log scope "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
+        # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
+        # @param [String] log_scope_id
+        #   Required. A client-assigned identifier such as "log-scope". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods. First character has to be alphanumeric.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_log_scope(parent, log_scope_object = nil, log_scope_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/logScopes', options)
+          command.request_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.request_object = log_scope_object
+          command.response_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.response_class = Google::Apis::LoggingV2::LogScope
+          command.params['parent'] = parent unless parent.nil?
+          command.query['logScopeId'] = log_scope_id unless log_scope_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a log scope.
+        # @param [String] name
+        #   Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-
+        #   project/locations/global/logScopes/my-log-scope"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_log_scope(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a log scope.
+        # @param [String] name
+        #   Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/
+        #   [LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-project/
+        #   locations/global/logScopes/my-log-scope"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_log_scope(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.response_class = Google::Apis::LoggingV2::LogScope
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists log scopes.
+        # @param [String] parent
+        #   Required. The parent resource whose log scopes are to be listed: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListLogScopesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListLogScopesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_log_scopes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/logScopes', options)
+          command.response_representation = Google::Apis::LoggingV2::ListLogScopesResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListLogScopesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a log scope.
+        # @param [String] name
+        #   Output only. The resource name of the log scope.For example:projects/my-
+        #   project/locations/global/logScopes/my-log-scope
+        # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
+        # @param [String] update_mask
+        #   Optional. Field mask that specifies the fields in log_scope that need an
+        #   update. A field will be overwritten if, and only if, it is in the update mask.
+        #   name and output only fields cannot be updated.For a detailed FieldMask
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=description
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_log_scope(name, log_scope_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.request_object = log_scope_object
+          command.response_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.response_class = Google::Apis::LoggingV2::LogScope
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.
@@ -8719,6 +9093,193 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['resourceNames'] = resource_names unless resource_names.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a log scope.
+        # @param [String] parent
+        #   Required. The parent project in which to create the log scope "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
+        # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
+        # @param [String] log_scope_id
+        #   Required. A client-assigned identifier such as "log-scope". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods. First character has to be alphanumeric.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_log_scope(parent, log_scope_object = nil, log_scope_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/logScopes', options)
+          command.request_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.request_object = log_scope_object
+          command.response_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.response_class = Google::Apis::LoggingV2::LogScope
+          command.params['parent'] = parent unless parent.nil?
+          command.query['logScopeId'] = log_scope_id unless log_scope_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a log scope.
+        # @param [String] name
+        #   Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-
+        #   project/locations/global/logScopes/my-log-scope"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_log_scope(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a log scope.
+        # @param [String] name
+        #   Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/
+        #   [LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-project/
+        #   locations/global/logScopes/my-log-scope"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_log_scope(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.response_class = Google::Apis::LoggingV2::LogScope
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists log scopes.
+        # @param [String] parent
+        #   Required. The parent resource whose log scopes are to be listed: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request.Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListLogScopesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListLogScopesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_log_scopes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/logScopes', options)
+          command.response_representation = Google::Apis::LoggingV2::ListLogScopesResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListLogScopesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a log scope.
+        # @param [String] name
+        #   Output only. The resource name of the log scope.For example:projects/my-
+        #   project/locations/global/logScopes/my-log-scope
+        # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
+        # @param [String] update_mask
+        #   Optional. Field mask that specifies the fields in log_scope that need an
+        #   update. A field will be overwritten if, and only if, it is in the update mask.
+        #   name and output only fields cannot be updated.For a detailed FieldMask
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=description
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_log_scope(name, log_scope_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.request_object = log_scope_object
+          command.response_representation = Google::Apis::LoggingV2::LogScope::Representation
+          command.response_class = Google::Apis::LoggingV2::LogScope
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

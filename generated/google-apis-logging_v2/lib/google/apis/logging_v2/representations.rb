@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListLogScopesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLogsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +335,12 @@ module Google
       end
       
       class LogMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -853,6 +865,15 @@ module Google
         end
       end
       
+      class ListLogScopesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :log_scopes, as: 'logScopes', class: Google::Apis::LoggingV2::LogScope, decorator: Google::Apis::LoggingV2::LogScope::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListLogsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1053,6 +1074,17 @@ module Google
           property :update_time, as: 'updateTime'
           property :value_extractor, as: 'valueExtractor'
           property :version, as: 'version'
+        end
+      end
+      
+      class LogScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          collection :resource_names, as: 'resourceNames'
+          property :update_time, as: 'updateTime'
         end
       end
       
