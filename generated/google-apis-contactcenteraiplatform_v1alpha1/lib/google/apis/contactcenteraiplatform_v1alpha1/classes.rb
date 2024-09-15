@@ -111,9 +111,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Instances in this Channel will receive updates after all instances in `
-        # Critical` were updated + 2 days. They also will only be updated outside of
-        # their peak hours.
+        # Instances in this Channel will receive updates after all instances in `Normal`
+        # were updated. They also will only be updated outside of their peak hours.
         # Corresponds to the JSON property `critical`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::Critical]
         attr_accessor :critical
@@ -257,9 +256,8 @@ module Google
         end
       end
       
-      # Instances in this Channel will receive updates after all instances in `
-      # Critical` were updated + 2 days. They also will only be updated outside of
-      # their peak hours.
+      # Instances in this Channel will receive updates after all instances in `Normal`
+      # were updated. They also will only be updated outside of their peak hours.
       class Critical
         include Google::Apis::Core::Hashable
       
@@ -698,6 +696,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_consumer_project_ids
       
+        # Output only. The CCAIP tenant project ids.
+        # Corresponds to the JSON property `producerProjectIds`
+        # @return [Array<String>]
+        attr_accessor :producer_project_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -705,6 +708,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_consumer_project_ids = args[:allowed_consumer_project_ids] if args.key?(:allowed_consumer_project_ids)
+          @producer_project_ids = args[:producer_project_ids] if args.key?(:producer_project_ids)
         end
       end
       

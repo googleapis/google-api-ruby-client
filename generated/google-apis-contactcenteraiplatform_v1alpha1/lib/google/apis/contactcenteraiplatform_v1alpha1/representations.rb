@@ -365,6 +365,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_consumer_project_ids, as: 'allowedConsumerProjectIds'
+          collection :producer_project_ids, as: 'producerProjectIds'
         end
       end
       
