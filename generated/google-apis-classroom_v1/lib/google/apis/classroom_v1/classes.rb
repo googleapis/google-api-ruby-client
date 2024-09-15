@@ -63,8 +63,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Immutable. Identifier of the announcement, courseWork, or courseWorkMaterial
-        # under which the attachment is attached. Unique per course.
+        # Immutable. Identifier of the `Announcement`, `CourseWork`, or `
+        # CourseWorkMaterial` under which the attachment is attached. Unique per course.
         # Corresponds to the JSON property `itemId`
         # @return [String]
         attr_accessor :item_id
@@ -77,7 +77,7 @@ module Google
         # @return [Float]
         attr_accessor :max_points
       
-        # Immutable. Deprecated, use item_id instead.
+        # Immutable. Deprecated, use `item_id` instead.
         # Corresponds to the JSON property `postId`
         # @return [String]
         attr_accessor :post_id
@@ -159,13 +159,13 @@ module Google
         # @return [String]
         attr_accessor :course_id
       
-        # Immutable. Identifier of the announcement, courseWork, or courseWorkMaterial
-        # under which the attachment is attached.
+        # Immutable. Identifier of the `Announcement`, `CourseWork`, or `
+        # CourseWorkMaterial` under which the attachment is attached.
         # Corresponds to the JSON property `itemId`
         # @return [String]
         attr_accessor :item_id
       
-        # Immutable. Deprecated, use item_id instead.
+        # Immutable. Deprecated, use `item_id` instead.
         # Corresponds to the JSON property `postId`
         # @return [String]
         attr_accessor :post_id
@@ -409,13 +409,13 @@ module Google
         # @return [String]
         attr_accessor :course_id
       
-        # Immutable. Identifier of the announcement, courseWork, or courseWorkMaterial
-        # under which the attachment is attached.
+        # Immutable. Identifier of the `Announcement`, `CourseWork`, or `
+        # CourseWorkMaterial` under which the attachment is attached.
         # Corresponds to the JSON property `itemId`
         # @return [String]
         attr_accessor :item_id
       
-        # Immutable. Deprecated, use item_id instead.
+        # Immutable. Deprecated, use `item_id` instead.
         # Corresponds to the JSON property `postId`
         # @return [String]
         attr_accessor :post_id
