@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FixedIops
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,12 @@ module Google
       end
       
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IopsPerTb
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -191,6 +203,18 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerformanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerformanceLimits
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -337,6 +361,13 @@ module Google
         end
       end
       
+      class FixedIops
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_read_iops, :numeric_string => true, as: 'maxReadIops'
+        end
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -438,9 +469,17 @@ module Google
         end
       end
       
+      class IopsPerTb
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_read_iops_per_tb, :numeric_string => true, as: 'maxReadIopsPerTb'
+        end
+      end
+      
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :configurable_performance_enabled, as: 'configurablePerformanceEnabled'
           property :create_time, as: 'createTime'
           property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           property :deletion_protection_reason, as: 'deletionProtectionReason'
@@ -452,6 +491,10 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1::NetworkConfig, decorator: Google::Apis::FileV1::NetworkConfig::Representation
+      
+          property :performance_config, as: 'performanceConfig', class: Google::Apis::FileV1::PerformanceConfig, decorator: Google::Apis::FileV1::PerformanceConfig::Representation
+      
+          property :performance_limits, as: 'performanceLimits', class: Google::Apis::FileV1::PerformanceLimits, decorator: Google::Apis::FileV1::PerformanceLimits::Representation
       
           property :protocol, as: 'protocol'
           property :replication, as: 'replication', class: Google::Apis::FileV1::Replication, decorator: Google::Apis::FileV1::Replication::Representation
@@ -592,6 +635,26 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PerformanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fixed_iops, as: 'fixedIops', class: Google::Apis::FileV1::FixedIops, decorator: Google::Apis::FileV1::FixedIops::Representation
+      
+          property :iops_per_tb, as: 'iopsPerTb', class: Google::Apis::FileV1::IopsPerTb, decorator: Google::Apis::FileV1::IopsPerTb::Representation
+      
+        end
+      end
+      
+      class PerformanceLimits
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_read_iops, :numeric_string => true, as: 'maxReadIops'
+          property :max_read_throughput_bps, :numeric_string => true, as: 'maxReadThroughputBps'
+          property :max_write_iops, :numeric_string => true, as: 'maxWriteIops'
+          property :max_write_throughput_bps, :numeric_string => true, as: 'maxWriteThroughputBps'
         end
       end
       
