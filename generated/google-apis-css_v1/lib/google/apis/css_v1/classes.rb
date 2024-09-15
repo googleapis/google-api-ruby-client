@@ -255,6 +255,11 @@ module Google
         # @return [String]
         attr_accessor :headline_offer_condition
       
+        # A message that represents installment.
+        # Corresponds to the JSON property `headlineOfferInstallment`
+        # @return [Google::Apis::CssV1::HeadlineOfferInstallment]
+        attr_accessor :headline_offer_installment
+      
         # Link to the headline offer.
         # Corresponds to the JSON property `headlineOfferLink`
         # @return [String]
@@ -274,6 +279,11 @@ module Google
         # Corresponds to the JSON property `headlineOfferShippingPrice`
         # @return [Google::Apis::CssV1::Price]
         attr_accessor :headline_offer_shipping_price
+      
+        # The SubscriptionCost of the product.
+        # Corresponds to the JSON property `headlineOfferSubscriptionCost`
+        # @return [Google::Apis::CssV1::HeadlineOfferSubscriptionCost]
+        attr_accessor :headline_offer_subscription_cost
       
         # The price represented as a number and currency.
         # Corresponds to the JSON property `highPrice`
@@ -427,10 +437,12 @@ module Google
           @google_product_category = args[:google_product_category] if args.key?(:google_product_category)
           @gtin = args[:gtin] if args.key?(:gtin)
           @headline_offer_condition = args[:headline_offer_condition] if args.key?(:headline_offer_condition)
+          @headline_offer_installment = args[:headline_offer_installment] if args.key?(:headline_offer_installment)
           @headline_offer_link = args[:headline_offer_link] if args.key?(:headline_offer_link)
           @headline_offer_mobile_link = args[:headline_offer_mobile_link] if args.key?(:headline_offer_mobile_link)
           @headline_offer_price = args[:headline_offer_price] if args.key?(:headline_offer_price)
           @headline_offer_shipping_price = args[:headline_offer_shipping_price] if args.key?(:headline_offer_shipping_price)
+          @headline_offer_subscription_cost = args[:headline_offer_subscription_cost] if args.key?(:headline_offer_subscription_cost)
           @high_price = args[:high_price] if args.key?(:high_price)
           @image_link = args[:image_link] if args.key?(:image_link)
           @included_destinations = args[:included_destinations] if args.key?(:included_destinations)
@@ -775,6 +787,68 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A message that represents installment.
+      class HeadlineOfferInstallment
+        include Google::Apis::Core::Hashable
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::CssV1::Price]
+        attr_accessor :amount
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `downpayment`
+        # @return [Google::Apis::CssV1::Price]
+        attr_accessor :downpayment
+      
+        # The number of installments the buyer has to pay.
+        # Corresponds to the JSON property `months`
+        # @return [Fixnum]
+        attr_accessor :months
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @downpayment = args[:downpayment] if args.key?(:downpayment)
+          @months = args[:months] if args.key?(:months)
+        end
+      end
+      
+      # The SubscriptionCost of the product.
+      class HeadlineOfferSubscriptionCost
+        include Google::Apis::Core::Hashable
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::CssV1::Price]
+        attr_accessor :amount
+      
+        # The type of subscription period. Supported values are: * "`month`" * "`year`"
+        # Corresponds to the JSON property `period`
+        # @return [String]
+        attr_accessor :period
+      
+        # The number of subscription periods the buyer has to pay.
+        # Corresponds to the JSON property `periodLength`
+        # @return [Fixnum]
+        attr_accessor :period_length
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @period = args[:period] if args.key?(:period)
+          @period_length = args[:period_length] if args.key?(:period_length)
         end
       end
       

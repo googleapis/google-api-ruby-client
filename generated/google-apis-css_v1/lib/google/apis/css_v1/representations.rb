@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HeadlineOfferInstallment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HeadlineOfferSubscriptionCost
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ItemLevelIssue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -187,11 +199,15 @@ module Google
           property :google_product_category, as: 'googleProductCategory'
           property :gtin, as: 'gtin'
           property :headline_offer_condition, as: 'headlineOfferCondition'
+          property :headline_offer_installment, as: 'headlineOfferInstallment', class: Google::Apis::CssV1::HeadlineOfferInstallment, decorator: Google::Apis::CssV1::HeadlineOfferInstallment::Representation
+      
           property :headline_offer_link, as: 'headlineOfferLink'
           property :headline_offer_mobile_link, as: 'headlineOfferMobileLink'
           property :headline_offer_price, as: 'headlineOfferPrice', class: Google::Apis::CssV1::Price, decorator: Google::Apis::CssV1::Price::Representation
       
           property :headline_offer_shipping_price, as: 'headlineOfferShippingPrice', class: Google::Apis::CssV1::Price, decorator: Google::Apis::CssV1::Price::Representation
+      
+          property :headline_offer_subscription_cost, as: 'headlineOfferSubscriptionCost', class: Google::Apis::CssV1::HeadlineOfferSubscriptionCost, decorator: Google::Apis::CssV1::HeadlineOfferSubscriptionCost::Representation
       
           property :high_price, as: 'highPrice', class: Google::Apis::CssV1::Price, decorator: Google::Apis::CssV1::Price::Representation
       
@@ -303,6 +319,27 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class HeadlineOfferInstallment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::CssV1::Price, decorator: Google::Apis::CssV1::Price::Representation
+      
+          property :downpayment, as: 'downpayment', class: Google::Apis::CssV1::Price, decorator: Google::Apis::CssV1::Price::Representation
+      
+          property :months, :numeric_string => true, as: 'months'
+        end
+      end
+      
+      class HeadlineOfferSubscriptionCost
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::CssV1::Price, decorator: Google::Apis::CssV1::Price::Representation
+      
+          property :period, as: 'period'
+          property :period_length, :numeric_string => true, as: 'periodLength'
         end
       end
       
