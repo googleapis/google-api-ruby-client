@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApiOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +95,12 @@ module Google
       end
       
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClientScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -268,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReauthSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplaceAccessLevelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +311,12 @@ module Google
       end
       
       class ReplaceServicePerimetersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScopedAccessSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -382,6 +412,23 @@ module Google
         end
       end
       
+      class AccessScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_scope, as: 'clientScope', class: Google::Apis::AccesscontextmanagerV1::ClientScope, decorator: Google::Apis::AccesscontextmanagerV1::ClientScope::Representation
+      
+        end
+      end
+      
+      class AccessSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_levels, as: 'accessLevels'
+          property :reauth_settings, as: 'reauthSettings', class: Google::Apis::AccesscontextmanagerV1::ReauthSettings, decorator: Google::Apis::AccesscontextmanagerV1::ReauthSettings::Representation
+      
+        end
+      end
+      
       class ApiOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -449,6 +496,14 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ClientScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restricted_client_application, as: 'restrictedClientApplication', class: Google::Apis::AccesscontextmanagerV1::Application, decorator: Google::Apis::AccesscontextmanagerV1::Application::Representation
+      
         end
       end
       
@@ -564,7 +619,11 @@ module Google
           collection :dry_run_access_levels, as: 'dryRunAccessLevels'
           property :group_key, as: 'groupKey'
           property :name, as: 'name'
+          property :reauth_settings, as: 'reauthSettings', class: Google::Apis::AccesscontextmanagerV1::ReauthSettings, decorator: Google::Apis::AccesscontextmanagerV1::ReauthSettings::Representation
+      
           collection :restricted_client_applications, as: 'restrictedClientApplications', class: Google::Apis::AccesscontextmanagerV1::Application, decorator: Google::Apis::AccesscontextmanagerV1::Application::Representation
+      
+          collection :scoped_access_settings, as: 'scopedAccessSettings', class: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings, decorator: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings::Representation
       
         end
       end
@@ -731,6 +790,17 @@ module Google
         end
       end
       
+      class ReauthSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_inactivity, as: 'maxInactivity'
+          property :reauth_method, as: 'reauthMethod'
+          property :session_length, as: 'sessionLength'
+          property :session_length_enabled, as: 'sessionLengthEnabled'
+          property :use_oidc_max_age, as: 'useOidcMaxAge'
+        end
+      end
+      
       class ReplaceAccessLevelsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -761,6 +831,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :service_perimeters, as: 'servicePerimeters', class: Google::Apis::AccesscontextmanagerV1::ServicePerimeter, decorator: Google::Apis::AccesscontextmanagerV1::ServicePerimeter::Representation
+      
+        end
+      end
+      
+      class ScopedAccessSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_settings, as: 'activeSettings', class: Google::Apis::AccesscontextmanagerV1::AccessSettings, decorator: Google::Apis::AccesscontextmanagerV1::AccessSettings::Representation
+      
+          property :dry_run_settings, as: 'dryRunSettings', class: Google::Apis::AccesscontextmanagerV1::AccessSettings, decorator: Google::Apis::AccesscontextmanagerV1::AccessSettings::Representation
+      
+          property :scope, as: 'scope', class: Google::Apis::AccesscontextmanagerV1::AccessScope, decorator: Google::Apis::AccesscontextmanagerV1::AccessScope::Representation
       
         end
       end
