@@ -441,6 +441,31 @@ module Google
         end
       end
       
+      # 
+      class DivisionByAddressResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `divisions`
+        # @return [Hash<String,Google::Apis::CivicinfoV2::GeographicDivision>]
+        attr_accessor :divisions
+      
+        # A simple representation of an address.
+        # Corresponds to the JSON property `normalizedInput`
+        # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
+        attr_accessor :normalized_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @divisions = args[:divisions] if args.key?(:divisions)
+          @normalized_input = args[:normalized_input] if args.key?(:normalized_input)
+        end
+      end
+      
       # The result of a division search query.
       class SearchDivisionResponse
         include Google::Apis::Core::Hashable

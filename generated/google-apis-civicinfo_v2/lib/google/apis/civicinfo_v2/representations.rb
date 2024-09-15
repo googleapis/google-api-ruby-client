@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DivisionByAddressResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchDivisionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,6 +244,16 @@ module Google
       
           property :special, as: 'special'
           property :type, as: 'type'
+        end
+      end
+      
+      class DivisionByAddressResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :divisions, as: 'divisions', class: Google::Apis::CivicinfoV2::GeographicDivision, decorator: Google::Apis::CivicinfoV2::GeographicDivision::Representation
+      
+          property :normalized_input, as: 'normalizedInput', class: Google::Apis::CivicinfoV2::SimpleAddressType, decorator: Google::Apis::CivicinfoV2::SimpleAddressType::Representation
+      
         end
       end
       
