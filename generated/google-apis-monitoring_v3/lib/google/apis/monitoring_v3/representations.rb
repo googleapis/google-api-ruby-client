@@ -1457,6 +1457,7 @@ module Google
           property :ingest_delay, as: 'ingestDelay'
           property :launch_stage, as: 'launchStage'
           property :sample_period, as: 'samplePeriod'
+          collection :time_series_resource_hierarchy_level, as: 'timeSeriesResourceHierarchyLevel'
         end
       end
       
