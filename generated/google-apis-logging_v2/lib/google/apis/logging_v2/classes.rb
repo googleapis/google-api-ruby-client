@@ -1451,6 +1451,34 @@ module Google
         end
       end
       
+      # The response from ListLogScopes. Every project has a _Default log scope that
+      # cannot be modified or deleted.
+      class ListLogScopesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of log scopes.
+        # Corresponds to the JSON property `logScopes`
+        # @return [Array<Google::Apis::LoggingV2::LogScope>]
+        attr_accessor :log_scopes
+      
+        # If there might be more results than appear in this response, then
+        # nextPageToken is included. To get the next set of results, call the same
+        # method again using the value of nextPageToken as pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_scopes = args[:log_scopes] if args.key?(:log_scopes)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Result returned from ListLogs.
       class ListLogsResponse
         include Google::Apis::Core::Hashable
@@ -2410,6 +2438,54 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @value_extractor = args[:value_extractor] if args.key?(:value_extractor)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Describes a group of resources to read log entries from.
+      class LogScope
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation timestamp of the log scope.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Describes this log scope.The maximum length of the description is
+        # 8000 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The resource name of the log scope.For example:projects/my-
+        # project/locations/global/logScopes/my-log-scope
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Names of one or more parent resources: projects/[PROJECT_ID]May
+        # alternatively be one or more views: projects/[PROJECT_ID]/locations/[
+        # LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]A log scope can include a
+        # maximum of 50 projects and a maximum of 100 resources in total.
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        # Output only. The last update timestamp of the log scope.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
