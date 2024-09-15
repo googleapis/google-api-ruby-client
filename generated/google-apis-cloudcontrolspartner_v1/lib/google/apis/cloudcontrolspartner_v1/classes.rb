@@ -153,7 +153,7 @@ module Google
         # @return [Google::Apis::CloudcontrolspartnerV1::CustomerOnboardingState]
         attr_accessor :customer_onboarding_state
       
-        # The customer organization's display name. E.g. "Google".
+        # Required. Display name for the customer
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
