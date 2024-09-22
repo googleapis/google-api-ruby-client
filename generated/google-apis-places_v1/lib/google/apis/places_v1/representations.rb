@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1Polyline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1References
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +275,30 @@ module Google
       end
       
       class GoogleMapsPlacesV1Review
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1RouteModifiers
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1RoutingParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1RoutingSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1RoutingSummaryLeg
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -311,6 +341,12 @@ module Google
       end
       
       class GoogleMapsPlacesV1SearchTextRequestLocationRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -831,6 +867,13 @@ module Google
         end
       end
       
+      class GoogleMapsPlacesV1Polyline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoded_polyline, as: 'encodedPolyline'
+        end
+      end
+      
       class GoogleMapsPlacesV1References
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -856,6 +899,44 @@ module Google
         end
       end
       
+      class GoogleMapsPlacesV1RouteModifiers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avoid_ferries, as: 'avoidFerries'
+          property :avoid_highways, as: 'avoidHighways'
+          property :avoid_indoor, as: 'avoidIndoor'
+          property :avoid_tolls, as: 'avoidTolls'
+        end
+      end
+      
+      class GoogleMapsPlacesV1RoutingParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :origin, as: 'origin', class: Google::Apis::PlacesV1::GoogleTypeLatLng, decorator: Google::Apis::PlacesV1::GoogleTypeLatLng::Representation
+      
+          property :route_modifiers, as: 'routeModifiers', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1RouteModifiers, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1RouteModifiers::Representation
+      
+          property :routing_preference, as: 'routingPreference'
+          property :travel_mode, as: 'travelMode'
+        end
+      end
+      
+      class GoogleMapsPlacesV1RoutingSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :legs, as: 'legs', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummaryLeg, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummaryLeg::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1RoutingSummaryLeg
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distance_meters, as: 'distanceMeters'
+          property :duration, as: 'duration'
+        end
+      end
+      
       class GoogleMapsPlacesV1SearchNearbyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -869,6 +950,8 @@ module Google
           property :max_result_count, as: 'maxResultCount'
           property :rank_preference, as: 'rankPreference'
           property :region_code, as: 'regionCode'
+          property :routing_parameters, as: 'routingParameters', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingParameters, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingParameters::Representation
+      
         end
       end
       
@@ -884,6 +967,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :places, as: 'places', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Place, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Place::Representation
+      
+          collection :routing_summaries, as: 'routingSummaries', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary::Representation
       
         end
       end
@@ -907,6 +992,10 @@ module Google
           collection :price_levels, as: 'priceLevels'
           property :rank_preference, as: 'rankPreference'
           property :region_code, as: 'regionCode'
+          property :routing_parameters, as: 'routingParameters', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingParameters, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingParameters::Representation
+      
+          property :search_along_route_parameters, as: 'searchAlongRouteParameters', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters::Representation
+      
           property :strict_type_filtering, as: 'strictTypeFiltering'
           property :text_query, as: 'textQuery'
         end
@@ -938,6 +1027,14 @@ module Google
         end
       end
       
+      class GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :polyline, as: 'polyline', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Polyline, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Polyline::Representation
+      
+        end
+      end
+      
       class GoogleMapsPlacesV1SearchTextResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -945,6 +1042,8 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :places, as: 'places', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1Place, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1Place::Representation
+      
+          collection :routing_summaries, as: 'routingSummaries', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary::Representation
       
         end
       end
