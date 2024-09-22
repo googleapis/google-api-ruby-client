@@ -1,0 +1,7 @@
+{
+    "api_id": "oracledatabase:v1",
+    "name_pretty": "Oracle Database@Google Cloud API",
+    "distribution_name": "google-apis-oracledatabase_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
