@@ -5621,10 +5621,9 @@ module Google
         # @return [String]
         attr_accessor :package_name
       
-        # Required. The phases of this subscription offer. Must contain at least one
-        # entry, and may contain at most five. Users will always receive all these
-        # phases in the specified order. Phases may not be added, removed, or reordered
-        # after initial creation.
+        # Required. The phases of this subscription offer. Must contain at least one and
+        # at most two entries. Users will always receive all these phases in the
+        # specified order.
         # Corresponds to the JSON property `phases`
         # @return [Array<Google::Apis::AndroidpublisherV3::SubscriptionOfferPhase>]
         attr_accessor :phases
