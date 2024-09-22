@@ -70,6 +70,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2AmazonS3Bucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2AmazonS3BucketConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2AmazonS3BucketRegex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +95,24 @@ module Google
       end
       
       class GooglePrivacyDlpV2AuxiliaryTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2AwsAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2AwsAccountRegex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2AwsDiscoveryStartingLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -629,6 +665,24 @@ module Google
       end
       
       class GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryOtherCloudConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryOtherCloudFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1217,6 +1271,42 @@ module Google
       end
       
       class GooglePrivacyDlpV2OrgConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudDiscoveryTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudResourceCollection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudResourceRegex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudResourceRegexes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudSingleResourceReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1892,6 +1982,32 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2AmazonS3Bucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_account, as: 'awsAccount', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AwsAccount, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AwsAccount::Representation
+      
+          property :bucket_name, as: 'bucketName'
+        end
+      end
+      
+      class GooglePrivacyDlpV2AmazonS3BucketConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bucket_types, as: 'bucketTypes'
+          collection :object_storage_classes, as: 'objectStorageClasses'
+        end
+      end
+      
+      class GooglePrivacyDlpV2AmazonS3BucketRegex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_account_regex, as: 'awsAccountRegex', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AwsAccountRegex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AwsAccountRegex::Representation
+      
+          property :bucket_name_regex, as: 'bucketNameRegex'
+        end
+      end
+      
       class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1925,6 +2041,28 @@ module Google
       
           property :table, as: 'table', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2AwsAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+        end
+      end
+      
+      class GooglePrivacyDlpV2AwsAccountRegex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id_regex, as: 'accountIdRegex'
+        end
+      end
+      
+      class GooglePrivacyDlpV2AwsDiscoveryStartingLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :all_asset_inventory_assets, as: 'allAssetInventoryAssets'
         end
       end
       
@@ -2509,6 +2647,8 @@ module Google
           collection :inspect_templates, as: 'inspectTemplates'
           property :location, as: 'location', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileLocation::Representation
       
+          property :other_cloud_starting_location, as: 'otherCloudStartingLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation::Representation
+      
           property :project_id, as: 'projectId'
         end
       end
@@ -2878,6 +3018,8 @@ module Google
           property :name, as: 'name'
           property :org_config, as: 'orgConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OrgConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OrgConfig::Representation
       
+          property :other_cloud_starting_location, as: 'otherCloudStartingLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation::Representation
+      
           property :status, as: 'status'
           collection :targets, as: 'targets', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTarget::Representation
       
@@ -2915,6 +3057,36 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2DiscoveryOtherCloudConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amazon_s3_bucket_conditions, as: 'amazonS3BucketConditions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AmazonS3BucketConditions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AmazonS3BucketConditions::Representation
+      
+          property :min_age, as: 'minAge'
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryOtherCloudFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection, as: 'collection', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudResourceCollection, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudResourceCollection::Representation
+      
+          property :others, as: 'others', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherResources, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherResources::Representation
+      
+          property :single_resource, as: 'singleResource', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudSingleResourceReference, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudSingleResourceReference::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inspect_template_modified_cadence, as: 'inspectTemplateModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence::Representation
+      
+          property :refresh_frequency, as: 'refreshFrequency'
+        end
+      end
+      
       class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2947,6 +3119,8 @@ module Google
           property :cloud_sql_target, as: 'cloudSqlTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlDiscoveryTarget::Representation
       
           property :cloud_storage_target, as: 'cloudStorageTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageDiscoveryTarget::Representation
+      
+          property :other_cloud_target, as: 'otherCloudTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryTarget::Representation
       
           property :secrets_target, as: 'secretsTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SecretsDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SecretsDiscoveryTarget::Representation
       
@@ -3919,6 +4093,62 @@ module Google
           property :location, as: 'location', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryStartingLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryStartingLocation::Representation
       
           property :project_id, as: 'projectId'
+        end
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_location, as: 'awsLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AwsDiscoveryStartingLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AwsDiscoveryStartingLocation::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudDiscoveryTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conditions, as: 'conditions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryOtherCloudConditions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryOtherCloudConditions::Representation
+      
+          property :data_source_type, as: 'dataSourceType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType::Representation
+      
+          property :disabled, as: 'disabled', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled::Representation
+      
+          property :filter, as: 'filter', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryOtherCloudFilter, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryOtherCloudFilter::Representation
+      
+          property :generation_cadence, as: 'generationCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudResourceCollection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_regexes, as: 'includeRegexes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudResourceRegexes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudResourceRegexes::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudResourceRegex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amazon_s3_bucket_regex, as: 'amazonS3BucketRegex', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AmazonS3BucketRegex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AmazonS3BucketRegex::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudResourceRegexes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :patterns, as: 'patterns', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudResourceRegex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudResourceRegex::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2OtherCloudSingleResourceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amazon_s3_bucket, as: 'amazonS3Bucket', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AmazonS3Bucket, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AmazonS3Bucket::Representation
+      
         end
       end
       

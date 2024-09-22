@@ -214,6 +214,83 @@ module Google
         end
       end
       
+      # Amazon S3 bucket.
+      class GooglePrivacyDlpV2AmazonS3Bucket
+        include Google::Apis::Core::Hashable
+      
+        # AWS account.
+        # Corresponds to the JSON property `awsAccount`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AwsAccount]
+        attr_accessor :aws_account
+      
+        # Required. The bucket name.
+        # Corresponds to the JSON property `bucketName`
+        # @return [String]
+        attr_accessor :bucket_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_account = args[:aws_account] if args.key?(:aws_account)
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+        end
+      end
+      
+      # Amazon S3 bucket conditions.
+      class GooglePrivacyDlpV2AmazonS3BucketConditions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Bucket types that should be profiled. Optional. Defaults to
+        # TYPE_ALL_SUPPORTED if unspecified.
+        # Corresponds to the JSON property `bucketTypes`
+        # @return [Array<String>]
+        attr_accessor :bucket_types
+      
+        # Optional. Object classes that should be profiled. Optional. Defaults to
+        # ALL_SUPPORTED_CLASSES if unspecified.
+        # Corresponds to the JSON property `objectStorageClasses`
+        # @return [Array<String>]
+        attr_accessor :object_storage_classes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_types = args[:bucket_types] if args.key?(:bucket_types)
+          @object_storage_classes = args[:object_storage_classes] if args.key?(:object_storage_classes)
+        end
+      end
+      
+      # Amazon S3 bucket regex.
+      class GooglePrivacyDlpV2AmazonS3BucketRegex
+        include Google::Apis::Core::Hashable
+      
+        # AWS account regex.
+        # Corresponds to the JSON property `awsAccountRegex`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AwsAccountRegex]
+        attr_accessor :aws_account_regex
+      
+        # Optional. Regex to test the bucket name against. If empty, all buckets match.
+        # Corresponds to the JSON property `bucketNameRegex`
+        # @return [String]
+        attr_accessor :bucket_name_regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_account_regex = args[:aws_account_regex] if args.key?(:aws_account_regex)
+          @bucket_name_regex = args[:bucket_name_regex] if args.key?(:bucket_name_regex)
+        end
+      end
+      
       # Result of a risk analysis operation request.
       class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails
         include Google::Apis::Core::Hashable
@@ -320,6 +397,75 @@ module Google
           @quasi_ids = args[:quasi_ids] if args.key?(:quasi_ids)
           @relative_frequency = args[:relative_frequency] if args.key?(:relative_frequency)
           @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # AWS account.
+      class GooglePrivacyDlpV2AwsAccount
+        include Google::Apis::Core::Hashable
+      
+        # Required. AWS account ID.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+        end
+      end
+      
+      # AWS account regex.
+      class GooglePrivacyDlpV2AwsAccountRegex
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Regex to test the AWS account ID against. If empty, all accounts
+        # match.
+        # Corresponds to the JSON property `accountIdRegex`
+        # @return [String]
+        attr_accessor :account_id_regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id_regex = args[:account_id_regex] if args.key?(:account_id_regex)
+        end
+      end
+      
+      # The AWS starting location for discovery.
+      class GooglePrivacyDlpV2AwsDiscoveryStartingLocation
+        include Google::Apis::Core::Hashable
+      
+        # The AWS account ID that this discovery config applies to. Within an AWS
+        # organization, you can find the AWS account ID inside an AWS account ARN.
+        # Example: arn:`partition`:organizations::`management_account_id`:account/`
+        # org_id`/`account_id`
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # All AWS assets stored in Asset Inventory that didn't match other AWS discovery
+        # configs.
+        # Corresponds to the JSON property `allAssetInventoryAssets`
+        # @return [Boolean]
+        attr_accessor :all_asset_inventory_assets
+        alias_method :all_asset_inventory_assets?, :all_asset_inventory_assets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @all_asset_inventory_assets = args[:all_asset_inventory_assets] if args.key?(:all_asset_inventory_assets)
         end
       end
       
@@ -2325,7 +2471,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ColumnDataProfile]
         attr_accessor :column_profile
       
-        # The profile for a file store. * Cloud Storage: maps 1:1 with a bucket.
+        # The profile for a file store. * Cloud Storage: maps 1:1 with a bucket. *
+        # Amazon S3: maps 1:1 with a bucket.
         # Corresponds to the JSON property `fileStoreProfile`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile]
         attr_accessor :file_store_profile
@@ -2431,6 +2578,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileLocation]
         attr_accessor :location
       
+        # The other cloud starting location for discovery.
+        # Corresponds to the JSON property `otherCloudStartingLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation]
+        attr_accessor :other_cloud_starting_location
+      
         # The project that will run the scan. The DLP service account that exists within
         # this project must have access to all resources that are profiled, and the
         # Cloud DLP API must be enabled.
@@ -2447,6 +2599,7 @@ module Google
           @data_profile_actions = args[:data_profile_actions] if args.key?(:data_profile_actions)
           @inspect_templates = args[:inspect_templates] if args.key?(:inspect_templates)
           @location = args[:location] if args.key?(:location)
+          @other_cloud_starting_location = args[:other_cloud_starting_location] if args.key?(:other_cloud_starting_location)
           @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
@@ -2506,7 +2659,8 @@ module Google
         # @return [String]
         attr_accessor :event
       
-        # The profile for a file store. * Cloud Storage: maps 1:1 with a bucket.
+        # The profile for a file store. * Cloud Storage: maps 1:1 with a bucket. *
+        # Amazon S3: maps 1:1 with a bucket.
         # Corresponds to the JSON property `fileStoreProfile`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreDataProfile]
         attr_accessor :file_store_profile
@@ -3679,6 +3833,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OrgConfig]
         attr_accessor :org_config
       
+        # The other cloud starting location for discovery.
+        # Corresponds to the JSON property `otherCloudStartingLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation]
+        attr_accessor :other_cloud_starting_location
+      
         # Required. A status for this configuration.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -3708,6 +3867,7 @@ module Google
           @last_run_time = args[:last_run_time] if args.key?(:last_run_time)
           @name = args[:name] if args.key?(:name)
           @org_config = args[:org_config] if args.key?(:org_config)
+          @other_cloud_starting_location = args[:other_cloud_starting_location] if args.key?(:other_cloud_starting_location)
           @status = args[:status] if args.key?(:status)
           @targets = args[:targets] if args.key?(:targets)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -3812,6 +3972,93 @@ module Google
         end
       end
       
+      # Requirements that must be true before a resource is profiled for the first
+      # time.
+      class GooglePrivacyDlpV2DiscoveryOtherCloudConditions
+        include Google::Apis::Core::Hashable
+      
+        # Amazon S3 bucket conditions.
+        # Corresponds to the JSON property `amazonS3BucketConditions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AmazonS3BucketConditions]
+        attr_accessor :amazon_s3_bucket_conditions
+      
+        # Minimum age a resource must be before Cloud DLP can profile it. Value must be
+        # 1 hour or greater.
+        # Corresponds to the JSON property `minAge`
+        # @return [String]
+        attr_accessor :min_age
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amazon_s3_bucket_conditions = args[:amazon_s3_bucket_conditions] if args.key?(:amazon_s3_bucket_conditions)
+          @min_age = args[:min_age] if args.key?(:min_age)
+        end
+      end
+      
+      # Determines which resources from the other cloud will have profiles generated.
+      # Includes the ability to filter by resource names.
+      class GooglePrivacyDlpV2DiscoveryOtherCloudFilter
+        include Google::Apis::Core::Hashable
+      
+        # Match resources using regex filters.
+        # Corresponds to the JSON property `collection`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudResourceCollection]
+        attr_accessor :collection
+      
+        # Match discovery resources not covered by any other filter.
+        # Corresponds to the JSON property `others`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherResources]
+        attr_accessor :others
+      
+        # Identifies a single resource, like a single Amazon S3 bucket.
+        # Corresponds to the JSON property `singleResource`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudSingleResourceReference]
+        attr_accessor :single_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection = args[:collection] if args.key?(:collection)
+          @others = args[:others] if args.key?(:others)
+          @single_resource = args[:single_resource] if args.key?(:single_resource)
+        end
+      end
+      
+      # How often existing resources should have their profiles refreshed. New
+      # resources are scanned as quickly as possible depending on system capacity.
+      class GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence
+        include Google::Apis::Core::Hashable
+      
+        # The cadence at which to update data profiles when the inspection rules defined
+        # by the `InspectTemplate` change.
+        # Corresponds to the JSON property `inspectTemplateModifiedCadence`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence]
+        attr_accessor :inspect_template_modified_cadence
+      
+        # Optional. Frequency to update profiles regardless of whether the underlying
+        # resource has changes. Defaults to never.
+        # Corresponds to the JSON property `refreshFrequency`
+        # @return [String]
+        attr_accessor :refresh_frequency
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inspect_template_modified_cadence = args[:inspect_template_modified_cadence] if args.key?(:inspect_template_modified_cadence)
+          @refresh_frequency = args[:refresh_frequency] if args.key?(:refresh_frequency)
+        end
+      end
+      
       # The cadence at which to update data profiles when a schema is modified.
       class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence
         include Google::Apis::Core::Hashable
@@ -3911,6 +4158,14 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageDiscoveryTarget]
         attr_accessor :cloud_storage_target
       
+        # Target used to match against for discovery of resources from other clouds. An [
+        # AWS connector in Security Command Center (Enterprise](https://cloud.google.com/
+        # security-command-center/docs/connect-scc-to-aws) is required to use this
+        # feature.
+        # Corresponds to the JSON property `otherCloudTarget`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryTarget]
+        attr_accessor :other_cloud_target
+      
         # Discovery target for credentials and secrets in cloud resource metadata. This
         # target does not include any filtering or frequency controls. Cloud DLP will
         # scan cloud resource metadata for secrets daily. No inspect template should be
@@ -3932,6 +4187,7 @@ module Google
           @big_query_target = args[:big_query_target] if args.key?(:big_query_target)
           @cloud_sql_target = args[:cloud_sql_target] if args.key?(:cloud_sql_target)
           @cloud_storage_target = args[:cloud_storage_target] if args.key?(:cloud_storage_target)
+          @other_cloud_target = args[:other_cloud_target] if args.key?(:other_cloud_target)
           @secrets_target = args[:secrets_target] if args.key?(:secrets_target)
         end
       end
@@ -4504,7 +4760,8 @@ module Google
         end
       end
       
-      # The profile for a file store. * Cloud Storage: maps 1:1 with a bucket.
+      # The profile for a file store. * Cloud Storage: maps 1:1 with a bucket. *
+      # Amazon S3: maps 1:1 with a bucket.
       class GooglePrivacyDlpV2FileStoreDataProfile
         include Google::Apis::Core::Hashable
       
@@ -4555,18 +4812,22 @@ module Google
         alias_method :file_store_is_empty?, :file_store_is_empty
       
         # The location of the file store. * Cloud Storage: https://cloud.google.com/
-        # storage/docs/locations#available-locations
+        # storage/docs/locations#available-locations * Amazon S3: https://docs.aws.
+        # amazon.com/general/latest/gr/rande.html#regional-endpoints
         # Corresponds to the JSON property `fileStoreLocation`
         # @return [String]
         attr_accessor :file_store_location
       
-        # The file store path. * Cloud Storage: `gs://`bucket``
+        # The file store path. * Cloud Storage: `gs://`bucket`` * Amazon S3: `s3://`
+        # bucket``
         # Corresponds to the JSON property `fileStorePath`
         # @return [String]
         attr_accessor :file_store_path
       
         # The resource name of the resource profiled. https://cloud.google.com/apis/
-        # design/resource_names#full_resource_name
+        # design/resource_names#full_resource_name Example format of an S3 bucket full
+        # resource name: `//cloudasset.googleapis.com/organizations/`org_id`/
+        # otherCloudConnections/aws/arn:aws:s3:::`bucket_name``
         # Corresponds to the JSON property `fullResource`
         # @return [String]
         attr_accessor :full_resource
@@ -4602,7 +4863,8 @@ module Google
         # @return [String]
         attr_accessor :project_data_profile
       
-        # The Google Cloud project ID that owns the resource.
+        # The Google Cloud project ID that owns the resource. For Amazon S3 buckets,
+        # this is the AWS Account Id.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -7106,6 +7368,156 @@ module Google
         def update!(**args)
           @location = args[:location] if args.key?(:location)
           @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # The other cloud starting location for discovery.
+      class GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation
+        include Google::Apis::Core::Hashable
+      
+        # The AWS starting location for discovery.
+        # Corresponds to the JSON property `awsLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AwsDiscoveryStartingLocation]
+        attr_accessor :aws_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_location = args[:aws_location] if args.key?(:aws_location)
+        end
+      end
+      
+      # Target used to match against for discovery of resources from other clouds. An [
+      # AWS connector in Security Command Center (Enterprise](https://cloud.google.com/
+      # security-command-center/docs/connect-scc-to-aws) is required to use this
+      # feature.
+      class GooglePrivacyDlpV2OtherCloudDiscoveryTarget
+        include Google::Apis::Core::Hashable
+      
+        # Requirements that must be true before a resource is profiled for the first
+        # time.
+        # Corresponds to the JSON property `conditions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryOtherCloudConditions]
+        attr_accessor :conditions
+      
+        # Message used to identify the type of resource being profiled.
+        # Corresponds to the JSON property `dataSourceType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataSourceType]
+        attr_accessor :data_source_type
+      
+        # Do not profile the tables.
+        # Corresponds to the JSON property `disabled`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled]
+        attr_accessor :disabled
+      
+        # Determines which resources from the other cloud will have profiles generated.
+        # Includes the ability to filter by resource names.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryOtherCloudFilter]
+        attr_accessor :filter
+      
+        # How often existing resources should have their profiles refreshed. New
+        # resources are scanned as quickly as possible depending on system capacity.
+        # Corresponds to the JSON property `generationCadence`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence]
+        attr_accessor :generation_cadence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @filter = args[:filter] if args.key?(:filter)
+          @generation_cadence = args[:generation_cadence] if args.key?(:generation_cadence)
+        end
+      end
+      
+      # Match resources using regex filters.
+      class GooglePrivacyDlpV2OtherCloudResourceCollection
+        include Google::Apis::Core::Hashable
+      
+        # A collection of regular expressions to determine what resources to match
+        # against.
+        # Corresponds to the JSON property `includeRegexes`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudResourceRegexes]
+        attr_accessor :include_regexes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_regexes = args[:include_regexes] if args.key?(:include_regexes)
+        end
+      end
+      
+      # A pattern to match against one or more resources. At least one pattern must be
+      # specified. Regular expressions use RE2 [syntax](https://github.com/google/re2/
+      # wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
+      class GooglePrivacyDlpV2OtherCloudResourceRegex
+        include Google::Apis::Core::Hashable
+      
+        # Amazon S3 bucket regex.
+        # Corresponds to the JSON property `amazonS3BucketRegex`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AmazonS3BucketRegex]
+        attr_accessor :amazon_s3_bucket_regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amazon_s3_bucket_regex = args[:amazon_s3_bucket_regex] if args.key?(:amazon_s3_bucket_regex)
+        end
+      end
+      
+      # A collection of regular expressions to determine what resources to match
+      # against.
+      class GooglePrivacyDlpV2OtherCloudResourceRegexes
+        include Google::Apis::Core::Hashable
+      
+        # A group of regular expression patterns to match against one or more resources.
+        # Maximum of 100 entries. The sum of all regular expression's length can't
+        # exceed 10 KiB.
+        # Corresponds to the JSON property `patterns`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudResourceRegex>]
+        attr_accessor :patterns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @patterns = args[:patterns] if args.key?(:patterns)
+        end
+      end
+      
+      # Identifies a single resource, like a single Amazon S3 bucket.
+      class GooglePrivacyDlpV2OtherCloudSingleResourceReference
+        include Google::Apis::Core::Hashable
+      
+        # Amazon S3 bucket.
+        # Corresponds to the JSON property `amazonS3Bucket`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AmazonS3Bucket]
+        attr_accessor :amazon_s3_bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amazon_s3_bucket = args[:amazon_s3_bucket] if args.key?(:amazon_s3_bucket)
         end
       end
       
