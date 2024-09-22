@@ -534,10 +534,10 @@ module Google
         # @param [String] parent
         #   Required. The parent, which owns this collection of targets.
         # @param [String] filter
-        #   Optional. The filter request (according to https://google.aip.dev/160).
+        #   Optional. The filter request (according to AIP-160).
         # @param [String] order_by
-        #   Optional. The order by fields for the result (according to https://google.aip.
-        #   dev/132#ordering). Currently ordering is only possible by "name" field.
+        #   Optional. The order by fields for the result (according to AIP-132). Currently
+        #   ordering is only possible by "name" field.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of targets to return. The service may return
         #   fewer than this value. If unspecified, at most 500 targets will be returned.
@@ -645,10 +645,10 @@ module Google
         # @param [String] parent
         #   Required. The parent, which owns this collection of targets.
         # @param [String] filter
-        #   Optional. The filter request (according to https://google.aip.dev/160).
+        #   Optional. The filter request (according to AIP-160).
         # @param [String] order_by
-        #   Optional. The order by fields for the result (according to https://google.aip.
-        #   dev/132#ordering). Currently ordering is only possible by "name" field.
+        #   Optional. The order by fields for the result (according to AIP-132). Currently
+        #   ordering is only possible by "name" field.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of targets to return. The service may return
         #   fewer than this value. If unspecified, at most 500 targets will be returned.
