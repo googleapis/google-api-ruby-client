@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Mesh
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +413,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetryFilterPerRouteConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1178,6 +1190,13 @@ module Google
         end
       end
       
+      class LoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_severity, as: 'logSeverity'
+        end
+      end
+      
       class Mesh
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1226,6 +1245,13 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class RetryFilterPerRouteConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crypto_key_name, as: 'cryptoKeyName'
         end
       end
       

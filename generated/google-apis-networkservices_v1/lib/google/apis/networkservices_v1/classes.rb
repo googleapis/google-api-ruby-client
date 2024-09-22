@@ -2186,7 +2186,8 @@ module Google
         # message sent to the extension server. The metadata is available under the
         # namespace `com.google.lb_route_extension.`. The following variables are
         # supported in the metadata Struct: ``forwarding_rule_id`` - substituted with
-        # the forwarding rule's fully qualified resource name.
+        # the forwarding rule's fully qualified resource name. Only one of the resource
+        # level metadata and extension level metadata can be set.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -2274,7 +2275,8 @@ module Google
         # metadata_context.filter_metadata` map field. The metadata is available under
         # the key `com.google.lb_traffic_extension.`. The following variables are
         # supported in the metadata: ``forwarding_rule_id`` - substituted with the
-        # forwarding rule's fully qualified resource name.
+        # forwarding rule's fully qualified resource name. Only one of the resource
+        # level metadata and extension level metadata can be set.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -2717,6 +2719,28 @@ module Google
         end
       end
       
+      # The configuration for Platform Telemetry logging for Eventarc Avdvanced
+      # resources.
+      class LoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The minimum severity of logs that will be sent to Stackdriver/
+        # Platform Telemetry. Logs at severitiy ≥ this value will be sent, unless it is
+        # NONE.
+        # Corresponds to the JSON property `logSeverity`
+        # @return [String]
+        attr_accessor :log_severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_severity = args[:log_severity] if args.key?(:log_severity)
+        end
+      end
+      
       # Mesh represents a logical configuration grouping for workload to workload
       # communication within a service mesh. Routes that point to mesh dictate how
       # requests are routed within this logical mesh boundary.
@@ -3000,6 +3024,25 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class RetryFilterPerRouteConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the crypto key to use for encrypting event data.
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
         end
       end
       
