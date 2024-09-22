@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthorizedNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackgroundJobLogEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +335,12 @@ module Google
       end
       
       class IndexEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceNetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -894,6 +906,13 @@ module Google
         end
       end
       
+      class AuthorizedNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cidr_range, as: 'cidrRange'
+        end
+      end
+      
       class BackgroundJobLogEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -957,6 +976,7 @@ module Google
           property :data_disk_type, as: 'dataDiskType'
           hash :database_flags, as: 'databaseFlags'
           property :database_version, as: 'databaseVersion'
+          property :database_version_name, as: 'databaseVersionName'
           property :edition, as: 'edition'
           property :ip_config, as: 'ipConfig', class: Google::Apis::DatamigrationV1::SqlIpConfig, decorator: Google::Apis::DatamigrationV1::SqlIpConfig::Representation
       
@@ -1396,6 +1416,16 @@ module Google
         end
       end
       
+      class InstanceNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authorized_external_networks, as: 'authorizedExternalNetworks', class: Google::Apis::DatamigrationV1::AuthorizedNetwork, decorator: Google::Apis::DatamigrationV1::AuthorizedNetwork::Representation
+      
+          property :enable_outbound_public_ip, as: 'enableOutboundPublicIp'
+          property :enable_public_ip, as: 'enablePublicIp'
+        end
+      end
+      
       class IntComparisonFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1746,9 +1776,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :database_flags, as: 'databaseFlags'
           property :id, as: 'id'
+          property :instance_network_config, as: 'instanceNetworkConfig', class: Google::Apis::DatamigrationV1::InstanceNetworkConfig, decorator: Google::Apis::DatamigrationV1::InstanceNetworkConfig::Representation
+      
           hash :labels, as: 'labels'
           property :machine_config, as: 'machineConfig', class: Google::Apis::DatamigrationV1::MachineConfig, decorator: Google::Apis::DatamigrationV1::MachineConfig::Representation
       
+          collection :outbound_public_ip_addresses, as: 'outboundPublicIpAddresses'
           property :private_ip, as: 'privateIp'
         end
       end
