@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainTags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainUserLabels
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1237,6 +1243,8 @@ module Google
       
           property :resource_container, as: 'resourceContainer'
           property :resource_name, as: 'resourceName'
+          property :tags_set, as: 'tagsSet', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainTags, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainTags::Representation
+      
           property :updation_time, as: 'updationTime'
           property :user_label_set, as: 'userLabelSet', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUserLabels, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUserLabels::Representation
       
@@ -1285,6 +1293,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpu_count, as: 'cpuCount'
           property :memory_size_in_bytes, :numeric_string => true, as: 'memorySizeInBytes'
+          property :shard_count, as: 'shardCount'
         end
       end
       
@@ -1315,6 +1324,13 @@ module Google
           property :quantity_based_retention, as: 'quantityBasedRetention'
           property :retention_unit, as: 'retentionUnit'
           property :time_based_retention, as: 'timeBasedRetention'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainTags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :tags, as: 'tags'
         end
       end
       
