@@ -1819,6 +1819,7 @@ module Google
       class AzureTenant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :id, as: 'id'
         end
       end
@@ -2736,6 +2737,7 @@ module Google
       class GoogleCloudSecuritycenterV2AzureTenant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :id, as: 'id'
         end
       end
