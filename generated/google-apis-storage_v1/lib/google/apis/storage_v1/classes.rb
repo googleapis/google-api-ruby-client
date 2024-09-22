@@ -2412,6 +2412,13 @@ module Google
         # @return [Google::Apis::StorageV1::Object::Owner]
         attr_accessor :owner
       
+        # Restore token used to differentiate deleted objects with the same name and
+        # generation. This field is only returned for deleted objects in hierarchical
+        # namespace buckets.
+        # Corresponds to the JSON property `restoreToken`
+        # @return [String]
+        attr_accessor :restore_token
+      
         # A collection of object level retention parameters.
         # Corresponds to the JSON property `retention`
         # @return [Google::Apis::StorageV1::Object::Retention]
@@ -2513,6 +2520,7 @@ module Google
           @metageneration = args[:metageneration] if args.key?(:metageneration)
           @name = args[:name] if args.key?(:name)
           @owner = args[:owner] if args.key?(:owner)
+          @restore_token = args[:restore_token] if args.key?(:restore_token)
           @retention = args[:retention] if args.key?(:retention)
           @retention_expiration_time = args[:retention_expiration_time] if args.key?(:retention_expiration_time)
           @self_link = args[:self_link] if args.key?(:self_link)
