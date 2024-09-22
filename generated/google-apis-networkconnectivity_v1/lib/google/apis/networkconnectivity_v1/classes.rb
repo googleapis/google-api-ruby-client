@@ -306,10 +306,16 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Immutable. An immutable identifier for the producer instance.
+        # Immutable. Deprecated. Use producer_instance_metadata instead. An immutable
+        # identifier for the producer instance.
         # Corresponds to the JSON property `producerInstanceId`
         # @return [String]
         attr_accessor :producer_instance_id
+      
+        # Immutable. An immutable map for the producer instance metadata.
+        # Corresponds to the JSON property `producerInstanceMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :producer_instance_metadata
       
         # The consumer project where PSC connections are allowed to be created in.
         # Corresponds to the JSON property `project`
@@ -339,6 +345,7 @@ module Google
           @disable_global_access = args[:disable_global_access] if args.key?(:disable_global_access)
           @network = args[:network] if args.key?(:network)
           @producer_instance_id = args[:producer_instance_id] if args.key?(:producer_instance_id)
+          @producer_instance_metadata = args[:producer_instance_metadata] if args.key?(:producer_instance_metadata)
           @project = args[:project] if args.key?(:project)
           @service_attachment_ip_address_map = args[:service_attachment_ip_address_map] if args.key?(:service_attachment_ip_address_map)
           @state = args[:state] if args.key?(:state)
@@ -402,10 +409,16 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Immutable. An immutable identifier for the producer instance.
+        # Immutable. Deprecated. Use producer_instance_metadata instead. An immutable
+        # identifier for the producer instance.
         # Corresponds to the JSON property `producerInstanceId`
         # @return [String]
         attr_accessor :producer_instance_id
+      
+        # Immutable. An immutable map for the producer instance metadata.
+        # Corresponds to the JSON property `producerInstanceMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :producer_instance_metadata
       
         # The consumer project whose PSC forwarding rule is connected to the service
         # attachments in this service connection map.
@@ -449,6 +462,7 @@ module Google
           @ip = args[:ip] if args.key?(:ip)
           @network = args[:network] if args.key?(:network)
           @producer_instance_id = args[:producer_instance_id] if args.key?(:producer_instance_id)
+          @producer_instance_metadata = args[:producer_instance_metadata] if args.key?(:producer_instance_metadata)
           @project = args[:project] if args.key?(:project)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @selected_subnetwork = args[:selected_subnetwork] if args.key?(:selected_subnetwork)
@@ -994,7 +1008,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The IP range that this internal range defines.
+        # The IP range that this internal range defines. NOTE: IPv6 ranges are limited
+        # to usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges this
+        # field is compulsory, i.e. the address range must be specified explicitly.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -1003,6 +1019,11 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Specification for migration with source and target resource names.
+        # Corresponds to the JSON property `migration`
+        # @return [Google::Apis::NetworkconnectivityV1::Migration]
+        attr_accessor :migration
       
         # Immutable. The name of an internal range. Format: projects/`project`/locations/
         # `location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
@@ -1031,10 +1052,13 @@ module Google
         # @return [String]
         attr_accessor :peering
       
-        # An alternate to ip_cidr_range. Can be set when trying to create a reservation
-        # that automatically finds a free range of the given size. If both ip_cidr_range
-        # and prefix_length are set, there is an error if the range sizes do not match.
-        # Can also be used during updates to change the range size.
+        # An alternate to ip_cidr_range. Can be set when trying to create an IPv4
+        # reservation that automatically finds a free range of the given size. If both
+        # ip_cidr_range and prefix_length are set, there is an error if the range sizes
+        # do not match. Can also be used during updates to change the range size. NOTE:
+        # For IPv6 this field only works if ip_cidr_range is set as well, and both
+        # fields must match. In other words, with IPv6 this field only works as a
+        # redundant parameter.
         # Corresponds to the JSON property `prefixLength`
         # @return [Fixnum]
         attr_accessor :prefix_length
@@ -1077,6 +1101,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @labels = args[:labels] if args.key?(:labels)
+          @migration = args[:migration] if args.key?(:migration)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @overlaps = args[:overlaps] if args.key?(:overlaps)
@@ -1781,6 +1806,36 @@ module Google
         end
       end
       
+      # Specification for migration with source and target resource names.
+      class Migration
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Resource path as an URI of the source resource, for example a
+        # subnet. The project for the source resource should match the project for the
+        # InternalRange. An example: /projects/`project`/regions/`region`/subnetworks/`
+        # subnet`
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Immutable. Resource path of the target resource. The target project can be
+        # different, as in the cases when migrating to peer networks. The resource For
+        # example: /projects/`project`/regions/`region`/subnetworks/`subnet`
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source = args[:source] if args.key?(:source)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
       # A route next hop that leads to an interconnect attachment resource.
       class NextHopInterconnectAttachment
         include Google::Apis::Core::Hashable
@@ -2301,10 +2356,16 @@ module Google
         # @return [String]
         attr_accessor :gce_operation
       
-        # Immutable. An immutable identifier for the producer instance.
+        # Immutable. Deprecated. Use producer_instance_metadata instead. An immutable
+        # identifier for the producer instance.
         # Corresponds to the JSON property `producerInstanceId`
         # @return [String]
         attr_accessor :producer_instance_id
+      
+        # Immutable. An immutable map for the producer instance metadata.
+        # Corresponds to the JSON property `producerInstanceMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :producer_instance_metadata
       
         # The PSC connection id of the PSC forwarding rule.
         # Corresponds to the JSON property `pscConnectionId`
@@ -2316,6 +2377,13 @@ module Google
         # Corresponds to the JSON property `selectedSubnetwork`
         # @return [String]
         attr_accessor :selected_subnetwork
+      
+        # Output only. [Output only] The service class associated with this PSC
+        # Connection. The value is derived from the SCPolicy and matches the service
+        # class name provided by the customer.
+        # Corresponds to the JSON property `serviceClass`
+        # @return [String]
+        attr_accessor :service_class
       
         # State of the PSC Connection
         # Corresponds to the JSON property `state`
@@ -2336,8 +2404,10 @@ module Google
           @error_type = args[:error_type] if args.key?(:error_type)
           @gce_operation = args[:gce_operation] if args.key?(:gce_operation)
           @producer_instance_id = args[:producer_instance_id] if args.key?(:producer_instance_id)
+          @producer_instance_metadata = args[:producer_instance_metadata] if args.key?(:producer_instance_metadata)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @selected_subnetwork = args[:selected_subnetwork] if args.key?(:selected_subnetwork)
+          @service_class = args[:service_class] if args.key?(:service_class)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -2908,7 +2978,7 @@ module Google
       class ServiceConnectionPolicy
         include Google::Apis::Core::Hashable
       
-        # Output only. Time when the ServiceConnectionMap was created.
+        # Output only. Time when the ServiceConnectionPolicy was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -2968,7 +3038,7 @@ module Google
         # @return [String]
         attr_accessor :service_class
       
-        # Output only. Time when the ServiceConnectionMap was updated.
+        # Output only. Time when the ServiceConnectionPolicy was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
