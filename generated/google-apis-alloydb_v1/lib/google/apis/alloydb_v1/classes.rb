@@ -2542,7 +2542,7 @@ module Google
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata.
+        # Common model for database resource instance metadata. Next ID: 21
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -2717,7 +2717,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata.
+      # Common model for database resource instance metadata. Next ID: 21
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -2813,6 +2813,13 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
+        # Message type for storing tags. Tags provide a way to create annotations for
+        # resources, and in some cases conditionally allow or deny policies based on
+        # whether a resource has a specific tag.
+        # Corresponds to the JSON property `tagsSet`
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainTags]
+        attr_accessor :tags_set
+      
         # The time at which the resource was updated and recorded at partner service.
         # Corresponds to the JSON property `updationTime`
         # @return [String]
@@ -2847,6 +2854,7 @@ module Google
           @product = args[:product] if args.key?(:product)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @tags_set = args[:tags_set] if args.key?(:tags_set)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
           @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
         end
@@ -3014,6 +3022,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :memory_size_in_bytes
       
+        # Optional. Number of shards (if applicable).
+        # Corresponds to the JSON property `shardCount`
+        # @return [Fixnum]
+        attr_accessor :shard_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3022,6 +3035,7 @@ module Google
         def update!(**args)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
           @memory_size_in_bytes = args[:memory_size_in_bytes] if args.key?(:memory_size_in_bytes)
+          @shard_count = args[:shard_count] if args.key?(:shard_count)
         end
       end
       
@@ -3129,6 +3143,27 @@ module Google
           @quantity_based_retention = args[:quantity_based_retention] if args.key?(:quantity_based_retention)
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
+        end
+      end
+      
+      # Message type for storing tags. Tags provide a way to create annotations for
+      # resources, and in some cases conditionally allow or deny policies based on
+      # whether a resource has a specific tag.
+      class StorageDatabasecenterPartnerapiV1mainTags
+        include Google::Apis::Core::Hashable
+      
+        # The Tag key/value mappings.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
