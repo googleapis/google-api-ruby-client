@@ -1685,7 +1685,8 @@ module Google
         end
       end
       
-      # For display only. Metadata associated with a Compute Engine network.
+      # For display only. Metadata associated with a Compute Engine network. Next ID:
+      # 7
       class NetworkInfo
         include Google::Apis::Core::Hashable
       
@@ -1694,10 +1695,20 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The IP range that matches the test.
+        # The IP range of the subnet matching the source IP address of the test.
         # Corresponds to the JSON property `matchedIpRange`
         # @return [String]
         attr_accessor :matched_ip_range
+      
+        # URI of the subnet matching the source IP address of the test.
+        # Corresponds to the JSON property `matchedSubnetUri`
+        # @return [String]
+        attr_accessor :matched_subnet_uri
+      
+        # The region of the subnet matching the source IP address of the test.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
       
         # URI of a Compute Engine network.
         # Corresponds to the JSON property `uri`
@@ -1712,6 +1723,8 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @matched_ip_range = args[:matched_ip_range] if args.key?(:matched_ip_range)
+          @matched_subnet_uri = args[:matched_subnet_uri] if args.key?(:matched_subnet_uri)
+          @region = args[:region] if args.key?(:region)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -2247,6 +2260,19 @@ module Google
       class RouteInfo
         include Google::Apis::Core::Hashable
       
+        # For advertised routes, the URI of their next hop, i.e. the URI of the hybrid
+        # endpoint (VPN tunnel, Interconnect attachment, NCC router appliance) the
+        # advertised prefix is advertised through, or URI of the source peered network.
+        # Corresponds to the JSON property `advertisedRouteNextHopUri`
+        # @return [String]
+        attr_accessor :advertised_route_next_hop_uri
+      
+        # For advertised dynamic routes, the URI of the Cloud Router that advertised the
+        # corresponding IP prefix.
+        # Corresponds to the JSON property `advertisedRouteSourceRouterUri`
+        # @return [String]
+        attr_accessor :advertised_route_source_router_uri
+      
         # Destination IP range of the route.
         # Corresponds to the JSON property `destIpRange`
         # @return [String]
@@ -2302,6 +2328,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :protocols
       
+        # Region of the route (if applicable).
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # Indicates where route is applicable.
         # Corresponds to the JSON property `routeScope`
         # @return [String]
@@ -2322,9 +2353,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :src_port_ranges
       
-        # URI of a route. Dynamic, peering static and peering dynamic routes do not have
-        # an URI. Advertised route from Google Cloud VPC to on-premises network also
-        # does not have an URI.
+        # URI of a route (if applicable).
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2335,6 +2364,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advertised_route_next_hop_uri = args[:advertised_route_next_hop_uri] if args.key?(:advertised_route_next_hop_uri)
+          @advertised_route_source_router_uri = args[:advertised_route_source_router_uri] if args.key?(:advertised_route_source_router_uri)
           @dest_ip_range = args[:dest_ip_range] if args.key?(:dest_ip_range)
           @dest_port_ranges = args[:dest_port_ranges] if args.key?(:dest_port_ranges)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -2346,6 +2377,7 @@ module Google
           @next_hop_type = args[:next_hop_type] if args.key?(:next_hop_type)
           @priority = args[:priority] if args.key?(:priority)
           @protocols = args[:protocols] if args.key?(:protocols)
+          @region = args[:region] if args.key?(:region)
           @route_scope = args[:route_scope] if args.key?(:route_scope)
           @route_type = args[:route_type] if args.key?(:route_type)
           @src_ip_range = args[:src_ip_range] if args.key?(:src_ip_range)
@@ -2575,7 +2607,8 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::NatInfo]
         attr_accessor :nat
       
-        # For display only. Metadata associated with a Compute Engine network.
+        # For display only. Metadata associated with a Compute Engine network. Next ID:
+        # 7
         # Corresponds to the JSON property `network`
         # @return [Google::Apis::NetworkmanagementV1::NetworkInfo]
         attr_accessor :network
