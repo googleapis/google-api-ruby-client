@@ -1939,6 +1939,33 @@ module Google
         end
       end
       
+      # A route polyline. Only supports an [encoded polyline](https://developers.
+      # google.com/maps/documentation/utilities/polylinealgorithm), which can be
+      # passed as a string and includes compression with minimal lossiness. This is
+      # the Routes API default output.
+      class GoogleMapsPlacesV1Polyline
+        include Google::Apis::Core::Hashable
+      
+        # An [encoded polyline](https://developers.google.com/maps/documentation/
+        # utilities/polylinealgorithm), as returned by the [Routes API by default](https:
+        # //developers.google.com/maps/documentation/routes/reference/rest/v2/TopLevel/
+        # computeRoutes#polylineencoding). See the [encoder](https://developers.google.
+        # com/maps/documentation/utilities/polylineutility) and [decoder](https://
+        # developers.google.com/maps/documentation/routes/polylinedecoder) tools.
+        # Corresponds to the JSON property `encodedPolyline`
+        # @return [String]
+        attr_accessor :encoded_polyline
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoded_polyline = args[:encoded_polyline] if args.key?(:encoded_polyline)
+        end
+      end
+      
       # Experimental: See https://developers.google.com/maps/documentation/places/web-
       # service/experimental/places-generative for more details. Reference that the
       # generative content is related to.
@@ -2022,6 +2049,154 @@ module Google
           @rating = args[:rating] if args.key?(:rating)
           @relative_publish_time_description = args[:relative_publish_time_description] if args.key?(:relative_publish_time_description)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Encapsulates a set of optional conditions to satisfy when calculating the
+      # routes.
+      class GoogleMapsPlacesV1RouteModifiers
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When set to true, avoids ferries where reasonable, giving preference
+        # to routes not containing ferries. Applies only to the `DRIVE` and `TWO_WHEELER`
+        # `TravelMode`.
+        # Corresponds to the JSON property `avoidFerries`
+        # @return [Boolean]
+        attr_accessor :avoid_ferries
+        alias_method :avoid_ferries?, :avoid_ferries
+      
+        # Optional. When set to true, avoids highways where reasonable, giving
+        # preference to routes not containing highways. Applies only to the `DRIVE` and `
+        # TWO_WHEELER` `TravelMode`.
+        # Corresponds to the JSON property `avoidHighways`
+        # @return [Boolean]
+        attr_accessor :avoid_highways
+        alias_method :avoid_highways?, :avoid_highways
+      
+        # Optional. When set to true, avoids navigating indoors where reasonable, giving
+        # preference to routes not containing indoor navigation. Applies only to the `
+        # WALK` `TravelMode`.
+        # Corresponds to the JSON property `avoidIndoor`
+        # @return [Boolean]
+        attr_accessor :avoid_indoor
+        alias_method :avoid_indoor?, :avoid_indoor
+      
+        # Optional. When set to true, avoids toll roads where reasonable, giving
+        # preference to routes not containing toll roads. Applies only to the `DRIVE`
+        # and `TWO_WHEELER` `TravelMode`.
+        # Corresponds to the JSON property `avoidTolls`
+        # @return [Boolean]
+        attr_accessor :avoid_tolls
+        alias_method :avoid_tolls?, :avoid_tolls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avoid_ferries = args[:avoid_ferries] if args.key?(:avoid_ferries)
+          @avoid_highways = args[:avoid_highways] if args.key?(:avoid_highways)
+          @avoid_indoor = args[:avoid_indoor] if args.key?(:avoid_indoor)
+          @avoid_tolls = args[:avoid_tolls] if args.key?(:avoid_tolls)
+        end
+      end
+      
+      # Parameters to configure the routing calculations to the places in the response,
+      # both along a route (where result ranking will be influenced) and for
+      # calculating travel times on results.
+      class GoogleMapsPlacesV1RoutingParameters
+        include Google::Apis::Core::Hashable
+      
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
+        # Corresponds to the JSON property `origin`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLatLng]
+        attr_accessor :origin
+      
+        # Encapsulates a set of optional conditions to satisfy when calculating the
+        # routes.
+        # Corresponds to the JSON property `routeModifiers`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1RouteModifiers]
+        attr_accessor :route_modifiers
+      
+        # Optional. Specifies how to compute the routing summaries. The server attempts
+        # to use the selected routing preference to compute the route. The traffic aware
+        # routing preference is only available for the `DRIVE` or `TWO_WHEELER` `
+        # travelMode`.
+        # Corresponds to the JSON property `routingPreference`
+        # @return [String]
+        attr_accessor :routing_preference
+      
+        # Optional. The travel mode.
+        # Corresponds to the JSON property `travelMode`
+        # @return [String]
+        attr_accessor :travel_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @origin = args[:origin] if args.key?(:origin)
+          @route_modifiers = args[:route_modifiers] if args.key?(:route_modifiers)
+          @routing_preference = args[:routing_preference] if args.key?(:routing_preference)
+          @travel_mode = args[:travel_mode] if args.key?(:travel_mode)
+        end
+      end
+      
+      # The duration and distance from the routing origin to a place in the response,
+      # and a second leg from that place to the destination, if requested. **Note:**
+      # Adding `routingSummaries` in the field mask without also including either the `
+      # routingParameters.origin` parameter or the `searchAlongRouteParameters.
+      # polyline.encodedPolyline` parameter in the request causes an error.
+      class GoogleMapsPlacesV1RoutingSummary
+        include Google::Apis::Core::Hashable
+      
+        # The legs of the trip. When you calculate travel duration and distance from a
+        # set origin, `legs` contains a single leg containing the duration and distance
+        # from the origin to the destination. When you do a search along route, `legs`
+        # contains two legs: one from the origin to place, and one from the place to the
+        # destination.
+        # Corresponds to the JSON property `legs`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummaryLeg>]
+        attr_accessor :legs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @legs = args[:legs] if args.key?(:legs)
+        end
+      end
+      
+      # A leg is a single portion of a journey from one location to another.
+      class GoogleMapsPlacesV1RoutingSummaryLeg
+        include Google::Apis::Core::Hashable
+      
+        # The distance of this leg of the trip.
+        # Corresponds to the JSON property `distanceMeters`
+        # @return [Fixnum]
+        attr_accessor :distance_meters
+      
+        # The time it takes to complete this leg of the trip.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distance_meters = args[:distance_meters] if args.key?(:distance_meters)
+          @duration = args[:duration] if args.key?(:duration)
         end
       end
       
@@ -2130,6 +2305,13 @@ module Google
         # @return [String]
         attr_accessor :region_code
       
+        # Parameters to configure the routing calculations to the places in the response,
+        # both along a route (where result ranking will be influenced) and for
+        # calculating travel times on results.
+        # Corresponds to the JSON property `routingParameters`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingParameters]
+        attr_accessor :routing_parameters
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2145,6 +2327,7 @@ module Google
           @max_result_count = args[:max_result_count] if args.key?(:max_result_count)
           @rank_preference = args[:rank_preference] if args.key?(:rank_preference)
           @region_code = args[:region_code] if args.key?(:region_code)
+          @routing_parameters = args[:routing_parameters] if args.key?(:routing_parameters)
         end
       end
       
@@ -2177,6 +2360,14 @@ module Google
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Place>]
         attr_accessor :places
       
+        # A list of routing summaries where each entry associates to the corresponding
+        # place in the same index in the `places` field. If the routing summary is not
+        # available for one of the places, it will contain an empty entry. This list
+        # should have as many entries as the list of places if requested.
+        # Corresponds to the JSON property `routingSummaries`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary>]
+        attr_accessor :routing_summaries
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2184,6 +2375,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @places = args[:places] if args.key?(:places)
+          @routing_summaries = args[:routing_summaries] if args.key?(:routing_summaries)
         end
       end
       
@@ -2294,6 +2486,28 @@ module Google
         # @return [String]
         attr_accessor :region_code
       
+        # Parameters to configure the routing calculations to the places in the response,
+        # both along a route (where result ranking will be influenced) and for
+        # calculating travel times on results.
+        # Corresponds to the JSON property `routingParameters`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingParameters]
+        attr_accessor :routing_parameters
+      
+        # Specifies a precalculated polyline from the [Routes API](https://developers.
+        # google.com/maps/documentation/routes) defining the route to search. Searching
+        # along a route is similar to using the `locationBias` or `locationRestriction`
+        # request option to bias the search results. However, while the `locationBias`
+        # and `locationRestriction` options let you specify a region to bias the search
+        # results, this option lets you bias the results along a trip route. Results are
+        # not guaranteed to be along the route provided, but rather are ranked within
+        # the search area defined by the polyline and, optionally, by the `locationBias`
+        # or `locationRestriction` based on minimal detour times from origin to
+        # destination. The results might be along an alternate route, especially if the
+        # provided polyline does not define an optimal route from origin to destination.
+        # Corresponds to the JSON property `searchAlongRouteParameters`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters]
+        attr_accessor :search_along_route_parameters
+      
         # Used to set strict type filtering for included_type. If set to true, only
         # results of the same type will be returned. Default to false.
         # Corresponds to the JSON property `strictTypeFiltering`
@@ -2325,6 +2539,8 @@ module Google
           @price_levels = args[:price_levels] if args.key?(:price_levels)
           @rank_preference = args[:rank_preference] if args.key?(:rank_preference)
           @region_code = args[:region_code] if args.key?(:region_code)
+          @routing_parameters = args[:routing_parameters] if args.key?(:routing_parameters)
+          @search_along_route_parameters = args[:search_along_route_parameters] if args.key?(:search_along_route_parameters)
           @strict_type_filtering = args[:strict_type_filtering] if args.key?(:strict_type_filtering)
           @text_query = args[:text_query] if args.key?(:text_query)
         end
@@ -2433,6 +2649,38 @@ module Google
         end
       end
       
+      # Specifies a precalculated polyline from the [Routes API](https://developers.
+      # google.com/maps/documentation/routes) defining the route to search. Searching
+      # along a route is similar to using the `locationBias` or `locationRestriction`
+      # request option to bias the search results. However, while the `locationBias`
+      # and `locationRestriction` options let you specify a region to bias the search
+      # results, this option lets you bias the results along a trip route. Results are
+      # not guaranteed to be along the route provided, but rather are ranked within
+      # the search area defined by the polyline and, optionally, by the `locationBias`
+      # or `locationRestriction` based on minimal detour times from origin to
+      # destination. The results might be along an alternate route, especially if the
+      # provided polyline does not define an optimal route from origin to destination.
+      class GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters
+        include Google::Apis::Core::Hashable
+      
+        # A route polyline. Only supports an [encoded polyline](https://developers.
+        # google.com/maps/documentation/utilities/polylinealgorithm), which can be
+        # passed as a string and includes compression with minimal lossiness. This is
+        # the Routes API default output.
+        # Corresponds to the JSON property `polyline`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1Polyline]
+        attr_accessor :polyline
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @polyline = args[:polyline] if args.key?(:polyline)
+        end
+      end
+      
       # Response proto for SearchText.
       class GoogleMapsPlacesV1SearchTextResponse
         include Google::Apis::Core::Hashable
@@ -2460,6 +2708,14 @@ module Google
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Place>]
         attr_accessor :places
       
+        # A list of routing summaries where each entry associates to the corresponding
+        # place in the same index in the `places` field. If the routing summary is not
+        # available for one of the places, it will contain an empty entry. This list
+        # will have as many entries as the list of places if requested.
+        # Corresponds to the JSON property `routingSummaries`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary>]
+        attr_accessor :routing_summaries
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2469,6 +2725,7 @@ module Google
           @contextual_contents = args[:contextual_contents] if args.key?(:contextual_contents)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @places = args[:places] if args.key?(:places)
+          @routing_summaries = args[:routing_summaries] if args.key?(:routing_summaries)
         end
       end
       
