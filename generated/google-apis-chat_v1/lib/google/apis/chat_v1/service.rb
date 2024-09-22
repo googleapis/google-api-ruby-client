@@ -177,12 +177,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a named space. Spaces grouped by topics aren't supported. For an
-        # example, see [Create a space](https://developers.google.com/workspace/chat/
-        # create-spaces). If you receive the error message `ALREADY_EXISTS` when
-        # creating a space, try a different `displayName`. An existing space within the
-        # Google Workspace organization might already use this display name. Requires [
-        # user authentication](https://developers.google.com/workspace/chat/authenticate-
+        # Creates a space with no members. Can be used to create a named space. Spaces
+        # grouped by topics aren't supported. For an example, see [Create a space](https:
+        # //developers.google.com/workspace/chat/create-spaces). If you receive the
+        # error message `ALREADY_EXISTS` when creating a space, try a different `
+        # displayName`. An existing space within the Google Workspace organization might
+        # already use this display name. If you're a member of the [Developer Preview
+        # program](https://developers.google.com/workspace/preview), you can create a
+        # group chat in import mode using `spaceType.GROUP_CHAT`. Requires [user
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
         # authorize-chat-user).
         # @param [Google::Apis::ChatV1::Space] space_object
         # @param [String] request_id
@@ -228,8 +231,7 @@ module Google
         # @param [String] name
         #   Required. Resource name of the space to delete. Format: `spaces/`space``
         # @param [Boolean] use_admin_access
-        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
-        #   true`, the method runs using the user's Google Workspace administrator
+        #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
         #   [manage chat and spaces conversations privilege](https://support.google.com/a/
         #   answer/13369245). Requires the `chat.admin.delete` [OAuth 2.0 scope](https://
@@ -321,8 +323,7 @@ module Google
         #   Required. Resource name of the space, in the form `spaces/`space``. Format: `
         #   spaces/`space``
         # @param [Boolean] use_admin_access
-        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
-        #   true`, the method runs using the user's Google Workspace administrator
+        #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
         #   [manage chat and spaces conversations privilege](https://support.google.com/a/
         #   answer/13369245). Requires the `chat.admin.spaces` or `chat.admin.spaces.
@@ -469,8 +470,7 @@ module Google
         #   other non-permission settings field paths). `permission_settings` is not
         #   supported with admin access.
         # @param [Boolean] use_admin_access
-        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
-        #   true`, the method runs using the user's Google Workspace administrator
+        #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
         #   [manage chat and spaces conversations privilege](https://support.google.com/a/
         #   answer/13369245). Requires the `chat.admin.spaces` [OAuth 2.0 scope](https://
@@ -508,11 +508,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # [Developer Preview](https://developers.google.com/workspace/preview). Returns
-        # a list of spaces based on a user's search. Requires [user authentication](
-        # https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
-        # The user must be an administrator for the Google Workspace organization. In
-        # the request, set `use_admin_access` to `true`.
+        # Returns a list of spaces in a Google Workspace organization based on an
+        # administrator's search. Requires [user authentication with administrator
+        # privileges](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user#admin-privileges). In the request, set `use_admin_access`
+        # to `true`.
         # @param [String] order_by
         #   Optional. How the list of spaces is ordered. Supported attributes to order by
         #   are: - `membership_count.joined_direct_human_user_count` — Denotes the count
@@ -692,8 +692,7 @@ module Google
         #   Format: spaces/`space`
         # @param [Google::Apis::ChatV1::Membership] membership_object
         # @param [Boolean] use_admin_access
-        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
-        #   true`, the method runs using the user's Google Workspace administrator
+        #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
         #   [manage chat and spaces conversations privilege](https://support.google.com/a/
         #   answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](
@@ -746,8 +745,7 @@ module Google
         #   spaces/`space`/members/app` format. Format: `spaces/`space`/members/`member``
         #   or `spaces/`space`/members/app`.
         # @param [Boolean] use_admin_access
-        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
-        #   true`, the method runs using the user's Google Workspace administrator
+        #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
         #   [manage chat and spaces conversations privilege](https://support.google.com/a/
         #   answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](
@@ -800,8 +798,7 @@ module Google
         #   example@gmail.com` where `example@gmail.com` is the email of the Google Chat
         #   user.
         # @param [Boolean] use_admin_access
-        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
-        #   true`, the method runs using the user's Google Workspace administrator
+        #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
         #   [manage chat and spaces conversations privilege](https://support.google.com/a/
         #   answer/13369245). Requires the `chat.admin.memberships` or `chat.admin.
@@ -857,16 +854,16 @@ module Google
         #   spaces.members#membershiprole)) and type ([`member.type`](https://developers.
         #   google.com/workspace/chat/api/reference/rest/v1/User#type)). To filter by role,
         #   set `role` to `ROLE_MEMBER` or `ROLE_MANAGER`. To filter by type, set `member.
-        #   type` to `HUMAN` or `BOT`. Developer Preview: You can also filter for `member.
-        #   type` using the `!=` operator. To filter by both role and type, use the `AND`
-        #   operator. To filter by either role or type, use the `OR` operator. Either `
-        #   member.type = "HUMAN"` or `member.type != "BOT"` is required when `
-        #   use_admin_access` is set to true. Other member type filters will be rejected.
-        #   For example, the following queries are valid: ``` role = "ROLE_MANAGER" OR
-        #   role = "ROLE_MEMBER" member.type = "HUMAN" AND role = "ROLE_MANAGER" member.
-        #   type != "BOT" ``` The following queries are invalid: ``` member.type = "HUMAN"
-        #   AND member.type = "BOT" role = "ROLE_MANAGER" AND role = "ROLE_MEMBER" ```
-        #   Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error.
+        #   type` to `HUMAN` or `BOT`. You can also filter for `member.type` using the `!=`
+        #   operator. To filter by both role and type, use the `AND` operator. To filter
+        #   by either role or type, use the `OR` operator. Either `member.type = "HUMAN"`
+        #   or `member.type != "BOT"` is required when `use_admin_access` is set to true.
+        #   Other member type filters will be rejected. For example, the following queries
+        #   are valid: ``` role = "ROLE_MANAGER" OR role = "ROLE_MEMBER" member.type = "
+        #   HUMAN" AND role = "ROLE_MANAGER" member.type != "BOT" ``` The following
+        #   queries are invalid: ``` member.type = "HUMAN" AND member.type = "BOT" role = "
+        #   ROLE_MANAGER" AND role = "ROLE_MEMBER" ``` Invalid queries are rejected by the
+        #   server with an `INVALID_ARGUMENT` error.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of memberships to return. The service might
         #   return fewer than this value. If unspecified, at most 100 memberships are
@@ -890,8 +887,7 @@ module Google
         #   Currently requires [user authentication](https://developers.google.com/
         #   workspace/chat/authenticate-authorize-chat-user).
         # @param [Boolean] use_admin_access
-        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
-        #   true`, the method runs using the user's Google Workspace administrator
+        #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
         #   [manage chat and spaces conversations privilege](https://support.google.com/a/
         #   answer/13369245). Requires either the `chat.admin.memberships.readonly` or `
@@ -943,8 +939,7 @@ module Google
         #   Required. The field paths to update. Separate multiple values with commas or
         #   use `*` to update all field paths. Currently supported field paths: - `role`
         # @param [Boolean] use_admin_access
-        #   [Developer Preview](https://developers.google.com/workspace/preview). When `
-        #   true`, the method runs using the user's Google Workspace administrator
+        #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
         #   [manage chat and spaces conversations privilege](https://support.google.com/a/
         #   answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](
