@@ -1045,6 +1045,7 @@ module Google
           property :name, as: 'name'
           property :owner, as: 'owner', class: Google::Apis::StorageV1::Object::Owner, decorator: Google::Apis::StorageV1::Object::Owner::Representation
       
+          property :restore_token, as: 'restoreToken'
           property :retention, as: 'retention', class: Google::Apis::StorageV1::Object::Retention, decorator: Google::Apis::StorageV1::Object::Retention::Representation
       
           property :retention_expiration_time, as: 'retentionExpirationTime', type: DateTime

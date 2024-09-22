@@ -2660,6 +2660,12 @@ module Google
         #   does not match the given value.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
+        # @param [String] restore_token
+        #   Restore token used to differentiate soft-deleted objects with the same name
+        #   and generation. Only applicable for hierarchical namespace buckets and if
+        #   softDeleted is set to true. This parameter is optional, and is only required
+        #   in the rare case when there are multiple soft-deleted objects with the same
+        #   name and generation.
         # @param [Boolean] soft_deleted
         #   If true, only soft-deleted object versions will be listed. The default is
         #   false. For more information, see [Soft Delete](https://cloud.google.com/
@@ -2687,7 +2693,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_object(bucket, object, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, soft_deleted: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def get_object(bucket, object, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, restore_token: nil, soft_deleted: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
         
           if download_dest.nil?
             command = make_simple_command(:get, 'b/{bucket}/o/{object}', options)
@@ -2705,6 +2711,7 @@ module Google
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
           command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['restoreToken'] = restore_token unless restore_token.nil?
           command.query['softDeleted'] = soft_deleted unless soft_deleted.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3048,6 +3055,11 @@ module Google
         #   metagenerations match the given value.
         # @param [String] projection
         #   Set of properties to return. Defaults to full.
+        # @param [String] restore_token
+        #   Restore token used to differentiate sof-deleted objects with the same name and
+        #   generation. Only applicable for hierarchical namespace buckets. This parameter
+        #   is optional, and is only required in the rare case when there are multiple
+        #   soft-deleted objects with the same name and generation.
         # @param [String] user_project
         #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
@@ -3069,7 +3081,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_object(bucket, object, generation, copy_source_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def restore_object(bucket, object, generation, copy_source_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, restore_token: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'b/{bucket}/o/{object}/restore', options)
           command.response_representation = Google::Apis::StorageV1::Object::Representation
           command.response_class = Google::Apis::StorageV1::Object
@@ -3082,6 +3094,7 @@ module Google
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
           command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['restoreToken'] = restore_token unless restore_token.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
