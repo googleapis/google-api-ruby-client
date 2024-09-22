@@ -2500,6 +2500,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_instance_count
       
+        # Optional. The scaling mode for the service.
+        # Corresponds to the JSON property `scalingMode`
+        # @return [String]
+        attr_accessor :scaling_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2507,6 +2512,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
+          @scaling_mode = args[:scaling_mode] if args.key?(:scaling_mode)
         end
       end
       

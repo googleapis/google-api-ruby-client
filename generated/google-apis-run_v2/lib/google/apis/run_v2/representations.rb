@@ -1269,6 +1269,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :min_instance_count, as: 'minInstanceCount'
+          property :scaling_mode, as: 'scalingMode'
         end
       end
       
