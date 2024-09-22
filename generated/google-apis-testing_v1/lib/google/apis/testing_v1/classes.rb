@@ -298,6 +298,11 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Lab specific information for a device.
+        # Corresponds to the JSON property `labInfo`
+        # @return [Google::Apis::TestingV1::LabInfo]
+        attr_accessor :lab_info
+      
         # True if and only if tests with this model are recorded by stitching together
         # screenshots. See use_low_spec_video_recording in device config.
         # Corresponds to the JSON property `lowFpsVideoRecording`
@@ -372,6 +377,7 @@ module Google
           @form = args[:form] if args.key?(:form)
           @form_factor = args[:form_factor] if args.key?(:form_factor)
           @id = args[:id] if args.key?(:id)
+          @lab_info = args[:lab_info] if args.key?(:lab_info)
           @low_fps_video_recording = args[:low_fps_video_recording] if args.key?(:low_fps_video_recording)
           @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
           @name = args[:name] if args.key?(:name)
@@ -1757,6 +1763,26 @@ module Google
           @tests_zip = args[:tests_zip] if args.key?(:tests_zip)
           @xcode_version = args[:xcode_version] if args.key?(:xcode_version)
           @xctestrun = args[:xctestrun] if args.key?(:xctestrun)
+        end
+      end
+      
+      # Lab specific information for a device.
+      class LabInfo
+        include Google::Apis::Core::Hashable
+      
+        # Lab name where the device is hosted. If empty, the device is hosted in a
+        # Google owned lab.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
