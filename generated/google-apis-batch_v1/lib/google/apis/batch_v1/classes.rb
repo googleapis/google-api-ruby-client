@@ -1218,7 +1218,9 @@ module Google
         alias_method :install_ops_agent?, :install_ops_agent
       
         # Name of an instance template used to create VMs. Named the field as '
-        # instance_template' instead of 'template' to avoid c++ keyword conflict.
+        # instance_template' instead of 'template' to avoid C++ keyword conflict. Batch
+        # only supports global instance templates. You can specify the global instance
+        # template as a full or partial URL.
         # Corresponds to the JSON property `instanceTemplate`
         # @return [String]
         attr_accessor :instance_template
