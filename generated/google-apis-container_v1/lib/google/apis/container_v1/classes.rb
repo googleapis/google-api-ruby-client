@@ -106,6 +106,12 @@ module Google
         # @return [Google::Apis::ContainerV1::MaxPodsConstraint]
         attr_accessor :max_pods_per_node
       
+        # The name of the network attachment for pods to communicate to; cannot be
+        # specified along with subnetwork or secondary_pod_range.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
         # The name of the secondary range on the subnet which provides IP address for
         # this pod range.
         # Corresponds to the JSON property `secondaryPodRange`
@@ -124,6 +130,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_pods_per_node = args[:max_pods_per_node] if args.key?(:max_pods_per_node)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @secondary_pod_range = args[:secondary_pod_range] if args.key?(:secondary_pod_range)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
