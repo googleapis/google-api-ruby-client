@@ -1964,18 +1964,19 @@ module Google
       class FhirNotificationConfig
         include Google::Apis::Core::Hashable
       
-        # The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications
-        # of changes are published on. Supplied by the client. The notification is a `
-        # PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the
-        # resource name. * `PubsubMessage.MessageId` is the ID of this notification. It
-        # is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is
-        # the time when the message was published. Note that notifications are only sent
-        # if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/
-        # overview#names) must be scoped to a project. The Cloud Healthcare API service
-        # account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have
-        # publisher permissions on the given Pub/Sub topic. Not having adequate
-        # permissions causes the calls that send notifications to fail (https://cloud.
-        # google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#
+        # Optional. The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
+        # notifications of changes are published on. Supplied by the client. The
+        # notification is a `PubsubMessage` with the following fields: * `PubsubMessage.
+        # Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of
+        # this notification. It is guaranteed to be unique within the topic. * `
+        # PubsubMessage.PublishTime` is the time when the message was published. Note
+        # that notifications are only sent if the topic is non-empty. [Topic names](
+        # https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a
+        # project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.
+        # iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub
+        # topic. Not having adequate permissions causes the calls that send
+        # notifications to fail (https://cloud.google.com/healthcare-api/docs/
+        # permissions-healthcare-api-gcp-products#
         # dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't
         # be published to Pub/Sub, errors are logged to Cloud Logging. For more
         # information, see [Viewing error logs in Cloud Logging](https://cloud.google.
@@ -1984,20 +1985,20 @@ module Google
         # @return [String]
         attr_accessor :pubsub_topic
       
-        # Whether to send full FHIR resource to this Pub/Sub topic. The default value is
-        # false.
+        # Optional. Whether to send full FHIR resource to this Pub/Sub topic. The
+        # default value is false.
         # Corresponds to the JSON property `sendFullResource`
         # @return [Boolean]
         attr_accessor :send_full_resource
         alias_method :send_full_resource?, :send_full_resource
       
-        # Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR
-        # resource. The default value is false. Note that setting this to true does not
-        # guarantee that all previous resources will be sent in the format of full FHIR
-        # resource. When a resource change is too large or during heavy traffic, only
-        # the resource name will be sent. Clients should always check the "payloadType"
-        # label from a Pub/Sub message to determine whether it needs to fetch the full
-        # previous resource as a separate operation.
+        # Optional. Whether to send full FHIR resource to this Pub/Sub topic for
+        # deleting FHIR resource. The default value is false. Note that setting this to
+        # true does not guarantee that all previous resources will be sent in the format
+        # of full FHIR resource. When a resource change is too large or during heavy
+        # traffic, only the resource name will be sent. Clients should always check the "
+        # payloadType" label from a Pub/Sub message to determine whether it needs to
+        # fetch the full previous resource as a separate operation.
         # Corresponds to the JSON property `sendPreviousResourceOnDelete`
         # @return [Boolean]
         attr_accessor :send_previous_resource_on_delete
@@ -2031,12 +2032,12 @@ module Google
         # @return [String]
         attr_accessor :complex_data_type_reference_parsing
       
-        # If true, overrides the default search behavior for this FHIR store to `
-        # handling=strict` which returns an error for unrecognized search parameters. If
-        # false, uses the FHIR specification default `handling=lenient` which ignores
-        # unrecognized search parameters. The handling can always be changed from the
-        # default on an individual API call by setting the HTTP header `Prefer: handling=
-        # strict` or `Prefer: handling=lenient`. Defaults to false.
+        # Optional. If true, overrides the default search behavior for this FHIR store
+        # to `handling=strict` which returns an error for unrecognized search parameters.
+        # If false, uses the FHIR specification default `handling=lenient` which
+        # ignores unrecognized search parameters. The handling can always be changed
+        # from the default on an individual API call by setting the HTTP header `Prefer:
+        # handling=strict` or `Prefer: handling=lenient`. Defaults to false.
         # Corresponds to the JSON property `defaultSearchHandlingStrict`
         # @return [Boolean]
         attr_accessor :default_search_handling_strict
@@ -2065,16 +2066,16 @@ module Google
         attr_accessor :disable_resource_versioning
         alias_method :disable_resource_versioning?, :disable_resource_versioning
       
-        # Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/
-        # fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.
-        # updateCreate). This determines if the client can use an Update operation to
-        # create a new resource with a client-specified ID. If false, all IDs are server-
-        # assigned through the Create operation and attempts to update a non-existent
-        # resource return errors. It is strongly advised not to include or encode any
-        # sensitive data such as patient identifiers in client-specified resource IDs.
-        # Those IDs are part of the FHIR resource path recorded in Cloud audit logs and
-        # Pub/Sub notifications. Those IDs can also be contained in reference fields
-        # within other resources. Defaults to false.
+        # Optional. Whether this FHIR store has the [updateCreate capability](https://
+        # www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.
+        # resource.updateCreate). This determines if the client can use an Update
+        # operation to create a new resource with a client-specified ID. If false, all
+        # IDs are server-assigned through the Create operation and attempts to update a
+        # non-existent resource return errors. It is strongly advised not to include or
+        # encode any sensitive data such as patient identifiers in client-specified
+        # resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud
+        # audit logs and Pub/Sub notifications. Those IDs can also be contained in
+        # reference fields within other resources. Defaults to false.
         # Corresponds to the JSON property `enableUpdateCreate`
         # @return [Boolean]
         attr_accessor :enable_update_create
@@ -2103,21 +2104,22 @@ module Google
         # @return [Google::Apis::HealthcareV1::NotificationConfig]
         attr_accessor :notification_config
       
-        # Specifies where and whether to send notifications upon changes to a FHIR store.
+        # Optional. Specifies where and whether to send notifications upon changes to a
+        # FHIR store.
         # Corresponds to the JSON property `notificationConfigs`
         # @return [Array<Google::Apis::HealthcareV1::FhirNotificationConfig>]
         attr_accessor :notification_configs
       
-        # A list of streaming configs that configure the destinations of streaming
-        # export for every resource mutation in this FHIR store. Each store is allowed
-        # to have up to 10 streaming configs. After a new config is added, the next
-        # resource mutation is streamed to the new location in addition to the existing
-        # ones. When a location is removed from the list, the server stops streaming to
-        # that location. Before adding a new config, you must add the required [`
-        # bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#
-        # bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent**
-        # [service account](https://cloud.google.com/iam/docs/service-accounts). Some
-        # lag (typically on the order of dozens of seconds) is expected before the
+        # Optional. A list of streaming configs that configure the destinations of
+        # streaming export for every resource mutation in this FHIR store. Each store is
+        # allowed to have up to 10 streaming configs. After a new config is added, the
+        # next resource mutation is streamed to the new location in addition to the
+        # existing ones. When a location is removed from the list, the server stops
+        # streaming to that location. Before adding a new config, you must add the
+        # required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-
+        # control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service
+        # Agent** [service account](https://cloud.google.com/iam/docs/service-accounts).
+        # Some lag (typically on the order of dozens of seconds) is expected before the
         # results show up in the streaming destination.
         # Corresponds to the JSON property `streamConfigs`
         # @return [Array<Google::Apis::HealthcareV1::StreamConfig>]
@@ -2587,18 +2589,18 @@ module Google
       class GoogleCloudHealthcareV1FhirBigQueryDestination
         include Google::Apis::Core::Hashable
       
-        # BigQuery URI to an existing dataset, up to 2000 characters long, in the format
-        # `bq://projectId.bqDatasetId`.
+        # Optional. BigQuery URI to an existing dataset, up to 2000 characters long, in
+        # the format `bq://projectId.bqDatasetId`.
         # Corresponds to the JSON property `datasetUri`
         # @return [String]
         attr_accessor :dataset_uri
       
-        # The default value is false. If this flag is `TRUE`, all tables are deleted
-        # from the dataset before the new exported tables are written. If the flag is
-        # not set and the destination dataset contains tables, the export call returns
-        # an error. If `write_disposition` is specified, this parameter is ignored.
-        # force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is
-        # equivalent to write_disposition=WRITE_TRUNCATE.
+        # Optional. The default value is false. If this flag is `TRUE`, all tables are
+        # deleted from the dataset before the new exported tables are written. If the
+        # flag is not set and the destination dataset contains tables, the export call
+        # returns an error. If `write_disposition` is specified, this parameter is
+        # ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=
+        # true is equivalent to write_disposition=WRITE_TRUNCATE.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
@@ -2610,9 +2612,9 @@ module Google
         # @return [Google::Apis::HealthcareV1::SchemaConfig]
         attr_accessor :schema_config
       
-        # Determines if existing data in the destination dataset is overwritten,
-        # appended to, or not written if the tables contain data. If a write_disposition
-        # is specified, the `force` parameter is ignored.
+        # Optional. Determines if existing data in the destination dataset is
+        # overwritten, appended to, or not written if the tables contain data. If a
+        # write_disposition is specified, the `force` parameter is ignored.
         # Corresponds to the JSON property `writeDisposition`
         # @return [String]
         attr_accessor :write_disposition
@@ -2766,29 +2768,29 @@ module Google
       class Hl7V2NotificationConfig
         include Google::Apis::Core::Hashable
       
-        # Restricts notifications sent for messages matching a filter. If this is empty,
-        # all messages are matched. The following syntax is available: * A string field
-        # value can be written as text inside quotation marks, for example `"query text"`
-        # . The only valid relational operation for text fields is equality (`=`), where
-        # text is searched within the field, rather than having the field be equal to
-        # the text. For example, `"Comment = great"` returns messages with `great` in
-        # the comment field. * A number field value can be written as an integer, a
-        # decimal, or an exponential. The valid relational operators for number fields
-        # are the equality operator (`=`), along with the less than/greater than
-        # operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`)
+        # Optional. Restricts notifications sent for messages matching a filter. If this
+        # is empty, all messages are matched. The following syntax is available: * A
+        # string field value can be written as text inside quotation marks, for example `
+        # "query text"`. The only valid relational operation for text fields is equality
+        # (`=`), where text is searched within the field, rather than having the field
+        # be equal to the text. For example, `"Comment = great"` returns messages with `
+        # great` in the comment field. * A number field value can be written as an
+        # integer, a decimal, or an exponential. The valid relational operators for
+        # number fields are the equality operator (`=`), along with the less than/
+        # greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no
+        # inequality (`!=`) operator. You can prepend the `NOT` operator to an
+        # expression to negate it. * A date field value must be written in `yyyy-mm-dd`
+        # form. Fields with date and time use the RFC3339 time format. Leading zeros are
+        # required for one-digit months and days. The valid relational operators for
+        # date fields are the equality operator (`=`) , along with the less than/greater
+        # than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`)
         # operator. You can prepend the `NOT` operator to an expression to negate it. *
-        # A date field value must be written in `yyyy-mm-dd` form. Fields with date and
-        # time use the RFC3339 time format. Leading zeros are required for one-digit
-        # months and days. The valid relational operators for date fields are the
-        # equality operator (`=`) , along with the less than/greater than operators (`<`,
-        # `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can
-        # prepend the `NOT` operator to an expression to negate it. * Multiple field
-        # query expressions can be combined in one query by adding `AND` or `OR`
-        # operators between the expressions. If a boolean operator appears within a
-        # quoted string, it is not treated as special, it's just another part of the
-        # character string to be matched. You can prepend the `NOT` operator to an
-        # expression to negate it. The following fields and functions are available for
-        # filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT
+        # Multiple field query expressions can be combined in one query by adding `AND`
+        # or `OR` operators between the expressions. If a boolean operator appears
+        # within a quoted string, it is not treated as special, it's just another part
+        # of the character string to be matched. You can prepend the `NOT` operator to
+        # an expression to negate it. The following fields and functions are available
+        # for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT
         # message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the
         # message was sent in the dataset's time_zone, from the MSH-7 segment. For
         # example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the
@@ -2859,10 +2861,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A list of notification configs. Each configuration uses a filter to determine
-        # whether to publish a message (both Ingest & Create) on the corresponding
-        # notification destination. Only the message name is sent as part of the
-        # notification. Supplied by the client.
+        # Optional. A list of notification configs. Each configuration uses a filter to
+        # determine whether to publish a message (both Ingest & Create) on the
+        # corresponding notification destination. Only the message name is sent as part
+        # of the notification. Supplied by the client.
         # Corresponds to the JSON property `notificationConfigs`
         # @return [Array<Google::Apis::HealthcareV1::Hl7V2NotificationConfig>]
         attr_accessor :notification_configs
@@ -2873,15 +2875,15 @@ module Google
         # @return [Google::Apis::HealthcareV1::ParserConfig]
         attr_accessor :parser_config
       
-        # Determines whether to reject duplicate messages. A duplicate message is a
-        # message with the same raw bytes as a message that has already been ingested/
-        # created in this HL7v2 store. The default value is false, meaning that the
-        # store accepts the duplicate messages and it also returns the same ACK message
-        # in the IngestMessageResponse as has been returned previously. Note that only
-        # one resource is created in the store. When this field is set to true,
-        # CreateMessage/IngestMessage requests with a duplicate message will be rejected
-        # by the store, and IngestMessageErrorDetail returns a NACK message upon
-        # rejection.
+        # Optional. Determines whether to reject duplicate messages. A duplicate message
+        # is a message with the same raw bytes as a message that has already been
+        # ingested/created in this HL7v2 store. The default value is false, meaning that
+        # the store accepts the duplicate messages and it also returns the same ACK
+        # message in the IngestMessageResponse as has been returned previously. Note
+        # that only one resource is created in the store. When this field is set to true,
+        # CreateMessage/IngestMessage requests with a duplicate message will be
+        # rejected by the store, and IngestMessageErrorDetail returns a NACK message
+        # upon rejection.
         # Corresponds to the JSON property `rejectDuplicateMessage`
         # @return [Boolean]
         attr_accessor :reject_duplicate_message
@@ -3992,7 +3994,7 @@ module Google
       class ParserConfig
         include Google::Apis::Core::Hashable
       
-        # Determines whether messages with no header are allowed.
+        # Optional. Determines whether messages with no header are allowed.
         # Corresponds to the JSON property `allowNullHeader`
         # @return [Boolean]
         attr_accessor :allow_null_header
@@ -4699,37 +4701,37 @@ module Google
       class SchemaPackage
         include Google::Apis::Core::Hashable
       
-        # Flag to ignore all min_occurs restrictions in the schema. This means that
-        # incoming messages can omit any group, segment, field, component, or
+        # Optional. Flag to ignore all min_occurs restrictions in the schema. This means
+        # that incoming messages can omit any group, segment, field, component, or
         # subcomponent.
         # Corresponds to the JSON property `ignoreMinOccurs`
         # @return [Boolean]
         attr_accessor :ignore_min_occurs
         alias_method :ignore_min_occurs?, :ignore_min_occurs
       
-        # Schema configs that are layered based on their VersionSources that match the
-        # incoming message. Schema configs present in higher indices override those in
-        # lower indices with the same message type and trigger event if their
+        # Optional. Schema configs that are layered based on their VersionSources that
+        # match the incoming message. Schema configs present in higher indices override
+        # those in lower indices with the same message type and trigger event if their
         # VersionSources all match an incoming message.
         # Corresponds to the JSON property `schemas`
         # @return [Array<Google::Apis::HealthcareV1::Hl7SchemaConfig>]
         attr_accessor :schemas
       
-        # Determines how messages that fail to parse are handled.
+        # Optional. Determines how messages that fail to parse are handled.
         # Corresponds to the JSON property `schematizedParsingType`
         # @return [String]
         attr_accessor :schematized_parsing_type
       
-        # Schema type definitions that are layered based on their VersionSources that
-        # match the incoming message. Type definitions present in higher indices
-        # override those in lower indices with the same type name if their
-        # VersionSources all match an incoming message.
+        # Optional. Schema type definitions that are layered based on their
+        # VersionSources that match the incoming message. Type definitions present in
+        # higher indices override those in lower indices with the same type name if
+        # their VersionSources all match an incoming message.
         # Corresponds to the JSON property `types`
         # @return [Array<Google::Apis::HealthcareV1::Hl7TypesConfig>]
         attr_accessor :types
       
-        # Determines how unexpected segments (segments not matched to the schema) are
-        # handled.
+        # Optional. Determines how unexpected segments (segments not matched to the
+        # schema) are handled.
         # Corresponds to the JSON property `unexpectedSegmentHandling`
         # @return [String]
         attr_accessor :unexpected_segment_handling
@@ -5127,10 +5129,10 @@ module Google
         # @return [Google::Apis::HealthcareV1::DeidentifiedStoreDestination]
         attr_accessor :deidentified_store_destination
       
-        # Supply a FHIR resource type (such as "Patient" or "Observation"). See https://
-        # www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource
-        # types. The server treats an empty list as an intent to stream all the
-        # supported resource types in this FHIR store.
+        # Optional. Supply a FHIR resource type (such as "Patient" or "Observation").
+        # See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all
+        # FHIR resource types. The server treats an empty list as an intent to stream
+        # all the supported resource types in this FHIR store.
         # Corresponds to the JSON property `resourceTypes`
         # @return [Array<String>]
         attr_accessor :resource_types
