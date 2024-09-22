@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Migration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NextHopInterconnectAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -511,6 +517,7 @@ module Google
           property :disable_global_access, as: 'disableGlobalAccess'
           property :network, as: 'network'
           property :producer_instance_id, as: 'producerInstanceId'
+          hash :producer_instance_metadata, as: 'producerInstanceMetadata'
           property :project, as: 'project'
           hash :service_attachment_ip_address_map, as: 'serviceAttachmentIpAddressMap'
           property :state, as: 'state'
@@ -530,6 +537,7 @@ module Google
           property :ip, as: 'ip'
           property :network, as: 'network'
           property :producer_instance_id, as: 'producerInstanceId'
+          hash :producer_instance_metadata, as: 'producerInstanceMetadata'
           property :project, as: 'project'
           property :psc_connection_id, as: 'pscConnectionId'
           property :selected_subnetwork, as: 'selectedSubnetwork'
@@ -660,6 +668,8 @@ module Google
           property :description, as: 'description'
           property :ip_cidr_range, as: 'ipCidrRange'
           hash :labels, as: 'labels'
+          property :migration, as: 'migration', class: Google::Apis::NetworkconnectivityV1::Migration, decorator: Google::Apis::NetworkconnectivityV1::Migration::Representation
+      
           property :name, as: 'name'
           property :network, as: 'network'
           collection :overlaps, as: 'overlaps'
@@ -870,6 +880,14 @@ module Google
         end
       end
       
+      class Migration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source'
+          property :target, as: 'target'
+        end
+      end
+      
       class NextHopInterconnectAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -984,8 +1002,10 @@ module Google
           property :error_type, as: 'errorType'
           property :gce_operation, as: 'gceOperation'
           property :producer_instance_id, as: 'producerInstanceId'
+          hash :producer_instance_metadata, as: 'producerInstanceMetadata'
           property :psc_connection_id, as: 'pscConnectionId'
           property :selected_subnetwork, as: 'selectedSubnetwork'
+          property :service_class, as: 'serviceClass'
           property :state, as: 'state'
         end
       end
