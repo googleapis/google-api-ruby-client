@@ -1765,8 +1765,8 @@ module Google
       class LogBucket
         include Google::Apis::Core::Hashable
       
-        # Whether log analytics is enabled for this bucket.Once enabled, log analytics
-        # features cannot be disabled.
+        # Optional. Whether log analytics is enabled for this bucket.Once enabled, log
+        # analytics features cannot be disabled.
         # Corresponds to the JSON property `analyticsEnabled`
         # @return [Boolean]
         attr_accessor :analytics_enabled
