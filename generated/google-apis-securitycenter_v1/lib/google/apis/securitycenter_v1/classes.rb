@@ -893,6 +893,11 @@ module Google
       class AzureTenant
         include Google::Apis::Core::Hashable
       
+        # The display name of the Azure tenant.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # The ID of the Microsoft Entra tenant, for example, "a11aaa11-aa11-1aa1-11aa-
         # 1aaa11a".
         # Corresponds to the JSON property `id`
@@ -905,6 +910,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
         end
       end
@@ -4710,6 +4716,11 @@ module Google
       class GoogleCloudSecuritycenterV2AzureTenant
         include Google::Apis::Core::Hashable
       
+        # The display name of the Azure tenant.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # The ID of the Microsoft Entra tenant, for example, "a11aaa11-aa11-1aa1-11aa-
         # 1aaa11a".
         # Corresponds to the JSON property `id`
@@ -4722,6 +4733,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
         end
       end
