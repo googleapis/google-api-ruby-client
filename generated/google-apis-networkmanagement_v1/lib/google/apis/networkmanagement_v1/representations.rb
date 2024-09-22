@@ -776,6 +776,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :matched_ip_range, as: 'matchedIpRange'
+          property :matched_subnet_uri, as: 'matchedSubnetUri'
+          property :region, as: 'region'
           property :uri, as: 'uri'
         end
       end
@@ -898,6 +900,8 @@ module Google
       class RouteInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertised_route_next_hop_uri, as: 'advertisedRouteNextHopUri'
+          property :advertised_route_source_router_uri, as: 'advertisedRouteSourceRouterUri'
           property :dest_ip_range, as: 'destIpRange'
           collection :dest_port_ranges, as: 'destPortRanges'
           property :display_name, as: 'displayName'
@@ -909,6 +913,7 @@ module Google
           property :next_hop_type, as: 'nextHopType'
           property :priority, as: 'priority'
           collection :protocols, as: 'protocols'
+          property :region, as: 'region'
           property :route_scope, as: 'routeScope'
           property :route_type, as: 'routeType'
           property :src_ip_range, as: 'srcIpRange'
