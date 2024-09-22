@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LabInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LauncherActivityIntent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -607,6 +613,8 @@ module Google
           property :form, as: 'form'
           property :form_factor, as: 'formFactor'
           property :id, as: 'id'
+          property :lab_info, as: 'labInfo', class: Google::Apis::TestingV1::LabInfo, decorator: Google::Apis::TestingV1::LabInfo::Representation
+      
           property :low_fps_video_recording, as: 'lowFpsVideoRecording'
           property :manufacturer, as: 'manufacturer'
           property :name, as: 'name'
@@ -1026,6 +1034,13 @@ module Google
           property :xcode_version, as: 'xcodeVersion'
           property :xctestrun, as: 'xctestrun', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
       
+        end
+      end
+      
+      class LabInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
