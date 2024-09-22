@@ -4349,7 +4349,9 @@ module Google
       class V1DefaultIdentity
         include Google::Apis::Core::Hashable
       
-        # The email address of the default identity.
+        # The email address of the default identity. Calling GenerateDefaultIdentity
+        # with a deleted or purged default identity should expect does_not_exist@invalid-
+        # project.iam.gserviceaccount.com placeholder email.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
