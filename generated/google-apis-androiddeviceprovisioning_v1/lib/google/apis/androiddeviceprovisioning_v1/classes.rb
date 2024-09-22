@@ -658,6 +658,11 @@ module Google
         # @return [String]
         attr_accessor :imei
       
+        # The device’s second IMEI number.
+        # Corresponds to the JSON property `imei2`
+        # @return [String]
+        attr_accessor :imei2
+      
         # The device manufacturer’s name. Matches the device's built-in value returned
         # from `android.os.Build.MANUFACTURER`. Allowed values are listed in [Android
         # manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names).
@@ -669,6 +674,11 @@ module Google
         # Corresponds to the JSON property `meid`
         # @return [String]
         attr_accessor :meid
+      
+        # The device’s second MEID number.
+        # Corresponds to the JSON property `meid2`
+        # @return [String]
+        attr_accessor :meid2
       
         # The device model's name. Allowed values are listed in [Android models](/zero-
         # touch/resources/manufacturer-names#model-names) and [Chrome OS models](https://
@@ -692,8 +702,10 @@ module Google
           @chrome_os_attested_device_id = args[:chrome_os_attested_device_id] if args.key?(:chrome_os_attested_device_id)
           @device_type = args[:device_type] if args.key?(:device_type)
           @imei = args[:imei] if args.key?(:imei)
+          @imei2 = args[:imei2] if args.key?(:imei2)
           @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
           @meid = args[:meid] if args.key?(:meid)
+          @meid2 = args[:meid2] if args.key?(:meid2)
           @model = args[:model] if args.key?(:model)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
         end
