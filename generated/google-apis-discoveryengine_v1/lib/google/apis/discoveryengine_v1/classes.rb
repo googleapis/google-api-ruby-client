@@ -1007,12 +1007,16 @@ module Google
         # @return [String]
         attr_accessor :document
       
-        # List of document contexts.
+        # List of document contexts. The content will be used for Answer Generation.
+        # This is supposed to be the main content of the document that can be long and
+        # comprehensive.
         # Corresponds to the JSON property `documentContexts`
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext>]
         attr_accessor :document_contexts
       
-        # List of extractive answers.
+        # Deprecated: This field is deprecated and will have no effect on the Answer
+        # generation. Please use document_contexts and extractive_segments fields. List
+        # of extractive answers.
         # Corresponds to the JSON property `extractiveAnswers`
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer>]
         attr_accessor :extractive_answers
@@ -1051,7 +1055,7 @@ module Google
       class GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext
         include Google::Apis::Core::Hashable
       
-        # Document content.
+        # Document content to be used for answer generation.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -1099,7 +1103,8 @@ module Google
       end
       
       # Extractive segment. [Guide](https://cloud.google.com/generative-ai-app-builder/
-      # docs/snippets#extractive-segments)
+      # docs/snippets#extractive-segments) Answer generation will only use it if
+      # document_contexts is empty. This is supposed to be shorter snippets.
       class GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment
         include Google::Apis::Core::Hashable
       
