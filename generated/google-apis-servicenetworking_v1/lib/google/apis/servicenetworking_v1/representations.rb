@@ -664,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SelectiveGapicGeneration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Service
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1003,6 +1009,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :destinations, as: 'destinations'
           property :reference_docs_uri, as: 'referenceDocsUri'
+          property :selective_gapic_generation, as: 'selectiveGapicGeneration', class: Google::Apis::ServicenetworkingV1::SelectiveGapicGeneration, decorator: Google::Apis::ServicenetworkingV1::SelectiveGapicGeneration::Representation
+      
         end
       end
       
@@ -1815,6 +1823,13 @@ module Google
           property :outside_allocation_public_ip_range, as: 'outsideAllocationPublicIpRange'
           property :range_name, as: 'rangeName'
           property :requested_address, as: 'requestedAddress'
+        end
+      end
+      
+      class SelectiveGapicGeneration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :methods_prop, as: 'methods'
         end
       end
       

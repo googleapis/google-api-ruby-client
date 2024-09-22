@@ -1005,6 +1005,12 @@ module Google
         # @return [String]
         attr_accessor :reference_docs_uri
       
+        # This message is used to configure the generation of a subset of the RPCs in a
+        # service for client libraries.
+        # Corresponds to the JSON property `selectiveGapicGeneration`
+        # @return [Google::Apis::ServicenetworkingV1::SelectiveGapicGeneration]
+        attr_accessor :selective_gapic_generation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1013,6 +1019,7 @@ module Google
         def update!(**args)
           @destinations = args[:destinations] if args.key?(:destinations)
           @reference_docs_uri = args[:reference_docs_uri] if args.key?(:reference_docs_uri)
+          @selective_gapic_generation = args[:selective_gapic_generation] if args.key?(:selective_gapic_generation)
         end
       end
       
@@ -4360,6 +4367,27 @@ module Google
           @outside_allocation_public_ip_range = args[:outside_allocation_public_ip_range] if args.key?(:outside_allocation_public_ip_range)
           @range_name = args[:range_name] if args.key?(:range_name)
           @requested_address = args[:requested_address] if args.key?(:requested_address)
+        end
+      end
+      
+      # This message is used to configure the generation of a subset of the RPCs in a
+      # service for client libraries.
+      class SelectiveGapicGeneration
+        include Google::Apis::Core::Hashable
+      
+        # An allowlist of the fully qualified names of RPCs that should be included on
+        # public client surfaces.
+        # Corresponds to the JSON property `methods`
+        # @return [Array<String>]
+        attr_accessor :methods_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
         end
       end
       
