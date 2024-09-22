@@ -286,6 +286,25 @@ module Google
         end
       end
       
+      # AuthorizedNetwork contains metadata for an authorized network.
+      class AuthorizedNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Optional. CIDR range for one authorzied network of the instance.
+        # Corresponds to the JSON property `cidrRange`
+        # @return [String]
+        attr_accessor :cidr_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cidr_range = args[:cidr_range] if args.key?(:cidr_range)
+        end
+      end
+      
       # Execution log of a background job.
       class BackgroundJobLogEntry
         include Google::Apis::Core::Hashable
@@ -597,10 +616,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :database_flags
       
-        # The database engine type and version.
+        # The database engine type and version. Deprecated. Use database_version_name
+        # instead.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
+      
+        # Optional. The database engine type and version name.
+        # Corresponds to the JSON property `databaseVersionName`
+        # @return [String]
+        attr_accessor :database_version_name
       
         # Optional. The edition of the given Cloud SQL instance.
         # Corresponds to the JSON property `edition`
@@ -681,6 +706,7 @@ module Google
           @data_disk_type = args[:data_disk_type] if args.key?(:data_disk_type)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
           @database_version = args[:database_version] if args.key?(:database_version)
+          @database_version_name = args[:database_version_name] if args.key?(:database_version_name)
           @edition = args[:edition] if args.key?(:edition)
           @ip_config = args[:ip_config] if args.key?(:ip_config)
           @root_password = args[:root_password] if args.key?(:root_password)
@@ -2268,6 +2294,40 @@ module Google
         end
       end
       
+      # Metadata related to instance level network configuration.
+      class InstanceNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of external network authorized to access this instance.
+        # Corresponds to the JSON property `authorizedExternalNetworks`
+        # @return [Array<Google::Apis::DatamigrationV1::AuthorizedNetwork>]
+        attr_accessor :authorized_external_networks
+      
+        # Optional. Enabling an outbound public IP address to support a database server
+        # sending requests out into the internet.
+        # Corresponds to the JSON property `enableOutboundPublicIp`
+        # @return [Boolean]
+        attr_accessor :enable_outbound_public_ip
+        alias_method :enable_outbound_public_ip?, :enable_outbound_public_ip
+      
+        # Optional. Enabling public ip for the instance.
+        # Corresponds to the JSON property `enablePublicIp`
+        # @return [Boolean]
+        attr_accessor :enable_public_ip
+        alias_method :enable_public_ip?, :enable_public_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_external_networks = args[:authorized_external_networks] if args.key?(:authorized_external_networks)
+          @enable_outbound_public_ip = args[:enable_outbound_public_ip] if args.key?(:enable_outbound_public_ip)
+          @enable_public_ip = args[:enable_public_ip] if args.key?(:enable_public_ip)
+        end
+      end
+      
       # Filter based on relation between source value and compare value of type
       # integer in ConditionalColumnSetValue
       class IntComparisonFilter
@@ -3717,6 +3777,11 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Metadata related to instance level network configuration.
+        # Corresponds to the JSON property `instanceNetworkConfig`
+        # @return [Google::Apis::DatamigrationV1::InstanceNetworkConfig]
+        attr_accessor :instance_network_config
+      
         # Labels for the AlloyDB primary instance created by DMS. An object containing a
         # list of 'key', 'value' pairs.
         # Corresponds to the JSON property `labels`
@@ -3727,6 +3792,11 @@ module Google
         # Corresponds to the JSON property `machineConfig`
         # @return [Google::Apis::DatamigrationV1::MachineConfig]
         attr_accessor :machine_config
+      
+        # Output only. All outbound public IP addresses configured for the instance.
+        # Corresponds to the JSON property `outboundPublicIpAddresses`
+        # @return [Array<String>]
+        attr_accessor :outbound_public_ip_addresses
       
         # Output only. The private IP address for the Instance. This is the connection
         # endpoint for an end-user application.
@@ -3742,8 +3812,10 @@ module Google
         def update!(**args)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
           @id = args[:id] if args.key?(:id)
+          @instance_network_config = args[:instance_network_config] if args.key?(:instance_network_config)
           @labels = args[:labels] if args.key?(:labels)
           @machine_config = args[:machine_config] if args.key?(:machine_config)
+          @outbound_public_ip_addresses = args[:outbound_public_ip_addresses] if args.key?(:outbound_public_ip_addresses)
           @private_ip = args[:private_ip] if args.key?(:private_ip)
         end
       end
