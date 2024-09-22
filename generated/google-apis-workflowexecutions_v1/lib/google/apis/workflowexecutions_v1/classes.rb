@@ -231,7 +231,8 @@ module Google
         # @return [String]
         attr_accessor :result
       
-        # Output only. Marks the beginning of execution.
+        # Output only. Marks the beginning of execution. Note that this will be the same
+        # as `createTime` for executions that start immediately.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
