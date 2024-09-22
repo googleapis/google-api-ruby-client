@@ -34,7 +34,7 @@ module Google
       
         # The proportion of users that experienced this bin's value for the given metric.
         # Corresponds to the JSON property `density`
-        # @return [Float]
+        # @return [Object]
         attr_accessor :density
       
         # End is the end of the data bin. If end is not populated, then the bin has no
