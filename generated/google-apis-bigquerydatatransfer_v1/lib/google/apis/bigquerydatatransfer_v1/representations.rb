@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventDrivenSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDataSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,7 +112,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManualSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ScheduleOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScheduleOptionsV2
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +155,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeBasedSchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -266,6 +290,13 @@ module Google
         end
       end
       
+      class EventDrivenSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub_subscription, as: 'pubsubSubscription'
+        end
+      end
+      
       class ListDataSourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -322,12 +353,30 @@ module Google
         end
       end
       
+      class ManualSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ScheduleOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_auto_scheduling, as: 'disableAutoScheduling'
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ScheduleOptionsV2
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_driven_schedule, as: 'eventDrivenSchedule', class: Google::Apis::BigquerydatatransferV1::EventDrivenSchedule, decorator: Google::Apis::BigquerydatatransferV1::EventDrivenSchedule::Representation
+      
+          property :manual_schedule, as: 'manualSchedule', class: Google::Apis::BigquerydatatransferV1::ManualSchedule, decorator: Google::Apis::BigquerydatatransferV1::ManualSchedule::Representation
+      
+          property :time_based_schedule, as: 'timeBasedSchedule', class: Google::Apis::BigquerydatatransferV1::TimeBasedSchedule, decorator: Google::Apis::BigquerydatatransferV1::TimeBasedSchedule::Representation
+      
         end
       end
       
@@ -373,6 +422,15 @@ module Google
         end
       end
       
+      class TimeBasedSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :schedule, as: 'schedule'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class TimeRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -394,6 +452,8 @@ module Google
       
           property :encryption_configuration, as: 'encryptionConfiguration', class: Google::Apis::BigquerydatatransferV1::EncryptionConfiguration, decorator: Google::Apis::BigquerydatatransferV1::EncryptionConfiguration::Representation
       
+          property :error, as: 'error', class: Google::Apis::BigquerydatatransferV1::Status, decorator: Google::Apis::BigquerydatatransferV1::Status::Representation
+      
           property :name, as: 'name'
           property :next_run_time, as: 'nextRunTime'
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'
@@ -402,6 +462,8 @@ module Google
           hash :params, as: 'params'
           property :schedule, as: 'schedule'
           property :schedule_options, as: 'scheduleOptions', class: Google::Apis::BigquerydatatransferV1::ScheduleOptions, decorator: Google::Apis::BigquerydatatransferV1::ScheduleOptions::Representation
+      
+          property :schedule_options_v2, as: 'scheduleOptionsV2', class: Google::Apis::BigquerydatatransferV1::ScheduleOptionsV2, decorator: Google::Apis::BigquerydatatransferV1::ScheduleOptionsV2::Representation
       
           property :state, as: 'state'
           property :update_time, as: 'updateTime'

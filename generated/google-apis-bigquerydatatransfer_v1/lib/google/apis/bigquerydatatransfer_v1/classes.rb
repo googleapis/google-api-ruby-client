@@ -385,6 +385,27 @@ module Google
         end
       end
       
+      # Options customizing EventDriven transfers schedule.
+      class EventDrivenSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Pub/Sub subscription name used to receive events. Only Google Cloud Storage
+        # data source support this option. Format: projects/`project`/subscriptions/`
+        # subscription`
+        # Corresponds to the JSON property `pubsubSubscription`
+        # @return [String]
+        attr_accessor :pubsub_subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pubsub_subscription = args[:pubsub_subscription] if args.key?(:pubsub_subscription)
+        end
+      end
+      
       # Returns list of supported data sources and their metadata.
       class ListDataSourcesResponse
         include Google::Apis::Core::Hashable
@@ -565,6 +586,19 @@ module Google
         end
       end
       
+      # Options customizing manual transfers schedule.
+      class ManualSchedule
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Options customizing the data transfer schedule.
       class ScheduleOptions
         include Google::Apis::Core::Hashable
@@ -603,6 +637,41 @@ module Google
           @disable_auto_scheduling = args[:disable_auto_scheduling] if args.key?(:disable_auto_scheduling)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # V2 options customizing different types of data transfer schedule. This field
+      # supports existing time-based and manual transfer schedule. Also supports Event-
+      # Driven transfer schedule. ScheduleOptionsV2 cannot be used together with
+      # ScheduleOptions/Schedule.
+      class ScheduleOptionsV2
+        include Google::Apis::Core::Hashable
+      
+        # Options customizing EventDriven transfers schedule.
+        # Corresponds to the JSON property `eventDrivenSchedule`
+        # @return [Google::Apis::BigquerydatatransferV1::EventDrivenSchedule]
+        attr_accessor :event_driven_schedule
+      
+        # Options customizing manual transfers schedule.
+        # Corresponds to the JSON property `manualSchedule`
+        # @return [Google::Apis::BigquerydatatransferV1::ManualSchedule]
+        attr_accessor :manual_schedule
+      
+        # Options customizing the time based transfer schedule. Options are migrated
+        # from the original ScheduleOptions message.
+        # Corresponds to the JSON property `timeBasedSchedule`
+        # @return [Google::Apis::BigquerydatatransferV1::TimeBasedSchedule]
+        attr_accessor :time_based_schedule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_driven_schedule = args[:event_driven_schedule] if args.key?(:event_driven_schedule)
+          @manual_schedule = args[:manual_schedule] if args.key?(:manual_schedule)
+          @time_based_schedule = args[:time_based_schedule] if args.key?(:time_based_schedule)
         end
       end
       
@@ -738,6 +807,49 @@ module Google
         end
       end
       
+      # Options customizing the time based transfer schedule. Options are migrated
+      # from the original ScheduleOptions message.
+      class TimeBasedSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Defines time to stop scheduling transfer runs. A transfer run cannot be
+        # scheduled at or after the end time. The end time can be changed at any moment.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Data transfer schedule. If the data source does not support a custom schedule,
+        # this should be empty. If it is empty, the default value for the data source
+        # will be used. The specified times are in UTC. Examples of valid format: `1st,
+        # 3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first
+        # sunday of quarter 00:00`. See more explanation about the format here: https://
+        # cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#
+        # the_schedule_format NOTE: The minimum interval time between recurring
+        # transfers depends on the data source; refer to the documentation for your data
+        # source.
+        # Corresponds to the JSON property `schedule`
+        # @return [String]
+        attr_accessor :schedule
+      
+        # Specifies time to start scheduling transfer runs. The first run will be
+        # scheduled at or after the start time according to a recurrence pattern defined
+        # in the schedule string. The start time can be changed at any moment.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @schedule = args[:schedule] if args.key?(:schedule)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # A specification for a time range, this will request transfer runs with
       # run_time between start_time (inclusive) and end_time (exclusive).
       class TimeRange
@@ -828,6 +940,16 @@ module Google
         # @return [Google::Apis::BigquerydatatransferV1::EncryptionConfiguration]
         attr_accessor :encryption_configuration
       
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::BigquerydatatransferV1::Status]
+        attr_accessor :error
+      
         # Identifier. The resource name of the transfer config. Transfer config names
         # have the form either `projects/`project_id`/locations/`region`/transferConfigs/
         # `config_id`` or `projects/`project_id`/transferConfigs/`config_id``, where `
@@ -880,6 +1002,14 @@ module Google
         # @return [Google::Apis::BigquerydatatransferV1::ScheduleOptions]
         attr_accessor :schedule_options
       
+        # V2 options customizing different types of data transfer schedule. This field
+        # supports existing time-based and manual transfer schedule. Also supports Event-
+        # Driven transfer schedule. ScheduleOptionsV2 cannot be used together with
+        # ScheduleOptions/Schedule.
+        # Corresponds to the JSON property `scheduleOptionsV2`
+        # @return [Google::Apis::BigquerydatatransferV1::ScheduleOptionsV2]
+        attr_accessor :schedule_options_v2
+      
         # Output only. State of the most recently updated transfer run.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -909,6 +1039,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @email_preferences = args[:email_preferences] if args.key?(:email_preferences)
           @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
+          @error = args[:error] if args.key?(:error)
           @name = args[:name] if args.key?(:name)
           @next_run_time = args[:next_run_time] if args.key?(:next_run_time)
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
@@ -916,6 +1047,7 @@ module Google
           @params = args[:params] if args.key?(:params)
           @schedule = args[:schedule] if args.key?(:schedule)
           @schedule_options = args[:schedule_options] if args.key?(:schedule_options)
+          @schedule_options_v2 = args[:schedule_options_v2] if args.key?(:schedule_options_v2)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_id = args[:user_id] if args.key?(:user_id)
