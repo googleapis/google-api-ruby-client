@@ -1626,7 +1626,7 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardHeader]
         attr_accessor :peek_card_header
       
-        # The divider style between sections.
+        # The divider style between the header, sections and footer.
         # Corresponds to the JSON property `sectionDividerStyle`
         # @return [String]
         attr_accessor :section_divider_style
@@ -1833,9 +1833,12 @@ module Google
       # screen width is less than or equal to 480 pixels. * On iOS devices, the second
       # column wraps if the screen width is less than or equal to 300 pt. * On Android
       # devices, the second column wraps if the screen width is less than or equal to
-      # 320 dp. To include more than 2 columns, or to use rows, use the `Grid` widget.
-      # [Google Workspace Add-ons and Chat apps](https://developers.google.com/
-      # workspace/extend):
+      # 320 dp. To include more than two columns, or to use rows, use the `Grid`
+      # widget. [Google Workspace Add-ons and Chat apps](https://developers.google.com/
+      # workspace/extend): The add-on UIs that support columns include: * The dialog
+      # displayed when users open the add-on from an email draft. * The dialog
+      # displayed when users open the add-on from the **Add attachment** menu in a
+      # Google Calendar event.
       class GoogleAppsCardV1Columns
         include Google::Apis::Core::Hashable
       
@@ -3002,9 +3005,12 @@ module Google
         # screen width is less than or equal to 480 pixels. * On iOS devices, the second
         # column wraps if the screen width is less than or equal to 300 pt. * On Android
         # devices, the second column wraps if the screen width is less than or equal to
-        # 320 dp. To include more than 2 columns, or to use rows, use the `Grid` widget.
-        # [Google Workspace Add-ons and Chat apps](https://developers.google.com/
-        # workspace/extend):
+        # 320 dp. To include more than two columns, or to use rows, use the `Grid`
+        # widget. [Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend): The add-on UIs that support columns include: * The dialog
+        # displayed when users open the add-on from an email draft. * The dialog
+        # displayed when users open the add-on from the **Add attachment** menu in a
+        # Google Calendar event.
         # Corresponds to the JSON property `columns`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Columns]
         attr_accessor :columns
@@ -3765,7 +3771,6 @@ module Google
         end
       end
       
-      # [Developer Preview](https://developers.google.com/workspace/preview).
       # Represents the count of memberships of a space, grouped into categories.
       class MembershipCount
         include Google::Apis::Core::Hashable
@@ -4676,11 +4681,12 @@ module Google
         attr_accessor :create_time
       
         # The space's display name. Required when [creating a space](https://developers.
-        # google.com/workspace/chat/api/reference/rest/v1/spaces/create). If you receive
-        # the error message `ALREADY_EXISTS` when creating a space or updating the `
-        # displayName`, try a different `displayName`. An existing space within the
-        # Google Workspace organization might already use this display name. For direct
-        # messages, this field might be empty. Supports up to 128 characters.
+        # google.com/workspace/chat/api/reference/rest/v1/spaces/create) with a `
+        # spaceType` of `SPACE`. If you receive the error message `ALREADY_EXISTS` when
+        # creating a space or updating the `displayName`, try a different `displayName`.
+        # An existing space within the Google Workspace organization might already use
+        # this display name. For direct messages, this field might be empty. Supports up
+        # to 128 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -4704,13 +4710,11 @@ module Google
         attr_accessor :import_mode
         alias_method :import_mode?, :import_mode
       
-        # Output only. Timestamp of the last message in the space. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # Output only. Timestamp of the last message in the space.
         # Corresponds to the JSON property `lastActiveTime`
         # @return [String]
         attr_accessor :last_active_time
       
-        # [Developer Preview](https://developers.google.com/workspace/preview).
         # Represents the count of memberships of a space, grouped into categories.
         # Corresponds to the JSON property `membershipCount`
         # @return [Google::Apis::ChatV1::MembershipCount]
