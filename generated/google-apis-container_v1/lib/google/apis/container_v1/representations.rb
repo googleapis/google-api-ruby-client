@@ -1134,6 +1134,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_pods_per_node, as: 'maxPodsPerNode', class: Google::Apis::ContainerV1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1::MaxPodsConstraint::Representation
       
+          property :network_attachment, as: 'networkAttachment'
           property :secondary_pod_range, as: 'secondaryPodRange'
           property :subnetwork, as: 'subnetwork'
         end
