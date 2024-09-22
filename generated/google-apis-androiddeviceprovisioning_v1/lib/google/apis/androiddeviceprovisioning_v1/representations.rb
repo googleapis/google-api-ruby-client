@@ -446,8 +446,10 @@ module Google
           property :chrome_os_attested_device_id, as: 'chromeOsAttestedDeviceId'
           property :device_type, as: 'deviceType'
           property :imei, as: 'imei'
+          property :imei2, as: 'imei2'
           property :manufacturer, as: 'manufacturer'
           property :meid, as: 'meid'
+          property :meid2, as: 'meid2'
           property :model, as: 'model'
           property :serial_number, as: 'serialNumber'
         end
