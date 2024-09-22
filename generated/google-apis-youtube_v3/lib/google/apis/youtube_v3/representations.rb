@@ -1120,6 +1120,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VideoPaidProductPlacementDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VideoPlayer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3237,6 +3243,8 @@ module Google
       
           property :monetization_details, as: 'monetizationDetails', class: Google::Apis::YoutubeV3::VideoMonetizationDetails, decorator: Google::Apis::YoutubeV3::VideoMonetizationDetails::Representation
       
+          property :paid_product_placement_details, as: 'paidProductPlacementDetails', class: Google::Apis::YoutubeV3::VideoPaidProductPlacementDetails, decorator: Google::Apis::YoutubeV3::VideoPaidProductPlacementDetails::Representation
+      
           property :player, as: 'player', class: Google::Apis::YoutubeV3::VideoPlayer, decorator: Google::Apis::YoutubeV3::VideoPlayer::Representation
       
           property :processing_details, as: 'processingDetails', class: Google::Apis::YoutubeV3::VideoProcessingDetails, decorator: Google::Apis::YoutubeV3::VideoProcessingDetails::Representation
@@ -3483,6 +3491,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access, as: 'access', class: Google::Apis::YoutubeV3::AccessPolicy, decorator: Google::Apis::YoutubeV3::AccessPolicy::Representation
       
+        end
+      end
+      
+      class VideoPaidProductPlacementDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_paid_product_placement, as: 'hasPaidProductPlacement'
         end
       end
       

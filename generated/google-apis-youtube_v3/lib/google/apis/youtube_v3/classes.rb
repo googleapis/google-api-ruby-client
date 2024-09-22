@@ -7662,6 +7662,13 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoMonetizationDetails]
         attr_accessor :monetization_details
       
+        # Details about paid content, such as paid product placement, sponsorships or
+        # endorsement, contained in a YouTube video and a method to inform viewers of
+        # paid promotion. This data can only be retrieved by the video owner.
+        # Corresponds to the JSON property `paidProductPlacementDetails`
+        # @return [Google::Apis::YoutubeV3::VideoPaidProductPlacementDetails]
+        attr_accessor :paid_product_placement_details
+      
         # Player to be used for a video playback.
         # Corresponds to the JSON property `player`
         # @return [Google::Apis::YoutubeV3::VideoPlayer]
@@ -7734,6 +7741,7 @@ module Google
           @live_streaming_details = args[:live_streaming_details] if args.key?(:live_streaming_details)
           @localizations = args[:localizations] if args.key?(:localizations)
           @monetization_details = args[:monetization_details] if args.key?(:monetization_details)
+          @paid_product_placement_details = args[:paid_product_placement_details] if args.key?(:paid_product_placement_details)
           @player = args[:player] if args.key?(:player)
           @processing_details = args[:processing_details] if args.key?(:processing_details)
           @project_details = args[:project_details] if args.key?(:project_details)
@@ -8624,6 +8632,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access = args[:access] if args.key?(:access)
+        end
+      end
+      
+      # Details about paid content, such as paid product placement, sponsorships or
+      # endorsement, contained in a YouTube video and a method to inform viewers of
+      # paid promotion. This data can only be retrieved by the video owner.
+      class VideoPaidProductPlacementDetails
+        include Google::Apis::Core::Hashable
+      
+        # This boolean represents whether the video contains Paid Product Placement,
+        # Studio equivalent: https://screenshot.googleplex.com/4Me79DE6AfT2ktp.png
+        # Corresponds to the JSON property `hasPaidProductPlacement`
+        # @return [Boolean]
+        attr_accessor :has_paid_product_placement
+        alias_method :has_paid_product_placement?, :has_paid_product_placement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @has_paid_product_placement = args[:has_paid_product_placement] if args.key?(:has_paid_product_placement)
         end
       end
       
