@@ -659,6 +659,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Immutable. The node scaling factor of this cluster.
+        # Corresponds to the JSON property `nodeScalingFactor`
+        # @return [String]
+        attr_accessor :node_scaling_factor
+      
         # The number of nodes in the cluster. If no value is set, Cloud Bigtable
         # automatically allocates nodes based on your data footprint and optimized for
         # 50% storage utilization.
@@ -682,6 +687,7 @@ module Google
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @node_scaling_factor = args[:node_scaling_factor] if args.key?(:node_scaling_factor)
           @serve_nodes = args[:serve_nodes] if args.key?(:serve_nodes)
           @state = args[:state] if args.key?(:state)
         end
@@ -2736,11 +2742,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :cluster_ids
       
-        # If enabled, the AFE will route the request based on the row key of the request,
-        # rather than randomly. Instead, each row key will be assigned to a cluster,
-        # and will stick to that cluster. If clusters are added or removed, then this
-        # may affect which row keys stick to which clusters. To avoid this, users can
-        # specify a group cluster.
+        # If enabled, Bigtable will route the request based on the row key of the
+        # request, rather than randomly. Instead, each row key will be assigned to a
+        # cluster, and will stick to that cluster. If clusters are added or removed,
+        # then this may affect which row keys stick to which clusters. To avoid this,
+        # users can use a cluster group to specify which clusters are to be used. In
+        # this case, new clusters that are not a part of the cluster group will not be
+        # routed to, and routing will be unaffected by the new cluster. Moreover,
+        # clusters specified in the cluster group cannot be deleted unless removed from
+        # the cluster group.
         # Corresponds to the JSON property `rowAffinity`
         # @return [Google::Apis::BigtableadminV2::RowAffinity]
         attr_accessor :row_affinity
@@ -3162,11 +3172,15 @@ module Google
         end
       end
       
-      # If enabled, the AFE will route the request based on the row key of the request,
-      # rather than randomly. Instead, each row key will be assigned to a cluster,
-      # and will stick to that cluster. If clusters are added or removed, then this
-      # may affect which row keys stick to which clusters. To avoid this, users can
-      # specify a group cluster.
+      # If enabled, Bigtable will route the request based on the row key of the
+      # request, rather than randomly. Instead, each row key will be assigned to a
+      # cluster, and will stick to that cluster. If clusters are added or removed,
+      # then this may affect which row keys stick to which clusters. To avoid this,
+      # users can use a cluster group to specify which clusters are to be used. In
+      # this case, new clusters that are not a part of the cluster group will not be
+      # routed to, and routing will be unaffected by the new cluster. Moreover,
+      # clusters specified in the cluster group cannot be deleted unless removed from
+      # the cluster group.
       class RowAffinity
         include Google::Apis::Core::Hashable
       
