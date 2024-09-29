@@ -508,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CrossMediaReachReportCompatibleFields
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomFloodlightVariable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1165,6 +1171,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class CrossMediaReachCriteria
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Delivery
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1391,6 +1403,30 @@ module Google
       end
       
       class TranscodeSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TvCampaignDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TvCampaignSummariesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TvCampaignSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TvCampaignTimepoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2129,6 +2165,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cross_dimension_reach_report_compatible_fields, as: 'crossDimensionReachReportCompatibleFields', class: Google::Apis::DfareportingV4::CrossDimensionReachReportCompatibleFields, decorator: Google::Apis::DfareportingV4::CrossDimensionReachReportCompatibleFields::Representation
       
+          property :cross_media_reach_report_compatible_fields, as: 'crossMediaReachReportCompatibleFields', class: Google::Apis::DfareportingV4::CrossMediaReachReportCompatibleFields, decorator: Google::Apis::DfareportingV4::CrossMediaReachReportCompatibleFields::Representation
+      
           property :floodlight_report_compatible_fields, as: 'floodlightReportCompatibleFields', class: Google::Apis::DfareportingV4::FloodlightReportCompatibleFields, decorator: Google::Apis::DfareportingV4::FloodlightReportCompatibleFields::Representation
       
           property :kind, as: 'kind'
@@ -2668,6 +2706,19 @@ module Google
           collection :metrics, as: 'metrics', class: Google::Apis::DfareportingV4::Metric, decorator: Google::Apis::DfareportingV4::Metric::Representation
       
           collection :overlap_metrics, as: 'overlapMetrics', class: Google::Apis::DfareportingV4::Metric, decorator: Google::Apis::DfareportingV4::Metric::Representation
+      
+        end
+      end
+      
+      class CrossMediaReachReportCompatibleFields
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimension_filters, as: 'dimensionFilters', class: Google::Apis::DfareportingV4::Dimension, decorator: Google::Apis::DfareportingV4::Dimension::Representation
+      
+          collection :dimensions, as: 'dimensions', class: Google::Apis::DfareportingV4::Dimension, decorator: Google::Apis::DfareportingV4::Dimension::Representation
+      
+          property :kind, as: 'kind'
+          collection :metrics, as: 'metrics', class: Google::Apis::DfareportingV4::Metric, decorator: Google::Apis::DfareportingV4::Metric::Representation
       
         end
       end
@@ -4056,6 +4107,8 @@ module Google
       
           property :cross_dimension_reach_criteria, as: 'crossDimensionReachCriteria', class: Google::Apis::DfareportingV4::Report::CrossDimensionReachCriteria, decorator: Google::Apis::DfareportingV4::Report::CrossDimensionReachCriteria::Representation
       
+          property :cross_media_reach_criteria, as: 'crossMediaReachCriteria', class: Google::Apis::DfareportingV4::Report::CrossMediaReachCriteria, decorator: Google::Apis::DfareportingV4::Report::CrossMediaReachCriteria::Representation
+      
           property :delivery, as: 'delivery', class: Google::Apis::DfareportingV4::Report::Delivery, decorator: Google::Apis::DfareportingV4::Report::Delivery::Representation
       
           property :etag, as: 'etag'
@@ -4108,6 +4161,19 @@ module Google
             collection :metric_names, as: 'metricNames'
             collection :overlap_metric_names, as: 'overlapMetricNames'
             property :pivoted, as: 'pivoted'
+          end
+        end
+        
+        class CrossMediaReachCriteria
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :date_range, as: 'dateRange', class: Google::Apis::DfareportingV4::DateRange, decorator: Google::Apis::DfareportingV4::DateRange::Representation
+        
+            collection :dimension_filters, as: 'dimensionFilters', class: Google::Apis::DfareportingV4::DimensionValue, decorator: Google::Apis::DfareportingV4::DimensionValue::Representation
+        
+            collection :dimensions, as: 'dimensions', class: Google::Apis::DfareportingV4::SortedDimension, decorator: Google::Apis::DfareportingV4::SortedDimension::Representation
+        
+            collection :metric_names, as: 'metricNames'
           end
         end
         
@@ -4593,6 +4659,49 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :enabled_video_formats, as: 'enabledVideoFormats'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class TvCampaignDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          collection :timepoints, as: 'timepoints', class: Google::Apis::DfareportingV4::TvCampaignTimepoint, decorator: Google::Apis::DfareportingV4::TvCampaignTimepoint::Representation
+      
+        end
+      end
+      
+      class TvCampaignSummariesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :tv_campaign_summaries, as: 'tvCampaignSummaries', class: Google::Apis::DfareportingV4::TvCampaignSummary, decorator: Google::Apis::DfareportingV4::TvCampaignSummary::Representation
+      
+        end
+      end
+      
+      class TvCampaignSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate'
+          property :grp, :numeric_string => true, as: 'grp'
+          property :id, as: 'id'
+          property :impressions, :numeric_string => true, as: 'impressions'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :spend, as: 'spend'
+          property :start_date, as: 'startDate'
+          property :type, as: 'type'
+        end
+      end
+      
+      class TvCampaignTimepoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_window, as: 'dateWindow'
+          property :spend, as: 'spend'
+          property :start_date, as: 'startDate'
         end
       end
       

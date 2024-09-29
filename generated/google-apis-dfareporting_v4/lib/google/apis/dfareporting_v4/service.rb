@@ -7771,6 +7771,79 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets one TvCampaignDetail by ID.
+        # @param [Fixnum] profile_id
+        #   Required. User profile ID associated with this request.
+        # @param [String] id
+        #   Required. TV Campaign ID.
+        # @param [Fixnum] account_id
+        #   Required. Account ID associated with this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV4::TvCampaignDetail] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV4::TvCampaignDetail]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_tv_campaign_detail(profile_id, id, account_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'userprofiles/{+profileId}/tvCampaignDetails/{+id}', options)
+          command.response_representation = Google::Apis::DfareportingV4::TvCampaignDetail::Representation
+          command.response_class = Google::Apis::DfareportingV4::TvCampaignDetail
+          command.params['profileId'] = profile_id unless profile_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['accountId'] = account_id unless account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of TV campaign summaries.
+        # @param [Fixnum] profile_id
+        #   Required. User profile ID associated with this request.
+        # @param [Fixnum] account_id
+        #   Required. Account ID associated with this request.
+        # @param [String] name
+        #   Required. Search string to filter the list of TV campaign summaries. Matches
+        #   any substring. Required field.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV4::TvCampaignSummariesListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV4::TvCampaignSummariesListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_tv_campaign_summaries(profile_id, account_id: nil, name: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'userprofiles/{+profileId}/tvCampaignSummaries', options)
+          command.response_representation = Google::Apis::DfareportingV4::TvCampaignSummariesListResponse::Representation
+          command.response_class = Google::Apis::DfareportingV4::TvCampaignSummariesListResponse
+          command.params['profileId'] = profile_id unless profile_id.nil?
+          command.query['accountId'] = account_id unless account_id.nil?
+          command.query['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets one user profile by ID.
         # @param [Fixnum] profile_id
         #   The user profile ID.
