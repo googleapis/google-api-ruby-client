@@ -385,8 +385,8 @@ module Google
         
         # Update a CaPool.
         # @param [String] name
-        #   Output only. The resource name for this CaPool in the format `projects/*/
-        #   locations/*/caPools/*`.
+        #   Output only. Identifier. The resource name for this CaPool in the format `
+        #   projects/*/locations/*/caPools/*`.
         # @param [Google::Apis::PrivatecaV1::CaPool] ca_pool_object
         # @param [String] request_id
         #   Optional. An ID to identify requests. Specify a unique request ID so that if
