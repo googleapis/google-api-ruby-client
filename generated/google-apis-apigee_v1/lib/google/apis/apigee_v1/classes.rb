@@ -2978,7 +2978,7 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Required. GCP project in which the datastore exists
+        # Required. Google Cloud project in which the datastore exists
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
