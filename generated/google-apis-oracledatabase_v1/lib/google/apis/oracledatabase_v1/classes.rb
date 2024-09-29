@@ -108,8 +108,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The name of the VPC network used by the Autonomous Database. Format:
-        # projects/`project`/global/networks/`network`
+        # Required. The name of the VPC network used by the Autonomous Database in the
+        # following format: projects/`project`/global/networks/`network`
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1071,7 +1071,7 @@ module Google
         # @return [String]
         attr_accessor :entitlement_id
       
-        # Optional. GCP location where Oracle Exadata is hosted.
+        # Optional. Google Cloud Platform location where Oracle Exadata is hosted.
         # Corresponds to the JSON property `gcpOracleZone`
         # @return [String]
         attr_accessor :gcp_oracle_zone
@@ -1328,8 +1328,8 @@ module Google
         # @return [String]
         attr_accessor :exadata_infrastructure
       
-        # Output only. GCP location where Oracle Exadata is hosted. It is same as GCP
-        # Oracle zone of Exadata infrastructure.
+        # Output only. Google Cloud Platform location where Oracle Exadata is hosted. It
+        # is same as Google Cloud Platform Oracle zone of Exadata infrastructure.
         # Corresponds to the JSON property `gcpOracleZone`
         # @return [String]
         attr_accessor :gcp_oracle_zone
@@ -2510,7 +2510,7 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. GCP Oracle zones in a location.
+        # Output only. Google Cloud Platform Oracle zones in a location.
         # Corresponds to the JSON property `gcpOracleZones`
         # @return [Array<String>]
         attr_accessor :gcp_oracle_zones

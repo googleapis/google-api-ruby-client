@@ -21,8 +21,8 @@ module Google
   module Apis
     # Oracle Database@Google Cloud API
     #
-    # The Oracle Database@Google Cloud API provides set of APIs to manage Oracle
-    # databases such as Exadata and Autonomous Databases.
+    # The Oracle Database@Google Cloud API provides a set of APIs to manage Oracle
+    # database services, such as Exadata and Autonomous Databases.
     #
     # @see https://cloud.google.com/oracle/database/docs
     module OracledatabaseV1
