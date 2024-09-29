@@ -394,6 +394,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RelocateBucketRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class DestinationCustomPlacementConfig
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RewriteResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1158,6 +1170,23 @@ module Google
         
             collection :members, as: 'members'
             property :role, as: 'role'
+          end
+        end
+      end
+      
+      class RelocateBucketRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_custom_placement_config, as: 'destinationCustomPlacementConfig', class: Google::Apis::StorageV1::RelocateBucketRequest::DestinationCustomPlacementConfig, decorator: Google::Apis::StorageV1::RelocateBucketRequest::DestinationCustomPlacementConfig::Representation
+      
+          property :destination_location, as: 'destinationLocation'
+          property :validate_only, as: 'validateOnly'
+        end
+        
+        class DestinationCustomPlacementConfig
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :data_locations, as: 'dataLocations'
           end
         end
       end

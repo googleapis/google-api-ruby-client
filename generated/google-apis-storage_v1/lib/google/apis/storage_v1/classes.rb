@@ -2931,6 +2931,59 @@ module Google
         end
       end
       
+      # A Relocate Bucket request.
+      class RelocateBucketRequest
+        include Google::Apis::Core::Hashable
+      
+        # The bucket's new custom placement configuration if relocating to a Custom Dual
+        # Region.
+        # Corresponds to the JSON property `destinationCustomPlacementConfig`
+        # @return [Google::Apis::StorageV1::RelocateBucketRequest::DestinationCustomPlacementConfig]
+        attr_accessor :destination_custom_placement_config
+      
+        # The new location the bucket will be relocated to.
+        # Corresponds to the JSON property `destinationLocation`
+        # @return [String]
+        attr_accessor :destination_location
+      
+        # If true, validate the operation, but do not actually relocate the bucket.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_custom_placement_config = args[:destination_custom_placement_config] if args.key?(:destination_custom_placement_config)
+          @destination_location = args[:destination_location] if args.key?(:destination_location)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+        
+        # The bucket's new custom placement configuration if relocating to a Custom Dual
+        # Region.
+        class DestinationCustomPlacementConfig
+          include Google::Apis::Core::Hashable
+        
+          # The list of regional locations in which data is placed.
+          # Corresponds to the JSON property `dataLocations`
+          # @return [Array<String>]
+          attr_accessor :data_locations
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @data_locations = args[:data_locations] if args.key?(:data_locations)
+          end
+        end
+      end
+      
       # A rewrite response.
       class RewriteResponse
         include Google::Apis::Core::Hashable
