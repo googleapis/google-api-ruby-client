@@ -22,8 +22,8 @@ module Google
     module OracledatabaseV1
       # Oracle Database@Google Cloud API
       #
-      # The Oracle Database@Google Cloud API provides set of APIs to manage Oracle
-      #  databases such as Exadata and Autonomous Databases.
+      # The Oracle Database@Google Cloud API provides a set of APIs to manage Oracle
+      #  database services, such as Exadata and Autonomous Databases.
       #
       # @example
       #    require 'google/apis/oracledatabase_v1'
@@ -125,7 +125,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the long term and automatic backups of an Autonomous Database.
+        # Lists the long-term and automatic backups of an Autonomous Database.
         # @param [String] parent
         #   Required. The parent value for ListAutonomousDatabaseBackups in the following
         #   format: projects/`project`/locations/`location`.
@@ -304,7 +304,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a wallet for a single Autonomous Database.
+        # Generates a wallet for an Autonomous Database.
         # @param [String] name
         #   Required. The name of the Autonomous Database in the following format:
         #   projects/`project`/locations/`location`/autonomousDatabases/`
@@ -938,8 +938,8 @@ module Google
         
         # Lists the entitlements in a given project.
         # @param [String] parent
-        #   Required. The parent value for Entitlement in the following format: projects/`
-        #   project`/locations/`location`.
+        #   Required. The parent value for the entitlement in the following format:
+        #   projects/`project`/locations/`location`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, a maximum of
         #   50 entitlements will be returned. The maximum value is 1000.
