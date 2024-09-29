@@ -395,8 +395,8 @@ module Google
         # @return [Array<Google::Apis::RedisV1::PscConfig>]
         attr_accessor :psc_configs
       
-        # Output only. PSC connections for discovery of the cluster topology and
-        # accessing the cluster.
+        # Output only. The list of PSC connections that are auto-created through service
+        # connectivity automation.
         # Corresponds to the JSON property `pscConnections`
         # @return [Array<Google::Apis::RedisV1::PscConnection>]
         attr_accessor :psc_connections
@@ -525,12 +525,6 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Output only. The deadline that the maintenance schedule start time can not go
-        # beyond, including reschedule.
-        # Corresponds to the JSON property `scheduleDeadlineTime`
-        # @return [String]
-        attr_accessor :schedule_deadline_time
-      
         # Output only. The start time of any upcoming scheduled maintenance for this
         # instance.
         # Corresponds to the JSON property `startTime`
@@ -544,7 +538,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
-          @schedule_deadline_time = args[:schedule_deadline_time] if args.key?(:schedule_deadline_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -589,11 +582,6 @@ module Google
         # @return [String]
         attr_accessor :day
       
-        # Duration of the time window.
-        # Corresponds to the JSON property `duration`
-        # @return [String]
-        attr_accessor :duration
-      
         # Represents a time of day. The date and time zone are either not significant or
         # are specified elsewhere. An API may choose to allow leap seconds. Related
         # types are google.type.Date and `google.protobuf.Timestamp`.
@@ -608,7 +596,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @day = args[:day] if args.key?(:day)
-          @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -742,7 +729,7 @@ module Google
         # @return [Google::Apis::RedisV1::DatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 21
+        # Common model for database resource instance metadata. Next ID: 23
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::RedisV1::DatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -917,7 +904,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 21
+      # Common model for database resource instance metadata. Next ID: 23
       class DatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -953,6 +940,13 @@ module Google
         # Corresponds to the JSON property `customMetadata`
         # @return [Google::Apis::RedisV1::CustomMetadataData]
         attr_accessor :custom_metadata
+      
+        # Optional. Edition represents whether the instance is ENTERPRISE or
+        # ENTERPRISE_PLUS. This information is core to Cloud SQL only and is used to
+        # identify the edition of the instance.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # Entitlements associated with the resource
         # Corresponds to the JSON property `entitlements`
@@ -991,6 +985,12 @@ module Google
         # Corresponds to the JSON property `primaryResourceId`
         # @return [Google::Apis::RedisV1::DatabaseResourceId]
         attr_accessor :primary_resource_id
+      
+        # Primary resource location. REQUIRED if the immediate parent exists when first
+        # time resource is getting ingested, otherwise optional.
+        # Corresponds to the JSON property `primaryResourceLocation`
+        # @return [String]
+        attr_accessor :primary_resource_location
       
         # Product specification for Condor resources.
         # Corresponds to the JSON property `product`
@@ -1044,6 +1044,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @current_state = args[:current_state] if args.key?(:current_state)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
+          @edition = args[:edition] if args.key?(:edition)
           @entitlements = args[:entitlements] if args.key?(:entitlements)
           @expected_state = args[:expected_state] if args.key?(:expected_state)
           @id = args[:id] if args.key?(:id)
@@ -1051,6 +1052,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
           @primary_resource_id = args[:primary_resource_id] if args.key?(:primary_resource_id)
+          @primary_resource_location = args[:primary_resource_location] if args.key?(:primary_resource_location)
           @product = args[:product] if args.key?(:product)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
@@ -2150,6 +2152,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :memory_size_in_bytes
       
+        # Optional. Number of shards (if applicable).
+        # Corresponds to the JSON property `shardCount`
+        # @return [Fixnum]
+        attr_accessor :shard_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2158,6 +2165,7 @@ module Google
         def update!(**args)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
           @memory_size_in_bytes = args[:memory_size_in_bytes] if args.key?(:memory_size_in_bytes)
+          @shard_count = args[:shard_count] if args.key?(:shard_count)
         end
       end
       
@@ -2658,34 +2666,41 @@ module Google
       class PscConnection
         include Google::Apis::Core::Hashable
       
-        # Output only. The IP allocated on the consumer network for the PSC forwarding
-        # rule.
+        # Required. The IP allocated on the consumer network for the PSC forwarding rule.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
       
-        # Output only. The URI of the consumer side forwarding rule. Example: projects/`
+        # Required. The URI of the consumer side forwarding rule. Example: projects/`
         # projectNumOrId`/regions/us-east1/forwardingRules/`resourceId`.
         # Corresponds to the JSON property `forwardingRule`
         # @return [String]
         attr_accessor :forwarding_rule
       
-        # The consumer network where the IP address resides, in the form of projects/`
-        # project_id`/global/networks/`network_id`.
+        # Required. The consumer network where the IP address resides, in the form of
+        # projects/`project_id`/global/networks/`network_id`.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Output only. The consumer project_id where the forwarding rule is created from.
+        # Optional. Project ID of the consumer project where the forwarding rule is
+        # created in.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Output only. The PSC connection id of the forwarding rule connected to the
+        # Required. The PSC connection id of the forwarding rule connected to the
         # service attachment.
         # Corresponds to the JSON property `pscConnectionId`
         # @return [String]
         attr_accessor :psc_connection_id
+      
+        # Required. The service attachment which is the target of the PSC connection, in
+        # the form of projects/`project-id`/regions/`region`/serviceAttachments/`service-
+        # attachment-id`.
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
       
         def initialize(**args)
            update!(**args)
@@ -2698,6 +2713,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @project_id = args[:project_id] if args.key?(:project_id)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
         end
       end
       
@@ -2893,6 +2909,11 @@ module Google
       class RetentionSettings
         include Google::Apis::Core::Hashable
       
+        # Duration based retention period i.e. 172800 seconds (2 days)
+        # Corresponds to the JSON property `durationBasedRetention`
+        # @return [String]
+        attr_accessor :duration_based_retention
+      
         # 
         # Corresponds to the JSON property `quantityBasedRetention`
         # @return [Fixnum]
@@ -2914,6 +2935,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @duration_based_retention = args[:duration_based_retention] if args.key?(:duration_based_retention)
           @quantity_based_retention = args[:quantity_based_retention] if args.key?(:quantity_based_retention)
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)

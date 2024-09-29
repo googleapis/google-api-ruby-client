@@ -682,7 +682,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
-          property :schedule_deadline_time, as: 'scheduleDeadlineTime'
           property :start_time, as: 'startTime'
         end
       end
@@ -702,7 +701,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :day, as: 'day'
-          property :duration, as: 'duration'
           property :start_time, as: 'startTime', class: Google::Apis::RedisV1::TimeOfDay, decorator: Google::Apis::RedisV1::TimeOfDay::Representation
       
         end
@@ -800,6 +798,7 @@ module Google
           property :current_state, as: 'currentState'
           property :custom_metadata, as: 'customMetadata', class: Google::Apis::RedisV1::CustomMetadataData, decorator: Google::Apis::RedisV1::CustomMetadataData::Representation
       
+          property :edition, as: 'edition'
           collection :entitlements, as: 'entitlements', class: Google::Apis::RedisV1::Entitlement, decorator: Google::Apis::RedisV1::Entitlement::Representation
       
           property :expected_state, as: 'expectedState'
@@ -811,6 +810,7 @@ module Google
       
           property :primary_resource_id, as: 'primaryResourceId', class: Google::Apis::RedisV1::DatabaseResourceId, decorator: Google::Apis::RedisV1::DatabaseResourceId::Representation
       
+          property :primary_resource_location, as: 'primaryResourceLocation'
           property :product, as: 'product', class: Google::Apis::RedisV1::Product, decorator: Google::Apis::RedisV1::Product::Representation
       
           property :resource_container, as: 'resourceContainer'
@@ -1114,6 +1114,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpu_count, as: 'cpuCount'
           property :memory_size_in_bytes, :numeric_string => true, as: 'memorySizeInBytes'
+          property :shard_count, as: 'shardCount'
         end
       end
       
@@ -1259,6 +1260,7 @@ module Google
           property :network, as: 'network'
           property :project_id, as: 'projectId'
           property :psc_connection_id, as: 'pscConnectionId'
+          property :service_attachment, as: 'serviceAttachment'
         end
       end
       
@@ -1322,6 +1324,7 @@ module Google
       class RetentionSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_based_retention, as: 'durationBasedRetention'
           property :quantity_based_retention, as: 'quantityBasedRetention'
           property :retention_unit, as: 'retentionUnit'
           property :time_based_retention, as: 'timeBasedRetention'
