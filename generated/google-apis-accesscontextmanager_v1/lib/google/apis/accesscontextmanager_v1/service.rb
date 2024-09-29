@@ -1394,11 +1394,17 @@ module Google
         #   not be specified by the client during creation. Example: "organizations/256/
         #   gcpUserAccessBindings/b3-BhcX_Ud5N"
         # @param [Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding] gcp_user_access_binding_object
+        # @param [Boolean] append_scoped_access_settings
+        #   Optional. This field will be used to control whether or not scoped access
+        #   settings are appended to the existing list of scoped access settings. If true,
+        #   the scoped access settings in the request will be appended to the existing
+        #   list of scoped access settings. If false, the scoped access settings in the
+        #   request replace the existing list of scoped access settings.
         # @param [String] update_mask
         #   Required. Only the fields specified in this mask are updated. Because name and
         #   group_key cannot be changed, update_mask is required and may only contain the
-        #   following fields: `access_levels`, `dry_run_access_levels`. update_mask `
-        #   paths: "access_levels" `
+        #   following fields: `access_levels`, `dry_run_access_levels`, `reauth_settings`,
+        #   `scoped_access_settings`. update_mask ` paths: "access_levels" `
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1416,13 +1422,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_organization_gcp_user_access_binding(name, gcp_user_access_binding_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_organization_gcp_user_access_binding(name, gcp_user_access_binding_object = nil, append_scoped_access_settings: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding::Representation
           command.request_object = gcp_user_access_binding_object
           command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['appendScopedAccessSettings'] = append_scoped_access_settings unless append_scoped_access_settings.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
