@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomMirroringProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Destination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -442,6 +448,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
           property :source_address_group, as: 'sourceAddressGroup'
+        end
+      end
+      
+      class CustomMirroringProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mirroring_endpoint_group, as: 'mirroringEndpointGroup'
         end
       end
       
@@ -845,6 +858,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom_mirroring_profile, as: 'customMirroringProfile', class: Google::Apis::NetworksecurityV1::CustomMirroringProfile, decorator: Google::Apis::NetworksecurityV1::CustomMirroringProfile::Representation
+      
           property :description, as: 'description'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
@@ -860,6 +875,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom_mirroring_profile, as: 'customMirroringProfile'
           property :description, as: 'description'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
