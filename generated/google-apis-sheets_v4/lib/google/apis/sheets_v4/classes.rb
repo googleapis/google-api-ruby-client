@@ -9528,7 +9528,8 @@ module Google
       
         # Whether to allow external URL access for image and import functions. Read only
         # when true. When false, you can set to true. This value will be bypassed and
-        # always return true if the admin has enabled the allowlisting feature.
+        # always return true if the admin has enabled the [allowlisting feature](https://
+        # support.google.com/a?p=url_allowlist).
         # Corresponds to the JSON property `importFunctionsExternalUrlAccessAllowed`
         # @return [Boolean]
         attr_accessor :import_functions_external_url_access_allowed
