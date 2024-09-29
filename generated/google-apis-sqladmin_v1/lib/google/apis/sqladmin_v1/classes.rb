@@ -277,6 +277,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The name of the backup. Format: projects/`project`/backups/`backup`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -285,6 +290,7 @@ module Google
         def update!(**args)
           @backup_id = args[:backup_id] if args.key?(:backup_id)
           @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -2618,11 +2624,23 @@ module Google
       class InstancesRestoreBackupRequest
         include Google::Apis::Core::Hashable
       
+        # The name of the backup to restore from in following format: projects/`project-
+        # id`/backups/`backup-uid` Only one of restore_backup_context or backup can be
+        # passed to the input.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
         # Database instance restore from backup context. Backup context contains source
         # instance id and project id.
         # Corresponds to the JSON property `restoreBackupContext`
         # @return [Google::Apis::SqladminV1::RestoreBackupContext]
         attr_accessor :restore_backup_context
+      
+        # A Cloud SQL instance resource.
+        # Corresponds to the JSON property `restoreInstanceSettings`
+        # @return [Google::Apis::SqladminV1::DatabaseInstance]
+        attr_accessor :restore_instance_settings
       
         def initialize(**args)
            update!(**args)
@@ -2630,7 +2648,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
           @restore_backup_context = args[:restore_backup_context] if args.key?(:restore_backup_context)
+          @restore_instance_settings = args[:restore_instance_settings] if args.key?(:restore_instance_settings)
         end
       end
       
@@ -3348,6 +3368,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # List of warnings that occurred while handling the request.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::SqladminV1::ApiWarning>]
+        attr_accessor :warnings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3357,6 +3382,7 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
