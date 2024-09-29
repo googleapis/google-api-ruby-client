@@ -269,6 +269,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Manages overal generative question feature state -- enables toggling feature
+        # on and off.
+        # @param [String] catalog
+        #   Required. Resource name of the parent catalog. Format: projects/`project`/
+        #   locations/`location`/catalogs/`catalog`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionsFeatureConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionsFeatureConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_catalog_generative_question_feature(catalog, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+catalog}/generativeQuestionFeature', options)
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionsFeatureConfig::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionsFeatureConfig
+          command.params['catalog'] = catalog unless catalog.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all the Catalogs associated with the project.
         # @param [String] parent
         #   Required. The account resource name with an associated location. If the caller
@@ -480,6 +512,85 @@ module Google
           command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig::Representation
           command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Allows management of individual questions.
+        # @param [String] catalog
+        #   Required. Resource name of the catalog. Format: projects/`project`/locations/`
+        #   location`/catalogs/`catalog`
+        # @param [Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig] google_cloud_retail_v2_generative_question_config_object
+        # @param [String] update_mask
+        #   Optional. Indicates which fields in the provided GenerativeQuestionConfig to
+        #   update. The following are NOT supported: * GenerativeQuestionConfig.frequency
+        #   If not set or empty, all supported fields are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_catalog_generative_question(catalog, google_cloud_retail_v2_generative_question_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+catalog}/generativeQuestion', options)
+          command.request_representation = Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig::Representation
+          command.request_object = google_cloud_retail_v2_generative_question_config_object
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig
+          command.params['catalog'] = catalog unless catalog.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Manages overal generative question feature state -- enables toggling feature
+        # on and off.
+        # @param [String] catalog
+        #   Required. Resource name of the affected catalog. Format: projects/`project`/
+        #   locations/`location`/catalogs/`catalog`
+        # @param [Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionsFeatureConfig] google_cloud_retail_v2_generative_questions_feature_config_object
+        # @param [String] update_mask
+        #   Optional. Indicates which fields in the provided
+        #   GenerativeQuestionsFeatureConfig to update. If not set or empty, all supported
+        #   fields are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionsFeatureConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionsFeatureConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_catalog_generative_question_feature(catalog, google_cloud_retail_v2_generative_questions_feature_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+catalog}/generativeQuestionFeature', options)
+          command.request_representation = Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionsFeatureConfig::Representation
+          command.request_object = google_cloud_retail_v2_generative_questions_feature_config_object
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionsFeatureConfig::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionsFeatureConfig
+          command.params['catalog'] = catalog unless catalog.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1400,6 +1511,71 @@ module Google
           command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2Control
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Allows management of multiple questions.
+        # @param [String] parent
+        #   Optional. Resource name of the parent catalog. Format: projects/`project`/
+        #   locations/`location`/catalogs/`catalog`
+        # @param [Google::Apis::RetailV2::GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest] google_cloud_retail_v2_batch_update_generative_question_configs_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_catalog_generative_question_update(parent, google_cloud_retail_v2_batch_update_generative_question_configs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/generativeQuestion:batchUpdate', options)
+          command.request_representation = Google::Apis::RetailV2::GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest::Representation
+          command.request_object = google_cloud_retail_v2_batch_update_generative_question_configs_request_object
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns all questions for a given catalog.
+        # @param [String] parent
+        #   Required. Resource name of the parent catalog. Format: projects/`project`/
+        #   locations/`location`/catalogs/`catalog`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_catalog_generative_questions(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/generativeQuestions', options)
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

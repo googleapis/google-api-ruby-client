@@ -560,6 +560,44 @@ module Google
         end
       end
       
+      # Request for BatchUpdateGenerativeQuestionConfig method.
+      class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The updates question configs.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Aggregated response for UpdateGenerativeQuestionConfig method.
+      class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The updates question configs.
+        # Corresponds to the JSON property `generativeQuestionConfigs`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig>]
+        attr_accessor :generative_question_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generative_question_configs = args[:generative_question_configs] if args.key?(:generative_question_configs)
+        end
+      end
+      
       # A BigQuery output result.
       class GoogleCloudRetailV2BigQueryOutputResult
         include Google::Apis::Core::Hashable
@@ -1805,6 +1843,99 @@ module Google
         end
       end
       
+      # Configuration for a single generated question.
+      class GoogleCloudRetailV2GenerativeQuestionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the question is asked at serving time.
+        # Corresponds to the JSON property `allowedInConversation`
+        # @return [Boolean]
+        attr_accessor :allowed_in_conversation
+        alias_method :allowed_in_conversation?, :allowed_in_conversation
+      
+        # Required. Resource name of the catalog. Format: projects/`project`/locations/`
+        # location`/catalogs/`catalog`
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # Output only. Values that can be used to answer the question.
+        # Corresponds to the JSON property `exampleValues`
+        # @return [Array<String>]
+        attr_accessor :example_values
+      
+        # Required. The facet to which the question is associated.
+        # Corresponds to the JSON property `facet`
+        # @return [String]
+        attr_accessor :facet
+      
+        # Optional. The question that will be used at serving time. Question can have a
+        # max length of 300 bytes. When not populated, generated_question should be used.
+        # Corresponds to the JSON property `finalQuestion`
+        # @return [String]
+        attr_accessor :final_question
+      
+        # Output only. The ratio of how often a question was asked.
+        # Corresponds to the JSON property `frequency`
+        # @return [Float]
+        attr_accessor :frequency
+      
+        # Output only. The LLM generated question.
+        # Corresponds to the JSON property `generatedQuestion`
+        # @return [String]
+        attr_accessor :generated_question
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_in_conversation = args[:allowed_in_conversation] if args.key?(:allowed_in_conversation)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @example_values = args[:example_values] if args.key?(:example_values)
+          @facet = args[:facet] if args.key?(:facet)
+          @final_question = args[:final_question] if args.key?(:final_question)
+          @frequency = args[:frequency] if args.key?(:frequency)
+          @generated_question = args[:generated_question] if args.key?(:generated_question)
+        end
+      end
+      
+      # Configuration for overall generative question feature state.
+      class GoogleCloudRetailV2GenerativeQuestionsFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource name of the affected catalog. Format: projects/`project`/
+        # locations/`location`/catalogs/`catalog`
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # Optional. Determines whether questions will be used at serving time. Note:
+        # This feature cannot be enabled until initial data requirements are satisfied.
+        # Corresponds to the JSON property `featureEnabled`
+        # @return [Boolean]
+        attr_accessor :feature_enabled
+        alias_method :feature_enabled?, :feature_enabled
+      
+        # Optional. Minimum number of products in the response to trigger follow-up
+        # questions. Value must be 0 or positive.
+        # Corresponds to the JSON property `minimumProducts`
+        # @return [Fixnum]
+        attr_accessor :minimum_products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @feature_enabled = args[:feature_enabled] if args.key?(:feature_enabled)
+          @minimum_products = args[:minimum_products] if args.key?(:minimum_products)
+        end
+      end
+      
       # Response message of CatalogService.GetDefaultBranch.
       class GoogleCloudRetailV2GetDefaultBranchResponse
         include Google::Apis::Core::Hashable
@@ -2232,6 +2363,25 @@ module Google
         def update!(**args)
           @controls = args[:controls] if args.key?(:controls)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for ListQuestions method.
+      class GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the questions for a given catalog.
+        # Corresponds to the JSON property `generativeQuestionConfigs`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig>]
+        attr_accessor :generative_question_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generative_question_configs = args[:generative_question_configs] if args.key?(:generative_question_configs)
         end
       end
       
@@ -6059,6 +6209,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request for UpdateGenerativeQuestionConfig method.
+      class GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a single generated question.
+        # Corresponds to the JSON property `generativeQuestionConfig`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig]
+        attr_accessor :generative_question_config
+      
+        # Optional. Indicates which fields in the provided GenerativeQuestionConfig to
+        # update. The following are NOT supported: * GenerativeQuestionConfig.frequency
+        # If not set or empty, all supported fields are updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generative_question_config = args[:generative_question_config] if args.key?(:generative_question_config)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       

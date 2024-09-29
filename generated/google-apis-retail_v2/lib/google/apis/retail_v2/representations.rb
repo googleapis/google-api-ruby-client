@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2BigQueryOutputResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +328,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2GenerativeQuestionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2GenerativeQuestionsFeatureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2GetDefaultBranchResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +413,12 @@ module Google
       end
       
       class GoogleCloudRetailV2ListControlsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -929,6 +959,12 @@ module Google
       end
       
       class GoogleCloudRetailV2TuneModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1639,6 +1675,22 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::RetailV2::GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generative_question_configs, as: 'generativeQuestionConfigs', class: Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudRetailV2BigQueryOutputResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1948,6 +2000,28 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2GenerativeQuestionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed_in_conversation, as: 'allowedInConversation'
+          property :catalog, as: 'catalog'
+          collection :example_values, as: 'exampleValues'
+          property :facet, as: 'facet'
+          property :final_question, as: 'finalQuestion'
+          property :frequency, as: 'frequency'
+          property :generated_question, as: 'generatedQuestion'
+        end
+      end
+      
+      class GoogleCloudRetailV2GenerativeQuestionsFeatureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog, as: 'catalog'
+          property :feature_enabled, as: 'featureEnabled'
+          property :minimum_products, as: 'minimumProducts'
+        end
+      end
+      
       class GoogleCloudRetailV2GetDefaultBranchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2073,6 +2147,14 @@ module Google
           collection :controls, as: 'controls', class: Google::Apis::RetailV2::GoogleCloudRetailV2Control, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2Control::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generative_question_configs, as: 'generativeQuestionConfigs', class: Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig::Representation
+      
         end
       end
       
@@ -2987,6 +3069,15 @@ module Google
       class GoogleCloudRetailV2TuneModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generative_question_config, as: 'generativeQuestionConfig', class: Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2GenerativeQuestionConfig::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
