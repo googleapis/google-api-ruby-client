@@ -623,7 +623,7 @@ module Google
       
         # Browser-specific fields reported by the [Endpoint Verification extension](
         # https://chromewebstore.google.com/detail/endpoint-verification/
-        # callobklhcbilhphinckomhgkigmfocg?pli=1). LINT.IfChange
+        # callobklhcbilhphinckomhgkigmfocg?pli=1).
         # Corresponds to the JSON property `chromeBrowserInfo`
         # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1BrowserInfo]
         attr_accessor :chrome_browser_info
@@ -634,7 +634,8 @@ module Google
         # @return [String]
         attr_accessor :chrome_profile_id
       
-        # Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+        # Timestamp in milliseconds since the Unix epoch when the profile/gcm id was
+        # last synced.
         # Corresponds to the JSON property `lastProfileSyncTime`
         # @return [String]
         attr_accessor :last_profile_sync_time
@@ -653,7 +654,7 @@ module Google
       
       # Browser-specific fields reported by the [Endpoint Verification extension](
       # https://chromewebstore.google.com/detail/endpoint-verification/
-      # callobklhcbilhphinckomhgkigmfocg?pli=1). LINT.IfChange
+      # callobklhcbilhphinckomhgkigmfocg?pli=1).
       class GoogleAppsCloudidentityDevicesV1BrowserInfo
         include Google::Apis::Core::Hashable
       
@@ -662,7 +663,7 @@ module Google
         # @return [String]
         attr_accessor :browser_management_state
       
-        # Version of the request initiating browser.
+        # Version of the request initiating browser. E.g. `91.0.4442.4`.
         # Corresponds to the JSON property `browserVersion`
         # @return [String]
         attr_accessor :browser_version
@@ -1464,10 +1465,11 @@ module Google
       class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes
         include Google::Apis::Core::Hashable
       
-        # Additional signals reported by Endpoint Verification. It includes the
-        # following attributes: 1. Non-configurable attributes: hotfixes, av_installed,
+        # [Additional signals](https://cloud.google.com/endpoint-verification/docs/
+        # device-information) reported by Endpoint Verification. It includes the
+        # following attributes: * Non-configurable attributes: hotfixes, av_installed,
         # av_enabled, windows_domain_name, is_os_native_firewall_enabled, and
-        # is_secure_boot_enabled. 2. [Configurable attributes](https://cloud.google.com/
+        # is_secure_boot_enabled. * [Configurable attributes](https://cloud.google.com/
         # endpoint-verification/docs/collect-config-attributes): file, folder, and
         # binary attributes; registry entries; and properties in a plist.
         # Corresponds to the JSON property `additionalSignals`
