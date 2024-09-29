@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AvroFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsKinesis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,12 @@ module Google
       end
       
       class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudStorage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -184,7 +196,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlatformLogsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubSubAvroFormat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Topic
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -381,6 +411,12 @@ module Google
         end
       end
       
+      class AvroFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AwsKinesis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -412,6 +448,22 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class CloudStorage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avro_format, as: 'avroFormat', class: Google::Apis::PubsubV1::AvroFormat, decorator: Google::Apis::PubsubV1::AvroFormat::Representation
+      
+          property :bucket, as: 'bucket'
+          property :match_glob, as: 'matchGlob'
+          property :minimum_object_create_time, as: 'minimumObjectCreateTime'
+          property :pubsub_avro_format, as: 'pubsubAvroFormat', class: Google::Apis::PubsubV1::PubSubAvroFormat, decorator: Google::Apis::PubsubV1::PubSubAvroFormat::Representation
+      
+          property :state, as: 'state'
+          property :text_format, as: 'textFormat', class: Google::Apis::PubsubV1::TextFormat, decorator: Google::Apis::PubsubV1::TextFormat::Representation
+      
         end
       end
       
@@ -491,6 +543,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aws_kinesis, as: 'awsKinesis', class: Google::Apis::PubsubV1::AwsKinesis, decorator: Google::Apis::PubsubV1::AwsKinesis::Representation
+      
+          property :cloud_storage, as: 'cloudStorage', class: Google::Apis::PubsubV1::CloudStorage, decorator: Google::Apis::PubsubV1::CloudStorage::Representation
+      
+          property :platform_logs_settings, as: 'platformLogsSettings', class: Google::Apis::PubsubV1::PlatformLogsSettings, decorator: Google::Apis::PubsubV1::PlatformLogsSettings::Representation
       
         end
       end
@@ -595,6 +651,13 @@ module Google
         end
       end
       
+      class PlatformLogsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :severity, as: 'severity'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -602,6 +665,12 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PubSubAvroFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -794,6 +863,13 @@ module Google
       class TextConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class TextFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delimiter, as: 'delimiter'
         end
       end
       
