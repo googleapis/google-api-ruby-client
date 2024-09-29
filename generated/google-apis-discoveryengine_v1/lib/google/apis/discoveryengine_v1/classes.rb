@@ -3275,6 +3275,11 @@ module Google
       class GoogleCloudDiscoveryengineV1DataStore
         include Google::Apis::Core::Hashable
       
+        # Estimation of data size per data store.
+        # Corresponds to the JSON property `billingEstimation`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStoreBillingEstimation]
+        attr_accessor :billing_estimation
+      
         # Immutable. The content config of the data store. If this field is unset, the
         # server behavior defaults to ContentConfig.NO_CONTENT.
         # Corresponds to the JSON property `contentConfig`
@@ -3347,6 +3352,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
           @content_config = args[:content_config] if args.key?(:content_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
@@ -3358,6 +3364,55 @@ module Google
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
           @workspace_config = args[:workspace_config] if args.key?(:workspace_config)
+        end
+      end
+      
+      # Estimation of data size per data store.
+      class GoogleCloudDiscoveryengineV1DataStoreBillingEstimation
+        include Google::Apis::Core::Hashable
+      
+        # Data size for structured data in terms of bytes.
+        # Corresponds to the JSON property `structuredDataSize`
+        # @return [Fixnum]
+        attr_accessor :structured_data_size
+      
+        # Last updated timestamp for structured data.
+        # Corresponds to the JSON property `structuredDataUpdateTime`
+        # @return [String]
+        attr_accessor :structured_data_update_time
+      
+        # Data size for unstructured data in terms of bytes.
+        # Corresponds to the JSON property `unstructuredDataSize`
+        # @return [Fixnum]
+        attr_accessor :unstructured_data_size
+      
+        # Last updated timestamp for unstructured data.
+        # Corresponds to the JSON property `unstructuredDataUpdateTime`
+        # @return [String]
+        attr_accessor :unstructured_data_update_time
+      
+        # Data size for websites in terms of bytes.
+        # Corresponds to the JSON property `websiteDataSize`
+        # @return [Fixnum]
+        attr_accessor :website_data_size
+      
+        # Last updated timestamp for websites.
+        # Corresponds to the JSON property `websiteDataUpdateTime`
+        # @return [String]
+        attr_accessor :website_data_update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @structured_data_size = args[:structured_data_size] if args.key?(:structured_data_size)
+          @structured_data_update_time = args[:structured_data_update_time] if args.key?(:structured_data_update_time)
+          @unstructured_data_size = args[:unstructured_data_size] if args.key?(:unstructured_data_size)
+          @unstructured_data_update_time = args[:unstructured_data_update_time] if args.key?(:unstructured_data_update_time)
+          @website_data_size = args[:website_data_size] if args.key?(:website_data_size)
+          @website_data_update_time = args[:website_data_update_time] if args.key?(:website_data_update_time)
         end
       end
       
@@ -7076,6 +7131,13 @@ module Google
         # @return [String]
         attr_accessor :data_store
       
+        # Optional. Filter specification to filter documents in the data store specified
+        # by data_store field. For more information on filtering, see [Filtering](https:/
+        # /cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7083,6 +7145,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       
@@ -9916,6 +9979,11 @@ module Google
         attr_accessor :acl_enabled
         alias_method :acl_enabled?, :acl_enabled
       
+        # Estimation of data size per data store.
+        # Corresponds to the JSON property `billingEstimation`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation]
+        attr_accessor :billing_estimation
+      
         # Immutable. The content config of the data store. If this field is unset, the
         # server behavior defaults to ContentConfig.NO_CONTENT.
         # Corresponds to the JSON property `contentConfig`
@@ -10004,6 +10072,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acl_enabled = args[:acl_enabled] if args.key?(:acl_enabled)
+          @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
           @content_config = args[:content_config] if args.key?(:content_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
@@ -10018,6 +10087,55 @@ module Google
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
           @workspace_config = args[:workspace_config] if args.key?(:workspace_config)
+        end
+      end
+      
+      # Estimation of data size per data store.
+      class GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation
+        include Google::Apis::Core::Hashable
+      
+        # Data size for structured data in terms of bytes.
+        # Corresponds to the JSON property `structuredDataSize`
+        # @return [Fixnum]
+        attr_accessor :structured_data_size
+      
+        # Last updated timestamp for structured data.
+        # Corresponds to the JSON property `structuredDataUpdateTime`
+        # @return [String]
+        attr_accessor :structured_data_update_time
+      
+        # Data size for unstructured data in terms of bytes.
+        # Corresponds to the JSON property `unstructuredDataSize`
+        # @return [Fixnum]
+        attr_accessor :unstructured_data_size
+      
+        # Last updated timestamp for unstructured data.
+        # Corresponds to the JSON property `unstructuredDataUpdateTime`
+        # @return [String]
+        attr_accessor :unstructured_data_update_time
+      
+        # Data size for websites in terms of bytes.
+        # Corresponds to the JSON property `websiteDataSize`
+        # @return [Fixnum]
+        attr_accessor :website_data_size
+      
+        # Last updated timestamp for websites.
+        # Corresponds to the JSON property `websiteDataUpdateTime`
+        # @return [String]
+        attr_accessor :website_data_update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @structured_data_size = args[:structured_data_size] if args.key?(:structured_data_size)
+          @structured_data_update_time = args[:structured_data_update_time] if args.key?(:structured_data_update_time)
+          @unstructured_data_size = args[:unstructured_data_size] if args.key?(:unstructured_data_size)
+          @unstructured_data_update_time = args[:unstructured_data_update_time] if args.key?(:unstructured_data_update_time)
+          @website_data_size = args[:website_data_size] if args.key?(:website_data_size)
+          @website_data_update_time = args[:website_data_update_time] if args.key?(:website_data_update_time)
         end
       end
       
@@ -11020,6 +11138,14 @@ module Google
         # @return [String]
         attr_accessor :key_property_type
       
+        # Optional. The metatag name found in the HTML page. If user defines this field,
+        # the value of this metatag name will be used to extract metatag. If the user
+        # does not define this field, the FieldConfig.field_path will be used to extract
+        # metatag.
+        # Corresponds to the JSON property `metatagName`
+        # @return [String]
+        attr_accessor :metatag_name
+      
         # If recs_filterable_option is FILTERABLE_ENABLED, field values are filterable
         # by filter expression in RecommendationService.Recommend. If FILTERABLE_ENABLED
         # but the field type is numerical, field values are not filterable by text
@@ -11081,6 +11207,7 @@ module Google
           @field_type = args[:field_type] if args.key?(:field_type)
           @indexable_option = args[:indexable_option] if args.key?(:indexable_option)
           @key_property_type = args[:key_property_type] if args.key?(:key_property_type)
+          @metatag_name = args[:metatag_name] if args.key?(:metatag_name)
           @recs_filterable_option = args[:recs_filterable_option] if args.key?(:recs_filterable_option)
           @retrievable_option = args[:retrievable_option] if args.key?(:retrievable_option)
           @schema_org_paths = args[:schema_org_paths] if args.key?(:schema_org_paths)
@@ -12404,6 +12531,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :params
       
+        # The specification for personalization.
+        # Corresponds to the JSON property `personalizationSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec]
+        attr_accessor :personalization_spec
+      
         # Raw search query.
         # Corresponds to the JSON property `query`
         # @return [String]
@@ -12554,6 +12686,7 @@ module Google
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
           @params = args[:params] if args.key?(:params)
+          @personalization_spec = args[:personalization_spec] if args.key?(:personalization_spec)
           @query = args[:query] if args.key?(:query)
           @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
           @ranking_expression = args[:ranking_expression] if args.key?(:ranking_expression)
@@ -13071,6 +13204,13 @@ module Google
         # @return [String]
         attr_accessor :data_store
       
+        # Optional. Filter specification to filter documents in the data store specified
+        # by data_store field. For more information on filtering, see [Filtering](https:/
+        # /cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13078,6 +13218,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       
@@ -13323,6 +13464,25 @@ module Google
         def update!(**args)
           @filter_extraction_condition = args[:filter_extraction_condition] if args.key?(:filter_extraction_condition)
           @geo_search_query_detection_field_names = args[:geo_search_query_detection_field_names] if args.key?(:geo_search_query_detection_field_names)
+        end
+      end
+      
+      # The specification for personalization.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec
+        include Google::Apis::Core::Hashable
+      
+        # The personalization mode of the search request. Defaults to Mode.AUTO.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
@@ -14449,6 +14609,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDataStore
         include Google::Apis::Core::Hashable
       
+        # Estimation of data size per data store.
+        # Corresponds to the JSON property `billingEstimation`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation]
+        attr_accessor :billing_estimation
+      
         # Immutable. The content config of the data store. If this field is unset, the
         # server behavior defaults to ContentConfig.NO_CONTENT.
         # Corresponds to the JSON property `contentConfig`
@@ -14531,6 +14696,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
           @content_config = args[:content_config] if args.key?(:content_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
@@ -14544,6 +14710,55 @@ module Google
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
           @workspace_config = args[:workspace_config] if args.key?(:workspace_config)
+        end
+      end
+      
+      # Estimation of data size per data store.
+      class GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation
+        include Google::Apis::Core::Hashable
+      
+        # Data size for structured data in terms of bytes.
+        # Corresponds to the JSON property `structuredDataSize`
+        # @return [Fixnum]
+        attr_accessor :structured_data_size
+      
+        # Last updated timestamp for structured data.
+        # Corresponds to the JSON property `structuredDataUpdateTime`
+        # @return [String]
+        attr_accessor :structured_data_update_time
+      
+        # Data size for unstructured data in terms of bytes.
+        # Corresponds to the JSON property `unstructuredDataSize`
+        # @return [Fixnum]
+        attr_accessor :unstructured_data_size
+      
+        # Last updated timestamp for unstructured data.
+        # Corresponds to the JSON property `unstructuredDataUpdateTime`
+        # @return [String]
+        attr_accessor :unstructured_data_update_time
+      
+        # Data size for websites in terms of bytes.
+        # Corresponds to the JSON property `websiteDataSize`
+        # @return [Fixnum]
+        attr_accessor :website_data_size
+      
+        # Last updated timestamp for websites.
+        # Corresponds to the JSON property `websiteDataUpdateTime`
+        # @return [String]
+        attr_accessor :website_data_update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @structured_data_size = args[:structured_data_size] if args.key?(:structured_data_size)
+          @structured_data_update_time = args[:structured_data_update_time] if args.key?(:structured_data_update_time)
+          @unstructured_data_size = args[:unstructured_data_size] if args.key?(:unstructured_data_size)
+          @unstructured_data_update_time = args[:unstructured_data_update_time] if args.key?(:unstructured_data_update_time)
+          @website_data_size = args[:website_data_size] if args.key?(:website_data_size)
+          @website_data_update_time = args[:website_data_update_time] if args.key?(:website_data_update_time)
         end
       end
       
@@ -16240,6 +16455,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :params
       
+        # The specification for personalization.
+        # Corresponds to the JSON property `personalizationSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec]
+        attr_accessor :personalization_spec
+      
         # Raw search query.
         # Corresponds to the JSON property `query`
         # @return [String]
@@ -16389,6 +16609,7 @@ module Google
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
           @params = args[:params] if args.key?(:params)
+          @personalization_spec = args[:personalization_spec] if args.key?(:personalization_spec)
           @query = args[:query] if args.key?(:query)
           @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
           @ranking_expression = args[:ranking_expression] if args.key?(:ranking_expression)
@@ -16906,6 +17127,13 @@ module Google
         # @return [String]
         attr_accessor :data_store
       
+        # Optional. Filter specification to filter documents in the data store specified
+        # by data_store field. For more information on filtering, see [Filtering](https:/
+        # /cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16913,6 +17141,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       
@@ -17158,6 +17387,25 @@ module Google
         def update!(**args)
           @filter_extraction_condition = args[:filter_extraction_condition] if args.key?(:filter_extraction_condition)
           @geo_search_query_detection_field_names = args[:geo_search_query_detection_field_names] if args.key?(:geo_search_query_detection_field_names)
+        end
+      end
+      
+      # The specification for personalization.
+      class GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec
+        include Google::Apis::Core::Hashable
+      
+        # The personalization mode of the search request. Defaults to Mode.AUTO.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
