@@ -555,6 +555,8 @@ module Google
           property :network_type, as: 'networkType'
           property :port, as: 'port'
           property :project_id, as: 'projectId'
+          property :redis_cluster, as: 'redisCluster'
+          property :redis_instance, as: 'redisInstance'
         end
       end
       

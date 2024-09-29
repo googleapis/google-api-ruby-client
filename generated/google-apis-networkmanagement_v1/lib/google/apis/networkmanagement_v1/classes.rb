@@ -779,6 +779,16 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # A [Redis Cluster](https://cloud.google.com/memorystore/docs/cluster) URI.
+        # Corresponds to the JSON property `redisCluster`
+        # @return [String]
+        attr_accessor :redis_cluster
+      
+        # A [Redis Instance](https://cloud.google.com/memorystore/docs/redis) URI.
+        # Corresponds to the JSON property `redisInstance`
+        # @return [String]
+        attr_accessor :redis_instance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -800,6 +810,8 @@ module Google
           @network_type = args[:network_type] if args.key?(:network_type)
           @port = args[:port] if args.key?(:port)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @redis_cluster = args[:redis_cluster] if args.key?(:redis_cluster)
+          @redis_instance = args[:redis_instance] if args.key?(:redis_instance)
         end
       end
       
