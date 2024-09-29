@@ -333,6 +333,27 @@ module Google
         end
       end
       
+      # CustomMirroringProfile defines an action for mirroring traffic to a collector'
+      # s EndpointGroup
+      class CustomMirroringProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. The MirroringEndpointGroup to which traffic associated with the SP
+        # should be mirrored.
+        # Corresponds to the JSON property `mirroringEndpointGroup`
+        # @return [String]
+        attr_accessor :mirroring_endpoint_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mirroring_endpoint_group = args[:mirroring_endpoint_group] if args.key?(:mirroring_endpoint_group)
+        end
+      end
+      
       # Specification of traffic destination attributes.
       class Destination
         include Google::Apis::Core::Hashable
@@ -1945,6 +1966,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # CustomMirroringProfile defines an action for mirroring traffic to a collector'
+        # s EndpointGroup
+        # Corresponds to the JSON property `customMirroringProfile`
+        # @return [Google::Apis::NetworksecurityV1::CustomMirroringProfile]
+        attr_accessor :custom_mirroring_profile
+      
         # Optional. An optional description of the profile. Max length 512 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1992,6 +2019,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_mirroring_profile = args[:custom_mirroring_profile] if args.key?(:custom_mirroring_profile)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
@@ -2011,6 +2039,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. Reference to a SecurityProfile with the CustomMirroring
+        # configuration.
+        # Corresponds to the JSON property `customMirroringProfile`
+        # @return [String]
+        attr_accessor :custom_mirroring_profile
       
         # Optional. An optional description of the profile group. Max length 2048
         # characters.
@@ -2055,6 +2089,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_mirroring_profile = args[:custom_mirroring_profile] if args.key?(:custom_mirroring_profile)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
