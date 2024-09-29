@@ -6732,6 +6732,8 @@ module Google
           property :display_name, as: 'displayName'
           property :language_code, as: 'languageCode'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :smart_reply_model_metadata, as: 'smartReplyModelMetadata', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SmartReplyModelMetadata, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SmartReplyModelMetadata::Representation
       
           property :state, as: 'state'

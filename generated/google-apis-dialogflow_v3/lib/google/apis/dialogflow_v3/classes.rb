@@ -13006,6 +13006,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. A read only boolean field reflecting Zone Isolation status of the
+        # model.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. A read only boolean field reflecting Zone Separation status of
+        # the model.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Metadata for smart reply models.
         # Corresponds to the JSON property `smartReplyModelMetadata`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SmartReplyModelMetadata]
@@ -13029,6 +13043,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @smart_reply_model_metadata = args[:smart_reply_model_metadata] if args.key?(:smart_reply_model_metadata)
           @state = args[:state] if args.key?(:state)
         end
