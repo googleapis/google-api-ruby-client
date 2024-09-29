@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LinkedProducerVpcNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LinkedRouterApplianceInstances
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -692,6 +698,17 @@ module Google
         end
       end
       
+      class LinkedProducerVpcNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_export_ranges, as: 'excludeExportRanges'
+          property :network, as: 'network'
+          property :peering, as: 'peering'
+          property :producer_network, as: 'producerNetwork'
+          property :service_consumer_vpc_spoke, as: 'serviceConsumerVpcSpoke'
+        end
+      end
+      
       class LinkedRouterApplianceInstances
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1187,6 +1204,8 @@ module Google
           property :hub, as: 'hub'
           hash :labels, as: 'labels'
           property :linked_interconnect_attachments, as: 'linkedInterconnectAttachments', class: Google::Apis::NetworkconnectivityV1::LinkedInterconnectAttachments, decorator: Google::Apis::NetworkconnectivityV1::LinkedInterconnectAttachments::Representation
+      
+          property :linked_producer_vpc_network, as: 'linkedProducerVpcNetwork', class: Google::Apis::NetworkconnectivityV1::LinkedProducerVpcNetwork, decorator: Google::Apis::NetworkconnectivityV1::LinkedProducerVpcNetwork::Representation
       
           property :linked_router_appliance_instances, as: 'linkedRouterApplianceInstances', class: Google::Apis::NetworkconnectivityV1::LinkedRouterApplianceInstances, decorator: Google::Apis::NetworkconnectivityV1::LinkedRouterApplianceInstances::Representation
       
