@@ -130,6 +130,12 @@ module Google
       class AdvanceRolloutRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Deploy policies to override. Format is `projects/`project`/locations/
+        # `location`/deployPolicies/`deployPolicy``.
+        # Corresponds to the JSON property `overrideDeployPolicy`
+        # @return [Array<String>]
+        attr_accessor :override_deploy_policy
+      
         # Required. The phase ID to advance the `Rollout` to.
         # Corresponds to the JSON property `phaseId`
         # @return [String]
@@ -141,6 +147,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @override_deploy_policy = args[:override_deploy_policy] if args.key?(:override_deploy_policy)
           @phase_id = args[:phase_id] if args.key?(:phase_id)
         end
       end
@@ -232,6 +239,12 @@ module Google
         attr_accessor :approved
         alias_method :approved?, :approved
       
+        # Optional. Deploy policies to override. Format is `projects/`project`/locations/
+        # `location`/deployPolicies/`deployPolicy``.
+        # Corresponds to the JSON property `overrideDeployPolicy`
+        # @return [Array<String>]
+        attr_accessor :override_deploy_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -239,6 +252,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @approved = args[:approved] if args.key?(:approved)
+          @override_deploy_policy = args[:override_deploy_policy] if args.key?(:override_deploy_policy)
         end
       end
       
@@ -637,6 +651,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Returned from an action if one or more policies were violated, and therefore
+        # the action was prevented. Contains information about what policies were
+        # violated and why.
+        # Corresponds to the JSON property `policyViolation`
+        # @return [Google::Apis::ClouddeployV1::PolicyViolation]
+        attr_accessor :policy_violation
+      
         # Contains the information of an automated promote-release operation.
         # Corresponds to the JSON property `promoteReleaseOperation`
         # @return [Google::Apis::ClouddeployV1::PromoteReleaseOperation]
@@ -700,6 +721,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
+          @policy_violation = args[:policy_violation] if args.key?(:policy_violation)
           @promote_release_operation = args[:promote_release_operation] if args.key?(:promote_release_operation)
           @repair_rollout_operation = args[:repair_rollout_operation] if args.key?(:repair_rollout_operation)
           @rule_id = args[:rule_id] if args.key?(:rule_id)
@@ -1012,12 +1034,19 @@ module Google
       class CancelRolloutRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Deploy policies to override. Format is `projects/`project`/locations/
+        # `location`/deployPolicies/`deployPolicy``.
+        # Corresponds to the JSON property `overrideDeployPolicy`
+        # @return [Array<String>]
+        attr_accessor :override_deploy_policy
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @override_deploy_policy = args[:override_deploy_policy] if args.key?(:override_deploy_policy)
         end
       end
       
@@ -1661,6 +1690,33 @@ module Google
         end
       end
       
+      # Contains criteria for selecting DeliveryPipelines.
+      class DeliveryPipelineAttribute
+        include Google::Apis::Core::Hashable
+      
+        # ID of the `DeliveryPipeline`. The value of this field could be one of the
+        # following: * The last segment of a pipeline name * "*", all delivery pipelines
+        # in a location
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # DeliveryPipeline labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
       # Payload proto for "clouddeploy.googleapis.com/deliverypipeline_notification"
       # Platform Log event that describes the failure to send delivery pipeline status
       # change Pub/Sub notification.
@@ -1846,6 +1902,210 @@ module Google
         end
       end
       
+      # A `DeployPolicy` resource in the Cloud Deploy API. A `DeployPolicy` inhibits
+      # manual or automation driven actions within a Delivery Pipeline or Target.
+      class DeployPolicy
+        include Google::Apis::Core::Hashable
+      
+        # User annotations. These attributes can only be set and used by the user, and
+        # not by Cloud Deploy. Annotations must meet the following constraints: *
+        # Annotations are key/value pairs. * Valid annotation keys have two segments: an
+        # optional prefix and name, separated by a slash (`/`). * The name segment is
+        # required and must be 63 characters or less, beginning and ending with an
+        # alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`),
+        # dots (`.`), and alphanumerics between. * The prefix is optional. If specified,
+        # the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.
+        # `), not longer than 253 characters in total, followed by a slash (`/`). See
+        # https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#
+        # syntax-and-character-set for more details.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. Time at which the deploy policy was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Description of the `DeployPolicy`. Max length is 255 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The weak etag of the `Automation` resource. This checksum is computed by the
+        # server based on the value of other fields, and may be sent on update and
+        # delete requests to ensure the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Labels are attributes that can be set and used by both the user and by Cloud
+        # Deploy. Labels must meet the following constraints: * Keys and values can
+        # contain only lowercase letters, numeric characters, underscores, and dashes. *
+        # All characters must use UTF-8 encoding, and international characters are
+        # allowed. * Keys must start with a lowercase letter or international character.
+        # * Each resource is limited to a maximum of 64 labels. Both keys and values are
+        # additionally constrained to be <= 128 bytes.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Name of the `DeployPolicy`. Format is `projects/`project`/
+        # locations/`location`/deployPolicies/`deployPolicy``. The `deployPolicy`
+        # component must match `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Rules to apply. At least one rule must be present.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ClouddeployV1::PolicyRule>]
+        attr_accessor :rules
+      
+        # Required. Selected resources to which the policy will be applied. At least one
+        # selector is required. If one selector matches the resource the policy applies.
+        # For example, if there are two selectors and the action being attempted matches
+        # one of them, the policy will apply to that action.
+        # Corresponds to the JSON property `selectors`
+        # @return [Array<Google::Apis::ClouddeployV1::DeployPolicyResourceSelector>]
+        attr_accessor :selectors
+      
+        # When suspended, the policy will not prevent actions from occurring, even if
+        # the action violates the policy.
+        # Corresponds to the JSON property `suspended`
+        # @return [Boolean]
+        attr_accessor :suspended
+        alias_method :suspended?, :suspended
+      
+        # Output only. Unique identifier of the `DeployPolicy`.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Most recent time at which the deploy policy was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+          @selectors = args[:selectors] if args.key?(:selectors)
+          @suspended = args[:suspended] if args.key?(:suspended)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Payload proto for "clouddeploy.googleapis.com/deploypolicy_evaluation"
+      # Platform Log event that describes the deploy policy evaluation event.
+      class DeployPolicyEvaluationEvent
+        include Google::Apis::Core::Hashable
+      
+        # Whether the request is allowed. Allowed is set as true if: (1) the request
+        # complies with the policy; or (2) the request doesn't comply with the policy
+        # but the policy was overridden; or (3) the request doesn't comply with the
+        # policy but the policy was suspended
+        # Corresponds to the JSON property `allowed`
+        # @return [Boolean]
+        attr_accessor :allowed
+        alias_method :allowed?, :allowed
+      
+        # The name of the `Delivery Pipeline`.
+        # Corresponds to the JSON property `deliveryPipeline`
+        # @return [String]
+        attr_accessor :delivery_pipeline
+      
+        # The name of the `DeployPolicy`.
+        # Corresponds to the JSON property `deployPolicy`
+        # @return [String]
+        attr_accessor :deploy_policy
+      
+        # Unique identifier of the `DeployPolicy`.
+        # Corresponds to the JSON property `deployPolicyUid`
+        # @return [String]
+        attr_accessor :deploy_policy_uid
+      
+        # What invoked the action (e.g. a user or automation).
+        # Corresponds to the JSON property `invoker`
+        # @return [String]
+        attr_accessor :invoker
+      
+        # Debug message for when a deploy policy event occurs.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Things that could have overridden the policy verdict. Overrides together with
+        # verdict decide whether the request is allowed.
+        # Corresponds to the JSON property `overrides`
+        # @return [Array<String>]
+        attr_accessor :overrides
+      
+        # Unique identifier of the `Delivery Pipeline`.
+        # Corresponds to the JSON property `pipelineUid`
+        # @return [String]
+        attr_accessor :pipeline_uid
+      
+        # Rule id.
+        # Corresponds to the JSON property `rule`
+        # @return [String]
+        attr_accessor :rule
+      
+        # Rule type (e.g. Restrict Rollouts).
+        # Corresponds to the JSON property `ruleType`
+        # @return [String]
+        attr_accessor :rule_type
+      
+        # The name of the `Target`. This is an optional field, as a `Target` may not
+        # always be applicable to a policy.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Unique identifier of the `Target`. This is an optional field, as a `Target`
+        # may not always be applicable to a policy.
+        # Corresponds to the JSON property `targetUid`
+        # @return [String]
+        attr_accessor :target_uid
+      
+        # The policy verdict of the request.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @delivery_pipeline = args[:delivery_pipeline] if args.key?(:delivery_pipeline)
+          @deploy_policy = args[:deploy_policy] if args.key?(:deploy_policy)
+          @deploy_policy_uid = args[:deploy_policy_uid] if args.key?(:deploy_policy_uid)
+          @invoker = args[:invoker] if args.key?(:invoker)
+          @message = args[:message] if args.key?(:message)
+          @overrides = args[:overrides] if args.key?(:overrides)
+          @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
+          @rule = args[:rule] if args.key?(:rule)
+          @rule_type = args[:rule_type] if args.key?(:rule_type)
+          @target = args[:target] if args.key?(:target)
+          @target_uid = args[:target_uid] if args.key?(:target_uid)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
       # Payload proto for "clouddeploy.googleapis.com/deploypolicy_notification".
       # Platform Log event that describes the failure to send a pub/sub notification
       # when there is a DeployPolicy status change.
@@ -1882,6 +2142,35 @@ module Google
           @deploy_policy_uid = args[:deploy_policy_uid] if args.key?(:deploy_policy_uid)
           @message = args[:message] if args.key?(:message)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Contains information on the resources to select for a deploy policy.
+      # Attributes provided must all match the resource in order for policy
+      # restrictions to apply. For example, if delivery pipelines attributes given are
+      # an id "prod" and labels "foo: bar", a delivery pipeline resource must match
+      # both that id and have that label in order to be subject to the policy.
+      class DeployPolicyResourceSelector
+        include Google::Apis::Core::Hashable
+      
+        # Contains criteria for selecting DeliveryPipelines.
+        # Corresponds to the JSON property `deliveryPipeline`
+        # @return [Google::Apis::ClouddeployV1::DeliveryPipelineAttribute]
+        attr_accessor :delivery_pipeline
+      
+        # Contains criteria for selecting Targets.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::ClouddeployV1::TargetAttribute]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delivery_pipeline = args[:delivery_pipeline] if args.key?(:delivery_pipeline)
+          @target = args[:target] if args.key?(:target)
         end
       end
       
@@ -2168,6 +2457,12 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
+        # Optional. Deploy policies to override. Format is `projects/`project`/locations/
+        # `location`/deployPolicies/`deployPolicy``.
+        # Corresponds to the JSON property `overrideDeployPolicy`
+        # @return [Array<String>]
+        attr_accessor :override_deploy_policy
+      
         # Required. The phase ID the Job to ignore belongs to.
         # Corresponds to the JSON property `phaseId`
         # @return [String]
@@ -2180,6 +2475,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job_id = args[:job_id] if args.key?(:job_id)
+          @override_deploy_policy = args[:override_deploy_policy] if args.key?(:override_deploy_policy)
           @phase_id = args[:phase_id] if args.key?(:phase_id)
         end
       end
@@ -2603,6 +2899,38 @@ module Google
         end
       end
       
+      # The response object from `ListDeployPolicies`.
+      class ListDeployPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `DeployPolicy` objects.
+        # Corresponds to the JSON property `deployPolicies`
+        # @return [Array<Google::Apis::ClouddeployV1::DeployPolicy>]
+        attr_accessor :deploy_policies
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deploy_policies = args[:deploy_policies] if args.key?(:deploy_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # ListJobRunsResponse is the response object returned by `ListJobRuns`.
       class ListJobRunsResponse
         include Google::Apis::Core::Hashable
@@ -2876,6 +3204,62 @@ module Google
         # Update properties of this object
         def update!(**args)
           @target_ids = args[:target_ids] if args.key?(:target_ids)
+        end
+      end
+      
+      # One-time window within which actions are restricted. For example, blocking
+      # actions over New Year's Eve from December 31st at 5pm to January 1st at 9am.
+      class OneTimeWindow
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::ClouddeployV1::Date]
+        attr_accessor :end_date
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `endTime`
+        # @return [Google::Apis::ClouddeployV1::TimeOfDay]
+        attr_accessor :end_time
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::ClouddeployV1::Date]
+        attr_accessor :start_date
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::ClouddeployV1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -3286,6 +3670,79 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Deploy Policy rule.
+      class PolicyRule
+        include Google::Apis::Core::Hashable
+      
+        # Rollout restrictions.
+        # Corresponds to the JSON property `rolloutRestriction`
+        # @return [Google::Apis::ClouddeployV1::RolloutRestriction]
+        attr_accessor :rollout_restriction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollout_restriction = args[:rollout_restriction] if args.key?(:rollout_restriction)
+        end
+      end
+      
+      # Returned from an action if one or more policies were violated, and therefore
+      # the action was prevented. Contains information about what policies were
+      # violated and why.
+      class PolicyViolation
+        include Google::Apis::Core::Hashable
+      
+        # Policy violation details.
+        # Corresponds to the JSON property `policyViolationDetails`
+        # @return [Array<Google::Apis::ClouddeployV1::PolicyViolationDetails>]
+        attr_accessor :policy_violation_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_violation_details = args[:policy_violation_details] if args.key?(:policy_violation_details)
+        end
+      end
+      
+      # Policy violation details.
+      class PolicyViolationDetails
+        include Google::Apis::Core::Hashable
+      
+        # User readable message about why the request violated a policy. This is not
+        # intended for machine parsing.
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
+        # Name of the policy that was violated. Policy resource will be in the format of
+        # `projects/`project`/locations/`location`/policies/`policy``.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        # Id of the rule that triggered the policy violation.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @policy = args[:policy] if args.key?(:policy)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
         end
       end
       
@@ -4044,6 +4501,12 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
+        # Optional. Deploy policies to override. Format is `projects/`project`/locations/
+        # `location`/deployPolicies/`deployPolicy``.
+        # Corresponds to the JSON property `overrideDeployPolicy`
+        # @return [Array<String>]
+        attr_accessor :override_deploy_policy
+      
         # Required. The phase ID the Job to retry belongs to.
         # Corresponds to the JSON property `phaseId`
         # @return [String]
@@ -4056,6 +4519,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job_id = args[:job_id] if args.key?(:job_id)
+          @override_deploy_policy = args[:override_deploy_policy] if args.key?(:override_deploy_policy)
           @phase_id = args[:phase_id] if args.key?(:phase_id)
         end
       end
@@ -4174,6 +4638,12 @@ module Google
       class RollbackTargetRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Deploy policies to override. Format is `projects/`project`/locations/
+        # `location`/deployPolicies/`deploy_policy``.
+        # Corresponds to the JSON property `overrideDeployPolicy`
+        # @return [Array<String>]
+        attr_accessor :override_deploy_policy
+      
         # Optional. ID of the `Release` to roll back to. If this isn't specified, the
         # previous successful `Rollout` to the specified target will be used to
         # determine the `Release`.
@@ -4215,6 +4685,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @override_deploy_policy = args[:override_deploy_policy] if args.key?(:override_deploy_policy)
           @release_id = args[:release_id] if args.key?(:release_id)
           @rollback_config = args[:rollback_config] if args.key?(:rollback_config)
           @rollout_id = args[:rollout_id] if args.key?(:rollout_id)
@@ -4467,6 +4938,46 @@ module Google
           @rollout_uid = args[:rollout_uid] if args.key?(:rollout_uid)
           @target_id = args[:target_id] if args.key?(:target_id)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Rollout restrictions.
+      class RolloutRestriction
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Rollout actions to be restricted as part of the policy. If left
+        # empty, all actions will be restricted.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<String>]
+        attr_accessor :actions
+      
+        # Required. Restriction rule ID. Required and must be unique within a
+        # DeployPolicy. The format is `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. What invoked the action. If left empty, all invoker types will be
+        # restricted.
+        # Corresponds to the JSON property `invokers`
+        # @return [Array<String>]
+        attr_accessor :invokers
+      
+        # Time windows within which actions are restricted.
+        # Corresponds to the JSON property `timeWindows`
+        # @return [Google::Apis::ClouddeployV1::TimeWindows]
+        attr_accessor :time_windows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @id = args[:id] if args.key?(:id)
+          @invokers = args[:invokers] if args.key?(:invokers)
+          @time_windows = args[:time_windows] if args.key?(:time_windows)
         end
       end
       
@@ -5370,12 +5881,19 @@ module Google
       class TerminateJobRunRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Deploy policies to override. Format is `projects/`project`/locations/
+        # `location`/deployPolicies/`deployPolicy``.
+        # Corresponds to the JSON property `overrideDeployPolicy`
+        # @return [Array<String>]
+        attr_accessor :override_deploy_policy
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @override_deploy_policy = args[:override_deploy_policy] if args.key?(:override_deploy_policy)
         end
       end
       
@@ -5429,6 +5947,79 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+        # allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+        # allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # Time windows within which actions are restricted.
+      class TimeWindows
+        include Google::Apis::Core::Hashable
+      
+        # Optional. One-time windows within which actions are restricted.
+        # Corresponds to the JSON property `oneTimeWindows`
+        # @return [Array<Google::Apis::ClouddeployV1::OneTimeWindow>]
+        attr_accessor :one_time_windows
+      
+        # Required. The time zone in IANA format [IANA Time Zone Database](https://www.
+        # iana.org/time-zones) (e.g. America/New_York).
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        # Optional. Recurring weekly windows within which actions are restricted.
+        # Corresponds to the JSON property `weeklyWindows`
+        # @return [Array<Google::Apis::ClouddeployV1::WeeklyWindow>]
+        attr_accessor :weekly_windows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @one_time_windows = args[:one_time_windows] if args.key?(:one_time_windows)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @weekly_windows = args[:weekly_windows] if args.key?(:weekly_windows)
         end
       end
       
@@ -5488,6 +6079,42 @@ module Google
           @event_log_path = args[:event_log_path] if args.key?(:event_log_path)
           @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
           @failure_message = args[:failure_message] if args.key?(:failure_message)
+        end
+      end
+      
+      # Weekly windows. For example, blocking actions every Saturday and Sunday.
+      # Another example would be blocking actions every weekday from 5pm to midnight.
+      class WeeklyWindow
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Days of week. If left empty, all days of the week will be included.
+        # Corresponds to the JSON property `daysOfWeek`
+        # @return [Array<String>]
+        attr_accessor :days_of_week
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `endTime`
+        # @return [Google::Apis::ClouddeployV1::TimeOfDay]
+        attr_accessor :end_time
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::ClouddeployV1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @days_of_week = args[:days_of_week] if args.key?(:days_of_week)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
     end
