@@ -342,8 +342,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The resource name for this CaPool in the format `projects/*/
-        # locations/*/caPools/*`.
+        # Output only. Identifier. The resource name for this CaPool in the format `
+        # projects/*/locations/*/caPools/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
