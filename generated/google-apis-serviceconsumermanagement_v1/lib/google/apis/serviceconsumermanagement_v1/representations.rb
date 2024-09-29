@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SelectiveGapicGeneration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Service
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -829,6 +835,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :destinations, as: 'destinations'
           property :reference_docs_uri, as: 'referenceDocsUri'
+          property :selective_gapic_generation, as: 'selectiveGapicGeneration', class: Google::Apis::ServiceconsumermanagementV1::SelectiveGapicGeneration, decorator: Google::Apis::ServiceconsumermanagementV1::SelectiveGapicGeneration::Representation
+      
         end
       end
       
@@ -1387,6 +1395,13 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :tenancy_units, as: 'tenancyUnits', class: Google::Apis::ServiceconsumermanagementV1::TenancyUnit, decorator: Google::Apis::ServiceconsumermanagementV1::TenancyUnit::Representation
       
+        end
+      end
+      
+      class SelectiveGapicGeneration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :methods_prop, as: 'methods'
         end
       end
       
