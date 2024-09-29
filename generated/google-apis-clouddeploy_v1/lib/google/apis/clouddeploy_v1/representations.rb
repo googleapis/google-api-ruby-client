@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeliveryPipelineAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeliveryPipelineNotificationEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,7 +352,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeployPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeployPolicyEvaluationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeployPolicyNotificationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeployPolicyResourceSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -448,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDeployPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListJobRunsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -502,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OneTimeWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -545,6 +581,24 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyViolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyViolationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -718,6 +772,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RolloutRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RolloutUpdateEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -874,6 +934,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeWindows
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VerifyJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -881,6 +953,12 @@ module Google
       end
       
       class VerifyJobRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WeeklyWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -925,6 +1003,7 @@ module Google
       class AdvanceRolloutRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :override_deploy_policy, as: 'overrideDeployPolicy'
           property :phase_id, as: 'phaseId'
         end
       end
@@ -957,6 +1036,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :approved, as: 'approved'
+          collection :override_deploy_policy, as: 'overrideDeployPolicy'
         end
       end
       
@@ -1062,6 +1142,8 @@ module Google
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
           property :name, as: 'name'
+          property :policy_violation, as: 'policyViolation', class: Google::Apis::ClouddeployV1::PolicyViolation, decorator: Google::Apis::ClouddeployV1::PolicyViolation::Representation
+      
           property :promote_release_operation, as: 'promoteReleaseOperation', class: Google::Apis::ClouddeployV1::PromoteReleaseOperation, decorator: Google::Apis::ClouddeployV1::PromoteReleaseOperation::Representation
       
           property :repair_rollout_operation, as: 'repairRolloutOperation', class: Google::Apis::ClouddeployV1::RepairRolloutOperation, decorator: Google::Apis::ClouddeployV1::RepairRolloutOperation::Representation
@@ -1152,6 +1234,7 @@ module Google
       class CancelRolloutRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :override_deploy_policy, as: 'overrideDeployPolicy'
         end
       end
       
@@ -1331,6 +1414,14 @@ module Google
         end
       end
       
+      class DeliveryPipelineAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :labels, as: 'labels'
+        end
+      end
+      
       class DeliveryPipelineNotificationEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1388,6 +1479,44 @@ module Google
         end
       end
       
+      class DeployPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::ClouddeployV1::PolicyRule, decorator: Google::Apis::ClouddeployV1::PolicyRule::Representation
+      
+          collection :selectors, as: 'selectors', class: Google::Apis::ClouddeployV1::DeployPolicyResourceSelector, decorator: Google::Apis::ClouddeployV1::DeployPolicyResourceSelector::Representation
+      
+          property :suspended, as: 'suspended'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class DeployPolicyEvaluationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed, as: 'allowed'
+          property :delivery_pipeline, as: 'deliveryPipeline'
+          property :deploy_policy, as: 'deployPolicy'
+          property :deploy_policy_uid, as: 'deployPolicyUid'
+          property :invoker, as: 'invoker'
+          property :message, as: 'message'
+          collection :overrides, as: 'overrides'
+          property :pipeline_uid, as: 'pipelineUid'
+          property :rule, as: 'rule'
+          property :rule_type, as: 'ruleType'
+          property :target, as: 'target'
+          property :target_uid, as: 'targetUid'
+          property :verdict, as: 'verdict'
+        end
+      end
+      
       class DeployPolicyNotificationEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1395,6 +1524,16 @@ module Google
           property :deploy_policy_uid, as: 'deployPolicyUid'
           property :message, as: 'message'
           property :type, as: 'type'
+        end
+      end
+      
+      class DeployPolicyResourceSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delivery_pipeline, as: 'deliveryPipeline', class: Google::Apis::ClouddeployV1::DeliveryPipelineAttribute, decorator: Google::Apis::ClouddeployV1::DeliveryPipelineAttribute::Representation
+      
+          property :target, as: 'target', class: Google::Apis::ClouddeployV1::TargetAttribute, decorator: Google::Apis::ClouddeployV1::TargetAttribute::Representation
+      
         end
       end
       
@@ -1469,6 +1608,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job_id, as: 'jobId'
+          collection :override_deploy_policy, as: 'overrideDeployPolicy'
           property :phase_id, as: 'phaseId'
         end
       end
@@ -1593,6 +1733,16 @@ module Google
         end
       end
       
+      class ListDeployPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deploy_policies, as: 'deployPolicies', class: Google::Apis::ClouddeployV1::DeployPolicy, decorator: Google::Apis::ClouddeployV1::DeployPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListJobRunsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1678,6 +1828,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :target_ids, as: 'targetIds'
+        end
+      end
+      
+      class OneTimeWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::ClouddeployV1::Date, decorator: Google::Apis::ClouddeployV1::Date::Representation
+      
+          property :end_time, as: 'endTime', class: Google::Apis::ClouddeployV1::TimeOfDay, decorator: Google::Apis::ClouddeployV1::TimeOfDay::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::ClouddeployV1::Date, decorator: Google::Apis::ClouddeployV1::Date::Representation
+      
+          property :start_time, as: 'startTime', class: Google::Apis::ClouddeployV1::TimeOfDay, decorator: Google::Apis::ClouddeployV1::TimeOfDay::Representation
+      
         end
       end
       
@@ -1771,6 +1935,31 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollout_restriction, as: 'rolloutRestriction', class: Google::Apis::ClouddeployV1::RolloutRestriction, decorator: Google::Apis::ClouddeployV1::RolloutRestriction::Representation
+      
+        end
+      end
+      
+      class PolicyViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :policy_violation_details, as: 'policyViolationDetails', class: Google::Apis::ClouddeployV1::PolicyViolationDetails, decorator: Google::Apis::ClouddeployV1::PolicyViolationDetails::Representation
+      
+        end
+      end
+      
+      class PolicyViolationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_message, as: 'failureMessage'
+          property :policy, as: 'policy'
+          property :rule_id, as: 'ruleId'
         end
       end
       
@@ -1980,6 +2169,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job_id, as: 'jobId'
+          collection :override_deploy_policy, as: 'overrideDeployPolicy'
           property :phase_id, as: 'phaseId'
         end
       end
@@ -2022,6 +2212,7 @@ module Google
       class RollbackTargetRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :override_deploy_policy, as: 'overrideDeployPolicy'
           property :release_id, as: 'releaseId'
           property :rollback_config, as: 'rollbackConfig', class: Google::Apis::ClouddeployV1::RollbackTargetConfig, decorator: Google::Apis::ClouddeployV1::RollbackTargetConfig::Representation
       
@@ -2081,6 +2272,17 @@ module Google
           property :rollout_uid, as: 'rolloutUid'
           property :target_id, as: 'targetId'
           property :type, as: 'type'
+        end
+      end
+      
+      class RolloutRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions'
+          property :id, as: 'id'
+          collection :invokers, as: 'invokers'
+          property :time_windows, as: 'timeWindows', class: Google::Apis::ClouddeployV1::TimeWindows, decorator: Google::Apis::ClouddeployV1::TimeWindows::Representation
+      
         end
       end
       
@@ -2326,6 +2528,7 @@ module Google
       class TerminateJobRunRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :override_deploy_policy, as: 'overrideDeployPolicy'
         end
       end
       
@@ -2349,6 +2552,27 @@ module Google
         end
       end
       
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+        end
+      end
+      
+      class TimeWindows
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :one_time_windows, as: 'oneTimeWindows', class: Google::Apis::ClouddeployV1::OneTimeWindow, decorator: Google::Apis::ClouddeployV1::OneTimeWindow::Representation
+      
+          property :time_zone, as: 'timeZone'
+          collection :weekly_windows, as: 'weeklyWindows', class: Google::Apis::ClouddeployV1::WeeklyWindow, decorator: Google::Apis::ClouddeployV1::WeeklyWindow::Representation
+      
+        end
+      end
+      
       class VerifyJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2363,6 +2587,17 @@ module Google
           property :event_log_path, as: 'eventLogPath'
           property :failure_cause, as: 'failureCause'
           property :failure_message, as: 'failureMessage'
+        end
+      end
+      
+      class WeeklyWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :days_of_week, as: 'daysOfWeek'
+          property :end_time, as: 'endTime', class: Google::Apis::ClouddeployV1::TimeOfDay, decorator: Google::Apis::ClouddeployV1::TimeOfDay::Representation
+      
+          property :start_time, as: 'startTime', class: Google::Apis::ClouddeployV1::TimeOfDay, decorator: Google::Apis::ClouddeployV1::TimeOfDay::Representation
+      
         end
       end
     end
