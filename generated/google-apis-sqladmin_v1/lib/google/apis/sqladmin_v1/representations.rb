@@ -779,6 +779,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_id, :numeric_string => true, as: 'backupId'
           property :kind, as: 'kind'
+          property :name, as: 'name'
         end
       end
       
@@ -1386,7 +1387,10 @@ module Google
       class InstancesRestoreBackupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
           property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqladminV1::RestoreBackupContext, decorator: Google::Apis::SqladminV1::RestoreBackupContext::Representation
+      
+          property :restore_instance_settings, as: 'restoreInstanceSettings', class: Google::Apis::SqladminV1::DatabaseInstance, decorator: Google::Apis::SqladminV1::DatabaseInstance::Representation
       
         end
       end
@@ -1570,6 +1574,8 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+          collection :warnings, as: 'warnings', class: Google::Apis::SqladminV1::ApiWarning, decorator: Google::Apis::SqladminV1::ApiWarning::Representation
+      
         end
       end
       

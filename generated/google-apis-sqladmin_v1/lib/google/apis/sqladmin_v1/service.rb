@@ -764,6 +764,15 @@ module Google
         #   Project ID of the project that contains the instance to be deleted.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Boolean] enable_final_backup
+        #   Flag to opt-in for final backup. By default, it is turned off.
+        # @param [String] final_backup_description
+        #   Optional. The description of the final backup.
+        # @param [String] final_backup_expiry_time
+        #   Optional. Final Backup expiration time. Timestamp in UTC of when this resource
+        #   is considered expired.
+        # @param [Fixnum] final_backup_ttl_days
+        #   Optional. Retention period of the final backup.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -781,12 +790,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_instance(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_instance(project, instance, enable_final_backup: nil, final_backup_description: nil, final_backup_expiry_time: nil, final_backup_ttl_days: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/projects/{project}/instances/{instance}', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['enableFinalBackup'] = enable_final_backup unless enable_final_backup.nil?
+          command.query['finalBackupDescription'] = final_backup_description unless final_backup_description.nil?
+          command.query['finalBackupExpiryTime'] = final_backup_expiry_time unless final_backup_expiry_time.nil?
+          command.query['finalBackupTtlDays'] = final_backup_ttl_days unless final_backup_ttl_days.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1673,6 +1686,10 @@ module Google
         # instance in the reverse chronological order of the start time.
         # @param [String] project
         #   Project ID of the project that contains the instance.
+        # @param [String] filter
+        #   Optional. A filter string that follows the rules of EBNF grammar (https://
+        #   google.aip.dev/assets/misc/ebnf-filtering.txt). Cloud SQL provides filters for
+        #   status, operationType, and startTime.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Fixnum] max_results
@@ -1697,11 +1714,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(project, instance: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_operations(project, filter: nil, instance: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/operations', options)
           command.response_representation = Google::Apis::SqladminV1::OperationsListResponse::Representation
           command.response_class = Google::Apis::SqladminV1::OperationsListResponse
           command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['instance'] = instance unless instance.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
