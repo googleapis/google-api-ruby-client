@@ -856,6 +856,7 @@ module Google
       
           property :location, as: 'location'
           property :name, as: 'name'
+          property :node_scaling_factor, as: 'nodeScalingFactor'
           property :serve_nodes, as: 'serveNodes'
           property :state, as: 'state'
         end
