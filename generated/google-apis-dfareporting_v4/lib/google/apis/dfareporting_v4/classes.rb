@@ -2085,7 +2085,8 @@ module Google
         end
       end
       
-      # Contains additional information about cart data.
+      # Contains additional information about cart data. This field may only be used
+      # when calling batchinsert; it is not supported by batchupdate.
       class CartData
         include Google::Apis::Core::Hashable
       
@@ -2108,7 +2109,7 @@ module Google
         # @return [String]
         attr_accessor :merchant_feed_language
       
-        # The Merchant Center ID where the items are uploaded.
+        # The Merchant Center ID where the items are uploaded. This is a required field.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
         attr_accessor :merchant_id
@@ -2561,7 +2562,7 @@ module Google
         end
       end
       
-      # Represents a response to the queryCompatibleFields method.
+      # Represents a response to the queryCompatibleFields method. Next ID: 10
       class CompatibleFields
         include Google::Apis::Core::Hashable
       
@@ -2570,6 +2571,12 @@ module Google
         # Corresponds to the JSON property `crossDimensionReachReportCompatibleFields`
         # @return [Google::Apis::DfareportingV4::CrossDimensionReachReportCompatibleFields]
         attr_accessor :cross_dimension_reach_report_compatible_fields
+      
+        # Represents fields that are compatible to be selected for a report of type "
+        # CROSS_MEDIA_REACH".
+        # Corresponds to the JSON property `crossMediaReachReportCompatibleFields`
+        # @return [Google::Apis::DfareportingV4::CrossMediaReachReportCompatibleFields]
+        attr_accessor :cross_media_reach_report_compatible_fields
       
         # Represents fields that are compatible to be selected for a report of type "
         # FlOODLIGHT".
@@ -2607,6 +2614,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cross_dimension_reach_report_compatible_fields = args[:cross_dimension_reach_report_compatible_fields] if args.key?(:cross_dimension_reach_report_compatible_fields)
+          @cross_media_reach_report_compatible_fields = args[:cross_media_reach_report_compatible_fields] if args.key?(:cross_media_reach_report_compatible_fields)
           @floodlight_report_compatible_fields = args[:floodlight_report_compatible_fields] if args.key?(:floodlight_report_compatible_fields)
           @kind = args[:kind] if args.key?(:kind)
           @path_to_conversion_report_compatible_fields = args[:path_to_conversion_report_compatible_fields] if args.key?(:path_to_conversion_report_compatible_fields)
@@ -2756,7 +2764,8 @@ module Google
         # @return [String]
         attr_accessor :ad_user_data_consent
       
-        # Contains additional information about cart data.
+        # Contains additional information about cart data. This field may only be used
+        # when calling batchinsert; it is not supported by batchupdate.
         # Corresponds to the JSON property `cartData`
         # @return [Google::Apis::DfareportingV4::CartData]
         attr_accessor :cart_data
@@ -2768,8 +2777,7 @@ module Google
         attr_accessor :child_directed_treatment
         alias_method :child_directed_treatment?, :child_directed_treatment
       
-        # Custom floodlight variables. This field may only be used when calling
-        # batchinsert; it is not supported by batchupdate.
+        # Custom floodlight variables.
         # Corresponds to the JSON property `customVariables`
         # @return [Array<Google::Apis::DfareportingV4::CustomFloodlightVariable>]
         attr_accessor :custom_variables
@@ -5003,6 +5011,48 @@ module Google
         end
       end
       
+      # Represents fields that are compatible to be selected for a report of type "
+      # CROSS_MEDIA_REACH".
+      class CrossMediaReachReportCompatibleFields
+        include Google::Apis::Core::Hashable
+      
+        # Dimensions which are compatible to be selected in the "dimensionFilters"
+        # section of the report.
+        # Corresponds to the JSON property `dimensionFilters`
+        # @return [Array<Google::Apis::DfareportingV4::Dimension>]
+        attr_accessor :dimension_filters
+      
+        # Dimensions which are compatible to be selected in the "dimensions" section of
+        # the report.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::DfareportingV4::Dimension>]
+        attr_accessor :dimensions
+      
+        # The kind of resource this is, in this case dfareporting#
+        # crossMediaReachReportCompatibleFields.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Metrics which are compatible to be selected in the "metricNames" section of
+        # the report.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::DfareportingV4::Metric>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_filters = args[:dimension_filters] if args.key?(:dimension_filters)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @kind = args[:kind] if args.key?(:kind)
+          @metrics = args[:metrics] if args.key?(:metrics)
+        end
+      end
+      
       # A custom floodlight variable. This field may only be used when calling
       # batchinsert; it is not supported by batchupdate.
       class CustomFloodlightVariable
@@ -5015,7 +5065,7 @@ module Google
         attr_accessor :kind
       
         # The type of custom floodlight variable to supply a value for. These map to the
-        # "u[1-20]=" in the tags.
+        # "u[1-100]=" in the tags.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -10433,6 +10483,11 @@ module Google
         # @return [Google::Apis::DfareportingV4::Report::CrossDimensionReachCriteria]
         attr_accessor :cross_dimension_reach_criteria
       
+        # Optional. The report criteria for a report of type "CROSS_MEDIA_REACH".
+        # Corresponds to the JSON property `crossMediaReachCriteria`
+        # @return [Google::Apis::DfareportingV4::Report::CrossMediaReachCriteria]
+        attr_accessor :cross_media_reach_criteria
+      
         # The report's email delivery settings.
         # Corresponds to the JSON property `delivery`
         # @return [Google::Apis::DfareportingV4::Report::Delivery]
@@ -10522,6 +10577,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @criteria = args[:criteria] if args.key?(:criteria)
           @cross_dimension_reach_criteria = args[:cross_dimension_reach_criteria] if args.key?(:cross_dimension_reach_criteria)
+          @cross_media_reach_criteria = args[:cross_media_reach_criteria] if args.key?(:cross_media_reach_criteria)
           @delivery = args[:delivery] if args.key?(:delivery)
           @etag = args[:etag] if args.key?(:etag)
           @file_name = args[:file_name] if args.key?(:file_name)
@@ -10643,6 +10699,45 @@ module Google
             @metric_names = args[:metric_names] if args.key?(:metric_names)
             @overlap_metric_names = args[:overlap_metric_names] if args.key?(:overlap_metric_names)
             @pivoted = args[:pivoted] if args.key?(:pivoted)
+          end
+        end
+        
+        # Optional. The report criteria for a report of type "CROSS_MEDIA_REACH".
+        class CrossMediaReachCriteria
+          include Google::Apis::Core::Hashable
+        
+          # Represents a date range.
+          # Corresponds to the JSON property `dateRange`
+          # @return [Google::Apis::DfareportingV4::DateRange]
+          attr_accessor :date_range
+        
+          # Required. The list of filters on which dimensions are filtered. Filters for
+          # different dimensions are ANDed, filters for the same dimension are grouped
+          # together and ORed.
+          # Corresponds to the JSON property `dimensionFilters`
+          # @return [Array<Google::Apis::DfareportingV4::DimensionValue>]
+          attr_accessor :dimension_filters
+        
+          # Required. The list of dimensions the report should include.
+          # Corresponds to the JSON property `dimensions`
+          # @return [Array<Google::Apis::DfareportingV4::SortedDimension>]
+          attr_accessor :dimensions
+        
+          # Required. The list of names of metrics the report should include.
+          # Corresponds to the JSON property `metricNames`
+          # @return [Array<String>]
+          attr_accessor :metric_names
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @date_range = args[:date_range] if args.key?(:date_range)
+            @dimension_filters = args[:dimension_filters] if args.key?(:dimension_filters)
+            @dimensions = args[:dimensions] if args.key?(:dimensions)
+            @metric_names = args[:metric_names] if args.key?(:metric_names)
           end
         end
         
@@ -12490,6 +12585,167 @@ module Google
         def update!(**args)
           @enabled_video_formats = args[:enabled_video_formats] if args.key?(:enabled_video_formats)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # TvCampaignDetail contains data from a TV campaign for specific start dates and
+      # date windows.
+      class TvCampaignDetail
+        include Google::Apis::Core::Hashable
+      
+        # ID of this TV campaign.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#tvCampaignSummary".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The timepoints of the TV campaign.
+        # Corresponds to the JSON property `timepoints`
+        # @return [Array<Google::Apis::DfareportingV4::TvCampaignTimepoint>]
+        attr_accessor :timepoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @timepoints = args[:timepoints] if args.key?(:timepoints)
+        end
+      end
+      
+      # Response message for TvCampaignSummariesService.List.
+      class TvCampaignSummariesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#tvCampaignSummariesListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # List of TV campaign summaries.
+        # Corresponds to the JSON property `tvCampaignSummaries`
+        # @return [Array<Google::Apis::DfareportingV4::TvCampaignSummary>]
+        attr_accessor :tv_campaign_summaries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @tv_campaign_summaries = args[:tv_campaign_summaries] if args.key?(:tv_campaign_summaries)
+        end
+      end
+      
+      # TvCampaignSummary contains aggregate data from a TV campaign.
+      class TvCampaignSummary
+        include Google::Apis::Core::Hashable
+      
+        # The end date of the TV campaign, inclusive. A string of the format: "yyyy-MM-
+        # dd".
+        # Corresponds to the JSON property `endDate`
+        # @return [String]
+        attr_accessor :end_date
+      
+        # GRP of this TV campaign.
+        # Corresponds to the JSON property `grp`
+        # @return [Fixnum]
+        attr_accessor :grp
+      
+        # ID of this TV campaign.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Impressions across the entire TV campaign.
+        # Corresponds to the JSON property `impressions`
+        # @return [Fixnum]
+        attr_accessor :impressions
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#tvCampaignSummary".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Identifier. Name of this TV campaign.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Spend across the entire TV campaign.
+        # Corresponds to the JSON property `spend`
+        # @return [Float]
+        attr_accessor :spend
+      
+        # The start date of the TV campaign, inclusive. A string of the format: "yyyy-MM-
+        # dd".
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
+      
+        # "CampaignComponentType" of this TV campaign.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @grp = args[:grp] if args.key?(:grp)
+          @id = args[:id] if args.key?(:id)
+          @impressions = args[:impressions] if args.key?(:impressions)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @spend = args[:spend] if args.key?(:spend)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A single data point for TvCampaignDetail, which holds information about the TV
+      # campaign for a specific start date and date window.
+      class TvCampaignTimepoint
+        include Google::Apis::Core::Hashable
+      
+        # The date window of the timepoint.
+        # Corresponds to the JSON property `dateWindow`
+        # @return [String]
+        attr_accessor :date_window
+      
+        # The spend within the time range of the timepoint.
+        # Corresponds to the JSON property `spend`
+        # @return [Float]
+        attr_accessor :spend
+      
+        # The start date of the timepoint. A string in the format of "yyyy-MM-dd".
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_window = args[:date_window] if args.key?(:date_window)
+          @spend = args[:spend] if args.key?(:spend)
+          @start_date = args[:start_date] if args.key?(:start_date)
         end
       end
       
