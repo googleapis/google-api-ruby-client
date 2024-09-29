@@ -104,6 +104,20 @@ module Google
         end
       end
       
+      # Configuration for reading Cloud Storage data in Avro binary format. The bytes
+      # of each object will be set to the `data` field of a Pub/Sub message.
+      class AvroFormat
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Ingestion settings for Amazon Kinesis Data Streams.
       class AwsKinesis
         include Google::Apis::Core::Hashable
@@ -329,6 +343,74 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Ingestion settings for Cloud Storage.
+      class CloudStorage
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for reading Cloud Storage data in Avro binary format. The bytes
+        # of each object will be set to the `data` field of a Pub/Sub message.
+        # Corresponds to the JSON property `avroFormat`
+        # @return [Google::Apis::PubsubV1::AvroFormat]
+        attr_accessor :avro_format
+      
+        # Optional. Cloud Storage bucket. The bucket name must be without any prefix
+        # like "gs://". See the [bucket naming requirements] (https://cloud.google.com/
+        # storage/docs/buckets#naming).
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Optional. Glob pattern used to match objects that will be ingested. If unset,
+        # all objects will be ingested. See the [supported patterns](https://cloud.
+        # google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-
+        # using-glob).
+        # Corresponds to the JSON property `matchGlob`
+        # @return [String]
+        attr_accessor :match_glob
+      
+        # Optional. Only objects with a larger or equal creation timestamp will be
+        # ingested.
+        # Corresponds to the JSON property `minimumObjectCreateTime`
+        # @return [String]
+        attr_accessor :minimum_object_create_time
+      
+        # Configuration for reading Cloud Storage data written via [Cloud Storage
+        # subscriptions](https://cloud.google.com/pubsub/docs/cloudstorage). The data
+        # and attributes fields of the originally exported Pub/Sub message will be
+        # restored when publishing.
+        # Corresponds to the JSON property `pubsubAvroFormat`
+        # @return [Google::Apis::PubsubV1::PubSubAvroFormat]
+        attr_accessor :pubsub_avro_format
+      
+        # Output only. An output-only field that indicates the state of the Cloud
+        # Storage ingestion source.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Configuration for reading Cloud Storage data in text format. Each line of text
+        # as specified by the delimiter will be set to the `data` field of a Pub/Sub
+        # message.
+        # Corresponds to the JSON property `textFormat`
+        # @return [Google::Apis::PubsubV1::TextFormat]
+        attr_accessor :text_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avro_format = args[:avro_format] if args.key?(:avro_format)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @match_glob = args[:match_glob] if args.key?(:match_glob)
+          @minimum_object_create_time = args[:minimum_object_create_time] if args.key?(:minimum_object_create_time)
+          @pubsub_avro_format = args[:pubsub_avro_format] if args.key?(:pubsub_avro_format)
+          @state = args[:state] if args.key?(:state)
+          @text_format = args[:text_format] if args.key?(:text_format)
         end
       end
       
@@ -638,6 +720,16 @@ module Google
         # @return [Google::Apis::PubsubV1::AwsKinesis]
         attr_accessor :aws_kinesis
       
+        # Ingestion settings for Cloud Storage.
+        # Corresponds to the JSON property `cloudStorage`
+        # @return [Google::Apis::PubsubV1::CloudStorage]
+        attr_accessor :cloud_storage
+      
+        # Settings for Platform Logs produced by Pub/Sub.
+        # Corresponds to the JSON property `platformLogsSettings`
+        # @return [Google::Apis::PubsubV1::PlatformLogsSettings]
+        attr_accessor :platform_logs_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -645,6 +737,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aws_kinesis = args[:aws_kinesis] if args.key?(:aws_kinesis)
+          @cloud_storage = args[:cloud_storage] if args.key?(:cloud_storage)
+          @platform_logs_settings = args[:platform_logs_settings] if args.key?(:platform_logs_settings)
         end
       end
       
@@ -975,6 +1069,25 @@ module Google
         end
       end
       
+      # Settings for Platform Logs produced by Pub/Sub.
+      class PlatformLogsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The minimum severity level of Platform Logs that will be written.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -1061,6 +1174,22 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for reading Cloud Storage data written via [Cloud Storage
+      # subscriptions](https://cloud.google.com/pubsub/docs/cloudstorage). The data
+      # and attributes fields of the originally exported Pub/Sub message will be
+      # restored when publishing.
+      class PubSubAvroFormat
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1879,6 +2008,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Configuration for reading Cloud Storage data in text format. Each line of text
+      # as specified by the delimiter will be set to the `data` field of a Pub/Sub
+      # message.
+      class TextFormat
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When unset, '\n' is used.
+        # Corresponds to the JSON property `delimiter`
+        # @return [String]
+        attr_accessor :delimiter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delimiter = args[:delimiter] if args.key?(:delimiter)
         end
       end
       
