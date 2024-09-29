@@ -141,7 +141,7 @@ module Google
         #   completes. During this period, the Organization may be restored to its last
         #   known state. After this period, the Organization will no longer be able to be
         #   restored. **Note: During the data retention period specified using this field,
-        #   the Apigee organization cannot be recreated in the same GCP project.**
+        #   the Apigee organization cannot be recreated in the same Google Cloud project.**
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
