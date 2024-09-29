@@ -12746,9 +12746,12 @@ module Google
           property :grounding_config, as: 'groundingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig::Representation
       
           property :has_prompt_variable, as: 'hasPromptVariable'
+          property :logprobs, as: 'logprobs'
           property :max_output_tokens, :numeric_string => true, as: 'maxOutputTokens'
           property :note, as: 'note'
           property :prompt_type, as: 'promptType'
+          property :seed_enabled, as: 'seedEnabled'
+          property :seed_value, :numeric_string => true, as: 'seedValue'
           collection :stop_sequences, as: 'stopSequences'
           property :system_instruction, as: 'systemInstruction'
           property :system_instruction_gcs_uri, as: 'systemInstructionGcsUri'
