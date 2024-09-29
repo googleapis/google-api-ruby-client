@@ -39,7 +39,9 @@ module Google
         # Make a space discoverable to a target audience](https://developers.google.com/
         # workspace/chat/space-target-audience). Format: `audiences/`audience`` To use
         # the default target audience for the Google Workspace organization, set to `
-        # audiences/default`.
+        # audiences/default`. This field is not populated when using the `chat.bot`
+        # scope with [app authentication](https://developers.google.com/workspace/chat/
+        # authenticate-authorize-chat-app).
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
