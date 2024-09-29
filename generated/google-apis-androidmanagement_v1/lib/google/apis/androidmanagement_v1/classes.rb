@@ -62,12 +62,13 @@ module Google
         # Controls Common Criteria Mode—security standards defined in the Common
         # Criteria for Information Technology Security Evaluation (https://www.
         # commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode increases
-        # certain security components on a device, including AES-GCM encryption of
-        # Bluetooth Long Term Keys, and Wi-Fi configuration stores.Common Criteria Mode
-        # is only supported on company-owned devices running Android 11 or above.Warning:
-        # Common Criteria Mode enforces a strict security model typically only required
-        # for IT products used in national security systems and other highly sensitive
-        # organizations. Standard device use may be affected. Only enabled if required.
+        # certain security components on a device, see CommonCriteriaMode for details.
+        # Warning: Common Criteria Mode enforces a strict security model typically only
+        # required for IT products used in national security systems and other highly
+        # sensitive organizations. Standard device use may be affected. Only enabled if
+        # required. If Common Criteria Mode is turned off after being enabled previously,
+        # all user-configured Wi-Fi networks may be lost and any enterprise-configured
+        # Wi-Fi networks that require user input may need to be reconfigured.
         # Corresponds to the JSON property `commonCriteriaMode`
         # @return [String]
         attr_accessor :common_criteria_mode
@@ -1209,6 +1210,11 @@ module Google
         # @return [String]
         attr_accessor :common_criteria_mode_status
       
+        # Output only. The status of policy signature verification.
+        # Corresponds to the JSON property `policySignatureVerificationStatus`
+        # @return [String]
+        attr_accessor :policy_signature_verification_status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1216,6 +1222,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_criteria_mode_status = args[:common_criteria_mode_status] if args.key?(:common_criteria_mode_status)
+          @policy_signature_verification_status = args[:policy_signature_verification_status] if args.key?(:policy_signature_verification_status)
         end
       end
       
@@ -1806,6 +1813,11 @@ module Google
         # @return [String]
         attr_accessor :wifi_direct_settings
       
+        # Wi-Fi roaming policy.
+        # Corresponds to the JSON property `wifiRoamingPolicy`
+        # @return [Google::Apis::AndroidmanagementV1::WifiRoamingPolicy]
+        attr_accessor :wifi_roaming_policy
+      
         # Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this
         # does not affect which networks can be configured on the device. Supported on
         # company-owned devices running Android 13 and above.
@@ -1823,6 +1835,7 @@ module Google
           @tethering_settings = args[:tethering_settings] if args.key?(:tethering_settings)
           @usb_data_access = args[:usb_data_access] if args.key?(:usb_data_access)
           @wifi_direct_settings = args[:wifi_direct_settings] if args.key?(:wifi_direct_settings)
+          @wifi_roaming_policy = args[:wifi_roaming_policy] if args.key?(:wifi_roaming_policy)
           @wifi_ssid_policy = args[:wifi_ssid_policy] if args.key?(:wifi_ssid_policy)
         end
       end
@@ -5236,7 +5249,8 @@ module Google
         # brightness set. Any other value is rejected. screenBrightnessMode must be
         # either BRIGHTNESS_AUTOMATIC or BRIGHTNESS_FIXED to set this. Supported on
         # Android 9 and above on fully managed devices. A NonComplianceDetail with
-        # API_LEVEL is reported if the Android version is less than 9.
+        # API_LEVEL is reported if the Android version is less than 9. Supported on work
+        # profiles on company-owned devices on Android 15 and above.
         # Corresponds to the JSON property `screenBrightness`
         # @return [Fixnum]
         attr_accessor :screen_brightness
@@ -5270,7 +5284,8 @@ module Google
         # lower bound. The lower bound may vary across devices. If this is set,
         # screenTimeoutMode must be SCREEN_TIMEOUT_ENFORCED. Supported on Android 9 and
         # above on fully managed devices. A NonComplianceDetail with API_LEVEL is
-        # reported if the Android version is less than 9.
+        # reported if the Android version is less than 9. Supported on work profiles on
+        # company-owned devices on Android 15 and above.
         # Corresponds to the JSON property `screenTimeout`
         # @return [String]
         attr_accessor :screen_timeout
@@ -6417,6 +6432,51 @@ module Google
           @parent_frame_url = args[:parent_frame_url] if args.key?(:parent_frame_url)
           @permissions = args[:permissions] if args.key?(:permissions)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Wi-Fi roaming policy.
+      class WifiRoamingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Wi-Fi roaming settings. SSIDs provided in this list must be unique,
+        # the policy will be rejected otherwise.
+        # Corresponds to the JSON property `wifiRoamingSettings`
+        # @return [Array<Google::Apis::AndroidmanagementV1::WifiRoamingSetting>]
+        attr_accessor :wifi_roaming_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wifi_roaming_settings = args[:wifi_roaming_settings] if args.key?(:wifi_roaming_settings)
+        end
+      end
+      
+      # Wi-Fi roaming setting.
+      class WifiRoamingSetting
+        include Google::Apis::Core::Hashable
+      
+        # Required. Wi-Fi roaming mode for the specified SSID.
+        # Corresponds to the JSON property `wifiRoamingMode`
+        # @return [String]
+        attr_accessor :wifi_roaming_mode
+      
+        # Required. SSID of the Wi-Fi network.
+        # Corresponds to the JSON property `wifiSsid`
+        # @return [String]
+        attr_accessor :wifi_ssid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wifi_roaming_mode = args[:wifi_roaming_mode] if args.key?(:wifi_roaming_mode)
+          @wifi_ssid = args[:wifi_ssid] if args.key?(:wifi_ssid)
         end
       end
       
