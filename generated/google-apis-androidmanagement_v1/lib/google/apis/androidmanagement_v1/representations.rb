@@ -826,6 +826,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WifiRoamingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WifiRoamingSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WifiSsid
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1133,6 +1145,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_criteria_mode_status, as: 'commonCriteriaModeStatus'
+          property :policy_signature_verification_status, as: 'policySignatureVerificationStatus'
         end
       end
       
@@ -1273,6 +1286,8 @@ module Google
           property :tethering_settings, as: 'tetheringSettings'
           property :usb_data_access, as: 'usbDataAccess'
           property :wifi_direct_settings, as: 'wifiDirectSettings'
+          property :wifi_roaming_policy, as: 'wifiRoamingPolicy', class: Google::Apis::AndroidmanagementV1::WifiRoamingPolicy, decorator: Google::Apis::AndroidmanagementV1::WifiRoamingPolicy::Representation
+      
           property :wifi_ssid_policy, as: 'wifiSsidPolicy', class: Google::Apis::AndroidmanagementV1::WifiSsidPolicy, decorator: Google::Apis::AndroidmanagementV1::WifiSsidPolicy::Representation
       
         end
@@ -2423,6 +2438,22 @@ module Google
           property :parent_frame_url, as: 'parentFrameUrl'
           collection :permissions, as: 'permissions'
           property :value, as: 'value'
+        end
+      end
+      
+      class WifiRoamingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :wifi_roaming_settings, as: 'wifiRoamingSettings', class: Google::Apis::AndroidmanagementV1::WifiRoamingSetting, decorator: Google::Apis::AndroidmanagementV1::WifiRoamingSetting::Representation
+      
+        end
+      end
+      
+      class WifiRoamingSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :wifi_roaming_mode, as: 'wifiRoamingMode'
+          property :wifi_ssid, as: 'wifiSsid'
         end
       end
       
