@@ -574,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1DataStoreBillingEstimation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1DeleteDataStoreMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1666,6 +1672,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDeleteDataStoreMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2188,6 +2200,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2411,6 +2429,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaDataStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2819,6 +2843,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3878,6 +3908,8 @@ module Google
       class GoogleCloudDiscoveryengineV1DataStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_estimation, as: 'billingEstimation', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStoreBillingEstimation, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStoreBillingEstimation::Representation
+      
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -3893,6 +3925,18 @@ module Google
       
           property :workspace_config, as: 'workspaceConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WorkspaceConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WorkspaceConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DataStoreBillingEstimation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :structured_data_size, :numeric_string => true, as: 'structuredDataSize'
+          property :structured_data_update_time, as: 'structuredDataUpdateTime'
+          property :unstructured_data_size, :numeric_string => true, as: 'unstructuredDataSize'
+          property :unstructured_data_update_time, as: 'unstructuredDataUpdateTime'
+          property :website_data_size, :numeric_string => true, as: 'websiteDataSize'
+          property :website_data_update_time, as: 'websiteDataUpdateTime'
         end
       end
       
@@ -4901,6 +4945,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
+          property :filter, as: 'filter'
         end
       end
       
@@ -5685,6 +5730,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acl_enabled, as: 'aclEnabled'
+          property :billing_estimation, as: 'billingEstimation', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation::Representation
+      
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -5706,6 +5753,18 @@ module Google
       
           property :workspace_config, as: 'workspaceConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaWorkspaceConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaWorkspaceConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :structured_data_size, :numeric_string => true, as: 'structuredDataSize'
+          property :structured_data_update_time, as: 'structuredDataUpdateTime'
+          property :unstructured_data_size, :numeric_string => true, as: 'unstructuredDataSize'
+          property :unstructured_data_update_time, as: 'unstructuredDataUpdateTime'
+          property :website_data_size, :numeric_string => true, as: 'websiteDataSize'
+          property :website_data_update_time, as: 'websiteDataUpdateTime'
         end
       end
       
@@ -5993,6 +6052,7 @@ module Google
           property :field_type, as: 'fieldType'
           property :indexable_option, as: 'indexableOption'
           property :key_property_type, as: 'keyPropertyType'
+          property :metatag_name, as: 'metatagName'
           property :recs_filterable_option, as: 'recsFilterableOption'
           property :retrievable_option, as: 'retrievableOption'
           collection :schema_org_paths, as: 'schemaOrgPaths'
@@ -6377,6 +6437,8 @@ module Google
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
           hash :params, as: 'params'
+          property :personalization_spec, as: 'personalizationSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec::Representation
+      
           property :query, as: 'query'
           property :query_expansion_spec, as: 'queryExpansionSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec::Representation
       
@@ -6515,6 +6577,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
+          property :filter, as: 'filter'
         end
       end
       
@@ -6571,6 +6634,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filter_extraction_condition, as: 'filterExtractionCondition'
           collection :geo_search_query_detection_field_names, as: 'geoSearchQueryDetectionFieldNames'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
       
@@ -6902,6 +6972,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDataStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_estimation, as: 'billingEstimation', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation::Representation
+      
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -6921,6 +6993,18 @@ module Google
       
           property :workspace_config, as: 'workspaceConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaWorkspaceConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaWorkspaceConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :structured_data_size, :numeric_string => true, as: 'structuredDataSize'
+          property :structured_data_update_time, as: 'structuredDataUpdateTime'
+          property :unstructured_data_size, :numeric_string => true, as: 'unstructuredDataSize'
+          property :unstructured_data_update_time, as: 'unstructuredDataUpdateTime'
+          property :website_data_size, :numeric_string => true, as: 'websiteDataSize'
+          property :website_data_update_time, as: 'websiteDataUpdateTime'
         end
       end
       
@@ -7411,6 +7495,8 @@ module Google
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
           hash :params, as: 'params'
+          property :personalization_spec, as: 'personalizationSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec::Representation
+      
           property :query, as: 'query'
           property :query_expansion_spec, as: 'queryExpansionSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec::Representation
       
@@ -7549,6 +7635,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
+          property :filter, as: 'filter'
         end
       end
       
@@ -7605,6 +7692,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filter_extraction_condition, as: 'filterExtractionCondition'
           collection :geo_search_query_detection_field_names, as: 'geoSearchQueryDetectionFieldNames'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
       
