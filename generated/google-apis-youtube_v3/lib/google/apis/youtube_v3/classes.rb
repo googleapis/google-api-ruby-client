@@ -7001,11 +7001,6 @@ module Google
         # @return [String]
         attr_accessor :channel_id
       
-        # Channel title for the channel that the subscription belongs to.
-        # Corresponds to the JSON property `channelTitle`
-        # @return [String]
-        attr_accessor :channel_title
-      
         # The subscription's details.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -7038,7 +7033,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
-          @channel_title = args[:channel_title] if args.key?(:channel_title)
           @description = args[:description] if args.key?(:description)
           @published_at = args[:published_at] if args.key?(:published_at)
           @resource_id = args[:resource_id] if args.key?(:resource_id)

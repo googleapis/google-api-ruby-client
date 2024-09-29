@@ -3047,7 +3047,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
-          property :channel_title, as: 'channelTitle'
           property :description, as: 'description'
           property :published_at, as: 'publishedAt', type: DateTime
       
