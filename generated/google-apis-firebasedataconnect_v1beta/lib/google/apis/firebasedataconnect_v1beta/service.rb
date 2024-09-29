@@ -1,0 +1,1193 @@
+# Copyright 2020 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+require 'google/apis/core/base_service'
+require 'google/apis/core/json_representation'
+require 'google/apis/core/hashable'
+require 'google/apis/errors'
+
+module Google
+  module Apis
+    module FirebasedataconnectV1beta
+      # Firebase Data Connect API
+      #
+      # 
+      #
+      # @example
+      #    require 'google/apis/firebasedataconnect_v1beta'
+      #
+      #    Firebasedataconnect = Google::Apis::FirebasedataconnectV1beta # Alias the module
+      #    service = Firebasedataconnect::FirebaseDataConnectService.new
+      #
+      # @see https://firebase.google.com/docs/data-connect
+      class FirebaseDataConnectService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://firebasedataconnect.$UNIVERSE_DOMAIN$/"
+
+        # @return [String]
+        #  API key. Your API key identifies your project and provides you with API access,
+        #  quota, and reports. Required unless you provide an OAuth 2.0 token.
+        attr_accessor :key
+
+        # @return [String]
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
+        attr_accessor :quota_user
+
+        def initialize
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
+                client_name: 'google-apis-firebasedataconnect_v1beta',
+                client_version: Google::Apis::FirebasedataconnectV1beta::GEM_VERSION)
+          @batch_path = 'batch'
+        end
+        
+        # Gets information about a location.
+        # @param [String] name
+        #   Resource name for the location.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Location] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Location]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Location::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Location
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists information about the supported locations for this service.
+        # @param [String] name
+        #   The resource that owns the locations collection, if applicable.
+        # @param [String] filter
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
+        #   in [AIP-160](https://google.aip.dev/160).
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return. If not set, the service selects a
+        #   default.
+        # @param [String] page_token
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::ListLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::ListLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}/locations', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::ListLocationsResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::ListLocationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
+        # @param [String] name
+        #   The name of the operation resource to be cancelled.
+        # @param [Google::Apis::FirebasedataconnectV1beta::CancelOperationRequest] cancel_operation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:cancel', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::CancelOperationRequest::Representation
+          command.request_object = cancel_operation_request_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Empty::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation resource to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Empty::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Operation::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation's parent resource.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::ListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::ListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}/operations', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::ListOperationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Service in a given project and location.
+        # @param [String] parent
+        #   Required. Value of parent.
+        # @param [Google::Apis::FirebasedataconnectV1beta::Service] service_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] service_id
+        #   Required. The ID to use for the service, which will become the final component
+        #   of the service's resource name.
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the Service, but do not
+        #   actually create it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_service(parent, service_object = nil, request_id: nil, service_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/services', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::Service::Representation
+          command.request_object = service_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Operation::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['serviceId'] = service_id unless service_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Service.
+        # @param [String] name
+        #   Required. The name of the service to delete, in the format: ``` projects/`
+        #   project`/locations/`location`/services/`service` ```
+        # @param [Boolean] allow_missing
+        #   Optional. If true and the Service is not found, the request will succeed but
+        #   no action will be taken on the server.
+        # @param [String] etag
+        #   Optional. The etag of the Service. If this is provided, it must match the
+        #   server's etag.
+        # @param [Boolean] force
+        #   Optional. If set to true, any child resources (i.e. Schema, SchemaRevisions,
+        #   Connectors, and ConnectorRevisions) will also be deleted. Otherwise, the
+        #   request will only work if the Service has no child resources.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the Service, but do not
+        #   actually delete it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_service(name, allow_missing: nil, etag: nil, force: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Operation::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Execute any GraphQL query and mutation against the Firebase Data Connect's
+        # generated GraphQL schema. Grants full read and write access to the connected
+        # data sources. Note: Use introspection query to explore the generated GraphQL
+        # schema.
+        # @param [String] name
+        #   Required. The relative resource name of Firebase Data Connect service, in the
+        #   format: ``` projects/`project`/locations/`location`/services/`service` ```
+        # @param [Google::Apis::FirebasedataconnectV1beta::GraphqlRequest] graphql_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::GraphqlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_project_location_service_graphql(name, graphql_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:executeGraphql', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::GraphqlRequest::Representation
+          command.request_object = graphql_request_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::GraphqlResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::GraphqlResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Execute any GraphQL query against the Firebase Data Connect's generated
+        # GraphQL schema. Grants full read to the connected data sources. `
+        # ExecuteGraphqlRead` is identical to `ExecuteGraphql` except it only accepts
+        # read-only query.
+        # @param [String] name
+        #   Required. The relative resource name of Firebase Data Connect service, in the
+        #   format: ``` projects/`project`/locations/`location`/services/`service` ```
+        # @param [Google::Apis::FirebasedataconnectV1beta::GraphqlRequest] graphql_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::GraphqlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_project_location_service_graphql_read(name, graphql_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:executeGraphqlRead', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::GraphqlRequest::Representation
+          command.request_object = graphql_request_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::GraphqlResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::GraphqlResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Service.
+        # @param [String] name
+        #   Required. The name of the service to retrieve, in the format: ``` projects/`
+        #   project`/locations/`location`/services/`service` ```
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Service] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Service]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_service(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Service::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Service
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Services in a given project and location.
+        # @param [String] parent
+        #   Required. Value of parent.
+        # @param [String] filter
+        #   Optional. Filtering results.
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListServices` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListServices` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::ListServicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::ListServicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_services(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/services', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::ListServicesResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::ListServicesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single Service.
+        # @param [String] name
+        #   Identifier. The relative resource name of the Firebase Data Connect service,
+        #   in the format: ``` projects/`project`/locations/`location`/services/`service` `
+        #   `` Note that the service ID is specific to Firebase Data Connect and does not
+        #   correspond to any of the instance IDs of the underlying data source
+        #   connections.
+        # @param [Google::Apis::FirebasedataconnectV1beta::Service] service_object
+        # @param [Boolean] allow_missing
+        #   Optional. If true and the Service is not found, a new Service will be created.
+        #   In this case, `update_mask` is ignored.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   Service resource by the update. The fields specified in the update_mask are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. If the user does not provide a mask then all fields will be
+        #   overwritten.
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the Service, but do not
+        #   actually update it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_service(name, service_object = nil, allow_missing: nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::Service::Representation
+          command.request_object = service_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Operation::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Connector in a given project and location. The operations are
+        # validated against and must be compatible with the active schema. If the
+        # operations and schema are not compatible or if the schema is not present, this
+        # will result in an error.
+        # @param [String] parent
+        #   Required. Value for parent.
+        # @param [Google::Apis::FirebasedataconnectV1beta::Connector] connector_object
+        # @param [String] connector_id
+        #   Required. The ID to use for the connector, which will become the final
+        #   component of the connector's resource name.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the Connector, but do not
+        #   actually create it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_service_connector(parent, connector_object = nil, connector_id: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/connectors', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::Connector::Representation
+          command.request_object = connector_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Operation::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['connectorId'] = connector_id unless connector_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Connector.
+        # @param [String] name
+        #   Required. The name of the connector to delete, in the format: ``` projects/`
+        #   project`/locations/`location`/services/`service`/connectors/`connector` ```
+        # @param [Boolean] allow_missing
+        #   Optional. If true and the Connector is not found, the request will succeed but
+        #   no action will be taken on the server.
+        # @param [String] etag
+        #   Optional. The etag of the Connector. If this is provided, it must match the
+        #   server's etag.
+        # @param [Boolean] force
+        #   Optional. If set to true, any child resources (i.e. ConnectorRevisions) will
+        #   also be deleted. Otherwise, the request will only work if the Connector has no
+        #   child resources.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the Connector, but do not
+        #   actually delete it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_service_connector(name, allow_missing: nil, etag: nil, force: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Operation::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Execute a predefined mutation in a Connector.
+        # @param [String] name
+        #   Required. The resource name of the connector to find the predefined mutation,
+        #   in the format: ``` projects/`project`/locations/`location`/services/`service`/
+        #   connectors/`connector` ```
+        # @param [Google::Apis::FirebasedataconnectV1beta::ExecuteMutationRequest] execute_mutation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::ExecuteMutationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::ExecuteMutationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_connector_mutation(name, execute_mutation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:executeMutation', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::ExecuteMutationRequest::Representation
+          command.request_object = execute_mutation_request_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::ExecuteMutationResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::ExecuteMutationResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Execute a predefined query in a Connector.
+        # @param [String] name
+        #   Required. The resource name of the connector to find the predefined query, in
+        #   the format: ``` projects/`project`/locations/`location`/services/`service`/
+        #   connectors/`connector` ```
+        # @param [Google::Apis::FirebasedataconnectV1beta::ExecuteQueryRequest] execute_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::ExecuteQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::ExecuteQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_connector_query(name, execute_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:executeQuery', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::ExecuteQueryRequest::Representation
+          command.request_object = execute_query_request_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::ExecuteQueryResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::ExecuteQueryResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Connector.
+        # @param [String] name
+        #   Required. The name of the connector to retrieve, in the format: ``` projects/`
+        #   project`/locations/`location`/services/`service`/connectors/`connector` ```
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Connector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Connector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_service_connector(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Connector::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Connector
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Connectors in a given project and location.
+        # @param [String] parent
+        #   Required. Value of parent.
+        # @param [String] filter
+        #   Optional. Filtering results.
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListConnectors` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListConnectors` must match the call that provided the
+        #   page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::ListConnectorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::ListConnectorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_service_connectors(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/connectors', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::ListConnectorsResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::ListConnectorsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single Connector, and creates a new
+        # ConnectorRevision with the updated Connector. The operations are validated
+        # against and must be compatible with the live schema. If the operations and
+        # schema are not compatible or if the schema is not present, this will result in
+        # an error.
+        # @param [String] name
+        #   Identifier. The relative resource name of the connector, in the format: ```
+        #   projects/`project`/locations/`location`/services/`service`/connectors/`
+        #   connector` ```
+        # @param [Google::Apis::FirebasedataconnectV1beta::Connector] connector_object
+        # @param [Boolean] allow_missing
+        #   Optional. If true and the Connector is not found, a new Connector will be
+        #   created. In this case, `update_mask` is ignored.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   Connector resource by the update. The fields specified in the update_mask are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. If the user does not provide a mask then all fields will be
+        #   overwritten.
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the Connector, but do not
+        #   actually update it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_service_connector(name, connector_object = nil, allow_missing: nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::Connector::Representation
+          command.request_object = connector_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Operation::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Schema in a given project and location. Only creation of `
+        # schemas/main` is supported and calling create with any other schema ID will
+        # result in an error.
+        # @param [String] parent
+        #   Required. Value for parent.
+        # @param [Google::Apis::FirebasedataconnectV1beta::Schema] schema_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] schema_id
+        #   Required. The ID to use for the schema, which will become the final component
+        #   of the schema's resource name. Currently, only `main` is supported and any
+        #   other schema ID will result in an error.
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the Schema, but do not
+        #   actually update it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_service_schema(parent, schema_object = nil, request_id: nil, schema_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/schemas', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::Schema::Representation
+          command.request_object = schema_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Operation::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['schemaId'] = schema_id unless schema_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Schema. Because the schema and connectors must be compatible
+        # at all times, if this is called while any connectors are active, this will
+        # result in an error.
+        # @param [String] name
+        #   Required. The name of the schema to delete, in the format: ``` projects/`
+        #   project`/locations/`location`/services/`service`/schemas/`schema` ```
+        # @param [Boolean] allow_missing
+        #   Optional. If true and the Schema is not found, the request will succeed but no
+        #   action will be taken on the server.
+        # @param [String] etag
+        #   Optional. The etag of the Schema. If this is provided, it must match the
+        #   server's etag.
+        # @param [Boolean] force
+        #   Optional. If set to true, any child resources (i.e. SchemaRevisions) will also
+        #   be deleted.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the Schema, but do not
+        #   actually delete it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_service_schema(name, allow_missing: nil, etag: nil, force: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Operation::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Schema.
+        # @param [String] name
+        #   Required. The name of the schema to retrieve, in the format: ``` projects/`
+        #   project`/locations/`location`/services/`service`/schemas/`schema` ```
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Schema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Schema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_service_schema(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Schema::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Schema
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Schemas in a given project and location. Note that only `schemas/main`
+        # is supported, so this will always return at most one Schema.
+        # @param [String] parent
+        #   Required. Value of parent.
+        # @param [String] filter
+        #   Optional. Filtering results.
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListSchemas` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListSchemas` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::ListSchemasResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::ListSchemasResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_service_schemas(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/schemas', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::ListSchemasResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::ListSchemasResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single Schema, and creates a new SchemaRevision
+        # with the updated Schema.
+        # @param [String] name
+        #   Identifier. The relative resource name of the schema, in the format: ```
+        #   projects/`project`/locations/`location`/services/`service`/schemas/`schema` ```
+        #   Right now, the only supported schema is "main".
+        # @param [Google::Apis::FirebasedataconnectV1beta::Schema] schema_object
+        # @param [Boolean] allow_missing
+        #   Optional. If true and the Schema is not found, a new Schema will be created.
+        #   In this case, `update_mask` is ignored.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   Schema resource by the update. The fields specified in the update_mask are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. If the user does not provide a mask then all fields will be
+        #   overwritten.
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the Schema, but do not
+        #   actually update it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_service_schema(name, schema_object = nil, allow_missing: nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::Schema::Representation
+          command.request_object = schema_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::Operation::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+
+        protected
+
+        def apply_command_defaults(command)
+          command.query['key'] = key unless key.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+        end
+      end
+    end
+  end
+end

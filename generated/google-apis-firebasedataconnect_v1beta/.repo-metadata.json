@@ -1,0 +1,7 @@
+{
+    "api_id": "firebasedataconnect:v1beta",
+    "name_pretty": "Firebase Data Connect API",
+    "distribution_name": "google-apis-firebasedataconnect_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
