@@ -2174,8 +2174,8 @@ module Google
       
         # Required. All backend services and forwarding rules referenced by this
         # extension must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [
-        # Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-
+        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Backend
+        # services overview](https://cloud.google.com/load-balancing/docs/backend-
         # service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
@@ -2186,8 +2186,7 @@ module Google
         # message sent to the extension server. The metadata is available under the
         # namespace `com.google.lb_route_extension.`. The following variables are
         # supported in the metadata Struct: ``forwarding_rule_id`` - substituted with
-        # the forwarding rule's fully qualified resource name. Only one of the resource
-        # level metadata and extension level metadata can be set.
+        # the forwarding rule's fully qualified resource name.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -2264,8 +2263,8 @@ module Google
       
         # Required. All backend services and forwarding rules referenced by this
         # extension must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [
-        # Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-
+        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Backend
+        # services overview](https://cloud.google.com/load-balancing/docs/backend-
         # service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
@@ -2275,8 +2274,7 @@ module Google
         # metadata_context.filter_metadata` map field. The metadata is available under
         # the key `com.google.lb_traffic_extension.`. The following variables are
         # supported in the metadata: ``forwarding_rule_id`` - substituted with the
-        # forwarding rule's fully qualified resource name. Only one of the resource
-        # level metadata and extension level metadata can be set.
+        # forwarding rule's fully qualified resource name.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
