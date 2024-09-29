@@ -249,8 +249,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a conversation. Does not support audio transcription or DLP redaction.
-        # Use `conversations.upload` instead.
+        # Creates a conversation. Note that this method does not support audio
+        # transcription or redaction. Use `conversations.upload` instead.
         # @param [String] parent
         #   Required. The parent resource of the conversation.
         # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation] google_cloud_contactcenterinsights_v1_conversation_object
@@ -405,9 +405,9 @@ module Google
         #   ordering).
         # @param [Fixnum] page_size
         #   The maximum number of conversations to return in the response. A valid page
-        #   size ranges from 0 to 1,000 inclusive. If the page size is zero or unspecified,
-        #   a default page size of 100 will be chosen. Note that a call might return
-        #   fewer results than the requested page size.
+        #   size ranges from 0 to 100,000 inclusive. If the page size is zero or
+        #   unspecified, a default page size of 100 will be chosen. Note that a call might
+        #   return fewer results than the requested page size.
         # @param [String] page_token
         #   The value returned by the last `ListConversationsResponse`. This value
         #   indicates that this is a continuation of a prior `ListConversations` call and
