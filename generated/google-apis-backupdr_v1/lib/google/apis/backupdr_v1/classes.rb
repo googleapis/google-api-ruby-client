@@ -557,7 +557,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Identifier. Name of the resource.
+        # Output only. Identifier. Name of the backup to create. It must have the format`
+        # "projects//locations//backupVaults//dataSources/`datasource`/backups/`backup`"`
+        # . ``backup`` cannot be changed after creation. It must be between 3-63
+        # characters long and must be unique within the datasource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1057,6 +1060,13 @@ module Google
       class BackupVault
         include Google::Apis::Core::Hashable
       
+        # Optional. Note: This field is added for future use case and will not be
+        # supported in the current release. Optional. Access restriction for the backup
+        # vault. Default value is WITHIN_ORGANIZATION if not provided during creation.
+        # Corresponds to the JSON property `accessRestriction`
+        # @return [String]
+        attr_accessor :access_restriction
+      
         # Optional. User annotations. See https://google.aip.dev/128#annotations Stores
         # small amounts of arbitrary data.
         # Corresponds to the JSON property `annotations`
@@ -1108,7 +1118,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Identifier. The resource name.
+        # Output only. Identifier. Name of the backup vault to create. It must have the
+        # format`"projects/`project`/locations/`location`/backupVaults/`backupvault`"`. `
+        # `backupvault`` cannot be changed after creation. It must be between 3-63
+        # characters long and must be unique within the project and location.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1147,6 +1160,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_restriction = args[:access_restriction] if args.key?(:access_restriction)
           @annotations = args[:annotations] if args.key?(:annotations)
           @backup_count = args[:backup_count] if args.key?(:backup_count)
           @backup_minimum_enforced_retention_duration = args[:backup_minimum_enforced_retention_duration] if args.key?(:backup_minimum_enforced_retention_duration)
@@ -1850,7 +1864,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Identifier. The resource name.
+        # Output only. Identifier. Name of the datasource to create. It must have the
+        # format`"projects/`project`/locations/`location`/backupVaults/`backupvault`/
+        # dataSources/`datasource`"`. ``datasource`` cannot be changed after creation.
+        # It must be between 3-63 characters long and must be unique within the backup
+        # vault.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
