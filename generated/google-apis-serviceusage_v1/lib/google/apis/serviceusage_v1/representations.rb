@@ -652,6 +652,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SelectiveGapicGeneration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceIdentity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -963,6 +969,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :destinations, as: 'destinations'
           property :reference_docs_uri, as: 'referenceDocsUri'
+          property :selective_gapic_generation, as: 'selectiveGapicGeneration', class: Google::Apis::ServiceusageV1::SelectiveGapicGeneration, decorator: Google::Apis::ServiceusageV1::SelectiveGapicGeneration::Representation
+      
         end
       end
       
@@ -1795,6 +1803,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServiceusageV1::CommonLanguageSettings, decorator: Google::Apis::ServiceusageV1::CommonLanguageSettings::Representation
       
+        end
+      end
+      
+      class SelectiveGapicGeneration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :methods_prop, as: 'methods'
         end
       end
       
