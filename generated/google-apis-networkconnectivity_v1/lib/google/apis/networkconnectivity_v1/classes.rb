@@ -1121,8 +1121,8 @@ module Google
       class LinkedInterconnectAttachments
         include Google::Apis::Core::Hashable
       
-        # Optional. IP ranges allowed to be included during import from hub.(does not
-        # control transit connectivity) The only allowed value for now is "
+        # Optional. IP ranges allowed to be included during import from hub (does not
+        # control transit connectivity). The only allowed value for now is "
         # ALL_IPV4_RANGES".
         # Corresponds to the JSON property `includeImportRanges`
         # @return [Array<String>]
@@ -1160,6 +1160,52 @@ module Google
         end
       end
       
+      # Next ID: 7
+      class LinkedProducerVpcNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Optional. IP ranges encompassing the subnets to be excluded from peering.
+        # Corresponds to the JSON property `excludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_export_ranges
+      
+        # Immutable. The URI of the Service Consumer VPC that the Producer VPC is peered
+        # with.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Immutable. The name of the VPC peering between the Service Consumer VPC and
+        # the Producer VPC (defined in the Tenant project) which is added to the NCC hub.
+        # This peering must be in ACTIVE state.
+        # Corresponds to the JSON property `peering`
+        # @return [String]
+        attr_accessor :peering
+      
+        # Output only. The URI of the Producer VPC.
+        # Corresponds to the JSON property `producerNetwork`
+        # @return [String]
+        attr_accessor :producer_network
+      
+        # Output only. The Service Consumer Network spoke.
+        # Corresponds to the JSON property `serviceConsumerVpcSpoke`
+        # @return [String]
+        attr_accessor :service_consumer_vpc_spoke
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
+          @network = args[:network] if args.key?(:network)
+          @peering = args[:peering] if args.key?(:peering)
+          @producer_network = args[:producer_network] if args.key?(:producer_network)
+          @service_consumer_vpc_spoke = args[:service_consumer_vpc_spoke] if args.key?(:service_consumer_vpc_spoke)
+        end
+      end
+      
       # A collection of router appliance instances. If you configure multiple router
       # appliance instances to receive data from the same set of sites outside of
       # Google Cloud, we recommend that you associate those instances with the same
@@ -1167,8 +1213,8 @@ module Google
       class LinkedRouterApplianceInstances
         include Google::Apis::Core::Hashable
       
-        # Optional. IP ranges allowed to be included during import from hub.(does not
-        # control transit connectivity) The only allowed value for now is "
+        # Optional. IP ranges allowed to be included during import from hub (does not
+        # control transit connectivity). The only allowed value for now is "
         # ALL_IPV4_RANGES".
         # Corresponds to the JSON property `includeImportRanges`
         # @return [Array<String>]
@@ -1253,8 +1299,8 @@ module Google
       class LinkedVpnTunnels
         include Google::Apis::Core::Hashable
       
-        # Optional. IP ranges allowed to be included during import from hub.(does not
-        # control transit connectivity) The only allowed value for now is "
+        # Optional. IP ranges allowed to be included during import from hub (does not
+        # control transit connectivity). The only allowed value for now is "
         # ALL_IPV4_RANGES".
         # Corresponds to the JSON property `includeImportRanges`
         # @return [Array<String>]
@@ -3230,6 +3276,11 @@ module Google
         # @return [Google::Apis::NetworkconnectivityV1::LinkedInterconnectAttachments]
         attr_accessor :linked_interconnect_attachments
       
+        # Next ID: 7
+        # Corresponds to the JSON property `linkedProducerVpcNetwork`
+        # @return [Google::Apis::NetworkconnectivityV1::LinkedProducerVpcNetwork]
+        attr_accessor :linked_producer_vpc_network
+      
         # A collection of router appliance instances. If you configure multiple router
         # appliance instances to receive data from the same set of sites outside of
         # Google Cloud, we recommend that you associate those instances with the same
@@ -3298,6 +3349,7 @@ module Google
           @hub = args[:hub] if args.key?(:hub)
           @labels = args[:labels] if args.key?(:labels)
           @linked_interconnect_attachments = args[:linked_interconnect_attachments] if args.key?(:linked_interconnect_attachments)
+          @linked_producer_vpc_network = args[:linked_producer_vpc_network] if args.key?(:linked_producer_vpc_network)
           @linked_router_appliance_instances = args[:linked_router_appliance_instances] if args.key?(:linked_router_appliance_instances)
           @linked_vpc_network = args[:linked_vpc_network] if args.key?(:linked_vpc_network)
           @linked_vpn_tunnels = args[:linked_vpn_tunnels] if args.key?(:linked_vpn_tunnels)
