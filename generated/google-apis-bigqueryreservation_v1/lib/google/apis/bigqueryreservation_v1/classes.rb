@@ -138,13 +138,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The end of the current commitment period. It is applicable only
-        # for ACTIVE capacity commitments.
+        # for ACTIVE capacity commitments. Note after renewal, commitment_end_time is
+        # the time the renewed commitment expires. So itwould be at a time after
+        # commitment_start_time + committed period, because we don't change
+        # commitment_start_time ,
         # Corresponds to the JSON property `commitmentEndTime`
         # @return [String]
         attr_accessor :commitment_end_time
       
         # Output only. The start of the current commitment period. It is applicable only
-        # for ACTIVE capacity commitments.
+        # for ACTIVE capacity commitments. Note after the commitment is renewed,
+        # commitment_start_time won't be changed. It refers to the start time of the
+        # original commitment.
         # Corresponds to the JSON property `commitmentStartTime`
         # @return [String]
         attr_accessor :commitment_start_time
