@@ -687,8 +687,8 @@ module Google
         # @return [Google::Apis::NotebooksV2::ShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
       
-        # Optional. The Compute Engine tags to add to runtime (see [Tagging instances](
-        # https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        # Optional. The Compute Engine network tags to add to runtime (see [Add network
+        # tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
