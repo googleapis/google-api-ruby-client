@@ -1239,6 +1239,7 @@ module Google
       
           property :primary_resource_id, as: 'primaryResourceId', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
+          property :primary_resource_location, as: 'primaryResourceLocation'
           property :product, as: 'product', class: Google::Apis::AlloydbV1::StorageDatabasecenterProtoCommonProduct, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterProtoCommonProduct::Representation
       
           property :resource_container, as: 'resourceContainer'
@@ -1321,6 +1322,7 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainRetentionSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_based_retention, as: 'durationBasedRetention'
           property :quantity_based_retention, as: 'quantityBasedRetention'
           property :retention_unit, as: 'retentionUnit'
           property :time_based_retention, as: 'timeBasedRetention'

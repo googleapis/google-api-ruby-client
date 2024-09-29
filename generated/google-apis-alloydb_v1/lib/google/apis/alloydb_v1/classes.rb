@@ -890,21 +890,22 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the failover.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -1044,21 +1045,22 @@ module Google
         attr_accessor :fault_type
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the fault injection.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -1177,7 +1179,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Metadata related to instance level network configuration.
+        # Metadata related to instance-level network configuration.
         # Corresponds to the JSON property `networkConfig`
         # @return [Google::Apis::AlloydbV1::InstanceNetworkConfig]
         attr_accessor :network_config
@@ -1290,7 +1292,7 @@ module Google
         end
       end
       
-      # Metadata related to instance level network configuration.
+      # Metadata related to instance-level network configuration.
       class InstanceNetworkConfig
         include Google::Apis::Core::Hashable
       
@@ -1905,21 +1907,22 @@ module Google
         attr_accessor :etag
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if original
+        # operation with the same request ID was received, and if so, will ignore the
+        # second request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the delete.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -2114,27 +2117,28 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Full name of the nodes as obtained from INSTANCE_VIEW_FULL to
-        # restart upon. Only applicable for read instances.
+        # restart upon. Applicable only to read instances.
         # Corresponds to the JSON property `nodeIds`
         # @return [Array<String>]
         attr_accessor :node_ids
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the restart.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -2180,21 +2184,22 @@ module Google
         attr_accessor :continuous_backup_source
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes since the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the import request.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -2542,7 +2547,7 @@ module Google
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 21
+        # Common model for database resource instance metadata. Next ID: 22
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -2717,7 +2722,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 21
+      # Common model for database resource instance metadata. Next ID: 22
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -2792,6 +2797,12 @@ module Google
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :primary_resource_id
       
+        # Primary resource location. REQUIRED if the immediate parent exists when first
+        # time resource is getting ingested, otherwise optional.
+        # Corresponds to the JSON property `primaryResourceLocation`
+        # @return [String]
+        attr_accessor :primary_resource_location
+      
         # Product specification for Condor resources.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterProtoCommonProduct]
@@ -2851,6 +2862,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
           @primary_resource_id = args[:primary_resource_id] if args.key?(:primary_resource_id)
+          @primary_resource_location = args[:primary_resource_location] if args.key?(:primary_resource_location)
           @product = args[:product] if args.key?(:product)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
@@ -3119,6 +3131,11 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainRetentionSettings
         include Google::Apis::Core::Hashable
       
+        # Duration based retention period i.e. 172800 seconds (2 days)
+        # Corresponds to the JSON property `durationBasedRetention`
+        # @return [String]
+        attr_accessor :duration_based_retention
+      
         # 
         # Corresponds to the JSON property `quantityBasedRetention`
         # @return [Fixnum]
@@ -3140,6 +3157,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @duration_based_retention = args[:duration_based_retention] if args.key?(:duration_based_retention)
           @quantity_based_retention = args[:quantity_based_retention] if args.key?(:quantity_based_retention)
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
@@ -3357,21 +3375,22 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the delete.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -3457,21 +3476,22 @@ module Google
         attr_accessor :etag
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but does not actually execute the upgrade.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only

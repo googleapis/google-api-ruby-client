@@ -142,15 +142,15 @@ module Google
         #   Required. ID of the requesting object.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
         #   Optional. If set, the backend validates the request, but doesn't actually
         #   execute it.
@@ -196,15 +196,15 @@ module Google
         #   error will be returned.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
         #   Optional. If set, the backend validates the request, but doesn't actually
         #   execute it.
@@ -326,15 +326,15 @@ module Google
         #   that case, a new backup is created and `update_mask` is ignored.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
         #   Backup resource by the update. The fields specified in the update_mask are
@@ -386,18 +386,19 @@ module Google
         #   Required. ID of the requesting object.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
-        #   Optional. If set, performs request validation (e.g. permission checks and any
-        #   other type of validation), but do not actually execute the create request.
+        #   Optional. If set, performs request validation, for example, permission checks
+        #   and any other type of validation, but does not actually execute the create
+        #   request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -440,18 +441,19 @@ module Google
         #   Required. ID of the requesting object (the secondary cluster).
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
-        #   Optional. If set, performs request validation (e.g. permission checks and any
-        #   other type of validation), but do not actually execute the create request.
+        #   Optional. If set, performs request validation, for example, permission checks
+        #   and any other type of validation, but does not actually execute the create
+        #   request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -496,18 +498,19 @@ module Google
         #   Optional. Whether to cascade delete child instances for given cluster.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
-        #   Optional. If set, performs request validation (e.g. permission checks and any
-        #   other type of validation), but do not actually execute the delete.
+        #   Optional. If set, performs request validation, for example, permission checks
+        #   and any other type of validation, but does not actually execute the create
+        #   request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -633,15 +636,15 @@ module Google
         #   that case, a new cluster is created and `update_mask` is ignored.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
         #   Cluster resource by the update. The fields specified in the update_mask are
@@ -649,8 +652,9 @@ module Google
         #   it is in the mask. If the user does not provide a mask then all fields will be
         #   overwritten.
         # @param [Boolean] validate_only
-        #   Optional. If set, performs request validation (e.g. permission checks and any
-        #   other type of validation), but do not actually execute the update request.
+        #   Optional. If set, performs request validation, for example, permission checks
+        #   and any other type of validation, but does not actually execute the create
+        #   request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -756,9 +760,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Switches the role of PRIMARY and SECONDARY cluster without any data loss. This
-        # promotes the SECONDARY cluster to PRIMARY and sets up original PRIMARY cluster
-        # to replicate from this newly promoted cluster.
+        # Switches the roles of PRIMARY and SECONDARY clusters without any data loss.
+        # This promotes the SECONDARY cluster to PRIMARY and sets up the original
+        # PRIMARY cluster to replicate from this newly promoted cluster.
         # @param [String] name
         #   Required. The name of the resource. For the required format, see the comment
         #   on the Cluster.name field
@@ -834,18 +838,19 @@ module Google
         #   Required. ID of the requesting object.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
-        #   Optional. If set, performs request validation (e.g. permission checks and any
-        #   other type of validation), but do not actually execute the create request.
+        #   Optional. If set, performs request validation, for example, permission checks
+        #   and any other type of validation, but does not actually execute the create
+        #   request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -887,18 +892,19 @@ module Google
         #   Required. ID of the requesting object.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
-        #   Optional. If set, performs request validation (e.g. permission checks and any
-        #   other type of validation), but do not actually execute the create request.
+        #   Optional. If set, performs request validation, for example, permission checks
+        #   and any other type of validation, but does not actually execute the create
+        #   request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -941,18 +947,19 @@ module Google
         #   ABORTED error will be returned.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
-        #   Optional. If set, performs request validation (e.g. permission checks and any
-        #   other type of validation), but do not actually execute the delete.
+        #   Optional. If set, performs request validation, for example, permission checks
+        #   and any other type of validation, but does not actually execute the create
+        #   request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1058,15 +1065,15 @@ module Google
         #   project`/locations/`location`/clusters/`cluster`/instances/`instance`
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1192,15 +1199,15 @@ module Google
         #   that case, a new instance is created and `update_mask` is ignored.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
         #   Instance resource by the update. The fields specified in the update_mask are
@@ -1208,8 +1215,9 @@ module Google
         #   it is in the mask. If the user does not provide a mask then all fields will be
         #   overwritten.
         # @param [Boolean] validate_only
-        #   Optional. If set, performs request validation (e.g. permission checks and any
-        #   other type of validation), but do not actually execute the update request.
+        #   Optional. If set, performs request validation, for example, permission checks
+        #   and any other type of validation, but does not actually execute the create
+        #   request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1283,15 +1291,15 @@ module Google
         # @param [Google::Apis::AlloydbV1::User] user_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] user_id
         #   Required. ID of the requesting object.
         # @param [Boolean] validate_only
@@ -1335,15 +1343,15 @@ module Google
         #   on the User.name field.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [Boolean] validate_only
         #   Optional. If set, the backend validates the request, but doesn't actually
         #   execute it.
@@ -1459,15 +1467,15 @@ module Google
         #   Optional. Allow missing fields in the update mask.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   request ID so that if you must retry your request, the server ignores the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if the original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
         #   User resource by the update. The fields specified in the update_mask are
