@@ -49,6 +49,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The crypto key configuration. This field is used by the Customer-managed
+        # encryption keys (CMEK) feature.
+        # Corresponds to the JSON property `cryptoKeyConfig`
+        # @return [Google::Apis::DeveloperconnectV1::CryptoKeyConfig]
+        attr_accessor :crypto_key_config
+      
         # Output only. [Output only] Delete timestamp
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
@@ -73,6 +79,21 @@ module Google
         # Corresponds to the JSON property `githubConfig`
         # @return [Google::Apis::DeveloperconnectV1::GitHubConfig]
         attr_accessor :github_config
+      
+        # Configuration for connections to an instance of GitHub Enterprise.
+        # Corresponds to the JSON property `githubEnterpriseConfig`
+        # @return [Google::Apis::DeveloperconnectV1::GitHubEnterpriseConfig]
+        attr_accessor :github_enterprise_config
+      
+        # Configuration for connections to gitlab.com.
+        # Corresponds to the JSON property `gitlabConfig`
+        # @return [Google::Apis::DeveloperconnectV1::GitLabConfig]
+        attr_accessor :gitlab_config
+      
+        # Configuration for connections to an instance of GitLab Enterprise.
+        # Corresponds to the JSON property `gitlabEnterpriseConfig`
+        # @return [Google::Apis::DeveloperconnectV1::GitLabEnterpriseConfig]
+        attr_accessor :gitlab_enterprise_config
       
         # Describes stage and necessary actions to be taken by the user to complete the
         # installation. Used for GitHub and GitHub Enterprise based connections.
@@ -116,16 +137,42 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_config = args[:crypto_key_config] if args.key?(:crypto_key_config)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @disabled = args[:disabled] if args.key?(:disabled)
           @etag = args[:etag] if args.key?(:etag)
           @github_config = args[:github_config] if args.key?(:github_config)
+          @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
+          @gitlab_enterprise_config = args[:gitlab_enterprise_config] if args.key?(:gitlab_enterprise_config)
           @installation_state = args[:installation_state] if args.key?(:installation_state)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The crypto key configuration. This field is used by the Customer-managed
+      # encryption keys (CMEK) feature.
+      class CryptoKeyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the key which is used to encrypt/decrypt customer data.
+        # For key in Cloud KMS, the key should be in the format of `projects/*/locations/
+        # */keyRings/*/cryptoKeys/*`.
+        # Corresponds to the JSON property `keyReference`
+        # @return [String]
+        attr_accessor :key_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_reference = args[:key_reference] if args.key?(:key_reference)
         end
       end
       
@@ -345,6 +392,179 @@ module Google
         end
       end
       
+      # Configuration for connections to an instance of GitHub Enterprise.
+      class GitHubEnterpriseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. ID of the GitHub App created from the manifest.
+        # Corresponds to the JSON property `appId`
+        # @return [Fixnum]
+        attr_accessor :app_id
+      
+        # Optional. ID of the installation of the GitHub App.
+        # Corresponds to the JSON property `appInstallationId`
+        # @return [Fixnum]
+        attr_accessor :app_installation_id
+      
+        # Output only. The URL-friendly name of the GitHub App.
+        # Corresponds to the JSON property `appSlug`
+        # @return [String]
+        attr_accessor :app_slug
+      
+        # Required. The URI of the GitHub Enterprise host this connection is for.
+        # Corresponds to the JSON property `hostUri`
+        # @return [String]
+        attr_accessor :host_uri
+      
+        # Output only. The URI to navigate to in order to manage the installation
+        # associated with this GitHubEnterpriseConfig.
+        # Corresponds to the JSON property `installationUri`
+        # @return [String]
+        attr_accessor :installation_uri
+      
+        # Optional. SecretManager resource containing the private key of the GitHub App,
+        # formatted as `projects/*/secrets/*/versions/*`.
+        # Corresponds to the JSON property `privateKeySecretVersion`
+        # @return [String]
+        attr_accessor :private_key_secret_version
+      
+        # Output only. GitHub Enterprise version installed at the host_uri.
+        # Corresponds to the JSON property `serverVersion`
+        # @return [String]
+        attr_accessor :server_version
+      
+        # ServiceDirectoryConfig represents Service Directory configuration for a
+        # connection.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
+        # Optional. SSL certificate to use for requests to GitHub Enterprise.
+        # Corresponds to the JSON property `sslCaCertificate`
+        # @return [String]
+        attr_accessor :ssl_ca_certificate
+      
+        # Optional. SecretManager resource containing the webhook secret of the GitHub
+        # App, formatted as `projects/*/secrets/*/versions/*`.
+        # Corresponds to the JSON property `webhookSecretSecretVersion`
+        # @return [String]
+        attr_accessor :webhook_secret_secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @app_installation_id = args[:app_installation_id] if args.key?(:app_installation_id)
+          @app_slug = args[:app_slug] if args.key?(:app_slug)
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
+          @installation_uri = args[:installation_uri] if args.key?(:installation_uri)
+          @private_key_secret_version = args[:private_key_secret_version] if args.key?(:private_key_secret_version)
+          @server_version = args[:server_version] if args.key?(:server_version)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
+          @ssl_ca_certificate = args[:ssl_ca_certificate] if args.key?(:ssl_ca_certificate)
+          @webhook_secret_secret_version = args[:webhook_secret_secret_version] if args.key?(:webhook_secret_secret_version)
+        end
+      end
+      
+      # Configuration for connections to gitlab.com.
+      class GitLabConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `authorizerCredential`
+        # @return [Google::Apis::DeveloperconnectV1::UserCredential]
+        attr_accessor :authorizer_credential
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `readAuthorizerCredential`
+        # @return [Google::Apis::DeveloperconnectV1::UserCredential]
+        attr_accessor :read_authorizer_credential
+      
+        # Required. Immutable. SecretManager resource containing the webhook secret of a
+        # GitLab project, formatted as `projects/*/secrets/*/versions/*`. This is used
+        # to validate webhooks.
+        # Corresponds to the JSON property `webhookSecretSecretVersion`
+        # @return [String]
+        attr_accessor :webhook_secret_secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorizer_credential = args[:authorizer_credential] if args.key?(:authorizer_credential)
+          @read_authorizer_credential = args[:read_authorizer_credential] if args.key?(:read_authorizer_credential)
+          @webhook_secret_secret_version = args[:webhook_secret_secret_version] if args.key?(:webhook_secret_secret_version)
+        end
+      end
+      
+      # Configuration for connections to an instance of GitLab Enterprise.
+      class GitLabEnterpriseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `authorizerCredential`
+        # @return [Google::Apis::DeveloperconnectV1::UserCredential]
+        attr_accessor :authorizer_credential
+      
+        # Required. The URI of the GitLab Enterprise host this connection is for.
+        # Corresponds to the JSON property `hostUri`
+        # @return [String]
+        attr_accessor :host_uri
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `readAuthorizerCredential`
+        # @return [Google::Apis::DeveloperconnectV1::UserCredential]
+        attr_accessor :read_authorizer_credential
+      
+        # Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+        # Corresponds to the JSON property `serverVersion`
+        # @return [String]
+        attr_accessor :server_version
+      
+        # ServiceDirectoryConfig represents Service Directory configuration for a
+        # connection.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
+        # Optional. SSL Certificate Authority certificate to use for requests to GitLab
+        # Enterprise instance.
+        # Corresponds to the JSON property `sslCaCertificate`
+        # @return [String]
+        attr_accessor :ssl_ca_certificate
+      
+        # Required. Immutable. SecretManager resource containing the webhook secret of a
+        # GitLab project, formatted as `projects/*/secrets/*/versions/*`. This is used
+        # to validate webhooks.
+        # Corresponds to the JSON property `webhookSecretSecretVersion`
+        # @return [String]
+        attr_accessor :webhook_secret_secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorizer_credential = args[:authorizer_credential] if args.key?(:authorizer_credential)
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
+          @read_authorizer_credential = args[:read_authorizer_credential] if args.key?(:read_authorizer_credential)
+          @server_version = args[:server_version] if args.key?(:server_version)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
+          @ssl_ca_certificate = args[:ssl_ca_certificate] if args.key?(:ssl_ca_certificate)
+          @webhook_secret_secret_version = args[:webhook_secret_secret_version] if args.key?(:webhook_secret_secret_version)
+        end
+      end
+      
       # Message describing the GitRepositoryLink object
       class GitRepositoryLink
         include Google::Apis::Core::Hashable
@@ -404,6 +624,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. External ID of the webhook created for the repository.
+        # Corresponds to the JSON property `webhookId`
+        # @return [String]
+        attr_accessor :webhook_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -420,6 +645,7 @@ module Google
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @webhook_id = args[:webhook_id] if args.key?(:webhook_id)
         end
       end
       
@@ -815,6 +1041,27 @@ module Google
         end
       end
       
+      # ServiceDirectoryConfig represents Service Directory configuration for a
+      # connection.
+      class ServiceDirectoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Service Directory service name. Format: projects/`project`/
+        # locations/`location`/namespaces/`namespace`/services/`service`.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -851,6 +1098,33 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Represents a personal access token that authorized the Connection, and
+      # associated metadata.
+      class UserCredential
+        include Google::Apis::Core::Hashable
+      
+        # Required. A SecretManager resource containing the user token that authorizes
+        # the Developer Connect connection. Format: `projects/*/secrets/*/versions/*`.
+        # Corresponds to the JSON property `userTokenSecretVersion`
+        # @return [String]
+        attr_accessor :user_token_secret_version
+      
+        # Output only. The username associated with this token.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_token_secret_version = args[:user_token_secret_version] if args.key?(:user_token_secret_version)
+          @username = args[:username] if args.key?(:username)
         end
       end
     end
