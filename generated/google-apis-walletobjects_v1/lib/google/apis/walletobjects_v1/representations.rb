@@ -628,6 +628,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ModuleViewConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Money
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -887,6 +893,12 @@ module Google
       end
       
       class Uri
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValueAddedModuleData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1358,6 +1370,8 @@ module Google
       
           collection :text_modules_data, as: 'textModulesData', class: Google::Apis::WalletobjectsV1::TextModuleData, decorator: Google::Apis::WalletobjectsV1::TextModuleData::Representation
       
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
+      
           property :venue, as: 'venue', class: Google::Apis::WalletobjectsV1::EventVenue, decorator: Google::Apis::WalletobjectsV1::EventVenue::Representation
       
           property :version, :numeric_string => true, as: 'version'
@@ -1440,6 +1454,8 @@ module Google
           property :ticket_type, as: 'ticketType', class: Google::Apis::WalletobjectsV1::LocalizedString, decorator: Google::Apis::WalletobjectsV1::LocalizedString::Representation
       
           property :valid_time_interval, as: 'validTimeInterval', class: Google::Apis::WalletobjectsV1::TimeInterval, decorator: Google::Apis::WalletobjectsV1::TimeInterval::Representation
+      
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
       
           property :version, :numeric_string => true, as: 'version'
         end
@@ -1580,6 +1596,8 @@ module Google
       
           collection :text_modules_data, as: 'textModulesData', class: Google::Apis::WalletobjectsV1::TextModuleData, decorator: Google::Apis::WalletobjectsV1::TextModuleData::Representation
       
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
+      
           property :version, :numeric_string => true, as: 'version'
           property :view_unlock_requirement, as: 'viewUnlockRequirement'
           property :word_mark, as: 'wordMark', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
@@ -1669,6 +1687,8 @@ module Google
       
           property :valid_time_interval, as: 'validTimeInterval', class: Google::Apis::WalletobjectsV1::TimeInterval, decorator: Google::Apis::WalletobjectsV1::TimeInterval::Representation
       
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
+      
           property :version, :numeric_string => true, as: 'version'
         end
       end
@@ -1723,6 +1743,8 @@ module Google
           property :security_animation, as: 'securityAnimation', class: Google::Apis::WalletobjectsV1::SecurityAnimation, decorator: Google::Apis::WalletobjectsV1::SecurityAnimation::Representation
       
           collection :text_modules_data, as: 'textModulesData', class: Google::Apis::WalletobjectsV1::TextModuleData, decorator: Google::Apis::WalletobjectsV1::TextModuleData::Representation
+      
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
       
           property :view_unlock_requirement, as: 'viewUnlockRequirement'
         end
@@ -1790,6 +1812,8 @@ module Google
           collection :text_modules_data, as: 'textModulesData', class: Google::Apis::WalletobjectsV1::TextModuleData, decorator: Google::Apis::WalletobjectsV1::TextModuleData::Representation
       
           property :valid_time_interval, as: 'validTimeInterval', class: Google::Apis::WalletobjectsV1::TimeInterval, decorator: Google::Apis::WalletobjectsV1::TimeInterval::Representation
+      
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
       
           property :wide_logo, as: 'wideLogo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
       
@@ -1870,6 +1894,8 @@ module Google
       
           collection :text_modules_data, as: 'textModulesData', class: Google::Apis::WalletobjectsV1::TextModuleData, decorator: Google::Apis::WalletobjectsV1::TextModuleData::Representation
       
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
+      
           property :version, :numeric_string => true, as: 'version'
           property :view_unlock_requirement, as: 'viewUnlockRequirement'
           property :wide_program_logo, as: 'wideProgramLogo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
@@ -1945,6 +1971,8 @@ module Google
           collection :text_modules_data, as: 'textModulesData', class: Google::Apis::WalletobjectsV1::TextModuleData, decorator: Google::Apis::WalletobjectsV1::TextModuleData::Representation
       
           property :valid_time_interval, as: 'validTimeInterval', class: Google::Apis::WalletobjectsV1::TimeInterval, decorator: Google::Apis::WalletobjectsV1::TimeInterval::Representation
+      
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
       
           property :version, :numeric_string => true, as: 'version'
         end
@@ -2201,6 +2229,8 @@ module Google
       
           collection :text_modules_data, as: 'textModulesData', class: Google::Apis::WalletobjectsV1::TextModuleData, decorator: Google::Apis::WalletobjectsV1::TextModuleData::Representation
       
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
+      
           property :version, :numeric_string => true, as: 'version'
           property :view_unlock_requirement, as: 'viewUnlockRequirement'
           property :wide_program_logo, as: 'wideProgramLogo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
@@ -2276,6 +2306,8 @@ module Google
           collection :text_modules_data, as: 'textModulesData', class: Google::Apis::WalletobjectsV1::TextModuleData, decorator: Google::Apis::WalletobjectsV1::TextModuleData::Representation
       
           property :valid_time_interval, as: 'validTimeInterval', class: Google::Apis::WalletobjectsV1::TimeInterval, decorator: Google::Apis::WalletobjectsV1::TimeInterval::Representation
+      
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
       
           property :version, :numeric_string => true, as: 'version'
         end
@@ -2415,6 +2447,14 @@ module Google
         end
       end
       
+      class ModuleViewConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_interval, as: 'displayInterval', class: Google::Apis::WalletobjectsV1::TimeInterval, decorator: Google::Apis::WalletobjectsV1::TimeInterval::Representation
+      
+        end
+      end
+      
       class Money
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2504,6 +2544,8 @@ module Google
           property :title, as: 'title'
           property :title_image, as: 'titleImage', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
       
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
+      
           property :version, :numeric_string => true, as: 'version'
           property :view_unlock_requirement, as: 'viewUnlockRequirement'
           property :wide_title_image, as: 'wideTitleImage', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
@@ -2572,6 +2614,8 @@ module Google
           collection :text_modules_data, as: 'textModulesData', class: Google::Apis::WalletobjectsV1::TextModuleData, decorator: Google::Apis::WalletobjectsV1::TextModuleData::Representation
       
           property :valid_time_interval, as: 'validTimeInterval', class: Google::Apis::WalletobjectsV1::TimeInterval, decorator: Google::Apis::WalletobjectsV1::TimeInterval::Representation
+      
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
       
           property :version, :numeric_string => true, as: 'version'
         end
@@ -2965,6 +3009,8 @@ module Google
           property :transit_operator_name, as: 'transitOperatorName', class: Google::Apis::WalletobjectsV1::LocalizedString, decorator: Google::Apis::WalletobjectsV1::LocalizedString::Representation
       
           property :transit_type, as: 'transitType'
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
+      
           property :version, :numeric_string => true, as: 'version'
           property :view_unlock_requirement, as: 'viewUnlockRequirement'
           property :watermark, as: 'watermark', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
@@ -3059,6 +3105,8 @@ module Google
           property :trip_type, as: 'tripType'
           property :valid_time_interval, as: 'validTimeInterval', class: Google::Apis::WalletobjectsV1::TimeInterval, decorator: Google::Apis::WalletobjectsV1::TimeInterval::Representation
       
+          collection :value_added_module_data, as: 'valueAddedModuleData', class: Google::Apis::WalletobjectsV1::ValueAddedModuleData, decorator: Google::Apis::WalletobjectsV1::ValueAddedModuleData::Representation
+      
           property :version, :numeric_string => true, as: 'version'
         end
       end
@@ -3122,6 +3170,22 @@ module Google
           property :localized_description, as: 'localizedDescription', class: Google::Apis::WalletobjectsV1::LocalizedString, decorator: Google::Apis::WalletobjectsV1::LocalizedString::Representation
       
           property :uri, as: 'uri'
+        end
+      end
+      
+      class ValueAddedModuleData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, as: 'body', class: Google::Apis::WalletobjectsV1::LocalizedString, decorator: Google::Apis::WalletobjectsV1::LocalizedString::Representation
+      
+          property :header, as: 'header', class: Google::Apis::WalletobjectsV1::LocalizedString, decorator: Google::Apis::WalletobjectsV1::LocalizedString::Representation
+      
+          property :image, as: 'image', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
+      
+          property :sort_index, as: 'sortIndex'
+          property :uri, as: 'uri'
+          property :view_constraints, as: 'viewConstraints', class: Google::Apis::WalletobjectsV1::ModuleViewConstraints, decorator: Google::Apis::WalletobjectsV1::ModuleViewConstraints::Representation
+      
         end
       end
     end

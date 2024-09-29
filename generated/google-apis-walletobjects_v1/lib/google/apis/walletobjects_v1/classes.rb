@@ -1750,6 +1750,12 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
+        # Optional value added module data. Maximum of ten on the class. For a pass only
+        # ten will be displayed, prioritizing those from the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Event venue details.
         # Corresponds to the JSON property `venue`
         # @return [Google::Apis::WalletobjectsV1::EventVenue]
@@ -1820,6 +1826,7 @@ module Google
           @section_label = args[:section_label] if args.key?(:section_label)
           @security_animation = args[:security_animation] if args.key?(:security_animation)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @venue = args[:venue] if args.key?(:venue)
           @version = args[:version] if args.key?(:version)
           @view_unlock_requirement = args[:view_unlock_requirement] if args.key?(:view_unlock_requirement)
@@ -2090,6 +2097,11 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
+        # Optional value added module data. Maximum of ten on the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Deprecated
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -2133,6 +2145,7 @@ module Google
           @ticket_number = args[:ticket_number] if args.key?(:ticket_number)
           @ticket_type = args[:ticket_type] if args.key?(:ticket_type)
           @valid_time_interval = args[:valid_time_interval] if args.key?(:valid_time_interval)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -2648,6 +2661,12 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
+        # Optional value added module data. Maximum of ten on the class. For a pass only
+        # ten will be displayed, prioritizing those from the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Deprecated
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -2705,6 +2724,7 @@ module Google
           @review_status = args[:review_status] if args.key?(:review_status)
           @security_animation = args[:security_animation] if args.key?(:security_animation)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @version = args[:version] if args.key?(:version)
           @view_unlock_requirement = args[:view_unlock_requirement] if args.key?(:view_unlock_requirement)
           @word_mark = args[:word_mark] if args.key?(:word_mark)
@@ -3008,6 +3028,11 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
+        # Optional value added module data. Maximum of ten on the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Deprecated
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -3048,6 +3073,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
           @valid_time_interval = args[:valid_time_interval] if args.key?(:valid_time_interval)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -3216,6 +3242,12 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
+        # Optional value added module data. Maximum of ten on the class. For a pass only
+        # ten will be displayed, prioritizing those from the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # View Unlock Requirement options for the generic pass.
         # Corresponds to the JSON property `viewUnlockRequirement`
         # @return [String]
@@ -3239,6 +3271,7 @@ module Google
           @redemption_issuers = args[:redemption_issuers] if args.key?(:redemption_issuers)
           @security_animation = args[:security_animation] if args.key?(:security_animation)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @view_unlock_requirement = args[:view_unlock_requirement] if args.key?(:view_unlock_requirement)
         end
       end
@@ -3465,6 +3498,11 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
+        # Optional value added module data. Maximum of ten on the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Wrapping type for Google hosted images. Next ID: 7
         # Corresponds to the JSON property `wideLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
@@ -3501,6 +3539,7 @@ module Google
           @subheader = args[:subheader] if args.key?(:subheader)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
           @valid_time_interval = args[:valid_time_interval] if args.key?(:valid_time_interval)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @wide_logo = args[:wide_logo] if args.key?(:wide_logo)
         end
       end
@@ -3776,6 +3815,12 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
+        # Optional value added module data. Maximum of ten on the class. For a pass only
+        # ten will be displayed, prioritizing those from the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Deprecated
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -3836,6 +3881,7 @@ module Google
           @review_status = args[:review_status] if args.key?(:review_status)
           @security_animation = args[:security_animation] if args.key?(:security_animation)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @version = args[:version] if args.key?(:version)
           @view_unlock_requirement = args[:view_unlock_requirement] if args.key?(:view_unlock_requirement)
           @wide_program_logo = args[:wide_program_logo] if args.key?(:wide_program_logo)
@@ -4081,6 +4127,11 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
+        # Optional value added module data. Maximum of ten on the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Deprecated
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -4121,6 +4172,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
           @valid_time_interval = args[:valid_time_interval] if args.key?(:valid_time_interval)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -4951,6 +5003,12 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
+        # Optional value added module data. Maximum of ten on the class. For a pass only
+        # ten will be displayed, prioritizing those from the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Deprecated
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -5017,6 +5075,7 @@ module Google
           @secondary_rewards_tier_label = args[:secondary_rewards_tier_label] if args.key?(:secondary_rewards_tier_label)
           @security_animation = args[:security_animation] if args.key?(:security_animation)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @version = args[:version] if args.key?(:version)
           @view_unlock_requirement = args[:view_unlock_requirement] if args.key?(:view_unlock_requirement)
           @wide_program_logo = args[:wide_program_logo] if args.key?(:wide_program_logo)
@@ -5267,6 +5326,11 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
+        # Optional value added module data. Maximum of ten on the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Deprecated
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -5307,6 +5371,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
           @valid_time_interval = args[:valid_time_interval] if args.key?(:valid_time_interval)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -5866,6 +5931,28 @@ module Google
         end
       end
       
+      # Constraints that all must be met for the module to be shown.
+      class ModuleViewConstraints
+        include Google::Apis::Core::Hashable
+      
+        # The period of time that the module will be displayed to users. Can define both
+        # a `startTime` and `endTime`. The module is displayed immediately after
+        # insertion unless a `startTime` is set. The module is displayed indefinitely if
+        # `endTime` is not set.
+        # Corresponds to the JSON property `displayInterval`
+        # @return [Google::Apis::WalletobjectsV1::TimeInterval]
+        attr_accessor :display_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_interval = args[:display_interval] if args.key?(:display_interval)
+        end
+      end
+      
       # 
       class Money
         include Google::Apis::Core::Hashable
@@ -6210,6 +6297,12 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :title_image
       
+        # Optional value added module data. Maximum of ten on the class. For a pass only
+        # ten will be displayed, prioritizing those from the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Deprecated
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -6273,6 +6366,7 @@ module Google
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
           @title = args[:title] if args.key?(:title)
           @title_image = args[:title_image] if args.key?(:title_image)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @version = args[:version] if args.key?(:version)
           @view_unlock_requirement = args[:view_unlock_requirement] if args.key?(:view_unlock_requirement)
           @wide_title_image = args[:wide_title_image] if args.key?(:wide_title_image)
@@ -6491,6 +6585,11 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
+        # Optional value added module data. Maximum of ten on the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Deprecated
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -6526,6 +6625,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
           @valid_time_interval = args[:valid_time_interval] if args.key?(:valid_time_interval)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -7887,6 +7987,12 @@ module Google
         # @return [String]
         attr_accessor :transit_type
       
+        # Optional value added module data. Maximum of ten on the class. For a pass only
+        # ten will be displayed, prioritizing those from the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Deprecated
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -7966,6 +8072,7 @@ module Google
           @text_modules_data = args[:text_modules_data] if args.key?(:text_modules_data)
           @transit_operator_name = args[:transit_operator_name] if args.key?(:transit_operator_name)
           @transit_type = args[:transit_type] if args.key?(:transit_type)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @version = args[:version] if args.key?(:version)
           @view_unlock_requirement = args[:view_unlock_requirement] if args.key?(:view_unlock_requirement)
           @watermark = args[:watermark] if args.key?(:watermark)
@@ -8281,6 +8388,11 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
+        # Optional value added module data. Maximum of ten on the object.
+        # Corresponds to the JSON property `valueAddedModuleData`
+        # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
+        attr_accessor :value_added_module_data
+      
         # Deprecated
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -8331,6 +8443,7 @@ module Google
           @trip_id = args[:trip_id] if args.key?(:trip_id)
           @trip_type = args[:trip_type] if args.key?(:trip_type)
           @valid_time_interval = args[:valid_time_interval] if args.key?(:valid_time_interval)
+          @value_added_module_data = args[:value_added_module_data] if args.key?(:value_added_module_data)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -8520,6 +8633,61 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @localized_description = args[:localized_description] if args.key?(:localized_description)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Data for Value Added module. Required fields are header and uri.
+      class ValueAddedModuleData
+        include Google::Apis::Core::Hashable
+      
+        # Body to be displayed on the module. Character limit is 50 and longer strings
+        # will be truncated.
+        # Corresponds to the JSON property `body`
+        # @return [Google::Apis::WalletobjectsV1::LocalizedString]
+        attr_accessor :body
+      
+        # Header to be displayed on the module. Character limit is 60 and longer strings
+        # will be truncated.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::WalletobjectsV1::LocalizedString]
+        attr_accessor :header
+      
+        # Wrapping type for Google hosted images. Next ID: 7
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::WalletobjectsV1::Image]
+        attr_accessor :image
+      
+        # The index for sorting the modules. Modules with a lower sort index are shown
+        # before modules with a higher sort index. If unspecified, the sort index is
+        # assumed to be INT_MAX. For two modules with the same index, the sorting
+        # behavior is undefined.
+        # Corresponds to the JSON property `sortIndex`
+        # @return [Fixnum]
+        attr_accessor :sort_index
+      
+        # URI that the module leads to on click. This can be a web link or a deep link
+        # as mentioned in https://developer.android.com/training/app-links/deep-linking.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Constraints that all must be met for the module to be shown.
+        # Corresponds to the JSON property `viewConstraints`
+        # @return [Google::Apis::WalletobjectsV1::ModuleViewConstraints]
+        attr_accessor :view_constraints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+          @header = args[:header] if args.key?(:header)
+          @image = args[:image] if args.key?(:image)
+          @sort_index = args[:sort_index] if args.key?(:sort_index)
+          @uri = args[:uri] if args.key?(:uri)
+          @view_constraints = args[:view_constraints] if args.key?(:view_constraints)
         end
       end
     end
