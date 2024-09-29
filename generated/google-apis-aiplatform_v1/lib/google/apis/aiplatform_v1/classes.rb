@@ -25319,6 +25319,13 @@ module Google
         attr_accessor :has_prompt_variable
         alias_method :has_prompt_variable?, :has_prompt_variable
       
+        # Whether or not the user has enabled logit probabilities in the model
+        # parameters.
+        # Corresponds to the JSON property `logprobs`
+        # @return [Boolean]
+        attr_accessor :logprobs
+        alias_method :logprobs?, :logprobs
+      
         # Value of the maximum number of tokens generated set when the dataset was saved.
         # Corresponds to the JSON property `maxOutputTokens`
         # @return [Fixnum]
@@ -25333,6 +25340,19 @@ module Google
         # Corresponds to the JSON property `promptType`
         # @return [String]
         attr_accessor :prompt_type
+      
+        # Seeding enables model to return a deterministic response on a best effort
+        # basis. Determinism isn't guaranteed. This field determines whether or not
+        # seeding is enabled.
+        # Corresponds to the JSON property `seedEnabled`
+        # @return [Boolean]
+        attr_accessor :seed_enabled
+        alias_method :seed_enabled?, :seed_enabled
+      
+        # The actual value of the seed.
+        # Corresponds to the JSON property `seedValue`
+        # @return [Fixnum]
+        attr_accessor :seed_value
       
         # Customized stop sequences.
         # Corresponds to the JSON property `stopSequences`
@@ -25384,9 +25404,12 @@ module Google
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
           @grounding_config = args[:grounding_config] if args.key?(:grounding_config)
           @has_prompt_variable = args[:has_prompt_variable] if args.key?(:has_prompt_variable)
+          @logprobs = args[:logprobs] if args.key?(:logprobs)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
           @note = args[:note] if args.key?(:note)
           @prompt_type = args[:prompt_type] if args.key?(:prompt_type)
+          @seed_enabled = args[:seed_enabled] if args.key?(:seed_enabled)
+          @seed_value = args[:seed_value] if args.key?(:seed_value)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
           @system_instruction_gcs_uri = args[:system_instruction_gcs_uri] if args.key?(:system_instruction_gcs_uri)
