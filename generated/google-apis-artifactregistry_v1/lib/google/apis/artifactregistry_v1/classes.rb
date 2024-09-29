@@ -100,6 +100,85 @@ module Google
         end
       end
       
+      # An Attachment refers to additional metadata that can be attached to artifacts
+      # in ArtifactRegistry. An attachment consists of one or more files.
+      class Attachment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User annotations. These attributes can only be set and used by the
+        # user, and not by Artifact Registry. See https://google.aip.dev/128#annotations
+        # for more details such as format and size limitations. Client specified
+        # annotations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # The namespace this attachment belongs to. E.g. If an Attachment is created by
+        # artifact analysis, namespace is set to artifactanalysis.googleapis.com.
+        # Corresponds to the JSON property `attachmentNamespace`
+        # @return [String]
+        attr_accessor :attachment_namespace
+      
+        # Output only. The time when the attachment was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The files that blong to this Attachment. If the file ID part
+        # contains slashes, they are escaped. E.g. "projects/p1/locations/us-central1/
+        # repositories/repo1/files/sha:".
+        # Corresponds to the JSON property `files`
+        # @return [Array<String>]
+        attr_accessor :files
+      
+        # The name of the attachment. E.g. "projects/p1/locations/us/repositories/repo/
+        # attachments/sbom".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The name of the OCI version that this attachment created. Only
+        # populated for Docker attachments. E.g. "projects/p1/locations/us-central1/
+        # repositories/repo1/packages/p1/versions/v1".
+        # Corresponds to the JSON property `ociVersionName`
+        # @return [String]
+        attr_accessor :oci_version_name
+      
+        # Required. The target the attachment is for, can be a Version, Package or
+        # Repository. E.g. "projects/p1/locations/us-central1/repositories/repo1/
+        # packages/p1/versions/v1".
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Type of Attachment. E.g. application/vnd.spdx+jsonn
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The time when the attachment was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @attachment_namespace = args[:attachment_namespace] if args.key?(:attachment_namespace)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @files = args[:files] if args.key?(:files)
+          @name = args[:name] if args.key?(:name)
+          @oci_version_name = args[:oci_version_name] if args.key?(:oci_version_name)
+          @target = args[:target] if args.key?(:target)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # The metadata of an LRO from deleting multiple versions.
       class BatchDeleteVersionsMetadata
         include Google::Apis::Core::Hashable
@@ -706,6 +785,11 @@ module Google
       class GoogleDevtoolsArtifactregistryV1File
         include Google::Apis::Core::Hashable
       
+        # Optional. Client specified annotations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # Output only. The time when the File was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -750,6 +834,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
           @fetch_time = args[:fetch_time] if args.key?(:fetch_time)
           @hashes = args[:hashes] if args.key?(:hashes)
@@ -929,6 +1014,66 @@ module Google
         def update!(**args)
           @repository_base = args[:repository_base] if args.key?(:repository_base)
           @repository_path = args[:repository_path] if args.key?(:repository_path)
+        end
+      end
+      
+      # A Rule applies to repository or package level. It defines the deny or allow
+      # action of the operation when the conditions in the rule are met.
+      class GoogleDevtoolsArtifactregistryV1Rule
+        include Google::Apis::Core::Hashable
+      
+        # The action this rule makes.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::ArtifactregistryV1::Expr]
+        attr_accessor :condition
+      
+        # The name of the rule, for example: "projects/p1/locations/us-central1/
+        # repositories/repo1/rules/rule1".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The package ID the rule applies to. If empty, this rule applies to all the
+        # packages inside the repository.
+        # Corresponds to the JSON property `packageId`
+        # @return [String]
+        attr_accessor :package_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @condition = args[:condition] if args.key?(:condition)
+          @name = args[:name] if args.key?(:name)
+          @operation = args[:operation] if args.key?(:operation)
+          @package_id = args[:package_id] if args.key?(:package_id)
         end
       end
       
@@ -1326,6 +1471,32 @@ module Google
         end
       end
       
+      # The response from listing attachments.
+      class ListAttachmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Attachments returned.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<Google::Apis::ArtifactregistryV1::Attachment>]
+        attr_accessor :attachments
+      
+        # The token to retrieve the next page of attachments, or empty if there are no
+        # more attachments to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response from listing docker images.
       class ListDockerImagesResponse
         include Google::Apis::Core::Hashable
@@ -1530,6 +1701,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @repositories = args[:repositories] if args.key?(:repositories)
+        end
+      end
+      
+      # The response from listing rules.
+      class ListRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token to retrieve the next page of rules, or empty if there are no more
+        # rules to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The rules returned.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule>]
+        attr_accessor :rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rules = args[:rules] if args.key?(:rules)
         end
       end
       
@@ -2600,6 +2797,46 @@ module Google
       end
       
       # The response to upload a generic artifact.
+      class UploadFileMediaResponse
+        include Google::Apis::Core::Hashable
+      
+        # This resource represents a long-running operation that is the result of a
+        # network API call.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::ArtifactregistryV1::Operation]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # The request to upload a file.
+      class UploadFileRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The ID of the file. If left empty will default to sha256 digest of
+        # the content uploaded.
+        # Corresponds to the JSON property `fileId`
+        # @return [String]
+        attr_accessor :file_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_id = args[:file_id] if args.key?(:file_id)
+        end
+      end
+      
+      # The response to upload a generic artifact.
       class UploadGenericArtifactMediaResponse
         include Google::Apis::Core::Hashable
       
@@ -3023,6 +3260,11 @@ module Google
       class Version
         include Google::Apis::Core::Hashable
       
+        # Optional. Client specified annotations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # The time when the version was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -3064,6 +3306,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @metadata = args[:metadata] if args.key?(:metadata)

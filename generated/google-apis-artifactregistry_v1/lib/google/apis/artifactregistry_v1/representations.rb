@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Attachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchDeleteVersionsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsArtifactregistryV1Rule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HashProp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAttachmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDockerImagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +347,12 @@ module Google
       end
       
       class ListRepositoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRulesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -491,6 +515,18 @@ module Google
       end
       
       class UploadAptArtifactResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadFileMediaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadFileRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -668,6 +704,21 @@ module Google
         end
       end
       
+      class Attachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :attachment_namespace, as: 'attachmentNamespace'
+          property :create_time, as: 'createTime'
+          collection :files, as: 'files'
+          property :name, as: 'name'
+          property :oci_version_name, as: 'ociVersionName'
+          property :target, as: 'target'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class BatchDeleteVersionsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -816,6 +867,7 @@ module Google
       class GoogleDevtoolsArtifactregistryV1File
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
           property :fetch_time, as: 'fetchTime'
           collection :hashes, as: 'hashes', class: Google::Apis::ArtifactregistryV1::HashProp, decorator: Google::Apis::ArtifactregistryV1::HashProp::Representation
@@ -882,6 +934,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :repository_base, as: 'repositoryBase'
           property :repository_path, as: 'repositoryPath'
+        end
+      end
+      
+      class GoogleDevtoolsArtifactregistryV1Rule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :condition, as: 'condition', class: Google::Apis::ArtifactregistryV1::Expr, decorator: Google::Apis::ArtifactregistryV1::Expr::Representation
+      
+          property :name, as: 'name'
+          property :operation, as: 'operation'
+          property :package_id, as: 'packageId'
         end
       end
       
@@ -1027,6 +1091,15 @@ module Google
         end
       end
       
+      class ListAttachmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attachments, as: 'attachments', class: Google::Apis::ArtifactregistryV1::Attachment, decorator: Google::Apis::ArtifactregistryV1::Attachment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListDockerImagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1095,6 +1168,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :repositories, as: 'repositories', class: Google::Apis::ArtifactregistryV1::Repository, decorator: Google::Apis::ArtifactregistryV1::Repository::Representation
+      
+        end
+      end
+      
+      class ListRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rules, as: 'rules', class: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule, decorator: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule::Representation
       
         end
       end
@@ -1374,6 +1456,21 @@ module Google
         end
       end
       
+      class UploadFileMediaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation', class: Google::Apis::ArtifactregistryV1::Operation, decorator: Google::Apis::ArtifactregistryV1::Operation::Representation
+      
+        end
+      end
+      
+      class UploadFileRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_id, as: 'fileId'
+        end
+      end
+      
       class UploadGenericArtifactMediaResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1531,6 +1628,7 @@ module Google
       class Version
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           hash :metadata, as: 'metadata'

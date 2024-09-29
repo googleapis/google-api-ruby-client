@@ -677,6 +677,146 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an attachment. The returned Operation will finish once the attachment
+        # has been created. Its response will be the created Attachment.
+        # @param [String] parent
+        #   Required. The name of the parent resource where the attachment will be created.
+        # @param [Google::Apis::ArtifactregistryV1::Attachment] attachment_object
+        # @param [String] attachment_id
+        #   Required. The attachment id to use for this attachment.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_repository_attachment(parent, attachment_object = nil, attachment_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/attachments', options)
+          command.request_representation = Google::Apis::ArtifactregistryV1::Attachment::Representation
+          command.request_object = attachment_object
+          command.response_representation = Google::Apis::ArtifactregistryV1::Operation::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an attachment. The returned Operation will finish once the attachments
+        # has been deleted. It will not have any Operation metadata and will return a
+        # google.protobuf.Empty response.
+        # @param [String] name
+        #   Required. The name of the attachment to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_repository_attachment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ArtifactregistryV1::Operation::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an attachment.
+        # @param [String] name
+        #   Required. The name of the attachment to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::Attachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::Attachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_repository_attachment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ArtifactregistryV1::Attachment::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::Attachment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists repositories.
+        # @param [String] parent
+        #   Required. The name of the parent resource whose attachments will be listed.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Filter rules
+        #   are case insensitive. The fields eligible for filtering are: * `target` * `
+        #   type` * `attachment_namespace`
+        # @param [Fixnum] page_size
+        #   The maximum number of attachments to return. Maximum page size is 1,000.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::ListAttachmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::ListAttachmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_repository_attachments(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/attachments', options)
+          command.response_representation = Google::Apis::ArtifactregistryV1::ListAttachmentsResponse::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::ListAttachmentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a docker image.
         # @param [String] name
         #   Required. The name of the docker images.
@@ -909,6 +1049,90 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a file.
+        # @param [String] name
+        #   The name of the file, for example: `projects/p1/locations/us-central1/
+        #   repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part contains slashes,
+        #   they are escaped.
+        # @param [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1File] google_devtools_artifactregistry_v1_file_object
+        # @param [String] update_mask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1File] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1File]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_repository_file(name, google_devtools_artifactregistry_v1_file_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1File::Representation
+          command.request_object = google_devtools_artifactregistry_v1_file_object
+          command.response_representation = Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1File::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1File
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Directly uploads a File to a repository. The returned Operation will complete
+        # once the resources are uploaded.
+        # @param [String] parent
+        #   Required. The resource name of the repository where the file will be uploaded.
+        # @param [Google::Apis::ArtifactregistryV1::UploadFileRequest] upload_file_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::UploadFileMediaResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::UploadFileMediaResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_file(parent, upload_file_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'v1/{+parent}/files:upload', options)
+          else
+            command = make_upload_command(:post, 'v1/{+parent}/files:upload', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::ArtifactregistryV1::UploadFileRequest::Representation
+          command.request_object = upload_file_request_object
+          command.response_representation = Google::Apis::ArtifactregistryV1::UploadFileMediaResponse::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::UploadFileMediaResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1795,6 +2019,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a version.
+        # @param [String] name
+        #   The name of the version, for example: "projects/p1/locations/us-central1/
+        #   repositories/repo1/packages/pkg1/versions/art1". If the package or version ID
+        #   parts contain slashes, the slashes are escaped.
+        # @param [Google::Apis::ArtifactregistryV1::Version] version_object
+        # @param [String] update_mask
+        #   The update mask applies to the resource. For the `FieldMask` definition, see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::Version] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::Version]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_repository_package_version(name, version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ArtifactregistryV1::Version::Representation
+          command.request_object = version_object
+          command.response_representation = Google::Apis::ArtifactregistryV1::Version::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::Version
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a python package.
         # @param [String] name
         #   Required. The name of the python package.
@@ -1856,6 +2120,178 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a rule.
+        # @param [String] parent
+        #   Required. The name of the parent resource where the rule will be created.
+        # @param [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule] google_devtools_artifactregistry_v1_rule_object
+        # @param [String] rule_id
+        #   The rule id to use for this repository.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_repository_rule(parent, google_devtools_artifactregistry_v1_rule_object = nil, rule_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/rules', options)
+          command.request_representation = Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule::Representation
+          command.request_object = google_devtools_artifactregistry_v1_rule_object
+          command.response_representation = Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule
+          command.params['parent'] = parent unless parent.nil?
+          command.query['ruleId'] = rule_id unless rule_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a rule.
+        # @param [String] name
+        #   Required. The name of the rule to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_repository_rule(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ArtifactregistryV1::Empty::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a rule.
+        # @param [String] name
+        #   Required. The name of the rule to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_repository_rule(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists rules.
+        # @param [String] parent
+        #   Required. The name of the parent repository whose rules will be listed. For
+        #   example: `projects/p1/locations/us-central1/repositories/repo1`.
+        # @param [Fixnum] page_size
+        #   The maximum number of rules to return. Maximum page size is 1,000.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::ListRulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::ListRulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_repository_rules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/rules', options)
+          command.response_representation = Google::Apis::ArtifactregistryV1::ListRulesResponse::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::ListRulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a rule.
+        # @param [String] name
+        #   The name of the rule, for example: "projects/p1/locations/us-central1/
+        #   repositories/repo1/rules/rule1".
+        # @param [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule] google_devtools_artifactregistry_v1_rule_object
+        # @param [String] update_mask
+        #   The update mask applies to the resource. For the `FieldMask` definition, see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_repository_rule(name, google_devtools_artifactregistry_v1_rule_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule::Representation
+          command.request_object = google_devtools_artifactregistry_v1_rule_object
+          command.response_representation = Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
