@@ -509,7 +509,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # 
+        # Creates a new BackupVault in a given project and location.
         # @param [String] parent
         #   Required. Value for parent.
         # @param [Google::Apis::BackupdrV1::BackupVault] backup_vault_object
@@ -757,7 +757,10 @@ module Google
         
         # Updates the settings of a BackupVault.
         # @param [String] name
-        #   Output only. Identifier. The resource name.
+        #   Output only. Identifier. Name of the backup vault to create. It must have the
+        #   format`"projects/`project`/locations/`location`/backupVaults/`backupvault`"`. `
+        #   `backupvault`` cannot be changed after creation. It must be between 3-63
+        #   characters long and must be unique within the project and location.
         # @param [Google::Apis::BackupdrV1::BackupVault] backup_vault_object
         # @param [Boolean] force
         #   Optional. If set to true, will not check plan duration against backup vault
@@ -1069,7 +1072,11 @@ module Google
         
         # Updates the settings of a DataSource.
         # @param [String] name
-        #   Output only. Identifier. The resource name.
+        #   Output only. Identifier. Name of the datasource to create. It must have the
+        #   format`"projects/`project`/locations/`location`/backupVaults/`backupvault`/
+        #   dataSources/`datasource`"`. ``datasource`` cannot be changed after creation.
+        #   It must be between 3-63 characters long and must be unique within the backup
+        #   vault.
         # @param [Google::Apis::BackupdrV1::DataSource] data_source_object
         # @param [Boolean] allow_missing
         #   Optional. Enable upsert.
@@ -1321,7 +1328,10 @@ module Google
         
         # Updates the settings of a Backup.
         # @param [String] name
-        #   Output only. Identifier. Name of the resource.
+        #   Output only. Identifier. Name of the backup to create. It must have the format`
+        #   "projects//locations//backupVaults//dataSources/`datasource`/backups/`backup`"`
+        #   . ``backup`` cannot be changed after creation. It must be between 3-63
+        #   characters long and must be unique within the datasource.
         # @param [Google::Apis::BackupdrV1::Backup] backup_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique

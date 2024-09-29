@@ -859,6 +859,7 @@ module Google
       class BackupVault
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_restriction, as: 'accessRestriction'
           hash :annotations, as: 'annotations'
           property :backup_count, :numeric_string => true, as: 'backupCount'
           property :backup_minimum_enforced_retention_duration, as: 'backupMinimumEnforcedRetentionDuration'
