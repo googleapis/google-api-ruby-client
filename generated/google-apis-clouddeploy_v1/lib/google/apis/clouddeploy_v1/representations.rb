@@ -700,6 +700,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepairPhaseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepairRolloutOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -707,6 +713,12 @@ module Google
       end
       
       class RepairRolloutRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Retry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -731,6 +743,12 @@ module Google
       end
       
       class RetryPhase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Rollback
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2134,9 +2152,20 @@ module Google
         end
       end
       
+      class RepairPhaseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retry, as: 'retry', class: Google::Apis::ClouddeployV1::Retry, decorator: Google::Apis::ClouddeployV1::Retry::Representation
+      
+          property :rollback, as: 'rollback', class: Google::Apis::ClouddeployV1::Rollback, decorator: Google::Apis::ClouddeployV1::Rollback::Representation
+      
+        end
+      end
+      
       class RepairRolloutOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_repair_phase_index, :numeric_string => true, as: 'currentRepairPhaseIndex'
           property :job_id, as: 'jobId'
           property :phase_id, as: 'phaseId'
           collection :repair_phases, as: 'repairPhases', class: Google::Apis::ClouddeployV1::RepairPhase, decorator: Google::Apis::ClouddeployV1::RepairPhase::Representation
@@ -2152,6 +2181,18 @@ module Google
       
           property :id, as: 'id'
           collection :jobs, as: 'jobs'
+          collection :phases, as: 'phases'
+          collection :repair_phases, as: 'repairPhases', class: Google::Apis::ClouddeployV1::RepairPhaseConfig, decorator: Google::Apis::ClouddeployV1::RepairPhaseConfig::Representation
+      
+        end
+      end
+      
+      class Retry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attempts, :numeric_string => true, as: 'attempts'
+          property :backoff_mode, as: 'backoffMode'
+          property :wait, as: 'wait'
         end
       end
       
@@ -2190,10 +2231,19 @@ module Google
         end
       end
       
+      class Rollback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_phase, as: 'destinationPhase'
+          property :disable_rollback_if_rollout_pending, as: 'disableRollbackIfRolloutPending'
+        end
+      end
+      
       class RollbackAttempt
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_phase, as: 'destinationPhase'
+          property :disable_rollback_if_rollout_pending, as: 'disableRollbackIfRolloutPending'
           property :rollout_id, as: 'rolloutId'
           property :state, as: 'state'
           property :state_desc, as: 'stateDesc'
@@ -2234,6 +2284,7 @@ module Google
       class Rollout
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_repair_automation_run, as: 'activeRepairAutomationRun'
           hash :annotations, as: 'annotations'
           property :approval_state, as: 'approvalState'
           property :approve_time, as: 'approveTime'
