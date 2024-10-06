@@ -10702,6 +10702,14 @@ module Google
         # @return [Float]
         attr_accessor :colsample_bytree
       
+        # The contribution metric. Applies to contribution analysis models. Allowed
+        # formats supported are for summable and summable ratio contribution metrics.
+        # These include expressions such as "SUM(x)" or "SUM(x)/SUM(y)", where x and y
+        # are column names from the base table.
+        # Corresponds to the JSON property `contributionMetric`
+        # @return [String]
+        attr_accessor :contribution_metric
+      
         # Type of normalization algorithm for boosted tree models using dart booster.
         # Corresponds to the JSON property `dartNormalizeType`
         # @return [String]
@@ -10741,6 +10749,12 @@ module Google
         # @return [Boolean]
         attr_accessor :decompose_time_series
         alias_method :decompose_time_series?, :decompose_time_series
+      
+        # Optional. Names of the columns to slice on. Applies to contribution analysis
+        # models.
+        # Corresponds to the JSON property `dimensionIdColumns`
+        # @return [Array<String>]
+        attr_accessor :dimension_id_columns
       
         # Distance type for clustering models.
         # Corresponds to the JSON property `distanceType`
@@ -10831,6 +10845,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :integrated_gradients_num_steps
       
+        # Name of the column used to determine the rows corresponding to control and
+        # test. Applies to contribution analysis models.
+        # Corresponds to the JSON property `isTestColumn`
+        # @return [String]
+        attr_accessor :is_test_column
+      
         # Item column specified for matrix factorization models.
         # Corresponds to the JSON property `itemColumn`
         # @return [String]
@@ -10905,6 +10925,11 @@ module Google
         # Corresponds to the JSON property `maxTreeDepth`
         # @return [Fixnum]
         attr_accessor :max_tree_depth
+      
+        # The apriori support minimum. Applies to contribution analysis models.
+        # Corresponds to the JSON property `minAprioriSupport`
+        # @return [Float]
+        attr_accessor :min_apriori_support
       
         # When early_stop is true, stops training when accuracy improvement is less than
         # 'min_relative_progress'. Used only for iterative training algorithms.
@@ -11122,12 +11147,14 @@ module Google
           @colsample_bylevel = args[:colsample_bylevel] if args.key?(:colsample_bylevel)
           @colsample_bynode = args[:colsample_bynode] if args.key?(:colsample_bynode)
           @colsample_bytree = args[:colsample_bytree] if args.key?(:colsample_bytree)
+          @contribution_metric = args[:contribution_metric] if args.key?(:contribution_metric)
           @dart_normalize_type = args[:dart_normalize_type] if args.key?(:dart_normalize_type)
           @data_frequency = args[:data_frequency] if args.key?(:data_frequency)
           @data_split_column = args[:data_split_column] if args.key?(:data_split_column)
           @data_split_eval_fraction = args[:data_split_eval_fraction] if args.key?(:data_split_eval_fraction)
           @data_split_method = args[:data_split_method] if args.key?(:data_split_method)
           @decompose_time_series = args[:decompose_time_series] if args.key?(:decompose_time_series)
+          @dimension_id_columns = args[:dimension_id_columns] if args.key?(:dimension_id_columns)
           @distance_type = args[:distance_type] if args.key?(:distance_type)
           @dropout = args[:dropout] if args.key?(:dropout)
           @early_stop = args[:early_stop] if args.key?(:early_stop)
@@ -11144,6 +11171,7 @@ module Google
           @input_label_columns = args[:input_label_columns] if args.key?(:input_label_columns)
           @instance_weight_column = args[:instance_weight_column] if args.key?(:instance_weight_column)
           @integrated_gradients_num_steps = args[:integrated_gradients_num_steps] if args.key?(:integrated_gradients_num_steps)
+          @is_test_column = args[:is_test_column] if args.key?(:is_test_column)
           @item_column = args[:item_column] if args.key?(:item_column)
           @kmeans_initialization_column = args[:kmeans_initialization_column] if args.key?(:kmeans_initialization_column)
           @kmeans_initialization_method = args[:kmeans_initialization_method] if args.key?(:kmeans_initialization_method)
@@ -11158,6 +11186,7 @@ module Google
           @max_parallel_trials = args[:max_parallel_trials] if args.key?(:max_parallel_trials)
           @max_time_series_length = args[:max_time_series_length] if args.key?(:max_time_series_length)
           @max_tree_depth = args[:max_tree_depth] if args.key?(:max_tree_depth)
+          @min_apriori_support = args[:min_apriori_support] if args.key?(:min_apriori_support)
           @min_relative_progress = args[:min_relative_progress] if args.key?(:min_relative_progress)
           @min_split_loss = args[:min_split_loss] if args.key?(:min_split_loss)
           @min_time_series_length = args[:min_time_series_length] if args.key?(:min_time_series_length)
