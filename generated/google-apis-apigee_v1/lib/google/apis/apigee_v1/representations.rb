@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ControlPlaneAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Credential
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -970,6 +976,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListSecurityProfilesV2Response
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListSecurityReportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1505,6 +1517,18 @@ module Google
       end
       
       class GoogleCloudApigeeV1SecurityProfileScoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileV2
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2421,6 +2445,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :expires_at, :numeric_string => true, as: 'expiresAt'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ControlPlaneAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :analytics_publisher_identities, as: 'analyticsPublisherIdentities'
+          property :name, as: 'name'
+          collection :synchronizer_identities, as: 'synchronizerIdentities'
         end
       end
       
@@ -3512,6 +3545,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListSecurityProfilesV2Response
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_profiles_v2, as: 'securityProfilesV2', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1ListSecurityReportsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4472,6 +4514,26 @@ module Google
           property :description, as: 'description'
           property :score_path, as: 'scorePath'
           property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileV2
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :google_defined, as: 'googleDefined'
+          property :name, as: 'name'
+          hash :profile_assessment_configs, as: 'profileAssessmentConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :weight, as: 'weight'
         end
       end
       
