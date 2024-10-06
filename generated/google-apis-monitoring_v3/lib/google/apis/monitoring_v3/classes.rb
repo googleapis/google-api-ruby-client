@@ -440,6 +440,27 @@ module Google
         end
       end
       
+      # A test that uses an alerting result in a boolean column produced by the SQL
+      # query.
+      class BooleanTest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the column containing the boolean value. If the value in
+        # a row is NULL, that row is ignored.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+        end
+      end
+      
       # BucketOptions describes the bucket boundaries used to create a histogram for
       # the distribution. The buckets can be in a linear sequence, an exponential
       # sequence, or each bucket can be specified explicitly. BucketOptions does not
@@ -842,6 +863,13 @@ module Google
         # @return [Google::Apis::MonitoringV3::PrometheusQueryLanguageCondition]
         attr_accessor :condition_prometheus_query_language
       
+        # A condition that allows alert policies to be defined using GoogleSQL. SQL
+        # conditions examine a sliding window of logs using GoogleSQL. Alert policies
+        # with SQL conditions may incur additional billing.
+        # Corresponds to the JSON property `conditionSql`
+        # @return [Google::Apis::MonitoringV3::SqlCondition]
+        attr_accessor :condition_sql
+      
         # A condition type that compares a collection of time series against a threshold.
         # Corresponds to the JSON property `conditionThreshold`
         # @return [Google::Apis::MonitoringV3::MetricThreshold]
@@ -882,6 +910,7 @@ module Google
           @condition_matched_log = args[:condition_matched_log] if args.key?(:condition_matched_log)
           @condition_monitoring_query_language = args[:condition_monitoring_query_language] if args.key?(:condition_monitoring_query_language)
           @condition_prometheus_query_language = args[:condition_prometheus_query_language] if args.key?(:condition_prometheus_query_language)
+          @condition_sql = args[:condition_sql] if args.key?(:condition_sql)
           @condition_threshold = args[:condition_threshold] if args.key?(:condition_threshold)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
@@ -1088,6 +1117,35 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Used to schedule the query to run every so many days.
+      class Daily
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and google.protobuf.Timestamp.
+        # Corresponds to the JSON property `executionTime`
+        # @return [Google::Apis::MonitoringV3::TimeOfDay]
+        attr_accessor :execution_time
+      
+        # Required. LINT.IfChange The number of days between runs. Must be greater than
+        # or equal to 1 day and less than or equal to 31 days. LINT.ThenChange(//depot/
+        # google3/cloud/monitoring/api/alerts/policy_validation.cc)
+        # Corresponds to the JSON property `periodicity`
+        # @return [Fixnum]
+        attr_accessor :periodicity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_time = args[:execution_time] if args.key?(:execution_time)
+          @periodicity = args[:periodicity] if args.key?(:periodicity)
         end
       end
       
@@ -1834,6 +1892,36 @@ module Google
           @is_cluster = args[:is_cluster] if args.key?(:is_cluster)
           @name = args[:name] if args.key?(:name)
           @parent_name = args[:parent_name] if args.key?(:parent_name)
+        end
+      end
+      
+      # Used to schedule the query to run every so many hours.
+      class Hourly
+        include Google::Apis::Core::Hashable
+      
+        # Optional. LINT.IfChange The number of minutes after the hour (in UTC) to run
+        # the query. Must be between 0 and 59 inclusive. If left unspecified, then an
+        # arbitrary offset is used. LINT.ThenChange(//depot/google3/cloud/monitoring/api/
+        # alerts/policy_validation.cc)
+        # Corresponds to the JSON property `minuteOffset`
+        # @return [Fixnum]
+        attr_accessor :minute_offset
+      
+        # Required. LINT.IfChange The number of hours between runs. Must be greater than
+        # or equal to 1 hour and less than or equal to 48 hours. LINT.ThenChange(//depot/
+        # google3/cloud/monitoring/api/alerts/policy_validation.cc)
+        # Corresponds to the JSON property `periodicity`
+        # @return [Fixnum]
+        attr_accessor :periodicity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @minute_offset = args[:minute_offset] if args.key?(:minute_offset)
+          @periodicity = args[:periodicity] if args.key?(:periodicity)
         end
       end
       
@@ -3141,6 +3229,27 @@ module Google
         end
       end
       
+      # Used to schedule the query to run every so many minutes.
+      class Minutes
+        include Google::Apis::Core::Hashable
+      
+        # Required. LINT.IfChange Number of minutes between runs. The interval must be
+        # between 5 minutes and 1440 minutes. LINT.ThenChange(//depot/google3/cloud/
+        # monitoring/api/alerts/policy_validation.cc)
+        # Corresponds to the JSON property `periodicity`
+        # @return [Fixnum]
+        attr_accessor :periodicity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @periodicity = args[:periodicity] if args.key?(:periodicity)
+        end
+      end
+      
       # An object representing a resource that can be used for monitoring, logging,
       # billing, or other purposes. Examples include virtual machine instances,
       # databases, and storage devices such as disks. The type field identifies a
@@ -4102,6 +4211,33 @@ module Google
         end
       end
       
+      # A test that checks if the number of rows in the result set violates some
+      # threshold.
+      class RowCountTest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The comparison to apply between the number of rows returned by the
+        # query and the threshold.
+        # Corresponds to the JSON property `comparison`
+        # @return [String]
+        attr_accessor :comparison
+      
+        # Required. The value against which to compare the row count.
+        # Corresponds to the JSON property `threshold`
+        # @return [Fixnum]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comparison = args[:comparison] if args.key?(:comparison)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
       # The SendNotificationChannelVerificationCode request.
       class SendNotificationChannelVerificationCodeRequest
         include Google::Apis::Core::Hashable
@@ -4513,6 +4649,65 @@ module Google
         end
       end
       
+      # A condition that allows alert policies to be defined using GoogleSQL. SQL
+      # conditions examine a sliding window of logs using GoogleSQL. Alert policies
+      # with SQL conditions may incur additional billing.
+      class SqlCondition
+        include Google::Apis::Core::Hashable
+      
+        # A test that uses an alerting result in a boolean column produced by the SQL
+        # query.
+        # Corresponds to the JSON property `booleanTest`
+        # @return [Google::Apis::MonitoringV3::BooleanTest]
+        attr_accessor :boolean_test
+      
+        # Used to schedule the query to run every so many days.
+        # Corresponds to the JSON property `daily`
+        # @return [Google::Apis::MonitoringV3::Daily]
+        attr_accessor :daily
+      
+        # Used to schedule the query to run every so many hours.
+        # Corresponds to the JSON property `hourly`
+        # @return [Google::Apis::MonitoringV3::Hourly]
+        attr_accessor :hourly
+      
+        # Used to schedule the query to run every so many minutes.
+        # Corresponds to the JSON property `minutes`
+        # @return [Google::Apis::MonitoringV3::Minutes]
+        attr_accessor :minutes
+      
+        # Required. The Log Analytics SQL query to run, as a string. The query must
+        # conform to the required shape. Specifically, the query must not try to filter
+        # the input by time. A filter will automatically be applied to filter the input
+        # so that the query receives all rows received since the last time the query was
+        # run.E.g. Extract all log entries containing an HTTP request:SELECT timestamp,
+        # log_name, severity, http_request, resource, labels FROM my-project.global.
+        # _Default._AllLogs WHERE http_request IS NOT NULL
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # A test that checks if the number of rows in the result set violates some
+        # threshold.
+        # Corresponds to the JSON property `rowCountTest`
+        # @return [Google::Apis::MonitoringV3::RowCountTest]
+        attr_accessor :row_count_test
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boolean_test = args[:boolean_test] if args.key?(:boolean_test)
+          @daily = args[:daily] if args.key?(:daily)
+          @hourly = args[:hourly] if args.key?(:hourly)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @query = args[:query] if args.key?(:query)
+          @row_count_test = args[:row_count_test] if args.key?(:row_count_test)
+        end
+      end
+      
       # The Status type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by gRPC
       # (https://github.com/grpc). Each Status message contains three pieces of data:
@@ -4670,6 +4865,47 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and google.protobuf.Timestamp.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+        # allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+        # allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
         end
       end
       
