@@ -1173,14 +1173,16 @@ module Google
         end
       end
       
-      # Request message for FeaturestoreService.BatchCreateFeatures.
+      # Request message for FeaturestoreService.BatchCreateFeatures. Request message
+      # for FeatureRegistryService.BatchCreateFeatures.
       class GoogleCloudAiplatformV1BatchCreateFeaturesRequest
         include Google::Apis::Core::Hashable
       
         # Required. The request message specifying the Features to create. All Features
-        # must be created under the same parent EntityType. The `parent` field in each
-        # child request message can be omitted. If `parent` is set in a child request,
-        # then the value must match the `parent` value in this request message.
+        # must be created under the same parent EntityType / FeatureGroup. The `parent`
+        # field in each child request message can be omitted. If `parent` is set in a
+        # child request, then the value must match the `parent` value in this request
+        # message.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CreateFeatureRequest>]
         attr_accessor :requests

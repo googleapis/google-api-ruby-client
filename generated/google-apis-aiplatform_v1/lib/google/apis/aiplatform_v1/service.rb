@@ -7525,9 +7525,10 @@ module Google
         
         # Creates a batch of Features in a given EntityType.
         # @param [String] parent
-        #   Required. The resource name of the EntityType to create the batch of Features
-        #   under. Format: `projects/`project`/locations/`location`/featurestores/`
-        #   featurestore`/entityTypes/`entity_type``
+        #   Required. The resource name of the EntityType/FeatureGroup to create the batch
+        #   of Features under. Format: `projects/`project`/locations/`location`/
+        #   featurestores/`featurestore`/entityTypes/`entity_type`` `projects/`project`/
+        #   locations/`location`/featureGroups/`feature_group``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchCreateFeaturesRequest] google_cloud_aiplatform_v1_batch_create_features_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
