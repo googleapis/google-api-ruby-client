@@ -934,6 +934,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :name, as: 'name'
+          property :severity, as: 'severity'
         end
       end
       
@@ -1050,6 +1051,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document, as: 'document', class: Google::Apis::LanguageV2::Document, decorator: Google::Apis::LanguageV2::Document::Representation
       
+          property :model_version, as: 'modelVersion'
         end
       end
       
