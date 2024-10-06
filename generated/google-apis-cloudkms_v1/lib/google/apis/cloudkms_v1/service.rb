@@ -847,8 +847,8 @@ module Google
         #   Optional. Optional limit on the number of KeyHandles to include in the
         #   response. The service may return fewer than this value. Further KeyHandles can
         #   subsequently be obtained by including the ListKeyHandlesResponse.
-        #   next_page_token in a subsequent request. If unspecified, at most KeyHandles
-        #   100 will be returned.
+        #   next_page_token in a subsequent request. If unspecified, at most 100
+        #   KeyHandles will be returned.
         # @param [String] page_token
         #   Optional. Optional pagination token, returned earlier via
         #   ListKeyHandlesResponse.next_page_token.
