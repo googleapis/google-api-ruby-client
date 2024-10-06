@@ -1903,7 +1903,7 @@ module Google
       end
       
       # A `DeployPolicy` resource in the Cloud Deploy API. A `DeployPolicy` inhibits
-      # manual or automation driven actions within a Delivery Pipeline or Target.
+      # manual or automation-driven actions within a Delivery Pipeline or Target.
       class DeployPolicy
         include Google::Apis::Core::Hashable
       
@@ -2158,7 +2158,8 @@ module Google
         # @return [Google::Apis::ClouddeployV1::DeliveryPipelineAttribute]
         attr_accessor :delivery_pipeline
       
-        # Contains criteria for selecting Targets.
+        # Contains criteria for selecting Targets. This could be used to select targets
+        # for a Deploy Policy or for an Automation.
         # Corresponds to the JSON property `target`
         # @return [Google::Apis::ClouddeployV1::TargetAttribute]
         attr_accessor :target
@@ -4379,9 +4380,39 @@ module Google
         end
       end
       
+      # Configuration of the repair phase.
+      class RepairPhaseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Retries the failed job.
+        # Corresponds to the JSON property `retry`
+        # @return [Google::Apis::ClouddeployV1::Retry]
+        attr_accessor :retry
+      
+        # Rolls back a `Rollout`.
+        # Corresponds to the JSON property `rollback`
+        # @return [Google::Apis::ClouddeployV1::Rollback]
+        attr_accessor :rollback
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retry = args[:retry] if args.key?(:retry)
+          @rollback = args[:rollback] if args.key?(:rollback)
+        end
+      end
+      
       # Contains the information for an automated `repair rollout` operation.
       class RepairRolloutOperation
         include Google::Apis::Core::Hashable
+      
+        # Output only. The index of the current repair action in the repair sequence.
+        # Corresponds to the JSON property `currentRepairPhaseIndex`
+        # @return [Fixnum]
+        attr_accessor :current_repair_phase_index
       
         # Output only. The job ID for the Job to repair.
         # Corresponds to the JSON property `jobId`
@@ -4410,6 +4441,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @current_repair_phase_index = args[:current_repair_phase_index] if args.key?(:current_repair_phase_index)
           @job_id = args[:job_id] if args.key?(:job_id)
           @phase_id = args[:phase_id] if args.key?(:phase_id)
           @repair_phases = args[:repair_phases] if args.key?(:repair_phases)
@@ -4443,6 +4475,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :jobs
       
+        # Optional. Phases within which jobs are subject to automatic repair actions on
+        # failure. Proceeds only after phase name matched any one in the list, or for
+        # all phases if unspecified. This value must consist of lower-case letters,
+        # numbers, and hyphens, start with a letter and end with a letter or a number,
+        # and have a max length of 63 characters. In other words, it must match the
+        # following regex: `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`.
+        # Corresponds to the JSON property `phases`
+        # @return [Array<String>]
+        attr_accessor :phases
+      
+        # Required. Defines the types of automatic repair phases for failed jobs.
+        # Corresponds to the JSON property `repairPhases`
+        # @return [Array<Google::Apis::ClouddeployV1::RepairPhaseConfig>]
+        attr_accessor :repair_phases
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4452,6 +4499,42 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @id = args[:id] if args.key?(:id)
           @jobs = args[:jobs] if args.key?(:jobs)
+          @phases = args[:phases] if args.key?(:phases)
+          @repair_phases = args[:repair_phases] if args.key?(:repair_phases)
+        end
+      end
+      
+      # Retries the failed job.
+      class Retry
+        include Google::Apis::Core::Hashable
+      
+        # Required. Total number of retries. Retry is skipped if set to 0; The minimum
+        # value is 1, and the maximum value is 10.
+        # Corresponds to the JSON property `attempts`
+        # @return [Fixnum]
+        attr_accessor :attempts
+      
+        # Optional. The pattern of how wait time will be increased. Default is linear.
+        # Backoff mode will be ignored if `wait` is 0.
+        # Corresponds to the JSON property `backoffMode`
+        # @return [String]
+        attr_accessor :backoff_mode
+      
+        # Optional. How long to wait for the first retry. Default is 0, and the maximum
+        # value is 14d.
+        # Corresponds to the JSON property `wait`
+        # @return [String]
+        attr_accessor :wait
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attempts = args[:attempts] if args.key?(:attempts)
+          @backoff_mode = args[:backoff_mode] if args.key?(:backoff_mode)
+          @wait = args[:wait] if args.key?(:wait)
         end
       end
       
@@ -4570,6 +4653,34 @@ module Google
         end
       end
       
+      # Rolls back a `Rollout`.
+      class Rollback
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The starting phase ID for the `Rollout`. If unspecified, the `
+        # Rollout` will start in the stable phase.
+        # Corresponds to the JSON property `destinationPhase`
+        # @return [String]
+        attr_accessor :destination_phase
+      
+        # Optional. If pending rollout exists on the target, the rollback operation will
+        # be aborted.
+        # Corresponds to the JSON property `disableRollbackIfRolloutPending`
+        # @return [Boolean]
+        attr_accessor :disable_rollback_if_rollout_pending
+        alias_method :disable_rollback_if_rollout_pending?, :disable_rollback_if_rollout_pending
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_phase = args[:destination_phase] if args.key?(:destination_phase)
+          @disable_rollback_if_rollout_pending = args[:disable_rollback_if_rollout_pending] if args.key?(:disable_rollback_if_rollout_pending)
+        end
+      end
+      
       # RollbackAttempt represents an action of rolling back a Cloud Deploy 'Target'.
       class RollbackAttempt
         include Google::Apis::Core::Hashable
@@ -4578,6 +4689,12 @@ module Google
         # Corresponds to the JSON property `destinationPhase`
         # @return [String]
         attr_accessor :destination_phase
+      
+        # Output only. If active rollout exists on the target, abort this rollback.
+        # Corresponds to the JSON property `disableRollbackIfRolloutPending`
+        # @return [Boolean]
+        attr_accessor :disable_rollback_if_rollout_pending
+        alias_method :disable_rollback_if_rollout_pending?, :disable_rollback_if_rollout_pending
       
         # Output only. ID of the rollback `Rollout` to create.
         # Corresponds to the JSON property `rolloutId`
@@ -4601,6 +4718,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destination_phase = args[:destination_phase] if args.key?(:destination_phase)
+          @disable_rollback_if_rollout_pending = args[:disable_rollback_if_rollout_pending] if args.key?(:disable_rollback_if_rollout_pending)
           @rollout_id = args[:rollout_id] if args.key?(:rollout_id)
           @state = args[:state] if args.key?(:state)
           @state_desc = args[:state_desc] if args.key?(:state_desc)
@@ -4718,6 +4836,11 @@ module Google
       # around a specific deployment to a `Target`.
       class Rollout
         include Google::Apis::Core::Hashable
+      
+        # Output only. The AutomationRun actively repairing the rollout.
+        # Corresponds to the JSON property `activeRepairAutomationRun`
+        # @return [String]
+        attr_accessor :active_repair_automation_run
       
         # User annotations. These attributes can only be set and used by the user, and
         # not by Cloud Deploy. See https://google.aip.dev/128#annotations for more
@@ -4853,6 +4976,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_repair_automation_run = args[:active_repair_automation_run] if args.key?(:active_repair_automation_run)
           @annotations = args[:annotations] if args.key?(:annotations)
           @approval_state = args[:approval_state] if args.key?(:approval_state)
           @approve_time = args[:approve_time] if args.key?(:approve_time)
@@ -4963,7 +5087,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :invokers
       
-        # Time windows within which actions are restricted.
+        # Time windows within which actions are restricted. See the [documentation](
+        # https://cloud.google.com/deploy/docs/deploy-policy#dates_times) for more
+        # information on how to configure dates/times.
         # Corresponds to the JSON property `timeWindows`
         # @return [Google::Apis::ClouddeployV1::TimeWindows]
         attr_accessor :time_windows
@@ -5709,7 +5835,8 @@ module Google
         end
       end
       
-      # Contains criteria for selecting Targets.
+      # Contains criteria for selecting Targets. This could be used to select targets
+      # for a Deploy Policy or for an Automation.
       class TargetAttribute
         include Google::Apis::Core::Hashable
       
@@ -5991,7 +6118,9 @@ module Google
         end
       end
       
-      # Time windows within which actions are restricted.
+      # Time windows within which actions are restricted. See the [documentation](
+      # https://cloud.google.com/deploy/docs/deploy-policy#dates_times) for more
+      # information on how to configure dates/times.
       class TimeWindows
         include Google::Apis::Core::Hashable
       
