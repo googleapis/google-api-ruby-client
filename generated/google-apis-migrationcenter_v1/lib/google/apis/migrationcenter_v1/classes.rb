@@ -2728,7 +2728,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :cpu_socket_count
       
-        # Number of CPU threads allocated to the machine.
+        # Deprecated: use MachineDetails.core_count instead. Number of CPU threads
+        # allocated to the machine.
         # Corresponds to the JSON property `cpuThreadCount`
         # @return [Fixnum]
         attr_accessor :cpu_thread_count
