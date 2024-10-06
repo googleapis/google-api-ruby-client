@@ -101,20 +101,19 @@ module Google
       end
       
       # An Attachment refers to additional metadata that can be attached to artifacts
-      # in ArtifactRegistry. An attachment consists of one or more files.
+      # in Artifact Registry. An attachment consists of one or more files.
       class Attachment
         include Google::Apis::Core::Hashable
       
         # Optional. User annotations. These attributes can only be set and used by the
         # user, and not by Artifact Registry. See https://google.aip.dev/128#annotations
-        # for more details such as format and size limitations. Client specified
-        # annotations.
+        # for more details such as format and size limitations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
         # The namespace this attachment belongs to. E.g. If an Attachment is created by
-        # artifact analysis, namespace is set to artifactanalysis.googleapis.com.
+        # artifact analysis, namespace is set to `artifactanalysis.googleapis.com`.
         # Corresponds to the JSON property `attachmentNamespace`
         # @return [String]
         attr_accessor :attachment_namespace
@@ -124,9 +123,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The files that blong to this Attachment. If the file ID part
-        # contains slashes, they are escaped. E.g. "projects/p1/locations/us-central1/
-        # repositories/repo1/files/sha:".
+        # Required. The files that belong to this attachment. If the file ID part
+        # contains slashes, they are escaped. E.g. `projects/p1/locations/us-central1/
+        # repositories/repo1/files/sha:`.
         # Corresponds to the JSON property `files`
         # @return [Array<String>]
         attr_accessor :files
@@ -138,8 +137,8 @@ module Google
         attr_accessor :name
       
         # Output only. The name of the OCI version that this attachment created. Only
-        # populated for Docker attachments. E.g. "projects/p1/locations/us-central1/
-        # repositories/repo1/packages/p1/versions/v1".
+        # populated for Docker attachments. E.g. `projects/p1/locations/us-central1/
+        # repositories/repo1/packages/p1/versions/v1`.
         # Corresponds to the JSON property `ociVersionName`
         # @return [String]
         attr_accessor :oci_version_name
@@ -151,7 +150,7 @@ module Google
         # @return [String]
         attr_accessor :target
       
-        # Type of Attachment. E.g. application/vnd.spdx+jsonn
+        # Type of Attachment. E.g. `application/vnd.spdx+json`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -447,7 +446,7 @@ module Google
       class CommonRemoteRepository
         include Google::Apis::Core::Hashable
       
-        # Required. A common public repository base for Remote Repository.
+        # Required. A common public repository base for remote repository.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2264,19 +2263,6 @@ module Google
         end
       end
       
-      # The metadata for promote artifact long running operation.
-      class PromoteArtifactMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # PythonPackage represents a python artifact.
       class PythonPackage
         include Google::Apis::Core::Hashable
@@ -3282,8 +3268,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # The name of the version, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/packages/pkg1/versions/art1". If the package or version ID
+        # The name of the version, for example: `projects/p1/locations/us-central1/
+        # repositories/repo1/packages/pkg1/versions/art1`. If the package or version ID
         # parts contain slashes, the slashes are escaped.
         # Corresponds to the JSON property `name`
         # @return [String]
