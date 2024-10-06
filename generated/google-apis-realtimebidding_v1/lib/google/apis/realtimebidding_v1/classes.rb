@@ -2243,13 +2243,14 @@ module Google
         # @return [Google::Apis::RealtimebiddingV1::VideoMetadata]
         attr_accessor :video_metadata
       
-        # The URL to fetch a video ad.
+        # The URL to fetch a video ad. The URL should return an XML response that
+        # conforms to the VAST 2.0, 3.0 or 4.x standard.
         # Corresponds to the JSON property `videoUrl`
         # @return [String]
         attr_accessor :video_url
       
         # The contents of a VAST document for a video ad. This document should conform
-        # to the VAST 2.0 or 3.0 standard.
+        # to the VAST 2.0, 3.0, or 4.x standard.
         # Corresponds to the JSON property `videoVastXml`
         # @return [String]
         attr_accessor :video_vast_xml
