@@ -28,6 +28,96 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessSessionSparkApplicationEnvironmentInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSessionSparkApplicationJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSessionSparkApplicationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSessionSparkApplicationSqlQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSessionSparkApplicationSqlSparkPlanGraphResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSessionSparkApplicationStageAttemptResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSessionSparkApplicationStageRddOperationGraphResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSparkApplicationEnvironmentInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSparkApplicationJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSparkApplicationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSparkApplicationSqlQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSparkApplicationSqlSparkPlanGraphResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSparkApplicationStageAttemptResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSparkApplicationStageRddOperationGraphResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccumulableInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnalyzeBatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +125,30 @@ module Google
       end
       
       class AnalyzeOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApplicationAttemptInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApplicationEnvironmentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApplicationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,7 +268,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterToRepair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfidentialInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConsolidatedExecutorSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +341,42 @@ module Google
       end
       
       class ExecutionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutorMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutorMetricsDistributions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutorPeakMetricsDistributions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutorResourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutorStageSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutorSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +478,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InputMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputQuantileMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceFlexibilityPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +544,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JobData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JobMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +575,12 @@ module Google
       end
       
       class JobStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JobsSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -496,6 +682,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MemoryMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetastoreConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -556,6 +748,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OutputMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OutputQuantileMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ParameterValidation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -580,7 +784,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PoolData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrestoJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProcessSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProvisioningModelMix
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -604,7 +826,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Quantiles
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RddDataDistribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RddOperationCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RddOperationEdge
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RddOperationGraph
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RddOperationNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RddPartitionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RddStorageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -646,6 +916,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceInformation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceProfileInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuntimeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -653,6 +935,102 @@ module Google
       end
       
       class RuntimeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSessionSparkApplicationExecutorStageSummaryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSessionSparkApplicationExecutorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSessionSparkApplicationJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSessionSparkApplicationSqlQueriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSessionSparkApplicationStageAttemptTasksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSessionSparkApplicationStageAttemptsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSessionSparkApplicationStagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSessionSparkApplicationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSparkApplicationExecutorStageSummaryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSparkApplicationExecutorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSparkApplicationJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSparkApplicationSqlQueriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSparkApplicationStageAttemptTasksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSparkApplicationStageAttemptsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSparkApplicationStagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSparkApplicationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -700,7 +1078,61 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShufflePushReadMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShufflePushReadQuantileMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShuffleReadMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShuffleReadQuantileMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShuffleWriteMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShuffleWriteQuantileMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SinkProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SoftwareConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SparkApplication
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -730,6 +1162,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SparkPlanGraph
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SparkPlanGraphCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SparkPlanGraphEdge
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SparkPlanGraphNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SparkPlanGraphNodeWrapper
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SparkRBatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -737,6 +1199,12 @@ module Google
       end
       
       class SparkRJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SparkRuntimeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -760,6 +1228,84 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SparkWrapperObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpeculationStageSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlExecutionUiData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlPlanMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StageAttemptTasksSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StageData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StageInputMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StageMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StageOutputMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StageShufflePushReadMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StageShuffleReadMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StageShuffleWriteMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StagesSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -778,6 +1324,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StateOperatorProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -790,7 +1342,97 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StreamBlockData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StreamingQueryData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StreamingQueryProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubmitJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SummarizeSessionSparkApplicationExecutorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SummarizeSessionSparkApplicationJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SummarizeSessionSparkApplicationStageAttemptTasksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SummarizeSessionSparkApplicationStagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SummarizeSparkApplicationExecutorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SummarizeSparkApplicationJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SummarizeSparkApplicationStageAttemptTasksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SummarizeSparkApplicationStagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaskData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaskMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaskQuantileMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaskResourceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -880,6 +1522,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WriteSessionSparkApplicationContextRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WriteSessionSparkApplicationContextResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WriteSparkApplicationContextRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WriteSparkApplicationContextResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class YarnApplication
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -891,6 +1557,128 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_count, as: 'acceleratorCount'
           property :accelerator_type_uri, as: 'acceleratorTypeUri'
+        end
+      end
+      
+      class AccessSessionSparkApplicationEnvironmentInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_environment_info, as: 'applicationEnvironmentInfo', class: Google::Apis::DataprocV1::ApplicationEnvironmentInfo, decorator: Google::Apis::DataprocV1::ApplicationEnvironmentInfo::Representation
+      
+        end
+      end
+      
+      class AccessSessionSparkApplicationJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_data, as: 'jobData', class: Google::Apis::DataprocV1::JobData, decorator: Google::Apis::DataprocV1::JobData::Representation
+      
+        end
+      end
+      
+      class AccessSessionSparkApplicationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::DataprocV1::ApplicationInfo, decorator: Google::Apis::DataprocV1::ApplicationInfo::Representation
+      
+        end
+      end
+      
+      class AccessSessionSparkApplicationSqlQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_data, as: 'executionData', class: Google::Apis::DataprocV1::SqlExecutionUiData, decorator: Google::Apis::DataprocV1::SqlExecutionUiData::Representation
+      
+        end
+      end
+      
+      class AccessSessionSparkApplicationSqlSparkPlanGraphResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spark_plan_graph, as: 'sparkPlanGraph', class: Google::Apis::DataprocV1::SparkPlanGraph, decorator: Google::Apis::DataprocV1::SparkPlanGraph::Representation
+      
+        end
+      end
+      
+      class AccessSessionSparkApplicationStageAttemptResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stage_data, as: 'stageData', class: Google::Apis::DataprocV1::StageData, decorator: Google::Apis::DataprocV1::StageData::Representation
+      
+        end
+      end
+      
+      class AccessSessionSparkApplicationStageRddOperationGraphResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rdd_operation_graph, as: 'rddOperationGraph', class: Google::Apis::DataprocV1::RddOperationGraph, decorator: Google::Apis::DataprocV1::RddOperationGraph::Representation
+      
+        end
+      end
+      
+      class AccessSparkApplicationEnvironmentInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_environment_info, as: 'applicationEnvironmentInfo', class: Google::Apis::DataprocV1::ApplicationEnvironmentInfo, decorator: Google::Apis::DataprocV1::ApplicationEnvironmentInfo::Representation
+      
+        end
+      end
+      
+      class AccessSparkApplicationJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_data, as: 'jobData', class: Google::Apis::DataprocV1::JobData, decorator: Google::Apis::DataprocV1::JobData::Representation
+      
+        end
+      end
+      
+      class AccessSparkApplicationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::DataprocV1::ApplicationInfo, decorator: Google::Apis::DataprocV1::ApplicationInfo::Representation
+      
+        end
+      end
+      
+      class AccessSparkApplicationSqlQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_data, as: 'executionData', class: Google::Apis::DataprocV1::SqlExecutionUiData, decorator: Google::Apis::DataprocV1::SqlExecutionUiData::Representation
+      
+        end
+      end
+      
+      class AccessSparkApplicationSqlSparkPlanGraphResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spark_plan_graph, as: 'sparkPlanGraph', class: Google::Apis::DataprocV1::SparkPlanGraph, decorator: Google::Apis::DataprocV1::SparkPlanGraph::Representation
+      
+        end
+      end
+      
+      class AccessSparkApplicationStageAttemptResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stage_data, as: 'stageData', class: Google::Apis::DataprocV1::StageData, decorator: Google::Apis::DataprocV1::StageData::Representation
+      
+        end
+      end
+      
+      class AccessSparkApplicationStageRddOperationGraphResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rdd_operation_graph, as: 'rddOperationGraph', class: Google::Apis::DataprocV1::RddOperationGraph, decorator: Google::Apis::DataprocV1::RddOperationGraph::Representation
+      
+        end
+      end
+      
+      class AccumulableInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accumullable_info_id, :numeric_string => true, as: 'accumullableInfoId'
+          property :name, as: 'name'
+          property :update, as: 'update'
+          property :value, as: 'value'
         end
       end
       
@@ -912,6 +1700,59 @@ module Google
           property :done_time, as: 'doneTime'
           hash :labels, as: 'labels'
           collection :warnings, as: 'warnings'
+        end
+      end
+      
+      class AppSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_completed_jobs, as: 'numCompletedJobs'
+          property :num_completed_stages, as: 'numCompletedStages'
+        end
+      end
+      
+      class ApplicationAttemptInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_spark_version, as: 'appSparkVersion'
+          property :attempt_id, as: 'attemptId'
+          property :completed, as: 'completed'
+          property :duration_millis, :numeric_string => true, as: 'durationMillis'
+          property :end_time, as: 'endTime'
+          property :last_updated, as: 'lastUpdated'
+          property :spark_user, as: 'sparkUser'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ApplicationEnvironmentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :classpath_entries, as: 'classpathEntries'
+          hash :hadoop_properties, as: 'hadoopProperties'
+          hash :metrics_properties, as: 'metricsProperties'
+          collection :resource_profiles, as: 'resourceProfiles', class: Google::Apis::DataprocV1::ResourceProfileInfo, decorator: Google::Apis::DataprocV1::ResourceProfileInfo::Representation
+      
+          property :runtime, as: 'runtime', class: Google::Apis::DataprocV1::SparkRuntimeInfo, decorator: Google::Apis::DataprocV1::SparkRuntimeInfo::Representation
+      
+          hash :spark_properties, as: 'sparkProperties'
+          hash :system_properties, as: 'systemProperties'
+        end
+      end
+      
+      class ApplicationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_context_ingestion_status, as: 'applicationContextIngestionStatus'
+          property :application_id, as: 'applicationId'
+          collection :attempts, as: 'attempts', class: Google::Apis::DataprocV1::ApplicationAttemptInfo, decorator: Google::Apis::DataprocV1::ApplicationAttemptInfo::Representation
+      
+          property :cores_granted, as: 'coresGranted'
+          property :cores_per_executor, as: 'coresPerExecutor'
+          property :max_cores, as: 'maxCores'
+          property :memory_per_executor_mb, as: 'memoryPerExecutorMb'
+          property :name, as: 'name'
+          property :quantile_data_status, as: 'quantileDataStatus'
         end
       end
       
@@ -1166,10 +2007,41 @@ module Google
         end
       end
       
+      class ClusterToRepair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_repair_action, as: 'clusterRepairAction'
+        end
+      end
+      
       class ConfidentialInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
+        end
+      end
+      
+      class ConsolidatedExecutorSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_tasks, as: 'activeTasks'
+          property :completed_tasks, as: 'completedTasks'
+          property :count, as: 'count'
+          property :disk_used, :numeric_string => true, as: 'diskUsed'
+          property :failed_tasks, as: 'failedTasks'
+          property :is_excluded, as: 'isExcluded'
+          property :max_memory, :numeric_string => true, as: 'maxMemory'
+          property :memory_metrics, as: 'memoryMetrics', class: Google::Apis::DataprocV1::MemoryMetrics, decorator: Google::Apis::DataprocV1::MemoryMetrics::Representation
+      
+          property :memory_used, :numeric_string => true, as: 'memoryUsed'
+          property :rdd_blocks, as: 'rddBlocks'
+          property :total_cores, as: 'totalCores'
+          property :total_duration_millis, :numeric_string => true, as: 'totalDurationMillis'
+          property :total_gc_time_millis, :numeric_string => true, as: 'totalGcTimeMillis'
+          property :total_input_bytes, :numeric_string => true, as: 'totalInputBytes'
+          property :total_shuffle_read, :numeric_string => true, as: 'totalShuffleRead'
+          property :total_shuffle_write, :numeric_string => true, as: 'totalShuffleWrite'
+          property :total_tasks, as: 'totalTasks'
         end
       end
       
@@ -1265,6 +2137,119 @@ module Google
           property :staging_bucket, as: 'stagingBucket'
           property :subnetwork_uri, as: 'subnetworkUri'
           property :ttl, as: 'ttl'
+        end
+      end
+      
+      class ExecutorMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metrics, as: 'metrics'
+        end
+      end
+      
+      class ExecutorMetricsDistributions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disk_bytes_spilled, as: 'diskBytesSpilled'
+          collection :failed_tasks, as: 'failedTasks'
+          collection :input_bytes, as: 'inputBytes'
+          collection :input_records, as: 'inputRecords'
+          collection :killed_tasks, as: 'killedTasks'
+          collection :memory_bytes_spilled, as: 'memoryBytesSpilled'
+          collection :output_bytes, as: 'outputBytes'
+          collection :output_records, as: 'outputRecords'
+          property :peak_memory_metrics, as: 'peakMemoryMetrics', class: Google::Apis::DataprocV1::ExecutorPeakMetricsDistributions, decorator: Google::Apis::DataprocV1::ExecutorPeakMetricsDistributions::Representation
+      
+          collection :quantiles, as: 'quantiles'
+          collection :shuffle_read, as: 'shuffleRead'
+          collection :shuffle_read_records, as: 'shuffleReadRecords'
+          collection :shuffle_write, as: 'shuffleWrite'
+          collection :shuffle_write_records, as: 'shuffleWriteRecords'
+          collection :succeeded_tasks, as: 'succeededTasks'
+          collection :task_time_millis, as: 'taskTimeMillis'
+        end
+      end
+      
+      class ExecutorPeakMetricsDistributions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :executor_metrics, as: 'executorMetrics', class: Google::Apis::DataprocV1::ExecutorMetrics, decorator: Google::Apis::DataprocV1::ExecutorMetrics::Representation
+      
+          collection :quantiles, as: 'quantiles'
+        end
+      end
+      
+      class ExecutorResourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, :numeric_string => true, as: 'amount'
+          property :discovery_script, as: 'discoveryScript'
+          property :resource_name, as: 'resourceName'
+          property :vendor, as: 'vendor'
+        end
+      end
+      
+      class ExecutorStageSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_bytes_spilled, :numeric_string => true, as: 'diskBytesSpilled'
+          property :executor_id, as: 'executorId'
+          property :failed_tasks, as: 'failedTasks'
+          property :input_bytes, :numeric_string => true, as: 'inputBytes'
+          property :input_records, :numeric_string => true, as: 'inputRecords'
+          property :is_excluded_for_stage, as: 'isExcludedForStage'
+          property :killed_tasks, as: 'killedTasks'
+          property :memory_bytes_spilled, :numeric_string => true, as: 'memoryBytesSpilled'
+          property :output_bytes, :numeric_string => true, as: 'outputBytes'
+          property :output_records, :numeric_string => true, as: 'outputRecords'
+          property :peak_memory_metrics, as: 'peakMemoryMetrics', class: Google::Apis::DataprocV1::ExecutorMetrics, decorator: Google::Apis::DataprocV1::ExecutorMetrics::Representation
+      
+          property :shuffle_read, :numeric_string => true, as: 'shuffleRead'
+          property :shuffle_read_records, :numeric_string => true, as: 'shuffleReadRecords'
+          property :shuffle_write, :numeric_string => true, as: 'shuffleWrite'
+          property :shuffle_write_records, :numeric_string => true, as: 'shuffleWriteRecords'
+          property :stage_attempt_id, as: 'stageAttemptId'
+          property :stage_id, :numeric_string => true, as: 'stageId'
+          property :succeeded_tasks, as: 'succeededTasks'
+          property :task_time_millis, :numeric_string => true, as: 'taskTimeMillis'
+        end
+      end
+      
+      class ExecutorSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_tasks, as: 'activeTasks'
+          property :add_time, as: 'addTime'
+          hash :attributes, as: 'attributes'
+          property :completed_tasks, as: 'completedTasks'
+          property :disk_used, :numeric_string => true, as: 'diskUsed'
+          collection :excluded_in_stages, as: 'excludedInStages'
+          property :executor_id, as: 'executorId'
+          hash :executor_logs, as: 'executorLogs'
+          property :failed_tasks, as: 'failedTasks'
+          property :host_port, as: 'hostPort'
+          property :is_active, as: 'isActive'
+          property :is_excluded, as: 'isExcluded'
+          property :max_memory, :numeric_string => true, as: 'maxMemory'
+          property :max_tasks, as: 'maxTasks'
+          property :memory_metrics, as: 'memoryMetrics', class: Google::Apis::DataprocV1::MemoryMetrics, decorator: Google::Apis::DataprocV1::MemoryMetrics::Representation
+      
+          property :memory_used, :numeric_string => true, as: 'memoryUsed'
+          property :peak_memory_metrics, as: 'peakMemoryMetrics', class: Google::Apis::DataprocV1::ExecutorMetrics, decorator: Google::Apis::DataprocV1::ExecutorMetrics::Representation
+      
+          property :rdd_blocks, as: 'rddBlocks'
+          property :remove_reason, as: 'removeReason'
+          property :remove_time, as: 'removeTime'
+          property :resource_profile_id, as: 'resourceProfileId'
+          hash :resources, as: 'resources', class: Google::Apis::DataprocV1::ResourceInformation, decorator: Google::Apis::DataprocV1::ResourceInformation::Representation
+      
+          property :total_cores, as: 'totalCores'
+          property :total_duration_millis, :numeric_string => true, as: 'totalDurationMillis'
+          property :total_gc_time_millis, :numeric_string => true, as: 'totalGcTimeMillis'
+          property :total_input_bytes, :numeric_string => true, as: 'totalInputBytes'
+          property :total_shuffle_read, :numeric_string => true, as: 'totalShuffleRead'
+          property :total_shuffle_write, :numeric_string => true, as: 'totalShuffleWrite'
+          property :total_tasks, as: 'totalTasks'
         end
       end
       
@@ -1443,12 +2428,32 @@ module Google
         end
       end
       
+      class InputMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_read, :numeric_string => true, as: 'bytesRead'
+          property :records_read, :numeric_string => true, as: 'recordsRead'
+        end
+      end
+      
+      class InputQuantileMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_read, as: 'bytesRead', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :records_read, as: 'recordsRead', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+        end
+      end
+      
       class InstanceFlexibilityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instance_selection_list, as: 'instanceSelectionList', class: Google::Apis::DataprocV1::InstanceSelection, decorator: Google::Apis::DataprocV1::InstanceSelection::Representation
       
           collection :instance_selection_results, as: 'instanceSelectionResults', class: Google::Apis::DataprocV1::InstanceSelectionResult, decorator: Google::Apis::DataprocV1::InstanceSelectionResult::Representation
+      
+          property :provisioning_model_mix, as: 'provisioningModelMix', class: Google::Apis::DataprocV1::ProvisioningModelMix, decorator: Google::Apis::DataprocV1::ProvisioningModelMix::Representation
       
         end
       end
@@ -1576,6 +2581,34 @@ module Google
         end
       end
       
+      class JobData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_time, as: 'completionTime'
+          property :description, as: 'description'
+          property :job_group, as: 'jobGroup'
+          property :job_id, :numeric_string => true, as: 'jobId'
+          hash :kill_tasks_summary, as: 'killTasksSummary'
+          property :name, as: 'name'
+          property :num_active_stages, as: 'numActiveStages'
+          property :num_active_tasks, as: 'numActiveTasks'
+          property :num_completed_indices, as: 'numCompletedIndices'
+          property :num_completed_stages, as: 'numCompletedStages'
+          property :num_completed_tasks, as: 'numCompletedTasks'
+          property :num_failed_stages, as: 'numFailedStages'
+          property :num_failed_tasks, as: 'numFailedTasks'
+          property :num_killed_tasks, as: 'numKilledTasks'
+          property :num_skipped_stages, as: 'numSkippedStages'
+          property :num_skipped_tasks, as: 'numSkippedTasks'
+          property :num_tasks, as: 'numTasks'
+          collection :skipped_stages, as: 'skippedStages'
+          property :sql_execution_id, :numeric_string => true, as: 'sqlExecutionId'
+          collection :stage_ids, as: 'stageIds'
+          property :status, as: 'status'
+          property :submission_time, as: 'submissionTime'
+        end
+      end
+      
       class JobMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1619,6 +2652,19 @@ module Google
           property :state, as: 'state'
           property :state_start_time, as: 'stateStartTime'
           property :substate, as: 'substate'
+        end
+      end
+      
+      class JobsSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_jobs, as: 'activeJobs'
+          property :application_id, as: 'applicationId'
+          collection :attempts, as: 'attempts', class: Google::Apis::DataprocV1::ApplicationAttemptInfo, decorator: Google::Apis::DataprocV1::ApplicationAttemptInfo::Representation
+      
+          property :completed_jobs, as: 'completedJobs'
+          property :failed_jobs, as: 'failedJobs'
+          property :scheduling_mode, as: 'schedulingMode'
         end
       end
       
@@ -1781,6 +2827,16 @@ module Google
         end
       end
       
+      class MemoryMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_off_heap_storage_memory, :numeric_string => true, as: 'totalOffHeapStorageMemory'
+          property :total_on_heap_storage_memory, :numeric_string => true, as: 'totalOnHeapStorageMemory'
+          property :used_off_heap_storage_memory, :numeric_string => true, as: 'usedOffHeapStorageMemory'
+          property :used_on_heap_storage_memory, :numeric_string => true, as: 'usedOnHeapStorageMemory'
+        end
+      end
+      
       class MetastoreConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1898,6 +2954,24 @@ module Google
         end
       end
       
+      class OutputMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_written, :numeric_string => true, as: 'bytesWritten'
+          property :records_written, :numeric_string => true, as: 'recordsWritten'
+        end
+      end
+      
+      class OutputQuantileMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_written, as: 'bytesWritten', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :records_written, as: 'recordsWritten', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+        end
+      end
+      
       class ParameterValidation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1942,6 +3016,14 @@ module Google
         end
       end
       
+      class PoolData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :stage_ids, as: 'stageIds'
+        end
+      end
+      
       class PrestoJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1954,6 +3036,27 @@ module Google
           property :query_file_uri, as: 'queryFileUri'
           property :query_list, as: 'queryList', class: Google::Apis::DataprocV1::QueryList, decorator: Google::Apis::DataprocV1::QueryList::Representation
       
+        end
+      end
+      
+      class ProcessSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_time, as: 'addTime'
+          property :host_port, as: 'hostPort'
+          property :is_active, as: 'isActive'
+          property :process_id, as: 'processId'
+          hash :process_logs, as: 'processLogs'
+          property :remove_time, as: 'removeTime'
+          property :total_cores, as: 'totalCores'
+        end
+      end
+      
+      class ProvisioningModelMix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :standard_capacity_base, as: 'standardCapacityBase'
+          property :standard_capacity_percent_above_base, as: 'standardCapacityPercentAboveBase'
         end
       end
       
@@ -1991,10 +3094,112 @@ module Google
         end
       end
       
+      class Quantiles
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :maximum, :numeric_string => true, as: 'maximum'
+          property :minimum, :numeric_string => true, as: 'minimum'
+          property :percentile25, :numeric_string => true, as: 'percentile25'
+          property :percentile50, :numeric_string => true, as: 'percentile50'
+          property :percentile75, :numeric_string => true, as: 'percentile75'
+          property :sum, :numeric_string => true, as: 'sum'
+        end
+      end
+      
       class QueryList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :queries, as: 'queries'
+        end
+      end
+      
+      class RddDataDistribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :disk_used, :numeric_string => true, as: 'diskUsed'
+          property :memory_remaining, :numeric_string => true, as: 'memoryRemaining'
+          property :memory_used, :numeric_string => true, as: 'memoryUsed'
+          property :off_heap_memory_remaining, :numeric_string => true, as: 'offHeapMemoryRemaining'
+          property :off_heap_memory_used, :numeric_string => true, as: 'offHeapMemoryUsed'
+          property :on_heap_memory_remaining, :numeric_string => true, as: 'onHeapMemoryRemaining'
+          property :on_heap_memory_used, :numeric_string => true, as: 'onHeapMemoryUsed'
+        end
+      end
+      
+      class RddOperationCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :child_clusters, as: 'childClusters', class: Google::Apis::DataprocV1::RddOperationCluster, decorator: Google::Apis::DataprocV1::RddOperationCluster::Representation
+      
+          collection :child_nodes, as: 'childNodes', class: Google::Apis::DataprocV1::RddOperationNode, decorator: Google::Apis::DataprocV1::RddOperationNode::Representation
+      
+          property :name, as: 'name'
+          property :rdd_cluster_id, as: 'rddClusterId'
+        end
+      end
+      
+      class RddOperationEdge
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :from_id, as: 'fromId'
+          property :to_id, as: 'toId'
+        end
+      end
+      
+      class RddOperationGraph
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :edges, as: 'edges', class: Google::Apis::DataprocV1::RddOperationEdge, decorator: Google::Apis::DataprocV1::RddOperationEdge::Representation
+      
+          collection :incoming_edges, as: 'incomingEdges', class: Google::Apis::DataprocV1::RddOperationEdge, decorator: Google::Apis::DataprocV1::RddOperationEdge::Representation
+      
+          collection :outgoing_edges, as: 'outgoingEdges', class: Google::Apis::DataprocV1::RddOperationEdge, decorator: Google::Apis::DataprocV1::RddOperationEdge::Representation
+      
+          property :root_cluster, as: 'rootCluster', class: Google::Apis::DataprocV1::RddOperationCluster, decorator: Google::Apis::DataprocV1::RddOperationCluster::Representation
+      
+          property :stage_id, :numeric_string => true, as: 'stageId'
+        end
+      end
+      
+      class RddOperationNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :barrier, as: 'barrier'
+          property :cached, as: 'cached'
+          property :callsite, as: 'callsite'
+          property :name, as: 'name'
+          property :node_id, as: 'nodeId'
+          property :output_deterministic_level, as: 'outputDeterministicLevel'
+        end
+      end
+      
+      class RddPartitionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_name, as: 'blockName'
+          property :disk_used, :numeric_string => true, as: 'diskUsed'
+          collection :executors, as: 'executors'
+          property :memory_used, :numeric_string => true, as: 'memoryUsed'
+          property :storage_level, as: 'storageLevel'
+        end
+      end
+      
+      class RddStorageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_distribution, as: 'dataDistribution', class: Google::Apis::DataprocV1::RddDataDistribution, decorator: Google::Apis::DataprocV1::RddDataDistribution::Representation
+      
+          property :disk_used, :numeric_string => true, as: 'diskUsed'
+          property :memory_used, :numeric_string => true, as: 'memoryUsed'
+          property :name, as: 'name'
+          property :num_cached_partitions, as: 'numCachedPartitions'
+          property :num_partitions, as: 'numPartitions'
+          collection :partitions, as: 'partitions', class: Google::Apis::DataprocV1::RddPartitionInfo, decorator: Google::Apis::DataprocV1::RddPartitionInfo::Representation
+      
+          property :rdd_storage_id, as: 'rddStorageId'
+          property :storage_level, as: 'storageLevel'
         end
       end
       
@@ -2008,6 +3213,8 @@ module Google
       class RepairClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster', class: Google::Apis::DataprocV1::ClusterToRepair, decorator: Google::Apis::DataprocV1::ClusterToRepair::Representation
+      
           property :cluster_uuid, as: 'clusterUuid'
           property :graceful_decommission_timeout, as: 'gracefulDecommissionTimeout'
           collection :node_pools, as: 'nodePools', class: Google::Apis::DataprocV1::NodePool, decorator: Google::Apis::DataprocV1::NodePool::Representation
@@ -2053,6 +3260,25 @@ module Google
         end
       end
       
+      class ResourceInformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :addresses, as: 'addresses'
+          property :name, as: 'name'
+        end
+      end
+      
+      class ResourceProfileInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :executor_resources, as: 'executorResources', class: Google::Apis::DataprocV1::ExecutorResourceRequest, decorator: Google::Apis::DataprocV1::ExecutorResourceRequest::Representation
+      
+          property :resource_profile_id, as: 'resourceProfileId'
+          hash :task_resources, as: 'taskResources', class: Google::Apis::DataprocV1::TaskResourceRequest, decorator: Google::Apis::DataprocV1::TaskResourceRequest::Representation
+      
+        end
+      end
+      
       class RuntimeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2077,6 +3303,150 @@ module Google
           property :diagnostic_output_uri, as: 'diagnosticOutputUri'
           hash :endpoints, as: 'endpoints'
           property :output_uri, as: 'outputUri'
+        end
+      end
+      
+      class SearchSessionSparkApplicationExecutorStageSummaryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_stage_executors, as: 'sparkApplicationStageExecutors', class: Google::Apis::DataprocV1::ExecutorStageSummary, decorator: Google::Apis::DataprocV1::ExecutorStageSummary::Representation
+      
+        end
+      end
+      
+      class SearchSessionSparkApplicationExecutorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_executors, as: 'sparkApplicationExecutors', class: Google::Apis::DataprocV1::ExecutorSummary, decorator: Google::Apis::DataprocV1::ExecutorSummary::Representation
+      
+        end
+      end
+      
+      class SearchSessionSparkApplicationJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_jobs, as: 'sparkApplicationJobs', class: Google::Apis::DataprocV1::JobData, decorator: Google::Apis::DataprocV1::JobData::Representation
+      
+        end
+      end
+      
+      class SearchSessionSparkApplicationSqlQueriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_sql_queries, as: 'sparkApplicationSqlQueries', class: Google::Apis::DataprocV1::SqlExecutionUiData, decorator: Google::Apis::DataprocV1::SqlExecutionUiData::Representation
+      
+        end
+      end
+      
+      class SearchSessionSparkApplicationStageAttemptTasksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_stage_attempt_tasks, as: 'sparkApplicationStageAttemptTasks', class: Google::Apis::DataprocV1::TaskData, decorator: Google::Apis::DataprocV1::TaskData::Representation
+      
+        end
+      end
+      
+      class SearchSessionSparkApplicationStageAttemptsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_stage_attempts, as: 'sparkApplicationStageAttempts', class: Google::Apis::DataprocV1::StageData, decorator: Google::Apis::DataprocV1::StageData::Representation
+      
+        end
+      end
+      
+      class SearchSessionSparkApplicationStagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_stages, as: 'sparkApplicationStages', class: Google::Apis::DataprocV1::StageData, decorator: Google::Apis::DataprocV1::StageData::Representation
+      
+        end
+      end
+      
+      class SearchSessionSparkApplicationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_applications, as: 'sparkApplications', class: Google::Apis::DataprocV1::SparkApplication, decorator: Google::Apis::DataprocV1::SparkApplication::Representation
+      
+        end
+      end
+      
+      class SearchSparkApplicationExecutorStageSummaryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_stage_executors, as: 'sparkApplicationStageExecutors', class: Google::Apis::DataprocV1::ExecutorStageSummary, decorator: Google::Apis::DataprocV1::ExecutorStageSummary::Representation
+      
+        end
+      end
+      
+      class SearchSparkApplicationExecutorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_executors, as: 'sparkApplicationExecutors', class: Google::Apis::DataprocV1::ExecutorSummary, decorator: Google::Apis::DataprocV1::ExecutorSummary::Representation
+      
+        end
+      end
+      
+      class SearchSparkApplicationJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_jobs, as: 'sparkApplicationJobs', class: Google::Apis::DataprocV1::JobData, decorator: Google::Apis::DataprocV1::JobData::Representation
+      
+        end
+      end
+      
+      class SearchSparkApplicationSqlQueriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_sql_queries, as: 'sparkApplicationSqlQueries', class: Google::Apis::DataprocV1::SqlExecutionUiData, decorator: Google::Apis::DataprocV1::SqlExecutionUiData::Representation
+      
+        end
+      end
+      
+      class SearchSparkApplicationStageAttemptTasksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_stage_attempt_tasks, as: 'sparkApplicationStageAttemptTasks', class: Google::Apis::DataprocV1::TaskData, decorator: Google::Apis::DataprocV1::TaskData::Representation
+      
+        end
+      end
+      
+      class SearchSparkApplicationStageAttemptsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_stage_attempts, as: 'sparkApplicationStageAttempts', class: Google::Apis::DataprocV1::StageData, decorator: Google::Apis::DataprocV1::StageData::Representation
+      
+        end
+      end
+      
+      class SearchSparkApplicationStagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_stages, as: 'sparkApplicationStages', class: Google::Apis::DataprocV1::StageData, decorator: Google::Apis::DataprocV1::StageData::Representation
+      
+        end
+      end
+      
+      class SearchSparkApplicationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_applications, as: 'sparkApplications', class: Google::Apis::DataprocV1::SparkApplication, decorator: Google::Apis::DataprocV1::SparkApplication::Representation
+      
         end
       end
       
@@ -2179,12 +3549,146 @@ module Google
         end
       end
       
+      class ShufflePushReadMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :corrupt_merged_block_chunks, :numeric_string => true, as: 'corruptMergedBlockChunks'
+          property :local_merged_blocks_fetched, :numeric_string => true, as: 'localMergedBlocksFetched'
+          property :local_merged_bytes_read, :numeric_string => true, as: 'localMergedBytesRead'
+          property :local_merged_chunks_fetched, :numeric_string => true, as: 'localMergedChunksFetched'
+          property :merged_fetch_fallback_count, :numeric_string => true, as: 'mergedFetchFallbackCount'
+          property :remote_merged_blocks_fetched, :numeric_string => true, as: 'remoteMergedBlocksFetched'
+          property :remote_merged_bytes_read, :numeric_string => true, as: 'remoteMergedBytesRead'
+          property :remote_merged_chunks_fetched, :numeric_string => true, as: 'remoteMergedChunksFetched'
+          property :remote_merged_reqs_duration, :numeric_string => true, as: 'remoteMergedReqsDuration'
+        end
+      end
+      
+      class ShufflePushReadQuantileMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :corrupt_merged_block_chunks, as: 'corruptMergedBlockChunks', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :local_merged_blocks_fetched, as: 'localMergedBlocksFetched', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :local_merged_bytes_read, as: 'localMergedBytesRead', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :local_merged_chunks_fetched, as: 'localMergedChunksFetched', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :merged_fetch_fallback_count, as: 'mergedFetchFallbackCount', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :remote_merged_blocks_fetched, as: 'remoteMergedBlocksFetched', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :remote_merged_bytes_read, as: 'remoteMergedBytesRead', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :remote_merged_chunks_fetched, as: 'remoteMergedChunksFetched', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :remote_merged_reqs_duration, as: 'remoteMergedReqsDuration', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+        end
+      end
+      
+      class ShuffleReadMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fetch_wait_time_millis, :numeric_string => true, as: 'fetchWaitTimeMillis'
+          property :local_blocks_fetched, :numeric_string => true, as: 'localBlocksFetched'
+          property :local_bytes_read, :numeric_string => true, as: 'localBytesRead'
+          property :records_read, :numeric_string => true, as: 'recordsRead'
+          property :remote_blocks_fetched, :numeric_string => true, as: 'remoteBlocksFetched'
+          property :remote_bytes_read, :numeric_string => true, as: 'remoteBytesRead'
+          property :remote_bytes_read_to_disk, :numeric_string => true, as: 'remoteBytesReadToDisk'
+          property :remote_reqs_duration, :numeric_string => true, as: 'remoteReqsDuration'
+          property :shuffle_push_read_metrics, as: 'shufflePushReadMetrics', class: Google::Apis::DataprocV1::ShufflePushReadMetrics, decorator: Google::Apis::DataprocV1::ShufflePushReadMetrics::Representation
+      
+        end
+      end
+      
+      class ShuffleReadQuantileMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fetch_wait_time_millis, as: 'fetchWaitTimeMillis', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :local_blocks_fetched, as: 'localBlocksFetched', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :read_bytes, as: 'readBytes', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :read_records, as: 'readRecords', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :remote_blocks_fetched, as: 'remoteBlocksFetched', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :remote_bytes_read, as: 'remoteBytesRead', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :remote_bytes_read_to_disk, as: 'remoteBytesReadToDisk', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :remote_reqs_duration, as: 'remoteReqsDuration', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :shuffle_push_read_metrics, as: 'shufflePushReadMetrics', class: Google::Apis::DataprocV1::ShufflePushReadQuantileMetrics, decorator: Google::Apis::DataprocV1::ShufflePushReadQuantileMetrics::Representation
+      
+          property :total_blocks_fetched, as: 'totalBlocksFetched', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+        end
+      end
+      
+      class ShuffleWriteMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_written, :numeric_string => true, as: 'bytesWritten'
+          property :records_written, :numeric_string => true, as: 'recordsWritten'
+          property :write_time_nanos, :numeric_string => true, as: 'writeTimeNanos'
+        end
+      end
+      
+      class ShuffleWriteQuantileMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :write_bytes, as: 'writeBytes', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :write_records, as: 'writeRecords', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :write_time_nanos, as: 'writeTimeNanos', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+        end
+      end
+      
+      class SinkProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          hash :metrics, as: 'metrics'
+          property :num_output_rows, :numeric_string => true, as: 'numOutputRows'
+        end
+      end
+      
       class SoftwareConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image_version, as: 'imageVersion'
           collection :optional_components, as: 'optionalComponents'
           hash :properties, as: 'properties'
+        end
+      end
+      
+      class SourceProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :end_offset, as: 'endOffset'
+          property :input_rows_per_second, as: 'inputRowsPerSecond'
+          property :latest_offset, as: 'latestOffset'
+          hash :metrics, as: 'metrics'
+          property :num_input_rows, :numeric_string => true, as: 'numInputRows'
+          property :processed_rows_per_second, as: 'processedRowsPerSecond'
+          property :start_offset, as: 'startOffset'
+        end
+      end
+      
+      class SparkApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::DataprocV1::ApplicationInfo, decorator: Google::Apis::DataprocV1::ApplicationInfo::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -2228,6 +3732,59 @@ module Google
         end
       end
       
+      class SparkPlanGraph
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :edges, as: 'edges', class: Google::Apis::DataprocV1::SparkPlanGraphEdge, decorator: Google::Apis::DataprocV1::SparkPlanGraphEdge::Representation
+      
+          property :execution_id, :numeric_string => true, as: 'executionId'
+          collection :nodes, as: 'nodes', class: Google::Apis::DataprocV1::SparkPlanGraphNodeWrapper, decorator: Google::Apis::DataprocV1::SparkPlanGraphNodeWrapper::Representation
+      
+        end
+      end
+      
+      class SparkPlanGraphCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :desc, as: 'desc'
+          collection :metrics, as: 'metrics', class: Google::Apis::DataprocV1::SqlPlanMetric, decorator: Google::Apis::DataprocV1::SqlPlanMetric::Representation
+      
+          property :name, as: 'name'
+          collection :nodes, as: 'nodes', class: Google::Apis::DataprocV1::SparkPlanGraphNodeWrapper, decorator: Google::Apis::DataprocV1::SparkPlanGraphNodeWrapper::Representation
+      
+          property :spark_plan_graph_cluster_id, :numeric_string => true, as: 'sparkPlanGraphClusterId'
+        end
+      end
+      
+      class SparkPlanGraphEdge
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :from_id, :numeric_string => true, as: 'fromId'
+          property :to_id, :numeric_string => true, as: 'toId'
+        end
+      end
+      
+      class SparkPlanGraphNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :desc, as: 'desc'
+          collection :metrics, as: 'metrics', class: Google::Apis::DataprocV1::SqlPlanMetric, decorator: Google::Apis::DataprocV1::SqlPlanMetric::Representation
+      
+          property :name, as: 'name'
+          property :spark_plan_graph_node_id, :numeric_string => true, as: 'sparkPlanGraphNodeId'
+        end
+      end
+      
+      class SparkPlanGraphNodeWrapper
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster', class: Google::Apis::DataprocV1::SparkPlanGraphCluster, decorator: Google::Apis::DataprocV1::SparkPlanGraphCluster::Representation
+      
+          property :node, as: 'node', class: Google::Apis::DataprocV1::SparkPlanGraphNode, decorator: Google::Apis::DataprocV1::SparkPlanGraphNode::Representation
+      
+        end
+      end
+      
       class SparkRBatch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2248,6 +3805,15 @@ module Google
       
           property :main_r_file_uri, as: 'mainRFileUri'
           hash :properties, as: 'properties'
+        end
+      end
+      
+      class SparkRuntimeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :java_home, as: 'javaHome'
+          property :java_version, as: 'javaVersion'
+          property :scala_version, as: 'scalaVersion'
         end
       end
       
@@ -2286,6 +3852,250 @@ module Google
         end
       end
       
+      class SparkWrapperObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_summary, as: 'appSummary', class: Google::Apis::DataprocV1::AppSummary, decorator: Google::Apis::DataprocV1::AppSummary::Representation
+      
+          property :application_environment_info, as: 'applicationEnvironmentInfo', class: Google::Apis::DataprocV1::ApplicationEnvironmentInfo, decorator: Google::Apis::DataprocV1::ApplicationEnvironmentInfo::Representation
+      
+          property :application_id, as: 'applicationId'
+          property :application_info, as: 'applicationInfo', class: Google::Apis::DataprocV1::ApplicationInfo, decorator: Google::Apis::DataprocV1::ApplicationInfo::Representation
+      
+          property :event_timestamp, as: 'eventTimestamp'
+          property :executor_stage_summary, as: 'executorStageSummary', class: Google::Apis::DataprocV1::ExecutorStageSummary, decorator: Google::Apis::DataprocV1::ExecutorStageSummary::Representation
+      
+          property :executor_summary, as: 'executorSummary', class: Google::Apis::DataprocV1::ExecutorSummary, decorator: Google::Apis::DataprocV1::ExecutorSummary::Representation
+      
+          property :job_data, as: 'jobData', class: Google::Apis::DataprocV1::JobData, decorator: Google::Apis::DataprocV1::JobData::Representation
+      
+          property :pool_data, as: 'poolData', class: Google::Apis::DataprocV1::PoolData, decorator: Google::Apis::DataprocV1::PoolData::Representation
+      
+          property :process_summary, as: 'processSummary', class: Google::Apis::DataprocV1::ProcessSummary, decorator: Google::Apis::DataprocV1::ProcessSummary::Representation
+      
+          property :rdd_operation_graph, as: 'rddOperationGraph', class: Google::Apis::DataprocV1::RddOperationGraph, decorator: Google::Apis::DataprocV1::RddOperationGraph::Representation
+      
+          property :rdd_storage_info, as: 'rddStorageInfo', class: Google::Apis::DataprocV1::RddStorageInfo, decorator: Google::Apis::DataprocV1::RddStorageInfo::Representation
+      
+          property :resource_profile_info, as: 'resourceProfileInfo', class: Google::Apis::DataprocV1::ResourceProfileInfo, decorator: Google::Apis::DataprocV1::ResourceProfileInfo::Representation
+      
+          property :spark_plan_graph, as: 'sparkPlanGraph', class: Google::Apis::DataprocV1::SparkPlanGraph, decorator: Google::Apis::DataprocV1::SparkPlanGraph::Representation
+      
+          property :speculation_stage_summary, as: 'speculationStageSummary', class: Google::Apis::DataprocV1::SpeculationStageSummary, decorator: Google::Apis::DataprocV1::SpeculationStageSummary::Representation
+      
+          property :sql_execution_ui_data, as: 'sqlExecutionUiData', class: Google::Apis::DataprocV1::SqlExecutionUiData, decorator: Google::Apis::DataprocV1::SqlExecutionUiData::Representation
+      
+          property :stage_data, as: 'stageData', class: Google::Apis::DataprocV1::StageData, decorator: Google::Apis::DataprocV1::StageData::Representation
+      
+          property :stream_block_data, as: 'streamBlockData', class: Google::Apis::DataprocV1::StreamBlockData, decorator: Google::Apis::DataprocV1::StreamBlockData::Representation
+      
+          property :streaming_query_data, as: 'streamingQueryData', class: Google::Apis::DataprocV1::StreamingQueryData, decorator: Google::Apis::DataprocV1::StreamingQueryData::Representation
+      
+          property :streaming_query_progress, as: 'streamingQueryProgress', class: Google::Apis::DataprocV1::StreamingQueryProgress, decorator: Google::Apis::DataprocV1::StreamingQueryProgress::Representation
+      
+          property :task_data, as: 'taskData', class: Google::Apis::DataprocV1::TaskData, decorator: Google::Apis::DataprocV1::TaskData::Representation
+      
+        end
+      end
+      
+      class SpeculationStageSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_active_tasks, as: 'numActiveTasks'
+          property :num_completed_tasks, as: 'numCompletedTasks'
+          property :num_failed_tasks, as: 'numFailedTasks'
+          property :num_killed_tasks, as: 'numKilledTasks'
+          property :num_tasks, as: 'numTasks'
+          property :stage_attempt_id, as: 'stageAttemptId'
+          property :stage_id, :numeric_string => true, as: 'stageId'
+        end
+      end
+      
+      class SqlExecutionUiData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_time, as: 'completionTime'
+          property :description, as: 'description'
+          property :details, as: 'details'
+          property :error_message, as: 'errorMessage'
+          property :execution_id, :numeric_string => true, as: 'executionId'
+          hash :jobs, as: 'jobs'
+          hash :metric_values, as: 'metricValues'
+          property :metric_values_is_null, as: 'metricValuesIsNull'
+          collection :metrics, as: 'metrics', class: Google::Apis::DataprocV1::SqlPlanMetric, decorator: Google::Apis::DataprocV1::SqlPlanMetric::Representation
+      
+          hash :modified_configs, as: 'modifiedConfigs'
+          property :physical_plan_description, as: 'physicalPlanDescription'
+          property :root_execution_id, :numeric_string => true, as: 'rootExecutionId'
+          collection :stages, as: 'stages'
+          property :submission_time, as: 'submissionTime'
+        end
+      end
+      
+      class SqlPlanMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accumulator_id, :numeric_string => true, as: 'accumulatorId'
+          property :metric_type, as: 'metricType'
+          property :name, as: 'name'
+        end
+      end
+      
+      class StageAttemptTasksSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_id, as: 'applicationId'
+          property :num_failed_tasks, as: 'numFailedTasks'
+          property :num_killed_tasks, as: 'numKilledTasks'
+          property :num_pending_tasks, as: 'numPendingTasks'
+          property :num_running_tasks, as: 'numRunningTasks'
+          property :num_success_tasks, as: 'numSuccessTasks'
+          property :num_tasks, as: 'numTasks'
+          property :stage_attempt_id, as: 'stageAttemptId'
+          property :stage_id, :numeric_string => true, as: 'stageId'
+        end
+      end
+      
+      class StageData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accumulator_updates, as: 'accumulatorUpdates', class: Google::Apis::DataprocV1::AccumulableInfo, decorator: Google::Apis::DataprocV1::AccumulableInfo::Representation
+      
+          property :completion_time, as: 'completionTime'
+          property :description, as: 'description'
+          property :details, as: 'details'
+          property :executor_metrics_distributions, as: 'executorMetricsDistributions', class: Google::Apis::DataprocV1::ExecutorMetricsDistributions, decorator: Google::Apis::DataprocV1::ExecutorMetricsDistributions::Representation
+      
+          hash :executor_summary, as: 'executorSummary', class: Google::Apis::DataprocV1::ExecutorStageSummary, decorator: Google::Apis::DataprocV1::ExecutorStageSummary::Representation
+      
+          property :failure_reason, as: 'failureReason'
+          property :first_task_launched_time, as: 'firstTaskLaunchedTime'
+          property :is_shuffle_push_enabled, as: 'isShufflePushEnabled'
+          collection :job_ids, as: 'jobIds'
+          hash :killed_tasks_summary, as: 'killedTasksSummary'
+          hash :locality, as: 'locality'
+          property :name, as: 'name'
+          property :num_active_tasks, as: 'numActiveTasks'
+          property :num_complete_tasks, as: 'numCompleteTasks'
+          property :num_completed_indices, as: 'numCompletedIndices'
+          property :num_failed_tasks, as: 'numFailedTasks'
+          property :num_killed_tasks, as: 'numKilledTasks'
+          property :num_tasks, as: 'numTasks'
+          collection :parent_stage_ids, as: 'parentStageIds'
+          property :peak_executor_metrics, as: 'peakExecutorMetrics', class: Google::Apis::DataprocV1::ExecutorMetrics, decorator: Google::Apis::DataprocV1::ExecutorMetrics::Representation
+      
+          collection :rdd_ids, as: 'rddIds'
+          property :resource_profile_id, as: 'resourceProfileId'
+          property :scheduling_pool, as: 'schedulingPool'
+          property :shuffle_mergers_count, as: 'shuffleMergersCount'
+          property :speculation_summary, as: 'speculationSummary', class: Google::Apis::DataprocV1::SpeculationStageSummary, decorator: Google::Apis::DataprocV1::SpeculationStageSummary::Representation
+      
+          property :stage_attempt_id, as: 'stageAttemptId'
+          property :stage_id, :numeric_string => true, as: 'stageId'
+          property :stage_metrics, as: 'stageMetrics', class: Google::Apis::DataprocV1::StageMetrics, decorator: Google::Apis::DataprocV1::StageMetrics::Representation
+      
+          property :status, as: 'status'
+          property :submission_time, as: 'submissionTime'
+          property :task_quantile_metrics, as: 'taskQuantileMetrics', class: Google::Apis::DataprocV1::TaskQuantileMetrics, decorator: Google::Apis::DataprocV1::TaskQuantileMetrics::Representation
+      
+          hash :tasks, as: 'tasks', class: Google::Apis::DataprocV1::TaskData, decorator: Google::Apis::DataprocV1::TaskData::Representation
+      
+        end
+      end
+      
+      class StageInputMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_read, :numeric_string => true, as: 'bytesRead'
+          property :records_read, :numeric_string => true, as: 'recordsRead'
+        end
+      end
+      
+      class StageMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_bytes_spilled, :numeric_string => true, as: 'diskBytesSpilled'
+          property :executor_cpu_time_nanos, :numeric_string => true, as: 'executorCpuTimeNanos'
+          property :executor_deserialize_cpu_time_nanos, :numeric_string => true, as: 'executorDeserializeCpuTimeNanos'
+          property :executor_deserialize_time_millis, :numeric_string => true, as: 'executorDeserializeTimeMillis'
+          property :executor_run_time_millis, :numeric_string => true, as: 'executorRunTimeMillis'
+          property :jvm_gc_time_millis, :numeric_string => true, as: 'jvmGcTimeMillis'
+          property :memory_bytes_spilled, :numeric_string => true, as: 'memoryBytesSpilled'
+          property :peak_execution_memory_bytes, :numeric_string => true, as: 'peakExecutionMemoryBytes'
+          property :result_serialization_time_millis, :numeric_string => true, as: 'resultSerializationTimeMillis'
+          property :result_size, :numeric_string => true, as: 'resultSize'
+          property :stage_input_metrics, as: 'stageInputMetrics', class: Google::Apis::DataprocV1::StageInputMetrics, decorator: Google::Apis::DataprocV1::StageInputMetrics::Representation
+      
+          property :stage_output_metrics, as: 'stageOutputMetrics', class: Google::Apis::DataprocV1::StageOutputMetrics, decorator: Google::Apis::DataprocV1::StageOutputMetrics::Representation
+      
+          property :stage_shuffle_read_metrics, as: 'stageShuffleReadMetrics', class: Google::Apis::DataprocV1::StageShuffleReadMetrics, decorator: Google::Apis::DataprocV1::StageShuffleReadMetrics::Representation
+      
+          property :stage_shuffle_write_metrics, as: 'stageShuffleWriteMetrics', class: Google::Apis::DataprocV1::StageShuffleWriteMetrics, decorator: Google::Apis::DataprocV1::StageShuffleWriteMetrics::Representation
+      
+        end
+      end
+      
+      class StageOutputMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_written, :numeric_string => true, as: 'bytesWritten'
+          property :records_written, :numeric_string => true, as: 'recordsWritten'
+        end
+      end
+      
+      class StageShufflePushReadMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :corrupt_merged_block_chunks, :numeric_string => true, as: 'corruptMergedBlockChunks'
+          property :local_merged_blocks_fetched, :numeric_string => true, as: 'localMergedBlocksFetched'
+          property :local_merged_bytes_read, :numeric_string => true, as: 'localMergedBytesRead'
+          property :local_merged_chunks_fetched, :numeric_string => true, as: 'localMergedChunksFetched'
+          property :merged_fetch_fallback_count, :numeric_string => true, as: 'mergedFetchFallbackCount'
+          property :remote_merged_blocks_fetched, :numeric_string => true, as: 'remoteMergedBlocksFetched'
+          property :remote_merged_bytes_read, :numeric_string => true, as: 'remoteMergedBytesRead'
+          property :remote_merged_chunks_fetched, :numeric_string => true, as: 'remoteMergedChunksFetched'
+          property :remote_merged_reqs_duration, :numeric_string => true, as: 'remoteMergedReqsDuration'
+        end
+      end
+      
+      class StageShuffleReadMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_read, :numeric_string => true, as: 'bytesRead'
+          property :fetch_wait_time_millis, :numeric_string => true, as: 'fetchWaitTimeMillis'
+          property :local_blocks_fetched, :numeric_string => true, as: 'localBlocksFetched'
+          property :local_bytes_read, :numeric_string => true, as: 'localBytesRead'
+          property :records_read, :numeric_string => true, as: 'recordsRead'
+          property :remote_blocks_fetched, :numeric_string => true, as: 'remoteBlocksFetched'
+          property :remote_bytes_read, :numeric_string => true, as: 'remoteBytesRead'
+          property :remote_bytes_read_to_disk, :numeric_string => true, as: 'remoteBytesReadToDisk'
+          property :remote_reqs_duration, :numeric_string => true, as: 'remoteReqsDuration'
+          property :stage_shuffle_push_read_metrics, as: 'stageShufflePushReadMetrics', class: Google::Apis::DataprocV1::StageShufflePushReadMetrics, decorator: Google::Apis::DataprocV1::StageShufflePushReadMetrics::Representation
+      
+        end
+      end
+      
+      class StageShuffleWriteMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_written, :numeric_string => true, as: 'bytesWritten'
+          property :records_written, :numeric_string => true, as: 'recordsWritten'
+          property :write_time_nanos, :numeric_string => true, as: 'writeTimeNanos'
+        end
+      end
+      
+      class StagesSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_id, as: 'applicationId'
+          property :num_active_stages, as: 'numActiveStages'
+          property :num_completed_stages, as: 'numCompletedStages'
+          property :num_failed_stages, as: 'numFailedStages'
+          property :num_pending_stages, as: 'numPendingStages'
+          property :num_skipped_stages, as: 'numSkippedStages'
+        end
+      end
+      
       class StartClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2310,6 +4120,24 @@ module Google
         end
       end
       
+      class StateOperatorProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_removals_time_ms, :numeric_string => true, as: 'allRemovalsTimeMs'
+          property :all_updates_time_ms, :numeric_string => true, as: 'allUpdatesTimeMs'
+          property :commit_time_ms, :numeric_string => true, as: 'commitTimeMs'
+          hash :custom_metrics, as: 'customMetrics'
+          property :memory_used_bytes, :numeric_string => true, as: 'memoryUsedBytes'
+          property :num_rows_dropped_by_watermark, :numeric_string => true, as: 'numRowsDroppedByWatermark'
+          property :num_rows_removed, :numeric_string => true, as: 'numRowsRemoved'
+          property :num_rows_total, :numeric_string => true, as: 'numRowsTotal'
+          property :num_rows_updated, :numeric_string => true, as: 'numRowsUpdated'
+          property :num_shuffle_partitions, :numeric_string => true, as: 'numShufflePartitions'
+          property :num_state_store_instances, :numeric_string => true, as: 'numStateStoreInstances'
+          property :operator_name, as: 'operatorName'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2327,12 +4155,236 @@ module Google
         end
       end
       
+      class StreamBlockData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deserialized, as: 'deserialized'
+          property :disk_size, :numeric_string => true, as: 'diskSize'
+          property :executor_id, as: 'executorId'
+          property :host_port, as: 'hostPort'
+          property :mem_size, :numeric_string => true, as: 'memSize'
+          property :name, as: 'name'
+          property :storage_level, as: 'storageLevel'
+          property :use_disk, as: 'useDisk'
+          property :use_memory, as: 'useMemory'
+        end
+      end
+      
+      class StreamingQueryData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_timestamp, :numeric_string => true, as: 'endTimestamp'
+          property :exception, as: 'exception'
+          property :is_active, as: 'isActive'
+          property :name, as: 'name'
+          property :run_id, as: 'runId'
+          property :start_timestamp, :numeric_string => true, as: 'startTimestamp'
+          property :streaming_query_id, as: 'streamingQueryId'
+        end
+      end
+      
+      class StreamingQueryProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_duration, :numeric_string => true, as: 'batchDuration'
+          property :batch_id, :numeric_string => true, as: 'batchId'
+          hash :duration_millis, as: 'durationMillis'
+          hash :event_time, as: 'eventTime'
+          property :name, as: 'name'
+          hash :observed_metrics, as: 'observedMetrics'
+          property :run_id, as: 'runId'
+          property :sink, as: 'sink', class: Google::Apis::DataprocV1::SinkProgress, decorator: Google::Apis::DataprocV1::SinkProgress::Representation
+      
+          collection :sources, as: 'sources', class: Google::Apis::DataprocV1::SourceProgress, decorator: Google::Apis::DataprocV1::SourceProgress::Representation
+      
+          collection :state_operators, as: 'stateOperators', class: Google::Apis::DataprocV1::StateOperatorProgress, decorator: Google::Apis::DataprocV1::StateOperatorProgress::Representation
+      
+          property :streaming_query_progress_id, as: 'streamingQueryProgressId'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
       class SubmitJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job, as: 'job', class: Google::Apis::DataprocV1::Job, decorator: Google::Apis::DataprocV1::Job::Representation
       
           property :request_id, as: 'requestId'
+        end
+      end
+      
+      class SummarizeSessionSparkApplicationExecutorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_executor_summary, as: 'activeExecutorSummary', class: Google::Apis::DataprocV1::ConsolidatedExecutorSummary, decorator: Google::Apis::DataprocV1::ConsolidatedExecutorSummary::Representation
+      
+          property :application_id, as: 'applicationId'
+          property :dead_executor_summary, as: 'deadExecutorSummary', class: Google::Apis::DataprocV1::ConsolidatedExecutorSummary, decorator: Google::Apis::DataprocV1::ConsolidatedExecutorSummary::Representation
+      
+          property :total_executor_summary, as: 'totalExecutorSummary', class: Google::Apis::DataprocV1::ConsolidatedExecutorSummary, decorator: Google::Apis::DataprocV1::ConsolidatedExecutorSummary::Representation
+      
+        end
+      end
+      
+      class SummarizeSessionSparkApplicationJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :jobs_summary, as: 'jobsSummary', class: Google::Apis::DataprocV1::JobsSummary, decorator: Google::Apis::DataprocV1::JobsSummary::Representation
+      
+        end
+      end
+      
+      class SummarizeSessionSparkApplicationStageAttemptTasksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stage_attempt_tasks_summary, as: 'stageAttemptTasksSummary', class: Google::Apis::DataprocV1::StageAttemptTasksSummary, decorator: Google::Apis::DataprocV1::StageAttemptTasksSummary::Representation
+      
+        end
+      end
+      
+      class SummarizeSessionSparkApplicationStagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stages_summary, as: 'stagesSummary', class: Google::Apis::DataprocV1::StagesSummary, decorator: Google::Apis::DataprocV1::StagesSummary::Representation
+      
+        end
+      end
+      
+      class SummarizeSparkApplicationExecutorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_executor_summary, as: 'activeExecutorSummary', class: Google::Apis::DataprocV1::ConsolidatedExecutorSummary, decorator: Google::Apis::DataprocV1::ConsolidatedExecutorSummary::Representation
+      
+          property :application_id, as: 'applicationId'
+          property :dead_executor_summary, as: 'deadExecutorSummary', class: Google::Apis::DataprocV1::ConsolidatedExecutorSummary, decorator: Google::Apis::DataprocV1::ConsolidatedExecutorSummary::Representation
+      
+          property :total_executor_summary, as: 'totalExecutorSummary', class: Google::Apis::DataprocV1::ConsolidatedExecutorSummary, decorator: Google::Apis::DataprocV1::ConsolidatedExecutorSummary::Representation
+      
+        end
+      end
+      
+      class SummarizeSparkApplicationJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :jobs_summary, as: 'jobsSummary', class: Google::Apis::DataprocV1::JobsSummary, decorator: Google::Apis::DataprocV1::JobsSummary::Representation
+      
+        end
+      end
+      
+      class SummarizeSparkApplicationStageAttemptTasksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stage_attempt_tasks_summary, as: 'stageAttemptTasksSummary', class: Google::Apis::DataprocV1::StageAttemptTasksSummary, decorator: Google::Apis::DataprocV1::StageAttemptTasksSummary::Representation
+      
+        end
+      end
+      
+      class SummarizeSparkApplicationStagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stages_summary, as: 'stagesSummary', class: Google::Apis::DataprocV1::StagesSummary, decorator: Google::Apis::DataprocV1::StagesSummary::Representation
+      
+        end
+      end
+      
+      class TaskData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accumulator_updates, as: 'accumulatorUpdates', class: Google::Apis::DataprocV1::AccumulableInfo, decorator: Google::Apis::DataprocV1::AccumulableInfo::Representation
+      
+          property :attempt, as: 'attempt'
+          property :duration_millis, :numeric_string => true, as: 'durationMillis'
+          property :error_message, as: 'errorMessage'
+          property :executor_id, as: 'executorId'
+          hash :executor_logs, as: 'executorLogs'
+          property :getting_result_time_millis, :numeric_string => true, as: 'gettingResultTimeMillis'
+          property :has_metrics, as: 'hasMetrics'
+          property :host, as: 'host'
+          property :index, as: 'index'
+          property :launch_time, as: 'launchTime'
+          property :partition_id, as: 'partitionId'
+          property :result_fetch_start, as: 'resultFetchStart'
+          property :scheduler_delay_millis, :numeric_string => true, as: 'schedulerDelayMillis'
+          property :speculative, as: 'speculative'
+          property :stage_attempt_id, as: 'stageAttemptId'
+          property :stage_id, :numeric_string => true, as: 'stageId'
+          property :status, as: 'status'
+          property :task_id, :numeric_string => true, as: 'taskId'
+          property :task_locality, as: 'taskLocality'
+          property :task_metrics, as: 'taskMetrics', class: Google::Apis::DataprocV1::TaskMetrics, decorator: Google::Apis::DataprocV1::TaskMetrics::Representation
+      
+        end
+      end
+      
+      class TaskMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_bytes_spilled, :numeric_string => true, as: 'diskBytesSpilled'
+          property :executor_cpu_time_nanos, :numeric_string => true, as: 'executorCpuTimeNanos'
+          property :executor_deserialize_cpu_time_nanos, :numeric_string => true, as: 'executorDeserializeCpuTimeNanos'
+          property :executor_deserialize_time_millis, :numeric_string => true, as: 'executorDeserializeTimeMillis'
+          property :executor_run_time_millis, :numeric_string => true, as: 'executorRunTimeMillis'
+          property :input_metrics, as: 'inputMetrics', class: Google::Apis::DataprocV1::InputMetrics, decorator: Google::Apis::DataprocV1::InputMetrics::Representation
+      
+          property :jvm_gc_time_millis, :numeric_string => true, as: 'jvmGcTimeMillis'
+          property :memory_bytes_spilled, :numeric_string => true, as: 'memoryBytesSpilled'
+          property :output_metrics, as: 'outputMetrics', class: Google::Apis::DataprocV1::OutputMetrics, decorator: Google::Apis::DataprocV1::OutputMetrics::Representation
+      
+          property :peak_execution_memory_bytes, :numeric_string => true, as: 'peakExecutionMemoryBytes'
+          property :result_serialization_time_millis, :numeric_string => true, as: 'resultSerializationTimeMillis'
+          property :result_size, :numeric_string => true, as: 'resultSize'
+          property :shuffle_read_metrics, as: 'shuffleReadMetrics', class: Google::Apis::DataprocV1::ShuffleReadMetrics, decorator: Google::Apis::DataprocV1::ShuffleReadMetrics::Representation
+      
+          property :shuffle_write_metrics, as: 'shuffleWriteMetrics', class: Google::Apis::DataprocV1::ShuffleWriteMetrics, decorator: Google::Apis::DataprocV1::ShuffleWriteMetrics::Representation
+      
+        end
+      end
+      
+      class TaskQuantileMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_bytes_spilled, as: 'diskBytesSpilled', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :duration_millis, as: 'durationMillis', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :executor_cpu_time_nanos, as: 'executorCpuTimeNanos', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :executor_deserialize_cpu_time_nanos, as: 'executorDeserializeCpuTimeNanos', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :executor_deserialize_time_millis, as: 'executorDeserializeTimeMillis', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :executor_run_time_millis, as: 'executorRunTimeMillis', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :getting_result_time_millis, as: 'gettingResultTimeMillis', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :input_metrics, as: 'inputMetrics', class: Google::Apis::DataprocV1::InputQuantileMetrics, decorator: Google::Apis::DataprocV1::InputQuantileMetrics::Representation
+      
+          property :jvm_gc_time_millis, as: 'jvmGcTimeMillis', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :memory_bytes_spilled, as: 'memoryBytesSpilled', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :output_metrics, as: 'outputMetrics', class: Google::Apis::DataprocV1::OutputQuantileMetrics, decorator: Google::Apis::DataprocV1::OutputQuantileMetrics::Representation
+      
+          property :peak_execution_memory_bytes, as: 'peakExecutionMemoryBytes', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :result_serialization_time_millis, as: 'resultSerializationTimeMillis', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :result_size, as: 'resultSize', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :scheduler_delay_millis, as: 'schedulerDelayMillis', class: Google::Apis::DataprocV1::Quantiles, decorator: Google::Apis::DataprocV1::Quantiles::Representation
+      
+          property :shuffle_read_metrics, as: 'shuffleReadMetrics', class: Google::Apis::DataprocV1::ShuffleReadQuantileMetrics, decorator: Google::Apis::DataprocV1::ShuffleReadQuantileMetrics::Representation
+      
+          property :shuffle_write_metrics, as: 'shuffleWriteMetrics', class: Google::Apis::DataprocV1::ShuffleWriteQuantileMetrics, decorator: Google::Apis::DataprocV1::ShuffleWriteQuantileMetrics::Representation
+      
+        end
+      end
+      
+      class TaskResourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount'
+          property :resource_name, as: 'resourceName'
         end
       end
       
@@ -2494,6 +4546,36 @@ module Google
       
           property :managed_cluster, as: 'managedCluster', class: Google::Apis::DataprocV1::ManagedCluster, decorator: Google::Apis::DataprocV1::ManagedCluster::Representation
       
+        end
+      end
+      
+      class WriteSessionSparkApplicationContextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          collection :spark_wrapper_objects, as: 'sparkWrapperObjects', class: Google::Apis::DataprocV1::SparkWrapperObject, decorator: Google::Apis::DataprocV1::SparkWrapperObject::Representation
+      
+        end
+      end
+      
+      class WriteSessionSparkApplicationContextResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class WriteSparkApplicationContextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          collection :spark_wrapper_objects, as: 'sparkWrapperObjects', class: Google::Apis::DataprocV1::SparkWrapperObject, decorator: Google::Apis::DataprocV1::SparkWrapperObject::Representation
+      
+        end
+      end
+      
+      class WriteSparkApplicationContextResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

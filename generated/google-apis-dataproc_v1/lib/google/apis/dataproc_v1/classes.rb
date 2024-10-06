@@ -58,6 +58,313 @@ module Google
         end
       end
       
+      # Environment details of a Saprk Application.
+      class AccessSessionSparkApplicationEnvironmentInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # Details about the Environment that the application is running in.
+        # Corresponds to the JSON property `applicationEnvironmentInfo`
+        # @return [Google::Apis::DataprocV1::ApplicationEnvironmentInfo]
+        attr_accessor :application_environment_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_environment_info = args[:application_environment_info] if args.key?(:application_environment_info)
+        end
+      end
+      
+      # Details of a particular job associated with Spark Application
+      class AccessSessionSparkApplicationJobResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data corresponding to a spark job.
+        # Corresponds to the JSON property `jobData`
+        # @return [Google::Apis::DataprocV1::JobData]
+        attr_accessor :job_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_data = args[:job_data] if args.key?(:job_data)
+        end
+      end
+      
+      # A summary of Spark Application
+      class AccessSessionSparkApplicationResponse
+        include Google::Apis::Core::Hashable
+      
+        # High level information corresponding to an application.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::DataprocV1::ApplicationInfo]
+        attr_accessor :application
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application = args[:application] if args.key?(:application)
+        end
+      end
+      
+      # Details of a query for a Spark Application
+      class AccessSessionSparkApplicationSqlQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # SQL Execution Data
+        # Corresponds to the JSON property `executionData`
+        # @return [Google::Apis::DataprocV1::SqlExecutionUiData]
+        attr_accessor :execution_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_data = args[:execution_data] if args.key?(:execution_data)
+        end
+      end
+      
+      # SparkPlanGraph for a Spark Application execution limited to maximum 10000
+      # clusters.
+      class AccessSessionSparkApplicationSqlSparkPlanGraphResponse
+        include Google::Apis::Core::Hashable
+      
+        # A graph used for storing information of an executionPlan of DataFrame.
+        # Corresponds to the JSON property `sparkPlanGraph`
+        # @return [Google::Apis::DataprocV1::SparkPlanGraph]
+        attr_accessor :spark_plan_graph
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spark_plan_graph = args[:spark_plan_graph] if args.key?(:spark_plan_graph)
+        end
+      end
+      
+      # Stage Attempt for a Stage of a Spark Application
+      class AccessSessionSparkApplicationStageAttemptResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data corresponding to a stage.
+        # Corresponds to the JSON property `stageData`
+        # @return [Google::Apis::DataprocV1::StageData]
+        attr_accessor :stage_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage_data = args[:stage_data] if args.key?(:stage_data)
+        end
+      end
+      
+      # RDD operation graph for a Spark Application Stage limited to maximum 10000
+      # clusters.
+      class AccessSessionSparkApplicationStageRddOperationGraphResponse
+        include Google::Apis::Core::Hashable
+      
+        # Graph representing RDD dependencies. Consists of edges and a root cluster.
+        # Corresponds to the JSON property `rddOperationGraph`
+        # @return [Google::Apis::DataprocV1::RddOperationGraph]
+        attr_accessor :rdd_operation_graph
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rdd_operation_graph = args[:rdd_operation_graph] if args.key?(:rdd_operation_graph)
+        end
+      end
+      
+      # Environment details of a Saprk Application.
+      class AccessSparkApplicationEnvironmentInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # Details about the Environment that the application is running in.
+        # Corresponds to the JSON property `applicationEnvironmentInfo`
+        # @return [Google::Apis::DataprocV1::ApplicationEnvironmentInfo]
+        attr_accessor :application_environment_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_environment_info = args[:application_environment_info] if args.key?(:application_environment_info)
+        end
+      end
+      
+      # Details of a particular job associated with Spark Application
+      class AccessSparkApplicationJobResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data corresponding to a spark job.
+        # Corresponds to the JSON property `jobData`
+        # @return [Google::Apis::DataprocV1::JobData]
+        attr_accessor :job_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_data = args[:job_data] if args.key?(:job_data)
+        end
+      end
+      
+      # A summary of Spark Application
+      class AccessSparkApplicationResponse
+        include Google::Apis::Core::Hashable
+      
+        # High level information corresponding to an application.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::DataprocV1::ApplicationInfo]
+        attr_accessor :application
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application = args[:application] if args.key?(:application)
+        end
+      end
+      
+      # Details of a query for a Spark Application
+      class AccessSparkApplicationSqlQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # SQL Execution Data
+        # Corresponds to the JSON property `executionData`
+        # @return [Google::Apis::DataprocV1::SqlExecutionUiData]
+        attr_accessor :execution_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_data = args[:execution_data] if args.key?(:execution_data)
+        end
+      end
+      
+      # SparkPlanGraph for a Spark Application execution limited to maximum 10000
+      # clusters.
+      class AccessSparkApplicationSqlSparkPlanGraphResponse
+        include Google::Apis::Core::Hashable
+      
+        # A graph used for storing information of an executionPlan of DataFrame.
+        # Corresponds to the JSON property `sparkPlanGraph`
+        # @return [Google::Apis::DataprocV1::SparkPlanGraph]
+        attr_accessor :spark_plan_graph
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spark_plan_graph = args[:spark_plan_graph] if args.key?(:spark_plan_graph)
+        end
+      end
+      
+      # Stage Attempt for a Stage of a Spark Application
+      class AccessSparkApplicationStageAttemptResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data corresponding to a stage.
+        # Corresponds to the JSON property `stageData`
+        # @return [Google::Apis::DataprocV1::StageData]
+        attr_accessor :stage_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage_data = args[:stage_data] if args.key?(:stage_data)
+        end
+      end
+      
+      # RDD operation graph for a Spark Application Stage limited to maximum 10000
+      # clusters.
+      class AccessSparkApplicationStageRddOperationGraphResponse
+        include Google::Apis::Core::Hashable
+      
+        # Graph representing RDD dependencies. Consists of edges and a root cluster.
+        # Corresponds to the JSON property `rddOperationGraph`
+        # @return [Google::Apis::DataprocV1::RddOperationGraph]
+        attr_accessor :rdd_operation_graph
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rdd_operation_graph = args[:rdd_operation_graph] if args.key?(:rdd_operation_graph)
+        end
+      end
+      
+      # 
+      class AccumulableInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `accumullableInfoId`
+        # @return [Fixnum]
+        attr_accessor :accumullable_info_id
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `update`
+        # @return [String]
+        attr_accessor :update
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accumullable_info_id = args[:accumullable_info_id] if args.key?(:accumullable_info_id)
+          @name = args[:name] if args.key?(:name)
+          @update = args[:update] if args.key?(:update)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A request to analyze a batch workload.
       class AnalyzeBatchRequest
         include Google::Apis::Core::Hashable
@@ -144,6 +451,215 @@ module Google
           @done_time = args[:done_time] if args.key?(:done_time)
           @labels = args[:labels] if args.key?(:labels)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # 
+      class AppSummary
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `numCompletedJobs`
+        # @return [Fixnum]
+        attr_accessor :num_completed_jobs
+      
+        # 
+        # Corresponds to the JSON property `numCompletedStages`
+        # @return [Fixnum]
+        attr_accessor :num_completed_stages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_completed_jobs = args[:num_completed_jobs] if args.key?(:num_completed_jobs)
+          @num_completed_stages = args[:num_completed_stages] if args.key?(:num_completed_stages)
+        end
+      end
+      
+      # Specific attempt of an application.
+      class ApplicationAttemptInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `appSparkVersion`
+        # @return [String]
+        attr_accessor :app_spark_version
+      
+        # 
+        # Corresponds to the JSON property `attemptId`
+        # @return [String]
+        attr_accessor :attempt_id
+      
+        # 
+        # Corresponds to the JSON property `completed`
+        # @return [Boolean]
+        attr_accessor :completed
+        alias_method :completed?, :completed
+      
+        # 
+        # Corresponds to the JSON property `durationMillis`
+        # @return [Fixnum]
+        attr_accessor :duration_millis
+      
+        # 
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # 
+        # Corresponds to the JSON property `lastUpdated`
+        # @return [String]
+        attr_accessor :last_updated
+      
+        # 
+        # Corresponds to the JSON property `sparkUser`
+        # @return [String]
+        attr_accessor :spark_user
+      
+        # 
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_spark_version = args[:app_spark_version] if args.key?(:app_spark_version)
+          @attempt_id = args[:attempt_id] if args.key?(:attempt_id)
+          @completed = args[:completed] if args.key?(:completed)
+          @duration_millis = args[:duration_millis] if args.key?(:duration_millis)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @last_updated = args[:last_updated] if args.key?(:last_updated)
+          @spark_user = args[:spark_user] if args.key?(:spark_user)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Details about the Environment that the application is running in.
+      class ApplicationEnvironmentInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `classpathEntries`
+        # @return [Hash<String,String>]
+        attr_accessor :classpath_entries
+      
+        # 
+        # Corresponds to the JSON property `hadoopProperties`
+        # @return [Hash<String,String>]
+        attr_accessor :hadoop_properties
+      
+        # 
+        # Corresponds to the JSON property `metricsProperties`
+        # @return [Hash<String,String>]
+        attr_accessor :metrics_properties
+      
+        # 
+        # Corresponds to the JSON property `resourceProfiles`
+        # @return [Array<Google::Apis::DataprocV1::ResourceProfileInfo>]
+        attr_accessor :resource_profiles
+      
+        # 
+        # Corresponds to the JSON property `runtime`
+        # @return [Google::Apis::DataprocV1::SparkRuntimeInfo]
+        attr_accessor :runtime
+      
+        # 
+        # Corresponds to the JSON property `sparkProperties`
+        # @return [Hash<String,String>]
+        attr_accessor :spark_properties
+      
+        # 
+        # Corresponds to the JSON property `systemProperties`
+        # @return [Hash<String,String>]
+        attr_accessor :system_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classpath_entries = args[:classpath_entries] if args.key?(:classpath_entries)
+          @hadoop_properties = args[:hadoop_properties] if args.key?(:hadoop_properties)
+          @metrics_properties = args[:metrics_properties] if args.key?(:metrics_properties)
+          @resource_profiles = args[:resource_profiles] if args.key?(:resource_profiles)
+          @runtime = args[:runtime] if args.key?(:runtime)
+          @spark_properties = args[:spark_properties] if args.key?(:spark_properties)
+          @system_properties = args[:system_properties] if args.key?(:system_properties)
+        end
+      end
+      
+      # High level information corresponding to an application.
+      class ApplicationInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `applicationContextIngestionStatus`
+        # @return [String]
+        attr_accessor :application_context_ingestion_status
+      
+        # 
+        # Corresponds to the JSON property `applicationId`
+        # @return [String]
+        attr_accessor :application_id
+      
+        # 
+        # Corresponds to the JSON property `attempts`
+        # @return [Array<Google::Apis::DataprocV1::ApplicationAttemptInfo>]
+        attr_accessor :attempts
+      
+        # 
+        # Corresponds to the JSON property `coresGranted`
+        # @return [Fixnum]
+        attr_accessor :cores_granted
+      
+        # 
+        # Corresponds to the JSON property `coresPerExecutor`
+        # @return [Fixnum]
+        attr_accessor :cores_per_executor
+      
+        # 
+        # Corresponds to the JSON property `maxCores`
+        # @return [Fixnum]
+        attr_accessor :max_cores
+      
+        # 
+        # Corresponds to the JSON property `memoryPerExecutorMb`
+        # @return [Fixnum]
+        attr_accessor :memory_per_executor_mb
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `quantileDataStatus`
+        # @return [String]
+        attr_accessor :quantile_data_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_context_ingestion_status = args[:application_context_ingestion_status] if args.key?(:application_context_ingestion_status)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @attempts = args[:attempts] if args.key?(:attempts)
+          @cores_granted = args[:cores_granted] if args.key?(:cores_granted)
+          @cores_per_executor = args[:cores_per_executor] if args.key?(:cores_per_executor)
+          @max_cores = args[:max_cores] if args.key?(:max_cores)
+          @memory_per_executor_mb = args[:memory_per_executor_mb] if args.key?(:memory_per_executor_mb)
+          @name = args[:name] if args.key?(:name)
+          @quantile_data_status = args[:quantile_data_status] if args.key?(:quantile_data_status)
         end
       end
       
@@ -1157,6 +1673,25 @@ module Google
         end
       end
       
+      # Cluster to be repaired
+      class ClusterToRepair
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repair action to take on the cluster resource.
+        # Corresponds to the JSON property `clusterRepairAction`
+        # @return [String]
+        attr_accessor :cluster_repair_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_repair_action = args[:cluster_repair_action] if args.key?(:cluster_repair_action)
+        end
+      end
+      
       # Confidential Instance Config for clusters using Confidential VMs (https://
       # cloud.google.com/compute/confidential-vm/docs)
       class ConfidentialInstanceConfig
@@ -1176,6 +1711,121 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+        end
+      end
+      
+      # Consolidated summary about executors used by the application.
+      class ConsolidatedExecutorSummary
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `activeTasks`
+        # @return [Fixnum]
+        attr_accessor :active_tasks
+      
+        # 
+        # Corresponds to the JSON property `completedTasks`
+        # @return [Fixnum]
+        attr_accessor :completed_tasks
+      
+        # 
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # 
+        # Corresponds to the JSON property `diskUsed`
+        # @return [Fixnum]
+        attr_accessor :disk_used
+      
+        # 
+        # Corresponds to the JSON property `failedTasks`
+        # @return [Fixnum]
+        attr_accessor :failed_tasks
+      
+        # 
+        # Corresponds to the JSON property `isExcluded`
+        # @return [Fixnum]
+        attr_accessor :is_excluded
+      
+        # 
+        # Corresponds to the JSON property `maxMemory`
+        # @return [Fixnum]
+        attr_accessor :max_memory
+      
+        # 
+        # Corresponds to the JSON property `memoryMetrics`
+        # @return [Google::Apis::DataprocV1::MemoryMetrics]
+        attr_accessor :memory_metrics
+      
+        # 
+        # Corresponds to the JSON property `memoryUsed`
+        # @return [Fixnum]
+        attr_accessor :memory_used
+      
+        # 
+        # Corresponds to the JSON property `rddBlocks`
+        # @return [Fixnum]
+        attr_accessor :rdd_blocks
+      
+        # 
+        # Corresponds to the JSON property `totalCores`
+        # @return [Fixnum]
+        attr_accessor :total_cores
+      
+        # 
+        # Corresponds to the JSON property `totalDurationMillis`
+        # @return [Fixnum]
+        attr_accessor :total_duration_millis
+      
+        # 
+        # Corresponds to the JSON property `totalGcTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :total_gc_time_millis
+      
+        # 
+        # Corresponds to the JSON property `totalInputBytes`
+        # @return [Fixnum]
+        attr_accessor :total_input_bytes
+      
+        # 
+        # Corresponds to the JSON property `totalShuffleRead`
+        # @return [Fixnum]
+        attr_accessor :total_shuffle_read
+      
+        # 
+        # Corresponds to the JSON property `totalShuffleWrite`
+        # @return [Fixnum]
+        attr_accessor :total_shuffle_write
+      
+        # 
+        # Corresponds to the JSON property `totalTasks`
+        # @return [Fixnum]
+        attr_accessor :total_tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_tasks = args[:active_tasks] if args.key?(:active_tasks)
+          @completed_tasks = args[:completed_tasks] if args.key?(:completed_tasks)
+          @count = args[:count] if args.key?(:count)
+          @disk_used = args[:disk_used] if args.key?(:disk_used)
+          @failed_tasks = args[:failed_tasks] if args.key?(:failed_tasks)
+          @is_excluded = args[:is_excluded] if args.key?(:is_excluded)
+          @max_memory = args[:max_memory] if args.key?(:max_memory)
+          @memory_metrics = args[:memory_metrics] if args.key?(:memory_metrics)
+          @memory_used = args[:memory_used] if args.key?(:memory_used)
+          @rdd_blocks = args[:rdd_blocks] if args.key?(:rdd_blocks)
+          @total_cores = args[:total_cores] if args.key?(:total_cores)
+          @total_duration_millis = args[:total_duration_millis] if args.key?(:total_duration_millis)
+          @total_gc_time_millis = args[:total_gc_time_millis] if args.key?(:total_gc_time_millis)
+          @total_input_bytes = args[:total_input_bytes] if args.key?(:total_input_bytes)
+          @total_shuffle_read = args[:total_shuffle_read] if args.key?(:total_shuffle_read)
+          @total_shuffle_write = args[:total_shuffle_write] if args.key?(:total_shuffle_write)
+          @total_tasks = args[:total_tasks] if args.key?(:total_tasks)
         end
       end
       
@@ -1573,6 +2223,513 @@ module Google
         end
       end
       
+      # 
+      class ExecutorMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+        end
+      end
+      
+      # 
+      class ExecutorMetricsDistributions
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `diskBytesSpilled`
+        # @return [Array<Float>]
+        attr_accessor :disk_bytes_spilled
+      
+        # 
+        # Corresponds to the JSON property `failedTasks`
+        # @return [Array<Float>]
+        attr_accessor :failed_tasks
+      
+        # 
+        # Corresponds to the JSON property `inputBytes`
+        # @return [Array<Float>]
+        attr_accessor :input_bytes
+      
+        # 
+        # Corresponds to the JSON property `inputRecords`
+        # @return [Array<Float>]
+        attr_accessor :input_records
+      
+        # 
+        # Corresponds to the JSON property `killedTasks`
+        # @return [Array<Float>]
+        attr_accessor :killed_tasks
+      
+        # 
+        # Corresponds to the JSON property `memoryBytesSpilled`
+        # @return [Array<Float>]
+        attr_accessor :memory_bytes_spilled
+      
+        # 
+        # Corresponds to the JSON property `outputBytes`
+        # @return [Array<Float>]
+        attr_accessor :output_bytes
+      
+        # 
+        # Corresponds to the JSON property `outputRecords`
+        # @return [Array<Float>]
+        attr_accessor :output_records
+      
+        # 
+        # Corresponds to the JSON property `peakMemoryMetrics`
+        # @return [Google::Apis::DataprocV1::ExecutorPeakMetricsDistributions]
+        attr_accessor :peak_memory_metrics
+      
+        # 
+        # Corresponds to the JSON property `quantiles`
+        # @return [Array<Float>]
+        attr_accessor :quantiles
+      
+        # 
+        # Corresponds to the JSON property `shuffleRead`
+        # @return [Array<Float>]
+        attr_accessor :shuffle_read
+      
+        # 
+        # Corresponds to the JSON property `shuffleReadRecords`
+        # @return [Array<Float>]
+        attr_accessor :shuffle_read_records
+      
+        # 
+        # Corresponds to the JSON property `shuffleWrite`
+        # @return [Array<Float>]
+        attr_accessor :shuffle_write
+      
+        # 
+        # Corresponds to the JSON property `shuffleWriteRecords`
+        # @return [Array<Float>]
+        attr_accessor :shuffle_write_records
+      
+        # 
+        # Corresponds to the JSON property `succeededTasks`
+        # @return [Array<Float>]
+        attr_accessor :succeeded_tasks
+      
+        # 
+        # Corresponds to the JSON property `taskTimeMillis`
+        # @return [Array<Float>]
+        attr_accessor :task_time_millis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_bytes_spilled = args[:disk_bytes_spilled] if args.key?(:disk_bytes_spilled)
+          @failed_tasks = args[:failed_tasks] if args.key?(:failed_tasks)
+          @input_bytes = args[:input_bytes] if args.key?(:input_bytes)
+          @input_records = args[:input_records] if args.key?(:input_records)
+          @killed_tasks = args[:killed_tasks] if args.key?(:killed_tasks)
+          @memory_bytes_spilled = args[:memory_bytes_spilled] if args.key?(:memory_bytes_spilled)
+          @output_bytes = args[:output_bytes] if args.key?(:output_bytes)
+          @output_records = args[:output_records] if args.key?(:output_records)
+          @peak_memory_metrics = args[:peak_memory_metrics] if args.key?(:peak_memory_metrics)
+          @quantiles = args[:quantiles] if args.key?(:quantiles)
+          @shuffle_read = args[:shuffle_read] if args.key?(:shuffle_read)
+          @shuffle_read_records = args[:shuffle_read_records] if args.key?(:shuffle_read_records)
+          @shuffle_write = args[:shuffle_write] if args.key?(:shuffle_write)
+          @shuffle_write_records = args[:shuffle_write_records] if args.key?(:shuffle_write_records)
+          @succeeded_tasks = args[:succeeded_tasks] if args.key?(:succeeded_tasks)
+          @task_time_millis = args[:task_time_millis] if args.key?(:task_time_millis)
+        end
+      end
+      
+      # 
+      class ExecutorPeakMetricsDistributions
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `executorMetrics`
+        # @return [Array<Google::Apis::DataprocV1::ExecutorMetrics>]
+        attr_accessor :executor_metrics
+      
+        # 
+        # Corresponds to the JSON property `quantiles`
+        # @return [Array<Float>]
+        attr_accessor :quantiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @executor_metrics = args[:executor_metrics] if args.key?(:executor_metrics)
+          @quantiles = args[:quantiles] if args.key?(:quantiles)
+        end
+      end
+      
+      # Resources used per executor used by the application.
+      class ExecutorResourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `amount`
+        # @return [Fixnum]
+        attr_accessor :amount
+      
+        # 
+        # Corresponds to the JSON property `discoveryScript`
+        # @return [String]
+        attr_accessor :discovery_script
+      
+        # 
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # 
+        # Corresponds to the JSON property `vendor`
+        # @return [String]
+        attr_accessor :vendor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @discovery_script = args[:discovery_script] if args.key?(:discovery_script)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @vendor = args[:vendor] if args.key?(:vendor)
+        end
+      end
+      
+      # Executor resources consumed by a stage.
+      class ExecutorStageSummary
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `diskBytesSpilled`
+        # @return [Fixnum]
+        attr_accessor :disk_bytes_spilled
+      
+        # 
+        # Corresponds to the JSON property `executorId`
+        # @return [String]
+        attr_accessor :executor_id
+      
+        # 
+        # Corresponds to the JSON property `failedTasks`
+        # @return [Fixnum]
+        attr_accessor :failed_tasks
+      
+        # 
+        # Corresponds to the JSON property `inputBytes`
+        # @return [Fixnum]
+        attr_accessor :input_bytes
+      
+        # 
+        # Corresponds to the JSON property `inputRecords`
+        # @return [Fixnum]
+        attr_accessor :input_records
+      
+        # 
+        # Corresponds to the JSON property `isExcludedForStage`
+        # @return [Boolean]
+        attr_accessor :is_excluded_for_stage
+        alias_method :is_excluded_for_stage?, :is_excluded_for_stage
+      
+        # 
+        # Corresponds to the JSON property `killedTasks`
+        # @return [Fixnum]
+        attr_accessor :killed_tasks
+      
+        # 
+        # Corresponds to the JSON property `memoryBytesSpilled`
+        # @return [Fixnum]
+        attr_accessor :memory_bytes_spilled
+      
+        # 
+        # Corresponds to the JSON property `outputBytes`
+        # @return [Fixnum]
+        attr_accessor :output_bytes
+      
+        # 
+        # Corresponds to the JSON property `outputRecords`
+        # @return [Fixnum]
+        attr_accessor :output_records
+      
+        # 
+        # Corresponds to the JSON property `peakMemoryMetrics`
+        # @return [Google::Apis::DataprocV1::ExecutorMetrics]
+        attr_accessor :peak_memory_metrics
+      
+        # 
+        # Corresponds to the JSON property `shuffleRead`
+        # @return [Fixnum]
+        attr_accessor :shuffle_read
+      
+        # 
+        # Corresponds to the JSON property `shuffleReadRecords`
+        # @return [Fixnum]
+        attr_accessor :shuffle_read_records
+      
+        # 
+        # Corresponds to the JSON property `shuffleWrite`
+        # @return [Fixnum]
+        attr_accessor :shuffle_write
+      
+        # 
+        # Corresponds to the JSON property `shuffleWriteRecords`
+        # @return [Fixnum]
+        attr_accessor :shuffle_write_records
+      
+        # 
+        # Corresponds to the JSON property `stageAttemptId`
+        # @return [Fixnum]
+        attr_accessor :stage_attempt_id
+      
+        # 
+        # Corresponds to the JSON property `stageId`
+        # @return [Fixnum]
+        attr_accessor :stage_id
+      
+        # 
+        # Corresponds to the JSON property `succeededTasks`
+        # @return [Fixnum]
+        attr_accessor :succeeded_tasks
+      
+        # 
+        # Corresponds to the JSON property `taskTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :task_time_millis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_bytes_spilled = args[:disk_bytes_spilled] if args.key?(:disk_bytes_spilled)
+          @executor_id = args[:executor_id] if args.key?(:executor_id)
+          @failed_tasks = args[:failed_tasks] if args.key?(:failed_tasks)
+          @input_bytes = args[:input_bytes] if args.key?(:input_bytes)
+          @input_records = args[:input_records] if args.key?(:input_records)
+          @is_excluded_for_stage = args[:is_excluded_for_stage] if args.key?(:is_excluded_for_stage)
+          @killed_tasks = args[:killed_tasks] if args.key?(:killed_tasks)
+          @memory_bytes_spilled = args[:memory_bytes_spilled] if args.key?(:memory_bytes_spilled)
+          @output_bytes = args[:output_bytes] if args.key?(:output_bytes)
+          @output_records = args[:output_records] if args.key?(:output_records)
+          @peak_memory_metrics = args[:peak_memory_metrics] if args.key?(:peak_memory_metrics)
+          @shuffle_read = args[:shuffle_read] if args.key?(:shuffle_read)
+          @shuffle_read_records = args[:shuffle_read_records] if args.key?(:shuffle_read_records)
+          @shuffle_write = args[:shuffle_write] if args.key?(:shuffle_write)
+          @shuffle_write_records = args[:shuffle_write_records] if args.key?(:shuffle_write_records)
+          @stage_attempt_id = args[:stage_attempt_id] if args.key?(:stage_attempt_id)
+          @stage_id = args[:stage_id] if args.key?(:stage_id)
+          @succeeded_tasks = args[:succeeded_tasks] if args.key?(:succeeded_tasks)
+          @task_time_millis = args[:task_time_millis] if args.key?(:task_time_millis)
+        end
+      end
+      
+      # Details about executors used by the application.
+      class ExecutorSummary
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `activeTasks`
+        # @return [Fixnum]
+        attr_accessor :active_tasks
+      
+        # 
+        # Corresponds to the JSON property `addTime`
+        # @return [String]
+        attr_accessor :add_time
+      
+        # 
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,String>]
+        attr_accessor :attributes
+      
+        # 
+        # Corresponds to the JSON property `completedTasks`
+        # @return [Fixnum]
+        attr_accessor :completed_tasks
+      
+        # 
+        # Corresponds to the JSON property `diskUsed`
+        # @return [Fixnum]
+        attr_accessor :disk_used
+      
+        # 
+        # Corresponds to the JSON property `excludedInStages`
+        # @return [Array<Fixnum>]
+        attr_accessor :excluded_in_stages
+      
+        # 
+        # Corresponds to the JSON property `executorId`
+        # @return [String]
+        attr_accessor :executor_id
+      
+        # 
+        # Corresponds to the JSON property `executorLogs`
+        # @return [Hash<String,String>]
+        attr_accessor :executor_logs
+      
+        # 
+        # Corresponds to the JSON property `failedTasks`
+        # @return [Fixnum]
+        attr_accessor :failed_tasks
+      
+        # 
+        # Corresponds to the JSON property `hostPort`
+        # @return [String]
+        attr_accessor :host_port
+      
+        # 
+        # Corresponds to the JSON property `isActive`
+        # @return [Boolean]
+        attr_accessor :is_active
+        alias_method :is_active?, :is_active
+      
+        # 
+        # Corresponds to the JSON property `isExcluded`
+        # @return [Boolean]
+        attr_accessor :is_excluded
+        alias_method :is_excluded?, :is_excluded
+      
+        # 
+        # Corresponds to the JSON property `maxMemory`
+        # @return [Fixnum]
+        attr_accessor :max_memory
+      
+        # 
+        # Corresponds to the JSON property `maxTasks`
+        # @return [Fixnum]
+        attr_accessor :max_tasks
+      
+        # 
+        # Corresponds to the JSON property `memoryMetrics`
+        # @return [Google::Apis::DataprocV1::MemoryMetrics]
+        attr_accessor :memory_metrics
+      
+        # 
+        # Corresponds to the JSON property `memoryUsed`
+        # @return [Fixnum]
+        attr_accessor :memory_used
+      
+        # 
+        # Corresponds to the JSON property `peakMemoryMetrics`
+        # @return [Google::Apis::DataprocV1::ExecutorMetrics]
+        attr_accessor :peak_memory_metrics
+      
+        # 
+        # Corresponds to the JSON property `rddBlocks`
+        # @return [Fixnum]
+        attr_accessor :rdd_blocks
+      
+        # 
+        # Corresponds to the JSON property `removeReason`
+        # @return [String]
+        attr_accessor :remove_reason
+      
+        # 
+        # Corresponds to the JSON property `removeTime`
+        # @return [String]
+        attr_accessor :remove_time
+      
+        # 
+        # Corresponds to the JSON property `resourceProfileId`
+        # @return [Fixnum]
+        attr_accessor :resource_profile_id
+      
+        # 
+        # Corresponds to the JSON property `resources`
+        # @return [Hash<String,Google::Apis::DataprocV1::ResourceInformation>]
+        attr_accessor :resources
+      
+        # 
+        # Corresponds to the JSON property `totalCores`
+        # @return [Fixnum]
+        attr_accessor :total_cores
+      
+        # 
+        # Corresponds to the JSON property `totalDurationMillis`
+        # @return [Fixnum]
+        attr_accessor :total_duration_millis
+      
+        # 
+        # Corresponds to the JSON property `totalGcTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :total_gc_time_millis
+      
+        # 
+        # Corresponds to the JSON property `totalInputBytes`
+        # @return [Fixnum]
+        attr_accessor :total_input_bytes
+      
+        # 
+        # Corresponds to the JSON property `totalShuffleRead`
+        # @return [Fixnum]
+        attr_accessor :total_shuffle_read
+      
+        # 
+        # Corresponds to the JSON property `totalShuffleWrite`
+        # @return [Fixnum]
+        attr_accessor :total_shuffle_write
+      
+        # 
+        # Corresponds to the JSON property `totalTasks`
+        # @return [Fixnum]
+        attr_accessor :total_tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_tasks = args[:active_tasks] if args.key?(:active_tasks)
+          @add_time = args[:add_time] if args.key?(:add_time)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @completed_tasks = args[:completed_tasks] if args.key?(:completed_tasks)
+          @disk_used = args[:disk_used] if args.key?(:disk_used)
+          @excluded_in_stages = args[:excluded_in_stages] if args.key?(:excluded_in_stages)
+          @executor_id = args[:executor_id] if args.key?(:executor_id)
+          @executor_logs = args[:executor_logs] if args.key?(:executor_logs)
+          @failed_tasks = args[:failed_tasks] if args.key?(:failed_tasks)
+          @host_port = args[:host_port] if args.key?(:host_port)
+          @is_active = args[:is_active] if args.key?(:is_active)
+          @is_excluded = args[:is_excluded] if args.key?(:is_excluded)
+          @max_memory = args[:max_memory] if args.key?(:max_memory)
+          @max_tasks = args[:max_tasks] if args.key?(:max_tasks)
+          @memory_metrics = args[:memory_metrics] if args.key?(:memory_metrics)
+          @memory_used = args[:memory_used] if args.key?(:memory_used)
+          @peak_memory_metrics = args[:peak_memory_metrics] if args.key?(:peak_memory_metrics)
+          @rdd_blocks = args[:rdd_blocks] if args.key?(:rdd_blocks)
+          @remove_reason = args[:remove_reason] if args.key?(:remove_reason)
+          @remove_time = args[:remove_time] if args.key?(:remove_time)
+          @resource_profile_id = args[:resource_profile_id] if args.key?(:resource_profile_id)
+          @resources = args[:resources] if args.key?(:resources)
+          @total_cores = args[:total_cores] if args.key?(:total_cores)
+          @total_duration_millis = args[:total_duration_millis] if args.key?(:total_duration_millis)
+          @total_gc_time_millis = args[:total_gc_time_millis] if args.key?(:total_gc_time_millis)
+          @total_input_bytes = args[:total_input_bytes] if args.key?(:total_input_bytes)
+          @total_shuffle_read = args[:total_shuffle_read] if args.key?(:total_shuffle_read)
+          @total_shuffle_write = args[:total_shuffle_write] if args.key?(:total_shuffle_write)
+          @total_tasks = args[:total_tasks] if args.key?(:total_tasks)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec.Example (Comparison): title: "
@@ -1661,9 +2818,9 @@ module Google
         attr_accessor :main_jar_file_uri
       
         # Optional. A mapping of property names to values, used to configure Flink.
-        # Properties that conflict with values set by the Dataproc API might
-        # beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.
-        # conf and classes in user code.
+        # Properties that conflict with values set by the Dataproc API might be
+        # overwritten. Can include properties set in /etc/flink/conf/flink-defaults.conf
+        # and classes in user code.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,String>]
         attr_accessor :properties
@@ -2344,6 +3501,58 @@ module Google
         end
       end
       
+      # Metrics about the input data read by the task.
+      class InputMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bytesRead`
+        # @return [Fixnum]
+        attr_accessor :bytes_read
+      
+        # 
+        # Corresponds to the JSON property `recordsRead`
+        # @return [Fixnum]
+        attr_accessor :records_read
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_read = args[:bytes_read] if args.key?(:bytes_read)
+          @records_read = args[:records_read] if args.key?(:records_read)
+        end
+      end
+      
+      # 
+      class InputQuantileMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `bytesRead`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :bytes_read
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `recordsRead`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :records_read
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_read = args[:bytes_read] if args.key?(:bytes_read)
+          @records_read = args[:records_read] if args.key?(:records_read)
+        end
+      end
+      
       # Instance flexibility Policy allowing a mixture of VM shapes and provisioning
       # models.
       class InstanceFlexibilityPolicy
@@ -2360,6 +3569,11 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::InstanceSelectionResult>]
         attr_accessor :instance_selection_results
       
+        # Defines how Dataproc should create VMs with a mixture of provisioning models.
+        # Corresponds to the JSON property `provisioningModelMix`
+        # @return [Google::Apis::DataprocV1::ProvisioningModelMix]
+        attr_accessor :provisioning_model_mix
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2368,6 +3582,7 @@ module Google
         def update!(**args)
           @instance_selection_list = args[:instance_selection_list] if args.key?(:instance_selection_list)
           @instance_selection_results = args[:instance_selection_results] if args.key?(:instance_selection_results)
+          @provisioning_model_mix = args[:provisioning_model_mix] if args.key?(:provisioning_model_mix)
         end
       end
       
@@ -2887,6 +4102,151 @@ module Google
         end
       end
       
+      # Data corresponding to a spark job.
+      class JobData
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `jobGroup`
+        # @return [String]
+        attr_accessor :job_group
+      
+        # 
+        # Corresponds to the JSON property `jobId`
+        # @return [Fixnum]
+        attr_accessor :job_id
+      
+        # 
+        # Corresponds to the JSON property `killTasksSummary`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :kill_tasks_summary
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `numActiveStages`
+        # @return [Fixnum]
+        attr_accessor :num_active_stages
+      
+        # 
+        # Corresponds to the JSON property `numActiveTasks`
+        # @return [Fixnum]
+        attr_accessor :num_active_tasks
+      
+        # 
+        # Corresponds to the JSON property `numCompletedIndices`
+        # @return [Fixnum]
+        attr_accessor :num_completed_indices
+      
+        # 
+        # Corresponds to the JSON property `numCompletedStages`
+        # @return [Fixnum]
+        attr_accessor :num_completed_stages
+      
+        # 
+        # Corresponds to the JSON property `numCompletedTasks`
+        # @return [Fixnum]
+        attr_accessor :num_completed_tasks
+      
+        # 
+        # Corresponds to the JSON property `numFailedStages`
+        # @return [Fixnum]
+        attr_accessor :num_failed_stages
+      
+        # 
+        # Corresponds to the JSON property `numFailedTasks`
+        # @return [Fixnum]
+        attr_accessor :num_failed_tasks
+      
+        # 
+        # Corresponds to the JSON property `numKilledTasks`
+        # @return [Fixnum]
+        attr_accessor :num_killed_tasks
+      
+        # 
+        # Corresponds to the JSON property `numSkippedStages`
+        # @return [Fixnum]
+        attr_accessor :num_skipped_stages
+      
+        # 
+        # Corresponds to the JSON property `numSkippedTasks`
+        # @return [Fixnum]
+        attr_accessor :num_skipped_tasks
+      
+        # 
+        # Corresponds to the JSON property `numTasks`
+        # @return [Fixnum]
+        attr_accessor :num_tasks
+      
+        # 
+        # Corresponds to the JSON property `skippedStages`
+        # @return [Array<Fixnum>]
+        attr_accessor :skipped_stages
+      
+        # 
+        # Corresponds to the JSON property `sqlExecutionId`
+        # @return [Fixnum]
+        attr_accessor :sql_execution_id
+      
+        # 
+        # Corresponds to the JSON property `stageIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :stage_ids
+      
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # 
+        # Corresponds to the JSON property `submissionTime`
+        # @return [String]
+        attr_accessor :submission_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @description = args[:description] if args.key?(:description)
+          @job_group = args[:job_group] if args.key?(:job_group)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @kill_tasks_summary = args[:kill_tasks_summary] if args.key?(:kill_tasks_summary)
+          @name = args[:name] if args.key?(:name)
+          @num_active_stages = args[:num_active_stages] if args.key?(:num_active_stages)
+          @num_active_tasks = args[:num_active_tasks] if args.key?(:num_active_tasks)
+          @num_completed_indices = args[:num_completed_indices] if args.key?(:num_completed_indices)
+          @num_completed_stages = args[:num_completed_stages] if args.key?(:num_completed_stages)
+          @num_completed_tasks = args[:num_completed_tasks] if args.key?(:num_completed_tasks)
+          @num_failed_stages = args[:num_failed_stages] if args.key?(:num_failed_stages)
+          @num_failed_tasks = args[:num_failed_tasks] if args.key?(:num_failed_tasks)
+          @num_killed_tasks = args[:num_killed_tasks] if args.key?(:num_killed_tasks)
+          @num_skipped_stages = args[:num_skipped_stages] if args.key?(:num_skipped_stages)
+          @num_skipped_tasks = args[:num_skipped_tasks] if args.key?(:num_skipped_tasks)
+          @num_tasks = args[:num_tasks] if args.key?(:num_tasks)
+          @skipped_stages = args[:skipped_stages] if args.key?(:skipped_stages)
+          @sql_execution_id = args[:sql_execution_id] if args.key?(:sql_execution_id)
+          @stage_ids = args[:stage_ids] if args.key?(:stage_ids)
+          @status = args[:status] if args.key?(:status)
+          @submission_time = args[:submission_time] if args.key?(:submission_time)
+        end
+      end
+      
       # Job Operation metadata.
       class JobMetadata
         include Google::Apis::Core::Hashable
@@ -3057,6 +4417,55 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_start_time = args[:state_start_time] if args.key?(:state_start_time)
           @substate = args[:substate] if args.key?(:substate)
+        end
+      end
+      
+      # Data related to Jobs page summary
+      class JobsSummary
+        include Google::Apis::Core::Hashable
+      
+        # Number of active jobs
+        # Corresponds to the JSON property `activeJobs`
+        # @return [Fixnum]
+        attr_accessor :active_jobs
+      
+        # Spark Application Id
+        # Corresponds to the JSON property `applicationId`
+        # @return [String]
+        attr_accessor :application_id
+      
+        # Attempts info
+        # Corresponds to the JSON property `attempts`
+        # @return [Array<Google::Apis::DataprocV1::ApplicationAttemptInfo>]
+        attr_accessor :attempts
+      
+        # Number of completed jobs
+        # Corresponds to the JSON property `completedJobs`
+        # @return [Fixnum]
+        attr_accessor :completed_jobs
+      
+        # Number of failed jobs
+        # Corresponds to the JSON property `failedJobs`
+        # @return [Fixnum]
+        attr_accessor :failed_jobs
+      
+        # Spark Scheduling mode
+        # Corresponds to the JSON property `schedulingMode`
+        # @return [String]
+        attr_accessor :scheduling_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_jobs = args[:active_jobs] if args.key?(:active_jobs)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @attempts = args[:attempts] if args.key?(:attempts)
+          @completed_jobs = args[:completed_jobs] if args.key?(:completed_jobs)
+          @failed_jobs = args[:failed_jobs] if args.key?(:failed_jobs)
+          @scheduling_mode = args[:scheduling_mode] if args.key?(:scheduling_mode)
         end
       end
       
@@ -3645,6 +5054,43 @@ module Google
         end
       end
       
+      # 
+      class MemoryMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `totalOffHeapStorageMemory`
+        # @return [Fixnum]
+        attr_accessor :total_off_heap_storage_memory
+      
+        # 
+        # Corresponds to the JSON property `totalOnHeapStorageMemory`
+        # @return [Fixnum]
+        attr_accessor :total_on_heap_storage_memory
+      
+        # 
+        # Corresponds to the JSON property `usedOffHeapStorageMemory`
+        # @return [Fixnum]
+        attr_accessor :used_off_heap_storage_memory
+      
+        # 
+        # Corresponds to the JSON property `usedOnHeapStorageMemory`
+        # @return [Fixnum]
+        attr_accessor :used_on_heap_storage_memory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_off_heap_storage_memory = args[:total_off_heap_storage_memory] if args.key?(:total_off_heap_storage_memory)
+          @total_on_heap_storage_memory = args[:total_on_heap_storage_memory] if args.key?(:total_on_heap_storage_memory)
+          @used_off_heap_storage_memory = args[:used_off_heap_storage_memory] if args.key?(:used_off_heap_storage_memory)
+          @used_on_heap_storage_memory = args[:used_on_heap_storage_memory] if args.key?(:used_on_heap_storage_memory)
+        end
+      end
+      
       # Specifies a Metastore configuration.
       class MetastoreConfig
         include Google::Apis::Core::Hashable
@@ -3741,7 +5187,7 @@ module Google
         # characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).
         # Label values can be empty. If specified, they must consist of from 1 to 63
         # characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The
-        # node group must have no more than 32 labelsn.
+        # node group must have no more than 32 labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -4111,6 +5557,58 @@ module Google
         end
       end
       
+      # Metrics about the data written by the task.
+      class OutputMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bytesWritten`
+        # @return [Fixnum]
+        attr_accessor :bytes_written
+      
+        # 
+        # Corresponds to the JSON property `recordsWritten`
+        # @return [Fixnum]
+        attr_accessor :records_written
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_written = args[:bytes_written] if args.key?(:bytes_written)
+          @records_written = args[:records_written] if args.key?(:records_written)
+        end
+      end
+      
+      # 
+      class OutputQuantileMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `bytesWritten`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :bytes_written
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `recordsWritten`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :records_written
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_written = args[:bytes_written] if args.key?(:bytes_written)
+          @records_written = args[:records_written] if args.key?(:records_written)
+        end
+      end
+      
       # Configuration for parameter validation.
       class ParameterValidation
         include Google::Apis::Core::Hashable
@@ -4313,6 +5811,31 @@ module Google
         end
       end
       
+      # Pool Data
+      class PoolData
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `stageIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :stage_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @stage_ids = args[:stage_ids] if args.key?(:stage_ids)
+        end
+      end
+      
       # A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT:
       # The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/
       # concepts/components/presto) must be enabled when the cluster is created to
@@ -4374,6 +5897,98 @@ module Google
           @properties = args[:properties] if args.key?(:properties)
           @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
           @query_list = args[:query_list] if args.key?(:query_list)
+        end
+      end
+      
+      # Process Summary
+      class ProcessSummary
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `addTime`
+        # @return [String]
+        attr_accessor :add_time
+      
+        # 
+        # Corresponds to the JSON property `hostPort`
+        # @return [String]
+        attr_accessor :host_port
+      
+        # 
+        # Corresponds to the JSON property `isActive`
+        # @return [Boolean]
+        attr_accessor :is_active
+        alias_method :is_active?, :is_active
+      
+        # 
+        # Corresponds to the JSON property `processId`
+        # @return [String]
+        attr_accessor :process_id
+      
+        # 
+        # Corresponds to the JSON property `processLogs`
+        # @return [Hash<String,String>]
+        attr_accessor :process_logs
+      
+        # 
+        # Corresponds to the JSON property `removeTime`
+        # @return [String]
+        attr_accessor :remove_time
+      
+        # 
+        # Corresponds to the JSON property `totalCores`
+        # @return [Fixnum]
+        attr_accessor :total_cores
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_time = args[:add_time] if args.key?(:add_time)
+          @host_port = args[:host_port] if args.key?(:host_port)
+          @is_active = args[:is_active] if args.key?(:is_active)
+          @process_id = args[:process_id] if args.key?(:process_id)
+          @process_logs = args[:process_logs] if args.key?(:process_logs)
+          @remove_time = args[:remove_time] if args.key?(:remove_time)
+          @total_cores = args[:total_cores] if args.key?(:total_cores)
+        end
+      end
+      
+      # Defines how Dataproc should create VMs with a mixture of provisioning models.
+      class ProvisioningModelMix
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The base capacity that will always use Standard VMs to avoid risk of
+        # more preemption than the minimum capacity you need. Dataproc will create only
+        # standard VMs until it reaches standard_capacity_base, then it will start using
+        # standard_capacity_percent_above_base to mix Spot with Standard VMs. eg. If 15
+        # instances are requested and standard_capacity_base is 5, Dataproc will create
+        # 5 standard VMs and then start mixing spot and standard VMs for remaining 10
+        # instances.
+        # Corresponds to the JSON property `standardCapacityBase`
+        # @return [Fixnum]
+        attr_accessor :standard_capacity_base
+      
+        # Optional. The percentage of target capacity that should use Standard VM. The
+        # remaining percentage will use Spot VMs. The percentage applies only to the
+        # capacity above standard_capacity_base. eg. If 15 instances are requested and
+        # standard_capacity_base is 5 and standard_capacity_percent_above_base is 30,
+        # Dataproc will create 5 standard VMs and then start mixing spot and standard
+        # VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+        # Corresponds to the JSON property `standardCapacityPercentAboveBase`
+        # @return [Fixnum]
+        attr_accessor :standard_capacity_percent_above_base
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @standard_capacity_base = args[:standard_capacity_base] if args.key?(:standard_capacity_base)
+          @standard_capacity_percent_above_base = args[:standard_capacity_percent_above_base] if args.key?(:standard_capacity_percent_above_base)
         end
       end
       
@@ -4525,6 +6140,62 @@ module Google
         end
       end
       
+      # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+      # milliseconds, etc depending on the message type.
+      class Quantiles
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # 
+        # Corresponds to the JSON property `maximum`
+        # @return [Fixnum]
+        attr_accessor :maximum
+      
+        # 
+        # Corresponds to the JSON property `minimum`
+        # @return [Fixnum]
+        attr_accessor :minimum
+      
+        # 
+        # Corresponds to the JSON property `percentile25`
+        # @return [Fixnum]
+        attr_accessor :percentile25
+      
+        # 
+        # Corresponds to the JSON property `percentile50`
+        # @return [Fixnum]
+        attr_accessor :percentile50
+      
+        # 
+        # Corresponds to the JSON property `percentile75`
+        # @return [Fixnum]
+        attr_accessor :percentile75
+      
+        # 
+        # Corresponds to the JSON property `sum`
+        # @return [Fixnum]
+        attr_accessor :sum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @minimum = args[:minimum] if args.key?(:minimum)
+          @percentile25 = args[:percentile25] if args.key?(:percentile25)
+          @percentile50 = args[:percentile50] if args.key?(:percentile50)
+          @percentile75 = args[:percentile75] if args.key?(:percentile75)
+          @sum = args[:sum] if args.key?(:sum)
+        end
+      end
+      
       # A list of queries to run on a cluster.
       class QueryList
         include Google::Apis::Core::Hashable
@@ -4545,6 +6216,333 @@ module Google
         # Update properties of this object
         def update!(**args)
           @queries = args[:queries] if args.key?(:queries)
+        end
+      end
+      
+      # Details about RDD usage.
+      class RddDataDistribution
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # 
+        # Corresponds to the JSON property `diskUsed`
+        # @return [Fixnum]
+        attr_accessor :disk_used
+      
+        # 
+        # Corresponds to the JSON property `memoryRemaining`
+        # @return [Fixnum]
+        attr_accessor :memory_remaining
+      
+        # 
+        # Corresponds to the JSON property `memoryUsed`
+        # @return [Fixnum]
+        attr_accessor :memory_used
+      
+        # 
+        # Corresponds to the JSON property `offHeapMemoryRemaining`
+        # @return [Fixnum]
+        attr_accessor :off_heap_memory_remaining
+      
+        # 
+        # Corresponds to the JSON property `offHeapMemoryUsed`
+        # @return [Fixnum]
+        attr_accessor :off_heap_memory_used
+      
+        # 
+        # Corresponds to the JSON property `onHeapMemoryRemaining`
+        # @return [Fixnum]
+        attr_accessor :on_heap_memory_remaining
+      
+        # 
+        # Corresponds to the JSON property `onHeapMemoryUsed`
+        # @return [Fixnum]
+        attr_accessor :on_heap_memory_used
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @disk_used = args[:disk_used] if args.key?(:disk_used)
+          @memory_remaining = args[:memory_remaining] if args.key?(:memory_remaining)
+          @memory_used = args[:memory_used] if args.key?(:memory_used)
+          @off_heap_memory_remaining = args[:off_heap_memory_remaining] if args.key?(:off_heap_memory_remaining)
+          @off_heap_memory_used = args[:off_heap_memory_used] if args.key?(:off_heap_memory_used)
+          @on_heap_memory_remaining = args[:on_heap_memory_remaining] if args.key?(:on_heap_memory_remaining)
+          @on_heap_memory_used = args[:on_heap_memory_used] if args.key?(:on_heap_memory_used)
+        end
+      end
+      
+      # A grouping of nodes representing higher level constructs (stage, job etc.).
+      class RddOperationCluster
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `childClusters`
+        # @return [Array<Google::Apis::DataprocV1::RddOperationCluster>]
+        attr_accessor :child_clusters
+      
+        # 
+        # Corresponds to the JSON property `childNodes`
+        # @return [Array<Google::Apis::DataprocV1::RddOperationNode>]
+        attr_accessor :child_nodes
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `rddClusterId`
+        # @return [String]
+        attr_accessor :rdd_cluster_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @child_clusters = args[:child_clusters] if args.key?(:child_clusters)
+          @child_nodes = args[:child_nodes] if args.key?(:child_nodes)
+          @name = args[:name] if args.key?(:name)
+          @rdd_cluster_id = args[:rdd_cluster_id] if args.key?(:rdd_cluster_id)
+        end
+      end
+      
+      # A directed edge representing dependency between two RDDs.
+      class RddOperationEdge
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `fromId`
+        # @return [Fixnum]
+        attr_accessor :from_id
+      
+        # 
+        # Corresponds to the JSON property `toId`
+        # @return [Fixnum]
+        attr_accessor :to_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @from_id = args[:from_id] if args.key?(:from_id)
+          @to_id = args[:to_id] if args.key?(:to_id)
+        end
+      end
+      
+      # Graph representing RDD dependencies. Consists of edges and a root cluster.
+      class RddOperationGraph
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `edges`
+        # @return [Array<Google::Apis::DataprocV1::RddOperationEdge>]
+        attr_accessor :edges
+      
+        # 
+        # Corresponds to the JSON property `incomingEdges`
+        # @return [Array<Google::Apis::DataprocV1::RddOperationEdge>]
+        attr_accessor :incoming_edges
+      
+        # 
+        # Corresponds to the JSON property `outgoingEdges`
+        # @return [Array<Google::Apis::DataprocV1::RddOperationEdge>]
+        attr_accessor :outgoing_edges
+      
+        # A grouping of nodes representing higher level constructs (stage, job etc.).
+        # Corresponds to the JSON property `rootCluster`
+        # @return [Google::Apis::DataprocV1::RddOperationCluster]
+        attr_accessor :root_cluster
+      
+        # 
+        # Corresponds to the JSON property `stageId`
+        # @return [Fixnum]
+        attr_accessor :stage_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edges = args[:edges] if args.key?(:edges)
+          @incoming_edges = args[:incoming_edges] if args.key?(:incoming_edges)
+          @outgoing_edges = args[:outgoing_edges] if args.key?(:outgoing_edges)
+          @root_cluster = args[:root_cluster] if args.key?(:root_cluster)
+          @stage_id = args[:stage_id] if args.key?(:stage_id)
+        end
+      end
+      
+      # A node in the RDD operation graph. Corresponds to a single RDD.
+      class RddOperationNode
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `barrier`
+        # @return [Boolean]
+        attr_accessor :barrier
+        alias_method :barrier?, :barrier
+      
+        # 
+        # Corresponds to the JSON property `cached`
+        # @return [Boolean]
+        attr_accessor :cached
+        alias_method :cached?, :cached
+      
+        # 
+        # Corresponds to the JSON property `callsite`
+        # @return [String]
+        attr_accessor :callsite
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `nodeId`
+        # @return [Fixnum]
+        attr_accessor :node_id
+      
+        # 
+        # Corresponds to the JSON property `outputDeterministicLevel`
+        # @return [String]
+        attr_accessor :output_deterministic_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @barrier = args[:barrier] if args.key?(:barrier)
+          @cached = args[:cached] if args.key?(:cached)
+          @callsite = args[:callsite] if args.key?(:callsite)
+          @name = args[:name] if args.key?(:name)
+          @node_id = args[:node_id] if args.key?(:node_id)
+          @output_deterministic_level = args[:output_deterministic_level] if args.key?(:output_deterministic_level)
+        end
+      end
+      
+      # Information about RDD partitions.
+      class RddPartitionInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `blockName`
+        # @return [String]
+        attr_accessor :block_name
+      
+        # 
+        # Corresponds to the JSON property `diskUsed`
+        # @return [Fixnum]
+        attr_accessor :disk_used
+      
+        # 
+        # Corresponds to the JSON property `executors`
+        # @return [Array<String>]
+        attr_accessor :executors
+      
+        # 
+        # Corresponds to the JSON property `memoryUsed`
+        # @return [Fixnum]
+        attr_accessor :memory_used
+      
+        # 
+        # Corresponds to the JSON property `storageLevel`
+        # @return [String]
+        attr_accessor :storage_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block_name = args[:block_name] if args.key?(:block_name)
+          @disk_used = args[:disk_used] if args.key?(:disk_used)
+          @executors = args[:executors] if args.key?(:executors)
+          @memory_used = args[:memory_used] if args.key?(:memory_used)
+          @storage_level = args[:storage_level] if args.key?(:storage_level)
+        end
+      end
+      
+      # Overall data about RDD storage.
+      class RddStorageInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dataDistribution`
+        # @return [Array<Google::Apis::DataprocV1::RddDataDistribution>]
+        attr_accessor :data_distribution
+      
+        # 
+        # Corresponds to the JSON property `diskUsed`
+        # @return [Fixnum]
+        attr_accessor :disk_used
+      
+        # 
+        # Corresponds to the JSON property `memoryUsed`
+        # @return [Fixnum]
+        attr_accessor :memory_used
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `numCachedPartitions`
+        # @return [Fixnum]
+        attr_accessor :num_cached_partitions
+      
+        # 
+        # Corresponds to the JSON property `numPartitions`
+        # @return [Fixnum]
+        attr_accessor :num_partitions
+      
+        # 
+        # Corresponds to the JSON property `partitions`
+        # @return [Array<Google::Apis::DataprocV1::RddPartitionInfo>]
+        attr_accessor :partitions
+      
+        # 
+        # Corresponds to the JSON property `rddStorageId`
+        # @return [Fixnum]
+        attr_accessor :rdd_storage_id
+      
+        # 
+        # Corresponds to the JSON property `storageLevel`
+        # @return [String]
+        attr_accessor :storage_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_distribution = args[:data_distribution] if args.key?(:data_distribution)
+          @disk_used = args[:disk_used] if args.key?(:disk_used)
+          @memory_used = args[:memory_used] if args.key?(:memory_used)
+          @name = args[:name] if args.key?(:name)
+          @num_cached_partitions = args[:num_cached_partitions] if args.key?(:num_cached_partitions)
+          @num_partitions = args[:num_partitions] if args.key?(:num_partitions)
+          @partitions = args[:partitions] if args.key?(:partitions)
+          @rdd_storage_id = args[:rdd_storage_id] if args.key?(:rdd_storage_id)
+          @storage_level = args[:storage_level] if args.key?(:storage_level)
         end
       end
       
@@ -4572,6 +6570,11 @@ module Google
       # A request to repair a cluster.
       class RepairClusterRequest
         include Google::Apis::Core::Hashable
+      
+        # Cluster to be repaired
+        # Corresponds to the JSON property `cluster`
+        # @return [Google::Apis::DataprocV1::ClusterToRepair]
+        attr_accessor :cluster
       
         # Optional. Specifying the cluster_uuid means the RPC will fail (with error
         # NOT_FOUND) if a cluster with the specified UUID does not exist.
@@ -4619,6 +6622,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
           @graceful_decommission_timeout = args[:graceful_decommission_timeout] if args.key?(:graceful_decommission_timeout)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
@@ -4770,6 +6774,63 @@ module Google
         end
       end
       
+      # 
+      class ResourceInformation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `addresses`
+        # @return [Array<String>]
+        attr_accessor :addresses
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @addresses = args[:addresses] if args.key?(:addresses)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Resource profile that contains information about all the resources required by
+      # executors and tasks.
+      class ResourceProfileInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `executorResources`
+        # @return [Hash<String,Google::Apis::DataprocV1::ExecutorResourceRequest>]
+        attr_accessor :executor_resources
+      
+        # 
+        # Corresponds to the JSON property `resourceProfileId`
+        # @return [Fixnum]
+        attr_accessor :resource_profile_id
+      
+        # 
+        # Corresponds to the JSON property `taskResources`
+        # @return [Hash<String,Google::Apis::DataprocV1::TaskResourceRequest>]
+        attr_accessor :task_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @executor_resources = args[:executor_resources] if args.key?(:executor_resources)
+          @resource_profile_id = args[:resource_profile_id] if args.key?(:resource_profile_id)
+          @task_resources = args[:task_resources] if args.key?(:task_resources)
+        end
+      end
+      
       # Runtime configuration for a workload.
       class RuntimeConfig
         include Google::Apis::Core::Hashable
@@ -4865,6 +6926,438 @@ module Google
           @diagnostic_output_uri = args[:diagnostic_output_uri] if args.key?(:diagnostic_output_uri)
           @endpoints = args[:endpoints] if args.key?(:endpoints)
           @output_uri = args[:output_uri] if args.key?(:output_uri)
+        end
+      end
+      
+      # List of Executors associated with a Spark Application Stage.
+      class SearchSessionSparkApplicationExecutorStageSummaryResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSessionSparkApplicationExecutorStageSummaryRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Details about executors used by the application stage.
+        # Corresponds to the JSON property `sparkApplicationStageExecutors`
+        # @return [Array<Google::Apis::DataprocV1::ExecutorStageSummary>]
+        attr_accessor :spark_application_stage_executors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_stage_executors = args[:spark_application_stage_executors] if args.key?(:spark_application_stage_executors)
+        end
+      end
+      
+      # List of Executors associated with a Spark Application.
+      class SearchSessionSparkApplicationExecutorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSessionSparkApplicationExecutorsRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Details about executors used by the application.
+        # Corresponds to the JSON property `sparkApplicationExecutors`
+        # @return [Array<Google::Apis::DataprocV1::ExecutorSummary>]
+        attr_accessor :spark_application_executors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_executors = args[:spark_application_executors] if args.key?(:spark_application_executors)
+        end
+      end
+      
+      # A list of Jobs associated with a Spark Application.
+      class SearchSessionSparkApplicationJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSessionSparkApplicationJobsRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Data corresponding to a spark job.
+        # Corresponds to the JSON property `sparkApplicationJobs`
+        # @return [Array<Google::Apis::DataprocV1::JobData>]
+        attr_accessor :spark_application_jobs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_jobs = args[:spark_application_jobs] if args.key?(:spark_application_jobs)
+        end
+      end
+      
+      # List of all queries for a Spark Application.
+      class SearchSessionSparkApplicationSqlQueriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSessionSparkApplicationSqlQueriesRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. SQL Execution Data
+        # Corresponds to the JSON property `sparkApplicationSqlQueries`
+        # @return [Array<Google::Apis::DataprocV1::SqlExecutionUiData>]
+        attr_accessor :spark_application_sql_queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_sql_queries = args[:spark_application_sql_queries] if args.key?(:spark_application_sql_queries)
+        end
+      end
+      
+      # List of tasks for a stage of a Spark Application
+      class SearchSessionSparkApplicationStageAttemptTasksResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSessionSparkApplicationStageAttemptTasksRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Data corresponding to tasks created by spark.
+        # Corresponds to the JSON property `sparkApplicationStageAttemptTasks`
+        # @return [Array<Google::Apis::DataprocV1::TaskData>]
+        attr_accessor :spark_application_stage_attempt_tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_stage_attempt_tasks = args[:spark_application_stage_attempt_tasks] if args.key?(:spark_application_stage_attempt_tasks)
+        end
+      end
+      
+      # A list of Stage Attempts for a Stage of a Spark Application.
+      class SearchSessionSparkApplicationStageAttemptsResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSessionSparkApplicationStageAttemptsRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Data corresponding to a stage attempts
+        # Corresponds to the JSON property `sparkApplicationStageAttempts`
+        # @return [Array<Google::Apis::DataprocV1::StageData>]
+        attr_accessor :spark_application_stage_attempts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_stage_attempts = args[:spark_application_stage_attempts] if args.key?(:spark_application_stage_attempts)
+        end
+      end
+      
+      # A list of stages associated with a Spark Application.
+      class SearchSessionSparkApplicationStagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSessionSparkApplicationStages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Data corresponding to a stage.
+        # Corresponds to the JSON property `sparkApplicationStages`
+        # @return [Array<Google::Apis::DataprocV1::StageData>]
+        attr_accessor :spark_application_stages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_stages = args[:spark_application_stages] if args.key?(:spark_application_stages)
+        end
+      end
+      
+      # A list of summary of Spark Applications
+      class SearchSessionSparkApplicationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSessionSparkApplicationsRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. High level information corresponding to an application.
+        # Corresponds to the JSON property `sparkApplications`
+        # @return [Array<Google::Apis::DataprocV1::SparkApplication>]
+        attr_accessor :spark_applications
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_applications = args[:spark_applications] if args.key?(:spark_applications)
+        end
+      end
+      
+      # List of Executors associated with a Spark Application Stage.
+      class SearchSparkApplicationExecutorStageSummaryResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSparkApplicationExecutorsListRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Details about executors used by the application stage.
+        # Corresponds to the JSON property `sparkApplicationStageExecutors`
+        # @return [Array<Google::Apis::DataprocV1::ExecutorStageSummary>]
+        attr_accessor :spark_application_stage_executors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_stage_executors = args[:spark_application_stage_executors] if args.key?(:spark_application_stage_executors)
+        end
+      end
+      
+      # List of Executors associated with a Spark Application.
+      class SearchSparkApplicationExecutorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSparkApplicationExecutorsListRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Details about executors used by the application.
+        # Corresponds to the JSON property `sparkApplicationExecutors`
+        # @return [Array<Google::Apis::DataprocV1::ExecutorSummary>]
+        attr_accessor :spark_application_executors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_executors = args[:spark_application_executors] if args.key?(:spark_application_executors)
+        end
+      end
+      
+      # A list of Jobs associated with a Spark Application.
+      class SearchSparkApplicationJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSparkApplicationJobsRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Data corresponding to a spark job.
+        # Corresponds to the JSON property `sparkApplicationJobs`
+        # @return [Array<Google::Apis::DataprocV1::JobData>]
+        attr_accessor :spark_application_jobs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_jobs = args[:spark_application_jobs] if args.key?(:spark_application_jobs)
+        end
+      end
+      
+      # List of all queries for a Spark Application.
+      class SearchSparkApplicationSqlQueriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSparkApplicationSqlQueriesRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. SQL Execution Data
+        # Corresponds to the JSON property `sparkApplicationSqlQueries`
+        # @return [Array<Google::Apis::DataprocV1::SqlExecutionUiData>]
+        attr_accessor :spark_application_sql_queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_sql_queries = args[:spark_application_sql_queries] if args.key?(:spark_application_sql_queries)
+        end
+      end
+      
+      # List of tasks for a stage of a Spark Application
+      class SearchSparkApplicationStageAttemptTasksResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # ListSparkApplicationStageAttemptTasksRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Data corresponding to tasks created by spark.
+        # Corresponds to the JSON property `sparkApplicationStageAttemptTasks`
+        # @return [Array<Google::Apis::DataprocV1::TaskData>]
+        attr_accessor :spark_application_stage_attempt_tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_stage_attempt_tasks = args[:spark_application_stage_attempt_tasks] if args.key?(:spark_application_stage_attempt_tasks)
+        end
+      end
+      
+      # A list of Stage Attempts for a Stage of a Spark Application.
+      class SearchSparkApplicationStageAttemptsResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # ListSparkApplicationStageAttemptsRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Data corresponding to a stage attempts
+        # Corresponds to the JSON property `sparkApplicationStageAttempts`
+        # @return [Array<Google::Apis::DataprocV1::StageData>]
+        attr_accessor :spark_application_stage_attempts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_stage_attempts = args[:spark_application_stage_attempts] if args.key?(:spark_application_stage_attempts)
+        end
+      end
+      
+      # A list of stages associated with a Spark Application.
+      class SearchSparkApplicationStagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSparkApplicationStages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Data corresponding to a stage.
+        # Corresponds to the JSON property `sparkApplicationStages`
+        # @return [Array<Google::Apis::DataprocV1::StageData>]
+        attr_accessor :spark_application_stages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_stages = args[:spark_application_stages] if args.key?(:spark_application_stages)
+        end
+      end
+      
+      # A list of summary of Spark Applications
+      class SearchSparkApplicationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSparkApplicationsRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. High level information corresponding to an application.
+        # Corresponds to the JSON property `sparkApplications`
+        # @return [Array<Google::Apis::DataprocV1::SparkApplication>]
+        attr_accessor :spark_applications
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_applications = args[:spark_applications] if args.key?(:spark_applications)
         end
       end
       
@@ -5270,6 +7763,394 @@ module Google
         end
       end
       
+      # 
+      class ShufflePushReadMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `corruptMergedBlockChunks`
+        # @return [Fixnum]
+        attr_accessor :corrupt_merged_block_chunks
+      
+        # 
+        # Corresponds to the JSON property `localMergedBlocksFetched`
+        # @return [Fixnum]
+        attr_accessor :local_merged_blocks_fetched
+      
+        # 
+        # Corresponds to the JSON property `localMergedBytesRead`
+        # @return [Fixnum]
+        attr_accessor :local_merged_bytes_read
+      
+        # 
+        # Corresponds to the JSON property `localMergedChunksFetched`
+        # @return [Fixnum]
+        attr_accessor :local_merged_chunks_fetched
+      
+        # 
+        # Corresponds to the JSON property `mergedFetchFallbackCount`
+        # @return [Fixnum]
+        attr_accessor :merged_fetch_fallback_count
+      
+        # 
+        # Corresponds to the JSON property `remoteMergedBlocksFetched`
+        # @return [Fixnum]
+        attr_accessor :remote_merged_blocks_fetched
+      
+        # 
+        # Corresponds to the JSON property `remoteMergedBytesRead`
+        # @return [Fixnum]
+        attr_accessor :remote_merged_bytes_read
+      
+        # 
+        # Corresponds to the JSON property `remoteMergedChunksFetched`
+        # @return [Fixnum]
+        attr_accessor :remote_merged_chunks_fetched
+      
+        # 
+        # Corresponds to the JSON property `remoteMergedReqsDuration`
+        # @return [Fixnum]
+        attr_accessor :remote_merged_reqs_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @corrupt_merged_block_chunks = args[:corrupt_merged_block_chunks] if args.key?(:corrupt_merged_block_chunks)
+          @local_merged_blocks_fetched = args[:local_merged_blocks_fetched] if args.key?(:local_merged_blocks_fetched)
+          @local_merged_bytes_read = args[:local_merged_bytes_read] if args.key?(:local_merged_bytes_read)
+          @local_merged_chunks_fetched = args[:local_merged_chunks_fetched] if args.key?(:local_merged_chunks_fetched)
+          @merged_fetch_fallback_count = args[:merged_fetch_fallback_count] if args.key?(:merged_fetch_fallback_count)
+          @remote_merged_blocks_fetched = args[:remote_merged_blocks_fetched] if args.key?(:remote_merged_blocks_fetched)
+          @remote_merged_bytes_read = args[:remote_merged_bytes_read] if args.key?(:remote_merged_bytes_read)
+          @remote_merged_chunks_fetched = args[:remote_merged_chunks_fetched] if args.key?(:remote_merged_chunks_fetched)
+          @remote_merged_reqs_duration = args[:remote_merged_reqs_duration] if args.key?(:remote_merged_reqs_duration)
+        end
+      end
+      
+      # 
+      class ShufflePushReadQuantileMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `corruptMergedBlockChunks`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :corrupt_merged_block_chunks
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `localMergedBlocksFetched`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :local_merged_blocks_fetched
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `localMergedBytesRead`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :local_merged_bytes_read
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `localMergedChunksFetched`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :local_merged_chunks_fetched
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `mergedFetchFallbackCount`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :merged_fetch_fallback_count
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `remoteMergedBlocksFetched`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :remote_merged_blocks_fetched
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `remoteMergedBytesRead`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :remote_merged_bytes_read
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `remoteMergedChunksFetched`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :remote_merged_chunks_fetched
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `remoteMergedReqsDuration`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :remote_merged_reqs_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @corrupt_merged_block_chunks = args[:corrupt_merged_block_chunks] if args.key?(:corrupt_merged_block_chunks)
+          @local_merged_blocks_fetched = args[:local_merged_blocks_fetched] if args.key?(:local_merged_blocks_fetched)
+          @local_merged_bytes_read = args[:local_merged_bytes_read] if args.key?(:local_merged_bytes_read)
+          @local_merged_chunks_fetched = args[:local_merged_chunks_fetched] if args.key?(:local_merged_chunks_fetched)
+          @merged_fetch_fallback_count = args[:merged_fetch_fallback_count] if args.key?(:merged_fetch_fallback_count)
+          @remote_merged_blocks_fetched = args[:remote_merged_blocks_fetched] if args.key?(:remote_merged_blocks_fetched)
+          @remote_merged_bytes_read = args[:remote_merged_bytes_read] if args.key?(:remote_merged_bytes_read)
+          @remote_merged_chunks_fetched = args[:remote_merged_chunks_fetched] if args.key?(:remote_merged_chunks_fetched)
+          @remote_merged_reqs_duration = args[:remote_merged_reqs_duration] if args.key?(:remote_merged_reqs_duration)
+        end
+      end
+      
+      # Shuffle data read by the task.
+      class ShuffleReadMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `fetchWaitTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :fetch_wait_time_millis
+      
+        # 
+        # Corresponds to the JSON property `localBlocksFetched`
+        # @return [Fixnum]
+        attr_accessor :local_blocks_fetched
+      
+        # 
+        # Corresponds to the JSON property `localBytesRead`
+        # @return [Fixnum]
+        attr_accessor :local_bytes_read
+      
+        # 
+        # Corresponds to the JSON property `recordsRead`
+        # @return [Fixnum]
+        attr_accessor :records_read
+      
+        # 
+        # Corresponds to the JSON property `remoteBlocksFetched`
+        # @return [Fixnum]
+        attr_accessor :remote_blocks_fetched
+      
+        # 
+        # Corresponds to the JSON property `remoteBytesRead`
+        # @return [Fixnum]
+        attr_accessor :remote_bytes_read
+      
+        # 
+        # Corresponds to the JSON property `remoteBytesReadToDisk`
+        # @return [Fixnum]
+        attr_accessor :remote_bytes_read_to_disk
+      
+        # 
+        # Corresponds to the JSON property `remoteReqsDuration`
+        # @return [Fixnum]
+        attr_accessor :remote_reqs_duration
+      
+        # 
+        # Corresponds to the JSON property `shufflePushReadMetrics`
+        # @return [Google::Apis::DataprocV1::ShufflePushReadMetrics]
+        attr_accessor :shuffle_push_read_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fetch_wait_time_millis = args[:fetch_wait_time_millis] if args.key?(:fetch_wait_time_millis)
+          @local_blocks_fetched = args[:local_blocks_fetched] if args.key?(:local_blocks_fetched)
+          @local_bytes_read = args[:local_bytes_read] if args.key?(:local_bytes_read)
+          @records_read = args[:records_read] if args.key?(:records_read)
+          @remote_blocks_fetched = args[:remote_blocks_fetched] if args.key?(:remote_blocks_fetched)
+          @remote_bytes_read = args[:remote_bytes_read] if args.key?(:remote_bytes_read)
+          @remote_bytes_read_to_disk = args[:remote_bytes_read_to_disk] if args.key?(:remote_bytes_read_to_disk)
+          @remote_reqs_duration = args[:remote_reqs_duration] if args.key?(:remote_reqs_duration)
+          @shuffle_push_read_metrics = args[:shuffle_push_read_metrics] if args.key?(:shuffle_push_read_metrics)
+        end
+      end
+      
+      # 
+      class ShuffleReadQuantileMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `fetchWaitTimeMillis`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :fetch_wait_time_millis
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `localBlocksFetched`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :local_blocks_fetched
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `readBytes`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :read_bytes
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `readRecords`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :read_records
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `remoteBlocksFetched`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :remote_blocks_fetched
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `remoteBytesRead`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :remote_bytes_read
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `remoteBytesReadToDisk`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :remote_bytes_read_to_disk
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `remoteReqsDuration`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :remote_reqs_duration
+      
+        # 
+        # Corresponds to the JSON property `shufflePushReadMetrics`
+        # @return [Google::Apis::DataprocV1::ShufflePushReadQuantileMetrics]
+        attr_accessor :shuffle_push_read_metrics
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `totalBlocksFetched`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :total_blocks_fetched
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fetch_wait_time_millis = args[:fetch_wait_time_millis] if args.key?(:fetch_wait_time_millis)
+          @local_blocks_fetched = args[:local_blocks_fetched] if args.key?(:local_blocks_fetched)
+          @read_bytes = args[:read_bytes] if args.key?(:read_bytes)
+          @read_records = args[:read_records] if args.key?(:read_records)
+          @remote_blocks_fetched = args[:remote_blocks_fetched] if args.key?(:remote_blocks_fetched)
+          @remote_bytes_read = args[:remote_bytes_read] if args.key?(:remote_bytes_read)
+          @remote_bytes_read_to_disk = args[:remote_bytes_read_to_disk] if args.key?(:remote_bytes_read_to_disk)
+          @remote_reqs_duration = args[:remote_reqs_duration] if args.key?(:remote_reqs_duration)
+          @shuffle_push_read_metrics = args[:shuffle_push_read_metrics] if args.key?(:shuffle_push_read_metrics)
+          @total_blocks_fetched = args[:total_blocks_fetched] if args.key?(:total_blocks_fetched)
+        end
+      end
+      
+      # Shuffle data written by task.
+      class ShuffleWriteMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bytesWritten`
+        # @return [Fixnum]
+        attr_accessor :bytes_written
+      
+        # 
+        # Corresponds to the JSON property `recordsWritten`
+        # @return [Fixnum]
+        attr_accessor :records_written
+      
+        # 
+        # Corresponds to the JSON property `writeTimeNanos`
+        # @return [Fixnum]
+        attr_accessor :write_time_nanos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_written = args[:bytes_written] if args.key?(:bytes_written)
+          @records_written = args[:records_written] if args.key?(:records_written)
+          @write_time_nanos = args[:write_time_nanos] if args.key?(:write_time_nanos)
+        end
+      end
+      
+      # 
+      class ShuffleWriteQuantileMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `writeBytes`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :write_bytes
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `writeRecords`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :write_records
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `writeTimeNanos`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :write_time_nanos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @write_bytes = args[:write_bytes] if args.key?(:write_bytes)
+          @write_records = args[:write_records] if args.key?(:write_records)
+          @write_time_nanos = args[:write_time_nanos] if args.key?(:write_time_nanos)
+        end
+      end
+      
+      # 
+      class SinkProgress
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,String>]
+        attr_accessor :metrics
+      
+        # 
+        # Corresponds to the JSON property `numOutputRows`
+        # @return [Fixnum]
+        attr_accessor :num_output_rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @num_output_rows = args[:num_output_rows] if args.key?(:num_output_rows)
+        end
+      end
+      
       # Specifies the selection and config of software inside the cluster.
       class SoftwareConfig
         include Google::Apis::Core::Hashable
@@ -5310,6 +8191,92 @@ module Google
           @image_version = args[:image_version] if args.key?(:image_version)
           @optional_components = args[:optional_components] if args.key?(:optional_components)
           @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # 
+      class SourceProgress
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `endOffset`
+        # @return [String]
+        attr_accessor :end_offset
+      
+        # 
+        # Corresponds to the JSON property `inputRowsPerSecond`
+        # @return [Float]
+        attr_accessor :input_rows_per_second
+      
+        # 
+        # Corresponds to the JSON property `latestOffset`
+        # @return [String]
+        attr_accessor :latest_offset
+      
+        # 
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,String>]
+        attr_accessor :metrics
+      
+        # 
+        # Corresponds to the JSON property `numInputRows`
+        # @return [Fixnum]
+        attr_accessor :num_input_rows
+      
+        # 
+        # Corresponds to the JSON property `processedRowsPerSecond`
+        # @return [Float]
+        attr_accessor :processed_rows_per_second
+      
+        # 
+        # Corresponds to the JSON property `startOffset`
+        # @return [String]
+        attr_accessor :start_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @input_rows_per_second = args[:input_rows_per_second] if args.key?(:input_rows_per_second)
+          @latest_offset = args[:latest_offset] if args.key?(:latest_offset)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @num_input_rows = args[:num_input_rows] if args.key?(:num_input_rows)
+          @processed_rows_per_second = args[:processed_rows_per_second] if args.key?(:processed_rows_per_second)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
+        end
+      end
+      
+      # A summary of Spark Application
+      class SparkApplication
+        include Google::Apis::Core::Hashable
+      
+        # High level information corresponding to an application.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::DataprocV1::ApplicationInfo]
+        attr_accessor :application
+      
+        # Identifier. Name of the spark application
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application = args[:application] if args.key?(:application)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -5474,6 +8441,167 @@ module Google
         end
       end
       
+      # A graph used for storing information of an executionPlan of DataFrame.
+      class SparkPlanGraph
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `edges`
+        # @return [Array<Google::Apis::DataprocV1::SparkPlanGraphEdge>]
+        attr_accessor :edges
+      
+        # 
+        # Corresponds to the JSON property `executionId`
+        # @return [Fixnum]
+        attr_accessor :execution_id
+      
+        # 
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::DataprocV1::SparkPlanGraphNodeWrapper>]
+        attr_accessor :nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edges = args[:edges] if args.key?(:edges)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @nodes = args[:nodes] if args.key?(:nodes)
+        end
+      end
+      
+      # Represents a tree of spark plan.
+      class SparkPlanGraphCluster
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `desc`
+        # @return [String]
+        attr_accessor :desc
+      
+        # 
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::DataprocV1::SqlPlanMetric>]
+        attr_accessor :metrics
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::DataprocV1::SparkPlanGraphNodeWrapper>]
+        attr_accessor :nodes
+      
+        # 
+        # Corresponds to the JSON property `sparkPlanGraphClusterId`
+        # @return [Fixnum]
+        attr_accessor :spark_plan_graph_cluster_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @desc = args[:desc] if args.key?(:desc)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+          @nodes = args[:nodes] if args.key?(:nodes)
+          @spark_plan_graph_cluster_id = args[:spark_plan_graph_cluster_id] if args.key?(:spark_plan_graph_cluster_id)
+        end
+      end
+      
+      # Represents a directed edge in the spark plan tree from child to parent.
+      class SparkPlanGraphEdge
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `fromId`
+        # @return [Fixnum]
+        attr_accessor :from_id
+      
+        # 
+        # Corresponds to the JSON property `toId`
+        # @return [Fixnum]
+        attr_accessor :to_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @from_id = args[:from_id] if args.key?(:from_id)
+          @to_id = args[:to_id] if args.key?(:to_id)
+        end
+      end
+      
+      # Represents a node in the spark plan tree.
+      class SparkPlanGraphNode
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `desc`
+        # @return [String]
+        attr_accessor :desc
+      
+        # 
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::DataprocV1::SqlPlanMetric>]
+        attr_accessor :metrics
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `sparkPlanGraphNodeId`
+        # @return [Fixnum]
+        attr_accessor :spark_plan_graph_node_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @desc = args[:desc] if args.key?(:desc)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+          @spark_plan_graph_node_id = args[:spark_plan_graph_node_id] if args.key?(:spark_plan_graph_node_id)
+        end
+      end
+      
+      # Wrapper user to represent either a node or a cluster.
+      class SparkPlanGraphNodeWrapper
+        include Google::Apis::Core::Hashable
+      
+        # Represents a tree of spark plan.
+        # Corresponds to the JSON property `cluster`
+        # @return [Google::Apis::DataprocV1::SparkPlanGraphCluster]
+        attr_accessor :cluster
+      
+        # Represents a node in the spark plan tree.
+        # Corresponds to the JSON property `node`
+        # @return [Google::Apis::DataprocV1::SparkPlanGraphNode]
+        attr_accessor :node
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @node = args[:node] if args.key?(:node)
+        end
+      end
+      
       # A configuration for running an Apache SparkR (https://spark.apache.org/docs/
       # latest/sparkr.html) batch workload.
       class SparkRBatch
@@ -5572,6 +8700,37 @@ module Google
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @main_r_file_uri = args[:main_r_file_uri] if args.key?(:main_r_file_uri)
           @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # 
+      class SparkRuntimeInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `javaHome`
+        # @return [String]
+        attr_accessor :java_home
+      
+        # 
+        # Corresponds to the JSON property `javaVersion`
+        # @return [String]
+        attr_accessor :java_version
+      
+        # 
+        # Corresponds to the JSON property `scalaVersion`
+        # @return [String]
+        attr_accessor :scala_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @java_home = args[:java_home] if args.key?(:java_home)
+          @java_version = args[:java_version] if args.key?(:java_version)
+          @scala_version = args[:scala_version] if args.key?(:scala_version)
         end
       end
       
@@ -5731,6 +8890,978 @@ module Google
         end
       end
       
+      # Outer message that contains the data obtained from spark listener, packaged
+      # with information that is required to process it.
+      class SparkWrapperObject
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `appSummary`
+        # @return [Google::Apis::DataprocV1::AppSummary]
+        attr_accessor :app_summary
+      
+        # Details about the Environment that the application is running in.
+        # Corresponds to the JSON property `applicationEnvironmentInfo`
+        # @return [Google::Apis::DataprocV1::ApplicationEnvironmentInfo]
+        attr_accessor :application_environment_info
+      
+        # Application Id created by Spark.
+        # Corresponds to the JSON property `applicationId`
+        # @return [String]
+        attr_accessor :application_id
+      
+        # High level information corresponding to an application.
+        # Corresponds to the JSON property `applicationInfo`
+        # @return [Google::Apis::DataprocV1::ApplicationInfo]
+        attr_accessor :application_info
+      
+        # VM Timestamp associated with the data object.
+        # Corresponds to the JSON property `eventTimestamp`
+        # @return [String]
+        attr_accessor :event_timestamp
+      
+        # Executor resources consumed by a stage.
+        # Corresponds to the JSON property `executorStageSummary`
+        # @return [Google::Apis::DataprocV1::ExecutorStageSummary]
+        attr_accessor :executor_stage_summary
+      
+        # Details about executors used by the application.
+        # Corresponds to the JSON property `executorSummary`
+        # @return [Google::Apis::DataprocV1::ExecutorSummary]
+        attr_accessor :executor_summary
+      
+        # Data corresponding to a spark job.
+        # Corresponds to the JSON property `jobData`
+        # @return [Google::Apis::DataprocV1::JobData]
+        attr_accessor :job_data
+      
+        # Pool Data
+        # Corresponds to the JSON property `poolData`
+        # @return [Google::Apis::DataprocV1::PoolData]
+        attr_accessor :pool_data
+      
+        # Process Summary
+        # Corresponds to the JSON property `processSummary`
+        # @return [Google::Apis::DataprocV1::ProcessSummary]
+        attr_accessor :process_summary
+      
+        # Graph representing RDD dependencies. Consists of edges and a root cluster.
+        # Corresponds to the JSON property `rddOperationGraph`
+        # @return [Google::Apis::DataprocV1::RddOperationGraph]
+        attr_accessor :rdd_operation_graph
+      
+        # Overall data about RDD storage.
+        # Corresponds to the JSON property `rddStorageInfo`
+        # @return [Google::Apis::DataprocV1::RddStorageInfo]
+        attr_accessor :rdd_storage_info
+      
+        # Resource profile that contains information about all the resources required by
+        # executors and tasks.
+        # Corresponds to the JSON property `resourceProfileInfo`
+        # @return [Google::Apis::DataprocV1::ResourceProfileInfo]
+        attr_accessor :resource_profile_info
+      
+        # A graph used for storing information of an executionPlan of DataFrame.
+        # Corresponds to the JSON property `sparkPlanGraph`
+        # @return [Google::Apis::DataprocV1::SparkPlanGraph]
+        attr_accessor :spark_plan_graph
+      
+        # Details of the speculation task when speculative execution is enabled.
+        # Corresponds to the JSON property `speculationStageSummary`
+        # @return [Google::Apis::DataprocV1::SpeculationStageSummary]
+        attr_accessor :speculation_stage_summary
+      
+        # SQL Execution Data
+        # Corresponds to the JSON property `sqlExecutionUiData`
+        # @return [Google::Apis::DataprocV1::SqlExecutionUiData]
+        attr_accessor :sql_execution_ui_data
+      
+        # Data corresponding to a stage.
+        # Corresponds to the JSON property `stageData`
+        # @return [Google::Apis::DataprocV1::StageData]
+        attr_accessor :stage_data
+      
+        # Stream Block Data.
+        # Corresponds to the JSON property `streamBlockData`
+        # @return [Google::Apis::DataprocV1::StreamBlockData]
+        attr_accessor :stream_block_data
+      
+        # Streaming
+        # Corresponds to the JSON property `streamingQueryData`
+        # @return [Google::Apis::DataprocV1::StreamingQueryData]
+        attr_accessor :streaming_query_data
+      
+        # 
+        # Corresponds to the JSON property `streamingQueryProgress`
+        # @return [Google::Apis::DataprocV1::StreamingQueryProgress]
+        attr_accessor :streaming_query_progress
+      
+        # Data corresponding to tasks created by spark.
+        # Corresponds to the JSON property `taskData`
+        # @return [Google::Apis::DataprocV1::TaskData]
+        attr_accessor :task_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_summary = args[:app_summary] if args.key?(:app_summary)
+          @application_environment_info = args[:application_environment_info] if args.key?(:application_environment_info)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @application_info = args[:application_info] if args.key?(:application_info)
+          @event_timestamp = args[:event_timestamp] if args.key?(:event_timestamp)
+          @executor_stage_summary = args[:executor_stage_summary] if args.key?(:executor_stage_summary)
+          @executor_summary = args[:executor_summary] if args.key?(:executor_summary)
+          @job_data = args[:job_data] if args.key?(:job_data)
+          @pool_data = args[:pool_data] if args.key?(:pool_data)
+          @process_summary = args[:process_summary] if args.key?(:process_summary)
+          @rdd_operation_graph = args[:rdd_operation_graph] if args.key?(:rdd_operation_graph)
+          @rdd_storage_info = args[:rdd_storage_info] if args.key?(:rdd_storage_info)
+          @resource_profile_info = args[:resource_profile_info] if args.key?(:resource_profile_info)
+          @spark_plan_graph = args[:spark_plan_graph] if args.key?(:spark_plan_graph)
+          @speculation_stage_summary = args[:speculation_stage_summary] if args.key?(:speculation_stage_summary)
+          @sql_execution_ui_data = args[:sql_execution_ui_data] if args.key?(:sql_execution_ui_data)
+          @stage_data = args[:stage_data] if args.key?(:stage_data)
+          @stream_block_data = args[:stream_block_data] if args.key?(:stream_block_data)
+          @streaming_query_data = args[:streaming_query_data] if args.key?(:streaming_query_data)
+          @streaming_query_progress = args[:streaming_query_progress] if args.key?(:streaming_query_progress)
+          @task_data = args[:task_data] if args.key?(:task_data)
+        end
+      end
+      
+      # Details of the speculation task when speculative execution is enabled.
+      class SpeculationStageSummary
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `numActiveTasks`
+        # @return [Fixnum]
+        attr_accessor :num_active_tasks
+      
+        # 
+        # Corresponds to the JSON property `numCompletedTasks`
+        # @return [Fixnum]
+        attr_accessor :num_completed_tasks
+      
+        # 
+        # Corresponds to the JSON property `numFailedTasks`
+        # @return [Fixnum]
+        attr_accessor :num_failed_tasks
+      
+        # 
+        # Corresponds to the JSON property `numKilledTasks`
+        # @return [Fixnum]
+        attr_accessor :num_killed_tasks
+      
+        # 
+        # Corresponds to the JSON property `numTasks`
+        # @return [Fixnum]
+        attr_accessor :num_tasks
+      
+        # 
+        # Corresponds to the JSON property `stageAttemptId`
+        # @return [Fixnum]
+        attr_accessor :stage_attempt_id
+      
+        # 
+        # Corresponds to the JSON property `stageId`
+        # @return [Fixnum]
+        attr_accessor :stage_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_active_tasks = args[:num_active_tasks] if args.key?(:num_active_tasks)
+          @num_completed_tasks = args[:num_completed_tasks] if args.key?(:num_completed_tasks)
+          @num_failed_tasks = args[:num_failed_tasks] if args.key?(:num_failed_tasks)
+          @num_killed_tasks = args[:num_killed_tasks] if args.key?(:num_killed_tasks)
+          @num_tasks = args[:num_tasks] if args.key?(:num_tasks)
+          @stage_attempt_id = args[:stage_attempt_id] if args.key?(:stage_attempt_id)
+          @stage_id = args[:stage_id] if args.key?(:stage_id)
+        end
+      end
+      
+      # SQL Execution Data
+      class SqlExecutionUiData
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # 
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # 
+        # Corresponds to the JSON property `executionId`
+        # @return [Fixnum]
+        attr_accessor :execution_id
+      
+        # 
+        # Corresponds to the JSON property `jobs`
+        # @return [Hash<String,String>]
+        attr_accessor :jobs
+      
+        # 
+        # Corresponds to the JSON property `metricValues`
+        # @return [Hash<String,String>]
+        attr_accessor :metric_values
+      
+        # 
+        # Corresponds to the JSON property `metricValuesIsNull`
+        # @return [Boolean]
+        attr_accessor :metric_values_is_null
+        alias_method :metric_values_is_null?, :metric_values_is_null
+      
+        # 
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::DataprocV1::SqlPlanMetric>]
+        attr_accessor :metrics
+      
+        # 
+        # Corresponds to the JSON property `modifiedConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :modified_configs
+      
+        # 
+        # Corresponds to the JSON property `physicalPlanDescription`
+        # @return [String]
+        attr_accessor :physical_plan_description
+      
+        # 
+        # Corresponds to the JSON property `rootExecutionId`
+        # @return [Fixnum]
+        attr_accessor :root_execution_id
+      
+        # 
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Fixnum>]
+        attr_accessor :stages
+      
+        # 
+        # Corresponds to the JSON property `submissionTime`
+        # @return [String]
+        attr_accessor :submission_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @description = args[:description] if args.key?(:description)
+          @details = args[:details] if args.key?(:details)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @jobs = args[:jobs] if args.key?(:jobs)
+          @metric_values = args[:metric_values] if args.key?(:metric_values)
+          @metric_values_is_null = args[:metric_values_is_null] if args.key?(:metric_values_is_null)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @modified_configs = args[:modified_configs] if args.key?(:modified_configs)
+          @physical_plan_description = args[:physical_plan_description] if args.key?(:physical_plan_description)
+          @root_execution_id = args[:root_execution_id] if args.key?(:root_execution_id)
+          @stages = args[:stages] if args.key?(:stages)
+          @submission_time = args[:submission_time] if args.key?(:submission_time)
+        end
+      end
+      
+      # Metrics related to SQL execution.
+      class SqlPlanMetric
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `accumulatorId`
+        # @return [Fixnum]
+        attr_accessor :accumulator_id
+      
+        # 
+        # Corresponds to the JSON property `metricType`
+        # @return [String]
+        attr_accessor :metric_type
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accumulator_id = args[:accumulator_id] if args.key?(:accumulator_id)
+          @metric_type = args[:metric_type] if args.key?(:metric_type)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Data related to tasks summary for a Spark Stage Attempt
+      class StageAttemptTasksSummary
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `applicationId`
+        # @return [String]
+        attr_accessor :application_id
+      
+        # 
+        # Corresponds to the JSON property `numFailedTasks`
+        # @return [Fixnum]
+        attr_accessor :num_failed_tasks
+      
+        # 
+        # Corresponds to the JSON property `numKilledTasks`
+        # @return [Fixnum]
+        attr_accessor :num_killed_tasks
+      
+        # 
+        # Corresponds to the JSON property `numPendingTasks`
+        # @return [Fixnum]
+        attr_accessor :num_pending_tasks
+      
+        # 
+        # Corresponds to the JSON property `numRunningTasks`
+        # @return [Fixnum]
+        attr_accessor :num_running_tasks
+      
+        # 
+        # Corresponds to the JSON property `numSuccessTasks`
+        # @return [Fixnum]
+        attr_accessor :num_success_tasks
+      
+        # 
+        # Corresponds to the JSON property `numTasks`
+        # @return [Fixnum]
+        attr_accessor :num_tasks
+      
+        # 
+        # Corresponds to the JSON property `stageAttemptId`
+        # @return [Fixnum]
+        attr_accessor :stage_attempt_id
+      
+        # 
+        # Corresponds to the JSON property `stageId`
+        # @return [Fixnum]
+        attr_accessor :stage_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @num_failed_tasks = args[:num_failed_tasks] if args.key?(:num_failed_tasks)
+          @num_killed_tasks = args[:num_killed_tasks] if args.key?(:num_killed_tasks)
+          @num_pending_tasks = args[:num_pending_tasks] if args.key?(:num_pending_tasks)
+          @num_running_tasks = args[:num_running_tasks] if args.key?(:num_running_tasks)
+          @num_success_tasks = args[:num_success_tasks] if args.key?(:num_success_tasks)
+          @num_tasks = args[:num_tasks] if args.key?(:num_tasks)
+          @stage_attempt_id = args[:stage_attempt_id] if args.key?(:stage_attempt_id)
+          @stage_id = args[:stage_id] if args.key?(:stage_id)
+        end
+      end
+      
+      # Data corresponding to a stage.
+      class StageData
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `accumulatorUpdates`
+        # @return [Array<Google::Apis::DataprocV1::AccumulableInfo>]
+        attr_accessor :accumulator_updates
+      
+        # 
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # 
+        # Corresponds to the JSON property `executorMetricsDistributions`
+        # @return [Google::Apis::DataprocV1::ExecutorMetricsDistributions]
+        attr_accessor :executor_metrics_distributions
+      
+        # 
+        # Corresponds to the JSON property `executorSummary`
+        # @return [Hash<String,Google::Apis::DataprocV1::ExecutorStageSummary>]
+        attr_accessor :executor_summary
+      
+        # 
+        # Corresponds to the JSON property `failureReason`
+        # @return [String]
+        attr_accessor :failure_reason
+      
+        # 
+        # Corresponds to the JSON property `firstTaskLaunchedTime`
+        # @return [String]
+        attr_accessor :first_task_launched_time
+      
+        # 
+        # Corresponds to the JSON property `isShufflePushEnabled`
+        # @return [Boolean]
+        attr_accessor :is_shuffle_push_enabled
+        alias_method :is_shuffle_push_enabled?, :is_shuffle_push_enabled
+      
+        # 
+        # Corresponds to the JSON property `jobIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :job_ids
+      
+        # 
+        # Corresponds to the JSON property `killedTasksSummary`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :killed_tasks_summary
+      
+        # 
+        # Corresponds to the JSON property `locality`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :locality
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `numActiveTasks`
+        # @return [Fixnum]
+        attr_accessor :num_active_tasks
+      
+        # 
+        # Corresponds to the JSON property `numCompleteTasks`
+        # @return [Fixnum]
+        attr_accessor :num_complete_tasks
+      
+        # 
+        # Corresponds to the JSON property `numCompletedIndices`
+        # @return [Fixnum]
+        attr_accessor :num_completed_indices
+      
+        # 
+        # Corresponds to the JSON property `numFailedTasks`
+        # @return [Fixnum]
+        attr_accessor :num_failed_tasks
+      
+        # 
+        # Corresponds to the JSON property `numKilledTasks`
+        # @return [Fixnum]
+        attr_accessor :num_killed_tasks
+      
+        # 
+        # Corresponds to the JSON property `numTasks`
+        # @return [Fixnum]
+        attr_accessor :num_tasks
+      
+        # 
+        # Corresponds to the JSON property `parentStageIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :parent_stage_ids
+      
+        # 
+        # Corresponds to the JSON property `peakExecutorMetrics`
+        # @return [Google::Apis::DataprocV1::ExecutorMetrics]
+        attr_accessor :peak_executor_metrics
+      
+        # 
+        # Corresponds to the JSON property `rddIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :rdd_ids
+      
+        # 
+        # Corresponds to the JSON property `resourceProfileId`
+        # @return [Fixnum]
+        attr_accessor :resource_profile_id
+      
+        # 
+        # Corresponds to the JSON property `schedulingPool`
+        # @return [String]
+        attr_accessor :scheduling_pool
+      
+        # 
+        # Corresponds to the JSON property `shuffleMergersCount`
+        # @return [Fixnum]
+        attr_accessor :shuffle_mergers_count
+      
+        # Details of the speculation task when speculative execution is enabled.
+        # Corresponds to the JSON property `speculationSummary`
+        # @return [Google::Apis::DataprocV1::SpeculationStageSummary]
+        attr_accessor :speculation_summary
+      
+        # 
+        # Corresponds to the JSON property `stageAttemptId`
+        # @return [Fixnum]
+        attr_accessor :stage_attempt_id
+      
+        # 
+        # Corresponds to the JSON property `stageId`
+        # @return [Fixnum]
+        attr_accessor :stage_id
+      
+        # Stage Level Aggregated Metrics
+        # Corresponds to the JSON property `stageMetrics`
+        # @return [Google::Apis::DataprocV1::StageMetrics]
+        attr_accessor :stage_metrics
+      
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # 
+        # Corresponds to the JSON property `submissionTime`
+        # @return [String]
+        attr_accessor :submission_time
+      
+        # Summary metrics fields. These are included in response only if present in
+        # summary_metrics_mask field in request
+        # Corresponds to the JSON property `taskQuantileMetrics`
+        # @return [Google::Apis::DataprocV1::TaskQuantileMetrics]
+        attr_accessor :task_quantile_metrics
+      
+        # 
+        # Corresponds to the JSON property `tasks`
+        # @return [Hash<String,Google::Apis::DataprocV1::TaskData>]
+        attr_accessor :tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accumulator_updates = args[:accumulator_updates] if args.key?(:accumulator_updates)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @description = args[:description] if args.key?(:description)
+          @details = args[:details] if args.key?(:details)
+          @executor_metrics_distributions = args[:executor_metrics_distributions] if args.key?(:executor_metrics_distributions)
+          @executor_summary = args[:executor_summary] if args.key?(:executor_summary)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @first_task_launched_time = args[:first_task_launched_time] if args.key?(:first_task_launched_time)
+          @is_shuffle_push_enabled = args[:is_shuffle_push_enabled] if args.key?(:is_shuffle_push_enabled)
+          @job_ids = args[:job_ids] if args.key?(:job_ids)
+          @killed_tasks_summary = args[:killed_tasks_summary] if args.key?(:killed_tasks_summary)
+          @locality = args[:locality] if args.key?(:locality)
+          @name = args[:name] if args.key?(:name)
+          @num_active_tasks = args[:num_active_tasks] if args.key?(:num_active_tasks)
+          @num_complete_tasks = args[:num_complete_tasks] if args.key?(:num_complete_tasks)
+          @num_completed_indices = args[:num_completed_indices] if args.key?(:num_completed_indices)
+          @num_failed_tasks = args[:num_failed_tasks] if args.key?(:num_failed_tasks)
+          @num_killed_tasks = args[:num_killed_tasks] if args.key?(:num_killed_tasks)
+          @num_tasks = args[:num_tasks] if args.key?(:num_tasks)
+          @parent_stage_ids = args[:parent_stage_ids] if args.key?(:parent_stage_ids)
+          @peak_executor_metrics = args[:peak_executor_metrics] if args.key?(:peak_executor_metrics)
+          @rdd_ids = args[:rdd_ids] if args.key?(:rdd_ids)
+          @resource_profile_id = args[:resource_profile_id] if args.key?(:resource_profile_id)
+          @scheduling_pool = args[:scheduling_pool] if args.key?(:scheduling_pool)
+          @shuffle_mergers_count = args[:shuffle_mergers_count] if args.key?(:shuffle_mergers_count)
+          @speculation_summary = args[:speculation_summary] if args.key?(:speculation_summary)
+          @stage_attempt_id = args[:stage_attempt_id] if args.key?(:stage_attempt_id)
+          @stage_id = args[:stage_id] if args.key?(:stage_id)
+          @stage_metrics = args[:stage_metrics] if args.key?(:stage_metrics)
+          @status = args[:status] if args.key?(:status)
+          @submission_time = args[:submission_time] if args.key?(:submission_time)
+          @task_quantile_metrics = args[:task_quantile_metrics] if args.key?(:task_quantile_metrics)
+          @tasks = args[:tasks] if args.key?(:tasks)
+        end
+      end
+      
+      # Metrics about the input read by the stage.
+      class StageInputMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bytesRead`
+        # @return [Fixnum]
+        attr_accessor :bytes_read
+      
+        # 
+        # Corresponds to the JSON property `recordsRead`
+        # @return [Fixnum]
+        attr_accessor :records_read
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_read = args[:bytes_read] if args.key?(:bytes_read)
+          @records_read = args[:records_read] if args.key?(:records_read)
+        end
+      end
+      
+      # Stage Level Aggregated Metrics
+      class StageMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `diskBytesSpilled`
+        # @return [Fixnum]
+        attr_accessor :disk_bytes_spilled
+      
+        # 
+        # Corresponds to the JSON property `executorCpuTimeNanos`
+        # @return [Fixnum]
+        attr_accessor :executor_cpu_time_nanos
+      
+        # 
+        # Corresponds to the JSON property `executorDeserializeCpuTimeNanos`
+        # @return [Fixnum]
+        attr_accessor :executor_deserialize_cpu_time_nanos
+      
+        # 
+        # Corresponds to the JSON property `executorDeserializeTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :executor_deserialize_time_millis
+      
+        # 
+        # Corresponds to the JSON property `executorRunTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :executor_run_time_millis
+      
+        # 
+        # Corresponds to the JSON property `jvmGcTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :jvm_gc_time_millis
+      
+        # 
+        # Corresponds to the JSON property `memoryBytesSpilled`
+        # @return [Fixnum]
+        attr_accessor :memory_bytes_spilled
+      
+        # 
+        # Corresponds to the JSON property `peakExecutionMemoryBytes`
+        # @return [Fixnum]
+        attr_accessor :peak_execution_memory_bytes
+      
+        # 
+        # Corresponds to the JSON property `resultSerializationTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :result_serialization_time_millis
+      
+        # 
+        # Corresponds to the JSON property `resultSize`
+        # @return [Fixnum]
+        attr_accessor :result_size
+      
+        # Metrics about the input read by the stage.
+        # Corresponds to the JSON property `stageInputMetrics`
+        # @return [Google::Apis::DataprocV1::StageInputMetrics]
+        attr_accessor :stage_input_metrics
+      
+        # Metrics about the output written by the stage.
+        # Corresponds to the JSON property `stageOutputMetrics`
+        # @return [Google::Apis::DataprocV1::StageOutputMetrics]
+        attr_accessor :stage_output_metrics
+      
+        # Shuffle data read for the stage.
+        # Corresponds to the JSON property `stageShuffleReadMetrics`
+        # @return [Google::Apis::DataprocV1::StageShuffleReadMetrics]
+        attr_accessor :stage_shuffle_read_metrics
+      
+        # Shuffle data written for the stage.
+        # Corresponds to the JSON property `stageShuffleWriteMetrics`
+        # @return [Google::Apis::DataprocV1::StageShuffleWriteMetrics]
+        attr_accessor :stage_shuffle_write_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_bytes_spilled = args[:disk_bytes_spilled] if args.key?(:disk_bytes_spilled)
+          @executor_cpu_time_nanos = args[:executor_cpu_time_nanos] if args.key?(:executor_cpu_time_nanos)
+          @executor_deserialize_cpu_time_nanos = args[:executor_deserialize_cpu_time_nanos] if args.key?(:executor_deserialize_cpu_time_nanos)
+          @executor_deserialize_time_millis = args[:executor_deserialize_time_millis] if args.key?(:executor_deserialize_time_millis)
+          @executor_run_time_millis = args[:executor_run_time_millis] if args.key?(:executor_run_time_millis)
+          @jvm_gc_time_millis = args[:jvm_gc_time_millis] if args.key?(:jvm_gc_time_millis)
+          @memory_bytes_spilled = args[:memory_bytes_spilled] if args.key?(:memory_bytes_spilled)
+          @peak_execution_memory_bytes = args[:peak_execution_memory_bytes] if args.key?(:peak_execution_memory_bytes)
+          @result_serialization_time_millis = args[:result_serialization_time_millis] if args.key?(:result_serialization_time_millis)
+          @result_size = args[:result_size] if args.key?(:result_size)
+          @stage_input_metrics = args[:stage_input_metrics] if args.key?(:stage_input_metrics)
+          @stage_output_metrics = args[:stage_output_metrics] if args.key?(:stage_output_metrics)
+          @stage_shuffle_read_metrics = args[:stage_shuffle_read_metrics] if args.key?(:stage_shuffle_read_metrics)
+          @stage_shuffle_write_metrics = args[:stage_shuffle_write_metrics] if args.key?(:stage_shuffle_write_metrics)
+        end
+      end
+      
+      # Metrics about the output written by the stage.
+      class StageOutputMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bytesWritten`
+        # @return [Fixnum]
+        attr_accessor :bytes_written
+      
+        # 
+        # Corresponds to the JSON property `recordsWritten`
+        # @return [Fixnum]
+        attr_accessor :records_written
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_written = args[:bytes_written] if args.key?(:bytes_written)
+          @records_written = args[:records_written] if args.key?(:records_written)
+        end
+      end
+      
+      # 
+      class StageShufflePushReadMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `corruptMergedBlockChunks`
+        # @return [Fixnum]
+        attr_accessor :corrupt_merged_block_chunks
+      
+        # 
+        # Corresponds to the JSON property `localMergedBlocksFetched`
+        # @return [Fixnum]
+        attr_accessor :local_merged_blocks_fetched
+      
+        # 
+        # Corresponds to the JSON property `localMergedBytesRead`
+        # @return [Fixnum]
+        attr_accessor :local_merged_bytes_read
+      
+        # 
+        # Corresponds to the JSON property `localMergedChunksFetched`
+        # @return [Fixnum]
+        attr_accessor :local_merged_chunks_fetched
+      
+        # 
+        # Corresponds to the JSON property `mergedFetchFallbackCount`
+        # @return [Fixnum]
+        attr_accessor :merged_fetch_fallback_count
+      
+        # 
+        # Corresponds to the JSON property `remoteMergedBlocksFetched`
+        # @return [Fixnum]
+        attr_accessor :remote_merged_blocks_fetched
+      
+        # 
+        # Corresponds to the JSON property `remoteMergedBytesRead`
+        # @return [Fixnum]
+        attr_accessor :remote_merged_bytes_read
+      
+        # 
+        # Corresponds to the JSON property `remoteMergedChunksFetched`
+        # @return [Fixnum]
+        attr_accessor :remote_merged_chunks_fetched
+      
+        # 
+        # Corresponds to the JSON property `remoteMergedReqsDuration`
+        # @return [Fixnum]
+        attr_accessor :remote_merged_reqs_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @corrupt_merged_block_chunks = args[:corrupt_merged_block_chunks] if args.key?(:corrupt_merged_block_chunks)
+          @local_merged_blocks_fetched = args[:local_merged_blocks_fetched] if args.key?(:local_merged_blocks_fetched)
+          @local_merged_bytes_read = args[:local_merged_bytes_read] if args.key?(:local_merged_bytes_read)
+          @local_merged_chunks_fetched = args[:local_merged_chunks_fetched] if args.key?(:local_merged_chunks_fetched)
+          @merged_fetch_fallback_count = args[:merged_fetch_fallback_count] if args.key?(:merged_fetch_fallback_count)
+          @remote_merged_blocks_fetched = args[:remote_merged_blocks_fetched] if args.key?(:remote_merged_blocks_fetched)
+          @remote_merged_bytes_read = args[:remote_merged_bytes_read] if args.key?(:remote_merged_bytes_read)
+          @remote_merged_chunks_fetched = args[:remote_merged_chunks_fetched] if args.key?(:remote_merged_chunks_fetched)
+          @remote_merged_reqs_duration = args[:remote_merged_reqs_duration] if args.key?(:remote_merged_reqs_duration)
+        end
+      end
+      
+      # Shuffle data read for the stage.
+      class StageShuffleReadMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bytesRead`
+        # @return [Fixnum]
+        attr_accessor :bytes_read
+      
+        # 
+        # Corresponds to the JSON property `fetchWaitTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :fetch_wait_time_millis
+      
+        # 
+        # Corresponds to the JSON property `localBlocksFetched`
+        # @return [Fixnum]
+        attr_accessor :local_blocks_fetched
+      
+        # 
+        # Corresponds to the JSON property `localBytesRead`
+        # @return [Fixnum]
+        attr_accessor :local_bytes_read
+      
+        # 
+        # Corresponds to the JSON property `recordsRead`
+        # @return [Fixnum]
+        attr_accessor :records_read
+      
+        # 
+        # Corresponds to the JSON property `remoteBlocksFetched`
+        # @return [Fixnum]
+        attr_accessor :remote_blocks_fetched
+      
+        # 
+        # Corresponds to the JSON property `remoteBytesRead`
+        # @return [Fixnum]
+        attr_accessor :remote_bytes_read
+      
+        # 
+        # Corresponds to the JSON property `remoteBytesReadToDisk`
+        # @return [Fixnum]
+        attr_accessor :remote_bytes_read_to_disk
+      
+        # 
+        # Corresponds to the JSON property `remoteReqsDuration`
+        # @return [Fixnum]
+        attr_accessor :remote_reqs_duration
+      
+        # 
+        # Corresponds to the JSON property `stageShufflePushReadMetrics`
+        # @return [Google::Apis::DataprocV1::StageShufflePushReadMetrics]
+        attr_accessor :stage_shuffle_push_read_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_read = args[:bytes_read] if args.key?(:bytes_read)
+          @fetch_wait_time_millis = args[:fetch_wait_time_millis] if args.key?(:fetch_wait_time_millis)
+          @local_blocks_fetched = args[:local_blocks_fetched] if args.key?(:local_blocks_fetched)
+          @local_bytes_read = args[:local_bytes_read] if args.key?(:local_bytes_read)
+          @records_read = args[:records_read] if args.key?(:records_read)
+          @remote_blocks_fetched = args[:remote_blocks_fetched] if args.key?(:remote_blocks_fetched)
+          @remote_bytes_read = args[:remote_bytes_read] if args.key?(:remote_bytes_read)
+          @remote_bytes_read_to_disk = args[:remote_bytes_read_to_disk] if args.key?(:remote_bytes_read_to_disk)
+          @remote_reqs_duration = args[:remote_reqs_duration] if args.key?(:remote_reqs_duration)
+          @stage_shuffle_push_read_metrics = args[:stage_shuffle_push_read_metrics] if args.key?(:stage_shuffle_push_read_metrics)
+        end
+      end
+      
+      # Shuffle data written for the stage.
+      class StageShuffleWriteMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bytesWritten`
+        # @return [Fixnum]
+        attr_accessor :bytes_written
+      
+        # 
+        # Corresponds to the JSON property `recordsWritten`
+        # @return [Fixnum]
+        attr_accessor :records_written
+      
+        # 
+        # Corresponds to the JSON property `writeTimeNanos`
+        # @return [Fixnum]
+        attr_accessor :write_time_nanos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_written = args[:bytes_written] if args.key?(:bytes_written)
+          @records_written = args[:records_written] if args.key?(:records_written)
+          @write_time_nanos = args[:write_time_nanos] if args.key?(:write_time_nanos)
+        end
+      end
+      
+      # Data related to Stages page summary
+      class StagesSummary
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `applicationId`
+        # @return [String]
+        attr_accessor :application_id
+      
+        # 
+        # Corresponds to the JSON property `numActiveStages`
+        # @return [Fixnum]
+        attr_accessor :num_active_stages
+      
+        # 
+        # Corresponds to the JSON property `numCompletedStages`
+        # @return [Fixnum]
+        attr_accessor :num_completed_stages
+      
+        # 
+        # Corresponds to the JSON property `numFailedStages`
+        # @return [Fixnum]
+        attr_accessor :num_failed_stages
+      
+        # 
+        # Corresponds to the JSON property `numPendingStages`
+        # @return [Fixnum]
+        attr_accessor :num_pending_stages
+      
+        # 
+        # Corresponds to the JSON property `numSkippedStages`
+        # @return [Fixnum]
+        attr_accessor :num_skipped_stages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @num_active_stages = args[:num_active_stages] if args.key?(:num_active_stages)
+          @num_completed_stages = args[:num_completed_stages] if args.key?(:num_completed_stages)
+          @num_failed_stages = args[:num_failed_stages] if args.key?(:num_failed_stages)
+          @num_pending_stages = args[:num_pending_stages] if args.key?(:num_pending_stages)
+          @num_skipped_stages = args[:num_skipped_stages] if args.key?(:num_skipped_stages)
+        end
+      end
+      
       # A request to start a cluster.
       class StartClusterRequest
         include Google::Apis::Core::Hashable
@@ -5821,6 +9952,91 @@ module Google
         end
       end
       
+      # 
+      class StateOperatorProgress
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `allRemovalsTimeMs`
+        # @return [Fixnum]
+        attr_accessor :all_removals_time_ms
+      
+        # 
+        # Corresponds to the JSON property `allUpdatesTimeMs`
+        # @return [Fixnum]
+        attr_accessor :all_updates_time_ms
+      
+        # 
+        # Corresponds to the JSON property `commitTimeMs`
+        # @return [Fixnum]
+        attr_accessor :commit_time_ms
+      
+        # 
+        # Corresponds to the JSON property `customMetrics`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :custom_metrics
+      
+        # 
+        # Corresponds to the JSON property `memoryUsedBytes`
+        # @return [Fixnum]
+        attr_accessor :memory_used_bytes
+      
+        # 
+        # Corresponds to the JSON property `numRowsDroppedByWatermark`
+        # @return [Fixnum]
+        attr_accessor :num_rows_dropped_by_watermark
+      
+        # 
+        # Corresponds to the JSON property `numRowsRemoved`
+        # @return [Fixnum]
+        attr_accessor :num_rows_removed
+      
+        # 
+        # Corresponds to the JSON property `numRowsTotal`
+        # @return [Fixnum]
+        attr_accessor :num_rows_total
+      
+        # 
+        # Corresponds to the JSON property `numRowsUpdated`
+        # @return [Fixnum]
+        attr_accessor :num_rows_updated
+      
+        # 
+        # Corresponds to the JSON property `numShufflePartitions`
+        # @return [Fixnum]
+        attr_accessor :num_shuffle_partitions
+      
+        # 
+        # Corresponds to the JSON property `numStateStoreInstances`
+        # @return [Fixnum]
+        attr_accessor :num_state_store_instances
+      
+        # 
+        # Corresponds to the JSON property `operatorName`
+        # @return [String]
+        attr_accessor :operator_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_removals_time_ms = args[:all_removals_time_ms] if args.key?(:all_removals_time_ms)
+          @all_updates_time_ms = args[:all_updates_time_ms] if args.key?(:all_updates_time_ms)
+          @commit_time_ms = args[:commit_time_ms] if args.key?(:commit_time_ms)
+          @custom_metrics = args[:custom_metrics] if args.key?(:custom_metrics)
+          @memory_used_bytes = args[:memory_used_bytes] if args.key?(:memory_used_bytes)
+          @num_rows_dropped_by_watermark = args[:num_rows_dropped_by_watermark] if args.key?(:num_rows_dropped_by_watermark)
+          @num_rows_removed = args[:num_rows_removed] if args.key?(:num_rows_removed)
+          @num_rows_total = args[:num_rows_total] if args.key?(:num_rows_total)
+          @num_rows_updated = args[:num_rows_updated] if args.key?(:num_rows_updated)
+          @num_shuffle_partitions = args[:num_shuffle_partitions] if args.key?(:num_shuffle_partitions)
+          @num_state_store_instances = args[:num_state_store_instances] if args.key?(:num_state_store_instances)
+          @operator_name = args[:operator_name] if args.key?(:operator_name)
+        end
+      end
+      
       # The Status type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by gRPC
       # (https://github.com/grpc). Each Status message contains three pieces of data:
@@ -5894,6 +10110,217 @@ module Google
         end
       end
       
+      # Stream Block Data.
+      class StreamBlockData
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `deserialized`
+        # @return [Boolean]
+        attr_accessor :deserialized
+        alias_method :deserialized?, :deserialized
+      
+        # 
+        # Corresponds to the JSON property `diskSize`
+        # @return [Fixnum]
+        attr_accessor :disk_size
+      
+        # 
+        # Corresponds to the JSON property `executorId`
+        # @return [String]
+        attr_accessor :executor_id
+      
+        # 
+        # Corresponds to the JSON property `hostPort`
+        # @return [String]
+        attr_accessor :host_port
+      
+        # 
+        # Corresponds to the JSON property `memSize`
+        # @return [Fixnum]
+        attr_accessor :mem_size
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `storageLevel`
+        # @return [String]
+        attr_accessor :storage_level
+      
+        # 
+        # Corresponds to the JSON property `useDisk`
+        # @return [Boolean]
+        attr_accessor :use_disk
+        alias_method :use_disk?, :use_disk
+      
+        # 
+        # Corresponds to the JSON property `useMemory`
+        # @return [Boolean]
+        attr_accessor :use_memory
+        alias_method :use_memory?, :use_memory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deserialized = args[:deserialized] if args.key?(:deserialized)
+          @disk_size = args[:disk_size] if args.key?(:disk_size)
+          @executor_id = args[:executor_id] if args.key?(:executor_id)
+          @host_port = args[:host_port] if args.key?(:host_port)
+          @mem_size = args[:mem_size] if args.key?(:mem_size)
+          @name = args[:name] if args.key?(:name)
+          @storage_level = args[:storage_level] if args.key?(:storage_level)
+          @use_disk = args[:use_disk] if args.key?(:use_disk)
+          @use_memory = args[:use_memory] if args.key?(:use_memory)
+        end
+      end
+      
+      # Streaming
+      class StreamingQueryData
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `endTimestamp`
+        # @return [Fixnum]
+        attr_accessor :end_timestamp
+      
+        # 
+        # Corresponds to the JSON property `exception`
+        # @return [String]
+        attr_accessor :exception
+      
+        # 
+        # Corresponds to the JSON property `isActive`
+        # @return [Boolean]
+        attr_accessor :is_active
+        alias_method :is_active?, :is_active
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `runId`
+        # @return [String]
+        attr_accessor :run_id
+      
+        # 
+        # Corresponds to the JSON property `startTimestamp`
+        # @return [Fixnum]
+        attr_accessor :start_timestamp
+      
+        # 
+        # Corresponds to the JSON property `streamingQueryId`
+        # @return [String]
+        attr_accessor :streaming_query_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_timestamp = args[:end_timestamp] if args.key?(:end_timestamp)
+          @exception = args[:exception] if args.key?(:exception)
+          @is_active = args[:is_active] if args.key?(:is_active)
+          @name = args[:name] if args.key?(:name)
+          @run_id = args[:run_id] if args.key?(:run_id)
+          @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
+          @streaming_query_id = args[:streaming_query_id] if args.key?(:streaming_query_id)
+        end
+      end
+      
+      # 
+      class StreamingQueryProgress
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `batchDuration`
+        # @return [Fixnum]
+        attr_accessor :batch_duration
+      
+        # 
+        # Corresponds to the JSON property `batchId`
+        # @return [Fixnum]
+        attr_accessor :batch_id
+      
+        # 
+        # Corresponds to the JSON property `durationMillis`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :duration_millis
+      
+        # 
+        # Corresponds to the JSON property `eventTime`
+        # @return [Hash<String,String>]
+        attr_accessor :event_time
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `observedMetrics`
+        # @return [Hash<String,String>]
+        attr_accessor :observed_metrics
+      
+        # 
+        # Corresponds to the JSON property `runId`
+        # @return [String]
+        attr_accessor :run_id
+      
+        # 
+        # Corresponds to the JSON property `sink`
+        # @return [Google::Apis::DataprocV1::SinkProgress]
+        attr_accessor :sink
+      
+        # 
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::DataprocV1::SourceProgress>]
+        attr_accessor :sources
+      
+        # 
+        # Corresponds to the JSON property `stateOperators`
+        # @return [Array<Google::Apis::DataprocV1::StateOperatorProgress>]
+        attr_accessor :state_operators
+      
+        # 
+        # Corresponds to the JSON property `streamingQueryProgressId`
+        # @return [String]
+        attr_accessor :streaming_query_progress_id
+      
+        # 
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_duration = args[:batch_duration] if args.key?(:batch_duration)
+          @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @duration_millis = args[:duration_millis] if args.key?(:duration_millis)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @name = args[:name] if args.key?(:name)
+          @observed_metrics = args[:observed_metrics] if args.key?(:observed_metrics)
+          @run_id = args[:run_id] if args.key?(:run_id)
+          @sink = args[:sink] if args.key?(:sink)
+          @sources = args[:sources] if args.key?(:sources)
+          @state_operators = args[:state_operators] if args.key?(:state_operators)
+          @streaming_query_progress_id = args[:streaming_query_progress_id] if args.key?(:streaming_query_progress_id)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
       # A request to submit a job.
       class SubmitJobRequest
         include Google::Apis::Core::Hashable
@@ -5923,6 +10350,585 @@ module Google
         def update!(**args)
           @job = args[:job] if args.key?(:job)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Consolidated summary of executors for a Spark Application.
+      class SummarizeSessionSparkApplicationExecutorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Consolidated summary about executors used by the application.
+        # Corresponds to the JSON property `activeExecutorSummary`
+        # @return [Google::Apis::DataprocV1::ConsolidatedExecutorSummary]
+        attr_accessor :active_executor_summary
+      
+        # Spark Application Id
+        # Corresponds to the JSON property `applicationId`
+        # @return [String]
+        attr_accessor :application_id
+      
+        # Consolidated summary about executors used by the application.
+        # Corresponds to the JSON property `deadExecutorSummary`
+        # @return [Google::Apis::DataprocV1::ConsolidatedExecutorSummary]
+        attr_accessor :dead_executor_summary
+      
+        # Consolidated summary about executors used by the application.
+        # Corresponds to the JSON property `totalExecutorSummary`
+        # @return [Google::Apis::DataprocV1::ConsolidatedExecutorSummary]
+        attr_accessor :total_executor_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_executor_summary = args[:active_executor_summary] if args.key?(:active_executor_summary)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @dead_executor_summary = args[:dead_executor_summary] if args.key?(:dead_executor_summary)
+          @total_executor_summary = args[:total_executor_summary] if args.key?(:total_executor_summary)
+        end
+      end
+      
+      # Summary of a Spark Application jobs.
+      class SummarizeSessionSparkApplicationJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data related to Jobs page summary
+        # Corresponds to the JSON property `jobsSummary`
+        # @return [Google::Apis::DataprocV1::JobsSummary]
+        attr_accessor :jobs_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @jobs_summary = args[:jobs_summary] if args.key?(:jobs_summary)
+        end
+      end
+      
+      # Summary of tasks for a Spark Application stage attempt.
+      class SummarizeSessionSparkApplicationStageAttemptTasksResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data related to tasks summary for a Spark Stage Attempt
+        # Corresponds to the JSON property `stageAttemptTasksSummary`
+        # @return [Google::Apis::DataprocV1::StageAttemptTasksSummary]
+        attr_accessor :stage_attempt_tasks_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage_attempt_tasks_summary = args[:stage_attempt_tasks_summary] if args.key?(:stage_attempt_tasks_summary)
+        end
+      end
+      
+      # Summary of a Spark Application stages.
+      class SummarizeSessionSparkApplicationStagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data related to Stages page summary
+        # Corresponds to the JSON property `stagesSummary`
+        # @return [Google::Apis::DataprocV1::StagesSummary]
+        attr_accessor :stages_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stages_summary = args[:stages_summary] if args.key?(:stages_summary)
+        end
+      end
+      
+      # Consolidated summary of executors for a Spark Application.
+      class SummarizeSparkApplicationExecutorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Consolidated summary about executors used by the application.
+        # Corresponds to the JSON property `activeExecutorSummary`
+        # @return [Google::Apis::DataprocV1::ConsolidatedExecutorSummary]
+        attr_accessor :active_executor_summary
+      
+        # Spark Application Id
+        # Corresponds to the JSON property `applicationId`
+        # @return [String]
+        attr_accessor :application_id
+      
+        # Consolidated summary about executors used by the application.
+        # Corresponds to the JSON property `deadExecutorSummary`
+        # @return [Google::Apis::DataprocV1::ConsolidatedExecutorSummary]
+        attr_accessor :dead_executor_summary
+      
+        # Consolidated summary about executors used by the application.
+        # Corresponds to the JSON property `totalExecutorSummary`
+        # @return [Google::Apis::DataprocV1::ConsolidatedExecutorSummary]
+        attr_accessor :total_executor_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_executor_summary = args[:active_executor_summary] if args.key?(:active_executor_summary)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @dead_executor_summary = args[:dead_executor_summary] if args.key?(:dead_executor_summary)
+          @total_executor_summary = args[:total_executor_summary] if args.key?(:total_executor_summary)
+        end
+      end
+      
+      # Summary of a Spark Application jobs.
+      class SummarizeSparkApplicationJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data related to Jobs page summary
+        # Corresponds to the JSON property `jobsSummary`
+        # @return [Google::Apis::DataprocV1::JobsSummary]
+        attr_accessor :jobs_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @jobs_summary = args[:jobs_summary] if args.key?(:jobs_summary)
+        end
+      end
+      
+      # Summary of tasks for a Spark Application stage attempt.
+      class SummarizeSparkApplicationStageAttemptTasksResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data related to tasks summary for a Spark Stage Attempt
+        # Corresponds to the JSON property `stageAttemptTasksSummary`
+        # @return [Google::Apis::DataprocV1::StageAttemptTasksSummary]
+        attr_accessor :stage_attempt_tasks_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage_attempt_tasks_summary = args[:stage_attempt_tasks_summary] if args.key?(:stage_attempt_tasks_summary)
+        end
+      end
+      
+      # Summary of a Spark Application stages.
+      class SummarizeSparkApplicationStagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data related to Stages page summary
+        # Corresponds to the JSON property `stagesSummary`
+        # @return [Google::Apis::DataprocV1::StagesSummary]
+        attr_accessor :stages_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stages_summary = args[:stages_summary] if args.key?(:stages_summary)
+        end
+      end
+      
+      # Data corresponding to tasks created by spark.
+      class TaskData
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `accumulatorUpdates`
+        # @return [Array<Google::Apis::DataprocV1::AccumulableInfo>]
+        attr_accessor :accumulator_updates
+      
+        # 
+        # Corresponds to the JSON property `attempt`
+        # @return [Fixnum]
+        attr_accessor :attempt
+      
+        # 
+        # Corresponds to the JSON property `durationMillis`
+        # @return [Fixnum]
+        attr_accessor :duration_millis
+      
+        # 
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # 
+        # Corresponds to the JSON property `executorId`
+        # @return [String]
+        attr_accessor :executor_id
+      
+        # 
+        # Corresponds to the JSON property `executorLogs`
+        # @return [Hash<String,String>]
+        attr_accessor :executor_logs
+      
+        # 
+        # Corresponds to the JSON property `gettingResultTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :getting_result_time_millis
+      
+        # 
+        # Corresponds to the JSON property `hasMetrics`
+        # @return [Boolean]
+        attr_accessor :has_metrics
+        alias_method :has_metrics?, :has_metrics
+      
+        # 
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # 
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # 
+        # Corresponds to the JSON property `launchTime`
+        # @return [String]
+        attr_accessor :launch_time
+      
+        # 
+        # Corresponds to the JSON property `partitionId`
+        # @return [Fixnum]
+        attr_accessor :partition_id
+      
+        # 
+        # Corresponds to the JSON property `resultFetchStart`
+        # @return [String]
+        attr_accessor :result_fetch_start
+      
+        # 
+        # Corresponds to the JSON property `schedulerDelayMillis`
+        # @return [Fixnum]
+        attr_accessor :scheduler_delay_millis
+      
+        # 
+        # Corresponds to the JSON property `speculative`
+        # @return [Boolean]
+        attr_accessor :speculative
+        alias_method :speculative?, :speculative
+      
+        # 
+        # Corresponds to the JSON property `stageAttemptId`
+        # @return [Fixnum]
+        attr_accessor :stage_attempt_id
+      
+        # 
+        # Corresponds to the JSON property `stageId`
+        # @return [Fixnum]
+        attr_accessor :stage_id
+      
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # 
+        # Corresponds to the JSON property `taskId`
+        # @return [Fixnum]
+        attr_accessor :task_id
+      
+        # 
+        # Corresponds to the JSON property `taskLocality`
+        # @return [String]
+        attr_accessor :task_locality
+      
+        # Executor Task Metrics
+        # Corresponds to the JSON property `taskMetrics`
+        # @return [Google::Apis::DataprocV1::TaskMetrics]
+        attr_accessor :task_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accumulator_updates = args[:accumulator_updates] if args.key?(:accumulator_updates)
+          @attempt = args[:attempt] if args.key?(:attempt)
+          @duration_millis = args[:duration_millis] if args.key?(:duration_millis)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @executor_id = args[:executor_id] if args.key?(:executor_id)
+          @executor_logs = args[:executor_logs] if args.key?(:executor_logs)
+          @getting_result_time_millis = args[:getting_result_time_millis] if args.key?(:getting_result_time_millis)
+          @has_metrics = args[:has_metrics] if args.key?(:has_metrics)
+          @host = args[:host] if args.key?(:host)
+          @index = args[:index] if args.key?(:index)
+          @launch_time = args[:launch_time] if args.key?(:launch_time)
+          @partition_id = args[:partition_id] if args.key?(:partition_id)
+          @result_fetch_start = args[:result_fetch_start] if args.key?(:result_fetch_start)
+          @scheduler_delay_millis = args[:scheduler_delay_millis] if args.key?(:scheduler_delay_millis)
+          @speculative = args[:speculative] if args.key?(:speculative)
+          @stage_attempt_id = args[:stage_attempt_id] if args.key?(:stage_attempt_id)
+          @stage_id = args[:stage_id] if args.key?(:stage_id)
+          @status = args[:status] if args.key?(:status)
+          @task_id = args[:task_id] if args.key?(:task_id)
+          @task_locality = args[:task_locality] if args.key?(:task_locality)
+          @task_metrics = args[:task_metrics] if args.key?(:task_metrics)
+        end
+      end
+      
+      # Executor Task Metrics
+      class TaskMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `diskBytesSpilled`
+        # @return [Fixnum]
+        attr_accessor :disk_bytes_spilled
+      
+        # 
+        # Corresponds to the JSON property `executorCpuTimeNanos`
+        # @return [Fixnum]
+        attr_accessor :executor_cpu_time_nanos
+      
+        # 
+        # Corresponds to the JSON property `executorDeserializeCpuTimeNanos`
+        # @return [Fixnum]
+        attr_accessor :executor_deserialize_cpu_time_nanos
+      
+        # 
+        # Corresponds to the JSON property `executorDeserializeTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :executor_deserialize_time_millis
+      
+        # 
+        # Corresponds to the JSON property `executorRunTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :executor_run_time_millis
+      
+        # Metrics about the input data read by the task.
+        # Corresponds to the JSON property `inputMetrics`
+        # @return [Google::Apis::DataprocV1::InputMetrics]
+        attr_accessor :input_metrics
+      
+        # 
+        # Corresponds to the JSON property `jvmGcTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :jvm_gc_time_millis
+      
+        # 
+        # Corresponds to the JSON property `memoryBytesSpilled`
+        # @return [Fixnum]
+        attr_accessor :memory_bytes_spilled
+      
+        # Metrics about the data written by the task.
+        # Corresponds to the JSON property `outputMetrics`
+        # @return [Google::Apis::DataprocV1::OutputMetrics]
+        attr_accessor :output_metrics
+      
+        # 
+        # Corresponds to the JSON property `peakExecutionMemoryBytes`
+        # @return [Fixnum]
+        attr_accessor :peak_execution_memory_bytes
+      
+        # 
+        # Corresponds to the JSON property `resultSerializationTimeMillis`
+        # @return [Fixnum]
+        attr_accessor :result_serialization_time_millis
+      
+        # 
+        # Corresponds to the JSON property `resultSize`
+        # @return [Fixnum]
+        attr_accessor :result_size
+      
+        # Shuffle data read by the task.
+        # Corresponds to the JSON property `shuffleReadMetrics`
+        # @return [Google::Apis::DataprocV1::ShuffleReadMetrics]
+        attr_accessor :shuffle_read_metrics
+      
+        # Shuffle data written by task.
+        # Corresponds to the JSON property `shuffleWriteMetrics`
+        # @return [Google::Apis::DataprocV1::ShuffleWriteMetrics]
+        attr_accessor :shuffle_write_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_bytes_spilled = args[:disk_bytes_spilled] if args.key?(:disk_bytes_spilled)
+          @executor_cpu_time_nanos = args[:executor_cpu_time_nanos] if args.key?(:executor_cpu_time_nanos)
+          @executor_deserialize_cpu_time_nanos = args[:executor_deserialize_cpu_time_nanos] if args.key?(:executor_deserialize_cpu_time_nanos)
+          @executor_deserialize_time_millis = args[:executor_deserialize_time_millis] if args.key?(:executor_deserialize_time_millis)
+          @executor_run_time_millis = args[:executor_run_time_millis] if args.key?(:executor_run_time_millis)
+          @input_metrics = args[:input_metrics] if args.key?(:input_metrics)
+          @jvm_gc_time_millis = args[:jvm_gc_time_millis] if args.key?(:jvm_gc_time_millis)
+          @memory_bytes_spilled = args[:memory_bytes_spilled] if args.key?(:memory_bytes_spilled)
+          @output_metrics = args[:output_metrics] if args.key?(:output_metrics)
+          @peak_execution_memory_bytes = args[:peak_execution_memory_bytes] if args.key?(:peak_execution_memory_bytes)
+          @result_serialization_time_millis = args[:result_serialization_time_millis] if args.key?(:result_serialization_time_millis)
+          @result_size = args[:result_size] if args.key?(:result_size)
+          @shuffle_read_metrics = args[:shuffle_read_metrics] if args.key?(:shuffle_read_metrics)
+          @shuffle_write_metrics = args[:shuffle_write_metrics] if args.key?(:shuffle_write_metrics)
+        end
+      end
+      
+      # 
+      class TaskQuantileMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `diskBytesSpilled`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :disk_bytes_spilled
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `durationMillis`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :duration_millis
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `executorCpuTimeNanos`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :executor_cpu_time_nanos
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `executorDeserializeCpuTimeNanos`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :executor_deserialize_cpu_time_nanos
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `executorDeserializeTimeMillis`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :executor_deserialize_time_millis
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `executorRunTimeMillis`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :executor_run_time_millis
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `gettingResultTimeMillis`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :getting_result_time_millis
+      
+        # 
+        # Corresponds to the JSON property `inputMetrics`
+        # @return [Google::Apis::DataprocV1::InputQuantileMetrics]
+        attr_accessor :input_metrics
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `jvmGcTimeMillis`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :jvm_gc_time_millis
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `memoryBytesSpilled`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :memory_bytes_spilled
+      
+        # 
+        # Corresponds to the JSON property `outputMetrics`
+        # @return [Google::Apis::DataprocV1::OutputQuantileMetrics]
+        attr_accessor :output_metrics
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `peakExecutionMemoryBytes`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :peak_execution_memory_bytes
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `resultSerializationTimeMillis`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :result_serialization_time_millis
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `resultSize`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :result_size
+      
+        # Quantile metrics data related to Tasks. Units can be seconds, bytes,
+        # milliseconds, etc depending on the message type.
+        # Corresponds to the JSON property `schedulerDelayMillis`
+        # @return [Google::Apis::DataprocV1::Quantiles]
+        attr_accessor :scheduler_delay_millis
+      
+        # 
+        # Corresponds to the JSON property `shuffleReadMetrics`
+        # @return [Google::Apis::DataprocV1::ShuffleReadQuantileMetrics]
+        attr_accessor :shuffle_read_metrics
+      
+        # 
+        # Corresponds to the JSON property `shuffleWriteMetrics`
+        # @return [Google::Apis::DataprocV1::ShuffleWriteQuantileMetrics]
+        attr_accessor :shuffle_write_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_bytes_spilled = args[:disk_bytes_spilled] if args.key?(:disk_bytes_spilled)
+          @duration_millis = args[:duration_millis] if args.key?(:duration_millis)
+          @executor_cpu_time_nanos = args[:executor_cpu_time_nanos] if args.key?(:executor_cpu_time_nanos)
+          @executor_deserialize_cpu_time_nanos = args[:executor_deserialize_cpu_time_nanos] if args.key?(:executor_deserialize_cpu_time_nanos)
+          @executor_deserialize_time_millis = args[:executor_deserialize_time_millis] if args.key?(:executor_deserialize_time_millis)
+          @executor_run_time_millis = args[:executor_run_time_millis] if args.key?(:executor_run_time_millis)
+          @getting_result_time_millis = args[:getting_result_time_millis] if args.key?(:getting_result_time_millis)
+          @input_metrics = args[:input_metrics] if args.key?(:input_metrics)
+          @jvm_gc_time_millis = args[:jvm_gc_time_millis] if args.key?(:jvm_gc_time_millis)
+          @memory_bytes_spilled = args[:memory_bytes_spilled] if args.key?(:memory_bytes_spilled)
+          @output_metrics = args[:output_metrics] if args.key?(:output_metrics)
+          @peak_execution_memory_bytes = args[:peak_execution_memory_bytes] if args.key?(:peak_execution_memory_bytes)
+          @result_serialization_time_millis = args[:result_serialization_time_millis] if args.key?(:result_serialization_time_millis)
+          @result_size = args[:result_size] if args.key?(:result_size)
+          @scheduler_delay_millis = args[:scheduler_delay_millis] if args.key?(:scheduler_delay_millis)
+          @shuffle_read_metrics = args[:shuffle_read_metrics] if args.key?(:shuffle_read_metrics)
+          @shuffle_write_metrics = args[:shuffle_write_metrics] if args.key?(:shuffle_write_metrics)
+        end
+      end
+      
+      # Resources used per task created by the application.
+      class TaskResourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `amount`
+        # @return [Float]
+        attr_accessor :amount
+      
+        # 
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -6580,6 +11586,82 @@ module Google
         def update!(**args)
           @cluster_selector = args[:cluster_selector] if args.key?(:cluster_selector)
           @managed_cluster = args[:managed_cluster] if args.key?(:managed_cluster)
+        end
+      end
+      
+      # Write Spark Application data to internal storage systems
+      class WriteSessionSparkApplicationContextRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Parent (Batch) resource reference.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Required. The batch of spark application context objects sent for ingestion.
+        # Corresponds to the JSON property `sparkWrapperObjects`
+        # @return [Array<Google::Apis::DataprocV1::SparkWrapperObject>]
+        attr_accessor :spark_wrapper_objects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @spark_wrapper_objects = args[:spark_wrapper_objects] if args.key?(:spark_wrapper_objects)
+        end
+      end
+      
+      # Response returned as an acknowledgement of receipt of data.
+      class WriteSessionSparkApplicationContextResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Write Spark Application data to internal storage systems
+      class WriteSparkApplicationContextRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Parent (Batch) resource reference.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # 
+        # Corresponds to the JSON property `sparkWrapperObjects`
+        # @return [Array<Google::Apis::DataprocV1::SparkWrapperObject>]
+        attr_accessor :spark_wrapper_objects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @spark_wrapper_objects = args[:spark_wrapper_objects] if args.key?(:spark_wrapper_objects)
+        end
+      end
+      
+      # Response returned as an acknowledgement of receipt of data.
+      class WriteSparkApplicationContextResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

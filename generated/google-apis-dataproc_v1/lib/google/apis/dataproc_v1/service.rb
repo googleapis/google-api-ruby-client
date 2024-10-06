@@ -562,6 +562,886 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Obtain high level information corresponding to a single Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSparkApplicationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSparkApplicationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_batch_spark_application(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:access', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSparkApplicationResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSparkApplicationResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain environment details for a Spark Application
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSparkApplicationEnvironmentInfoResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSparkApplicationEnvironmentInfoResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_batch_spark_application_environment_info(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessEnvironmentInfo', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSparkApplicationEnvironmentInfoResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSparkApplicationEnvironmentInfoResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to a spark job for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] job_id
+        #   Required. Job ID to fetch data for.
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSparkApplicationJobResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSparkApplicationJobResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_batch_spark_application_job(name, job_id: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessJob', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSparkApplicationJobResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSparkApplicationJobResponse
+          command.params['name'] = name unless name.nil?
+          command.query['jobId'] = job_id unless job_id.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the
+        # number of clusters returned as part of the graph to 10000.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] execution_id
+        #   Required. Execution ID
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSparkApplicationSqlSparkPlanGraphResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSparkApplicationSqlSparkPlanGraphResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_batch_spark_application_sql_plan(name, execution_id: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessSqlPlan', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSparkApplicationSqlSparkPlanGraphResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSparkApplicationSqlSparkPlanGraphResponse
+          command.params['name'] = name unless name.nil?
+          command.query['executionId'] = execution_id unless execution_id.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to a particular SQL Query for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Boolean] details
+        #   Optional. Lists/ hides details of Spark plan nodes. True is set to list and
+        #   false to hide.
+        # @param [Fixnum] execution_id
+        #   Required. Execution ID
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [Boolean] plan_description
+        #   Optional. Enables/ disables physical plan description on demand
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSparkApplicationSqlQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSparkApplicationSqlQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_batch_spark_application_sql_query(name, details: nil, execution_id: nil, parent: nil, plan_description: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessSqlQuery', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSparkApplicationSqlQueryResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSparkApplicationSqlQueryResponse
+          command.params['name'] = name unless name.nil?
+          command.query['details'] = details unless details.nil?
+          command.query['executionId'] = execution_id unless execution_id.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['planDescription'] = plan_description unless plan_description.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to a spark stage attempt for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [Fixnum] stage_attempt_id
+        #   Required. Stage Attempt ID
+        # @param [Fixnum] stage_id
+        #   Required. Stage ID
+        # @param [String] summary_metrics_mask
+        #   Optional. The list of summary metrics fields to include. Empty list will
+        #   default to skip all summary metrics fields. Example, if the response should
+        #   include TaskQuantileMetrics, the request should have task_quantile_metrics in
+        #   summary_metrics_mask field
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSparkApplicationStageAttemptResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSparkApplicationStageAttemptResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_batch_spark_application_stage_attempt(name, parent: nil, stage_attempt_id: nil, stage_id: nil, summary_metrics_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessStageAttempt', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSparkApplicationStageAttemptResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSparkApplicationStageAttemptResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageAttemptId'] = stage_attempt_id unless stage_attempt_id.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['summaryMetricsMask'] = summary_metrics_mask unless summary_metrics_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain RDD operation graph for a Spark Application Stage. Limits the number of
+        # clusters returned as part of the graph to 10000.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [Fixnum] stage_id
+        #   Required. Stage ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSparkApplicationStageRddOperationGraphResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSparkApplicationStageRddOperationGraphResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_batch_spark_application_stage_rdd_graph(name, parent: nil, stage_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessStageRddGraph', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSparkApplicationStageRddOperationGraphResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSparkApplicationStageRddOperationGraphResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain high level information and list of Spark Applications corresponding to
+        # a batch
+        # @param [String] parent
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
+        # @param [String] application_status
+        #   Optional. Search only applications in the chosen state.
+        # @param [String] max_end_time
+        #   Optional. Latest end timestamp to list.
+        # @param [String] max_time
+        #   Optional. Latest start timestamp to list.
+        # @param [String] min_end_time
+        #   Optional. Earliest end timestamp to list.
+        # @param [String] min_time
+        #   Optional. Earliest start timestamp to list.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of applications to return in each response. The
+        #   service may return fewer than this. The default page size is 10; the maximum
+        #   page size is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous SearchSparkApplications call.
+        #   Provide this token to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSparkApplicationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSparkApplicationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_batch_spark_applications(parent, application_status: nil, max_end_time: nil, max_time: nil, min_end_time: nil, min_time: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/sparkApplications:search', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSparkApplicationsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSparkApplicationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['applicationStatus'] = application_status unless application_status.nil?
+          command.query['maxEndTime'] = max_end_time unless max_end_time.nil?
+          command.query['maxTime'] = max_time unless max_time.nil?
+          command.query['minEndTime'] = min_end_time unless min_end_time.nil?
+          command.query['minTime'] = min_time unless min_time.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain executor summary with respect to a spark stage attempt.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of executors to return in each response. The service
+        #   may return fewer than this. The default page size is 10; the maximum page size
+        #   is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   AccessSparkApplicationExecutorsList call. Provide this token to retrieve the
+        #   subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [Fixnum] stage_attempt_id
+        #   Required. Stage Attempt ID
+        # @param [Fixnum] stage_id
+        #   Required. Stage ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSparkApplicationExecutorStageSummaryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSparkApplicationExecutorStageSummaryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_batch_spark_application_executor_stage_summary(name, page_size: nil, page_token: nil, parent: nil, stage_attempt_id: nil, stage_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchExecutorStageSummary', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSparkApplicationExecutorStageSummaryResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSparkApplicationExecutorStageSummaryResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageAttemptId'] = stage_attempt_id unless stage_attempt_id.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to executors for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] executor_status
+        #   Optional. Filter to select whether active/ dead or all executors should be
+        #   selected.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of executors to return in each response. The service
+        #   may return fewer than this. The default page size is 10; the maximum page size
+        #   is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   AccessSparkApplicationExecutorsList call. Provide this token to retrieve the
+        #   subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSparkApplicationExecutorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSparkApplicationExecutorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_batch_spark_application_executors(name, executor_status: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchExecutors', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSparkApplicationExecutorsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSparkApplicationExecutorsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['executorStatus'] = executor_status unless executor_status.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain list of spark jobs corresponding to a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] job_status
+        #   Optional. List only jobs in the specific state.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of jobs to return in each response. The service may
+        #   return fewer than this. The default page size is 10; the maximum page size is
+        #   100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous SearchSparkApplicationJobs
+        #   call. Provide this token to retrieve the subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSparkApplicationJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSparkApplicationJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_batch_spark_application_jobs(name, job_status: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchJobs', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSparkApplicationJobsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSparkApplicationJobsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['jobStatus'] = job_status unless job_status.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to SQL Queries for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Boolean] details
+        #   Optional. Lists/ hides details of Spark plan nodes. True is set to list and
+        #   false to hide.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of queries to return in each response. The service
+        #   may return fewer than this. The default page size is 10; the maximum page size
+        #   is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   SearchSparkApplicationSqlQueries call. Provide this token to retrieve the
+        #   subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [Boolean] plan_description
+        #   Optional. Enables/ disables physical plan description on demand
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSparkApplicationSqlQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSparkApplicationSqlQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_batch_spark_application_sql_queries(name, details: nil, page_size: nil, page_token: nil, parent: nil, plan_description: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchSqlQueries', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSparkApplicationSqlQueriesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSparkApplicationSqlQueriesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['details'] = details unless details.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['planDescription'] = plan_description unless plan_description.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to tasks for a spark stage attempt for a Spark
+        # Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of tasks to return in each response. The service may
+        #   return fewer than this. The default page size is 10; the maximum page size is
+        #   100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   ListSparkApplicationStageAttemptTasks call. Provide this token to retrieve the
+        #   subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [Boolean] sort_runtime
+        #   Optional. Sort the tasks by runtime.
+        # @param [Fixnum] stage_attempt_id
+        #   Optional. Stage Attempt ID
+        # @param [Fixnum] stage_id
+        #   Optional. Stage ID
+        # @param [String] task_status
+        #   Optional. List only tasks in the state.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSparkApplicationStageAttemptTasksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSparkApplicationStageAttemptTasksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_batch_spark_application_stage_attempt_tasks(name, page_size: nil, page_token: nil, parent: nil, sort_runtime: nil, stage_attempt_id: nil, stage_id: nil, task_status: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchStageAttemptTasks', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSparkApplicationStageAttemptTasksResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSparkApplicationStageAttemptTasksResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['sortRuntime'] = sort_runtime unless sort_runtime.nil?
+          command.query['stageAttemptId'] = stage_attempt_id unless stage_attempt_id.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['taskStatus'] = task_status unless task_status.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to a spark stage attempts for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of stage attempts (paging based on stage_attempt_id)
+        #   to return in each response. The service may return fewer than this. The
+        #   default page size is 10; the maximum page size is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   SearchSparkApplicationStageAttempts call. Provide this token to retrieve the
+        #   subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [Fixnum] stage_id
+        #   Required. Stage ID for which attempts are to be fetched
+        # @param [String] summary_metrics_mask
+        #   Optional. The list of summary metrics fields to include. Empty list will
+        #   default to skip all summary metrics fields. Example, if the response should
+        #   include TaskQuantileMetrics, the request should have task_quantile_metrics in
+        #   summary_metrics_mask field
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSparkApplicationStageAttemptsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSparkApplicationStageAttemptsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_batch_spark_application_stage_attempts(name, page_size: nil, page_token: nil, parent: nil, stage_id: nil, summary_metrics_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchStageAttempts', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSparkApplicationStageAttemptsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSparkApplicationStageAttemptsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['summaryMetricsMask'] = summary_metrics_mask unless summary_metrics_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to stages for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of stages (paging based on stage_id) to return in
+        #   each response. The service may return fewer than this. The default page size
+        #   is 10; the maximum page size is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   FetchSparkApplicationStagesList call. Provide this token to retrieve the
+        #   subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] stage_status
+        #   Optional. List only stages in the given state.
+        # @param [String] summary_metrics_mask
+        #   Optional. The list of summary metrics fields to include. Empty list will
+        #   default to skip all summary metrics fields. Example, if the response should
+        #   include TaskQuantileMetrics, the request should have task_quantile_metrics in
+        #   summary_metrics_mask field
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSparkApplicationStagesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSparkApplicationStagesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_batch_spark_application_stages(name, page_size: nil, page_token: nil, parent: nil, stage_status: nil, summary_metrics_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchStages', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSparkApplicationStagesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSparkApplicationStagesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageStatus'] = stage_status unless stage_status.nil?
+          command.query['summaryMetricsMask'] = summary_metrics_mask unless summary_metrics_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain summary of Executor Summary for a Spark Application
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SummarizeSparkApplicationExecutorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SummarizeSparkApplicationExecutorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def summarize_project_location_batch_spark_application_executors(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:summarizeExecutors', options)
+          command.response_representation = Google::Apis::DataprocV1::SummarizeSparkApplicationExecutorsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SummarizeSparkApplicationExecutorsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain summary of Jobs for a Spark Application
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SummarizeSparkApplicationJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SummarizeSparkApplicationJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def summarize_project_location_batch_spark_application_jobs(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:summarizeJobs', options)
+          command.response_representation = Google::Apis::DataprocV1::SummarizeSparkApplicationJobsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SummarizeSparkApplicationJobsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain summary of Tasks for a Spark Application Stage Attempt
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [Fixnum] stage_attempt_id
+        #   Required. Stage Attempt ID
+        # @param [Fixnum] stage_id
+        #   Required. Stage ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SummarizeSparkApplicationStageAttemptTasksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SummarizeSparkApplicationStageAttemptTasksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def summarize_project_location_batch_spark_application_stage_attempt_tasks(name, parent: nil, stage_attempt_id: nil, stage_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:summarizeStageAttemptTasks', options)
+          command.response_representation = Google::Apis::DataprocV1::SummarizeSparkApplicationStageAttemptTasksResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SummarizeSparkApplicationStageAttemptTasksResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageAttemptId'] = stage_attempt_id unless stage_attempt_id.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain summary of Stages for a Spark Application
+        # @param [String] name
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Batch) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SummarizeSparkApplicationStagesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SummarizeSparkApplicationStagesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def summarize_project_location_batch_spark_application_stages(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:summarizeStages', options)
+          command.response_representation = Google::Apis::DataprocV1::SummarizeSparkApplicationStagesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SummarizeSparkApplicationStagesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Write wrapper objects from dataplane to spanner
+        # @param [String] name
+        #   Required. The fully qualified name of the spark application to write data
+        #   about in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/
+        #   BATCH_ID/sparkApplications/APPLICATION_ID"
+        # @param [Google::Apis::DataprocV1::WriteSparkApplicationContextRequest] write_spark_application_context_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::WriteSparkApplicationContextResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::WriteSparkApplicationContextResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def write_spark_application_context(name, write_spark_application_context_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:write', options)
+          command.request_representation = Google::Apis::DataprocV1::WriteSparkApplicationContextRequest::Representation
+          command.request_object = write_spark_application_context_request_object
+          command.response_representation = Google::Apis::DataprocV1::WriteSparkApplicationContextResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::WriteSparkApplicationContextResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.
@@ -1068,6 +1948,887 @@ module Google
           command.request_object = terminate_session_request_object
           command.response_representation = Google::Apis::DataprocV1::Operation::Representation
           command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain high level information corresponding to a single Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSessionSparkApplicationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSessionSparkApplicationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_session_spark_application(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:access', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSessionSparkApplicationResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSessionSparkApplicationResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain environment details for a Spark Application
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSessionSparkApplicationEnvironmentInfoResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSessionSparkApplicationEnvironmentInfoResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_session_spark_application_environment_info(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessEnvironmentInfo', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSessionSparkApplicationEnvironmentInfoResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSessionSparkApplicationEnvironmentInfoResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to a spark job for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] job_id
+        #   Required. Job ID to fetch data for.
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSessionSparkApplicationJobResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSessionSparkApplicationJobResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_session_spark_application_job(name, job_id: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessJob', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSessionSparkApplicationJobResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSessionSparkApplicationJobResponse
+          command.params['name'] = name unless name.nil?
+          command.query['jobId'] = job_id unless job_id.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the
+        # number of clusters returned as part of the graph to 10000.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] execution_id
+        #   Required. Execution ID
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSessionSparkApplicationSqlSparkPlanGraphResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSessionSparkApplicationSqlSparkPlanGraphResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_session_spark_application_sql_plan(name, execution_id: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessSqlPlan', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSessionSparkApplicationSqlSparkPlanGraphResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSessionSparkApplicationSqlSparkPlanGraphResponse
+          command.params['name'] = name unless name.nil?
+          command.query['executionId'] = execution_id unless execution_id.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to a particular SQL Query for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Boolean] details
+        #   Optional. Lists/ hides details of Spark plan nodes. True is set to list and
+        #   false to hide.
+        # @param [Fixnum] execution_id
+        #   Required. Execution ID
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [Boolean] plan_description
+        #   Optional. Enables/ disables physical plan description on demand
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSessionSparkApplicationSqlQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSessionSparkApplicationSqlQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_session_spark_application_sql_query(name, details: nil, execution_id: nil, parent: nil, plan_description: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessSqlQuery', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSessionSparkApplicationSqlQueryResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSessionSparkApplicationSqlQueryResponse
+          command.params['name'] = name unless name.nil?
+          command.query['details'] = details unless details.nil?
+          command.query['executionId'] = execution_id unless execution_id.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['planDescription'] = plan_description unless plan_description.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to a spark stage attempt for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [Fixnum] stage_attempt_id
+        #   Required. Stage Attempt ID
+        # @param [Fixnum] stage_id
+        #   Required. Stage ID
+        # @param [String] summary_metrics_mask
+        #   Optional. The list of summary metrics fields to include. Empty list will
+        #   default to skip all summary metrics fields. Example, if the response should
+        #   include TaskQuantileMetrics, the request should have task_quantile_metrics in
+        #   summary_metrics_mask field
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSessionSparkApplicationStageAttemptResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSessionSparkApplicationStageAttemptResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_session_spark_application_stage_attempt(name, parent: nil, stage_attempt_id: nil, stage_id: nil, summary_metrics_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessStageAttempt', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSessionSparkApplicationStageAttemptResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSessionSparkApplicationStageAttemptResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageAttemptId'] = stage_attempt_id unless stage_attempt_id.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['summaryMetricsMask'] = summary_metrics_mask unless summary_metrics_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain RDD operation graph for a Spark Application Stage. Limits the number of
+        # clusters returned as part of the graph to 10000.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [Fixnum] stage_id
+        #   Required. Stage ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::AccessSessionSparkApplicationStageRddOperationGraphResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::AccessSessionSparkApplicationStageRddOperationGraphResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def access_project_location_session_spark_application_stage_rdd_graph(name, parent: nil, stage_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:accessStageRddGraph', options)
+          command.response_representation = Google::Apis::DataprocV1::AccessSessionSparkApplicationStageRddOperationGraphResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::AccessSessionSparkApplicationStageRddOperationGraphResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain high level information and list of Spark Applications corresponding to
+        # a batch
+        # @param [String] parent
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID"
+        # @param [String] application_status
+        #   Optional. Search only applications in the chosen state.
+        # @param [String] max_end_time
+        #   Optional. Latest end timestamp to list.
+        # @param [String] max_time
+        #   Optional. Latest start timestamp to list.
+        # @param [String] min_end_time
+        #   Optional. Earliest end timestamp to list.
+        # @param [String] min_time
+        #   Optional. Earliest start timestamp to list.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of applications to return in each response. The
+        #   service may return fewer than this. The default page size is 10; the maximum
+        #   page size is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous SearchSessionSparkApplications
+        #   call. Provide this token to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSessionSparkApplicationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSessionSparkApplicationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_session_spark_applications(parent, application_status: nil, max_end_time: nil, max_time: nil, min_end_time: nil, min_time: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/sparkApplications:search', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['applicationStatus'] = application_status unless application_status.nil?
+          command.query['maxEndTime'] = max_end_time unless max_end_time.nil?
+          command.query['maxTime'] = max_time unless max_time.nil?
+          command.query['minEndTime'] = min_end_time unless min_end_time.nil?
+          command.query['minTime'] = min_time unless min_time.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain executor summary with respect to a spark stage attempt.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of executors to return in each response. The service
+        #   may return fewer than this. The default page size is 10; the maximum page size
+        #   is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   SearchSessionSparkApplicationExecutorStageSummary call. Provide this token to
+        #   retrieve the subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [Fixnum] stage_attempt_id
+        #   Required. Stage Attempt ID
+        # @param [Fixnum] stage_id
+        #   Required. Stage ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSessionSparkApplicationExecutorStageSummaryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSessionSparkApplicationExecutorStageSummaryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_session_spark_application_executor_stage_summary(name, page_size: nil, page_token: nil, parent: nil, stage_attempt_id: nil, stage_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchExecutorStageSummary', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationExecutorStageSummaryResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationExecutorStageSummaryResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageAttemptId'] = stage_attempt_id unless stage_attempt_id.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to executors for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] executor_status
+        #   Optional. Filter to select whether active/ dead or all executors should be
+        #   selected.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of executors to return in each response. The service
+        #   may return fewer than this. The default page size is 10; the maximum page size
+        #   is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   SearchSessionSparkApplicationExecutors call. Provide this token to retrieve
+        #   the subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSessionSparkApplicationExecutorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSessionSparkApplicationExecutorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_session_spark_application_executors(name, executor_status: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchExecutors', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationExecutorsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationExecutorsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['executorStatus'] = executor_status unless executor_status.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain list of spark jobs corresponding to a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] job_status
+        #   Optional. List only jobs in the specific state.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of jobs to return in each response. The service may
+        #   return fewer than this. The default page size is 10; the maximum page size is
+        #   100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   SearchSessionSparkApplicationJobs call. Provide this token to retrieve the
+        #   subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSessionSparkApplicationJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSessionSparkApplicationJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_session_spark_application_jobs(name, job_status: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchJobs', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationJobsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationJobsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['jobStatus'] = job_status unless job_status.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to SQL Queries for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Boolean] details
+        #   Optional. Lists/ hides details of Spark plan nodes. True is set to list and
+        #   false to hide.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of queries to return in each response. The service
+        #   may return fewer than this. The default page size is 10; the maximum page size
+        #   is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   SearchSessionSparkApplicationSqlQueries call. Provide this token to retrieve
+        #   the subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [Boolean] plan_description
+        #   Optional. Enables/ disables physical plan description on demand
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSessionSparkApplicationSqlQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSessionSparkApplicationSqlQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_session_spark_application_sql_queries(name, details: nil, page_size: nil, page_token: nil, parent: nil, plan_description: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchSqlQueries', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationSqlQueriesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationSqlQueriesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['details'] = details unless details.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['planDescription'] = plan_description unless plan_description.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to tasks for a spark stage attempt for a Spark
+        # Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of tasks to return in each response. The service may
+        #   return fewer than this. The default page size is 10; the maximum page size is
+        #   100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   SearchSessionSparkApplicationStageAttemptTasks call. Provide this token to
+        #   retrieve the subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [Boolean] sort_runtime
+        #   Optional. Sort the tasks by runtime.
+        # @param [Fixnum] stage_attempt_id
+        #   Optional. Stage Attempt ID
+        # @param [Fixnum] stage_id
+        #   Optional. Stage ID
+        # @param [String] task_status
+        #   Optional. List only tasks in the state.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSessionSparkApplicationStageAttemptTasksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSessionSparkApplicationStageAttemptTasksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_session_spark_application_stage_attempt_tasks(name, page_size: nil, page_token: nil, parent: nil, sort_runtime: nil, stage_attempt_id: nil, stage_id: nil, task_status: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchStageAttemptTasks', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationStageAttemptTasksResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationStageAttemptTasksResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['sortRuntime'] = sort_runtime unless sort_runtime.nil?
+          command.query['stageAttemptId'] = stage_attempt_id unless stage_attempt_id.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['taskStatus'] = task_status unless task_status.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to a spark stage attempts for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of stage attempts (paging based on stage_attempt_id)
+        #   to return in each response. The service may return fewer than this. The
+        #   default page size is 10; the maximum page size is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   SearchSessionSparkApplicationStageAttempts call. Provide this token to
+        #   retrieve the subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [Fixnum] stage_id
+        #   Required. Stage ID for which attempts are to be fetched
+        # @param [String] summary_metrics_mask
+        #   Optional. The list of summary metrics fields to include. Empty list will
+        #   default to skip all summary metrics fields. Example, if the response should
+        #   include TaskQuantileMetrics, the request should have task_quantile_metrics in
+        #   summary_metrics_mask field
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSessionSparkApplicationStageAttemptsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSessionSparkApplicationStageAttemptsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_session_spark_application_stage_attempts(name, page_size: nil, page_token: nil, parent: nil, stage_id: nil, summary_metrics_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchStageAttempts', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationStageAttemptsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationStageAttemptsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['summaryMetricsMask'] = summary_metrics_mask unless summary_metrics_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain data corresponding to stages for a Spark Application.
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of stages (paging based on stage_id) to return in
+        #   each response. The service may return fewer than this. The default page size
+        #   is 10; the maximum page size is 100.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous
+        #   SearchSessionSparkApplicationStages call. Provide this token to retrieve the
+        #   subsequent page.
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] stage_status
+        #   Optional. List only stages in the given state.
+        # @param [String] summary_metrics_mask
+        #   Optional. The list of summary metrics fields to include. Empty list will
+        #   default to skip all summary metrics fields. Example, if the response should
+        #   include TaskQuantileMetrics, the request should have task_quantile_metrics in
+        #   summary_metrics_mask field
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SearchSessionSparkApplicationStagesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SearchSessionSparkApplicationStagesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_session_spark_application_stages(name, page_size: nil, page_token: nil, parent: nil, stage_status: nil, summary_metrics_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:searchStages', options)
+          command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationStagesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationStagesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageStatus'] = stage_status unless stage_status.nil?
+          command.query['summaryMetricsMask'] = summary_metrics_mask unless summary_metrics_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain summary of Executor Summary for a Spark Application
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SummarizeSessionSparkApplicationExecutorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SummarizeSessionSparkApplicationExecutorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def summarize_project_location_session_spark_application_executors(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:summarizeExecutors', options)
+          command.response_representation = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationExecutorsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationExecutorsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain summary of Jobs for a Spark Application
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SummarizeSessionSparkApplicationJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SummarizeSessionSparkApplicationJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def summarize_project_location_session_spark_application_jobs(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:summarizeJobs', options)
+          command.response_representation = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationJobsResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationJobsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain summary of Tasks for a Spark Application Stage Attempt
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [Fixnum] stage_attempt_id
+        #   Required. Stage Attempt ID
+        # @param [Fixnum] stage_id
+        #   Required. Stage ID
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStageAttemptTasksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStageAttemptTasksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def summarize_project_location_session_spark_application_stage_attempt_tasks(name, parent: nil, stage_attempt_id: nil, stage_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:summarizeStageAttemptTasks', options)
+          command.response_representation = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStageAttemptTasksResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStageAttemptTasksResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['stageAttemptId'] = stage_attempt_id unless stage_attempt_id.nil?
+          command.query['stageId'] = stage_id unless stage_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Obtain summary of Stages for a Spark Application
+        # @param [String] name
+        #   Required. The fully qualified name of the session to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
+        #   sparkApplications/APPLICATION_ID"
+        # @param [String] parent
+        #   Required. Parent (Session) resource reference.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStagesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStagesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def summarize_project_location_session_spark_application_stages(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:summarizeStages', options)
+          command.response_representation = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStagesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStagesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Write wrapper objects from dataplane to spanner
+        # @param [String] name
+        #   Required. The fully qualified name of the spark application to write data
+        #   about in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/
+        #   SESSION_ID/sparkApplications/APPLICATION_ID"
+        # @param [Google::Apis::DataprocV1::WriteSessionSparkApplicationContextRequest] write_session_spark_application_context_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::WriteSessionSparkApplicationContextResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::WriteSessionSparkApplicationContextResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def write_session_spark_application_context(name, write_session_spark_application_context_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:write', options)
+          command.request_representation = Google::Apis::DataprocV1::WriteSessionSparkApplicationContextRequest::Representation
+          command.request_object = write_session_spark_application_context_request_object
+          command.response_representation = Google::Apis::DataprocV1::WriteSessionSparkApplicationContextResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::WriteSessionSparkApplicationContextResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
