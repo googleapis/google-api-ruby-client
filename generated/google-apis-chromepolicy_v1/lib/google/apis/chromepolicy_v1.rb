@@ -31,10 +31,10 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
-      # See, edit, create or delete policies applied to Chrome OS and Chrome Browsers managed within your organization
+      # See, edit, create or delete policies applied to ChromeOS and Chrome Browsers managed within your organization
       AUTH_CHROME_MANAGEMENT_POLICY = 'https://www.googleapis.com/auth/chrome.management.policy'
 
-      # See policies applied to Chrome OS and Chrome Browsers managed within your organization
+      # See policies applied to ChromeOS and Chrome Browsers managed within your organization
       AUTH_CHROME_MANAGEMENT_POLICY_READONLY = 'https://www.googleapis.com/auth/chrome.management.policy.readonly'
     end
   end
