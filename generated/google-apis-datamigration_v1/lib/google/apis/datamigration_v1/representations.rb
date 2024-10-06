@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BinaryLogParser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -400,6 +406,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogFileDirectories
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogMiner
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MachineConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -466,7 +484,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OracleAsmLogFileAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OracleConnectionProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OracleSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OracleToPostgresConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -497,6 +533,12 @@ module Google
       end
       
       class PostgreSqlConnectionProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgresDestinationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -931,6 +973,16 @@ module Google
           property :seed_job_details, as: 'seedJobDetails', class: Google::Apis::DatamigrationV1::SeedJobDetails, decorator: Google::Apis::DatamigrationV1::SeedJobDetails::Representation
       
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class BinaryLogParser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_file_directories, as: 'logFileDirectories', class: Google::Apis::DatamigrationV1::LogFileDirectories, decorator: Google::Apis::DatamigrationV1::LogFileDirectories::Representation
+      
+          property :oracle_asm_log_file_access, as: 'oracleAsmLogFileAccess', class: Google::Apis::DatamigrationV1::OracleAsmLogFileAccess, decorator: Google::Apis::DatamigrationV1::OracleAsmLogFileAccess::Representation
+      
         end
       end
       
@@ -1512,6 +1564,20 @@ module Google
         end
       end
       
+      class LogFileDirectories
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archived_log_directory, as: 'archivedLogDirectory'
+          property :online_log_directory, as: 'onlineLogDirectory'
+        end
+      end
+      
+      class LogMiner
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class MachineConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1597,6 +1663,8 @@ module Google
           property :filter, as: 'filter'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :oracle_to_postgres_config, as: 'oracleToPostgresConfig', class: Google::Apis::DatamigrationV1::OracleToPostgresConfig, decorator: Google::Apis::DatamigrationV1::OracleToPostgresConfig::Representation
+      
           property :performance_config, as: 'performanceConfig', class: Google::Apis::DatamigrationV1::PerformanceConfig, decorator: Google::Apis::DatamigrationV1::PerformanceConfig::Representation
       
           property :phase, as: 'phase'
@@ -1691,6 +1759,12 @@ module Google
         end
       end
       
+      class OracleAsmLogFileAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class OracleConnectionProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1710,6 +1784,30 @@ module Google
           property :static_service_ip_connectivity, as: 'staticServiceIpConnectivity', class: Google::Apis::DatamigrationV1::StaticServiceIpConnectivity, decorator: Google::Apis::DatamigrationV1::StaticServiceIpConnectivity::Representation
       
           property :username, as: 'username'
+        end
+      end
+      
+      class OracleSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :binary_log_parser, as: 'binaryLogParser', class: Google::Apis::DatamigrationV1::BinaryLogParser, decorator: Google::Apis::DatamigrationV1::BinaryLogParser::Representation
+      
+          property :cdc_start_position, :numeric_string => true, as: 'cdcStartPosition'
+          property :log_miner, as: 'logMiner', class: Google::Apis::DatamigrationV1::LogMiner, decorator: Google::Apis::DatamigrationV1::LogMiner::Representation
+      
+          property :max_concurrent_cdc_connections, as: 'maxConcurrentCdcConnections'
+          property :max_concurrent_full_dump_connections, as: 'maxConcurrentFullDumpConnections'
+          property :skip_full_dump, as: 'skipFullDump'
+        end
+      end
+      
+      class OracleToPostgresConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oracle_source_config, as: 'oracleSourceConfig', class: Google::Apis::DatamigrationV1::OracleSourceConfig, decorator: Google::Apis::DatamigrationV1::OracleSourceConfig::Representation
+      
+          property :postgres_destination_config, as: 'postgresDestinationConfig', class: Google::Apis::DatamigrationV1::PostgresDestinationConfig, decorator: Google::Apis::DatamigrationV1::PostgresDestinationConfig::Representation
+      
         end
       end
       
@@ -1768,6 +1866,14 @@ module Google
           property :static_ip_connectivity, as: 'staticIpConnectivity', class: Google::Apis::DatamigrationV1::StaticIpConnectivity, decorator: Google::Apis::DatamigrationV1::StaticIpConnectivity::Representation
       
           property :username, as: 'username'
+        end
+      end
+      
+      class PostgresDestinationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_concurrent_connections, as: 'maxConcurrentConnections'
+          property :transaction_timeout, as: 'transactionTimeout'
         end
       end
       

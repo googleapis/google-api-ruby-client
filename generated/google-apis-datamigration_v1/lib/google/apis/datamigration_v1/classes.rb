@@ -388,6 +388,31 @@ module Google
         end
       end
       
+      # Configuration to use Binary Log Parser CDC technique.
+      class BinaryLogParser
+        include Google::Apis::Core::Hashable
+      
+        # Configuration to specify the Oracle directories to access the log files.
+        # Corresponds to the JSON property `logFileDirectories`
+        # @return [Google::Apis::DatamigrationV1::LogFileDirectories]
+        attr_accessor :log_file_directories
+      
+        # Configuration to use Oracle ASM to access the log files.
+        # Corresponds to the JSON property `oracleAsmLogFileAccess`
+        # @return [Google::Apis::DatamigrationV1::OracleAsmLogFileAccess]
+        attr_accessor :oracle_asm_log_file_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_file_directories = args[:log_file_directories] if args.key?(:log_file_directories)
+          @oracle_asm_log_file_access = args[:oracle_asm_log_file_access] if args.key?(:oracle_asm_log_file_access)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -2605,6 +2630,44 @@ module Google
         end
       end
       
+      # Configuration to specify the Oracle directories to access the log files.
+      class LogFileDirectories
+        include Google::Apis::Core::Hashable
+      
+        # Required. Oracle directory for archived logs.
+        # Corresponds to the JSON property `archivedLogDirectory`
+        # @return [String]
+        attr_accessor :archived_log_directory
+      
+        # Required. Oracle directory for online logs.
+        # Corresponds to the JSON property `onlineLogDirectory`
+        # @return [String]
+        attr_accessor :online_log_directory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archived_log_directory = args[:archived_log_directory] if args.key?(:archived_log_directory)
+          @online_log_directory = args[:online_log_directory] if args.key?(:online_log_directory)
+        end
+      end
+      
+      # Configuration to use LogMiner CDC method.
+      class LogMiner
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # MachineConfig describes the configuration of a machine.
       class MachineConfig
         include Google::Apis::Core::Hashable
@@ -2977,6 +3040,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configuration for heterogeneous **Oracle to Cloud SQL for PostgreSQL** and **
+        # Oracle to AlloyDB for PostgreSQL** migrations.
+        # Corresponds to the JSON property `oracleToPostgresConfig`
+        # @return [Google::Apis::DatamigrationV1::OracleToPostgresConfig]
+        attr_accessor :oracle_to_postgres_config
+      
         # Performance configuration definition.
         # Corresponds to the JSON property `performanceConfig`
         # @return [Google::Apis::DatamigrationV1::PerformanceConfig]
@@ -3065,6 +3134,7 @@ module Google
           @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @oracle_to_postgres_config = args[:oracle_to_postgres_config] if args.key?(:oracle_to_postgres_config)
           @performance_config = args[:performance_config] if args.key?(:performance_config)
           @phase = args[:phase] if args.key?(:phase)
           @reverse_ssh_connectivity = args[:reverse_ssh_connectivity] if args.key?(:reverse_ssh_connectivity)
@@ -3403,6 +3473,19 @@ module Google
         end
       end
       
+      # Configuration to use Oracle ASM to access the log files.
+      class OracleAsmLogFileAccess
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specifies connection parameters required specifically for Oracle databases.
       class OracleConnectionProfile
         include Google::Apis::Core::Hashable
@@ -3484,6 +3567,84 @@ module Google
           @ssl = args[:ssl] if args.key?(:ssl)
           @static_service_ip_connectivity = args[:static_service_ip_connectivity] if args.key?(:static_service_ip_connectivity)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Configuration for Oracle as a source in a migration.
+      class OracleSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration to use Binary Log Parser CDC technique.
+        # Corresponds to the JSON property `binaryLogParser`
+        # @return [Google::Apis::DatamigrationV1::BinaryLogParser]
+        attr_accessor :binary_log_parser
+      
+        # Optional. The schema change number (SCN) to start CDC data migration from.
+        # Corresponds to the JSON property `cdcStartPosition`
+        # @return [Fixnum]
+        attr_accessor :cdc_start_position
+      
+        # Configuration to use LogMiner CDC method.
+        # Corresponds to the JSON property `logMiner`
+        # @return [Google::Apis::DatamigrationV1::LogMiner]
+        attr_accessor :log_miner
+      
+        # Optional. Maximum number of connections Database Migration Service will open
+        # to the source for CDC phase.
+        # Corresponds to the JSON property `maxConcurrentCdcConnections`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_cdc_connections
+      
+        # Optional. Maximum number of connections Database Migration Service will open
+        # to the source for full dump phase.
+        # Corresponds to the JSON property `maxConcurrentFullDumpConnections`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_full_dump_connections
+      
+        # Optional. Whether to skip full dump or not.
+        # Corresponds to the JSON property `skipFullDump`
+        # @return [Boolean]
+        attr_accessor :skip_full_dump
+        alias_method :skip_full_dump?, :skip_full_dump
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @binary_log_parser = args[:binary_log_parser] if args.key?(:binary_log_parser)
+          @cdc_start_position = args[:cdc_start_position] if args.key?(:cdc_start_position)
+          @log_miner = args[:log_miner] if args.key?(:log_miner)
+          @max_concurrent_cdc_connections = args[:max_concurrent_cdc_connections] if args.key?(:max_concurrent_cdc_connections)
+          @max_concurrent_full_dump_connections = args[:max_concurrent_full_dump_connections] if args.key?(:max_concurrent_full_dump_connections)
+          @skip_full_dump = args[:skip_full_dump] if args.key?(:skip_full_dump)
+        end
+      end
+      
+      # Configuration for heterogeneous **Oracle to Cloud SQL for PostgreSQL** and **
+      # Oracle to AlloyDB for PostgreSQL** migrations.
+      class OracleToPostgresConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Oracle as a source in a migration.
+        # Corresponds to the JSON property `oracleSourceConfig`
+        # @return [Google::Apis::DatamigrationV1::OracleSourceConfig]
+        attr_accessor :oracle_source_config
+      
+        # Configuration for Postgres as a destination in a migration.
+        # Corresponds to the JSON property `postgresDestinationConfig`
+        # @return [Google::Apis::DatamigrationV1::PostgresDestinationConfig]
+        attr_accessor :postgres_destination_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oracle_source_config = args[:oracle_source_config] if args.key?(:oracle_source_config)
+          @postgres_destination_config = args[:postgres_destination_config] if args.key?(:postgres_destination_config)
         end
       end
       
@@ -3758,6 +3919,32 @@ module Google
           @ssl = args[:ssl] if args.key?(:ssl)
           @static_ip_connectivity = args[:static_ip_connectivity] if args.key?(:static_ip_connectivity)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Configuration for Postgres as a destination in a migration.
+      class PostgresDestinationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Maximum number of connections Database Migration Service will open
+        # to the destination for data migration.
+        # Corresponds to the JSON property `maxConcurrentConnections`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_connections
+      
+        # Optional. Timeout for data migration transactions.
+        # Corresponds to the JSON property `transactionTimeout`
+        # @return [String]
+        attr_accessor :transaction_timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_concurrent_connections = args[:max_concurrent_connections] if args.key?(:max_concurrent_connections)
+          @transaction_timeout = args[:transaction_timeout] if args.key?(:transaction_timeout)
         end
       end
       
