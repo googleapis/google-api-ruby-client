@@ -1674,6 +1674,372 @@ module Google
         end
       end
       
+      # A Beyondcorp Application resource information.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1Application
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An arbitrary user-provided name for the Application resource. Cannot
+        # exceed 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Endpoint matchers associated with an application. A combination of
+        # hostname and ports as endpoint matcher is used to match the application. Match
+        # conditions for OR logic. An array of match conditions to allow for multiple
+        # matching criteria. The rule is considered a match if one the conditions are
+        # met. The conditions can be one of the following combination (Hostname), (
+        # Hostname & Ports) EXAMPLES: Hostname - ("*.abc.com"), ("xyz.abc.com") Hostname
+        # and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
+        # Corresponds to the JSON property `endpointMatchers`
+        # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>]
+        attr_accessor :endpoint_matchers
+      
+        # Identifier. Name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when the resource was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @endpoint_matchers = args[:endpoint_matchers] if args.key?(:endpoint_matchers)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # EndpointMatcher contains the information of the endpoint that will match the
+      # application.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher
+        include Google::Apis::Core::Hashable
+      
+        # Required. Hostname of the application.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Optional. Ports of the application.
+        # Corresponds to the JSON property `ports`
+        # @return [Array<Fixnum>]
+        attr_accessor :ports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # The Hub message contains information pertaining to the regional data path
+      # deployments.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1Hub
+        include Google::Apis::Core::Hashable
+      
+        # Represents the NAT Gateway configuration.
+        # Corresponds to the JSON property `natGatewayConfig`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig]
+        attr_accessor :nat_gateway_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nat_gateway_config = args[:nat_gateway_config] if args.key?(:nat_gateway_config)
+        end
+      end
+      
+      # Message for response to listing Applications.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of BeyondCorp Application in the project.
+        # Corresponds to the JSON property `applications`
+        # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Application>]
+        attr_accessor :applications
+      
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applications = args[:applications] if args.key?(:applications)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing SecurityGateways.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of BeyondCorp SecurityGateway in the project.
+        # Corresponds to the JSON property `securityGateways`
+        # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>]
+        attr_accessor :security_gateways
+      
+        # A list of locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_gateways = args[:security_gateways] if args.key?(:security_gateways)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Represents the NAT Gateway configuration.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of NAT IPs that will be used for establishing connection to
+        # the endpoints.
+        # Corresponds to the JSON property `natIps`
+        # @return [Array<String>]
+        attr_accessor :nat_ips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nat_ips = args[:nat_ips] if args.key?(:nat_ips)
+        end
+      end
+      
+      # VPC Peering details.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1Peering
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of DNS zones for DNS peering with the customer VPC network.
+        # Corresponds to the JSON property `dnsZones`
+        # @return [Array<String>]
+        attr_accessor :dns_zones
+      
+        # Required. The name of the Target VPC network name in the format: `projects/`
+        # project`/global/networks/`network`
+        # Corresponds to the JSON property `targetVpcNetwork`
+        # @return [String]
+        attr_accessor :target_vpc_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_zones = args[:dns_zones] if args.key?(:dns_zones)
+          @target_vpc_network = args[:target_vpc_network] if args.key?(:target_vpc_network)
+        end
+      end
+      
+      # Information about a BeyoncCorp SecurityGateway resource.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An arbitrary user-provided name for the SecurityGateway. Cannot
+        # exceed 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. IP addresses that will be used for establishing connection to the
+        # endpoints.
+        # Corresponds to the JSON property `externalIps`
+        # @return [Array<String>]
+        attr_accessor :external_ips
+      
+        # Optional. Map of Hubs that represents regional data path deployment with GCP
+        # region as a key.
+        # Corresponds to the JSON property `hubs`
+        # @return [Hash<String,Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Hub>]
+        attr_accessor :hubs
+      
+        # Identifier. Name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The operational state of the SecurityGateway.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when the resource was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @external_ips = args[:external_ips] if args.key?(:external_ips)
+          @hubs = args[:hubs] if args.key?(:hubs)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have been cancelled successfully have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Set Peering request for creating a VPC peering between Google network and
+      # customer networks.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Optional. If set, validates request by executing a dry-run which would not
+        # alter the resource in any way.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        # Required. List of Peering connection information.
+        # Corresponds to the JSON property `vpcPeerings`
+        # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering>]
+        attr_accessor :vpc_peerings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+          @vpc_peerings = args[:vpc_peerings] if args.key?(:vpc_peerings)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata
         include Google::Apis::Core::Hashable

@@ -2050,6 +2050,99 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new Application in a given project and location.
+        # @param [String] parent
+        #   Required. The resource name of the parent SecurityGateway using the form: `
+        #   projects/`project_id`/locations/global/securityGateways/`security_gateway_id``
+        # @param [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Application] google_cloud_beyondcorp_securitygateways_v1_application_object
+        # @param [String] application_id
+        #   Optional. User-settable Application resource ID. * Must start with a letter. *
+        #   Must contain between 4-63 characters from `/a-z-/`. * Must end with a number
+        #   or letter.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_global_security_gateway_application(parent, google_cloud_beyondcorp_securitygateways_v1_application_object = nil, application_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/applications', options)
+          command.request_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Application::Representation
+          command.request_object = google_cloud_beyondcorp_securitygateways_v1_application_object
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['applicationId'] = application_id unless application_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single Application.
+        # @param [String] name
+        #   Identifier. Name of the resource.
+        # @param [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Application] google_cloud_beyondcorp_securitygateways_v1_application_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request timed out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Mutable fields include: display_name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_global_security_gateway_application(name, google_cloud_beyondcorp_securitygateways_v1_application_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Application::Representation
+          command.request_object = google_cloud_beyondcorp_securitygateways_v1_application_object
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -2187,6 +2280,395 @@ module Google
           command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningListOperationsResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new SecurityGateway in a given project and location.
+        # @param [String] parent
+        #   Required. The resource project name of the SecurityGateway location using the
+        #   form: `projects/`project_id`/locations/`location_id``
+        # @param [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway] google_cloud_beyondcorp_securitygateways_v1_security_gateway_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request.
+        # @param [String] security_gateway_id
+        #   Optional. User-settable SecurityGateway resource ID. * Must start with a
+        #   letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with
+        #   a number or letter.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_security_gateway(parent, google_cloud_beyondcorp_securitygateways_v1_security_gateway_object = nil, request_id: nil, security_gateway_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/securityGateways', options)
+          command.request_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway::Representation
+          command.request_object = google_cloud_beyondcorp_securitygateways_v1_security_gateway_object
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['securityGatewayId'] = security_gateway_id unless security_gateway_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single SecurityGateway.
+        # @param [String] name
+        #   Required. BeyondCorp SecurityGateway name using the form: `projects/`
+        #   project_id`/locations/`location_id`/securityGateways/`security_gateway_id``
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validates request by executing a dry-run which would not
+        #   alter the resource in any way.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_security_gateway(name, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single SecurityGateway.
+        # @param [String] name
+        #   Required. The resource name of the PartnerTenant using the form: `projects/`
+        #   project_id`/locations/`location_id`/securityGateway/`security_gateway_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_security_gateway(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists SecurityGateways in a given project and location.
+        # @param [String] parent
+        #   Required. The parent location to which the resources belong. `projects/`
+        #   project_id`/locations/`location_id`/`
+        # @param [String] filter
+        #   Optional. A filter specifying constraints of a list operation. All fields in
+        #   the SecurityGateway message are supported. For example, the following query
+        #   will return the SecurityGateway with displayName "test-security-gateway" For
+        #   more information, please refer to https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. Specifies the ordering of results. See [Sorting order](https://cloud.
+        #   google.com/apis/design/design_patterns#sorting_order) for more information.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 50 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous
+        #   ListSecurityGatewayRequest, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_security_gateways(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/securityGateways', options)
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single SecurityGateway.
+        # @param [String] name
+        #   Identifier. Name of the resource.
+        # @param [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway] google_cloud_beyondcorp_securitygateways_v1_security_gateway_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request timed out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Mutable fields include: display_name, hubs.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_security_gateway(name, google_cloud_beyondcorp_securitygateways_v1_security_gateway_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway::Representation
+          command.request_object = google_cloud_beyondcorp_securitygateways_v1_security_gateway_object
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # This is a custom method to allow customers to create a peering connections
+        # between Google network and customer networks. This is enabled only for the
+        # allowlisted customers.
+        # @param [String] security_gateway
+        #   Required. BeyondCorp SecurityGateway name using the form: `projects/`project`/
+        #   locations/`location`/securityGateways/`security_gateway``
+        # @param [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest] google_cloud_beyondcorp_securitygateways_v1_set_peering_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_security_gateway_peering(security_gateway, google_cloud_beyondcorp_securitygateways_v1_set_peering_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+securityGateway}:setPeering', options)
+          command.request_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest::Representation
+          command.request_object = google_cloud_beyondcorp_securitygateways_v1_set_peering_request_object
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
+          command.params['securityGateway'] = security_gateway unless security_gateway.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Application.
+        # @param [String] name
+        #   Required. Name of the resource.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validates request by executing a dry-run which would not
+        #   alter the resource in any way.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_security_gateway_application(name, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Application.
+        # @param [String] name
+        #   Required. The resource name of the Application using the form: `projects/`
+        #   project_id`/locations/global/securityGateway/`security_gateway_id`/
+        #   applications/`application_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Application] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Application]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_security_gateway_application(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Application::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Application
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Applications in a given project and location.
+        # @param [String] parent
+        #   Required. The parent location to which the resources belong. `projects/`
+        #   project_id`/locations/global/securityGateways/`security_gateway_id``
+        # @param [String] filter
+        #   Optional. A filter specifying constraints of a list operation. All fields in
+        #   the Application message are supported. For example, the following query will
+        #   return the Application with displayName "test-application" For more
+        #   information, please refer to https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. Specifies the ordering of results. See [Sorting order](https://cloud.
+        #   google.com/apis/design/design_patterns#sorting_order) for more information.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 50 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous
+        #   ListApplicationsRequest, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_security_gateway_applications(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/applications', options)
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
