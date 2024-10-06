@@ -622,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesAdGroupEffectiveLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesAdGroupLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -731,6 +737,12 @@ module Google
       end
       
       class GoogleAdsSearchads360V0ResourcesCampaignCriterion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesCampaignEffectiveLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1235,12 +1247,16 @@ module Google
           property :cost_per_conversion, as: 'costPerConversion'
           property :cost_per_current_model_attributed_conversion, as: 'costPerCurrentModelAttributedConversion'
           property :cross_device_conversions, as: 'crossDeviceConversions'
+          property :cross_device_conversions_by_conversion_date, as: 'crossDeviceConversionsByConversionDate'
           property :cross_device_conversions_value, as: 'crossDeviceConversionsValue'
+          property :cross_device_conversions_value_by_conversion_date, as: 'crossDeviceConversionsValueByConversionDate'
           property :cross_sell_cost_of_goods_sold_micros, :numeric_string => true, as: 'crossSellCostOfGoodsSoldMicros'
           property :cross_sell_gross_profit_micros, :numeric_string => true, as: 'crossSellGrossProfitMicros'
           property :cross_sell_revenue_micros, :numeric_string => true, as: 'crossSellRevenueMicros'
           property :cross_sell_units_sold, as: 'crossSellUnitsSold'
           property :ctr, as: 'ctr'
+          property :general_invalid_click_rate, as: 'generalInvalidClickRate'
+          property :general_invalid_clicks, :numeric_string => true, as: 'generalInvalidClicks'
           property :historical_creative_quality_score, as: 'historicalCreativeQualityScore'
           property :historical_landing_page_quality_score, as: 'historicalLandingPageQualityScore'
           property :historical_quality_score, :numeric_string => true, as: 'historicalQualityScore'
@@ -1950,6 +1966,7 @@ module Google
           property :ad_rotation_mode, as: 'adRotationMode'
           property :cpc_bid_micros, :numeric_string => true, as: 'cpcBidMicros'
           property :creation_time, as: 'creationTime'
+          collection :effective_labels, as: 'effectiveLabels'
           property :end_date, as: 'endDate'
           property :engine_id, as: 'engineId'
           property :engine_status, as: 'engineStatus'
@@ -2074,6 +2091,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_group_criterion, as: 'adGroupCriterion'
+          property :label, as: 'label'
+          property :owner_customer_id, :numeric_string => true, as: 'ownerCustomerId'
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupEffectiveLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group, as: 'adGroup'
           property :label, as: 'label'
           property :owner_customer_id, :numeric_string => true, as: 'ownerCustomerId'
           property :resource_name, as: 'resourceName'
@@ -2277,6 +2304,7 @@ module Google
           property :creation_time, as: 'creationTime'
           property :dynamic_search_ads_setting, as: 'dynamicSearchAdsSetting', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignDynamicSearchAdsSetting, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignDynamicSearchAdsSetting::Representation
       
+          collection :effective_labels, as: 'effectiveLabels'
           property :end_date, as: 'endDate'
           property :engine_id, as: 'engineId'
           collection :excluded_parent_asset_field_types, as: 'excludedParentAssetFieldTypes'
@@ -2400,6 +2428,16 @@ module Google
       
           property :webpage, as: 'webpage', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo::Representation
       
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesCampaignEffectiveLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :campaign, as: 'campaign'
+          property :label, as: 'label'
+          property :owner_customer_id, :numeric_string => true, as: 'ownerCustomerId'
+          property :resource_name, as: 'resourceName'
         end
       end
       
@@ -2861,6 +2899,8 @@ module Google
       
           property :ad_group_criterion_label, as: 'adGroupCriterionLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel::Representation
       
+          property :ad_group_effective_label, as: 'adGroupEffectiveLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupEffectiveLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupEffectiveLabel::Representation
+      
           property :ad_group_label, as: 'adGroupLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupLabel::Representation
       
           property :age_range_view, as: 'ageRangeView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAgeRangeView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAgeRangeView::Representation
@@ -2896,6 +2936,8 @@ module Google
           property :campaign_budget, as: 'campaignBudget', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignBudget, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignBudget::Representation
       
           property :campaign_criterion, as: 'campaignCriterion', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignCriterion, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignCriterion::Representation
+      
+          property :campaign_effective_label, as: 'campaignEffectiveLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignEffectiveLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignEffectiveLabel::Representation
       
           property :campaign_label, as: 'campaignLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignLabel::Representation
       

@@ -1084,10 +1084,24 @@ module Google
         # @return [Float]
         attr_accessor :cross_device_conversions
       
+        # The number of cross-device conversions by conversion date. Details for the
+        # by_conversion_date columns are available at https://support.google.com/sa360/
+        # answer/9250611.
+        # Corresponds to the JSON property `crossDeviceConversionsByConversionDate`
+        # @return [Float]
+        attr_accessor :cross_device_conversions_by_conversion_date
+      
         # The sum of the value of cross-device conversions.
         # Corresponds to the JSON property `crossDeviceConversionsValue`
         # @return [Float]
         attr_accessor :cross_device_conversions_value
+      
+        # The sum of cross-device conversions value by conversion date. Details for the
+        # by_conversion_date columns are available at https://support.google.com/sa360/
+        # answer/9250611.
+        # Corresponds to the JSON property `crossDeviceConversionsValueByConversionDate`
+        # @return [Float]
+        attr_accessor :cross_device_conversions_value_by_conversion_date
       
         # Cross-sell cost of goods sold (COGS) is the total cost of products sold as a
         # result of advertising a different product. How it works: You report
@@ -1166,6 +1180,27 @@ module Google
         # Corresponds to the JSON property `ctr`
         # @return [Float]
         attr_accessor :ctr
+      
+        # The percentage of clicks that have been filtered out of your total number of
+        # clicks (filtered + non-filtered clicks) due to being general invalid clicks.
+        # These are clicks Google considers illegitimate that are detected through
+        # routine means of filtration (that is, known invalid data-center traffic, bots
+        # and spiders or other crawlers, irregular patterns, etc). You're not charged
+        # for them, and they don't affect your account statistics. See the help page at
+        # https://support.google.com/campaignmanager/answer/6076504 for details.
+        # Corresponds to the JSON property `generalInvalidClickRate`
+        # @return [Float]
+        attr_accessor :general_invalid_click_rate
+      
+        # Number of general invalid clicks. These are a subset of your invalid clicks
+        # that are detected through routine means of filtration (such as known invalid
+        # data-center traffic, bots and spiders or other crawlers, irregular patterns,
+        # etc.). You're not charged for them, and they don't affect your account
+        # statistics. See the help page at https://support.google.com/campaignmanager/
+        # answer/6076504 for details.
+        # Corresponds to the JSON property `generalInvalidClicks`
+        # @return [Fixnum]
+        attr_accessor :general_invalid_clicks
       
         # The creative historical quality score.
         # Corresponds to the JSON property `historicalCreativeQualityScore`
@@ -1483,12 +1518,16 @@ module Google
           @cost_per_conversion = args[:cost_per_conversion] if args.key?(:cost_per_conversion)
           @cost_per_current_model_attributed_conversion = args[:cost_per_current_model_attributed_conversion] if args.key?(:cost_per_current_model_attributed_conversion)
           @cross_device_conversions = args[:cross_device_conversions] if args.key?(:cross_device_conversions)
+          @cross_device_conversions_by_conversion_date = args[:cross_device_conversions_by_conversion_date] if args.key?(:cross_device_conversions_by_conversion_date)
           @cross_device_conversions_value = args[:cross_device_conversions_value] if args.key?(:cross_device_conversions_value)
+          @cross_device_conversions_value_by_conversion_date = args[:cross_device_conversions_value_by_conversion_date] if args.key?(:cross_device_conversions_value_by_conversion_date)
           @cross_sell_cost_of_goods_sold_micros = args[:cross_sell_cost_of_goods_sold_micros] if args.key?(:cross_sell_cost_of_goods_sold_micros)
           @cross_sell_gross_profit_micros = args[:cross_sell_gross_profit_micros] if args.key?(:cross_sell_gross_profit_micros)
           @cross_sell_revenue_micros = args[:cross_sell_revenue_micros] if args.key?(:cross_sell_revenue_micros)
           @cross_sell_units_sold = args[:cross_sell_units_sold] if args.key?(:cross_sell_units_sold)
           @ctr = args[:ctr] if args.key?(:ctr)
+          @general_invalid_click_rate = args[:general_invalid_click_rate] if args.key?(:general_invalid_click_rate)
+          @general_invalid_clicks = args[:general_invalid_clicks] if args.key?(:general_invalid_clicks)
           @historical_creative_quality_score = args[:historical_creative_quality_score] if args.key?(:historical_creative_quality_score)
           @historical_landing_page_quality_score = args[:historical_landing_page_quality_score] if args.key?(:historical_landing_page_quality_score)
           @historical_quality_score = args[:historical_quality_score] if args.key?(:historical_quality_score)
@@ -3506,7 +3545,8 @@ module Google
       class GoogleAdsSearchads360V0ResourcesCampaignSelectiveOptimization
         include Google::Apis::Core::Hashable
       
-        # The selected set of conversion actions for optimizing this campaign.
+        # The selected set of resource names for conversion actions for optimizing this
+        # campaign.
         # Corresponds to the JSON property `conversionActions`
         # @return [Array<String>]
         attr_accessor :conversion_actions
@@ -4081,6 +4121,12 @@ module Google
         # @return [String]
         attr_accessor :creation_time
       
+        # Output only. The resource names of effective labels attached to this ad group.
+        # An effective label is a label inherited or directly assigned to this ad group.
+        # Corresponds to the JSON property `effectiveLabels`
+        # @return [Array<String>]
+        attr_accessor :effective_labels
+      
         # Output only. Date when the ad group ends serving ads. By default, the ad group
         # ends on the ad group's end date. If this field is set, then the ad group ends
         # at the end of the specified date in the customer's time zone. This field is
@@ -4176,6 +4222,7 @@ module Google
           @ad_rotation_mode = args[:ad_rotation_mode] if args.key?(:ad_rotation_mode)
           @cpc_bid_micros = args[:cpc_bid_micros] if args.key?(:cpc_bid_micros)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @effective_labels = args[:effective_labels] if args.key?(:effective_labels)
           @end_date = args[:end_date] if args.key?(:end_date)
           @engine_id = args[:engine_id] if args.key?(:engine_id)
           @engine_status = args[:engine_status] if args.key?(:engine_status)
@@ -4660,6 +4707,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ad_group_criterion = args[:ad_group_criterion] if args.key?(:ad_group_criterion)
+          @label = args[:label] if args.key?(:label)
+          @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # A relationship between an ad group and an effective label. An effective label
+      # is a label inherited or directly assigned to this ad group.
+      class GoogleAdsSearchads360V0ResourcesAdGroupEffectiveLabel
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The ad group to which the effective label is attached.
+        # Corresponds to the JSON property `adGroup`
+        # @return [String]
+        attr_accessor :ad_group
+      
+        # Immutable. The effective label assigned to the ad group.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Output only. The ID of the Customer which owns the effective label.
+        # Corresponds to the JSON property `ownerCustomerId`
+        # @return [Fixnum]
+        attr_accessor :owner_customer_id
+      
+        # Immutable. The resource name of the ad group effective label. Ad group
+        # effective label resource names have the form: `customers/`customer_id`/
+        # adGroupEffectiveLabels/`ad_group_id`~`label_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group = args[:ad_group] if args.key?(:ad_group)
           @label = args[:label] if args.key?(:label)
           @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
@@ -5430,7 +5517,7 @@ module Google
         # @return [String]
         attr_accessor :advertising_channel_type
       
-        # Portfolio bidding strategy used by campaign.
+        # The resource name of the portfolio bidding strategy used by the campaign.
         # Corresponds to the JSON property `biddingStrategy`
         # @return [String]
         attr_accessor :bidding_strategy
@@ -5448,7 +5535,7 @@ module Google
         # @return [String]
         attr_accessor :bidding_strategy_type
       
-        # The budget of the campaign.
+        # The resource name of the campaign budget of the campaign.
         # Corresponds to the JSON property `campaignBudget`
         # @return [String]
         attr_accessor :campaign_budget
@@ -5470,6 +5557,12 @@ module Google
         # Corresponds to the JSON property `dynamicSearchAdsSetting`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignDynamicSearchAdsSetting]
         attr_accessor :dynamic_search_ads_setting
+      
+        # Output only. The resource names of effective labels attached to this campaign.
+        # An effective label is a label inherited or directly assigned to this campaign.
+        # Corresponds to the JSON property `effectiveLabels`
+        # @return [Array<String>]
+        attr_accessor :effective_labels
       
         # The last day of the campaign in serving customer's timezone in YYYY-MM-DD
         # format. On create, defaults to 2037-12-30, which means the campaign will run
@@ -5694,6 +5787,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @dynamic_search_ads_setting = args[:dynamic_search_ads_setting] if args.key?(:dynamic_search_ads_setting)
+          @effective_labels = args[:effective_labels] if args.key?(:effective_labels)
           @end_date = args[:end_date] if args.key?(:end_date)
           @engine_id = args[:engine_id] if args.key?(:engine_id)
           @excluded_parent_asset_field_types = args[:excluded_parent_asset_field_types] if args.key?(:excluded_parent_asset_field_types)
@@ -5998,6 +6092,46 @@ module Google
           @type = args[:type] if args.key?(:type)
           @user_list = args[:user_list] if args.key?(:user_list)
           @webpage = args[:webpage] if args.key?(:webpage)
+        end
+      end
+      
+      # Represents a relationship between a campaign and an effective label. An
+      # effective label is a label inherited or directly assigned to this campaign.
+      class GoogleAdsSearchads360V0ResourcesCampaignEffectiveLabel
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The campaign to which the effective label is attached.
+        # Corresponds to the JSON property `campaign`
+        # @return [String]
+        attr_accessor :campaign
+      
+        # Immutable. The effective label assigned to the campaign.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Output only. The ID of the Customer which owns the effective label.
+        # Corresponds to the JSON property `ownerCustomerId`
+        # @return [Fixnum]
+        attr_accessor :owner_customer_id
+      
+        # Immutable. Name of the resource. CampaignEffectivelabel resource names have
+        # the form: `customers/`customer_id`/campaignEffectiveLabels/`campaign_id`~`
+        # label_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @campaign = args[:campaign] if args.key?(:campaign)
+          @label = args[:label] if args.key?(:label)
+          @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -7940,6 +8074,12 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel]
         attr_accessor :ad_group_criterion_label
       
+        # A relationship between an ad group and an effective label. An effective label
+        # is a label inherited or directly assigned to this ad group.
+        # Corresponds to the JSON property `adGroupEffectiveLabel`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupEffectiveLabel]
+        attr_accessor :ad_group_effective_label
+      
         # A relationship between an ad group and a label.
         # Corresponds to the JSON property `adGroupLabel`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupLabel]
@@ -8046,6 +8186,12 @@ module Google
         # Corresponds to the JSON property `campaignCriterion`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignCriterion]
         attr_accessor :campaign_criterion
+      
+        # Represents a relationship between a campaign and an effective label. An
+        # effective label is a label inherited or directly assigned to this campaign.
+        # Corresponds to the JSON property `campaignEffectiveLabel`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignEffectiveLabel]
+        attr_accessor :campaign_effective_label
       
         # Represents a relationship between a campaign and a label.
         # Corresponds to the JSON property `campaignLabel`
@@ -8205,6 +8351,7 @@ module Google
           @ad_group_bid_modifier = args[:ad_group_bid_modifier] if args.key?(:ad_group_bid_modifier)
           @ad_group_criterion = args[:ad_group_criterion] if args.key?(:ad_group_criterion)
           @ad_group_criterion_label = args[:ad_group_criterion_label] if args.key?(:ad_group_criterion_label)
+          @ad_group_effective_label = args[:ad_group_effective_label] if args.key?(:ad_group_effective_label)
           @ad_group_label = args[:ad_group_label] if args.key?(:ad_group_label)
           @age_range_view = args[:age_range_view] if args.key?(:age_range_view)
           @asset = args[:asset] if args.key?(:asset)
@@ -8223,6 +8370,7 @@ module Google
           @campaign_audience_view = args[:campaign_audience_view] if args.key?(:campaign_audience_view)
           @campaign_budget = args[:campaign_budget] if args.key?(:campaign_budget)
           @campaign_criterion = args[:campaign_criterion] if args.key?(:campaign_criterion)
+          @campaign_effective_label = args[:campaign_effective_label] if args.key?(:campaign_effective_label)
           @campaign_label = args[:campaign_label] if args.key?(:campaign_label)
           @cart_data_sales_view = args[:cart_data_sales_view] if args.key?(:cart_data_sales_view)
           @conversion = args[:conversion] if args.key?(:conversion)
