@@ -610,6 +610,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PermissionSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PermissionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QuotedMessageMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1862,6 +1874,36 @@ module Google
         end
       end
       
+      class PermissionSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :managers_allowed, as: 'managersAllowed'
+          property :members_allowed, as: 'membersAllowed'
+        end
+      end
+      
+      class PermissionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :manage_apps, as: 'manageApps', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
+      
+          property :manage_members_and_groups, as: 'manageMembersAndGroups', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
+      
+          property :manage_webhooks, as: 'manageWebhooks', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
+      
+          property :modify_space_details, as: 'modifySpaceDetails', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
+      
+          property :post_messages, as: 'postMessages', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
+      
+          property :reply_messages, as: 'replyMessages', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
+      
+          property :toggle_history, as: 'toggleHistory', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
+      
+          property :use_at_mention_all, as: 'useAtMentionAll', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
+      
+        end
+      end
+      
       class QuotedMessageMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1996,6 +2038,9 @@ module Google
           property :membership_count, as: 'membershipCount', class: Google::Apis::ChatV1::MembershipCount, decorator: Google::Apis::ChatV1::MembershipCount::Representation
       
           property :name, as: 'name'
+          property :permission_settings, as: 'permissionSettings', class: Google::Apis::ChatV1::PermissionSettings, decorator: Google::Apis::ChatV1::PermissionSettings::Representation
+      
+          property :predefined_permission_settings, as: 'predefinedPermissionSettings'
           property :single_user_bot_dm, as: 'singleUserBotDm'
           property :space_details, as: 'spaceDetails', class: Google::Apis::ChatV1::SpaceDetails, decorator: Google::Apis::ChatV1::SpaceDetails::Representation
       

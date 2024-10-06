@@ -39,9 +39,17 @@ module Google
         # Make a space discoverable to a target audience](https://developers.google.com/
         # workspace/chat/space-target-audience). Format: `audiences/`audience`` To use
         # the default target audience for the Google Workspace organization, set to `
-        # audiences/default`. This field is not populated when using the `chat.bot`
-        # scope with [app authentication](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-app).
+        # audiences/default`. Reading the target audience supports: - [User
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user) - [App authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-app) with [administrator approval](
+        # https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` scope
+        # in [Developer Preview](https://developers.google.com/workspace/preview). This
+        # field is not populated when using the `chat.bot` scope with [app
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-app). Setting the target audience requires [user authentication]
+        # (https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+        # .
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
@@ -4269,6 +4277,96 @@ module Google
         end
       end
       
+      # Represents a space permission setting.
+      class PermissionSetting
+        include Google::Apis::Core::Hashable
+      
+        # Whether spaces managers have this permission.
+        # Corresponds to the JSON property `managersAllowed`
+        # @return [Boolean]
+        attr_accessor :managers_allowed
+        alias_method :managers_allowed?, :managers_allowed
+      
+        # Whether non-manager members have this permission.
+        # Corresponds to the JSON property `membersAllowed`
+        # @return [Boolean]
+        attr_accessor :members_allowed
+        alias_method :members_allowed?, :members_allowed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @managers_allowed = args[:managers_allowed] if args.key?(:managers_allowed)
+          @members_allowed = args[:members_allowed] if args.key?(:members_allowed)
+        end
+      end
+      
+      # [Permission settings](https://support.google.com/chat/answer/13340792) for a
+      # named space. To set permission settings when creating a space, specify the `
+      # PredefinedPermissionSettings` field in your request.
+      class PermissionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Represents a space permission setting.
+        # Corresponds to the JSON property `manageApps`
+        # @return [Google::Apis::ChatV1::PermissionSetting]
+        attr_accessor :manage_apps
+      
+        # Represents a space permission setting.
+        # Corresponds to the JSON property `manageMembersAndGroups`
+        # @return [Google::Apis::ChatV1::PermissionSetting]
+        attr_accessor :manage_members_and_groups
+      
+        # Represents a space permission setting.
+        # Corresponds to the JSON property `manageWebhooks`
+        # @return [Google::Apis::ChatV1::PermissionSetting]
+        attr_accessor :manage_webhooks
+      
+        # Represents a space permission setting.
+        # Corresponds to the JSON property `modifySpaceDetails`
+        # @return [Google::Apis::ChatV1::PermissionSetting]
+        attr_accessor :modify_space_details
+      
+        # Represents a space permission setting.
+        # Corresponds to the JSON property `postMessages`
+        # @return [Google::Apis::ChatV1::PermissionSetting]
+        attr_accessor :post_messages
+      
+        # Represents a space permission setting.
+        # Corresponds to the JSON property `replyMessages`
+        # @return [Google::Apis::ChatV1::PermissionSetting]
+        attr_accessor :reply_messages
+      
+        # Represents a space permission setting.
+        # Corresponds to the JSON property `toggleHistory`
+        # @return [Google::Apis::ChatV1::PermissionSetting]
+        attr_accessor :toggle_history
+      
+        # Represents a space permission setting.
+        # Corresponds to the JSON property `useAtMentionAll`
+        # @return [Google::Apis::ChatV1::PermissionSetting]
+        attr_accessor :use_at_mention_all
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @manage_apps = args[:manage_apps] if args.key?(:manage_apps)
+          @manage_members_and_groups = args[:manage_members_and_groups] if args.key?(:manage_members_and_groups)
+          @manage_webhooks = args[:manage_webhooks] if args.key?(:manage_webhooks)
+          @modify_space_details = args[:modify_space_details] if args.key?(:modify_space_details)
+          @post_messages = args[:post_messages] if args.key?(:post_messages)
+          @reply_messages = args[:reply_messages] if args.key?(:reply_messages)
+          @toggle_history = args[:toggle_history] if args.key?(:toggle_history)
+          @use_at_mention_all = args[:use_at_mention_all] if args.key?(:use_at_mention_all)
+        end
+      end
+      
       # Information about a quoted message.
       class QuotedMessageMetadata
         include Google::Apis::Core::Hashable
@@ -4706,7 +4804,9 @@ module Google
       
         # Optional. Whether this space is created in `Import Mode` as part of a data
         # migration into Google Workspace. While spaces are being imported, they aren't
-        # visible to users until the import is complete.
+        # visible to users until the import is complete. Creating a space in `Import
+        # Mode`requires [user authentication](https://developers.google.com/workspace/
+        # chat/authenticate-authorize-chat-user).
         # Corresponds to the JSON property `importMode`
         # @return [Boolean]
         attr_accessor :import_mode
@@ -4731,6 +4831,20 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # [Permission settings](https://support.google.com/chat/answer/13340792) for a
+        # named space. To set permission settings when creating a space, specify the `
+        # PredefinedPermissionSettings` field in your request.
+        # Corresponds to the JSON property `permissionSettings`
+        # @return [Google::Apis::ChatV1::PermissionSettings]
+        attr_accessor :permission_settings
+      
+        # Optional. Input only. Space permission settings. Input for creating a space, a
+        # collaboration space is created if this field is not set. After you create the
+        # space, settings are populated in the `PermissionSettings` field.
+        # Corresponds to the JSON property `predefinedPermissionSettings`
+        # @return [String]
+        attr_accessor :predefined_permission_settings
       
         # Optional. Whether the space is a DM between a Chat app and a single human.
         # Corresponds to the JSON property `singleUserBotDm`
@@ -4791,6 +4905,8 @@ module Google
           @last_active_time = args[:last_active_time] if args.key?(:last_active_time)
           @membership_count = args[:membership_count] if args.key?(:membership_count)
           @name = args[:name] if args.key?(:name)
+          @permission_settings = args[:permission_settings] if args.key?(:permission_settings)
+          @predefined_permission_settings = args[:predefined_permission_settings] if args.key?(:predefined_permission_settings)
           @single_user_bot_dm = args[:single_user_bot_dm] if args.key?(:single_user_bot_dm)
           @space_details = args[:space_details] if args.key?(:space_details)
           @space_history_state = args[:space_history_state] if args.key?(:space_history_state)
