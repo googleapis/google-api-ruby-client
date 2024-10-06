@@ -1351,6 +1351,12 @@ module Google
         # @return [String]
         attr_accessor :tpu_ipv4_cidr_block
       
+        # UserManagedKeysConfig holds the resource address to Keys which are used for
+        # signing certs and token that are used for communication within cluster.
+        # Corresponds to the JSON property `userManagedKeysConfig`
+        # @return [Google::Apis::ContainerV1::UserManagedKeysConfig]
+        attr_accessor :user_managed_keys_config
+      
         # VerticalPodAutoscaling contains global, per-cluster information required by
         # Vertical Pod Autoscaler to automatically adjust the resources of pods
         # controlled by it.
@@ -1446,6 +1452,7 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
+          @user_managed_keys_config = args[:user_managed_keys_config] if args.key?(:user_managed_keys_config)
           @vertical_pod_autoscaling = args[:vertical_pod_autoscaling] if args.key?(:vertical_pod_autoscaling)
           @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
           @zone = args[:zone] if args.key?(:zone)
@@ -1894,6 +1901,12 @@ module Google
         # @return [Google::Apis::ContainerV1::AdditionalPodRangesConfig]
         attr_accessor :removed_additional_pod_ranges_config
       
+        # UserManagedKeysConfig holds the resource address to Keys which are used for
+        # signing certs and token that are used for communication within cluster.
+        # Corresponds to the JSON property `userManagedKeysConfig`
+        # @return [Google::Apis::ContainerV1::UserManagedKeysConfig]
+        attr_accessor :user_managed_keys_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1960,6 +1973,7 @@ module Google
           @enable_k8s_beta_apis = args[:enable_k8s_beta_apis] if args.key?(:enable_k8s_beta_apis)
           @etag = args[:etag] if args.key?(:etag)
           @removed_additional_pod_ranges_config = args[:removed_additional_pod_ranges_config] if args.key?(:removed_additional_pod_ranges_config)
+          @user_managed_keys_config = args[:user_managed_keys_config] if args.key?(:user_managed_keys_config)
         end
       end
       
@@ -4151,6 +4165,14 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Output only. effective_cgroup_mode is the cgroup mode actually used by the
+        # node pool. It is determined by the cgroup mode specified in the
+        # LinuxNodeConfig or the default cgroup mode based on the cluster creation
+        # version.
+        # Corresponds to the JSON property `effectiveCgroupMode`
+        # @return [String]
+        attr_accessor :effective_cgroup_mode
+      
         # Optional. Reserved for future use.
         # Corresponds to the JSON property `enableConfidentialStorage`
         # @return [Boolean]
@@ -4398,6 +4420,7 @@ module Google
           @containerd_config = args[:containerd_config] if args.key?(:containerd_config)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @effective_cgroup_mode = args[:effective_cgroup_mode] if args.key?(:effective_cgroup_mode)
           @enable_confidential_storage = args[:enable_confidential_storage] if args.key?(:enable_confidential_storage)
           @ephemeral_storage_local_ssd_config = args[:ephemeral_storage_local_ssd_config] if args.key?(:ephemeral_storage_local_ssd_config)
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
@@ -7802,6 +7825,78 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @range_name = args[:range_name] if args.key?(:range_name)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # UserManagedKeysConfig holds the resource address to Keys which are used for
+      # signing certs and token that are used for communication within cluster.
+      class UserManagedKeysConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Certificate Authority Service caPool to use for the aggregation CA in this
+        # cluster.
+        # Corresponds to the JSON property `aggregationCa`
+        # @return [String]
+        attr_accessor :aggregation_ca
+      
+        # The Certificate Authority Service caPool to use for the cluster CA in this
+        # cluster.
+        # Corresponds to the JSON property `clusterCa`
+        # @return [String]
+        attr_accessor :cluster_ca
+      
+        # The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane
+        # nodes.
+        # Corresponds to the JSON property `controlPlaneDiskEncryptionKey`
+        # @return [String]
+        attr_accessor :control_plane_disk_encryption_key
+      
+        # Resource path of the Certificate Authority Service caPool to use for the etcd
+        # API CA in this cluster.
+        # Corresponds to the JSON property `etcdApiCa`
+        # @return [String]
+        attr_accessor :etcd_api_ca
+      
+        # Resource path of the Certificate Authority Service caPool to use for the etcd
+        # peer CA in this cluster.
+        # Corresponds to the JSON property `etcdPeerCa`
+        # @return [String]
+        attr_accessor :etcd_peer_ca
+      
+        # Resource path of the Cloud KMS cryptoKey to use for encryption of internal
+        # etcd backups.
+        # Corresponds to the JSON property `gkeopsEtcdBackupEncryptionKey`
+        # @return [String]
+        attr_accessor :gkeops_etcd_backup_encryption_key
+      
+        # The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued
+        # by this cluster. Format: `projects/`project`/locations/`location`/keyRings/`
+        # keyring`/cryptoKeys/`cryptoKey`/cryptoKeyVersions/`cryptoKeyVersion``
+        # Corresponds to the JSON property `serviceAccountSigningKeys`
+        # @return [Array<String>]
+        attr_accessor :service_account_signing_keys
+      
+        # The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs
+        # issued by this cluster. Format: `projects/`project`/locations/`location`/
+        # keyRings/`keyring`/cryptoKeys/`cryptoKey`/cryptoKeyVersions/`cryptoKeyVersion``
+        # Corresponds to the JSON property `serviceAccountVerificationKeys`
+        # @return [Array<String>]
+        attr_accessor :service_account_verification_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_ca = args[:aggregation_ca] if args.key?(:aggregation_ca)
+          @cluster_ca = args[:cluster_ca] if args.key?(:cluster_ca)
+          @control_plane_disk_encryption_key = args[:control_plane_disk_encryption_key] if args.key?(:control_plane_disk_encryption_key)
+          @etcd_api_ca = args[:etcd_api_ca] if args.key?(:etcd_api_ca)
+          @etcd_peer_ca = args[:etcd_peer_ca] if args.key?(:etcd_peer_ca)
+          @gkeops_etcd_backup_encryption_key = args[:gkeops_etcd_backup_encryption_key] if args.key?(:gkeops_etcd_backup_encryption_key)
+          @service_account_signing_keys = args[:service_account_signing_keys] if args.key?(:service_account_signing_keys)
+          @service_account_verification_keys = args[:service_account_verification_keys] if args.key?(:service_account_verification_keys)
         end
       end
       
