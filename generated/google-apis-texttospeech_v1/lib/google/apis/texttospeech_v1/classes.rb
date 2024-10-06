@@ -22,6 +22,27 @@ module Google
   module Apis
     module TexttospeechV1
       
+      # Used for advanced voice options.
+      class AdvancedVoiceOptions
+        include Google::Apis::Core::Hashable
+      
+        # Only for Jounrney voices. If false, the synthesis will be context aware and
+        # have higher latency.
+        # Corresponds to the JSON property `lowLatencyJourneySynthesis`
+        # @return [Boolean]
+        attr_accessor :low_latency_journey_synthesis
+        alias_method :low_latency_journey_synthesis?, :low_latency_journey_synthesis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @low_latency_journey_synthesis = args[:low_latency_journey_synthesis] if args.key?(:low_latency_journey_synthesis)
+        end
+      end
+      
       # Description of audio data to be synthesized.
       class AudioConfig
         include Google::Apis::Core::Hashable
@@ -106,6 +127,59 @@ module Google
         end
       end
       
+      # Pronunciation customization for a phrase.
+      class CustomPronunciationParams
+        include Google::Apis::Core::Hashable
+      
+        # The phonetic encoding of the phrase.
+        # Corresponds to the JSON property `phoneticEncoding`
+        # @return [String]
+        attr_accessor :phonetic_encoding
+      
+        # The phrase to which the customization will be applied. The phrase can be
+        # multiple words (in the case of proper nouns etc), but should not span to a
+        # whole sentence.
+        # Corresponds to the JSON property `phrase`
+        # @return [String]
+        attr_accessor :phrase
+      
+        # The pronunciation of the phrase. This must be in the phonetic encoding
+        # specified above.
+        # Corresponds to the JSON property `pronunciation`
+        # @return [String]
+        attr_accessor :pronunciation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phonetic_encoding = args[:phonetic_encoding] if args.key?(:phonetic_encoding)
+          @phrase = args[:phrase] if args.key?(:phrase)
+          @pronunciation = args[:pronunciation] if args.key?(:pronunciation)
+        end
+      end
+      
+      # A collection of pronunciation customizations.
+      class CustomPronunciations
+        include Google::Apis::Core::Hashable
+      
+        # The pronunciation customizations to be applied.
+        # Corresponds to the JSON property `pronunciations`
+        # @return [Array<Google::Apis::TexttospeechV1::CustomPronunciationParams>]
+        attr_accessor :pronunciations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pronunciations = args[:pronunciations] if args.key?(:pronunciations)
+        end
+      end
+      
       # Description of the custom voice to be synthesized.
       class CustomVoiceParams
         include Google::Apis::Core::Hashable
@@ -147,6 +221,68 @@ module Google
         end
       end
       
+      # Request message for the `GenerateVoiceCloningKey` method.
+      class GenerateVoiceCloningKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The script used for the voice talent statement. The script will be
+        # provided to the caller through other channels. It must be returned unchanged
+        # in this field.
+        # Corresponds to the JSON property `consentScript`
+        # @return [String]
+        attr_accessor :consent_script
+      
+        # Required. The language of the supplied audio as a [BCP-47](https://www.rfc-
+        # editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". See [Language
+        # Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of
+        # the currently supported language codes.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Holds audio content and config.
+        # Corresponds to the JSON property `referenceAudio`
+        # @return [Google::Apis::TexttospeechV1::InputAudio]
+        attr_accessor :reference_audio
+      
+        # Holds audio content and config.
+        # Corresponds to the JSON property `voiceTalentConsent`
+        # @return [Google::Apis::TexttospeechV1::InputAudio]
+        attr_accessor :voice_talent_consent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_script = args[:consent_script] if args.key?(:consent_script)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @reference_audio = args[:reference_audio] if args.key?(:reference_audio)
+          @voice_talent_consent = args[:voice_talent_consent] if args.key?(:voice_talent_consent)
+        end
+      end
+      
+      # Response message for the `GenerateVoiceCloningKey` method.
+      class GenerateVoiceCloningKeyResponse
+        include Google::Apis::Core::Hashable
+      
+        # The voice clone key. Use it in the SynthesizeSpeechRequest by setting [voice.
+        # voice_clone.voice_cloning_key].
+        # Corresponds to the JSON property `voiceCloningKey`
+        # @return [String]
+        attr_accessor :voice_cloning_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @voice_cloning_key = args[:voice_cloning_key] if args.key?(:voice_cloning_key)
+        end
+      end
+      
       # Metadata for response returned by the `SynthesizeLongAudio` method.
       class GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata
         include Google::Apis::Core::Hashable
@@ -175,6 +311,60 @@ module Google
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Holds audio content and config.
+      class InputAudio
+        include Google::Apis::Core::Hashable
+      
+        # Description of inputted audio data.
+        # Corresponds to the JSON property `audioConfig`
+        # @return [Google::Apis::TexttospeechV1::InputAudioConfig]
+        attr_accessor :audio_config
+      
+        # Required. The audio data bytes encoded as specified in `InputAudioConfig`.
+        # Note: as with all bytes fields, proto buffers use a pure binary representation,
+        # whereas JSON representations use base64. Audio samples should be between 5-25
+        # seconds in length.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_config = args[:audio_config] if args.key?(:audio_config)
+          @content = args[:content] if args.key?(:content)
+        end
+      end
+      
+      # Description of inputted audio data.
+      class InputAudioConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The format of the audio byte stream.
+        # Corresponds to the JSON property `audioEncoding`
+        # @return [String]
+        attr_accessor :audio_encoding
+      
+        # Required. The sample rate (in hertz) for this audio.
+        # Corresponds to the JSON property `sampleRateHertz`
+        # @return [Fixnum]
+        attr_accessor :sample_rate_hertz
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
         end
       end
       
@@ -329,6 +519,11 @@ module Google
       class SynthesisInput
         include Google::Apis::Core::Hashable
       
+        # A collection of pronunciation customizations.
+        # Corresponds to the JSON property `customPronunciations`
+        # @return [Google::Apis::TexttospeechV1::CustomPronunciations]
+        attr_accessor :custom_pronunciations
+      
         # The SSML document to be synthesized. The SSML document must be valid and well-
         # formed. Otherwise the RPC will fail and return google.rpc.Code.
         # INVALID_ARGUMENT. For more information, see [SSML](https://cloud.google.com/
@@ -348,6 +543,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_pronunciations = args[:custom_pronunciations] if args.key?(:custom_pronunciations)
           @ssml = args[:ssml] if args.key?(:ssml)
           @text = args[:text] if args.key?(:text)
         end
@@ -429,6 +625,11 @@ module Google
       class SynthesizeSpeechRequest
         include Google::Apis::Core::Hashable
       
+        # Used for advanced voice options.
+        # Corresponds to the JSON property `advancedVoiceOptions`
+        # @return [Google::Apis::TexttospeechV1::AdvancedVoiceOptions]
+        attr_accessor :advanced_voice_options
+      
         # Description of audio data to be synthesized.
         # Corresponds to the JSON property `audioConfig`
         # @return [Google::Apis::TexttospeechV1::AudioConfig]
@@ -452,6 +653,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_voice_options = args[:advanced_voice_options] if args.key?(:advanced_voice_options)
           @audio_config = args[:audio_config] if args.key?(:audio_config)
           @input = args[:input] if args.key?(:input)
           @voice = args[:voice] if args.key?(:voice)
@@ -520,6 +722,25 @@ module Google
         end
       end
       
+      # The configuration of Voice Clone feature.
+      class VoiceCloneParams
+        include Google::Apis::Core::Hashable
+      
+        # Required. Created by GenerateVoiceCloningKey.
+        # Corresponds to the JSON property `voiceCloningKey`
+        # @return [String]
+        attr_accessor :voice_cloning_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @voice_cloning_key = args[:voice_cloning_key] if args.key?(:voice_cloning_key)
+        end
+      end
+      
       # Description of which voice to use for a synthesis request.
       class VoiceSelectionParams
         include Google::Apis::Core::Hashable
@@ -559,6 +780,11 @@ module Google
         # @return [String]
         attr_accessor :ssml_gender
       
+        # The configuration of Voice Clone feature.
+        # Corresponds to the JSON property `voiceClone`
+        # @return [Google::Apis::TexttospeechV1::VoiceCloneParams]
+        attr_accessor :voice_clone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -569,6 +795,7 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
           @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
+          @voice_clone = args[:voice_clone] if args.key?(:voice_clone)
         end
       end
     end
