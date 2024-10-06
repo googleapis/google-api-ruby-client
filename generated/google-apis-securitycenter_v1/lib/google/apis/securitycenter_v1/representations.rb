@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CelPolicySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudArmor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1804,6 +1810,7 @@ module Google
       class AzureResourceGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
           property :name, as: 'name'
         end
       end
@@ -1872,6 +1879,13 @@ module Google
           property :filter, as: 'filter'
           property :mute_annotation, as: 'muteAnnotation'
           property :mute_state, as: 'muteState'
+        end
+      end
+      
+      class CelPolicySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spec, as: 'spec'
         end
       end
       
@@ -2352,6 +2366,8 @@ module Google
       class GoogleCloudSecuritycenterV1CustomConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cel_policy, as: 'celPolicy', class: Google::Apis::SecuritycenterV1::CelPolicySpec, decorator: Google::Apis::SecuritycenterV1::CelPolicySpec::Representation
+      
           property :custom_output, as: 'customOutput', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomOutputSpec, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomOutputSpec::Representation
       
           property :description, as: 'description'
@@ -2722,6 +2738,7 @@ module Google
       class GoogleCloudSecuritycenterV2AzureResourceGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
           property :name, as: 'name'
         end
       end
