@@ -262,6 +262,66 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1Application
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1Hub
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1Peering
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -799,6 +859,106 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1Application
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          collection :endpoint_matchers, as: 'endpointMatchers', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher::Representation
+      
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hostname, as: 'hostname'
+          collection :ports, as: 'ports'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1Hub
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nat_gateway_config, as: 'natGatewayConfig', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applications, as: 'applications', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Application, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Application::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_gateways, as: 'securityGateways', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nat_ips, as: 'natIps'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1Peering
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dns_zones, as: 'dnsZones'
+          property :target_vpc_network, as: 'targetVpcNetwork'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          collection :external_ips, as: 'externalIps'
+          hash :hubs, as: 'hubs', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Hub, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Hub::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          property :validate_only, as: 'validateOnly'
+          collection :vpc_peerings, as: 'vpcPeerings', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering::Representation
+      
         end
       end
       
