@@ -1157,6 +1157,8 @@ module Google
       
         # Optional. If specified, VMs will consume only the specified reservation. If
         # not specified (default), VMs will consume any applicable reservation.
+        # Additionally, VMs will not consume any reservation if "NO_RESERVATION" is
+        # specified.
         # Corresponds to the JSON property `reservation`
         # @return [String]
         attr_accessor :reservation
