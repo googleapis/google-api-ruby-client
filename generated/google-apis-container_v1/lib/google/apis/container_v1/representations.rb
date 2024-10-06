@@ -1072,6 +1072,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserManagedKeysConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VerticalPodAutoscaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1460,6 +1466,8 @@ module Google
           property :status_message, as: 'statusMessage'
           property :subnetwork, as: 'subnetwork'
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
+          property :user_managed_keys_config, as: 'userManagedKeysConfig', class: Google::Apis::ContainerV1::UserManagedKeysConfig, decorator: Google::Apis::ContainerV1::UserManagedKeysConfig::Representation
+      
           property :vertical_pod_autoscaling, as: 'verticalPodAutoscaling', class: Google::Apis::ContainerV1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1::VerticalPodAutoscaling::Representation
       
           property :workload_identity_config, as: 'workloadIdentityConfig', class: Google::Apis::ContainerV1::WorkloadIdentityConfig, decorator: Google::Apis::ContainerV1::WorkloadIdentityConfig::Representation
@@ -1594,6 +1602,8 @@ module Google
       
           property :etag, as: 'etag'
           property :removed_additional_pod_ranges_config, as: 'removedAdditionalPodRangesConfig', class: Google::Apis::ContainerV1::AdditionalPodRangesConfig, decorator: Google::Apis::ContainerV1::AdditionalPodRangesConfig::Representation
+      
+          property :user_managed_keys_config, as: 'userManagedKeysConfig', class: Google::Apis::ContainerV1::UserManagedKeysConfig, decorator: Google::Apis::ContainerV1::UserManagedKeysConfig::Representation
       
         end
       end
@@ -2234,6 +2244,7 @@ module Google
       
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
+          property :effective_cgroup_mode, as: 'effectiveCgroupMode'
           property :enable_confidential_storage, as: 'enableConfidentialStorage'
           property :ephemeral_storage_local_ssd_config, as: 'ephemeralStorageLocalSsdConfig', class: Google::Apis::ContainerV1::EphemeralStorageLocalSsdConfig, decorator: Google::Apis::ContainerV1::EphemeralStorageLocalSsdConfig::Representation
       
@@ -3125,6 +3136,20 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :range_name, as: 'rangeName'
           property :status, as: 'status'
+        end
+      end
+      
+      class UserManagedKeysConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_ca, as: 'aggregationCa'
+          property :cluster_ca, as: 'clusterCa'
+          property :control_plane_disk_encryption_key, as: 'controlPlaneDiskEncryptionKey'
+          property :etcd_api_ca, as: 'etcdApiCa'
+          property :etcd_peer_ca, as: 'etcdPeerCa'
+          property :gkeops_etcd_backup_encryption_key, as: 'gkeopsEtcdBackupEncryptionKey'
+          collection :service_account_signing_keys, as: 'serviceAccountSigningKeys'
+          collection :service_account_verification_keys, as: 'serviceAccountVerificationKeys'
         end
       end
       
