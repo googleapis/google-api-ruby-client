@@ -362,7 +362,7 @@ module Google
         end
       end
       
-      # LINT.IfChange Workflow program to be executed by Workflows.
+      # Workflow program to be executed by Workflows.
       class Workflow
         include Google::Apis::Core::Hashable
       
