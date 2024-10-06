@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BooleanTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BucketOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,12 @@ module Google
       end
       
       class Custom
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Daily
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -275,6 +287,12 @@ module Google
       end
       
       class Group
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Hourly
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -460,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Minutes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MonitoredResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -592,6 +616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RowCountTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SendNotificationChannelVerificationCodeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -640,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -665,6 +701,12 @@ module Google
       end
       
       class TimeInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeOfDay
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -830,6 +872,13 @@ module Google
         end
       end
       
+      class BooleanTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+        end
+      end
+      
       class BucketOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -933,6 +982,8 @@ module Google
       
           property :condition_prometheus_query_language, as: 'conditionPrometheusQueryLanguage', class: Google::Apis::MonitoringV3::PrometheusQueryLanguageCondition, decorator: Google::Apis::MonitoringV3::PrometheusQueryLanguageCondition::Representation
       
+          property :condition_sql, as: 'conditionSql', class: Google::Apis::MonitoringV3::SqlCondition, decorator: Google::Apis::MonitoringV3::SqlCondition::Representation
+      
           property :condition_threshold, as: 'conditionThreshold', class: Google::Apis::MonitoringV3::MetricThreshold, decorator: Google::Apis::MonitoringV3::MetricThreshold::Representation
       
           property :display_name, as: 'displayName'
@@ -999,6 +1050,15 @@ module Google
       class Custom
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Daily
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_time, as: 'executionTime', class: Google::Apis::MonitoringV3::TimeOfDay, decorator: Google::Apis::MonitoringV3::TimeOfDay::Representation
+      
+          property :periodicity, as: 'periodicity'
         end
       end
       
@@ -1173,6 +1233,14 @@ module Google
           property :is_cluster, as: 'isCluster'
           property :name, as: 'name'
           property :parent_name, as: 'parentName'
+        end
+      end
+      
+      class Hourly
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :minute_offset, as: 'minuteOffset'
+          property :periodicity, as: 'periodicity'
         end
       end
       
@@ -1490,6 +1558,13 @@ module Google
         end
       end
       
+      class Minutes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :periodicity, as: 'periodicity'
+        end
+      end
+      
       class MonitoredResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1708,6 +1783,14 @@ module Google
         end
       end
       
+      class RowCountTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comparison, as: 'comparison'
+          property :threshold, :numeric_string => true, as: 'threshold'
+        end
+      end
+      
       class SendNotificationChannelVerificationCodeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1806,6 +1889,23 @@ module Google
         end
       end
       
+      class SqlCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boolean_test, as: 'booleanTest', class: Google::Apis::MonitoringV3::BooleanTest, decorator: Google::Apis::MonitoringV3::BooleanTest::Representation
+      
+          property :daily, as: 'daily', class: Google::Apis::MonitoringV3::Daily, decorator: Google::Apis::MonitoringV3::Daily::Representation
+      
+          property :hourly, as: 'hourly', class: Google::Apis::MonitoringV3::Hourly, decorator: Google::Apis::MonitoringV3::Hourly::Representation
+      
+          property :minutes, as: 'minutes', class: Google::Apis::MonitoringV3::Minutes, decorator: Google::Apis::MonitoringV3::Minutes::Representation
+      
+          property :query, as: 'query'
+          property :row_count_test, as: 'rowCountTest', class: Google::Apis::MonitoringV3::RowCountTest, decorator: Google::Apis::MonitoringV3::RowCountTest::Representation
+      
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1844,6 +1944,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
         end
       end
       
