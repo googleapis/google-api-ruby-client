@@ -678,7 +678,7 @@ module Google
         end
         
         # Creates an attachment. The returned Operation will finish once the attachment
-        # has been created. Its response will be the created Attachment.
+        # has been created. Its response will be the created attachment.
         # @param [String] parent
         #   Required. The name of the parent resource where the attachment will be created.
         # @param [Google::Apis::ArtifactregistryV1::Attachment] attachment_object
@@ -715,8 +715,8 @@ module Google
         end
         
         # Deletes an attachment. The returned Operation will finish once the attachments
-        # has been deleted. It will not have any Operation metadata and will return a
-        # google.protobuf.Empty response.
+        # has been deleted. It will not have any Operation metadata and will return a `
+        # google.protobuf.Empty` response.
         # @param [String] name
         #   Required. The name of the attachment to delete.
         # @param [String] fields
@@ -776,7 +776,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists repositories.
+        # Lists attachments.
         # @param [String] parent
         #   Required. The name of the parent resource whose attachments will be listed.
         # @param [String] filter
@@ -1094,7 +1094,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Directly uploads a File to a repository. The returned Operation will complete
+        # Directly uploads a file to a repository. The returned Operation will complete
         # once the resources are uploaded.
         # @param [String] parent
         #   Required. The resource name of the repository where the file will be uploaded.
@@ -2021,8 +2021,8 @@ module Google
         
         # Updates a version.
         # @param [String] name
-        #   The name of the version, for example: "projects/p1/locations/us-central1/
-        #   repositories/repo1/packages/pkg1/versions/art1". If the package or version ID
+        #   The name of the version, for example: `projects/p1/locations/us-central1/
+        #   repositories/repo1/packages/pkg1/versions/art1`. If the package or version ID
         #   parts contain slashes, the slashes are escaped.
         # @param [Google::Apis::ArtifactregistryV1::Version] version_object
         # @param [String] update_mask
