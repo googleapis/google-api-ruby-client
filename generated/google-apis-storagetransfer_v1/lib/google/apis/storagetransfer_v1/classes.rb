@@ -1056,7 +1056,10 @@ module Google
         end
       end
       
-      # Specifies the configuration for running a replication job.
+      # Specifies the configuration for a cross-bucket replication job. Cross-bucket
+      # replication copies new or updated objects from a source Cloud Storage bucket
+      # to a destination Cloud Storage bucket. Existing objects in the source bucket
+      # are not copied by a new cross-bucket replication job.
       class ReplicationSpec
         include Google::Apis::Core::Hashable
       
@@ -1556,7 +1559,10 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # Specifies the configuration for running a replication job.
+        # Specifies the configuration for a cross-bucket replication job. Cross-bucket
+        # replication copies new or updated objects from a source Cloud Storage bucket
+        # to a destination Cloud Storage bucket. Existing objects in the source bucket
+        # are not copied by a new cross-bucket replication job.
         # Corresponds to the JSON property `replicationSpec`
         # @return [Google::Apis::StoragetransferV1::ReplicationSpec]
         attr_accessor :replication_spec
