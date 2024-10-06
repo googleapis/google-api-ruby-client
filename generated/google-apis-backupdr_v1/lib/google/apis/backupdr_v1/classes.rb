@@ -2392,6 +2392,38 @@ module Google
         end
       end
       
+      # Minimum details to identify a Google Cloud resource
+      class GcpResource
+        include Google::Apis::Core::Hashable
+      
+        # Name of the Google Cloud resource.
+        # Corresponds to the JSON property `gcpResourcename`
+        # @return [String]
+        attr_accessor :gcp_resourcename
+      
+        # Location of the resource: //"global"/"unspecified".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Type of the resource. Use the Unified Resource Type, eg. compute.googleapis.
+        # com/Instance.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_resourcename = args[:gcp_resourcename] if args.key?(:gcp_resourcename)
+          @location = args[:location] if args.key?(:location)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Feature type of the Guest OS.
       class GuestOsFeature
         include Google::Apis::Core::Hashable
@@ -3698,6 +3730,25 @@ module Google
         end
       end
       
+      # Response message for restoring from a Backup.
+      class RestoreBackupResponse
+        include Google::Apis::Core::Hashable
+      
+        # Details of the target resource created/modified as part of restore.
+        # Corresponds to the JSON property `targetResource`
+        # @return [Google::Apis::BackupdrV1::TargetResource]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
       # Message for rules config info.
       class RuleConfigInfo
         include Google::Apis::Core::Hashable
@@ -3978,6 +4029,19 @@ module Google
         end
       end
       
+      # Response message from SetStatusInternal method.
+      class SetInternalStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # 
       class SpannerLocation
         include Google::Apis::Core::Hashable
@@ -4143,6 +4207,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # Details of the target resource created/modified as part of restore.
+      class TargetResource
+        include Google::Apis::Core::Hashable
+      
+        # Minimum details to identify a Google Cloud resource
+        # Corresponds to the JSON property `gcpResource`
+        # @return [Google::Apis::BackupdrV1::GcpResource]
+        attr_accessor :gcp_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_resource = args[:gcp_resource] if args.key?(:gcp_resource)
         end
       end
       
