@@ -3227,6 +3227,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Currently this is only populated if the model state is `
+        # INPUT_VALIDATION_FAILED`.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
         # The metrics of the trained model.
         # Corresponds to the JSON property `metrics`
         # @return [Hash<String,Float>]
@@ -3263,6 +3269,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @error_message = args[:error_message] if args.key?(:error_message)
           @metrics = args[:metrics] if args.key?(:metrics)
           @model_state = args[:model_state] if args.key?(:model_state)
           @model_version = args[:model_version] if args.key?(:model_version)
@@ -4062,6 +4069,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :data_store_ids
       
+        # Optional. Whether to disable analytics for searches performed on this engine.
+        # Corresponds to the JSON property `disableAnalytics`
+        # @return [Boolean]
+        attr_accessor :disable_analytics
+        alias_method :disable_analytics?, :disable_analytics
+      
         # Required. The display name of the engine. Should be human readable. UTF-8
         # encoded string with limit of 1024 characters.
         # Corresponds to the JSON property `displayName`
@@ -4110,6 +4123,7 @@ module Google
           @common_config = args[:common_config] if args.key?(:common_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
+          @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
           @display_name = args[:display_name] if args.key?(:display_name)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @name = args[:name] if args.key?(:name)
@@ -8794,6 +8808,20 @@ module Google
         # @return [String]
         attr_accessor :dasher_customer_id
       
+        # Optional. The super admin email address for the workspace that will be used
+        # for access token generation. For now we only use it for Native Google Drive
+        # connector data ingestion.
+        # Corresponds to the JSON property `superAdminEmailAddress`
+        # @return [String]
+        attr_accessor :super_admin_email_address
+      
+        # Optional. The super admin service account for the workspace that will be used
+        # for access token generation. For now we only use it for Native Google Drive
+        # connector data ingestion.
+        # Corresponds to the JSON property `superAdminServiceAccount`
+        # @return [String]
+        attr_accessor :super_admin_service_account
+      
         # The Google Workspace data source.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -8806,6 +8834,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dasher_customer_id = args[:dasher_customer_id] if args.key?(:dasher_customer_id)
+          @super_admin_email_address = args[:super_admin_email_address] if args.key?(:super_admin_email_address)
+          @super_admin_service_account = args[:super_admin_service_account] if args.key?(:super_admin_service_account)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -9920,6 +9950,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Currently this is only populated if the model state is `
+        # INPUT_VALIDATION_FAILED`.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
         # The metrics of the trained model.
         # Corresponds to the JSON property `metrics`
         # @return [Hash<String,Float>]
@@ -9956,6 +9992,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @error_message = args[:error_message] if args.key?(:error_message)
           @metrics = args[:metrics] if args.key?(:metrics)
           @model_state = args[:model_state] if args.key?(:model_state)
           @model_version = args[:model_version] if args.key?(:model_version)
@@ -10546,6 +10583,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :data_store_ids
       
+        # Optional. Whether to disable analytics for searches performed on this engine.
+        # Corresponds to the JSON property `disableAnalytics`
+        # @return [Boolean]
+        attr_accessor :disable_analytics
+        alias_method :disable_analytics?, :disable_analytics
+      
         # Required. The display name of the engine. Should be human readable. UTF-8
         # encoded string with limit of 1024 characters.
         # Corresponds to the JSON property `displayName`
@@ -10609,6 +10652,7 @@ module Google
           @common_config = args[:common_config] if args.key?(:common_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
+          @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
           @display_name = args[:display_name] if args.key?(:display_name)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
@@ -14087,6 +14131,20 @@ module Google
         # @return [String]
         attr_accessor :dasher_customer_id
       
+        # Optional. The super admin email address for the workspace that will be used
+        # for access token generation. For now we only use it for Native Google Drive
+        # connector data ingestion.
+        # Corresponds to the JSON property `superAdminEmailAddress`
+        # @return [String]
+        attr_accessor :super_admin_email_address
+      
+        # Optional. The super admin service account for the workspace that will be used
+        # for access token generation. For now we only use it for Native Google Drive
+        # connector data ingestion.
+        # Corresponds to the JSON property `superAdminServiceAccount`
+        # @return [String]
+        attr_accessor :super_admin_service_account
+      
         # The Google Workspace data source.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -14099,6 +14157,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dasher_customer_id = args[:dasher_customer_id] if args.key?(:dasher_customer_id)
+          @super_admin_email_address = args[:super_admin_email_address] if args.key?(:super_admin_email_address)
+          @super_admin_service_account = args[:super_admin_service_account] if args.key?(:super_admin_service_account)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -14561,6 +14621,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Currently this is only populated if the model state is `
+        # INPUT_VALIDATION_FAILED`.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
         # The metrics of the trained model.
         # Corresponds to the JSON property `metrics`
         # @return [Hash<String,Float>]
@@ -14597,6 +14663,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @error_message = args[:error_message] if args.key?(:error_message)
           @metrics = args[:metrics] if args.key?(:metrics)
           @model_state = args[:model_state] if args.key?(:model_state)
           @model_version = args[:model_version] if args.key?(:model_version)
@@ -15169,6 +15236,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :data_store_ids
       
+        # Optional. Whether to disable analytics for searches performed on this engine.
+        # Corresponds to the JSON property `disableAnalytics`
+        # @return [Boolean]
+        attr_accessor :disable_analytics
+        alias_method :disable_analytics?, :disable_analytics
+      
         # Required. The display name of the engine. Should be human readable. UTF-8
         # encoded string with limit of 1024 characters.
         # Corresponds to the JSON property `displayName`
@@ -15217,6 +15290,7 @@ module Google
           @common_config = args[:common_config] if args.key?(:common_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
+          @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
           @display_name = args[:display_name] if args.key?(:display_name)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @name = args[:name] if args.key?(:name)
@@ -17893,6 +17967,20 @@ module Google
         # @return [String]
         attr_accessor :dasher_customer_id
       
+        # Optional. The super admin email address for the workspace that will be used
+        # for access token generation. For now we only use it for Native Google Drive
+        # connector data ingestion.
+        # Corresponds to the JSON property `superAdminEmailAddress`
+        # @return [String]
+        attr_accessor :super_admin_email_address
+      
+        # Optional. The super admin service account for the workspace that will be used
+        # for access token generation. For now we only use it for Native Google Drive
+        # connector data ingestion.
+        # Corresponds to the JSON property `superAdminServiceAccount`
+        # @return [String]
+        attr_accessor :super_admin_service_account
+      
         # The Google Workspace data source.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -17905,6 +17993,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dasher_customer_id = args[:dasher_customer_id] if args.key?(:dasher_customer_id)
+          @super_admin_email_address = args[:super_admin_email_address] if args.key?(:super_admin_email_address)
+          @super_admin_service_account = args[:super_admin_service_account] if args.key?(:super_admin_service_account)
           @type = args[:type] if args.key?(:type)
         end
       end

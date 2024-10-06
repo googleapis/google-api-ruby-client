@@ -3897,6 +3897,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :error_message, as: 'errorMessage'
           hash :metrics, as: 'metrics'
           property :model_state, as: 'modelState'
           property :model_version, :numeric_string => true, as: 'modelVersion'
@@ -4132,6 +4133,7 @@ module Google
       
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
+          property :disable_analytics, as: 'disableAnalytics'
           property :display_name, as: 'displayName'
           property :industry_vertical, as: 'industryVertical'
           property :name, as: 'name'
@@ -5377,6 +5379,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dasher_customer_id, as: 'dasherCustomerId'
+          property :super_admin_email_address, as: 'superAdminEmailAddress'
+          property :super_admin_service_account, as: 'superAdminServiceAccount'
           property :type, as: 'type'
         end
       end
@@ -5718,6 +5722,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :error_message, as: 'errorMessage'
           hash :metrics, as: 'metrics'
           property :model_state, as: 'modelState'
           property :model_version, :numeric_string => true, as: 'modelVersion'
@@ -5900,6 +5905,7 @@ module Google
       
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
+          property :disable_analytics, as: 'disableAnalytics'
           property :display_name, as: 'displayName'
           property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig::Representation
@@ -6820,6 +6826,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dasher_customer_id, as: 'dasherCustomerId'
+          property :super_admin_email_address, as: 'superAdminEmailAddress'
+          property :super_admin_service_account, as: 'superAdminServiceAccount'
           property :type, as: 'type'
         end
       end
@@ -6961,6 +6969,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :error_message, as: 'errorMessage'
           hash :metrics, as: 'metrics'
           property :model_state, as: 'modelState'
           property :model_version, :numeric_string => true, as: 'modelVersion'
@@ -7140,6 +7149,7 @@ module Google
       
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
+          property :disable_analytics, as: 'disableAnalytics'
           property :display_name, as: 'displayName'
           property :industry_vertical, as: 'industryVertical'
           property :name, as: 'name'
@@ -7842,6 +7852,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dasher_customer_id, as: 'dasherCustomerId'
+          property :super_admin_email_address, as: 'superAdminEmailAddress'
+          property :super_admin_service_account, as: 'superAdminServiceAccount'
           property :type, as: 'type'
         end
       end
