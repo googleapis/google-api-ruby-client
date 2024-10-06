@@ -1232,6 +1232,7 @@ module Google
           property :expire_time, as: 'expireTime'
           property :generation, :numeric_string => true, as: 'generation'
           property :ingress, as: 'ingress'
+          property :invoker_iam_disabled, as: 'invokerIamDisabled'
           hash :labels, as: 'labels'
           property :last_modifier, as: 'lastModifier'
           property :latest_created_revision, as: 'latestCreatedRevision'

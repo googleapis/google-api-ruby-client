@@ -2286,6 +2286,13 @@ module Google
         # @return [String]
         attr_accessor :ingress
       
+        # Optional. Disables IAM permission check for run.routes.invoke for callers of
+        # this service. This setting should not be used with external ingress.
+        # Corresponds to the JSON property `invokerIamDisabled`
+        # @return [Boolean]
+        attr_accessor :invoker_iam_disabled
+        alias_method :invoker_iam_disabled?, :invoker_iam_disabled
+      
         # Optional. Unstructured key value map that can be used to organize and
         # categorize objects. User-provided labels are shared with Google's billing
         # system, so they can be used to filter, or break down billing charges by team,
@@ -2446,6 +2453,7 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @generation = args[:generation] if args.key?(:generation)
           @ingress = args[:ingress] if args.key?(:ingress)
+          @invoker_iam_disabled = args[:invoker_iam_disabled] if args.key?(:invoker_iam_disabled)
           @labels = args[:labels] if args.key?(:labels)
           @last_modifier = args[:last_modifier] if args.key?(:last_modifier)
           @latest_created_revision = args[:latest_created_revision] if args.key?(:latest_created_revision)
@@ -2495,7 +2503,7 @@ module Google
       
         # Optional. total min instances for the service. This number of instances is
         # divided among all revisions with specified traffic based on the percent of
-        # traffic they are receiving. (BETA)
+        # traffic they are receiving.
         # Corresponds to the JSON property `minInstanceCount`
         # @return [Fixnum]
         attr_accessor :min_instance_count
