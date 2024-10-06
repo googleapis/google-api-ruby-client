@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcpResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GuestOsFeature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -496,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreBackupResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuleConfigInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -538,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetInternalStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpannerLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,6 +575,12 @@ module Google
       end
       
       class Tags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1183,6 +1207,15 @@ module Google
         end
       end
       
+      class GcpResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_resourcename, as: 'gcpResourcename'
+          property :location, as: 'location'
+          property :type, as: 'type'
+        end
+      end
+      
       class GuestOsFeature
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1521,6 +1554,14 @@ module Google
         end
       end
       
+      class RestoreBackupResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_resource, as: 'targetResource', class: Google::Apis::BackupdrV1::TargetResource, decorator: Google::Apis::BackupdrV1::TargetResource::Representation
+      
+        end
+      end
+      
       class RuleConfigInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1589,6 +1630,12 @@ module Google
         end
       end
       
+      class SetInternalStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SpannerLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1626,6 +1673,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items'
+        end
+      end
+      
+      class TargetResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_resource, as: 'gcpResource', class: Google::Apis::BackupdrV1::GcpResource, decorator: Google::Apis::BackupdrV1::GcpResource::Representation
+      
         end
       end
       
