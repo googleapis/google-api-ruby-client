@@ -301,6 +301,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The classifier's severity of the category. This is only present when
+        # the ModerateTextRequest.ModelVersion is set to MODEL_VERSION_2, and the
+        # corresponding category has a severity score.
+        # Corresponds to the JSON property `severity`
+        # @return [Float]
+        attr_accessor :severity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -309,6 +316,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @name = args[:name] if args.key?(:name)
+          @severity = args[:severity] if args.key?(:severity)
         end
       end
       
@@ -750,6 +758,11 @@ module Google
         # @return [Google::Apis::LanguageV2::Document]
         attr_accessor :document
       
+        # Optional. The model version to use for ModerateText.
+        # Corresponds to the JSON property `modelVersion`
+        # @return [String]
+        attr_accessor :model_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -757,6 +770,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @document = args[:document] if args.key?(:document)
+          @model_version = args[:model_version] if args.key?(:model_version)
         end
       end
       
