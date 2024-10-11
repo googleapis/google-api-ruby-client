@@ -292,7 +292,12 @@ module Google
             rescue Google::Apis::Error => e
               err = e
             end
-          elsif err.is_a?(HTTPClient::TimeoutError) || err.is_a?(SocketError) || err.is_a?(HTTPClient::KeepAliveDisconnected) || err.is_a?(Errno::ECONNREFUSED) || err.is_a?(Errno::ETIMEDOUT)
+          elsif err.is_a?(HTTPClient::TimeoutError) ||
+                err.is_a?(SocketError) ||
+                err.is_a?(HTTPClient::KeepAliveDisconnected) ||
+                err.is_a?(Errno::ECONNREFUSED) ||
+                err.is_a?(Errno::ETIMEDOUT) ||
+                err.is_a?(Errno::ECONNRESET)
             err = Google::Apis::TransmissionError.new(err)
           end
           block.call(nil, err) if block_given?
