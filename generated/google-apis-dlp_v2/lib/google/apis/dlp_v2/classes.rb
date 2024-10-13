@@ -1521,13 +1521,13 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel]
         attr_accessor :data_risk_level
       
-        # The BigQuery dataset ID.
+        # The BigQuery dataset ID, if the resource profiled is a BigQuery table.
         # Corresponds to the JSON property `datasetId`
         # @return [String]
         attr_accessor :dataset_id
       
-        # The BigQuery location where the dataset's data is stored. See https://cloud.
-        # google.com/bigquery/docs/locations for supported locations.
+        # If supported, the location where the dataset's data is stored. See https://
+        # cloud.google.com/bigquery/docs/locations for supported BigQuery locations.
         # Corresponds to the JSON property `datasetLocation`
         # @return [String]
         attr_accessor :dataset_location
@@ -1600,7 +1600,7 @@ module Google
         # @return [String]
         attr_accessor :table_full_resource
       
-        # The BigQuery table ID.
+        # The table ID.
         # Corresponds to the JSON property `tableId`
         # @return [String]
         attr_accessor :table_id
@@ -9539,8 +9539,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :failed_column_count
       
-        # The resource name of the resource profiled. https://cloud.google.com/apis/
-        # design/resource_names#full_resource_name
+        # The Cloud Asset Inventory resource that was profiled in order to generate this
+        # TableDataProfile. https://cloud.google.com/apis/design/resource_names#
+        # full_resource_name
         # Corresponds to the JSON property `fullResource`
         # @return [String]
         attr_accessor :full_resource
@@ -9612,7 +9613,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # If the resource is BigQuery, the BigQuery table ID.
+        # The table ID.
         # Corresponds to the JSON property `tableId`
         # @return [String]
         attr_accessor :table_id
@@ -10806,24 +10807,28 @@ module Google
       class GoogleTypeTimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
-        # allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # Minutes of hour of day. Must be from 0 to 59.
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
       
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
