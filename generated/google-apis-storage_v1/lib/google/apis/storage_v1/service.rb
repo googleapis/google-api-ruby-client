@@ -3514,6 +3514,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Starts asynchronous advancement of the relocate bucket operation in the case
+        # of required write downtime, to allow it to lock the bucket at the source
+        # location, and proceed with the bucket location swap. The server makes a best
+        # effort to advance the relocate bucket operation, but success is not guaranteed.
+        # @param [String] bucket
+        #   Name of the bucket to advance the relocate for.
+        # @param [String] operation_id
+        #   ID of the operation resource.
+        # @param [Google::Apis::StorageV1::AdvanceRelocateBucketOperationRequest] advance_relocate_bucket_operation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def advance_relocate_bucket_operation(bucket, operation_id, advance_relocate_bucket_operation_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/operations/{operationId}/advanceRelocateBucket', options)
+          command.request_representation = Google::Apis::StorageV1::AdvanceRelocateBucketOperationRequest::Representation
+          command.request_object = advance_relocate_bucket_operation_request_object
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['operationId'] = operation_id unless operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed.
         # @param [String] bucket

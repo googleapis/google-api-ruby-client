@@ -22,6 +22,34 @@ module Google
   module Apis
     module StorageV1
       
+      # An AdvanceRelocateBucketOperation request.
+      class AdvanceRelocateBucketOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the time when the relocation will revert to the sync stage if the
+        # relocation hasn't succeeded.
+        # Corresponds to the JSON property `expireTime`
+        # @return [DateTime]
+        attr_accessor :expire_time
+      
+        # Specifies the duration after which the relocation will revert to the sync
+        # stage if the relocation hasn't succeeded. Optional, if not supplied, a default
+        # value of 12h will be used.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
       # An Anywhere Cache instance.
       class AnywhereCache
         include Google::Apis::Core::Hashable
