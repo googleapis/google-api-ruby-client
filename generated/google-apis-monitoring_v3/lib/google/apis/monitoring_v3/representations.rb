@@ -825,6 +825,7 @@ module Google
           property :auto_close, as: 'autoClose'
           collection :notification_channel_strategy, as: 'notificationChannelStrategy', class: Google::Apis::MonitoringV3::NotificationChannelStrategy, decorator: Google::Apis::MonitoringV3::NotificationChannelStrategy::Representation
       
+          collection :notification_prompts, as: 'notificationPrompts'
           property :notification_rate_limit, as: 'notificationRateLimit', class: Google::Apis::MonitoringV3::NotificationRateLimit, decorator: Google::Apis::MonitoringV3::NotificationRateLimit::Representation
       
         end
