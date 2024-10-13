@@ -1843,11 +1843,6 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::AuditLogConfig>]
         attr_accessor :audit_log_configs
       
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `exemptedMembers`
-        # @return [Array<String>]
-        attr_accessor :exempted_members
-      
         # Specifies a service that will be enabled for audit logging. For example, `
         # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
         # value that covers all services.
@@ -1862,7 +1857,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
-          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @service = args[:service] if args.key?(:service)
         end
       end
@@ -1881,12 +1875,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `ignoreChildExemptions`
-        # @return [Boolean]
-        attr_accessor :ignore_child_exemptions
-        alias_method :ignore_child_exemptions?, :ignore_child_exemptions
-      
         # The log type that this config enables.
         # Corresponds to the JSON property `logType`
         # @return [String]
@@ -1899,7 +1887,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
-          @ignore_child_exemptions = args[:ignore_child_exemptions] if args.key?(:ignore_child_exemptions)
           @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
@@ -3491,6 +3478,28 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Specifies a preference for traffic sent from the proxy to the backend (or from
+        # the client to the backend for proxyless gRPC). The possible values are: -
+        # IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (
+        # Instance Group, Managed Instance Group, Network Endpoint Group), regardless of
+        # traffic from the client to the proxy. Only IPv4 health checks are used to
+        # check the health of the backends. This is the default setting. - PREFER_IPV6:
+        # Prioritize the connection to the endpoint's IPv6 address over its IPv4 address
+        # (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6
+        # traffic to the backends of the backend service (Instance Group, Managed
+        # Instance Group, Network Endpoint Group), regardless of traffic from the client
+        # to the proxy. Only IPv6 health checks are used to check the health of the
+        # backends. This field is applicable to either: - Advanced global external
+        # Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional
+        # external Application Load Balancer, - Internal proxy Network Load Balancer (
+        # load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load
+        # Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with
+        # Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
+        # 
+        # Corresponds to the JSON property `ipAddressSelectionPolicy`
+        # @return [String]
+        attr_accessor :ip_address_selection_policy
+      
         # [Output Only] Type of resource. Always compute#backendService for backend
         # services.
         # Corresponds to the JSON property `kind`
@@ -3710,6 +3719,7 @@ module Google
           @health_checks = args[:health_checks] if args.key?(:health_checks)
           @iap = args[:iap] if args.key?(:iap)
           @id = args[:id] if args.key?(:id)
+          @ip_address_selection_policy = args[:ip_address_selection_policy] if args.key?(:ip_address_selection_policy)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @locality_lb_policies = args[:locality_lb_policies] if args.key?(:locality_lb_policies)
@@ -5478,6 +5488,13 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # [Input Only] Optional, specifies the CUD end time requested by the customer in
+        # RFC3339 text format. Needed when the customer wants CUD's end date is later
+        # than the start date + term duration.
+        # Corresponds to the JSON property `customEndTimestamp`
+        # @return [String]
+        attr_accessor :custom_end_timestamp
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -5546,6 +5563,11 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::Reservation>]
         attr_accessor :reservations
       
+        # [Output Only] Contains output only fields.
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeV1::CommitmentResourceStatus]
+        attr_accessor :resource_status
+      
         # A list of commitment amounts for particular resources. Note that VCPU and
         # MEMORY resource commitments must occur together.
         # Corresponds to the JSON property `resources`
@@ -5596,6 +5618,7 @@ module Google
           @auto_renew = args[:auto_renew] if args.key?(:auto_renew)
           @category = args[:category] if args.key?(:category)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @custom_end_timestamp = args[:custom_end_timestamp] if args.key?(:custom_end_timestamp)
           @description = args[:description] if args.key?(:description)
           @end_timestamp = args[:end_timestamp] if args.key?(:end_timestamp)
           @existing_reservations = args[:existing_reservations] if args.key?(:existing_reservations)
@@ -5607,6 +5630,7 @@ module Google
           @plan = args[:plan] if args.key?(:plan)
           @region = args[:region] if args.key?(:region)
           @reservations = args[:reservations] if args.key?(:reservations)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
           @resources = args[:resources] if args.key?(:resources)
           @self_link = args[:self_link] if args.key?(:self_link)
           @split_source_commitment = args[:split_source_commitment] if args.key?(:split_source_commitment)
@@ -5856,6 +5880,27 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # [Output Only] Contains output only fields.
+      class CommitmentResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Indicates the end time of customer's eligibility to send custom
+        # term requests in RFC3339 text format. Term extension requests that (not the
+        # end time in the request) after this time will be rejected.
+        # Corresponds to the JSON property `customTermEligibilityEndTimestamp`
+        # @return [String]
+        attr_accessor :custom_term_eligibility_end_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_term_eligibility_end_timestamp = args[:custom_term_eligibility_end_timestamp] if args.key?(:custom_term_eligibility_end_timestamp)
         end
       end
       
@@ -10438,766 +10483,6 @@ module Google
       end
       
       # 
-      class FutureReservation
-        include Google::Apis::Core::Hashable
-      
-        # Future timestamp when the FR auto-created reservations will be deleted by
-        # Compute Engine. Format of this field must be a valid href="https://www.ietf.
-        # org/rfc/rfc3339.txt">RFC3339 value.
-        # Corresponds to the JSON property `autoCreatedReservationsDeleteTime`
-        # @return [String]
-        attr_accessor :auto_created_reservations_delete_time
-      
-        # A Duration represents a fixed-length span of time represented as a count of
-        # seconds and fractions of seconds at nanosecond resolution. It is independent
-        # of any calendar and concepts like "day" or "month". Range is approximately 10,
-        # 000 years.
-        # Corresponds to the JSON property `autoCreatedReservationsDuration`
-        # @return [Google::Apis::ComputeV1::Duration]
-        attr_accessor :auto_created_reservations_duration
-      
-        # Setting for enabling or disabling automatic deletion for auto-created
-        # reservation. If set to true, auto-created reservations will be deleted at
-        # Future Reservation's end time (default) or at user's defined timestamp if any
-        # of the [auto_created_reservations_delete_time,
-        # auto_created_reservations_duration] values is specified. For keeping auto-
-        # created reservation indefinitely, this value should be set to false.
-        # Corresponds to the JSON property `autoDeleteAutoCreatedReservations`
-        # @return [Boolean]
-        attr_accessor :auto_delete_auto_created_reservations
-        alias_method :auto_delete_auto_created_reservations?, :auto_delete_auto_created_reservations
-      
-        # [Output Only] The creation timestamp for this future reservation in RFC3339
-        # text format.
-        # Corresponds to the JSON property `creationTimestamp`
-        # @return [String]
-        attr_accessor :creation_timestamp
-      
-        # An optional description of this resource. Provide this property when you
-        # create the future reservation.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # [Output Only] A unique identifier for this future reservation. The server
-        # defines this identifier.
-        # Corresponds to the JSON property `id`
-        # @return [Fixnum]
-        attr_accessor :id
-      
-        # [Output Only] Type of the resource. Always compute#futureReservation for
-        # future reservations.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The name of the resource, provided by the client when initially creating the
-        # resource. The resource name must be 1-63 characters long, and comply with
-        # RFC1035. Specifically, the name must be 1-63 characters long and match the
-        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
-        # character must be a lowercase letter, and all following characters must be a
-        # dash, lowercase letter, or digit, except the last character, which cannot be a
-        # dash.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Name prefix for the reservations to be created at the time of delivery. The
-        # name prefix must comply with RFC1035. Maximum allowed length for name prefix
-        # is 20. Automatically created reservations name format will be -date-####.
-        # Corresponds to the JSON property `namePrefix`
-        # @return [String]
-        attr_accessor :name_prefix
-      
-        # Planning state before being submitted for evaluation
-        # Corresponds to the JSON property `planningStatus`
-        # @return [String]
-        attr_accessor :planning_status
-      
-        # [Output Only] Server-defined fully-qualified URL for this resource.
-        # Corresponds to the JSON property `selfLink`
-        # @return [String]
-        attr_accessor :self_link
-      
-        # [Output Only] Server-defined URL for this resource with the resource id.
-        # Corresponds to the JSON property `selfLinkWithId`
-        # @return [String]
-        attr_accessor :self_link_with_id
-      
-        # The share setting for reservations and sole tenancy node groups.
-        # Corresponds to the JSON property `shareSettings`
-        # @return [Google::Apis::ComputeV1::ShareSettings]
-        attr_accessor :share_settings
-      
-        # Future Reservation configuration to indicate instance properties and total
-        # count.
-        # Corresponds to the JSON property `specificSkuProperties`
-        # @return [Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties]
-        attr_accessor :specific_sku_properties
-      
-        # [Output only] Represents status related to the future reservation.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::ComputeV1::FutureReservationStatus]
-        attr_accessor :status
-      
-        # Time window for this Future Reservation.
-        # Corresponds to the JSON property `timeWindow`
-        # @return [Google::Apis::ComputeV1::FutureReservationTimeWindow]
-        attr_accessor :time_window
-      
-        # [Output Only] URL of the Zone where this future reservation resides.
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @auto_created_reservations_delete_time = args[:auto_created_reservations_delete_time] if args.key?(:auto_created_reservations_delete_time)
-          @auto_created_reservations_duration = args[:auto_created_reservations_duration] if args.key?(:auto_created_reservations_duration)
-          @auto_delete_auto_created_reservations = args[:auto_delete_auto_created_reservations] if args.key?(:auto_delete_auto_created_reservations)
-          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
-          @description = args[:description] if args.key?(:description)
-          @id = args[:id] if args.key?(:id)
-          @kind = args[:kind] if args.key?(:kind)
-          @name = args[:name] if args.key?(:name)
-          @name_prefix = args[:name_prefix] if args.key?(:name_prefix)
-          @planning_status = args[:planning_status] if args.key?(:planning_status)
-          @self_link = args[:self_link] if args.key?(:self_link)
-          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
-          @share_settings = args[:share_settings] if args.key?(:share_settings)
-          @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
-          @status = args[:status] if args.key?(:status)
-          @time_window = args[:time_window] if args.key?(:time_window)
-          @zone = args[:zone] if args.key?(:zone)
-        end
-      end
-      
-      # 
-      class FutureReservationSpecificSkuProperties
-        include Google::Apis::Core::Hashable
-      
-        # Properties of the SKU instances being reserved. Next ID: 9
-        # Corresponds to the JSON property `instanceProperties`
-        # @return [Google::Apis::ComputeV1::AllocationSpecificSkuAllocationReservedInstanceProperties]
-        attr_accessor :instance_properties
-      
-        # The instance template that will be used to populate the
-        # ReservedInstanceProperties of the future reservation
-        # Corresponds to the JSON property `sourceInstanceTemplate`
-        # @return [String]
-        attr_accessor :source_instance_template
-      
-        # Total number of instances for which capacity assurance is requested at a
-        # future time period.
-        # Corresponds to the JSON property `totalCount`
-        # @return [Fixnum]
-        attr_accessor :total_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
-          @source_instance_template = args[:source_instance_template] if args.key?(:source_instance_template)
-          @total_count = args[:total_count] if args.key?(:total_count)
-        end
-      end
-      
-      # [Output only] Represents status related to the future reservation.
-      class FutureReservationStatus
-        include Google::Apis::Core::Hashable
-      
-        # [Output Only] The current status of the requested amendment.
-        # Corresponds to the JSON property `amendmentStatus`
-        # @return [String]
-        attr_accessor :amendment_status
-      
-        # Fully qualified urls of the automatically created reservations at start_time.
-        # Corresponds to the JSON property `autoCreatedReservations`
-        # @return [Array<String>]
-        attr_accessor :auto_created_reservations
-      
-        # [Output Only] Represents the existing matching usage for the future
-        # reservation.
-        # Corresponds to the JSON property `existingMatchingUsageInfo`
-        # @return [Google::Apis::ComputeV1::FutureReservationStatusExistingMatchingUsageInfo]
-        attr_accessor :existing_matching_usage_info
-      
-        # This count indicates the fulfilled capacity so far. This is set during "
-        # PROVISIONING" state. This count also includes capacity delivered as part of
-        # existing matching reservations.
-        # Corresponds to the JSON property `fulfilledCount`
-        # @return [Fixnum]
-        attr_accessor :fulfilled_count
-      
-        # The state that the future reservation will be reverted to should the amendment
-        # be declined.
-        # Corresponds to the JSON property `lastKnownGoodState`
-        # @return [Google::Apis::ComputeV1::FutureReservationStatusLastKnownGoodState]
-        attr_accessor :last_known_good_state
-      
-        # Time when Future Reservation would become LOCKED, after which no modifications
-        # to Future Reservation will be allowed. Applicable only after the Future
-        # Reservation is in the APPROVED state. The lock_time is an RFC3339 string. The
-        # procurement_status will transition to PROCURING state at this time.
-        # Corresponds to the JSON property `lockTime`
-        # @return [String]
-        attr_accessor :lock_time
-      
-        # Current state of this Future Reservation
-        # Corresponds to the JSON property `procurementStatus`
-        # @return [String]
-        attr_accessor :procurement_status
-      
-        # Properties to be set for the Future Reservation.
-        # Corresponds to the JSON property `specificSkuProperties`
-        # @return [Google::Apis::ComputeV1::FutureReservationStatusSpecificSkuProperties]
-        attr_accessor :specific_sku_properties
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @amendment_status = args[:amendment_status] if args.key?(:amendment_status)
-          @auto_created_reservations = args[:auto_created_reservations] if args.key?(:auto_created_reservations)
-          @existing_matching_usage_info = args[:existing_matching_usage_info] if args.key?(:existing_matching_usage_info)
-          @fulfilled_count = args[:fulfilled_count] if args.key?(:fulfilled_count)
-          @last_known_good_state = args[:last_known_good_state] if args.key?(:last_known_good_state)
-          @lock_time = args[:lock_time] if args.key?(:lock_time)
-          @procurement_status = args[:procurement_status] if args.key?(:procurement_status)
-          @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
-        end
-      end
-      
-      # [Output Only] Represents the existing matching usage for the future
-      # reservation.
-      class FutureReservationStatusExistingMatchingUsageInfo
-        include Google::Apis::Core::Hashable
-      
-        # Count to represent min(FR total_count, matching_reserved_capacity+
-        # matching_unreserved_instances)
-        # Corresponds to the JSON property `count`
-        # @return [Fixnum]
-        attr_accessor :count
-      
-        # Timestamp when the matching usage was calculated
-        # Corresponds to the JSON property `timestamp`
-        # @return [String]
-        attr_accessor :timestamp
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @count = args[:count] if args.key?(:count)
-          @timestamp = args[:timestamp] if args.key?(:timestamp)
-        end
-      end
-      
-      # The state that the future reservation will be reverted to should the amendment
-      # be declined.
-      class FutureReservationStatusLastKnownGoodState
-        include Google::Apis::Core::Hashable
-      
-        # [Output Only] The description of the FutureReservation before an amendment was
-        # requested.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # [Output Only] Represents the existing matching usage for the future
-        # reservation.
-        # Corresponds to the JSON property `existingMatchingUsageInfo`
-        # @return [Google::Apis::ComputeV1::FutureReservationStatusExistingMatchingUsageInfo]
-        attr_accessor :existing_matching_usage_info
-      
-        # The properties of the last known good state for the Future Reservation.
-        # Corresponds to the JSON property `futureReservationSpecs`
-        # @return [Google::Apis::ComputeV1::FutureReservationStatusLastKnownGoodStateFutureReservationSpecs]
-        attr_accessor :future_reservation_specs
-      
-        # [Output Only] The lock time of the FutureReservation before an amendment was
-        # requested.
-        # Corresponds to the JSON property `lockTime`
-        # @return [String]
-        attr_accessor :lock_time
-      
-        # [Output Only] The name prefix of the Future Reservation before an amendment
-        # was requested.
-        # Corresponds to the JSON property `namePrefix`
-        # @return [String]
-        attr_accessor :name_prefix
-      
-        # [Output Only] The status of the last known good state for the Future
-        # Reservation.
-        # Corresponds to the JSON property `procurementStatus`
-        # @return [String]
-        attr_accessor :procurement_status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @existing_matching_usage_info = args[:existing_matching_usage_info] if args.key?(:existing_matching_usage_info)
-          @future_reservation_specs = args[:future_reservation_specs] if args.key?(:future_reservation_specs)
-          @lock_time = args[:lock_time] if args.key?(:lock_time)
-          @name_prefix = args[:name_prefix] if args.key?(:name_prefix)
-          @procurement_status = args[:procurement_status] if args.key?(:procurement_status)
-        end
-      end
-      
-      # The properties of the last known good state for the Future Reservation.
-      class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs
-        include Google::Apis::Core::Hashable
-      
-        # The share setting for reservations and sole tenancy node groups.
-        # Corresponds to the JSON property `shareSettings`
-        # @return [Google::Apis::ComputeV1::ShareSettings]
-        attr_accessor :share_settings
-      
-        # [Output Only] The previous instance related properties of the Future
-        # Reservation.
-        # Corresponds to the JSON property `specificSkuProperties`
-        # @return [Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties]
-        attr_accessor :specific_sku_properties
-      
-        # [Output Only] The previous time window of the Future Reservation.
-        # Corresponds to the JSON property `timeWindow`
-        # @return [Google::Apis::ComputeV1::FutureReservationTimeWindow]
-        attr_accessor :time_window
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @share_settings = args[:share_settings] if args.key?(:share_settings)
-          @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
-          @time_window = args[:time_window] if args.key?(:time_window)
-        end
-      end
-      
-      # Properties to be set for the Future Reservation.
-      class FutureReservationStatusSpecificSkuProperties
-        include Google::Apis::Core::Hashable
-      
-        # ID of the instance template used to populate the Future Reservation properties.
-        # Corresponds to the JSON property `sourceInstanceTemplateId`
-        # @return [String]
-        attr_accessor :source_instance_template_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @source_instance_template_id = args[:source_instance_template_id] if args.key?(:source_instance_template_id)
-        end
-      end
-      
-      # 
-      class FutureReservationTimeWindow
-        include Google::Apis::Core::Hashable
-      
-        # A Duration represents a fixed-length span of time represented as a count of
-        # seconds and fractions of seconds at nanosecond resolution. It is independent
-        # of any calendar and concepts like "day" or "month". Range is approximately 10,
-        # 000 years.
-        # Corresponds to the JSON property `duration`
-        # @return [Google::Apis::ComputeV1::Duration]
-        attr_accessor :duration
-      
-        # 
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Start time of the Future Reservation. The start_time is an RFC3339 string.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @duration = args[:duration] if args.key?(:duration)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
-      # Contains a list of future reservations.
-      class FutureReservationsAggregatedListResponse
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # [Output Only] Unique identifier for the resource; defined by the server.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # A list of Future reservation resources.
-        # Corresponds to the JSON property `items`
-        # @return [Hash<String,Google::Apis::ComputeV1::FutureReservationsScopedList>]
-        attr_accessor :items
-      
-        # [Output Only] Type of resource. Always compute#
-        # futureReservationsAggregatedListResponse for future resevation aggregated list
-        # response.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # [Output Only] This token allows you to get the next page of results for list
-        # requests. If the number of results is larger than maxResults, use the
-        # nextPageToken as a value for the query parameter pageToken in the next list
-        # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # [Output Only] Server-defined URL for this resource.
-        # Corresponds to the JSON property `selfLink`
-        # @return [String]
-        attr_accessor :self_link
-      
-        # [Output Only] Unreachable resources.
-        # Corresponds to the JSON property `unreachables`
-        # @return [Array<String>]
-        attr_accessor :unreachables
-      
-        # [Output Only] Informational warning message.
-        # Corresponds to the JSON property `warning`
-        # @return [Google::Apis::ComputeV1::FutureReservationsAggregatedListResponse::Warning]
-        attr_accessor :warning
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
-          @id = args[:id] if args.key?(:id)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @self_link = args[:self_link] if args.key?(:self_link)
-          @unreachables = args[:unreachables] if args.key?(:unreachables)
-          @warning = args[:warning] if args.key?(:warning)
-        end
-        
-        # [Output Only] Informational warning message.
-        class Warning
-          include Google::Apis::Core::Hashable
-        
-          # [Output Only] A warning code, if applicable. For example, Compute Engine
-          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
-          # Corresponds to the JSON property `code`
-          # @return [String]
-          attr_accessor :code
-        
-          # [Output Only] Metadata about this warning in key: value format. For example: "
-          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
-          # Corresponds to the JSON property `data`
-          # @return [Array<Google::Apis::ComputeV1::FutureReservationsAggregatedListResponse::Warning::Datum>]
-          attr_accessor :data
-        
-          # [Output Only] A human-readable description of the warning code.
-          # Corresponds to the JSON property `message`
-          # @return [String]
-          attr_accessor :message
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @code = args[:code] if args.key?(:code)
-            @data = args[:data] if args.key?(:data)
-            @message = args[:message] if args.key?(:message)
-          end
-          
-          # 
-          class Datum
-            include Google::Apis::Core::Hashable
-          
-            # [Output Only] A key that provides more detail on the warning being returned.
-            # For example, for warnings where there are no results in a list request for a
-            # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource and a
-            # suggested replacement, or a warning about invalid network settings (for
-            # example, if an instance attempts to perform IP forwarding but is not enabled
-            # for IP forwarding).
-            # Corresponds to the JSON property `key`
-            # @return [String]
-            attr_accessor :key
-          
-            # [Output Only] A warning data value corresponding to the key.
-            # Corresponds to the JSON property `value`
-            # @return [String]
-            attr_accessor :value
-          
-            def initialize(**args)
-               update!(**args)
-            end
-          
-            # Update properties of this object
-            def update!(**args)
-              @key = args[:key] if args.key?(:key)
-              @value = args[:value] if args.key?(:value)
-            end
-          end
-        end
-      end
-      
-      # 
-      class FutureReservationsListResponse
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # [Output Only] A list of future reservation resources.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::ComputeV1::FutureReservation>]
-        attr_accessor :items
-      
-        # [Output Only] Type of resource.Always compute#FutureReservationsListResponse
-        # for lists of reservations
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # [Output Only] This token allows you to get the next page of results for list
-        # requests. If the number of results is larger than maxResults, use the
-        # nextPageToken as a value for the query parameter pageToken in the next list
-        # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # [Output Only] Server-defined URL for this resource.
-        # Corresponds to the JSON property `selfLink`
-        # @return [String]
-        attr_accessor :self_link
-      
-        # [Output Only] Unreachable resources.
-        # Corresponds to the JSON property `unreachables`
-        # @return [Array<String>]
-        attr_accessor :unreachables
-      
-        # [Output Only] Informational warning message.
-        # Corresponds to the JSON property `warning`
-        # @return [Google::Apis::ComputeV1::FutureReservationsListResponse::Warning]
-        attr_accessor :warning
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
-          @id = args[:id] if args.key?(:id)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @self_link = args[:self_link] if args.key?(:self_link)
-          @unreachables = args[:unreachables] if args.key?(:unreachables)
-          @warning = args[:warning] if args.key?(:warning)
-        end
-        
-        # [Output Only] Informational warning message.
-        class Warning
-          include Google::Apis::Core::Hashable
-        
-          # [Output Only] A warning code, if applicable. For example, Compute Engine
-          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
-          # Corresponds to the JSON property `code`
-          # @return [String]
-          attr_accessor :code
-        
-          # [Output Only] Metadata about this warning in key: value format. For example: "
-          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
-          # Corresponds to the JSON property `data`
-          # @return [Array<Google::Apis::ComputeV1::FutureReservationsListResponse::Warning::Datum>]
-          attr_accessor :data
-        
-          # [Output Only] A human-readable description of the warning code.
-          # Corresponds to the JSON property `message`
-          # @return [String]
-          attr_accessor :message
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @code = args[:code] if args.key?(:code)
-            @data = args[:data] if args.key?(:data)
-            @message = args[:message] if args.key?(:message)
-          end
-          
-          # 
-          class Datum
-            include Google::Apis::Core::Hashable
-          
-            # [Output Only] A key that provides more detail on the warning being returned.
-            # For example, for warnings where there are no results in a list request for a
-            # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource and a
-            # suggested replacement, or a warning about invalid network settings (for
-            # example, if an instance attempts to perform IP forwarding but is not enabled
-            # for IP forwarding).
-            # Corresponds to the JSON property `key`
-            # @return [String]
-            attr_accessor :key
-          
-            # [Output Only] A warning data value corresponding to the key.
-            # Corresponds to the JSON property `value`
-            # @return [String]
-            attr_accessor :value
-          
-            def initialize(**args)
-               update!(**args)
-            end
-          
-            # Update properties of this object
-            def update!(**args)
-              @key = args[:key] if args.key?(:key)
-              @value = args[:value] if args.key?(:value)
-            end
-          end
-        end
-      end
-      
-      # 
-      class FutureReservationsScopedList
-        include Google::Apis::Core::Hashable
-      
-        # A list of future reservations contained in this scope.
-        # Corresponds to the JSON property `futureReservations`
-        # @return [Array<Google::Apis::ComputeV1::FutureReservation>]
-        attr_accessor :future_reservations
-      
-        # Informational warning which replaces the list of future reservations when the
-        # list is empty.
-        # Corresponds to the JSON property `warning`
-        # @return [Google::Apis::ComputeV1::FutureReservationsScopedList::Warning]
-        attr_accessor :warning
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @future_reservations = args[:future_reservations] if args.key?(:future_reservations)
-          @warning = args[:warning] if args.key?(:warning)
-        end
-        
-        # Informational warning which replaces the list of future reservations when the
-        # list is empty.
-        class Warning
-          include Google::Apis::Core::Hashable
-        
-          # [Output Only] A warning code, if applicable. For example, Compute Engine
-          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
-          # Corresponds to the JSON property `code`
-          # @return [String]
-          attr_accessor :code
-        
-          # [Output Only] Metadata about this warning in key: value format. For example: "
-          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
-          # Corresponds to the JSON property `data`
-          # @return [Array<Google::Apis::ComputeV1::FutureReservationsScopedList::Warning::Datum>]
-          attr_accessor :data
-        
-          # [Output Only] A human-readable description of the warning code.
-          # Corresponds to the JSON property `message`
-          # @return [String]
-          attr_accessor :message
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @code = args[:code] if args.key?(:code)
-            @data = args[:data] if args.key?(:data)
-            @message = args[:message] if args.key?(:message)
-          end
-          
-          # 
-          class Datum
-            include Google::Apis::Core::Hashable
-          
-            # [Output Only] A key that provides more detail on the warning being returned.
-            # For example, for warnings where there are no results in a list request for a
-            # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource and a
-            # suggested replacement, or a warning about invalid network settings (for
-            # example, if an instance attempts to perform IP forwarding but is not enabled
-            # for IP forwarding).
-            # Corresponds to the JSON property `key`
-            # @return [String]
-            attr_accessor :key
-          
-            # [Output Only] A warning data value corresponding to the key.
-            # Corresponds to the JSON property `value`
-            # @return [String]
-            attr_accessor :value
-          
-            def initialize(**args)
-               update!(**args)
-            end
-          
-            # Update properties of this object
-            def update!(**args)
-              @key = args[:key] if args.key?(:key)
-              @value = args[:value] if args.key?(:value)
-            end
-          end
-        end
-      end
-      
-      # 
       class GrpcHealthCheck
         include Google::Apis::Core::Hashable
       
@@ -12699,6 +11984,16 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # 
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
+        # Health state of the IPv6 address of the instance.
+        # Corresponds to the JSON property `ipv6HealthState`
+        # @return [String]
+        attr_accessor :ipv6_health_state
+      
         # The named port of the instance group, not necessarily the port that is health-
         # checked.
         # Corresponds to the JSON property `port`
@@ -12727,6 +12022,8 @@ module Google
           @health_state = args[:health_state] if args.key?(:health_state)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
+          @ipv6_health_state = args[:ipv6_health_state] if args.key?(:ipv6_health_state)
           @port = args[:port] if args.key?(:port)
           @weight = args[:weight] if args.key?(:weight)
           @weight_error = args[:weight_error] if args.key?(:weight_error)
@@ -28682,8 +27979,8 @@ module Google
         attr_accessor :target_id
       
         # [Output Only] The URL of the resource that the operation modifies. For
-        # operations related to creating a snapshot, this points to the persistent disk
-        # that the snapshot was created from.
+        # operations related to creating a snapshot, this points to the disk that the
+        # snapshot was created from.
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
@@ -33383,9 +32680,9 @@ module Google
         # and traffic management table. This resource defines mappings from hostnames
         # and URL paths to either a backend service or a backend bucket. To use the
         # global urlMaps resource, the backend service must have a loadBalancingScheme
-        # of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource,
-        # the backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For
-        # more information, read URL Map Concepts.
+        # of either EXTERNAL, EXTERNAL_MANAGED, or INTERNAL_SELF_MANAGED. To use the
+        # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+        # INTERNAL_MANAGED. For more information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeV1::UrlMap]
         attr_accessor :resource
@@ -39302,6 +38599,19 @@ module Google
         # @return [String]
         attr_accessor :producer_forwarding_rule
       
+        # The number of consumer spokes that connected Private Service Connect endpoints
+        # can be propagated to through Network Connectivity Center. This limit lets the
+        # service producer limit how many propagated Private Service Connect connections
+        # can be established to this service attachment from a single consumer. If the
+        # connection preference of the service attachment is ACCEPT_MANUAL, the limit
+        # applies to each project or network that is listed in the consumer accept list.
+        # If the connection preference of the service attachment is ACCEPT_AUTOMATIC,
+        # the limit applies to each project that contains a connected endpoint. If
+        # unspecified, the default propagated connection limit is 250.
+        # Corresponds to the JSON property `propagatedConnectionLimit`
+        # @return [Fixnum]
+        attr_accessor :propagated_connection_limit
+      
         # [Output Only] An 128-bit global unique ID of the PSC service attachment.
         # Corresponds to the JSON property `pscServiceAttachmentId`
         # @return [Google::Apis::ComputeV1::Uint128]
@@ -39359,6 +38669,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nat_subnets = args[:nat_subnets] if args.key?(:nat_subnets)
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
+          @propagated_connection_limit = args[:propagated_connection_limit] if args.key?(:propagated_connection_limit)
           @psc_service_attachment_id = args[:psc_service_attachment_id] if args.key?(:psc_service_attachment_id)
           @reconcile_connections = args[:reconcile_connections] if args.key?(:reconcile_connections)
           @region = args[:region] if args.key?(:region)
@@ -39504,6 +38815,12 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
+        # The number of consumer Network Connectivity Center spokes that the connected
+        # Private Service Connect endpoint has propagated to.
+        # Corresponds to the JSON property `propagatedConnectionCount`
+        # @return [Fixnum]
+        attr_accessor :propagated_connection_count
+      
         # The PSC connection id of the connected endpoint.
         # Corresponds to the JSON property `pscConnectionId`
         # @return [Fixnum]
@@ -39522,6 +38839,7 @@ module Google
         def update!(**args)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @propagated_connection_count = args[:propagated_connection_count] if args.key?(:propagated_connection_count)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @status = args[:status] if args.key?(:status)
         end
@@ -47591,9 +46909,9 @@ module Google
       # and traffic management table. This resource defines mappings from hostnames
       # and URL paths to either a backend service or a backend bucket. To use the
       # global urlMaps resource, the backend service must have a loadBalancingScheme
-      # of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource,
-      # the backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For
-      # more information, read URL Map Concepts.
+      # of either EXTERNAL, EXTERNAL_MANAGED, or INTERNAL_SELF_MANAGED. To use the
+      # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+      # INTERNAL_MANAGED. For more information, read URL Map Concepts.
       class UrlMap
         include Google::Apis::Core::Hashable
       
@@ -48262,9 +47580,9 @@ module Google
         # and traffic management table. This resource defines mappings from hostnames
         # and URL paths to either a backend service or a backend bucket. To use the
         # global urlMaps resource, the backend service must have a loadBalancingScheme
-        # of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource,
-        # the backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For
-        # more information, read URL Map Concepts.
+        # of either EXTERNAL, EXTERNAL_MANAGED, or INTERNAL_SELF_MANAGED. To use the
+        # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+        # INTERNAL_MANAGED. For more information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeV1::UrlMap]
         attr_accessor :resource
