@@ -193,8 +193,8 @@ module Google
         # Submits a build in a given project.
         # @param [String] parent
         #   Required. The project and location to build in. Location must be a region, e.g.
-        #   , 'us-central1' or 'global' if the global builder is to be used. Format:
-        #   projects/`project`/locations/`location`
+        #   , 'us-central1' or 'global' if the global builder is to be used. Format: `
+        #   projects/`project`/locations/`location``
         # @param [Google::Apis::RunV2::GoogleCloudRunV2SubmitBuildRequest] google_cloud_run_v2_submit_build_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -34,8 +34,8 @@ module Google
         # @return [String]
         attr_accessor :breakglass_justification
       
-        # Optional. The path to a binary authorization policy. Format: projects/`project`
-        # /platforms/cloudRun/`policy-name`
+        # Optional. The path to a binary authorization policy. Format: `projects/`
+        # project`/platforms/cloudRun/`policy-name``
         # Corresponds to the JSON property `policy`
         # @return [String]
         attr_accessor :policy
@@ -1985,8 +1985,8 @@ module Google
         attr_accessor :labels
       
         # Optional. Sets the maximum number of requests that each serving instance can
-        # receive. If not specified or 0, defaults to 80 when requested CPU >= 1 and
-        # defaults to 1 when requested CPU < 1.
+        # receive. If not specified or 0, defaults to 80 when requested `CPU >= 1` and
+        # defaults to 1 when requested `CPU < 1`.
         # Corresponds to the JSON property `maxInstanceRequestConcurrency`
         # @return [Fixnum]
         attr_accessor :max_instance_request_concurrency
@@ -2480,8 +2480,8 @@ module Google
       class GoogleCloudRunV2ServiceMesh
         include Google::Apis::Core::Hashable
       
-        # The Mesh resource name. Format: projects/`project`/locations/global/meshes/`
-        # mesh`, where `project` can be project id or number.
+        # The Mesh resource name. Format: `projects/`project`/locations/global/meshes/`
+        # mesh``, where ``project`` can be project id or number.
         # Corresponds to the JSON property `mesh`
         # @return [String]
         attr_accessor :mesh
@@ -2596,9 +2596,9 @@ module Google
       
         # Optional. Name of the Cloud Build Custom Worker Pool that should be used to
         # build the function. The format of this field is `projects/`project`/locations/`
-        # region`/workerPools/`workerPool`` where `project` and `region` are the project
-        # id and region respectively where the worker pool is defined and `workerPool`
-        # is the short name of the worker pool.
+        # region`/workerPools/`workerPool`` where ``project`` and ``region`` are the
+        # project id and region respectively where the worker pool is defined and ``
+        # workerPool`` is the short name of the worker pool.
         # Corresponds to the JSON property `workerPool`
         # @return [String]
         attr_accessor :worker_pool
@@ -3222,10 +3222,10 @@ module Google
       class GoogleCloudRunV2VpcAccess
         include Google::Apis::Core::Hashable
       
-        # VPC Access connector name. Format: projects/`project`/locations/`location`/
-        # connectors/`connector`, where `project` can be project id or number. For more
-        # information on sending traffic to a VPC network via a connector, visit https://
-        # cloud.google.com/run/docs/configuring/vpc-connectors.
+        # VPC Access connector name. Format: `projects/`project`/locations/`location`/
+        # connectors/`connector``, where ``project`` can be project id or number. For
+        # more information on sending traffic to a VPC network via a connector, visit
+        # https://cloud.google.com/run/docs/configuring/vpc-connectors.
         # Corresponds to the JSON property `connector`
         # @return [String]
         attr_accessor :connector
