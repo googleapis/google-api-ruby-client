@@ -269,8 +269,8 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Optional. Immutable. Identifier. Resource name of the subscription. Format: `
-        # subscriptions/`subscription``
+        # Identifier. Resource name of the subscription. Format: `subscriptions/`
+        # subscription``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

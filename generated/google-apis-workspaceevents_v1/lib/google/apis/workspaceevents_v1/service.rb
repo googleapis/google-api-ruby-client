@@ -262,8 +262,8 @@ module Google
         # see [Update or renew a Google Workspace subscription](https://developers.
         # google.com/workspace/events/guides/update-subscription).
         # @param [String] name
-        #   Optional. Immutable. Identifier. Resource name of the subscription. Format: `
-        #   subscriptions/`subscription``
+        #   Identifier. Resource name of the subscription. Format: `subscriptions/`
+        #   subscription``
         # @param [Google::Apis::WorkspaceeventsV1::Subscription] subscription_object
         # @param [String] update_mask
         #   Optional. The field to update. If omitted, updates any fields included in the
