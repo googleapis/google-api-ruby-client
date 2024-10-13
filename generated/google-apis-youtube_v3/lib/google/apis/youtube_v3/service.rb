@@ -1817,7 +1817,7 @@ module Google
         #   returned.
         # @param [Fixnum] max_results
         #   The *maxResults* parameter specifies the maximum number of items that should
-        #   be returned in the result set.
+        #   be returned in the result set. Not used in the streaming RPC.
         # @param [String] page_token
         #   The *pageToken* parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken property identify
@@ -4155,6 +4155,56 @@ module Google
           command.response_representation = Google::Apis::YoutubeV3::CommentThread::Representation
           command.response_class = Google::Apis::YoutubeV3::CommentThread
           command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Allows a user to load live chat through a server-streamed RPC.
+        # @param [String] hl
+        #   Specifies the localization language in which the system messages should be
+        #   returned.
+        # @param [String] live_chat_id
+        #   The id of the live chat for which comments should be returned.
+        # @param [Fixnum] max_results
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set. Not used in the streaming RPC.
+        # @param [String] page_token
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken property identify
+        #   other pages that could be retrieved.
+        # @param [Array<String>, String] part
+        #   The *part* parameter specifies the liveChatComment resource parts that the API
+        #   response will include. Supported values are id, snippet, and authorDetails.
+        # @param [Fixnum] profile_image_size
+        #   Specifies the size of the profile image that should be returned for each user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::LiveChatMessageListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::LiveChatMessageListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_youtube_v3_live_chat_message(hl: nil, live_chat_id: nil, max_results: nil, page_token: nil, part: nil, profile_image_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'youtube/v3/liveChat/messages/stream', options)
+          command.response_representation = Google::Apis::YoutubeV3::LiveChatMessageListResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::LiveChatMessageListResponse
+          command.query['hl'] = hl unless hl.nil?
+          command.query['liveChatId'] = live_chat_id unless live_chat_id.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['profileImageSize'] = profile_image_size unless profile_image_size.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
