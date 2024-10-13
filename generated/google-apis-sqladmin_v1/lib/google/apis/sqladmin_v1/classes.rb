@@ -277,11 +277,6 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The name of the backup. Format: projects/`project`/backups/`backup`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         def initialize(**args)
            update!(**args)
         end
@@ -290,7 +285,6 @@ module Google
         def update!(**args)
           @backup_id = args[:backup_id] if args.key?(:backup_id)
           @kind = args[:kind] if args.key?(:kind)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -2624,23 +2618,11 @@ module Google
       class InstancesRestoreBackupRequest
         include Google::Apis::Core::Hashable
       
-        # The name of the backup to restore from in following format: projects/`project-
-        # id`/backups/`backup-uid` Only one of restore_backup_context or backup can be
-        # passed to the input.
-        # Corresponds to the JSON property `backup`
-        # @return [String]
-        attr_accessor :backup
-      
         # Database instance restore from backup context. Backup context contains source
         # instance id and project id.
         # Corresponds to the JSON property `restoreBackupContext`
         # @return [Google::Apis::SqladminV1::RestoreBackupContext]
         attr_accessor :restore_backup_context
-      
-        # A Cloud SQL instance resource.
-        # Corresponds to the JSON property `restoreInstanceSettings`
-        # @return [Google::Apis::SqladminV1::DatabaseInstance]
-        attr_accessor :restore_instance_settings
       
         def initialize(**args)
            update!(**args)
@@ -2648,9 +2630,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @backup = args[:backup] if args.key?(:backup)
           @restore_backup_context = args[:restore_backup_context] if args.key?(:restore_backup_context)
-          @restore_instance_settings = args[:restore_instance_settings] if args.key?(:restore_instance_settings)
         end
       end
       
@@ -3368,11 +3348,6 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of warnings that occurred while handling the request.
-        # Corresponds to the JSON property `warnings`
-        # @return [Array<Google::Apis::SqladminV1::ApiWarning>]
-        attr_accessor :warnings
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3382,7 +3357,6 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -3490,6 +3464,54 @@ module Google
         end
       end
       
+      # Settings for an automatically-setup Private Service Connect consumer endpoint
+      # that is used to connect to a Cloud SQL instance.
+      class PscAutoConnectionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The consumer network of this consumer endpoint. This must be a resource path
+        # that includes both the host project and the network name. For example, `
+        # projects/project1/global/networks/network1`. The consumer host project of this
+        # network might be different from the consumer service project.
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
+        # The connection policy status of the consumer network.
+        # Corresponds to the JSON property `consumerNetworkStatus`
+        # @return [String]
+        attr_accessor :consumer_network_status
+      
+        # This is the project ID of consumer service project of this consumer endpoint.
+        # Optional. This is only applicable if consumer_network is a shared vpc network.
+        # Corresponds to the JSON property `consumerProject`
+        # @return [String]
+        attr_accessor :consumer_project
+      
+        # The IP address of the consumer endpoint.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # The connection status of the consumer endpoint.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
+          @consumer_network_status = args[:consumer_network_status] if args.key?(:consumer_network_status)
+          @consumer_project = args[:consumer_project] if args.key?(:consumer_project)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # PSC settings for a Cloud SQL instance.
       class PscConfig
         include Google::Apis::Core::Hashable
@@ -3501,6 +3523,12 @@ module Google
         # Corresponds to the JSON property `allowedConsumerProjects`
         # @return [Array<String>]
         attr_accessor :allowed_consumer_projects
+      
+        # Optional. The list of settings for requested Private Service Connect consumer
+        # endpoints that can be used to connect to this Cloud SQL instance.
+        # Corresponds to the JSON property `pscAutoConnections`
+        # @return [Array<Google::Apis::SqladminV1::PscAutoConnectionConfig>]
+        attr_accessor :psc_auto_connections
       
         # Whether PSC connectivity is enabled for this instance.
         # Corresponds to the JSON property `pscEnabled`
@@ -3515,6 +3543,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
+          @psc_auto_connections = args[:psc_auto_connections] if args.key?(:psc_auto_connections)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
         end
       end
