@@ -550,6 +550,11 @@ module Google
       class AwsEc2PlatformDetails
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether the machine is hyperthreaded.
+        # Corresponds to the JSON property `hyperthreading`
+        # @return [String]
+        attr_accessor :hyperthreading
+      
         # The location of the machine in the AWS format.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -566,6 +571,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
           @location = args[:location] if args.key?(:location)
           @machine_type_label = args[:machine_type_label] if args.key?(:machine_type_label)
         end
@@ -574,6 +580,11 @@ module Google
       # Azure VM specific details.
       class AzureVmPlatformDetails
         include Google::Apis::Core::Hashable
+      
+        # Whether the machine is hyperthreaded.
+        # Corresponds to the JSON property `hyperthreading`
+        # @return [String]
+        attr_accessor :hyperthreading
       
         # The location of the machine in the Azure format.
         # Corresponds to the JSON property `location`
@@ -596,6 +607,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
           @location = args[:location] if args.key?(:location)
           @machine_type_label = args[:machine_type_label] if args.key?(:machine_type_label)
           @provisioning_state = args[:provisioning_state] if args.key?(:provisioning_state)
@@ -1678,6 +1690,11 @@ module Google
       class GenericPlatformDetails
         include Google::Apis::Core::Hashable
       
+        # Whether the machine is hyperthreaded.
+        # Corresponds to the JSON property `hyperthreading`
+        # @return [String]
+        attr_accessor :hyperthreading
+      
         # Free text representation of the machine location. The format of this field
         # should not be relied on. Different VMs in the same location may have different
         # string values for this field.
@@ -1691,6 +1708,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
           @location = args[:location] if args.key?(:location)
         end
       end
@@ -3527,6 +3545,11 @@ module Google
       class PhysicalPlatformDetails
         include Google::Apis::Core::Hashable
       
+        # Whether the machine is hyperthreaded.
+        # Corresponds to the JSON property `hyperthreading`
+        # @return [String]
+        attr_accessor :hyperthreading
+      
         # Free text representation of the machine location. The format of this field
         # should not be relied on. Different machines in the same location may have
         # different string values for this field.
@@ -3540,6 +3563,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
           @location = args[:location] if args.key?(:location)
         end
       end
@@ -5129,6 +5153,11 @@ module Google
       class VmwarePlatformDetails
         include Google::Apis::Core::Hashable
       
+        # Whether the ESX is hyperthreaded.
+        # Corresponds to the JSON property `esxHyperthreading`
+        # @return [String]
+        attr_accessor :esx_hyperthreading
+      
         # ESX version.
         # Corresponds to the JSON property `esxVersion`
         # @return [String]
@@ -5167,6 +5196,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @esx_hyperthreading = args[:esx_hyperthreading] if args.key?(:esx_hyperthreading)
           @esx_version = args[:esx_version] if args.key?(:esx_version)
           @osid = args[:osid] if args.key?(:osid)
           @vcenter_folder = args[:vcenter_folder] if args.key?(:vcenter_folder)
