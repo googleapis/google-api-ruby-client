@@ -3387,10 +3387,9 @@ module Google
         # attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION,
         # the following fields are always returned in SearchResponse by default: * name
         # For Type.VARIANT, the following fields are always returned in by default: *
-        # name * color_info The maximum number of paths is 30. Otherwise, an
-        # INVALID_ARGUMENT error is returned. Note: Returning more fields in
-        # SearchResponse can increase response payload size and serving latency. This
-        # field is deprecated. Use the retrievable site-wide control instead.
+        # name * color_info Note: Returning more fields in SearchResponse can increase
+        # response payload size and serving latency. This field is deprecated. Use the
+        # retrievable site-wide control instead.
         # Corresponds to the JSON property `retrievableFields`
         # @return [String]
         attr_accessor :retrievable_fields
@@ -7413,6 +7412,12 @@ module Google
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig]
         attr_accessor :frequently_bought_together_config
       
+        # Config that turns on usage of llm embeddings as features to the model.
+        # Embeddings leverage unstructured text fields like description and title.
+        # Corresponds to the JSON property `llmEmbeddingConfig`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2alphaModelModelFeaturesConfigLlmEmbeddingConfig]
+        attr_accessor :llm_embedding_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7420,6 +7425,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @frequently_bought_together_config = args[:frequently_bought_together_config] if args.key?(:frequently_bought_together_config)
+          @llm_embedding_config = args[:llm_embedding_config] if args.key?(:llm_embedding_config)
+        end
+      end
+      
+      # Config that turns on usage of llm embeddings as features to the model.
+      # Embeddings leverage unstructured text fields like description and title.
+      class GoogleCloudRetailV2alphaModelModelFeaturesConfigLlmEmbeddingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The LLM embedding version to use. Currently only `v0` is supported.
+        # If not specified, feature will not be turned on.
+        # Corresponds to the JSON property `llmEmbeddingVersion`
+        # @return [String]
+        attr_accessor :llm_embedding_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @llm_embedding_version = args[:llm_embedding_version] if args.key?(:llm_embedding_version)
         end
       end
       
