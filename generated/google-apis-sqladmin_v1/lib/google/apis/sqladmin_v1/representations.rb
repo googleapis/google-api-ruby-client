@@ -490,6 +490,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscAutoConnectionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PscConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -779,7 +785,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_id, :numeric_string => true, as: 'backupId'
           property :kind, as: 'kind'
-          property :name, as: 'name'
         end
       end
       
@@ -1387,10 +1392,7 @@ module Google
       class InstancesRestoreBackupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup, as: 'backup'
           property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqladminV1::RestoreBackupContext, decorator: Google::Apis::SqladminV1::RestoreBackupContext::Representation
-      
-          property :restore_instance_settings, as: 'restoreInstanceSettings', class: Google::Apis::SqladminV1::DatabaseInstance, decorator: Google::Apis::SqladminV1::DatabaseInstance::Representation
       
         end
       end
@@ -1574,8 +1576,6 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
-          collection :warnings, as: 'warnings', class: Google::Apis::SqladminV1::ApiWarning, decorator: Google::Apis::SqladminV1::ApiWarning::Representation
-      
         end
       end
       
@@ -1607,10 +1607,23 @@ module Google
         end
       end
       
+      class PscAutoConnectionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
+          property :consumer_network_status, as: 'consumerNetworkStatus'
+          property :consumer_project, as: 'consumerProject'
+          property :ip_address, as: 'ipAddress'
+          property :status, as: 'status'
+        end
+      end
+      
       class PscConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
+          collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::SqladminV1::PscAutoConnectionConfig, decorator: Google::Apis::SqladminV1::PscAutoConnectionConfig::Representation
+      
           property :psc_enabled, as: 'pscEnabled'
         end
       end
