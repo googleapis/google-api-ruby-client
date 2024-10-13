@@ -22,6 +22,12 @@ module Google
   module Apis
     module StorageV1
       
+      class AdvanceRelocateBucketOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnywhereCache
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -422,6 +428,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdvanceRelocateBucketOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime', type: DateTime
+      
+          property :ttl, as: 'ttl'
+        end
       end
       
       class AnywhereCache
