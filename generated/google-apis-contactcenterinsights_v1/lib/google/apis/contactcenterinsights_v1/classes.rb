@@ -885,9 +885,9 @@ module Google
         # @return [String]
         attr_accessor :medium
       
-        # Input only. JSON Metadata encoded as a string. This field is primarily used by
+        # Input only. JSON metadata encoded as a string. This field is primarily used by
         # Insights integrations with various telphony systems and must be in one of
-        # Insights' supported formats.
+        # Insight's supported formats.
         # Corresponds to the JSON property `metadataJson`
         # @return [String]
         attr_accessor :metadata_json
@@ -1679,15 +1679,15 @@ module Google
       end
       
       # A customer-managed encryption key specification that can be applied to all
-      # created resources (e.g. Conversation).
+      # created resources (e.g. `Conversation`).
       class GoogleCloudContactcenterinsightsV1EncryptionSpec
         include Google::Apis::Core::Hashable
       
         # Required. The name of customer-managed encryption key that is used to secure a
-        # resource and its sub-resources. If empty, the resource is secured by the
-        # default Google encryption key. Only the key in the same location as this
-        # resource is allowed to be used for encryption. Format: `projects/`project`/
-        # locations/`location`/keyRings/`keyRing`/cryptoKeys/`key``
+        # resource and its sub-resources. If empty, the resource is secured by our
+        # default encryption key. Only the key in the same location as this resource is
+        # allowed to be used for encryption. Format: `projects/`project`/locations/`
+        # location`/keyRings/`keyRing`/cryptoKeys/`key``
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
@@ -2499,7 +2499,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Partial errors during initialising operation that might cause the operation
+        # Partial errors during initializing operation that might cause the operation
         # output to be incomplete.
         # Corresponds to the JSON property `partialErrors`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
@@ -2528,7 +2528,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A customer-managed encryption key specification that can be applied to all
-        # created resources (e.g. Conversation).
+        # created resources (e.g. `Conversation`).
         # Corresponds to the JSON property `encryptionSpec`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1EncryptionSpec]
         attr_accessor :encryption_spec
@@ -4616,9 +4616,9 @@ module Google
         # @return [String]
         attr_accessor :medium
       
-        # Input only. JSON Metadata encoded as a string. This field is primarily used by
+        # Input only. JSON metadata encoded as a string. This field is primarily used by
         # Insights integrations with various telphony systems and must be in one of
-        # Insights' supported formats.
+        # Insight's supported formats.
         # Corresponds to the JSON property `metadataJson`
         # @return [String]
         attr_accessor :metadata_json
@@ -5410,15 +5410,15 @@ module Google
       end
       
       # A customer-managed encryption key specification that can be applied to all
-      # created resources (e.g. Conversation).
+      # created resources (e.g. `Conversation`).
       class GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec
         include Google::Apis::Core::Hashable
       
         # Required. The name of customer-managed encryption key that is used to secure a
-        # resource and its sub-resources. If empty, the resource is secured by the
-        # default Google encryption key. Only the key in the same location as this
-        # resource is allowed to be used for encryption. Format: `projects/`project`/
-        # locations/`location`/keyRings/`keyRing`/cryptoKeys/`key``
+        # resource and its sub-resources. If empty, the resource is secured by our
+        # default encryption key. Only the key in the same location as this resource is
+        # allowed to be used for encryption. Format: `projects/`project`/locations/`
+        # location`/keyRings/`keyRing`/cryptoKeys/`key``
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
@@ -6210,7 +6210,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Partial errors during initialising operation that might cause the operation
+        # Partial errors during initializing operation that might cause the operation
         # output to be incomplete.
         # Corresponds to the JSON property `partialErrors`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
@@ -6239,7 +6239,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A customer-managed encryption key specification that can be applied to all
-        # created resources (e.g. Conversation).
+        # created resources (e.g. `Conversation`).
         # Corresponds to the JSON property `encryptionSpec`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec]
         attr_accessor :encryption_spec

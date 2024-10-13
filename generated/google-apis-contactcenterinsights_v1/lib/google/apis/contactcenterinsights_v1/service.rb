@@ -660,9 +660,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Initializes a location-level encryption key specification. An error will be
-        # thrown if the location has resources already created before the initialization.
-        # Once the encryption specification is initialized at a location, it is
+        # Initializes a location-level encryption key specification. An error will
+        # result if the location has resources already created before the initialization.
+        # After the encryption specification is initialized at a location, it is
         # immutable and all newly created resources under the location will be encrypted
         # with the existing specification.
         # @param [String] name
