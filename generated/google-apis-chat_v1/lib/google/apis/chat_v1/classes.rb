@@ -3573,7 +3573,9 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Results are returned in chronological order (oldest event first).
+        # Results are returned in chronological order (oldest event first). Note: The `
+        # permissionSettings` field is not returned in the Space object for list
+        # requests.
         # Corresponds to the JSON property `spaceEvents`
         # @return [Array<Google::Apis::ChatV1::SpaceEvent>]
         attr_accessor :space_events
@@ -3599,7 +3601,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of spaces in the requested (or first) page.
+        # List of spaces in the requested (or first) page. Note: The `permissionSettings`
+        # field is not returned in the Space object for list requests.
         # Corresponds to the JSON property `spaces`
         # @return [Array<Google::Apis::ChatV1::Space>]
         attr_accessor :spaces
@@ -4304,9 +4307,10 @@ module Google
         end
       end
       
-      # [Permission settings](https://support.google.com/chat/answer/13340792) for a
-      # named space. To set permission settings when creating a space, specify the `
-      # PredefinedPermissionSettings` field in your request.
+      # [Permission settings](https://support.google.com/chat/answer/13340792) that
+      # you can specify when updating an existing named space. To set permission
+      # settings when creating a space, specify the `PredefinedPermissionSettings`
+      # field in your request.
       class PermissionSettings
         include Google::Apis::Core::Hashable
       
@@ -4832,16 +4836,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Permission settings](https://support.google.com/chat/answer/13340792) for a
-        # named space. To set permission settings when creating a space, specify the `
-        # PredefinedPermissionSettings` field in your request.
+        # [Permission settings](https://support.google.com/chat/answer/13340792) that
+        # you can specify when updating an existing named space. To set permission
+        # settings when creating a space, specify the `PredefinedPermissionSettings`
+        # field in your request.
         # Corresponds to the JSON property `permissionSettings`
         # @return [Google::Apis::ChatV1::PermissionSettings]
         attr_accessor :permission_settings
       
-        # Optional. Input only. Space permission settings. Input for creating a space, a
-        # collaboration space is created if this field is not set. After you create the
-        # space, settings are populated in the `PermissionSettings` field.
+        # Optional. Input only. Predefined space permission settings, input only when
+        # creating a space. If the field is not set, a collaboration space is created.
+        # After you create the space, settings are populated in the `PermissionSettings`
+        # field.
         # Corresponds to the JSON property `predefinedPermissionSettings`
         # @return [String]
         attr_accessor :predefined_permission_settings

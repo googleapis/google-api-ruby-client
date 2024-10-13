@@ -141,8 +141,9 @@ module Google
         end
         
         # Completes the [import process](https://developers.google.com/workspace/chat/
-        # import-data) for the specified space and makes it visible to users. Requires
-        # app authentication and domain-wide delegation. For more information, see [
+        # import-data) for the specified space and makes it visible to users. Requires [
+        # app authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-app) and domain-wide delegation. For more information, see [
         # Authorize Google Chat apps to import data](https://developers.google.com/
         # workspace/chat/authorize-import).
         # @param [String] name
@@ -237,7 +238,9 @@ module Google
         # workspace/chat/authenticate-authorize-chat-app) with [administrator approval](
         # https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://
         # developers.google.com/workspace/preview) - [User authentication](https://
-        # developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) You can
+        # authenticate and authorize this method with administrator privileges by
+        # setting the `use_admin_access` field in the request.
         # @param [String] name
         #   Required. Resource name of the space to delete. Format: `spaces/`space``
         # @param [Boolean] use_admin_access
@@ -331,6 +334,8 @@ module Google
         # chat/authenticate-authorize): - [App authentication](https://developers.google.
         # com/workspace/chat/authenticate-authorize-chat-app) - [User authentication](
         # https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+        # You can authenticate and authorize this method with administrator privileges
+        # by setting the `use_admin_access` field in the request.
         # @param [String] name
         #   Required. Resource name of the space, in the form `spaces/`space``. Format: `
         #   spaces/`space``
@@ -375,12 +380,10 @@ module Google
         # types of [authentication](https://developers.google.com/workspace/chat/
         # authenticate-authorize): - [App authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize-chat-app) - [User authentication](https:/
-        # /developers.google.com/workspace/chat/authenticate-authorize-chat-user) Lists
-        # spaces visible to the caller or authenticated user. Group chats and DMs aren't
-        # listed until the first message is sent. To list all named spaces by Google
-        # Workspace organization, use the [`spaces.search()`](https://developers.google.
-        # com/workspace/chat/api/reference/rest/v1/spaces/search) method using Workspace
-        # administrator privileges instead.
+        # /developers.google.com/workspace/chat/authenticate-authorize-chat-user) To
+        # list all named spaces by Google Workspace organization, use the [`spaces.
+        # search()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/
+        # spaces/search) method using Workspace administrator privileges instead.
         # @param [String] filter
         #   Optional. A query filter. You can filter spaces by the space type ([`
         #   space_type`](https://developers.google.com/workspace/chat/api/reference/rest/
@@ -439,7 +442,9 @@ module Google
         # authorize-chat-app) with [administrator approval](https://support.google.com/a?
         # p=chat-app-auth) in [Developer Preview](https://developers.google.com/
         # workspace/preview) - [User authentication](https://developers.google.com/
-        # workspace/chat/authenticate-authorize-chat-user)
+        # workspace/chat/authenticate-authorize-chat-user) You can authenticate and
+        # authorize this method with administrator privileges by setting the `
+        # use_admin_access` field in the request.
         # @param [String] name
         #   Resource name of the space. Format: `spaces/`space`` Where ``space``
         #   represents the system-assigned ID for the space. You can obtain the space ID
@@ -449,14 +454,45 @@ module Google
         #   the space ID is `AAAAAAAAA`.
         # @param [Google::Apis::ChatV1::Space] space_object
         # @param [String] update_mask
-        #   - Supports changing the [permission settings](https://support.google.com/chat/
-        #   answer/13340792) of a space, supported field paths include: `
-        #   permission_settings.manage_members_and_groups`, `permission_settings.
-        #   modify_space_details`, `permission_settings.toggle_history`, `
-        #   permission_settings.use_at_mention_all`, `permission_settings.manage_apps`, `
-        #   permission_settings.manage_webhooks`, `permission_settings.reply_messages` (
-        #   Warning: mutually exclusive with all other non-permission settings field paths)
-        #   . `permission_settings` is not supported with admin access.
+        #   Required. The updated field paths, comma separated if there are multiple. You
+        #   can update the following fields for a space: `space_details`: Updates the
+        #   space's description. Supports up to 150 characters. `display_name`: Only
+        #   supports updating the display name for spaces where `spaceType` field is `
+        #   SPACE`. If you receive the error message `ALREADY_EXISTS`, try a different
+        #   value. An existing space within the Google Workspace organization might
+        #   already use this display name. `space_type`: Only supports changing a `
+        #   GROUP_CHAT` space type to `SPACE`. Include `display_name` together with `
+        #   space_type` in the update mask and ensure that the specified space has a non-
+        #   empty display name and the `SPACE` space type. Including the `space_type` mask
+        #   and the `SPACE` type in the specified space when updating the display name is
+        #   optional if the existing space already has the `SPACE` type. Trying to update
+        #   the space type in other ways results in an invalid argument error. `space_type`
+        #   is not supported with `useAdminAccess`. `space_history_state`: Updates [space
+        #   history settings](https://support.google.com/chat/answer/7664687) by turning
+        #   history on or off for the space. Only supported if history settings are
+        #   enabled for the Google Workspace organization. To update the space history
+        #   state, you must omit all other field masks in your request. `
+        #   space_history_state` is not supported with `useAdminAccess`. `access_settings.
+        #   audience`: Updates the [access setting](https://support.google.com/chat/answer/
+        #   11971020) of who can discover the space, join the space, and preview the
+        #   messages in named space where `spaceType` field is `SPACE`. If the existing
+        #   space has a target audience, you can remove the audience and restrict space
+        #   access by omitting a value for this field mask. To update access settings for
+        #   a space, the authenticating user must be a space manager and omit all other
+        #   field masks in your request. You can't update this field if the space is in [
+        #   import mode](https://developers.google.com/workspace/chat/import-data-overview)
+        #   . To learn more, see [Make a space discoverable to specific users](https://
+        #   developers.google.com/workspace/chat/space-target-audience). `access_settings.
+        #   audience` is not supported with `useAdminAccess`. `permission_settings`:
+        #   Supports changing the [permission settings](https://support.google.com/chat/
+        #   answer/13340792) of a space. When updating permission settings, you can only
+        #   specify `permissionSettings` field masks; you cannot update other field masks
+        #   at the same time. `permissionSettings` is not supported with `useAdminAccess`.
+        #   The supported field masks include: - `permission_settings.
+        #   manageMembersAndGroups` - `permission_settings.modifySpaceDetails` - `
+        #   permission_settings.toggleHistory` - `permission_settings.useAtMentionAll` - `
+        #   permission_settings.manageApps` - `permission_settings.manageWebhooks` - `
+        #   permission_settings.replyMessages`
         # @param [Boolean] use_admin_access
         #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
@@ -674,12 +710,14 @@ module Google
         # with [administrator approval](https://support.google.com/a?p=chat-app-auth) in
         # [Developer Preview](https://developers.google.com/workspace/preview) - [User
         # authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user) For example usage, see: - [Invite or add a user to a
-        # space](https://developers.google.com/workspace/chat/create-members#create-user-
-        # membership). - [Invite or add a Google Group to a space](https://developers.
-        # google.com/workspace/chat/create-members#create-group-membership). - [Add the
-        # Chat app to a space](https://developers.google.com/workspace/chat/create-
-        # members#create-membership-calling-api).
+        # authorize-chat-user) You can authenticate and authorize this method with
+        # administrator privileges by setting the `use_admin_access` field in the
+        # request. For example usage, see: - [Invite or add a user to a space](https://
+        # developers.google.com/workspace/chat/create-members#create-user-membership). -
+        # [Invite or add a Google Group to a space](https://developers.google.com/
+        # workspace/chat/create-members#create-group-membership). - [Add the Chat app to
+        # a space](https://developers.google.com/workspace/chat/create-members#create-
+        # membership-calling-api).
         # @param [String] parent
         #   Required. The resource name of the space for which to create the membership.
         #   Format: spaces/`space`
@@ -731,7 +769,9 @@ module Google
         # administrator approval](https://support.google.com/a?p=chat-app-auth) in [
         # Developer Preview](https://developers.google.com/workspace/preview) - [User
         # authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user)
+        # authorize-chat-user) You can authenticate and authorize this method with
+        # administrator privileges by setting the `use_admin_access` field in the
+        # request.
         # @param [String] name
         #   Required. Resource name of the membership to delete. Chat apps can delete
         #   human users' or their own memberships. Chat apps can't delete other apps'
@@ -784,7 +824,9 @@ module Google
         # https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         # authentication](https://developers.google.com/workspace/chat/authenticate-
         # authorize-chat-app) - [User authentication](https://developers.google.com/
-        # workspace/chat/authenticate-authorize-chat-user)
+        # workspace/chat/authenticate-authorize-chat-user) You can authenticate and
+        # authorize this method with administrator privileges by setting the `
+        # use_admin_access` field in the request.
         # @param [String] name
         #   Required. Resource name of the membership to retrieve. To get the app's own
         #   membership [by using user authentication](https://developers.google.com/
@@ -840,7 +882,9 @@ module Google
         # types of [authentication](https://developers.google.com/workspace/chat/
         # authenticate-authorize): - [App authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize-chat-app) - [User authentication](https:/
-        # /developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+        # /developers.google.com/workspace/chat/authenticate-authorize-chat-user) You
+        # can authenticate and authorize this method with administrator privileges by
+        # setting the `use_admin_access` field in the request.
         # @param [String] parent
         #   Required. The resource name of the space for which to fetch a membership list.
         #   Format: spaces/`space`
@@ -931,7 +975,9 @@ module Google
         # administrator approval](https://support.google.com/a?p=chat-app-auth) in [
         # Developer Preview](https://developers.google.com/workspace/preview) - [User
         # authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user)
+        # authorize-chat-user) You can authenticate and authorize this method with
+        # administrator privileges by setting the `use_admin_access` field in the
+        # request.
         # @param [String] name
         #   Resource name of the membership, assigned by the server. Format: `spaces/`
         #   space`/members/`member``
@@ -979,19 +1025,22 @@ module Google
         
         # Creates a message in a Google Chat space. For an example, see [Send a message](
         # https://developers.google.com/workspace/chat/create-messages). The `create()`
-        # method requires either user or app authentication. Chat attributes the message
-        # sender differently depending on the type of authentication that you use in
-        # your request. The following image shows how Chat attributes a message when you
-        # use app authentication. Chat displays the Chat app as the message sender. The
-        # content of the message can contain text (`text`), cards (`cardsV2`), and
-        # accessory widgets (`accessoryWidgets`). ![Message sent with app authentication]
-        # (https://developers.google.com/workspace/chat/images/message-app-auth.svg) The
-        # following image shows how Chat attributes a message when you use user
-        # authentication. Chat displays the user as the message sender and attributes
-        # the Chat app to the message by displaying its name. The content of message can
-        # only contain text (`text`). ![Message sent with user authentication](https://
-        # developers.google.com/workspace/chat/images/message-user-auth.svg) The maximum
-        # message size, including the message contents, is 32,000 bytes.
+        # method requires either [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user) or [app authentication](https:
+        # //developers.google.com/workspace/chat/authorize-import). Chat attributes the
+        # message sender differently depending on the type of authentication that you
+        # use in your request. The following image shows how Chat attributes a message
+        # when you use app authentication. Chat displays the Chat app as the message
+        # sender. The content of the message can contain text (`text`), cards (`cardsV2`)
+        # , and accessory widgets (`accessoryWidgets`). ![Message sent with app
+        # authentication](https://developers.google.com/workspace/chat/images/message-
+        # app-auth.svg) The following image shows how Chat attributes a message when you
+        # use user authentication. Chat displays the user as the message sender and
+        # attributes the Chat app to the message by displaying its name. The content of
+        # message can only contain text (`text`). ![Message sent with user
+        # authentication](https://developers.google.com/workspace/chat/images/message-
+        # user-auth.svg) The maximum message size, including the message contents, is 32,
+        # 000 bytes.
         # @param [String] parent
         #   Required. The resource name of the space in which to create a message. Format:
         #   `spaces/`space``
@@ -1527,11 +1576,13 @@ module Google
         # SpaceEvent.FIELDS.oneof_payload) contains the most recent version of the
         # resource that changed. For example, if you request an event about a new
         # message but the message was later updated, the server returns the updated `
-        # Message` resource in the event payload. Requires [user authentication](https://
-        # developers.google.com/workspace/chat/authenticate-authorize-chat-user). To get
-        # an event, the authenticated user must be a member of the space. For an example,
-        # see [Get details about an event from a Google Chat space](https://developers.
-        # google.com/workspace/chat/get-space-event).
+        # Message` resource in the event payload. Note: The `permissionSettings` field
+        # is not returned in the Space object of the Space event data for this request.
+        # Requires [user authentication](https://developers.google.com/workspace/chat/
+        # authenticate-authorize-chat-user). To get an event, the authenticated user
+        # must be a member of the space. For an example, see [Get details about an event
+        # from a Google Chat space](https://developers.google.com/workspace/chat/get-
+        # space-event).
         # @param [String] name
         #   Required. The resource name of the space event. Format: `spaces/`space`/
         #   spaceEvents/`spaceEvent``
