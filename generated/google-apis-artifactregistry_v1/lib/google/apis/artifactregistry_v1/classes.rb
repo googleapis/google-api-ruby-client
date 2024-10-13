@@ -112,7 +112,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # The namespace this attachment belongs to. E.g. If an Attachment is created by
+        # The namespace this attachment belongs to. E.g. If an attachment is created by
         # artifact analysis, namespace is set to `artifactanalysis.googleapis.com`.
         # Corresponds to the JSON property `attachmentNamespace`
         # @return [String]
@@ -130,8 +130,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :files
       
-        # The name of the attachment. E.g. "projects/p1/locations/us/repositories/repo/
-        # attachments/sbom".
+        # The name of the attachment. E.g. `projects/p1/locations/us/repositories/repo/
+        # attachments/sbom`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -144,13 +144,13 @@ module Google
         attr_accessor :oci_version_name
       
         # Required. The target the attachment is for, can be a Version, Package or
-        # Repository. E.g. "projects/p1/locations/us-central1/repositories/repo1/
-        # packages/p1/versions/v1".
+        # Repository. E.g. `projects/p1/locations/us-central1/repositories/repo1/
+        # packages/p1/versions/v1`.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
       
-        # Type of Attachment. E.g. `application/vnd.spdx+json`
+        # Type of attachment. E.g. `application/vnd.spdx+json`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1474,7 +1474,7 @@ module Google
       class ListAttachmentsResponse
         include Google::Apis::Core::Hashable
       
-        # The Attachments returned.
+        # The attachments returned.
         # Corresponds to the JSON property `attachments`
         # @return [Array<Google::Apis::ArtifactregistryV1::Attachment>]
         attr_accessor :attachments
@@ -2658,8 +2658,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The name of the version the tag refers to, for example: "projects/p1/locations/
-        # us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the
+        # The name of the version the tag refers to, for example: `projects/p1/locations/
+        # us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811` If the
         # package or version ID parts contain slashes, the slashes are escaped.
         # Corresponds to the JSON property `version`
         # @return [String]
