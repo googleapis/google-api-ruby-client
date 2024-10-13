@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessProposal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessProposalRoleAndView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class App
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAccessProposalsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -414,6 +432,28 @@ module Google
             property :color_rgb, as: 'colorRgb'
             property :id, as: 'id'
           end
+        end
+      end
+      
+      class AccessProposal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :file_id, as: 'fileId'
+          property :proposal_id, as: 'proposalId'
+          property :recipient_email_address, as: 'recipientEmailAddress'
+          property :request_message, as: 'requestMessage'
+          property :requester_email_address, as: 'requesterEmailAddress'
+          collection :roles_and_views, as: 'rolesAndViews', class: Google::Apis::DriveV3::AccessProposalRoleAndView, decorator: Google::Apis::DriveV3::AccessProposalRoleAndView::Representation
+      
+        end
+      end
+      
+      class AccessProposalRoleAndView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :role, as: 'role'
+          property :view, as: 'view'
         end
       end
       
@@ -953,6 +993,15 @@ module Google
           property :kind, as: 'kind'
           property :label_id, as: 'labelId'
           property :remove_label, as: 'removeLabel'
+        end
+      end
+      
+      class ListAccessProposalsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_proposals, as: 'accessProposals', class: Google::Apis::DriveV3::AccessProposal, decorator: Google::Apis::DriveV3::AccessProposal::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

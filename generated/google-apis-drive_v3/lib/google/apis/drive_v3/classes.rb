@@ -227,6 +227,89 @@ module Google
         end
       end
       
+      # The Access Proposal resource for outstanding access proposals on a file
+      class AccessProposal
+        include Google::Apis::Core::Hashable
+      
+        # The creation time
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The file id that the proposal for access is on
+        # Corresponds to the JSON property `fileId`
+        # @return [String]
+        attr_accessor :file_id
+      
+        # The id of the access proposal
+        # Corresponds to the JSON property `proposalId`
+        # @return [String]
+        attr_accessor :proposal_id
+      
+        # The email address of the user that will receive permissions if accepted
+        # Corresponds to the JSON property `recipientEmailAddress`
+        # @return [String]
+        attr_accessor :recipient_email_address
+      
+        # The message that the requester added to the proposal
+        # Corresponds to the JSON property `requestMessage`
+        # @return [String]
+        attr_accessor :request_message
+      
+        # The email address of the requesting user
+        # Corresponds to the JSON property `requesterEmailAddress`
+        # @return [String]
+        attr_accessor :requester_email_address
+      
+        # A wrapper for the role and view of an access proposal.
+        # Corresponds to the JSON property `rolesAndViews`
+        # @return [Array<Google::Apis::DriveV3::AccessProposalRoleAndView>]
+        attr_accessor :roles_and_views
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @file_id = args[:file_id] if args.key?(:file_id)
+          @proposal_id = args[:proposal_id] if args.key?(:proposal_id)
+          @recipient_email_address = args[:recipient_email_address] if args.key?(:recipient_email_address)
+          @request_message = args[:request_message] if args.key?(:request_message)
+          @requester_email_address = args[:requester_email_address] if args.key?(:requester_email_address)
+          @roles_and_views = args[:roles_and_views] if args.key?(:roles_and_views)
+        end
+      end
+      
+      # A wrapper for the role and view of an access proposal.
+      class AccessProposalRoleAndView
+        include Google::Apis::Core::Hashable
+      
+        # The role that was proposed by the requester New values may be added in the
+        # future, but the following are currently possible: * `writer` * `commenter` * `
+        # reader`
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        # Indicates the view for this access proposal. Only populated for proposals that
+        # belong to a view. `published` is the only supported value.
+        # Corresponds to the JSON property `view`
+        # @return [String]
+        attr_accessor :view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @role = args[:role] if args.key?(:role)
+          @view = args[:view] if args.key?(:view)
+        end
+      end
+      
       # The `apps` resource provides a list of apps that a user has installed, with
       # information about each app's supported MIME types, file extensions, and other
       # details. Some resource methods (such as `apps.get`) require an `appId`. Use
@@ -2800,6 +2883,34 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @label_id = args[:label_id] if args.key?(:label_id)
           @remove_label = args[:remove_label] if args.key?(:remove_label)
+        end
+      end
+      
+      # The response to an Access Proposal list request.
+      class ListAccessProposalsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Access Proposals. This field is only populated in v3 and v3beta.
+        # Corresponds to the JSON property `accessProposals`
+        # @return [Array<Google::Apis::DriveV3::AccessProposal>]
+        attr_accessor :access_proposals
+      
+        # The continuation token for the next page of results. This will be absent if
+        # the end of the results list has been reached. If the token is rejected for any
+        # reason, it should be discarded, and pagination should be restarted from the
+        # first page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_proposals = args[:access_proposals] if args.key?(:access_proposals)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
