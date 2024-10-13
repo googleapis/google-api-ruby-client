@@ -576,6 +576,7 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :state, as: 'state'
+          hash :tags, as: 'tags'
           property :type, as: 'type'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -660,6 +661,7 @@ module Google
       
           property :state, as: 'state'
           property :subscription_type, as: 'subscriptionType'
+          hash :tags, as: 'tags'
           property :trial_metadata, as: 'trialMetadata', class: Google::Apis::AlloydbV1::TrialMetadata, decorator: Google::Apis::AlloydbV1::TrialMetadata::Representation
       
           property :uid, as: 'uid'
@@ -1228,6 +1230,7 @@ module Google
           property :current_state, as: 'currentState'
           property :custom_metadata, as: 'customMetadata', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainCustomMetadataData, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainCustomMetadataData::Representation
       
+          property :edition, as: 'edition'
           collection :entitlements, as: 'entitlements', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainEntitlement, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainEntitlement::Representation
       
           property :expected_state, as: 'expectedState'
