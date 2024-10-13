@@ -531,6 +531,7 @@ module Google
       
           property :rule, as: 'rule'
           property :severity, as: 'severity'
+          property :type, as: 'type'
           property :violation_details, as: 'violationDetails', class: Google::Apis::WorkloadmanagerV1::ViolationDetails, decorator: Google::Apis::WorkloadmanagerV1::ViolationDetails::Representation
       
           property :violation_message, as: 'violationMessage'
@@ -889,6 +890,7 @@ module Google
           collection :cluster_instances, as: 'clusterInstances'
           property :instance_number, :numeric_string => true, as: 'instanceNumber'
           property :instance_role, as: 'instanceRole'
+          property :is_dr_site, as: 'isDrSite'
           property :virtual_hostname, as: 'virtualHostname'
         end
       end
