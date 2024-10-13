@@ -444,6 +444,11 @@ module Google
         # @return [String]
         attr_accessor :severity
       
+        # Execution result type of the scanned resource
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Message describing the violation in an evaluation result.
         # Corresponds to the JSON property `violationDetails`
         # @return [Google::Apis::WorkloadmanagerV1::ViolationDetails]
@@ -465,6 +470,7 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @rule = args[:rule] if args.key?(:rule)
           @severity = args[:severity] if args.key?(:severity)
+          @type = args[:type] if args.key?(:type)
           @violation_details = args[:violation_details] if args.key?(:violation_details)
           @violation_message = args[:violation_message] if args.key?(:violation_message)
         end
@@ -1724,6 +1730,12 @@ module Google
         # @return [String]
         attr_accessor :instance_role
       
+        # Optional. Instance is part of a DR site.
+        # Corresponds to the JSON property `isDrSite`
+        # @return [Boolean]
+        attr_accessor :is_dr_site
+        alias_method :is_dr_site?, :is_dr_site
+      
         # Optional. A virtual hostname of the instance if it has one.
         # Corresponds to the JSON property `virtualHostname`
         # @return [String]
@@ -1739,6 +1751,7 @@ module Google
           @cluster_instances = args[:cluster_instances] if args.key?(:cluster_instances)
           @instance_number = args[:instance_number] if args.key?(:instance_number)
           @instance_role = args[:instance_role] if args.key?(:instance_role)
+          @is_dr_site = args[:is_dr_site] if args.key?(:is_dr_site)
           @virtual_hostname = args[:virtual_hostname] if args.key?(:virtual_hostname)
         end
       end
