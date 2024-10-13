@@ -583,8 +583,8 @@ module Google
         # @return [String]
         attr_accessor :lifetime
       
-        # Output only. The resource name for this CertificateAuthority in the format `
-        # projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        # Output only. Identifier. The resource name for this CertificateAuthority in
+        # the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
