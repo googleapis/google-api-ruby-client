@@ -835,6 +835,11 @@ module Google
         attr_accessor :violation_notifications_enabled
         alias_method :violation_notifications_enabled?, :violation_notifications_enabled
       
+        # Options to be set for the given created workload.
+        # Corresponds to the JSON property `workloadOptions`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions]
+        attr_accessor :workload_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -863,6 +868,7 @@ module Google
           @resources = args[:resources] if args.key?(:resources)
           @saa_enrollment_response = args[:saa_enrollment_response] if args.key?(:saa_enrollment_response)
           @violation_notifications_enabled = args[:violation_notifications_enabled] if args.key?(:violation_notifications_enabled)
+          @workload_options = args[:workload_options] if args.key?(:workload_options)
         end
       end
       
@@ -1087,6 +1093,25 @@ module Google
         def update!(**args)
           @setup_errors = args[:setup_errors] if args.key?(:setup_errors)
           @setup_status = args[:setup_status] if args.key?(:setup_status)
+        end
+      end
+      
+      # Options to be set for the given created workload.
+      class GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies type of KAJ Enrollment if provided.
+        # Corresponds to the JSON property `kajEnrollmentType`
+        # @return [String]
+        attr_accessor :kaj_enrollment_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kaj_enrollment_type = args[:kaj_enrollment_type] if args.key?(:kaj_enrollment_type)
         end
       end
       

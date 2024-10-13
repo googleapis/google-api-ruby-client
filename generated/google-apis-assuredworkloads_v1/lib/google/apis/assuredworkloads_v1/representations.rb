@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -440,6 +446,8 @@ module Google
           property :saa_enrollment_response, as: 'saaEnrollmentResponse', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse::Representation
       
           property :violation_notifications_enabled, as: 'violationNotificationsEnabled'
+          property :workload_options, as: 'workloadOptions', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions::Representation
+      
         end
       end
       
@@ -502,6 +510,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :setup_errors, as: 'setupErrors'
           property :setup_status, as: 'setupStatus'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kaj_enrollment_type, as: 'kajEnrollmentType'
         end
       end
       
