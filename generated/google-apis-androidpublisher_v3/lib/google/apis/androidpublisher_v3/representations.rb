@@ -484,12 +484,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ExternalOfferInitialAcquisitionDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ExternalSubscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2128,13 +2122,6 @@ module Google
         end
       end
       
-      class ExternalOfferInitialAcquisitionDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :external_transaction_id, as: 'externalTransactionId'
-        end
-      end
-      
       class ExternalSubscription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2149,8 +2136,6 @@ module Google
           property :current_pre_tax_amount, as: 'currentPreTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
       
           property :current_tax_amount, as: 'currentTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
-      
-          property :external_offer_initial_acquisition_details, as: 'externalOfferInitialAcquisitionDetails', class: Google::Apis::AndroidpublisherV3::ExternalOfferInitialAcquisitionDetails, decorator: Google::Apis::AndroidpublisherV3::ExternalOfferInitialAcquisitionDetails::Representation
       
           property :external_transaction_id, as: 'externalTransactionId'
           property :one_time_transaction, as: 'oneTimeTransaction', class: Google::Apis::AndroidpublisherV3::OneTimeExternalTransaction, decorator: Google::Apis::AndroidpublisherV3::OneTimeExternalTransaction::Representation
