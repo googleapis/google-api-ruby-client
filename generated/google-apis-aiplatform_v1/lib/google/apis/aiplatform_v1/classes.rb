@@ -5664,6 +5664,32 @@ module Google
         end
       end
       
+      # Describes the options to customize dynamic retrieval.
+      class GoogleCloudAiplatformV1DynamicRetrievalConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The threshold to be used in dynamic retrieval. If not set, a system
+        # default value is used.
+        # Corresponds to the JSON property `dynamicThreshold`
+        # @return [Float]
+        attr_accessor :dynamic_threshold
+      
+        # The mode of the predictor to be used in dynamic retrieval.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_threshold = args[:dynamic_threshold] if args.key?(:dynamic_threshold)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
       # Represents a customer-managed encryption key spec that can be applied to a top-
       # level resource.
       class GoogleCloudAiplatformV1EncryptionSpec
@@ -10785,12 +10811,18 @@ module Google
       class GoogleCloudAiplatformV1GoogleSearchRetrieval
         include Google::Apis::Core::Hashable
       
+        # Describes the options to customize dynamic retrieval.
+        # Corresponds to the JSON property `dynamicRetrievalConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DynamicRetrievalConfig]
+        attr_accessor :dynamic_retrieval_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @dynamic_retrieval_config = args[:dynamic_retrieval_config] if args.key?(:dynamic_retrieval_config)
         end
       end
       
@@ -10984,6 +11016,11 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingSupport>]
         attr_accessor :grounding_supports
       
+        # Metadata related to retrieval in the grounding flow.
+        # Corresponds to the JSON property `retrievalMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalMetadata]
+        attr_accessor :retrieval_metadata
+      
         # Google search entry point.
         # Corresponds to the JSON property `searchEntryPoint`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SearchEntryPoint]
@@ -11002,6 +11039,7 @@ module Google
         def update!(**args)
           @grounding_chunks = args[:grounding_chunks] if args.key?(:grounding_chunks)
           @grounding_supports = args[:grounding_supports] if args.key?(:grounding_supports)
+          @retrieval_metadata = args[:retrieval_metadata] if args.key?(:retrieval_metadata)
           @search_entry_point = args[:search_entry_point] if args.key?(:search_entry_point)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
         end
@@ -13605,12 +13643,12 @@ module Google
         # @return [Float]
         attr_accessor :log_probability
       
-        # The candidate’s token string value.
+        # The candidate's token string value.
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
       
-        # The candidate’s token id value.
+        # The candidate's token id value.
         # Corresponds to the JSON property `tokenId`
         # @return [Fixnum]
         attr_accessor :token_id
@@ -21569,6 +21607,29 @@ module Google
           @disable_attribution = args[:disable_attribution] if args.key?(:disable_attribution)
           @vertex_ai_search = args[:vertex_ai_search] if args.key?(:vertex_ai_search)
           @vertex_rag_store = args[:vertex_rag_store] if args.key?(:vertex_rag_store)
+        end
+      end
+      
+      # Metadata related to retrieval in the grounding flow.
+      class GoogleCloudAiplatformV1RetrievalMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Score indicating how likely information from Google Search could
+        # help answer the prompt. The score is in the range `[0, 1]`, where 0 is the
+        # least likely and 1 is the most likely. This score is only populated when
+        # Google Search grounding and dynamic retrieval is enabled. It will be compared
+        # to the threshold to determine whether to trigger Google Search.
+        # Corresponds to the JSON property `googleSearchDynamicRetrievalScore`
+        # @return [Float]
+        attr_accessor :google_search_dynamic_retrieval_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_search_dynamic_retrieval_score = args[:google_search_dynamic_retrieval_score] if args.key?(:google_search_dynamic_retrieval_score)
         end
       end
       
