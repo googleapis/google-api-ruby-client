@@ -1544,6 +1544,88 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # List the AccessProposals on a file. Note: Only approvers are able to list
+        # AccessProposals on a file. If the user is not an approver, returns a 403.
+        # @param [String] file_id
+        #   Required. The id of the item the request is on.
+        # @param [Fixnum] page_size
+        #   Optional. The number of results per page
+        # @param [String] page_token
+        #   Optional. The continuation token on the list of access requests.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::ListAccessProposalsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::ListAccessProposalsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_file_accessproposals(file_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'files/{fileId}/accessproposals', options)
+          command.response_representation = Google::Apis::DriveV3::ListAccessProposalsResponse::Representation
+          command.response_class = Google::Apis::DriveV3::ListAccessProposalsResponse
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Used to approve or deny an Access Proposal.
+        # @param [String] file_id
+        #   Required. The id of the item the request is on.
+        # @param [String] proposal_id
+        #   Required. The id of the access proposal to resolve.
+        # @param [String] action
+        #   Required. The action to take on the AccessProposal.
+        # @param [Array<String>, String] role
+        #   Optional. The roles the approver has allowed, if any.
+        # @param [Boolean] send_notification
+        #   Optional. Whether to send an email to the requester when the AccessProposal is
+        #   denied or accepted.
+        # @param [String] view
+        #   Optional. Indicates the view for this access proposal. This should only be set
+        #   when the proposal belongs to a view. `published` is the only supported value.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resolve_file_accessproposal(file_id, proposal_id, action: nil, role: nil, send_notification: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/accessproposals/{proposalId}:resolve', options)
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['proposalId'] = proposal_id unless proposal_id.nil?
+          command.query['action'] = action unless action.nil?
+          command.query['role'] = role unless role.nil?
+          command.query['sendNotification'] = send_notification unless send_notification.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
