@@ -1100,6 +1100,7 @@ module Google
       class AwsEc2PlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hyperthreading, as: 'hyperthreading'
           property :location, as: 'location'
           property :machine_type_label, as: 'machineTypeLabel'
         end
@@ -1108,6 +1109,7 @@ module Google
       class AzureVmPlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hyperthreading, as: 'hyperthreading'
           property :location, as: 'location'
           property :machine_type_label, as: 'machineTypeLabel'
           property :provisioning_state, as: 'provisioningState'
@@ -1442,6 +1444,7 @@ module Google
       class GenericPlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hyperthreading, as: 'hyperthreading'
           property :location, as: 'location'
         end
       end
@@ -2000,6 +2003,7 @@ module Google
       class PhysicalPlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hyperthreading, as: 'hyperthreading'
           property :location, as: 'location'
         end
       end
@@ -2466,6 +2470,7 @@ module Google
       class VmwarePlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :esx_hyperthreading, as: 'esxHyperthreading'
           property :esx_version, as: 'esxVersion'
           property :osid, as: 'osid'
           property :vcenter_folder, as: 'vcenterFolder'
