@@ -527,6 +527,12 @@ module Google
       class GooglePlayDeveloperReportingV1beta1ErrorIssue
         include Google::Apis::Core::Hashable
       
+        # List of annotations for an issue. Annotations provide additional information
+        # that may help in diagnosing and fixing the issue.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1IssueAnnotation>]
+        attr_accessor :annotations
+      
         # Cause of the issue. Depending on the type this can be either: *
         # APPLICATION_NOT_RESPONDING: the type of ANR that occurred, e.g., 'Input
         # dispatching timed out'. * CRASH: for Java unhandled exception errors, the type
@@ -618,6 +624,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @cause = args[:cause] if args.key?(:cause)
           @distinct_users = args[:distinct_users] if args.key?(:distinct_users)
           @distinct_users_percent = args[:distinct_users_percent] if args.key?(:distinct_users_percent)
@@ -849,6 +856,38 @@ module Google
         def update!(**args)
           @aggregation_period = args[:aggregation_period] if args.key?(:aggregation_period)
           @latest_end_time = args[:latest_end_time] if args.key?(:latest_end_time)
+        end
+      end
+      
+      # Representation of an annotation message for an issue.
+      class GooglePlayDeveloperReportingV1beta1IssueAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Contains the contents of the annotation message.
+        # Corresponds to the JSON property `body`
+        # @return [String]
+        attr_accessor :body
+      
+        # Category that the annotation belongs to. An annotation will belong to a single
+        # category. Example categories: "Potential fix", "Insight".
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Title for the annotation.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+          @category = args[:category] if args.key?(:category)
+          @title = args[:title] if args.key?(:title)
         end
       end
       

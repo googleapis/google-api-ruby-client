@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePlayDeveloperReportingV1beta1IssueAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -396,6 +402,8 @@ module Google
       class GooglePlayDeveloperReportingV1beta1ErrorIssue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotations, as: 'annotations', class: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1IssueAnnotation, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1IssueAnnotation::Representation
+      
           property :cause, as: 'cause'
           property :distinct_users, :numeric_string => true, as: 'distinctUsers'
           property :distinct_users_percent, as: 'distinctUsersPercent', class: Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal::Representation
@@ -459,6 +467,15 @@ module Google
           property :aggregation_period, as: 'aggregationPeriod'
           property :latest_end_time, as: 'latestEndTime', class: Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDateTime, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDateTime::Representation
       
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1beta1IssueAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, as: 'body'
+          property :category, as: 'category'
+          property :title, as: 'title'
         end
       end
       
