@@ -4428,6 +4428,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Exposes an OpenAI-compatible endpoint for chat completions.
+        # @param [String] endpoint
+        #   Required. The name of the endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1::GoogleApiHttpBody] google_api_http_body_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def completions_project_location_endpoint_chat(endpoint, google_api_http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}/chat/completions', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleApiHttpBody::Representation
+          command.request_object = google_api_http_body_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleApiHttpBody
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.

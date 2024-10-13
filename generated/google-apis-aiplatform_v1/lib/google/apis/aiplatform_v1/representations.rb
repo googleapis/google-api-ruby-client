@@ -1006,6 +1006,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1DynamicRetrievalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1EncryptionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3557,6 +3563,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1Retrieval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RetrievalMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7297,6 +7309,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1DynamicRetrievalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dynamic_threshold, as: 'dynamicThreshold'
+          property :mode, as: 'mode'
+        end
+      end
+      
       class GoogleCloudAiplatformV1EncryptionSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8703,6 +8723,8 @@ module Google
       class GoogleCloudAiplatformV1GoogleSearchRetrieval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dynamic_retrieval_config, as: 'dynamicRetrievalConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DynamicRetrievalConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DynamicRetrievalConfig::Representation
+      
         end
       end
       
@@ -8772,6 +8794,8 @@ module Google
           collection :grounding_chunks, as: 'groundingChunks', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunk, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunk::Representation
       
           collection :grounding_supports, as: 'groundingSupports', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingSupport, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingSupport::Representation
+      
+          property :retrieval_metadata, as: 'retrievalMetadata', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalMetadata, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalMetadata::Representation
       
           property :search_entry_point, as: 'searchEntryPoint', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SearchEntryPoint, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SearchEntryPoint::Representation
       
@@ -11760,6 +11784,13 @@ module Google
       
           property :vertex_rag_store, as: 'vertexRagStore', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexRagStore, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexRagStore::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RetrievalMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_search_dynamic_retrieval_score, as: 'googleSearchDynamicRetrievalScore'
         end
       end
       
