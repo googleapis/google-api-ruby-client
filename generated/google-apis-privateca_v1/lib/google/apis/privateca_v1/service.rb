@@ -836,8 +836,8 @@ module Google
         
         # Update a CertificateAuthority.
         # @param [String] name
-        #   Output only. The resource name for this CertificateAuthority in the format `
-        #   projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        #   Output only. Identifier. The resource name for this CertificateAuthority in
+        #   the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         # @param [Google::Apis::PrivatecaV1::CertificateAuthority] certificate_authority_object
         # @param [String] request_id
         #   Optional. An ID to identify requests. Specify a unique request ID so that if
