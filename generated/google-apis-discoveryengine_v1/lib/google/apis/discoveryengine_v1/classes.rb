@@ -3310,9 +3310,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A singleton resource of DataStore. It's empty when DataStore is created, which
-        # defaults to digital parser. The first call to DataStoreService.
-        # UpdateDocumentProcessingConfig method will initialize the config.
+        # A singleton resource of DataStore. If it's empty when DataStore is created and
+        # DataStore is set to DataStore.ContentConfig.CONTENT_REQUIRED, the default
+        # parser will default to digital parser.
         # Corresponds to the JSON property `documentProcessingConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentProcessingConfig]
         attr_accessor :document_processing_config
@@ -3799,9 +3799,9 @@ module Google
         end
       end
       
-      # A singleton resource of DataStore. It's empty when DataStore is created, which
-      # defaults to digital parser. The first call to DataStoreService.
-      # UpdateDocumentProcessingConfig method will initialize the config.
+      # A singleton resource of DataStore. If it's empty when DataStore is created and
+      # DataStore is set to DataStore.ContentConfig.CONTENT_REQUIRED, the default
+      # parser will default to digital parser.
       class GoogleCloudDiscoveryengineV1DocumentProcessingConfig
         include Google::Apis::Core::Hashable
       
@@ -10044,9 +10044,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A singleton resource of DataStore. It's empty when DataStore is created, which
-        # defaults to digital parser. The first call to DataStoreService.
-        # UpdateDocumentProcessingConfig method will initialize the config.
+        # A singleton resource of DataStore. If it's empty when DataStore is created and
+        # DataStore is set to DataStore.ContentConfig.CONTENT_REQUIRED, the default
+        # parser will default to digital parser.
         # Corresponds to the JSON property `documentProcessingConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig]
         attr_accessor :document_processing_config
@@ -10326,9 +10326,9 @@ module Google
         end
       end
       
-      # A singleton resource of DataStore. It's empty when DataStore is created, which
-      # defaults to digital parser. The first call to DataStoreService.
-      # UpdateDocumentProcessingConfig method will initialize the config.
+      # A singleton resource of DataStore. If it's empty when DataStore is created and
+      # DataStore is set to DataStore.ContentConfig.CONTENT_REQUIRED, the default
+      # parser will default to digital parser.
       class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
         include Google::Apis::Core::Hashable
       
@@ -14704,9 +14704,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A singleton resource of DataStore. It's empty when DataStore is created, which
-        # defaults to digital parser. The first call to DataStoreService.
-        # UpdateDocumentProcessingConfig method will initialize the config.
+        # A singleton resource of DataStore. If it's empty when DataStore is created and
+        # DataStore is set to DataStore.ContentConfig.CONTENT_REQUIRED, the default
+        # parser will default to digital parser.
         # Corresponds to the JSON property `documentProcessingConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig]
         attr_accessor :document_processing_config
@@ -14979,9 +14979,9 @@ module Google
         end
       end
       
-      # A singleton resource of DataStore. It's empty when DataStore is created, which
-      # defaults to digital parser. The first call to DataStoreService.
-      # UpdateDocumentProcessingConfig method will initialize the config.
+      # A singleton resource of DataStore. If it's empty when DataStore is created and
+      # DataStore is set to DataStore.ContentConfig.CONTENT_REQUIRED, the default
+      # parser will default to digital parser.
       class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig
         include Google::Apis::Core::Hashable
       
