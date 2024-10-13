@@ -241,6 +241,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: ``` "123/environment": "production", "123/costCenter": "
+        # marketing" ```
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # The backup type, which suggests the trigger for the backup.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -282,6 +289,7 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -567,6 +575,13 @@ module Google
         # @return [String]
         attr_accessor :subscription_type
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: ``` "123/environment": "production", "123/costCenter": "
+        # marketing" ```
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Contains information and all metadata related to TRIAL clusters.
         # Corresponds to the JSON property `trialMetadata`
         # @return [Google::Apis::AlloydbV1::TrialMetadata]
@@ -618,6 +633,7 @@ module Google
           @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @state = args[:state] if args.key?(:state)
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
+          @tags = args[:tags] if args.key?(:tags)
           @trial_metadata = args[:trial_metadata] if args.key?(:trial_metadata)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1000,24 +1016,28 @@ module Google
       class GoogleTypeTimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
-        # allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # Minutes of hour of day. Must be from 0 to 59.
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
       
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
@@ -2547,7 +2567,7 @@ module Google
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 22
+        # Common model for database resource instance metadata. Next ID: 23
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -2722,7 +2742,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 22
+      # Common model for database resource instance metadata. Next ID: 23
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -2758,6 +2778,13 @@ module Google
         # Corresponds to the JSON property `customMetadata`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainCustomMetadataData]
         attr_accessor :custom_metadata
+      
+        # Optional. Edition represents whether the instance is ENTERPRISE or
+        # ENTERPRISE_PLUS. This information is core to Cloud SQL only and is used to
+        # identify the edition of the instance.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # Entitlements associated with the resource
         # Corresponds to the JSON property `entitlements`
@@ -2855,6 +2882,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @current_state = args[:current_state] if args.key?(:current_state)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
+          @edition = args[:edition] if args.key?(:edition)
           @entitlements = args[:entitlements] if args.key?(:entitlements)
           @expected_state = args[:expected_state] if args.key?(:expected_state)
           @id = args[:id] if args.key?(:id)
