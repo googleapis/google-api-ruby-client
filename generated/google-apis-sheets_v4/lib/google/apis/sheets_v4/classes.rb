@@ -5015,7 +5015,7 @@ module Google
       
         # Limits the selected developer metadata to that which has a matching
         # DeveloperMetadata.visibility. If left unspecified, all developer metadata
-        # visibile to the requesting project is considered.
+        # visible to the requesting project is considered.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
