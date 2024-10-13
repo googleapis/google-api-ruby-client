@@ -956,6 +956,11 @@ module Google
         # @return [Google::Apis::ContainerV1::ConfidentialNodes]
         attr_accessor :confidential_nodes
       
+        # Configuration for all of the cluster's control plane endpoints.
+        # Corresponds to the JSON property `controlPlaneEndpointsConfig`
+        # @return [Google::Apis::ContainerV1::ControlPlaneEndpointsConfig]
+        attr_accessor :control_plane_endpoints_config
+      
         # Configuration for fine-grained cost management feature.
         # Corresponds to the JSON property `costManagementConfig`
         # @return [Google::Apis::ContainerV1::CostManagementConfig]
@@ -1391,6 +1396,7 @@ module Google
           @compliance_posture_config = args[:compliance_posture_config] if args.key?(:compliance_posture_config)
           @conditions = args[:conditions] if args.key?(:conditions)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
+          @control_plane_endpoints_config = args[:control_plane_endpoints_config] if args.key?(:control_plane_endpoints_config)
           @cost_management_config = args[:cost_management_config] if args.key?(:cost_management_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
@@ -1578,6 +1584,11 @@ module Google
         # @return [Google::Apis::ContainerV1::ContainerdConfig]
         attr_accessor :desired_containerd_config
       
+        # Configuration for all of the cluster's control plane endpoints.
+        # Corresponds to the JSON property `desiredControlPlaneEndpointsConfig`
+        # @return [Google::Apis::ContainerV1::ControlPlaneEndpointsConfig]
+        attr_accessor :desired_control_plane_endpoints_config
+      
         # Configuration for fine-grained cost management feature.
         # Corresponds to the JSON property `desiredCostManagementConfig`
         # @return [Google::Apis::ContainerV1::CostManagementConfig]
@@ -1592,6 +1603,13 @@ module Google
         # Corresponds to the JSON property `desiredDatapathProvider`
         # @return [String]
         attr_accessor :desired_datapath_provider
+      
+        # Override the default setting of whether future created nodes have private IP
+        # addresses only, namely NetworkConfig.default_enable_private_nodes
+        # Corresponds to the JSON property `desiredDefaultEnablePrivateNodes`
+        # @return [Boolean]
+        attr_accessor :desired_default_enable_private_nodes
+        alias_method :desired_default_enable_private_nodes?, :desired_default_enable_private_nodes
       
         # DefaultSnatStatus contains the desired state of whether default sNAT should be
         # disabled on the cluster.
@@ -1622,7 +1640,11 @@ module Google
         attr_accessor :desired_enable_multi_networking
         alias_method :desired_enable_multi_networking?, :desired_enable_multi_networking
       
-        # Enable/Disable private endpoint for the cluster's master.
+        # Enable/Disable private endpoint for the cluster's master. Deprecated: Use
+        # desired_control_plane_endpoints_config.ip_endpoints_config.
+        # enable_public_endpoint instead. Note that the value of enable_public_endpoint
+        # is reversed: if enable_private_endpoint is false, then enable_public_endpoint
+        # will be true.
         # Corresponds to the JSON property `desiredEnablePrivateEndpoint`
         # @return [Boolean]
         attr_accessor :desired_enable_private_endpoint
@@ -1921,9 +1943,11 @@ module Google
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_compliance_posture_config = args[:desired_compliance_posture_config] if args.key?(:desired_compliance_posture_config)
           @desired_containerd_config = args[:desired_containerd_config] if args.key?(:desired_containerd_config)
+          @desired_control_plane_endpoints_config = args[:desired_control_plane_endpoints_config] if args.key?(:desired_control_plane_endpoints_config)
           @desired_cost_management_config = args[:desired_cost_management_config] if args.key?(:desired_cost_management_config)
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
+          @desired_default_enable_private_nodes = args[:desired_default_enable_private_nodes] if args.key?(:desired_default_enable_private_nodes)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
           @desired_enable_cilium_clusterwide_network_policy = args[:desired_enable_cilium_clusterwide_network_policy] if args.key?(:desired_enable_cilium_clusterwide_network_policy)
@@ -2161,6 +2185,31 @@ module Google
         end
       end
       
+      # Configuration for all of the cluster's control plane endpoints.
+      class ControlPlaneEndpointsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Describes the configuration of a DNS endpoint.
+        # Corresponds to the JSON property `dnsEndpointConfig`
+        # @return [Google::Apis::ContainerV1::DnsEndpointConfig]
+        attr_accessor :dns_endpoint_config
+      
+        # IP endpoints configuration.
+        # Corresponds to the JSON property `ipEndpointsConfig`
+        # @return [Google::Apis::ContainerV1::IpEndpointsConfig]
+        attr_accessor :ip_endpoints_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_endpoint_config = args[:dns_endpoint_config] if args.key?(:dns_endpoint_config)
+          @ip_endpoints_config = args[:ip_endpoints_config] if args.key?(:ip_endpoints_config)
+        end
+      end
+      
       # Configuration for fine-grained cost management feature.
       class CostManagementConfig
         include Google::Apis::Core::Hashable
@@ -2311,6 +2360,36 @@ module Google
           @cluster_dns = args[:cluster_dns] if args.key?(:cluster_dns)
           @cluster_dns_domain = args[:cluster_dns_domain] if args.key?(:cluster_dns_domain)
           @cluster_dns_scope = args[:cluster_dns_scope] if args.key?(:cluster_dns_scope)
+        end
+      end
+      
+      # Describes the configuration of a DNS endpoint.
+      class DnsEndpointConfig
+        include Google::Apis::Core::Hashable
+      
+        # Controls whether user traffic is allowed over this endpoint. Note that GCP-
+        # managed services may still use the endpoint even if this is false.
+        # Corresponds to the JSON property `allowExternalTraffic`
+        # @return [Boolean]
+        attr_accessor :allow_external_traffic
+        alias_method :allow_external_traffic?, :allow_external_traffic
+      
+        # Output only. The cluster's DNS endpoint configuration. A DNS format address.
+        # This is accessible from the public internet. Ex: uid.us-central1.gke.goog.
+        # Always present, but the behavior may change according to the value of
+        # DNSEndpointConfig.allow_external_traffic.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_external_traffic = args[:allow_external_traffic] if args.key?(:allow_external_traffic)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
         end
       end
       
@@ -3149,6 +3228,76 @@ module Google
         end
       end
       
+      # IP endpoints configuration.
+      class IpEndpointsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration options for the master authorized networks feature. Enabled
+        # master authorized networks will disallow all external traffic to access
+        # Kubernetes master through HTTPS except traffic from the given CIDR blocks,
+        # Google Compute Engine Public IPs and Google Prod IPs.
+        # Corresponds to the JSON property `authorizedNetworksConfig`
+        # @return [Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig]
+        attr_accessor :authorized_networks_config
+      
+        # Controls whether the control plane allows access through a public IP. It is
+        # invalid to specify both PrivateClusterConfig.enablePrivateEndpoint and this
+        # field at the same time.
+        # Corresponds to the JSON property `enablePublicEndpoint`
+        # @return [Boolean]
+        attr_accessor :enable_public_endpoint
+        alias_method :enable_public_endpoint?, :enable_public_endpoint
+      
+        # Controls whether to allow direct IP access.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Controls whether the control plane's private endpoint is accessible from
+        # sources in other regions. It is invalid to specify both
+        # PrivateClusterMasterGlobalAccessConfig.enabled and this field at the same time.
+        # Corresponds to the JSON property `globalAccess`
+        # @return [Boolean]
+        attr_accessor :global_access
+        alias_method :global_access?, :global_access
+      
+        # Output only. The internal IP address of this cluster's control plane. Only
+        # populated if enabled.
+        # Corresponds to the JSON property `privateEndpoint`
+        # @return [String]
+        attr_accessor :private_endpoint
+      
+        # Subnet to provision the master's private endpoint during cluster creation.
+        # Specified in projects/*/regions/*/subnetworks/* format. It is invalid to
+        # specify both PrivateClusterConfig.privateEndpointSubnetwork and this field at
+        # the same time.
+        # Corresponds to the JSON property `privateEndpointSubnetwork`
+        # @return [String]
+        attr_accessor :private_endpoint_subnetwork
+      
+        # Output only. The external IP address of this cluster's control plane. Only
+        # populated if enabled.
+        # Corresponds to the JSON property `publicEndpoint`
+        # @return [String]
+        attr_accessor :public_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_networks_config = args[:authorized_networks_config] if args.key?(:authorized_networks_config)
+          @enable_public_endpoint = args[:enable_public_endpoint] if args.key?(:enable_public_endpoint)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @global_access = args[:global_access] if args.key?(:global_access)
+          @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
+          @private_endpoint_subnetwork = args[:private_endpoint_subnetwork] if args.key?(:private_endpoint_subnetwork)
+          @public_endpoint = args[:public_endpoint] if args.key?(:public_endpoint)
+        end
+      end
+      
       # IdentityServiceConfig is configuration for Identity Service which allows
       # customers to use external identity providers with the K8S API
       class IdentityServiceConfig
@@ -3733,6 +3882,12 @@ module Google
         attr_accessor :gcp_public_cidrs_access_enabled
         alias_method :gcp_public_cidrs_access_enabled?, :gcp_public_cidrs_access_enabled
       
+        # Whether master authorized networks is enforced on private endpoint or not.
+        # Corresponds to the JSON property `privateEndpointEnforcementEnabled`
+        # @return [Boolean]
+        attr_accessor :private_endpoint_enforcement_enabled
+        alias_method :private_endpoint_enforcement_enabled?, :private_endpoint_enforcement_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3742,6 +3897,7 @@ module Google
           @cidr_blocks = args[:cidr_blocks] if args.key?(:cidr_blocks)
           @enabled = args[:enabled] if args.key?(:enabled)
           @gcp_public_cidrs_access_enabled = args[:gcp_public_cidrs_access_enabled] if args.key?(:gcp_public_cidrs_access_enabled)
+          @private_endpoint_enforcement_enabled = args[:private_endpoint_enforcement_enabled] if args.key?(:private_endpoint_enforcement_enabled)
         end
       end
       
@@ -3888,6 +4044,15 @@ module Google
         # @return [String]
         attr_accessor :datapath_provider
       
+        # Controls whether by default nodes have private IP addresses only. It is
+        # invalid to specify both PrivateClusterConfig.enablePrivateNodes and this field
+        # at the same time. To update the default setting, use ClusterUpdate.
+        # desired_default_enable_private_nodes
+        # Corresponds to the JSON property `defaultEnablePrivateNodes`
+        # @return [Boolean]
+        attr_accessor :default_enable_private_nodes
+        alias_method :default_enable_private_nodes?, :default_enable_private_nodes
+      
         # DefaultSnatStatus contains the desired state of whether default sNAT should be
         # disabled on the cluster.
         # Corresponds to the JSON property `defaultSnatStatus`
@@ -3978,6 +4143,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
+          @default_enable_private_nodes = args[:default_enable_private_nodes] if args.key?(:default_enable_private_nodes)
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
           @dns_config = args[:dns_config] if args.key?(:dns_config)
           @enable_cilium_clusterwide_network_policy = args[:enable_cilium_clusterwide_network_policy] if args.key?(:enable_cilium_clusterwide_network_policy)
@@ -4645,8 +4811,8 @@ module Google
         alias_method :create_pod_range?, :create_pod_range
       
         # Whether nodes have internal IP addresses only. If enable_private_nodes is not
-        # specified, then the value is derived from cluster.privateClusterConfig.
-        # enablePrivateNodes
+        # specified, then the value is derived from Cluster.NetworkConfig.
+        # default_enable_private_nodes
         # Corresponds to the JSON property `enablePrivateNodes`
         # @return [Boolean]
         attr_accessor :enable_private_nodes
@@ -5402,6 +5568,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the master's internal IP address is used as the cluster endpoint.
+        # Deprecated: Use ControlPlaneEndpointsConfig.IPEndpointsConfig.
+        # enable_public_endpoint instead. Note that the value of enable_public_endpoint
+        # is reversed: if enable_private_endpoint is false, then enable_public_endpoint
+        # will be true.
         # Corresponds to the JSON property `enablePrivateEndpoint`
         # @return [Boolean]
         attr_accessor :enable_private_endpoint
@@ -5409,7 +5579,7 @@ module Google
       
         # Whether nodes have internal IP addresses only. If enabled, all nodes are given
         # only RFC 1918 private addresses and communicate with the master via private
-        # networking.
+        # networking. Deprecated: Use NetworkConfig.default_enable_private_nodes instead.
         # Corresponds to the JSON property `enablePrivateNodes`
         # @return [Boolean]
         attr_accessor :enable_private_nodes
@@ -5434,17 +5604,23 @@ module Google
         attr_accessor :peering_name
       
         # Output only. The internal IP address of this cluster's master endpoint.
+        # Deprecated: Use ControlPlaneEndpointsConfig.IPEndpointsConfig.private_endpoint
+        # instead.
         # Corresponds to the JSON property `privateEndpoint`
         # @return [String]
         attr_accessor :private_endpoint
       
         # Subnet to provision the master's private endpoint during cluster creation.
-        # Specified in projects/*/regions/*/subnetworks/* format.
+        # Specified in projects/*/regions/*/subnetworks/* format. Deprecated: Use
+        # ControlPlaneEndpointsConfig.IPEndpointsConfig.private_endpoint_subnetwork
+        # instead.
         # Corresponds to the JSON property `privateEndpointSubnetwork`
         # @return [String]
         attr_accessor :private_endpoint_subnetwork
       
         # Output only. The external IP address of this cluster's master endpoint.
+        # Deprecated:Use ControlPlaneEndpointsConfig.IPEndpointsConfig.public_endpoint
+        # instead.
         # Corresponds to the JSON property `publicEndpoint`
         # @return [String]
         attr_accessor :public_endpoint

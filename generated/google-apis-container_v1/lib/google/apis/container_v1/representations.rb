@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ControlPlaneEndpointsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CostManagementConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +257,12 @@ module Google
       end
       
       class DnsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DnsEndpointConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +425,12 @@ module Google
       end
       
       class IpAllocationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IpEndpointsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1375,6 +1393,8 @@ module Google
       
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
       
+          property :control_plane_endpoints_config, as: 'controlPlaneEndpointsConfig', class: Google::Apis::ContainerV1::ControlPlaneEndpointsConfig, decorator: Google::Apis::ContainerV1::ControlPlaneEndpointsConfig::Representation
+      
           property :cost_management_config, as: 'costManagementConfig', class: Google::Apis::ContainerV1::CostManagementConfig, decorator: Google::Apis::ContainerV1::CostManagementConfig::Representation
       
           property :create_time, as: 'createTime'
@@ -1515,11 +1535,14 @@ module Google
       
           property :desired_containerd_config, as: 'desiredContainerdConfig', class: Google::Apis::ContainerV1::ContainerdConfig, decorator: Google::Apis::ContainerV1::ContainerdConfig::Representation
       
+          property :desired_control_plane_endpoints_config, as: 'desiredControlPlaneEndpointsConfig', class: Google::Apis::ContainerV1::ControlPlaneEndpointsConfig, decorator: Google::Apis::ContainerV1::ControlPlaneEndpointsConfig::Representation
+      
           property :desired_cost_management_config, as: 'desiredCostManagementConfig', class: Google::Apis::ContainerV1::CostManagementConfig, decorator: Google::Apis::ContainerV1::CostManagementConfig::Representation
       
           property :desired_database_encryption, as: 'desiredDatabaseEncryption', class: Google::Apis::ContainerV1::DatabaseEncryption, decorator: Google::Apis::ContainerV1::DatabaseEncryption::Representation
       
           property :desired_datapath_provider, as: 'desiredDatapathProvider'
+          property :desired_default_enable_private_nodes, as: 'desiredDefaultEnablePrivateNodes'
           property :desired_default_snat_status, as: 'desiredDefaultSnatStatus', class: Google::Apis::ContainerV1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1::DefaultSnatStatus::Representation
       
           property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1::DnsConfig, decorator: Google::Apis::ContainerV1::DnsConfig::Representation
@@ -1669,6 +1692,16 @@ module Google
         end
       end
       
+      class ControlPlaneEndpointsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_endpoint_config, as: 'dnsEndpointConfig', class: Google::Apis::ContainerV1::DnsEndpointConfig, decorator: Google::Apis::ContainerV1::DnsEndpointConfig::Representation
+      
+          property :ip_endpoints_config, as: 'ipEndpointsConfig', class: Google::Apis::ContainerV1::IpEndpointsConfig, decorator: Google::Apis::ContainerV1::IpEndpointsConfig::Representation
+      
+        end
+      end
+      
       class CostManagementConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1706,6 +1739,14 @@ module Google
           property :cluster_dns, as: 'clusterDns'
           property :cluster_dns_domain, as: 'clusterDnsDomain'
           property :cluster_dns_scope, as: 'clusterDnsScope'
+        end
+      end
+      
+      class DnsEndpointConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_external_traffic, as: 'allowExternalTraffic'
+          property :endpoint, as: 'endpoint'
         end
       end
       
@@ -1941,6 +1982,20 @@ module Google
         end
       end
       
+      class IpEndpointsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorized_networks_config, as: 'authorizedNetworksConfig', class: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig::Representation
+      
+          property :enable_public_endpoint, as: 'enablePublicEndpoint'
+          property :enabled, as: 'enabled'
+          property :global_access, as: 'globalAccess'
+          property :private_endpoint, as: 'privateEndpoint'
+          property :private_endpoint_subnetwork, as: 'privateEndpointSubnetwork'
+          property :public_endpoint, as: 'publicEndpoint'
+        end
+      end
+      
       class IdentityServiceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2120,6 +2175,7 @@ module Google
       
           property :enabled, as: 'enabled'
           property :gcp_public_cidrs_access_enabled, as: 'gcpPublicCidrsAccessEnabled'
+          property :private_endpoint_enforcement_enabled, as: 'privateEndpointEnforcementEnabled'
         end
       end
       
@@ -2170,6 +2226,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datapath_provider, as: 'datapathProvider'
+          property :default_enable_private_nodes, as: 'defaultEnablePrivateNodes'
           property :default_snat_status, as: 'defaultSnatStatus', class: Google::Apis::ContainerV1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1::DefaultSnatStatus::Representation
       
           property :dns_config, as: 'dnsConfig', class: Google::Apis::ContainerV1::DnsConfig, decorator: Google::Apis::ContainerV1::DnsConfig::Representation
