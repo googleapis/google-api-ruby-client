@@ -21,7 +21,10 @@ module Google
   module Apis
     # Firebase Data Connect API
     #
-    # 
+    # Firebase Data Connect is a relational database service for mobile and web apps
+    # that lets you build and scale using a fully-managed PostgreSQL database
+    # powered by Cloud SQL. The REST API lets developers manage the connections to
+    # their database, change the schema of their database, and query the database.
     #
     # @see https://firebase.google.com/docs/data-connect
     module FirebasedataconnectV1beta
