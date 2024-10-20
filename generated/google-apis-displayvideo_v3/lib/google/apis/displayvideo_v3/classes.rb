@@ -310,10 +310,86 @@ module Google
       class Adloox
         include Google::Apis::Core::Hashable
       
+        # Optional. Adult explicit sexual content.
+        # Corresponds to the JSON property `adultExplicitSexualContent`
+        # @return [String]
+        attr_accessor :adult_explicit_sexual_content
+      
+        # Optional. Arms ammunition content.
+        # Corresponds to the JSON property `armsAmmunitionContent`
+        # @return [String]
+        attr_accessor :arms_ammunition_content
+      
+        # Optional. Crime harmful acts to individuals society human rights violations
+        # content.
+        # Corresponds to the JSON property `crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent`
+        # @return [String]
+        attr_accessor :crime_harmful_acts_individuals_society_human_rights_violations_content
+      
+        # Optional. Death injury military conflict content.
+        # Corresponds to the JSON property `deathInjuryMilitaryConflictContent`
+        # @return [String]
+        attr_accessor :death_injury_military_conflict_content
+      
+        # Optional. Debated sensitive social issue content.
+        # Corresponds to the JSON property `debatedSensitiveSocialIssueContent`
+        # @return [String]
+        attr_accessor :debated_sensitive_social_issue_content
+      
+        # Optional. Display IAB viewability.
+        # Corresponds to the JSON property `displayIabViewability`
+        # @return [String]
+        attr_accessor :display_iab_viewability
+      
         # Adloox's brand safety settings.
         # Corresponds to the JSON property `excludedAdlooxCategories`
         # @return [Array<String>]
         attr_accessor :excluded_adloox_categories
+      
+        # Optional. Adloox's fraud IVT MFA settings.
+        # Corresponds to the JSON property `excludedFraudIvtMfaCategories`
+        # @return [Array<String>]
+        attr_accessor :excluded_fraud_ivt_mfa_categories
+      
+        # Optional. Hate speech acts of aggression content.
+        # Corresponds to the JSON property `hateSpeechActsAggressionContent`
+        # @return [String]
+        attr_accessor :hate_speech_acts_aggression_content
+      
+        # Optional. Illegal drugs tobacco ecigarettes vaping alcohol content.
+        # Corresponds to the JSON property `illegalDrugsTobaccoEcigarettesVapingAlcoholContent`
+        # @return [String]
+        attr_accessor :illegal_drugs_tobacco_ecigarettes_vaping_alcohol_content
+      
+        # Optional. Misinformation content.
+        # Corresponds to the JSON property `misinformationContent`
+        # @return [String]
+        attr_accessor :misinformation_content
+      
+        # Optional. Obscenity profanity content.
+        # Corresponds to the JSON property `obscenityProfanityContent`
+        # @return [String]
+        attr_accessor :obscenity_profanity_content
+      
+        # Optional. Online piracy content.
+        # Corresponds to the JSON property `onlinePiracyContent`
+        # @return [String]
+        attr_accessor :online_piracy_content
+      
+        # Optional. Spam harmful content.
+        # Corresponds to the JSON property `spamHarmfulContent`
+        # @return [String]
+        attr_accessor :spam_harmful_content
+      
+        # Optional. Terrorism content.
+        # Corresponds to the JSON property `terrorismContent`
+        # @return [String]
+        attr_accessor :terrorism_content
+      
+        # Optional. Video IAB viewability.
+        # Corresponds to the JSON property `videoIabViewability`
+        # @return [String]
+        attr_accessor :video_iab_viewability
       
         def initialize(**args)
            update!(**args)
@@ -321,7 +397,22 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adult_explicit_sexual_content = args[:adult_explicit_sexual_content] if args.key?(:adult_explicit_sexual_content)
+          @arms_ammunition_content = args[:arms_ammunition_content] if args.key?(:arms_ammunition_content)
+          @crime_harmful_acts_individuals_society_human_rights_violations_content = args[:crime_harmful_acts_individuals_society_human_rights_violations_content] if args.key?(:crime_harmful_acts_individuals_society_human_rights_violations_content)
+          @death_injury_military_conflict_content = args[:death_injury_military_conflict_content] if args.key?(:death_injury_military_conflict_content)
+          @debated_sensitive_social_issue_content = args[:debated_sensitive_social_issue_content] if args.key?(:debated_sensitive_social_issue_content)
+          @display_iab_viewability = args[:display_iab_viewability] if args.key?(:display_iab_viewability)
           @excluded_adloox_categories = args[:excluded_adloox_categories] if args.key?(:excluded_adloox_categories)
+          @excluded_fraud_ivt_mfa_categories = args[:excluded_fraud_ivt_mfa_categories] if args.key?(:excluded_fraud_ivt_mfa_categories)
+          @hate_speech_acts_aggression_content = args[:hate_speech_acts_aggression_content] if args.key?(:hate_speech_acts_aggression_content)
+          @illegal_drugs_tobacco_ecigarettes_vaping_alcohol_content = args[:illegal_drugs_tobacco_ecigarettes_vaping_alcohol_content] if args.key?(:illegal_drugs_tobacco_ecigarettes_vaping_alcohol_content)
+          @misinformation_content = args[:misinformation_content] if args.key?(:misinformation_content)
+          @obscenity_profanity_content = args[:obscenity_profanity_content] if args.key?(:obscenity_profanity_content)
+          @online_piracy_content = args[:online_piracy_content] if args.key?(:online_piracy_content)
+          @spam_harmful_content = args[:spam_harmful_content] if args.key?(:spam_harmful_content)
+          @terrorism_content = args[:terrorism_content] if args.key?(:terrorism_content)
+          @video_iab_viewability = args[:video_iab_viewability] if args.key?(:video_iab_viewability)
         end
       end
       
