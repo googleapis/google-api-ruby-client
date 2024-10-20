@@ -1930,6 +1930,12 @@ module Google
         # @return [Array<Google::Apis::AndroidpublisherV3::SystemFeature>]
         attr_accessor :required_system_features
       
+        # Optional. The SoCs included by this selector. Only works for Android S+
+        # devices.
+        # Corresponds to the JSON property `systemOnChips`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SystemOnChip>]
+        attr_accessor :system_on_chips
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1941,6 +1947,7 @@ module Google
           @forbidden_system_features = args[:forbidden_system_features] if args.key?(:forbidden_system_features)
           @included_device_ids = args[:included_device_ids] if args.key?(:included_device_ids)
           @required_system_features = args[:required_system_features] if args.key?(:required_system_features)
+          @system_on_chips = args[:system_on_chips] if args.key?(:system_on_chips)
         end
       end
       
@@ -6318,6 +6325,36 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Representation of a System-on-Chip (SoC) of an Android device. Can be used to
+      # target S+ devices.
+      class SystemOnChip
+        include Google::Apis::Core::Hashable
+      
+        # Required. The designer of the SoC, eg. "Google" Value of build property "ro.
+        # soc.manufacturer" https://developer.android.com/reference/android/os/Build#
+        # SOC_MANUFACTURER Required.
+        # Corresponds to the JSON property `manufacturer`
+        # @return [String]
+        attr_accessor :manufacturer
+      
+        # Required. The model of the SoC, eg. "Tensor" Value of build property "ro.soc.
+        # model" https://developer.android.com/reference/android/os/Build#SOC_MODEL
+        # Required.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
+          @model = args[:model] if args.key?(:model)
         end
       end
       
