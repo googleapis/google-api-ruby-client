@@ -90,7 +90,7 @@ module Google
         end
       end
       
-      # Message describing ContactCenter object Next ID: 23
+      # Message describing ContactCenter object Next ID: 24
       class ContactCenter
         include Google::Apis::Core::Hashable
       
@@ -597,7 +597,7 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # Message describing ContactCenter object Next ID: 23
+        # Message describing ContactCenter object Next ID: 24
         # Corresponds to the JSON property `contactCenter`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::ContactCenter]
         attr_accessor :contact_center
