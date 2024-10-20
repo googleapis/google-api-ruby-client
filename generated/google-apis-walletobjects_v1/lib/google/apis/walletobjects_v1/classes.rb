@@ -1680,6 +1680,16 @@ module Google
         # @return [String]
         attr_accessor :multiple_devices_and_holders_allowed_status
       
+        # Whether or not field updates to this class should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If not specified, no notification will be triggered. This setting
+        # is ephemeral and needs to be set with each PATCH or UPDATE request, otherwise
+        # a notification will not be triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # Identifies which redemption issuers can redeem the pass over Smart Tap.
         # Redemption issuers are identified by their issuer ID. Redemption issuers must
         # have at least one Smart Tap key configured. The `enableSmartTap` and object
@@ -1818,6 +1828,7 @@ module Google
           @logo = args[:logo] if args.key?(:logo)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @redemption_issuers = args[:redemption_issuers] if args.key?(:redemption_issuers)
           @review = args[:review] if args.key?(:review)
           @review_status = args[:review_status] if args.key?(:review_status)
@@ -2024,6 +2035,17 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::Message>]
         attr_accessor :messages
       
+        # Whether or not field updates to this object should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        # notification will be triggered. This setting is ephemeral and needs to be set
+        # with each PATCH or UPDATE request, otherwise a notification will not be
+        # triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # Container for any constraints that may be placed on passes.
         # Corresponds to the JSON property `passConstraints`
         # @return [Google::Apis::WalletobjectsV1::PassConstraints]
@@ -2133,6 +2155,7 @@ module Google
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @locations = args[:locations] if args.key?(:locations)
           @messages = args[:messages] if args.key?(:messages)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @reservation_info = args[:reservation_info] if args.key?(:reservation_info)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
@@ -2615,6 +2638,16 @@ module Google
         # @return [String]
         attr_accessor :multiple_devices_and_holders_allowed_status
       
+        # Whether or not field updates to this class should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If not specified, no notification will be triggered. This setting
+        # is ephemeral and needs to be set with each PATCH or UPDATE request, otherwise
+        # a notification will not be triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # Required. Origin airport.
         # Corresponds to the JSON property `origin`
         # @return [Google::Apis::WalletobjectsV1::AirportInfo]
@@ -2718,6 +2751,7 @@ module Google
           @locations = args[:locations] if args.key?(:locations)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @origin = args[:origin] if args.key?(:origin)
           @redemption_issuers = args[:redemption_issuers] if args.key?(:redemption_issuers)
           @review = args[:review] if args.key?(:review)
@@ -2968,6 +3002,17 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::Message>]
         attr_accessor :messages
       
+        # Whether or not field updates to this object should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        # notification will be triggered. This setting is ephemeral and needs to be set
+        # with each PATCH or UPDATE request, otherwise a notification will not be
+        # triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # Container for any constraints that may be placed on passes.
         # Corresponds to the JSON property `passConstraints`
         # @return [Google::Apis::WalletobjectsV1::PassConstraints]
@@ -3063,6 +3108,7 @@ module Google
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @locations = args[:locations] if args.key?(:locations)
           @messages = args[:messages] if args.key?(:messages)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @passenger_name = args[:passenger_name] if args.key?(:passenger_name)
           @reservation_info = args[:reservation_info] if args.key?(:reservation_info)
@@ -3764,6 +3810,16 @@ module Google
         # @return [String]
         attr_accessor :multiple_devices_and_holders_allowed_status
       
+        # Whether or not field updates to this class should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If not specified, no notification will be triggered. This setting
+        # is ephemeral and needs to be set with each PATCH or UPDATE request, otherwise
+        # a notification will not be triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # The label to display for the PIN, such as "4-digit PIN".
         # Corresponds to the JSON property `pinLabel`
         # @return [String]
@@ -3874,6 +3930,7 @@ module Google
           @merchant_name = args[:merchant_name] if args.key?(:merchant_name)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pin_label = args[:pin_label] if args.key?(:pin_label)
           @program_logo = args[:program_logo] if args.key?(:program_logo)
           @redemption_issuers = args[:redemption_issuers] if args.key?(:redemption_issuers)
@@ -4078,6 +4135,17 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::Message>]
         attr_accessor :messages
       
+        # Whether or not field updates to this object should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        # notification will be triggered. This setting is ephemeral and needs to be set
+        # with each PATCH or UPDATE request, otherwise a notification will not be
+        # triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # Container for any constraints that may be placed on passes.
         # Corresponds to the JSON property `passConstraints`
         # @return [Google::Apis::WalletobjectsV1::PassConstraints]
@@ -4164,6 +4232,7 @@ module Google
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @locations = args[:locations] if args.key?(:locations)
           @messages = args[:messages] if args.key?(:messages)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @pin = args[:pin] if args.key?(:pin)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
@@ -4928,6 +4997,16 @@ module Google
         # @return [String]
         attr_accessor :multiple_devices_and_holders_allowed_status
       
+        # Whether or not field updates to this class should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If not specified, no notification will be triggered. This setting
+        # is ephemeral and needs to be set with each PATCH or UPDATE request, otherwise
+        # a notification will not be triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # Wrapping type for Google hosted images. Next ID: 7
         # Corresponds to the JSON property `programLogo`
         # @return [Google::Apis::WalletobjectsV1::Image]
@@ -5064,6 +5143,7 @@ module Google
           @locations = args[:locations] if args.key?(:locations)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @program_logo = args[:program_logo] if args.key?(:program_logo)
           @program_name = args[:program_name] if args.key?(:program_name)
           @redemption_issuers = args[:redemption_issuers] if args.key?(:redemption_issuers)
@@ -5273,6 +5353,17 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::Message>]
         attr_accessor :messages
       
+        # Whether or not field updates to this object should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        # notification will be triggered. This setting is ephemeral and needs to be set
+        # with each PATCH or UPDATE request, otherwise a notification will not be
+        # triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # Container for any constraints that may be placed on passes.
         # Corresponds to the JSON property `passConstraints`
         # @return [Google::Apis::WalletobjectsV1::PassConstraints]
@@ -5363,6 +5454,7 @@ module Google
           @locations = args[:locations] if args.key?(:locations)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
           @messages = args[:messages] if args.key?(:messages)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
           @save_restrictions = args[:save_restrictions] if args.key?(:save_restrictions)
@@ -6224,6 +6316,16 @@ module Google
         # @return [String]
         attr_accessor :multiple_devices_and_holders_allowed_status
       
+        # Whether or not field updates to this class should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If not specified, no notification will be triggered. This setting
+        # is ephemeral and needs to be set with each PATCH or UPDATE request, otherwise
+        # a notification will not be triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # Required. The offer provider (either the aggregator name or merchant name).
         # Recommended maximum length is 12 characters to ensure full string is displayed
         # on smaller screens.
@@ -6356,6 +6458,7 @@ module Google
           @locations = args[:locations] if args.key?(:locations)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @provider = args[:provider] if args.key?(:provider)
           @redemption_channel = args[:redemption_channel] if args.key?(:redemption_channel)
           @redemption_issuers = args[:redemption_issuers] if args.key?(:redemption_issuers)
@@ -6541,6 +6644,17 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::Message>]
         attr_accessor :messages
       
+        # Whether or not field updates to this object should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        # notification will be triggered. This setting is ephemeral and needs to be set
+        # with each PATCH or UPDATE request, otherwise a notification will not be
+        # triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # Container for any constraints that may be placed on passes.
         # Corresponds to the JSON property `passConstraints`
         # @return [Google::Apis::WalletobjectsV1::PassConstraints]
@@ -6618,6 +6732,7 @@ module Google
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @locations = args[:locations] if args.key?(:locations)
           @messages = args[:messages] if args.key?(:messages)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @rotating_barcode = args[:rotating_barcode] if args.key?(:rotating_barcode)
           @save_restrictions = args[:save_restrictions] if args.key?(:save_restrictions)
@@ -7936,6 +8051,17 @@ module Google
         # @return [String]
         attr_accessor :multiple_devices_and_holders_allowed_status
       
+        # Whether or not field updates to this class should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        # notification will be triggered. This setting is ephemeral and needs to be set
+        # with each PATCH or UPDATE request, otherwise a notification will not be
+        # triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # Identifies which redemption issuers can redeem the pass over Smart Tap.
         # Redemption issuers are identified by their issuer ID. Redemption issuers must
         # have at least one Smart Tap key configured. The `enableSmartTap` and object
@@ -8065,6 +8191,7 @@ module Google
           @logo = args[:logo] if args.key?(:logo)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @redemption_issuers = args[:redemption_issuers] if args.key?(:redemption_issuers)
           @review = args[:review] if args.key?(:review)
           @review_status = args[:review_status] if args.key?(:review_status)
@@ -8281,6 +8408,17 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::Message>]
         attr_accessor :messages
       
+        # Whether or not field updates to this object should trigger notifications. When
+        # set to NOTIFY, we will attempt to trigger a field update notification to users.
+        # These notifications will only be sent to users if the field is part of an
+        # allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        # notification will be triggered. This setting is ephemeral and needs to be set
+        # with each PATCH or UPDATE request, otherwise a notification will not be
+        # triggered.
+        # Corresponds to the JSON property `notifyPreference`
+        # @return [String]
+        attr_accessor :notify_preference
+      
         # Container for any constraints that may be placed on passes.
         # Corresponds to the JSON property `passConstraints`
         # @return [Google::Apis::WalletobjectsV1::PassConstraints]
@@ -8426,6 +8564,7 @@ module Google
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @locations = args[:locations] if args.key?(:locations)
           @messages = args[:messages] if args.key?(:messages)
+          @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
           @passenger_names = args[:passenger_names] if args.key?(:passenger_names)
           @passenger_type = args[:passenger_type] if args.key?(:passenger_type)
