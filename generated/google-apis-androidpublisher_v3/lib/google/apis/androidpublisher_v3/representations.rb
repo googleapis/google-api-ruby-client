@@ -1216,6 +1216,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SystemOnChip
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Targeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2055,6 +2061,8 @@ module Google
           collection :included_device_ids, as: 'includedDeviceIds', class: Google::Apis::AndroidpublisherV3::DeviceId, decorator: Google::Apis::AndroidpublisherV3::DeviceId::Representation
       
           collection :required_system_features, as: 'requiredSystemFeatures', class: Google::Apis::AndroidpublisherV3::SystemFeature, decorator: Google::Apis::AndroidpublisherV3::SystemFeature::Representation
+      
+          collection :system_on_chips, as: 'systemOnChips', class: Google::Apis::AndroidpublisherV3::SystemOnChip, decorator: Google::Apis::AndroidpublisherV3::SystemOnChip::Representation
       
         end
       end
@@ -3328,6 +3336,14 @@ module Google
       class SystemInitiatedCancellation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SystemOnChip
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :manufacturer, as: 'manufacturer'
+          property :model, as: 'model'
         end
       end
       
