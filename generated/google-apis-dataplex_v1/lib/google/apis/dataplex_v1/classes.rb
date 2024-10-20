@@ -392,6 +392,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The version of the data format used to produce this data. This field is used
+        # to indicated when the underlying data format changes (e.g., schema
+        # modifications, changes to the source URL format definition, etc).
+        # Corresponds to the JSON property `dataVersion`
+        # @return [String]
+        attr_accessor :data_version
+      
         # The time the aspect was last updated in the source system.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -404,6 +411,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_version = args[:data_version] if args.key?(:data_version)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -2065,7 +2073,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS",
-        # "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+        # "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2243,7 +2251,7 @@ module Google
       
         # Required. The dimension a rule belongs to. Results are also aggregated at the
         # dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "
-        # CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+        # CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
         # Corresponds to the JSON property `dimension`
         # @return [String]
         attr_accessor :dimension
@@ -3711,6 +3719,11 @@ module Google
       class GoogleCloudDataplexV1DiscoveryEventActionDetails
         include Google::Apis::Core::Hashable
       
+        # The human readable issue associated with the action.
+        # Corresponds to the JSON property `issue`
+        # @return [String]
+        attr_accessor :issue
+      
         # The type of action. Eg. IncompatibleDataSchema, InvalidDataFormat
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -3722,6 +3735,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @issue = args[:issue] if args.key?(:issue)
           @type = args[:type] if args.key?(:type)
         end
       end
