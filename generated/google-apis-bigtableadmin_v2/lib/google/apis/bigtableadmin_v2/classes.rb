@@ -218,8 +218,8 @@ module Google
       class AutomatedBackupPolicy
         include Google::Apis::Core::Hashable
       
-        # Required. How frequently automated backups should occur. The only supported
-        # value at this time is 24 hours.
+        # How frequently automated backups should occur. The only supported value at
+        # this time is 24 hours. An undefined frequency is treated as 24 hours.
         # Corresponds to the JSON property `frequency`
         # @return [String]
         attr_accessor :frequency
@@ -787,21 +787,18 @@ module Google
         # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
         # familiarity and consistency across products and features. For compatibility
         # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
-        # which describes how to convert to/from the underlying data. Each encoding also
-        # defines the following properties: * Order-preserving: Does the encoded value
-        # sort consistently with the original typed value? Note that Bigtable will
-        # always sort data based on the raw encoded value, *not* the decoded type. -
-        # Example: BYTES values sort in the same order as their raw encodings. -
-        # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
-        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
-        # two encoded values, can we always tell where the first one ends and the second
-        # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
-        # value will always contain exactly N digits, possibly preceded by a sign. -
-        # Counterexample: If we concatenate two UTF-8 encoded STRINGs, we have no way to
-        # tell where the first one ends. * Compatibility: Which other systems have
-        # matching encoding schemes? For example, does this encoding have a GoogleSQL
-        # equivalent? HBase? Java?
+        # which describes how to convert to or from the underlying data. Each encoding
+        # can operate in one of two modes: - Sorted: In this mode, Bigtable guarantees
+        # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
+        # sort order is important, for example when encoding keys. - Distinct: In this
+        # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
+        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
+        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # value. The API clearly documents which mode is used wherever an encoding can
+        # be configured. Each encoding also documents which values are supported in
+        # which modes. For example, when encoding INT64 as a numeric STRING, negative
+        # numbers cannot be encoded in sorted mode. This is because `INT64(1) > INT64(-1)
+        # `, but `STRING("-00001") > STRING("00001")`.
         # Corresponds to the JSON property `valueType`
         # @return [Google::Apis::BigtableadminV2::Type]
         attr_accessor :value_type
@@ -1608,9 +1605,8 @@ module Google
       end
       
       # A value that combines incremental updates into a summarized value. Data is
-      # never directly written or read using type `Aggregate`. Writes will provide
-      # either the `input_type` or `state_type`, and reads will always return the `
-      # state_type` .
+      # never directly written or read using type `Aggregate`. Writes provide either
+      # the `input_type` or `state_type`, and reads always return the `state_type` .
       class GoogleBigtableAdminV2TypeAggregate
         include Google::Apis::Core::Hashable
       
@@ -1627,21 +1623,18 @@ module Google
         # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
         # familiarity and consistency across products and features. For compatibility
         # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
-        # which describes how to convert to/from the underlying data. Each encoding also
-        # defines the following properties: * Order-preserving: Does the encoded value
-        # sort consistently with the original typed value? Note that Bigtable will
-        # always sort data based on the raw encoded value, *not* the decoded type. -
-        # Example: BYTES values sort in the same order as their raw encodings. -
-        # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
-        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
-        # two encoded values, can we always tell where the first one ends and the second
-        # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
-        # value will always contain exactly N digits, possibly preceded by a sign. -
-        # Counterexample: If we concatenate two UTF-8 encoded STRINGs, we have no way to
-        # tell where the first one ends. * Compatibility: Which other systems have
-        # matching encoding schemes? For example, does this encoding have a GoogleSQL
-        # equivalent? HBase? Java?
+        # which describes how to convert to or from the underlying data. Each encoding
+        # can operate in one of two modes: - Sorted: In this mode, Bigtable guarantees
+        # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
+        # sort order is important, for example when encoding keys. - Distinct: In this
+        # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
+        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
+        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # value. The API clearly documents which mode is used wherever an encoding can
+        # be configured. Each encoding also documents which values are supported in
+        # which modes. For example, when encoding INT64 as a numeric STRING, negative
+        # numbers cannot be encoded in sorted mode. This is because `INT64(1) > INT64(-1)
+        # `, but `STRING("-00001") > STRING("00001")`.
         # Corresponds to the JSON property `inputType`
         # @return [Google::Apis::BigtableadminV2::Type]
         attr_accessor :input_type
@@ -1662,21 +1655,18 @@ module Google
         # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
         # familiarity and consistency across products and features. For compatibility
         # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
-        # which describes how to convert to/from the underlying data. Each encoding also
-        # defines the following properties: * Order-preserving: Does the encoded value
-        # sort consistently with the original typed value? Note that Bigtable will
-        # always sort data based on the raw encoded value, *not* the decoded type. -
-        # Example: BYTES values sort in the same order as their raw encodings. -
-        # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
-        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
-        # two encoded values, can we always tell where the first one ends and the second
-        # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
-        # value will always contain exactly N digits, possibly preceded by a sign. -
-        # Counterexample: If we concatenate two UTF-8 encoded STRINGs, we have no way to
-        # tell where the first one ends. * Compatibility: Which other systems have
-        # matching encoding schemes? For example, does this encoding have a GoogleSQL
-        # equivalent? HBase? Java?
+        # which describes how to convert to or from the underlying data. Each encoding
+        # can operate in one of two modes: - Sorted: In this mode, Bigtable guarantees
+        # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
+        # sort order is important, for example when encoding keys. - Distinct: In this
+        # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
+        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
+        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # value. The API clearly documents which mode is used wherever an encoding can
+        # be configured. Each encoding also documents which values are supported in
+        # which modes. For example, when encoding INT64 as a numeric STRING, negative
+        # numbers cannot be encoded in sorted mode. This is because `INT64(1) > INT64(-1)
+        # `, but `STRING("-00001") > STRING("00001")`.
         # Corresponds to the JSON property `stateType`
         # @return [Google::Apis::BigtableadminV2::Type]
         attr_accessor :state_type
@@ -1770,21 +1760,18 @@ module Google
         # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
         # familiarity and consistency across products and features. For compatibility
         # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
-        # which describes how to convert to/from the underlying data. Each encoding also
-        # defines the following properties: * Order-preserving: Does the encoded value
-        # sort consistently with the original typed value? Note that Bigtable will
-        # always sort data based on the raw encoded value, *not* the decoded type. -
-        # Example: BYTES values sort in the same order as their raw encodings. -
-        # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
-        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
-        # two encoded values, can we always tell where the first one ends and the second
-        # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
-        # value will always contain exactly N digits, possibly preceded by a sign. -
-        # Counterexample: If we concatenate two UTF-8 encoded STRINGs, we have no way to
-        # tell where the first one ends. * Compatibility: Which other systems have
-        # matching encoding schemes? For example, does this encoding have a GoogleSQL
-        # equivalent? HBase? Java?
+        # which describes how to convert to or from the underlying data. Each encoding
+        # can operate in one of two modes: - Sorted: In this mode, Bigtable guarantees
+        # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
+        # sort order is important, for example when encoding keys. - Distinct: In this
+        # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
+        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
+        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # value. The API clearly documents which mode is used wherever an encoding can
+        # be configured. Each encoding also documents which values are supported in
+        # which modes. For example, when encoding INT64 as a numeric STRING, negative
+        # numbers cannot be encoded in sorted mode. This is because `INT64(1) > INT64(-1)
+        # `, but `STRING("-00001") > STRING("00001")`.
         # Corresponds to the JSON property `elementType`
         # @return [Google::Apis::BigtableadminV2::Type]
         attr_accessor :element_type
@@ -1816,7 +1803,7 @@ module Google
       class GoogleBigtableAdminV2TypeBytes
         include Google::Apis::Core::Hashable
       
-        # Rules used to convert to/from lower level types.
+        # Rules used to convert to or from lower level types.
         # Corresponds to the JSON property `encoding`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytesEncoding]
         attr_accessor :encoding
@@ -1831,12 +1818,12 @@ module Google
         end
       end
       
-      # Rules used to convert to/from lower level types.
+      # Rules used to convert to or from lower level types.
       class GoogleBigtableAdminV2TypeBytesEncoding
         include Google::Apis::Core::Hashable
       
-        # Leaves the value "as-is" * Order-preserving? Yes * Self-delimiting? No *
-        # Compatibility? N/A
+        # Leaves the value as-is. Sorted mode: all values are supported. Distinct mode:
+        # all values are supported.
         # Corresponds to the JSON property `raw`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBytesEncodingRaw]
         attr_accessor :raw
@@ -1851,8 +1838,8 @@ module Google
         end
       end
       
-      # Leaves the value "as-is" * Order-preserving? Yes * Self-delimiting? No *
-      # Compatibility? N/A
+      # Leaves the value as-is. Sorted mode: all values are supported. Distinct mode:
+      # all values are supported.
       class GoogleBigtableAdminV2TypeBytesEncodingRaw
         include Google::Apis::Core::Hashable
       
@@ -1908,7 +1895,7 @@ module Google
       class GoogleBigtableAdminV2TypeInt64
         include Google::Apis::Core::Hashable
       
-        # Rules used to convert to/from lower level types.
+        # Rules used to convert to or from lower level types.
         # Corresponds to the JSON property `encoding`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64Encoding]
         attr_accessor :encoding
@@ -1923,14 +1910,14 @@ module Google
         end
       end
       
-      # Rules used to convert to/from lower level types.
+      # Rules used to convert to or from lower level types.
       class GoogleBigtableAdminV2TypeInt64Encoding
         include Google::Apis::Core::Hashable
       
-        # Encodes the value as an 8-byte big endian twos complement `Bytes` value. *
-        # Order-preserving? No (positive values only) * Self-delimiting? Yes *
-        # Compatibility? - BigQuery Federation `BINARY` encoding - HBase `Bytes.toBytes`
-        # - Java `ByteBuffer.putLong()` with `ByteOrder.BIG_ENDIAN`
+        # Encodes the value as an 8-byte big-endian two's complement value. Sorted mode:
+        # non-negative values are supported. Distinct mode: all values are supported.
+        # Compatible with: - BigQuery `BINARY` encoding - HBase `Bytes.toBytes` - Java `
+        # ByteBuffer.putLong()` with `ByteOrder.BIG_ENDIAN`
         # Corresponds to the JSON property `bigEndianBytes`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes]
         attr_accessor :big_endian_bytes
@@ -1945,10 +1932,10 @@ module Google
         end
       end
       
-      # Encodes the value as an 8-byte big endian twos complement `Bytes` value. *
-      # Order-preserving? No (positive values only) * Self-delimiting? Yes *
-      # Compatibility? - BigQuery Federation `BINARY` encoding - HBase `Bytes.toBytes`
-      # - Java `ByteBuffer.putLong()` with `ByteOrder.BIG_ENDIAN`
+      # Encodes the value as an 8-byte big-endian two's complement value. Sorted mode:
+      # non-negative values are supported. Distinct mode: all values are supported.
+      # Compatible with: - BigQuery `BINARY` encoding - HBase `Bytes.toBytes` - Java `
+      # ByteBuffer.putLong()` with `ByteOrder.BIG_ENDIAN`
       class GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes
         include Google::Apis::Core::Hashable
       
@@ -1980,21 +1967,18 @@ module Google
         # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
         # familiarity and consistency across products and features. For compatibility
         # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
-        # which describes how to convert to/from the underlying data. Each encoding also
-        # defines the following properties: * Order-preserving: Does the encoded value
-        # sort consistently with the original typed value? Note that Bigtable will
-        # always sort data based on the raw encoded value, *not* the decoded type. -
-        # Example: BYTES values sort in the same order as their raw encodings. -
-        # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
-        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
-        # two encoded values, can we always tell where the first one ends and the second
-        # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
-        # value will always contain exactly N digits, possibly preceded by a sign. -
-        # Counterexample: If we concatenate two UTF-8 encoded STRINGs, we have no way to
-        # tell where the first one ends. * Compatibility: Which other systems have
-        # matching encoding schemes? For example, does this encoding have a GoogleSQL
-        # equivalent? HBase? Java?
+        # which describes how to convert to or from the underlying data. Each encoding
+        # can operate in one of two modes: - Sorted: In this mode, Bigtable guarantees
+        # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
+        # sort order is important, for example when encoding keys. - Distinct: In this
+        # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
+        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
+        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # value. The API clearly documents which mode is used wherever an encoding can
+        # be configured. Each encoding also documents which values are supported in
+        # which modes. For example, when encoding INT64 as a numeric STRING, negative
+        # numbers cannot be encoded in sorted mode. This is because `INT64(1) > INT64(-1)
+        # `, but `STRING("-00001") > STRING("00001")`.
         # Corresponds to the JSON property `keyType`
         # @return [Google::Apis::BigtableadminV2::Type]
         attr_accessor :key_type
@@ -2003,21 +1987,18 @@ module Google
         # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
         # familiarity and consistency across products and features. For compatibility
         # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
-        # which describes how to convert to/from the underlying data. Each encoding also
-        # defines the following properties: * Order-preserving: Does the encoded value
-        # sort consistently with the original typed value? Note that Bigtable will
-        # always sort data based on the raw encoded value, *not* the decoded type. -
-        # Example: BYTES values sort in the same order as their raw encodings. -
-        # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
-        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
-        # two encoded values, can we always tell where the first one ends and the second
-        # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
-        # value will always contain exactly N digits, possibly preceded by a sign. -
-        # Counterexample: If we concatenate two UTF-8 encoded STRINGs, we have no way to
-        # tell where the first one ends. * Compatibility: Which other systems have
-        # matching encoding schemes? For example, does this encoding have a GoogleSQL
-        # equivalent? HBase? Java?
+        # which describes how to convert to or from the underlying data. Each encoding
+        # can operate in one of two modes: - Sorted: In this mode, Bigtable guarantees
+        # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
+        # sort order is important, for example when encoding keys. - Distinct: In this
+        # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
+        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
+        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # value. The API clearly documents which mode is used wherever an encoding can
+        # be configured. Each encoding also documents which values are supported in
+        # which modes. For example, when encoding INT64 as a numeric STRING, negative
+        # numbers cannot be encoded in sorted mode. This is because `INT64(1) > INT64(-1)
+        # `, but `STRING("-00001") > STRING("00001")`.
         # Corresponds to the JSON property `valueType`
         # @return [Google::Apis::BigtableadminV2::Type]
         attr_accessor :value_type
@@ -2037,7 +2018,7 @@ module Google
       class GoogleBigtableAdminV2TypeString
         include Google::Apis::Core::Hashable
       
-        # Rules used to convert to/from lower level types.
+        # Rules used to convert to or from lower level types.
         # Corresponds to the JSON property `encoding`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStringEncoding]
         attr_accessor :encoding
@@ -2052,13 +2033,14 @@ module Google
         end
       end
       
-      # Rules used to convert to/from lower level types.
+      # Rules used to convert to or from lower level types.
       class GoogleBigtableAdminV2TypeStringEncoding
         include Google::Apis::Core::Hashable
       
-        # UTF-8 encoding * Order-preserving? Yes (code point order) * Self-delimiting?
-        # No * Compatibility? - BigQuery Federation `TEXT` encoding - HBase `Bytes.
-        # toBytes` - Java `String#getBytes(StandardCharsets.UTF_8)`
+        # UTF-8 encoding. Sorted mode: - All values are supported. - Code point order is
+        # preserved. Distinct mode: all values are supported. Compatible with: -
+        # BigQuery `TEXT` encoding - HBase `Bytes.toBytes` - Java `String#getBytes(
+        # StandardCharsets.UTF_8)`
         # Corresponds to the JSON property `utf8Bytes`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes]
         attr_accessor :utf8_bytes
@@ -2079,9 +2061,10 @@ module Google
         end
       end
       
-      # UTF-8 encoding * Order-preserving? Yes (code point order) * Self-delimiting?
-      # No * Compatibility? - BigQuery Federation `TEXT` encoding - HBase `Bytes.
-      # toBytes` - Java `String#getBytes(StandardCharsets.UTF_8)`
+      # UTF-8 encoding. Sorted mode: - All values are supported. - Code point order is
+      # preserved. Distinct mode: all values are supported. Compatible with: -
+      # BigQuery `TEXT` encoding - HBase `Bytes.toBytes` - Java `String#getBytes(
+      # StandardCharsets.UTF_8)`
       class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes
         include Google::Apis::Core::Hashable
       
@@ -2142,21 +2125,18 @@ module Google
         # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
         # familiarity and consistency across products and features. For compatibility
         # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
-        # which describes how to convert to/from the underlying data. Each encoding also
-        # defines the following properties: * Order-preserving: Does the encoded value
-        # sort consistently with the original typed value? Note that Bigtable will
-        # always sort data based on the raw encoded value, *not* the decoded type. -
-        # Example: BYTES values sort in the same order as their raw encodings. -
-        # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-        # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
-        # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
-        # two encoded values, can we always tell where the first one ends and the second
-        # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
-        # value will always contain exactly N digits, possibly preceded by a sign. -
-        # Counterexample: If we concatenate two UTF-8 encoded STRINGs, we have no way to
-        # tell where the first one ends. * Compatibility: Which other systems have
-        # matching encoding schemes? For example, does this encoding have a GoogleSQL
-        # equivalent? HBase? Java?
+        # which describes how to convert to or from the underlying data. Each encoding
+        # can operate in one of two modes: - Sorted: In this mode, Bigtable guarantees
+        # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
+        # sort order is important, for example when encoding keys. - Distinct: In this
+        # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
+        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
+        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # value. The API clearly documents which mode is used wherever an encoding can
+        # be configured. Each encoding also documents which values are supported in
+        # which modes. For example, when encoding INT64 as a numeric STRING, negative
+        # numbers cannot be encoded in sorted mode. This is because `INT64(1) > INT64(-1)
+        # `, but `STRING("-00001") > STRING("00001")`.
         # Corresponds to the JSON property `type`
         # @return [Google::Apis::BigtableadminV2::Type]
         attr_accessor :type
@@ -3583,28 +3563,24 @@ module Google
       # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
       # familiarity and consistency across products and features. For compatibility
       # with Bigtable's existing untyped APIs, each `Type` includes an `Encoding`
-      # which describes how to convert to/from the underlying data. Each encoding also
-      # defines the following properties: * Order-preserving: Does the encoded value
-      # sort consistently with the original typed value? Note that Bigtable will
-      # always sort data based on the raw encoded value, *not* the decoded type. -
-      # Example: BYTES values sort in the same order as their raw encodings. -
-      # Counterexample: Encoding INT64 as a fixed-width decimal string does *not*
-      # preserve sort order when dealing with negative numbers. `INT64(1) > INT64(-1)`,
-      # but `STRING("-00001") > STRING("00001)`. * Self-delimiting: If we concatenate
-      # two encoded values, can we always tell where the first one ends and the second
-      # one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first
-      # value will always contain exactly N digits, possibly preceded by a sign. -
-      # Counterexample: If we concatenate two UTF-8 encoded STRINGs, we have no way to
-      # tell where the first one ends. * Compatibility: Which other systems have
-      # matching encoding schemes? For example, does this encoding have a GoogleSQL
-      # equivalent? HBase? Java?
+      # which describes how to convert to or from the underlying data. Each encoding
+      # can operate in one of two modes: - Sorted: In this mode, Bigtable guarantees
+      # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
+      # sort order is important, for example when encoding keys. - Distinct: In this
+      # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
+      # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
+      # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+      # value. The API clearly documents which mode is used wherever an encoding can
+      # be configured. Each encoding also documents which values are supported in
+      # which modes. For example, when encoding INT64 as a numeric STRING, negative
+      # numbers cannot be encoded in sorted mode. This is because `INT64(1) > INT64(-1)
+      # `, but `STRING("-00001") > STRING("00001")`.
       class Type
         include Google::Apis::Core::Hashable
       
         # A value that combines incremental updates into a summarized value. Data is
-        # never directly written or read using type `Aggregate`. Writes will provide
-        # either the `input_type` or `state_type`, and reads will always return the `
-        # state_type` .
+        # never directly written or read using type `Aggregate`. Writes provide either
+        # the `input_type` or `state_type`, and reads always return the `state_type` .
         # Corresponds to the JSON property `aggregateType`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeAggregate]
         attr_accessor :aggregate_type
