@@ -3658,8 +3658,9 @@ module Google
         
         # Updates a log scope.
         # @param [String] name
-        #   Output only. The resource name of the log scope.For example:projects/my-
-        #   project/locations/global/logScopes/my-log-scope
+        #   Output only. The resource name of the log scope.Log scopes are only available
+        #   in the global location. For example:projects/my-project/locations/global/
+        #   logScopes/my-log-scope
         # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in log_scope that need an
@@ -7061,8 +7062,9 @@ module Google
         
         # Updates a log scope.
         # @param [String] name
-        #   Output only. The resource name of the log scope.For example:projects/my-
-        #   project/locations/global/logScopes/my-log-scope
+        #   Output only. The resource name of the log scope.Log scopes are only available
+        #   in the global location. For example:projects/my-project/locations/global/
+        #   logScopes/my-log-scope
         # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in log_scope that need an
@@ -9246,8 +9248,9 @@ module Google
         
         # Updates a log scope.
         # @param [String] name
-        #   Output only. The resource name of the log scope.For example:projects/my-
-        #   project/locations/global/logScopes/my-log-scope
+        #   Output only. The resource name of the log scope.Log scopes are only available
+        #   in the global location. For example:projects/my-project/locations/global/
+        #   logScopes/my-log-scope
         # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in log_scope that need an

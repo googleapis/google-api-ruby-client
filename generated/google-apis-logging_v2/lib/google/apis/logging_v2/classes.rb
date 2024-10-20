@@ -2456,8 +2456,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. The resource name of the log scope.For example:projects/my-
-        # project/locations/global/logScopes/my-log-scope
+        # Output only. The resource name of the log scope.Log scopes are only available
+        # in the global location. For example:projects/my-project/locations/global/
+        # logScopes/my-log-scope
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
