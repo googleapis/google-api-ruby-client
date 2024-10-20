@@ -2124,7 +2124,22 @@ module Google
       class Adloox
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adult_explicit_sexual_content, as: 'adultExplicitSexualContent'
+          property :arms_ammunition_content, as: 'armsAmmunitionContent'
+          property :crime_harmful_acts_individuals_society_human_rights_violations_content, as: 'crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent'
+          property :death_injury_military_conflict_content, as: 'deathInjuryMilitaryConflictContent'
+          property :debated_sensitive_social_issue_content, as: 'debatedSensitiveSocialIssueContent'
+          property :display_iab_viewability, as: 'displayIabViewability'
           collection :excluded_adloox_categories, as: 'excludedAdlooxCategories'
+          collection :excluded_fraud_ivt_mfa_categories, as: 'excludedFraudIvtMfaCategories'
+          property :hate_speech_acts_aggression_content, as: 'hateSpeechActsAggressionContent'
+          property :illegal_drugs_tobacco_ecigarettes_vaping_alcohol_content, as: 'illegalDrugsTobaccoEcigarettesVapingAlcoholContent'
+          property :misinformation_content, as: 'misinformationContent'
+          property :obscenity_profanity_content, as: 'obscenityProfanityContent'
+          property :online_piracy_content, as: 'onlinePiracyContent'
+          property :spam_harmful_content, as: 'spamHarmfulContent'
+          property :terrorism_content, as: 'terrorismContent'
+          property :video_iab_viewability, as: 'videoIabViewability'
         end
       end
       
