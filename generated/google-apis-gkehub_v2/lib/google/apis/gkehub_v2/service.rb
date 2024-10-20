@@ -124,6 +124,210 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates membershipFeature under a given parent.
+        # @param [String] parent
+        #   Required. The name of parent where the MembershipFeature will be created.
+        #   Specified in the format `projects/*/locations/*/memberships/*`.
+        # @param [Google::Apis::GkehubV2::MembershipFeature] membership_feature_object
+        # @param [String] feature_id
+        #   Required. The ID of the membership_feature to create.
+        # @param [String] request_id
+        #   Idempotent request UUID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_membership_feature(parent, membership_feature_object = nil, feature_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/features', options)
+          command.request_representation = Google::Apis::GkehubV2::MembershipFeature::Representation
+          command.request_object = membership_feature_object
+          command.response_representation = Google::Apis::GkehubV2::Operation::Representation
+          command.response_class = Google::Apis::GkehubV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['featureId'] = feature_id unless feature_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a membershipFeature.
+        # @param [String] name
+        #   Required. The name of the membershipFeature to be deleted. Specified in the
+        #   format `projects/*/locations/*/memberships/*/features/*`.
+        # @param [String] request_id
+        #   Idempotent request UUID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_membership_feature(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV2::Operation::Representation
+          command.response_class = Google::Apis::GkehubV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ========= MembershipFeature Services ========= Gets details of a
+        # membershipFeature.
+        # @param [String] name
+        #   Required. The MembershipFeature resource name in the format `projects/*/
+        #   locations/*/memberships/*/features/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV2::MembershipFeature] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV2::MembershipFeature]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_membership_feature(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV2::MembershipFeature::Representation
+          command.response_class = Google::Apis::GkehubV2::MembershipFeature
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists MembershipFeatures in a given project and location.
+        # @param [String] parent
+        #   Required. The parent where the MembershipFeature will be listed. In the format:
+        #   `projects/*/locations/*/memberships/*`.
+        # @param [String] filter
+        #   Lists MembershipFeatures that match the filter expression, following the
+        #   syntax outlined in https://google.aip.dev/160. Examples: - Feature with the
+        #   name "helloworld" in project "foo-proj" and membership "member-bar": name = "
+        #   projects/foo-proj/locations/global/memberships/member-bar/features/helloworld"
+        #   - Features that have a label called `foo`: labels.foo:* - Features that have a
+        #   label called `foo` whose value is `bar`: labels.foo = bar
+        # @param [String] order_by
+        #   One or more fields to compare and use to sort the output. See https://google.
+        #   aip.dev/132#ordering.
+        # @param [Fixnum] page_size
+        #   When requesting a 'page' of resources, `page_size` specifies number of
+        #   resources to return. If unspecified or set to 0, all resources will be
+        #   returned.
+        # @param [String] page_token
+        #   Token returned by previous call to `ListFeatures` which specifies the position
+        #   in the list from where to continue listing the resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV2::ListMembershipFeaturesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV2::ListMembershipFeaturesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_membership_features(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/features', options)
+          command.response_representation = Google::Apis::GkehubV2::ListMembershipFeaturesResponse::Representation
+          command.response_class = Google::Apis::GkehubV2::ListMembershipFeaturesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing MembershipFeature.
+        # @param [String] name
+        #   Output only. The resource name of the membershipFeature, in the format: `
+        #   projects/`project`/locations/`location`/memberships/`membership`/features/`
+        #   feature``. Note that `membershipFeatures` is shortened to `features` in the
+        #   resource name. (see http://go/aip/122#collection-identifiers)
+        # @param [Google::Apis::GkehubV2::MembershipFeature] membership_feature_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the MembershipFeature is not found, a new
+        #   MembershipFeature will be created. In this situation, `update_mask` is ignored.
+        # @param [String] request_id
+        #   Idempotent request UUID.
+        # @param [String] update_mask
+        #   Required. Mask of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_membership_feature(name, membership_feature_object = nil, allow_missing: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::GkehubV2::MembershipFeature::Representation
+          command.request_object = membership_feature_object
+          command.response_representation = Google::Apis::GkehubV2::Operation::Representation
+          command.response_class = Google::Apis::GkehubV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
