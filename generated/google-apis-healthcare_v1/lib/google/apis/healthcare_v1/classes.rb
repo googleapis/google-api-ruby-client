@@ -959,9 +959,9 @@ module Google
         # @return [Google::Apis::HealthcareV1::DeidentifyConfig]
         attr_accessor :config
       
-        # The full resource name of a Cloud Healthcare FHIR store, for example, `
-        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/
-        # `fhir_store_id``.
+        # Optional. The full resource name of a Cloud Healthcare FHIR store, for example,
+        # `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # fhirStores/`fhir_store_id``.
         # Corresponds to the JSON property `store`
         # @return [String]
         attr_accessor :store
@@ -2020,14 +2020,14 @@ module Google
       class FhirStore
         include Google::Apis::Core::Hashable
       
-        # Enable parsing of references within complex FHIR data types such as Extensions.
-        # If this value is set to ENABLED, then features like referential integrity and
-        # Bundle reference rewriting apply to all references. If this flag has not been
-        # specified the behavior of the FHIR store will not change, references in
-        # complex data types will not be parsed. New stores will have this value set to
-        # ENABLED after a notification period. Warning: turning on this flag causes
-        # processing existing resources to fail if they contain references to non-
-        # existent resources.
+        # Optional. Enable parsing of references within complex FHIR data types such as
+        # Extensions. If this value is set to ENABLED, then features like referential
+        # integrity and Bundle reference rewriting apply to all references. If this flag
+        # has not been specified the behavior of the FHIR store will not change,
+        # references in complex data types will not be parsed. New stores will have this
+        # value set to ENABLED after a notification period. Warning: turning on this
+        # flag causes processing existing resources to fail if they contain references
+        # to non-existent resources.
         # Corresponds to the JSON property `complexDataTypeReferenceParsing`
         # @return [String]
         attr_accessor :complex_data_type_reference_parsing
@@ -2456,23 +2456,23 @@ module Google
       class GoogleCloudHealthcareV1DicomBigQueryDestination
         include Google::Apis::Core::Hashable
       
-        # Use `write_disposition` instead. If `write_disposition` is specified, this
-        # parameter is ignored. force=false is equivalent to write_disposition=
+        # Optional. Use `write_disposition` instead. If `write_disposition` is specified,
+        # this parameter is ignored. force=false is equivalent to write_disposition=
         # WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
         alias_method :force?, :force
       
-        # BigQuery URI to a table, up to 2000 characters long, in the format `bq://
-        # projectId.bqDatasetId.tableId`
+        # Optional. BigQuery URI to a table, up to 2000 characters long, in the format `
+        # bq://projectId.bqDatasetId.tableId`
         # Corresponds to the JSON property `tableUri`
         # @return [String]
         attr_accessor :table_uri
       
-        # Determines whether the existing table in the destination is to be overwritten
-        # or appended to. If a write_disposition is specified, the `force` parameter is
-        # ignored.
+        # Optional. Determines whether the existing table in the destination is to be
+        # overwritten or appended to. If a write_disposition is specified, the `force`
+        # parameter is ignored.
         # Corresponds to the JSON property `writeDisposition`
         # @return [String]
         attr_accessor :write_disposition
@@ -5451,26 +5451,27 @@ module Google
       class ValidationConfig
         include Google::Apis::Core::Hashable
       
-        # Whether to disable FHIRPath validation for incoming resources. The default
-        # value is false. Set this to true to disable checking incoming resources for
-        # conformance against FHIRPath requirement defined in the FHIR specification.
-        # This property only affects resource types that do not have profiles configured
-        # for them, any rules in enabled implementation guides will still be enforced.
+        # Optional. Whether to disable FHIRPath validation for incoming resources. The
+        # default value is false. Set this to true to disable checking incoming
+        # resources for conformance against FHIRPath requirement defined in the FHIR
+        # specification. This property only affects resource types that do not have
+        # profiles configured for them, any rules in enabled implementation guides will
+        # still be enforced.
         # Corresponds to the JSON property `disableFhirpathValidation`
         # @return [Boolean]
         attr_accessor :disable_fhirpath_validation
         alias_method :disable_fhirpath_validation?, :disable_fhirpath_validation
       
-        # Whether to disable profile validation for this FHIR store. The default value
-        # is false. Set this to true to disable checking incoming resources for
-        # conformance against structure definitions in this FHIR store.
+        # Optional. Whether to disable profile validation for this FHIR store. The
+        # default value is false. Set this to true to disable checking incoming
+        # resources for conformance against structure definitions in this FHIR store.
         # Corresponds to the JSON property `disableProfileValidation`
         # @return [Boolean]
         attr_accessor :disable_profile_validation
         alias_method :disable_profile_validation?, :disable_profile_validation
       
-        # Whether to disable reference type validation for incoming resources. The
-        # default value is false. Set this to true to disable checking incoming
+        # Optional. Whether to disable reference type validation for incoming resources.
+        # The default value is false. Set this to true to disable checking incoming
         # resources for conformance against reference type requirement defined in the
         # FHIR specification. This property only affects resource types that do not have
         # profiles configured for them, any rules in enabled implementation guides will
@@ -5480,8 +5481,8 @@ module Google
         attr_accessor :disable_reference_type_validation
         alias_method :disable_reference_type_validation?, :disable_reference_type_validation
       
-        # Whether to disable required fields validation for incoming resources. The
-        # default value is false. Set this to true to disable checking incoming
+        # Optional. Whether to disable required fields validation for incoming resources.
+        # The default value is false. Set this to true to disable checking incoming
         # resources for conformance against required fields requirement defined in the
         # FHIR specification. This property only affects resource types that do not have
         # profiles configured for them, any rules in enabled implementation guides will
@@ -5491,19 +5492,19 @@ module Google
         attr_accessor :disable_required_field_validation
         alias_method :disable_required_field_validation?, :disable_required_field_validation
       
-        # A list of implementation guide URLs in this FHIR store that are used to
-        # configure the profiles to use for validation. For example, to use the US Core
-        # profiles for validation, set `enabled_implementation_guides` to `["http://hl7.
-        # org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides`
-        # is empty or omitted, then incoming resources are only required to conform to
-        # the base FHIR profiles. Otherwise, a resource must conform to at least one
-        # profile listed in the `global` property of one of the enabled
-        # ImplementationGuides. The Cloud Healthcare API does not currently enforce all
-        # of the rules in a StructureDefinition. The following rules are supported: -
-        # min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on
-        # simple types - slicing, when using "value" as the discriminator type When a
-        # URL cannot be resolved (for example, in a type assertion), the server does not
-        # return an error.
+        # Optional. A list of implementation guide URLs in this FHIR store that are used
+        # to configure the profiles to use for validation. For example, to use the US
+        # Core profiles for validation, set `enabled_implementation_guides` to `["http://
+        # hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `
+        # enabled_implementation_guides` is empty or omitted, then incoming resources
+        # are only required to conform to the base FHIR profiles. Otherwise, a resource
+        # must conform to at least one profile listed in the `global` property of one of
+        # the enabled ImplementationGuides. The Cloud Healthcare API does not currently
+        # enforce all of the rules in a StructureDefinition. The following rules are
+        # supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] -
+        # pattern[x] on simple types - slicing, when using "value" as the discriminator
+        # type When a URL cannot be resolved (for example, in a type assertion), the
+        # server does not return an error.
         # Corresponds to the JSON property `enabledImplementationGuides`
         # @return [Array<String>]
         attr_accessor :enabled_implementation_guides
