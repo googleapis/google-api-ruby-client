@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1CmekConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1CompleteQueryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1420,6 +1426,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1UpdateSchemaMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1571,6 +1583,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaCmekConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2308,6 +2326,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2339,6 +2363,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaCmekConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3665,6 +3695,18 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1CmekConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_default, as: 'isDefault'
+          property :kms_key, as: 'kmsKey'
+          property :kms_key_version, as: 'kmsKeyVersion'
+          property :last_rotation_timestamp_micros, :numeric_string => true, as: 'lastRotationTimestampMicros'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1CompleteQueryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3911,6 +3953,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_estimation, as: 'billingEstimation', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStoreBillingEstimation, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStoreBillingEstimation::Representation
       
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CmekConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CmekConfig::Representation
+      
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -3918,6 +3962,7 @@ module Google
           property :document_processing_config, as: 'documentProcessingConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentProcessingConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentProcessingConfig::Representation
       
           property :industry_vertical, as: 'industryVertical'
+          property :kms_key_name, as: 'kmsKeyName'
           property :name, as: 'name'
           property :serving_config_data_store, as: 'servingConfigDataStore', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfigDataStore, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfigDataStore::Representation
       
@@ -4809,6 +4854,7 @@ module Google
       
           property :language_code, as: 'languageCode'
           property :offset, as: 'offset'
+          property :one_box_page_size, as: 'oneBoxPageSize'
           property :order_by, as: 'orderBy'
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
@@ -5316,6 +5362,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1UpdateSchemaMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5594,6 +5648,18 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaCmekConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_default, as: 'isDefault'
+          property :kms_key, as: 'kmsKey'
+          property :kms_key_version, as: 'kmsKeyVersion'
+          property :last_rotation_timestamp_micros, :numeric_string => true, as: 'lastRotationTimestampMicros'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5737,6 +5803,8 @@ module Google
           property :acl_enabled, as: 'aclEnabled'
           property :billing_estimation, as: 'billingEstimation', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation::Representation
       
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCmekConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCmekConfig::Representation
+      
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -5746,6 +5814,7 @@ module Google
           property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaIdpConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaIdpConfig::Representation
       
           property :industry_vertical, as: 'industryVertical'
+          property :kms_key_name, as: 'kmsKeyName'
           property :language_info, as: 'languageInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaLanguageInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaLanguageInfo::Representation
       
           property :name, as: 'name'
@@ -6439,6 +6508,7 @@ module Google
           property :natural_language_query_understanding_spec, as: 'naturalLanguageQueryUnderstandingSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec::Representation
       
           property :offset, as: 'offset'
+          property :one_box_page_size, as: 'oneBoxPageSize'
           property :order_by, as: 'orderBy'
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
@@ -6798,6 +6868,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6845,6 +6923,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :target_sites, as: 'targetSites', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaTargetSite, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaTargetSite::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaCmekConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_default, as: 'isDefault'
+          property :kms_key, as: 'kmsKey'
+          property :kms_key_version, as: 'kmsKeyVersion'
+          property :last_rotation_timestamp_micros, :numeric_string => true, as: 'lastRotationTimestampMicros'
+          property :name, as: 'name'
+          property :state, as: 'state'
         end
       end
       
@@ -6983,6 +7073,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_estimation, as: 'billingEstimation', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation::Representation
       
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaCmekConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaCmekConfig::Representation
+      
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -6990,6 +7082,7 @@ module Google
           property :document_processing_config, as: 'documentProcessingConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig::Representation
       
           property :industry_vertical, as: 'industryVertical'
+          property :kms_key_name, as: 'kmsKeyName'
           property :language_info, as: 'languageInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaLanguageInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaLanguageInfo::Representation
       
           property :name, as: 'name'
@@ -7501,6 +7594,7 @@ module Google
           property :natural_language_query_understanding_spec, as: 'naturalLanguageQueryUnderstandingSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec::Representation
       
           property :offset, as: 'offset'
+          property :one_box_page_size, as: 'oneBoxPageSize'
           property :order_by, as: 'orderBy'
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'

@@ -229,6 +229,8 @@ module Google
         #   Required. The parent resource name, such as `projects/`project`/locations/`
         #   location`/collections/`collection``.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStore] google_cloud_discoveryengine_v1_data_store_object
+        # @param [String] cmek_config_name
+        #   Resource name of the CmekConfig to use for protecting this DataStore.
         # @param [Boolean] create_advanced_site_search
         #   A boolean flag indicating whether user want to directly create an advanced
         #   data store for site search. If the data store is not configured as site search
@@ -239,6 +241,9 @@ module Google
         #   component of the DataStore's resource name. This field must conform to [RFC-
         #   1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
         #   characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # @param [Boolean] disable_cmek
+        #   DataStore without CMEK protections. If a default CmekConfig is set for the
+        #   project, setting this field will override the default CmekConfig as well.
         # @param [Boolean] skip_default_schema_creation
         #   A boolean flag indicating whether to skip the default schema creation for the
         #   data store. Only enable this flag if you are certain that the default schema
@@ -262,15 +267,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_collection_data_store(parent, google_cloud_discoveryengine_v1_data_store_object = nil, create_advanced_site_search: nil, data_store_id: nil, skip_default_schema_creation: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_collection_data_store(parent, google_cloud_discoveryengine_v1_data_store_object = nil, cmek_config_name: nil, create_advanced_site_search: nil, data_store_id: nil, disable_cmek: nil, skip_default_schema_creation: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/dataStores', options)
           command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStore::Representation
           command.request_object = google_cloud_discoveryengine_v1_data_store_object
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['cmekConfigName'] = cmek_config_name unless cmek_config_name.nil?
           command.query['createAdvancedSiteSearch'] = create_advanced_site_search unless create_advanced_site_search.nil?
           command.query['dataStoreId'] = data_store_id unless data_store_id.nil?
+          command.query['disableCmek'] = disable_cmek unless disable_cmek.nil?
           command.query['skipDefaultSchemaCreation'] = skip_default_schema_creation unless skip_default_schema_creation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -4129,6 +4136,8 @@ module Google
         #   Required. The parent resource name, such as `projects/`project`/locations/`
         #   location`/collections/`collection``.
         # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStore] google_cloud_discoveryengine_v1_data_store_object
+        # @param [String] cmek_config_name
+        #   Resource name of the CmekConfig to use for protecting this DataStore.
         # @param [Boolean] create_advanced_site_search
         #   A boolean flag indicating whether user want to directly create an advanced
         #   data store for site search. If the data store is not configured as site search
@@ -4139,6 +4148,9 @@ module Google
         #   component of the DataStore's resource name. This field must conform to [RFC-
         #   1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
         #   characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # @param [Boolean] disable_cmek
+        #   DataStore without CMEK protections. If a default CmekConfig is set for the
+        #   project, setting this field will override the default CmekConfig as well.
         # @param [Boolean] skip_default_schema_creation
         #   A boolean flag indicating whether to skip the default schema creation for the
         #   data store. Only enable this flag if you are certain that the default schema
@@ -4162,15 +4174,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_data_store(parent, google_cloud_discoveryengine_v1_data_store_object = nil, create_advanced_site_search: nil, data_store_id: nil, skip_default_schema_creation: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_data_store(parent, google_cloud_discoveryengine_v1_data_store_object = nil, cmek_config_name: nil, create_advanced_site_search: nil, data_store_id: nil, disable_cmek: nil, skip_default_schema_creation: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/dataStores', options)
           command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStore::Representation
           command.request_object = google_cloud_discoveryengine_v1_data_store_object
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['cmekConfigName'] = cmek_config_name unless cmek_config_name.nil?
           command.query['createAdvancedSiteSearch'] = create_advanced_site_search unless create_advanced_site_search.nil?
           command.query['dataStoreId'] = data_store_id unless data_store_id.nil?
+          command.query['disableCmek'] = disable_cmek unless disable_cmek.nil?
           command.query['skipDefaultSchemaCreation'] = skip_default_schema_creation unless skip_default_schema_creation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
