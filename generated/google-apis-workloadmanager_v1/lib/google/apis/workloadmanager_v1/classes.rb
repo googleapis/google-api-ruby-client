@@ -381,6 +381,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. execution result summary per rule
+        # Corresponds to the JSON property `ruleResults`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::RuleExecutionResult>]
+        attr_accessor :rule_results
+      
         # type represent whether the execution executed directly by user or scheduled
         # according evaluation.schedule field.
         # Corresponds to the JSON property `runType`
@@ -409,6 +414,7 @@ module Google
           @inventory_time = args[:inventory_time] if args.key?(:inventory_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @rule_results = args[:rule_results] if args.key?(:rule_results)
           @run_type = args[:run_type] if args.key?(:run_type)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
@@ -1340,6 +1346,49 @@ module Google
           @severity = args[:severity] if args.key?(:severity)
           @tags = args[:tags] if args.key?(:tags)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Message for execution result summary per rule
+      class RuleExecutionResult
+        include Google::Apis::Core::Hashable
+      
+        # Execution message, if any
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Number of violations
+        # Corresponds to the JSON property `resultCount`
+        # @return [Fixnum]
+        attr_accessor :result_count
+      
+        # rule name
+        # Corresponds to the JSON property `rule`
+        # @return [String]
+        attr_accessor :rule
+      
+        # Number of total scanned resources
+        # Corresponds to the JSON property `scannedResourceCount`
+        # @return [Fixnum]
+        attr_accessor :scanned_resource_count
+      
+        # Output only. The execution status
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @result_count = args[:result_count] if args.key?(:result_count)
+          @rule = args[:rule] if args.key?(:rule)
+          @scanned_resource_count = args[:scanned_resource_count] if args.key?(:scanned_resource_count)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

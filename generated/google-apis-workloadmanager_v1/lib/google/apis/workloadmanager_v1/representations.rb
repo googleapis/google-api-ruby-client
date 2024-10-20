@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RuleExecutionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunEvaluationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +521,8 @@ module Google
           property :inventory_time, as: 'inventoryTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :rule_results, as: 'ruleResults', class: Google::Apis::WorkloadmanagerV1::RuleExecutionResult, decorator: Google::Apis::WorkloadmanagerV1::RuleExecutionResult::Representation
+      
           property :run_type, as: 'runType'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
@@ -785,6 +793,17 @@ module Google
           property :severity, as: 'severity'
           collection :tags, as: 'tags'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class RuleExecutionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :result_count, :numeric_string => true, as: 'resultCount'
+          property :rule, as: 'rule'
+          property :scanned_resource_count, :numeric_string => true, as: 'scannedResourceCount'
+          property :state, as: 'state'
         end
       end
       
