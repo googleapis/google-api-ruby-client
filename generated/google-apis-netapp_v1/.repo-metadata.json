@@ -1,0 +1,7 @@
+{
+    "api_id": "netapp:v1",
+    "name_pretty": "NetApp API",
+    "distribution_name": "google-apis-netapp_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
