@@ -514,7 +514,7 @@ module Google
       class ContainerSpec
         include Google::Apis::Core::Hashable
       
-        # The environment values to be set at runtime for flex template. LINT.IfChange
+        # The environment values to be set at runtime for flex template.
         # Corresponds to the JSON property `defaultEnvironment`
         # @return [Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment]
         attr_accessor :default_environment
@@ -824,7 +824,7 @@ module Google
       class CreateJobFromTemplateRequest
         include Google::Apis::Core::Hashable
       
-        # The environment values to set at runtime. LINT.IfChange
+        # The environment values to set at runtime.
         # Corresponds to the JSON property `environment`
         # @return [Google::Apis::DataflowV1b3::RuntimeEnvironment]
         attr_accessor :environment
@@ -1670,7 +1670,7 @@ module Google
         end
       end
       
-      # The environment values to be set at runtime for flex template. LINT.IfChange
+      # The environment values to be set at runtime for flex template.
       class FlexTemplateRuntimeEnvironment
         include Google::Apis::Core::Hashable
       
@@ -2816,7 +2816,7 @@ module Google
         # @return [String]
         attr_accessor :container_spec_gcs_path
       
-        # The environment values to be set at runtime for flex template. LINT.IfChange
+        # The environment values to be set at runtime for flex template.
         # Corresponds to the JSON property `environment`
         # @return [Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment]
         attr_accessor :environment
@@ -2920,7 +2920,7 @@ module Google
       class LaunchTemplateParameters
         include Google::Apis::Core::Hashable
       
-        # The environment values to set at runtime. LINT.IfChange
+        # The environment values to set at runtime.
         # Corresponds to the JSON property `environment`
         # @return [Google::Apis::DataflowV1b3::RuntimeEnvironment]
         attr_accessor :environment
@@ -4429,7 +4429,7 @@ module Google
         end
       end
       
-      # The environment values to set at runtime. LINT.IfChange
+      # The environment values to set at runtime.
       class RuntimeEnvironment
         include Google::Apis::Core::Hashable
       
