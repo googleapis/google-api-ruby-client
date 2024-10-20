@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceHttpCookie
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceIap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7344,6 +7350,8 @@ module Google
           collection :service_bindings, as: 'serviceBindings'
           property :service_lb_policy, as: 'serviceLbPolicy'
           property :session_affinity, as: 'sessionAffinity'
+          property :strong_session_affinity_cookie, as: 'strongSessionAffinityCookie', class: Google::Apis::ComputeV1::BackendServiceHttpCookie, decorator: Google::Apis::ComputeV1::BackendServiceHttpCookie::Representation
+      
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeV1::Subsetting, decorator: Google::Apis::ComputeV1::Subsetting::Representation
       
           property :timeout_sec, as: 'timeoutSec'
@@ -7447,6 +7455,16 @@ module Google
           collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeV1::HealthStatus, decorator: Google::Apis::ComputeV1::HealthStatus::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class BackendServiceHttpCookie
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :path, as: 'path'
+          property :ttl, as: 'ttl', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
         end
       end
       
@@ -9247,6 +9265,7 @@ module Google
           property :health_check_service, as: 'healthCheckService', class: Google::Apis::ComputeV1::HealthCheckServiceReference, decorator: Google::Apis::ComputeV1::HealthCheckServiceReference::Representation
       
           property :health_state, as: 'healthState'
+          property :ipv6_health_state, as: 'ipv6HealthState'
         end
       end
       
@@ -12314,6 +12333,7 @@ module Google
           property :fqdn, as: 'fqdn'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_address, as: 'ipv6Address'
           property :port, as: 'port'
         end
       end
