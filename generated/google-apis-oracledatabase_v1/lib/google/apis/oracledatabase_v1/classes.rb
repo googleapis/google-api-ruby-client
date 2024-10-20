@@ -1136,7 +1136,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :compute_count
       
-        # Optional. The number of enabled CPU cores.
+        # Output only. The number of enabled CPU cores.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
@@ -1151,7 +1151,7 @@ module Google
         # @return [Float]
         attr_accessor :data_storage_size_tb
       
-        # Optional. The local node storage allocated in GBs.
+        # Output only. The local node storage allocated in GBs.
         # Corresponds to the JSON property `dbNodeStorageSizeGb`
         # @return [Fixnum]
         attr_accessor :db_node_storage_size_gb
@@ -1188,7 +1188,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_memory_gb
       
-        # Optional. The memory allocated in GBs.
+        # Output only. The memory allocated in GBs.
         # Corresponds to the JSON property `memorySizeGb`
         # @return [Fixnum]
         attr_accessor :memory_size_gb
