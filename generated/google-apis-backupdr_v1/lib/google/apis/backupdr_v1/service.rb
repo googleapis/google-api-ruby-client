@@ -574,6 +574,9 @@ module Google
         # @param [Boolean] force
         #   Optional. If set to true, any data source from this backup vault will also be
         #   deleted.
+        # @param [Boolean] ignore_backup_plan_references
+        #   Optional. If set to true, backupvault deletion will proceed even if there are
+        #   backup plans referencing the backupvault. The default is 'false'.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -605,7 +608,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_backup_vault(name, allow_missing: nil, etag: nil, force: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_backup_vault(name, allow_missing: nil, etag: nil, force: nil, ignore_backup_plan_references: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
           command.response_class = Google::Apis::BackupdrV1::Operation
@@ -613,6 +616,7 @@ module Google
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['etag'] = etag unless etag.nil?
           command.query['force'] = force unless force.nil?
+          command.query['ignoreBackupPlanReferences'] = ignore_backup_plan_references unless ignore_backup_plan_references.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?

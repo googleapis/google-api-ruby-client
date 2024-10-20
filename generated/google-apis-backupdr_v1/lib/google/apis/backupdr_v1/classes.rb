@@ -979,8 +979,7 @@ module Google
         # @return [String]
         attr_accessor :resource
       
-        # Output only. Output Only. Resource type of workload on which backupplan is
-        # applied
+        # Optional. Resource type of workload on which backupplan is applied
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
