@@ -1552,6 +1552,11 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1RiskAnalysis
         include Google::Apis::Core::Hashable
       
+        # Output only. Challenge information for SCORE_AND_CHALLENGE keys
+        # Corresponds to the JSON property `challenge`
+        # @return [String]
+        attr_accessor :challenge
+      
         # Output only. Extended verdict reasons to be used for experimentation only. The
         # set of possible reasons is subject to change.
         # Corresponds to the JSON property `extendedVerdictReasons`
@@ -1575,6 +1580,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @challenge = args[:challenge] if args.key?(:challenge)
           @extended_verdict_reasons = args[:extended_verdict_reasons] if args.key?(:extended_verdict_reasons)
           @reasons = args[:reasons] if args.key?(:reasons)
           @score = args[:score] if args.key?(:score)
