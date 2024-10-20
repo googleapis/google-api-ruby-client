@@ -2401,6 +2401,60 @@ module Google
         end
       end
       
+      # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+      class GoogleCloudDiscoveryengineV1CmekConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The default CmekConfig for the Customer.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
+        # Kms key resource name which will be used to encrypt resources `projects/`
+        # project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Kms key version resource name which will be used to encrypt resources `/
+        # cryptoKeyVersions/`keyVersion``.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
+        # Output only. The timestamp of the last key rotation.
+        # Corresponds to the JSON property `lastRotationTimestampMicros`
+        # @return [Fixnum]
+        attr_accessor :last_rotation_timestamp_micros
+      
+        # Required. Name of the CmekConfig, of the form `projects/`project`/locations/`
+        # location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/`
+        # cmekConfig``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the CmekConfig.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_default = args[:is_default] if args.key?(:is_default)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
+          @last_rotation_timestamp_micros = args[:last_rotation_timestamp_micros] if args.key?(:last_rotation_timestamp_micros)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Response message for CompletionService.CompleteQuery method.
       class GoogleCloudDiscoveryengineV1CompleteQueryResponse
         include Google::Apis::Core::Hashable
@@ -3287,6 +3341,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStoreBillingEstimation]
         attr_accessor :billing_estimation
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CmekConfig]
+        attr_accessor :cmek_config
+      
         # Immutable. The content config of the data store. If this field is unset, the
         # server behavior defaults to ContentConfig.NO_CONTENT.
         # Corresponds to the JSON property `contentConfig`
@@ -3321,6 +3380,14 @@ module Google
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
+      
+        # Input only. The KMS key to be used to protect this DataStore at creation time.
+        # Must be set for requests that need to comply with CMEK Org Policy protections.
+        # If this field is set and processed successfully, the DataStore will be
+        # protected by the KMS key, as indicated in the cmek_config field.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
       
         # Immutable. The full resource name of the data store. Format: `projects/`
         # project`/locations/`location`/collections/`collection_id`/dataStores/`
@@ -3360,12 +3427,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @content_config = args[:content_config] if args.key?(:content_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @name = args[:name] if args.key?(:name)
           @serving_config_data_store = args[:serving_config_data_store] if args.key?(:serving_config_data_store)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
@@ -6485,6 +6554,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :offset
       
+        # The maximum number of results to return for OneBox. This applies to each
+        # OneBox type individually. Default number is 10.
+        # Corresponds to the JSON property `oneBoxPageSize`
+        # @return [Fixnum]
+        attr_accessor :one_box_page_size
+      
         # The order in which documents are returned. Documents can be ordered by a field
         # in an Document object. Leave it unset if ordered by relevance. `order_by`
         # expression is case-sensitive. For more information on ordering the website
@@ -6628,6 +6703,7 @@ module Google
           @image_query = args[:image_query] if args.key?(:image_query)
           @language_code = args[:language_code] if args.key?(:language_code)
           @offset = args[:offset] if args.key?(:offset)
+          @one_box_page_size = args[:one_box_page_size] if args.key?(:one_box_page_size)
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
@@ -8496,6 +8572,34 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the CmekConfigService.UpdateCmekConfig
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata for UpdateSchema LRO.
       class GoogleCloudDiscoveryengineV1UpdateSchemaMetadata
         include Google::Apis::Core::Hashable
@@ -9519,6 +9623,60 @@ module Google
         end
       end
       
+      # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+      class GoogleCloudDiscoveryengineV1alphaCmekConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The default CmekConfig for the Customer.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
+        # Kms key resource name which will be used to encrypt resources `projects/`
+        # project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Kms key version resource name which will be used to encrypt resources `/
+        # cryptoKeyVersions/`keyVersion``.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
+        # Output only. The timestamp of the last key rotation.
+        # Corresponds to the JSON property `lastRotationTimestampMicros`
+        # @return [Fixnum]
+        attr_accessor :last_rotation_timestamp_micros
+      
+        # Required. Name of the CmekConfig, of the form `projects/`project`/locations/`
+        # location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/`
+        # cmekConfig``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the CmekConfig.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_default = args[:is_default] if args.key?(:is_default)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
+          @last_rotation_timestamp_micros = args[:last_rotation_timestamp_micros] if args.key?(:last_rotation_timestamp_micros)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Defines circumstances to be checked before allowing a behavior
       class GoogleCloudDiscoveryengineV1alphaCondition
         include Google::Apis::Core::Hashable
@@ -10021,6 +10179,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation]
         attr_accessor :billing_estimation
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCmekConfig]
+        attr_accessor :cmek_config
+      
         # Immutable. The content config of the data store. If this field is unset, the
         # server behavior defaults to ContentConfig.NO_CONTENT.
         # Corresponds to the JSON property `contentConfig`
@@ -10060,6 +10223,14 @@ module Google
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
+      
+        # Input only. The KMS key to be used to protect this DataStore at creation time.
+        # Must be set for requests that need to comply with CMEK Org Policy protections.
+        # If this field is set and processed successfully, the DataStore will be
+        # protected by the KMS key, as indicated in the cmek_config field.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
       
         # Language info for DataStore.
         # Corresponds to the JSON property `languageInfo`
@@ -10110,6 +10281,7 @@ module Google
         def update!(**args)
           @acl_enabled = args[:acl_enabled] if args.key?(:acl_enabled)
           @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @content_config = args[:content_config] if args.key?(:content_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
@@ -10117,6 +10289,7 @@ module Google
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
           @idp_config = args[:idp_config] if args.key?(:idp_config)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @language_info = args[:language_info] if args.key?(:language_info)
           @name = args[:name] if args.key?(:name)
           @natural_language_query_understanding_config = args[:natural_language_query_understanding_config] if args.key?(:natural_language_query_understanding_config)
@@ -12534,6 +12707,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :offset
       
+        # The maximum number of results to return for OneBox. This applies to each
+        # OneBox type individually. Default number is 10.
+        # Corresponds to the JSON property `oneBoxPageSize`
+        # @return [Fixnum]
+        attr_accessor :one_box_page_size
+      
         # The order in which documents are returned. Documents can be ordered by a field
         # in an Document object. Leave it unset if ordered by relevance. `order_by`
         # expression is case-sensitive. For more information on ordering the website
@@ -12726,6 +12905,7 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @natural_language_query_understanding_spec = args[:natural_language_query_understanding_spec] if args.key?(:natural_language_query_understanding_spec)
           @offset = args[:offset] if args.key?(:offset)
+          @one_box_page_size = args[:one_box_page_size] if args.key?(:one_box_page_size)
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
@@ -14034,6 +14214,34 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the CmekConfigService.UpdateCmekConfig
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata for UpdateSchema LRO.
       class GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata
         include Google::Apis::Core::Hashable
@@ -14207,6 +14415,60 @@ module Google
         # Update properties of this object
         def update!(**args)
           @target_sites = args[:target_sites] if args.key?(:target_sites)
+        end
+      end
+      
+      # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+      class GoogleCloudDiscoveryengineV1betaCmekConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The default CmekConfig for the Customer.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
+        # Kms key resource name which will be used to encrypt resources `projects/`
+        # project`/locations/`location`/keyRings/`keyRing`/cryptoKeys/`keyId``.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Kms key version resource name which will be used to encrypt resources `/
+        # cryptoKeyVersions/`keyVersion``.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
+        # Output only. The timestamp of the last key rotation.
+        # Corresponds to the JSON property `lastRotationTimestampMicros`
+        # @return [Fixnum]
+        attr_accessor :last_rotation_timestamp_micros
+      
+        # Required. Name of the CmekConfig, of the form `projects/`project`/locations/`
+        # location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/`
+        # cmekConfig``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the CmekConfig.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_default = args[:is_default] if args.key?(:is_default)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
+          @last_rotation_timestamp_micros = args[:last_rotation_timestamp_micros] if args.key?(:last_rotation_timestamp_micros)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -14681,6 +14943,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation]
         attr_accessor :billing_estimation
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaCmekConfig]
+        attr_accessor :cmek_config
+      
         # Immutable. The content config of the data store. If this field is unset, the
         # server behavior defaults to ContentConfig.NO_CONTENT.
         # Corresponds to the JSON property `contentConfig`
@@ -14715,6 +14982,14 @@ module Google
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
+      
+        # Input only. The KMS key to be used to protect this DataStore at creation time.
+        # Must be set for requests that need to comply with CMEK Org Policy protections.
+        # If this field is set and processed successfully, the DataStore will be
+        # protected by the KMS key, as indicated in the cmek_config field.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
       
         # Language info for DataStore.
         # Corresponds to the JSON property `languageInfo`
@@ -14764,12 +15039,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @content_config = args[:content_config] if args.key?(:content_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @language_info = args[:language_info] if args.key?(:language_info)
           @name = args[:name] if args.key?(:name)
           @natural_language_query_understanding_config = args[:natural_language_query_understanding_config] if args.key?(:natural_language_query_understanding_config)
@@ -16488,6 +16765,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :offset
       
+        # The maximum number of results to return for OneBox. This applies to each
+        # OneBox type individually. Default number is 10.
+        # Corresponds to the JSON property `oneBoxPageSize`
+        # @return [Fixnum]
+        attr_accessor :one_box_page_size
+      
         # The order in which documents are returned. Documents can be ordered by a field
         # in an Document object. Leave it unset if ordered by relevance. `order_by`
         # expression is case-sensitive. For more information on ordering the website
@@ -16679,6 +16962,7 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @natural_language_query_understanding_spec = args[:natural_language_query_understanding_spec] if args.key?(:natural_language_query_understanding_spec)
           @offset = args[:offset] if args.key?(:offset)
+          @one_box_page_size = args[:one_box_page_size] if args.key?(:one_box_page_size)
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
