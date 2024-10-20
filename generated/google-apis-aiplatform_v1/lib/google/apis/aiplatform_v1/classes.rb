@@ -80,6 +80,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionImageRaiScores]
         attr_accessor :image_rai_scores
       
+        # Image size.
+        # Corresponds to the JSON property `imageSize`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionImageImageSize]
+        attr_accessor :image_size
+      
         # Next ID: 6
         # Corresponds to the JSON property `raiInfo`
         # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionRaiInfo]
@@ -110,10 +115,42 @@ module Google
           @generation_seed = args[:generation_seed] if args.key?(:generation_seed)
           @image = args[:image] if args.key?(:image)
           @image_rai_scores = args[:image_rai_scores] if args.key?(:image_rai_scores)
+          @image_size = args[:image_size] if args.key?(:image_size)
           @rai_info = args[:rai_info] if args.key?(:rai_info)
           @semantic_filter_response = args[:semantic_filter_response] if args.key?(:semantic_filter_response)
           @text = args[:text] if args.key?(:text)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Image size.
+      class CloudAiLargeModelsVisionImageImageSize
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `channels`
+        # @return [Fixnum]
+        attr_accessor :channels
+      
+        # 
+        # Corresponds to the JSON property `height`
+        # @return [Fixnum]
+        attr_accessor :height
+      
+        # 
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channels = args[:channels] if args.key?(:channels)
+          @height = args[:height] if args.key?(:height)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
@@ -4068,6 +4105,11 @@ module Google
         # @return [String]
         attr_accessor :protected_artifact_location_id
       
+        # Configuration for PSC-I.
+        # Corresponds to the JSON property `pscInterfaceConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig]
+        attr_accessor :psc_interface_config
+      
         # Optional. A list of names for the reserved ip ranges under the VPC network
         # that can be used for this job. If set, we will deploy the job within the
         # provided ip ranges. Otherwise, the job will be deployed to any ip ranges under
@@ -4118,6 +4160,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @persistent_resource_id = args[:persistent_resource_id] if args.key?(:persistent_resource_id)
           @protected_artifact_location_id = args[:protected_artifact_location_id] if args.key?(:protected_artifact_location_id)
+          @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
           @reserved_ip_ranges = args[:reserved_ip_ranges] if args.key?(:reserved_ip_ranges)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -9245,6 +9288,13 @@ module Google
       class GoogleCloudAiplatformV1FeatureViewSyncConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, syncs the FeatureView in a continuous manner to Online
+        # Store.
+        # Corresponds to the JSON property `continuous`
+        # @return [Boolean]
+        attr_accessor :continuous
+        alias_method :continuous?, :continuous
+      
         # Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
         # To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "
         # CRON_TZ=$`IANA_TIME_ZONE`" or "TZ=$`IANA_TIME_ZONE`". The $`IANA_TIME_ZONE`
@@ -9260,6 +9310,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @continuous = args[:continuous] if args.key?(:continuous)
           @cron = args[:cron] if args.key?(:cron)
         end
       end
@@ -10587,6 +10638,13 @@ module Google
       class GoogleCloudAiplatformV1GenerationConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. If enabled, audio timestamp will be included in the request to the
+        # model.
+        # Corresponds to the JSON property `audioTimestamp`
+        # @return [Boolean]
+        attr_accessor :audio_timestamp
+        alias_method :audio_timestamp?, :audio_timestamp
+      
         # Optional. Number of candidates to generate.
         # Corresponds to the JSON property `candidateCount`
         # @return [Fixnum]
@@ -10670,6 +10728,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audio_timestamp = args[:audio_timestamp] if args.key?(:audio_timestamp)
           @candidate_count = args[:candidate_count] if args.key?(:candidate_count)
           @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
           @logprobs = args[:logprobs] if args.key?(:logprobs)
@@ -19439,6 +19498,19 @@ module Google
         end
       end
       
+      # Configuration for PSC-I.
+      class GoogleCloudAiplatformV1PscInterfaceConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A Model Garden Publisher Model.
       class GoogleCloudAiplatformV1PublisherModel
         include Google::Apis::Core::Hashable
@@ -22380,9 +22452,10 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Possible values of the element of Type.STRING with enum format. For
-        # example we can define an Enum Direction as : `type:STRING, format:enum, enum:["
-        # EAST", NORTH", "SOUTH", "WEST"]`
+        # Optional. Possible values of the element of primitive type with enum format.
+        # Examples: 1. We can define direction as : `type:STRING, format:enum, enum:["
+        # EAST", NORTH", "SOUTH", "WEST"]` 2. We can define apartment number as : `type:
+        # INTEGER, format:enum, enum:["101", "201", "301"]`
         # Corresponds to the JSON property `enum`
         # @return [Array<String>]
         attr_accessor :enum
@@ -25168,6 +25241,232 @@ module Google
         end
       end
       
+      # The A2 schema of a prompt.
+      class GoogleCloudAiplatformV1SchemaPromptApiSchema
+        include Google::Apis::Core::Hashable
+      
+        # The Schema version that represents changes to the API behavior.
+        # Corresponds to the JSON property `apiSchemaVersion`
+        # @return [String]
+        attr_accessor :api_schema_version
+      
+        # A list of execution instances for constructing a ready-to-use prompt.
+        # Corresponds to the JSON property `executions`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptInstancePromptExecution>]
+        attr_accessor :executions
+      
+        # Prompt variation that embeds preambles to prompt string.
+        # Corresponds to the JSON property `multimodalPrompt`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecMultimodalPrompt]
+        attr_accessor :multimodal_prompt
+      
+        # Prompt variation that stores preambles in separate fields.
+        # Corresponds to the JSON property `structuredPrompt`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt]
+        attr_accessor :structured_prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_schema_version = args[:api_schema_version] if args.key?(:api_schema_version)
+          @executions = args[:executions] if args.key?(:executions)
+          @multimodal_prompt = args[:multimodal_prompt] if args.key?(:multimodal_prompt)
+          @structured_prompt = args[:structured_prompt] if args.key?(:structured_prompt)
+        end
+      end
+      
+      # A prompt instance's parameters set that contains a set of variable values.
+      class GoogleCloudAiplatformV1SchemaPromptInstancePromptExecution
+        include Google::Apis::Core::Hashable
+      
+        # Maps variable names to their value.
+        # Corresponds to the JSON property `arguments`
+        # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptInstanceVariableValue>]
+        attr_accessor :arguments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arguments = args[:arguments] if args.key?(:arguments)
+        end
+      end
+      
+      # The value of a variable in prompt.
+      class GoogleCloudAiplatformV1SchemaPromptInstanceVariableValue
+        include Google::Apis::Core::Hashable
+      
+        # A list of elements and information that make up a portion of prompt.
+        # Corresponds to the JSON property `partList`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList]
+        attr_accessor :part_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @part_list = args[:part_list] if args.key?(:part_list)
+        end
+      end
+      
+      # Prompt variation that embeds preambles to prompt string.
+      class GoogleCloudAiplatformV1SchemaPromptSpecMultimodalPrompt
+        include Google::Apis::Core::Hashable
+      
+        # The prompt message that aligns with the prompt message in google.cloud.
+        # aiplatform.master.GenerateContentRequest.
+        # Corresponds to the JSON property `promptMessage`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage]
+        attr_accessor :prompt_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt_message = args[:prompt_message] if args.key?(:prompt_message)
+        end
+      end
+      
+      # A list of elements and information that make up a portion of prompt.
+      class GoogleCloudAiplatformV1SchemaPromptSpecPartList
+        include Google::Apis::Core::Hashable
+      
+        # A list of elements that can be part of a prompt.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Part>]
+        attr_accessor :parts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parts = args[:parts] if args.key?(:parts)
+        end
+      end
+      
+      # The prompt message that aligns with the prompt message in google.cloud.
+      # aiplatform.master.GenerateContentRequest.
+      class GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage
+        include Google::Apis::Core::Hashable
+      
+        # The content of the current conversation with the model. For single-turn
+        # queries, this is a single instance. For multi-turn queries, this is a repeated
+        # field that contains conversation history + latest request.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
+        attr_accessor :contents
+      
+        # Generation config.
+        # Corresponds to the JSON property `generationConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig]
+        attr_accessor :generation_config
+      
+        # The model name.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Per request settings for blocking unsafe content. Enforced on
+        # GenerateContentResponse.candidates.
+        # Corresponds to the JSON property `safetySettings`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySetting>]
+        attr_accessor :safety_settings
+      
+        # The base structured datatype containing multi-part content of a message. A `
+        # Content` includes a `role` field designating the producer of the `Content` and
+        # a `parts` field containing multi-part data that contains the content of the
+        # message turn.
+        # Corresponds to the JSON property `systemInstruction`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
+        attr_accessor :system_instruction
+      
+        # Tool config. This config is shared for all tools provided in the request.
+        # Corresponds to the JSON property `toolConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolConfig]
+        attr_accessor :tool_config
+      
+        # A list of `Tools` the model may use to generate the next response. A `Tool` is
+        # a piece of code that enables the system to interact with external systems to
+        # perform an action, or set of actions, outside of knowledge and scope of the
+        # model.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tool>]
+        attr_accessor :tools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @generation_config = args[:generation_config] if args.key?(:generation_config)
+          @model = args[:model] if args.key?(:model)
+          @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
+          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
+          @tool_config = args[:tool_config] if args.key?(:tool_config)
+          @tools = args[:tools] if args.key?(:tools)
+        end
+      end
+      
+      # Prompt variation that stores preambles in separate fields.
+      class GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt
+        include Google::Apis::Core::Hashable
+      
+        # The base structured datatype containing multi-part content of a message. A `
+        # Content` includes a `role` field designating the producer of the `Content` and
+        # a `parts` field containing multi-part data that contains the content of the
+        # message turn.
+        # Corresponds to the JSON property `context`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
+        attr_accessor :context
+      
+        # Preamble: A set of examples for expected model response.
+        # Corresponds to the JSON property `examples`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList>]
+        attr_accessor :examples
+      
+        # Preamble: The input prefixes before each example input.
+        # Corresponds to the JSON property `inputPrefixes`
+        # @return [Array<String>]
+        attr_accessor :input_prefixes
+      
+        # Preamble: The output prefixes before each example output.
+        # Corresponds to the JSON property `outputPrefixes`
+        # @return [Array<String>]
+        attr_accessor :output_prefixes
+      
+        # The prompt message that aligns with the prompt message in google.cloud.
+        # aiplatform.master.GenerateContentRequest.
+        # Corresponds to the JSON property `promptMessage`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage]
+        attr_accessor :prompt_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @examples = args[:examples] if args.key?(:examples)
+          @input_prefixes = args[:input_prefixes] if args.key?(:input_prefixes)
+          @output_prefixes = args[:output_prefixes] if args.key?(:output_prefixes)
+          @prompt_message = args[:prompt_message] if args.key?(:prompt_message)
+        end
+      end
+      
       # The metadata of Datasets that contain tables data.
       class GoogleCloudAiplatformV1SchemaTablesDatasetMetadata
         include Google::Apis::Core::Hashable
@@ -25399,6 +25698,11 @@ module Google
         # @return [String]
         attr_accessor :note
       
+        # The A2 schema of a prompt.
+        # Corresponds to the JSON property `promptApiSchema`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptApiSchema]
+        attr_accessor :prompt_api_schema
+      
         # Type of the prompt dataset.
         # Corresponds to the JSON property `promptType`
         # @return [String]
@@ -25470,6 +25774,7 @@ module Google
           @logprobs = args[:logprobs] if args.key?(:logprobs)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
           @note = args[:note] if args.key?(:note)
+          @prompt_api_schema = args[:prompt_api_schema] if args.key?(:prompt_api_schema)
           @prompt_type = args[:prompt_type] if args.key?(:prompt_type)
           @seed_enabled = args[:seed_enabled] if args.key?(:seed_enabled)
           @seed_value = args[:seed_value] if args.key?(:seed_value)
@@ -32027,7 +32332,7 @@ module Google
       class GoogleCloudAiplatformV1ToolParameterKvMatchSpec
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether to use STRCIT string match on parameter values.
+        # Optional. Whether to use STRICT string match on parameter values.
         # Corresponds to the JSON property `useStrictStringMatch`
         # @return [Boolean]
         attr_accessor :use_strict_string_match

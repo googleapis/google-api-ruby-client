@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiLargeModelsVisionImageImageSize
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiLargeModelsVisionImageRaiScores
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3124,6 +3130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1PscInterfaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1PublisherModel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4091,6 +4103,48 @@ module Google
       end
       
       class GoogleCloudAiplatformV1SchemaPredictionResultError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptApiSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptInstancePromptExecution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptInstanceVariableValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecMultimodalPrompt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecPartList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5716,12 +5770,23 @@ module Google
           property :image, :base64 => true, as: 'image'
           property :image_rai_scores, as: 'imageRaiScores', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionImageRaiScores, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionImageRaiScores::Representation
       
+          property :image_size, as: 'imageSize', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionImageImageSize, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionImageImageSize::Representation
+      
           property :rai_info, as: 'raiInfo', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionRaiInfo, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionRaiInfo::Representation
       
           property :semantic_filter_response, as: 'semanticFilterResponse', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionSemanticFilterResponse, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionSemanticFilterResponse::Representation
       
           property :text, as: 'text'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionImageImageSize
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channels, as: 'channels'
+          property :height, as: 'height'
+          property :width, as: 'width'
         end
       end
       
@@ -6908,6 +6973,8 @@ module Google
           property :network, as: 'network'
           property :persistent_resource_id, as: 'persistentResourceId'
           property :protected_artifact_location_id, as: 'protectedArtifactLocationId'
+          property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig::Representation
+      
           collection :reserved_ip_ranges, as: 'reservedIpRanges'
           property :scheduling, as: 'scheduling', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Scheduling, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Scheduling::Representation
       
@@ -8272,6 +8339,7 @@ module Google
       class GoogleCloudAiplatformV1FeatureViewSyncConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :continuous, as: 'continuous'
           property :cron, as: 'cron'
         end
       end
@@ -8660,6 +8728,7 @@ module Google
       class GoogleCloudAiplatformV1GenerationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_timestamp, as: 'audioTimestamp'
           property :candidate_count, as: 'candidateCount'
           property :frequency_penalty, as: 'frequencyPenalty'
           property :logprobs, as: 'logprobs'
@@ -11097,6 +11166,12 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1PscInterfaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudAiplatformV1PublisherModel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12704,6 +12779,84 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1SchemaPromptApiSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_schema_version, as: 'apiSchemaVersion'
+          collection :executions, as: 'executions', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptInstancePromptExecution, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptInstancePromptExecution::Representation
+      
+          property :multimodal_prompt, as: 'multimodalPrompt', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecMultimodalPrompt, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecMultimodalPrompt::Representation
+      
+          property :structured_prompt, as: 'structuredPrompt', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptInstancePromptExecution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :arguments, as: 'arguments', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptInstanceVariableValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptInstanceVariableValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptInstanceVariableValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :part_list, as: 'partList', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecMultimodalPrompt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt_message, as: 'promptMessage', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecPartList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :parts, as: 'parts', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Part, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Part::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :contents, as: 'contents', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
+      
+          property :generation_config, as: 'generationConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig::Representation
+      
+          property :model, as: 'model'
+          collection :safety_settings, as: 'safetySettings', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySetting, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySetting::Representation
+      
+          property :system_instruction, as: 'systemInstruction', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
+      
+          property :tool_config, as: 'toolConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolConfig::Representation
+      
+          collection :tools, as: 'tools', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tool, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tool::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
+      
+          collection :examples, as: 'examples', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList::Representation
+      
+          collection :input_prefixes, as: 'inputPrefixes'
+          collection :output_prefixes, as: 'outputPrefixes'
+          property :prompt_message, as: 'promptMessage', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1SchemaTablesDatasetMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12780,6 +12933,8 @@ module Google
           property :logprobs, as: 'logprobs'
           property :max_output_tokens, :numeric_string => true, as: 'maxOutputTokens'
           property :note, as: 'note'
+          property :prompt_api_schema, as: 'promptApiSchema', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptApiSchema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptApiSchema::Representation
+      
           property :prompt_type, as: 'promptType'
           property :seed_enabled, as: 'seedEnabled'
           property :seed_value, :numeric_string => true, as: 'seedValue'
