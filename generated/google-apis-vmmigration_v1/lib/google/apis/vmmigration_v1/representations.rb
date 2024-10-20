@@ -805,6 +805,7 @@ module Google
       class AwsSourceVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1::AwsDiskDetails, decorator: Google::Apis::VmmigrationV1::AwsDiskDetails::Representation
       
@@ -874,6 +875,7 @@ module Google
       class AzureSourceVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1::AzureDiskDetails, decorator: Google::Apis::VmmigrationV1::AzureDiskDetails::Representation
       
@@ -886,6 +888,7 @@ module Google
       class AzureVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :boot_option, as: 'bootOption'
           property :committed_storage_mb, :numeric_string => true, as: 'committedStorageMb'
           property :computer_name, as: 'computerName'
@@ -2002,6 +2005,7 @@ module Google
       class VmwareSourceVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1::VmwareDiskDetails, decorator: Google::Apis::VmmigrationV1::VmwareDiskDetails::Representation
       
@@ -2014,6 +2018,7 @@ module Google
       class VmwareVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :boot_option, as: 'bootOption'
           property :committed_storage_mb, :numeric_string => true, as: 'committedStorageMb'
           property :cpu_count, as: 'cpuCount'
