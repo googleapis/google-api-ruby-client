@@ -3670,6 +3670,11 @@ module Google
         # @return [String]
         attr_accessor :session_affinity
       
+        # The HTTP cookie used for stateful session affinity.
+        # Corresponds to the JSON property `strongSessionAffinityCookie`
+        # @return [Google::Apis::ComputeV1::BackendServiceHttpCookie]
+        attr_accessor :strong_session_affinity_cookie
+      
         # Subsetting configuration for this BackendService. Currently this is applicable
         # only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and
         # Traffic Director.
@@ -3740,6 +3745,7 @@ module Google
           @service_bindings = args[:service_bindings] if args.key?(:service_bindings)
           @service_lb_policy = args[:service_lb_policy] if args.key?(:service_lb_policy)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
+          @strong_session_affinity_cookie = args[:strong_session_affinity_cookie] if args.key?(:strong_session_affinity_cookie)
           @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
           @used_by = args[:used_by] if args.key?(:used_by)
@@ -4229,6 +4235,40 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @health_status = args[:health_status] if args.key?(:health_status)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # The HTTP cookie used for stateful session affinity.
+      class BackendServiceHttpCookie
+        include Google::Apis::Core::Hashable
+      
+        # Name of the cookie.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Path to set for the cookie.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `ttl`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @path = args[:path] if args.key?(:path)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
@@ -12069,6 +12109,12 @@ module Google
         # @return [String]
         attr_accessor :health_state
       
+        # Health state of the ipv6 network endpoint determined based on the health
+        # checks configured.
+        # Corresponds to the JSON property `ipv6HealthState`
+        # @return [String]
+        attr_accessor :ipv6_health_state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -12080,6 +12126,7 @@ module Google
           @health_check = args[:health_check] if args.key?(:health_check)
           @health_check_service = args[:health_check_service] if args.key?(:health_check_service)
           @health_state = args[:health_state] if args.key?(:health_state)
+          @ipv6_health_state = args[:ipv6_health_state] if args.key?(:ipv6_health_state)
         end
       end
       
@@ -18136,7 +18183,7 @@ module Google
       class InstancesGetEffectiveFirewallsResponse
         include Google::Apis::Core::Hashable
       
-        # Effective firewalls from firewall policies.
+        # [Output Only] Effective firewalls from firewall policies.
         # Corresponds to the JSON property `firewallPolicys`
         # @return [Array<Google::Apis::ComputeV1::InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>]
         attr_accessor :firewall_policys
@@ -18178,7 +18225,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
-        # The rules that apply to the network.
+        # [Output Only] The rules that apply to the instance. Only rules that target the
+        # specific VM instance are returned if target service accounts or target secure
+        # tags are specified in the rules.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
         attr_accessor :rules
@@ -24356,6 +24405,11 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # Optional IPv6 address of network endpoint.
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         # Optional port number of network endpoint. If not specified, the defaultPort
         # for the network endpoint group will be used. This field can not be set for
         # network endpoints of type GCE_VM_IP.
@@ -24374,6 +24428,7 @@ module Google
           @fqdn = args[:fqdn] if args.key?(:fqdn)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @port = args[:port] if args.key?(:port)
         end
       end
@@ -25708,7 +25763,10 @@ module Google
       class NetworksGetEffectiveFirewallsResponse
         include Google::Apis::Core::Hashable
       
-        # Effective firewalls from firewall policy.
+        # [Output Only] Effective firewalls from firewall policy. It returns Global
+        # Network Firewall Policies and Hierarchical Firewall Policies. Use
+        # regionNetworkFirewallPolicies.getEffectiveFirewalls to get Regional Network
+        # Firewall Policies as well.
         # Corresponds to the JSON property `firewallPolicys`
         # @return [Array<Google::Apis::ComputeV1::NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>]
         attr_accessor :firewall_policys
@@ -25750,7 +25808,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
-        # The rules that apply to the network.
+        # [Output Only] The rules that apply to the network.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
         attr_accessor :rules
@@ -32493,7 +32551,10 @@ module Google
       class RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse
         include Google::Apis::Core::Hashable
       
-        # Effective firewalls from firewall policy.
+        # [Output only] Effective firewalls from firewall policy. It applies to Regional
+        # Network Firewall Policies in the specified region, Global Network Firewall
+        # Policies and Hierachial Firewall Policies which are associated with the
+        # network.
         # Corresponds to the JSON property `firewallPolicys`
         # @return [Array<Google::Apis::ComputeV1::RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>]
         attr_accessor :firewall_policys
@@ -32528,7 +32589,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The rules that apply to the network.
+        # [Output only] The rules that apply to the network.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
         attr_accessor :rules
@@ -32817,7 +32878,10 @@ module Google
         attr_accessor :specific_reservation_required
         alias_method :specific_reservation_required?, :specific_reservation_required
       
-        # [Output Only] The status of the reservation.
+        # [Output Only] The status of the reservation. - CREATING: Reservation resources
+        # are being allocated. - READY: Reservation resources have been allocated, and
+        # the reservation is ready for use. - DELETING: Reservation deletion is in
+        # progress. - UPDATING: Reservation update is in progress.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
