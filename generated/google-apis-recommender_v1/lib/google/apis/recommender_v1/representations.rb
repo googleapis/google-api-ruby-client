@@ -201,10 +201,13 @@ module Google
           property :category, as: 'category'
           property :cost_projection, as: 'costProjection', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1CostProjection, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1CostProjection::Representation
       
+          collection :impact_components, as: 'impactComponents', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Impact, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Impact::Representation
+      
           property :reliability_projection, as: 'reliabilityProjection', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1ReliabilityProjection, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1ReliabilityProjection::Representation
       
           property :security_projection, as: 'securityProjection', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SecurityProjection, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SecurityProjection::Representation
       
+          property :service, as: 'service'
           property :sustainability_projection, as: 'sustainabilityProjection', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SustainabilityProjection, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SustainabilityProjection::Representation
       
         end
