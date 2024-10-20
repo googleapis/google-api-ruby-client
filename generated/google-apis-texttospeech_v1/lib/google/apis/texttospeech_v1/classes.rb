@@ -221,68 +221,6 @@ module Google
         end
       end
       
-      # Request message for the `GenerateVoiceCloningKey` method.
-      class GenerateVoiceCloningKeyRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The script used for the voice talent statement. The script will be
-        # provided to the caller through other channels. It must be returned unchanged
-        # in this field.
-        # Corresponds to the JSON property `consentScript`
-        # @return [String]
-        attr_accessor :consent_script
-      
-        # Required. The language of the supplied audio as a [BCP-47](https://www.rfc-
-        # editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". See [Language
-        # Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of
-        # the currently supported language codes.
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        # Holds audio content and config.
-        # Corresponds to the JSON property `referenceAudio`
-        # @return [Google::Apis::TexttospeechV1::InputAudio]
-        attr_accessor :reference_audio
-      
-        # Holds audio content and config.
-        # Corresponds to the JSON property `voiceTalentConsent`
-        # @return [Google::Apis::TexttospeechV1::InputAudio]
-        attr_accessor :voice_talent_consent
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @consent_script = args[:consent_script] if args.key?(:consent_script)
-          @language_code = args[:language_code] if args.key?(:language_code)
-          @reference_audio = args[:reference_audio] if args.key?(:reference_audio)
-          @voice_talent_consent = args[:voice_talent_consent] if args.key?(:voice_talent_consent)
-        end
-      end
-      
-      # Response message for the `GenerateVoiceCloningKey` method.
-      class GenerateVoiceCloningKeyResponse
-        include Google::Apis::Core::Hashable
-      
-        # The voice clone key. Use it in the SynthesizeSpeechRequest by setting [voice.
-        # voice_clone.voice_cloning_key].
-        # Corresponds to the JSON property `voiceCloningKey`
-        # @return [String]
-        attr_accessor :voice_cloning_key
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @voice_cloning_key = args[:voice_cloning_key] if args.key?(:voice_cloning_key)
-        end
-      end
-      
       # Metadata for response returned by the `SynthesizeLongAudio` method.
       class GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata
         include Google::Apis::Core::Hashable
@@ -311,60 +249,6 @@ module Google
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
           @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
-      # Holds audio content and config.
-      class InputAudio
-        include Google::Apis::Core::Hashable
-      
-        # Description of inputted audio data.
-        # Corresponds to the JSON property `audioConfig`
-        # @return [Google::Apis::TexttospeechV1::InputAudioConfig]
-        attr_accessor :audio_config
-      
-        # Required. The audio data bytes encoded as specified in `InputAudioConfig`.
-        # Note: as with all bytes fields, proto buffers use a pure binary representation,
-        # whereas JSON representations use base64. Audio samples should be between 5-25
-        # seconds in length.
-        # Corresponds to the JSON property `content`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :content
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @audio_config = args[:audio_config] if args.key?(:audio_config)
-          @content = args[:content] if args.key?(:content)
-        end
-      end
-      
-      # Description of inputted audio data.
-      class InputAudioConfig
-        include Google::Apis::Core::Hashable
-      
-        # Required. The format of the audio byte stream.
-        # Corresponds to the JSON property `audioEncoding`
-        # @return [String]
-        attr_accessor :audio_encoding
-      
-        # Required. The sample rate (in hertz) for this audio.
-        # Corresponds to the JSON property `sampleRateHertz`
-        # @return [Fixnum]
-        attr_accessor :sample_rate_hertz
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
-          @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
         end
       end
       
@@ -722,25 +606,6 @@ module Google
         end
       end
       
-      # The configuration of Voice Clone feature.
-      class VoiceCloneParams
-        include Google::Apis::Core::Hashable
-      
-        # Required. Created by GenerateVoiceCloningKey.
-        # Corresponds to the JSON property `voiceCloningKey`
-        # @return [String]
-        attr_accessor :voice_cloning_key
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @voice_cloning_key = args[:voice_cloning_key] if args.key?(:voice_cloning_key)
-        end
-      end
-      
       # Description of which voice to use for a synthesis request.
       class VoiceSelectionParams
         include Google::Apis::Core::Hashable
@@ -780,11 +645,6 @@ module Google
         # @return [String]
         attr_accessor :ssml_gender
       
-        # The configuration of Voice Clone feature.
-        # Corresponds to the JSON property `voiceClone`
-        # @return [Google::Apis::TexttospeechV1::VoiceCloneParams]
-        attr_accessor :voice_clone
-      
         def initialize(**args)
            update!(**args)
         end
@@ -795,7 +655,6 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
           @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
-          @voice_clone = args[:voice_clone] if args.key?(:voice_clone)
         end
       end
     end
