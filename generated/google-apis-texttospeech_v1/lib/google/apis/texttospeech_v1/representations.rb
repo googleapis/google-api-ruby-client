@@ -64,31 +64,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenerateVoiceCloningKeyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GenerateVoiceCloningKeyResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InputAudio
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InputAudioConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,12 +125,6 @@ module Google
       end
       
       class Voice
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class VoiceCloneParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -222,48 +192,12 @@ module Google
         end
       end
       
-      class GenerateVoiceCloningKeyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :consent_script, as: 'consentScript'
-          property :language_code, as: 'languageCode'
-          property :reference_audio, as: 'referenceAudio', class: Google::Apis::TexttospeechV1::InputAudio, decorator: Google::Apis::TexttospeechV1::InputAudio::Representation
-      
-          property :voice_talent_consent, as: 'voiceTalentConsent', class: Google::Apis::TexttospeechV1::InputAudio, decorator: Google::Apis::TexttospeechV1::InputAudio::Representation
-      
-        end
-      end
-      
-      class GenerateVoiceCloningKeyResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :voice_cloning_key, as: 'voiceCloningKey'
-        end
-      end
-      
       class GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :last_update_time, as: 'lastUpdateTime'
           property :progress_percentage, as: 'progressPercentage'
           property :start_time, as: 'startTime'
-        end
-      end
-      
-      class InputAudio
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :audio_config, as: 'audioConfig', class: Google::Apis::TexttospeechV1::InputAudioConfig, decorator: Google::Apis::TexttospeechV1::InputAudioConfig::Representation
-      
-          property :content, :base64 => true, as: 'content'
-        end
-      end
-      
-      class InputAudioConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :audio_encoding, as: 'audioEncoding'
-          property :sample_rate_hertz, as: 'sampleRateHertz'
         end
       end
       
@@ -368,13 +302,6 @@ module Google
         end
       end
       
-      class VoiceCloneParams
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :voice_cloning_key, as: 'voiceCloningKey'
-        end
-      end
-      
       class VoiceSelectionParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -383,8 +310,6 @@ module Google
           property :language_code, as: 'languageCode'
           property :name, as: 'name'
           property :ssml_gender, as: 'ssmlGender'
-          property :voice_clone, as: 'voiceClone', class: Google::Apis::TexttospeechV1::VoiceCloneParams, decorator: Google::Apis::TexttospeechV1::VoiceCloneParams::Representation
-      
         end
       end
     end
