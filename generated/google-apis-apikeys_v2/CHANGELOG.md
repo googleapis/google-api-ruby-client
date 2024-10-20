@@ -1,5 +1,9 @@
 # Release history for google-apis-apikeys_v2
 
+### v0.24.0 (2024-10-20)
+
+* Regenerated from discovery document revision 20241016
+
 ### v0.23.0 (2024-08-18)
 
 * Regenerated from discovery document revision 20240811

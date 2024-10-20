@@ -315,6 +315,12 @@ module Google
         # @return [Google::Apis::ApikeysV2::V2Restrictions]
         attr_accessor :restrictions
       
+        # Optional. The email address of [the service account](https://cloud.google.com/
+        # iam/docs/service-accounts) the key is bound to.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
         # Output only. Unique id in UUID4 format.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -339,6 +345,7 @@ module Google
           @key_string = args[:key_string] if args.key?(:key_string)
           @name = args[:name] if args.key?(:name)
           @restrictions = args[:restrictions] if args.key?(:restrictions)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end

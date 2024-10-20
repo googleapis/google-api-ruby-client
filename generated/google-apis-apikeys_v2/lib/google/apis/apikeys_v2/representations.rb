@@ -184,6 +184,7 @@ module Google
           property :name, as: 'name'
           property :restrictions, as: 'restrictions', class: Google::Apis::ApikeysV2::V2Restrictions, decorator: Google::Apis::ApikeysV2::V2Restrictions::Representation
       
+          property :service_account_email, as: 'serviceAccountEmail'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
