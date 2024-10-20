@@ -521,6 +521,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_instance_project, as: 'consumerInstanceProject'
           property :disable_global_access, as: 'disableGlobalAccess'
+          property :ip_version, as: 'ipVersion'
           property :network, as: 'network'
           property :producer_instance_id, as: 'producerInstanceId'
           hash :producer_instance_metadata, as: 'producerInstanceMetadata'
@@ -541,6 +542,7 @@ module Google
           property :forwarding_rule, as: 'forwardingRule'
           property :gce_operation, as: 'gceOperation'
           property :ip, as: 'ip'
+          property :ip_version, as: 'ipVersion'
           property :network, as: 'network'
           property :producer_instance_id, as: 'producerInstanceId'
           hash :producer_instance_metadata, as: 'producerInstanceMetadata'
@@ -1018,6 +1020,7 @@ module Google
       
           property :error_type, as: 'errorType'
           property :gce_operation, as: 'gceOperation'
+          property :ip_version, as: 'ipVersion'
           property :producer_instance_id, as: 'producerInstanceId'
           hash :producer_instance_metadata, as: 'producerInstanceMetadata'
           property :psc_connection_id, as: 'pscConnectionId'

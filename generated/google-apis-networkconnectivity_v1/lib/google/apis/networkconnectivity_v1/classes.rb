@@ -298,6 +298,11 @@ module Google
         attr_accessor :disable_global_access
         alias_method :disable_global_access?, :disable_global_access
       
+        # The requested IP version for the PSC connection.
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
+      
         # The resource path of the consumer network where PSC connections are allowed to
         # be created in. Note, this network does not need be in the ConsumerPscConfig.
         # project in the case of SharedVPC. Example: projects/`projectNumOrId`/global/
@@ -343,6 +348,7 @@ module Google
         def update!(**args)
           @consumer_instance_project = args[:consumer_instance_project] if args.key?(:consumer_instance_project)
           @disable_global_access = args[:disable_global_access] if args.key?(:disable_global_access)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @network = args[:network] if args.key?(:network)
           @producer_instance_id = args[:producer_instance_id] if args.key?(:producer_instance_id)
           @producer_instance_metadata = args[:producer_instance_metadata] if args.key?(:producer_instance_metadata)
@@ -402,6 +408,11 @@ module Google
         # @return [String]
         attr_accessor :ip
       
+        # The requested IP version for the PSC connection.
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
+      
         # The consumer network whose PSC forwarding rule is connected to the service
         # attachments in this service connection map. Note that the network could be on
         # a different project (shared VPC).
@@ -460,6 +471,7 @@ module Google
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @gce_operation = args[:gce_operation] if args.key?(:gce_operation)
           @ip = args[:ip] if args.key?(:ip)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @network = args[:network] if args.key?(:network)
           @producer_instance_id = args[:producer_instance_id] if args.key?(:producer_instance_id)
           @producer_instance_metadata = args[:producer_instance_metadata] if args.key?(:producer_instance_metadata)
@@ -2402,6 +2414,11 @@ module Google
         # @return [String]
         attr_accessor :gce_operation
       
+        # The requested IP version for the PSC connection.
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
+      
         # Immutable. Deprecated. Use producer_instance_metadata instead. An immutable
         # identifier for the producer instance.
         # Corresponds to the JSON property `producerInstanceId`
@@ -2449,6 +2466,7 @@ module Google
           @error_info = args[:error_info] if args.key?(:error_info)
           @error_type = args[:error_type] if args.key?(:error_type)
           @gce_operation = args[:gce_operation] if args.key?(:gce_operation)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @producer_instance_id = args[:producer_instance_id] if args.key?(:producer_instance_id)
           @producer_instance_metadata = args[:producer_instance_metadata] if args.key?(:producer_instance_metadata)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
