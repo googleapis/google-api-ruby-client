@@ -220,6 +220,80 @@ module Google
         end
       end
       
+      # A configuration that workstations can boost to.
+      class BoostConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of the type and count of accelerator cards attached to the
+        # boost instance. Defaults to `none`.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::WorkstationsV1::Accelerator>]
+        attr_accessor :accelerators
+      
+        # Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum
+        # boot disk size is `30` GB. Defaults to `50` GB.
+        # Corresponds to the JSON property `bootDiskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :boot_disk_size_gb
+      
+        # Optional. Whether to enable nested virtualization on boosted Cloud
+        # Workstations VMs running using this boost configuration. Defaults to false.
+        # Nested virtualization lets you run virtual machine (VM) instances inside your
+        # workstation. Before enabling nested virtualization, consider the following
+        # important considerations. Cloud Workstations instances are subject to the [
+        # same restrictions as Compute Engine instances](https://cloud.google.com/
+        # compute/docs/instances/nested-virtualization/overview#restrictions): * **
+        # Organization policy**: projects, folders, or organizations may be restricted
+        # from creating nested VMs if the **Disable VM nested virtualization**
+        # constraint is enforced in the organization policy. For more information, see
+        # the Compute Engine section, [Checking whether nested virtualization is allowed]
+        # (https://cloud.google.com/compute/docs/instances/nested-virtualization/
+        # managing-constraint#checking_whether_nested_virtualization_is_allowed). * **
+        # Performance**: nested VMs might experience a 10% or greater decrease in
+        # performance for workloads that are CPU-bound and possibly greater than a 10%
+        # decrease for workloads that are input/output bound. * **Machine Type**: nested
+        # virtualization can only be enabled on boost configurations that specify a
+        # machine_type in the N1 or N2 machine series.
+        # Corresponds to the JSON property `enableNestedVirtualization`
+        # @return [Boolean]
+        attr_accessor :enable_nested_virtualization
+        alias_method :enable_nested_virtualization?, :enable_nested_virtualization
+      
+        # Optional. Required. The id to be used for the boost configuration.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. The type of machine that boosted VM instances will use—for example, `
+        # e2-standard-4`. For more information about machine types that Cloud
+        # Workstations supports, see the list of [available machine types](https://cloud.
+        # google.com/workstations/docs/available-machine-types). Defaults to `e2-
+        # standard-4`.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Optional. The number of boost VMs that the system should keep idle so that
+        # workstations can be boosted quickly. Defaults to `0`.
+        # Corresponds to the JSON property `poolSize`
+        # @return [Fixnum]
+        attr_accessor :pool_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
+          @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+          @id = args[:id] if args.key?(:id)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @pool_size = args[:pool_size] if args.key?(:pool_size)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -456,6 +530,12 @@ module Google
         # @return [Array<Google::Apis::WorkstationsV1::Accelerator>]
         attr_accessor :accelerators
       
+        # Optional. A list of the boost configurations that workstations created using
+        # this workstation configuration are allowed to use.
+        # Corresponds to the JSON property `boostConfigs`
+        # @return [Array<Google::Apis::WorkstationsV1::BoostConfig>]
+        attr_accessor :boost_configs
+      
         # Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum
         # boot disk size is `30` GB. Defaults to `50` GB.
         # Corresponds to the JSON property `bootDiskSizeGb`
@@ -580,6 +660,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @boost_configs = args[:boost_configs] if args.key?(:boost_configs)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @disable_public_ip_addresses = args[:disable_public_ip_addresses] if args.key?(:disable_public_ip_addresses)
@@ -1836,6 +1917,12 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
+        # Optional. Tag keys/values directly bound to this resource. For example: "123/
+        # environment": "production", "123/costCenter": "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. A system-assigned unique identifier for this workstation cluster.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -1867,6 +1954,7 @@ module Google
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @tags = args[:tags] if args.key?(:tags)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
