@@ -48,10 +48,7 @@ module Google
         attr_accessor :detail
       
         # Required. Expiration time of the entitlement. Entitlements that have expired
-        # over 30 days will be purged. Required. LINT.IfChange(expire_time) The max
-        # expire_time is 398 days from now(). LINT.ThenChange(//depot/google3/java/com/
-        # google/subscribewithgoogle/accountlinking/subscriptionlink/service/config/
-        # protoconf.pi:max_expiry_age)
+        # over 30 days will be purged. The max expire_time is 398 days from now().
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
