@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,12 +293,6 @@ module Google
       end
       
       class GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -885,8 +885,15 @@ module Google
       class GoogleCloudBeyondcorpSecuritygatewaysV1Hub
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :nat_gateway_config, as: 'natGatewayConfig', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig::Representation
+          property :internet_gateway, as: 'internetGateway', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway::Representation
       
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_ips, as: 'assignedIps'
         end
       end
       
@@ -910,18 +917,11 @@ module Google
         end
       end
       
-      class GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :nat_ips, as: 'natIps'
-        end
-      end
-      
       class GoogleCloudBeyondcorpSecuritygatewaysV1Peering
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dns_zones, as: 'dnsZones'
-          property :target_vpc_network, as: 'targetVpcNetwork'
+          property :target_network, as: 'targetNetwork'
         end
       end
       
@@ -955,10 +955,10 @@ module Google
       class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :peerings, as: 'peerings', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering::Representation
+      
           property :request_id, as: 'requestId'
           property :validate_only, as: 'validateOnly'
-          collection :vpc_peerings, as: 'vpcPeerings', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering::Representation
-      
         end
       end
       

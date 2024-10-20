@@ -1755,10 +1755,10 @@ module Google
       class GoogleCloudBeyondcorpSecuritygatewaysV1Hub
         include Google::Apis::Core::Hashable
       
-        # Represents the NAT Gateway configuration.
-        # Corresponds to the JSON property `natGatewayConfig`
-        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig]
-        attr_accessor :nat_gateway_config
+        # Represents the Internet Gateway configuration.
+        # Corresponds to the JSON property `internetGateway`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway]
+        attr_accessor :internet_gateway
       
         def initialize(**args)
            update!(**args)
@@ -1766,7 +1766,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @nat_gateway_config = args[:nat_gateway_config] if args.key?(:nat_gateway_config)
+          @internet_gateway = args[:internet_gateway] if args.key?(:internet_gateway)
+        end
+      end
+      
+      # Represents the Internet Gateway configuration.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of IP addresses assigned to the Cloud NAT.
+        # Corresponds to the JSON property `assignedIps`
+        # @return [Array<String>]
+        attr_accessor :assigned_ips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_ips = args[:assigned_ips] if args.key?(:assigned_ips)
         end
       end
       
@@ -1834,26 +1853,6 @@ module Google
         end
       end
       
-      # Represents the NAT Gateway configuration.
-      class GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig
-        include Google::Apis::Core::Hashable
-      
-        # Output only. List of NAT IPs that will be used for establishing connection to
-        # the endpoints.
-        # Corresponds to the JSON property `natIps`
-        # @return [Array<String>]
-        attr_accessor :nat_ips
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @nat_ips = args[:nat_ips] if args.key?(:nat_ips)
-        end
-      end
-      
       # VPC Peering details.
       class GoogleCloudBeyondcorpSecuritygatewaysV1Peering
         include Google::Apis::Core::Hashable
@@ -1865,9 +1864,9 @@ module Google
       
         # Required. The name of the Target VPC network name in the format: `projects/`
         # project`/global/networks/`network`
-        # Corresponds to the JSON property `targetVpcNetwork`
+        # Corresponds to the JSON property `targetNetwork`
         # @return [String]
-        attr_accessor :target_vpc_network
+        attr_accessor :target_network
       
         def initialize(**args)
            update!(**args)
@@ -1876,7 +1875,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dns_zones = args[:dns_zones] if args.key?(:dns_zones)
-          @target_vpc_network = args[:target_vpc_network] if args.key?(:target_vpc_network)
+          @target_network = args[:target_network] if args.key?(:target_network)
         end
       end
       
@@ -2002,6 +2001,11 @@ module Google
       class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
         include Google::Apis::Core::Hashable
       
+        # Required. List of Peering connection information.
+        # Corresponds to the JSON property `peerings`
+        # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering>]
+        attr_accessor :peerings
+      
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server will know to
         # ignore the request if it has already been completed. The server will guarantee
@@ -2023,20 +2027,15 @@ module Google
         attr_accessor :validate_only
         alias_method :validate_only?, :validate_only
       
-        # Required. List of Peering connection information.
-        # Corresponds to the JSON property `vpcPeerings`
-        # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering>]
-        attr_accessor :vpc_peerings
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @peerings = args[:peerings] if args.key?(:peerings)
           @request_id = args[:request_id] if args.key?(:request_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
-          @vpc_peerings = args[:vpc_peerings] if args.key?(:vpc_peerings)
         end
       end
       
