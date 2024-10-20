@@ -130,6 +130,17 @@ module Google
       class BillingAccount
         include Google::Apis::Core::Hashable
       
+        # Optional. The currency in which the billing account is billed and charged,
+        # represented as an ISO 4217 code such as `USD`. Billing account currency is
+        # determined at the time of billing account creation and cannot be updated
+        # subsequently, so this field should not be set on update requests. In addition,
+        # a subaccount always matches the currency of its parent billing account, so
+        # this field should not be set on subaccount creation requests. Clients can read
+        # this field to determine the currency of an existing billing account.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
         # The display name given to the billing account, such as `My Billing Account`.
         # This name is displayed in the Google Cloud Console.
         # Corresponds to the JSON property `displayName`
@@ -175,6 +186,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
           @display_name = args[:display_name] if args.key?(:display_name)
           @master_billing_account = args[:master_billing_account] if args.key?(:master_billing_account)
           @name = args[:name] if args.key?(:name)
