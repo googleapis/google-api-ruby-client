@@ -1359,6 +1359,7 @@ module Google
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
+          property :notify_preference, as: 'notifyPreference'
           collection :redemption_issuers, as: 'redemptionIssuers'
           property :review, as: 'review', class: Google::Apis::WalletobjectsV1::Review, decorator: Google::Apis::WalletobjectsV1::Review::Representation
       
@@ -1435,6 +1436,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
+          property :notify_preference, as: 'notifyPreference'
           property :pass_constraints, as: 'passConstraints', class: Google::Apis::WalletobjectsV1::PassConstraints, decorator: Google::Apis::WalletobjectsV1::PassConstraints::Representation
       
           property :reservation_info, as: 'reservationInfo', class: Google::Apis::WalletobjectsV1::EventReservationInfo, decorator: Google::Apis::WalletobjectsV1::EventReservationInfo::Representation
@@ -1586,6 +1588,7 @@ module Google
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
+          property :notify_preference, as: 'notifyPreference'
           property :origin, as: 'origin', class: Google::Apis::WalletobjectsV1::AirportInfo, decorator: Google::Apis::WalletobjectsV1::AirportInfo::Representation
       
           collection :redemption_issuers, as: 'redemptionIssuers'
@@ -1670,6 +1673,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
+          property :notify_preference, as: 'notifyPreference'
           property :pass_constraints, as: 'passConstraints', class: Google::Apis::WalletobjectsV1::PassConstraints, decorator: Google::Apis::WalletobjectsV1::PassConstraints::Representation
       
           property :passenger_name, as: 'passengerName'
@@ -1883,6 +1887,7 @@ module Google
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
+          property :notify_preference, as: 'notifyPreference'
           property :pin_label, as: 'pinLabel'
           property :program_logo, as: 'programLogo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
       
@@ -1959,6 +1964,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
+          property :notify_preference, as: 'notifyPreference'
           property :pass_constraints, as: 'passConstraints', class: Google::Apis::WalletobjectsV1::PassConstraints, decorator: Google::Apis::WalletobjectsV1::PassConstraints::Representation
       
           property :pin, as: 'pin'
@@ -2214,6 +2220,7 @@ module Google
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
+          property :notify_preference, as: 'notifyPreference'
           property :program_logo, as: 'programLogo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
       
           property :program_name, as: 'programName'
@@ -2293,6 +2300,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
+          property :notify_preference, as: 'notifyPreference'
           property :pass_constraints, as: 'passConstraints', class: Google::Apis::WalletobjectsV1::PassConstraints, decorator: Google::Apis::WalletobjectsV1::PassConstraints::Representation
       
           property :rotating_barcode, as: 'rotatingBarcode', class: Google::Apis::WalletobjectsV1::RotatingBarcode, decorator: Google::Apis::WalletobjectsV1::RotatingBarcode::Representation
@@ -2530,6 +2538,7 @@ module Google
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
+          property :notify_preference, as: 'notifyPreference'
           property :provider, as: 'provider'
           property :redemption_channel, as: 'redemptionChannel'
           collection :redemption_issuers, as: 'redemptionIssuers'
@@ -2603,6 +2612,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
+          property :notify_preference, as: 'notifyPreference'
           property :pass_constraints, as: 'passConstraints', class: Google::Apis::WalletobjectsV1::PassConstraints, decorator: Google::Apis::WalletobjectsV1::PassConstraints::Representation
       
           property :rotating_barcode, as: 'rotatingBarcode', class: Google::Apis::WalletobjectsV1::RotatingBarcode, decorator: Google::Apis::WalletobjectsV1::RotatingBarcode::Representation
@@ -2998,6 +3008,7 @@ module Google
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
+          property :notify_preference, as: 'notifyPreference'
           collection :redemption_issuers, as: 'redemptionIssuers'
           property :review, as: 'review', class: Google::Apis::WalletobjectsV1::Review, decorator: Google::Apis::WalletobjectsV1::Review::Representation
       
@@ -3079,6 +3090,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
+          property :notify_preference, as: 'notifyPreference'
           property :pass_constraints, as: 'passConstraints', class: Google::Apis::WalletobjectsV1::PassConstraints, decorator: Google::Apis::WalletobjectsV1::PassConstraints::Representation
       
           property :passenger_names, as: 'passengerNames'
