@@ -68,6 +68,135 @@ module Google
         end
       end
       
+      # A relational description of a location. Includes a ranked set of nearby
+      # landmarks and precise containing areas and their relationship to the target
+      # location.
+      class GoogleMapsPlacesV1AddressDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # A ranked list of containing or adjacent areas. The most recognizable and
+        # precise areas are ranked first.
+        # Corresponds to the JSON property `areas`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1AddressDescriptorArea>]
+        attr_accessor :areas
+      
+        # A ranked list of nearby landmarks. The most recognizable and nearby landmarks
+        # are ranked first.
+        # Corresponds to the JSON property `landmarks`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1AddressDescriptorLandmark>]
+        attr_accessor :landmarks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @areas = args[:areas] if args.key?(:areas)
+          @landmarks = args[:landmarks] if args.key?(:landmarks)
+        end
+      end
+      
+      # Area information and the area's relationship with the target location. Areas
+      # includes precise sublocality, neighborhoods, and large compounds that are
+      # useful for describing a location.
+      class GoogleMapsPlacesV1AddressDescriptorArea
+        include Google::Apis::Core::Hashable
+      
+        # Defines the spatial relationship between the target location and the area.
+        # Corresponds to the JSON property `containment`
+        # @return [String]
+        attr_accessor :containment
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :display_name
+      
+        # The area's resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The area's place id.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @containment = args[:containment] if args.key?(:containment)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @place_id = args[:place_id] if args.key?(:place_id)
+        end
+      end
+      
+      # Basic landmark information and the landmark's relationship with the target
+      # location. Landmarks are prominent places that can be used to describe a
+      # location.
+      class GoogleMapsPlacesV1AddressDescriptorLandmark
+        include Google::Apis::Core::Hashable
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :display_name
+      
+        # The landmark's resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The landmark's place id.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
+      
+        # Defines the spatial relationship between the target location and the landmark.
+        # Corresponds to the JSON property `spatialRelationship`
+        # @return [String]
+        attr_accessor :spatial_relationship
+      
+        # The straight line distance in meters between the target location and the
+        # landmark.
+        # Corresponds to the JSON property `straightLineDistanceMeters`
+        # @return [Float]
+        attr_accessor :straight_line_distance_meters
+      
+        # The travel distance in meters along the road network if known. This does not
+        # take into account the mode of transportation (walking/driving).
+        # Corresponds to the JSON property `travelDistanceMeters`
+        # @return [Float]
+        attr_accessor :travel_distance_meters
+      
+        # A set of type tags for this landmark. For a complete list of possible values,
+        # see https://developers.google.com/maps/documentation/places/web-service/place-
+        # types.
+        # Corresponds to the JSON property `types`
+        # @return [Array<String>]
+        attr_accessor :types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @place_id = args[:place_id] if args.key?(:place_id)
+          @spatial_relationship = args[:spatial_relationship] if args.key?(:spatial_relationship)
+          @straight_line_distance_meters = args[:straight_line_distance_meters] if args.key?(:straight_line_distance_meters)
+          @travel_distance_meters = args[:travel_distance_meters] if args.key?(:travel_distance_meters)
+          @types = args[:types] if args.key?(:types)
+        end
+      end
+      
       # Information about the author of the UGC data. Used in Photo, and Review.
       class GoogleMapsPlacesV1AuthorAttribution
         include Google::Apis::Core::Hashable
@@ -995,6 +1124,13 @@ module Google
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAddressComponent>]
         attr_accessor :address_components
       
+        # A relational description of a location. Includes a ranked set of nearby
+        # landmarks and precise containing areas and their relationship to the target
+        # location.
+        # Corresponds to the JSON property `addressDescriptor`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AddressDescriptor]
+        attr_accessor :address_descriptor
+      
         # The place's address in adr microformat: http://microformats.org/wiki/adr.
         # Corresponds to the JSON property `adrFormatAddress`
         # @return [String]
@@ -1386,6 +1522,7 @@ module Google
         def update!(**args)
           @accessibility_options = args[:accessibility_options] if args.key?(:accessibility_options)
           @address_components = args[:address_components] if args.key?(:address_components)
+          @address_descriptor = args[:address_descriptor] if args.key?(:address_descriptor)
           @adr_format_address = args[:adr_format_address] if args.key?(:adr_format_address)
           @allows_dogs = args[:allows_dogs] if args.key?(:allows_dogs)
           @area_summary = args[:area_summary] if args.key?(:area_summary)

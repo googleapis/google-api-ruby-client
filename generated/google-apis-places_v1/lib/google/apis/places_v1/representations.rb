@@ -28,6 +28,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1AddressDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1AddressDescriptorArea
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1AddressDescriptorLandmark
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1AuthorAttribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -392,6 +410,41 @@ module Google
         end
       end
       
+      class GoogleMapsPlacesV1AddressDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :areas, as: 'areas', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AddressDescriptorArea, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AddressDescriptorArea::Representation
+      
+          collection :landmarks, as: 'landmarks', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AddressDescriptorLandmark, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AddressDescriptorLandmark::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1AddressDescriptorArea
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :containment, as: 'containment'
+          property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :name, as: 'name'
+          property :place_id, as: 'placeId'
+        end
+      end
+      
+      class GoogleMapsPlacesV1AddressDescriptorLandmark
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :name, as: 'name'
+          property :place_id, as: 'placeId'
+          property :spatial_relationship, as: 'spatialRelationship'
+          property :straight_line_distance_meters, as: 'straightLineDistanceMeters'
+          property :travel_distance_meters, as: 'travelDistanceMeters'
+          collection :types, as: 'types'
+        end
+      end
+      
       class GoogleMapsPlacesV1AuthorAttribution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -652,6 +705,8 @@ module Google
           property :accessibility_options, as: 'accessibilityOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAccessibilityOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAccessibilityOptions::Representation
       
           collection :address_components, as: 'addressComponents', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAddressComponent, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAddressComponent::Representation
+      
+          property :address_descriptor, as: 'addressDescriptor', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AddressDescriptor, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AddressDescriptor::Representation
       
           property :adr_format_address, as: 'adrFormatAddress'
           property :allows_dogs, as: 'allowsDogs'
