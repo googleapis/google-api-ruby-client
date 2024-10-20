@@ -1357,6 +1357,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :data_version, as: 'dataVersion'
           property :update_time, as: 'updateTime'
         end
       end
@@ -2251,6 +2252,7 @@ module Google
       class GoogleCloudDataplexV1DiscoveryEventActionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue, as: 'issue'
           property :type, as: 'type'
         end
       end
