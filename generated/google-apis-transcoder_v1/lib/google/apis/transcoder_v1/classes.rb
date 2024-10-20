@@ -289,7 +289,7 @@ module Google
         attr_accessor :channel_layout
       
         # The codec for this audio stream. The default is `aac`. Supported audio codecs:
-        # - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`
+        # - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3` - `vorbis`
         # Corresponds to the JSON property `codec`
         # @return [String]
         attr_accessor :codec
@@ -1681,9 +1681,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The container format. The default is `mp4` Supported container formats: - `ts`
-        # - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also:
-        # [Supported input and output formats](https://cloud.google.com/transcoder/docs/
-        # concepts/supported-input-and-output-formats)
+        # - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` - `ogg`
+        # See also: [Supported input and output formats](https://cloud.google.com/
+        # transcoder/docs/concepts/supported-input-and-output-formats)
         # Corresponds to the JSON property `container`
         # @return [String]
         attr_accessor :container
