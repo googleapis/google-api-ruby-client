@@ -2260,8 +2260,8 @@ module Google
         
         # Updates a rule.
         # @param [String] name
-        #   The name of the rule, for example: "projects/p1/locations/us-central1/
-        #   repositories/repo1/rules/rule1".
+        #   The name of the rule, for example: `projects/p1/locations/us-central1/
+        #   repositories/repo1/rules/rule1`.
         # @param [Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1Rule] google_devtools_artifactregistry_v1_rule_object
         # @param [String] update_mask
         #   The update mask applies to the resource. For the `FieldMask` definition, see

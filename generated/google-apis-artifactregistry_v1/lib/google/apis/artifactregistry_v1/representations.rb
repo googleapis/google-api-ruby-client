@@ -664,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VulnerabilityScanningConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class YumArtifact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1374,6 +1380,8 @@ module Google
           property :update_time, as: 'updateTime'
           property :virtual_repository_config, as: 'virtualRepositoryConfig', class: Google::Apis::ArtifactregistryV1::VirtualRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::VirtualRepositoryConfig::Representation
       
+          property :vulnerability_scanning_config, as: 'vulnerabilityScanningConfig', class: Google::Apis::ArtifactregistryV1::VulnerabilityScanningConfig, decorator: Google::Apis::ArtifactregistryV1::VulnerabilityScanningConfig::Representation
+      
         end
       end
       
@@ -1632,6 +1640,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :upstream_policies, as: 'upstreamPolicies', class: Google::Apis::ArtifactregistryV1::UpstreamPolicy, decorator: Google::Apis::ArtifactregistryV1::UpstreamPolicy::Representation
       
+        end
+      end
+      
+      class VulnerabilityScanningConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enablement_config, as: 'enablementConfig'
+          property :enablement_state, as: 'enablementState'
+          property :enablement_state_reason, as: 'enablementStateReason'
+          property :last_enable_time, as: 'lastEnableTime'
         end
       end
       

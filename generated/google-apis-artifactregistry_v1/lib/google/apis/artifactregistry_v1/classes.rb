@@ -1016,12 +1016,13 @@ module Google
         end
       end
       
-      # A Rule applies to repository or package level. It defines the deny or allow
-      # action of the operation when the conditions in the rule are met.
+      # A rule defines the deny or allow action of the operation it applies to and the
+      # conditions required for the rule to apply. You can set one rule for an entire
+      # repository and one rule for each package within.
       class GoogleDevtoolsArtifactregistryV1Rule
         include Google::Apis::Core::Hashable
       
-        # The action this rule makes.
+        # The action this rule takes.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -1045,8 +1046,8 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::Expr]
         attr_accessor :condition
       
-        # The name of the rule, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/rules/rule1".
+        # The name of the rule, for example: `projects/p1/locations/us-central1/
+        # repositories/repo1/rules/rule1`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1056,7 +1057,7 @@ module Google
         # @return [String]
         attr_accessor :operation
       
-        # The package ID the rule applies to. If empty, this rule applies to all the
+        # The package ID the rule applies to. If empty, this rule applies to all
         # packages inside the repository.
         # Corresponds to the JSON property `packageId`
         # @return [String]
@@ -2534,6 +2535,12 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::VirtualRepositoryConfig]
         attr_accessor :virtual_repository_config
       
+        # Config on whether to perform vulnerability scanning for resources in this
+        # repository, as well as output fields describing current state.
+        # Corresponds to the JSON property `vulnerabilityScanningConfig`
+        # @return [Google::Apis::ArtifactregistryV1::VulnerabilityScanningConfig]
+        attr_accessor :vulnerability_scanning_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2558,6 +2565,7 @@ module Google
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @update_time = args[:update_time] if args.key?(:update_time)
           @virtual_repository_config = args[:virtual_repository_config] if args.key?(:virtual_repository_config)
+          @vulnerability_scanning_config = args[:vulnerability_scanning_config] if args.key?(:vulnerability_scanning_config)
         end
       end
       
@@ -3319,6 +3327,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @upstream_policies = args[:upstream_policies] if args.key?(:upstream_policies)
+        end
+      end
+      
+      # Config on whether to perform vulnerability scanning for resources in this
+      # repository, as well as output fields describing current state.
+      class VulnerabilityScanningConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Config for whether this repository has vulnerability scanning
+        # disabled.
+        # Corresponds to the JSON property `enablementConfig`
+        # @return [String]
+        attr_accessor :enablement_config
+      
+        # Output only. State of feature enablement, combining repository enablement
+        # config and API enablement state.
+        # Corresponds to the JSON property `enablementState`
+        # @return [String]
+        attr_accessor :enablement_state
+      
+        # Output only. Reason for the repository state.
+        # Corresponds to the JSON property `enablementStateReason`
+        # @return [String]
+        attr_accessor :enablement_state_reason
+      
+        # Output only. The last time this repository config was enabled.
+        # Corresponds to the JSON property `lastEnableTime`
+        # @return [String]
+        attr_accessor :last_enable_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enablement_config = args[:enablement_config] if args.key?(:enablement_config)
+          @enablement_state = args[:enablement_state] if args.key?(:enablement_state)
+          @enablement_state_reason = args[:enablement_state_reason] if args.key?(:enablement_state_reason)
+          @last_enable_time = args[:last_enable_time] if args.key?(:last_enable_time)
         end
       end
       
