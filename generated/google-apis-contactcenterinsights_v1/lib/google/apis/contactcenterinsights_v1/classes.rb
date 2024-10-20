@@ -121,6 +121,11 @@ module Google
         # @return [Hash<String,Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1PhraseMatchData>]
         attr_accessor :phrase_matchers
       
+        # Results of scoring QaScorecards.
+        # Corresponds to the JSON property `qaScorecardResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaScorecardResult>]
+        attr_accessor :qa_scorecard_results
+      
         # Overall conversation-level sentiment for each channel of the call.
         # Corresponds to the JSON property `sentiments`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>]
@@ -142,8 +147,81 @@ module Google
           @intents = args[:intents] if args.key?(:intents)
           @issue_model_result = args[:issue_model_result] if args.key?(:issue_model_result)
           @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
+          @qa_scorecard_results = args[:qa_scorecard_results] if args.key?(:qa_scorecard_results)
           @sentiments = args[:sentiments] if args.key?(:sentiments)
           @silence = args[:silence] if args.key?(:silence)
+        end
+      end
+      
+      # The CCAI Insights project wide analysis rule. This rule will be applied to all
+      # conversations that match the filter defined in the rule. For a conversation
+      # matches the filter, the annotators specified in the rule will be run. If a
+      # conversation matches multiple rules, a union of all the annotators will be run.
+      # One project can have multiple analysis rules.
+      class GoogleCloudContactcenterinsightsV1AnalysisRule
+        include Google::Apis::Core::Hashable
+      
+        # If true, apply this rule to conversations. Otherwise, this rule is inactive
+        # and saved as a draft.
+        # Corresponds to the JSON property `active`
+        # @return [Boolean]
+        attr_accessor :active
+        alias_method :active?, :active
+      
+        # Percentage of conversations that we should apply this analysis setting
+        # automatically, between [0, 1]. For example, 0.1 means 10%. Conversations are
+        # sampled in a determenestic way. The original runtime_percentage & upload
+        # percentage will be replaced by defining filters on the conversation.
+        # Corresponds to the JSON property `analysisPercentage`
+        # @return [Float]
+        attr_accessor :analysis_percentage
+      
+        # Selector of all available annotators and phrase matchers to run.
+        # Corresponds to the JSON property `annotatorSelector`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector]
+        attr_accessor :annotator_selector
+      
+        # Filter for the conversations that should apply this analysis rule. An empty
+        # filter means this analysis rule applies to all conversations.
+        # Corresponds to the JSON property `conversationFilter`
+        # @return [String]
+        attr_accessor :conversation_filter
+      
+        # Output only. The time at which this analysis rule was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Display Name of the analysis rule.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of the analysis rule. Format: projects/`project`/
+        # locations/`location`/analysisRules/`analysis_rule`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The most recent time at which this analysis rule was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active = args[:active] if args.key?(:active)
+          @analysis_percentage = args[:analysis_percentage] if args.key?(:analysis_percentage)
+          @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
+          @conversation_filter = args[:conversation_filter] if args.key?(:conversation_filter)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -196,6 +274,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :phrase_matchers
       
+        # Configuration for the QA feature.
+        # Corresponds to the JSON property `qaConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig]
+        attr_accessor :qa_config
+      
         # Whether to run the entity annotator.
         # Corresponds to the JSON property `runEntityAnnotator`
         # @return [Boolean]
@@ -226,6 +309,12 @@ module Google
         # @return [Boolean]
         attr_accessor :run_phrase_matcher_annotator
         alias_method :run_phrase_matcher_annotator?, :run_phrase_matcher_annotator
+      
+        # Whether to run the QA annotator.
+        # Corresponds to the JSON property `runQaAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_qa_annotator
+        alias_method :run_qa_annotator?, :run_qa_annotator
       
         # Whether to run the sentiment annotator.
         # Corresponds to the JSON property `runSentimentAnnotator`
@@ -258,15 +347,55 @@ module Google
         def update!(**args)
           @issue_models = args[:issue_models] if args.key?(:issue_models)
           @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
+          @qa_config = args[:qa_config] if args.key?(:qa_config)
           @run_entity_annotator = args[:run_entity_annotator] if args.key?(:run_entity_annotator)
           @run_intent_annotator = args[:run_intent_annotator] if args.key?(:run_intent_annotator)
           @run_interruption_annotator = args[:run_interruption_annotator] if args.key?(:run_interruption_annotator)
           @run_issue_model_annotator = args[:run_issue_model_annotator] if args.key?(:run_issue_model_annotator)
           @run_phrase_matcher_annotator = args[:run_phrase_matcher_annotator] if args.key?(:run_phrase_matcher_annotator)
+          @run_qa_annotator = args[:run_qa_annotator] if args.key?(:run_qa_annotator)
           @run_sentiment_annotator = args[:run_sentiment_annotator] if args.key?(:run_sentiment_annotator)
           @run_silence_annotator = args[:run_silence_annotator] if args.key?(:run_silence_annotator)
           @run_summarization_annotator = args[:run_summarization_annotator] if args.key?(:run_summarization_annotator)
           @summarization_config = args[:summarization_config] if args.key?(:summarization_config)
+        end
+      end
+      
+      # Configuration for the QA feature.
+      class GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Container for a list of scorecards.
+        # Corresponds to the JSON property `scorecardList`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList]
+        attr_accessor :scorecard_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scorecard_list = args[:scorecard_list] if args.key?(:scorecard_list)
+        end
+      end
+      
+      # Container for a list of scorecards.
+      class GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList
+        include Google::Apis::Core::Hashable
+      
+        # List of QaScorecardRevisions.
+        # Corresponds to the JSON property `qaScorecardRevisions`
+        # @return [Array<String>]
+        attr_accessor :qa_scorecard_revisions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qa_scorecard_revisions = args[:qa_scorecard_revisions] if args.key?(:qa_scorecard_revisions)
         end
       end
       
@@ -591,6 +720,273 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata for the BulkDownloadFeedbackLabel endpoint.
+      class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Statistics for BulkDownloadFeedbackLabels operation.
+        # Corresponds to the JSON property `downloadStats`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats]
+        attr_accessor :download_stats
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Partial errors during ingest operation that might cause the operation output
+        # to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # Request for the BulkDownloadFeedbackLabel endpoint.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @download_stats = args[:download_stats] if args.key?(:download_stats)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # Statistics for BulkDownloadFeedbackLabels operation.
+      class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Full name of the files written to Cloud storage.
+        # Corresponds to the JSON property `fileNames`
+        # @return [Array<String>]
+        attr_accessor :file_names
+      
+        # The number of objects processed during the download operation.
+        # Corresponds to the JSON property `processedObjectCount`
+        # @return [Fixnum]
+        attr_accessor :processed_object_count
+      
+        # The number of new feedback labels downloaded during this operation. Different
+        # from "processed" because some labels might not be downloaded because an error.
+        # Corresponds to the JSON property `successfulDownloadCount`
+        # @return [Fixnum]
+        attr_accessor :successful_download_count
+      
+        # Total number of files written to the provided Cloud Storage bucket.
+        # Corresponds to the JSON property `totalFilesWritten`
+        # @return [Fixnum]
+        attr_accessor :total_files_written
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_names = args[:file_names] if args.key?(:file_names)
+          @processed_object_count = args[:processed_object_count] if args.key?(:processed_object_count)
+          @successful_download_count = args[:successful_download_count] if args.key?(:successful_download_count)
+          @total_files_written = args[:total_files_written] if args.key?(:total_files_written)
+        end
+      end
+      
+      # Request for the BulkDownloadFeedbackLabel endpoint.
+      class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Filter parent conversations to download feedback labels for. When
+        # specified, the feedback labels will be downloaded for the conversations that
+        # match the filter. If `template_qa_scorecard_id` is set, all the conversations
+        # that match the filter will be paired with the questions under the scorecard
+        # for labeling.
+        # Corresponds to the JSON property `conversationFilter`
+        # @return [String]
+        attr_accessor :conversation_filter
+      
+        # Optional. The type of feedback labels that will be downloaded.
+        # Corresponds to the JSON property `feedbackLabelType`
+        # @return [String]
+        attr_accessor :feedback_label_type
+      
+        # Optional. A filter to reduce results to a specific subset. Supports
+        # disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id`
+        # * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time`
+        # * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI,
+        # TOPIC_MODELING
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Google Cloud Storage Object details to write the feedback labels to.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination]
+        attr_accessor :gcs_destination
+      
+        # Optional. Limits the maximum number of feedback labels that will be downloaded.
+        # The first `N` feedback labels will be downloaded.
+        # Corresponds to the JSON property `maxDownloadCount`
+        # @return [Fixnum]
+        attr_accessor :max_download_count
+      
+        # Required. The parent resource for new feedback labels.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Optional. If set, a template for labeling conversations and scorecard
+        # questions will be created from the conversation_filter and the questions under
+        # the scorecard(s). The feedback label `filter` will be ignored.
+        # Corresponds to the JSON property `templateQaScorecardId`
+        # @return [Array<String>]
+        attr_accessor :template_qa_scorecard_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_filter = args[:conversation_filter] if args.key?(:conversation_filter)
+          @feedback_label_type = args[:feedback_label_type] if args.key?(:feedback_label_type)
+          @filter = args[:filter] if args.key?(:filter)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @max_download_count = args[:max_download_count] if args.key?(:max_download_count)
+          @parent = args[:parent] if args.key?(:parent)
+          @template_qa_scorecard_id = args[:template_qa_scorecard_id] if args.key?(:template_qa_scorecard_id)
+        end
+      end
+      
+      # Google Cloud Storage Object details to write the feedback labels to.
+      class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Add whitespace to the JSON file. Makes easier to read, but increases
+        # file size. Only applicable for JSON format.
+        # Corresponds to the JSON property `addWhitespace`
+        # @return [Boolean]
+        attr_accessor :add_whitespace
+        alias_method :add_whitespace?, :add_whitespace
+      
+        # Optional. Always print fields with no presence. This is useful for printing
+        # fields that are not set, like implicit 0 value or empty lists/maps. Only
+        # applicable for JSON format.
+        # Corresponds to the JSON property `alwaysPrintEmptyFields`
+        # @return [Boolean]
+        attr_accessor :always_print_empty_fields
+        alias_method :always_print_empty_fields?, :always_print_empty_fields
+      
+        # Required. File format in which the labels will be exported.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Required. The Google Cloud Storage URI to write the feedback labels to. The
+        # file name will be used as a prefix for the files written to the bucket if the
+        # output needs to be split across multiple files, otherwise it will be used as
+        # is. The file extension will be appended to the file name based on the format
+        # selected. E.g. `gs://bucket_name/object_uri_prefix`
+        # Corresponds to the JSON property `objectUri`
+        # @return [String]
+        attr_accessor :object_uri
+      
+        # Optional. The number of records per file. Applicable for either format.
+        # Corresponds to the JSON property `recordsPerFileCount`
+        # @return [Fixnum]
+        attr_accessor :records_per_file_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_whitespace = args[:add_whitespace] if args.key?(:add_whitespace)
+          @always_print_empty_fields = args[:always_print_empty_fields] if args.key?(:always_print_empty_fields)
+          @format = args[:format] if args.key?(:format)
+          @object_uri = args[:object_uri] if args.key?(:object_uri)
+          @records_per_file_count = args[:records_per_file_count] if args.key?(:records_per_file_count)
+        end
+      end
+      
+      # Response for the BulkDownloadFeedbackLabel endpoint.
+      class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request for bulk uploading feedback labels.
+      class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage Object details to get the feedback label file from.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource]
+        attr_accessor :gcs_source
+      
+        # Optional. If set, upload will not happen and the labels will be validated. If
+        # not set, then default behavior will be to upload the labels after validation
+        # is complete.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Google Cloud Storage Object details to get the feedback label file from.
+      class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. File format which will be ingested.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Required. The Google Cloud Storage URI of the file to import. Format: `gs://
+        # bucket_name/object_name`
+        # Corresponds to the JSON property `objectUri`
+        # @return [String]
+        attr_accessor :object_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @format = args[:format] if args.key?(:format)
+          @object_uri = args[:object_uri] if args.key?(:object_uri)
         end
       end
       
@@ -1604,6 +2000,19 @@ module Google
         end
       end
       
+      # The request to deploy a QaScorecardRevision
+      class GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The data for a Dialogflow intent. Represents a detected intent in the
       # conversation, e.g. MAKES_PROMISE.
       class GoogleCloudContactcenterinsightsV1DialogflowIntent
@@ -1675,6 +2084,182 @@ module Google
         def update!(**args)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
           @dialogflow_conversation = args[:dialogflow_conversation] if args.key?(:dialogflow_conversation)
+        end
+      end
+      
+      # A dimension determines the grouping key for the query. In SQL terms, these
+      # would be part of both the "SELECT" and "GROUP BY" clauses.
+      class GoogleCloudContactcenterinsightsV1Dimension
+        include Google::Apis::Core::Hashable
+      
+        # Metadata about the agent dimension.
+        # Corresponds to the JSON property `agentDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata]
+        attr_accessor :agent_dimension_metadata
+      
+        # The key of the dimension.
+        # Corresponds to the JSON property `dimensionKey`
+        # @return [String]
+        attr_accessor :dimension_key
+      
+        # Metadata about the issue dimension.
+        # Corresponds to the JSON property `issueDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata]
+        attr_accessor :issue_dimension_metadata
+      
+        # Metadata about the QA question-answer dimension. This is useful for showing
+        # the answer distribution for questions for a given scorecard.
+        # Corresponds to the JSON property `qaQuestionAnswerDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata]
+        attr_accessor :qa_question_answer_dimension_metadata
+      
+        # Metadata about the QA question dimension.
+        # Corresponds to the JSON property `qaQuestionDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata]
+        attr_accessor :qa_question_dimension_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_dimension_metadata = args[:agent_dimension_metadata] if args.key?(:agent_dimension_metadata)
+          @dimension_key = args[:dimension_key] if args.key?(:dimension_key)
+          @issue_dimension_metadata = args[:issue_dimension_metadata] if args.key?(:issue_dimension_metadata)
+          @qa_question_answer_dimension_metadata = args[:qa_question_answer_dimension_metadata] if args.key?(:qa_question_answer_dimension_metadata)
+          @qa_question_dimension_metadata = args[:qa_question_dimension_metadata] if args.key?(:qa_question_dimension_metadata)
+        end
+      end
+      
+      # Metadata about the agent dimension.
+      class GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The agent's name
+        # Corresponds to the JSON property `agentDisplayName`
+        # @return [String]
+        attr_accessor :agent_display_name
+      
+        # Optional. A user-specified string representing the agent.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        # Optional. A user-specified string representing the agent's team.
+        # Corresponds to the JSON property `agentTeam`
+        # @return [String]
+        attr_accessor :agent_team
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_display_name = args[:agent_display_name] if args.key?(:agent_display_name)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @agent_team = args[:agent_team] if args.key?(:agent_team)
+        end
+      end
+      
+      # Metadata about the issue dimension.
+      class GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The issue display name.
+        # Corresponds to the JSON property `issueDisplayName`
+        # @return [String]
+        attr_accessor :issue_display_name
+      
+        # The issue ID.
+        # Corresponds to the JSON property `issueId`
+        # @return [String]
+        attr_accessor :issue_id
+      
+        # The parent issue model ID.
+        # Corresponds to the JSON property `issueModelId`
+        # @return [String]
+        attr_accessor :issue_model_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue_display_name = args[:issue_display_name] if args.key?(:issue_display_name)
+          @issue_id = args[:issue_id] if args.key?(:issue_id)
+          @issue_model_id = args[:issue_model_id] if args.key?(:issue_model_id)
+        end
+      end
+      
+      # Metadata about the QA question-answer dimension. This is useful for showing
+      # the answer distribution for questions for a given scorecard.
+      class GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The full body of the question.
+        # Corresponds to the JSON property `answerValue`
+        # @return [String]
+        attr_accessor :answer_value
+      
+        # Optional. The QA question ID.
+        # Corresponds to the JSON property `qaQuestionId`
+        # @return [String]
+        attr_accessor :qa_question_id
+      
+        # Optional. The QA scorecard ID.
+        # Corresponds to the JSON property `qaScorecardId`
+        # @return [String]
+        attr_accessor :qa_scorecard_id
+      
+        # Optional. The full body of the question.
+        # Corresponds to the JSON property `questionBody`
+        # @return [String]
+        attr_accessor :question_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_value = args[:answer_value] if args.key?(:answer_value)
+          @qa_question_id = args[:qa_question_id] if args.key?(:qa_question_id)
+          @qa_scorecard_id = args[:qa_scorecard_id] if args.key?(:qa_scorecard_id)
+          @question_body = args[:question_body] if args.key?(:question_body)
+        end
+      end
+      
+      # Metadata about the QA question dimension.
+      class GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The QA question ID.
+        # Corresponds to the JSON property `qaQuestionId`
+        # @return [String]
+        attr_accessor :qa_question_id
+      
+        # Optional. The QA scorecard ID.
+        # Corresponds to the JSON property `qaScorecardId`
+        # @return [String]
+        attr_accessor :qa_scorecard_id
+      
+        # Optional. The full body of the question.
+        # Corresponds to the JSON property `questionBody`
+        # @return [String]
+        attr_accessor :question_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qa_question_id = args[:qa_question_id] if args.key?(:qa_question_id)
+          @qa_scorecard_id = args[:qa_scorecard_id] if args.key?(:qa_scorecard_id)
+          @question_body = args[:question_body] if args.key?(:question_body)
         end
       end
       
@@ -2084,6 +2669,58 @@ module Google
           @query_record = args[:query_record] if args.key?(:query_record)
           @question = args[:question] if args.key?(:question)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Represents a conversation, resource, and label provided by the user.
+      class GoogleCloudContactcenterinsightsV1FeedbackLabel
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time of the label.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # String label.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Resource name of the resource to be labeled.
+        # Corresponds to the JSON property `labeledResource`
+        # @return [String]
+        attr_accessor :labeled_resource
+      
+        # Immutable. Resource name of the FeedbackLabel. Format: projects/`project`/
+        # locations/`location`/conversations/`conversation`/feedbackLabels/`
+        # feedback_label`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Message for holding the value of the answer. QaQuestion.AnswerChoice defines
+        # the possible answer values for a question.
+        # Corresponds to the JSON property `qaAnswerLabel`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue]
+        attr_accessor :qa_answer_label
+      
+        # Output only. Update time of the label.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @label = args[:label] if args.key?(:label)
+          @labeled_resource = args[:labeled_resource] if args.key?(:labeled_resource)
+          @name = args[:name] if args.key?(:name)
+          @qa_answer_label = args[:qa_answer_label] if args.key?(:qa_answer_label)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2918,6 +3555,32 @@ module Google
         end
       end
       
+      # The response for listing all feedback labels.
+      class GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The feedback labels that match the request.
+        # Corresponds to the JSON property `feedbackLabels`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1FeedbackLabel>]
+        attr_accessor :feedback_labels
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feedback_labels = args[:feedback_labels] if args.key?(:feedback_labels)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response to list analyses.
       class GoogleCloudContactcenterinsightsV1ListAnalysesResponse
         include Google::Apis::Core::Hashable
@@ -2940,6 +3603,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analyses = args[:analyses] if args.key?(:analyses)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response of listing views.
+      class GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The analysis_rule that match the request.
+        # Corresponds to the JSON property `analysisRules`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnalysisRule>]
+        attr_accessor :analysis_rules
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis_rules = args[:analysis_rules] if args.key?(:analysis_rules)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2967,6 +3656,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conversations = args[:conversations] if args.key?(:conversations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response for listing feedback labels.
+      class GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The feedback labels that match the request.
+        # Corresponds to the JSON property `feedbackLabels`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1FeedbackLabel>]
+        attr_accessor :feedback_labels
+      
+        # The next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feedback_labels = args[:feedback_labels] if args.key?(:feedback_labels)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -3032,6 +3746,84 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
+        end
+      end
+      
+      # The response from a ListQaQuestions request.
+      class GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The QaQuestions under the parent.
+        # Corresponds to the JSON property `qaQuestions`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestion>]
+        attr_accessor :qa_questions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @qa_questions = args[:qa_questions] if args.key?(:qa_questions)
+        end
+      end
+      
+      # The response from a ListQaScorecardRevisions request.
+      class GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The QaScorecards under the parent.
+        # Corresponds to the JSON property `qaScorecardRevisions`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaScorecardRevision>]
+        attr_accessor :qa_scorecard_revisions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @qa_scorecard_revisions = args[:qa_scorecard_revisions] if args.key?(:qa_scorecard_revisions)
+        end
+      end
+      
+      # The response from a ListQaScorecards request.
+      class GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The QaScorecards under the parent.
+        # Corresponds to the JSON property `qaScorecards`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaScorecard>]
+        attr_accessor :qa_scorecards
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @qa_scorecards = args[:qa_scorecards] if args.key?(:qa_scorecards)
         end
       end
       
@@ -3249,6 +4041,892 @@ module Google
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version_tag = args[:version_tag] if args.key?(:version_tag)
+        end
+      end
+      
+      # An answer to a QaQuestion.
+      class GoogleCloudContactcenterinsightsV1QaAnswer
+        include Google::Apis::Core::Hashable
+      
+        # List of all individual answers given to the question.
+        # Corresponds to the JSON property `answerSources`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>]
+        attr_accessor :answer_sources
+      
+        # Message for holding the value of the answer. QaQuestion.AnswerChoice defines
+        # the possible answer values for a question.
+        # Corresponds to the JSON property `answerValue`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue]
+        attr_accessor :answer_value
+      
+        # The conversation the answer applies to.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The maximum potential score of the question. If the question was answered
+        # using `na_value`, this field will be zero.
+        # Corresponds to the JSON property `potentialScore`
+        # @return [Float]
+        attr_accessor :potential_score
+      
+        # The QaQuestion answered by this answer.
+        # Corresponds to the JSON property `qaQuestion`
+        # @return [String]
+        attr_accessor :qa_question
+      
+        # Question text. E.g., "Did the agent greet the customer?"
+        # Corresponds to the JSON property `questionBody`
+        # @return [String]
+        attr_accessor :question_body
+      
+        # User-defined list of arbitrary tags. Matches the value from QaScorecard.
+        # ScorecardQuestion.tags. Used for grouping/organization and for weighting the
+        # score of each answer.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_sources = args[:answer_sources] if args.key?(:answer_sources)
+          @answer_value = args[:answer_value] if args.key?(:answer_value)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @potential_score = args[:potential_score] if args.key?(:potential_score)
+          @qa_question = args[:qa_question] if args.key?(:qa_question)
+          @question_body = args[:question_body] if args.key?(:question_body)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # A question may have multiple answers from varying sources, one of which
+      # becomes the "main" answer above. AnswerSource represents each individual
+      # answer.
+      class GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource
+        include Google::Apis::Core::Hashable
+      
+        # Message for holding the value of the answer. QaQuestion.AnswerChoice defines
+        # the possible answer values for a question.
+        # Corresponds to the JSON property `answerValue`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue]
+        attr_accessor :answer_value
+      
+        # What created the answer.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_value = args[:answer_value] if args.key?(:answer_value)
+          @source_type = args[:source_type] if args.key?(:source_type)
+        end
+      end
+      
+      # Message for holding the value of the answer. QaQuestion.AnswerChoice defines
+      # the possible answer values for a question.
+      class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue
+        include Google::Apis::Core::Hashable
+      
+        # Boolean value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # A short string used as an identifier. Matches the value used in QaQuestion.
+        # AnswerChoice.key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # A value of "Not Applicable (N/A)".
+        # Corresponds to the JSON property `naValue`
+        # @return [Boolean]
+        attr_accessor :na_value
+        alias_method :na_value?, :na_value
+      
+        # Numerical value.
+        # Corresponds to the JSON property `numValue`
+        # @return [Float]
+        attr_accessor :num_value
+      
+        # Numerical score of the answer.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # String value.
+        # Corresponds to the JSON property `strValue`
+        # @return [String]
+        attr_accessor :str_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @key = args[:key] if args.key?(:key)
+          @na_value = args[:na_value] if args.key?(:na_value)
+          @num_value = args[:num_value] if args.key?(:num_value)
+          @score = args[:score] if args.key?(:score)
+          @str_value = args[:str_value] if args.key?(:str_value)
+        end
+      end
+      
+      # A single question to be scored by the Insights QA feature.
+      class GoogleCloudContactcenterinsightsV1QaQuestion
+        include Google::Apis::Core::Hashable
+      
+        # Short, descriptive string, used in the UI where it's not practical to display
+        # the full question body. E.g., "Greeting".
+        # Corresponds to the JSON property `abbreviation`
+        # @return [String]
+        attr_accessor :abbreviation
+      
+        # A list of valid answers to the question, which the LLM must choose from.
+        # Corresponds to the JSON property `answerChoices`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>]
+        attr_accessor :answer_choices
+      
+        # Instructions describing how to determine the answer.
+        # Corresponds to the JSON property `answerInstructions`
+        # @return [String]
+        attr_accessor :answer_instructions
+      
+        # Output only. The time at which this question was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A wrapper representing metrics calculated against a test-set on a LLM that was
+        # fine tuned for this question.
+        # Corresponds to the JSON property `metrics`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionMetrics]
+        attr_accessor :metrics
+      
+        # Identifier. The resource name of the question. Format: projects/`project`/
+        # locations/`location`/qaScorecards/`qa_scorecard`/revisions/`revision`/
+        # qaQuestions/`qa_question`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Defines the order of the question within its parent scorecard revision.
+        # Corresponds to the JSON property `order`
+        # @return [Fixnum]
+        attr_accessor :order
+      
+        # Question text. E.g., "Did the agent greet the customer?"
+        # Corresponds to the JSON property `questionBody`
+        # @return [String]
+        attr_accessor :question_body
+      
+        # User-defined list of arbitrary tags for the question. Used for grouping/
+        # organization and for weighting the score of each question.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Metadata about the tuning operation for the question. Will only be set if a
+        # scorecard containing this question has been tuned.
+        # Corresponds to the JSON property `tuningMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata]
+        attr_accessor :tuning_metadata
+      
+        # Output only. The most recent time at which the question was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abbreviation = args[:abbreviation] if args.key?(:abbreviation)
+          @answer_choices = args[:answer_choices] if args.key?(:answer_choices)
+          @answer_instructions = args[:answer_instructions] if args.key?(:answer_instructions)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+          @order = args[:order] if args.key?(:order)
+          @question_body = args[:question_body] if args.key?(:question_body)
+          @tags = args[:tags] if args.key?(:tags)
+          @tuning_metadata = args[:tuning_metadata] if args.key?(:tuning_metadata)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message representing a possible answer to the question.
+      class GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice
+        include Google::Apis::Core::Hashable
+      
+        # Boolean value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # A short string used as an identifier.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # A value of "Not Applicable (N/A)". If provided, this field may only be set to `
+        # true`. If a question receives this answer, it will be excluded from any score
+        # calculations.
+        # Corresponds to the JSON property `naValue`
+        # @return [Boolean]
+        attr_accessor :na_value
+        alias_method :na_value?, :na_value
+      
+        # Numerical value.
+        # Corresponds to the JSON property `numValue`
+        # @return [Float]
+        attr_accessor :num_value
+      
+        # Numerical score of the answer, used for generating the overall score of a
+        # QaScorecardResult. If the answer uses na_value, this field is unused.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # String value.
+        # Corresponds to the JSON property `strValue`
+        # @return [String]
+        attr_accessor :str_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @key = args[:key] if args.key?(:key)
+          @na_value = args[:na_value] if args.key?(:na_value)
+          @num_value = args[:num_value] if args.key?(:num_value)
+          @score = args[:score] if args.key?(:score)
+          @str_value = args[:str_value] if args.key?(:str_value)
+        end
+      end
+      
+      # A wrapper representing metrics calculated against a test-set on a LLM that was
+      # fine tuned for this question.
+      class GoogleCloudContactcenterinsightsV1QaQuestionMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Accuracy of the model. Measures the percentage of correct answers
+        # the model gave on the test set.
+        # Corresponds to the JSON property `accuracy`
+        # @return [Float]
+        attr_accessor :accuracy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accuracy = args[:accuracy] if args.key?(:accuracy)
+        end
+      end
+      
+      # Metadata about the tuning operation for the question. Will only be set if a
+      # scorecard containing this question has been tuned.
+      class GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A list of any applicable data validation warnings about the question's
+        # feedback labels.
+        # Corresponds to the JSON property `datasetValidationWarnings`
+        # @return [Array<String>]
+        attr_accessor :dataset_validation_warnings
+      
+        # Total number of valid labels provided for the question at the time of tuining.
+        # Corresponds to the JSON property `totalValidLabelCount`
+        # @return [Fixnum]
+        attr_accessor :total_valid_label_count
+      
+        # Error status of the tuning operation for the question. Will only be set if the
+        # tuning operation failed.
+        # Corresponds to the JSON property `tuningError`
+        # @return [String]
+        attr_accessor :tuning_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_validation_warnings = args[:dataset_validation_warnings] if args.key?(:dataset_validation_warnings)
+          @total_valid_label_count = args[:total_valid_label_count] if args.key?(:total_valid_label_count)
+          @tuning_error = args[:tuning_error] if args.key?(:tuning_error)
+        end
+      end
+      
+      # A QaScorecard represents a collection of questions to be scored during
+      # analysis.
+      class GoogleCloudContactcenterinsightsV1QaScorecard
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which this scorecard was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A text description explaining the intent of the scorecard.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The user-specified display name of the scorecard.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The scorecard name. Format: projects/`project`/locations/`location`
+        # /qaScorecards/`qa_scorecard`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The most recent time at which the scorecard was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The results of scoring a single conversation against a QaScorecard. Contains a
+      # collection of QaAnswers and aggregate score.
+      class GoogleCloudContactcenterinsightsV1QaScorecardResult
+        include Google::Apis::Core::Hashable
+      
+        # ID of the agent that handled the conversation.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        # The conversation scored by this result.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # Output only. The timestamp that the revision was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The name of the scorecard result. Format: projects/`project`/
+        # locations/`location`/qaScorecardResults/`qa_scorecard_result`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normalized score, which is the score divided by the potential score. Any
+        # manual edits are included if they exist.
+        # Corresponds to the JSON property `normalizedScore`
+        # @return [Float]
+        attr_accessor :normalized_score
+      
+        # The maximum potential overall score of the scorecard. Any questions answered
+        # using `na_value` are excluded from this calculation.
+        # Corresponds to the JSON property `potentialScore`
+        # @return [Float]
+        attr_accessor :potential_score
+      
+        # Set of QaAnswers represented in the result.
+        # Corresponds to the JSON property `qaAnswers`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswer>]
+        attr_accessor :qa_answers
+      
+        # The QaScorecardRevision scored by this result.
+        # Corresponds to the JSON property `qaScorecardRevision`
+        # @return [String]
+        attr_accessor :qa_scorecard_revision
+      
+        # Collection of tags and their scores.
+        # Corresponds to the JSON property `qaTagResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>]
+        attr_accessor :qa_tag_results
+      
+        # The overall numerical score of the result, incorporating any manual edits if
+        # they exist.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # List of all individual score sets.
+        # Corresponds to the JSON property `scoreSources`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>]
+        attr_accessor :score_sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
+          @potential_score = args[:potential_score] if args.key?(:potential_score)
+          @qa_answers = args[:qa_answers] if args.key?(:qa_answers)
+          @qa_scorecard_revision = args[:qa_scorecard_revision] if args.key?(:qa_scorecard_revision)
+          @qa_tag_results = args[:qa_tag_results] if args.key?(:qa_tag_results)
+          @score = args[:score] if args.key?(:score)
+          @score_sources = args[:score_sources] if args.key?(:score_sources)
+        end
+      end
+      
+      # Tags and their corresponding results.
+      class GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult
+        include Google::Apis::Core::Hashable
+      
+        # The normalized score the tag applies to.
+        # Corresponds to the JSON property `normalizedScore`
+        # @return [Float]
+        attr_accessor :normalized_score
+      
+        # The potential score the tag applies to.
+        # Corresponds to the JSON property `potentialScore`
+        # @return [Float]
+        attr_accessor :potential_score
+      
+        # The score the tag applies to.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # The tag the score applies to.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
+          @potential_score = args[:potential_score] if args.key?(:potential_score)
+          @score = args[:score] if args.key?(:score)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # A scorecard result may have multiple sets of scores from varying sources, one
+      # of which becomes the "main" answer above. A ScoreSource represents each
+      # individual set of scores.
+      class GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource
+        include Google::Apis::Core::Hashable
+      
+        # The normalized score, which is the score divided by the potential score.
+        # Corresponds to the JSON property `normalizedScore`
+        # @return [Float]
+        attr_accessor :normalized_score
+      
+        # The maximum potential overall score of the scorecard. Any questions answered
+        # using `na_value` are excluded from this calculation.
+        # Corresponds to the JSON property `potentialScore`
+        # @return [Float]
+        attr_accessor :potential_score
+      
+        # Collection of tags and their scores.
+        # Corresponds to the JSON property `qaTagResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>]
+        attr_accessor :qa_tag_results
+      
+        # The overall numerical score of the result.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # What created the score.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
+          @potential_score = args[:potential_score] if args.key?(:potential_score)
+          @qa_tag_results = args[:qa_tag_results] if args.key?(:qa_tag_results)
+          @score = args[:score] if args.key?(:score)
+          @source_type = args[:source_type] if args.key?(:source_type)
+        end
+      end
+      
+      # A revision of a QaScorecard. Modifying published scorecard fields would
+      # invalidate existing scorecard results — the questions may have changed, or the
+      # score weighting will make existing scores impossible to understand. So changes
+      # must create a new revision, rather than modifying the existing resource.
+      class GoogleCloudContactcenterinsightsV1QaScorecardRevision
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Alternative IDs for this revision of the scorecard, e.g., `latest`
+        # .
+        # Corresponds to the JSON property `alternateIds`
+        # @return [Array<String>]
+        attr_accessor :alternate_ids
+      
+        # Output only. The timestamp that the revision was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The name of the scorecard revision. Format: projects/`project`/
+        # locations/`location`/qaScorecards/`qa_scorecard`/revisions/`revision`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A QaScorecard represents a collection of questions to be scored during
+        # analysis.
+        # Corresponds to the JSON property `snapshot`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaScorecard]
+        attr_accessor :snapshot
+      
+        # Output only. State of the scorecard revision, indicating whether it's ready to
+        # be used in analysis.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternate_ids = args[:alternate_ids] if args.key?(:alternate_ids)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @snapshot = args[:snapshot] if args.key?(:snapshot)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The metadata from querying metrics.
+      class GoogleCloudContactcenterinsightsV1QueryMetricsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request for querying metrics.
+      class GoogleCloudContactcenterinsightsV1QueryMetricsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The dimensions that determine the grouping key for the query. Defaults to no
+        # dimension if this field is unspecified. If a dimension is specified, its key
+        # must also be specified. Each dimension's key must be unique. If a time
+        # granularity is also specified, metric values in the dimension will be bucketed
+        # by this granularity. Up to one dimension is supported for now.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Dimension>]
+        attr_accessor :dimensions
+      
+        # Required. Filter to select a subset of conversations to compute the metrics.
+        # Must specify a window of the conversation create time to compute the metrics.
+        # The returned metrics will be from the range [DATE(starting create time), DATE(
+        # ending create time)).
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Measures to return. Defaults to all measures if this field is unspecified. A
+        # valid mask should traverse from the `measure` field from the response. For
+        # example, a path from a measure mask to get the conversation count is "
+        # conversation_measure.count".
+        # Corresponds to the JSON property `measureMask`
+        # @return [String]
+        attr_accessor :measure_mask
+      
+        # The time granularity of each data point in the time series. Defaults to NONE
+        # if this field is unspecified.
+        # Corresponds to the JSON property `timeGranularity`
+        # @return [String]
+        attr_accessor :time_granularity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @filter = args[:filter] if args.key?(:filter)
+          @measure_mask = args[:measure_mask] if args.key?(:measure_mask)
+          @time_granularity = args[:time_granularity] if args.key?(:time_granularity)
+        end
+      end
+      
+      # The response for querying metrics.
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The location of the data. "projects/`project`/locations/`location`"
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # A slice contains a total and (if the request specified a time granularity) a
+        # time series of metric values. Each slice contains a unique combination of the
+        # cardinality of dimensions from the request. For example, if the request
+        # specifies a single ISSUE dimension and it has a cardinality of 2 (i.e. the
+        # data used to compute the metrics has 2 issues in total), the response will
+        # have 2 slices: * Slice 1 -> dimensions=[Issue 1] * Slice 2 -> dimensions=[
+        # Issue 2]
+        # Corresponds to the JSON property `macroAverageSlice`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice]
+        attr_accessor :macro_average_slice
+      
+        # A slice contains a total and (if the request specified a time granularity) a
+        # time series of metric values. Each slice contains a unique combination of the
+        # cardinality of dimensions from the request.
+        # Corresponds to the JSON property `slices`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice>]
+        attr_accessor :slices
+      
+        # The metrics last update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @macro_average_slice = args[:macro_average_slice] if args.key?(:macro_average_slice)
+          @slices = args[:slices] if args.key?(:slices)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A slice contains a total and (if the request specified a time granularity) a
+      # time series of metric values. Each slice contains a unique combination of the
+      # cardinality of dimensions from the request. For example, if the request
+      # specifies a single ISSUE dimension and it has a cardinality of 2 (i.e. the
+      # data used to compute the metrics has 2 issues in total), the response will
+      # have 2 slices: * Slice 1 -> dimensions=[Issue 1] * Slice 2 -> dimensions=[
+      # Issue 2]
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice
+        include Google::Apis::Core::Hashable
+      
+        # A unique combination of dimensions that this slice represents.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Dimension>]
+        attr_accessor :dimensions
+      
+        # A time series of metric values.
+        # Corresponds to the JSON property `timeSeries`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries]
+        attr_accessor :time_series
+      
+        # A data point contains the metric values mapped to an interval.
+        # Corresponds to the JSON property `total`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint]
+        attr_accessor :total
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @time_series = args[:time_series] if args.key?(:time_series)
+          @total = args[:total] if args.key?(:total)
+        end
+      end
+      
+      # A data point contains the metric values mapped to an interval.
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint
+        include Google::Apis::Core::Hashable
+      
+        # The measure related to conversations.
+        # Corresponds to the JSON property `conversationMeasure`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure]
+        attr_accessor :conversation_measure
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleTypeInterval]
+        attr_accessor :interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_measure = args[:conversation_measure] if args.key?(:conversation_measure)
+          @interval = args[:interval] if args.key?(:interval)
+        end
+      end
+      
+      # The measure related to conversations.
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure
+        include Google::Apis::Core::Hashable
+      
+        # The average agent's sentiment score.
+        # Corresponds to the JSON property `averageAgentSentimentScore`
+        # @return [Float]
+        attr_accessor :average_agent_sentiment_score
+      
+        # The average client's sentiment score.
+        # Corresponds to the JSON property `averageClientSentimentScore`
+        # @return [Float]
+        attr_accessor :average_client_sentiment_score
+      
+        # The average customer satisfaction rating.
+        # Corresponds to the JSON property `averageCustomerSatisfactionRating`
+        # @return [Float]
+        attr_accessor :average_customer_satisfaction_rating
+      
+        # The average duration.
+        # Corresponds to the JSON property `averageDuration`
+        # @return [String]
+        attr_accessor :average_duration
+      
+        # Average QA normalized score. Will exclude 0's in average calculation.
+        # Corresponds to the JSON property `averageQaNormalizedScore`
+        # @return [Float]
+        attr_accessor :average_qa_normalized_score
+      
+        # Average QA normalized score averaged for questions averaged across all
+        # revisions of the parent scorecard. Will be only populated if the request
+        # specifies a dimension of QA_QUESTION_ID.
+        # Corresponds to the JSON property `averageQaQuestionNormalizedScore`
+        # @return [Float]
+        attr_accessor :average_qa_question_normalized_score
+      
+        # The average silence percentage.
+        # Corresponds to the JSON property `averageSilencePercentage`
+        # @return [Float]
+        attr_accessor :average_silence_percentage
+      
+        # The average turn count.
+        # Corresponds to the JSON property `averageTurnCount`
+        # @return [Float]
+        attr_accessor :average_turn_count
+      
+        # The conversation count.
+        # Corresponds to the JSON property `conversationCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_count
+      
+        # Average QA normalized score for all the tags.
+        # Corresponds to the JSON property `qaTagScores`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>]
+        attr_accessor :qa_tag_scores
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_agent_sentiment_score = args[:average_agent_sentiment_score] if args.key?(:average_agent_sentiment_score)
+          @average_client_sentiment_score = args[:average_client_sentiment_score] if args.key?(:average_client_sentiment_score)
+          @average_customer_satisfaction_rating = args[:average_customer_satisfaction_rating] if args.key?(:average_customer_satisfaction_rating)
+          @average_duration = args[:average_duration] if args.key?(:average_duration)
+          @average_qa_normalized_score = args[:average_qa_normalized_score] if args.key?(:average_qa_normalized_score)
+          @average_qa_question_normalized_score = args[:average_qa_question_normalized_score] if args.key?(:average_qa_question_normalized_score)
+          @average_silence_percentage = args[:average_silence_percentage] if args.key?(:average_silence_percentage)
+          @average_turn_count = args[:average_turn_count] if args.key?(:average_turn_count)
+          @conversation_count = args[:conversation_count] if args.key?(:conversation_count)
+          @qa_tag_scores = args[:qa_tag_scores] if args.key?(:qa_tag_scores)
+        end
+      end
+      
+      # Average QA normalized score for the tag.
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore
+        include Google::Apis::Core::Hashable
+      
+        # Average tag normalized score per tag.
+        # Corresponds to the JSON property `averageTagNormalizedScore`
+        # @return [Float]
+        attr_accessor :average_tag_normalized_score
+      
+        # Tag name.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_tag_normalized_score = args[:average_tag_normalized_score] if args.key?(:average_tag_normalized_score)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # A time series of metric values.
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries
+        include Google::Apis::Core::Hashable
+      
+        # The data points that make up the time series .
+        # Corresponds to the JSON property `dataPoints`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint>]
+        attr_accessor :data_points
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_points = args[:data_points] if args.key?(:data_points)
         end
       end
       
@@ -3679,6 +5357,37 @@ module Google
         end
       end
       
+      # Request for TuneQaScorecardRevision endpoint.
+      class GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Filter for selecting the feedback labels that needs to be used for
+        # training. This filter can be used to limit the feedback labels used for tuning
+        # to a feedback labels created or updated for a specific time-window etc.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. Run in validate only mode, no fine tuning will actually run. Data
+        # quality validations like training data distributions will run. Even when set
+        # to false, the data quality validations will still run but once the validations
+        # complete we will proceed with the fine tune, if applicable.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Metadata for undeploying an issue model.
       class GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata
         include Google::Apis::Core::Hashable
@@ -3731,6 +5440,19 @@ module Google
       
       # The response to undeploy an issue model.
       class GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request to undeploy a QaScorecardRevision
+      class GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -3990,6 +5712,11 @@ module Google
         # @return [Hash<String,Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData>]
         attr_accessor :phrase_matchers
       
+        # Results of scoring QaScorecards.
+        # Corresponds to the JSON property `qaScorecardResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult>]
+        attr_accessor :qa_scorecard_results
+      
         # Overall conversation-level sentiment for each channel of the call.
         # Corresponds to the JSON property `sentiments`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment>]
@@ -4011,6 +5738,7 @@ module Google
           @intents = args[:intents] if args.key?(:intents)
           @issue_model_result = args[:issue_model_result] if args.key?(:issue_model_result)
           @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
+          @qa_scorecard_results = args[:qa_scorecard_results] if args.key?(:qa_scorecard_results)
           @sentiments = args[:sentiments] if args.key?(:sentiments)
           @silence = args[:silence] if args.key?(:silence)
         end
@@ -4065,6 +5793,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :phrase_matchers
       
+        # Configuration for the QA feature.
+        # Corresponds to the JSON property `qaConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig]
+        attr_accessor :qa_config
+      
         # Whether to run the entity annotator.
         # Corresponds to the JSON property `runEntityAnnotator`
         # @return [Boolean]
@@ -4095,6 +5828,12 @@ module Google
         # @return [Boolean]
         attr_accessor :run_phrase_matcher_annotator
         alias_method :run_phrase_matcher_annotator?, :run_phrase_matcher_annotator
+      
+        # Whether to run the QA annotator.
+        # Corresponds to the JSON property `runQaAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_qa_annotator
+        alias_method :run_qa_annotator?, :run_qa_annotator
       
         # Whether to run the sentiment annotator.
         # Corresponds to the JSON property `runSentimentAnnotator`
@@ -4127,15 +5866,55 @@ module Google
         def update!(**args)
           @issue_models = args[:issue_models] if args.key?(:issue_models)
           @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
+          @qa_config = args[:qa_config] if args.key?(:qa_config)
           @run_entity_annotator = args[:run_entity_annotator] if args.key?(:run_entity_annotator)
           @run_intent_annotator = args[:run_intent_annotator] if args.key?(:run_intent_annotator)
           @run_interruption_annotator = args[:run_interruption_annotator] if args.key?(:run_interruption_annotator)
           @run_issue_model_annotator = args[:run_issue_model_annotator] if args.key?(:run_issue_model_annotator)
           @run_phrase_matcher_annotator = args[:run_phrase_matcher_annotator] if args.key?(:run_phrase_matcher_annotator)
+          @run_qa_annotator = args[:run_qa_annotator] if args.key?(:run_qa_annotator)
           @run_sentiment_annotator = args[:run_sentiment_annotator] if args.key?(:run_sentiment_annotator)
           @run_silence_annotator = args[:run_silence_annotator] if args.key?(:run_silence_annotator)
           @run_summarization_annotator = args[:run_summarization_annotator] if args.key?(:run_summarization_annotator)
           @summarization_config = args[:summarization_config] if args.key?(:summarization_config)
+        end
+      end
+      
+      # Configuration for the QA feature.
+      class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Container for a list of scorecards.
+        # Corresponds to the JSON property `scorecardList`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList]
+        attr_accessor :scorecard_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scorecard_list = args[:scorecard_list] if args.key?(:scorecard_list)
+        end
+      end
+      
+      # Container for a list of scorecards.
+      class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList
+        include Google::Apis::Core::Hashable
+      
+        # List of QaScorecardRevisions.
+        # Corresponds to the JSON property `qaScorecardRevisions`
+        # @return [Array<String>]
+        attr_accessor :qa_scorecard_revisions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qa_scorecard_revisions = args[:qa_scorecard_revisions] if args.key?(:qa_scorecard_revisions)
         end
       end
       
@@ -5409,6 +7188,182 @@ module Google
         end
       end
       
+      # A dimension determines the grouping key for the query. In SQL terms, these
+      # would be part of both the "SELECT" and "GROUP BY" clauses.
+      class GoogleCloudContactcenterinsightsV1alpha1Dimension
+        include Google::Apis::Core::Hashable
+      
+        # Metadata about the agent dimension.
+        # Corresponds to the JSON property `agentDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata]
+        attr_accessor :agent_dimension_metadata
+      
+        # The key of the dimension.
+        # Corresponds to the JSON property `dimensionKey`
+        # @return [String]
+        attr_accessor :dimension_key
+      
+        # Metadata about the issue dimension.
+        # Corresponds to the JSON property `issueDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata]
+        attr_accessor :issue_dimension_metadata
+      
+        # Metadata about the QA question-answer dimension. This is useful for showing
+        # the answer distribution for questions for a given scorecard.
+        # Corresponds to the JSON property `qaQuestionAnswerDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata]
+        attr_accessor :qa_question_answer_dimension_metadata
+      
+        # Metadata about the QA question dimension.
+        # Corresponds to the JSON property `qaQuestionDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata]
+        attr_accessor :qa_question_dimension_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_dimension_metadata = args[:agent_dimension_metadata] if args.key?(:agent_dimension_metadata)
+          @dimension_key = args[:dimension_key] if args.key?(:dimension_key)
+          @issue_dimension_metadata = args[:issue_dimension_metadata] if args.key?(:issue_dimension_metadata)
+          @qa_question_answer_dimension_metadata = args[:qa_question_answer_dimension_metadata] if args.key?(:qa_question_answer_dimension_metadata)
+          @qa_question_dimension_metadata = args[:qa_question_dimension_metadata] if args.key?(:qa_question_dimension_metadata)
+        end
+      end
+      
+      # Metadata about the agent dimension.
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The agent's name
+        # Corresponds to the JSON property `agentDisplayName`
+        # @return [String]
+        attr_accessor :agent_display_name
+      
+        # Optional. A user-specified string representing the agent.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        # Optional. A user-specified string representing the agent's team.
+        # Corresponds to the JSON property `agentTeam`
+        # @return [String]
+        attr_accessor :agent_team
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_display_name = args[:agent_display_name] if args.key?(:agent_display_name)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @agent_team = args[:agent_team] if args.key?(:agent_team)
+        end
+      end
+      
+      # Metadata about the issue dimension.
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The issue display name.
+        # Corresponds to the JSON property `issueDisplayName`
+        # @return [String]
+        attr_accessor :issue_display_name
+      
+        # The issue ID.
+        # Corresponds to the JSON property `issueId`
+        # @return [String]
+        attr_accessor :issue_id
+      
+        # The parent issue model ID.
+        # Corresponds to the JSON property `issueModelId`
+        # @return [String]
+        attr_accessor :issue_model_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue_display_name = args[:issue_display_name] if args.key?(:issue_display_name)
+          @issue_id = args[:issue_id] if args.key?(:issue_id)
+          @issue_model_id = args[:issue_model_id] if args.key?(:issue_model_id)
+        end
+      end
+      
+      # Metadata about the QA question-answer dimension. This is useful for showing
+      # the answer distribution for questions for a given scorecard.
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The full body of the question.
+        # Corresponds to the JSON property `answerValue`
+        # @return [String]
+        attr_accessor :answer_value
+      
+        # Optional. The QA question ID.
+        # Corresponds to the JSON property `qaQuestionId`
+        # @return [String]
+        attr_accessor :qa_question_id
+      
+        # Optional. The QA scorecard ID.
+        # Corresponds to the JSON property `qaScorecardId`
+        # @return [String]
+        attr_accessor :qa_scorecard_id
+      
+        # Optional. The full body of the question.
+        # Corresponds to the JSON property `questionBody`
+        # @return [String]
+        attr_accessor :question_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_value = args[:answer_value] if args.key?(:answer_value)
+          @qa_question_id = args[:qa_question_id] if args.key?(:qa_question_id)
+          @qa_scorecard_id = args[:qa_scorecard_id] if args.key?(:qa_scorecard_id)
+          @question_body = args[:question_body] if args.key?(:question_body)
+        end
+      end
+      
+      # Metadata about the QA question dimension.
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The QA question ID.
+        # Corresponds to the JSON property `qaQuestionId`
+        # @return [String]
+        attr_accessor :qa_question_id
+      
+        # Optional. The QA scorecard ID.
+        # Corresponds to the JSON property `qaScorecardId`
+        # @return [String]
+        attr_accessor :qa_scorecard_id
+      
+        # Optional. The full body of the question.
+        # Corresponds to the JSON property `questionBody`
+        # @return [String]
+        attr_accessor :question_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qa_question_id = args[:qa_question_id] if args.key?(:qa_question_id)
+          @qa_scorecard_id = args[:qa_scorecard_id] if args.key?(:qa_scorecard_id)
+          @question_body = args[:question_body] if args.key?(:question_body)
+        end
+      end
+      
       # A customer-managed encryption key specification that can be applied to all
       # created resources (e.g. `Conversation`).
       class GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec
@@ -5795,6 +7750,58 @@ module Google
           @query_record = args[:query_record] if args.key?(:query_record)
           @question = args[:question] if args.key?(:question)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Represents a conversation, resource, and label provided by the user.
+      class GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time of the label.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # String label.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Resource name of the resource to be labeled.
+        # Corresponds to the JSON property `labeledResource`
+        # @return [String]
+        attr_accessor :labeled_resource
+      
+        # Immutable. Resource name of the FeedbackLabel. Format: projects/`project`/
+        # locations/`location`/conversations/`conversation`/feedbackLabels/`
+        # feedback_label`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Message for holding the value of the answer. QaQuestion.AnswerChoice defines
+        # the possible answer values for a question.
+        # Corresponds to the JSON property `qaAnswerLabel`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue]
+        attr_accessor :qa_answer_label
+      
+        # Output only. Update time of the label.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @label = args[:label] if args.key?(:label)
+          @labeled_resource = args[:labeled_resource] if args.key?(:labeled_resource)
+          @name = args[:name] if args.key?(:name)
+          @qa_answer_label = args[:qa_answer_label] if args.key?(:qa_answer_label)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -6578,6 +8585,57 @@ module Google
         end
       end
       
+      # The response for listing all feedback labels.
+      class GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The feedback labels that match the request.
+        # Corresponds to the JSON property `feedbackLabels`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>]
+        attr_accessor :feedback_labels
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feedback_labels = args[:feedback_labels] if args.key?(:feedback_labels)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response for listing feedback labels.
+      class GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The feedback labels that match the request.
+        # Corresponds to the JSON property `feedbackLabels`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>]
+        attr_accessor :feedback_labels
+      
+        # The next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feedback_labels = args[:feedback_labels] if args.key?(:feedback_labels)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The data for a matched phrase matcher. Represents information identifying a
       # phrase matcher for a given match.
       class GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData
@@ -6601,6 +8659,555 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @phrase_matcher = args[:phrase_matcher] if args.key?(:phrase_matcher)
+        end
+      end
+      
+      # An answer to a QaQuestion.
+      class GoogleCloudContactcenterinsightsV1alpha1QaAnswer
+        include Google::Apis::Core::Hashable
+      
+        # List of all individual answers given to the question.
+        # Corresponds to the JSON property `answerSources`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource>]
+        attr_accessor :answer_sources
+      
+        # Message for holding the value of the answer. QaQuestion.AnswerChoice defines
+        # the possible answer values for a question.
+        # Corresponds to the JSON property `answerValue`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue]
+        attr_accessor :answer_value
+      
+        # The conversation the answer applies to.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The maximum potential score of the question. If the question was answered
+        # using `na_value`, this field will be zero.
+        # Corresponds to the JSON property `potentialScore`
+        # @return [Float]
+        attr_accessor :potential_score
+      
+        # The QaQuestion answered by this answer.
+        # Corresponds to the JSON property `qaQuestion`
+        # @return [String]
+        attr_accessor :qa_question
+      
+        # Question text. E.g., "Did the agent greet the customer?"
+        # Corresponds to the JSON property `questionBody`
+        # @return [String]
+        attr_accessor :question_body
+      
+        # User-defined list of arbitrary tags. Matches the value from QaScorecard.
+        # ScorecardQuestion.tags. Used for grouping/organization and for weighting the
+        # score of each answer.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_sources = args[:answer_sources] if args.key?(:answer_sources)
+          @answer_value = args[:answer_value] if args.key?(:answer_value)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @potential_score = args[:potential_score] if args.key?(:potential_score)
+          @qa_question = args[:qa_question] if args.key?(:qa_question)
+          @question_body = args[:question_body] if args.key?(:question_body)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # A question may have multiple answers from varying sources, one of which
+      # becomes the "main" answer above. AnswerSource represents each individual
+      # answer.
+      class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource
+        include Google::Apis::Core::Hashable
+      
+        # Message for holding the value of the answer. QaQuestion.AnswerChoice defines
+        # the possible answer values for a question.
+        # Corresponds to the JSON property `answerValue`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue]
+        attr_accessor :answer_value
+      
+        # What created the answer.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_value = args[:answer_value] if args.key?(:answer_value)
+          @source_type = args[:source_type] if args.key?(:source_type)
+        end
+      end
+      
+      # Message for holding the value of the answer. QaQuestion.AnswerChoice defines
+      # the possible answer values for a question.
+      class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue
+        include Google::Apis::Core::Hashable
+      
+        # Boolean value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # A short string used as an identifier. Matches the value used in QaQuestion.
+        # AnswerChoice.key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # A value of "Not Applicable (N/A)".
+        # Corresponds to the JSON property `naValue`
+        # @return [Boolean]
+        attr_accessor :na_value
+        alias_method :na_value?, :na_value
+      
+        # Numerical value.
+        # Corresponds to the JSON property `numValue`
+        # @return [Float]
+        attr_accessor :num_value
+      
+        # Numerical score of the answer.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # String value.
+        # Corresponds to the JSON property `strValue`
+        # @return [String]
+        attr_accessor :str_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @key = args[:key] if args.key?(:key)
+          @na_value = args[:na_value] if args.key?(:na_value)
+          @num_value = args[:num_value] if args.key?(:num_value)
+          @score = args[:score] if args.key?(:score)
+          @str_value = args[:str_value] if args.key?(:str_value)
+        end
+      end
+      
+      # The results of scoring a single conversation against a QaScorecard. Contains a
+      # collection of QaAnswers and aggregate score.
+      class GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult
+        include Google::Apis::Core::Hashable
+      
+        # ID of the agent that handled the conversation.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        # The conversation scored by this result.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # Output only. The timestamp that the revision was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The name of the scorecard result. Format: projects/`project`/
+        # locations/`location`/qaScorecardResults/`qa_scorecard_result`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normalized score, which is the score divided by the potential score. Any
+        # manual edits are included if they exist.
+        # Corresponds to the JSON property `normalizedScore`
+        # @return [Float]
+        attr_accessor :normalized_score
+      
+        # The maximum potential overall score of the scorecard. Any questions answered
+        # using `na_value` are excluded from this calculation.
+        # Corresponds to the JSON property `potentialScore`
+        # @return [Float]
+        attr_accessor :potential_score
+      
+        # Set of QaAnswers represented in the result.
+        # Corresponds to the JSON property `qaAnswers`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswer>]
+        attr_accessor :qa_answers
+      
+        # The QaScorecardRevision scored by this result.
+        # Corresponds to the JSON property `qaScorecardRevision`
+        # @return [String]
+        attr_accessor :qa_scorecard_revision
+      
+        # Collection of tags and their scores.
+        # Corresponds to the JSON property `qaTagResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult>]
+        attr_accessor :qa_tag_results
+      
+        # The overall numerical score of the result, incorporating any manual edits if
+        # they exist.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # List of all individual score sets.
+        # Corresponds to the JSON property `scoreSources`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource>]
+        attr_accessor :score_sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
+          @potential_score = args[:potential_score] if args.key?(:potential_score)
+          @qa_answers = args[:qa_answers] if args.key?(:qa_answers)
+          @qa_scorecard_revision = args[:qa_scorecard_revision] if args.key?(:qa_scorecard_revision)
+          @qa_tag_results = args[:qa_tag_results] if args.key?(:qa_tag_results)
+          @score = args[:score] if args.key?(:score)
+          @score_sources = args[:score_sources] if args.key?(:score_sources)
+        end
+      end
+      
+      # Tags and their corresponding results.
+      class GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult
+        include Google::Apis::Core::Hashable
+      
+        # The normalized score the tag applies to.
+        # Corresponds to the JSON property `normalizedScore`
+        # @return [Float]
+        attr_accessor :normalized_score
+      
+        # The potential score the tag applies to.
+        # Corresponds to the JSON property `potentialScore`
+        # @return [Float]
+        attr_accessor :potential_score
+      
+        # The score the tag applies to.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # The tag the score applies to.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
+          @potential_score = args[:potential_score] if args.key?(:potential_score)
+          @score = args[:score] if args.key?(:score)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # A scorecard result may have multiple sets of scores from varying sources, one
+      # of which becomes the "main" answer above. A ScoreSource represents each
+      # individual set of scores.
+      class GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource
+        include Google::Apis::Core::Hashable
+      
+        # The normalized score, which is the score divided by the potential score.
+        # Corresponds to the JSON property `normalizedScore`
+        # @return [Float]
+        attr_accessor :normalized_score
+      
+        # The maximum potential overall score of the scorecard. Any questions answered
+        # using `na_value` are excluded from this calculation.
+        # Corresponds to the JSON property `potentialScore`
+        # @return [Float]
+        attr_accessor :potential_score
+      
+        # Collection of tags and their scores.
+        # Corresponds to the JSON property `qaTagResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult>]
+        attr_accessor :qa_tag_results
+      
+        # The overall numerical score of the result.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # What created the score.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
+          @potential_score = args[:potential_score] if args.key?(:potential_score)
+          @qa_tag_results = args[:qa_tag_results] if args.key?(:qa_tag_results)
+          @score = args[:score] if args.key?(:score)
+          @source_type = args[:source_type] if args.key?(:source_type)
+        end
+      end
+      
+      # The metadata from querying metrics.
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response for querying metrics.
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The location of the data. "projects/`project`/locations/`location`"
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # A slice contains a total and (if the request specified a time granularity) a
+        # time series of metric values. Each slice contains a unique combination of the
+        # cardinality of dimensions from the request. For example, if the request
+        # specifies a single ISSUE dimension and it has a cardinality of 2 (i.e. the
+        # data used to compute the metrics has 2 issues in total), the response will
+        # have 2 slices: * Slice 1 -> dimensions=[Issue 1] * Slice 2 -> dimensions=[
+        # Issue 2]
+        # Corresponds to the JSON property `macroAverageSlice`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice]
+        attr_accessor :macro_average_slice
+      
+        # A slice contains a total and (if the request specified a time granularity) a
+        # time series of metric values. Each slice contains a unique combination of the
+        # cardinality of dimensions from the request.
+        # Corresponds to the JSON property `slices`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice>]
+        attr_accessor :slices
+      
+        # The metrics last update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @macro_average_slice = args[:macro_average_slice] if args.key?(:macro_average_slice)
+          @slices = args[:slices] if args.key?(:slices)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A slice contains a total and (if the request specified a time granularity) a
+      # time series of metric values. Each slice contains a unique combination of the
+      # cardinality of dimensions from the request. For example, if the request
+      # specifies a single ISSUE dimension and it has a cardinality of 2 (i.e. the
+      # data used to compute the metrics has 2 issues in total), the response will
+      # have 2 slices: * Slice 1 -> dimensions=[Issue 1] * Slice 2 -> dimensions=[
+      # Issue 2]
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice
+        include Google::Apis::Core::Hashable
+      
+        # A unique combination of dimensions that this slice represents.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1Dimension>]
+        attr_accessor :dimensions
+      
+        # A time series of metric values.
+        # Corresponds to the JSON property `timeSeries`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries]
+        attr_accessor :time_series
+      
+        # A data point contains the metric values mapped to an interval.
+        # Corresponds to the JSON property `total`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint]
+        attr_accessor :total
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @time_series = args[:time_series] if args.key?(:time_series)
+          @total = args[:total] if args.key?(:total)
+        end
+      end
+      
+      # A data point contains the metric values mapped to an interval.
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint
+        include Google::Apis::Core::Hashable
+      
+        # The measure related to conversations.
+        # Corresponds to the JSON property `conversationMeasure`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure]
+        attr_accessor :conversation_measure
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleTypeInterval]
+        attr_accessor :interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_measure = args[:conversation_measure] if args.key?(:conversation_measure)
+          @interval = args[:interval] if args.key?(:interval)
+        end
+      end
+      
+      # The measure related to conversations.
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure
+        include Google::Apis::Core::Hashable
+      
+        # The average agent's sentiment score.
+        # Corresponds to the JSON property `averageAgentSentimentScore`
+        # @return [Float]
+        attr_accessor :average_agent_sentiment_score
+      
+        # The average client's sentiment score.
+        # Corresponds to the JSON property `averageClientSentimentScore`
+        # @return [Float]
+        attr_accessor :average_client_sentiment_score
+      
+        # The average customer satisfaction rating.
+        # Corresponds to the JSON property `averageCustomerSatisfactionRating`
+        # @return [Float]
+        attr_accessor :average_customer_satisfaction_rating
+      
+        # The average duration.
+        # Corresponds to the JSON property `averageDuration`
+        # @return [String]
+        attr_accessor :average_duration
+      
+        # Average QA normalized score. Will exclude 0's in average calculation.
+        # Corresponds to the JSON property `averageQaNormalizedScore`
+        # @return [Float]
+        attr_accessor :average_qa_normalized_score
+      
+        # Average QA normalized score averaged for questions averaged across all
+        # revisions of the parent scorecard. Will be only populated if the request
+        # specifies a dimension of QA_QUESTION_ID.
+        # Corresponds to the JSON property `averageQaQuestionNormalizedScore`
+        # @return [Float]
+        attr_accessor :average_qa_question_normalized_score
+      
+        # The average silence percentage.
+        # Corresponds to the JSON property `averageSilencePercentage`
+        # @return [Float]
+        attr_accessor :average_silence_percentage
+      
+        # The average turn count.
+        # Corresponds to the JSON property `averageTurnCount`
+        # @return [Float]
+        attr_accessor :average_turn_count
+      
+        # The conversation count.
+        # Corresponds to the JSON property `conversationCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_count
+      
+        # Average QA normalized score for all the tags.
+        # Corresponds to the JSON property `qaTagScores`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>]
+        attr_accessor :qa_tag_scores
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_agent_sentiment_score = args[:average_agent_sentiment_score] if args.key?(:average_agent_sentiment_score)
+          @average_client_sentiment_score = args[:average_client_sentiment_score] if args.key?(:average_client_sentiment_score)
+          @average_customer_satisfaction_rating = args[:average_customer_satisfaction_rating] if args.key?(:average_customer_satisfaction_rating)
+          @average_duration = args[:average_duration] if args.key?(:average_duration)
+          @average_qa_normalized_score = args[:average_qa_normalized_score] if args.key?(:average_qa_normalized_score)
+          @average_qa_question_normalized_score = args[:average_qa_question_normalized_score] if args.key?(:average_qa_question_normalized_score)
+          @average_silence_percentage = args[:average_silence_percentage] if args.key?(:average_silence_percentage)
+          @average_turn_count = args[:average_turn_count] if args.key?(:average_turn_count)
+          @conversation_count = args[:conversation_count] if args.key?(:conversation_count)
+          @qa_tag_scores = args[:qa_tag_scores] if args.key?(:qa_tag_scores)
+        end
+      end
+      
+      # Average QA normalized score for the tag.
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore
+        include Google::Apis::Core::Hashable
+      
+        # Average tag normalized score per tag.
+        # Corresponds to the JSON property `averageTagNormalizedScore`
+        # @return [Float]
+        attr_accessor :average_tag_normalized_score
+      
+        # Tag name.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_tag_normalized_score = args[:average_tag_normalized_score] if args.key?(:average_tag_normalized_score)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # A time series of metric values.
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries
+        include Google::Apis::Core::Hashable
+      
+        # The data points that make up the time series .
+        # Corresponds to the JSON property `dataPoints`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint>]
+        attr_accessor :data_points
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_points = args[:data_points] if args.key?(:data_points)
         end
       end
       
@@ -7069,6 +9676,366 @@ module Google
         end
       end
       
+      # Specifies the audit configuration for a service. The configuration determines
+      # which permission types are logged, and what identities, if any, are exempted
+      # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
+      # are AuditConfigs for both `allServices` and a specific service, the union of
+      # the two AuditConfigs is used for that service: the log_types specified in each
+      # AuditConfig are enabled, and the exempted_members in each AuditLogConfig are
+      # exempted. Example Policy with multiple AuditConfigs: ` "audit_configs": [ ` "
+      # service": "allServices", "audit_log_configs": [ ` "log_type": "DATA_READ", "
+      # exempted_members": [ "user:jose@example.com" ] `, ` "log_type": "DATA_WRITE" `,
+      # ` "log_type": "ADMIN_READ" ` ] `, ` "service": "sampleservice.googleapis.com",
+      # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
+      # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
+      # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
+      # exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com`
+      # from DATA_WRITE logging.
+      class GoogleIamV1AuditConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for logging of each type of permission.
+        # Corresponds to the JSON property `auditLogConfigs`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleIamV1AuditLogConfig>]
+        attr_accessor :audit_log_configs
+      
+        # Specifies a service that will be enabled for audit logging. For example, `
+        # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
+        # value that covers all services.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Provides the configuration for logging a type of permissions. Example: ` "
+      # audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "user:
+      # jose@example.com" ] `, ` "log_type": "DATA_WRITE" ` ] ` This enables '
+      # DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
+      # DATA_READ logging.
+      class GoogleIamV1AuditLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities that do not cause logging for this type of permission.
+        # Follows the same format of Binding.members.
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
+        # The log type that this config enables.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
+      # Associates `members`, or principals, with a `role`.
+      class GoogleIamV1Binding
+        include Google::Apis::Core::Hashable
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleTypeExpr]
+        attr_accessor :condition
+      
+        # Specifies the principals requesting access for a Google Cloud resource. `
+        # members` can have the following values: * `allUsers`: A special identifier
+        # that represents anyone who is on the internet; with or without a Google
+        # account. * `allAuthenticatedUsers`: A special identifier that represents
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        # Corresponds to the JSON property `members`
+        # @return [Array<String>]
+        attr_accessor :members
+      
+        # Role that is assigned to the list of `members`, or principals. For example, `
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @members = args[:members] if args.key?(:members)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # An Identity and Access Management (IAM) policy, which specifies access
+      # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+      # A `binding` binds one or more `members`, or principals, to a single `role`.
+      # Principals can be user accounts, service accounts, Google groups, and domains (
+      # such as G Suite). A `role` is a named list of permissions; each `role` can be
+      # an IAM predefined role or a user-created custom role. For some types of Google
+      # Cloud resources, a `binding` can also specify a `condition`, which is a
+      # logical expression that allows access to a resource only if the expression
+      # evaluates to `true`. A condition can add constraints based on attributes of
+      # the request, the resource, or both. To learn which resources support
+      # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
+      # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+      # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+      # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+      # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+      # ], "condition": ` "title": "expirable access", "description": "Does not grant
+      # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
+      class GoogleIamV1Policy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies cloud audit logging configuration for this policy.
+        # Corresponds to the JSON property `auditConfigs`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleIamV1AuditConfig>]
+        attr_accessor :audit_configs
+      
+        # Associates a list of `members`, or principals, with a `role`. Optionally, may
+        # specify a `condition` that determines how and when the `bindings` are applied.
+        # Each of the `bindings` must contain at least one principal. The `bindings` in
+        # a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        # can be Google groups. Each occurrence of a principal counts towards these
+        # limits. For example, if the `bindings` grant 50 different roles to `user:alice@
+        # example.com`, and not to any other principal, then you can add another 1,450
+        # principals to the `bindings` in the `Policy`.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleIamV1Binding>]
+        attr_accessor :bindings
+      
+        # `etag` is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy. **Important:** If you use IAM
+        # Conditions, you must include the `etag` field whenever you call `setIamPolicy`.
+        # If you omit this field, then IAM allows you to overwrite a version `3` policy
+        # with a version `1` policy, and all of the conditions in the version `3` policy
+        # are lost.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+        # Requests that specify an invalid value are rejected. Any operation that
+        # affects conditional role bindings must specify version `3`. This requirement
+        # applies to the following operations: * Getting a policy that includes a
+        # conditional role binding * Adding a conditional role binding to a policy *
+        # Changing a conditional role binding in a policy * Removing any role binding,
+        # with or without a condition, from a policy that includes conditions **
+        # Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
+        # to overwrite a version `3` policy with a version `1` policy, and all of the
+        # conditions in the version `3` policy are lost. If a policy does not include
+        # any conditions, operations on that policy may specify any valid version or
+        # leave the field unset. To learn which resources support conditions in their
+        # IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/
+        # conditions/resource-policies).
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Request message for `SetIamPolicy` method.
+      class GoogleIamV1SetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleIamV1Policy]
+        attr_accessor :policy
+      
+        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
+        # the fields in the mask will be modified. If no mask is provided, the following
+        # default mask is used: `paths: "bindings, etag"`
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request message for `TestIamPermissions` method.
+      class GoogleIamV1TestIamPermissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The set of permissions to check for the `resource`. Permissions with wildcards
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
+        # Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Response message for `TestIamPermissions` method.
+      class GoogleIamV1TestIamPermissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class GoogleLongrunningListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -7208,6 +10175,90 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+      # "Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
+      class GoogleTypeExpr
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in Common Expression Language syntax.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+      # Timestamp end (exclusive). The start must be less than or equal to the end.
+      # When the start equals the end, the interval is empty (matches no time). When
+      # both start and end are unspecified, the interval matches any time.
+      class GoogleTypeInterval
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        # this interval will have to be before the end.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        # this interval will have to be the same or after the start.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
     end
