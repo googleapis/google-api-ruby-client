@@ -11310,7 +11310,7 @@ module Google
         
         # Create a security profile v2.
         # @param [String] parent
-        #   Required. The parent resource name.
+        #   Required. The parent resource name. Format: `organizations/`org``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2] google_cloud_apigee_v1_security_profile_v2_object
         # @param [String] security_profile_v2_id
         #   Required. The security profile id.
@@ -11346,7 +11346,8 @@ module Google
         
         # Delete a security profile v2.
         # @param [String] name
-        #   Required. The name of the security profile v2 to delete.
+        #   Required. The name of the security profile v2 to delete. Format: `
+        #   organizations/`org`/securityProfilesV2/`profile``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11376,7 +11377,8 @@ module Google
         
         # Get a security profile v2.
         # @param [String] name
-        #   Required. The security profile id.
+        #   Required. The name of the security profile v2 to get. Format: `organizations/`
+        #   org`/securityProfilesV2/`profile``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11448,7 +11450,8 @@ module Google
         #   org`/securityProfilesV2/`profile`
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2] google_cloud_apigee_v1_security_profile_v2_object
         # @param [String] update_mask
-        #   Required. The list of fields to update.
+        #   Optional. The list of fields to update. Valid fields to update are `
+        #   description` and `profileAssessmentConfigs`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
