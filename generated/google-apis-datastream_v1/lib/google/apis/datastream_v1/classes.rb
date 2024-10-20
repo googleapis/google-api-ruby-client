@@ -285,7 +285,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # MySQL database profile.
+        # MySQL database profile. Next ID: 7.
         # Corresponds to the JSON property `mysqlProfile`
         # @return [Google::Apis::DatastreamV1::MysqlProfile]
         attr_accessor :mysql_profile
@@ -295,12 +295,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Oracle database profile.
+        # Oracle database profile. Next ID: 10.
         # Corresponds to the JSON property `oracleProfile`
         # @return [Google::Apis::DatastreamV1::OracleProfile]
         attr_accessor :oracle_profile
       
-        # PostgreSQL database profile.
+        # PostgreSQL database profile. Next ID: 7.
         # Corresponds to the JSON property `postgresqlProfile`
         # @return [Google::Apis::DatastreamV1::PostgresqlProfile]
         attr_accessor :postgresql_profile
@@ -310,7 +310,7 @@ module Google
         # @return [Google::Apis::DatastreamV1::PrivateConnectivity]
         attr_accessor :private_connectivity
       
-        # SQLServer database profile
+        # SQLServer database profile. Next ID: 8.
         # Corresponds to the JSON property `sqlServerProfile`
         # @return [Google::Apis::DatastreamV1::SqlServerProfile]
         attr_accessor :sql_server_profile
@@ -1200,7 +1200,7 @@ module Google
         end
       end
       
-      # MySQL database profile.
+      # MySQL database profile. Next ID: 7.
       class MysqlProfile
         include Google::Apis::Core::Hashable
       
@@ -1209,7 +1209,8 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
-        # Required. Input only. Password for the MySQL connection.
+        # Optional. Input only. Password for the MySQL connection. Mutually exclusive
+        # with the `secret_manager_stored_password` field.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
@@ -1619,7 +1620,7 @@ module Google
         end
       end
       
-      # Oracle database profile.
+      # Oracle database profile. Next ID: 10.
       class OracleProfile
         include Google::Apis::Core::Hashable
       
@@ -1643,7 +1644,8 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleSslConfig]
         attr_accessor :oracle_ssl_config
       
-        # Required. Password for the Oracle connection.
+        # Optional. Password for the Oracle connection. Mutually exclusive with the `
+        # secret_manager_stored_password` field.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
@@ -1930,7 +1932,7 @@ module Google
         end
       end
       
-      # PostgreSQL database profile.
+      # PostgreSQL database profile. Next ID: 7.
       class PostgresqlProfile
         include Google::Apis::Core::Hashable
       
@@ -1944,7 +1946,8 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
-        # Required. Password for the PostgreSQL connection.
+        # Optional. Password for the PostgreSQL connection. Mutually exclusive with the `
+        # secret_manager_stored_password` field.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
@@ -2501,7 +2504,7 @@ module Google
         end
       end
       
-      # SQLServer database profile
+      # SQLServer database profile. Next ID: 8.
       class SqlServerProfile
         include Google::Apis::Core::Hashable
       
@@ -2515,7 +2518,8 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
-        # Required. Password for the SQLServer connection.
+        # Optional. Password for the SQLServer connection. Mutually exclusive with the `
+        # secret_manager_stored_password` field.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
