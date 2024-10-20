@@ -1827,6 +1827,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :base_version
       
+        # The strategy to use when a conflict is detected. Defaults to `SERVER_VALUE`.
+        # If this is set, then `conflict_detection_strategy` must also be set.
+        # Corresponds to the JSON property `conflictResolutionStrategy`
+        # @return [String]
+        attr_accessor :conflict_resolution_strategy
+      
         # A unique identifier for an entity. If a key's partition ID or any of its path
         # kinds or names are reserved/read-only, the key is reserved/read-only. A
         # reserved/read-only key is forbidden in certain documented contexts.
@@ -1844,6 +1850,14 @@ module Google
         # Corresponds to the JSON property `propertyMask`
         # @return [Google::Apis::DatastoreV1::PropertyMask]
         attr_accessor :property_mask
+      
+        # Optional. The transforms to perform on the entity. This field can be set only
+        # when the operation is `insert`, `update`, or `upsert`. If present, the
+        # transforms are be applied to the entity regardless of the property mask, in
+        # order, after the operation.
+        # Corresponds to the JSON property `propertyTransforms`
+        # @return [Array<Google::Apis::DatastoreV1::PropertyTransform>]
+        attr_accessor :property_transforms
       
         # A Datastore data object. Must not exceed 1 MiB - 4 bytes.
         # Corresponds to the JSON property `update`
@@ -1868,9 +1882,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @base_version = args[:base_version] if args.key?(:base_version)
+          @conflict_resolution_strategy = args[:conflict_resolution_strategy] if args.key?(:conflict_resolution_strategy)
           @delete = args[:delete] if args.key?(:delete)
           @insert = args[:insert] if args.key?(:insert)
           @property_mask = args[:property_mask] if args.key?(:property_mask)
+          @property_transforms = args[:property_transforms] if args.key?(:property_transforms)
           @update = args[:update] if args.key?(:update)
           @update_time = args[:update_time] if args.key?(:update_time)
           @upsert = args[:upsert] if args.key?(:upsert)
@@ -1900,6 +1916,12 @@ module Google
         # @return [Google::Apis::DatastoreV1::Key]
         attr_accessor :key
       
+        # The results of applying each PropertyTransform, in the same order of the
+        # request.
+        # Corresponds to the JSON property `transformResults`
+        # @return [Array<Google::Apis::DatastoreV1::Value>]
+        attr_accessor :transform_results
+      
         # The update time of the entity on the server after processing the mutation. If
         # the mutation doesn't change anything on the server, then the timestamp will be
         # the update timestamp of the current entity. This field will not be set after a
@@ -1926,6 +1948,7 @@ module Google
           @conflict_detected = args[:conflict_detected] if args.key?(:conflict_detected)
           @create_time = args[:create_time] if args.key?(:create_time)
           @key = args[:key] if args.key?(:key)
+          @transform_results = args[:transform_results] if args.key?(:transform_results)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)
         end
@@ -2149,6 +2172,68 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A transformation of an entity property.
+      class PropertyTransform
+        include Google::Apis::Core::Hashable
+      
+        # An array value.
+        # Corresponds to the JSON property `appendMissingElements`
+        # @return [Google::Apis::DatastoreV1::ArrayValue]
+        attr_accessor :append_missing_elements
+      
+        # A message that can hold any of the supported value types and associated
+        # metadata.
+        # Corresponds to the JSON property `increment`
+        # @return [Google::Apis::DatastoreV1::Value]
+        attr_accessor :increment
+      
+        # A message that can hold any of the supported value types and associated
+        # metadata.
+        # Corresponds to the JSON property `maximum`
+        # @return [Google::Apis::DatastoreV1::Value]
+        attr_accessor :maximum
+      
+        # A message that can hold any of the supported value types and associated
+        # metadata.
+        # Corresponds to the JSON property `minimum`
+        # @return [Google::Apis::DatastoreV1::Value]
+        attr_accessor :minimum
+      
+        # Optional. The name of the property. Property paths (a list of property names
+        # separated by dots (`.`)) may be used to refer to properties inside entity
+        # values. For example `foo.bar` means the property `bar` inside the entity
+        # property `foo`. If a property name contains a dot `.` or a backlslash `\`,
+        # then that name must be escaped.
+        # Corresponds to the JSON property `property`
+        # @return [String]
+        attr_accessor :property
+      
+        # An array value.
+        # Corresponds to the JSON property `removeAllFromArray`
+        # @return [Google::Apis::DatastoreV1::ArrayValue]
+        attr_accessor :remove_all_from_array
+      
+        # Sets the property to the given server value.
+        # Corresponds to the JSON property `setToServerValue`
+        # @return [String]
+        attr_accessor :set_to_server_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @append_missing_elements = args[:append_missing_elements] if args.key?(:append_missing_elements)
+          @increment = args[:increment] if args.key?(:increment)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @minimum = args[:minimum] if args.key?(:minimum)
+          @property = args[:property] if args.key?(:property)
+          @remove_all_from_array = args[:remove_all_from_array] if args.key?(:remove_all_from_array)
+          @set_to_server_value = args[:set_to_server_value] if args.key?(:set_to_server_value)
         end
       end
       

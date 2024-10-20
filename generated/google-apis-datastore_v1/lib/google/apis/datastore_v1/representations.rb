@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PropertyTransform
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Query
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1023,11 +1029,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :base_version, :numeric_string => true, as: 'baseVersion'
+          property :conflict_resolution_strategy, as: 'conflictResolutionStrategy'
           property :delete, as: 'delete', class: Google::Apis::DatastoreV1::Key, decorator: Google::Apis::DatastoreV1::Key::Representation
       
           property :insert, as: 'insert', class: Google::Apis::DatastoreV1::Entity, decorator: Google::Apis::DatastoreV1::Entity::Representation
       
           property :property_mask, as: 'propertyMask', class: Google::Apis::DatastoreV1::PropertyMask, decorator: Google::Apis::DatastoreV1::PropertyMask::Representation
+      
+          collection :property_transforms, as: 'propertyTransforms', class: Google::Apis::DatastoreV1::PropertyTransform, decorator: Google::Apis::DatastoreV1::PropertyTransform::Representation
       
           property :update, as: 'update', class: Google::Apis::DatastoreV1::Entity, decorator: Google::Apis::DatastoreV1::Entity::Representation
       
@@ -1043,6 +1052,8 @@ module Google
           property :conflict_detected, as: 'conflictDetected'
           property :create_time, as: 'createTime'
           property :key, as: 'key', class: Google::Apis::DatastoreV1::Key, decorator: Google::Apis::DatastoreV1::Key::Representation
+      
+          collection :transform_results, as: 'transformResults', class: Google::Apis::DatastoreV1::Value, decorator: Google::Apis::DatastoreV1::Value::Representation
       
           property :update_time, as: 'updateTime'
           property :version, :numeric_string => true, as: 'version'
@@ -1113,6 +1124,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class PropertyTransform
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :append_missing_elements, as: 'appendMissingElements', class: Google::Apis::DatastoreV1::ArrayValue, decorator: Google::Apis::DatastoreV1::ArrayValue::Representation
+      
+          property :increment, as: 'increment', class: Google::Apis::DatastoreV1::Value, decorator: Google::Apis::DatastoreV1::Value::Representation
+      
+          property :maximum, as: 'maximum', class: Google::Apis::DatastoreV1::Value, decorator: Google::Apis::DatastoreV1::Value::Representation
+      
+          property :minimum, as: 'minimum', class: Google::Apis::DatastoreV1::Value, decorator: Google::Apis::DatastoreV1::Value::Representation
+      
+          property :property, as: 'property'
+          property :remove_all_from_array, as: 'removeAllFromArray', class: Google::Apis::DatastoreV1::ArrayValue, decorator: Google::Apis::DatastoreV1::ArrayValue::Representation
+      
+          property :set_to_server_value, as: 'setToServerValue'
         end
       end
       
