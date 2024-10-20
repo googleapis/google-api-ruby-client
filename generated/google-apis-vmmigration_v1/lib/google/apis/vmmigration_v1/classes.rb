@@ -304,6 +304,11 @@ module Google
       class AwsSourceVmDetails
         include Google::Apis::Core::Hashable
       
+        # Output only. The VM architecture.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # Output only. The total size of the disks being migrated in bytes.
         # Corresponds to the JSON property `committedStorageBytes`
         # @return [Fixnum]
@@ -331,6 +336,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
           @disks = args[:disks] if args.key?(:disks)
           @firmware = args[:firmware] if args.key?(:firmware)
@@ -579,6 +585,11 @@ module Google
       class AzureSourceVmDetails
         include Google::Apis::Core::Hashable
       
+        # Output only. The VM architecture.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # Output only. The total size of the disks being migrated in bytes.
         # Corresponds to the JSON property `committedStorageBytes`
         # @return [Fixnum]
@@ -606,6 +617,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
           @disks = args[:disks] if args.key?(:disks)
           @firmware = args[:firmware] if args.key?(:firmware)
@@ -616,6 +628,11 @@ module Google
       # AzureVmDetails describes a VM in Azure.
       class AzureVmDetails
         include Google::Apis::Core::Hashable
+      
+        # The CPU architecture.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
       
         # The VM Boot Option.
         # Corresponds to the JSON property `bootOption`
@@ -689,6 +706,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @committed_storage_mb = args[:committed_storage_mb] if args.key?(:committed_storage_mb)
           @computer_name = args[:computer_name] if args.key?(:computer_name)
@@ -4614,6 +4632,11 @@ module Google
       class VmwareSourceVmDetails
         include Google::Apis::Core::Hashable
       
+        # Output only. The VM architecture.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # Output only. The total size of the disks being migrated in bytes.
         # Corresponds to the JSON property `committedStorageBytes`
         # @return [Fixnum]
@@ -4641,6 +4664,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
           @disks = args[:disks] if args.key?(:disks)
           @firmware = args[:firmware] if args.key?(:firmware)
@@ -4651,6 +4675,11 @@ module Google
       # VmwareVmDetails describes a VM in vCenter.
       class VmwareVmDetails
         include Google::Apis::Core::Hashable
+      
+        # Output only. The CPU architecture.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
       
         # Output only. The VM Boot Option.
         # Corresponds to the JSON property `bootOption`
@@ -4722,6 +4751,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @committed_storage_mb = args[:committed_storage_mb] if args.key?(:committed_storage_mb)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
