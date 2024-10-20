@@ -2287,7 +2287,9 @@ module Google
         attr_accessor :ingress
       
         # Optional. Disables IAM permission check for run.routes.invoke for callers of
-        # this service. This setting should not be used with external ingress.
+        # this service. This feature is available by invitation only. For more
+        # information, visit https://cloud.google.com/run/docs/securing/managing-access#
+        # invoker_check.
         # Corresponds to the JSON property `invokerIamDisabled`
         # @return [Boolean]
         attr_accessor :invoker_iam_disabled
