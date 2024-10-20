@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssociatedEntities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -802,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouteDestinations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuntimeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1061,6 +1073,16 @@ module Google
       class ApproveRolloutResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AssociatedEntities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :anthos_clusters, as: 'anthosClusters', class: Google::Apis::ClouddeployV1::AnthosCluster, decorator: Google::Apis::ClouddeployV1::AnthosCluster::Representation
+      
+          collection :gke_clusters, as: 'gkeClusters', class: Google::Apis::ClouddeployV1::GkeCluster, decorator: Google::Apis::ClouddeployV1::GkeCluster::Representation
+      
         end
       end
       
@@ -1607,6 +1629,8 @@ module Google
           property :deployment, as: 'deployment'
           property :http_route, as: 'httpRoute'
           property :pod_selector_label, as: 'podSelectorLabel'
+          property :route_destinations, as: 'routeDestinations', class: Google::Apis::ClouddeployV1::RouteDestinations, decorator: Google::Apis::ClouddeployV1::RouteDestinations::Representation
+      
           property :route_update_wait_time, as: 'routeUpdateWaitTime'
           property :service, as: 'service'
           property :stable_cutback_duration, as: 'stableCutbackDuration'
@@ -2351,6 +2375,14 @@ module Google
         end
       end
       
+      class RouteDestinations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destination_ids, as: 'destinationIds'
+          property :propagate_service, as: 'propagateService'
+        end
+      end
+      
       class RuntimeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2495,6 +2527,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
           property :anthos_cluster, as: 'anthosCluster', class: Google::Apis::ClouddeployV1::AnthosCluster, decorator: Google::Apis::ClouddeployV1::AnthosCluster::Representation
+      
+          hash :associated_entities, as: 'associatedEntities', class: Google::Apis::ClouddeployV1::AssociatedEntities, decorator: Google::Apis::ClouddeployV1::AssociatedEntities::Representation
       
           property :create_time, as: 'createTime'
           property :custom_target, as: 'customTarget', class: Google::Apis::ClouddeployV1::CustomTarget, decorator: Google::Apis::ClouddeployV1::CustomTarget::Representation

@@ -269,6 +269,31 @@ module Google
         end
       end
       
+      # Information about entities associated with a `Target`.
+      class AssociatedEntities
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Information specifying Anthos clusters as associated entities.
+        # Corresponds to the JSON property `anthosClusters`
+        # @return [Array<Google::Apis::ClouddeployV1::AnthosCluster>]
+        attr_accessor :anthos_clusters
+      
+        # Optional. Information specifying GKE clusters as associated entities.
+        # Corresponds to the JSON property `gkeClusters`
+        # @return [Array<Google::Apis::ClouddeployV1::GkeCluster>]
+        attr_accessor :gke_clusters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anthos_clusters = args[:anthos_clusters] if args.key?(:anthos_clusters)
+          @gke_clusters = args[:gke_clusters] if args.key?(:gke_clusters)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -2374,6 +2399,11 @@ module Google
         # @return [String]
         attr_accessor :pod_selector_label
       
+        # Information about route destinations for the Gateway API service mesh.
+        # Corresponds to the JSON property `routeDestinations`
+        # @return [Google::Apis::ClouddeployV1::RouteDestinations]
+        attr_accessor :route_destinations
+      
         # Optional. The time to wait for route updates to propagate. The maximum
         # configurable time is 3 hours, in seconds format. If unspecified, there is no
         # wait time.
@@ -2402,6 +2432,7 @@ module Google
           @deployment = args[:deployment] if args.key?(:deployment)
           @http_route = args[:http_route] if args.key?(:http_route)
           @pod_selector_label = args[:pod_selector_label] if args.key?(:pod_selector_label)
+          @route_destinations = args[:route_destinations] if args.key?(:route_destinations)
           @route_update_wait_time = args[:route_update_wait_time] if args.key?(:route_update_wait_time)
           @service = args[:service] if args.key?(:service)
           @stable_cutback_duration = args[:stable_cutback_duration] if args.key?(:stable_cutback_duration)
@@ -5171,6 +5202,38 @@ module Google
         end
       end
       
+      # Information about route destinations for the Gateway API service mesh.
+      class RouteDestinations
+        include Google::Apis::Core::Hashable
+      
+        # Required. The clusters where the Gateway API HTTPRoute resource will be
+        # deployed to. Valid entries include the associated entities IDs configured in
+        # the Target resource and "@self" to include the Target cluster.
+        # Corresponds to the JSON property `destinationIds`
+        # @return [Array<String>]
+        attr_accessor :destination_ids
+      
+        # Optional. Whether to propagate the Kubernetes Service to the route destination
+        # clusters. The Service will always be deployed to the Target cluster even if
+        # the HTTPRoute is not. This option may be used to facilitiate successful DNS
+        # lookup in the route destination clusters. Can only be set to true if
+        # destinations are specified.
+        # Corresponds to the JSON property `propagateService`
+        # @return [Boolean]
+        attr_accessor :propagate_service
+        alias_method :propagate_service?, :propagate_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_ids = args[:destination_ids] if args.key?(:destination_ids)
+          @propagate_service = args[:propagate_service] if args.key?(:propagate_service)
+        end
+      end
+      
       # RuntimeConfig contains the runtime specific configurations for a deployment
       # strategy.
       class RuntimeConfig
@@ -5678,6 +5741,18 @@ module Google
         # @return [Google::Apis::ClouddeployV1::AnthosCluster]
         attr_accessor :anthos_cluster
       
+        # Optional. Map of entity IDs to their associated entities. Associated entities
+        # allows specifying places other than the deployment target for specific
+        # features. For example, the Gateway API canary can be configured to deploy the
+        # HTTPRoute to a different cluster(s) than the deployment cluster using
+        # associated entities. An entity ID must consist of lower-case letters, numbers,
+        # and hyphens, start with a letter and end with a letter or a number, and have a
+        # max length of 63 characters. In other words, it must match the following regex:
+        # `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`.
+        # Corresponds to the JSON property `associatedEntities`
+        # @return [Hash<String,Google::Apis::ClouddeployV1::AssociatedEntities>]
+        attr_accessor :associated_entities
+      
         # Output only. Time at which the `Target` was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -5777,6 +5852,7 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @anthos_cluster = args[:anthos_cluster] if args.key?(:anthos_cluster)
+          @associated_entities = args[:associated_entities] if args.key?(:associated_entities)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_target = args[:custom_target] if args.key?(:custom_target)
           @deploy_parameters = args[:deploy_parameters] if args.key?(:deploy_parameters)
