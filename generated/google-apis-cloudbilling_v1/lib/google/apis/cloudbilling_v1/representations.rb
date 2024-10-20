@@ -195,6 +195,7 @@ module Google
       class BillingAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
           property :display_name, as: 'displayName'
           property :master_billing_account, as: 'masterBillingAccount'
           property :name, as: 'name'
