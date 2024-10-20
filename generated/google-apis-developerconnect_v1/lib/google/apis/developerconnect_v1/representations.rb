@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Installation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,24 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProcessGitHubEnterpriseWebhookRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProcessGitLabEnterpriseWebhookRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProcessGitLabWebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,6 +400,15 @@ module Google
         end
       end
       
+      class HttpBody
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_type, as: 'contentType'
+          property :data, :base64 => true, as: 'data'
+          collection :extensions, as: 'extensions'
+        end
+      end
+      
       class Installation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -480,6 +513,30 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class ProcessGitHubEnterpriseWebhookRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, as: 'body', class: Google::Apis::DeveloperconnectV1::HttpBody, decorator: Google::Apis::DeveloperconnectV1::HttpBody::Representation
+      
+        end
+      end
+      
+      class ProcessGitLabEnterpriseWebhookRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, as: 'body', class: Google::Apis::DeveloperconnectV1::HttpBody, decorator: Google::Apis::DeveloperconnectV1::HttpBody::Representation
+      
+        end
+      end
+      
+      class ProcessGitLabWebhookRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, as: 'body', class: Google::Apis::DeveloperconnectV1::HttpBody, decorator: Google::Apis::DeveloperconnectV1::HttpBody::Representation
+      
         end
       end
       
