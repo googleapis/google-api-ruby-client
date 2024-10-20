@@ -1589,7 +1589,8 @@ module Google
         # @param [String] action
         #   Required. The action to take on the AccessProposal.
         # @param [Array<String>, String] role
-        #   Optional. The roles the approver has allowed, if any.
+        #   Optional. The roles the approver has allowed, if any. Note: This field is
+        #   required for the `ACCEPT` action.
         # @param [Boolean] send_notification
         #   Optional. Whether to send an email to the requester when the AccessProposal is
         #   denied or accepted.
