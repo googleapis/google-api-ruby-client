@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BoostConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -315,6 +321,19 @@ module Google
         end
       end
       
+      class BoostConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::WorkstationsV1::Accelerator, decorator: Google::Apis::WorkstationsV1::Accelerator::Representation
+      
+          property :boot_disk_size_gb, as: 'bootDiskSizeGb'
+          property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          property :id, as: 'id'
+          property :machine_type, as: 'machineType'
+          property :pool_size, as: 'poolSize'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -378,6 +397,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::WorkstationsV1::Accelerator, decorator: Google::Apis::WorkstationsV1::Accelerator::Representation
+      
+          collection :boost_configs, as: 'boostConfigs', class: Google::Apis::WorkstationsV1::BoostConfig, decorator: Google::Apis::WorkstationsV1::BoostConfig::Representation
       
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::WorkstationsV1::GceConfidentialInstanceConfig, decorator: Google::Apis::WorkstationsV1::GceConfidentialInstanceConfig::Representation
@@ -699,6 +720,7 @@ module Google
       
           property :reconciling, as: 'reconciling'
           property :subnetwork, as: 'subnetwork'
+          hash :tags, as: 'tags'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
