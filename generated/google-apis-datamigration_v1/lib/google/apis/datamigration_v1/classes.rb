@@ -1003,6 +1003,11 @@ module Google
         # @return [String]
         attr_accessor :provider
       
+        # Optional. The connection profile role.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
         # Specifies connection parameters required specifically for SQL Server databases.
         # Corresponds to the JSON property `sqlserver`
         # @return [Google::Apis::DatamigrationV1::SqlServerConnectionProfile]
@@ -1037,6 +1042,7 @@ module Google
           @oracle = args[:oracle] if args.key?(:oracle)
           @postgresql = args[:postgresql] if args.key?(:postgresql)
           @provider = args[:provider] if args.key?(:provider)
+          @role = args[:role] if args.key?(:role)
           @sqlserver = args[:sqlserver] if args.key?(:sqlserver)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
