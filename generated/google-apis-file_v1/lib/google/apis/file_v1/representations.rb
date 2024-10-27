@@ -364,6 +364,7 @@ module Google
       class FixedIops
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_iops, :numeric_string => true, as: 'maxIops'
           property :max_read_iops, :numeric_string => true, as: 'maxReadIops'
         end
       end
@@ -472,6 +473,7 @@ module Google
       class IopsPerTb
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_iops_per_tb, :numeric_string => true, as: 'maxIopsPerTb'
           property :max_read_iops_per_tb, :numeric_string => true, as: 'maxReadIopsPerTb'
         end
       end
