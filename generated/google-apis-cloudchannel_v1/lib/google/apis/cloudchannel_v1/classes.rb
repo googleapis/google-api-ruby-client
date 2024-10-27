@@ -280,7 +280,7 @@ module Google
         end
       end
       
-      # Request message for CloudChannelService.ChangeParametersRequest.
+      # Request message for CloudChannelService.ChangeParameters.
       class GoogleCloudChannelV1ChangeParametersRequest
         include Google::Apis::Core::Hashable
       
@@ -1779,8 +1779,8 @@ module Google
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1BillableSku>]
         attr_accessor :billable_skus
       
-        # A token to retrieve the next page of results. Pass to ListSkuGroupBillableSkus.
-        # page_token to obtain that page.
+        # A token to retrieve the next page of results. Pass to
+        # ListSkuGroupBillableSkusRequest.page_token to obtain that page.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1800,8 +1800,8 @@ module Google
       class GoogleCloudChannelV1ListSkuGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # A token to retrieve the next page of results. Pass to ListSkuGroups.page_token
-        # to obtain that page.
+        # A token to retrieve the next page of results. Pass to ListSkuGroupsRequest.
+        # page_token to obtain that page.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2704,6 +2704,18 @@ module Google
       class GoogleCloudChannelV1RegisterSubscriberRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Resource name of the account. Required if integrator is not provided.
+        # Otherwise, leave this field empty/unset.
+        # Corresponds to the JSON property `account`
+        # @return [String]
+        attr_accessor :account
+      
+        # Optional. Resource name of the integrator. Required if account is not provided.
+        # Otherwise, leave this field empty/unset.
+        # Corresponds to the JSON property `integrator`
+        # @return [String]
+        attr_accessor :integrator
+      
         # Required. Service account that provides subscriber access to the registered
         # topic.
         # Corresponds to the JSON property `serviceAccount`
@@ -2716,6 +2728,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account = args[:account] if args.key?(:account)
+          @integrator = args[:integrator] if args.key?(:integrator)
           @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
@@ -3621,6 +3635,18 @@ module Google
       class GoogleCloudChannelV1UnregisterSubscriberRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Resource name of the account. Required if integrator is not provided.
+        # Otherwise, leave this field empty/unset.
+        # Corresponds to the JSON property `account`
+        # @return [String]
+        attr_accessor :account
+      
+        # Optional. Resource name of the integrator. Required if account is not provided.
+        # Otherwise, leave this field empty/unset.
+        # Corresponds to the JSON property `integrator`
+        # @return [String]
+        attr_accessor :integrator
+      
         # Required. Service account to unregister from subscriber access to the topic.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -3632,6 +3658,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account = args[:account] if args.key?(:account)
+          @integrator = args[:integrator] if args.key?(:integrator)
           @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
@@ -4022,6 +4050,15 @@ module Google
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Parameter>]
         attr_accessor :parameters
       
+        # Optional. Price reference ID for the offer. Optional field only for offers
+        # that require additional price information. Used to guarantee that the pricing
+        # is consistent between quoting the offer and placing the order. Yet to be
+        # implemented: this field is currently not evaluated in the API if populated in
+        # a request.
+        # Corresponds to the JSON property `priceReferenceId`
+        # @return [String]
+        attr_accessor :price_reference_id
+      
         # Service provisioned for an entitlement.
         # Corresponds to the JSON property `provisionedService`
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ProvisionedService]
@@ -4073,6 +4110,7 @@ module Google
           @num_units = args[:num_units] if args.key?(:num_units)
           @offer = args[:offer] if args.key?(:offer)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @price_reference_id = args[:price_reference_id] if args.key?(:price_reference_id)
           @provisioned_service = args[:provisioned_service] if args.key?(:provisioned_service)
           @provisioning_state = args[:provisioning_state] if args.key?(:provisioning_state)
           @purchase_order_id = args[:purchase_order_id] if args.key?(:purchase_order_id)
