@@ -1800,6 +1800,8 @@ module Google
         class Access
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :condition, as: 'condition', class: Google::Apis::BigqueryV2::Expr, decorator: Google::Apis::BigqueryV2::Expr::Representation
+        
             property :dataset, as: 'dataset', class: Google::Apis::BigqueryV2::DatasetAccessEntry, decorator: Google::Apis::BigqueryV2::DatasetAccessEntry::Representation
         
             property :domain, as: 'domain'

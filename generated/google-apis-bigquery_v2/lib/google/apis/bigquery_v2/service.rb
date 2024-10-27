@@ -94,6 +94,20 @@ module Google
         #   Required. Project ID of the requested dataset
         # @param [String] dataset_id
         #   Required. Dataset ID of the requested dataset
+        # @param [Fixnum] access_policy_version
+        #   Optional. The version of the access policy schema to fetch. Valid values are 0,
+        #   1, and 3. Requests specifying an invalid value will be rejected. Requests for
+        #   conditional access policy binding in datasets must specify version 3. Dataset
+        #   with no conditional role bindings in access policy may specify any valid value
+        #   or leave the field unset. This field will be maped to [IAM Policy version] (
+        #   https://cloud.google.com/iam/docs/policies#versions) and will be used to fetch
+        #   policy from IAM. If unset or if 0 or 1 value is used for dataset with
+        #   conditional bindings, access entry with condition will have role string
+        #   appended by 'withcond' string followed by a hash value. For example : ` "
+        #   access": [ ` "role": "roles/bigquery.
+        #   dataViewer_with_conditionalbinding_7a34awqsda", "userByEmail": "user@example.
+        #   com", ` ] ` Please refer https://cloud.google.com/iam/docs/troubleshooting-
+        #   withcond for more details.
         # @param [String] dataset_view
         #   Optional. Specifies the view that determines which dataset information is
         #   returned. By default, metadata and ACL information are returned.
@@ -114,12 +128,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_dataset(project_id, dataset_id, dataset_view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_dataset(project_id, dataset_id, access_policy_version: nil, dataset_view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}', options)
           command.response_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.query['accessPolicyVersion'] = access_policy_version unless access_policy_version.nil?
           command.query['datasetView'] = dataset_view unless dataset_view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -130,6 +145,18 @@ module Google
         # @param [String] project_id
         #   Required. Project ID of the new dataset
         # @param [Google::Apis::BigqueryV2::Dataset] dataset_object
+        # @param [Fixnum] access_policy_version
+        #   Optional. The version of the provided access policy schema. Valid values are 0,
+        #   1, and 3. Requests specifying an invalid value will be rejected. This version
+        #   refers to the schema version of the access policy and not the version of
+        #   access policy. This field's value can be equal or more than the access policy
+        #   schema provided in the request. For example, * Requests with conditional
+        #   access policy binding in datasets must specify version 3. * But dataset with
+        #   no conditional role bindings in access policy may specify any valid value or
+        #   leave the field unset. If unset or if 0 or 1 value is used for dataset with
+        #   conditional bindings, request will be rejected. This field will be maped to
+        #   IAM Policy version (https://cloud.google.com/iam/docs/policies#versions) and
+        #   will be used to set policy in IAM.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -147,13 +174,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_dataset(project_id, dataset_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_dataset(project_id, dataset_object = nil, access_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{+projectId}/datasets', options)
           command.request_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.request_object = dataset_object
           command.response_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
+          command.query['accessPolicyVersion'] = access_policy_version unless access_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -216,6 +244,20 @@ module Google
         # @param [String] dataset_id
         #   Required. Dataset ID of the dataset being updated
         # @param [Google::Apis::BigqueryV2::Dataset] dataset_object
+        # @param [Fixnum] access_policy_version
+        #   Optional. The version of the provided access policy schema. Valid values are 0,
+        #   1, and 3. Requests specifying an invalid value will be rejected. This version
+        #   refers to the schema version of the access policy and not the version of
+        #   access policy. This field's value can be equal or more than the access policy
+        #   schema provided in the request. For example, * Operations updating conditional
+        #   access policy binding in datasets must specify version 3. Some of the
+        #   operations are : - Adding a new access policy entry with condition. - Removing
+        #   an access policy entry with condition. - Updating an access policy entry with
+        #   condition. * But dataset with no conditional role bindings in access policy
+        #   may specify any valid value or leave the field unset. If unset or if 0 or 1
+        #   value is used for dataset with conditional bindings, request will be rejected.
+        #   This field will be maped to IAM Policy version (https://cloud.google.com/iam/
+        #   docs/policies#versions) and will be used to set policy in IAM.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -233,7 +275,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_dataset(project_id, dataset_id, dataset_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_dataset(project_id, dataset_id, dataset_object = nil, access_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'projects/{+projectId}/datasets/{+datasetId}', options)
           command.request_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.request_object = dataset_object
@@ -241,6 +283,7 @@ module Google
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.query['accessPolicyVersion'] = access_policy_version unless access_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -292,6 +335,20 @@ module Google
         # @param [String] dataset_id
         #   Required. Dataset ID of the dataset being updated
         # @param [Google::Apis::BigqueryV2::Dataset] dataset_object
+        # @param [Fixnum] access_policy_version
+        #   Optional. The version of the provided access policy schema. Valid values are 0,
+        #   1, and 3. Requests specifying an invalid value will be rejected. This version
+        #   refers to the schema version of the access policy and not the version of
+        #   access policy. This field's value can be equal or more than the access policy
+        #   schema provided in the request. For example, * Operations updating conditional
+        #   access policy binding in datasets must specify version 3. Some of the
+        #   operations are : - Adding a new access policy entry with condition. - Removing
+        #   an access policy entry with condition. - Updating an access policy entry with
+        #   condition. * But dataset with no conditional role bindings in access policy
+        #   may specify any valid value or leave the field unset. If unset or if 0 or 1
+        #   value is used for dataset with conditional bindings, request will be rejected.
+        #   This field will be maped to IAM Policy version (https://cloud.google.com/iam/
+        #   docs/policies#versions) and will be used to set policy in IAM.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -309,7 +366,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_dataset(project_id, dataset_id, dataset_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_dataset(project_id, dataset_id, dataset_object = nil, access_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'projects/{+projectId}/datasets/{+datasetId}', options)
           command.request_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.request_object = dataset_object
@@ -317,6 +374,7 @@ module Google
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.query['accessPolicyVersion'] = access_policy_version unless access_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
