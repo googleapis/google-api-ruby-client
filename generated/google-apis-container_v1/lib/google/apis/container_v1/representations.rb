@@ -730,6 +730,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ParallelstoreCsiDriverConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ParentProductConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1197,6 +1203,8 @@ module Google
           property :kubernetes_dashboard, as: 'kubernetesDashboard', class: Google::Apis::ContainerV1::KubernetesDashboard, decorator: Google::Apis::ContainerV1::KubernetesDashboard::Representation
       
           property :network_policy_config, as: 'networkPolicyConfig', class: Google::Apis::ContainerV1::NetworkPolicyConfig, decorator: Google::Apis::ContainerV1::NetworkPolicyConfig::Representation
+      
+          property :parallelstore_csi_driver_config, as: 'parallelstoreCsiDriverConfig', class: Google::Apis::ContainerV1::ParallelstoreCsiDriverConfig, decorator: Google::Apis::ContainerV1::ParallelstoreCsiDriverConfig::Representation
       
           property :ray_operator_config, as: 'rayOperatorConfig', class: Google::Apis::ContainerV1::RayOperatorConfig, decorator: Google::Apis::ContainerV1::RayOperatorConfig::Representation
       
@@ -2567,6 +2575,13 @@ module Google
         end
       end
       
+      class ParallelstoreCsiDriverConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class ParentProductConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2701,6 +2716,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel, as: 'channel'
           property :default_version, as: 'defaultVersion'
+          property :upgrade_target_version, as: 'upgradeTargetVersion'
           collection :valid_versions, as: 'validVersions'
         end
       end

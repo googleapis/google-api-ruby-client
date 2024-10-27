@@ -227,6 +227,11 @@ module Google
         # @return [Google::Apis::ContainerV1::NetworkPolicyConfig]
         attr_accessor :network_policy_config
       
+        # Configuration for the Cloud Storage Parallelstore CSI driver.
+        # Corresponds to the JSON property `parallelstoreCsiDriverConfig`
+        # @return [Google::Apis::ContainerV1::ParallelstoreCsiDriverConfig]
+        attr_accessor :parallelstore_csi_driver_config
+      
         # Configuration options for the Ray Operator add-on.
         # Corresponds to the JSON property `rayOperatorConfig`
         # @return [Google::Apis::ContainerV1::RayOperatorConfig]
@@ -254,6 +259,7 @@ module Google
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
+          @parallelstore_csi_driver_config = args[:parallelstore_csi_driver_config] if args.key?(:parallelstore_csi_driver_config)
           @ray_operator_config = args[:ray_operator_config] if args.key?(:ray_operator_config)
           @stateful_ha_config = args[:stateful_ha_config] if args.key?(:stateful_ha_config)
         end
@@ -5481,6 +5487,26 @@ module Google
         end
       end
       
+      # Configuration for the Cloud Storage Parallelstore CSI driver.
+      class ParallelstoreCsiDriverConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Cloud Storage Parallelstore CSI driver is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # ParentProductConfig is the configuration of the parent product of the cluster.
       # This field is used by Google internal products that are built on top of a GKE
       # cluster and take the ownership of the cluster.
@@ -5948,6 +5974,11 @@ module Google
         # @return [String]
         attr_accessor :default_version
       
+        # The auto upgrade target version for clusters on the channel.
+        # Corresponds to the JSON property `upgradeTargetVersion`
+        # @return [String]
+        attr_accessor :upgrade_target_version
+      
         # List of valid versions for the channel.
         # Corresponds to the JSON property `validVersions`
         # @return [Array<String>]
@@ -5961,6 +5992,7 @@ module Google
         def update!(**args)
           @channel = args[:channel] if args.key?(:channel)
           @default_version = args[:default_version] if args.key?(:default_version)
+          @upgrade_target_version = args[:upgrade_target_version] if args.key?(:upgrade_target_version)
           @valid_versions = args[:valid_versions] if args.key?(:valid_versions)
         end
       end
