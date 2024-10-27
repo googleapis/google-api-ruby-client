@@ -336,7 +336,13 @@ module Google
       class FixedIops
         include Google::Apis::Core::Hashable
       
-        # Required. Maximum raw read IOPS.
+        # Required. Maximum IOPS.
+        # Corresponds to the JSON property `maxIops`
+        # @return [Fixnum]
+        attr_accessor :max_iops
+      
+        # Optional. Deprecated: `max_iops` should be used instead of this parameter.
+        # Maximum raw read IOPS.
         # Corresponds to the JSON property `maxReadIops`
         # @return [Fixnum]
         attr_accessor :max_read_iops
@@ -347,6 +353,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @max_iops = args[:max_iops] if args.key?(:max_iops)
           @max_read_iops = args[:max_read_iops] if args.key?(:max_read_iops)
         end
       end
@@ -789,7 +796,13 @@ module Google
       class IopsPerTb
         include Google::Apis::Core::Hashable
       
-        # Required. Maximum read IOPS per TiB.
+        # Required. Maximum IOPS per TiB.
+        # Corresponds to the JSON property `maxIopsPerTb`
+        # @return [Fixnum]
+        attr_accessor :max_iops_per_tb
+      
+        # Optional. Deprecated: `max_iops_per_tb` should be used instead of this
+        # parameter. Maximum read IOPS per TiB.
         # Corresponds to the JSON property `maxReadIopsPerTb`
         # @return [Fixnum]
         attr_accessor :max_read_iops_per_tb
@@ -800,6 +813,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @max_iops_per_tb = args[:max_iops_per_tb] if args.key?(:max_iops_per_tb)
           @max_read_iops_per_tb = args[:max_read_iops_per_tb] if args.key?(:max_read_iops_per_tb)
         end
       end
