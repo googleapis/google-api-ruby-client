@@ -707,6 +707,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_level_stop_syncing_state, as: 'clusterLevelStopSyncingState'
+          property :cr_count, as: 'crCount'
           property :deployment_state, as: 'deploymentState', class: Google::Apis::GkehubV2::ConfigManagementConfigSyncDeploymentState, decorator: Google::Apis::GkehubV2::ConfigManagementConfigSyncDeploymentState::Representation
       
           collection :errors, as: 'errors', class: Google::Apis::GkehubV2::ConfigManagementConfigSyncError, decorator: Google::Apis::GkehubV2::ConfigManagementConfigSyncError::Representation
