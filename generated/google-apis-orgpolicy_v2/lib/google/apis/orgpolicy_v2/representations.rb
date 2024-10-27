@@ -40,6 +40,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudOrgpolicyV2ConstraintListConstraint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -133,6 +151,39 @@ module Google
       class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_constraint_definition, as: 'customConstraintDefinition', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition::Representation
+      
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :condition, as: 'condition'
+          collection :method_types, as: 'methodTypes'
+          hash :parameters, as: 'parameters', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter::Representation
+      
+          collection :resource_types, as: 'resourceTypes'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_value, as: 'defaultValue'
+          property :item, as: 'item'
+          property :metadata, as: 'metadata', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata::Representation
+      
+          property :type, as: 'type'
+          property :valid_values_expr, as: 'validValuesExpr'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
         end
       end
       
