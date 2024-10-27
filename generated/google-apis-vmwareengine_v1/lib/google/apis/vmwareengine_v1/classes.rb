@@ -325,10 +325,10 @@ module Google
         attr_accessor :management
         alias_method :management?, :management
       
-        # Output only. The resource name of this cluster. Resource names are schemeless
-        # URIs that follow the conventions in https://cloud.google.com/apis/design/
-        # resource_names. For example: `projects/my-project/locations/us-central1-a/
-        # privateClouds/my-cloud/clusters/my-cluster`
+        # Output only. Identifier. The resource name of this cluster. Resource names are
+        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        # design/resource_names. For example: `projects/my-project/locations/us-central1-
+        # a/privateClouds/my-cloud/clusters/my-cluster`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -449,10 +449,10 @@ module Google
         # @return [Array<Google::Apis::VmwareengineV1::ForwardingRule>]
         attr_accessor :forwarding_rules
       
-        # Output only. The resource name of this DNS profile. Resource names are
-        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
-        # design/resource_names. For example: `projects/my-project/locations/us-central1-
-        # a/privateClouds/my-cloud/dnsForwarding`
+        # Output only. Identifier. The resource name of this DNS profile. Resource names
+        # are schemeless URIs that follow the conventions in https://cloud.google.com/
+        # apis/design/resource_names. For example: `projects/my-project/locations/us-
+        # central1-a/privateClouds/my-cloud/dnsForwarding`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -688,10 +688,10 @@ module Google
         # @return [String]
         attr_accessor :internal_ip
       
-        # Output only. The resource name of this external IP address. Resource names are
-        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
-        # design/resource_names. For example: `projects/my-project/locations/us-central1-
-        # a/privateClouds/my-cloud/externalAddresses/my-address`
+        # Output only. Identifier. The resource name of this external IP address.
+        # Resource names are schemeless URIs that follow the conventions in https://
+        # cloud.google.com/apis/design/resource_names. For example: `projects/my-project/
+        # locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1850,11 +1850,11 @@ module Google
         attr_accessor :import_custom_routes_with_public_ip
         alias_method :import_custom_routes_with_public_ip?, :import_custom_routes_with_public_ip
       
-        # Output only. The resource name of the network peering. NetworkPeering is a
-        # global resource and location can only be global. Resource names are scheme-
-        # less URIs that follow the conventions in https://cloud.google.com/apis/design/
-        # resource_names. For example: `projects/my-project/locations/global/
-        # networkPeerings/my-peering`
+        # Output only. Identifier. The resource name of the network peering.
+        # NetworkPeering is a global resource and location can only be global. Resource
+        # names are scheme-less URIs that follow the conventions in https://cloud.google.
+        # com/apis/design/resource_names. For example: `projects/my-project/locations/
+        # global/networkPeerings/my-peering`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1982,10 +1982,10 @@ module Google
         # @return [Google::Apis::VmwareengineV1::NetworkService]
         attr_accessor :internet_access
       
-        # Output only. The resource name of this network policy. Resource names are
-        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
-        # design/resource_names. For example: `projects/my-project/locations/us-central1/
-        # networkPolicies/my-network-policy`
+        # Output only. Identifier. The resource name of this network policy. Resource
+        # names are schemeless URIs that follow the conventions in https://cloud.google.
+        # com/apis/design/resource_names. For example: `projects/my-project/locations/us-
+        # central1/networkPolicies/my-network-policy`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2609,10 +2609,10 @@ module Google
         # @return [Google::Apis::VmwareengineV1::ManagementCluster]
         attr_accessor :management_cluster
       
-        # Output only. The resource name of this private cloud. Resource names are
-        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
-        # design/resource_names. For example: `projects/my-project/locations/us-central1-
-        # a/privateClouds/my-cloud`
+        # Output only. Identifier. The resource name of this private cloud. Resource
+        # names are schemeless URIs that follow the conventions in https://cloud.google.
+        # com/apis/design/resource_names. For example: `projects/my-project/locations/us-
+        # central1-a/privateClouds/my-cloud`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3064,10 +3064,10 @@ module Google
         # @return [String]
         attr_accessor :ip_cidr_range
       
-        # Output only. The resource name of this subnet. Resource names are schemeless
-        # URIs that follow the conventions in https://cloud.google.com/apis/design/
-        # resource_names. For example: `projects/my-project/locations/us-central1-a/
-        # privateClouds/my-cloud/subnets/my-subnet`
+        # Output only. Identifier. The resource name of this subnet. Resource names are
+        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        # design/resource_names. For example: `projects/my-project/locations/us-central1-
+        # a/privateClouds/my-cloud/subnets/my-subnet`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3247,10 +3247,10 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Output only. The resource name of the VMware Engine network. Resource names
-        # are schemeless URIs that follow the conventions in https://cloud.google.com/
-        # apis/design/resource_names. For example: `projects/my-project/locations/global/
-        # vmwareEngineNetworks/my-network`
+        # Output only. Identifier. The resource name of the VMware Engine network.
+        # Resource names are schemeless URIs that follow the conventions in https://
+        # cloud.google.com/apis/design/resource_names. For example: `projects/my-project/
+        # locations/global/vmwareEngineNetworks/my-network`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

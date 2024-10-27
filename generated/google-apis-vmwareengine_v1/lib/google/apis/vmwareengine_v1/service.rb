@@ -457,11 +457,11 @@ module Google
         # updated. Only fields specified in `updateMask` are applied. NetworkPeering is
         # a global resource and location can only be global.
         # @param [String] name
-        #   Output only. The resource name of the network peering. NetworkPeering is a
-        #   global resource and location can only be global. Resource names are scheme-
-        #   less URIs that follow the conventions in https://cloud.google.com/apis/design/
-        #   resource_names. For example: `projects/my-project/locations/global/
-        #   networkPeerings/my-peering`
+        #   Output only. Identifier. The resource name of the network peering.
+        #   NetworkPeering is a global resource and location can only be global. Resource
+        #   names are scheme-less URIs that follow the conventions in https://cloud.google.
+        #   com/apis/design/resource_names. For example: `projects/my-project/locations/
+        #   global/networkPeerings/my-peering`
         # @param [Google::Apis::VmwareengineV1::NetworkPeering] network_peering_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
@@ -825,10 +825,10 @@ module Google
         # resource. Use the operation status to determine when the processing fully
         # completes.
         # @param [String] name
-        #   Output only. The resource name of this network policy. Resource names are
-        #   schemeless URIs that follow the conventions in https://cloud.google.com/apis/
-        #   design/resource_names. For example: `projects/my-project/locations/us-central1/
-        #   networkPolicies/my-network-policy`
+        #   Output only. Identifier. The resource name of this network policy. Resource
+        #   names are schemeless URIs that follow the conventions in https://cloud.google.
+        #   com/apis/design/resource_names. For example: `projects/my-project/locations/us-
+        #   central1/networkPolicies/my-network-policy`
         # @param [Google::Apis::VmwareengineV1::NetworkPolicy] network_policy_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
@@ -1635,10 +1635,10 @@ module Google
         # resource. Use the operation status to determine when the processing fully
         # completes.
         # @param [String] name
-        #   Output only. The resource name of this private cloud. Resource names are
-        #   schemeless URIs that follow the conventions in https://cloud.google.com/apis/
-        #   design/resource_names. For example: `projects/my-project/locations/us-central1-
-        #   a/privateClouds/my-cloud`
+        #   Output only. Identifier. The resource name of this private cloud. Resource
+        #   names are schemeless URIs that follow the conventions in https://cloud.google.
+        #   com/apis/design/resource_names. For example: `projects/my-project/locations/us-
+        #   central1-a/privateClouds/my-cloud`
         # @param [Google::Apis::VmwareengineV1::PrivateCloud] private_cloud_object
         # @param [String] request_id
         #   Optional. The request ID must be a valid UUID with the exception that zero
@@ -1943,10 +1943,10 @@ module Google
         # Updates the parameters of the `DnsForwarding` config, like associated domains.
         # Only fields specified in `update_mask` are applied.
         # @param [String] name
-        #   Output only. The resource name of this DNS profile. Resource names are
-        #   schemeless URIs that follow the conventions in https://cloud.google.com/apis/
-        #   design/resource_names. For example: `projects/my-project/locations/us-central1-
-        #   a/privateClouds/my-cloud/dnsForwarding`
+        #   Output only. Identifier. The resource name of this DNS profile. Resource names
+        #   are schemeless URIs that follow the conventions in https://cloud.google.com/
+        #   apis/design/resource_names. For example: `projects/my-project/locations/us-
+        #   central1-a/privateClouds/my-cloud/dnsForwarding`
         # @param [Google::Apis::VmwareengineV1::DnsForwarding] dns_forwarding_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
@@ -2232,10 +2232,10 @@ module Google
         # you can't update the resource. Use the operation status to determine when the
         # processing fully completes.
         # @param [String] name
-        #   Output only. The resource name of this cluster. Resource names are schemeless
-        #   URIs that follow the conventions in https://cloud.google.com/apis/design/
-        #   resource_names. For example: `projects/my-project/locations/us-central1-a/
-        #   privateClouds/my-cloud/clusters/my-cluster`
+        #   Output only. Identifier. The resource name of this cluster. Resource names are
+        #   schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        #   design/resource_names. For example: `projects/my-project/locations/us-central1-
+        #   a/privateClouds/my-cloud/clusters/my-cluster`
         # @param [Google::Apis::VmwareengineV1::Cluster] cluster_object
         # @param [String] request_id
         #   Optional. The request ID must be a valid UUID with the exception that zero
@@ -2643,10 +2643,10 @@ module Google
         # that period of time, you can't update the resource. Use the operation status
         # to determine when the processing fully completes.
         # @param [String] name
-        #   Output only. The resource name of this external IP address. Resource names are
-        #   schemeless URIs that follow the conventions in https://cloud.google.com/apis/
-        #   design/resource_names. For example: `projects/my-project/locations/us-central1-
-        #   a/privateClouds/my-cloud/externalAddresses/my-address`
+        #   Output only. Identifier. The resource name of this external IP address.
+        #   Resource names are schemeless URIs that follow the conventions in https://
+        #   cloud.google.com/apis/design/resource_names. For example: `projects/my-project/
+        #   locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address`
         # @param [Google::Apis::VmwareengineV1::ExternalAddress] external_address_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
@@ -3602,10 +3602,10 @@ module Google
         # successful `google.longrunning.Operation` (LRO). The returned LRO will only
         # have `done` and `response` fields.
         # @param [String] name
-        #   Output only. The resource name of this subnet. Resource names are schemeless
-        #   URIs that follow the conventions in https://cloud.google.com/apis/design/
-        #   resource_names. For example: `projects/my-project/locations/us-central1-a/
-        #   privateClouds/my-cloud/subnets/my-subnet`
+        #   Output only. Identifier. The resource name of this subnet. Resource names are
+        #   schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        #   design/resource_names. For example: `projects/my-project/locations/us-central1-
+        #   a/privateClouds/my-cloud/subnets/my-subnet`
         # @param [Google::Apis::VmwareengineV1::Subnet] subnet_object
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the `
@@ -4168,10 +4168,10 @@ module Google
         # Modifies a VMware Engine network resource. Only the following fields can be
         # updated: `description`. Only fields specified in `updateMask` are applied.
         # @param [String] name
-        #   Output only. The resource name of the VMware Engine network. Resource names
-        #   are schemeless URIs that follow the conventions in https://cloud.google.com/
-        #   apis/design/resource_names. For example: `projects/my-project/locations/global/
-        #   vmwareEngineNetworks/my-network`
+        #   Output only. Identifier. The resource name of the VMware Engine network.
+        #   Resource names are schemeless URIs that follow the conventions in https://
+        #   cloud.google.com/apis/design/resource_names. For example: `projects/my-project/
+        #   locations/global/vmwareEngineNetworks/my-network`
         # @param [Google::Apis::VmwareengineV1::VmwareEngineNetwork] vmware_engine_network_object
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
