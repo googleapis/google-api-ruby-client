@@ -1833,8 +1833,8 @@ module Google
       # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
       # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
       # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
-      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
-      # DATA_WRITE logging.
+      # exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com`
+      # from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -5065,11 +5065,6 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `bindingId`
-        # @return [String]
-        attr_accessor :binding_id
-      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -5161,7 +5156,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -6032,49 +6026,6 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
-        end
-      end
-      
-      # This is deprecated and has no effect. Do not use.
-      class Condition
-        include Google::Apis::Core::Hashable
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `iam`
-        # @return [String]
-        attr_accessor :iam
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `svc`
-        # @return [String]
-        attr_accessor :svc
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `sys`
-        # @return [String]
-        attr_accessor :sys
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @iam = args[:iam] if args.key?(:iam)
-          @op = args[:op] if args.key?(:op)
-          @svc = args[:svc] if args.key?(:svc)
-          @sys = args[:sys] if args.key?(:sys)
-          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -14852,6 +14803,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Instance flexibility allowing MIG to create VMs from multiple types of
+        # machines. Instance flexibility configuration on MIG overrides instance
+        # template configuration.
+        # Corresponds to the JSON property `instanceFlexibilityPolicy`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerInstanceFlexibilityPolicy]
+        attr_accessor :instance_flexibility_policy
+      
         # [Output Only] The URL of the Instance Group resource.
         # Corresponds to the JSON property `instanceGroup`
         # @return [String]
@@ -14889,8 +14847,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Named ports configured for the Instance Groups complementary to this Instance
-        # Group Manager.
+        # [Output Only] Named ports configured on the Instance Groups complementary to
+        # this Instance Group Manager.
         # Corresponds to the JSON property `namedPorts`
         # @return [Array<Google::Apis::ComputeV1::NamedPort>]
         attr_accessor :named_ports
@@ -14980,6 +14938,7 @@ module Google
           @distribution_policy = args[:distribution_policy] if args.key?(:distribution_policy)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
+          @instance_flexibility_policy = args[:instance_flexibility_policy] if args.key?(:instance_flexibility_policy)
           @instance_group = args[:instance_group] if args.key?(:instance_group)
           @instance_lifecycle_policy = args[:instance_lifecycle_policy] if args.key?(:instance_lifecycle_policy)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
@@ -15287,6 +15246,54 @@ module Google
         def update!(**args)
           @health_check = args[:health_check] if args.key?(:health_check)
           @initial_delay_sec = args[:initial_delay_sec] if args.key?(:initial_delay_sec)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceFlexibilityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Named instance selections configuring properties that the group will use when
+        # creating new VMs.
+        # Corresponds to the JSON property `instanceSelections`
+        # @return [Hash<String,Google::Apis::ComputeV1::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>]
+        attr_accessor :instance_selections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_selections = args[:instance_selections] if args.key?(:instance_selections)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+        include Google::Apis::Core::Hashable
+      
+        # Full machine-type names, e.g. "n1-standard-16".
+        # Corresponds to the JSON property `machineTypes`
+        # @return [Array<String>]
+        attr_accessor :machine_types
+      
+        # Preference of this instance selection. Lower number means higher preference.
+        # MIG will first try to create a VM based on the machine-type with lowest rank
+        # and fallback to next rank based on availability. Machine types and instance
+        # selections with the same rank have the same preference.
+        # Corresponds to the JSON property `rank`
+        # @return [Fixnum]
+        attr_accessor :rank
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @rank = args[:rank] if args.key?(:rank)
         end
       end
       
@@ -21969,131 +21976,6 @@ module Google
         end
       end
       
-      # This is deprecated and has no effect. Do not use.
-      class LogConfig
-        include Google::Apis::Core::Hashable
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `cloudAudit`
-        # @return [Google::Apis::ComputeV1::LogConfigCloudAuditOptions]
-        attr_accessor :cloud_audit
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `counter`
-        # @return [Google::Apis::ComputeV1::LogConfigCounterOptions]
-        attr_accessor :counter
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `dataAccess`
-        # @return [Google::Apis::ComputeV1::LogConfigDataAccessOptions]
-        attr_accessor :data_access
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
-          @counter = args[:counter] if args.key?(:counter)
-          @data_access = args[:data_access] if args.key?(:data_access)
-        end
-      end
-      
-      # This is deprecated and has no effect. Do not use.
-      class LogConfigCloudAuditOptions
-        include Google::Apis::Core::Hashable
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `logName`
-        # @return [String]
-        attr_accessor :log_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @log_name = args[:log_name] if args.key?(:log_name)
-        end
-      end
-      
-      # This is deprecated and has no effect. Do not use.
-      class LogConfigCounterOptions
-        include Google::Apis::Core::Hashable
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `customFields`
-        # @return [Array<Google::Apis::ComputeV1::LogConfigCounterOptionsCustomField>]
-        attr_accessor :custom_fields
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @custom_fields = args[:custom_fields] if args.key?(:custom_fields)
-          @field = args[:field] if args.key?(:field)
-          @metric = args[:metric] if args.key?(:metric)
-        end
-      end
-      
-      # This is deprecated and has no effect. Do not use.
-      class LogConfigCounterOptionsCustomField
-        include Google::Apis::Core::Hashable
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # This is deprecated and has no effect. Do not use.
-      class LogConfigDataAccessOptions
-        include Google::Apis::Core::Hashable
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `logMode`
-        # @return [String]
-        attr_accessor :log_mode
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @log_mode = args[:log_mode] if args.key?(:log_mode)
-        end
-      end
-      
       # Represents a machine image resource. A machine image is a Compute Engine
       # resource that stores all the configuration, metadata, permissions, and data
       # from one or more disks required to create a Virtual machine (VM) instance. For
@@ -22939,6 +22821,12 @@ module Google
         # @return [Google::Apis::ComputeV1::PreservedState]
         attr_accessor :preserved_state_from_policy
       
+        # [Output Only] Instance properties selected for this instance resulting from
+        # InstanceFlexibilityPolicy.
+        # Corresponds to the JSON property `propertiesFromFlexibilityPolicy`
+        # @return [Google::Apis::ComputeV1::ManagedInstancePropertiesFromFlexibilityPolicy]
+        attr_accessor :properties_from_flexibility_policy
+      
         # [Output Only] Intended version of this instance.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::ComputeV1::ManagedInstanceVersion]
@@ -22959,6 +22847,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
+          @properties_from_flexibility_policy = args[:properties_from_flexibility_policy] if args.key?(:properties_from_flexibility_policy)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -23115,6 +23004,25 @@ module Google
               end
             end
           end
+        end
+      end
+      
+      # 
+      class ManagedInstancePropertiesFromFlexibilityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The machine type to be used for this instance.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
       
@@ -29665,11 +29573,6 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ComputeV1::Rule>]
-        attr_accessor :rules
-      
         # Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
         # Requests that specify an invalid value are rejected. Any operation that
         # affects conditional role bindings must specify version `3`. This requirement
@@ -29698,7 +29601,6 @@ module Google
           @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
-          @rules = args[:rules] if args.key?(:rules)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -36317,61 +36219,6 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
-        end
-      end
-      
-      # This is deprecated and has no effect. Do not use.
-      class Rule
-        include Google::Apis::Core::Hashable
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::ComputeV1::Condition>]
-        attr_accessor :conditions
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `ins`
-        # @return [Array<String>]
-        attr_accessor :ins
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `logConfigs`
-        # @return [Array<Google::Apis::ComputeV1::LogConfig>]
-        attr_accessor :log_configs
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `notIns`
-        # @return [Array<String>]
-        attr_accessor :not_ins
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action = args[:action] if args.key?(:action)
-          @conditions = args[:conditions] if args.key?(:conditions)
-          @description = args[:description] if args.key?(:description)
-          @ins = args[:ins] if args.key?(:ins)
-          @log_configs = args[:log_configs] if args.key?(:log_configs)
-          @not_ins = args[:not_ins] if args.key?(:not_ins)
-          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       

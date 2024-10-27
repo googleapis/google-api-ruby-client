@@ -700,12 +700,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ConfidentialInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1732,6 +1726,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerInstanceFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerInstanceLifecyclePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2710,36 +2716,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogConfigCloudAuditOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogConfigCounterOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogConfigCounterOptionsCustomField
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogConfigDataAccessOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class MachineImage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2868,6 +2844,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedInstancePropertiesFromFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4692,12 +4674,6 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Rule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -7674,7 +7650,6 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::ComputeV1::Expr, decorator: Google::Apis::ComputeV1::Expr::Representation
       
           collection :members, as: 'members'
@@ -7886,17 +7861,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class Condition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :iam, as: 'iam'
-          property :op, as: 'op'
-          property :svc, as: 'svc'
-          property :sys, as: 'sys'
-          collection :values, as: 'values'
         end
       end
       
@@ -9883,6 +9847,8 @@ module Google
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
+          property :instance_flexibility_policy, as: 'instanceFlexibilityPolicy', class: Google::Apis::ComputeV1::InstanceGroupManagerInstanceFlexibilityPolicy, decorator: Google::Apis::ComputeV1::InstanceGroupManagerInstanceFlexibilityPolicy::Representation
+      
           property :instance_group, as: 'instanceGroup'
           property :instance_lifecycle_policy, as: 'instanceLifecyclePolicy', class: Google::Apis::ComputeV1::InstanceGroupManagerInstanceLifecyclePolicy, decorator: Google::Apis::ComputeV1::InstanceGroupManagerInstanceLifecyclePolicy::Representation
       
@@ -9975,6 +9941,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :health_check, as: 'healthCheck'
           property :initial_delay_sec, as: 'initialDelaySec'
+        end
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeV1::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeV1::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :machine_types, as: 'machineTypes'
+          property :rank, as: 'rank'
         end
       end
       
@@ -11708,50 +11690,6 @@ module Google
         end
       end
       
-      class LogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::ComputeV1::LogConfigCloudAuditOptions, decorator: Google::Apis::ComputeV1::LogConfigCloudAuditOptions::Representation
-      
-          property :counter, as: 'counter', class: Google::Apis::ComputeV1::LogConfigCounterOptions, decorator: Google::Apis::ComputeV1::LogConfigCounterOptions::Representation
-      
-          property :data_access, as: 'dataAccess', class: Google::Apis::ComputeV1::LogConfigDataAccessOptions, decorator: Google::Apis::ComputeV1::LogConfigDataAccessOptions::Representation
-      
-        end
-      end
-      
-      class LogConfigCloudAuditOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_name, as: 'logName'
-        end
-      end
-      
-      class LogConfigCounterOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :custom_fields, as: 'customFields', class: Google::Apis::ComputeV1::LogConfigCounterOptionsCustomField, decorator: Google::Apis::ComputeV1::LogConfigCounterOptionsCustomField::Representation
-      
-          property :field, as: 'field'
-          property :metric, as: 'metric'
-        end
-      end
-      
-      class LogConfigCounterOptionsCustomField
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :value, as: 'value'
-        end
-      end
-      
-      class LogConfigDataAccessOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_mode, as: 'logMode'
-        end
-      end
-      
       class MachineImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11963,6 +11901,8 @@ module Google
       
           property :preserved_state_from_policy, as: 'preservedStateFromPolicy', class: Google::Apis::ComputeV1::PreservedState, decorator: Google::Apis::ComputeV1::PreservedState::Representation
       
+          property :properties_from_flexibility_policy, as: 'propertiesFromFlexibilityPolicy', class: Google::Apis::ComputeV1::ManagedInstancePropertiesFromFlexibilityPolicy, decorator: Google::Apis::ComputeV1::ManagedInstancePropertiesFromFlexibilityPolicy::Representation
+      
           property :version, as: 'version', class: Google::Apis::ComputeV1::ManagedInstanceVersion, decorator: Google::Apis::ComputeV1::ManagedInstanceVersion::Representation
       
         end
@@ -12014,6 +11954,13 @@ module Google
               end
             end
           end
+        end
+      end
+      
+      class ManagedInstancePropertiesFromFlexibilityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
         end
       end
       
@@ -13662,8 +13609,6 @@ module Google
           collection :bindings, as: 'bindings', class: Google::Apis::ComputeV1::Binding, decorator: Google::Apis::ComputeV1::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
-          collection :rules, as: 'rules', class: Google::Apis::ComputeV1::Rule, decorator: Google::Apis::ComputeV1::Rule::Representation
-      
           property :version, as: 'version'
         end
       end
@@ -15367,21 +15312,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class Rule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action, as: 'action'
-          collection :conditions, as: 'conditions', class: Google::Apis::ComputeV1::Condition, decorator: Google::Apis::ComputeV1::Condition::Representation
-      
-          property :description, as: 'description'
-          collection :ins, as: 'ins'
-          collection :log_configs, as: 'logConfigs', class: Google::Apis::ComputeV1::LogConfig, decorator: Google::Apis::ComputeV1::LogConfig::Representation
-      
-          collection :not_ins, as: 'notIns'
-          collection :permissions, as: 'permissions'
         end
       end
       
