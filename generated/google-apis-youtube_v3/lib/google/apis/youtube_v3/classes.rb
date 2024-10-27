@@ -3465,7 +3465,7 @@ module Google
         end
       end
       
-      # LINT.IfChange Describes an invideo branding.
+      # Describes an invideo branding.
       class InvideoBranding
         include Google::Apis::Core::Hashable
       
@@ -7297,6 +7297,11 @@ module Google
       class TestItem
         include Google::Apis::Core::Hashable
       
+        # Etag for the resource. See https://en.wikipedia.org/wiki/HTTP_ETag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # 
         # Corresponds to the JSON property `featuredPart`
         # @return [Boolean]
@@ -7324,6 +7329,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
           @featured_part = args[:featured_part] if args.key?(:featured_part)
           @gaia = args[:gaia] if args.key?(:gaia)
           @id = args[:id] if args.key?(:id)
