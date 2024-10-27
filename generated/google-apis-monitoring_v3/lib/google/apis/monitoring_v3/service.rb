@@ -1251,8 +1251,8 @@ module Google
         # @param [Boolean] force
         #   If true, the notification channel will be deleted regardless of its use in
         #   alert policies (the policies will be updated to remove the channel). If false,
-        #   channels that are still referenced by an existing alerting policy will fail to
-        #   be deleted in a delete operation.
+        #   this operation will fail if the notification channel is referenced by existing
+        #   alerting policies.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
