@@ -276,6 +276,19 @@ module Google
         end
       end
       
+      # Configuration data for advance site search.
+      class GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # AlloyDB source import data from.
       class GoogleCloudDiscoveryengineV1AlloyDbSource
         include Google::Apis::Core::Hashable
@@ -1526,7 +1539,7 @@ module Google
         attr_accessor :snippet_info
       
         # Data representation. The structured JSON data for the document. It's populated
-        # from the struct data from the Document, or the Chunk in search result. .
+        # from the struct data from the Document, or the Chunk in search result.
         # Corresponds to the JSON property `structData`
         # @return [Hash<String,Object>]
         attr_accessor :struct_data
@@ -1763,8 +1776,8 @@ module Google
       class GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue
         include Google::Apis::Core::Hashable
       
-        # Required. Format: projects/`project`/locations/`location`/datasets/`dataset`/
-        # fhirStores/`fhir_store`/fhir/`resource_type`/`fhir_resource_id`
+        # Format: projects/`project`/locations/`location`/datasets/`dataset`/fhirStores/`
+        # fhir_store`/fhir/`resource_type`/`fhir_resource_id`
         # Corresponds to the JSON property `fhirResource`
         # @return [String]
         attr_accessor :fhir_resource
@@ -2031,7 +2044,7 @@ module Google
       class GoogleCloudDiscoveryengineV1CheckGroundingRequest
         include Google::Apis::Core::Hashable
       
-        # Answer candidate to check. Can have a maximum length of 1024 characters.
+        # Answer candidate to check. It can have a maximum length of 4096 tokens.
         # Corresponds to the JSON property `answerCandidate`
         # @return [String]
         attr_accessor :answer_candidate
@@ -2081,7 +2094,7 @@ module Google
         # List of facts cited across all claims in the answer candidate. These are
         # derived from the facts supplied in the request.
         # Corresponds to the JSON property `citedChunks`
-        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FactChunk>]
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CheckGroundingResponseFactChunk>]
         attr_accessor :cited_chunks
       
         # Claim texts and citation info across all claims in the answer candidate.
@@ -2158,6 +2171,33 @@ module Google
           @end_pos = args[:end_pos] if args.key?(:end_pos)
           @grounding_check_required = args[:grounding_check_required] if args.key?(:grounding_check_required)
           @start_pos = args[:start_pos] if args.key?(:start_pos)
+        end
+      end
+      
+      # Fact chunk for grounding check.
+      class GoogleCloudDiscoveryengineV1CheckGroundingResponseFactChunk
+        include Google::Apis::Core::Hashable
+      
+        # Text content of the fact chunk. Can be at most 10K characters long.
+        # Corresponds to the JSON property `chunkText`
+        # @return [String]
+        attr_accessor :chunk_text
+      
+        # Source from which this fact chunk was retrieved. For a fact chunk retrieved
+        # from inline facts, this field will contain the index of the specific fact from
+        # which this chunk was retrieved.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_text = args[:chunk_text] if args.key?(:chunk_text)
+          @source = args[:source] if args.key?(:source)
         end
       end
       
@@ -2607,7 +2647,14 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ConditionTimeRange>]
         attr_accessor :active_time_range
       
-        # Search only A list of terms to match the query on. Maximum of 10 query terms.
+        # Optional. Query regex to match the whole search query. Cannot be set when
+        # Condition.query_terms is set. This is currently supporting promotion use case.
+        # Corresponds to the JSON property `queryRegex`
+        # @return [String]
+        attr_accessor :query_regex
+      
+        # Search only A list of terms to match the query on. Cannot be set when
+        # Condition.query_regex is set. Maximum of 10 query terms.
         # Corresponds to the JSON property `queryTerms`
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ConditionQueryTerm>]
         attr_accessor :query_terms
@@ -2619,6 +2666,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @active_time_range = args[:active_time_range] if args.key?(:active_time_range)
+          @query_regex = args[:query_regex] if args.key?(:query_regex)
           @query_terms = args[:query_terms] if args.key?(:query_terms)
         end
       end
@@ -3271,7 +3319,7 @@ module Google
       class GoogleCloudDiscoveryengineV1CustomTuningModel
         include Google::Apis::Core::Hashable
       
-        # Timestamp the Model was created at.
+        # Deprecated: Timestamp the Model was created at.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -3336,6 +3384,11 @@ module Google
       class GoogleCloudDiscoveryengineV1DataStore
         include Google::Apis::Core::Hashable
       
+        # Configuration data for advance site search.
+        # Corresponds to the JSON property `advancedSiteSearchConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig]
+        attr_accessor :advanced_site_search_config
+      
         # Estimation of data size per data store.
         # Corresponds to the JSON property `billingEstimation`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStoreBillingEstimation]
@@ -3399,7 +3452,7 @@ module Google
       
         # Stores information regarding the serving configurations at DataStore level.
         # Corresponds to the JSON property `servingConfigDataStore`
-        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfigDataStore]
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore]
         attr_accessor :serving_config_data_store
       
         # The solutions that the data store enrolls. Available solutions for each
@@ -3426,6 +3479,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_site_search_config = args[:advanced_site_search_config] if args.key?(:advanced_site_search_config)
           @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @content_config = args[:content_config] if args.key?(:content_config)
@@ -3489,6 +3543,26 @@ module Google
           @unstructured_data_update_time = args[:unstructured_data_update_time] if args.key?(:unstructured_data_update_time)
           @website_data_size = args[:website_data_size] if args.key?(:website_data_size)
           @website_data_update_time = args[:website_data_update_time] if args.key?(:website_data_update_time)
+        end
+      end
+      
+      # Stores information regarding the serving configurations at DataStore level.
+      class GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore
+        include Google::Apis::Core::Hashable
+      
+        # If set true, the DataStore will not be available for serving search requests.
+        # Corresponds to the JSON property `disabledForServing`
+        # @return [Boolean]
+        attr_accessor :disabled_for_serving
+        alias_method :disabled_for_serving?, :disabled_for_serving
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled_for_serving = args[:disabled_for_serving] if args.key?(:disabled_for_serving)
         end
       end
       
@@ -4348,45 +4422,6 @@ module Google
         def update!(**args)
           @search_add_ons = args[:search_add_ons] if args.key?(:search_add_ons)
           @search_tier = args[:search_tier] if args.key?(:search_tier)
-        end
-      end
-      
-      # Fact Chunk.
-      class GoogleCloudDiscoveryengineV1FactChunk
-        include Google::Apis::Core::Hashable
-      
-        # Text content of the fact chunk. Can be at most 10K characters long.
-        # Corresponds to the JSON property `chunkText`
-        # @return [String]
-        attr_accessor :chunk_text
-      
-        # The index of this chunk. Currently, only used for the streaming mode.
-        # Corresponds to the JSON property `index`
-        # @return [Fixnum]
-        attr_accessor :index
-      
-        # Source from which this fact chunk was retrieved. If it was retrieved from the
-        # GroundingFacts provided in the request then this field will contain the index
-        # of the specific fact from which this chunk was retrieved.
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        # More fine-grained information for the source reference.
-        # Corresponds to the JSON property `sourceMetadata`
-        # @return [Hash<String,String>]
-        attr_accessor :source_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @chunk_text = args[:chunk_text] if args.key?(:chunk_text)
-          @index = args[:index] if args.key?(:index)
-          @source = args[:source] if args.key?(:source)
-          @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
         end
       end
       
@@ -7985,26 +8020,6 @@ module Google
         end
       end
       
-      # Stores information regarding the serving configurations at DataStore level.
-      class GoogleCloudDiscoveryengineV1ServingConfigDataStore
-        include Google::Apis::Core::Hashable
-      
-        # If set true, the DataStore will not be available for serving search requests.
-        # Corresponds to the JSON property `disabledForServing`
-        # @return [Boolean]
-        attr_accessor :disabled_for_serving
-        alias_method :disabled_for_serving?, :disabled_for_serving
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @disabled_for_serving = args[:disabled_for_serving] if args.key?(:disabled_for_serving)
-        end
-      end
-      
       # External session proto definition.
       class GoogleCloudDiscoveryengineV1Session
         include Google::Apis::Core::Hashable
@@ -8971,6 +8986,33 @@ module Google
         end
       end
       
+      # Configuration data for advance site search.
+      class GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig
+        include Google::Apis::Core::Hashable
+      
+        # If set true, automatic refresh is disabled for the DataStore.
+        # Corresponds to the JSON property `disableAutomaticRefresh`
+        # @return [Boolean]
+        attr_accessor :disable_automatic_refresh
+        alias_method :disable_automatic_refresh?, :disable_automatic_refresh
+      
+        # If set true, initial indexing is disabled for the DataStore.
+        # Corresponds to the JSON property `disableInitialIndex`
+        # @return [Boolean]
+        attr_accessor :disable_initial_index
+        alias_method :disable_initial_index?, :disable_initial_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_automatic_refresh = args[:disable_automatic_refresh] if args.key?(:disable_automatic_refresh)
+          @disable_initial_index = args[:disable_initial_index] if args.key?(:disable_initial_index)
+        end
+      end
+      
       # Defines an answer.
       class GoogleCloudDiscoveryengineV1alphaAnswer
         include Google::Apis::Core::Hashable
@@ -9468,7 +9510,7 @@ module Google
         attr_accessor :snippet_info
       
         # Data representation. The structured JSON data for the document. It's populated
-        # from the struct data from the Document, or the Chunk in search result. .
+        # from the struct data from the Document, or the Chunk in search result.
         # Corresponds to the JSON property `structData`
         # @return [Hash<String,Object>]
         attr_accessor :struct_data
@@ -9687,7 +9729,14 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaConditionTimeRange>]
         attr_accessor :active_time_range
       
-        # Search only A list of terms to match the query on. Maximum of 10 query terms.
+        # Optional. Query regex to match the whole search query. Cannot be set when
+        # Condition.query_terms is set. This is currently supporting promotion use case.
+        # Corresponds to the JSON property `queryRegex`
+        # @return [String]
+        attr_accessor :query_regex
+      
+        # Search only A list of terms to match the query on. Cannot be set when
+        # Condition.query_regex is set. Maximum of 10 query terms.
         # Corresponds to the JSON property `queryTerms`
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaConditionQueryTerm>]
         attr_accessor :query_terms
@@ -9699,6 +9748,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @active_time_range = args[:active_time_range] if args.key?(:active_time_range)
+          @query_regex = args[:query_regex] if args.key?(:query_regex)
           @query_terms = args[:query_terms] if args.key?(:query_terms)
         end
       end
@@ -10098,7 +10148,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaCustomTuningModel
         include Google::Apis::Core::Hashable
       
-        # Timestamp the Model was created at.
+        # Deprecated: Timestamp the Model was created at.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -10173,6 +10223,11 @@ module Google
         # @return [Boolean]
         attr_accessor :acl_enabled
         alias_method :acl_enabled?, :acl_enabled
+      
+        # Configuration data for advance site search.
+        # Corresponds to the JSON property `advancedSiteSearchConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig]
+        attr_accessor :advanced_site_search_config
       
         # Estimation of data size per data store.
         # Corresponds to the JSON property `billingEstimation`
@@ -10252,7 +10307,7 @@ module Google
       
         # Stores information regarding the serving configurations at DataStore level.
         # Corresponds to the JSON property `servingConfigDataStore`
-        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaServingConfigDataStore]
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore]
         attr_accessor :serving_config_data_store
       
         # The solutions that the data store enrolls. Available solutions for each
@@ -10280,6 +10335,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acl_enabled = args[:acl_enabled] if args.key?(:acl_enabled)
+          @advanced_site_search_config = args[:advanced_site_search_config] if args.key?(:advanced_site_search_config)
           @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @content_config = args[:content_config] if args.key?(:content_config)
@@ -10346,6 +10402,26 @@ module Google
           @unstructured_data_update_time = args[:unstructured_data_update_time] if args.key?(:unstructured_data_update_time)
           @website_data_size = args[:website_data_size] if args.key?(:website_data_size)
           @website_data_update_time = args[:website_data_update_time] if args.key?(:website_data_update_time)
+        end
+      end
+      
+      # Stores information regarding the serving configurations at DataStore level.
+      class GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore
+        include Google::Apis::Core::Hashable
+      
+        # If set true, the DataStore will not be available for serving search requests.
+        # Corresponds to the JSON property `disabledForServing`
+        # @return [Boolean]
+        attr_accessor :disabled_for_serving
+        alias_method :disabled_for_serving?, :disabled_for_serving
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled_for_serving = args[:disabled_for_serving] if args.key?(:disabled_for_serving)
         end
       end
       
@@ -12439,12 +12515,15 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Unique URIs in the request that don't match any TargetSite in the DataStore,
-        # only match TargetSites that haven't been fully indexed, or match a TargetSite
-        # with type EXCLUDE.
+        # Unique URIs in the request that have invalid format. Sample limited to 1000.
         # Corresponds to the JSON property `invalidUris`
         # @return [Array<String>]
         attr_accessor :invalid_uris
+      
+        # Total number of unique URIs in the request that have invalid format.
+        # Corresponds to the JSON property `invalidUrisCount`
+        # @return [Fixnum]
+        attr_accessor :invalid_uris_count
       
         # Total number of URIs that have yet to be crawled.
         # Corresponds to the JSON property `pendingCount`
@@ -12467,6 +12546,18 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Unique URIs in the request that don't match any TargetSite in the DataStore,
+        # only match TargetSites that haven't been fully indexed, or match a TargetSite
+        # with type EXCLUDE. Sample limited to 1000.
+        # Corresponds to the JSON property `urisNotMatchingTargetSites`
+        # @return [Array<String>]
+        attr_accessor :uris_not_matching_target_sites
+      
+        # Total number of URIs that don't match any TargetSites.
+        # Corresponds to the JSON property `urisNotMatchingTargetSitesCount`
+        # @return [Fixnum]
+        attr_accessor :uris_not_matching_target_sites_count
+      
         # Total number of unique URIs in the request that are not in invalid_uris.
         # Corresponds to the JSON property `validUrisCount`
         # @return [Fixnum]
@@ -12480,10 +12571,13 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @invalid_uris = args[:invalid_uris] if args.key?(:invalid_uris)
+          @invalid_uris_count = args[:invalid_uris_count] if args.key?(:invalid_uris_count)
           @pending_count = args[:pending_count] if args.key?(:pending_count)
           @quota_exceeded_count = args[:quota_exceeded_count] if args.key?(:quota_exceeded_count)
           @success_count = args[:success_count] if args.key?(:success_count)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @uris_not_matching_target_sites = args[:uris_not_matching_target_sites] if args.key?(:uris_not_matching_target_sites)
+          @uris_not_matching_target_sites_count = args[:uris_not_matching_target_sites_count] if args.key?(:uris_not_matching_target_sites_count)
           @valid_uris_count = args[:valid_uris_count] if args.key?(:valid_uris_count)
         end
       end
@@ -13819,26 +13913,6 @@ module Google
         end
       end
       
-      # Stores information regarding the serving configurations at DataStore level.
-      class GoogleCloudDiscoveryengineV1alphaServingConfigDataStore
-        include Google::Apis::Core::Hashable
-      
-        # If set true, the DataStore will not be available for serving search requests.
-        # Corresponds to the JSON property `disabledForServing`
-        # @return [Boolean]
-        attr_accessor :disabled_for_serving
-        alias_method :disabled_for_serving?, :disabled_for_serving
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @disabled_for_serving = args[:disabled_for_serving] if args.key?(:disabled_for_serving)
-        end
-      end
-      
       # External session proto definition.
       class GoogleCloudDiscoveryengineV1alphaSession
         include Google::Apis::Core::Hashable
@@ -14371,6 +14445,19 @@ module Google
         end
       end
       
+      # Configuration data for advance site search.
+      class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata related to the progress of the SiteSearchEngineService.
       # BatchCreateTargetSites operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
@@ -14482,7 +14569,14 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaConditionTimeRange>]
         attr_accessor :active_time_range
       
-        # Search only A list of terms to match the query on. Maximum of 10 query terms.
+        # Optional. Query regex to match the whole search query. Cannot be set when
+        # Condition.query_terms is set. This is currently supporting promotion use case.
+        # Corresponds to the JSON property `queryRegex`
+        # @return [String]
+        attr_accessor :query_regex
+      
+        # Search only A list of terms to match the query on. Cannot be set when
+        # Condition.query_regex is set. Maximum of 10 query terms.
         # Corresponds to the JSON property `queryTerms`
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaConditionQueryTerm>]
         attr_accessor :query_terms
@@ -14494,6 +14588,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @active_time_range = args[:active_time_range] if args.key?(:active_time_range)
+          @query_regex = args[:query_regex] if args.key?(:query_regex)
           @query_terms = args[:query_terms] if args.key?(:query_terms)
         end
       end
@@ -14873,7 +14968,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaCustomTuningModel
         include Google::Apis::Core::Hashable
       
-        # Timestamp the Model was created at.
+        # Deprecated: Timestamp the Model was created at.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -14937,6 +15032,11 @@ module Google
       # DataStore captures global settings and configs at the DataStore level.
       class GoogleCloudDiscoveryengineV1betaDataStore
         include Google::Apis::Core::Hashable
+      
+        # Configuration data for advance site search.
+        # Corresponds to the JSON property `advancedSiteSearchConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig]
+        attr_accessor :advanced_site_search_config
       
         # Estimation of data size per data store.
         # Corresponds to the JSON property `billingEstimation`
@@ -15011,7 +15111,7 @@ module Google
       
         # Stores information regarding the serving configurations at DataStore level.
         # Corresponds to the JSON property `servingConfigDataStore`
-        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaServingConfigDataStore]
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore]
         attr_accessor :serving_config_data_store
       
         # The solutions that the data store enrolls. Available solutions for each
@@ -15038,6 +15138,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_site_search_config = args[:advanced_site_search_config] if args.key?(:advanced_site_search_config)
           @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @content_config = args[:content_config] if args.key?(:content_config)
@@ -15103,6 +15204,26 @@ module Google
           @unstructured_data_update_time = args[:unstructured_data_update_time] if args.key?(:unstructured_data_update_time)
           @website_data_size = args[:website_data_size] if args.key?(:website_data_size)
           @website_data_update_time = args[:website_data_update_time] if args.key?(:website_data_update_time)
+        end
+      end
+      
+      # Stores information regarding the serving configurations at DataStore level.
+      class GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore
+        include Google::Apis::Core::Hashable
+      
+        # If set true, the DataStore will not be available for serving search requests.
+        # Corresponds to the JSON property `disabledForServing`
+        # @return [Boolean]
+        attr_accessor :disabled_for_serving
+        alias_method :disabled_for_serving?, :disabled_for_serving
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled_for_serving = args[:disabled_for_serving] if args.key?(:disabled_for_serving)
         end
       end
       
@@ -17873,26 +17994,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mode = args[:mode] if args.key?(:mode)
-        end
-      end
-      
-      # Stores information regarding the serving configurations at DataStore level.
-      class GoogleCloudDiscoveryengineV1betaServingConfigDataStore
-        include Google::Apis::Core::Hashable
-      
-        # If set true, the DataStore will not be available for serving search requests.
-        # Corresponds to the JSON property `disabledForServing`
-        # @return [Boolean]
-        attr_accessor :disabled_for_serving
-        alias_method :disabled_for_serving?, :disabled_for_serving
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @disabled_for_serving = args[:disabled_for_serving] if args.key?(:disabled_for_serving)
         end
       end
       
