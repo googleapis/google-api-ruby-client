@@ -1107,6 +1107,7 @@ module Google
           property :postgresql, as: 'postgresql', class: Google::Apis::DatamigrationV1::PostgreSqlConnectionProfile, decorator: Google::Apis::DatamigrationV1::PostgreSqlConnectionProfile::Representation
       
           property :provider, as: 'provider'
+          property :role, as: 'role'
           property :sqlserver, as: 'sqlserver', class: Google::Apis::DatamigrationV1::SqlServerConnectionProfile, decorator: Google::Apis::DatamigrationV1::SqlServerConnectionProfile::Representation
       
           property :state, as: 'state'
