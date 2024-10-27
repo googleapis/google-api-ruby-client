@@ -1150,12 +1150,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudRetailV2alphaModelModelFeaturesConfigLlmEmbeddingConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudRetailV2alphaModelPageOptimizationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3388,15 +3382,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :frequently_bought_together_config, as: 'frequentlyBoughtTogetherConfig', class: Google::Apis::RetailV2::GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig::Representation
       
-          property :llm_embedding_config, as: 'llmEmbeddingConfig', class: Google::Apis::RetailV2::GoogleCloudRetailV2alphaModelModelFeaturesConfigLlmEmbeddingConfig, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2alphaModelModelFeaturesConfigLlmEmbeddingConfig::Representation
-      
-        end
-      end
-      
-      class GoogleCloudRetailV2alphaModelModelFeaturesConfigLlmEmbeddingConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :llm_embedding_version, as: 'llmEmbeddingVersion'
         end
       end
       
