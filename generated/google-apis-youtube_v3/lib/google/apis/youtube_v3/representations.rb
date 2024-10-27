@@ -3128,6 +3128,7 @@ module Google
       class TestItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
           property :featured_part, as: 'featuredPart'
           property :gaia, :numeric_string => true, as: 'gaia'
           property :id, as: 'id'
