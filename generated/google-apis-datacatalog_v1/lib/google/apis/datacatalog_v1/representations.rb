@@ -346,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1MigrationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1ModelSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +365,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1ModifyEntryOverviewRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1OrganizationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -509,6 +521,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1ServiceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1SetConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1034,6 +1052,7 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :transferred_to_dataplex, as: 'transferredToDataplex'
         end
       end
       
@@ -1218,6 +1237,14 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1MigrationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog_ui_experience, as: 'catalogUiExperience'
+          property :tag_template_migration, as: 'tagTemplateMigration'
+        end
+      end
+      
       class GoogleCloudDatacatalogV1ModelSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1238,6 +1265,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entry_overview, as: 'entryOverview', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1OrganizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :config, as: 'config', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig::Representation
       
         end
       end
@@ -1481,6 +1516,14 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1SetConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog_ui_experience, as: 'catalogUiExperience'
+          property :tag_template_migration, as: 'tagTemplateMigration'
+        end
+      end
+      
       class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1530,6 +1573,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column, as: 'column'
+          property :dataplex_transfer_status, as: 'dataplexTransferStatus'
           hash :fields, as: 'fields', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1TagField, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1TagField::Representation
       
           property :name, as: 'name'

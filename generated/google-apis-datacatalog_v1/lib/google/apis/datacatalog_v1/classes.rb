@@ -1282,6 +1282,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. When set to [true], it means DataCatalog EntryGroup was transferred
+        # to Dataplex Catalog Service. It makes EntryGroup and its Entries to be read-
+        # only in DataCatalog. However, new Tags on EntryGroup and its Entries can be
+        # created. After setting the flag to [true] it cannot be unset.
+        # Corresponds to the JSON property `transferredToDataplex`
+        # @return [Boolean]
+        attr_accessor :transferred_to_dataplex
+        alias_method :transferred_to_dataplex?, :transferred_to_dataplex
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1292,6 +1301,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @transferred_to_dataplex = args[:transferred_to_dataplex] if args.key?(:transferred_to_dataplex)
         end
       end
       
@@ -1842,6 +1852,33 @@ module Google
         end
       end
       
+      # The configuration related to the migration to Dataplex applied to an
+      # organization or project. It is the response message for SetConfig and
+      # RetrieveEffectiveConfig.
+      class GoogleCloudDatacatalogV1MigrationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Opt-in status for the UI switch to Dataplex.
+        # Corresponds to the JSON property `catalogUiExperience`
+        # @return [String]
+        attr_accessor :catalog_ui_experience
+      
+        # Opt-in status for the migration of Tag Templates to Dataplex.
+        # Corresponds to the JSON property `tagTemplateMigration`
+        # @return [String]
+        attr_accessor :tag_template_migration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog_ui_experience = args[:catalog_ui_experience] if args.key?(:catalog_ui_experience)
+          @tag_template_migration = args[:tag_template_migration] if args.key?(:tag_template_migration)
+        end
+      end
+      
       # Specification that applies to a model. Valid only for entries with the `MODEL`
       # type.
       class GoogleCloudDatacatalogV1ModelSpec
@@ -1897,6 +1934,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entry_overview = args[:entry_overview] if args.key?(:entry_overview)
+        end
+      end
+      
+      # The configuration related to the migration from Data Catalog to Dataplex that
+      # has been applied to an organization and any projects under it. It is the
+      # response message for RetrieveConfig.
+      class GoogleCloudDatacatalogV1OrganizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Map of organizations and project resource names and their configuration. The
+        # format for the map keys is `organizations/`organizationId`` or `projects/`
+        # projectId``.
+        # Corresponds to the JSON property `config`
+        # @return [Hash<String,Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig>]
+        attr_accessor :config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
         end
       end
       
@@ -2752,6 +2812,31 @@ module Google
         end
       end
       
+      # Request message for SetConfig.
+      class GoogleCloudDatacatalogV1SetConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Opt-in status for the UI switch to Dataplex.
+        # Corresponds to the JSON property `catalogUiExperience`
+        # @return [String]
+        attr_accessor :catalog_ui_experience
+      
+        # Opt-in status for the migration of Tag Templates to Dataplex.
+        # Corresponds to the JSON property `tagTemplateMigration`
+        # @return [String]
+        attr_accessor :tag_template_migration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog_ui_experience = args[:catalog_ui_experience] if args.key?(:catalog_ui_experience)
+          @tag_template_migration = args[:tag_template_migration] if args.key?(:tag_template_migration)
+        end
+      end
+      
       # Specification that applies to entries that are part `SQL_DATABASE` system (
       # user_specified_type)
       class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec
@@ -2922,6 +3007,11 @@ module Google
         # @return [String]
         attr_accessor :column
       
+        # Output only. Denotes the transfer status of the Tag Template.
+        # Corresponds to the JSON property `dataplexTransferStatus`
+        # @return [String]
+        attr_accessor :dataplex_transfer_status
+      
         # Required. Maps the ID of a tag field to its value and additional information
         # about that field. Tag template defines valid field IDs. A tag must have at
         # least 1 field and at most 500 fields.
@@ -2955,6 +3045,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column = args[:column] if args.key?(:column)
+          @dataplex_transfer_status = args[:dataplex_transfer_status] if args.key?(:dataplex_transfer_status)
           @fields = args[:fields] if args.key?(:fields)
           @name = args[:name] if args.key?(:name)
           @template = args[:template] if args.key?(:template)

@@ -155,6 +155,174 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves the configuration related to the migration from Data Catalog to
+        # Dataplex for a specific organization, including all the projects under it
+        # which have a separate configuration set.
+        # @param [String] name
+        #   Required. The organization whose config is being retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1OrganizationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1OrganizationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_organization_location_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:retrieveConfig', options)
+          command.response_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1OrganizationConfig::Representation
+          command.response_class = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1OrganizationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the effective configuration related to the migration from Data
+        # Catalog to Dataplex for a specific organization or project. If there is no
+        # specific configuration set for the resource, the setting is checked
+        # hierarchicahlly through the ancestors of the resource, starting from the
+        # resource itself.
+        # @param [String] name
+        #   Required. The resource whose effective config is being retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_organization_location_effective_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:retrieveEffectiveConfig', options)
+          command.response_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig::Representation
+          command.response_class = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the configuration related to the migration to Dataplex for an
+        # organization or project.
+        # @param [String] name
+        #   Required. The organization or project whose config is being specified.
+        # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SetConfigRequest] google_cloud_datacatalog_v1_set_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_organization_location_config(name, google_cloud_datacatalog_v1_set_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:setConfig', options)
+          command.request_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SetConfigRequest::Representation
+          command.request_object = google_cloud_datacatalog_v1_set_config_request_object
+          command.response_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig::Representation
+          command.response_class = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the effective configuration related to the migration from Data
+        # Catalog to Dataplex for a specific organization or project. If there is no
+        # specific configuration set for the resource, the setting is checked
+        # hierarchicahlly through the ancestors of the resource, starting from the
+        # resource itself.
+        # @param [String] name
+        #   Required. The resource whose effective config is being retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_project_location_effective_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:retrieveEffectiveConfig', options)
+          command.response_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig::Representation
+          command.response_class = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the configuration related to the migration to Dataplex for an
+        # organization or project.
+        # @param [String] name
+        #   Required. The organization or project whose config is being specified.
+        # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SetConfigRequest] google_cloud_datacatalog_v1_set_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_config(name, google_cloud_datacatalog_v1_set_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:setConfig', options)
+          command.request_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SetConfigRequest::Representation
+          command.request_object = google_cloud_datacatalog_v1_set_config_request_object
+          command.response_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig::Representation
+          command.response_class = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1MigrationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an entry group. An entry group contains logically related entries
         # together with [Cloud Identity and Access Management](/data-catalog/docs/
         # concepts/iam) policies. These policies specify users who can create, edit, and
