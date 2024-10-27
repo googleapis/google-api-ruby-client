@@ -131,12 +131,132 @@ module Google
       class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
         include Google::Apis::Core::Hashable
       
+        # Currently used for Managed Constraints. This represents a subset of fields
+        # missing from Constraint proto that are required to describe CustomConstraint
+        # Corresponds to the JSON property `customConstraintDefinition`
+        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition]
+        attr_accessor :custom_constraint_definition
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @custom_constraint_definition = args[:custom_constraint_definition] if args.key?(:custom_constraint_definition)
+        end
+      end
+      
+      # Currently used for Managed Constraints. This represents a subset of fields
+      # missing from Constraint proto that are required to describe CustomConstraint
+      class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition
+        include Google::Apis::Core::Hashable
+      
+        # Allow or deny type.
+        # Corresponds to the JSON property `actionType`
+        # @return [String]
+        attr_accessor :action_type
+      
+        # Org policy condition/expression. For example: `resource.instanceName.matches("[
+        # production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true`
+        # The max length of the condition is 1000 characters.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # All the operations being applied for this constraint.
+        # Corresponds to the JSON property `methodTypes`
+        # @return [Array<String>]
+        attr_accessor :method_types
+      
+        # Stores Structure of parameters used by Constraint condition. Key of map
+        # represents name of the parameter.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter>]
+        attr_accessor :parameters
+      
+        # The resource instance type on which this policy applies. Format will be of the
+        # form : `/` Example: * `compute.googleapis.com/Instance`.
+        # Corresponds to the JSON property `resourceTypes`
+        # @return [Array<String>]
+        attr_accessor :resource_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_type = args[:action_type] if args.key?(:action_type)
+          @condition = args[:condition] if args.key?(:condition)
+          @method_types = args[:method_types] if args.key?(:method_types)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @resource_types = args[:resource_types] if args.key?(:resource_types)
+        end
+      end
+      
+      # Defines a parameter structure.
+      class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
+        include Google::Apis::Core::Hashable
+      
+        # Sets the value of the parameter in an assignment if no value is given.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [Object]
+        attr_accessor :default_value
+      
+        # Determines the parameter’s value structure. For example, LIST can be specified
+        # by defining type : LIST, and item type as : STRING.
+        # Corresponds to the JSON property `item`
+        # @return [String]
+        attr_accessor :item
+      
+        # Defines Medata structure.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata]
+        attr_accessor :metadata
+      
+        # Type of the parameter.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Provides a CEL expression to specify the acceptable parameter values during
+        # assignment. For example, parameterName in ("parameterValue1", "parameterValue2"
+        # )
+        # Corresponds to the JSON property `validValuesExpr`
+        # @return [String]
+        attr_accessor :valid_values_expr
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_value = args[:default_value] if args.key?(:default_value)
+          @item = args[:item] if args.key?(:item)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @type = args[:type] if args.key?(:type)
+          @valid_values_expr = args[:valid_values_expr] if args.key?(:valid_values_expr)
+        end
+      end
+      
+      # Defines Medata structure.
+      class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Detailed description of what this `parameter` is and use of it. Mutable.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
         end
       end
       
