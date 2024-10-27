@@ -1329,6 +1329,7 @@ module Google
           property :quantity_based_retention, as: 'quantityBasedRetention'
           property :retention_unit, as: 'retentionUnit'
           property :time_based_retention, as: 'timeBasedRetention'
+          property :timestamp_based_retention_time, as: 'timestampBasedRetentionTime'
         end
       end
       

@@ -3179,6 +3179,11 @@ module Google
         # @return [String]
         attr_accessor :time_based_retention
       
+        # Timestamp based retention period i.e. 2024-05-01T00:00:00Z
+        # Corresponds to the JSON property `timestampBasedRetentionTime`
+        # @return [String]
+        attr_accessor :timestamp_based_retention_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3189,6 +3194,7 @@ module Google
           @quantity_based_retention = args[:quantity_based_retention] if args.key?(:quantity_based_retention)
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
+          @timestamp_based_retention_time = args[:timestamp_based_retention_time] if args.key?(:timestamp_based_retention_time)
         end
       end
       
