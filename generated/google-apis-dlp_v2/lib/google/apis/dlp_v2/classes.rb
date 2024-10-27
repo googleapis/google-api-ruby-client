@@ -713,8 +713,8 @@ module Google
         # @return [String]
         attr_accessor :dataset_id
       
-        # The Google Cloud Platform project ID of the project containing the table. If
-        # omitted, project ID is inferred from the API call.
+        # The Google Cloud project ID of the project containing the table. If omitted,
+        # project ID is inferred from the API call.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
