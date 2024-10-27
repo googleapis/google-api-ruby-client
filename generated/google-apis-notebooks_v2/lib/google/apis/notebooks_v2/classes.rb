@@ -401,7 +401,7 @@ module Google
         # @return [Google::Apis::NotebooksV2::DiagnosticConfig]
         attr_accessor :diagnostic_config
       
-        # Optional. Maxmium amount of time in minutes before the operation times out.
+        # Optional. Maximum amount of time in minutes before the operation times out.
         # Corresponds to the JSON property `timeoutMinutes`
         # @return [Fixnum]
         attr_accessor :timeout_minutes
