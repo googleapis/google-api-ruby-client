@@ -1,8 +1,8 @@
 # Release history for google-apis-places_v1
 
-### v0.27.0 (2024-10-20)
+### v0.27.0 (2024-10-27)
 
-* Regenerated from discovery document revision 20241015
+* Regenerated from discovery document revision 20241022
 
 ### v0.26.0 (2024-09-29)
 
