@@ -1473,7 +1473,7 @@ module Google
         #   Required. The ID of the conversion source to be updated.
         # @param [Google::Apis::ContentV2_1::ConversionSource] conversion_source_object
         # @param [String] update_mask
-        #   Required. List of fields being updated.
+        #   Optional. List of fields being updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4582,130 +4582,6 @@ module Google
           command.response_class = Google::Apis::ContentV2_1::ReturnPolicyOnline
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['returnPolicyId'] = return_policy_id unless return_policy_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves a settlement report from your Merchant Center account.
-        # @param [Fixnum] merchant_id
-        #   The Merchant Center account of the settlement report.
-        # @param [String] settlement_id
-        #   The Google-provided ID of the settlement.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2_1::SettlementReport] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2_1::SettlementReport]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_settlementreport(merchant_id, settlement_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{merchantId}/settlementreports/{settlementId}', options)
-          command.response_representation = Google::Apis::ContentV2_1::SettlementReport::Representation
-          command.response_class = Google::Apis::ContentV2_1::SettlementReport
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['settlementId'] = settlement_id unless settlement_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves a list of settlement reports from your Merchant Center account.
-        # @param [Fixnum] merchant_id
-        #   The Merchant Center account to list settlements for.
-        # @param [Fixnum] max_results
-        #   The maximum number of settlements to return in the response, used for paging.
-        #   The default value is 200 returns per page, and the maximum allowed value is
-        #   5000 returns per page.
-        # @param [String] page_token
-        #   The token returned by the previous request.
-        # @param [String] transfer_end_date
-        #   Obtains settlements which have transactions before this date (inclusively), in
-        #   ISO 8601 format.
-        # @param [String] transfer_start_date
-        #   Obtains settlements which have transactions after this date (inclusively), in
-        #   ISO 8601 format.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2_1::SettlementreportsListResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2_1::SettlementreportsListResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_settlementreports(merchant_id, max_results: nil, page_token: nil, transfer_end_date: nil, transfer_start_date: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{merchantId}/settlementreports', options)
-          command.response_representation = Google::Apis::ContentV2_1::SettlementreportsListResponse::Representation
-          command.response_class = Google::Apis::ContentV2_1::SettlementreportsListResponse
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['transferEndDate'] = transfer_end_date unless transfer_end_date.nil?
-          command.query['transferStartDate'] = transfer_start_date unless transfer_start_date.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves a list of transactions for the settlement.
-        # @param [Fixnum] merchant_id
-        #   The Merchant Center account to list transactions for.
-        # @param [String] settlement_id
-        #   The Google-provided ID of the settlement.
-        # @param [Fixnum] max_results
-        #   The maximum number of transactions to return in the response, used for paging.
-        #   The default value is 200 transactions per page, and the maximum allowed value
-        #   is 5000 transactions per page.
-        # @param [String] page_token
-        #   The token returned by the previous request.
-        # @param [Array<String>, String] transaction_ids
-        #   The list of transactions to return. If not set, all transactions will be
-        #   returned.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2_1::SettlementtransactionsListResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2_1::SettlementtransactionsListResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_settlementtransactions(merchant_id, settlement_id, max_results: nil, page_token: nil, transaction_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{merchantId}/settlementreports/{settlementId}/transactions', options)
-          command.response_representation = Google::Apis::ContentV2_1::SettlementtransactionsListResponse::Representation
-          command.response_class = Google::Apis::ContentV2_1::SettlementtransactionsListResponse
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['settlementId'] = settlement_id unless settlement_id.nil?
-          command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['transactionIds'] = transaction_ids unless transaction_ids.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
