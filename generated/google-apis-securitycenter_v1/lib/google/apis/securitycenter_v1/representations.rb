@@ -190,12 +190,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CelPolicySpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CloudArmor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1882,13 +1876,6 @@ module Google
         end
       end
       
-      class CelPolicySpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :spec, as: 'spec'
-        end
-      end
-      
       class CloudArmor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2366,8 +2353,6 @@ module Google
       class GoogleCloudSecuritycenterV1CustomConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cel_policy, as: 'celPolicy', class: Google::Apis::SecuritycenterV1::CelPolicySpec, decorator: Google::Apis::SecuritycenterV1::CelPolicySpec::Representation
-      
           property :custom_output, as: 'customOutput', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomOutputSpec, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomOutputSpec::Representation
       
           property :description, as: 'description'
