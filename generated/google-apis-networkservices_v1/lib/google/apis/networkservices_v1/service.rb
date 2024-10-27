@@ -2255,8 +2255,8 @@ module Google
         
         # Updates the parameters of a single ServiceLbPolicy.
         # @param [String] name
-        #   Required. Name of the ServiceLbPolicy resource. It matches pattern `projects/`
-        #   project`/locations/`location`/serviceLbPolicies/`service_lb_policy_name``.
+        #   Identifier. Name of the ServiceLbPolicy resource. It matches pattern `projects/
+        #   `project`/locations/`location`/serviceLbPolicies/`service_lb_policy_name``.
         # @param [Google::Apis::NetworkservicesV1::ServiceLbPolicy] service_lb_policy_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -2647,6 +2647,337 @@ module Google
           command.response_class = Google::Apis::NetworkservicesV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new `WasmPlugin` resource in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource of the `WasmPlugin` resource. Must be in the
+        #   format `projects/`project`/locations/global`.
+        # @param [Google::Apis::NetworkservicesV1::WasmPlugin] wasm_plugin_object
+        # @param [String] wasm_plugin_id
+        #   Required. User-provided ID of the `WasmPlugin` resource to be created.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_wasm_plugin(parent, wasm_plugin_object = nil, wasm_plugin_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/wasmPlugins', options)
+          command.request_representation = Google::Apis::NetworkservicesV1::WasmPlugin::Representation
+          command.request_object = wasm_plugin_object
+          command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['wasmPluginId'] = wasm_plugin_id unless wasm_plugin_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified `WasmPlugin` resource.
+        # @param [String] name
+        #   Required. A name of the `WasmPlugin` resource to delete. Must be in the format
+        #   `projects/`project`/locations/global/wasmPlugins/`wasm_plugin``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_wasm_plugin(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of the specified `WasmPlugin` resource.
+        # @param [String] name
+        #   Required. A name of the `WasmPlugin` resource to get. Must be in the format `
+        #   projects/`project`/locations/global/wasmPlugins/`wasm_plugin``.
+        # @param [String] view
+        #   Determine how much data should be returned by the API. See [AIP-157](https://
+        #   google.aip.dev/157).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::WasmPlugin] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::WasmPlugin]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_wasm_plugin(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::WasmPlugin::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::WasmPlugin
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists `WasmPlugin` resources in a given project and location.
+        # @param [String] parent
+        #   Required. The project and location from which the `WasmPlugin` resources are
+        #   listed, specified in the following format: `projects/`project`/locations/
+        #   global`.
+        # @param [Fixnum] page_size
+        #   Maximum number of `WasmPlugin` resources to return per call. If not specified,
+        #   at most 50 `WasmPlugin`s are returned. The maximum value is 1000; values above
+        #   1000 are coerced to 1000.
+        # @param [String] page_token
+        #   The value returned by the last `ListWasmPluginsResponse` call. Indicates that
+        #   this is a continuation of a prior `ListWasmPlugins` call, and that the next
+        #   page of data is to be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::ListWasmPluginsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::ListWasmPluginsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_wasm_plugins(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/wasmPlugins', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::ListWasmPluginsResponse::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::ListWasmPluginsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of the specified `WasmPlugin` resource.
+        # @param [String] name
+        #   Identifier. Name of the `WasmPlugin` resource in the following format: `
+        #   projects/`project`/locations/`location`/wasmPlugins/`wasm_plugin``.
+        # @param [Google::Apis::NetworkservicesV1::WasmPlugin] wasm_plugin_object
+        # @param [String] update_mask
+        #   Optional. Used to specify the fields to be overwritten in the `WasmPlugin`
+        #   resource by the update. The fields specified in the `update_mask` field are
+        #   relative to the resource, not the full request. An omitted `update_mask` field
+        #   is treated as an implied `update_mask` field equivalent to all fields that are
+        #   populated (that have a non-empty value). The `update_mask` field supports a
+        #   special value `*`, which means that each field in the given `WasmPlugin`
+        #   resource (including the empty ones) replaces the current value.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_wasm_plugin(name, wasm_plugin_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkservicesV1::WasmPlugin::Representation
+          command.request_object = wasm_plugin_object
+          command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new `WasmPluginVersion` resource in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource of the `WasmPluginVersion` resource. Must be in
+        #   the format `projects/`project`/locations/global/wasmPlugins/`wasm_plugin``.
+        # @param [Google::Apis::NetworkservicesV1::WasmPluginVersion] wasm_plugin_version_object
+        # @param [String] wasm_plugin_version_id
+        #   Required. User-provided ID of the `WasmPluginVersion` resource to be created.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_wasm_plugin_version(parent, wasm_plugin_version_object = nil, wasm_plugin_version_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/versions', options)
+          command.request_representation = Google::Apis::NetworkservicesV1::WasmPluginVersion::Representation
+          command.request_object = wasm_plugin_version_object
+          command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['wasmPluginVersionId'] = wasm_plugin_version_id unless wasm_plugin_version_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified `WasmPluginVersion` resource.
+        # @param [String] name
+        #   Required. A name of the `WasmPluginVersion` resource to delete. Must be in the
+        #   format `projects/`project`/locations/global/wasmPlugins/`wasm_plugin`/versions/
+        #   `wasm_plugin_version``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_wasm_plugin_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of the specified `WasmPluginVersion` resource.
+        # @param [String] name
+        #   Required. A name of the `WasmPluginVersion` resource to get. Must be in the
+        #   format `projects/`project`/locations/global/wasmPlugins/`wasm_plugin`/versions/
+        #   `wasm_plugin_version``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::WasmPluginVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::WasmPluginVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_wasm_plugin_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::WasmPluginVersion::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::WasmPluginVersion
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists `WasmPluginVersion` resources in a given project and location.
+        # @param [String] parent
+        #   Required. The `WasmPlugin` resource whose `WasmPluginVersion`s are listed,
+        #   specified in the following format: `projects/`project`/locations/global/
+        #   wasmPlugins/`wasm_plugin``.
+        # @param [Fixnum] page_size
+        #   Maximum number of `WasmPluginVersion` resources to return per call. If not
+        #   specified, at most 50 `WasmPluginVersion`s are returned. The maximum value is
+        #   1000; values above 1000 are coerced to 1000.
+        # @param [String] page_token
+        #   The value returned by the last `ListWasmPluginVersionsResponse` call.
+        #   Indicates that this is a continuation of a prior `ListWasmPluginVersions` call,
+        #   and that the next page of data is to be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::ListWasmPluginVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::ListWasmPluginVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_wasm_plugin_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/versions', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::ListWasmPluginVersionsResponse::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::ListWasmPluginVersionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

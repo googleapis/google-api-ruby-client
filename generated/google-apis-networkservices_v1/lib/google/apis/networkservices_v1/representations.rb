@@ -382,6 +382,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListWasmPluginVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWasmPluginsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -538,6 +550,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WasmPlugin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WasmPluginLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WasmPluginUsedBy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WasmPluginVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WasmPluginVersionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -648,6 +690,7 @@ module Google
           property :authority, as: 'authority'
           property :fail_open, as: 'failOpen'
           collection :forward_headers, as: 'forwardHeaders'
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :service, as: 'service'
           collection :supported_events, as: 'supportedEvents'
@@ -1179,6 +1222,24 @@ module Google
         end
       end
       
+      class ListWasmPluginVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :wasm_plugin_versions, as: 'wasmPluginVersions', class: Google::Apis::NetworkservicesV1::WasmPluginVersion, decorator: Google::Apis::NetworkservicesV1::WasmPluginVersion::Representation
+      
+        end
+      end
+      
+      class ListWasmPluginsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :wasm_plugins, as: 'wasmPlugins', class: Google::Apis::NetworkservicesV1::WasmPlugin, decorator: Google::Apis::NetworkservicesV1::WasmPlugin::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1437,6 +1498,71 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ports, as: 'ports'
+        end
+      end
+      
+      class WasmPlugin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :log_config, as: 'logConfig', class: Google::Apis::NetworkservicesV1::WasmPluginLogConfig, decorator: Google::Apis::NetworkservicesV1::WasmPluginLogConfig::Representation
+      
+          property :main_version_id, as: 'mainVersionId'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+          collection :used_by, as: 'usedBy', class: Google::Apis::NetworkservicesV1::WasmPluginUsedBy, decorator: Google::Apis::NetworkservicesV1::WasmPluginUsedBy::Representation
+      
+          hash :versions, as: 'versions', class: Google::Apis::NetworkservicesV1::WasmPluginVersionDetails, decorator: Google::Apis::NetworkservicesV1::WasmPluginVersionDetails::Representation
+      
+        end
+      end
+      
+      class WasmPluginLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+          property :min_log_level, as: 'minLogLevel'
+          property :sample_rate, as: 'sampleRate'
+        end
+      end
+      
+      class WasmPluginUsedBy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class WasmPluginVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :image_digest, as: 'imageDigest'
+          property :image_uri, as: 'imageUri'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :plugin_config_data, :base64 => true, as: 'pluginConfigData'
+          property :plugin_config_digest, as: 'pluginConfigDigest'
+          property :plugin_config_uri, as: 'pluginConfigUri'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class WasmPluginVersionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :image_digest, as: 'imageDigest'
+          property :image_uri, as: 'imageUri'
+          hash :labels, as: 'labels'
+          property :plugin_config_data, :base64 => true, as: 'pluginConfigData'
+          property :plugin_config_digest, as: 'pluginConfigDigest'
+          property :plugin_config_uri, as: 'pluginConfigUri'
+          property :update_time, as: 'updateTime'
         end
       end
     end

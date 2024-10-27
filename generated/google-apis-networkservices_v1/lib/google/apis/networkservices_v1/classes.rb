@@ -503,7 +503,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The `:authority` header in the gRPC request sent from Envoy to the
-        # extension service. Required for Callout extensions.
+        # extension service. Required for Callout extensions. This field is not
+        # supported for plugin extensions and must not be set.
         # Corresponds to the JSON property `authority`
         # @return [String]
         attr_accessor :authority
@@ -529,6 +530,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :forward_headers
       
+        # Optional. The metadata provided here is included as part of the `
+        # metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest`
+        # message sent to the extension server. The metadata is available under the
+        # namespace `com.google....`. For example: `com.google.lb_traffic_extension.
+        # lbtrafficextension1.chain1.ext1`. The following variables are supported in the
+        # metadata: ``forwarding_rule_id`` - substituted with the forwarding rule's
+        # fully qualified resource name. This field is not supported for plugin
+        # extensions and must not be set.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         # Required. The name for this extension. The name is logged as part of the HTTP
         # request logs. The name must conform with RFC-1034, is restricted to lower-
         # cased letters, numbers and hyphens, and can have a maximum length of 63
@@ -544,7 +557,12 @@ module Google
         # cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
         # `https://www.googleapis.com/compute/v1/projects/`project`/regions/`region`/
         # backendServices/`backendService`` or `https://www.googleapis.com/compute/v1/
-        # projects/`project`/global/backendServices/`backendService``.
+        # projects/`project`/global/backendServices/`backendService``. To configure a
+        # plugin extension, this must be a reference to a [wasm plugin](https://cloud.
+        # google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.
+        # wasmPlugins) in the format: `projects/`project`/locations/`location`/
+        # wasmPlugins/`plugin`` or `//networkservices.googleapis.com/projects/`project`/
+        # locations/`location`/wasmPlugins/`wasmPlugin``.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -557,7 +575,8 @@ module Google
         attr_accessor :supported_events
       
         # Optional. Specifies the timeout for each individual message on the stream. The
-        # timeout must be between 10-1000 milliseconds. Required for Callout extensions.
+        # timeout must be between 10-1000 milliseconds. Required for callout extensions.
+        # This field is not supported for plugin extensions and must not be set.
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
@@ -571,6 +590,7 @@ module Google
           @authority = args[:authority] if args.key?(:authority)
           @fail_open = args[:fail_open] if args.key?(:fail_open)
           @forward_headers = args[:forward_headers] if args.key?(:forward_headers)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @service = args[:service] if args.key?(:service)
           @supported_events = args[:supported_events] if args.key?(:supported_events)
@@ -2186,7 +2206,8 @@ module Google
         # message sent to the extension server. The metadata is available under the
         # namespace `com.google.lb_route_extension.`. The following variables are
         # supported in the metadata Struct: ``forwarding_rule_id`` - substituted with
-        # the forwarding rule's fully qualified resource name.
+        # the forwarding rule's fully qualified resource name. This field is not
+        # supported for plugin extensions and must not be set.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -2274,7 +2295,8 @@ module Google
         # metadata_context.filter_metadata` map field. The metadata is available under
         # the key `com.google.lb_traffic_extension.`. The following variables are
         # supported in the metadata: ``forwarding_rule_id`` - substituted with the
-        # forwarding rule's fully qualified resource name.
+        # forwarding rule's fully qualified resource name. This field is not supported
+        # for plugin extensions and must not be set.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -2667,6 +2689,60 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tls_routes = args[:tls_routes] if args.key?(:tls_routes)
+        end
+      end
+      
+      # Response returned by the `ListWasmPluginVersions` method.
+      class ListWasmPluginVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of `WasmPluginVersion` resources.
+        # Corresponds to the JSON property `wasmPluginVersions`
+        # @return [Array<Google::Apis::NetworkservicesV1::WasmPluginVersion>]
+        attr_accessor :wasm_plugin_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @wasm_plugin_versions = args[:wasm_plugin_versions] if args.key?(:wasm_plugin_versions)
+        end
+      end
+      
+      # Response returned by the `ListWasmPlugins` method.
+      class ListWasmPluginsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of `WasmPlugin` resources.
+        # Corresponds to the JSON property `wasmPlugins`
+        # @return [Array<Google::Apis::NetworkservicesV1::WasmPlugin>]
+        attr_accessor :wasm_plugins
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @wasm_plugins = args[:wasm_plugins] if args.key?(:wasm_plugins)
         end
       end
       
@@ -3143,8 +3219,8 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_algorithm
       
-        # Required. Name of the ServiceLbPolicy resource. It matches pattern `projects/`
-        # project`/locations/`location`/serviceLbPolicies/`service_lb_policy_name``.
+        # Identifier. Name of the ServiceLbPolicy resource. It matches pattern `projects/
+        # `project`/locations/`location`/serviceLbPolicies/`service_lb_policy_name``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3774,6 +3850,333 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # `WasmPlugin` is a resource representing a service executing a customer-
+      # provided Wasm module.
+      class WasmPlugin
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Set of labels associated with the `WasmPlugin` resource. The format
+        # must comply with [the following requirements](/compute/docs/labeling-resources#
+        # requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Specifies the logging options for the activity performed by this `WasmPlugin`.
+        # If logging is enabled, plugin logs are exported to Cloud Logging.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::NetworkservicesV1::WasmPluginLogConfig]
+        attr_accessor :log_config
+      
+        # Optional. The ID of the `WasmPluginVersion` resource that is the currently
+        # serving one. The version referred to must be a child of this `WasmPlugin`
+        # resource.
+        # Corresponds to the JSON property `mainVersionId`
+        # @return [String]
+        attr_accessor :main_version_id
+      
+        # Identifier. Name of the `WasmPlugin` resource in the following format: `
+        # projects/`project`/locations/`location`/wasmPlugins/`wasm_plugin``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. List of all [Service Extensions](https://cloud.google.com/service-
+        # extensions/docs/overview) that use this `WasmPlugin`.
+        # Corresponds to the JSON property `usedBy`
+        # @return [Array<Google::Apis::NetworkservicesV1::WasmPluginUsedBy>]
+        attr_accessor :used_by
+      
+        # Optional. All versions of this `WasmPlugin` in the key-value format. The key
+        # is the resource ID, the value is the `VersionDetails`. Allows to create or
+        # update `WasmPlugin` and its WasmPluginVersions in a single request. When the `
+        # main_version_id` field is not empty it must point to one of the VersionDetails
+        # in the map. If provided in the update request, the new versions replace the
+        # previous set. Any version omitted from the `versions` will be removed. Since
+        # the `WasmPluginVersion` resource is immutable, if the WasmPluginVersion with
+        # the same name already exists and differs the Update request will fail. Note:
+        # In the GET request, this field is populated only if the GetWasmPluginRequest.
+        # view is set to WASM_PLUGIN_VIEW_FULL.
+        # Corresponds to the JSON property `versions`
+        # @return [Hash<String,Google::Apis::NetworkservicesV1::WasmPluginVersionDetails>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @log_config = args[:log_config] if args.key?(:log_config)
+          @main_version_id = args[:main_version_id] if args.key?(:main_version_id)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @used_by = args[:used_by] if args.key?(:used_by)
+          @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
+      # Specifies the logging options for the activity performed by this `WasmPlugin`.
+      # If logging is enabled, plugin logs are exported to Cloud Logging.
+      class WasmPluginLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies whether to enable logging for activity by this `WasmPlugin`
+        # . Defaults to `false`.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        # Non-empty default. Specificies the lowest level of the plugin logs that are
+        # exported to Cloud Logging. This setting relates to the logs generated by using
+        # logging statements in your Wasm code. This field is can be set only if logging
+        # is enabled for the `WasmPlugin` resource. If the field is not provided when
+        # logging is enabled, it is set to `INFO` by default.
+        # Corresponds to the JSON property `minLogLevel`
+        # @return [String]
+        attr_accessor :min_log_level
+      
+        # Non-empty default. Configures the sampling rate of activity logs, where `1.0`
+        # means all logged activity is reported and `0.0` means no activity is reported.
+        # A floating point value between `0.0` and `1.0` indicates that a percentage of
+        # log messages is stored. The default value when logging is enabled is `1.0`.
+        # The value of the field must be between `0` and `1` (inclusive). This field can
+        # only be specified if logging is enabled for this `WasmPlugin`.
+        # Corresponds to the JSON property `sampleRate`
+        # @return [Float]
+        attr_accessor :sample_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
+          @min_log_level = args[:min_log_level] if args.key?(:min_log_level)
+          @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
+        end
+      end
+      
+      # Defines a resource that uses the `WasmPlugin`.
+      class WasmPluginUsedBy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Full name of the resource https://google.aip.dev/122#full-
+        # resource-names, e.g. `//networkservices.googleapis.com/projects/`project`/
+        # locations/`location`/lbRouteExtensions/`extension``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A single immutable version of a `WasmPlugin`. Defines the Wasm module used and
+      # optionally its runtime config.
+      class WasmPluginVersion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The resolved digest for the image specified in `image`. The
+        # digest is resolved during the creation of `WasmPluginVersion` resource. This
+        # field holds the digest value regardless of whether a tag or digest was
+        # originally specified in the `image` field.
+        # Corresponds to the JSON property `imageDigest`
+        # @return [String]
+        attr_accessor :image_digest
+      
+        # Optional. URI of the container image containing the Wasm plugin, stored in the
+        # Artifact Registry. When a new `WasmPluginVersion` resource is created, the
+        # digest of the container image is saved in the `image_digest` field. When
+        # downloading an image, the digest value is used instead of an image tag.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # Optional. Set of labels associated with the `WasmPluginVersion` resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Name of the `WasmPluginVersion` resource in the following format: `
+        # projects/`project`/locations/`location`/wasmPlugins/`wasm_plugin`/ versions/`
+        # wasm_plugin_version``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for the Wasm plugin. The configuration is provided to the Wasm
+        # plugin at runtime through the `ON_CONFIGURE` callback. When a new `
+        # WasmPluginVersion` resource is created, the digest of the contents is saved in
+        # the `plugin_config_digest` field.
+        # Corresponds to the JSON property `pluginConfigData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :plugin_config_data
+      
+        # Output only. This field holds the digest (usually checksum) value for the
+        # plugin configuration. The value is calculated based on the contents of the `
+        # plugin_config_data` or the container image defined by the `plugin_config_uri`
+        # field.
+        # Corresponds to the JSON property `pluginConfigDigest`
+        # @return [String]
+        attr_accessor :plugin_config_digest
+      
+        # URI of the Wasm plugin configuration stored in the Artifact Registry. The
+        # configuration is provided to the plugin at runtime through the `ON_CONFIGURE`
+        # callback. The container image must contain only a single file with the name `
+        # plugin.config`. When a new `WasmPluginVersion` resource is created, the digest
+        # of the container image is saved in the `plugin_config_digest` field.
+        # Corresponds to the JSON property `pluginConfigUri`
+        # @return [String]
+        attr_accessor :plugin_config_uri
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @image_digest = args[:image_digest] if args.key?(:image_digest)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @plugin_config_data = args[:plugin_config_data] if args.key?(:plugin_config_data)
+          @plugin_config_digest = args[:plugin_config_digest] if args.key?(:plugin_config_digest)
+          @plugin_config_uri = args[:plugin_config_uri] if args.key?(:plugin_config_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Details of a `WasmPluginVersion` resource to be inlined in the `WasmPlugin`
+      # resource.
+      class WasmPluginVersionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The resolved digest for the image specified in `image`. The
+        # digest is resolved during the creation of a `WasmPluginVersion` resource. This
+        # field holds the digest value regardless of whether a tag or digest was
+        # originally specified in the `image` field.
+        # Corresponds to the JSON property `imageDigest`
+        # @return [String]
+        attr_accessor :image_digest
+      
+        # Optional. URI of the container image containing the Wasm module, stored in the
+        # Artifact Registry. The container image must contain only a single file with
+        # the name `plugin.wasm`. When a new `WasmPluginVersion` resource is created,
+        # the URI gets resolved to an image digest and saved in the `image_digest` field.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # Optional. Set of labels associated with the `WasmPluginVersion` resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Configuration for the Wasm plugin. The configuration is provided to the Wasm
+        # plugin at runtime through the `ON_CONFIGURE` callback. When a new `
+        # WasmPluginVersion` version is created, the digest of the contents is saved in
+        # the `plugin_config_digest` field.
+        # Corresponds to the JSON property `pluginConfigData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :plugin_config_data
+      
+        # Output only. This field holds the digest (usually checksum) value for the
+        # plugin configuration. The value is calculated based on the contents of the `
+        # plugin_config_data` or the container image defined by the `plugin_config_uri`
+        # field.
+        # Corresponds to the JSON property `pluginConfigDigest`
+        # @return [String]
+        attr_accessor :plugin_config_digest
+      
+        # URI of the WasmPlugin configuration stored in the Artifact Registry. The
+        # configuration is provided to the Wasm plugin at runtime through the `
+        # ON_CONFIGURE` callback. The container image must contain only a single file
+        # with the name `plugin.config`. When a new `WasmPluginVersion` resource is
+        # created, the digest of the container image is saved in the `
+        # plugin_config_digest` field.
+        # Corresponds to the JSON property `pluginConfigUri`
+        # @return [String]
+        attr_accessor :plugin_config_uri
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @image_digest = args[:image_digest] if args.key?(:image_digest)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @labels = args[:labels] if args.key?(:labels)
+          @plugin_config_data = args[:plugin_config_data] if args.key?(:plugin_config_data)
+          @plugin_config_digest = args[:plugin_config_digest] if args.key?(:plugin_config_digest)
+          @plugin_config_uri = args[:plugin_config_uri] if args.key?(:plugin_config_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
     end
