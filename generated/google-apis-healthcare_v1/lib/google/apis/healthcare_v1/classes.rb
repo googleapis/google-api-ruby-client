@@ -4005,8 +4005,8 @@ module Google
         # @return [Google::Apis::HealthcareV1::SchemaPackage]
         attr_accessor :schema
       
-        # Byte(s) to use as the segment terminator. If this is unset, '\r' is used as
-        # segment terminator, matching the HL7 version 2 specification.
+        # Optional. Byte(s) to use as the segment terminator. If this is unset, '\r' is
+        # used as segment terminator, matching the HL7 version 2 specification.
         # Corresponds to the JSON property `segmentTerminator`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
