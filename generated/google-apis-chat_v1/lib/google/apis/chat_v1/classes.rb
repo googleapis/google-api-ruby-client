@@ -1518,6 +1518,14 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # Optional. The type of a button. If unset, button type defaults to `OUTLINED`.
+        # If the `color` field is set, the button type is forced to `FILLED` and any
+        # value set for this field is ignored. [Google Chat apps](https://developers.
+        # google.com/workspace/chat):
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1530,6 +1538,7 @@ module Google
           @icon = args[:icon] if args.key?(:icon)
           @on_click = args[:on_click] if args.key?(:on_click)
           @text = args[:text] if args.key?(:text)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1786,6 +1795,140 @@ module Google
           @image_url = args[:image_url] if args.key?(:image_url)
           @subtitle = args[:subtitle] if args.key?(:subtitle)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A text, icon, or text and icon chip that users can click. [Google Chat apps](
+      # https://developers.google.com/workspace/chat):
+      class GoogleAppsCardV1Chip
+        include Google::Apis::Core::Hashable
+      
+        # The alternative text that's used for accessibility. Set descriptive text that
+        # lets users know what the chip does. For example, if a chip opens a hyperlink,
+        # write: "Opens a new browser tab and navigates to the Google Chat developer
+        # documentation at https://developers.google.com/workspace/chat".
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # Whether the chip is in an inactive state and ignores user actions. Defaults to
+        # `false`.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Whether the chip is in an active state and responds to user actions. Defaults
+        # to `true`. Deprecated. Use `disabled` instead.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # An icon displayed in a widget on a card. For an example in Google Chat apps,
+        # see [Add an icon](https://developers.google.com/workspace/chat/add-text-image-
+        # card-dialog#add_an_icon). Supports [built-in](https://developers.google.com/
+        # workspace/chat/format-messages#builtinicons) and [custom](https://developers.
+        # google.com/workspace/chat/format-messages#customicons) icons. [Google
+        # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
+        # extend):
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
+        attr_accessor :icon
+      
+        # The text displayed inside the chip.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Represents how to respond when users click an interactive element on a card,
+        # such as a button. [Google Workspace Add-ons and Chat apps](https://developers.
+        # google.com/workspace/extend):
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
+        attr_accessor :on_click
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @icon = args[:icon] if args.key?(:icon)
+          @label = args[:label] if args.key?(:label)
+          @on_click = args[:on_click] if args.key?(:on_click)
+        end
+      end
+      
+      # A list of chips layed out horizontally, which can either scroll horizontally
+      # or wrap to the next line. [Google Chat apps](https://developers.google.com/
+      # workspace/chat):
+      class GoogleAppsCardV1ChipList
+        include Google::Apis::Core::Hashable
+      
+        # An array of chips.
+        # Corresponds to the JSON property `chips`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1Chip>]
+        attr_accessor :chips
+      
+        # Specified chip list layout.
+        # Corresponds to the JSON property `layout`
+        # @return [String]
+        attr_accessor :layout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chips = args[:chips] if args.key?(:chips)
+          @layout = args[:layout] if args.key?(:layout)
+        end
+      end
+      
+      # Represent an expand and collapse control. [Google Chat apps](https://
+      # developers.google.com/workspace/chat):
+      class GoogleAppsCardV1CollapseControl
+        include Google::Apis::Core::Hashable
+      
+        # A text, icon, or text and icon button that users can click. For an example in
+        # Google Chat apps, see [Add a button](https://developers.google.com/workspace/
+        # chat/design-interactive-card-dialog#add_a_button). To make an image a
+        # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
+        # onClick` action. [Google Workspace Add-ons and Chat apps](https://developers.
+        # google.com/workspace/extend):
+        # Corresponds to the JSON property `collapseButton`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
+        attr_accessor :collapse_button
+      
+        # A text, icon, or text and icon button that users can click. For an example in
+        # Google Chat apps, see [Add a button](https://developers.google.com/workspace/
+        # chat/design-interactive-card-dialog#add_a_button). To make an image a
+        # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
+        # onClick` action. [Google Workspace Add-ons and Chat apps](https://developers.
+        # google.com/workspace/extend):
+        # Corresponds to the JSON property `expandButton`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
+        attr_accessor :expand_button
+      
+        # The horizontal alignment of the expand and collapse button.
+        # Corresponds to the JSON property `horizontalAlignment`
+        # @return [String]
+        attr_accessor :horizontal_alignment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collapse_button = args[:collapse_button] if args.key?(:collapse_button)
+          @expand_button = args[:expand_button] if args.key?(:expand_button)
+          @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
         end
       end
       
@@ -2467,6 +2610,15 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OpenLink]
         attr_accessor :open_link
       
+        # A widget that presents a pop-up menu with one or more actions that users can
+        # invoke. For example, showing non-primary actions in a card. You can use this
+        # widget when actions don't fit in the available space. To use, specify this
+        # widget in the `OnClick` action of widgets that support it. For example, in a `
+        # Button`. [Google Chat apps](https://developers.google.com/workspace/chat):
+        # Corresponds to the JSON property `overflowMenu`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1OverflowMenu]
+        attr_accessor :overflow_menu
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2477,6 +2629,7 @@ module Google
           @card = args[:card] if args.key?(:card)
           @open_dynamic_link_action = args[:open_dynamic_link_action] if args.key?(:open_dynamic_link_action)
           @open_link = args[:open_link] if args.key?(:open_link)
+          @overflow_menu = args[:overflow_menu] if args.key?(:overflow_menu)
         end
       end
       
@@ -2512,6 +2665,76 @@ module Google
           @on_close = args[:on_close] if args.key?(:on_close)
           @open_as = args[:open_as] if args.key?(:open_as)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # A widget that presents a pop-up menu with one or more actions that users can
+      # invoke. For example, showing non-primary actions in a card. You can use this
+      # widget when actions don't fit in the available space. To use, specify this
+      # widget in the `OnClick` action of widgets that support it. For example, in a `
+      # Button`. [Google Chat apps](https://developers.google.com/workspace/chat):
+      class GoogleAppsCardV1OverflowMenu
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of menu options.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1OverflowMenuItem>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # An option that users can invoke in an overflow menu. [Google Chat apps](https:/
+      # /developers.google.com/workspace/chat):
+      class GoogleAppsCardV1OverflowMenuItem
+        include Google::Apis::Core::Hashable
+      
+        # Whether the menu option is disabled. Defaults to false.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Represents how to respond when users click an interactive element on a card,
+        # such as a button. [Google Workspace Add-ons and Chat apps](https://developers.
+        # google.com/workspace/extend):
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
+        attr_accessor :on_click
+      
+        # An icon displayed in a widget on a card. For an example in Google Chat apps,
+        # see [Add an icon](https://developers.google.com/workspace/chat/add-text-image-
+        # card-dialog#add_an_icon). Supports [built-in](https://developers.google.com/
+        # workspace/chat/format-messages#builtinicons) and [custom](https://developers.
+        # google.com/workspace/chat/format-messages#customicons) icons. [Google
+        # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
+        # extend):
+        # Corresponds to the JSON property `startIcon`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
+        attr_accessor :start_icon
+      
+        # Required. The text that identifies or describes the item to users.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @on_click = args[:on_click] if args.key?(:on_click)
+          @start_icon = args[:start_icon] if args.key?(:start_icon)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -2551,6 +2774,12 @@ module Google
       # developers.google.com/workspace/extend):
       class GoogleAppsCardV1Section
         include Google::Apis::Core::Hashable
+      
+        # Represent an expand and collapse control. [Google Chat apps](https://
+        # developers.google.com/workspace/chat):
+        # Corresponds to the JSON property `collapseControl`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1CollapseControl]
+        attr_accessor :collapse_control
       
         # Indicates whether this section is collapsible. Collapsible sections hide some
         # or all widgets, but users can expand the section to reveal the hidden widgets
@@ -2592,6 +2821,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @collapse_control = args[:collapse_control] if args.key?(:collapse_control)
           @collapsible = args[:collapsible] if args.key?(:collapsible)
           @header = args[:header] if args.key?(:header)
           @uncollapsible_widgets_count = args[:uncollapsible_widgets_count] if args.key?(:uncollapsible_widgets_count)
@@ -2972,6 +3202,17 @@ module Google
       class GoogleAppsCardV1TextParagraph
         include Google::Apis::Core::Hashable
       
+        # The maximum number of lines of text that are displayed in the widget. If the
+        # text exceeds the specified maximum number of lines, the excess content is
+        # concealed behind a **show more** button. If the text is equal or shorter than
+        # the specified maximum number of lines, a **show more** button isn't displayed.
+        # The default value is 0, in which case all context is displayed. Negative
+        # values are ignored. [Google Chat apps](https://developers.google.com/workspace/
+        # chat):
+        # Corresponds to the JSON property `maxLines`
+        # @return [Fixnum]
+        attr_accessor :max_lines
+      
         # The text that's shown in the widget.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -2983,6 +3224,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @max_lines = args[:max_lines] if args.key?(:max_lines)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -2999,6 +3241,13 @@ module Google
         # Corresponds to the JSON property `buttonList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
         attr_accessor :button_list
+      
+        # A list of chips layed out horizontally, which can either scroll horizontally
+        # or wrap to the next line. [Google Chat apps](https://developers.google.com/
+        # workspace/chat):
+        # Corresponds to the JSON property `chipList`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1ChipList]
+        attr_accessor :chip_list
       
         # The `Columns` widget displays up to 2 columns in a card or dialog. You can add
         # widgets to each column; the widgets appear in the order that they are
@@ -3137,6 +3386,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @button_list = args[:button_list] if args.key?(:button_list)
+          @chip_list = args[:chip_list] if args.key?(:chip_list)
           @columns = args[:columns] if args.key?(:columns)
           @date_time_picker = args[:date_time_picker] if args.key?(:date_time_picker)
           @decorated_text = args[:decorated_text] if args.key?(:decorated_text)
@@ -3162,6 +3412,13 @@ module Google
         # Corresponds to the JSON property `buttonList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
         attr_accessor :button_list
+      
+        # A list of chips layed out horizontally, which can either scroll horizontally
+        # or wrap to the next line. [Google Chat apps](https://developers.google.com/
+        # workspace/chat):
+        # Corresponds to the JSON property `chipList`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1ChipList]
+        attr_accessor :chip_list
       
         # Lets users input a date, a time, or both a date and a time. For an example in
         # Google Chat apps, see [Let a user pick a date and time](https://developers.
@@ -3241,6 +3498,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @button_list = args[:button_list] if args.key?(:button_list)
+          @chip_list = args[:chip_list] if args.key?(:chip_list)
           @date_time_picker = args[:date_time_picker] if args.key?(:date_time_picker)
           @decorated_text = args[:decorated_text] if args.key?(:decorated_text)
           @image = args[:image] if args.key?(:image)

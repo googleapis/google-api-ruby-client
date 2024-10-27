@@ -280,6 +280,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCardV1Chip
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1ChipList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1CollapseControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCardV1Column
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +377,18 @@ module Google
       end
       
       class GoogleAppsCardV1OpenLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1OverflowMenu
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1OverflowMenuItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1195,6 +1225,7 @@ module Google
           property :on_click, as: 'onClick', class: Google::Apis::ChatV1::GoogleAppsCardV1OnClick, decorator: Google::Apis::ChatV1::GoogleAppsCardV1OnClick::Representation
       
           property :text, as: 'text'
+          property :type, as: 'type'
         end
       end
       
@@ -1252,6 +1283,40 @@ module Google
           property :image_url, as: 'imageUrl'
           property :subtitle, as: 'subtitle'
           property :title, as: 'title'
+        end
+      end
+      
+      class GoogleAppsCardV1Chip
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alt_text, as: 'altText'
+          property :disabled, as: 'disabled'
+          property :enabled, as: 'enabled'
+          property :icon, as: 'icon', class: Google::Apis::ChatV1::GoogleAppsCardV1Icon, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Icon::Representation
+      
+          property :label, as: 'label'
+          property :on_click, as: 'onClick', class: Google::Apis::ChatV1::GoogleAppsCardV1OnClick, decorator: Google::Apis::ChatV1::GoogleAppsCardV1OnClick::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCardV1ChipList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :chips, as: 'chips', class: Google::Apis::ChatV1::GoogleAppsCardV1Chip, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Chip::Representation
+      
+          property :layout, as: 'layout'
+        end
+      end
+      
+      class GoogleAppsCardV1CollapseControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collapse_button, as: 'collapseButton', class: Google::Apis::ChatV1::GoogleAppsCardV1Button, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Button::Representation
+      
+          property :expand_button, as: 'expandButton', class: Google::Apis::ChatV1::GoogleAppsCardV1Button, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Button::Representation
+      
+          property :horizontal_alignment, as: 'horizontalAlignment'
         end
       end
       
@@ -1404,6 +1469,8 @@ module Google
       
           property :open_link, as: 'openLink', class: Google::Apis::ChatV1::GoogleAppsCardV1OpenLink, decorator: Google::Apis::ChatV1::GoogleAppsCardV1OpenLink::Representation
       
+          property :overflow_menu, as: 'overflowMenu', class: Google::Apis::ChatV1::GoogleAppsCardV1OverflowMenu, decorator: Google::Apis::ChatV1::GoogleAppsCardV1OverflowMenu::Representation
+      
         end
       end
       
@@ -1413,6 +1480,26 @@ module Google
           property :on_close, as: 'onClose'
           property :open_as, as: 'openAs'
           property :url, as: 'url'
+        end
+      end
+      
+      class GoogleAppsCardV1OverflowMenu
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ChatV1::GoogleAppsCardV1OverflowMenuItem, decorator: Google::Apis::ChatV1::GoogleAppsCardV1OverflowMenuItem::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCardV1OverflowMenuItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+          property :on_click, as: 'onClick', class: Google::Apis::ChatV1::GoogleAppsCardV1OnClick, decorator: Google::Apis::ChatV1::GoogleAppsCardV1OnClick::Representation
+      
+          property :start_icon, as: 'startIcon', class: Google::Apis::ChatV1::GoogleAppsCardV1Icon, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Icon::Representation
+      
+          property :text, as: 'text'
         end
       end
       
@@ -1428,6 +1515,8 @@ module Google
       class GoogleAppsCardV1Section
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :collapse_control, as: 'collapseControl', class: Google::Apis::ChatV1::GoogleAppsCardV1CollapseControl, decorator: Google::Apis::ChatV1::GoogleAppsCardV1CollapseControl::Representation
+      
           property :collapsible, as: 'collapsible'
           property :header, as: 'header'
           property :uncollapsible_widgets_count, as: 'uncollapsibleWidgetsCount'
@@ -1514,6 +1603,7 @@ module Google
       class GoogleAppsCardV1TextParagraph
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_lines, as: 'maxLines'
           property :text, as: 'text'
         end
       end
@@ -1522,6 +1612,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :button_list, as: 'buttonList', class: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList::Representation
+      
+          property :chip_list, as: 'chipList', class: Google::Apis::ChatV1::GoogleAppsCardV1ChipList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ChipList::Representation
       
           property :columns, as: 'columns', class: Google::Apis::ChatV1::GoogleAppsCardV1Columns, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Columns::Representation
       
@@ -1549,6 +1641,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :button_list, as: 'buttonList', class: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList::Representation
+      
+          property :chip_list, as: 'chipList', class: Google::Apis::ChatV1::GoogleAppsCardV1ChipList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ChipList::Representation
       
           property :date_time_picker, as: 'dateTimePicker', class: Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker, decorator: Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker::Representation
       
