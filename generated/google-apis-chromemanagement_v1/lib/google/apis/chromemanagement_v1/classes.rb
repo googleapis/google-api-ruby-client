@@ -2026,6 +2026,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :permissions
       
+        # Risk assessment data about an extension/app.
+        # Corresponds to the JSON property `riskAssessment`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessmentData]
+        attr_accessor :risk_assessment
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2043,6 +2048,7 @@ module Google
           @homepage_uri = args[:homepage_uri] if args.key?(:homepage_uri)
           @os_user_count = args[:os_user_count] if args.key?(:os_user_count)
           @permissions = args[:permissions] if args.key?(:permissions)
+          @risk_assessment = args[:risk_assessment] if args.key?(:risk_assessment)
         end
       end
       
@@ -2756,6 +2762,96 @@ module Google
           @printer_id = args[:printer_id] if args.key?(:printer_id)
           @printer_model = args[:printer_model] if args.key?(:printer_model)
           @user_count = args[:user_count] if args.key?(:user_count)
+        end
+      end
+      
+      # Risk assessment for a Chrome extension.
+      class GoogleChromeManagementV1RiskAssessment
+        include Google::Apis::Core::Hashable
+      
+        # Risk assessment for the extension. Currently, this is a numerical value, and
+        # its interpretation is specific to each risk assessment provider.
+        # Corresponds to the JSON property `assessment`
+        # @return [String]
+        attr_accessor :assessment
+      
+        # A URL that a user can navigate to for more information about the risk
+        # assessment.
+        # Corresponds to the JSON property `detailsUrl`
+        # @return [String]
+        attr_accessor :details_url
+      
+        # The version of the extension that this assessment applies to.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assessment = args[:assessment] if args.key?(:assessment)
+          @details_url = args[:details_url] if args.key?(:details_url)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Risk assessment data about an extension/app.
+      class GoogleChromeManagementV1RiskAssessmentData
+        include Google::Apis::Core::Hashable
+      
+        # Individual risk assessments.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessmentEntry>]
+        attr_accessor :entries
+      
+        # Overall assessed risk level across all entries. This will be the highest risk
+        # level from all entries.
+        # Corresponds to the JSON property `overallRiskLevel`
+        # @return [String]
+        attr_accessor :overall_risk_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @overall_risk_level = args[:overall_risk_level] if args.key?(:overall_risk_level)
+        end
+      end
+      
+      # One risk assessment entry.
+      class GoogleChromeManagementV1RiskAssessmentEntry
+        include Google::Apis::Core::Hashable
+      
+        # The risk assessment provider from which this entry comes from.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Risk assessment for a Chrome extension.
+        # Corresponds to the JSON property `riskAssessment`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessment]
+        attr_accessor :risk_assessment
+      
+        # The bucketed risk level for the risk assessment.
+        # Corresponds to the JSON property `riskLevel`
+        # @return [String]
+        attr_accessor :risk_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @provider = args[:provider] if args.key?(:provider)
+          @risk_assessment = args[:risk_assessment] if args.key?(:risk_assessment)
+          @risk_level = args[:risk_level] if args.key?(:risk_level)
         end
       end
       

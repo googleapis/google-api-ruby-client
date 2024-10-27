@@ -400,6 +400,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1RiskAssessment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1RiskAssessmentData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1RiskAssessmentEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1RuntimeCountersReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1100,6 +1118,8 @@ module Google
           property :homepage_uri, as: 'homepageUri'
           property :os_user_count, :numeric_string => true, as: 'osUserCount'
           collection :permissions, as: 'permissions'
+          property :risk_assessment, as: 'riskAssessment', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessmentData, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessmentData::Representation
+      
         end
       end
       
@@ -1274,6 +1294,34 @@ module Google
           property :printer_id, as: 'printerId'
           property :printer_model, as: 'printerModel'
           property :user_count, :numeric_string => true, as: 'userCount'
+        end
+      end
+      
+      class GoogleChromeManagementV1RiskAssessment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assessment, as: 'assessment'
+          property :details_url, as: 'detailsUrl'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleChromeManagementV1RiskAssessmentData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessmentEntry, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessmentEntry::Representation
+      
+          property :overall_risk_level, as: 'overallRiskLevel'
+        end
+      end
+      
+      class GoogleChromeManagementV1RiskAssessmentEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :provider, as: 'provider'
+          property :risk_assessment, as: 'riskAssessment', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessment, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessment::Representation
+      
+          property :risk_level, as: 'riskLevel'
         end
       end
       

@@ -551,11 +551,11 @@ module Google
         #   operations are not supported in this filter. Supported filter fields: *
         #   app_name * app_type * install_type * number_of_permissions *
         #   total_install_count * latest_profile_active_date * permission_name * app_id *
-        #   manifest_versions
+        #   manifest_versions * risk_score
         # @param [String] order_by
         #   Field used to order results. Supported order by fields: * app_name * app_type *
         #   install_type * number_of_permissions * total_install_count * app_id *
-        #   manifest_versions
+        #   manifest_versions * risk_score
         # @param [String] org_unit_id
         #   The ID of the organizational unit.
         # @param [Fixnum] page_size
