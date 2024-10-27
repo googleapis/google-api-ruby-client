@@ -334,6 +334,10 @@ module Google
         # enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.
         # metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the
         # namespace `config-management-monitoring` should be bound to the GSA.
+        # Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud
+        # Service Account is no longer needed for exporting Config Sync metrics: https://
+        # cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-
+        # config-sync-cloud-monitoring#custom-monitoring.
         # Corresponds to the JSON property `metricsGcpServiceAccountEmail`
         # @return [String]
         attr_accessor :metrics_gcp_service_account_email
@@ -468,6 +472,11 @@ module Google
         # @return [String]
         attr_accessor :cluster_level_stop_syncing_state
       
+        # Output only. The number of RootSync and RepoSync CRs in the cluster.
+        # Corresponds to the JSON property `crCount`
+        # @return [Fixnum]
+        attr_accessor :cr_count
+      
         # The state of ConfigSync's deployment on a cluster.
         # Corresponds to the JSON property `deploymentState`
         # @return [Google::Apis::GkehubV2::ConfigManagementConfigSyncDeploymentState]
@@ -510,6 +519,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_level_stop_syncing_state = args[:cluster_level_stop_syncing_state] if args.key?(:cluster_level_stop_syncing_state)
+          @cr_count = args[:cr_count] if args.key?(:cr_count)
           @deployment_state = args[:deployment_state] if args.key?(:deployment_state)
           @errors = args[:errors] if args.key?(:errors)
           @reposync_crd = args[:reposync_crd] if args.key?(:reposync_crd)
