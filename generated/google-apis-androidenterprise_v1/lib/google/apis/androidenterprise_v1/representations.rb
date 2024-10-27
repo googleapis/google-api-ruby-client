@@ -1091,6 +1091,7 @@ module Google
           property :device_report_policy, as: 'deviceReportPolicy'
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::AndroidenterpriseV1::MaintenanceWindow, decorator: Google::Apis::AndroidenterpriseV1::MaintenanceWindow::Representation
       
+          property :policy_id, as: 'policyId'
           property :product_availability_policy, as: 'productAvailabilityPolicy'
           collection :product_policy, as: 'productPolicy', class: Google::Apis::AndroidenterpriseV1::ProductPolicy, decorator: Google::Apis::AndroidenterpriseV1::ProductPolicy::Representation
       

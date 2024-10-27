@@ -1921,6 +1921,12 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::MaintenanceWindow]
         attr_accessor :maintenance_window
       
+        # An identifier for the policy that will be passed with the app install feedback
+        # sent from the Play Store.
+        # Corresponds to the JSON property `policyId`
+        # @return [String]
+        attr_accessor :policy_id
+      
         # The availability granted to the device for the specified products. "all" gives
         # the device access to all products, regardless of approval status. "all" does
         # not enable automatic visibility of "alpha" or "beta" tracks. "whitelist"
@@ -1947,6 +1953,7 @@ module Google
           @auto_update_policy = args[:auto_update_policy] if args.key?(:auto_update_policy)
           @device_report_policy = args[:device_report_policy] if args.key?(:device_report_policy)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
+          @policy_id = args[:policy_id] if args.key?(:policy_id)
           @product_availability_policy = args[:product_availability_policy] if args.key?(:product_availability_policy)
           @product_policy = args[:product_policy] if args.key?(:product_policy)
         end
