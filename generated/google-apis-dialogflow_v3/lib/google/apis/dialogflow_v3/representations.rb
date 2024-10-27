@@ -7321,6 +7321,7 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
           property :text, as: 'text'
           property :title, as: 'title'
           property :uri, as: 'uri'
@@ -8300,6 +8301,7 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
           property :text, as: 'text'
           property :title, as: 'title'
           property :uri, as: 'uri'
