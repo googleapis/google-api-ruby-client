@@ -2932,7 +2932,9 @@ module Google
           property :bool_value, as: 'boolValue'
           property :key, as: 'key'
           property :na_value, as: 'naValue'
+          property :normalized_score, as: 'normalizedScore'
           property :num_value, as: 'numValue'
+          property :potential_score, as: 'potentialScore'
           property :score, as: 'score'
           property :str_value, as: 'strValue'
         end
@@ -4256,7 +4258,9 @@ module Google
           property :bool_value, as: 'boolValue'
           property :key, as: 'key'
           property :na_value, as: 'naValue'
+          property :normalized_score, as: 'normalizedScore'
           property :num_value, as: 'numValue'
+          property :potential_score, as: 'potentialScore'
           property :score, as: 'score'
           property :str_value, as: 'strValue'
         end

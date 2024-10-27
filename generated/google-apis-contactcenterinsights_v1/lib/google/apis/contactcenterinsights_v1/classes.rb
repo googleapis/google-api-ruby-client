@@ -4065,7 +4065,8 @@ module Google
         attr_accessor :conversation
       
         # The maximum potential score of the question. If the question was answered
-        # using `na_value`, this field will be zero.
+        # using `na_value`, this field will be zero. Deprecated: Use AnswerValue.
+        # potential_score instead.
         # Corresponds to the JSON property `potentialScore`
         # @return [Float]
         attr_accessor :potential_score
@@ -4154,12 +4155,23 @@ module Google
         attr_accessor :na_value
         alias_method :na_value?, :na_value
       
+        # Output only. Normalized score of the questions. Calculated as score /
+        # potential_score iff potential_score != 0 else 0
+        # Corresponds to the JSON property `normalizedScore`
+        # @return [Float]
+        attr_accessor :normalized_score
+      
         # Numerical value.
         # Corresponds to the JSON property `numValue`
         # @return [Float]
         attr_accessor :num_value
       
-        # Numerical score of the answer.
+        # Output only. The maximum potential score of the question.
+        # Corresponds to the JSON property `potentialScore`
+        # @return [Float]
+        attr_accessor :potential_score
+      
+        # Output only. Numerical score of the answer.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -4178,7 +4190,9 @@ module Google
           @bool_value = args[:bool_value] if args.key?(:bool_value)
           @key = args[:key] if args.key?(:key)
           @na_value = args[:na_value] if args.key?(:na_value)
+          @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
           @num_value = args[:num_value] if args.key?(:num_value)
+          @potential_score = args[:potential_score] if args.key?(:potential_score)
           @score = args[:score] if args.key?(:score)
           @str_value = args[:str_value] if args.key?(:str_value)
         end
@@ -8683,7 +8697,8 @@ module Google
         attr_accessor :conversation
       
         # The maximum potential score of the question. If the question was answered
-        # using `na_value`, this field will be zero.
+        # using `na_value`, this field will be zero. Deprecated: Use AnswerValue.
+        # potential_score instead.
         # Corresponds to the JSON property `potentialScore`
         # @return [Float]
         attr_accessor :potential_score
@@ -8772,12 +8787,23 @@ module Google
         attr_accessor :na_value
         alias_method :na_value?, :na_value
       
+        # Output only. Normalized score of the questions. Calculated as score /
+        # potential_score iff potential_score != 0 else 0
+        # Corresponds to the JSON property `normalizedScore`
+        # @return [Float]
+        attr_accessor :normalized_score
+      
         # Numerical value.
         # Corresponds to the JSON property `numValue`
         # @return [Float]
         attr_accessor :num_value
       
-        # Numerical score of the answer.
+        # Output only. The maximum potential score of the question.
+        # Corresponds to the JSON property `potentialScore`
+        # @return [Float]
+        attr_accessor :potential_score
+      
+        # Output only. Numerical score of the answer.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -8796,7 +8822,9 @@ module Google
           @bool_value = args[:bool_value] if args.key?(:bool_value)
           @key = args[:key] if args.key?(:key)
           @na_value = args[:na_value] if args.key?(:na_value)
+          @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
           @num_value = args[:num_value] if args.key?(:num_value)
+          @potential_score = args[:potential_score] if args.key?(:potential_score)
           @score = args[:score] if args.key?(:score)
           @str_value = args[:str_value] if args.key?(:str_value)
         end
