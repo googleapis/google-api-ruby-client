@@ -334,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SessionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +431,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_levels, as: 'accessLevels'
           property :reauth_settings, as: 'reauthSettings', class: Google::Apis::AccesscontextmanagerV1::ReauthSettings, decorator: Google::Apis::AccesscontextmanagerV1::ReauthSettings::Representation
+      
+          property :session_settings, as: 'sessionSettings', class: Google::Apis::AccesscontextmanagerV1::SessionSettings, decorator: Google::Apis::AccesscontextmanagerV1::SessionSettings::Representation
       
         end
       end
@@ -874,6 +882,17 @@ module Google
           collection :restricted_services, as: 'restrictedServices'
           property :vpc_accessible_services, as: 'vpcAccessibleServices', class: Google::Apis::AccesscontextmanagerV1::VpcAccessibleServices, decorator: Google::Apis::AccesscontextmanagerV1::VpcAccessibleServices::Representation
       
+        end
+      end
+      
+      class SessionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_inactivity, as: 'maxInactivity'
+          property :session_length, as: 'sessionLength'
+          property :session_length_enabled, as: 'sessionLengthEnabled'
+          property :session_reauth_method, as: 'sessionReauthMethod'
+          property :use_oidc_max_age, as: 'useOidcMaxAge'
         end
       end
       
