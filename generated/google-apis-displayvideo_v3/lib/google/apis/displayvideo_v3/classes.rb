@@ -306,87 +306,98 @@ module Google
         end
       end
       
-      # Details of Adloox settings.
+      # Details of Adloox brand safety settings.
       class Adloox
         include Google::Apis::Core::Hashable
       
-        # Optional. Adult explicit sexual content.
+        # Optional. Adult and Explicit Sexual Content [GARM](https://wfanet.org/
+        # leadership/garm/about-garm) risk ranges to exclude.
         # Corresponds to the JSON property `adultExplicitSexualContent`
         # @return [String]
         attr_accessor :adult_explicit_sexual_content
       
-        # Optional. Arms ammunition content.
+        # Optional. Arms and Ammunition Content [GARM](https://wfanet.org/leadership/
+        # garm/about-garm) risk ranges to exclude.
         # Corresponds to the JSON property `armsAmmunitionContent`
         # @return [String]
         attr_accessor :arms_ammunition_content
       
-        # Optional. Crime harmful acts to individuals society human rights violations
-        # content.
+        # Optional. Crime and Harmful Acts Content [GARM](https://wfanet.org/leadership/
+        # garm/about-garm) risk ranges to exclude.
         # Corresponds to the JSON property `crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent`
         # @return [String]
         attr_accessor :crime_harmful_acts_individuals_society_human_rights_violations_content
       
-        # Optional. Death injury military conflict content.
+        # Optional. Death, Injury, or Military Conflict Content [GARM](https://wfanet.
+        # org/leadership/garm/about-garm) risk ranges to exclude.
         # Corresponds to the JSON property `deathInjuryMilitaryConflictContent`
         # @return [String]
         attr_accessor :death_injury_military_conflict_content
       
-        # Optional. Debated sensitive social issue content.
+        # Optional. Debated Sensitive Social Issue Content [GARM](https://wfanet.org/
+        # leadership/garm/about-garm) risk ranges to exclude.
         # Corresponds to the JSON property `debatedSensitiveSocialIssueContent`
         # @return [String]
         attr_accessor :debated_sensitive_social_issue_content
       
-        # Optional. Display IAB viewability.
+        # Optional. IAB viewability threshold for display ads.
         # Corresponds to the JSON property `displayIabViewability`
         # @return [String]
         attr_accessor :display_iab_viewability
       
-        # Adloox's brand safety settings.
+        # Adloox categories to exclude.
         # Corresponds to the JSON property `excludedAdlooxCategories`
         # @return [Array<String>]
         attr_accessor :excluded_adloox_categories
       
-        # Optional. Adloox's fraud IVT MFA settings.
+        # Optional. Adloox's fraud IVT MFA categories to exclude.
         # Corresponds to the JSON property `excludedFraudIvtMfaCategories`
         # @return [Array<String>]
         attr_accessor :excluded_fraud_ivt_mfa_categories
       
-        # Optional. Hate speech acts of aggression content.
+        # Optional. Hate Speech and Acts of Aggression Content [GARM](https://wfanet.org/
+        # leadership/garm/about-garm) risk ranges to exclude.
         # Corresponds to the JSON property `hateSpeechActsAggressionContent`
         # @return [String]
         attr_accessor :hate_speech_acts_aggression_content
       
-        # Optional. Illegal drugs tobacco ecigarettes vaping alcohol content.
+        # Optional. Illegal Drugs/Alcohol Content [GARM](https://wfanet.org/leadership/
+        # garm/about-garm) risk ranges to exclude.
         # Corresponds to the JSON property `illegalDrugsTobaccoEcigarettesVapingAlcoholContent`
         # @return [String]
         attr_accessor :illegal_drugs_tobacco_ecigarettes_vaping_alcohol_content
       
-        # Optional. Misinformation content.
+        # Optional. Misinformation Content [GARM](https://wfanet.org/leadership/garm/
+        # about-garm) risk ranges to exclude.
         # Corresponds to the JSON property `misinformationContent`
         # @return [String]
         attr_accessor :misinformation_content
       
-        # Optional. Obscenity profanity content.
+        # Optional. Obscenity and Profanity Content [GARM](https://wfanet.org/leadership/
+        # garm/about-garm) risk ranges to exclude.
         # Corresponds to the JSON property `obscenityProfanityContent`
         # @return [String]
         attr_accessor :obscenity_profanity_content
       
-        # Optional. Online piracy content.
+        # Optional. Online Piracy Content [GARM](https://wfanet.org/leadership/garm/
+        # about-garm) risk ranges to exclude.
         # Corresponds to the JSON property `onlinePiracyContent`
         # @return [String]
         attr_accessor :online_piracy_content
       
-        # Optional. Spam harmful content.
+        # Optional. Spam or Harmful Content [GARM](https://wfanet.org/leadership/garm/
+        # about-garm) risk ranges to exclude.
         # Corresponds to the JSON property `spamHarmfulContent`
         # @return [String]
         attr_accessor :spam_harmful_content
       
-        # Optional. Terrorism content.
+        # Optional. Terrorism Content [GARM](https://wfanet.org/leadership/garm/about-
+        # garm) risk ranges to exclude.
         # Corresponds to the JSON property `terrorismContent`
         # @return [String]
         attr_accessor :terrorism_content
       
-        # Optional. Video IAB viewability.
+        # Optional. IAB viewability threshold for video ads.
         # Corresponds to the JSON property `videoIabViewability`
         # @return [String]
         attr_accessor :video_iab_viewability
@@ -556,7 +567,7 @@ module Google
       class AdvertiserBillingConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The ID of a billing profile assigned to the advertiser.
+        # Required. The ID of a billing profile assigned to the advertiser.
         # Corresponds to the JSON property `billingProfileId`
         # @return [Fixnum]
         attr_accessor :billing_profile_id
@@ -12117,7 +12128,7 @@ module Google
       class ThirdPartyVerifierAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Details of Adloox settings.
+        # Details of Adloox brand safety settings.
         # Corresponds to the JSON property `adloox`
         # @return [Google::Apis::DisplayvideoV3::Adloox]
         attr_accessor :adloox
