@@ -41,53 +41,6 @@ module Google
         end
       end
       
-      # Provides the mapping of a cloud asset to a direct physical location or to a
-      # proxy that defines the location on its behalf.
-      class AssetLocation
-        include Google::Apis::Core::Hashable
-      
-        # Spanner path of the CCFE RMS database. It is only applicable for CCFE tenants
-        # that use CCFE RMS for storing resource metadata.
-        # Corresponds to the JSON property `ccfeRmsPath`
-        # @return [String]
-        attr_accessor :ccfe_rms_path
-      
-        # Defines the customer expectation around ZI/ZS for this asset and ZI/ZS state
-        # of the region at the time of asset creation.
-        # Corresponds to the JSON property `expected`
-        # @return [Google::Apis::RedisV1::IsolationExpectations]
-        attr_accessor :expected
-      
-        # Defines extra parameters required for specific asset types.
-        # Corresponds to the JSON property `extraParameters`
-        # @return [Array<Google::Apis::RedisV1::ExtraParameter>]
-        attr_accessor :extra_parameters
-      
-        # Contains all kinds of physical location definitions for this asset.
-        # Corresponds to the JSON property `locationData`
-        # @return [Array<Google::Apis::RedisV1::LocationData>]
-        attr_accessor :location_data
-      
-        # Defines parents assets if any in order to allow later generation of
-        # child_asset_location data via child assets.
-        # Corresponds to the JSON property `parentAsset`
-        # @return [Array<Google::Apis::RedisV1::CloudAsset>]
-        attr_accessor :parent_asset
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ccfe_rms_path = args[:ccfe_rms_path] if args.key?(:ccfe_rms_path)
-          @expected = args[:expected] if args.key?(:expected)
-          @extra_parameters = args[:extra_parameters] if args.key?(:extra_parameters)
-          @location_data = args[:location_data] if args.key?(:location_data)
-          @parent_asset = args[:parent_asset] if args.key?(:parent_asset)
-        end
-      end
-      
       # Configuration for availability of database instance
       class AvailabilityConfiguration
         include Google::Apis::Core::Hashable
@@ -213,26 +166,6 @@ module Google
         end
       end
       
-      # Policy ID that identified data placement in Blobstore as per go/blobstore-user-
-      # guide#data-metadata-placement-and-failure-domains
-      class BlobstoreLocation
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `policyId`
-        # @return [Array<String>]
-        attr_accessor :policy_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_id = args[:policy_id] if args.key?(:policy_id)
-        end
-      end
-      
       # 
       class CertChain
         include Google::Apis::Core::Hashable
@@ -279,50 +212,6 @@ module Google
         end
       end
       
-      # 
-      class CloudAsset
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `assetName`
-        # @return [String]
-        attr_accessor :asset_name
-      
-        # 
-        # Corresponds to the JSON property `assetType`
-        # @return [String]
-        attr_accessor :asset_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @asset_name = args[:asset_name] if args.key?(:asset_name)
-          @asset_type = args[:asset_type] if args.key?(:asset_type)
-        end
-      end
-      
-      # 
-      class CloudAssetComposition
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `childAsset`
-        # @return [Array<Google::Apis::RedisV1::CloudAsset>]
-        attr_accessor :child_asset
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @child_asset = args[:child_asset] if args.key?(:child_asset)
-        end
-      end
-      
       # A cluster instance.
       class Cluster
         include Google::Apis::Core::Hashable
@@ -332,6 +221,11 @@ module Google
         # Corresponds to the JSON property `authorizationMode`
         # @return [String]
         attr_accessor :authorization_mode
+      
+        # Optional. A list of cluster enpoints.
+        # Corresponds to the JSON property `clusterEndpoints`
+        # @return [Array<Google::Apis::RedisV1::ClusterEndpoint>]
+        attr_accessor :cluster_endpoints
       
         # Output only. The timestamp associated with the cluster creation request.
         # Corresponds to the JSON property `createTime`
@@ -388,7 +282,7 @@ module Google
         # @return [Float]
         attr_accessor :precise_size_gb
       
-        # Required. Each PscConfig configures the consumer network where IPs will be
+        # Optional. Each PscConfig configures the consumer network where IPs will be
         # designated to the cluster for client access through Private Service Connect
         # Automation. Currently, only one PscConfig is supported.
         # Corresponds to the JSON property `pscConfigs`
@@ -400,6 +294,11 @@ module Google
         # Corresponds to the JSON property `pscConnections`
         # @return [Array<Google::Apis::RedisV1::PscConnection>]
         attr_accessor :psc_connections
+      
+        # Output only. Service attachment details to configure Psc connections
+        # Corresponds to the JSON property `pscServiceAttachments`
+        # @return [Array<Google::Apis::RedisV1::PscServiceAttachment>]
+        attr_accessor :psc_service_attachments
       
         # Optional. Key/Value pairs of customer overrides for mutable Redis Configs
         # Corresponds to the JSON property `redisConfigs`
@@ -456,6 +355,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
+          @cluster_endpoints = args[:cluster_endpoints] if args.key?(:cluster_endpoints)
           @create_time = args[:create_time] if args.key?(:create_time)
           @cross_cluster_replication_config = args[:cross_cluster_replication_config] if args.key?(:cross_cluster_replication_config)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
@@ -468,6 +368,7 @@ module Google
           @precise_size_gb = args[:precise_size_gb] if args.key?(:precise_size_gb)
           @psc_configs = args[:psc_configs] if args.key?(:psc_configs)
           @psc_connections = args[:psc_connections] if args.key?(:psc_connections)
+          @psc_service_attachments = args[:psc_service_attachments] if args.key?(:psc_service_attachments)
           @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
           @replica_count = args[:replica_count] if args.key?(:replica_count)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
@@ -477,6 +378,28 @@ module Google
           @transit_encryption_mode = args[:transit_encryption_mode] if args.key?(:transit_encryption_mode)
           @uid = args[:uid] if args.key?(:uid)
           @zone_distribution_config = args[:zone_distribution_config] if args.key?(:zone_distribution_config)
+        end
+      end
+      
+      # ClusterEndpoint consists of PSC connections that are created as a group in
+      # each VPC network for accessing the cluster. In each group, there shall be one
+      # connection for each service attachment in the cluster.
+      class ClusterEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # A group of PSC connections. They are created in the same VPC network, one for
+        # each service attachment in the cluster.
+        # Corresponds to the JSON property `connections`
+        # @return [Array<Google::Apis::RedisV1::ConnectionDetail>]
+        attr_accessor :connections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connections = args[:connections] if args.key?(:connections)
         end
       end
       
@@ -623,6 +546,25 @@ module Google
         def update!(**args)
           @standard = args[:standard] if args.key?(:standard)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Detailed information of each PSC connection.
+      class ConnectionDetail
+        include Google::Apis::Core::Hashable
+      
+        # Details of consumer resources in a PSC connection.
+        # Corresponds to the JSON property `pscConnection`
+        # @return [Google::Apis::RedisV1::PscConnection]
+        attr_accessor :psc_connection
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @psc_connection = args[:psc_connection] if args.key?(:psc_connection)
         end
       end
       
@@ -1135,25 +1077,6 @@ module Google
         end
       end
       
-      # 
-      class DirectLocationAssignment
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `location`
-        # @return [Array<Google::Apis::RedisV1::LocationAssignment>]
-        attr_accessor :location
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @location = args[:location] if args.key?(:location)
-        end
-      end
-      
       # Endpoints on each network, for Redis clients to connect to the cluster.
       class DiscoveryEndpoint
         include Google::Apis::Core::Hashable
@@ -1245,26 +1168,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @output_config = args[:output_config] if args.key?(:output_config)
-        end
-      end
-      
-      # Defines parameters that should only be used for specific asset types.
-      class ExtraParameter
-        include Google::Apis::Core::Hashable
-      
-        # To be used for specifying the intended distribution of regional compute.
-        # googleapis.com/InstanceGroupManager instances
-        # Corresponds to the JSON property `regionalMigDistributionPolicy`
-        # @return [Google::Apis::RedisV1::RegionalMigDistributionPolicy]
-        attr_accessor :regional_mig_distribution_policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @regional_mig_distribution_policy = args[:regional_mig_distribution_policy] if args.key?(:regional_mig_distribution_policy)
         end
       end
       
@@ -1818,70 +1721,6 @@ module Google
         end
       end
       
-      # 
-      class IsolationExpectations
-        include Google::Apis::Core::Hashable
-      
-        # Explicit overrides for ZI and ZS requirements to be used for resources that
-        # should be excluded from ZI/ZS verification logic.
-        # Corresponds to the JSON property `requirementOverride`
-        # @return [Google::Apis::RedisV1::RequirementOverride]
-        attr_accessor :requirement_override
-      
-        # 
-        # Corresponds to the JSON property `ziOrgPolicy`
-        # @return [String]
-        attr_accessor :zi_org_policy
-      
-        # 
-        # Corresponds to the JSON property `ziRegionPolicy`
-        # @return [String]
-        attr_accessor :zi_region_policy
-      
-        # 
-        # Corresponds to the JSON property `ziRegionState`
-        # @return [String]
-        attr_accessor :zi_region_state
-      
-        # Deprecated: use zi_org_policy, zi_region_policy and zi_region_state instead
-        # for setting ZI expectations as per go/zicy-publish-physical-location.
-        # Corresponds to the JSON property `zoneIsolation`
-        # @return [String]
-        attr_accessor :zone_isolation
-      
-        # Deprecated: use zs_org_policy, and zs_region_stateinstead for setting Zs
-        # expectations as per go/zicy-publish-physical-location.
-        # Corresponds to the JSON property `zoneSeparation`
-        # @return [String]
-        attr_accessor :zone_separation
-      
-        # 
-        # Corresponds to the JSON property `zsOrgPolicy`
-        # @return [String]
-        attr_accessor :zs_org_policy
-      
-        # 
-        # Corresponds to the JSON property `zsRegionState`
-        # @return [String]
-        attr_accessor :zs_region_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @requirement_override = args[:requirement_override] if args.key?(:requirement_override)
-          @zi_org_policy = args[:zi_org_policy] if args.key?(:zi_org_policy)
-          @zi_region_policy = args[:zi_region_policy] if args.key?(:zi_region_policy)
-          @zi_region_state = args[:zi_region_state] if args.key?(:zi_region_state)
-          @zone_isolation = args[:zone_isolation] if args.key?(:zone_isolation)
-          @zone_separation = args[:zone_separation] if args.key?(:zone_separation)
-          @zs_org_policy = args[:zs_org_policy] if args.key?(:zs_org_policy)
-          @zs_region_state = args[:zs_region_state] if args.key?(:zs_region_state)
-        end
-      end
-      
       # Response for ListClusters.
       class ListClustersResponse
         include Google::Apis::Core::Hashable
@@ -2056,82 +1895,6 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # 
-      class LocationAssignment
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `location`
-        # @return [String]
-        attr_accessor :location
-      
-        # 
-        # Corresponds to the JSON property `locationType`
-        # @return [String]
-        attr_accessor :location_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @location = args[:location] if args.key?(:location)
-          @location_type = args[:location_type] if args.key?(:location_type)
-        end
-      end
-      
-      # 
-      class LocationData
-        include Google::Apis::Core::Hashable
-      
-        # Policy ID that identified data placement in Blobstore as per go/blobstore-user-
-        # guide#data-metadata-placement-and-failure-domains
-        # Corresponds to the JSON property `blobstoreLocation`
-        # @return [Google::Apis::RedisV1::BlobstoreLocation]
-        attr_accessor :blobstore_location
-      
-        # 
-        # Corresponds to the JSON property `childAssetLocation`
-        # @return [Google::Apis::RedisV1::CloudAssetComposition]
-        attr_accessor :child_asset_location
-      
-        # 
-        # Corresponds to the JSON property `directLocation`
-        # @return [Google::Apis::RedisV1::DirectLocationAssignment]
-        attr_accessor :direct_location
-      
-        # 
-        # Corresponds to the JSON property `gcpProjectProxy`
-        # @return [Google::Apis::RedisV1::TenantProjectProxy]
-        attr_accessor :gcp_project_proxy
-      
-        # Message describing that the location of the customer resource is tied to
-        # placer allocations
-        # Corresponds to the JSON property `placerLocation`
-        # @return [Google::Apis::RedisV1::PlacerLocation]
-        attr_accessor :placer_location
-      
-        # 
-        # Corresponds to the JSON property `spannerLocation`
-        # @return [Google::Apis::RedisV1::SpannerLocation]
-        attr_accessor :spanner_location
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @blobstore_location = args[:blobstore_location] if args.key?(:blobstore_location)
-          @child_asset_location = args[:child_asset_location] if args.key?(:child_asset_location)
-          @direct_location = args[:direct_location] if args.key?(:direct_location)
-          @gcp_project_proxy = args[:gcp_project_proxy] if args.key?(:gcp_project_proxy)
-          @placer_location = args[:placer_location] if args.key?(:placer_location)
-          @spanner_location = args[:spanner_location] if args.key?(:spanner_location)
         end
       end
       
@@ -2588,27 +2351,6 @@ module Google
         end
       end
       
-      # Message describing that the location of the customer resource is tied to
-      # placer allocations
-      class PlacerLocation
-        include Google::Apis::Core::Hashable
-      
-        # Directory with a config related to it in placer (e.g. "/placer/prod/home/my-
-        # root/my-dir")
-        # Corresponds to the JSON property `placerConfig`
-        # @return [String]
-        attr_accessor :placer_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @placer_config = args[:placer_config] if args.key?(:placer_config)
-        end
-      end
-      
       # Product specification for Condor resources.
       class Product
         include Google::Apis::Core::Hashable
@@ -2671,6 +2413,11 @@ module Google
         # @return [String]
         attr_accessor :address
       
+        # Output only. Type of the PSC connection.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
         # Required. The URI of the consumer side forwarding rule. Example: projects/`
         # projectNumOrId`/regions/us-east1/forwardingRules/`resourceId`.
         # Corresponds to the JSON property `forwardingRule`
@@ -2695,6 +2442,14 @@ module Google
         # @return [String]
         attr_accessor :psc_connection_id
       
+        # Output only. The status of the PSC connection. Please note that this value is
+        # updated periodically. To get the latest status of a PSC connection, follow
+        # https://cloud.google.com/vpc/docs/configure-private-service-connect-services#
+        # endpoint-details.
+        # Corresponds to the JSON property `pscConnectionStatus`
+        # @return [String]
+        attr_accessor :psc_connection_status
+      
         # Required. The service attachment which is the target of the PSC connection, in
         # the form of projects/`project-id`/regions/`region`/serviceAttachments/`service-
         # attachment-id`.
@@ -2709,10 +2464,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address = args[:address] if args.key?(:address)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @network = args[:network] if args.key?(:network)
           @project_id = args[:project_id] if args.key?(:project_id)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @psc_connection_status = args[:psc_connection_status] if args.key?(:psc_connection_status)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
+        end
+      end
+      
+      # Configuration of a service attachment of the cluster, for creating PSC
+      # connections.
+      class PscServiceAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Type of a PSC connection targeting this service attachment.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # Output only. Service attachment URI which your self-created PscConnection
+        # should use as target
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
           @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
         end
       end
@@ -2770,33 +2554,6 @@ module Google
         end
       end
       
-      # To be used for specifying the intended distribution of regional compute.
-      # googleapis.com/InstanceGroupManager instances
-      class RegionalMigDistributionPolicy
-        include Google::Apis::Core::Hashable
-      
-        # The shape in which the group converges around distribution of resources.
-        # Instance of proto2 enum
-        # Corresponds to the JSON property `targetShape`
-        # @return [Fixnum]
-        attr_accessor :target_shape
-      
-        # Cloud zones used by regional MIG to create instances.
-        # Corresponds to the JSON property `zones`
-        # @return [Array<Google::Apis::RedisV1::ZoneConfiguration>]
-        attr_accessor :zones
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @target_shape = args[:target_shape] if args.key?(:target_shape)
-          @zones = args[:zones] if args.key?(:zones)
-        end
-      end
-      
       # Details of the remote cluster associated with this cluster in a cross cluster
       # replication setup.
       class RemoteCluster
@@ -2821,31 +2578,6 @@ module Google
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
           @uid = args[:uid] if args.key?(:uid)
-        end
-      end
-      
-      # 
-      class RequirementOverride
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `ziOverride`
-        # @return [String]
-        attr_accessor :zi_override
-      
-        # 
-        # Corresponds to the JSON property `zsOverride`
-        # @return [String]
-        attr_accessor :zs_override
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @zi_override = args[:zi_override] if args.key?(:zi_override)
-          @zs_override = args[:zs_override] if args.key?(:zs_override)
         end
       end
       
@@ -2929,6 +2661,11 @@ module Google
         # @return [String]
         attr_accessor :time_based_retention
       
+        # Timestamp based retention period i.e. 2024-05-01T00:00:00Z
+        # Corresponds to the JSON property `timestampBasedRetentionTime`
+        # @return [String]
+        attr_accessor :timestamp_based_retention_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2939,32 +2676,7 @@ module Google
           @quantity_based_retention = args[:quantity_based_retention] if args.key?(:quantity_based_retention)
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
-        end
-      end
-      
-      # 
-      class SpannerLocation
-        include Google::Apis::Core::Hashable
-      
-        # Set of backups used by the resource with name in the same format as what is
-        # available at http://table/spanner_automon.backup_metadata
-        # Corresponds to the JSON property `backupName`
-        # @return [Array<String>]
-        attr_accessor :backup_name
-      
-        # Set of databases used by the resource in format /span//
-        # Corresponds to the JSON property `dbName`
-        # @return [Array<String>]
-        attr_accessor :db_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @backup_name = args[:backup_name] if args.key?(:backup_name)
-          @db_name = args[:db_name] if args.key?(:db_name)
+          @timestamp_based_retention_time = args[:timestamp_based_retention_time] if args.key?(:timestamp_based_retention_time)
         end
       end
       
@@ -3044,25 +2756,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tags = args[:tags] if args.key?(:tags)
-        end
-      end
-      
-      # 
-      class TenantProjectProxy
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `projectNumbers`
-        # @return [Array<String>]
-        attr_accessor :project_numbers
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @project_numbers = args[:project_numbers] if args.key?(:project_numbers)
         end
       end
       
@@ -3292,25 +2985,6 @@ module Google
           @day = args[:day] if args.key?(:day)
           @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
-      # 
-      class ZoneConfiguration
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
