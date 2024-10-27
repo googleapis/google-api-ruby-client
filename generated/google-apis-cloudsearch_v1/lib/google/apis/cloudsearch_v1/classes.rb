@@ -871,7 +871,7 @@ module Google
         # @return [String]
         attr_accessor :gsr_response
       
-        # The search API response.
+        # The search API response. NEXT ID: 17
         # Corresponds to the JSON property `searchResponse`
         # @return [Google::Apis::CloudsearchV1::SearchResponse]
         attr_accessor :search_response
@@ -7116,7 +7116,7 @@ module Google
         end
       end
       
-      # The search API request.
+      # The search API request. NEXT ID: 17
       class SearchRequest
         include Google::Apis::Core::Hashable
       
@@ -7188,7 +7188,7 @@ module Google
         end
       end
       
-      # The search API response.
+      # The search API response. NEXT ID: 17
       class SearchResponse
         include Google::Apis::Core::Hashable
       
