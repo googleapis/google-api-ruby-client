@@ -187,6 +187,13 @@ module Google
         # @return [Google::Apis::AccesscontextmanagerV1::ReauthSettings]
         attr_accessor :reauth_settings
       
+        # Stores settings related to Google Cloud Session Length including session
+        # duration, the type of challenge (i.e. method) they should face when their
+        # session expires, and other related settings.
+        # Corresponds to the JSON property `sessionSettings`
+        # @return [Google::Apis::AccesscontextmanagerV1::SessionSettings]
+        attr_accessor :session_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -195,6 +202,7 @@ module Google
         def update!(**args)
           @access_levels = args[:access_levels] if args.key?(:access_levels)
           @reauth_settings = args[:reauth_settings] if args.key?(:reauth_settings)
+          @session_settings = args[:session_settings] if args.key?(:session_settings)
         end
       end
       
@@ -1013,7 +1021,7 @@ module Google
       end
       
       # Restricts access to Cloud Console and Google Cloud APIs for a set of users
-      # using Context-Aware Access.
+      # using Context-Aware Access. Next ID: 11
       class GcpUserAccessBinding
         include Google::Apis::Core::Hashable
       
@@ -2038,6 +2046,61 @@ module Google
           @resources = args[:resources] if args.key?(:resources)
           @restricted_services = args[:restricted_services] if args.key?(:restricted_services)
           @vpc_accessible_services = args[:vpc_accessible_services] if args.key?(:vpc_accessible_services)
+        end
+      end
+      
+      # Stores settings related to Google Cloud Session Length including session
+      # duration, the type of challenge (i.e. method) they should face when their
+      # session expires, and other related settings.
+      class SessionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. How long a user is allowed to take between actions before a new
+        # access token must be issued. Presently only set for Cloud Apps.
+        # Corresponds to the JSON property `maxInactivity`
+        # @return [String]
+        attr_accessor :max_inactivity
+      
+        # Optional. The session length. Setting this field to zero is equal to disabling.
+        # Session. Also can set infinite session by flipping the enabled bit to false
+        # below. If use_oidc_max_age is true, for OIDC apps, the session length will be
+        # the minimum of this field and OIDC max_age param.
+        # Corresponds to the JSON property `sessionLength`
+        # @return [String]
+        attr_accessor :session_length
+      
+        # Optional. Big red button to turn off GCSL. When false, all fields set above
+        # will be disregarded and the session length is basically infinite.
+        # Corresponds to the JSON property `sessionLengthEnabled`
+        # @return [Boolean]
+        attr_accessor :session_length_enabled
+        alias_method :session_length_enabled?, :session_length_enabled
+      
+        # Optional. Session method when users GCP session is up.
+        # Corresponds to the JSON property `sessionReauthMethod`
+        # @return [String]
+        attr_accessor :session_reauth_method
+      
+        # Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if
+        # passed in the authentication request will be ignored. When true, the re-auth
+        # period will be the minimum of the session_length field and the max_age OIDC
+        # param.
+        # Corresponds to the JSON property `useOidcMaxAge`
+        # @return [Boolean]
+        attr_accessor :use_oidc_max_age
+        alias_method :use_oidc_max_age?, :use_oidc_max_age
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_inactivity = args[:max_inactivity] if args.key?(:max_inactivity)
+          @session_length = args[:session_length] if args.key?(:session_length)
+          @session_length_enabled = args[:session_length_enabled] if args.key?(:session_length_enabled)
+          @session_reauth_method = args[:session_reauth_method] if args.key?(:session_reauth_method)
+          @use_oidc_max_age = args[:use_oidc_max_age] if args.key?(:use_oidc_max_age)
         end
       end
       
