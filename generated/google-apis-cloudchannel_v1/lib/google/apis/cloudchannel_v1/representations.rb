@@ -1612,6 +1612,8 @@ module Google
       class GoogleCloudChannelV1RegisterSubscriberRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account, as: 'account'
+          property :integrator, as: 'integrator'
           property :service_account, as: 'serviceAccount'
         end
       end
@@ -1893,6 +1895,8 @@ module Google
       class GoogleCloudChannelV1UnregisterSubscriberRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account, as: 'account'
+          property :integrator, as: 'integrator'
           property :service_account, as: 'serviceAccount'
         end
       end
@@ -1997,6 +2001,7 @@ module Google
           property :offer, as: 'offer'
           collection :parameters, as: 'parameters', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Parameter, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Parameter::Representation
       
+          property :price_reference_id, as: 'priceReferenceId'
           property :provisioned_service, as: 'provisionedService', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ProvisionedService, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ProvisionedService::Representation
       
           property :provisioning_state, as: 'provisioningState'
