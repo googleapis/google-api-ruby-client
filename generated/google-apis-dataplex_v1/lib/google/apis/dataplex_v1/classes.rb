@@ -1561,6 +1561,221 @@ module Google
         end
       end
       
+      # The output of a data discovery scan.
+      class GoogleCloudDataplexV1DataDiscoveryResult
+        include Google::Apis::Core::Hashable
+      
+        # Describes BigQuery publishing configurations.
+        # Corresponds to the JSON property `bigqueryPublishing`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing]
+        attr_accessor :bigquery_publishing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_publishing = args[:bigquery_publishing] if args.key?(:bigquery_publishing)
+        end
+      end
+      
+      # Describes BigQuery publishing configurations.
+      class GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The BigQuery dataset to publish to. It takes the form projects/`
+        # project_id`/datasets/`dataset_id`. If not set, the service creates a default
+        # publishing dataset.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+        end
+      end
+      
+      # Spec for a data discovery scan.
+      class GoogleCloudDataplexV1DataDiscoverySpec
+        include Google::Apis::Core::Hashable
+      
+        # Describes BigQuery publishing configurations.
+        # Corresponds to the JSON property `bigqueryPublishingConfig`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig]
+        attr_accessor :bigquery_publishing_config
+      
+        # Configurations related to Cloud Storage as the data source.
+        # Corresponds to the JSON property `storageConfig`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfig]
+        attr_accessor :storage_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_publishing_config = args[:bigquery_publishing_config] if args.key?(:bigquery_publishing_config)
+          @storage_config = args[:storage_config] if args.key?(:storage_config)
+        end
+      end
+      
+      # Describes BigQuery publishing configurations.
+      class GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The BigQuery connection used to create BigLake tables. Must be in
+        # the form projects/`project_id`/locations/`location_id`/connections/`
+        # connection_id`
+        # Corresponds to the JSON property `connection`
+        # @return [String]
+        attr_accessor :connection
+      
+        # Optional. Determines whether to publish discovered tables as BigLake external
+        # tables or non-BigLake external tables.
+        # Corresponds to the JSON property `tableType`
+        # @return [String]
+        attr_accessor :table_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection = args[:connection] if args.key?(:connection)
+          @table_type = args[:table_type] if args.key?(:table_type)
+        end
+      end
+      
+      # Configurations related to Cloud Storage as the data source.
+      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfig
+        include Google::Apis::Core::Hashable
+      
+        # Describes CSV and similar semi-structured data formats.
+        # Corresponds to the JSON property `csvOptions`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions]
+        attr_accessor :csv_options
+      
+        # Optional. Defines the data to exclude during discovery. Provide a list of
+        # patterns that identify the data to exclude. For Cloud Storage bucket assets,
+        # these patterns are interpreted as glob patterns used to match object names.
+        # For BigQuery dataset assets, these patterns are interpreted as patterns to
+        # match table names.
+        # Corresponds to the JSON property `excludePatterns`
+        # @return [Array<String>]
+        attr_accessor :exclude_patterns
+      
+        # Optional. Defines the data to include during discovery when only a subset of
+        # the data should be considered. Provide a list of patterns that identify the
+        # data to include. For Cloud Storage bucket assets, these patterns are
+        # interpreted as glob patterns used to match object names. For BigQuery dataset
+        # assets, these patterns are interpreted as patterns to match table names.
+        # Corresponds to the JSON property `includePatterns`
+        # @return [Array<String>]
+        attr_accessor :include_patterns
+      
+        # Describes JSON data format.
+        # Corresponds to the JSON property `jsonOptions`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions]
+        attr_accessor :json_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csv_options = args[:csv_options] if args.key?(:csv_options)
+          @exclude_patterns = args[:exclude_patterns] if args.key?(:exclude_patterns)
+          @include_patterns = args[:include_patterns] if args.key?(:include_patterns)
+          @json_options = args[:json_options] if args.key?(:json_options)
+        end
+      end
+      
+      # Describes CSV and similar semi-structured data formats.
+      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The delimiter that is used to separate values. The default is , (
+        # comma).
+        # Corresponds to the JSON property `delimiter`
+        # @return [String]
+        attr_accessor :delimiter
+      
+        # Optional. The character encoding of the data. The default is UTF-8.
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # Optional. The number of rows to interpret as header rows that should be
+        # skipped when reading data rows.
+        # Corresponds to the JSON property `headerRows`
+        # @return [Fixnum]
+        attr_accessor :header_rows
+      
+        # Optional. The character used to quote column values. Accepts " (double
+        # quotation mark) or ' (single quotation mark). If unspecified, defaults to " (
+        # double quotation mark).
+        # Corresponds to the JSON property `quote`
+        # @return [String]
+        attr_accessor :quote
+      
+        # Optional. Whether to disable the inference of data types for CSV data. If true,
+        # all columns are registered as strings.
+        # Corresponds to the JSON property `typeInferenceDisabled`
+        # @return [Boolean]
+        attr_accessor :type_inference_disabled
+        alias_method :type_inference_disabled?, :type_inference_disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delimiter = args[:delimiter] if args.key?(:delimiter)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @header_rows = args[:header_rows] if args.key?(:header_rows)
+          @quote = args[:quote] if args.key?(:quote)
+          @type_inference_disabled = args[:type_inference_disabled] if args.key?(:type_inference_disabled)
+        end
+      end
+      
+      # Describes JSON data format.
+      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The character encoding of the data. The default is UTF-8.
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # Optional. Whether to disable the inference of data types for JSON data. If
+        # true, all columns are registered as their primitive types (strings, number, or
+        # boolean).
+        # Corresponds to the JSON property `typeInferenceDisabled`
+        # @return [Boolean]
+        attr_accessor :type_inference_disabled
+        alias_method :type_inference_disabled?, :type_inference_disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @type_inference_disabled = args[:type_inference_disabled] if args.key?(:type_inference_disabled)
+        end
+      end
+      
       # DataProfileResult defines the output of DataProfileScan. Each field of the
       # table will have field type specific profile result.
       class GoogleCloudDataplexV1DataProfileResult
@@ -2980,6 +3195,16 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataSource]
         attr_accessor :data
       
+        # The output of a data discovery scan.
+        # Corresponds to the JSON property `dataDiscoveryResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResult]
+        attr_accessor :data_discovery_result
+      
+        # Spec for a data discovery scan.
+        # Corresponds to the JSON property `dataDiscoverySpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec]
+        attr_accessor :data_discovery_spec
+      
         # DataProfileResult defines the output of DataProfileScan. Each field of the
         # table will have field type specific profile result.
         # Corresponds to the JSON property `dataProfileResult`
@@ -3062,6 +3287,8 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data = args[:data] if args.key?(:data)
+          @data_discovery_result = args[:data_discovery_result] if args.key?(:data_discovery_result)
+          @data_discovery_spec = args[:data_discovery_spec] if args.key?(:data_discovery_spec)
           @data_profile_result = args[:data_profile_result] if args.key?(:data_profile_result)
           @data_profile_spec = args[:data_profile_spec] if args.key?(:data_profile_spec)
           @data_quality_result = args[:data_quality_result] if args.key?(:data_quality_result)
@@ -3439,6 +3666,16 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The output of a data discovery scan.
+        # Corresponds to the JSON property `dataDiscoveryResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResult]
+        attr_accessor :data_discovery_result
+      
+        # Spec for a data discovery scan.
+        # Corresponds to the JSON property `dataDiscoverySpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec]
+        attr_accessor :data_discovery_spec
+      
         # DataProfileResult defines the output of DataProfileScan. Each field of the
         # table will have field type specific profile result.
         # Corresponds to the JSON property `dataProfileResult`
@@ -3505,6 +3742,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_discovery_result = args[:data_discovery_result] if args.key?(:data_discovery_result)
+          @data_discovery_spec = args[:data_discovery_spec] if args.key?(:data_discovery_spec)
           @data_profile_result = args[:data_profile_result] if args.key?(:data_profile_result)
           @data_profile_spec = args[:data_profile_spec] if args.key?(:data_profile_spec)
           @data_quality_result = args[:data_quality_result] if args.key?(:data_quality_result)
