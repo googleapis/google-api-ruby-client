@@ -244,6 +244,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataDiscoveryResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoverySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataProfileResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1652,6 +1694,70 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataDiscoveryResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_publishing, as: 'bigqueryPublishing', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoverySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_publishing_config, as: 'bigqueryPublishingConfig', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig::Representation
+      
+          property :storage_config, as: 'storageConfig', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfig, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection, as: 'connection'
+          property :table_type, as: 'tableType'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv_options, as: 'csvOptions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions::Representation
+      
+          collection :exclude_patterns, as: 'excludePatterns'
+          collection :include_patterns, as: 'includePatterns'
+          property :json_options, as: 'jsonOptions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delimiter, as: 'delimiter'
+          property :encoding, as: 'encoding'
+          property :header_rows, as: 'headerRows'
+          property :quote, as: 'quote'
+          property :type_inference_disabled, as: 'typeInferenceDisabled'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding'
+          property :type_inference_disabled, as: 'typeInferenceDisabled'
+        end
+      end
+      
       class GoogleCloudDataplexV1DataProfileResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2060,6 +2166,10 @@ module Google
           property :create_time, as: 'createTime'
           property :data, as: 'data', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataSource, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataSource::Representation
       
+          property :data_discovery_result, as: 'dataDiscoveryResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResult::Representation
+      
+          property :data_discovery_spec, as: 'dataDiscoverySpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec::Representation
+      
           property :data_profile_result, as: 'dataProfileResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult::Representation
       
           property :data_profile_spec, as: 'dataProfileSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec::Representation
@@ -2184,6 +2294,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :data_discovery_result, as: 'dataDiscoveryResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResult::Representation
+      
+          property :data_discovery_spec, as: 'dataDiscoverySpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec::Representation
+      
           property :data_profile_result, as: 'dataProfileResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult::Representation
       
           property :data_profile_spec, as: 'dataProfileSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec::Representation
