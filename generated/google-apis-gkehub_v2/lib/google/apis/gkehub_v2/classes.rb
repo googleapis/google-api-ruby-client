@@ -361,6 +361,12 @@ module Google
         # @return [String]
         attr_accessor :source_format
       
+        # Set to true to stop syncing configs for a single cluster. Default to false.
+        # Corresponds to the JSON property `stopSyncing`
+        # @return [Boolean]
+        attr_accessor :stop_syncing
+        alias_method :stop_syncing?, :stop_syncing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -374,6 +380,7 @@ module Google
           @oci = args[:oci] if args.key?(:oci)
           @prevent_drift = args[:prevent_drift] if args.key?(:prevent_drift)
           @source_format = args[:source_format] if args.key?(:source_format)
+          @stop_syncing = args[:stop_syncing] if args.key?(:stop_syncing)
         end
       end
       
