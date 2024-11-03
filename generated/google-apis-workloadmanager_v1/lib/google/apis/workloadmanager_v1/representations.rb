@@ -28,19 +28,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AssetLocation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BigQueryDestination
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BlobstoreLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -52,25 +40,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudAsset
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAssetComposition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Command
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DirectLocationAssignment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,12 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ExtraParameter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GceInstanceFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,12 +83,6 @@ module Google
       end
       
       class Insight
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class IsolationExpectations
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,13 +136,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LocationAssignment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LocationData
+      class Notice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,24 +149,6 @@ module Google
       end
       
       class OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PlacerLocation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RegionalMigDistributionPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RequirementOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -346,12 +280,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SpannerLocation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SqlserverValidation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,12 +304,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TenantProjectProxy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ViolationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -400,32 +322,11 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ZoneConfiguration
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AgentCommand
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :command, as: 'command'
           hash :parameters, as: 'parameters'
-        end
-      end
-      
-      class AssetLocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ccfe_rms_path, as: 'ccfeRmsPath'
-          property :expected, as: 'expected', class: Google::Apis::WorkloadmanagerV1::IsolationExpectations, decorator: Google::Apis::WorkloadmanagerV1::IsolationExpectations::Representation
-      
-          collection :extra_parameters, as: 'extraParameters', class: Google::Apis::WorkloadmanagerV1::ExtraParameter, decorator: Google::Apis::WorkloadmanagerV1::ExtraParameter::Representation
-      
-          collection :location_data, as: 'locationData', class: Google::Apis::WorkloadmanagerV1::LocationData, decorator: Google::Apis::WorkloadmanagerV1::LocationData::Representation
-      
-          collection :parent_asset, as: 'parentAsset', class: Google::Apis::WorkloadmanagerV1::CloudAsset, decorator: Google::Apis::WorkloadmanagerV1::CloudAsset::Representation
-      
         end
       end
       
@@ -437,32 +338,9 @@ module Google
         end
       end
       
-      class BlobstoreLocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :policy_id, as: 'policyId'
-        end
-      end
-      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class CloudAsset
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :asset_name, as: 'assetName'
-          property :asset_type, as: 'assetType'
-        end
-      end
-      
-      class CloudAssetComposition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :child_asset, as: 'childAsset', class: Google::Apis::WorkloadmanagerV1::CloudAsset, decorator: Google::Apis::WorkloadmanagerV1::CloudAsset::Representation
-      
         end
       end
       
@@ -472,14 +350,6 @@ module Google
           property :agent_command, as: 'agentCommand', class: Google::Apis::WorkloadmanagerV1::AgentCommand, decorator: Google::Apis::WorkloadmanagerV1::AgentCommand::Representation
       
           property :shell_command, as: 'shellCommand', class: Google::Apis::WorkloadmanagerV1::ShellCommand, decorator: Google::Apis::WorkloadmanagerV1::ShellCommand::Representation
-      
-        end
-      end
-      
-      class DirectLocationAssignment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :location, as: 'location', class: Google::Apis::WorkloadmanagerV1::LocationAssignment, decorator: Google::Apis::WorkloadmanagerV1::LocationAssignment::Representation
       
         end
       end
@@ -521,6 +391,8 @@ module Google
           property :inventory_time, as: 'inventoryTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :notices, as: 'notices', class: Google::Apis::WorkloadmanagerV1::Notice, decorator: Google::Apis::WorkloadmanagerV1::Notice::Representation
+      
           collection :rule_results, as: 'ruleResults', class: Google::Apis::WorkloadmanagerV1::RuleExecutionResult, decorator: Google::Apis::WorkloadmanagerV1::RuleExecutionResult::Representation
       
           property :run_type, as: 'runType'
@@ -556,14 +428,6 @@ module Google
         end
       end
       
-      class ExtraParameter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :regional_mig_distribution_policy, as: 'regionalMigDistributionPolicy', class: Google::Apis::WorkloadmanagerV1::RegionalMigDistributionPolicy, decorator: Google::Apis::WorkloadmanagerV1::RegionalMigDistributionPolicy::Representation
-      
-        end
-      end
-      
       class GceInstanceFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -582,21 +446,6 @@ module Google
           property :sent_time, as: 'sentTime'
           property :sqlserver_validation, as: 'sqlserverValidation', class: Google::Apis::WorkloadmanagerV1::SqlserverValidation, decorator: Google::Apis::WorkloadmanagerV1::SqlserverValidation::Representation
       
-        end
-      end
-      
-      class IsolationExpectations
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :requirement_override, as: 'requirementOverride', class: Google::Apis::WorkloadmanagerV1::RequirementOverride, decorator: Google::Apis::WorkloadmanagerV1::RequirementOverride::Representation
-      
-          property :zi_org_policy, as: 'ziOrgPolicy'
-          property :zi_region_policy, as: 'ziRegionPolicy'
-          property :zi_region_state, as: 'ziRegionState'
-          property :zone_isolation, as: 'zoneIsolation'
-          property :zone_separation, as: 'zoneSeparation'
-          property :zs_org_policy, as: 'zsOrgPolicy'
-          property :zs_region_state, as: 'zsRegionState'
         end
       end
       
@@ -676,29 +525,10 @@ module Google
         end
       end
       
-      class LocationAssignment
+      class Notice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :location, as: 'location'
-          property :location_type, as: 'locationType'
-        end
-      end
-      
-      class LocationData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :blobstore_location, as: 'blobstoreLocation', class: Google::Apis::WorkloadmanagerV1::BlobstoreLocation, decorator: Google::Apis::WorkloadmanagerV1::BlobstoreLocation::Representation
-      
-          property :child_asset_location, as: 'childAssetLocation', class: Google::Apis::WorkloadmanagerV1::CloudAssetComposition, decorator: Google::Apis::WorkloadmanagerV1::CloudAssetComposition::Representation
-      
-          property :direct_location, as: 'directLocation', class: Google::Apis::WorkloadmanagerV1::DirectLocationAssignment, decorator: Google::Apis::WorkloadmanagerV1::DirectLocationAssignment::Representation
-      
-          property :gcp_project_proxy, as: 'gcpProjectProxy', class: Google::Apis::WorkloadmanagerV1::TenantProjectProxy, decorator: Google::Apis::WorkloadmanagerV1::TenantProjectProxy::Representation
-      
-          property :placer_location, as: 'placerLocation', class: Google::Apis::WorkloadmanagerV1::PlacerLocation, decorator: Google::Apis::WorkloadmanagerV1::PlacerLocation::Representation
-      
-          property :spanner_location, as: 'spannerLocation', class: Google::Apis::WorkloadmanagerV1::SpannerLocation, decorator: Google::Apis::WorkloadmanagerV1::SpannerLocation::Representation
-      
+          property :message, as: 'message'
         end
       end
       
@@ -724,30 +554,6 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
-        end
-      end
-      
-      class PlacerLocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :placer_config, as: 'placerConfig'
-        end
-      end
-      
-      class RegionalMigDistributionPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :target_shape, as: 'targetShape'
-          collection :zones, as: 'zones', class: Google::Apis::WorkloadmanagerV1::ZoneConfiguration, decorator: Google::Apis::WorkloadmanagerV1::ZoneConfiguration::Representation
-      
-        end
-      end
-      
-      class RequirementOverride
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :zi_override, as: 'ziOverride'
-          property :zs_override, as: 'zsOverride'
         end
       end
       
@@ -986,14 +792,6 @@ module Google
         end
       end
       
-      class SpannerLocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :backup_name, as: 'backupName'
-          collection :db_name, as: 'dbName'
-        end
-      end
-      
       class SqlserverValidation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1030,13 +828,6 @@ module Google
         end
       end
       
-      class TenantProjectProxy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :project_numbers, as: 'projectNumbers'
-        end
-      end
-      
       class ViolationDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1059,13 +850,6 @@ module Google
       class WriteInsightResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ZoneConfiguration
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :zone, as: 'zone'
         end
       end
     end
