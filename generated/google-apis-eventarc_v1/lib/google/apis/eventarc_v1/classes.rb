@@ -445,6 +445,96 @@ module Google
         end
       end
       
+      # An enrollment represents a subscription for messages on a particular message
+      # bus. It defines a matching criteria for messages on the bus and the subscriber
+      # endpoint where matched messages should be delivered.
+      class Enrollment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource annotations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Required. A CEL expression identifying which messages this enrollment applies
+        # to.
+        # Corresponds to the JSON property `celMatch`
+        # @return [String]
+        attr_accessor :cel_match
+      
+        # Output only. The creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Destination is the Pipeline that the Enrollment is delivering to. It
+        # must point to the full resource name of a Pipeline. Format: "projects/`
+        # PROJECT_ID`/locations/`region`/pipelines/`PIPELINE_ID)"
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Optional. Resource display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. This checksum is computed by the server based on the value of
+        # other fields, and might be sent only on update and delete requests to ensure
+        # that the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Resource labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Resource name of the message bus identifying the source of the
+        # messages. It matches the form projects/`project`/locations/`location`/
+        # messageBuses/`messageBus`.
+        # Corresponds to the JSON property `messageBus`
+        # @return [String]
+        attr_accessor :message_bus
+      
+        # Identifier. Resource name of the form projects/`project`/locations/`location`/
+        # enrollments/`enrollment`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Server assigned unique identifier for the channel. The value is a
+        # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @cel_match = args[:cel_match] if args.key?(:cel_match)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @destination = args[:destination] if args.key?(:destination)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @message_bus = args[:message_bus] if args.key?(:message_bus)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Filters events based on exact matches on the CloudEvents attributes.
       class EventFilter
         include Google::Apis::Core::Hashable
@@ -670,6 +760,95 @@ module Google
         end
       end
       
+      # A GoogleApiSource represents a subscription of 1P events from a MessageBus.
+      class GoogleApiSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource annotations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. The creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Resource name of a KMS crypto key (managed by the user) used to
+        # encrypt/decrypt their event data. It must match the pattern `projects/*/
+        # locations/*/keyRings/*/cryptoKeys/*`.
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
+        # Required. Destination is the message bus that the GoogleApiSource is
+        # delivering to. It must be point to the full resource name of a MessageBus.
+        # Format: "projects/`PROJECT_ID`/locations/`region`/messagesBuses/`
+        # MESSAGE_BUS_ID)
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Optional. Resource display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. This checksum is computed by the server based on the value of
+        # other fields, and might be sent only on update and delete requests to ensure
+        # that the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Resource labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The configuration for Platform Telemetry logging for Eventarc Avdvanced
+        # resources.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::EventarcV1::LoggingConfig]
+        attr_accessor :logging_config
+      
+        # Identifier. Resource name of the form projects/`project`/locations/`location`/
+        # googleApiSources/`google_api_source`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Server assigned unique identifier for the channel. The value is a
+        # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
+          @destination = args[:destination] if args.key?(:destination)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # A GoogleChannelConfig is a resource that stores the custom settings respected
       # by Eventarc first-party triggers in the matching region. Once configured,
       # first-party event data will be protected using the specified custom managed
@@ -704,6 +883,439 @@ module Google
           @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a target of an invocation over HTTP.
+      class GoogleCloudEventarcV1PipelineDestination
+        include Google::Apis::Core::Hashable
+      
+        # Represents a config used to authenticate message requests.
+        # Corresponds to the JSON property `authenticationConfig`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig]
+        attr_accessor :authentication_config
+      
+        # Represents a HTTP endpoint destination.
+        # Corresponds to the JSON property `httpEndpoint`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationHttpEndpoint]
+        attr_accessor :http_endpoint
+      
+        # Optional. The resource name of the Message Bus to which events should be
+        # published. The Message Bus resource should exist in the same project as the
+        # Pipeline. Format: `projects/`project`/locations/`location`/messageBuses/`
+        # message_bus``
+        # Corresponds to the JSON property `messageBus`
+        # @return [String]
+        attr_accessor :message_bus
+      
+        # Represents a network config to be used for destination resolution and
+        # connectivity.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationNetworkConfig]
+        attr_accessor :network_config
+      
+        # Represents the format of message data.
+        # Corresponds to the JSON property `outputPayloadFormat`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormat]
+        attr_accessor :output_payload_format
+      
+        # Optional. The resource name of the Pub/Sub topic to which events should be
+        # published. Format: `projects/`project`/locations/`location`/topics/`topic``
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        # Optional. The resource name of the Workflow whose Executions are triggered by
+        # the events. The Workflow resource should be deployed in the same project as
+        # the Pipeline. Format: `projects/`project`/locations/`location`/workflows/`
+        # workflow``
+        # Corresponds to the JSON property `workflow`
+        # @return [String]
+        attr_accessor :workflow
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_config = args[:authentication_config] if args.key?(:authentication_config)
+          @http_endpoint = args[:http_endpoint] if args.key?(:http_endpoint)
+          @message_bus = args[:message_bus] if args.key?(:message_bus)
+          @network_config = args[:network_config] if args.key?(:network_config)
+          @output_payload_format = args[:output_payload_format] if args.key?(:output_payload_format)
+          @topic = args[:topic] if args.key?(:topic)
+          @workflow = args[:workflow] if args.key?(:workflow)
+        end
+      end
+      
+      # Represents a config used to authenticate message requests.
+      class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents a config used to authenticate with a Google OIDC token using a GCP
+        # service account. Use this authentication method to invoke your Cloud Run and
+        # Cloud Functions destinations or HTTP endpoints that support Google OIDC.
+        # Corresponds to the JSON property `googleOidc`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken]
+        attr_accessor :google_oidc
+      
+        # Contains information needed for generating an [OAuth token](https://developers.
+        # google.com/identity/protocols/OAuth2). This type of authorization should
+        # generally only be used when calling Google APIs hosted on *.googleapis.com.
+        # Corresponds to the JSON property `oauthToken`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken]
+        attr_accessor :oauth_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_oidc = args[:google_oidc] if args.key?(:google_oidc)
+          @oauth_token = args[:oauth_token] if args.key?(:oauth_token)
+        end
+      end
+      
+      # Contains information needed for generating an [OAuth token](https://developers.
+      # google.com/identity/protocols/OAuth2). This type of authorization should
+      # generally only be used when calling Google APIs hosted on *.googleapis.com.
+      class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken
+        include Google::Apis::Core::Hashable
+      
+        # Optional. OAuth scope to be used for generating OAuth access token. If not
+        # specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Required. Service account email used to generate the [OAuth token](https://
+        # developers.google.com/identity/protocols/OAuth2). The principal who calls this
+        # API must have iam.serviceAccounts.actAs permission in the service account. See
+        # https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#
+        # sa_common for more information. Eventarc service agents must have roles/roles/
+        # iam.serviceAccountTokenCreator role to allow Pipeline to create OAuth2 tokens
+        # for authenticated requests.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+          @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # Represents a config used to authenticate with a Google OIDC token using a GCP
+      # service account. Use this authentication method to invoke your Cloud Run and
+      # Cloud Functions destinations or HTTP endpoints that support Google OIDC.
+      class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Audience to be used to generate the OIDC Token. The audience claim
+        # identifies the recipient that the JWT is intended for. If unspecified, the
+        # destination URI will be used.
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
+        # Required. Service account email used to generate the OIDC Token. The principal
+        # who calls this API must have iam.serviceAccounts.actAs permission in the
+        # service account. See https://cloud.google.com/iam/docs/understanding-service-
+        # accounts?hl=en#sa_common for more information. Eventarc service agents must
+        # have roles/roles/iam.serviceAccountTokenCreator role to allow the Pipeline to
+        # create OpenID tokens for authenticated requests.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience = args[:audience] if args.key?(:audience)
+          @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # Represents a HTTP endpoint destination.
+      class GoogleCloudEventarcV1PipelineDestinationHttpEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The CEL expression used to construct a new HTTP request to be sent
+        # to the final destination. The result of the CEL expression must be a map of
+        # key/value pairs such that: - If a map named `headers` exists on the result of
+        # the expression, then its key/value pairs are directly mapped to the HTTP
+        # request headers. The headers values are constructed from the corresponding
+        # value type’s canonical representation. If the `headers` field doesn’t exist
+        # then the resulting HTTP request will be without headers. - If a field named `
+        # body` exists on the result of the expression then its value is directly mapped
+        # to the body of the request. If the value of the `body` field is of type bytes
+        # or string then it is used for the HTTP request body as-is, with no conversion.
+        # If the body field is of any other type then it is converted to a JSON string.
+        # If the body field doesn’t exist then the resulting HTTP request will be
+        # without a body. - Any other fields in the resulting expression will be ignored.
+        # The CEL expression may access the incoming CloudEvent message in its
+        # definition, as follows: - The `data` field of the incoming CloudEvent message
+        # can be accessed using the `message.data` value. - Each attribute of the
+        # incoming CloudEvent message can be accessed using the `message.` value, where
+        # is replaced with the name of the attribute. Headers added to the request by
+        # previous filters in the chain can be accessed in the CEL expression using the `
+        # headers` variable. The `headers` variable defines a map of key/value pairs
+        # corresponding to the HTTP headers added by previous mediation steps and not
+        # the headers present on the original incoming request. For example, the
+        # following CEL expression can be used to construct a Headers-only HTTP request
+        # by adding an additional header to the headers added by previous mediations in
+        # the Pipeline: ``` `"headers": headers.merge(`"new-header-key": "new-header-
+        # value"`)` ``` Additionally, the following CEL extension functions are provided
+        # for use in this CEL expression: - toBase64Url: map.toBase64Url() -> string -
+        # Converts a CelValue to a base64url encoded string - toJsonString: map.
+        # toJsonString() -> string - Converts a CelValue to a JSON string - merge: map1.
+        # merge(map2) -> map3 - Merges the passed CEL map with the existing CEL map the
+        # function is applied to. - If the same key exists in both maps, if the key's
+        # value is type map both maps are merged else the value from the passed map is
+        # used. - toMap: list(map).toMap() -> map - Converts a CEL list of CEL maps to a
+        # single CEL map - toDestinationPayloadFormat(): message.data.
+        # toDestinationPayloadFormat() -> string or bytes - Converts the message data to
+        # the destination payload format specified in Pipeline.Destination.
+        # output_payload_format - This function is meant to be applied to the message.
+        # data field. - If the destination payload format is not set, the function will
+        # return the message data unchanged. - toCloudEventJsonWithPayloadFormat:
+        # message.toCloudEventJsonWithPayloadFormat() -> map - Converts a message to the
+        # corresponding structure of JSON format for CloudEvents - This function applies
+        # toDestinationPayloadFormat() to the message data. It also sets the
+        # corresponding datacontenttype of the CloudEvent, as indicated by Pipeline.
+        # Destination.output_payload_format. If no output_payload_format is set it will
+        # use the existing datacontenttype on the CloudEvent if present, else leave
+        # datacontenttype absent. - This function expects that the content of the
+        # message will adhere to the standard CloudEvent format. If it doesn’t then this
+        # function will fail. - The result is a CEL map that corresponds to the JSON
+        # representation of the CloudEvent. To convert that data to a JSON string it can
+        # be chained with the toJsonString function. If a binding is not specified here,
+        # by default the message is treated as a CloudEvent and is mapped to the HTTP
+        # request according to the CloudEvent HTTP Protocol Binding Binary Content Mode.
+        # The Pipeline converts the data field of the message to the format provided in
+        # Pipeline.Destination.output_payload_format and maps it to the body field of
+        # the result. It also sets the corresponding Content-Type header to the
+        # output_payload_format type. If the Pipeline.Destination.output_payload_format
+        # is not set, then the Pipeline will treat the data field of the message as
+        # opaque binary data and attach it to the request body as bytes. In this case
+        # the Content-type header will be set to the value of the datacontenttype
+        # attribute set on the incoming CloudEvent message if present and the `
+        # application/octet-stream` MIME type otherwise. The Pipeline expects that the
+        # content of the message will adhere to the standard CloudEvent format. If it
+        # doesn’t then the outgoing message request may fail with a persistent error.
+        # Corresponds to the JSON property `messageBindingTemplate`
+        # @return [String]
+        attr_accessor :message_binding_template
+      
+        # Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string.
+        # Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`
+        # . Only HTTP and HTTPS protocols are supported. The host can be either a static
+        # IP addressable from the VPC specified by the network config, or an internal
+        # DNS hostname of the service resolvable via Cloud DNS.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_binding_template = args[:message_binding_template] if args.key?(:message_binding_template)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Represents a network config to be used for destination resolution and
+      # connectivity.
+      class GoogleCloudEventarcV1PipelineDestinationNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the NetworkAttachment that allows access to the consumer VPC.
+        # Format: `projects/`PROJECT_ID`/regions/`REGION`/networkAttachments/`
+        # NETWORK_ATTACHMENT_NAME``
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+        end
+      end
+      
+      # Mediation defines different ways to modify the Pipeline.
+      class GoogleCloudEventarcV1PipelineMediation
+        include Google::Apis::Core::Hashable
+      
+        # Transformation defines the way to transform an incoming message.
+        # Corresponds to the JSON property `transformation`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMediationTransformation]
+        attr_accessor :transformation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transformation = args[:transformation] if args.key?(:transformation)
+        end
+      end
+      
+      # Transformation defines the way to transform an incoming message.
+      class GoogleCloudEventarcV1PipelineMediationTransformation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The template to apply to transform messages.
+        # Corresponds to the JSON property `transformationTemplate`
+        # @return [String]
+        attr_accessor :transformation_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transformation_template = args[:transformation_template] if args.key?(:transformation_template)
+        end
+      end
+      
+      # Represents the format of message data.
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormat
+        include Google::Apis::Core::Hashable
+      
+        # The format of an AVRO message payload.
+        # Corresponds to the JSON property `avro`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat]
+        attr_accessor :avro
+      
+        # The format of a JSON message payload.
+        # Corresponds to the JSON property `json`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat]
+        attr_accessor :json
+      
+        # The format of a Protobuf message payload.
+        # Corresponds to the JSON property `protobuf`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat]
+        attr_accessor :protobuf
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avro = args[:avro] if args.key?(:avro)
+          @json = args[:json] if args.key?(:json)
+          @protobuf = args[:protobuf] if args.key?(:protobuf)
+        end
+      end
+      
+      # The format of an AVRO message payload.
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The entire schema definition is stored in this field.
+        # Corresponds to the JSON property `schemaDefinition`
+        # @return [String]
+        attr_accessor :schema_definition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema_definition = args[:schema_definition] if args.key?(:schema_definition)
+        end
+      end
+      
+      # The format of a JSON message payload.
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The format of a Protobuf message payload.
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The entire schema definition is stored in this field.
+        # Corresponds to the JSON property `schemaDefinition`
+        # @return [String]
+        attr_accessor :schema_definition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema_definition = args[:schema_definition] if args.key?(:schema_definition)
+        end
+      end
+      
+      # The retry policy configuration for the Pipeline. The pipeline exponentially
+      # backs off in case the destination is non responsive or returns a retryable
+      # error code. The default semantics are as follows: The backoff starts with a 5
+      # second delay and doubles the delay after each failed attempt (10 seconds, 20
+      # seconds, 40 seconds, etc.). The delay is capped at 60 seconds by default.
+      # Please note that if you set the min_retry_delay and max_retry_delay fields to
+      # the same value this will make the duration between retries constant.
+      class GoogleCloudEventarcV1PipelineRetryPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum number of delivery attempts for any message. The value
+        # must be between 1 and 100. The default value for this field is 5.
+        # Corresponds to the JSON property `maxAttempts`
+        # @return [Fixnum]
+        attr_accessor :max_attempts
+      
+        # Optional. The maximum amount of seconds to wait between retry attempts. The
+        # value must be between 0 and 600. The default value for this field is 60.
+        # Corresponds to the JSON property `maxRetryDelay`
+        # @return [String]
+        attr_accessor :max_retry_delay
+      
+        # Optional. The minimum amount of seconds to wait between retry attempts. The
+        # value must be between 0 and 600. The default value for this field is 5.
+        # Corresponds to the JSON property `minRetryDelay`
+        # @return [String]
+        attr_accessor :min_retry_delay
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_attempts = args[:max_attempts] if args.key?(:max_attempts)
+          @max_retry_delay = args[:max_retry_delay] if args.key?(:max_retry_delay)
+          @min_retry_delay = args[:min_retry_delay] if args.key?(:min_retry_delay)
         end
       end
       
@@ -933,6 +1545,70 @@ module Google
         end
       end
       
+      # The response message for the `ListEnrollments` method.
+      class ListEnrollmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested Enrollments, up to the number specified in `page_size`.
+        # Corresponds to the JSON property `enrollments`
+        # @return [Array<Google::Apis::EventarcV1::Enrollment>]
+        attr_accessor :enrollments
+      
+        # A page token that can be sent to `ListEnrollments` to request the next page.
+        # If this is empty, then there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enrollments = args[:enrollments] if args.key?(:enrollments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response message for the `ListGoogleApiSources` method.
+      class ListGoogleApiSourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested GoogleApiSources, up to the number specified in `page_size`.
+        # Corresponds to the JSON property `googleApiSources`
+        # @return [Array<Google::Apis::EventarcV1::GoogleApiSource>]
+        attr_accessor :google_api_sources
+      
+        # A page token that can be sent to `ListMessageBusEnrollments` to request the
+        # next page. If this is empty, then there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_api_sources = args[:google_api_sources] if args.key?(:google_api_sources)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -955,6 +1631,102 @@ module Google
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for the `ListMessageBusEnrollments` method.`
+      class ListMessageBusEnrollmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested enrollments, up to the number specified in `page_size`.
+        # Corresponds to the JSON property `enrollments`
+        # @return [Array<String>]
+        attr_accessor :enrollments
+      
+        # A page token that can be sent to `ListMessageBusEnrollments` to request the
+        # next page. If this is empty, then there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enrollments = args[:enrollments] if args.key?(:enrollments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response message for the `ListMessageBuses` method.
+      class ListMessageBusesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested message buses, up to the number specified in `page_size`.
+        # Corresponds to the JSON property `messageBuses`
+        # @return [Array<Google::Apis::EventarcV1::MessageBus>]
+        attr_accessor :message_buses
+      
+        # A page token that can be sent to `ListMessageBuses` to request the next page.
+        # If this is empty, then there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_buses = args[:message_buses] if args.key?(:message_buses)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response message for the ListPipelines method.
+      class ListPipelinesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A page token that can be sent to `ListPipelines` to request the next page. If
+        # this is empty, then there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The requested pipelines, up to the number specified in `page_size`.
+        # Corresponds to the JSON property `pipelines`
+        # @return [Array<Google::Apis::EventarcV1::Pipeline>]
+        attr_accessor :pipelines
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @pipelines = args[:pipelines] if args.key?(:pipelines)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1069,6 +1841,111 @@ module Google
         end
       end
       
+      # The configuration for Platform Telemetry logging for Eventarc Avdvanced
+      # resources.
+      class LoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The minimum severity of logs that will be sent to Stackdriver/
+        # Platform Telemetry. Logs at severitiy ≥ this value will be sent, unless it is
+        # NONE.
+        # Corresponds to the JSON property `logSeverity`
+        # @return [String]
+        attr_accessor :log_severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_severity = args[:log_severity] if args.key?(:log_severity)
+        end
+      end
+      
+      # MessageBus for the messages flowing through the system. The admin has
+      # visibility and control over the messages being published and consumed and can
+      # restrict publishers and subscribers to only a subset of data available in the
+      # system by defining authorization policies.
+      class MessageBus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource annotations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. The creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Resource name of a KMS crypto key (managed by the user) used to
+        # encrypt/decrypt their event data. It must match the pattern `projects/*/
+        # locations/*/keyRings/*/cryptoKeys/*`.
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
+        # Optional. Resource display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. This checksum is computed by the server based on the value of
+        # other fields, and might be sent only on update and delete requests to ensure
+        # that the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Resource labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The configuration for Platform Telemetry logging for Eventarc Avdvanced
+        # resources.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::EventarcV1::LoggingConfig]
+        attr_accessor :logging_config
+      
+        # Identifier. Resource name of the form projects/`project`/locations/`location`/
+        # messageBuses/`message_bus`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Server assigned unique identifier for the channel. The value is a
+        # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Network Configuration that can be inherited by other protos.
       class NetworkConfig
         include Google::Apis::Core::Hashable
@@ -1146,6 +2023,127 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # A representation of the Pipeline resource.
+      class Pipeline
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User-defined annotations. See https://google.aip.dev/128#annotations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. The creation time. A timestamp in RFC3339 UTC "Zulu" format, with
+        # nanosecond resolution and up to nine fractional digits. Examples: "2014-10-
+        # 02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Resource name of a KMS crypto key (managed by the user) used to
+        # encrypt/decrypt the event data. If not set, an internal Google-owned key will
+        # be used to encrypt messages. It must match the pattern "projects/`project`/
+        # locations/`location`/keyRings/`keyring`/cryptoKeys/`key`".
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
+        # Required. List of destinations to which messages will be forwarded. Currently,
+        # exactly one destination is supported per Pipeline.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestination>]
+        attr_accessor :destinations
+      
+        # Optional. Display name of resource.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. This checksum is computed by the server based on the value of
+        # other fields, and might be sent only on create requests to ensure that the
+        # client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Represents the format of message data.
+        # Corresponds to the JSON property `inputPayloadFormat`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormat]
+        attr_accessor :input_payload_format
+      
+        # Optional. User labels attached to the Pipeline that can be used to group
+        # resources. An object containing a list of "key": value pairs. Example: ` "name"
+        # : "wrench", "mass": "1.3kg", "count": "3" `.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The configuration for Platform Telemetry logging for Eventarc Avdvanced
+        # resources.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::EventarcV1::LoggingConfig]
+        attr_accessor :logging_config
+      
+        # Optional. List of mediation operations to be performed on the message.
+        # Currently, only one Transformation operation is allowed in each Pipeline.
+        # Corresponds to the JSON property `mediations`
+        # @return [Array<Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMediation>]
+        attr_accessor :mediations
+      
+        # Identifier. The resource name of the Pipeline. Must be unique within the
+        # location of the project and must be in `projects/`project`/locations/`location`
+        # /pipelines/`pipeline`` format.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The retry policy configuration for the Pipeline. The pipeline exponentially
+        # backs off in case the destination is non responsive or returns a retryable
+        # error code. The default semantics are as follows: The backoff starts with a 5
+        # second delay and doubles the delay after each failed attempt (10 seconds, 20
+        # seconds, 40 seconds, etc.). The delay is capped at 60 seconds by default.
+        # Please note that if you set the min_retry_delay and max_retry_delay fields to
+        # the same value this will make the duration between retries constant.
+        # Corresponds to the JSON property `retryPolicy`
+        # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineRetryPolicy]
+        attr_accessor :retry_policy
+      
+        # Output only. Server-assigned unique identifier for the Pipeline. The value is
+        # a UUID4 string and guaranteed to remain unchanged until the resource is
+        # deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time. A timestamp in RFC3339 UTC "Zulu" format,
+        # with nanosecond resolution and up to nine fractional digits. Examples: "2014-
+        # 10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @input_payload_format = args[:input_payload_format] if args.key?(:input_payload_format)
+          @labels = args[:labels] if args.key?(:labels)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @mediations = args[:mediations] if args.key?(:mediations)
+          @name = args[:name] if args.key?(:name)
+          @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       

@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Enrollment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,7 +106,91 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleApiSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChannelConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestinationHttpEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestinationNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineMediation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineMediationTransformation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudEventarcV1PipelineRetryPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,7 +238,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListEnrollmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGoogleApiSourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMessageBusEnrollmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMessageBusesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListPipelinesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,6 +292,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageBus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +311,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Pipeline
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -324,6 +462,23 @@ module Google
         end
       end
       
+      class Enrollment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :cel_match, as: 'celMatch'
+          property :create_time, as: 'createTime'
+          property :destination, as: 'destination'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :message_bus, as: 'messageBus'
+          property :name, as: 'name'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class EventFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -375,12 +530,144 @@ module Google
         end
       end
       
+      class GoogleApiSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :crypto_key_name, as: 'cryptoKeyName'
+          property :destination, as: 'destination'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::EventarcV1::LoggingConfig, decorator: Google::Apis::EventarcV1::LoggingConfig::Representation
+      
+          property :name, as: 'name'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleChannelConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crypto_key_name, as: 'cryptoKeyName'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_config, as: 'authenticationConfig', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig::Representation
+      
+          property :http_endpoint, as: 'httpEndpoint', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationHttpEndpoint, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationHttpEndpoint::Representation
+      
+          property :message_bus, as: 'messageBus'
+          property :network_config, as: 'networkConfig', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationNetworkConfig, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationNetworkConfig::Representation
+      
+          property :output_payload_format, as: 'outputPayloadFormat', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormat, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormat::Representation
+      
+          property :topic, as: 'topic'
+          property :workflow, as: 'workflow'
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_oidc, as: 'googleOidc', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken::Representation
+      
+          property :oauth_token, as: 'oauthToken', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken::Representation
+      
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
+          property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience'
+          property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestinationHttpEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_binding_template, as: 'messageBindingTemplate'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineDestinationNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_attachment, as: 'networkAttachment'
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineMediation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transformation, as: 'transformation', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMediationTransformation, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMediationTransformation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineMediationTransformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transformation_template, as: 'transformationTemplate'
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avro, as: 'avro', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat::Representation
+      
+          property :json, as: 'json', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat::Representation
+      
+          property :protobuf, as: 'protobuf', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat::Representation
+      
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema_definition, as: 'schemaDefinition'
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema_definition, as: 'schemaDefinition'
+        end
+      end
+      
+      class GoogleCloudEventarcV1PipelineRetryPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_attempts, as: 'maxAttempts'
+          property :max_retry_delay, as: 'maxRetryDelay'
+          property :min_retry_delay, as: 'minRetryDelay'
         end
       end
       
@@ -447,12 +734,61 @@ module Google
         end
       end
       
+      class ListEnrollmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enrollments, as: 'enrollments', class: Google::Apis::EventarcV1::Enrollment, decorator: Google::Apis::EventarcV1::Enrollment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListGoogleApiSourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :google_api_sources, as: 'googleApiSources', class: Google::Apis::EventarcV1::GoogleApiSource, decorator: Google::Apis::EventarcV1::GoogleApiSource::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :locations, as: 'locations', class: Google::Apis::EventarcV1::Location, decorator: Google::Apis::EventarcV1::Location::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMessageBusEnrollmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enrollments, as: 'enrollments'
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListMessageBusesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :message_buses, as: 'messageBuses', class: Google::Apis::EventarcV1::MessageBus, decorator: Google::Apis::EventarcV1::MessageBus::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListPipelinesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :pipelines, as: 'pipelines', class: Google::Apis::EventarcV1::Pipeline, decorator: Google::Apis::EventarcV1::Pipeline::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -487,6 +823,30 @@ module Google
         end
       end
       
+      class LoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_severity, as: 'logSeverity'
+        end
+      end
+      
+      class MessageBus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :crypto_key_name, as: 'cryptoKeyName'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::EventarcV1::LoggingConfig, decorator: Google::Apis::EventarcV1::LoggingConfig::Representation
+      
+          property :name, as: 'name'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -504,6 +864,31 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class Pipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :crypto_key_name, as: 'cryptoKeyName'
+          collection :destinations, as: 'destinations', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestination, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestination::Representation
+      
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :input_payload_format, as: 'inputPayloadFormat', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormat, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMessagePayloadFormat::Representation
+      
+          hash :labels, as: 'labels'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::EventarcV1::LoggingConfig, decorator: Google::Apis::EventarcV1::LoggingConfig::Representation
+      
+          collection :mediations, as: 'mediations', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMediation, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineMediation::Representation
+      
+          property :name, as: 'name'
+          property :retry_policy, as: 'retryPolicy', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineRetryPolicy, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineRetryPolicy::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
         end
       end
       
