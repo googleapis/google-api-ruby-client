@@ -2991,7 +2991,8 @@ module Google
         # CACHE_ALL_STATIC Automatically cache static content, including common image
         # formats, media (video and audio), and web assets (JavaScript and CSS).
         # Requests and responses that are marked as uncacheable, as well as dynamic
-        # content (including HTML), will not be cached.
+        # content (including HTML), will not be cached. If no value is provided for
+        # cdnPolicy.cacheMode, it defaults to CACHE_ALL_STATIC.
         # Corresponds to the JSON property `cacheMode`
         # @return [String]
         attr_accessor :cache_mode
@@ -3903,7 +3904,8 @@ module Google
         # CACHE_ALL_STATIC Automatically cache static content, including common image
         # formats, media (video and audio), and web assets (JavaScript and CSS).
         # Requests and responses that are marked as uncacheable, as well as dynamic
-        # content (including HTML), will not be cached.
+        # content (including HTML), will not be cached. If no value is provided for
+        # cdnPolicy.cacheMode, it defaults to CACHE_ALL_STATIC.
         # Corresponds to the JSON property `cacheMode`
         # @return [String]
         attr_accessor :cache_mode
@@ -25602,6 +25604,27 @@ module Google
       class NetworkRoutingConfig
         include Google::Apis::Core::Hashable
       
+        # Enable comparison of Multi-Exit Discriminators (MED) across routes with
+        # different neighbor ASNs when using the STANDARD BGP best path selection
+        # algorithm.
+        # Corresponds to the JSON property `bgpAlwaysCompareMed`
+        # @return [Boolean]
+        attr_accessor :bgp_always_compare_med
+        alias_method :bgp_always_compare_med?, :bgp_always_compare_med
+      
+        # The BGP best path selection algorithm to be employed within this network for
+        # dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+        # Corresponds to the JSON property `bgpBestPathSelectionMode`
+        # @return [String]
+        attr_accessor :bgp_best_path_selection_mode
+      
+        # Allows to define a preferred approach for handling inter-region cost in the
+        # selection process when using the STANDARD BGP best path selection algorithm.
+        # Can be DEFAULT or ADD_COST_TO_MED.
+        # Corresponds to the JSON property `bgpInterRegionCost`
+        # @return [String]
+        attr_accessor :bgp_inter_region_cost
+      
         # The network-wide routing mode to use. If set to REGIONAL, this network's Cloud
         # Routers will only advertise routes with subnets of this network in the same
         # region as the router. If set to GLOBAL, this network's Cloud Routers will
@@ -25616,6 +25639,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bgp_always_compare_med = args[:bgp_always_compare_med] if args.key?(:bgp_always_compare_med)
+          @bgp_best_path_selection_mode = args[:bgp_best_path_selection_mode] if args.key?(:bgp_best_path_selection_mode)
+          @bgp_inter_region_cost = args[:bgp_inter_region_cost] if args.key?(:bgp_inter_region_cost)
           @routing_mode = args[:routing_mode] if args.key?(:routing_mode)
         end
       end
@@ -34280,6 +34306,13 @@ module Google
         # @return [String]
         attr_accessor :next_hop_instance
       
+        # [Output only] Internal fixed region-to-region cost that Google Cloud
+        # calculates based on factors such as network performance, distance, and
+        # available bandwidth between regions.
+        # Corresponds to the JSON property `nextHopInterRegionCost`
+        # @return [Fixnum]
+        attr_accessor :next_hop_inter_region_cost
+      
         # The network IP address of an instance that should handle matching packets.
         # Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4
         # address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC
@@ -34290,10 +34323,22 @@ module Google
         # @return [String]
         attr_accessor :next_hop_ip
       
+        # [Output Only] Multi-Exit Discriminator, a BGP route metric that indicates the
+        # desirability of a particular route in a network.
+        # Corresponds to the JSON property `nextHopMed`
+        # @return [Fixnum]
+        attr_accessor :next_hop_med
+      
         # The URL of the local network if it should handle matching packets.
         # Corresponds to the JSON property `nextHopNetwork`
         # @return [String]
         attr_accessor :next_hop_network
+      
+        # [Output Only] Indicates the origin of the route. Can be IGP (Interior Gateway
+        # Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        # Corresponds to the JSON property `nextHopOrigin`
+        # @return [String]
+        attr_accessor :next_hop_origin
       
         # [Output Only] The network peering name that should handle matching packets,
         # which should conform to RFC1035.
@@ -34363,8 +34408,11 @@ module Google
           @next_hop_hub = args[:next_hop_hub] if args.key?(:next_hop_hub)
           @next_hop_ilb = args[:next_hop_ilb] if args.key?(:next_hop_ilb)
           @next_hop_instance = args[:next_hop_instance] if args.key?(:next_hop_instance)
+          @next_hop_inter_region_cost = args[:next_hop_inter_region_cost] if args.key?(:next_hop_inter_region_cost)
           @next_hop_ip = args[:next_hop_ip] if args.key?(:next_hop_ip)
+          @next_hop_med = args[:next_hop_med] if args.key?(:next_hop_med)
           @next_hop_network = args[:next_hop_network] if args.key?(:next_hop_network)
+          @next_hop_origin = args[:next_hop_origin] if args.key?(:next_hop_origin)
           @next_hop_peering = args[:next_hop_peering] if args.key?(:next_hop_peering)
           @next_hop_vpn_tunnel = args[:next_hop_vpn_tunnel] if args.key?(:next_hop_vpn_tunnel)
           @priority = args[:priority] if args.key?(:priority)
@@ -42470,7 +42518,7 @@ module Google
         attr_accessor :private_ipv6_google_access
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, or PRIVATE_SERVICE_CONNECT.
         # PRIVATE is the default purpose for user-created subnets or subnets that are
         # automatically created in auto mode networks. Subnets with purpose set to
         # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
@@ -47609,7 +47657,7 @@ module Google
         attr_accessor :network
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, or PRIVATE_SERVICE_CONNECT.
         # PRIVATE is the default purpose for user-created subnets or subnets that are
         # automatically created in auto mode networks. Subnets with purpose set to
         # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
