@@ -649,7 +649,8 @@ module Google
         attr_accessor :update_time
       
         # Information related to: * A function's eligibility for 1st Gen to 2nd Gen
-        # migration * Current state of migration for function undergoing migration.
+        # migration and 2nd Gen to CRf detach. * Current state of migration for function
+        # undergoing migration/detach.
         # Corresponds to the JSON property `upgradeInfo`
         # @return [Google::Apis::CloudfunctionsV2::UpgradeInfo]
         attr_accessor :upgrade_info
@@ -2046,7 +2047,8 @@ module Google
       end
       
       # Information related to: * A function's eligibility for 1st Gen to 2nd Gen
-      # migration * Current state of migration for function undergoing migration.
+      # migration and 2nd Gen to CRf detach. * Current state of migration for function
+      # undergoing migration/detach.
       class UpgradeInfo
         include Google::Apis::Core::Hashable
       
