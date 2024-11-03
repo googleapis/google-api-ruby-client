@@ -678,6 +678,7 @@ module Google
       
           property :prevent_drift, as: 'preventDrift'
           property :source_format, as: 'sourceFormat'
+          property :stop_syncing, as: 'stopSyncing'
         end
       end
       
