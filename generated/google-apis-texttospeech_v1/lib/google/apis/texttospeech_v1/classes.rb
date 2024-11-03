@@ -26,7 +26,7 @@ module Google
       class AdvancedVoiceOptions
         include Google::Apis::Core::Hashable
       
-        # Only for Jounrney voices. If false, the synthesis will be context aware and
+        # Only for Journey voices. If false, the synthesis will be context aware and
         # have higher latency.
         # Corresponds to the JSON property `lowLatencyJourneySynthesis`
         # @return [Boolean]
@@ -296,6 +296,25 @@ module Google
         end
       end
       
+      # A collection of turns for multi-speaker synthesis.
+      class MultiSpeakerMarkup
+        include Google::Apis::Core::Hashable
+      
+        # Required. Speaker turns.
+        # Corresponds to the JSON property `turns`
+        # @return [Array<Google::Apis::TexttospeechV1::Turn>]
+        attr_accessor :turns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @turns = args[:turns] if args.key?(:turns)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -408,6 +427,11 @@ module Google
         # @return [Google::Apis::TexttospeechV1::CustomPronunciations]
         attr_accessor :custom_pronunciations
       
+        # A collection of turns for multi-speaker synthesis.
+        # Corresponds to the JSON property `multiSpeakerMarkup`
+        # @return [Google::Apis::TexttospeechV1::MultiSpeakerMarkup]
+        attr_accessor :multi_speaker_markup
+      
         # The SSML document to be synthesized. The SSML document must be valid and well-
         # formed. Otherwise the RPC will fail and return google.rpc.Code.
         # INVALID_ARGUMENT. For more information, see [SSML](https://cloud.google.com/
@@ -428,6 +452,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_pronunciations = args[:custom_pronunciations] if args.key?(:custom_pronunciations)
+          @multi_speaker_markup = args[:multi_speaker_markup] if args.key?(:multi_speaker_markup)
           @ssml = args[:ssml] if args.key?(:ssml)
           @text = args[:text] if args.key?(:text)
         end
@@ -568,6 +593,32 @@ module Google
         end
       end
       
+      # A Multi-speaker turn.
+      class Turn
+        include Google::Apis::Core::Hashable
+      
+        # Required. The speaker of the turn, for example, 'O' or 'Q'. Please refer to
+        # documentation for available speakers.
+        # Corresponds to the JSON property `speaker`
+        # @return [String]
+        attr_accessor :speaker
+      
+        # Required. The text to speak.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker = args[:speaker] if args.key?(:speaker)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # Description of a voice supported by the TTS service.
       class Voice
         include Google::Apis::Core::Hashable
@@ -603,6 +654,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @natural_sample_rate_hertz = args[:natural_sample_rate_hertz] if args.key?(:natural_sample_rate_hertz)
           @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
+        end
+      end
+      
+      # The configuration of Voice Clone feature.
+      class VoiceCloneParams
+        include Google::Apis::Core::Hashable
+      
+        # Required. Created by GenerateVoiceCloningKey.
+        # Corresponds to the JSON property `voiceCloningKey`
+        # @return [String]
+        attr_accessor :voice_cloning_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @voice_cloning_key = args[:voice_cloning_key] if args.key?(:voice_cloning_key)
         end
       end
       
@@ -645,6 +715,11 @@ module Google
         # @return [String]
         attr_accessor :ssml_gender
       
+        # The configuration of Voice Clone feature.
+        # Corresponds to the JSON property `voiceClone`
+        # @return [Google::Apis::TexttospeechV1::VoiceCloneParams]
+        attr_accessor :voice_clone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -655,6 +730,7 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
           @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
+          @voice_clone = args[:voice_clone] if args.key?(:voice_clone)
         end
       end
     end
