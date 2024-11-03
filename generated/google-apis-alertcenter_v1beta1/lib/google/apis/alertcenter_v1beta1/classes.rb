@@ -584,9 +584,9 @@ module Google
         end
       end
       
-      # Alerts from AppSettingsChanged bucket Rules configured by Admin which contain
-      # the below rules. Calendar settings changed Drive settings changed Email
-      # settings changed Mobile settings changed
+      # * Alerts from AppSettingsChanged bucket Rules configured by Admin which
+      # contain the below rules. Calendar settings changed Drive settings changed
+      # Email settings changed Mobile settings changed
       class AppSettingsChanged
         include Google::Apis::Core::Hashable
       
@@ -1642,8 +1642,8 @@ module Google
         end
       end
       
-      # Event occurred when primary admin changed in customer's account. The event are
-      # being received from insight forwarder
+      # * Event occurred when primary admin changed in customer's account. The event
+      # are being received from insight forwarder
       class PrimaryAdminChangedEvent
         include Google::Apis::Core::Hashable
       
@@ -1895,7 +1895,7 @@ module Google
         end
       end
       
-      # Event occurred when SSO Profile created in customer's account. The event are
+      # * Event occurred when SSO Profile created in customer's account. The event are
       # being received from insight forwarder
       class SsoProfileCreatedEvent
         include Google::Apis::Core::Hashable
@@ -1915,7 +1915,7 @@ module Google
         end
       end
       
-      # Event occurred when SSO Profile deleted in customer's account. The event are
+      # * Event occurred when SSO Profile deleted in customer's account. The event are
       # being received from insight forwarder
       class SsoProfileDeletedEvent
         include Google::Apis::Core::Hashable
@@ -1935,7 +1935,7 @@ module Google
         end
       end
       
-      # Event occurred when SSO Profile updated in customer's account. The event are
+      # * Event occurred when SSO Profile updated in customer's account. The event are
       # being received from insight forwarder
       class SsoProfileUpdatedEvent
         include Google::Apis::Core::Hashable
@@ -1975,31 +1975,31 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Event occurred when primary admin changed in customer's account. The event are
-        # being received from insight forwarder
+        # * Event occurred when primary admin changed in customer's account. The event
+        # are being received from insight forwarder
         # Corresponds to the JSON property `primaryAdminChangedEvent`
         # @return [Google::Apis::AlertcenterV1beta1::PrimaryAdminChangedEvent]
         attr_accessor :primary_admin_changed_event
       
-        # Event occurred when SSO Profile created in customer's account. The event are
+        # * Event occurred when SSO Profile created in customer's account. The event are
         # being received from insight forwarder
         # Corresponds to the JSON property `ssoProfileCreatedEvent`
         # @return [Google::Apis::AlertcenterV1beta1::SsoProfileCreatedEvent]
         attr_accessor :sso_profile_created_event
       
-        # Event occurred when SSO Profile deleted in customer's account. The event are
+        # * Event occurred when SSO Profile deleted in customer's account. The event are
         # being received from insight forwarder
         # Corresponds to the JSON property `ssoProfileDeletedEvent`
         # @return [Google::Apis::AlertcenterV1beta1::SsoProfileDeletedEvent]
         attr_accessor :sso_profile_deleted_event
       
-        # Event occurred when SSO Profile updated in customer's account. The event are
+        # * Event occurred when SSO Profile updated in customer's account. The event are
         # being received from insight forwarder
         # Corresponds to the JSON property `ssoProfileUpdatedEvent`
         # @return [Google::Apis::AlertcenterV1beta1::SsoProfileUpdatedEvent]
         attr_accessor :sso_profile_updated_event
       
-        # Event occurred when password was reset for super admin in customer's account.
+        # * Event occurred when password was reset for super admin in customer's account.
         # The event are being received from insight forwarder
         # Corresponds to the JSON property `superAdminPasswordResetEvent`
         # @return [Google::Apis::AlertcenterV1beta1::SuperAdminPasswordResetEvent]
@@ -2098,7 +2098,7 @@ module Google
         end
       end
       
-      # Event occurred when password was reset for super admin in customer's account.
+      # * Event occurred when password was reset for super admin in customer's account.
       # The event are being received from insight forwarder
       class SuperAdminPasswordResetEvent
         include Google::Apis::Core::Hashable
@@ -2347,7 +2347,7 @@ module Google
         end
       end
       
-      # Alerts from UserChanges bucket Rules for predefined rules which contain the
+      # * Alerts from UserChanges bucket Rules for predefined rules which contain the
       # below rules. Suspended user made active New user Added User suspended (by
       # admin) User granted admin privileges User admin privileges revoked User
       # deleted Users password changed
