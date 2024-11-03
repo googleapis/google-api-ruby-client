@@ -3948,8 +3948,8 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :member
       
-        # Resource name of the membership, assigned by the server. Format: `spaces/`
-        # space`/members/`member``
+        # Identifier. Resource name of the membership, assigned by the server. Format: `
+        # spaces/`space`/members/`member``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
