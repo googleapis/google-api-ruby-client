@@ -3594,6 +3594,7 @@ module Google
       class VideoStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :contains_synthetic_media, as: 'containsSyntheticMedia'
           property :embeddable, as: 'embeddable'
           property :failure_reason, as: 'failureReason'
           property :license, as: 'license'

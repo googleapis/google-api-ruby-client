@@ -6194,7 +6194,7 @@ module Google
         attr_accessor :items
       
         # Identifies what kind of resource this is. Value: the fixed string "youtube#
-        # playlistItemListResponse". Etag of this resource.
+        # playlistItemListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -9021,6 +9021,12 @@ module Google
       class VideoStatus
         include Google::Apis::Core::Hashable
       
+        # Indicates if the video contains altered or synthetic media.
+        # Corresponds to the JSON property `containsSyntheticMedia`
+        # @return [Boolean]
+        attr_accessor :contains_synthetic_media
+        alias_method :contains_synthetic_media?, :contains_synthetic_media
+      
         # This value indicates if the video can be embedded on another website. @mutable
         # youtube.videos.insert youtube.videos.update
         # Corresponds to the JSON property `embeddable`
@@ -9088,6 +9094,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contains_synthetic_media = args[:contains_synthetic_media] if args.key?(:contains_synthetic_media)
           @embeddable = args[:embeddable] if args.key?(:embeddable)
           @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
           @license = args[:license] if args.key?(:license)
