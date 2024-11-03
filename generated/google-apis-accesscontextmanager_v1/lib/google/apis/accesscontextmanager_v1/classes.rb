@@ -1021,7 +1021,7 @@ module Google
       end
       
       # Restricts access to Cloud Console and Google Cloud APIs for a set of users
-      # using Context-Aware Access. Next ID: 11
+      # using Context-Aware Access.
       class GcpUserAccessBinding
         include Google::Apis::Core::Hashable
       
@@ -1080,6 +1080,13 @@ module Google
         # @return [Array<Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings>]
         attr_accessor :scoped_access_settings
       
+        # Stores settings related to Google Cloud Session Length including session
+        # duration, the type of challenge (i.e. method) they should face when their
+        # session expires, and other related settings.
+        # Corresponds to the JSON property `sessionSettings`
+        # @return [Google::Apis::AccesscontextmanagerV1::SessionSettings]
+        attr_accessor :session_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1093,6 +1100,7 @@ module Google
           @reauth_settings = args[:reauth_settings] if args.key?(:reauth_settings)
           @restricted_client_applications = args[:restricted_client_applications] if args.key?(:restricted_client_applications)
           @scoped_access_settings = args[:scoped_access_settings] if args.key?(:scoped_access_settings)
+          @session_settings = args[:session_settings] if args.key?(:session_settings)
         end
       end
       

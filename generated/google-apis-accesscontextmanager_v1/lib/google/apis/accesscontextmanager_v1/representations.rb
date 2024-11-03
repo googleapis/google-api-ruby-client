@@ -633,6 +633,8 @@ module Google
       
           collection :scoped_access_settings, as: 'scopedAccessSettings', class: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings, decorator: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings::Representation
       
+          property :session_settings, as: 'sessionSettings', class: Google::Apis::AccesscontextmanagerV1::SessionSettings, decorator: Google::Apis::AccesscontextmanagerV1::SessionSettings::Representation
+      
         end
       end
       
