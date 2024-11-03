@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BinaryLogParser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BinaryLogPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Gtid
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JsonFileFormat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +215,18 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogFileDirectories
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogMiner
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,6 +317,18 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OracleAsmConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OracleAsmLogFileAccess
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -639,6 +681,22 @@ module Google
         end
       end
       
+      class BinaryLogParser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_file_directories, as: 'logFileDirectories', class: Google::Apis::DatastreamV1::LogFileDirectories, decorator: Google::Apis::DatastreamV1::LogFileDirectories::Representation
+      
+          property :oracle_asm_log_file_access, as: 'oracleAsmLogFileAccess', class: Google::Apis::DatastreamV1::OracleAsmLogFileAccess, decorator: Google::Apis::DatastreamV1::OracleAsmLogFileAccess::Representation
+      
+        end
+      end
+      
+      class BinaryLogPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -802,6 +860,12 @@ module Google
         end
       end
       
+      class Gtid
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class JsonFileFormat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -888,6 +952,20 @@ module Google
         end
       end
       
+      class LogFileDirectories
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archived_log_directory, as: 'archivedLogDirectory'
+          property :online_log_directory, as: 'onlineLogDirectory'
+        end
+      end
+      
+      class LogMiner
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class LookupStreamObjectRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -971,7 +1049,11 @@ module Google
       class MysqlSourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binary_log_position, as: 'binaryLogPosition', class: Google::Apis::DatastreamV1::BinaryLogPosition, decorator: Google::Apis::DatastreamV1::BinaryLogPosition::Representation
+      
           property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::MysqlRdbms, decorator: Google::Apis::DatastreamV1::MysqlRdbms::Representation
+      
+          property :gtid, as: 'gtid', class: Google::Apis::DatastreamV1::Gtid, decorator: Google::Apis::DatastreamV1::Gtid::Representation
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::MysqlRdbms, decorator: Google::Apis::DatastreamV1::MysqlRdbms::Representation
       
@@ -1034,6 +1116,26 @@ module Google
         end
       end
       
+      class OracleAsmConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asm_service, as: 'asmService'
+          hash :connection_attributes, as: 'connectionAttributes'
+          property :hostname, as: 'hostname'
+          property :oracle_ssl_config, as: 'oracleSslConfig', class: Google::Apis::DatastreamV1::OracleSslConfig, decorator: Google::Apis::DatastreamV1::OracleSslConfig::Representation
+      
+          property :password, as: 'password'
+          property :port, as: 'port'
+          property :username, as: 'username'
+        end
+      end
+      
+      class OracleAsmLogFileAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class OracleColumn
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1063,10 +1165,13 @@ module Google
           hash :connection_attributes, as: 'connectionAttributes'
           property :database_service, as: 'databaseService'
           property :hostname, as: 'hostname'
+          property :oracle_asm_config, as: 'oracleAsmConfig', class: Google::Apis::DatastreamV1::OracleAsmConfig, decorator: Google::Apis::DatastreamV1::OracleAsmConfig::Representation
+      
           property :oracle_ssl_config, as: 'oracleSslConfig', class: Google::Apis::DatastreamV1::OracleSslConfig, decorator: Google::Apis::DatastreamV1::OracleSslConfig::Representation
       
           property :password, as: 'password'
           property :port, as: 'port'
+          property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
           property :username, as: 'username'
         end
       end
@@ -1098,11 +1203,15 @@ module Google
       class OracleSourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binary_log_parser, as: 'binaryLogParser', class: Google::Apis::DatastreamV1::BinaryLogParser, decorator: Google::Apis::DatastreamV1::BinaryLogParser::Representation
+      
           property :drop_large_objects, as: 'dropLargeObjects', class: Google::Apis::DatastreamV1::DropLargeObjects, decorator: Google::Apis::DatastreamV1::DropLargeObjects::Representation
       
           property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
+      
+          property :log_miner, as: 'logMiner', class: Google::Apis::DatastreamV1::LogMiner, decorator: Google::Apis::DatastreamV1::LogMiner::Representation
       
           property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
           property :max_concurrent_cdc_tasks, as: 'maxConcurrentCdcTasks'
