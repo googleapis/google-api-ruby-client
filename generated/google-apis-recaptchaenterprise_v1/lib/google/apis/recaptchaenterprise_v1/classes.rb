@@ -1461,7 +1461,7 @@ module Google
         end
       end
       
-      # The removeIpOverride request message.
+      # The RemoveIpOverride request message.
       class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest
         include Google::Apis::Core::Hashable
       
@@ -1552,7 +1552,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1RiskAnalysis
         include Google::Apis::Core::Hashable
       
-        # Output only. Challenge information for SCORE_AND_CHALLENGE keys
+        # Output only. Challenge information for SCORE_AND_CHALLENGE and INVISIBLE keys
         # Corresponds to the JSON property `challenge`
         # @return [String]
         attr_accessor :challenge
