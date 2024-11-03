@@ -1656,6 +1656,11 @@ module Google
         attr_accessor :desired_enable_private_endpoint
         alias_method :desired_enable_private_endpoint?, :desired_enable_private_endpoint
       
+        # DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
+        # Corresponds to the JSON property `desiredEnterpriseConfig`
+        # @return [Google::Apis::ContainerV1::DesiredEnterpriseConfig]
+        attr_accessor :desired_enterprise_config
+      
         # Fleet is the fleet configuration for the cluster.
         # Corresponds to the JSON property `desiredFleet`
         # @return [Google::Apis::ContainerV1::Fleet]
@@ -1960,6 +1965,7 @@ module Google
           @desired_enable_fqdn_network_policy = args[:desired_enable_fqdn_network_policy] if args.key?(:desired_enable_fqdn_network_policy)
           @desired_enable_multi_networking = args[:desired_enable_multi_networking] if args.key?(:desired_enable_multi_networking)
           @desired_enable_private_endpoint = args[:desired_enable_private_endpoint] if args.key?(:desired_enable_private_endpoint)
+          @desired_enterprise_config = args[:desired_enterprise_config] if args.key?(:desired_enterprise_config)
           @desired_fleet = args[:desired_fleet] if args.key?(:desired_fleet)
           @desired_gateway_api_config = args[:desired_gateway_api_config] if args.key?(:desired_gateway_api_config)
           @desired_gcfs_config = args[:desired_gcfs_config] if args.key?(:desired_gcfs_config)
@@ -2494,6 +2500,25 @@ module Google
         end
       end
       
+      # DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
+      class DesiredEnterpriseConfig
+        include Google::Apis::Core::Hashable
+      
+        # desired_tier specifies the desired tier of the cluster.
+        # Corresponds to the JSON property `desiredTier`
+        # @return [String]
+        attr_accessor :desired_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @desired_tier = args[:desired_tier] if args.key?(:desired_tier)
+        end
+      end
+      
       # Configuration for NodeLocal DNSCache
       class DnsCacheConfig
         include Google::Apis::Core::Hashable
@@ -2539,6 +2564,11 @@ module Google
         # @return [String]
         attr_accessor :cluster_tier
       
+        # desired_tier specifies the desired tier of the cluster.
+        # Corresponds to the JSON property `desiredTier`
+        # @return [String]
+        attr_accessor :desired_tier
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2546,6 +2576,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_tier = args[:cluster_tier] if args.key?(:cluster_tier)
+          @desired_tier = args[:desired_tier] if args.key?(:desired_tier)
         end
       end
       
