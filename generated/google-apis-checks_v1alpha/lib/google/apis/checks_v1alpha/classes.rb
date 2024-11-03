@@ -102,6 +102,185 @@ module Google
         end
       end
       
+      # Request proto for ClassifyContent RPC.
+      class GoogleChecksAisafetyV1alphaClassifyContentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Version of the classifier to use. If not specified, the latest
+        # version will be used.
+        # Corresponds to the JSON property `classifierVersion`
+        # @return [String]
+        attr_accessor :classifier_version
+      
+        # Context about the input that will be used to help on the classification.
+        # Corresponds to the JSON property `context`
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentRequestContext]
+        attr_accessor :context
+      
+        # Content to be classified.
+        # Corresponds to the JSON property `input`
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent]
+        attr_accessor :input
+      
+        # Required. List of policies to classify against.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classifier_version = args[:classifier_version] if args.key?(:classifier_version)
+          @context = args[:context] if args.key?(:context)
+          @input = args[:input] if args.key?(:input)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
+      # Context about the input that will be used to help on the classification.
+      class GoogleChecksAisafetyV1alphaClassifyContentRequestContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Prompt that generated the model response.
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt = args[:prompt] if args.key?(:prompt)
+        end
+      end
+      
+      # Content to be classified.
+      class GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent
+        include Google::Apis::Core::Hashable
+      
+        # Text input to be classified.
+        # Corresponds to the JSON property `textInput`
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaTextInput]
+        attr_accessor :text_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text_input = args[:text_input] if args.key?(:text_input)
+        end
+      end
+      
+      # List of policies to classify against.
+      class GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of the policy.
+        # Corresponds to the JSON property `policyType`
+        # @return [String]
+        attr_accessor :policy_type
+      
+        # Optional. Score threshold to use when deciding if the content is violative or
+        # non-violative. If not specified, the default 0.5 threshold for the policy will
+        # be used.
+        # Corresponds to the JSON property `threshold`
+        # @return [Float]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_type = args[:policy_type] if args.key?(:policy_type)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
+      # Response proto for ClassifyContent RPC.
+      class GoogleChecksAisafetyV1alphaClassifyContentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Results of the classification for each policy.
+        # Corresponds to the JSON property `policyResults`
+        # @return [Array<Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>]
+        attr_accessor :policy_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_results = args[:policy_results] if args.key?(:policy_results)
+        end
+      end
+      
+      # Result for one policy against the corresponding input.
+      class GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult
+        include Google::Apis::Core::Hashable
+      
+        # Type of the policy.
+        # Corresponds to the JSON property `policyType`
+        # @return [String]
+        attr_accessor :policy_type
+      
+        # Final score for the results of this policy.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # Result of the classification for the policy.
+        # Corresponds to the JSON property `violationResult`
+        # @return [String]
+        attr_accessor :violation_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_type = args[:policy_type] if args.key?(:policy_type)
+          @score = args[:score] if args.key?(:score)
+          @violation_result = args[:violation_result] if args.key?(:violation_result)
+        end
+      end
+      
+      # Text input to be classified.
+      class GoogleChecksAisafetyV1alphaTextInput
+        include Google::Apis::Core::Hashable
+      
+        # Actual piece of text to be classified.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Optional. Language of the text in ISO 639-1 format. If the language is invalid
+        # or not specified, the system will try to detect it.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
       # The request message for ReportService.AnalyzeUpload.
       class GoogleChecksReportV1alphaAnalyzeUploadRequest
         include Google::Apis::Core::Hashable
