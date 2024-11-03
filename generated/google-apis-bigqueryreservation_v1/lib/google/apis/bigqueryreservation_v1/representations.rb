@@ -134,6 +134,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assignee, as: 'assignee'
+          property :enable_gemini_in_bigquery, as: 'enableGeminiInBigquery'
           property :job_type, as: 'jobType'
           property :name, as: 'name'
           property :state, as: 'state'
@@ -240,6 +241,7 @@ module Google
           property :creation_time, as: 'creationTime'
           property :edition, as: 'edition'
           property :ignore_idle_slots, as: 'ignoreIdleSlots'
+          hash :labels, as: 'labels'
           property :multi_region_auxiliary, as: 'multiRegionAuxiliary'
           property :name, as: 'name'
           property :original_primary_location, as: 'originalPrimaryLocation'
