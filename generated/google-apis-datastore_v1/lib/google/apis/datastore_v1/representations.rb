@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FindNearest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDatastoreAdminV1CommonMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -702,6 +708,20 @@ module Google
         end
       end
       
+      class FindNearest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distance_measure, as: 'distanceMeasure'
+          property :distance_result_property, as: 'distanceResultProperty'
+          property :distance_threshold, as: 'distanceThreshold'
+          property :limit, as: 'limit'
+          property :query_vector, as: 'queryVector', class: Google::Apis::DatastoreV1::Value, decorator: Google::Apis::DatastoreV1::Value::Representation
+      
+          property :vector_property, as: 'vectorProperty', class: Google::Apis::DatastoreV1::PropertyReference, decorator: Google::Apis::DatastoreV1::PropertyReference::Representation
+      
+        end
+      end
+      
       class GoogleDatastoreAdminV1CommonMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1152,6 +1172,8 @@ module Google
       
           property :end_cursor, :base64 => true, as: 'endCursor'
           property :filter, as: 'filter', class: Google::Apis::DatastoreV1::Filter, decorator: Google::Apis::DatastoreV1::Filter::Representation
+      
+          property :find_nearest, as: 'findNearest', class: Google::Apis::DatastoreV1::FindNearest, decorator: Google::Apis::DatastoreV1::FindNearest::Representation
       
           collection :kind, as: 'kind', class: Google::Apis::DatastoreV1::KindExpression, decorator: Google::Apis::DatastoreV1::KindExpression::Representation
       
