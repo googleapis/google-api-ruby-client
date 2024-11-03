@@ -724,8 +724,15 @@ module Google
         # @return [String]
         attr_accessor :forwarding_rule_target
       
-        # A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/
-        # kubernetes-engine/docs/concepts/cluster-architecture).
+        # DNS endpoint of [Google Kubernetes Engine cluster control plane](https://cloud.
+        # google.com/kubernetes-engine/docs/concepts/cluster-architecture). Requires
+        # gke_master_cluster to be set, can't be used simultaneoulsly with ip_address.
+        # Corresponds to the JSON property `fqdn`
+        # @return [String]
+        attr_accessor :fqdn
+      
+        # A cluster URI for [Google Kubernetes Engine cluster control plane](https://
+        # cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         # Corresponds to the JSON property `gkeMasterCluster`
         # @return [String]
         attr_accessor :gke_master_cluster
@@ -801,6 +808,7 @@ module Google
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @forwarding_rule_target = args[:forwarding_rule_target] if args.key?(:forwarding_rule_target)
+          @fqdn = args[:fqdn] if args.key?(:fqdn)
           @gke_master_cluster = args[:gke_master_cluster] if args.key?(:gke_master_cluster)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
