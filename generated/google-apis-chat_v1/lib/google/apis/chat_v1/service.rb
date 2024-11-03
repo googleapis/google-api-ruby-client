@@ -723,14 +723,14 @@ module Google
         #   Format: spaces/`space`
         # @param [Google::Apis::ChatV1::Membership] membership_object
         # @param [Boolean] use_admin_access
-        #   When `true`, the method runs using the user's Google Workspace administrator
-        #   privileges. The calling user must be a Google Workspace administrator with the
-        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
-        #   answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](
-        #   https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
-        #   scopes). Creating app memberships or creating memberships for users outside
-        #   the administrator's Google Workspace organization isn't supported using admin
-        #   access.
+        #   Optional. When `true`, the method runs using the user's Google Workspace
+        #   administrator privileges. The calling user must be a Google Workspace
+        #   administrator with the [manage chat and spaces conversations privilege](https:/
+        #   /support.google.com/a/answer/13369245). Requires the `chat.admin.memberships` [
+        #   OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-
+        #   authorize#chat-api-scopes). Creating app memberships or creating memberships
+        #   for users outside the administrator's Google Workspace organization isn't
+        #   supported using admin access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -783,13 +783,13 @@ module Google
         #   spaces/`space`/members/app` format. Format: `spaces/`space`/members/`member``
         #   or `spaces/`space`/members/app`.
         # @param [Boolean] use_admin_access
-        #   When `true`, the method runs using the user's Google Workspace administrator
-        #   privileges. The calling user must be a Google Workspace administrator with the
-        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
-        #   answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](
-        #   https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
-        #   scopes). Deleting app memberships in a space isn't supported using admin
-        #   access.
+        #   Optional. When `true`, the method runs using the user's Google Workspace
+        #   administrator privileges. The calling user must be a Google Workspace
+        #   administrator with the [manage chat and spaces conversations privilege](https:/
+        #   /support.google.com/a/answer/13369245). Requires the `chat.admin.memberships` [
+        #   OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-
+        #   authorize#chat-api-scopes). Deleting app memberships in a space isn't
+        #   supported using admin access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -836,12 +836,12 @@ module Google
         #   member``. For example, `spaces/`space`/members/example@gmail.com` where `
         #   example@gmail.com` is the email of the Google Chat user.
         # @param [Boolean] use_admin_access
-        #   When `true`, the method runs using the user's Google Workspace administrator
-        #   privileges. The calling user must be a Google Workspace administrator with the
-        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
-        #   answer/13369245). Requires the `chat.admin.memberships` or `chat.admin.
-        #   memberships.readonly` [OAuth 2.0 scopes](https://developers.google.com/
-        #   workspace/chat/authenticate-authorize#chat-api-scopes). Getting app
+        #   Optional. When `true`, the method runs using the user's Google Workspace
+        #   administrator privileges. The calling user must be a Google Workspace
+        #   administrator with the [manage chat and spaces conversations privilege](https:/
+        #   /support.google.com/a/answer/13369245). Requires the `chat.admin.memberships`
+        #   or `chat.admin.memberships.readonly` [OAuth 2.0 scopes](https://developers.
+        #   google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Getting app
         #   memberships in a space isn't supported when using admin access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -927,13 +927,13 @@ module Google
         #   Currently requires [user authentication](https://developers.google.com/
         #   workspace/chat/authenticate-authorize-chat-user).
         # @param [Boolean] use_admin_access
-        #   When `true`, the method runs using the user's Google Workspace administrator
-        #   privileges. The calling user must be a Google Workspace administrator with the
-        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
-        #   answer/13369245). Requires either the `chat.admin.memberships.readonly` or `
-        #   chat.admin.memberships` [OAuth 2.0 scope](https://developers.google.com/
-        #   workspace/chat/authenticate-authorize#chat-api-scopes). Listing app
-        #   memberships in a space isn't supported when using admin access.
+        #   Optional. When `true`, the method runs using the user's Google Workspace
+        #   administrator privileges. The calling user must be a Google Workspace
+        #   administrator with the [manage chat and spaces conversations privilege](https:/
+        #   /support.google.com/a/answer/13369245). Requires either the `chat.admin.
+        #   memberships.readonly` or `chat.admin.memberships` [OAuth 2.0 scope](https://
+        #   developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
+        #   Listing app memberships in a space isn't supported when using admin access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -979,19 +979,19 @@ module Google
         # administrator privileges by setting the `use_admin_access` field in the
         # request.
         # @param [String] name
-        #   Resource name of the membership, assigned by the server. Format: `spaces/`
-        #   space`/members/`member``
+        #   Identifier. Resource name of the membership, assigned by the server. Format: `
+        #   spaces/`space`/members/`member``
         # @param [Google::Apis::ChatV1::Membership] membership_object
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas or
         #   use `*` to update all field paths. Currently supported field paths: - `role`
         # @param [Boolean] use_admin_access
-        #   When `true`, the method runs using the user's Google Workspace administrator
-        #   privileges. The calling user must be a Google Workspace administrator with the
-        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
-        #   answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](
-        #   https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
-        #   scopes).
+        #   Optional. When `true`, the method runs using the user's Google Workspace
+        #   administrator privileges. The calling user must be a Google Workspace
+        #   administrator with the [manage chat and spaces conversations privilege](https:/
+        #   /support.google.com/a/answer/13369245). Requires the `chat.admin.memberships` [
+        #   OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-
+        #   authorize#chat-api-scopes).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1659,10 +1659,11 @@ module Google
         #   return fewer than this value. Negative values return an `INVALID_ARGUMENT`
         #   error.
         # @param [String] page_token
-        #   A page token, received from a previous list space events call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to list space events must match the call that provided the page token. Passing
-        #   different values to the other parameters might lead to unexpected results.
+        #   Optional. A page token, received from a previous list space events call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to list space events must match the call that provided the
+        #   page token. Passing different values to the other parameters might lead to
+        #   unexpected results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
