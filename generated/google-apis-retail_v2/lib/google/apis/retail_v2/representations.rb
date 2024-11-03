@@ -502,6 +502,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2PinControlMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2PinControlMetadataProductPins
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2PredictRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2284,6 +2296,23 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2PinControlMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :all_matched_pins, as: 'allMatchedPins', class: Google::Apis::RetailV2::GoogleCloudRetailV2PinControlMetadataProductPins, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2PinControlMetadataProductPins::Representation
+      
+          hash :dropped_pins, as: 'droppedPins', class: Google::Apis::RetailV2::GoogleCloudRetailV2PinControlMetadataProductPins, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2PinControlMetadataProductPins::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2PinControlMetadataProductPins
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :product_id, as: 'productId'
+        end
+      end
+      
       class GoogleCloudRetailV2PredictRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2889,6 +2918,8 @@ module Google
           collection :invalid_condition_boost_specs, as: 'invalidConditionBoostSpecs', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          property :pin_control_metadata, as: 'pinControlMetadata', class: Google::Apis::RetailV2::GoogleCloudRetailV2PinControlMetadata, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2PinControlMetadata::Representation
+      
           property :query_expansion_info, as: 'queryExpansionInfo', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchResponseQueryExpansionInfo, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchResponseQueryExpansionInfo::Representation
       
           property :redirect_uri, as: 'redirectUri'
