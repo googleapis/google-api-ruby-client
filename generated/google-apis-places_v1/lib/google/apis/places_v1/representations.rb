@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1PlaceGoogleMapsLinks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1PlaceOpeningHours
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -685,6 +691,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :author_attributions, as: 'authorAttributions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution::Representation
       
+          property :flag_content_uri, as: 'flagContentUri'
+          property :google_maps_uri, as: 'googleMapsUri'
           property :height_px, as: 'heightPx'
           property :name, as: 'name'
           property :width_px, as: 'widthPx'
@@ -736,6 +744,8 @@ module Google
           property :good_for_children, as: 'goodForChildren'
           property :good_for_groups, as: 'goodForGroups'
           property :good_for_watching_sports, as: 'goodForWatchingSports'
+          property :google_maps_links, as: 'googleMapsLinks', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceGoogleMapsLinks, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceGoogleMapsLinks::Representation
+      
           property :google_maps_uri, as: 'googleMapsUri'
           property :icon_background_color, as: 'iconBackgroundColor'
           property :icon_mask_base_uri, as: 'iconMaskBaseUri'
@@ -817,6 +827,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :content_blocks, as: 'contentBlocks', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock::Representation
       
+          property :flag_content_uri, as: 'flagContentUri'
         end
       end
       
@@ -833,10 +844,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
+          property :description_flag_content_uri, as: 'descriptionFlagContentUri'
           property :overview, as: 'overview', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
+          property :overview_flag_content_uri, as: 'overviewFlagContentUri'
           property :references, as: 'references', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1References, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1References::Representation
       
+        end
+      end
+      
+      class GoogleMapsPlacesV1PlaceGoogleMapsLinks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :directions_uri, as: 'directionsUri'
+          property :photos_uri, as: 'photosUri'
+          property :place_uri, as: 'placeUri'
+          property :reviews_uri, as: 'reviewsUri'
+          property :write_a_review_uri, as: 'writeAReviewUri'
         end
       end
       
@@ -943,6 +967,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :author_attribution, as: 'authorAttribution', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution::Representation
       
+          property :flag_content_uri, as: 'flagContentUri'
+          property :google_maps_uri, as: 'googleMapsUri'
           property :name, as: 'name'
           property :original_text, as: 'originalText', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
@@ -979,6 +1005,7 @@ module Google
       class GoogleMapsPlacesV1RoutingSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :directions_uri, as: 'directionsUri'
           collection :legs, as: 'legs', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummaryLeg, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummaryLeg::Representation
       
         end
@@ -1100,6 +1127,7 @@ module Google
       
           collection :routing_summaries, as: 'routingSummaries', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary::Representation
       
+          property :search_uri, as: 'searchUri'
         end
       end
       
