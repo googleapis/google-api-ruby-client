@@ -4012,8 +4012,8 @@ module Google
         # @return [Google::Apis::DataprocV1::PrestoJob]
         attr_accessor :presto_job
       
-        # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/
-        # python-programming-guide.html) applications on YARN.
+        # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/
+        # latest/api/python/index.html#pyspark-overview) applications on YARN.
         # Corresponds to the JSON property `pysparkJob`
         # @return [Google::Apis::DataprocV1::PySparkJob]
         attr_accessor :pyspark_job
@@ -5487,8 +5487,8 @@ module Google
         # @return [Google::Apis::DataprocV1::PrestoJob]
         attr_accessor :presto_job
       
-        # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/
-        # python-programming-guide.html) applications on YARN.
+        # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/
+        # latest/api/python/index.html#pyspark-overview) applications on YARN.
         # Corresponds to the JSON property `pysparkJob`
         # @return [Google::Apis::DataprocV1::PySparkJob]
         attr_accessor :pyspark_job
@@ -6068,8 +6068,8 @@ module Google
         end
       end
       
-      # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/
-      # python-programming-guide.html) applications on YARN.
+      # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/
+      # latest/api/python/index.html#pyspark-overview) applications on YARN.
       class PySparkJob
         include Google::Apis::Core::Hashable
       
