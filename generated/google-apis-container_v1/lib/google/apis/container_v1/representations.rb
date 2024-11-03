@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DesiredEnterpriseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DnsCacheConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1559,6 +1565,8 @@ module Google
           property :desired_enable_fqdn_network_policy, as: 'desiredEnableFqdnNetworkPolicy'
           property :desired_enable_multi_networking, as: 'desiredEnableMultiNetworking'
           property :desired_enable_private_endpoint, as: 'desiredEnablePrivateEndpoint'
+          property :desired_enterprise_config, as: 'desiredEnterpriseConfig', class: Google::Apis::ContainerV1::DesiredEnterpriseConfig, decorator: Google::Apis::ContainerV1::DesiredEnterpriseConfig::Representation
+      
           property :desired_fleet, as: 'desiredFleet', class: Google::Apis::ContainerV1::Fleet, decorator: Google::Apis::ContainerV1::Fleet::Representation
       
           property :desired_gateway_api_config, as: 'desiredGatewayApiConfig', class: Google::Apis::ContainerV1::GatewayApiConfig, decorator: Google::Apis::ContainerV1::GatewayApiConfig::Representation
@@ -1785,6 +1793,13 @@ module Google
         end
       end
       
+      class DesiredEnterpriseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :desired_tier, as: 'desiredTier'
+        end
+      end
+      
       class DnsCacheConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1802,6 +1817,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_tier, as: 'clusterTier'
+          property :desired_tier, as: 'desiredTier'
         end
       end
       
