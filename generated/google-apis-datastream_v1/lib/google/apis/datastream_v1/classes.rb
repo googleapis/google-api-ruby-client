@@ -205,6 +205,44 @@ module Google
         end
       end
       
+      # Configuration to use Binary Log Parser CDC technique.
+      class BinaryLogParser
+        include Google::Apis::Core::Hashable
+      
+        # Configuration to specify the Oracle directories to access the log files.
+        # Corresponds to the JSON property `logFileDirectories`
+        # @return [Google::Apis::DatastreamV1::LogFileDirectories]
+        attr_accessor :log_file_directories
+      
+        # Configuration to use Oracle ASM to access the log files.
+        # Corresponds to the JSON property `oracleAsmLogFileAccess`
+        # @return [Google::Apis::DatastreamV1::OracleAsmLogFileAccess]
+        attr_accessor :oracle_asm_log_file_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_file_directories = args[:log_file_directories] if args.key?(:log_file_directories)
+          @oracle_asm_log_file_access = args[:oracle_asm_log_file_access] if args.key?(:oracle_asm_log_file_access)
+        end
+      end
+      
+      # Use Binary log position based replication.
+      class BinaryLogPosition
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -300,7 +338,7 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleProfile]
         attr_accessor :oracle_profile
       
-        # PostgreSQL database profile. Next ID: 7.
+        # PostgreSQL database profile.
         # Corresponds to the JSON property `postgresqlProfile`
         # @return [Google::Apis::DatastreamV1::PostgresqlProfile]
         attr_accessor :postgresql_profile
@@ -733,6 +771,19 @@ module Google
         end
       end
       
+      # Use GTID based replication.
+      class Gtid
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # JSON file format configuration.
       class JsonFileFormat
         include Google::Apis::Core::Hashable
@@ -1008,6 +1059,44 @@ module Google
         end
       end
       
+      # Configuration to specify the Oracle directories to access the log files.
+      class LogFileDirectories
+        include Google::Apis::Core::Hashable
+      
+        # Required. Oracle directory for archived logs.
+        # Corresponds to the JSON property `archivedLogDirectory`
+        # @return [String]
+        attr_accessor :archived_log_directory
+      
+        # Required. Oracle directory for online logs.
+        # Corresponds to the JSON property `onlineLogDirectory`
+        # @return [String]
+        attr_accessor :online_log_directory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archived_log_directory = args[:archived_log_directory] if args.key?(:archived_log_directory)
+          @online_log_directory = args[:online_log_directory] if args.key?(:online_log_directory)
+        end
+      end
+      
+      # Configuration to use LogMiner CDC method.
+      class LogMiner
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request for looking up a specific stream object by its source object
       # identifier.
       class LookupStreamObjectRequest
@@ -1267,10 +1356,20 @@ module Google
       class MysqlSourceConfig
         include Google::Apis::Core::Hashable
       
+        # Use Binary log position based replication.
+        # Corresponds to the JSON property `binaryLogPosition`
+        # @return [Google::Apis::DatastreamV1::BinaryLogPosition]
+        attr_accessor :binary_log_position
+      
         # MySQL database structure
         # Corresponds to the JSON property `excludeObjects`
         # @return [Google::Apis::DatastreamV1::MysqlRdbms]
         attr_accessor :exclude_objects
+      
+        # Use GTID based replication.
+        # Corresponds to the JSON property `gtid`
+        # @return [Google::Apis::DatastreamV1::Gtid]
+        attr_accessor :gtid
       
         # MySQL database structure
         # Corresponds to the JSON property `includeObjects`
@@ -1295,7 +1394,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binary_log_position = args[:binary_log_position] if args.key?(:binary_log_position)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @gtid = args[:gtid] if args.key?(:gtid)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
           @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
           @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
@@ -1526,6 +1627,74 @@ module Google
         end
       end
       
+      # Configuration for Oracle Automatic Storage Management (ASM) connection.
+      class OracleAsmConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. ASM service name for the Oracle ASM connection.
+        # Corresponds to the JSON property `asmService`
+        # @return [String]
+        attr_accessor :asm_service
+      
+        # Optional. Connection string attributes
+        # Corresponds to the JSON property `connectionAttributes`
+        # @return [Hash<String,String>]
+        attr_accessor :connection_attributes
+      
+        # Required. Hostname for the Oracle ASM connection.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Oracle SSL configuration information.
+        # Corresponds to the JSON property `oracleSslConfig`
+        # @return [Google::Apis::DatastreamV1::OracleSslConfig]
+        attr_accessor :oracle_ssl_config
+      
+        # Required. Password for the Oracle ASM connection.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Required. Port for the Oracle ASM connection.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Required. Username for the Oracle ASM connection.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asm_service = args[:asm_service] if args.key?(:asm_service)
+          @connection_attributes = args[:connection_attributes] if args.key?(:connection_attributes)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @oracle_ssl_config = args[:oracle_ssl_config] if args.key?(:oracle_ssl_config)
+          @password = args[:password] if args.key?(:password)
+          @port = args[:port] if args.key?(:port)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Configuration to use Oracle ASM to access the log files.
+      class OracleAsmLogFileAccess
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Oracle Column.
       class OracleColumn
         include Google::Apis::Core::Hashable
@@ -1639,6 +1808,11 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
+        # Configuration for Oracle Automatic Storage Management (ASM) connection.
+        # Corresponds to the JSON property `oracleAsmConfig`
+        # @return [Google::Apis::DatastreamV1::OracleAsmConfig]
+        attr_accessor :oracle_asm_config
+      
         # Oracle SSL configuration information.
         # Corresponds to the JSON property `oracleSslConfig`
         # @return [Google::Apis::DatastreamV1::OracleSslConfig]
@@ -1655,6 +1829,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # Optional. A reference to a Secret Manager resource name storing the Oracle
+        # connection password. Mutually exclusive with the `password` field.
+        # Corresponds to the JSON property `secretManagerStoredPassword`
+        # @return [String]
+        attr_accessor :secret_manager_stored_password
+      
         # Required. Username for the Oracle connection.
         # Corresponds to the JSON property `username`
         # @return [String]
@@ -1669,9 +1849,11 @@ module Google
           @connection_attributes = args[:connection_attributes] if args.key?(:connection_attributes)
           @database_service = args[:database_service] if args.key?(:database_service)
           @hostname = args[:hostname] if args.key?(:hostname)
+          @oracle_asm_config = args[:oracle_asm_config] if args.key?(:oracle_asm_config)
           @oracle_ssl_config = args[:oracle_ssl_config] if args.key?(:oracle_ssl_config)
           @password = args[:password] if args.key?(:password)
           @port = args[:port] if args.key?(:port)
+          @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
           @username = args[:username] if args.key?(:username)
         end
       end
@@ -1743,6 +1925,11 @@ module Google
       class OracleSourceConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration to use Binary Log Parser CDC technique.
+        # Corresponds to the JSON property `binaryLogParser`
+        # @return [Google::Apis::DatastreamV1::BinaryLogParser]
+        attr_accessor :binary_log_parser
+      
         # Configuration to drop large object values.
         # Corresponds to the JSON property `dropLargeObjects`
         # @return [Google::Apis::DatastreamV1::DropLargeObjects]
@@ -1757,6 +1944,11 @@ module Google
         # Corresponds to the JSON property `includeObjects`
         # @return [Google::Apis::DatastreamV1::OracleRdbms]
         attr_accessor :include_objects
+      
+        # Configuration to use LogMiner CDC method.
+        # Corresponds to the JSON property `logMiner`
+        # @return [Google::Apis::DatastreamV1::LogMiner]
+        attr_accessor :log_miner
       
         # Maximum number of concurrent backfill tasks. The number should be non-negative.
         # If not set (or set to 0), the system's default value is used.
@@ -1781,9 +1973,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binary_log_parser = args[:binary_log_parser] if args.key?(:binary_log_parser)
           @drop_large_objects = args[:drop_large_objects] if args.key?(:drop_large_objects)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @log_miner = args[:log_miner] if args.key?(:log_miner)
           @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
           @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
           @stream_large_objects = args[:stream_large_objects] if args.key?(:stream_large_objects)
@@ -1932,7 +2126,7 @@ module Google
         end
       end
       
-      # PostgreSQL database profile. Next ID: 7.
+      # PostgreSQL database profile.
       class PostgresqlProfile
         include Google::Apis::Core::Hashable
       
