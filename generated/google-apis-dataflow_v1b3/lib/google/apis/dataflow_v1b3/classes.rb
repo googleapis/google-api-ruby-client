@@ -1920,6 +1920,51 @@ module Google
         end
       end
       
+      # Information about the GPU usage on the worker.
+      class GpuUsage
+        include Google::Apis::Core::Hashable
+      
+        # Required. Timestamp of the measurement.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        # Utilization details about the GPU.
+        # Corresponds to the JSON property `utilization`
+        # @return [Google::Apis::DataflowV1b3::GpuUtilization]
+        attr_accessor :utilization
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @utilization = args[:utilization] if args.key?(:utilization)
+        end
+      end
+      
+      # Utilization details about the GPU.
+      class GpuUtilization
+        include Google::Apis::Core::Hashable
+      
+        # Required. GPU utilization rate of any kernel over the last sample period in
+        # the range of [0, 1].
+        # Corresponds to the JSON property `rate`
+        # @return [Float]
+        attr_accessor :rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rate = args[:rate] if args.key?(:rate)
+        end
+      end
+      
       # Request to get updated debug configuration for component.
       class GetDebugConfigRequest
         include Google::Apis::Core::Hashable
@@ -4399,6 +4444,11 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::CpuTime>]
         attr_accessor :cpu_time
       
+        # Optional. GPU usage samples.
+        # Corresponds to the JSON property `gpuUsage`
+        # @return [Array<Google::Apis::DataflowV1b3::GpuUsage>]
+        attr_accessor :gpu_usage
+      
         # Memory utilization samples.
         # Corresponds to the JSON property `memoryInfo`
         # @return [Array<Google::Apis::DataflowV1b3::MemInfo>]
@@ -4412,6 +4462,7 @@ module Google
         def update!(**args)
           @containers = args[:containers] if args.key?(:containers)
           @cpu_time = args[:cpu_time] if args.key?(:cpu_time)
+          @gpu_usage = args[:gpu_usage] if args.key?(:gpu_usage)
           @memory_info = args[:memory_info] if args.key?(:memory_info)
         end
       end

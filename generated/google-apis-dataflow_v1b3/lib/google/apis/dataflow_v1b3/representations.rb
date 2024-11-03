@@ -274,6 +274,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GpuUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GpuUtilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetDebugConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1626,6 +1638,22 @@ module Google
         end
       end
       
+      class GpuUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :timestamp, as: 'timestamp'
+          property :utilization, as: 'utilization', class: Google::Apis::DataflowV1b3::GpuUtilization, decorator: Google::Apis::DataflowV1b3::GpuUtilization::Representation
+      
+        end
+      end
+      
+      class GpuUtilization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rate, as: 'rate'
+        end
+      end
+      
       class GetDebugConfigRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2307,6 +2335,8 @@ module Google
           hash :containers, as: 'containers', class: Google::Apis::DataflowV1b3::ResourceUtilizationReport, decorator: Google::Apis::DataflowV1b3::ResourceUtilizationReport::Representation
       
           collection :cpu_time, as: 'cpuTime', class: Google::Apis::DataflowV1b3::CpuTime, decorator: Google::Apis::DataflowV1b3::CpuTime::Representation
+      
+          collection :gpu_usage, as: 'gpuUsage', class: Google::Apis::DataflowV1b3::GpuUsage, decorator: Google::Apis::DataflowV1b3::GpuUsage::Representation
       
           collection :memory_info, as: 'memoryInfo', class: Google::Apis::DataflowV1b3::MemInfo, decorator: Google::Apis::DataflowV1b3::MemInfo::Representation
       
