@@ -598,6 +598,70 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a GenAI cache config.
+        # @param [String] name
+        #   Required. Name of the cache config. Format: - `projects/`project`/cacheConfig`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CacheConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CacheConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_cache_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CacheConfig::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CacheConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a cache config.
+        # @param [String] name
+        #   Identifier. Name of the cache config. Format: - `projects/`project`/
+        #   cacheConfig`.
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CacheConfig] google_cloud_aiplatform_v1_cache_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_cache_config(name, google_cloud_aiplatform_v1_cache_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CacheConfig::Representation
+          command.request_object = google_cloud_aiplatform_v1_cache_config_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Evaluates instances based on a given metric.
         # @param [String] location
         #   Required. The resource name of the Location to evaluate the instances. Format:
@@ -4017,6 +4081,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetch an asynchronous online prediction operation.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint`` or `projects/`
+        #   project`/locations/`location`/publishers/`publisher`/models/`model``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FetchPredictOperationRequest] google_cloud_aiplatform_v1_fetch_predict_operation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_endpoint_predict_operation(endpoint, google_cloud_aiplatform_v1_fetch_predict_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:fetchPredictOperation', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FetchPredictOperationRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_fetch_predict_operation_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generate content with multimodal inputs.
         # @param [String] model
         #   Required. The fully qualified name of the publisher model or tuned model
@@ -4245,6 +4344,41 @@ module Google
           command.request_object = google_cloud_aiplatform_v1_predict_request_object
           command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictResponse::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # 
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint`` or `projects/`
+        #   project`/locations/`location`/publishers/`publisher`/models/`model``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictLongRunningRequest] google_cloud_aiplatform_v1_predict_long_running_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def predict_project_location_endpoint_long_running(endpoint, google_cloud_aiplatform_v1_predict_long_running_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:predictLongRunning', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictLongRunningRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_predict_long_running_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['endpoint'] = endpoint unless endpoint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -6005,7 +6139,8 @@ module Google
         #   override all fields. Updatable fields: * `labels` * `service_agent_type` * `
         #   big_query_source` * `big_query_source.uri` * `big_query_source.
         #   entity_id_columns` * `feature_registry_source` * `feature_registry_source.
-        #   feature_groups` * `sync_config` * `sync_config.cron`
+        #   feature_groups` * `sync_config` * `sync_config.cron` * `optimized_config.
+        #   automatic_resources`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15003,6 +15138,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Stops a NotebookRuntime.
+        # @param [String] name
+        #   Required. The name of the NotebookRuntime resource to be stopped. Instead of
+        #   checking whether the name is in valid NotebookRuntime resource name format,
+        #   directly throw NotFound exception if there is no such NotebookRuntime in
+        #   spanner.
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StopNotebookRuntimeRequest] google_cloud_aiplatform_v1_stop_notebook_runtime_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_project_location_notebook_runtime(name, google_cloud_aiplatform_v1_stop_notebook_runtime_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:stop', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StopNotebookRuntimeRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_stop_notebook_runtime_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Upgrades a NotebookRuntime.
         # @param [String] name
         #   Required. The name of the NotebookRuntime resource to be upgrade. Instead of
@@ -16341,6 +16512,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetch an asynchronous online prediction operation.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint`` or `projects/`
+        #   project`/locations/`location`/publishers/`publisher`/models/`model``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FetchPredictOperationRequest] google_cloud_aiplatform_v1_fetch_predict_operation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_publisher_model_predict_operation(endpoint, google_cloud_aiplatform_v1_fetch_predict_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:fetchPredictOperation', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FetchPredictOperationRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_fetch_predict_operation_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generate content with multimodal inputs.
         # @param [String] model
         #   Required. The fully qualified name of the publisher model or tuned model
@@ -16405,6 +16611,41 @@ module Google
           command.request_object = google_cloud_aiplatform_v1_predict_request_object
           command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictResponse::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # 
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint`` or `projects/`
+        #   project`/locations/`location`/publishers/`publisher`/models/`model``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictLongRunningRequest] google_cloud_aiplatform_v1_predict_long_running_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def predict_project_location_publisher_model_long_running(endpoint, google_cloud_aiplatform_v1_predict_long_running_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}:predictLongRunning', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredictLongRunningRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_predict_long_running_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['endpoint'] = endpoint unless endpoint.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
