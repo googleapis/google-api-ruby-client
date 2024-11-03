@@ -57,6 +57,21 @@ module Google
       # View chat and spaces in Google Chat
       AUTH_CHAT_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.spaces.readonly'
 
+      # See, edit, create, and delete all of your Google Drive files
+      AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
+
+      # See, edit, create, and delete only the specific Google Drive files you use with this app
+      AUTH_DRIVE_FILE = 'https://www.googleapis.com/auth/drive.file'
+
+      # View and manage metadata of files in your Google Drive
+      AUTH_DRIVE_METADATA = 'https://www.googleapis.com/auth/drive.metadata'
+
+      # See information about your Google Drive files
+      AUTH_DRIVE_METADATA_READONLY = 'https://www.googleapis.com/auth/drive.metadata.readonly'
+
+      # See and download all your Google Drive files
+      AUTH_DRIVE_READONLY = 'https://www.googleapis.com/auth/drive.readonly'
+
       # Create, edit, and see information about your Google Meet conferences created by the app.
       AUTH_MEETINGS_SPACE_CREATED = 'https://www.googleapis.com/auth/meetings.space.created'
 
