@@ -899,6 +899,12 @@ module Google
         # @return [String]
         attr_accessor :bucket
       
+        # A list of additional flags to pass to the gcsfuse CLI. Options should be
+        # specified without the leading "--".
+        # Corresponds to the JSON property `mountOptions`
+        # @return [Array<String>]
+        attr_accessor :mount_options
+      
         # If true, the volume will be mounted as read only for all mounts.
         # Corresponds to the JSON property `readOnly`
         # @return [Boolean]
@@ -912,6 +918,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket = args[:bucket] if args.key?(:bucket)
+          @mount_options = args[:mount_options] if args.key?(:mount_options)
           @read_only = args[:read_only] if args.key?(:read_only)
         end
       end

@@ -905,6 +905,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket, as: 'bucket'
+          collection :mount_options, as: 'mountOptions'
           property :read_only, as: 'readOnly'
         end
       end
