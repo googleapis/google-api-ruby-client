@@ -853,6 +853,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination, as: 'destination'
+          property :destination_dataset, as: 'destinationDataset', class: Google::Apis::AnalyticshubV1::DestinationDataset, decorator: Google::Apis::AnalyticshubV1::DestinationDataset::Representation
+      
           property :subscriber_contact, as: 'subscriberContact'
           property :subscription, as: 'subscription'
         end
