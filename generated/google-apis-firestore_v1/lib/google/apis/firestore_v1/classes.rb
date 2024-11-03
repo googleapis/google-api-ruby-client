@@ -1118,9 +1118,9 @@ module Google
         # Optional. Option to specify a threshold for which no less similar documents
         # will be returned. The behavior of the specified `distance_measure` will affect
         # the meaning of the distance threshold. Since DOT_PRODUCT distances increase
-        # when the vectors are more similar, the comparison is inverted. For EUCLIDEAN,
-        # COSINE: WHERE distance <= distance_threshold For DOT_PRODUCT: WHERE distance >=
-        # distance_threshold
+        # when the vectors are more similar, the comparison is inverted. * For EUCLIDEAN,
+        # COSINE: WHERE distance <= distance_threshold * For DOT_PRODUCT: WHERE
+        # distance >= distance_threshold
         # Corresponds to the JSON property `distanceThreshold`
         # @return [Float]
         attr_accessor :distance_threshold
@@ -3191,7 +3191,8 @@ module Google
         attr_accessor :read_time
       
         # A Firestore query. The query stages are executed in the following order: 1.
-        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit
+        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
+        # find_nearest
         # Corresponds to the JSON property `structuredQuery`
         # @return [Google::Apis::FirestoreV1::StructuredQuery]
         attr_accessor :structured_query
@@ -3329,7 +3330,8 @@ module Google
         attr_accessor :parent
       
         # A Firestore query. The query stages are executed in the following order: 1.
-        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit
+        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
+        # find_nearest
         # Corresponds to the JSON property `structuredQuery`
         # @return [Google::Apis::FirestoreV1::StructuredQuery]
         attr_accessor :structured_query
@@ -3522,7 +3524,8 @@ module Google
         attr_accessor :read_time
       
         # A Firestore query. The query stages are executed in the following order: 1.
-        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit
+        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
+        # find_nearest
         # Corresponds to the JSON property `structuredQuery`
         # @return [Google::Apis::FirestoreV1::StructuredQuery]
         attr_accessor :structured_query
@@ -3658,7 +3661,8 @@ module Google
         attr_accessor :aggregations
       
         # A Firestore query. The query stages are executed in the following order: 1.
-        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit
+        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
+        # find_nearest
         # Corresponds to the JSON property `structuredQuery`
         # @return [Google::Apis::FirestoreV1::StructuredQuery]
         attr_accessor :structured_query
@@ -3675,7 +3679,8 @@ module Google
       end
       
       # A Firestore query. The query stages are executed in the following order: 1.
-      # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit
+      # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
+      # find_nearest
       class StructuredQuery
         include Google::Apis::Core::Hashable
       
