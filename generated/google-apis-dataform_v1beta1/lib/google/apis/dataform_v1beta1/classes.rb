@@ -622,11 +622,6 @@ module Google
         # @return [Google::Apis::DataformV1beta1::Target]
         attr_accessor :canonical_target
       
-        # Defines a compiled Data Preparation entity
-        # Corresponds to the JSON property `dataPreparation`
-        # @return [Google::Apis::DataformV1beta1::DataPreparation]
-        attr_accessor :data_preparation
-      
         # Represents a relation which is not managed by Dataform but which may be
         # referenced by Dataform actions.
         # Corresponds to the JSON property `declaration`
@@ -668,7 +663,6 @@ module Google
         def update!(**args)
           @assertion = args[:assertion] if args.key?(:assertion)
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
-          @data_preparation = args[:data_preparation] if args.key?(:data_preparation)
           @declaration = args[:declaration] if args.key?(:declaration)
           @file_path = args[:file_path] if args.key?(:file_path)
           @notebook = args[:notebook] if args.key?(:notebook)
@@ -739,45 +733,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
-        end
-      end
-      
-      # Defines a compiled Data Preparation entity
-      class DataPreparation
-        include Google::Apis::Core::Hashable
-      
-        # The data preparation definition, stored as a binary encoded proto.
-        # Corresponds to the JSON property `contents`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :contents
-      
-        # A list of actions that this action depends on.
-        # Corresponds to the JSON property `dependencyTargets`
-        # @return [Array<Google::Apis::DataformV1beta1::Target>]
-        attr_accessor :dependency_targets
-      
-        # Whether this action is disabled (i.e. should not be run).
-        # Corresponds to the JSON property `disabled`
-        # @return [Boolean]
-        attr_accessor :disabled
-        alias_method :disabled?, :disabled
-      
-        # Arbitrary, user-defined tags on this action.
-        # Corresponds to the JSON property `tags`
-        # @return [Array<String>]
-        attr_accessor :tags
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @contents = args[:contents] if args.key?(:contents)
-          @dependency_targets = args[:dependency_targets] if args.key?(:dependency_targets)
-          @disabled = args[:disabled] if args.key?(:disabled)
-          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -2312,8 +2267,8 @@ module Google
         attr_accessor :name
       
         # Output only. Records of the 10 most recent scheduled release attempts, ordered
-        # in in descending order of `release_time`. Updated whenever automatic creation
-        # of a compilation result is triggered by cron_schedule.
+        # in descending order of `release_time`. Updated whenever automatic creation of
+        # a compilation result is triggered by cron_schedule.
         # Corresponds to the JSON property `recentScheduledReleaseRecords`
         # @return [Array<Google::Apis::DataformV1beta1::ScheduledReleaseRecord>]
         attr_accessor :recent_scheduled_release_records
@@ -2420,8 +2375,8 @@ module Google
         # Optional. The reference to a KMS encryption key. If provided, it will be used
         # to encrypt user data in the repository and all child resources. It is not
         # possible to add or update the encryption key after the repository is created.
-        # Example: `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/
-        # cryptoKeys/[key]`
+        # Example: `projects/`kms_project`/locations/`location`/keyRings/`key_location`/
+        # cryptoKeys/`key``
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -2881,7 +2836,7 @@ module Google
         attr_accessor :name
       
         # Output only. Records of the 10 most recent scheduled execution attempts,
-        # ordered in in descending order of `execution_time`. Updated whenever automatic
+        # ordered in descending order of `execution_time`. Updated whenever automatic
         # creation of a workflow invocation is triggered by cron_schedule.
         # Corresponds to the JSON property `recentScheduledExecutionRecords`
         # @return [Array<Google::Apis::DataformV1beta1::ScheduledExecutionRecord>]
@@ -3056,6 +3011,11 @@ module Google
       class Workspace
         include Google::Apis::Core::Hashable
       
+        # Output only. The timestamp of when the workspace was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Describes encryption state of a resource.
         # Corresponds to the JSON property `dataEncryptionState`
         # @return [Google::Apis::DataformV1beta1::DataEncryptionState]
@@ -3072,6 +3032,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @name = args[:name] if args.key?(:name)
         end

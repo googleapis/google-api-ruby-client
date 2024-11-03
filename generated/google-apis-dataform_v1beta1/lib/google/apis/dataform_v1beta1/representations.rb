@@ -130,12 +130,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DataPreparation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Declaration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -731,8 +725,6 @@ module Google
       
           property :canonical_target, as: 'canonicalTarget', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
-          property :data_preparation, as: 'dataPreparation', class: Google::Apis::DataformV1beta1::DataPreparation, decorator: Google::Apis::DataformV1beta1::DataPreparation::Representation
-      
           property :declaration, as: 'declaration', class: Google::Apis::DataformV1beta1::Declaration, decorator: Google::Apis::DataformV1beta1::Declaration::Representation
       
           property :file_path, as: 'filePath'
@@ -766,17 +758,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_version_name, as: 'kmsKeyVersionName'
-        end
-      end
-      
-      class DataPreparation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :contents, :base64 => true, as: 'contents'
-          collection :dependency_targets, as: 'dependencyTargets', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
-      
-          property :disabled, as: 'disabled'
-          collection :tags, as: 'tags'
         end
       end
       
@@ -1428,6 +1409,7 @@ module Google
       class Workspace
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
       
           property :name, as: 'name'
