@@ -1045,6 +1045,16 @@ module Google
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution>]
         attr_accessor :author_attributions
       
+        # A link where users can flag a problem with the photo.
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
+        # A link to show the photo on Google Maps.
+        # Corresponds to the JSON property `googleMapsUri`
+        # @return [String]
+        attr_accessor :google_maps_uri
+      
         # The maximum available height, in pixels.
         # Corresponds to the JSON property `heightPx`
         # @return [Fixnum]
@@ -1069,6 +1079,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @author_attributions = args[:author_attributions] if args.key?(:author_attributions)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @google_maps_uri = args[:google_maps_uri] if args.key?(:google_maps_uri)
           @height_px = args[:height_px] if args.key?(:height_px)
           @name = args[:name] if args.key?(:name)
           @width_px = args[:width_px] if args.key?(:width_px)
@@ -1156,7 +1168,7 @@ module Google
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution>]
         attr_accessor :attributions
       
-        # The business status for the place.
+        # 
         # Corresponds to the JSON property `businessStatus`
         # @return [String]
         attr_accessor :business_status
@@ -1249,6 +1261,11 @@ module Google
         # @return [Boolean]
         attr_accessor :good_for_watching_sports
         alias_method :good_for_watching_sports?, :good_for_watching_sports
+      
+        # Links to trigger different Google Maps actions.
+        # Corresponds to the JSON property `googleMapsLinks`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceGoogleMapsLinks]
+        attr_accessor :google_maps_links
       
         # A URL providing more information about this place.
         # Corresponds to the JSON property `googleMapsUri`
@@ -1544,6 +1561,7 @@ module Google
           @good_for_children = args[:good_for_children] if args.key?(:good_for_children)
           @good_for_groups = args[:good_for_groups] if args.key?(:good_for_groups)
           @good_for_watching_sports = args[:good_for_watching_sports] if args.key?(:good_for_watching_sports)
+          @google_maps_links = args[:google_maps_links] if args.key?(:google_maps_links)
           @google_maps_uri = args[:google_maps_uri] if args.key?(:google_maps_uri)
           @icon_background_color = args[:icon_background_color] if args.key?(:icon_background_color)
           @icon_mask_base_uri = args[:icon_mask_base_uri] if args.key?(:icon_mask_base_uri)
@@ -1684,6 +1702,11 @@ module Google
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1ContentBlock>]
         attr_accessor :content_blocks
       
+        # A link where users can flag a problem with the summary.
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1691,6 +1714,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content_blocks = args[:content_blocks] if args.key?(:content_blocks)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
         end
       end
       
@@ -1730,10 +1754,20 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :description
       
+        # A link where users can flag a problem with the description summary.
+        # Corresponds to the JSON property `descriptionFlagContentUri`
+        # @return [String]
+        attr_accessor :description_flag_content_uri
+      
         # Localized variant of a text in a particular language.
         # Corresponds to the JSON property `overview`
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :overview
+      
+        # A link where users can flag a problem with the overview summary.
+        # Corresponds to the JSON property `overviewFlagContentUri`
+        # @return [String]
+        attr_accessor :overview_flag_content_uri
       
         # Experimental: See https://developers.google.com/maps/documentation/places/web-
         # service/experimental/places-generative for more details. Reference that the
@@ -1749,8 +1783,57 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @description_flag_content_uri = args[:description_flag_content_uri] if args.key?(:description_flag_content_uri)
           @overview = args[:overview] if args.key?(:overview)
+          @overview_flag_content_uri = args[:overview_flag_content_uri] if args.key?(:overview_flag_content_uri)
           @references = args[:references] if args.key?(:references)
+        end
+      end
+      
+      # Links to trigger different Google Maps actions.
+      class GoogleMapsPlacesV1PlaceGoogleMapsLinks
+        include Google::Apis::Core::Hashable
+      
+        # A link to show the directions to the place. The link only populates the
+        # destination location and uses the default travel mode `DRIVE`.
+        # Corresponds to the JSON property `directionsUri`
+        # @return [String]
+        attr_accessor :directions_uri
+      
+        # A link to show photos of this place. This link is currently not supported on
+        # Google Maps Mobile and only works on the web version of Google Maps.
+        # Corresponds to the JSON property `photosUri`
+        # @return [String]
+        attr_accessor :photos_uri
+      
+        # A link to show this place.
+        # Corresponds to the JSON property `placeUri`
+        # @return [String]
+        attr_accessor :place_uri
+      
+        # A link to show reviews of this place. This link is currently not supported on
+        # Google Maps Mobile and only works on the web version of Google Maps.
+        # Corresponds to the JSON property `reviewsUri`
+        # @return [String]
+        attr_accessor :reviews_uri
+      
+        # A link to write a review for this place. This link is currently not supported
+        # on Google Maps Mobile and only works on the web version of Google Maps.
+        # Corresponds to the JSON property `writeAReviewUri`
+        # @return [String]
+        attr_accessor :write_a_review_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @directions_uri = args[:directions_uri] if args.key?(:directions_uri)
+          @photos_uri = args[:photos_uri] if args.key?(:photos_uri)
+          @place_uri = args[:place_uri] if args.key?(:place_uri)
+          @reviews_uri = args[:reviews_uri] if args.key?(:reviews_uri)
+          @write_a_review_uri = args[:write_a_review_uri] if args.key?(:write_a_review_uri)
         end
       end
       
@@ -2142,6 +2225,16 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1AuthorAttribution]
         attr_accessor :author_attribution
       
+        # A link where users can flag a problem with the review.
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
+        # A link to show the review on Google Maps.
+        # Corresponds to the JSON property `googleMapsUri`
+        # @return [String]
+        attr_accessor :google_maps_uri
+      
         # A reference representing this place review which may be used to look up this
         # place review again (also called the API "resource" name: `places/`place_id`/
         # reviews/`review``).
@@ -2182,6 +2275,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @author_attribution = args[:author_attribution] if args.key?(:author_attribution)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @google_maps_uri = args[:google_maps_uri] if args.key?(:google_maps_uri)
           @name = args[:name] if args.key?(:name)
           @original_text = args[:original_text] if args.key?(:original_text)
           @publish_time = args[:publish_time] if args.key?(:publish_time)
@@ -2295,6 +2390,16 @@ module Google
       class GoogleMapsPlacesV1RoutingSummary
         include Google::Apis::Core::Hashable
       
+        # A link to show directions on Google Maps using the waypoints from the given
+        # routing summary. The route generated by this link is not guaranteed to be the
+        # same as the route used to generate the routing summary. The link uses
+        # information provided in the request, from fields including `routingParameters`
+        # and `searchAlongRouteParameters` when applicable, to generate the directions
+        # link.
+        # Corresponds to the JSON property `directionsUri`
+        # @return [String]
+        attr_accessor :directions_uri
+      
         # The legs of the trip. When you calculate travel duration and distance from a
         # set origin, `legs` contains a single leg containing the duration and distance
         # from the origin to the destination. When you do a search along route, `legs`
@@ -2310,6 +2415,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @directions_uri = args[:directions_uri] if args.key?(:directions_uri)
           @legs = args[:legs] if args.key?(:legs)
         end
       end
@@ -2855,6 +2961,12 @@ module Google
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary>]
         attr_accessor :routing_summaries
       
+        # A link allows the user to search with the same text query as specified in the
+        # request on Google Maps.
+        # Corresponds to the JSON property `searchUri`
+        # @return [String]
+        attr_accessor :search_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2865,6 +2977,7 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @places = args[:places] if args.key?(:places)
           @routing_summaries = args[:routing_summaries] if args.key?(:routing_summaries)
+          @search_uri = args[:search_uri] if args.key?(:search_uri)
         end
       end
       
