@@ -2094,6 +2094,11 @@ module Google
         # @return [String]
         attr_accessor :destination
       
+        # Defines the destination bigquery dataset.
+        # Corresponds to the JSON property `destinationDataset`
+        # @return [Google::Apis::AnalyticshubV1::DestinationDataset]
+        attr_accessor :destination_dataset
+      
         # Email of the subscriber.
         # Corresponds to the JSON property `subscriberContact`
         # @return [String]
@@ -2111,6 +2116,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destination = args[:destination] if args.key?(:destination)
+          @destination_dataset = args[:destination_dataset] if args.key?(:destination_dataset)
           @subscriber_contact = args[:subscriber_contact] if args.key?(:subscriber_contact)
           @subscription = args[:subscription] if args.key?(:subscription)
         end
