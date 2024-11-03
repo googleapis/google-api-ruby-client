@@ -52,9 +52,9 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Returns a list of the sensitive information types that DLP API supports. See
-        # https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to
-        # learn more.
+        # Returns a list of the sensitive information types that the DLP API supports.
+        # See https://cloud.google.com/sensitive-data-protection/docs/infotypes-
+        # reference to learn more.
         # @param [String] filter
         #   filter to only return infoTypes supported by certain parts of the API.
         #   Defaults to supported_by=INSPECT.
@@ -96,9 +96,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of the sensitive information types that DLP API supports. See
-        # https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to
-        # learn more.
+        # Returns a list of the sensitive information types that the DLP API supports.
+        # See https://cloud.google.com/sensitive-data-protection/docs/infotypes-
+        # reference to learn more.
         # @param [String] parent
         #   The parent resource name. The format of this value is as follows: `locations/`
         #   location_id``

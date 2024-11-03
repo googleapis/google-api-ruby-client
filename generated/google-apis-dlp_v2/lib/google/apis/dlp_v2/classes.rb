@@ -1174,8 +1174,8 @@ module Google
         # @return [String]
         attr_accessor :database_engine
       
-        # Required. DLP will limit its connections to max_connections. Must be 2 or
-        # greater.
+        # Required. The DLP API will limit its connections to max_connections. Must be 2
+        # or greater.
         # Corresponds to the JSON property `maxConnections`
         # @return [Fixnum]
         attr_accessor :max_connections
@@ -1699,8 +1699,8 @@ module Google
         end
       end
       
-      # A data connection to allow DLP to profile data in locations that require
-      # additional configuration.
+      # A data connection to allow the DLP API to profile data in locations that
+      # require additional configuration.
       class GooglePrivacyDlpV2Connection
         include Google::Apis::Core::Hashable
       
@@ -1906,8 +1906,8 @@ module Google
       class GooglePrivacyDlpV2CreateConnectionRequest
         include Google::Apis::Core::Hashable
       
-        # A data connection to allow DLP to profile data in locations that require
-        # additional configuration.
+        # A data connection to allow the DLP API to profile data in locations that
+        # require additional configuration.
         # Corresponds to the JSON property `connection`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Connection]
         attr_accessor :connection
@@ -2433,7 +2433,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToChronicle]
         attr_accessor :publish_to_chronicle
       
-        # If set, a summary finding will be created/updated in SCC for each profile.
+        # If set, a summary finding will be created or updated in Security Command
+        # Center for each profile.
         # Corresponds to the JSON property `publishToScc`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToSecurityCommandCenter]
         attr_accessor :publish_to_scc
@@ -2584,8 +2585,8 @@ module Google
         attr_accessor :other_cloud_starting_location
       
         # The project that will run the scan. The DLP service account that exists within
-        # this project must have access to all resources that are profiled, and the
-        # Cloud DLP API must be enabled.
+        # this project must have access to all resources that are profiled, and the DLP
+        # API must be enabled.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -7354,8 +7355,8 @@ module Google
         attr_accessor :location
       
         # The project that will run the scan. The DLP service account that exists within
-        # this project must have access to all resources that are profiled, and the
-        # Cloud DLP API must be enabled.
+        # this project must have access to all resources that are profiled, and the DLP
+        # API must be enabled.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -8137,7 +8138,8 @@ module Google
         end
       end
       
-      # If set, a summary finding will be created/updated in SCC for each profile.
+      # If set, a summary finding will be created or updated in Security Command
+      # Center for each profile.
       class GooglePrivacyDlpV2PublishToSecurityCommandCenter
         include Google::Apis::Core::Hashable
       
@@ -10395,8 +10397,8 @@ module Google
       class GooglePrivacyDlpV2UpdateConnectionRequest
         include Google::Apis::Core::Hashable
       
-        # A data connection to allow DLP to profile data in locations that require
-        # additional configuration.
+        # A data connection to allow the DLP API to profile data in locations that
+        # require additional configuration.
         # Corresponds to the JSON property `connection`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Connection]
         attr_accessor :connection
