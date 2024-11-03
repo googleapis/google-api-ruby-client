@@ -765,6 +765,119 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a new Enrollment in a particular project and location.
+        # @param [String] parent
+        #   Required. The parent collection in which to add this enrollment.
+        # @param [Google::Apis::EventarcV1::Enrollment] enrollment_object
+        # @param [String] enrollment_id
+        #   Required. The user-provided ID to be assigned to the Enrollment. It should
+        #   match the format (^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_enrollment(parent, enrollment_object = nil, enrollment_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/enrollments', options)
+          command.request_representation = Google::Apis::EventarcV1::Enrollment::Representation
+          command.request_object = enrollment_object
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['enrollmentId'] = enrollment_id unless enrollment_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a single Enrollment.
+        # @param [String] name
+        #   Required. The name of the Enrollment to be deleted.
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the Enrollment is not found, the request will
+        #   succeed but no action will be taken on the server.
+        # @param [String] etag
+        #   Optional. If provided, the Enrollment will only be deleted if the etag matches
+        #   the current etag on the resource.
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_enrollment(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a single Enrollment.
+        # @param [String] name
+        #   Required. The name of the Enrollment to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::Enrollment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::Enrollment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_enrollment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::EventarcV1::Enrollment::Representation
+          command.response_class = Google::Apis::EventarcV1::Enrollment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -805,6 +918,102 @@ module Google
           command.response_class = Google::Apis::EventarcV1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List Enrollments.
+        # @param [String] parent
+        #   Required. The parent collection to list triggers on.
+        # @param [String] filter
+        #   Optional. The filter field that the list request will filter on. Possible
+        #   filtersare described in https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. The sorting order of the resources returned. Value should be a comma-
+        #   separated list of fields. The default sorting order is ascending. To specify
+        #   descending order for a field, append a `desc` suffix; for example: `name desc,
+        #   update_time`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return on each page. Note: The
+        #   service may send fewer.
+        # @param [String] page_token
+        #   Optional. The page token; provide the value from the `next_page_token` field
+        #   in a previous call to retrieve the subsequent page. When paginating, all other
+        #   parameters provided must match the previous call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::ListEnrollmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::ListEnrollmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_enrollments(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/enrollments', options)
+          command.response_representation = Google::Apis::EventarcV1::ListEnrollmentsResponse::Representation
+          command.response_class = Google::Apis::EventarcV1::ListEnrollmentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a single Enrollment.
+        # @param [String] name
+        #   Identifier. Resource name of the form projects/`project`/locations/`location`/
+        #   enrollments/`enrollment`
+        # @param [Google::Apis::EventarcV1::Enrollment] enrollment_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the Enrollment is not found, a new Enrollment
+        #   will be created. In this situation, `update_mask` is ignored.
+        # @param [String] update_mask
+        #   Optional. The fields to be updated; only fields explicitly provided are
+        #   updated. If no field mask is provided, all provided fields in the request are
+        #   updated. To update all fields, provide a field mask of "*".
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_enrollment(name, enrollment_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::EventarcV1::Enrollment::Representation
+          command.request_object = enrollment_object
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -886,6 +1095,119 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a new GoogleApiSource in a particular project and location.
+        # @param [String] parent
+        #   Required. The parent collection in which to add this google api source.
+        # @param [Google::Apis::EventarcV1::GoogleApiSource] google_api_source_object
+        # @param [String] google_api_source_id
+        #   Required. The user-provided ID to be assigned to the GoogleApiSource. It
+        #   should match the format (^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_google_api_source(parent, google_api_source_object = nil, google_api_source_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/googleApiSources', options)
+          command.request_representation = Google::Apis::EventarcV1::GoogleApiSource::Representation
+          command.request_object = google_api_source_object
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['googleApiSourceId'] = google_api_source_id unless google_api_source_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a single GoogleApiSource.
+        # @param [String] name
+        #   Required. The name of the GoogleApiSource to be deleted.
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the MessageBus is not found, the request will
+        #   succeed but no action will be taken on the server.
+        # @param [String] etag
+        #   Optional. If provided, the MessageBus will only be deleted if the etag matches
+        #   the current etag on the resource.
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_google_api_source(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a single GoogleApiSource.
+        # @param [String] name
+        #   Required. The name of the google api source to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleApiSource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleApiSource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_google_api_source(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::EventarcV1::GoogleApiSource::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleApiSource
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -926,6 +1248,102 @@ module Google
           command.response_class = Google::Apis::EventarcV1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List GoogleApiSources.
+        # @param [String] parent
+        #   Required. The parent collection to list GoogleApiSources on.
+        # @param [String] filter
+        #   Optional. The filter field that the list request will filter on. Possible
+        #   filtersare described in https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. The sorting order of the resources returned. Value should be a comma-
+        #   separated list of fields. The default sorting order is ascending. To specify
+        #   descending order for a field, append a `desc` suffix; for example: `name desc,
+        #   update_time`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return on each page. Note: The
+        #   service may send fewer.
+        # @param [String] page_token
+        #   Optional. The page token; provide the value from the `next_page_token` field
+        #   in a previous call to retrieve the subsequent page. When paginating, all other
+        #   parameters provided must match the previous call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::ListGoogleApiSourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::ListGoogleApiSourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_google_api_sources(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/googleApiSources', options)
+          command.response_representation = Google::Apis::EventarcV1::ListGoogleApiSourcesResponse::Representation
+          command.response_class = Google::Apis::EventarcV1::ListGoogleApiSourcesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a single GoogleApiSource.
+        # @param [String] name
+        #   Identifier. Resource name of the form projects/`project`/locations/`location`/
+        #   googleApiSources/`google_api_source`
+        # @param [Google::Apis::EventarcV1::GoogleApiSource] google_api_source_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the GoogleApiSource is not found, a new
+        #   GoogleApiSource will be created. In this situation, `update_mask` is ignored.
+        # @param [String] update_mask
+        #   Optional. The fields to be updated; only fields explicitly provided are
+        #   updated. If no field mask is provided, all provided fields in the request are
+        #   updated. To update all fields, provide a field mask of "*".
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_google_api_source(name, google_api_source_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::EventarcV1::GoogleApiSource::Representation
+          command.request_object = google_api_source_object
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1007,6 +1425,119 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a new MessageBus in a particular project and location.
+        # @param [String] parent
+        #   Required. The parent collection in which to add this message bus.
+        # @param [Google::Apis::EventarcV1::MessageBus] message_bus_object
+        # @param [String] message_bus_id
+        #   Required. The user-provided ID to be assigned to the MessageBus. It should
+        #   match the format (^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$)
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_message_bus(parent, message_bus_object = nil, message_bus_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/messageBuses', options)
+          command.request_representation = Google::Apis::EventarcV1::MessageBus::Representation
+          command.request_object = message_bus_object
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['messageBusId'] = message_bus_id unless message_bus_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a single message bus.
+        # @param [String] name
+        #   Required. The name of the MessageBus to be deleted.
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the MessageBus is not found, the request will
+        #   succeed but no action will be taken on the server.
+        # @param [String] etag
+        #   Optional. If provided, the MessageBus will only be deleted if the etag matches
+        #   the current etag on the resource.
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_message_bus(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a single MessageBus.
+        # @param [String] name
+        #   Required. The name of the message bus to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::MessageBus] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::MessageBus]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_message_bus(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::EventarcV1::MessageBus::Representation
+          command.response_class = Google::Apis::EventarcV1::MessageBus
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -1047,6 +1578,141 @@ module Google
           command.response_class = Google::Apis::EventarcV1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List message buses.
+        # @param [String] parent
+        #   Required. The parent collection to list triggers on.
+        # @param [String] filter
+        #   Optional. The filter field that the list request will filter on. Possible
+        #   filtersare described in https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. The sorting order of the resources returned. Value should be a comma-
+        #   separated list of fields. The default sorting order is ascending. To specify
+        #   descending order for a field, append a `desc` suffix; for example: `name desc,
+        #   update_time`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return on each page. Note: The
+        #   service may send fewer.
+        # @param [String] page_token
+        #   Optional. The page token; provide the value from the `next_page_token` field
+        #   in a previous call to retrieve the subsequent page. When paginating, all other
+        #   parameters provided must match the previous call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::ListMessageBusesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::ListMessageBusesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_message_buses(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/messageBuses', options)
+          command.response_representation = Google::Apis::EventarcV1::ListMessageBusesResponse::Representation
+          command.response_class = Google::Apis::EventarcV1::ListMessageBusesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List message bus enrollments.
+        # @param [String] parent
+        #   Required. The parent message bus to list enrollments on.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return on each page. Note: The
+        #   service may send fewer.
+        # @param [String] page_token
+        #   Optional. The page token; provide the value from the `next_page_token` field
+        #   in a previous call to retrieve the subsequent page. When paginating, all other
+        #   parameters provided must match the previous call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::ListMessageBusEnrollmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::ListMessageBusEnrollmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_message_bus_enrollments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}:listEnrollments', options)
+          command.response_representation = Google::Apis::EventarcV1::ListMessageBusEnrollmentsResponse::Representation
+          command.response_class = Google::Apis::EventarcV1::ListMessageBusEnrollmentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a single message bus.
+        # @param [String] name
+        #   Identifier. Resource name of the form projects/`project`/locations/`location`/
+        #   messageBuses/`message_bus`
+        # @param [Google::Apis::EventarcV1::MessageBus] message_bus_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the MessageBus is not found, a new MessageBus
+        #   will be created. In this situation, `update_mask` is ignored.
+        # @param [String] update_mask
+        #   Optional. The fields to be updated; only fields explicitly provided are
+        #   updated. If no field mask is provided, all provided fields in the request are
+        #   updated. To update all fields, provide a field mask of "*".
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_message_bus(name, message_bus_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::EventarcV1::MessageBus::Representation
+          command.request_object = message_bus_object
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1272,6 +1938,118 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a new Pipeline in a particular project and location.
+        # @param [String] parent
+        #   Required. The parent collection in which to add this pipeline.
+        # @param [Google::Apis::EventarcV1::Pipeline] pipeline_object
+        # @param [String] pipeline_id
+        #   Required. The user-provided ID to be assigned to the Pipeline.
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_pipeline(parent, pipeline_object = nil, pipeline_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/pipelines', options)
+          command.request_representation = Google::Apis::EventarcV1::Pipeline::Representation
+          command.request_object = pipeline_object
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pipelineId'] = pipeline_id unless pipeline_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a single pipeline.
+        # @param [String] name
+        #   Required. The name of the Pipeline to be deleted.
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the Pipeline is not found, the request will
+        #   succeed but no action will be taken on the server.
+        # @param [String] etag
+        #   Optional. If provided, the Pipeline will only be deleted if the etag matches
+        #   the current etag on the resource.
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_pipeline(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a single Pipeline.
+        # @param [String] name
+        #   Required. The name of the pipeline to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::Pipeline] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::Pipeline]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_pipeline(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::EventarcV1::Pipeline::Representation
+          command.response_class = Google::Apis::EventarcV1::Pipeline
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -1312,6 +2090,103 @@ module Google
           command.response_class = Google::Apis::EventarcV1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List pipelines.
+        # @param [String] parent
+        #   Required. The parent collection to list pipelines on.
+        # @param [String] filter
+        #   Optional. The filter field that the list request will filter on. Possible
+        #   filters are described in https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. The sorting order of the resources returned. Value should be a comma-
+        #   separated list of fields. The default sorting order is ascending. To specify
+        #   descending order for a field, append a `desc` suffix; for example: `name desc,
+        #   update_time`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return on each page. Note: The
+        #   service may send fewer.
+        # @param [String] page_token
+        #   Optional. The page token; provide the value from the `next_page_token` field
+        #   in a previous call to retrieve the subsequent page. When paginating, all other
+        #   parameters provided must match the previous call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::ListPipelinesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::ListPipelinesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_pipelines(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/pipelines', options)
+          command.response_representation = Google::Apis::EventarcV1::ListPipelinesResponse::Representation
+          command.response_class = Google::Apis::EventarcV1::ListPipelinesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a single pipeline.
+        # @param [String] name
+        #   Identifier. The resource name of the Pipeline. Must be unique within the
+        #   location of the project and must be in `projects/`project`/locations/`location`
+        #   /pipelines/`pipeline`` format.
+        # @param [Google::Apis::EventarcV1::Pipeline] pipeline_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the Pipeline is not found, a new Pipeline will
+        #   be created. In this situation, `update_mask` is ignored.
+        # @param [String] update_mask
+        #   Optional. The fields to be updated; only fields explicitly provided are
+        #   updated. If no field mask is provided, all provided fields in the request are
+        #   updated. To update all fields, provide a field mask of "*".
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_pipeline(name, pipeline_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::EventarcV1::Pipeline::Representation
+          command.request_object = pipeline_object
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
