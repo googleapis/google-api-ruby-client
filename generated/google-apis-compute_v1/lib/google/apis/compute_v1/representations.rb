@@ -12592,6 +12592,9 @@ module Google
       class NetworkRoutingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bgp_always_compare_med, as: 'bgpAlwaysCompareMed'
+          property :bgp_best_path_selection_mode, as: 'bgpBestPathSelectionMode'
+          property :bgp_inter_region_cost, as: 'bgpInterRegionCost'
           property :routing_mode, as: 'routingMode'
         end
       end
@@ -14877,8 +14880,11 @@ module Google
           property :next_hop_hub, as: 'nextHopHub'
           property :next_hop_ilb, as: 'nextHopIlb'
           property :next_hop_instance, as: 'nextHopInstance'
+          property :next_hop_inter_region_cost, as: 'nextHopInterRegionCost'
           property :next_hop_ip, as: 'nextHopIp'
+          property :next_hop_med, as: 'nextHopMed'
           property :next_hop_network, as: 'nextHopNetwork'
+          property :next_hop_origin, as: 'nextHopOrigin'
           property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
           property :priority, as: 'priority'
