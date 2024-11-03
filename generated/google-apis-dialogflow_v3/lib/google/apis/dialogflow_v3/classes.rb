@@ -3859,6 +3859,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Parameters to be passed to the LLM. If not set, default values will be used.
+        # Corresponds to the JSON property `modelParameter`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GeneratorModelParameter]
+        attr_accessor :model_parameter
+      
         # The unique identifier of the generator. Must be set for the Generators.
         # UpdateGenerator method. Generators.CreateGenerate populates the name
         # automatically. Format: `projects//locations//agents//generators/`.
@@ -3883,9 +3888,54 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @model_parameter = args[:model_parameter] if args.key?(:model_parameter)
           @name = args[:name] if args.key?(:name)
           @placeholders = args[:placeholders] if args.key?(:placeholders)
           @prompt_text = args[:prompt_text] if args.key?(:prompt_text)
+        end
+      end
+      
+      # Parameters to be passed to the LLM. If not set, default values will be used.
+      class GoogleCloudDialogflowCxV3GeneratorModelParameter
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of tokens to generate.
+        # Corresponds to the JSON property `maxDecodeSteps`
+        # @return [Fixnum]
+        attr_accessor :max_decode_steps
+      
+        # The temperature used for sampling. Temperature sampling occurs after both topP
+        # and topK have been applied. Valid range: [0.0, 1.0] Low temperature = less
+        # random. High temperature = more random.
+        # Corresponds to the JSON property `temperature`
+        # @return [Float]
+        attr_accessor :temperature
+      
+        # If set, the sampling process in each step is limited to the top_k tokens with
+        # highest probabilities. Valid range: [1, 40] or 1000+. Small topK = less random.
+        # Large topK = more random.
+        # Corresponds to the JSON property `topK`
+        # @return [Fixnum]
+        attr_accessor :top_k
+      
+        # If set, only the tokens comprising the top top_p probability mass are
+        # considered. If both top_p and top_k are set, top_p will be used for further
+        # refining candidates selected with top_k. Valid range: (0.0, 1.0]. Small topP =
+        # less random. Large topP = more random.
+        # Corresponds to the JSON property `topP`
+        # @return [Float]
+        attr_accessor :top_p
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_decode_steps = args[:max_decode_steps] if args.key?(:max_decode_steps)
+          @temperature = args[:temperature] if args.key?(:temperature)
+          @top_k = args[:top_k] if args.key?(:top_k)
+          @top_p = args[:top_p] if args.key?(:top_p)
         end
       end
       

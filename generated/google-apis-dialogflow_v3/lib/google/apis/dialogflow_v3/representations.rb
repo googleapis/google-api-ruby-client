@@ -634,6 +634,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3GeneratorModelParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3GeneratorPlaceholder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4273,11 +4279,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :model_parameter, as: 'modelParameter', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GeneratorModelParameter, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GeneratorModelParameter::Representation
+      
           property :name, as: 'name'
           collection :placeholders, as: 'placeholders', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GeneratorPlaceholder, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3GeneratorPlaceholder::Representation
       
           property :prompt_text, as: 'promptText', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Phrase, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Phrase::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3GeneratorModelParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_decode_steps, as: 'maxDecodeSteps'
+          property :temperature, as: 'temperature'
+          property :top_k, as: 'topK'
+          property :top_p, as: 'topP'
         end
       end
       
