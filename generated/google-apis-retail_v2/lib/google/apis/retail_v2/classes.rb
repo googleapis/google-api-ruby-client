@@ -2840,6 +2840,52 @@ module Google
         end
       end
       
+      # Metadata for pinning to be returned in the response. This is used for
+      # distinguishing between applied vs dropped pins.
+      class GoogleCloudRetailV2PinControlMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Map of all matched pins, keyed by pin position.
+        # Corresponds to the JSON property `allMatchedPins`
+        # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2PinControlMetadataProductPins>]
+        attr_accessor :all_matched_pins
+      
+        # Map of pins that were dropped due to overlap with other matching pins, keyed
+        # by pin position.
+        # Corresponds to the JSON property `droppedPins`
+        # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2PinControlMetadataProductPins>]
+        attr_accessor :dropped_pins
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_matched_pins = args[:all_matched_pins] if args.key?(:all_matched_pins)
+          @dropped_pins = args[:dropped_pins] if args.key?(:dropped_pins)
+        end
+      end
+      
+      # List of product ids which have associated pins.
+      class GoogleCloudRetailV2PinControlMetadataProductPins
+        include Google::Apis::Core::Hashable
+      
+        # List of product ids which have associated pins.
+        # Corresponds to the JSON property `productId`
+        # @return [Array<String>]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
       # Request message for Predict method.
       class GoogleCloudRetailV2PredictRequest
         include Google::Apis::Core::Hashable
@@ -5468,6 +5514,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Metadata for pinning to be returned in the response. This is used for
+        # distinguishing between applied vs dropped pins.
+        # Corresponds to the JSON property `pinControlMetadata`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2PinControlMetadata]
+        attr_accessor :pin_control_metadata
+      
         # Information describing query expansion including whether expansion has
         # occurred.
         # Corresponds to the JSON property `queryExpansionInfo`
@@ -5513,6 +5565,7 @@ module Google
           @facets = args[:facets] if args.key?(:facets)
           @invalid_condition_boost_specs = args[:invalid_condition_boost_specs] if args.key?(:invalid_condition_boost_specs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @pin_control_metadata = args[:pin_control_metadata] if args.key?(:pin_control_metadata)
           @query_expansion_info = args[:query_expansion_info] if args.key?(:query_expansion_info)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
           @results = args[:results] if args.key?(:results)
