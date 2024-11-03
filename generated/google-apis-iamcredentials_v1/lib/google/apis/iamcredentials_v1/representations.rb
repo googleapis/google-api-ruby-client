@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAccountAllowedLocations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SignBlobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +106,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :token, as: 'token'
+        end
+      end
+      
+      class ServiceAccountAllowedLocations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoded_locations, as: 'encodedLocations'
+          collection :locations, as: 'locations'
         end
       end
       
