@@ -2594,6 +2594,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::BeyondcorpV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_security_gateway_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::BeyondcorpV1::GoogleIamV1SetIamPolicyRequest::Representation
+          command.request_object = google_iam_v1_set_iam_policy_request_object
+          command.response_representation = Google::Apis::BeyondcorpV1::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::BeyondcorpV1::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # This is a custom method to allow customers to create a peering connections
         # between Google network and customer networks. This is enabled only for the
         # allowlisted customers.
@@ -2871,43 +2908,6 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_project_location_security_gateway_application_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
-          command.request_representation = Google::Apis::BeyondcorpV1::GoogleIamV1SetIamPolicyRequest::Representation
-          command.request_object = google_iam_v1_set_iam_policy_request_object
-          command.response_representation = Google::Apis::BeyondcorpV1::GoogleIamV1Policy::Representation
-          command.response_class = Google::Apis::BeyondcorpV1::GoogleIamV1Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
-        # PERMISSION_DENIED` errors.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See [Resource
-        #   names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
-        # @param [Google::Apis::BeyondcorpV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleIamV1Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1::GoogleIamV1Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_v_project_location_security_gateway_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::BeyondcorpV1::GoogleIamV1SetIamPolicyRequest::Representation
           command.request_object = google_iam_v1_set_iam_policy_request_object
           command.response_representation = Google::Apis::BeyondcorpV1::GoogleIamV1Policy::Representation
