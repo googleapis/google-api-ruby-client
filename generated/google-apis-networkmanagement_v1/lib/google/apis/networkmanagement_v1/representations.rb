@@ -546,6 +546,7 @@ module Google
           property :cloud_sql_instance, as: 'cloudSqlInstance'
           property :forwarding_rule, as: 'forwardingRule'
           property :forwarding_rule_target, as: 'forwardingRuleTarget'
+          property :fqdn, as: 'fqdn'
           property :gke_master_cluster, as: 'gkeMasterCluster'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
