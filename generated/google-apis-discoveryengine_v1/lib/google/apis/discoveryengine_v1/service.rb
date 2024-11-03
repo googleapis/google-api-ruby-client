@@ -1979,6 +1979,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Performs a search. Similar to the SearchService.Search method, but a lite
+        # version that allows API key for authentication, where OAuth and IAM checks are
+        # not required. Only public website search is supported by this method. If data
+        # stores and engines not associated with public website search are specified, a `
+        # FAILED_PRECONDITION` error is returned. This method can be used for easy
+        # onboarding without having to implement an authentication backend. However, it
+        # is strongly recommended to use SearchService.Search instead with required
+        # OAuth and IAM checks to provide better data security.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/default_data_store/servingConfigs/
+        #   default_serving_config`. This field is used to identify the serving
+        #   configuration name, set of models used to make the search.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequest] google_cloud_discoveryengine_v1_search_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_collection_data_store_serving_config_lite(serving_config, google_cloud_discoveryengine_v1_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+servingConfig}:searchLite', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_search_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Session. If the Session to create already exists, an ALREADY_EXISTS
         # error is returned.
         # @param [String] parent
@@ -3765,6 +3810,51 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_location_collection_engine_serving_configs(serving_config, google_cloud_discoveryengine_v1_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+servingConfig}:search', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_search_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Performs a search. Similar to the SearchService.Search method, but a lite
+        # version that allows API key for authentication, where OAuth and IAM checks are
+        # not required. Only public website search is supported by this method. If data
+        # stores and engines not associated with public website search are specified, a `
+        # FAILED_PRECONDITION` error is returned. This method can be used for easy
+        # onboarding without having to implement an authentication backend. However, it
+        # is strongly recommended to use SearchService.Search instead with required
+        # OAuth and IAM checks to provide better data security.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/default_data_store/servingConfigs/
+        #   default_serving_config`. This field is used to identify the serving
+        #   configuration name, set of models used to make the search.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequest] google_cloud_discoveryengine_v1_search_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_collection_engine_serving_config_lite(serving_config, google_cloud_discoveryengine_v1_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+servingConfig}:searchLite', options)
           command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequest::Representation
           command.request_object = google_cloud_discoveryengine_v1_search_request_object
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse::Representation
@@ -5738,6 +5828,51 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_location_data_store_serving_configs(serving_config, google_cloud_discoveryengine_v1_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+servingConfig}:search', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_search_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Performs a search. Similar to the SearchService.Search method, but a lite
+        # version that allows API key for authentication, where OAuth and IAM checks are
+        # not required. Only public website search is supported by this method. If data
+        # stores and engines not associated with public website search are specified, a `
+        # FAILED_PRECONDITION` error is returned. This method can be used for easy
+        # onboarding without having to implement an authentication backend. However, it
+        # is strongly recommended to use SearchService.Search instead with required
+        # OAuth and IAM checks to provide better data security.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/default_data_store/servingConfigs/
+        #   default_serving_config`. This field is used to identify the serving
+        #   configuration name, set of models used to make the search.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequest] google_cloud_discoveryengine_v1_search_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_data_store_serving_config_lite(serving_config, google_cloud_discoveryengine_v1_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+servingConfig}:searchLite', options)
           command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequest::Representation
           command.request_object = google_cloud_discoveryengine_v1_search_request_object
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponse::Representation

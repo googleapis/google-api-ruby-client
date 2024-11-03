@@ -22,6 +22,320 @@ module Google
   module Apis
     module DiscoveryengineV1
       
+      # `Distribution` contains summary statistics for a population of values. It
+      # optionally contains a histogram representing the distribution of those values
+      # across a set of buckets. The summary statistics are the count, mean, sum of
+      # the squared deviation from the mean, the minimum, and the maximum of the set
+      # of population of values. The histogram is based on a sequence of buckets and
+      # gives a count of values that fall into each bucket. The boundaries of the
+      # buckets are given either explicitly or by formulas for buckets of fixed or
+      # exponentially increasing widths. Although it is not forbidden, it is generally
+      # a bad idea to include non-finite values (infinities or NaNs) in the population
+      # of values, as this will render the `mean` and `sum_of_squared_deviation`
+      # fields meaningless.
+      class GoogleApiDistribution
+        include Google::Apis::Core::Hashable
+      
+        # The number of values in each bucket of the histogram, as described in `
+        # bucket_options`. If the distribution does not have a histogram, then omit this
+        # field. If there is a histogram, then the sum of the values in `bucket_counts`
+        # must equal the value in the `count` field of the distribution. If present, `
+        # bucket_counts` should contain N values, where N is the number of buckets
+        # specified in `bucket_options`. If you supply fewer than N values, the
+        # remaining values are assumed to be 0. The order of the values in `
+        # bucket_counts` follows the bucket numbering schemes described for the three
+        # bucket types. The first value must be the count for the underflow bucket (
+        # number 0). The next N-2 values are the counts for the finite buckets (number 1
+        # through N-2). The N'th value in `bucket_counts` is the count for the overflow
+        # bucket (number N-1).
+        # Corresponds to the JSON property `bucketCounts`
+        # @return [Array<Fixnum>]
+        attr_accessor :bucket_counts
+      
+        # `BucketOptions` describes the bucket boundaries used to create a histogram for
+        # the distribution. The buckets can be in a linear sequence, an exponential
+        # sequence, or each bucket can be specified explicitly. `BucketOptions` does not
+        # include the number of values in each bucket. A bucket has an inclusive lower
+        # bound and exclusive upper bound for the values that are counted for that
+        # bucket. The upper bound of a bucket must be strictly greater than the lower
+        # bound. The sequence of N buckets for a distribution consists of an underflow
+        # bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an
+        # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
+        # bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets
+        # span the whole range of finite values: lower bound of the underflow bucket is -
+        # infinity and the upper bound of the overflow bucket is +infinity. The finite
+        # buckets are so-called because both bounds are finite.
+        # Corresponds to the JSON property `bucketOptions`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleApiDistributionBucketOptions]
+        attr_accessor :bucket_options
+      
+        # The number of values in the population. Must be non-negative. This value must
+        # equal the sum of the values in `bucket_counts` if a histogram is provided.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Must be in increasing order of `value` field.
+        # Corresponds to the JSON property `exemplars`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleApiDistributionExemplar>]
+        attr_accessor :exemplars
+      
+        # The arithmetic mean of the values in the population. If `count` is zero then
+        # this field must be zero.
+        # Corresponds to the JSON property `mean`
+        # @return [Float]
+        attr_accessor :mean
+      
+        # The range of the population values.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleApiDistributionRange]
+        attr_accessor :range
+      
+        # The sum of squared deviations from the mean of the values in the population.
+        # For values x_i this is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of
+        # Computer Programming", Vol. 2, page 232, 3rd edition describes Welford's
+        # method for accumulating this sum in one pass. If `count` is zero then this
+        # field must be zero.
+        # Corresponds to the JSON property `sumOfSquaredDeviation`
+        # @return [Float]
+        attr_accessor :sum_of_squared_deviation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_counts = args[:bucket_counts] if args.key?(:bucket_counts)
+          @bucket_options = args[:bucket_options] if args.key?(:bucket_options)
+          @count = args[:count] if args.key?(:count)
+          @exemplars = args[:exemplars] if args.key?(:exemplars)
+          @mean = args[:mean] if args.key?(:mean)
+          @range = args[:range] if args.key?(:range)
+          @sum_of_squared_deviation = args[:sum_of_squared_deviation] if args.key?(:sum_of_squared_deviation)
+        end
+      end
+      
+      # `BucketOptions` describes the bucket boundaries used to create a histogram for
+      # the distribution. The buckets can be in a linear sequence, an exponential
+      # sequence, or each bucket can be specified explicitly. `BucketOptions` does not
+      # include the number of values in each bucket. A bucket has an inclusive lower
+      # bound and exclusive upper bound for the values that are counted for that
+      # bucket. The upper bound of a bucket must be strictly greater than the lower
+      # bound. The sequence of N buckets for a distribution consists of an underflow
+      # bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an
+      # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
+      # bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets
+      # span the whole range of finite values: lower bound of the underflow bucket is -
+      # infinity and the upper bound of the overflow bucket is +infinity. The finite
+      # buckets are so-called because both bounds are finite.
+      class GoogleApiDistributionBucketOptions
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a set of buckets with arbitrary widths. There are `size(bounds) + 1`
+        # (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 <= i <
+        # N-1): bounds[i] Lower bound (1 <= i < N); bounds[i - 1] The `bounds` field
+        # must contain at least one element. If `bounds` has only one element, then
+        # there are no finite buckets, and that single element is the common boundary of
+        # the overflow and underflow buckets.
+        # Corresponds to the JSON property `explicitBuckets`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleApiDistributionBucketOptionsExplicit]
+        attr_accessor :explicit_buckets
+      
+        # Specifies an exponential sequence of buckets that have a width that is
+        # proportional to the value of the lower bound. Each bucket represents a
+        # constant relative uncertainty on a specific value in the bucket. There are `
+        # num_finite_buckets + 2` (= N) buckets. Bucket `i` has the following boundaries:
+        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
+        # N): scale * (growth_factor ^ (i - 1)).
+        # Corresponds to the JSON property `exponentialBuckets`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleApiDistributionBucketOptionsExponential]
+        attr_accessor :exponential_buckets
+      
+        # Specifies a linear sequence of buckets that all have the same width (except
+        # overflow and underflow). Each bucket represents a constant absolute
+        # uncertainty on the specific value in the bucket. There are `num_finite_buckets
+        # + 2` (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 <=
+        # i < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i
+        # - 1)).
+        # Corresponds to the JSON property `linearBuckets`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleApiDistributionBucketOptionsLinear]
+        attr_accessor :linear_buckets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explicit_buckets = args[:explicit_buckets] if args.key?(:explicit_buckets)
+          @exponential_buckets = args[:exponential_buckets] if args.key?(:exponential_buckets)
+          @linear_buckets = args[:linear_buckets] if args.key?(:linear_buckets)
+        end
+      end
+      
+      # Specifies a set of buckets with arbitrary widths. There are `size(bounds) + 1`
+      # (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 <= i <
+      # N-1): bounds[i] Lower bound (1 <= i < N); bounds[i - 1] The `bounds` field
+      # must contain at least one element. If `bounds` has only one element, then
+      # there are no finite buckets, and that single element is the common boundary of
+      # the overflow and underflow buckets.
+      class GoogleApiDistributionBucketOptionsExplicit
+        include Google::Apis::Core::Hashable
+      
+        # The values must be monotonically increasing.
+        # Corresponds to the JSON property `bounds`
+        # @return [Array<Float>]
+        attr_accessor :bounds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounds = args[:bounds] if args.key?(:bounds)
+        end
+      end
+      
+      # Specifies an exponential sequence of buckets that have a width that is
+      # proportional to the value of the lower bound. Each bucket represents a
+      # constant relative uncertainty on a specific value in the bucket. There are `
+      # num_finite_buckets + 2` (= N) buckets. Bucket `i` has the following boundaries:
+      # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
+      # N): scale * (growth_factor ^ (i - 1)).
+      class GoogleApiDistributionBucketOptionsExponential
+        include Google::Apis::Core::Hashable
+      
+        # Must be greater than 1.
+        # Corresponds to the JSON property `growthFactor`
+        # @return [Float]
+        attr_accessor :growth_factor
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `numFiniteBuckets`
+        # @return [Fixnum]
+        attr_accessor :num_finite_buckets
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `scale`
+        # @return [Float]
+        attr_accessor :scale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @growth_factor = args[:growth_factor] if args.key?(:growth_factor)
+          @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
+          @scale = args[:scale] if args.key?(:scale)
+        end
+      end
+      
+      # Specifies a linear sequence of buckets that all have the same width (except
+      # overflow and underflow). Each bucket represents a constant absolute
+      # uncertainty on the specific value in the bucket. There are `num_finite_buckets
+      # + 2` (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 <=
+      # i < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i
+      # - 1)).
+      class GoogleApiDistributionBucketOptionsLinear
+        include Google::Apis::Core::Hashable
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `numFiniteBuckets`
+        # @return [Fixnum]
+        attr_accessor :num_finite_buckets
+      
+        # Lower bound of the first bucket.
+        # Corresponds to the JSON property `offset`
+        # @return [Float]
+        attr_accessor :offset
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `width`
+        # @return [Float]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
+          @offset = args[:offset] if args.key?(:offset)
+          @width = args[:width] if args.key?(:width)
+        end
+      end
+      
+      # Exemplars are example points that may be used to annotate aggregated
+      # distribution values. They are metadata that gives information about a
+      # particular value added to a Distribution bucket, such as a trace ID that was
+      # active when a value was added. They may contain further information, such as a
+      # example values and timestamps, origin, etc.
+      class GoogleApiDistributionExemplar
+        include Google::Apis::Core::Hashable
+      
+        # Contextual information about the example value. Examples are: Trace: type.
+        # googleapis.com/google.monitoring.v3.SpanContext Literal string: type.
+        # googleapis.com/google.protobuf.StringValue Labels dropped during aggregation:
+        # type.googleapis.com/google.monitoring.v3.DroppedLabels There may be only a
+        # single attachment of any given message type in a single exemplar, and this is
+        # enforced by the system.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :attachments
+      
+        # The observation (sampling) time of the above value.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        # Value of the exemplar point. This value determines to which bucket the
+        # exemplar belongs.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The range of the population values.
+      class GoogleApiDistributionRange
+        include Google::Apis::Core::Hashable
+      
+        # The maximum of the population values.
+        # Corresponds to the JSON property `max`
+        # @return [Float]
+        attr_accessor :max
+      
+        # The minimum of the population values.
+        # Corresponds to the JSON property `min`
+        # @return [Float]
+        attr_accessor :min
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
+        end
+      end
+      
       # Message that represents an arbitrary HTTP body. It should only be used for
       # payload formats that can't be represented as JSON, such as raw binary or an
       # HTML page. This message can be used both in streaming and non-streaming API
@@ -67,6 +381,107 @@ module Google
           @content_type = args[:content_type] if args.key?(:content_type)
           @data = args[:data] if args.key?(:data)
           @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
+      # A specific metric, identified by specifying values for all of the labels of a `
+      # MetricDescriptor`.
+      class GoogleApiMetric
+        include Google::Apis::Core::Hashable
+      
+        # The set of label values that uniquely identify this metric. All labels listed
+        # in the `MetricDescriptor` must be assigned values.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # An existing metric type, see google.api.MetricDescriptor. For example, `custom.
+        # googleapis.com/invoice/paid/amount`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # An object representing a resource that can be used for monitoring, logging,
+      # billing, or other purposes. Examples include virtual machine instances,
+      # databases, and storage devices such as disks. The `type` field identifies a
+      # MonitoredResourceDescriptor object that describes the resource's schema.
+      # Information in the `labels` field identifies the actual resource and its
+      # attributes according to the schema. For example, a particular Compute Engine
+      # VM instance could be represented by the following object, because the
+      # MonitoredResourceDescriptor for `"gce_instance"` has labels `"project_id"`, `"
+      # instance_id"` and `"zone"`: ` "type": "gce_instance", "labels": ` "project_id":
+      # "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
+      class GoogleApiMonitoredResource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Values for all of the labels listed in the associated monitored
+        # resource descriptor. For example, Compute Engine VM instances use the labels `"
+        # project_id"`, `"instance_id"`, and `"zone"`.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The monitored resource type. This field must match the `type` field
+        # of a MonitoredResourceDescriptor object. For example, the type of a Compute
+        # Engine VM instance is `gce_instance`. Some descriptors include the service
+        # name in the type; for example, the type of a Datastream stream is `datastream.
+        # googleapis.com/Stream`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
+      # contain the minimum set of information to uniquely identify a monitored
+      # resource instance. There is some other useful auxiliary metadata. Monitoring
+      # and Logging use an ingestion pipeline to extract metadata for cloud resources
+      # of all types, and store the metadata in this message.
+      class GoogleApiMonitoredResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Values for predefined system metadata labels. System labels are a
+        # kind of metadata extracted by Google, including "machine_image", "vpc", "
+        # subnet_id", "security_group", "name", etc. System label values can be only
+        # strings, Boolean values, or a list of strings. For example: ` "name": "my-test-
+        # instance", "security_group": ["a", "b", "c"], "spot_instance": false `
+        # Corresponds to the JSON property `systemLabels`
+        # @return [Hash<String,Object>]
+        attr_accessor :system_labels
+      
+        # Output only. A map of user-defined metadata labels.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @system_labels = args[:system_labels] if args.key?(:system_labels)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
       
@@ -498,6 +913,11 @@ module Google
         attr_accessor :asynchronous_mode
         alias_method :asynchronous_mode?, :asynchronous_mode
       
+        # Grounding specification.
+        # Corresponds to the JSON property `groundingSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequestGroundingSpec]
+        attr_accessor :grounding_spec
+      
         # Defines a user inputed query.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Query]
@@ -565,6 +985,7 @@ module Google
         def update!(**args)
           @answer_generation_spec = args[:answer_generation_spec] if args.key?(:answer_generation_spec)
           @asynchronous_mode = args[:asynchronous_mode] if args.key?(:asynchronous_mode)
+          @grounding_spec = args[:grounding_spec] if args.key?(:grounding_spec)
           @query = args[:query] if args.key?(:query)
           @query_understanding_spec = args[:query_understanding_spec] if args.key?(:query_understanding_spec)
           @related_questions_spec = args[:related_questions_spec] if args.key?(:related_questions_spec)
@@ -701,6 +1122,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @preamble = args[:preamble] if args.key?(:preamble)
+        end
+      end
+      
+      # Grounding specification.
+      class GoogleCloudDiscoveryengineV1AnswerQueryRequestGroundingSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies whether to include grounding_supports in the answer. The
+        # default value is `false`. When this field is set to `true`, returned answer
+        # will have `grounding_score` and will contain GroundingSupports for each claim.
+        # Corresponds to the JSON property `includeGroundingSupports`
+        # @return [Boolean]
+        attr_accessor :include_grounding_supports
+        alias_method :include_grounding_supports?, :include_grounding_supports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_grounding_supports = args[:include_grounding_supports] if args.key?(:include_grounding_supports)
         end
       end
       
@@ -8767,10 +9210,11 @@ module Google
         # Search for Documents. * `view-item`: Detailed page view of a Document. * `view-
         # item-list`: View of a panel or ordered list of Documents. * `view-home-page`:
         # View of the home page. * `view-category-page`: View of a category page, e.g.
-        # Home > Men > Jeans Retail-related values: * `add-to-cart`: Add an item(s) to
-        # cart, e.g. in Retail online shopping * `purchase`: Purchase an item(s) Media-
-        # related values: * `media-play`: Start/resume watching a video, playing a song,
-        # etc. * `media-complete`: Finished or stopped midway through a video, song, etc.
+        # Home > Men > Jeans * `add-feedback`: Add a user feedback. Retail-related
+        # values: * `add-to-cart`: Add an item(s) to cart, e.g. in Retail online
+        # shopping * `purchase`: Purchase an item(s) Media-related values: * `media-play`
+        # : Start/resume watching a video, playing a song, etc. * `media-complete`:
+        # Finished or stopped midway through a video, song, etc.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
@@ -10002,6 +10446,28 @@ module Google
         end
       end
       
+      # The historical crawl rate timeseries data, used for monitoring.
+      class GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries
+        include Google::Apis::Core::Hashable
+      
+        # A collection of data points that describes the time-varying values of a metric.
+        # A time series is identified by a combination of a fully-specified monitored
+        # resource and a fully-specified metric. This type is used for both listing and
+        # creating time series.
+        # Corresponds to the JSON property `qpsTimeSeries`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleMonitoringV3TimeSeries]
+        attr_accessor :qps_time_series
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qps_time_series = args[:qps_time_series] if args.key?(:qps_time_series)
+        end
+      end
+      
       # Metadata related to the progress of the DataStoreService.CreateDataStore
       # operation. This will be returned by the google.longrunning.Operation.metadata
       # field.
@@ -10072,6 +10538,34 @@ module Google
       
       # Metadata for Create Schema LRO.
       class GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.CreateSitemap
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1alphaCreateSitemapMetadata
         include Google::Apis::Core::Hashable
       
         # Operation create time.
@@ -10425,6 +10919,33 @@ module Google
         end
       end
       
+      # The historical dedicated crawl rate timeseries data, used for monitoring.
+      # Dedicated crawl is used by Vertex AI to crawl the user's website when dedicate
+      # crawl is set.
+      class GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries
+        include Google::Apis::Core::Hashable
+      
+        # The historical crawl rate timeseries data, used for monitoring.
+        # Corresponds to the JSON property `autoRefreshCrawlRate`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries]
+        attr_accessor :auto_refresh_crawl_rate
+      
+        # The historical crawl rate timeseries data, used for monitoring.
+        # Corresponds to the JSON property `userTriggeredCrawlRate`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries]
+        attr_accessor :user_triggered_crawl_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_refresh_crawl_rate = args[:auto_refresh_crawl_rate] if args.key?(:auto_refresh_crawl_rate)
+          @user_triggered_crawl_rate = args[:user_triggered_crawl_rate] if args.key?(:user_triggered_crawl_rate)
+        end
+      end
+      
       # Metadata related to the progress of the DataStoreService.DeleteDataStore
       # operation. This will be returned by the google.longrunning.Operation.metadata
       # field.
@@ -10482,6 +11003,34 @@ module Google
       
       # Metadata for DeleteSchema LRO.
       class GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.DeleteSitemap
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1alphaDeleteSitemapMetadata
         include Google::Apis::Core::Hashable
       
         # Operation create time.
@@ -11360,6 +11909,44 @@ module Google
         end
       end
       
+      # Response message for SiteSearchEngineService.FetchSitemaps method.
+      class GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Sitemaps fetched.
+        # Corresponds to the JSON property `sitemapsMetadata`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata>]
+        attr_accessor :sitemaps_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sitemaps_metadata = args[:sitemaps_metadata] if args.key?(:sitemaps_metadata)
+        end
+      end
+      
+      # Contains a Sitemap and its metadata.
+      class GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A sitemap for the SiteSearchEngine.
+        # Corresponds to the JSON property `sitemap`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSitemap]
+        attr_accessor :sitemap
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sitemap = args[:sitemap] if args.key?(:sitemap)
+        end
+      end
+      
       # Configurations for fields of a schema. For example, configuring a field is
       # indexable, or searchable.
       class GoogleCloudDiscoveryengineV1alphaFieldConfig
@@ -12055,6 +12642,83 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # Response message for CrawlRateManagementService.ObtainCrawlRate method. The
+      # response contains organcic or dedicated crawl rate time series data for
+      # monitoring, depending on whether dedicated crawl rate is set.
+      class GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse
+        include Google::Apis::Core::Hashable
+      
+        # The historical dedicated crawl rate timeseries data, used for monitoring.
+        # Dedicated crawl is used by Vertex AI to crawl the user's website when dedicate
+        # crawl is set.
+        # Corresponds to the JSON property `dedicatedCrawlRateTimeSeries`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries]
+        attr_accessor :dedicated_crawl_rate_time_series
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The historical organic crawl rate timeseries data, used for monitoring.
+        # Organic crawl is auto-determined by Google to crawl the user's website when
+        # dedicate crawl is not set. Crawl rate is the QPS of crawl request Google sends
+        # to the user's website.
+        # Corresponds to the JSON property `organicCrawlRateTimeSeries`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries]
+        attr_accessor :organic_crawl_rate_time_series
+      
+        # Output only. The state of the response.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dedicated_crawl_rate_time_series = args[:dedicated_crawl_rate_time_series] if args.key?(:dedicated_crawl_rate_time_series)
+          @error = args[:error] if args.key?(:error)
+          @organic_crawl_rate_time_series = args[:organic_crawl_rate_time_series] if args.key?(:organic_crawl_rate_time_series)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The historical organic crawl rate timeseries data, used for monitoring.
+      # Organic crawl is auto-determined by Google to crawl the user's website when
+      # dedicate crawl is not set. Crawl rate is the QPS of crawl request Google sends
+      # to the user's website.
+      class GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries
+        include Google::Apis::Core::Hashable
+      
+        # The historical crawl rate timeseries data, used for monitoring.
+        # Corresponds to the JSON property `googleOrganicCrawlRate`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries]
+        attr_accessor :google_organic_crawl_rate
+      
+        # The historical crawl rate timeseries data, used for monitoring.
+        # Corresponds to the JSON property `vertexAiOrganicCrawlRate`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries]
+        attr_accessor :vertex_ai_organic_crawl_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_organic_crawl_rate = args[:google_organic_crawl_rate] if args.key?(:google_organic_crawl_rate)
+          @vertex_ai_organic_crawl_rate = args[:vertex_ai_organic_crawl_rate] if args.key?(:vertex_ai_organic_crawl_rate)
         end
       end
       
@@ -14055,6 +14719,39 @@ module Google
         end
       end
       
+      # A sitemap for the SiteSearchEngine.
+      class GoogleCloudDiscoveryengineV1alphaSitemap
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The sitemap's creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The fully qualified resource name of the sitemap. `projects/*/
+        # locations/*/collections/*/dataStores/*/siteSearchEngine/sitemaps/*` The `
+        # sitemap_id` suffix is system-generated.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Public URI for the sitemap, e.g. `www.example.com/sitemap.xml`.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # A target site for the SiteSearchEngine.
       class GoogleCloudDiscoveryengineV1alphaTargetSite
         include Google::Apis::Core::Hashable
@@ -14936,6 +15633,34 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the SiteSearchEngineService.CreateSitemap
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1betaCreateSitemapMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata related to the progress of the SiteSearchEngineService.
       # CreateTargetSite operation. This will be returned by the google.longrunning.
       # Operation.metadata field.
@@ -15284,6 +16009,34 @@ module Google
       
       # Metadata for DeleteSchema LRO.
       class GoogleCloudDiscoveryengineV1betaDeleteSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the SiteSearchEngineService.DeleteSitemap
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1betaDeleteSitemapMetadata
         include Google::Apis::Core::Hashable
       
         # Operation create time.
@@ -15959,6 +16712,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @sample_query_set = args[:sample_query_set] if args.key?(:sample_query_set)
+        end
+      end
+      
+      # Response message for SiteSearchEngineService.FetchSitemaps method.
+      class GoogleCloudDiscoveryengineV1betaFetchSitemapsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Sitemaps fetched.
+        # Corresponds to the JSON property `sitemapsMetadata`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata>]
+        attr_accessor :sitemaps_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sitemaps_metadata = args[:sitemaps_metadata] if args.key?(:sitemaps_metadata)
+        end
+      end
+      
+      # Contains a Sitemap and its metadata.
+      class GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A sitemap for the SiteSearchEngine.
+        # Corresponds to the JSON property `sitemap`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSitemap]
+        attr_accessor :sitemap
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sitemap = args[:sitemap] if args.key?(:sitemap)
         end
       end
       
@@ -18022,6 +18813,39 @@ module Google
         end
       end
       
+      # A sitemap for the SiteSearchEngine.
+      class GoogleCloudDiscoveryengineV1betaSitemap
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The sitemap's creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The fully qualified resource name of the sitemap. `projects/*/
+        # locations/*/collections/*/dataStores/*/siteSearchEngine/sitemaps/*` The `
+        # sitemap_id` suffix is system-generated.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Public URI for the sitemap, e.g. `www.example.com/sitemap.xml`.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # A target site for the SiteSearchEngine.
       class GoogleCloudDiscoveryengineV1betaTargetSite
         include Google::Apis::Core::Hashable
@@ -18481,6 +19305,214 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # A single data point in a time series.
+      class GoogleMonitoringV3Point
+        include Google::Apis::Core::Hashable
+      
+        # A time interval extending just after a start time through an end time. If the
+        # start time is the same as the end time, then the interval represents a single
+        # point in time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleMonitoringV3TimeInterval]
+        attr_accessor :interval
+      
+        # A single strongly-typed value.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleMonitoringV3TypedValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A time interval extending just after a start time through an end time. If the
+      # start time is the same as the end time, then the interval represents a single
+      # point in time.
+      class GoogleMonitoringV3TimeInterval
+        include Google::Apis::Core::Hashable
+      
+        # Required. The end of the time interval.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. The beginning of the time interval. The default value for the start
+        # time is the end time. The start time must not be later than the end time.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # A collection of data points that describes the time-varying values of a metric.
+      # A time series is identified by a combination of a fully-specified monitored
+      # resource and a fully-specified metric. This type is used for both listing and
+      # creating time series.
+      class GoogleMonitoringV3TimeSeries
+        include Google::Apis::Core::Hashable
+      
+        # Input only. A detailed description of the time series that will be associated
+        # with the google.api.MetricDescriptor for the metric. Once set, this field
+        # cannot be changed through CreateTimeSeries.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
+        # contain the minimum set of information to uniquely identify a monitored
+        # resource instance. There is some other useful auxiliary metadata. Monitoring
+        # and Logging use an ingestion pipeline to extract metadata for cloud resources
+        # of all types, and store the metadata in this message.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleApiMonitoredResourceMetadata]
+        attr_accessor :metadata
+      
+        # A specific metric, identified by specifying values for all of the labels of a `
+        # MetricDescriptor`.
+        # Corresponds to the JSON property `metric`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleApiMetric]
+        attr_accessor :metric
+      
+        # The metric kind of the time series. When listing time series, this metric kind
+        # might be different from the metric kind of the associated metric if this time
+        # series is an alignment or reduction of other time series. When creating a time
+        # series, this field is optional. If present, it must be the same as the metric
+        # kind of the associated metric. If the associated metric's descriptor must be
+        # auto-created, then this field specifies the metric kind of the new descriptor
+        # and must be either `GAUGE` (the default) or `CUMULATIVE`.
+        # Corresponds to the JSON property `metricKind`
+        # @return [String]
+        attr_accessor :metric_kind
+      
+        # The data points of this time series. When listing time series, points are
+        # returned in reverse time order. When creating a time series, this field must
+        # contain exactly one point and the point's type must be the same as the value
+        # type of the associated metric. If the associated metric's descriptor must be
+        # auto-created, then the value type of the descriptor is determined by the point'
+        # s type, which must be `BOOL`, `INT64`, `DOUBLE`, or `DISTRIBUTION`.
+        # Corresponds to the JSON property `points`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleMonitoringV3Point>]
+        attr_accessor :points
+      
+        # An object representing a resource that can be used for monitoring, logging,
+        # billing, or other purposes. Examples include virtual machine instances,
+        # databases, and storage devices such as disks. The `type` field identifies a
+        # MonitoredResourceDescriptor object that describes the resource's schema.
+        # Information in the `labels` field identifies the actual resource and its
+        # attributes according to the schema. For example, a particular Compute Engine
+        # VM instance could be represented by the following object, because the
+        # MonitoredResourceDescriptor for `"gce_instance"` has labels `"project_id"`, `"
+        # instance_id"` and `"zone"`: ` "type": "gce_instance", "labels": ` "project_id":
+        # "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleApiMonitoredResource]
+        attr_accessor :resource
+      
+        # The units in which the metric value is reported. It is only applicable if the `
+        # value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit` defines the
+        # representation of the stored metric values. This field can only be changed
+        # through CreateTimeSeries when it is empty.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        # The value type of the time series. When listing time series, this value type
+        # might be different from the value type of the associated metric if this time
+        # series is an alignment or reduction of other time series. When creating a time
+        # series, this field is optional. If present, it must be the same as the type of
+        # the data in the `points` field.
+        # Corresponds to the JSON property `valueType`
+        # @return [String]
+        attr_accessor :value_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @metric = args[:metric] if args.key?(:metric)
+          @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
+          @points = args[:points] if args.key?(:points)
+          @resource = args[:resource] if args.key?(:resource)
+          @unit = args[:unit] if args.key?(:unit)
+          @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # A single strongly-typed value.
+      class GoogleMonitoringV3TypedValue
+        include Google::Apis::Core::Hashable
+      
+        # A Boolean value: `true` or `false`.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # `Distribution` contains summary statistics for a population of values. It
+        # optionally contains a histogram representing the distribution of those values
+        # across a set of buckets. The summary statistics are the count, mean, sum of
+        # the squared deviation from the mean, the minimum, and the maximum of the set
+        # of population of values. The histogram is based on a sequence of buckets and
+        # gives a count of values that fall into each bucket. The boundaries of the
+        # buckets are given either explicitly or by formulas for buckets of fixed or
+        # exponentially increasing widths. Although it is not forbidden, it is generally
+        # a bad idea to include non-finite values (infinities or NaNs) in the population
+        # of values, as this will render the `mean` and `sum_of_squared_deviation`
+        # fields meaningless.
+        # Corresponds to the JSON property `distributionValue`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleApiDistribution]
+        attr_accessor :distribution_value
+      
+        # A 64-bit double-precision floating-point number. Its magnitude is
+        # approximately ±10±300 and it has 16 significant digits of precision.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # A 64-bit integer. Its range is approximately ±9.2x1018.
+        # Corresponds to the JSON property `int64Value`
+        # @return [Fixnum]
+        attr_accessor :int64_value
+      
+        # A variable-length string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @distribution_value = args[:distribution_value] if args.key?(:distribution_value)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
       
