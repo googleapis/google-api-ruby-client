@@ -394,6 +394,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleApiServiceusageV2betaAnalysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaAnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaAnalyzeConsumerPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaAnalyzeConsumerPolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaConsumerPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaEnableRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaImpact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Http
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1380,6 +1428,75 @@ module Google
       end
       
       class GoogleApiServiceusageV2alphaUpdateConsumerPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaAnalysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis, as: 'analysis', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaAnalysisResult, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaAnalysisResult::Representation
+      
+          property :analysis_type, as: 'analysisType'
+          property :display_name, as: 'displayName'
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blockers, as: 'blockers', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaImpact, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaImpact::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaImpact, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaImpact::Representation
+      
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaAnalyzeConsumerPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaAnalyzeConsumerPolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :analysis, as: 'analysis', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaAnalysis, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaAnalysis::Representation
+      
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaConsumerPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          collection :enable_rules, as: 'enableRules', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaEnableRule, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaEnableRule::Representation
+      
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaEnableRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :services, as: 'services'
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaImpact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          property :impact_type, as: 'impactType'
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

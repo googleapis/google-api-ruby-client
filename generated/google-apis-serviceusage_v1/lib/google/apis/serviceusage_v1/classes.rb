@@ -2600,6 +2600,223 @@ module Google
         end
       end
       
+      # A message to group the analysis information.
+      class GoogleApiServiceusageV2betaAnalysis
+        include Google::Apis::Core::Hashable
+      
+        # An analysis result including blockers and warnings.
+        # Corresponds to the JSON property `analysis`
+        # @return [Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaAnalysisResult]
+        attr_accessor :analysis
+      
+        # Output only. The type of analysis.
+        # Corresponds to the JSON property `analysisType`
+        # @return [String]
+        attr_accessor :analysis_type
+      
+        # Output only. The user friendly display name of the analysis type. E.g. service
+        # dependency analysis, service resource usage analysis, etc.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The names of the service that has analysis result of warnings or blockers.
+        # Example: `services/storage.googleapis.com`.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis = args[:analysis] if args.key?(:analysis)
+          @analysis_type = args[:analysis_type] if args.key?(:analysis_type)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # An analysis result including blockers and warnings.
+      class GoogleApiServiceusageV2betaAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # Blocking information that would prevent the policy changes at runtime.
+        # Corresponds to the JSON property `blockers`
+        # @return [Array<Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaImpact>]
+        attr_accessor :blockers
+      
+        # Warning information indicating that the policy changes might be unsafe, but
+        # will not block the changes at runtime.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaImpact>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blockers = args[:blockers] if args.key?(:blockers)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Metadata for the `AnalyzeConsumerPolicy` method.
+      class GoogleApiServiceusageV2betaAnalyzeConsumerPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response of analyzing a consumer policy update.
+      class GoogleApiServiceusageV2betaAnalyzeConsumerPolicyResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of analyses returned from performing the intended policy update
+        # analysis. The analysis is grouped by service name and different analysis types.
+        # The empty analysis list means that the consumer policy can be updated without
+        # any warnings or blockers.
+        # Corresponds to the JSON property `analysis`
+        # @return [Array<Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaAnalysis>]
+        attr_accessor :analysis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis = args[:analysis] if args.key?(:analysis)
+        end
+      end
+      
+      # Consumer Policy is a set of rules that define what services or service groups
+      # can be used for a cloud resource hierarchy.
+      class GoogleApiServiceusageV2betaConsumerPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Annotations is an unstructured key-value map stored with a policy
+        # that may be set by external tools to store and retrieve arbitrary metadata.
+        # They are not queryable and should be preserved when modifying objects. [AIP-
+        # 128](https://google.aip.dev/128#annotations)
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. The time the policy was created. For singleton policies, this is
+        # the first touch of the policy.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Enable rules define usable services, groups, and categories. There can
+        # currently be at most one `EnableRule`. This restriction will be lifted in
+        # later releases.
+        # Corresponds to the JSON property `enableRules`
+        # @return [Array<Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaEnableRule>]
+        attr_accessor :enable_rules
+      
+        # Output only. An opaque tag indicating the current version of the policy, used
+        # for concurrency control.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The resource name of the policy. Only the `default` policy is
+        # supported: `projects/12345/consumerPolicies/default`, `folders/12345/
+        # consumerPolicies/default`, `organizations/12345/consumerPolicies/default`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time the policy was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @enable_rules = args[:enable_rules] if args.key?(:enable_rules)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The consumer policy rule that defines enabled services, groups, and categories.
+      class GoogleApiServiceusageV2betaEnableRule
+        include Google::Apis::Core::Hashable
+      
+        # The names of the services that are enabled. Example: `services/storage.
+        # googleapis.com`.
+        # Corresponds to the JSON property `services`
+        # @return [Array<String>]
+        attr_accessor :services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @services = args[:services] if args.key?(:services)
+        end
+      end
+      
+      # A message to group impacts of updating a policy.
+      class GoogleApiServiceusageV2betaImpact
+        include Google::Apis::Core::Hashable
+      
+        # Output only. User friendly impact detail in a free form message.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # Output only. The type of impact.
+        # Corresponds to the JSON property `impactType`
+        # @return [String]
+        attr_accessor :impact_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
+          @impact_type = args[:impact_type] if args.key?(:impact_type)
+        end
+      end
+      
+      # Metadata for the `UpdateConsumerPolicy` method.
+      class GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Defines the HTTP configuration for an API service. It contains a list of
       # HttpRule, each specifying the mapping of an RPC method to one or more HTTP
       # REST API methods.
