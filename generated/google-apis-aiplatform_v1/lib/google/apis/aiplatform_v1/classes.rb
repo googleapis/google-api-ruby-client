@@ -440,6 +440,17 @@ module Google
       class CloudAiLargeModelsVisionVideo
         include Google::Apis::Core::Hashable
       
+        # Base 64 encoded video bytes.
+        # Corresponds to the JSON property `encodedVideo`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encoded_video
+      
+        # Video encoding, for example "video/mp4".
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
         # Path to another storage (typically Google Cloud Storage).
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -457,6 +468,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encoded_video = args[:encoded_video] if args.key?(:encoded_video)
+          @encoding = args[:encoding] if args.key?(:encoding)
           @uri = args[:uri] if args.key?(:uri)
           @video = args[:video] if args.key?(:video)
         end
@@ -2373,6 +2386,33 @@ module Google
         end
       end
       
+      # Config of GenAI caching features. This is a singleton resource.
+      class GoogleCloudAiplatformV1CacheConfig
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, disables GenAI caching. Otherwise caching is enabled.
+        # Corresponds to the JSON property `disableCache`
+        # @return [Boolean]
+        attr_accessor :disable_cache
+        alias_method :disable_cache?, :disable_cache
+      
+        # Identifier. Name of the cache config. Format: - `projects/`project`/
+        # cacheConfig`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_cache = args[:disable_cache] if args.key?(:disable_cache)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Request message for JobService.CancelBatchPredictionJob.
       class GoogleCloudAiplatformV1CancelBatchPredictionJobRequest
         include Google::Apis::Core::Hashable
@@ -2687,6 +2727,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @citations = args[:citations] if args.key?(:citations)
+        end
+      end
+      
+      # Configurations (e.g. inference timeout) that are applied on your endpoints.
+      class GoogleCloudAiplatformV1ClientConnectionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Customizable online prediction request timeout.
+        # Corresponds to the JSON property `inferenceTimeout`
+        # @return [String]
+        attr_accessor :inference_timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inference_timeout = args[:inference_timeout] if args.key?(:inference_timeout)
         end
       end
       
@@ -4105,11 +4164,6 @@ module Google
         # @return [String]
         attr_accessor :protected_artifact_location_id
       
-        # Configuration for PSC-I.
-        # Corresponds to the JSON property `pscInterfaceConfig`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig]
-        attr_accessor :psc_interface_config
-      
         # Optional. A list of names for the reserved ip ranges under the VPC network
         # that can be used for this job. If set, we will deploy the job within the
         # provided ip ranges. Otherwise, the job will be deployed to any ip ranges under
@@ -4160,7 +4214,6 @@ module Google
           @network = args[:network] if args.key?(:network)
           @persistent_resource_id = args[:persistent_resource_id] if args.key?(:persistent_resource_id)
           @protected_artifact_location_id = args[:protected_artifact_location_id] if args.key?(:protected_artifact_location_id)
-          @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
           @reserved_ip_ranges = args[:reserved_ip_ranges] if args.key?(:reserved_ip_ranges)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -5410,6 +5463,12 @@ module Google
         # @return [String]
         attr_accessor :shared_resources
       
+        # System labels to apply to Model Garden deployments. System labels are managed
+        # by Google for internal use only.
+        # Corresponds to the JSON property `systemLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :system_labels
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5430,6 +5489,7 @@ module Google
           @private_endpoints = args[:private_endpoints] if args.key?(:private_endpoints)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shared_resources = args[:shared_resources] if args.key?(:shared_resources)
+          @system_labels = args[:system_labels] if args.key?(:system_labels)
         end
       end
       
@@ -5761,6 +5821,11 @@ module Google
       class GoogleCloudAiplatformV1Endpoint
         include Google::Apis::Core::Hashable
       
+        # Configurations (e.g. inference timeout) that are applied on your endpoints.
+        # Corresponds to the JSON property `clientConnectionConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ClientConnectionConfig]
+        attr_accessor :client_connection_config
+      
         # Output only. Timestamp when this Endpoint was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -5897,6 +5962,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_connection_config = args[:client_connection_config] if args.key?(:client_connection_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dedicated_endpoint_dns = args[:dedicated_endpoint_dns] if args.key?(:dedicated_endpoint_dns)
           @dedicated_endpoint_enabled = args[:dedicated_endpoint_enabled] if args.key?(:dedicated_endpoint_enabled)
@@ -8949,6 +9015,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configuration for FeatureViews created in Optimized FeatureOnlineStore.
+        # Corresponds to the JSON property `optimizedConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewOptimizedConfig]
+        attr_accessor :optimized_config
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -8989,6 +9060,7 @@ module Google
           @index_config = args[:index_config] if args.key?(:index_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @optimized_config = args[:optimized_config] if args.key?(:optimized_config)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @sync_config = args[:sync_config] if args.key?(:sync_config)
@@ -9210,6 +9282,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @leaf_node_embedding_count = args[:leaf_node_embedding_count] if args.key?(:leaf_node_embedding_count)
+        end
+      end
+      
+      # Configuration for FeatureViews created in Optimized FeatureOnlineStore.
+      class GoogleCloudAiplatformV1FeatureViewOptimizedConfig
+        include Google::Apis::Core::Hashable
+      
+        # A description of resources that to large degree are decided by Vertex AI, and
+        # require only a modest additional configuration. Each Model supporting these
+        # resources documents its specific guidelines.
+        # Corresponds to the JSON property `automaticResources`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AutomaticResources]
+        attr_accessor :automatic_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automatic_resources = args[:automatic_resources] if args.key?(:automatic_resources)
         end
       end
       
@@ -9788,6 +9881,25 @@ module Google
         end
       end
       
+      # Request message for PredictionService.FetchPredictOperation.
+      class GoogleCloudAiplatformV1FetchPredictOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The server-assigned name for the operation.
+        # Corresponds to the JSON property `operationName`
+        # @return [String]
+        attr_accessor :operation_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_name = args[:operation_name] if args.key?(:operation_name)
+        end
+      end
+      
       # URI based data.
       class GoogleCloudAiplatformV1FileData
         include Google::Apis::Core::Hashable
@@ -10345,9 +10457,9 @@ module Google
       
       # Structured representation of a function declaration as defined by the [OpenAPI
       # 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this
-      # declaration are the function name and parameters. This FunctionDeclaration is
-      # a representation of a block of code that can be used as a `Tool` by the model
-      # and executed by the client.
+      # declaration are the function name, description, parameters and response type.
+      # This FunctionDeclaration is a representation of a block of code that can be
+      # used as a `Tool` by the model and executed by the client.
       class GoogleCloudAiplatformV1FunctionDeclaration
         include Google::Apis::Core::Hashable
       
@@ -11015,6 +11127,11 @@ module Google
       class GoogleCloudAiplatformV1GroundingChunkRetrievedContext
         include Google::Apis::Core::Hashable
       
+        # Text of the attribution.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
         # Title of the attribution.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -11031,6 +11148,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @text = args[:text] if args.key?(:text)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -17264,6 +17382,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Compute configuration to use for an execution job.
+        # Corresponds to the JSON property `customEnvironmentSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec]
+        attr_accessor :custom_environment_spec
+      
         # The Dataform Repository containing the input notebook.
         # Corresponds to the JSON property `dataformRepositorySource`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobDataformRepositorySource]
@@ -17366,6 +17489,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_environment_spec = args[:custom_environment_spec] if args.key?(:custom_environment_spec)
           @dataform_repository_source = args[:dataform_repository_source] if args.key?(:dataform_repository_source)
           @direct_notebook_source = args[:direct_notebook_source] if args.key?(:direct_notebook_source)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -17382,6 +17506,37 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @status = args[:status] if args.key?(:status)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Compute configuration to use for an execution job.
+      class GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification of a single machine.
+        # Corresponds to the JSON property `machineSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MachineSpec]
+        attr_accessor :machine_spec
+      
+        # Network spec.
+        # Corresponds to the JSON property `networkSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NetworkSpec]
+        attr_accessor :network_spec
+      
+        # Represents the spec of persistent disk options.
+        # Corresponds to the JSON property `persistentDiskSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PersistentDiskSpec]
+        attr_accessor :persistent_disk_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_spec = args[:machine_spec] if args.key?(:machine_spec)
+          @network_spec = args[:network_spec] if args.key?(:network_spec)
+          @persistent_disk_spec = args[:persistent_disk_spec] if args.key?(:persistent_disk_spec)
         end
       end
       
@@ -19127,6 +19282,38 @@ module Google
         end
       end
       
+      # Request message for PredictionService.PredictLongRunning.
+      class GoogleCloudAiplatformV1PredictLongRunningRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The instances that are the input to the prediction call. A
+        # DeployedModel may have an upper limit on the number of instances it supports
+        # per request, and when it is exceeded the prediction call errors in case of
+        # AutoML Models, or, in case of customer created Models, the behaviour is as
+        # documented by that Model. The schema of any single instance may be specified
+        # via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Object>]
+        attr_accessor :instances
+      
+        # Optional. The parameters that govern the prediction. The schema of the
+        # parameters may be specified via Endpoint's DeployedModels' Model's
+        # PredictSchemata's parameters_schema_uri.
+        # Corresponds to the JSON property `parameters`
+        # @return [Object]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
       # Request message for PredictionService.Predict.
       class GoogleCloudAiplatformV1PredictRequest
         include Google::Apis::Core::Hashable
@@ -19498,19 +19685,6 @@ module Google
         end
       end
       
-      # Configuration for PSC-I.
-      class GoogleCloudAiplatformV1PscInterfaceConfig
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # A Model Garden Publisher Model.
       class GoogleCloudAiplatformV1PublisherModel
         include Google::Apis::Core::Hashable
@@ -19781,8 +19955,8 @@ module Google
       class GoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata
         include Google::Apis::Core::Hashable
       
-        # Optional. Labels for the deployment. For managing deployment config like
-        # verifying, source of deployment config, etc.
+        # Optional. Labels for the deployment config. For managing deployment config
+        # like verifying, source of deployment config, etc.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -25265,6 +25439,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt]
         attr_accessor :structured_prompt
       
+        # Prompt variation for Translation use case.
+        # Corresponds to the JSON property `translationPrompt`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationPrompt]
+        attr_accessor :translation_prompt
+      
         def initialize(**args)
            update!(**args)
         end
@@ -25275,6 +25454,7 @@ module Google
           @executions = args[:executions] if args.key?(:executions)
           @multimodal_prompt = args[:multimodal_prompt] if args.key?(:multimodal_prompt)
           @structured_prompt = args[:structured_prompt] if args.key?(:structured_prompt)
+          @translation_prompt = args[:translation_prompt] if args.key?(:translation_prompt)
         end
       end
       
@@ -25420,6 +25600,50 @@ module Google
         end
       end
       
+      # A pair of sentences used as reference in source and target languages.
+      class GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePair
+        include Google::Apis::Core::Hashable
+      
+        # Source sentence in the sentence pair.
+        # Corresponds to the JSON property `sourceSentence`
+        # @return [String]
+        attr_accessor :source_sentence
+      
+        # Target sentence in the sentence pair.
+        # Corresponds to the JSON property `targetSentence`
+        # @return [String]
+        attr_accessor :target_sentence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_sentence = args[:source_sentence] if args.key?(:source_sentence)
+          @target_sentence = args[:target_sentence] if args.key?(:target_sentence)
+        end
+      end
+      
+      # A list of reference sentence pairs.
+      class GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList
+        include Google::Apis::Core::Hashable
+      
+        # Reference sentence pairs.
+        # Corresponds to the JSON property `referenceSentencePairs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePair>]
+        attr_accessor :reference_sentence_pairs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference_sentence_pairs = args[:reference_sentence_pairs] if args.key?(:reference_sentence_pairs)
+        end
+      end
+      
       # Prompt variation that stores preambles in separate fields.
       class GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt
         include Google::Apis::Core::Hashable
@@ -25437,6 +25661,16 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList>]
         attr_accessor :examples
       
+        # Preamble: For infill prompt, the prefix before expected model response.
+        # Corresponds to the JSON property `infillPrefix`
+        # @return [String]
+        attr_accessor :infill_prefix
+      
+        # Preamble: For infill prompt, the suffix after expected model response.
+        # Corresponds to the JSON property `infillSuffix`
+        # @return [String]
+        attr_accessor :infill_suffix
+      
         # Preamble: The input prefixes before each example input.
         # Corresponds to the JSON property `inputPrefixes`
         # @return [Array<String>]
@@ -25446,6 +25680,12 @@ module Google
         # Corresponds to the JSON property `outputPrefixes`
         # @return [Array<String>]
         attr_accessor :output_prefixes
+      
+        # Preamble: The input test data for prediction. Each PartList in this field
+        # represents one text-only input set for a single model request.
+        # Corresponds to the JSON property `predictionInputs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList>]
+        attr_accessor :prediction_inputs
       
         # The prompt message that aligns with the prompt message in google.cloud.
         # aiplatform.master.GenerateContentRequest.
@@ -25461,9 +25701,175 @@ module Google
         def update!(**args)
           @context = args[:context] if args.key?(:context)
           @examples = args[:examples] if args.key?(:examples)
+          @infill_prefix = args[:infill_prefix] if args.key?(:infill_prefix)
+          @infill_suffix = args[:infill_suffix] if args.key?(:infill_suffix)
           @input_prefixes = args[:input_prefixes] if args.key?(:input_prefixes)
           @output_prefixes = args[:output_prefixes] if args.key?(:output_prefixes)
+          @prediction_inputs = args[:prediction_inputs] if args.key?(:prediction_inputs)
           @prompt_message = args[:prompt_message] if args.key?(:prompt_message)
+        end
+      end
+      
+      # The translation example that contains reference sentences from various sources.
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationExample
+        include Google::Apis::Core::Hashable
+      
+        # The reference sentences from inline text.
+        # Corresponds to the JSON property `referenceSentencePairLists`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList>]
+        attr_accessor :reference_sentence_pair_lists
+      
+        # The reference sentences from file.
+        # Corresponds to the JSON property `referenceSentencesFileInputs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationSentenceFileInput>]
+        attr_accessor :reference_sentences_file_inputs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reference_sentence_pair_lists = args[:reference_sentence_pair_lists] if args.key?(:reference_sentence_pair_lists)
+          @reference_sentences_file_inputs = args[:reference_sentences_file_inputs] if args.key?(:reference_sentences_file_inputs)
+        end
+      end
+      
+      # 
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationFileInputSource
+        include Google::Apis::Core::Hashable
+      
+        # The file's contents.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The file's display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The file's mime type.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # 
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationGcsInputSource
+        include Google::Apis::Core::Hashable
+      
+        # Source data URI. For example, `gs://my_bucket/my_object`.
+        # Corresponds to the JSON property `inputUri`
+        # @return [String]
+        attr_accessor :input_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_uri = args[:input_uri] if args.key?(:input_uri)
+        end
+      end
+      
+      # Optional settings for translation prompt.
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationOption
+        include Google::Apis::Core::Hashable
+      
+        # How many shots to use.
+        # Corresponds to the JSON property `numberOfShots`
+        # @return [Fixnum]
+        attr_accessor :number_of_shots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @number_of_shots = args[:number_of_shots] if args.key?(:number_of_shots)
+        end
+      end
+      
+      # Prompt variation for Translation use case.
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationPrompt
+        include Google::Apis::Core::Hashable
+      
+        # The translation example that contains reference sentences from various sources.
+        # Corresponds to the JSON property `example`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationExample]
+        attr_accessor :example
+      
+        # Optional settings for translation prompt.
+        # Corresponds to the JSON property `option`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationOption]
+        attr_accessor :option
+      
+        # The prompt message that aligns with the prompt message in google.cloud.
+        # aiplatform.master.GenerateContentRequest.
+        # Corresponds to the JSON property `promptMessage`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage]
+        attr_accessor :prompt_message
+      
+        # The source language code.
+        # Corresponds to the JSON property `sourceLanguageCode`
+        # @return [String]
+        attr_accessor :source_language_code
+      
+        # The target language code.
+        # Corresponds to the JSON property `targetLanguageCode`
+        # @return [String]
+        attr_accessor :target_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @example = args[:example] if args.key?(:example)
+          @option = args[:option] if args.key?(:option)
+          @prompt_message = args[:prompt_message] if args.key?(:prompt_message)
+          @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
+          @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
+        end
+      end
+      
+      # 
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationSentenceFileInput
+        include Google::Apis::Core::Hashable
+      
+        # Inlined file source.
+        # Corresponds to the JSON property `fileInputSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationFileInputSource]
+        attr_accessor :file_input_source
+      
+        # Cloud Storage file source.
+        # Corresponds to the JSON property `gcsInputSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationGcsInputSource]
+        attr_accessor :gcs_input_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_input_source = args[:file_input_source] if args.key?(:file_input_source)
+          @gcs_input_source = args[:gcs_input_source] if args.key?(:gcs_input_source)
         end
       end
       
@@ -29542,6 +29948,19 @@ module Google
         end
       end
       
+      # Request message for NotebookService.StopNotebookRuntime.
+      class GoogleCloudAiplatformV1StopNotebookRuntimeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for VizierService.StopTrial.
       class GoogleCloudAiplatformV1StopTrialRequest
         include Google::Apis::Core::Hashable
@@ -32868,7 +33287,7 @@ module Google
       class GoogleCloudAiplatformV1TuningJob
         include Google::Apis::Core::Hashable
       
-        # The base model that is being tuned, e.g., "gemini-1.0-pro-002".
+        # The base model that is being tuned, e.g., "gemini-1.0-pro-002". .
         # Corresponds to the JSON property `baseModel`
         # @return [String]
         attr_accessor :base_model

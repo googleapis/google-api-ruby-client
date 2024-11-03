@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1CacheConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1CancelBatchPredictionJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,6 +527,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1CitationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ClientConnectionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1498,6 +1510,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1FeatureViewOptimizedConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1FeatureViewSync
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1583,6 +1601,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1FetchPredictOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2818,6 +2842,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1NotebookExecutionJobDataformRepositorySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3070,6 +3100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1PredictLongRunningRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1PredictRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3125,12 +3161,6 @@ module Google
       end
       
       class GoogleCloudAiplatformV1PscAutomatedEndpoints
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1PscInterfaceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4144,7 +4174,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationExample
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationFileInputSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationGcsInputSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationPrompt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationSentenceFileInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4829,6 +4907,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1StartNotebookRuntimeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1StopNotebookRuntimeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5875,6 +5959,8 @@ module Google
       class CloudAiLargeModelsVisionVideo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoded_video, :base64 => true, as: 'encodedVideo'
+          property :encoding, as: 'encoding'
           property :uri, as: 'uri'
           property :video, :base64 => true, as: 'video'
         end
@@ -6428,6 +6514,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1CacheConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_cache, as: 'disableCache'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudAiplatformV1CancelBatchPredictionJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6537,6 +6631,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :citations, as: 'citations', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Citation, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Citation::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ClientConnectionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inference_timeout, as: 'inferenceTimeout'
         end
       end
       
@@ -6973,8 +7074,6 @@ module Google
           property :network, as: 'network'
           property :persistent_resource_id, as: 'persistentResourceId'
           property :protected_artifact_location_id, as: 'protectedArtifactLocationId'
-          property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PscInterfaceConfig::Representation
-      
           collection :reserved_ip_ranges, as: 'reservedIpRanges'
           property :scheduling, as: 'scheduling', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Scheduling, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Scheduling::Representation
       
@@ -7291,6 +7390,7 @@ module Google
       
           property :service_account, as: 'serviceAccount'
           property :shared_resources, as: 'sharedResources'
+          hash :system_labels, as: 'systemLabels'
         end
       end
       
@@ -7394,6 +7494,8 @@ module Google
       class GoogleCloudAiplatformV1Endpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_connection_config, as: 'clientConnectionConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ClientConnectionConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ClientConnectionConfig::Representation
+      
           property :create_time, as: 'createTime'
           property :dedicated_endpoint_dns, as: 'dedicatedEndpointDns'
           property :dedicated_endpoint_enabled, as: 'dedicatedEndpointEnabled'
@@ -8241,6 +8343,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :optimized_config, as: 'optimizedConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewOptimizedConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewOptimizedConfig::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :sync_config, as: 'syncConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureViewSyncConfig::Representation
@@ -8317,6 +8421,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :leaf_node_embedding_count, :numeric_string => true, as: 'leafNodeEmbeddingCount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FeatureViewOptimizedConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic_resources, as: 'automaticResources', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AutomaticResources, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AutomaticResources::Representation
+      
         end
       end
       
@@ -8470,6 +8582,13 @@ module Google
           property :name, as: 'name'
           property :value, as: 'value', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FeatureValue::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1FetchPredictOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_name, as: 'operationName'
         end
       end
       
@@ -8844,6 +8963,7 @@ module Google
       class GoogleCloudAiplatformV1GroundingChunkRetrievedContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
           property :title, as: 'title'
           property :uri, as: 'uri'
         end
@@ -10584,6 +10704,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom_environment_spec, as: 'customEnvironmentSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec::Representation
+      
           property :dataform_repository_source, as: 'dataformRepositorySource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobDataformRepositorySource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobDataformRepositorySource::Representation
       
           property :direct_notebook_source, as: 'directNotebookSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobDirectNotebookSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookExecutionJobDirectNotebookSource::Representation
@@ -10605,6 +10727,18 @@ module Google
           property :status, as: 'status', class: Google::Apis::AiplatformV1::GoogleRpcStatus, decorator: Google::Apis::AiplatformV1::GoogleRpcStatus::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_spec, as: 'machineSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MachineSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MachineSpec::Representation
+      
+          property :network_spec, as: 'networkSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NetworkSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NetworkSpec::Representation
+      
+          property :persistent_disk_spec, as: 'persistentDiskSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PersistentDiskSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PersistentDiskSpec::Representation
+      
         end
       end
       
@@ -11074,6 +11208,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1PredictLongRunningRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+          property :parameters, as: 'parameters'
+        end
+      end
+      
       class GoogleCloudAiplatformV1PredictRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11163,12 +11305,6 @@ module Google
           property :match_address, as: 'matchAddress'
           property :network, as: 'network'
           property :project_id, as: 'projectId'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1PscInterfaceConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -12789,6 +12925,8 @@ module Google
       
           property :structured_prompt, as: 'structuredPrompt', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt::Representation
       
+          property :translation_prompt, as: 'translationPrompt', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationPrompt, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationPrompt::Representation
+      
         end
       end
       
@@ -12843,6 +12981,22 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_sentence, as: 'sourceSentence'
+          property :target_sentence, as: 'targetSentence'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reference_sentence_pairs, as: 'referenceSentencePairs', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePair, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePair::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12850,9 +13004,70 @@ module Google
       
           collection :examples, as: 'examples', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList::Representation
       
+          property :infill_prefix, as: 'infillPrefix'
+          property :infill_suffix, as: 'infillSuffix'
           collection :input_prefixes, as: 'inputPrefixes'
           collection :output_prefixes, as: 'outputPrefixes'
+          collection :prediction_inputs, as: 'predictionInputs', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList::Representation
+      
           property :prompt_message, as: 'promptMessage', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationExample
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reference_sentence_pair_lists, as: 'referenceSentencePairLists', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList::Representation
+      
+          collection :reference_sentences_file_inputs, as: 'referenceSentencesFileInputs', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationSentenceFileInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationSentenceFileInput::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationFileInputSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :display_name, as: 'displayName'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationGcsInputSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_uri, as: 'inputUri'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :number_of_shots, as: 'numberOfShots'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationPrompt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :example, as: 'example', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationExample, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationExample::Representation
+      
+          property :option, as: 'option', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationOption, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationOption::Representation
+      
+          property :prompt_message, as: 'promptMessage', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage::Representation
+      
+          property :source_language_code, as: 'sourceLanguageCode'
+          property :target_language_code, as: 'targetLanguageCode'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecTranslationSentenceFileInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_input_source, as: 'fileInputSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationFileInputSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationFileInputSource::Representation
+      
+          property :gcs_input_source, as: 'gcsInputSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationGcsInputSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecTranslationGcsInputSource::Representation
       
         end
       end
@@ -13948,6 +14163,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1StartNotebookRuntimeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1StopNotebookRuntimeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
