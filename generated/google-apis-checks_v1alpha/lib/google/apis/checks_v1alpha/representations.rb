@@ -46,6 +46,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChecksAisafetyV1alphaClassifyContentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksAisafetyV1alphaClassifyContentRequestContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksAisafetyV1alphaClassifyContentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksAisafetyV1alphaTextInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChecksReportV1alphaAnalyzeUploadRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -324,6 +366,67 @@ module Google
           collection :apps, as: 'apps', class: Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaApp, decorator: Google::Apis::ChecksV1alpha::GoogleChecksAccountV1alphaApp::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleChecksAisafetyV1alphaClassifyContentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :classifier_version, as: 'classifierVersion'
+          property :context, as: 'context', class: Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentRequestContext, decorator: Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentRequestContext::Representation
+      
+          property :input, as: 'input', class: Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent, decorator: Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent::Representation
+      
+          collection :policies, as: 'policies', class: Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig, decorator: Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig::Representation
+      
+        end
+      end
+      
+      class GoogleChecksAisafetyV1alphaClassifyContentRequestContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt, as: 'prompt'
+        end
+      end
+      
+      class GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text_input, as: 'textInput', class: Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaTextInput, decorator: Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaTextInput::Representation
+      
+        end
+      end
+      
+      class GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_type, as: 'policyType'
+          property :threshold, as: 'threshold'
+        end
+      end
+      
+      class GoogleChecksAisafetyV1alphaClassifyContentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :policy_results, as: 'policyResults', class: Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult, decorator: Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult::Representation
+      
+        end
+      end
+      
+      class GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_type, as: 'policyType'
+          property :score, as: 'score'
+          property :violation_result, as: 'violationResult'
+        end
+      end
+      
+      class GoogleChecksAisafetyV1alphaTextInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :language_code, as: 'languageCode'
         end
       end
       
