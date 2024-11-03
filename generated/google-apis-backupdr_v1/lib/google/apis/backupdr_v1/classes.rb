@@ -2758,8 +2758,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. VPC networks to which the ManagementServer instance is connected.
-        # For this version, only a single network is supported.
+        # Optional. VPC networks to which the ManagementServer instance is connected.
+        # For this version, only a single network is supported. This field is optional
+        # if MS is created without PSA
         # Corresponds to the JSON property `networks`
         # @return [Array<Google::Apis::BackupdrV1::NetworkConfig>]
         attr_accessor :networks
