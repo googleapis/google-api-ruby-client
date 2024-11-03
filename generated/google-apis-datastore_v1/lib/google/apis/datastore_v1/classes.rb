@@ -94,7 +94,9 @@ module Google
         # @return [Array<Google::Apis::DatastoreV1::Aggregation>]
         attr_accessor :aggregations
       
-        # A query for entities.
+        # A query for entities. The query stages are executed in the following order: 1.
+        # kind 2. filter 3. projection 4. order + start_cursor + end_cursor 5. offset 6.
+        # limit 7. find_nearest
         # Corresponds to the JSON property `nestedQuery`
         # @return [Google::Apis::DatastoreV1::Query]
         attr_accessor :nested_query
@@ -651,6 +653,66 @@ module Google
         def update!(**args)
           @composite_filter = args[:composite_filter] if args.key?(:composite_filter)
           @property_filter = args[:property_filter] if args.key?(:property_filter)
+        end
+      end
+      
+      # Nearest Neighbors search config. The ordering provided by FindNearest
+      # supersedes the order_by stage. If multiple documents have the same vector
+      # distance, the returned document order is not guaranteed to be stable between
+      # queries.
+      class FindNearest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Distance Measure to use, required.
+        # Corresponds to the JSON property `distanceMeasure`
+        # @return [String]
+        attr_accessor :distance_measure
+      
+        # Optional. Optional name of the field to output the result of the vector
+        # distance calculation. Must conform to entity property limitations.
+        # Corresponds to the JSON property `distanceResultProperty`
+        # @return [String]
+        attr_accessor :distance_result_property
+      
+        # Optional. Option to specify a threshold for which no less similar documents
+        # will be returned. The behavior of the specified `distance_measure` will affect
+        # the meaning of the distance threshold. Since DOT_PRODUCT distances increase
+        # when the vectors are more similar, the comparison is inverted. * For EUCLIDEAN,
+        # COSINE: WHERE distance <= distance_threshold * For DOT_PRODUCT: WHERE
+        # distance >= distance_threshold
+        # Corresponds to the JSON property `distanceThreshold`
+        # @return [Float]
+        attr_accessor :distance_threshold
+      
+        # Required. The number of nearest neighbors to return. Must be a positive
+        # integer of no more than 100.
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        # A message that can hold any of the supported value types and associated
+        # metadata.
+        # Corresponds to the JSON property `queryVector`
+        # @return [Google::Apis::DatastoreV1::Value]
+        attr_accessor :query_vector
+      
+        # A reference to a property relative to the kind expressions.
+        # Corresponds to the JSON property `vectorProperty`
+        # @return [Google::Apis::DatastoreV1::PropertyReference]
+        attr_accessor :vector_property
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distance_measure = args[:distance_measure] if args.key?(:distance_measure)
+          @distance_result_property = args[:distance_result_property] if args.key?(:distance_result_property)
+          @distance_threshold = args[:distance_threshold] if args.key?(:distance_threshold)
+          @limit = args[:limit] if args.key?(:limit)
+          @query_vector = args[:query_vector] if args.key?(:query_vector)
+          @vector_property = args[:vector_property] if args.key?(:vector_property)
         end
       end
       
@@ -2237,7 +2299,9 @@ module Google
         end
       end
       
-      # A query for entities.
+      # A query for entities. The query stages are executed in the following order: 1.
+      # kind 2. filter 3. projection 4. order + start_cursor + end_cursor 5. offset 6.
+      # limit 7. find_nearest
       class Query
         include Google::Apis::Core::Hashable
       
@@ -2262,6 +2326,14 @@ module Google
         # Corresponds to the JSON property `filter`
         # @return [Google::Apis::DatastoreV1::Filter]
         attr_accessor :filter
+      
+        # Nearest Neighbors search config. The ordering provided by FindNearest
+        # supersedes the order_by stage. If multiple documents have the same vector
+        # distance, the returned document order is not guaranteed to be stable between
+        # queries.
+        # Corresponds to the JSON property `findNearest`
+        # @return [Google::Apis::DatastoreV1::FindNearest]
+        attr_accessor :find_nearest
       
         # The kinds to query (if empty, returns entities of all kinds). Currently at
         # most 1 kind may be specified.
@@ -2308,6 +2380,7 @@ module Google
           @distinct_on = args[:distinct_on] if args.key?(:distinct_on)
           @end_cursor = args[:end_cursor] if args.key?(:end_cursor)
           @filter = args[:filter] if args.key?(:filter)
+          @find_nearest = args[:find_nearest] if args.key?(:find_nearest)
           @kind = args[:kind] if args.key?(:kind)
           @limit = args[:limit] if args.key?(:limit)
           @offset = args[:offset] if args.key?(:offset)
@@ -2698,7 +2771,9 @@ module Google
         # @return [Google::Apis::DatastoreV1::PropertyMask]
         attr_accessor :property_mask
       
-        # A query for entities.
+        # A query for entities. The query stages are executed in the following order: 1.
+        # kind 2. filter 3. projection 4. order + start_cursor + end_cursor 5. offset 6.
+        # limit 7. find_nearest
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::DatastoreV1::Query]
         attr_accessor :query
@@ -2738,7 +2813,9 @@ module Google
         # @return [Google::Apis::DatastoreV1::ExplainMetrics]
         attr_accessor :explain_metrics
       
-        # A query for entities.
+        # A query for entities. The query stages are executed in the following order: 1.
+        # kind 2. filter 3. projection 4. order + start_cursor + end_cursor 5. offset 6.
+        # limit 7. find_nearest
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::DatastoreV1::Query]
         attr_accessor :query
