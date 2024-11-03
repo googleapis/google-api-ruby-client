@@ -33,6 +33,18 @@ module Google
         # @return [String]
         attr_accessor :assignee
       
+        # Optional. This field controls if "Gemini in BigQuery" (https://cloud.google.
+        # com/gemini/docs/bigquery/overview) features should be enabled for this
+        # reservation assignment, which is not on by default. "Gemini in BigQuery" has a
+        # distinct compliance posture from BigQuery. If this field is set to true, the
+        # assignment job type is QUERY, and the parent reservation edition is
+        # ENTERPRISE_PLUS, then the assignment will give the grantee project/
+        # organization access to "Gemini in BigQuery" features.
+        # Corresponds to the JSON property `enableGeminiInBigquery`
+        # @return [Boolean]
+        attr_accessor :enable_gemini_in_bigquery
+        alias_method :enable_gemini_in_bigquery?, :enable_gemini_in_bigquery
+      
         # Which type of jobs will use the reservation.
         # Corresponds to the JSON property `jobType`
         # @return [String]
@@ -58,6 +70,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assignee = args[:assignee] if args.key?(:assignee)
+          @enable_gemini_in_bigquery = args[:enable_gemini_in_bigquery] if args.key?(:enable_gemini_in_bigquery)
           @job_type = args[:job_type] if args.key?(:job_type)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
@@ -69,7 +82,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The slot capacity added to this reservation when autoscale
-        # happens. Will be between [0, max_slots].
+        # happens. Will be between [0, max_slots]. Note: after users reduce max_slots,
+        # it may take a while before it can be propagated, so current_slots may stay in
+        # the original value and could be larger than max_slots for that brief period (
+        # less than one minute)
         # Corresponds to the JSON property `currentSlots`
         # @return [Fixnum]
         attr_accessor :current_slots
@@ -435,6 +451,13 @@ module Google
         attr_accessor :ignore_idle_slots
         alias_method :ignore_idle_slots?, :ignore_idle_slots
       
+        # Optional. The labels associated with this reservation. You can use these to
+        # organize and group your reservations. You can set this property when inserting
+        # or updating a reservation.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Applicable only for reservations located within one of the BigQuery multi-
         # regions (US or EU). If set to true, this reservation is placed in the
         # organization's secondary region which is designated for disaster recovery
@@ -516,6 +539,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @edition = args[:edition] if args.key?(:edition)
           @ignore_idle_slots = args[:ignore_idle_slots] if args.key?(:ignore_idle_slots)
+          @labels = args[:labels] if args.key?(:labels)
           @multi_region_auxiliary = args[:multi_region_auxiliary] if args.key?(:multi_region_auxiliary)
           @name = args[:name] if args.key?(:name)
           @original_primary_location = args[:original_primary_location] if args.key?(:original_primary_location)
