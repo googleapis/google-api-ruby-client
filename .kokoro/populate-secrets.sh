@@ -23,6 +23,10 @@ function msg { println "$*" >&2 ;}
 function println { printf '%s\n' "$(now) $*" ;}
 
 # Populates requested secrets set in SECRET_MANAGER_KEYS
+if [[ -z "${SECRET_MANAGER_PROJECT_ID-}" ]]; then
+  msg "SECRET_MANAGER_PROJECT_ID is not set in environment variables, using default"
+  SECRET_MANAGER_PROJECT_ID="cloud-devrel-kokoro-resources"
+fi
 
 # In Kokoro CI builds, we use the service account attached to the
 # Kokoro VM. This means we need to setup auth on other CI systems.
@@ -64,7 +68,7 @@ do
     msg "Retrieving secret ${key}"
     "${GCLOUD_COMMANDS[@]}" \
         secrets versions access latest \
-        --project cloud-devrel-kokoro-resources \
+        --project "${SECRET_MANAGER_PROJECT_ID}" \
         --secret $key > \
         "$SECRET_LOCATION/$key"
     if [[ $? == 0 ]]; then

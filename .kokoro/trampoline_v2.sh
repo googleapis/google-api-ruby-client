@@ -138,18 +138,26 @@ if [[ -n "${KOKORO_BUILD_ID:-}" ]]; then
     RUNNING_IN_CI="true"
     TRAMPOLINE_CI="kokoro"
     if [[ "${TRAMPOLINE_USE_LEGACY_SERVICE_ACCOUNT:-}" == "true" ]]; then
-	if [[ ! -f "${KOKORO_GFILE_DIR}/kokoro-trampoline.service-account.json" ]]; then
-	    log_red "${KOKORO_GFILE_DIR}/kokoro-trampoline.service-account.json does not exist. Did you forget to mount cloud-devrel-kokoro-resources/trampoline? Aborting."
-	    exit 1
-	fi
-	# This service account will be activated later.
-	TRAMPOLINE_SERVICE_ACCOUNT="${KOKORO_GFILE_DIR}/kokoro-trampoline.service-account.json"
+        if [[ ! -f "${KOKORO_GFILE_DIR}/kokoro-trampoline.service-account.json" ]]; then
+            log_red "${KOKORO_GFILE_DIR}/kokoro-trampoline.service-account.json does not exist. Did you forget to mount cloud-devrel-kokoro-resources/trampoline? Aborting."
+            exit 1
+        fi
+        # This service account will be activated later.
+        TRAMPOLINE_SERVICE_ACCOUNT="${KOKORO_GFILE_DIR}/kokoro-trampoline.service-account.json"
     else
-	if [[ "${TRAMPOLINE_VERBOSE:-}" == "true" ]]; then
-	    gcloud auth list
-	fi
-	log_yellow "Configuring Container Registry access"
-	gcloud auth configure-docker --quiet
+        if [[ "${TRAMPOLINE_VERBOSE:-}" == "true" ]]; then
+            gcloud auth list
+        fi
+        log_yellow "Configuring Container Registry access"
+        TRAMPOLINE_HOST=$(echo "${TRAMPOLINE_IMAGE}" | cut -d/ -f1)
+        if [[ ! "${TRAMPOLINE_HOST}" =~ "gcr.io" ]]; then
+            # If you need to specificy a host other than gcr.io, you have to run on an update version of gcloud.
+            echo "TRAMPOLINE_HOST: ${TRAMPOLINE_HOST}"
+            gcloud components update
+            gcloud auth configure-docker "${TRAMPOLINE_HOST}"
+        else
+            gcloud auth configure-docker --quiet
+        fi
     fi
     pass_down_envvars+=(
 	# KOKORO dynamic variables.
