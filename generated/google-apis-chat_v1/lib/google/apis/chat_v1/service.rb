@@ -244,11 +244,12 @@ module Google
         # @param [String] name
         #   Required. Resource name of the space to delete. Format: `spaces/`space``
         # @param [Boolean] use_admin_access
-        #   When `true`, the method runs using the user's Google Workspace administrator
-        #   privileges. The calling user must be a Google Workspace administrator with the
-        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
-        #   answer/13369245). Requires the `chat.admin.delete` [OAuth 2.0 scope](https://
-        #   developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
+        #   Optional. When `true`, the method runs using the user's Google Workspace
+        #   administrator privileges. The calling user must be a Google Workspace
+        #   administrator with the [manage chat and spaces conversations privilege](https:/
+        #   /support.google.com/a/answer/13369245). Requires the `chat.admin.delete` [
+        #   OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-
+        #   authorize#chat-api-scopes).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -340,12 +341,12 @@ module Google
         #   Required. Resource name of the space, in the form `spaces/`space``. Format: `
         #   spaces/`space``
         # @param [Boolean] use_admin_access
-        #   When `true`, the method runs using the user's Google Workspace administrator
-        #   privileges. The calling user must be a Google Workspace administrator with the
-        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
-        #   answer/13369245). Requires the `chat.admin.spaces` or `chat.admin.spaces.
-        #   readonly` [OAuth 2.0 scopes](https://developers.google.com/workspace/chat/
-        #   authenticate-authorize#chat-api-scopes).
+        #   Optional. When `true`, the method runs using the user's Google Workspace
+        #   administrator privileges. The calling user must be a Google Workspace
+        #   administrator with the [manage chat and spaces conversations privilege](https:/
+        #   /support.google.com/a/answer/13369245). Requires the `chat.admin.spaces` or `
+        #   chat.admin.spaces.readonly` [OAuth 2.0 scopes](https://developers.google.com/
+        #   workspace/chat/authenticate-authorize#chat-api-scopes).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -446,8 +447,8 @@ module Google
         # authorize this method with administrator privileges by setting the `
         # use_admin_access` field in the request.
         # @param [String] name
-        #   Resource name of the space. Format: `spaces/`space`` Where ``space``
-        #   represents the system-assigned ID for the space. You can obtain the space ID
+        #   Identifier. Resource name of the space. Format: `spaces/`space`` Where ``space`
+        #   ` represents the system-assigned ID for the space. You can obtain the space ID
         #   by calling the [`spaces.list()`](https://developers.google.com/workspace/chat/
         #   api/reference/rest/v1/spaces/list) method or from the space URL. For example,
         #   if the space URL is `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`,
@@ -494,13 +495,13 @@ module Google
         #   permission_settings.manageApps` - `permission_settings.manageWebhooks` - `
         #   permission_settings.replyMessages`
         # @param [Boolean] use_admin_access
-        #   When `true`, the method runs using the user's Google Workspace administrator
-        #   privileges. The calling user must be a Google Workspace administrator with the
-        #   [manage chat and spaces conversations privilege](https://support.google.com/a/
-        #   answer/13369245). Requires the `chat.admin.spaces` [OAuth 2.0 scope](https://
-        #   developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
-        #   Some `FieldMask` values are not supported using admin access. For details, see
-        #   the description of `update_mask`.
+        #   Optional. When `true`, the method runs using the user's Google Workspace
+        #   administrator privileges. The calling user must be a Google Workspace
+        #   administrator with the [manage chat and spaces conversations privilege](https:/
+        #   /support.google.com/a/answer/13369245). Requires the `chat.admin.spaces` [
+        #   OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-
+        #   authorize#chat-api-scopes). Some `FieldMask` values are not supported using
+        #   admin access. For details, see the description of `update_mask`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1040,7 +1041,10 @@ module Google
         # message can only contain text (`text`). ![Message sent with user
         # authentication](https://developers.google.com/workspace/chat/images/message-
         # user-auth.svg) The maximum message size, including the message contents, is 32,
-        # 000 bytes.
+        # 000 bytes. For [webhook](https://developers.google.com/workspace/chat/
+        # quickstart/webhooks) requests, the response doesn't contain the full message.
+        # The response only populates the `name` and `thread.name` fields in addition to
+        # the information that was in the request.
         # @param [String] parent
         #   Required. The resource name of the space in which to create a message. Format:
         #   `spaces/`space``
@@ -1115,9 +1119,9 @@ module Google
         #   Name a message] (https://developers.google.com/workspace/chat/create-messages#
         #   name_a_created_message).
         # @param [Boolean] force
-        #   When `true`, deleting a message also deletes its threaded replies. When `false`
-        #   , if a message has threaded replies, deletion fails. Only applies when [
-        #   authenticating as a user](https://developers.google.com/workspace/chat/
+        #   Optional. When `true`, deleting a message also deletes its threaded replies.
+        #   When `false`, if a message has threaded replies, deletion fails. Only applies
+        #   when [authenticating as a user](https://developers.google.com/workspace/chat/
         #   authenticate-authorize-chat-user). Has no effect when [authenticating as a
         #   Chat app] (https://developers.google.com/workspace/chat/authenticate-authorize-
         #   chat-app).
@@ -1201,42 +1205,43 @@ module Google
         #   Required. The resource name of the space to list messages from. Format: `
         #   spaces/`space``
         # @param [String] filter
-        #   A query filter. You can filter messages by date (`create_time`) and thread (`
-        #   thread.name`). To filter messages by the date they were created, specify the `
-        #   create_time` with a timestamp in [RFC-3339](https://www.rfc-editor.org/rfc/
-        #   rfc3339) format and double quotation marks. For example, `"2023-04-21T11:30:00-
-        #   04:00"`. You can use the greater than operator `>` to list messages that were
-        #   created after a timestamp, or the less than operator `<` to list messages that
-        #   were created before a timestamp. To filter messages within a time interval,
-        #   use the `AND` operator between two timestamps. To filter by thread, specify
-        #   the `thread.name`, formatted as `spaces/`space`/threads/`thread``. You can
-        #   only specify one `thread.name` per query. To filter by both thread and date,
-        #   use the `AND` operator in your query. For example, the following queries are
-        #   valid: ``` create_time > "2012-04-21T11:30:00-04:00" create_time > "2012-04-
-        #   21T11:30:00-04:00" AND thread.name = spaces/AAAAAAAAAAA/threads/123
-        #   create_time > "2012-04-21T11:30:00+00:00" AND create_time < "2013-01-01T00:00:
-        #   00+00:00" AND thread.name = spaces/AAAAAAAAAAA/threads/123 thread.name =
-        #   spaces/AAAAAAAAAAA/threads/123 ``` Invalid queries are rejected by the server
-        #   with an `INVALID_ARGUMENT` error.
+        #   Optional. A query filter. You can filter messages by date (`create_time`) and
+        #   thread (`thread.name`). To filter messages by the date they were created,
+        #   specify the `create_time` with a timestamp in [RFC-3339](https://www.rfc-
+        #   editor.org/rfc/rfc3339) format and double quotation marks. For example, `"2023-
+        #   04-21T11:30:00-04:00"`. You can use the greater than operator `>` to list
+        #   messages that were created after a timestamp, or the less than operator `<` to
+        #   list messages that were created before a timestamp. To filter messages within
+        #   a time interval, use the `AND` operator between two timestamps. To filter by
+        #   thread, specify the `thread.name`, formatted as `spaces/`space`/threads/`
+        #   thread``. You can only specify one `thread.name` per query. To filter by both
+        #   thread and date, use the `AND` operator in your query. For example, the
+        #   following queries are valid: ``` create_time > "2012-04-21T11:30:00-04:00"
+        #   create_time > "2012-04-21T11:30:00-04:00" AND thread.name = spaces/AAAAAAAAAAA/
+        #   threads/123 create_time > "2012-04-21T11:30:00+00:00" AND create_time < "2013-
+        #   01-01T00:00:00+00:00" AND thread.name = spaces/AAAAAAAAAAA/threads/123 thread.
+        #   name = spaces/AAAAAAAAAAA/threads/123 ``` Invalid queries are rejected by the
+        #   server with an `INVALID_ARGUMENT` error.
         # @param [String] order_by
-        #   Optional, if resuming from a previous query. How the list of messages is
-        #   ordered. Specify a value to order by an ordering operation. Valid ordering
-        #   operation values are as follows: - `ASC` for ascending. - `DESC` for
+        #   Optional. Optional, if resuming from a previous query. How the list of
+        #   messages is ordered. Specify a value to order by an ordering operation. Valid
+        #   ordering operation values are as follows: - `ASC` for ascending. - `DESC` for
         #   descending. The default ordering is `create_time ASC`.
         # @param [Fixnum] page_size
-        #   The maximum number of messages returned. The service might return fewer
-        #   messages than this value. If unspecified, at most 25 are returned. The maximum
-        #   value is 1000. If you use a value more than 1000, it's automatically changed
-        #   to 1000. Negative values return an `INVALID_ARGUMENT` error.
+        #   Optional. The maximum number of messages returned. The service might return
+        #   fewer messages than this value. If unspecified, at most 25 are returned. The
+        #   maximum value is 1000. If you use a value more than 1000, it's automatically
+        #   changed to 1000. Negative values return an `INVALID_ARGUMENT` error.
         # @param [String] page_token
-        #   Optional, if resuming from a previous query. A page token received from a
-        #   previous list messages call. Provide this parameter to retrieve the subsequent
-        #   page. When paginating, all other parameters provided should match the call
-        #   that provided the page token. Passing different values to the other parameters
-        #   might lead to unexpected results.
+        #   Optional. Optional, if resuming from a previous query. A page token received
+        #   from a previous list messages call. Provide this parameter to retrieve the
+        #   subsequent page. When paginating, all other parameters provided should match
+        #   the call that provided the page token. Passing different values to the other
+        #   parameters might lead to unexpected results.
         # @param [Boolean] show_deleted
-        #   Whether to include deleted messages. Deleted messages include deleted time and
-        #   metadata about their deletion, but message content is unavailable.
+        #   Optional. Whether to include deleted messages. Deleted messages include
+        #   deleted time and metadata about their deletion, but message content is
+        #   unavailable.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1280,9 +1285,9 @@ module Google
         # authenticate-authorize-chat-user) When using app authentication, requests can
         # only update messages created by the calling Chat app.
         # @param [String] name
-        #   Resource name of the message. Format: `spaces/`space`/messages/`message``
-        #   Where ``space`` is the ID of the space where the message is posted and ``
-        #   message`` is a system-assigned ID for the message. For example, `spaces/
+        #   Identifier. Resource name of the message. Format: `spaces/`space`/messages/`
+        #   message`` Where ``space`` is the ID of the space where the message is posted
+        #   and ``message`` is a system-assigned ID for the message. For example, `spaces/
         #   AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you
         #   create a message, you can use this ID to specify the message in a request by
         #   replacing ``message`` with the value from the `clientAssignedMessageId` field.
@@ -1344,9 +1349,9 @@ module Google
         # authenticate-authorize-chat-user) When using app authentication, requests can
         # only update messages created by the calling Chat app.
         # @param [String] name
-        #   Resource name of the message. Format: `spaces/`space`/messages/`message``
-        #   Where ``space`` is the ID of the space where the message is posted and ``
-        #   message`` is a system-assigned ID for the message. For example, `spaces/
+        #   Identifier. Resource name of the message. Format: `spaces/`space`/messages/`
+        #   message`` Where ``space`` is the ID of the space where the message is posted
+        #   and ``message`` is a system-assigned ID for the message. For example, `spaces/
         #   AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you
         #   create a message, you can use this ID to specify the message in a request by
         #   replacing ``message`` with the value from the `clientAssignedMessageId` field.
