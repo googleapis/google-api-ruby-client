@@ -1791,6 +1791,11 @@ module Google
         # @return [Google::Apis::ContainerV1::NodeKubeletConfig]
         attr_accessor :desired_node_pool_auto_config_kubelet_config
       
+        # Parameters that can be configured on Linux nodes.
+        # Corresponds to the JSON property `desiredNodePoolAutoConfigLinuxNodeConfig`
+        # @return [Google::Apis::ContainerV1::LinuxNodeConfig]
+        attr_accessor :desired_node_pool_auto_config_linux_node_config
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance.
         # Corresponds to the JSON property `desiredNodePoolAutoConfigNetworkTags`
@@ -1986,6 +1991,7 @@ module Google
           @desired_network_performance_config = args[:desired_network_performance_config] if args.key?(:desired_network_performance_config)
           @desired_node_kubelet_config = args[:desired_node_kubelet_config] if args.key?(:desired_node_kubelet_config)
           @desired_node_pool_auto_config_kubelet_config = args[:desired_node_pool_auto_config_kubelet_config] if args.key?(:desired_node_pool_auto_config_kubelet_config)
+          @desired_node_pool_auto_config_linux_node_config = args[:desired_node_pool_auto_config_linux_node_config] if args.key?(:desired_node_pool_auto_config_linux_node_config)
           @desired_node_pool_auto_config_network_tags = args[:desired_node_pool_auto_config_network_tags] if args.key?(:desired_node_pool_auto_config_network_tags)
           @desired_node_pool_auto_config_resource_manager_tags = args[:desired_node_pool_auto_config_resource_manager_tags] if args.key?(:desired_node_pool_auto_config_resource_manager_tags)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
@@ -4446,6 +4452,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :local_ssd_count
       
+        # Specifies which method should be used for encrypting the Local SSDs attahced
+        # to the node.
+        # Corresponds to the JSON property `localSsdEncryptionMode`
+        # @return [String]
+        attr_accessor :local_ssd_encryption_mode
+      
         # NodePoolLoggingConfig specifies logging configuration for nodepools.
         # Corresponds to the JSON property `loggingConfig`
         # @return [Google::Apis::ContainerV1::NodePoolLoggingConfig]
@@ -4635,6 +4647,7 @@ module Google
           @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @local_nvme_ssd_block_config = args[:local_nvme_ssd_block_config] if args.key?(:local_nvme_ssd_block_config)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
+          @local_ssd_encryption_mode = args[:local_ssd_encryption_mode] if args.key?(:local_ssd_encryption_mode)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -5110,6 +5123,11 @@ module Google
       class NodePoolAutoConfig
         include Google::Apis::Core::Hashable
       
+        # Parameters that can be configured on Linux nodes.
+        # Corresponds to the JSON property `linuxNodeConfig`
+        # @return [Google::Apis::ContainerV1::LinuxNodeConfig]
+        attr_accessor :linux_node_config
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance.
         # Corresponds to the JSON property `networkTags`
@@ -5136,6 +5154,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @node_kubelet_config = args[:node_kubelet_config] if args.key?(:node_kubelet_config)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
@@ -5164,19 +5183,19 @@ module Google
         # @return [String]
         attr_accessor :location_policy
       
-        # Maximum number of nodes for one location in the NodePool. Must be >=
+        # Maximum number of nodes for one location in the node pool. Must be >=
         # min_node_count. There has to be enough quota to scale up the cluster.
         # Corresponds to the JSON property `maxNodeCount`
         # @return [Fixnum]
         attr_accessor :max_node_count
       
-        # Minimum number of nodes for one location in the NodePool. Must be >= 1 and <=
-        # max_node_count.
+        # Minimum number of nodes for one location in the node pool. Must be greater
+        # than or equal to 0 and less than or equal to max_node_count.
         # Corresponds to the JSON property `minNodeCount`
         # @return [Fixnum]
         attr_accessor :min_node_count
       
-        # Maximum number of nodes in the node pool. Must be greater than
+        # Maximum number of nodes in the node pool. Must be greater than or equal to
         # total_min_node_count. There has to be enough quota to scale up the cluster.
         # The total_*_node_count fields are mutually exclusive with the *_node_count
         # fields.
@@ -5184,9 +5203,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_max_node_count
       
-        # Minimum number of nodes in the node pool. Must be greater than 1 less than
-        # total_max_node_count. The total_*_node_count fields are mutually exclusive
-        # with the *_node_count fields.
+        # Minimum number of nodes in the node pool. Must be greater than or equal to 0
+        # and less than or equal to total_max_node_count. The total_*_node_count fields
+        # are mutually exclusive with the *_node_count fields.
         # Corresponds to the JSON property `totalMinNodeCount`
         # @return [Fixnum]
         attr_accessor :total_min_node_count
@@ -7914,6 +7933,75 @@ module Google
           @operation_start_time = args[:operation_start_time] if args.key?(:operation_start_time)
           @resource = args[:resource] if args.key?(:resource)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @target_version = args[:target_version] if args.key?(:target_version)
+        end
+      end
+      
+      # UpgradeInfoEvent is a notification sent to customers about the upgrade
+      # information of a resource.
+      class UpgradeInfoEvent
+        include Google::Apis::Core::Hashable
+      
+        # The current version before the upgrade.
+        # Corresponds to the JSON property `currentVersion`
+        # @return [String]
+        attr_accessor :current_version
+      
+        # A brief description of the event.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The time when the operation ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The operation associated with this upgrade.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # Optional relative path to the resource. For example in node pool upgrades, the
+        # relative path of the node pool.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # The resource type associated with the upgrade.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # The time when the operation was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The state of the upgrade.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The target version for the upgrade.
+        # Corresponds to the JSON property `targetVersion`
+        # @return [String]
+        attr_accessor :target_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_version = args[:current_version] if args.key?(:current_version)
+          @description = args[:description] if args.key?(:description)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @operation = args[:operation] if args.key?(:operation)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
           @target_version = args[:target_version] if args.key?(:target_version)
         end
       end

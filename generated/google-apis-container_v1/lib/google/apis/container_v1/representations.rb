@@ -1084,6 +1084,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeInfoEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpgradeSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1600,6 +1606,8 @@ module Google
           property :desired_node_kubelet_config, as: 'desiredNodeKubeletConfig', class: Google::Apis::ContainerV1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1::NodeKubeletConfig::Representation
       
           property :desired_node_pool_auto_config_kubelet_config, as: 'desiredNodePoolAutoConfigKubeletConfig', class: Google::Apis::ContainerV1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1::NodeKubeletConfig::Representation
+      
+          property :desired_node_pool_auto_config_linux_node_config, as: 'desiredNodePoolAutoConfigLinuxNodeConfig', class: Google::Apis::ContainerV1::LinuxNodeConfig, decorator: Google::Apis::ContainerV1::LinuxNodeConfig::Representation
       
           property :desired_node_pool_auto_config_network_tags, as: 'desiredNodePoolAutoConfigNetworkTags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
       
@@ -2344,6 +2352,7 @@ module Google
           property :local_nvme_ssd_block_config, as: 'localNvmeSsdBlockConfig', class: Google::Apis::ContainerV1::LocalNvmeSsdBlockConfig, decorator: Google::Apis::ContainerV1::LocalNvmeSsdBlockConfig::Representation
       
           property :local_ssd_count, as: 'localSsdCount'
+          property :local_ssd_encryption_mode, as: 'localSsdEncryptionMode'
           property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1::NodePoolLoggingConfig::Representation
       
           property :machine_type, as: 'machineType'
@@ -2482,6 +2491,8 @@ module Google
       class NodePoolAutoConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :linux_node_config, as: 'linuxNodeConfig', class: Google::Apis::ContainerV1::LinuxNodeConfig, decorator: Google::Apis::ContainerV1::LinuxNodeConfig::Representation
+      
           property :network_tags, as: 'networkTags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
       
           property :node_kubelet_config, as: 'nodeKubeletConfig', class: Google::Apis::ContainerV1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1::NodeKubeletConfig::Representation
@@ -3192,6 +3203,21 @@ module Google
           property :operation_start_time, as: 'operationStartTime'
           property :resource, as: 'resource'
           property :resource_type, as: 'resourceType'
+          property :target_version, as: 'targetVersion'
+        end
+      end
+      
+      class UpgradeInfoEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_version, as: 'currentVersion'
+          property :description, as: 'description'
+          property :end_time, as: 'endTime'
+          property :operation, as: 'operation'
+          property :resource, as: 'resource'
+          property :resource_type, as: 'resourceType'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
           property :target_version, as: 'targetVersion'
         end
       end
