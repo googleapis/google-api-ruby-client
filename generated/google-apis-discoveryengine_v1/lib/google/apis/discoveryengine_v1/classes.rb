@@ -2537,8 +2537,14 @@ module Google
         # List of facts cited across all claims in the answer candidate. These are
         # derived from the facts supplied in the request.
         # Corresponds to the JSON property `citedChunks`
-        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CheckGroundingResponseFactChunk>]
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FactChunk>]
         attr_accessor :cited_chunks
+      
+        # List of facts cited across all claims in the answer candidate. These are
+        # derived from the facts supplied in the request.
+        # Corresponds to the JSON property `citedFacts`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk>]
+        attr_accessor :cited_facts
       
         # Claim texts and citation info across all claims in the answer candidate.
         # Corresponds to the JSON property `claims`
@@ -2559,8 +2565,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cited_chunks = args[:cited_chunks] if args.key?(:cited_chunks)
+          @cited_facts = args[:cited_facts] if args.key?(:cited_facts)
           @claims = args[:claims] if args.key?(:claims)
           @support_score = args[:support_score] if args.key?(:support_score)
+        end
+      end
+      
+      # Fact chunk for grounding check.
+      class GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk
+        include Google::Apis::Core::Hashable
+      
+        # Text content of the fact chunk. Can be at most 10K characters long.
+        # Corresponds to the JSON property `chunkText`
+        # @return [String]
+        attr_accessor :chunk_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_text = args[:chunk_text] if args.key?(:chunk_text)
         end
       end
       
@@ -2614,33 +2640,6 @@ module Google
           @end_pos = args[:end_pos] if args.key?(:end_pos)
           @grounding_check_required = args[:grounding_check_required] if args.key?(:grounding_check_required)
           @start_pos = args[:start_pos] if args.key?(:start_pos)
-        end
-      end
-      
-      # Fact chunk for grounding check.
-      class GoogleCloudDiscoveryengineV1CheckGroundingResponseFactChunk
-        include Google::Apis::Core::Hashable
-      
-        # Text content of the fact chunk. Can be at most 10K characters long.
-        # Corresponds to the JSON property `chunkText`
-        # @return [String]
-        attr_accessor :chunk_text
-      
-        # Source from which this fact chunk was retrieved. For a fact chunk retrieved
-        # from inline facts, this field will contain the index of the specific fact from
-        # which this chunk was retrieved.
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @chunk_text = args[:chunk_text] if args.key?(:chunk_text)
-          @source = args[:source] if args.key?(:source)
         end
       end
       
@@ -4868,6 +4867,116 @@ module Google
         end
       end
       
+      # Fact Chunk.
+      class GoogleCloudDiscoveryengineV1FactChunk
+        include Google::Apis::Core::Hashable
+      
+        # Text content of the fact chunk. Can be at most 10K characters long.
+        # Corresponds to the JSON property `chunkText`
+        # @return [String]
+        attr_accessor :chunk_text
+      
+        # The index of this chunk. Currently, only used for the streaming mode.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Source from which this fact chunk was retrieved. If it was retrieved from the
+        # GroundingFacts provided in the request then this field will contain the index
+        # of the specific fact from which this chunk was retrieved.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # More fine-grained information for the source reference.
+        # Corresponds to the JSON property `sourceMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :source_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_text = args[:chunk_text] if args.key?(:chunk_text)
+          @index = args[:index] if args.key?(:index)
+          @source = args[:source] if args.key?(:source)
+          @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
+        end
+      end
+      
+      # Information about the user feedback. This information will be used for logging
+      # and metrics purpose.
+      class GoogleCloudDiscoveryengineV1Feedback
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The additional user comment of the feedback if user gives a thumb
+        # down.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # The conversation information such as the question index and session name.
+        # Corresponds to the JSON property `conversationInfo`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FeedbackConversationInfo]
+        attr_accessor :conversation_info
+      
+        # Required. Indicate whether the user gives a positive or negative feedback. If
+        # the user gives a negative feedback, there might be more feedback details.
+        # Corresponds to the JSON property `feedbackType`
+        # @return [String]
+        attr_accessor :feedback_type
+      
+        # The version of the LLM model that was used to generate the response.
+        # Corresponds to the JSON property `llmModelVersion`
+        # @return [String]
+        attr_accessor :llm_model_version
+      
+        # Optional. The reason if user gives a thumb down.
+        # Corresponds to the JSON property `reasons`
+        # @return [Array<String>]
+        attr_accessor :reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment = args[:comment] if args.key?(:comment)
+          @conversation_info = args[:conversation_info] if args.key?(:conversation_info)
+          @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
+          @llm_model_version = args[:llm_model_version] if args.key?(:llm_model_version)
+          @reasons = args[:reasons] if args.key?(:reasons)
+        end
+      end
+      
+      # The conversation information such as the question index and session name.
+      class GoogleCloudDiscoveryengineV1FeedbackConversationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The index of the user input within the conversation messages.
+        # Corresponds to the JSON property `questionIndex`
+        # @return [Fixnum]
+        attr_accessor :question_index
+      
+        # Name of the newly generated or continued session.
+        # Corresponds to the JSON property `session`
+        # @return [String]
+        attr_accessor :session
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @question_index = args[:question_index] if args.key?(:question_index)
+          @session = args[:session] if args.key?(:session)
+        end
+      end
+      
       # Response message for SiteSearchEngineService.FetchDomainVerificationStatus
       # method.
       class GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusResponse
@@ -6007,6 +6116,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. The document IDs associated with this panel.
+        # Corresponds to the JSON property `documents`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentInfo>]
+        attr_accessor :documents
+      
         # Required. The panel ID.
         # Corresponds to the JSON property `panelId`
         # @return [String]
@@ -6031,6 +6145,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @documents = args[:documents] if args.key?(:documents)
           @panel_id = args[:panel_id] if args.key?(:panel_id)
           @panel_position = args[:panel_position] if args.key?(:panel_position)
           @total_panels = args[:total_panels] if args.key?(:total_panels)
@@ -9219,6 +9334,12 @@ module Google
         # @return [String]
         attr_accessor :event_type
       
+        # Information about the user feedback. This information will be used for logging
+        # and metrics purpose.
+        # Corresponds to the JSON property `feedback`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Feedback]
+        attr_accessor :feedback
+      
         # The filter syntax consists of an expression language for constructing a
         # predicate from one or more fields of the documents being filtered. One example
         # is for `search` events, the associated SearchRequest may contain a filter
@@ -9246,6 +9367,12 @@ module Google
         # Corresponds to the JSON property `panel`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PanelInfo]
         attr_accessor :panel
+      
+        # Optional. List of panels associated with this event. Used for page-level
+        # impression data.
+        # Corresponds to the JSON property `panels`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PanelInfo>]
+        attr_accessor :panels
       
         # The promotion IDs if this is an event associated with promotions. Currently,
         # this field is restricted to at most one ID.
@@ -9314,10 +9441,12 @@ module Google
           @engine = args[:engine] if args.key?(:engine)
           @event_time = args[:event_time] if args.key?(:event_time)
           @event_type = args[:event_type] if args.key?(:event_type)
+          @feedback = args[:feedback] if args.key?(:feedback)
           @filter = args[:filter] if args.key?(:filter)
           @media_info = args[:media_info] if args.key?(:media_info)
           @page_info = args[:page_info] if args.key?(:page_info)
           @panel = args[:panel] if args.key?(:panel)
+          @panels = args[:panels] if args.key?(:panels)
           @promotion_ids = args[:promotion_ids] if args.key?(:promotion_ids)
           @search_info = args[:search_info] if args.key?(:search_info)
           @session_id = args[:session_id] if args.key?(:session_id)
