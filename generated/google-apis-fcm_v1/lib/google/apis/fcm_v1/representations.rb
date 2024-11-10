@@ -163,6 +163,7 @@ module Google
           property :fcm_options, as: 'fcmOptions', class: Google::Apis::FcmV1::ApnsFcmOptions, decorator: Google::Apis::FcmV1::ApnsFcmOptions::Representation
       
           hash :headers, as: 'headers'
+          property :live_activity_token, as: 'liveActivityToken'
           hash :payload, as: 'payload'
         end
       end
