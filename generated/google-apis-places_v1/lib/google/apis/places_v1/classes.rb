@@ -234,6 +234,18 @@ module Google
       class GoogleMapsPlacesV1AutocompletePlacesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Include pure service area businesses if the field is set to true.
+        # Pure service area business is a business that visits or delivers to customers
+        # directly but does not serve customers at their business address. For example,
+        # businesses like cleaning services or plumbers. Those businesses do not have a
+        # physical address or location on Google Maps. Places will not return fields
+        # including `location`, `plus_code`, and other location related fields for these
+        # businesses.
+        # Corresponds to the JSON property `includePureServiceAreaBusinesses`
+        # @return [Boolean]
+        attr_accessor :include_pure_service_area_businesses
+        alias_method :include_pure_service_area_businesses?, :include_pure_service_area_businesses
+      
         # Optional. If true, the response will include both Place and query predictions.
         # Otherwise the response will only return Place predictions.
         # Corresponds to the JSON property `includeQueryPredictions`
@@ -334,6 +346,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_pure_service_area_businesses = args[:include_pure_service_area_businesses] if args.key?(:include_pure_service_area_businesses)
           @include_query_predictions = args[:include_query_predictions] if args.key?(:include_query_predictions)
           @included_primary_types = args[:included_primary_types] if args.key?(:included_primary_types)
           @included_region_codes = args[:included_region_codes] if args.key?(:included_region_codes)
@@ -1168,10 +1181,15 @@ module Google
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution>]
         attr_accessor :attributions
       
-        # 
+        # The business status for the place.
         # Corresponds to the JSON property `businessStatus`
         # @return [String]
         attr_accessor :business_status
+      
+        # List of places in which the current place is located.
+        # Corresponds to the JSON property `containingPlaces`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceContainingPlace>]
+        attr_accessor :containing_places
       
         # Specifies if the business supports curbside pickup.
         # Corresponds to the JSON property `curbsidePickup`
@@ -1359,6 +1377,12 @@ module Google
         # @return [String]
         attr_accessor :price_level
       
+        # The price range associated with a Place. `end_price` could be unset, which
+        # indicates a range without upper bound (e.g. "More than $100").
+        # Corresponds to the JSON property `priceRange`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PriceRange]
+        attr_accessor :price_range
+      
         # The primary type of the given result. This type must one of the Places API
         # supported types. For example, "restaurant", "cafe", "airport", etc. A place
         # can only have a single primary type. For the complete list of possible values,
@@ -1372,6 +1396,16 @@ module Google
         # Corresponds to the JSON property `primaryTypeDisplayName`
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :primary_type_display_name
+      
+        # Indicates whether the place is a pure service area business. Pure service area
+        # business is a business that visits or delivers to customers directly but does
+        # not serve customers at their business address. For example, businesses like
+        # cleaning services or plumbers. Those businesses may not have a physical
+        # address or location on Google Maps.
+        # Corresponds to the JSON property `pureServiceAreaBusiness`
+        # @return [Boolean]
+        attr_accessor :pure_service_area_business
+        alias_method :pure_service_area_business?, :pure_service_area_business
       
         # A rating between 1.0 and 5.0, based on user reviews of this place.
         # Corresponds to the JSON property `rating`
@@ -1547,6 +1581,7 @@ module Google
           @area_summary = args[:area_summary] if args.key?(:area_summary)
           @attributions = args[:attributions] if args.key?(:attributions)
           @business_status = args[:business_status] if args.key?(:business_status)
+          @containing_places = args[:containing_places] if args.key?(:containing_places)
           @curbside_pickup = args[:curbside_pickup] if args.key?(:curbside_pickup)
           @current_opening_hours = args[:current_opening_hours] if args.key?(:current_opening_hours)
           @current_secondary_opening_hours = args[:current_secondary_opening_hours] if args.key?(:current_secondary_opening_hours)
@@ -1578,8 +1613,10 @@ module Google
           @photos = args[:photos] if args.key?(:photos)
           @plus_code = args[:plus_code] if args.key?(:plus_code)
           @price_level = args[:price_level] if args.key?(:price_level)
+          @price_range = args[:price_range] if args.key?(:price_range)
           @primary_type = args[:primary_type] if args.key?(:primary_type)
           @primary_type_display_name = args[:primary_type_display_name] if args.key?(:primary_type_display_name)
+          @pure_service_area_business = args[:pure_service_area_business] if args.key?(:pure_service_area_business)
           @rating = args[:rating] if args.key?(:rating)
           @regular_opening_hours = args[:regular_opening_hours] if args.key?(:regular_opening_hours)
           @regular_secondary_opening_hours = args[:regular_secondary_opening_hours] if args.key?(:regular_secondary_opening_hours)
@@ -1743,6 +1780,31 @@ module Google
         end
       end
       
+      # Info about the place in which this place is located.
+      class GoogleMapsPlacesV1PlaceContainingPlace
+        include Google::Apis::Core::Hashable
+      
+        # The place id of the place in which this place is located.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The resource name of the place in which this place is located.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Experimental: See https://developers.google.com/maps/documentation/places/web-
       # service/experimental/places-generative for more details. AI-generated summary
       # of the place.
@@ -1841,6 +1903,20 @@ module Google
       class GoogleMapsPlacesV1PlaceOpeningHours
         include Google::Apis::Core::Hashable
       
+        # The next time the current opening hours period ends up to 7 days in the future.
+        # This field is only populated if the opening hours period is active at the
+        # time of serving the request.
+        # Corresponds to the JSON property `nextCloseTime`
+        # @return [String]
+        attr_accessor :next_close_time
+      
+        # The next time the current opening hours period starts up to 7 days in the
+        # future. This field is only populated if the opening hours period is not active
+        # at the time of serving the request.
+        # Corresponds to the JSON property `nextOpenTime`
+        # @return [String]
+        attr_accessor :next_open_time
+      
         # Whether the opening hours period is currently active. For regular opening
         # hours and current opening hours, this field means whether the place is open.
         # For secondary opening hours and current secondary opening hours, this field
@@ -1884,6 +1960,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @next_close_time = args[:next_close_time] if args.key?(:next_close_time)
+          @next_open_time = args[:next_open_time] if args.key?(:next_open_time)
           @open_now = args[:open_now] if args.key?(:open_now)
           @periods = args[:periods] if args.key?(:periods)
           @secondary_hours_type = args[:secondary_hours_type] if args.key?(:secondary_hours_type)
@@ -2185,6 +2263,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @encoded_polyline = args[:encoded_polyline] if args.key?(:encoded_polyline)
+        end
+      end
+      
+      # The price range associated with a Place. `end_price` could be unset, which
+      # indicates a range without upper bound (e.g. "More than $100").
+      class GoogleMapsPlacesV1PriceRange
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `endPrice`
+        # @return [Google::Apis::PlacesV1::GoogleTypeMoney]
+        attr_accessor :end_price
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `startPrice`
+        # @return [Google::Apis::PlacesV1::GoogleTypeMoney]
+        attr_accessor :start_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_price = args[:end_price] if args.key?(:end_price)
+          @start_price = args[:start_price] if args.key?(:start_price)
         end
       end
       
@@ -2633,6 +2737,18 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestEvOptions]
         attr_accessor :ev_options
       
+        # Optional. Include pure service area businesses if the field is set to true.
+        # Pure service area business is a business that visits or delivers to customers
+        # directly but does not serve customers at their business address. For example,
+        # businesses like cleaning services or plumbers. Those businesses do not have a
+        # physical address or location on Google Maps. Places will not return fields
+        # including `location`, `plus_code`, and other location related fields for these
+        # businesses.
+        # Corresponds to the JSON property `includePureServiceAreaBusinesses`
+        # @return [Boolean]
+        attr_accessor :include_pure_service_area_businesses
+        alias_method :include_pure_service_area_businesses?, :include_pure_service_area_businesses
+      
         # The requested place type. Full list of types supported: https://developers.
         # google.com/maps/documentation/places/web-service/place-types. Only support one
         # included type.
@@ -2772,6 +2888,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ev_options = args[:ev_options] if args.key?(:ev_options)
+          @include_pure_service_area_businesses = args[:include_pure_service_area_businesses] if args.key?(:include_pure_service_area_businesses)
           @included_type = args[:included_type] if args.key?(:included_type)
           @language_code = args[:language_code] if args.key?(:language_code)
           @location_bias = args[:location_bias] if args.key?(:location_bias)
