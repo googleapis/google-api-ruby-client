@@ -8565,7 +8565,7 @@ module Google
         attr_accessor :concurrent_viewers
       
         # The time that the broadcast is scheduled to end. If the value is empty or the
-        # property is not present, then the broadcast is scheduled to contiue
+        # property is not present, then the broadcast is scheduled to continue
         # indefinitely.
         # Corresponds to the JSON property `scheduledEndTime`
         # @return [DateTime]
