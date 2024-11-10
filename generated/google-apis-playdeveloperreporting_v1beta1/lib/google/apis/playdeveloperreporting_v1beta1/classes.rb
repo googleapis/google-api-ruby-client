@@ -322,19 +322,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `lowerBound`
         # @return [Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal]
         attr_accessor :lower_bound
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `upperBound`
         # @return [Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal]
         attr_accessor :upper_bound
@@ -550,10 +548,9 @@ module Google
         attr_accessor :distinct_users
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `distinctUsersPercent`
         # @return [Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal]
         attr_accessor :distinct_users_percent
@@ -921,10 +918,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `decimalValue`
         # @return [Google::Apis::PlaydeveloperreportingV1beta1::GoogleTypeDecimal]
         attr_accessor :decimal_value
@@ -2588,10 +2584,9 @@ module Google
       end
       
       # A representation of a decimal value, such as 2.5. Clients may convert values
-      # into language-native decimal formats, such as Java's BigDecimal or Python's
-      # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-      # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-      # org/3/library/decimal.html
+      # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+      # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+      # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
       class GoogleTypeDecimal
         include Google::Apis::Core::Hashable
       
