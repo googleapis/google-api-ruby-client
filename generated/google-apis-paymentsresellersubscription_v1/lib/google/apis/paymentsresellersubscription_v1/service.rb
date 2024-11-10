@@ -460,6 +460,43 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # This API replaces user authorized OAuth consnet based APIs (Create, Entitle).
+        # Generates a short-lived token for a user session based on the user intent. You
+        # can use the session token to redirect the user to Google to finish the signup
+        # flow. You can re-generate new session token repeatedly for same request if
+        # necessary, regardless of the previous tokens being expired or not.
+        # @param [String] parent
+        #   Required. The parent, the partner that can resell. Format: partners/`partner`
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest] google_cloud_payments_reseller_subscription_v1_generate_user_session_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_partner_user_session(parent, google_cloud_payments_reseller_subscription_v1_generate_user_session_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/userSessions:generate', options)
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest::Representation
+          command.request_object = google_cloud_payments_reseller_subscription_v1_generate_user_session_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
