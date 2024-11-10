@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HubStatusEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +335,18 @@ module Google
       end
       
       class PscConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PscPropagationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryHubStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -662,6 +680,16 @@ module Google
         end
       end
       
+      class HubStatusEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :group_by, as: 'groupBy'
+          property :psc_propagation_status, as: 'pscPropagationStatus', class: Google::Apis::NetworkconnectivityV1::PscPropagationStatus, decorator: Google::Apis::NetworkconnectivityV1::PscPropagationStatus::Representation
+      
+        end
+      end
+      
       class InterconnectAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -704,6 +732,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exclude_export_ranges, as: 'excludeExportRanges'
+          collection :include_export_ranges, as: 'includeExportRanges'
           property :network, as: 'network'
           property :peering, as: 'peering'
           property :producer_network, as: 'producerNetwork'
@@ -1027,6 +1056,28 @@ module Google
           property :selected_subnetwork, as: 'selectedSubnetwork'
           property :service_class, as: 'serviceClass'
           property :state, as: 'state'
+        end
+      end
+      
+      class PscPropagationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
+          property :source_forwarding_rule, as: 'sourceForwardingRule'
+          property :source_group, as: 'sourceGroup'
+          property :source_spoke, as: 'sourceSpoke'
+          property :target_group, as: 'targetGroup'
+          property :target_spoke, as: 'targetSpoke'
+        end
+      end
+      
+      class QueryHubStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :hub_status_entries, as: 'hubStatusEntries', class: Google::Apis::NetworkconnectivityV1::HubStatusEntry, decorator: Google::Apis::NetworkconnectivityV1::HubStatusEntry::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

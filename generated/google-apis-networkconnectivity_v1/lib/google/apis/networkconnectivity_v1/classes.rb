@@ -983,6 +983,37 @@ module Google
         end
       end
       
+      # The hub status entry.
+      class HubStatusEntry
+        include Google::Apis::Core::Hashable
+      
+        # The number of status. If group_by is not set in the request, the default is 1.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The same group_by field from the request.
+        # Corresponds to the JSON property `groupBy`
+        # @return [String]
+        attr_accessor :group_by
+      
+        # The PSC propagation status in a hub.
+        # Corresponds to the JSON property `pscPropagationStatus`
+        # @return [Google::Apis::NetworkconnectivityV1::PscPropagationStatus]
+        attr_accessor :psc_propagation_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @group_by = args[:group_by] if args.key?(:group_by)
+          @psc_propagation_status = args[:psc_propagation_status] if args.key?(:psc_propagation_status)
+        end
+      end
+      
       # InterconnectAttachment that this route applies to.
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
@@ -1172,7 +1203,7 @@ module Google
         end
       end
       
-      # Next ID: 7
+      # 
       class LinkedProducerVpcNetwork
         include Google::Apis::Core::Hashable
       
@@ -1180,6 +1211,11 @@ module Google
         # Corresponds to the JSON property `excludeExportRanges`
         # @return [Array<String>]
         attr_accessor :exclude_export_ranges
+      
+        # Optional. IP ranges allowed to be included from peering.
+        # Corresponds to the JSON property `includeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :include_export_ranges
       
         # Immutable. The URI of the Service Consumer VPC that the Producer VPC is peered
         # with.
@@ -1211,6 +1247,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
+          @include_export_ranges = args[:include_export_ranges] if args.key?(:include_export_ranges)
           @network = args[:network] if args.key?(:network)
           @peering = args[:peering] if args.key?(:peering)
           @producer_network = args[:producer_network] if args.key?(:producer_network)
@@ -2476,6 +2513,88 @@ module Google
         end
       end
       
+      # The PSC propagation status in a hub.
+      class PscPropagationStatus
+        include Google::Apis::Core::Hashable
+      
+        # The propagation status.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # The human-readable summary of the PSC connection propagation status.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The name of the forwarding rule exported to the hub.
+        # Corresponds to the JSON property `sourceForwardingRule`
+        # @return [String]
+        attr_accessor :source_forwarding_rule
+      
+        # The name of the group that the source spoke belongs to.
+        # Corresponds to the JSON property `sourceGroup`
+        # @return [String]
+        attr_accessor :source_group
+      
+        # The name of the spoke that the source forwarding rule belongs to.
+        # Corresponds to the JSON property `sourceSpoke`
+        # @return [String]
+        attr_accessor :source_spoke
+      
+        # The name of the group that the target spoke belongs to.
+        # Corresponds to the JSON property `targetGroup`
+        # @return [String]
+        attr_accessor :target_group
+      
+        # The name of the spoke that the source forwarding rule propagates to.
+        # Corresponds to the JSON property `targetSpoke`
+        # @return [String]
+        attr_accessor :target_spoke
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @source_forwarding_rule = args[:source_forwarding_rule] if args.key?(:source_forwarding_rule)
+          @source_group = args[:source_group] if args.key?(:source_group)
+          @source_spoke = args[:source_spoke] if args.key?(:source_spoke)
+          @target_group = args[:target_group] if args.key?(:target_group)
+          @target_spoke = args[:target_spoke] if args.key?(:target_spoke)
+        end
+      end
+      
+      # The response for HubService.QueryHubStatus.
+      class QueryHubStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of hub status.
+        # Corresponds to the JSON property `hubStatusEntries`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::HubStatusEntry>]
+        attr_accessor :hub_status_entries
+      
+        # The token for the next page of the response. To see more results, use this
+        # value as the page_token for your next request. If this value is empty, there
+        # are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hub_status_entries = args[:hub_status_entries] if args.key?(:hub_status_entries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The RegionalEndpoint resource.
       class RegionalEndpoint
         include Google::Apis::Core::Hashable
@@ -2881,7 +3000,7 @@ module Google
         end
       end
       
-      # The ServiceClass resource. Next id: 9
+      # The ServiceClass resource.
       class ServiceClass
         include Google::Apis::Core::Hashable
       
@@ -2940,7 +3059,7 @@ module Google
         end
       end
       
-      # The ServiceConnectionMap resource. Next id: 15
+      # The ServiceConnectionMap resource.
       class ServiceConnectionMap
         include Google::Apis::Core::Hashable
       
@@ -3038,7 +3157,7 @@ module Google
         end
       end
       
-      # The ServiceConnectionPolicy resource. Next id: 12
+      # The ServiceConnectionPolicy resource.
       class ServiceConnectionPolicy
         include Google::Apis::Core::Hashable
       
@@ -3127,7 +3246,7 @@ module Google
         end
       end
       
-      # The ServiceConnectionToken resource. Next id: 10
+      # The ServiceConnectionToken resource.
       class ServiceConnectionToken
         include Google::Apis::Core::Hashable
       
@@ -3294,7 +3413,7 @@ module Google
         # @return [Google::Apis::NetworkconnectivityV1::LinkedInterconnectAttachments]
         attr_accessor :linked_interconnect_attachments
       
-        # Next ID: 7
+        # Optional. The linked producer VPC that is associated with the spoke.
         # Corresponds to the JSON property `linkedProducerVpcNetwork`
         # @return [Google::Apis::NetworkconnectivityV1::LinkedProducerVpcNetwork]
         attr_accessor :linked_producer_vpc_network
@@ -3327,8 +3446,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The reasons for current state of the spoke. Only present when the
-        # spoke is in the `INACTIVE` state.
+        # Output only. The reasons for current state of the spoke.
         # Corresponds to the JSON property `reasons`
         # @return [Array<Google::Apis::NetworkconnectivityV1::StateReason>]
         attr_accessor :reasons

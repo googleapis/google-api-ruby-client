@@ -476,6 +476,66 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Query PSC propagation status the status of a Network Connectivity Center hub.
+        # @param [String] name
+        #   Required. The name of the hub.
+        # @param [String] filter
+        #   Optional. An expression that filters the list of results. The filter can be
+        #   used to filter the results by the following fields: * psc_propagation_status.
+        #   source_spoke * psc_propagation_status.source_group * psc_propagation_status.
+        #   source_forwarding_rule * psc_propagation_status.target_spoke *
+        #   psc_propagation_status.target_group * psc_propagation_status.code *
+        #   psc_propagation_status.message
+        # @param [String] group_by
+        #   Optional. A field that counts are grouped by. A comma-separated list of any of
+        #   these fields: * psc_propagation_status.source_spoke * psc_propagation_status.
+        #   source_group * psc_propagation_status.source_forwarding_rule *
+        #   psc_propagation_status.target_spoke * psc_propagation_status.target_group *
+        #   psc_propagation_status.code
+        # @param [String] order_by
+        #   Optional. Sort the results in the ascending order by specific fields returned
+        #   in the response. A comma-separated list of any of these fields: *
+        #   psc_propagation_status.source_spoke * psc_propagation_status.source_group *
+        #   psc_propagation_status.source_forwarding_rule * psc_propagation_status.
+        #   target_spoke * psc_propagation_status.target_group * psc_propagation_status.
+        #   code If `group_by` is set, the value of the `order_by` field must be the same
+        #   as or a subset of the `group_by` field.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return per page.
+        # @param [String] page_token
+        #   Optional. The page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::QueryHubStatusResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::QueryHubStatusResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_project_location_global_hub_status(name, filter: nil, group_by: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:queryStatus', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::QueryHubStatusResponse::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::QueryHubStatusResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['groupBy'] = group_by unless group_by.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Rejects a Network Connectivity Center spoke from being attached to a hub. If
         # the spoke was previously in the `ACTIVE` state, it transitions to the `
         # INACTIVE` state and is no longer able to connect to other spokes that are
