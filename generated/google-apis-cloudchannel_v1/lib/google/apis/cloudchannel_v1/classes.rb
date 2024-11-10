@@ -249,6 +249,15 @@ module Google
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter>]
         attr_accessor :parameters
       
+        # Optional. Price reference ID for the offer. Optional field only for offers
+        # that require additional price information. Used to guarantee that the pricing
+        # is consistent between quoting the offer and placing the order. Yet to be
+        # implemented: this field is currently not evaluated in the API if populated in
+        # a request.
+        # Corresponds to the JSON property `priceReferenceId`
+        # @return [String]
+        attr_accessor :price_reference_id
+      
         # Optional. Purchase order id provided by the reseller.
         # Corresponds to the JSON property `purchaseOrderId`
         # @return [String]
@@ -275,6 +284,7 @@ module Google
           @billing_account = args[:billing_account] if args.key?(:billing_account)
           @offer = args[:offer] if args.key?(:offer)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @price_reference_id = args[:price_reference_id] if args.key?(:price_reference_id)
           @purchase_order_id = args[:purchase_order_id] if args.key?(:purchase_order_id)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
@@ -973,7 +983,7 @@ module Google
         # @return [String]
         attr_accessor :customer
       
-        # Type of event which happened on the customer.
+        # Type of event which happened for the customer.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
@@ -1181,6 +1191,15 @@ module Google
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter>]
         attr_accessor :parameters
       
+        # Optional. Price reference ID for the offer. Optional field only for offers
+        # that require additional price information. Used to guarantee that the pricing
+        # is consistent between quoting the offer and placing the order. Yet to be
+        # implemented: this field is currently not evaluated in the API if populated in
+        # a request.
+        # Corresponds to the JSON property `priceReferenceId`
+        # @return [String]
+        attr_accessor :price_reference_id
+      
         # Service provisioned for an entitlement.
         # Corresponds to the JSON property `provisionedService`
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ProvisionedService]
@@ -1228,6 +1247,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @offer = args[:offer] if args.key?(:offer)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @price_reference_id = args[:price_reference_id] if args.key?(:price_reference_id)
           @provisioned_service = args[:provisioned_service] if args.key?(:provisioned_service)
           @provisioning_state = args[:provisioning_state] if args.key?(:provisioning_state)
           @purchase_order_id = args[:purchase_order_id] if args.key?(:purchase_order_id)
@@ -1337,7 +1357,7 @@ module Google
         # @return [String]
         attr_accessor :entitlement
       
-        # Type of event which happened on the entitlement.
+        # Type of event which happened for the entitlement.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
@@ -2307,10 +2327,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `percentage`
         # @return [Google::Apis::CloudchannelV1::GoogleTypeDecimal]
         attr_accessor :percentage
@@ -2647,6 +2666,13 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer]
         attr_accessor :offer
       
+        # Optional. Price reference ID for the offer. Optional field only for offers
+        # that require additional price information. Used to guarantee that the pricing
+        # is consistent between quoting the offer and placing the order.
+        # Corresponds to the JSON property `priceReferenceId`
+        # @return [String]
+        attr_accessor :price_reference_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2654,6 +2680,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @offer = args[:offer] if args.key?(:offer)
+          @price_reference_id = args[:price_reference_id] if args.key?(:price_reference_id)
         end
       end
       
@@ -2966,10 +2993,9 @@ module Google
         attr_accessor :date_value
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `decimalValue`
         # @return [Google::Apis::CloudchannelV1::GoogleTypeDecimal]
         attr_accessor :decimal_value
@@ -3555,6 +3581,13 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer]
         attr_accessor :offer
       
+        # Optional. Price reference ID for the offer. Optional field only for offers
+        # that require additional price information. Used to guarantee that the pricing
+        # is consistent between quoting the offer and placing the order.
+        # Corresponds to the JSON property `priceReferenceId`
+        # @return [String]
+        attr_accessor :price_reference_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3562,6 +3595,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @offer = args[:offer] if args.key?(:offer)
+          @price_reference_id = args[:price_reference_id] if args.key?(:price_reference_id)
         end
       end
       
@@ -3784,7 +3818,7 @@ module Google
         # @return [String]
         attr_accessor :channel_partner
       
-        # Type of event performed on the Channel Partner.
+        # Type of event which happened for the channel partner.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
@@ -3875,7 +3909,7 @@ module Google
         # @return [String]
         attr_accessor :customer
       
-        # Type of event which happened on the customer.
+        # Type of event which happened for the customer.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
@@ -4130,7 +4164,7 @@ module Google
         # @return [String]
         attr_accessor :entitlement
       
-        # Type of event which happened on the entitlement.
+        # Type of event which happened for the entitlement.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
@@ -4162,6 +4196,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
+        end
+      end
+      
+      # Represents Pub/Sub message content describing opportunity updates.
+      class GoogleCloudChannelV1alpha1OpportunityEvent
+        include Google::Apis::Core::Hashable
+      
+        # Type of event which happened for the opportunity.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Resource name of the opportunity. Format: opportunities/`opportunity`
+        # Corresponds to the JSON property `opportunity`
+        # @return [String]
+        attr_accessor :opportunity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @opportunity = args[:opportunity] if args.key?(:opportunity)
         end
       end
       
@@ -4506,6 +4565,11 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1EntitlementEvent]
         attr_accessor :entitlement_event
       
+        # Represents Pub/Sub message content describing opportunity updates.
+        # Corresponds to the JSON property `opportunityEvent`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1OpportunityEvent]
+        attr_accessor :opportunity_event
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4515,6 +4579,7 @@ module Google
           @channel_partner_event = args[:channel_partner_event] if args.key?(:channel_partner_event)
           @customer_event = args[:customer_event] if args.key?(:customer_event)
           @entitlement_event = args[:entitlement_event] if args.key?(:entitlement_event)
+          @opportunity_event = args[:opportunity_event] if args.key?(:opportunity_event)
         end
       end
       
@@ -4896,10 +4961,9 @@ module Google
       end
       
       # A representation of a decimal value, such as 2.5. Clients may convert values
-      # into language-native decimal formats, such as Java's BigDecimal or Python's
-      # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-      # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-      # org/3/library/decimal.html
+      # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+      # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+      # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
       class GoogleTypeDecimal
         include Google::Apis::Core::Hashable
       
