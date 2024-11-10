@@ -493,10 +493,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The resource name of the environment, in the form: "projects/`projectId`/
-        # locations/`locationId`/environments/`environmentId`" EnvironmentId must start
-        # with a lowercase letter followed by up to 63 lowercase letters, numbers, or
-        # hyphens, and cannot end with a hyphen.
+        # Identifier. The resource name of the environment, in the form: "projects/`
+        # projectId`/locations/`locationId`/environments/`environmentId`" EnvironmentId
+        # must start with a lowercase letter followed by up to 63 lowercase letters,
+        # numbers, or hyphens, and cannot end with a hyphen.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1960,24 +1960,24 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :env_variables
       
-        # The version of the software running in the environment. This encapsulates both
-        # the version of Cloud Composer functionality and the version of Apache Airflow.
-        # It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-
-        # preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used
-        # as input, the server also checks if the provided version is supported and
-        # denies the request for an unsupported version. The Cloud Composer portion of
-        # the image version is a full [semantic version](https://semver.org), or an
-        # alias in the form of major version number or `latest`. When an alias is
-        # provided, the server replaces it with the current Cloud Composer version that
-        # satisfies the alias. The Apache Airflow portion of the image version is a full
-        # semantic version that points to one of the supported Apache Airflow versions,
-        # or an alias in the form of only major or major.minor versions specified. When
-        # an alias is provided, the server replaces it with the latest Apache Airflow
-        # version that satisfies the alias and is supported in the given Cloud Composer
-        # version. In all cases, the resolved image version is stored in the same field.
-        # See also [version list](/composer/docs/concepts/versioning/composer-versions)
-        # and [versioning overview](/composer/docs/concepts/versioning/composer-
-        # versioning-overview).
+        # Optional. The version of the software running in the environment. This
+        # encapsulates both the version of Cloud Composer functionality and the version
+        # of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-
+        # 9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)
+        # `. When used as input, the server also checks if the provided version is
+        # supported and denies the request for an unsupported version. The Cloud
+        # Composer portion of the image version is a full [semantic version](https://
+        # semver.org), or an alias in the form of major version number or `latest`. When
+        # an alias is provided, the server replaces it with the current Cloud Composer
+        # version that satisfies the alias. The Apache Airflow portion of the image
+        # version is a full semantic version that points to one of the supported Apache
+        # Airflow versions, or an alias in the form of only major or major.minor
+        # versions specified. When an alias is provided, the server replaces it with the
+        # latest Apache Airflow version that satisfies the alias and is supported in the
+        # given Cloud Composer version. In all cases, the resolved image version is
+        # stored in the same field. See also [version list](/composer/docs/concepts/
+        # versioning/composer-versions) and [versioning overview](/composer/docs/
+        # concepts/versioning/composer-versioning-overview).
         # Corresponds to the JSON property `imageVersion`
         # @return [String]
         attr_accessor :image_version
@@ -2211,7 +2211,8 @@ module Google
       
         # Optional. The "data" field of Kubernetes ConfigMap, organized in key-value
         # pairs. For details see: https://kubernetes.io/docs/concepts/configuration/
-        # configmap/
+        # configmap/ Example: ` "example_key": "example_value", "another_key": "
+        # another_value" `
         # Corresponds to the JSON property `data`
         # @return [Hash<String,String>]
         attr_accessor :data
@@ -2242,7 +2243,8 @@ module Google
         # Optional. The "data" field of Kubernetes Secret, organized in key-value pairs,
         # which can contain sensitive values such as a password, a token, or a key. The
         # values for all keys have to be base64-encoded strings. For details see: https:/
-        # /kubernetes.io/docs/concepts/configuration/secret/
+        # /kubernetes.io/docs/concepts/configuration/secret/ Example: ` "example": "
+        # ZXhhbXBsZV92YWx1ZQ==", "another-example": "YW5vdGhlcl9leGFtcGxlX3ZhbHVl" `
         # Corresponds to the JSON property `data`
         # @return [Hash<String,String>]
         attr_accessor :data
