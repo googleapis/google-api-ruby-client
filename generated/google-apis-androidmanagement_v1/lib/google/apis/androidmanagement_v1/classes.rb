@@ -4268,7 +4268,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :account_types_with_management_disabled
       
-        # Whether adding new users and profiles is disabled.
+        # Whether adding new users and profiles is disabled. For devices where
+        # managementMode is DEVICE_OWNER this field is ignored and the user is never
+        # allowed to add or remove users.
         # Corresponds to the JSON property `addUserDisabled`
         # @return [Boolean]
         attr_accessor :add_user_disabled
