@@ -391,7 +391,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the labels assigned to an account.
+        # Lists the labels owned by an account.
         # @param [String] parent
         #   Required. The parent account. Format: accounts/`account`
         # @param [Fixnum] page_size
