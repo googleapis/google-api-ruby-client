@@ -1263,6 +1263,7 @@ module Google
       class ExperimentalFeatures
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :protobuf_pythonic_types_enabled, as: 'protobufPythonicTypesEnabled'
           property :rest_async_io_enabled, as: 'restAsyncIoEnabled'
         end
       end
