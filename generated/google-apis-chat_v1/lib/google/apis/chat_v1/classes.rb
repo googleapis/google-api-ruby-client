@@ -1154,7 +1154,7 @@ module Google
         # @return [Google::Apis::ChatV1::CustomEmoji]
         attr_accessor :custom_emoji
       
-        # A basic emoji represented by a unicode string.
+        # Optional. A basic emoji represented by a unicode string.
         # Corresponds to the JSON property `unicode`
         # @return [String]
         attr_accessor :unicode
@@ -1179,7 +1179,7 @@ module Google
         # @return [Google::Apis::ChatV1::Emoji]
         attr_accessor :emoji
       
-        # The total number of reactions using the associated emoji.
+        # Output only. The total number of reactions using the associated emoji.
         # Corresponds to the JSON property `reactionCount`
         # @return [Fixnum]
         attr_accessor :reaction_count
@@ -4046,13 +4046,13 @@ module Google
       class MembershipCount
         include Google::Apis::Core::Hashable
       
-        # Count of human users that have directly joined the space, not counting users
-        # joined by having membership in a joined group.
+        # Output only. Count of human users that have directly joined the space, not
+        # counting users joined by having membership in a joined group.
         # Corresponds to the JSON property `joinedDirectHumanUserCount`
         # @return [Fixnum]
         attr_accessor :joined_direct_human_user_count
       
-        # Count of all groups that have directly joined the space.
+        # Output only. Count of all groups that have directly joined the space.
         # Corresponds to the JSON property `joinedGroupCount`
         # @return [Fixnum]
         attr_accessor :joined_group_count
@@ -4135,13 +4135,13 @@ module Google
       class Message
         include Google::Apis::Core::Hashable
       
-        # One or more interactive widgets that appear at the bottom of a message. You
-        # can add accessory widgets to messages that contain text, cards, or both text
-        # and cards. Not supported for messages that contain dialogs. For details, see [
-        # Add interactive widgets at the bottom of a message](https://developers.google.
-        # com/workspace/chat/create-messages#add-accessory-widgets). Creating a message
-        # with accessory widgets requires [app authentication] (https://developers.
-        # google.com/workspace/chat/authenticate-authorize-chat-app).
+        # Optional. One or more interactive widgets that appear at the bottom of a
+        # message. You can add accessory widgets to messages that contain text, cards,
+        # or both text and cards. Not supported for messages that contain dialogs. For
+        # details, see [Add interactive widgets at the bottom of a message](https://
+        # developers.google.com/workspace/chat/create-messages#add-accessory-widgets).
+        # Creating a message with accessory widgets requires [app authentication] (https:
+        # //developers.google.com/workspace/chat/authenticate-authorize-chat-app).
         # Corresponds to the JSON property `accessoryWidgets`
         # @return [Array<Google::Apis::ChatV1::AccessoryWidget>]
         attr_accessor :accessory_widgets
@@ -4167,7 +4167,7 @@ module Google
         # @return [Array<Google::Apis::ChatV1::AttachedGif>]
         attr_accessor :attached_gifs
       
-        # User-uploaded attachment.
+        # Optional. User-uploaded attachment.
         # Corresponds to the JSON property `attachment`
         # @return [Array<Google::Apis::ChatV1::Attachment>]
         attr_accessor :attachment
@@ -4180,8 +4180,8 @@ module Google
         # @return [Array<Google::Apis::ChatV1::Card>]
         attr_accessor :cards
       
-        # An array of [cards](https://developers.google.com/workspace/chat/api/reference/
-        # rest/v1/cards). Only Chat apps can create cards. If your Chat app [
+        # Optional. An array of [cards](https://developers.google.com/workspace/chat/api/
+        # reference/rest/v1/cards). Only Chat apps can create cards. If your Chat app [
         # authenticates as a user](https://developers.google.com/workspace/chat/
         # authenticate-authorize-chat-user), the messages can't contain cards. To learn
         # how to create a message that contains cards, see [Send a message](https://
@@ -4191,12 +4191,12 @@ module Google
         # @return [Array<Google::Apis::ChatV1::CardWithId>]
         attr_accessor :cards_v2
       
-        # Optional. A custom ID for the message. You can use field to identify a message,
-        # or to get, delete, or update a message. To set a custom ID, specify the [`
-        # messageId`](https://developers.google.com/workspace/chat/api/reference/rest/v1/
-        # spaces.messages/create#body.QUERY_PARAMETERS.message_id) field when you create
-        # the message. For details, see [Name a message](https://developers.google.com/
-        # workspace/chat/create-messages#name_a_created_message).
+        # Optional. Optional. A custom ID for the message. You can use field to identify
+        # a message, or to get, delete, or update a message. To set a custom ID, specify
+        # the [`messageId`](https://developers.google.com/workspace/chat/api/reference/
+        # rest/v1/spaces.messages/create#body.QUERY_PARAMETERS.message_id) field when
+        # you create the message. For details, see [Name a message](https://developers.
+        # google.com/workspace/chat/create-messages#name_a_created_message).
         # Corresponds to the JSON property `clientAssignedMessageId`
         # @return [String]
         attr_accessor :client_assigned_message_id
@@ -4227,8 +4227,8 @@ module Google
         # @return [Array<Google::Apis::ChatV1::EmojiReactionSummary>]
         attr_accessor :emoji_reaction_summaries
       
-        # A plain-text description of the message's cards, used when the actual cards
-        # can't be displayed—for example, mobile notifications.
+        # Optional. A plain-text description of the message's cards, used when the
+        # actual cards can't be displayed—for example, mobile notifications.
         # Corresponds to the JSON property `fallbackText`
         # @return [String]
         attr_accessor :fallback_text
@@ -4263,9 +4263,9 @@ module Google
         # @return [Google::Apis::ChatV1::MatchedUrl]
         attr_accessor :matched_url
       
-        # Resource name of the message. Format: `spaces/`space`/messages/`message``
-        # Where ``space`` is the ID of the space where the message is posted and ``
-        # message`` is a system-assigned ID for the message. For example, `spaces/
+        # Identifier. Resource name of the message. Format: `spaces/`space`/messages/`
+        # message`` Where ``space`` is the ID of the space where the message is posted
+        # and ``message`` is a system-assigned ID for the message. For example, `spaces/
         # AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you
         # create a message, you can use this ID to specify the message in a request by
         # replacing ``message`` with the value from the `clientAssignedMessageId` field.
@@ -4309,12 +4309,12 @@ module Google
         # @return [Google::Apis::ChatV1::Space]
         attr_accessor :space
       
-        # Plain-text body of the message. The first link to an image, video, or web page
-        # generates a [preview chip](https://developers.google.com/workspace/chat/
-        # preview-links). You can also [@mention a Google Chat user](https://developers.
-        # google.com/workspace/chat/format-messages#messages-@mention), or everyone in
-        # the space. To learn about creating text messages, see [Send a message](https://
-        # developers.google.com/workspace/chat/create-messages).
+        # Optional. Plain-text body of the message. The first link to an image, video,
+        # or web page generates a [preview chip](https://developers.google.com/workspace/
+        # chat/preview-links). You can also [@mention a Google Chat user](https://
+        # developers.google.com/workspace/chat/format-messages#messages-@mention), or
+        # everyone in the space. To learn about creating text messages, see [Send a
+        # message](https://developers.google.com/workspace/chat/create-messages).
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -4542,13 +4542,13 @@ module Google
       class PermissionSetting
         include Google::Apis::Core::Hashable
       
-        # Whether spaces managers have this permission.
+        # Optional. Whether spaces managers have this permission.
         # Corresponds to the JSON property `managersAllowed`
         # @return [Boolean]
         attr_accessor :managers_allowed
         alias_method :managers_allowed?, :managers_allowed
       
-        # Whether non-manager members have this permission.
+        # Optional. Whether non-manager members have this permission.
         # Corresponds to the JSON property `membersAllowed`
         # @return [Boolean]
         attr_accessor :members_allowed
@@ -4665,8 +4665,8 @@ module Google
         # @return [Google::Apis::ChatV1::Emoji]
         attr_accessor :emoji
       
-        # The resource name of the reaction. Format: `spaces/`space`/messages/`message`/
-        # reactions/`reaction``
+        # Identifier. The resource name of the reaction. Format: `spaces/`space`/
+        # messages/`message`/reactions/`reaction``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5042,23 +5042,23 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The space's display name. Required when [creating a space](https://developers.
-        # google.com/workspace/chat/api/reference/rest/v1/spaces/create) with a `
-        # spaceType` of `SPACE`. If you receive the error message `ALREADY_EXISTS` when
-        # creating a space or updating the `displayName`, try a different `displayName`.
-        # An existing space within the Google Workspace organization might already use
-        # this display name. For direct messages, this field might be empty. Supports up
-        # to 128 characters.
+        # Optional. The space's display name. Required when [creating a space](https://
+        # developers.google.com/workspace/chat/api/reference/rest/v1/spaces/create) with
+        # a `spaceType` of `SPACE`. If you receive the error message `ALREADY_EXISTS`
+        # when creating a space or updating the `displayName`, try a different `
+        # displayName`. An existing space within the Google Workspace organization might
+        # already use this display name. For direct messages, this field might be empty.
+        # Supports up to 128 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Immutable. Whether this space permits any Google Chat user as a member. Input
-        # when creating a space in a Google Workspace organization. Omit this field when
-        # creating spaces in the following conditions: * The authenticated user uses a
-        # consumer account (unmanaged user account). By default, a space created by a
-        # consumer account permits any Google Chat user. For existing spaces, this field
-        # is output only.
+        # Optional. Immutable. Whether this space permits any Google Chat user as a
+        # member. Input when creating a space in a Google Workspace organization. Omit
+        # this field when creating spaces in the following conditions: * The
+        # authenticated user uses a consumer account (unmanaged user account). By
+        # default, a space created by a consumer account permits any Google Chat user.
+        # For existing spaces, this field is output only.
         # Corresponds to the JSON property `externalUserAllowed`
         # @return [Boolean]
         attr_accessor :external_user_allowed
@@ -5084,8 +5084,8 @@ module Google
         # @return [Google::Apis::ChatV1::MembershipCount]
         attr_accessor :membership_count
       
-        # Resource name of the space. Format: `spaces/`space`` Where ``space``
-        # represents the system-assigned ID for the space. You can obtain the space ID
+        # Identifier. Resource name of the space. Format: `spaces/`space`` Where ``space`
+        # ` represents the system-assigned ID for the space. You can obtain the space ID
         # by calling the [`spaces.list()`](https://developers.google.com/workspace/chat/
         # api/reference/rest/v1/spaces/list) method or from the space URL. For example,
         # if the space URL is `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`,
@@ -5121,7 +5121,7 @@ module Google
         # @return [Google::Apis::ChatV1::SpaceDetails]
         attr_accessor :space_details
       
-        # The message history state for messages and threads in this space.
+        # Optional. The message history state for messages and threads in this space.
         # Corresponds to the JSON property `spaceHistoryState`
         # @return [String]
         attr_accessor :space_history_state
@@ -5131,8 +5131,8 @@ module Google
         # @return [String]
         attr_accessor :space_threading_state
       
-        # The type of space. Required when creating a space or updating the space type
-        # of a space. Output only for other usage.
+        # Optional. The type of space. Required when creating a space or updating the
+        # space type of a space. Output only for other usage.
         # Corresponds to the JSON property `spaceType`
         # @return [String]
         attr_accessor :space_type
@@ -5606,7 +5606,8 @@ module Google
       class Thread
         include Google::Apis::Core::Hashable
       
-        # Resource name of the thread. Example: `spaces/`space`/threads/`thread``
+        # Identifier. Resource name of the thread. Example: `spaces/`space`/threads/`
+        # thread``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
