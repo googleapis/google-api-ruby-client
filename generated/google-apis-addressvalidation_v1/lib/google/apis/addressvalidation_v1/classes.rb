@@ -84,7 +84,11 @@ module Google
         attr_accessor :address_components
       
         # The post-processed address, formatted as a single-line address following the
-        # address formatting rules of the region where the address is located.
+        # address formatting rules of the region where the address is located. Note: the
+        # format of this address may not match the format of the address in the `
+        # postal_address` field. For example, the `postal_address` will always represent
+        # the country as a 2 letter `region_code` (ex. "US" or "CA"), whereas this field
+        # will use a longer form of the country name (ex. "USA or "Canada").
         # Corresponds to the JSON property `formattedAddress`
         # @return [String]
         attr_accessor :formatted_address
@@ -127,9 +131,8 @@ module Google
       
         # Any tokens in the input that could not be resolved. This might be an input
         # that was not recognized as a valid part of an address (for example in an input
-        # like "123235253253 Main St, San Francisco, CA, 94105", the unresolved tokens
-        # may look like `["123235253253"]` since that does not look like a valid street
-        # number.
+        # like "Parcel 0000123123 & 0000456456 Str # Guthrie Center IA 50115 US", the
+        # unresolved tokens may look like `["Parcel", "0000123123", "&", "0000456456"]`.
         # Corresponds to the JSON property `unresolvedTokens`
         # @return [Array<String>]
         attr_accessor :unresolved_tokens
