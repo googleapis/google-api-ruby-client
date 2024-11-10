@@ -3307,7 +3307,7 @@ module Google
       end
       
       # These messages contain information about the execution of a datascan. The
-      # monitored resource is 'DataScan' Next ID: 13
+      # monitored resource is 'DataScan'
       class GoogleCloudDataplexV1DataScanEvent
         include Google::Apis::Core::Hashable
       
