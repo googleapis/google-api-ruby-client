@@ -454,13 +454,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim
+      class GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1CheckGroundingResponseFactChunk
+      class GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -827,6 +827,24 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1EngineSearchEngineConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1FactChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1Feedback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1FeedbackConversationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3914,11 +3932,20 @@ module Google
       class GoogleCloudDiscoveryengineV1CheckGroundingResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :cited_chunks, as: 'citedChunks', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CheckGroundingResponseFactChunk, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CheckGroundingResponseFactChunk::Representation
+          collection :cited_chunks, as: 'citedChunks', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FactChunk, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FactChunk::Representation
+      
+          collection :cited_facts, as: 'citedFacts', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk::Representation
       
           collection :claims, as: 'claims', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim::Representation
       
           property :support_score, as: 'supportScore'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk_text, as: 'chunkText'
         end
       end
       
@@ -3930,14 +3957,6 @@ module Google
           property :end_pos, as: 'endPos'
           property :grounding_check_required, as: 'groundingCheckRequired'
           property :start_pos, as: 'startPos'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1CheckGroundingResponseFactChunk
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :chunk_text, as: 'chunkText'
-          property :source, as: 'source'
         end
       end
       
@@ -4549,6 +4568,36 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1FactChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk_text, as: 'chunkText'
+          property :index, as: 'index'
+          property :source, as: 'source'
+          hash :source_metadata, as: 'sourceMetadata'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1Feedback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment, as: 'comment'
+          property :conversation_info, as: 'conversationInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FeedbackConversationInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FeedbackConversationInfo::Representation
+      
+          property :feedback_type, as: 'feedbackType'
+          property :llm_model_version, as: 'llmModelVersion'
+          collection :reasons, as: 'reasons'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1FeedbackConversationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :question_index, as: 'questionIndex'
+          property :session, as: 'session'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4895,6 +4944,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          collection :documents, as: 'documents', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentInfo::Representation
+      
           property :panel_id, as: 'panelId'
           property :panel_position, as: 'panelPosition'
           property :total_panels, as: 'totalPanels'
@@ -5703,12 +5754,16 @@ module Google
           property :engine, as: 'engine'
           property :event_time, as: 'eventTime'
           property :event_type, as: 'eventType'
+          property :feedback, as: 'feedback', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Feedback, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Feedback::Representation
+      
           property :filter, as: 'filter'
           property :media_info, as: 'mediaInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1MediaInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1MediaInfo::Representation
       
           property :page_info, as: 'pageInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PageInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PageInfo::Representation
       
           property :panel, as: 'panel', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PanelInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PanelInfo::Representation
+      
+          collection :panels, as: 'panels', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PanelInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PanelInfo::Representation
       
           collection :promotion_ids, as: 'promotionIds'
           property :search_info, as: 'searchInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchInfo::Representation
