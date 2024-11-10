@@ -1852,6 +1852,55 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new VMware admin cluster in a given project and location. The API
+        # needs to be combined with creating a bootstrap cluster to work.
+        # @param [String] parent
+        #   Required. The parent of the project and location where the cluster is created
+        #   in. Format: "projects/`project`/locations/`location`"
+        # @param [Google::Apis::GkeonpremV1::VmwareAdminCluster] vmware_admin_cluster_object
+        # @param [Boolean] allow_preflight_failure
+        #   Optional. If set to true, CLM will force CCFE to persist the cluster resource
+        #   in RMS when the creation fails during standalone preflight checks. In that
+        #   case the subsequent create call will fail with "cluster already exists" error
+        #   and hence a update cluster is required to fix the cluster.
+        # @param [Boolean] validate_only
+        #   Validate the request without actually doing any updates.
+        # @param [String] vmware_admin_cluster_id
+        #   Required. User provided identifier that is used as part of the resource name;
+        #   must conform to RFC-1034 and additionally restrict to lower-cased letters.
+        #   This comes out roughly to: /^a-z+[a-z0-9]$/
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkeonpremV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkeonpremV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_vmware_admin_cluster(parent, vmware_admin_cluster_object = nil, allow_preflight_failure: nil, validate_only: nil, vmware_admin_cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/vmwareAdminClusters', options)
+          command.request_representation = Google::Apis::GkeonpremV1::VmwareAdminCluster::Representation
+          command.request_object = vmware_admin_cluster_object
+          command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
+          command.response_class = Google::Apis::GkeonpremV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['allowPreflightFailure'] = allow_preflight_failure unless allow_preflight_failure.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['vmwareAdminClusterId'] = vmware_admin_cluster_id unless vmware_admin_cluster_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Enrolls an existing VMware admin cluster to the Anthos On-Prem API within a
         # given project and location. Through enrollment, an existing admin cluster will
         # become Anthos On-Prem API managed. The corresponding GCP resources will be
