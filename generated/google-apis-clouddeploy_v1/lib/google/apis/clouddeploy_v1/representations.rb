@@ -928,6 +928,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Targets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetsPresentCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -971,6 +977,24 @@ module Google
       end
       
       class TimeWindows
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimedPromoteReleaseCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimedPromoteReleaseOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimedPromoteReleaseRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1159,6 +1183,8 @@ module Google
       
           property :repair_rollout_rule, as: 'repairRolloutRule', class: Google::Apis::ClouddeployV1::RepairRolloutRule, decorator: Google::Apis::ClouddeployV1::RepairRolloutRule::Representation
       
+          property :timed_promote_release_rule, as: 'timedPromoteReleaseRule', class: Google::Apis::ClouddeployV1::TimedPromoteReleaseRule, decorator: Google::Apis::ClouddeployV1::TimedPromoteReleaseRule::Representation
+      
         end
       end
       
@@ -1166,6 +1192,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :targets_present_condition, as: 'targetsPresentCondition', class: Google::Apis::ClouddeployV1::TargetsPresentCondition, decorator: Google::Apis::ClouddeployV1::TargetsPresentCondition::Representation
+      
+          property :timed_promote_release_condition, as: 'timedPromoteReleaseCondition', class: Google::Apis::ClouddeployV1::TimedPromoteReleaseCondition, decorator: Google::Apis::ClouddeployV1::TimedPromoteReleaseCondition::Representation
       
         end
       end
@@ -1193,6 +1221,8 @@ module Google
           property :state, as: 'state'
           property :state_description, as: 'stateDescription'
           property :target_id, as: 'targetId'
+          property :timed_promote_release_operation, as: 'timedPromoteReleaseOperation', class: Google::Apis::ClouddeployV1::TimedPromoteReleaseOperation, decorator: Google::Apis::ClouddeployV1::TimedPromoteReleaseOperation::Representation
+      
           property :update_time, as: 'updateTime'
           property :wait_until_time, as: 'waitUntilTime'
         end
@@ -2593,6 +2623,14 @@ module Google
         end
       end
       
+      class Targets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_target_id, as: 'destinationTargetId'
+          property :source_target_id, as: 'sourceTargetId'
+        end
+      end
+      
       class TargetsPresentCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2655,6 +2693,37 @@ module Google
           property :time_zone, as: 'timeZone'
           collection :weekly_windows, as: 'weeklyWindows', class: Google::Apis::ClouddeployV1::WeeklyWindow, decorator: Google::Apis::ClouddeployV1::WeeklyWindow::Representation
       
+        end
+      end
+      
+      class TimedPromoteReleaseCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_promotion_time, as: 'nextPromotionTime'
+          collection :targets_list, as: 'targetsList', class: Google::Apis::ClouddeployV1::Targets, decorator: Google::Apis::ClouddeployV1::Targets::Representation
+      
+        end
+      end
+      
+      class TimedPromoteReleaseOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phase, as: 'phase'
+          property :release, as: 'release'
+          property :target_id, as: 'targetId'
+        end
+      end
+      
+      class TimedPromoteReleaseRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::ClouddeployV1::AutomationRuleCondition, decorator: Google::Apis::ClouddeployV1::AutomationRuleCondition::Representation
+      
+          property :destination_phase, as: 'destinationPhase'
+          property :destination_target_id, as: 'destinationTargetId'
+          property :id, as: 'id'
+          property :schedule, as: 'schedule'
+          property :time_zone, as: 'timeZone'
         end
       end
       

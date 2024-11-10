@@ -594,6 +594,12 @@ module Google
         # @return [Google::Apis::ClouddeployV1::RepairRolloutRule]
         attr_accessor :repair_rollout_rule
       
+        # The `TimedPromoteReleaseRule` will automatically promote a release from the
+        # current target(s) to the specified target(s) on a configured schedule.
+        # Corresponds to the JSON property `timedPromoteReleaseRule`
+        # @return [Google::Apis::ClouddeployV1::TimedPromoteReleaseRule]
+        attr_accessor :timed_promote_release_rule
+      
         def initialize(**args)
            update!(**args)
         end
@@ -603,6 +609,7 @@ module Google
           @advance_rollout_rule = args[:advance_rollout_rule] if args.key?(:advance_rollout_rule)
           @promote_release_rule = args[:promote_release_rule] if args.key?(:promote_release_rule)
           @repair_rollout_rule = args[:repair_rollout_rule] if args.key?(:repair_rollout_rule)
+          @timed_promote_release_rule = args[:timed_promote_release_rule] if args.key?(:timed_promote_release_rule)
         end
       end
       
@@ -616,6 +623,12 @@ module Google
         # @return [Google::Apis::ClouddeployV1::TargetsPresentCondition]
         attr_accessor :targets_present_condition
       
+        # `TimedPromoteReleaseCondition` contains conditions specific to an Automation
+        # with a Timed Promote Release rule defined.
+        # Corresponds to the JSON property `timedPromoteReleaseCondition`
+        # @return [Google::Apis::ClouddeployV1::TimedPromoteReleaseCondition]
+        attr_accessor :timed_promote_release_condition
+      
         def initialize(**args)
            update!(**args)
         end
@@ -623,6 +636,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @targets_present_condition = args[:targets_present_condition] if args.key?(:targets_present_condition)
+          @timed_promote_release_condition = args[:timed_promote_release_condition] if args.key?(:timed_promote_release_condition)
         end
       end
       
@@ -715,12 +729,16 @@ module Google
         # @return [String]
         attr_accessor :state_description
       
-        # Output only. The ID of the target that represents the promotion stage that
-        # initiates the `AutomationRun`. The value of this field is the last segment of
-        # a target name.
+        # Output only. The ID of the source target that initiates the `AutomationRun`.
+        # The value of this field is the last segment of a target name.
         # Corresponds to the JSON property `targetId`
         # @return [String]
         attr_accessor :target_id
+      
+        # Contains the information of an automated timed promote-release operation.
+        # Corresponds to the JSON property `timedPromoteReleaseOperation`
+        # @return [Google::Apis::ClouddeployV1::TimedPromoteReleaseOperation]
+        attr_accessor :timed_promote_release_operation
       
         # Output only. Time at which the automationRun was updated.
         # Corresponds to the JSON property `updateTime`
@@ -754,6 +772,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_description = args[:state_description] if args.key?(:state_description)
           @target_id = args[:target_id] if args.key?(:target_id)
+          @timed_promote_release_operation = args[:timed_promote_release_operation] if args.key?(:timed_promote_release_operation)
           @update_time = args[:update_time] if args.key?(:update_time)
           @wait_until_time = args[:wait_until_time] if args.key?(:wait_until_time)
         end
@@ -6017,6 +6036,31 @@ module Google
         end
       end
       
+      # The targets involved in a single timed promotion.
+      class Targets
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The destination target ID.
+        # Corresponds to the JSON property `destinationTargetId`
+        # @return [String]
+        attr_accessor :destination_target_id
+      
+        # Optional. The source target ID.
+        # Corresponds to the JSON property `sourceTargetId`
+        # @return [String]
+        attr_accessor :source_target_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_target_id = args[:destination_target_id] if args.key?(:destination_target_id)
+          @source_target_id = args[:source_target_id] if args.key?(:source_target_id)
+        end
+      end
+      
       # `TargetsPresentCondition` contains information on any Targets referenced in
       # the Delivery Pipeline that do not actually exist.
       class TargetsPresentCondition
@@ -6229,6 +6273,121 @@ module Google
           @one_time_windows = args[:one_time_windows] if args.key?(:one_time_windows)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @weekly_windows = args[:weekly_windows] if args.key?(:weekly_windows)
+        end
+      end
+      
+      # `TimedPromoteReleaseCondition` contains conditions specific to an Automation
+      # with a Timed Promote Release rule defined.
+      class TimedPromoteReleaseCondition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. When the next scheduled promotion(s) will occur.
+        # Corresponds to the JSON property `nextPromotionTime`
+        # @return [String]
+        attr_accessor :next_promotion_time
+      
+        # Output only. A list of targets involved in the upcoming timed promotion(s).
+        # Corresponds to the JSON property `targetsList`
+        # @return [Array<Google::Apis::ClouddeployV1::Targets>]
+        attr_accessor :targets_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_promotion_time = args[:next_promotion_time] if args.key?(:next_promotion_time)
+          @targets_list = args[:targets_list] if args.key?(:targets_list)
+        end
+      end
+      
+      # Contains the information of an automated timed promote-release operation.
+      class TimedPromoteReleaseOperation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The starting phase of the rollout created by this operation.
+        # Corresponds to the JSON property `phase`
+        # @return [String]
+        attr_accessor :phase
+      
+        # Output only. The name of the release to be promoted.
+        # Corresponds to the JSON property `release`
+        # @return [String]
+        attr_accessor :release
+      
+        # Output only. The ID of the target that represents the promotion stage to which
+        # the release will be promoted. The value of this field is the last segment of a
+        # target name.
+        # Corresponds to the JSON property `targetId`
+        # @return [String]
+        attr_accessor :target_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phase = args[:phase] if args.key?(:phase)
+          @release = args[:release] if args.key?(:release)
+          @target_id = args[:target_id] if args.key?(:target_id)
+        end
+      end
+      
+      # The `TimedPromoteReleaseRule` will automatically promote a release from the
+      # current target(s) to the specified target(s) on a configured schedule.
+      class TimedPromoteReleaseRule
+        include Google::Apis::Core::Hashable
+      
+        # `AutomationRuleCondition` contains conditions relevant to an `Automation` rule.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::ClouddeployV1::AutomationRuleCondition]
+        attr_accessor :condition
+      
+        # Optional. The starting phase of the rollout created by this rule. Default to
+        # the first phase.
+        # Corresponds to the JSON property `destinationPhase`
+        # @return [String]
+        attr_accessor :destination_phase
+      
+        # Optional. The ID of the stage in the pipeline to which this `Release` is
+        # deploying. If unspecified, default it to the next stage in the promotion flow.
+        # The value of this field could be one of the following: * The last segment of a
+        # target name * "@next", the next target in the promotion sequence
+        # Corresponds to the JSON property `destinationTargetId`
+        # @return [String]
+        attr_accessor :destination_target_id
+      
+        # Required. ID of the rule. This ID must be unique in the `Automation` resource
+        # to which this rule belongs. The format is `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Required. Schedule in crontab format. e.g. "0 9 * * 1" for every Monday at 9am.
+        # Corresponds to the JSON property `schedule`
+        # @return [String]
+        attr_accessor :schedule
+      
+        # Required. The time zone in IANA format [IANA Time Zone Database](https://www.
+        # iana.org/time-zones) (e.g. America/New_York).
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @destination_phase = args[:destination_phase] if args.key?(:destination_phase)
+          @destination_target_id = args[:destination_target_id] if args.key?(:destination_target_id)
+          @id = args[:id] if args.key?(:id)
+          @schedule = args[:schedule] if args.key?(:schedule)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
