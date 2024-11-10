@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1PlaceContainingPlace
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1PlaceGenerativeSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +293,12 @@ module Google
       end
       
       class GoogleMapsPlacesV1Polyline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1PriceRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -463,6 +475,7 @@ module Google
       class GoogleMapsPlacesV1AutocompletePlacesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_pure_service_area_businesses, as: 'includePureServiceAreaBusinesses'
           property :include_query_predictions, as: 'includeQueryPredictions'
           collection :included_primary_types, as: 'includedPrimaryTypes'
           collection :included_region_codes, as: 'includedRegionCodes'
@@ -723,6 +736,8 @@ module Google
           collection :attributions, as: 'attributions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution::Representation
       
           property :business_status, as: 'businessStatus'
+          collection :containing_places, as: 'containingPlaces', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceContainingPlace, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceContainingPlace::Representation
+      
           property :curbside_pickup, as: 'curbsidePickup'
           property :current_opening_hours, as: 'currentOpeningHours', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours::Representation
       
@@ -767,9 +782,12 @@ module Google
           property :plus_code, as: 'plusCode', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode::Representation
       
           property :price_level, as: 'priceLevel'
+          property :price_range, as: 'priceRange', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PriceRange, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PriceRange::Representation
+      
           property :primary_type, as: 'primaryType'
           property :primary_type_display_name, as: 'primaryTypeDisplayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
+          property :pure_service_area_business, as: 'pureServiceAreaBusiness'
           property :rating, as: 'rating'
           property :regular_opening_hours, as: 'regularOpeningHours', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHours::Representation
       
@@ -839,6 +857,14 @@ module Google
         end
       end
       
+      class GoogleMapsPlacesV1PlaceContainingPlace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleMapsPlacesV1PlaceGenerativeSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -867,6 +893,8 @@ module Google
       class GoogleMapsPlacesV1PlaceOpeningHours
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_close_time, as: 'nextCloseTime'
+          property :next_open_time, as: 'nextOpenTime'
           property :open_now, as: 'openNow'
           collection :periods, as: 'periods', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHoursPeriod, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHoursPeriod::Representation
       
@@ -950,6 +978,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encoded_polyline, as: 'encodedPolyline'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PriceRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_price, as: 'endPrice', class: Google::Apis::PlacesV1::GoogleTypeMoney, decorator: Google::Apis::PlacesV1::GoogleTypeMoney::Representation
+      
+          property :start_price, as: 'startPrice', class: Google::Apis::PlacesV1::GoogleTypeMoney, decorator: Google::Apis::PlacesV1::GoogleTypeMoney::Representation
+      
         end
       end
       
@@ -1060,6 +1098,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ev_options, as: 'evOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestEvOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestEvOptions::Representation
       
+          property :include_pure_service_area_businesses, as: 'includePureServiceAreaBusinesses'
           property :included_type, as: 'includedType'
           property :language_code, as: 'languageCode'
           property :location_bias, as: 'locationBias', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocationBias, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestLocationBias::Representation
