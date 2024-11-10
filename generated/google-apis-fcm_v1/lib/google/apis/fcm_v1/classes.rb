@@ -395,6 +395,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :headers
       
+        # Optional. [Apple Live Activity](https://developer.apple.com/design/human-
+        # interface-guidelines/live-activities) token to send updates to. This token can
+        # either be a push token or [push-to-start](https://developer.apple.com/
+        # documentation/activitykit/activity/pushtostarttoken) token from Apple.
+        # Corresponds to the JSON property `liveActivityToken`
+        # @return [String]
+        attr_accessor :live_activity_token
+      
         # APNs payload as a JSON object, including both `aps` dictionary and custom
         # payload. See [Payload Key Reference](https://developer.apple.com/documentation/
         # usernotifications/setting_up_a_remote_notification_server/
@@ -412,6 +420,7 @@ module Google
         def update!(**args)
           @fcm_options = args[:fcm_options] if args.key?(:fcm_options)
           @headers = args[:headers] if args.key?(:headers)
+          @live_activity_token = args[:live_activity_token] if args.key?(:live_activity_token)
           @payload = args[:payload] if args.key?(:payload)
         end
       end
