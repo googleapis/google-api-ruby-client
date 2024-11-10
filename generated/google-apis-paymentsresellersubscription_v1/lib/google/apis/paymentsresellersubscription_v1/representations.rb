@@ -40,7 +40,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1Duration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,7 +112,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1IntentPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1UserSession
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -274,11 +310,28 @@ module Google
         end
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          property :subscription, as: 'subscription', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription::Representation
+      
+          property :subscription_id, as: 'subscriptionId'
+        end
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1Duration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :unit, as: 'unit'
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -358,6 +411,22 @@ module Google
         end
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intent_payload, as: 'intentPayload', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1IntentPayload, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1IntentPayload::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_session, as: 'userSession', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1UserSession, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1UserSession::Representation
+      
+        end
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -365,6 +434,16 @@ module Google
           property :offering, as: 'offering'
           property :sales_channel, as: 'salesChannel'
           property :store_id, as: 'storeId'
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1IntentPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_intent, as: 'createIntent', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent::Representation
+      
+          property :entitle_intent, as: 'entitleIntent', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent::Representation
+      
         end
       end
       
@@ -592,6 +671,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :subscription, as: 'subscription', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription::Representation
       
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1UserSession
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :token, as: 'token'
         end
       end
       

@@ -106,6 +106,48 @@ module Google
         end
       end
       
+      # Intent message for creating a Subscription resource.
+      class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent
+        include Google::Apis::Core::Hashable
+      
+        # Required. The parent resource name, which is the identifier of the partner.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # A subscription serves as a central billing entity between an external partner
+        # and Google. The underlying Google services rely on the subscription state to
+        # grant or revoke the user's service entitlement. It's important to note that
+        # the subscription state may not always perfectly align with the user's service
+        # entitlement. For example, some Google services may continue providing access
+        # to the user until the current billing cycle ends, even if the subscription has
+        # been immediately canceled. However, other services may not do the same. To
+        # fully understand the specific details, please consult the relevant contract or
+        # product policy.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        attr_accessor :subscription
+      
+        # Required. Identifies the subscription resource on the Partner side. The value
+        # is restricted to 63 ASCII characters at the maximum. If a subscription was
+        # previously created with the same subscription_id, we will directly return that
+        # one.
+        # Corresponds to the JSON property `subscriptionId`
+        # @return [String]
+        attr_accessor :subscription_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @subscription = args[:subscription] if args.key?(:subscription)
+          @subscription_id = args[:subscription_id] if args.key?(:subscription_id)
+        end
+      end
+      
       # Describes the length of a period of a time.
       class GoogleCloudPaymentsResellerSubscriptionV1Duration
         include Google::Apis::Core::Hashable
@@ -128,6 +170,26 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @unit = args[:unit] if args.key?(:unit)
+        end
+      end
+      
+      # Intent for entitling the previously provisioned subscription to an end user.
+      class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the subscription resource that is entitled to the
+        # current end user.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -392,6 +454,55 @@ module Google
         end
       end
       
+      # [Preview only] Request to generate a user session.
+      class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest
+        include Google::Apis::Core::Hashable
+      
+        # The payload that describes the user intent.
+        # Corresponds to the JSON property `intentPayload`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1IntentPayload]
+        attr_accessor :intent_payload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_payload = args[:intent_payload] if args.key?(:intent_payload)
+        end
+      end
+      
+      # [Preview only] Response that contains the details for generated user session.
+      class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse
+        include Google::Apis::Core::Hashable
+      
+        # A user session contains a short-lived token that includes information required
+        # to interact with Google Payments Reseller Platform using the following web
+        # endpoints. - A user session token should be generated dynamically for an
+        # authenticated user. You should refrain from sharing a token directly with a
+        # user in an unauthenticated context, such as SMS, or email. - You can re-
+        # generate new session tokens repeatedly for same `generate` request if
+        # necessary, regardless of the previous tokens being expired or not. You don't
+        # need to worry about multiple sessions resulting in duplicate fulfillments as
+        # guaranteed by the same subscription id. Please refer to the [Google Managed
+        # Signup](/payments/reseller/subscription/reference/index/User.Signup.
+        # Integration/Google.Managed.Signup.\(In.Preview\)) documentation for additional
+        # integration details.
+        # Corresponds to the JSON property `userSession`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1UserSession]
+        attr_accessor :user_session
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_session = args[:user_session] if args.key?(:user_session)
+        end
+      end
+      
       # Payload specific to Google One products.
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
         include Google::Apis::Core::Hashable
@@ -426,6 +537,31 @@ module Google
           @offering = args[:offering] if args.key?(:offering)
           @sales_channel = args[:sales_channel] if args.key?(:sales_channel)
           @store_id = args[:store_id] if args.key?(:store_id)
+        end
+      end
+      
+      # The payload that describes the user intent.
+      class GoogleCloudPaymentsResellerSubscriptionV1IntentPayload
+        include Google::Apis::Core::Hashable
+      
+        # Intent message for creating a Subscription resource.
+        # Corresponds to the JSON property `createIntent`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent]
+        attr_accessor :create_intent
+      
+        # Intent for entitling the previously provisioned subscription to an end user.
+        # Corresponds to the JSON property `entitleIntent`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent]
+        attr_accessor :entitle_intent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_intent = args[:create_intent] if args.key?(:create_intent)
+          @entitle_intent = args[:entitle_intent] if args.key?(:entitle_intent)
         end
       end
       
@@ -1224,6 +1360,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
+      # A user session contains a short-lived token that includes information required
+      # to interact with Google Payments Reseller Platform using the following web
+      # endpoints. - A user session token should be generated dynamically for an
+      # authenticated user. You should refrain from sharing a token directly with a
+      # user in an unauthenticated context, such as SMS, or email. - You can re-
+      # generate new session tokens repeatedly for same `generate` request if
+      # necessary, regardless of the previous tokens being expired or not. You don't
+      # need to worry about multiple sessions resulting in duplicate fulfillments as
+      # guaranteed by the same subscription id. Please refer to the [Google Managed
+      # Signup](/payments/reseller/subscription/reference/index/User.Signup.
+      # Integration/Google.Managed.Signup.\(In.Preview\)) documentation for additional
+      # integration details.
+      class GoogleCloudPaymentsResellerSubscriptionV1UserSession
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the user session expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The encrypted token of the user session, including the
+        # information of the user's intent and request. This token should be provided
+        # when redirecting the user to Google.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @token = args[:token] if args.key?(:token)
         end
       end
       
