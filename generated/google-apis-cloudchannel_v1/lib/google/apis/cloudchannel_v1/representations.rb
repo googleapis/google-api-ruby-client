@@ -712,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1alpha1OpportunityEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1alpha1Parameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -922,6 +928,7 @@ module Google
           property :offer, as: 'offer'
           collection :parameters, as: 'parameters', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter::Representation
       
+          property :price_reference_id, as: 'priceReferenceId'
           property :purchase_order_id, as: 'purchaseOrderId'
           property :request_id, as: 'requestId'
         end
@@ -1158,6 +1165,7 @@ module Google
           property :offer, as: 'offer'
           collection :parameters, as: 'parameters', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter::Representation
       
+          property :price_reference_id, as: 'priceReferenceId'
           property :provisioned_service, as: 'provisionedService', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ProvisionedService, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ProvisionedService::Representation
       
           property :provisioning_state, as: 'provisioningState'
@@ -1590,6 +1598,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :offer, as: 'offer', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer::Representation
       
+          property :price_reference_id, as: 'priceReferenceId'
         end
       end
       
@@ -1869,6 +1878,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :offer, as: 'offer', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer::Representation
       
+          property :price_reference_id, as: 'priceReferenceId'
         end
       end
       
@@ -2028,6 +2038,14 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1alpha1OpportunityEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_type, as: 'eventType'
+          property :opportunity, as: 'opportunity'
+        end
+      end
+      
       class GoogleCloudChannelV1alpha1Parameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2129,6 +2147,8 @@ module Google
           property :customer_event, as: 'customerEvent', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1CustomerEvent, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1CustomerEvent::Representation
       
           property :entitlement_event, as: 'entitlementEvent', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1EntitlementEvent, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1EntitlementEvent::Representation
+      
+          property :opportunity_event, as: 'opportunityEvent', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1OpportunityEvent, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1OpportunityEvent::Representation
       
         end
       end
