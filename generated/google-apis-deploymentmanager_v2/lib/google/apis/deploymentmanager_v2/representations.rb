@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DebugInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Deployment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ErrorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,6 +118,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Help
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HelpLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +137,12 @@ module Google
       end
       
       class InstancesBulkInsertOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalizedMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -138,6 +168,12 @@ module Google
           
           class Error
             class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
           
             include Google::Apis::Core::JsonObjectSupport
           end
@@ -167,6 +203,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotaExceededInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -204,6 +246,12 @@ module Google
           
           class Error
             class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
           
             include Google::Apis::Core::JsonObjectSupport
           end
@@ -325,6 +373,14 @@ module Google
         end
       end
       
+      class DebugInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          collection :stack_entries, as: 'stackEntries'
+        end
+      end
+      
       class Deployment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -396,6 +452,15 @@ module Google
         end
       end
       
+      class ErrorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          hash :metadata, as: 'metadata'
+          property :reason, as: 'reason'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -414,6 +479,23 @@ module Google
           property :etag, :base64 => true, as: 'etag'
           property :policy, as: 'policy', class: Google::Apis::DeploymentmanagerV2::Policy, decorator: Google::Apis::DeploymentmanagerV2::Policy::Representation
       
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class Help
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :links, as: 'links', class: Google::Apis::DeploymentmanagerV2::HelpLink, decorator: Google::Apis::DeploymentmanagerV2::HelpLink::Representation
+      
+        end
+      end
+      
+      class HelpLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :url, as: 'url'
         end
       end
       
@@ -430,6 +512,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :per_location_status, as: 'perLocationStatus', class: Google::Apis::DeploymentmanagerV2::BulkInsertOperationStatus, decorator: Google::Apis::DeploymentmanagerV2::BulkInsertOperationStatus::Representation
       
+        end
+      end
+      
+      class LocalizedMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :locale, as: 'locale'
+          property :message, as: 'message'
         end
       end
       
@@ -482,6 +572,7 @@ module Google
           property :progress, as: 'progress'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :set_common_instance_metadata_operation_metadata, as: 'setCommonInstanceMetadataOperationMetadata', class: Google::Apis::DeploymentmanagerV2::SetCommonInstanceMetadataOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2::SetCommonInstanceMetadataOperationMetadata::Representation
       
           property :start_time, as: 'startTime'
@@ -505,9 +596,28 @@ module Google
           class Error
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
+              collection :arguments, as: 'arguments'
               property :code, as: 'code'
+              property :debug_info, as: 'debugInfo', class: Google::Apis::DeploymentmanagerV2::DebugInfo, decorator: Google::Apis::DeploymentmanagerV2::DebugInfo::Representation
+          
+              collection :error_details, as: 'errorDetails', class: Google::Apis::DeploymentmanagerV2::Operation::Error::Error::ErrorDetail, decorator: Google::Apis::DeploymentmanagerV2::Operation::Error::Error::ErrorDetail::Representation
+          
               property :location, as: 'location'
               property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::DeploymentmanagerV2::ErrorInfo, decorator: Google::Apis::DeploymentmanagerV2::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::DeploymentmanagerV2::Help, decorator: Google::Apis::DeploymentmanagerV2::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::DeploymentmanagerV2::LocalizedMessage, decorator: Google::Apis::DeploymentmanagerV2::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::DeploymentmanagerV2::QuotaExceededInfo, decorator: Google::Apis::DeploymentmanagerV2::QuotaExceededInfo::Representation
+            
+              end
             end
           end
         end
@@ -549,6 +659,18 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class QuotaExceededInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :dimensions, as: 'dimensions'
+          property :future_limit, as: 'futureLimit'
+          property :limit, as: 'limit'
+          property :limit_name, as: 'limitName'
+          property :metric_name, as: 'metricName'
+          property :rollout_status, as: 'rolloutStatus'
         end
       end
       
@@ -624,9 +746,28 @@ module Google
           class Error
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
+              collection :arguments, as: 'arguments'
               property :code, as: 'code'
+              property :debug_info, as: 'debugInfo', class: Google::Apis::DeploymentmanagerV2::DebugInfo, decorator: Google::Apis::DeploymentmanagerV2::DebugInfo::Representation
+          
+              collection :error_details, as: 'errorDetails', class: Google::Apis::DeploymentmanagerV2::ResourceUpdate::Error::Error::ErrorDetail, decorator: Google::Apis::DeploymentmanagerV2::ResourceUpdate::Error::Error::ErrorDetail::Representation
+          
               property :location, as: 'location'
               property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::DeploymentmanagerV2::ErrorInfo, decorator: Google::Apis::DeploymentmanagerV2::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::DeploymentmanagerV2::Help, decorator: Google::Apis::DeploymentmanagerV2::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::DeploymentmanagerV2::LocalizedMessage, decorator: Google::Apis::DeploymentmanagerV2::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::DeploymentmanagerV2::QuotaExceededInfo, decorator: Google::Apis::DeploymentmanagerV2::QuotaExceededInfo::Representation
+            
+              end
             end
           end
         end
