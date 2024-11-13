@@ -22,7 +22,6 @@ pass_down_envvars+=(
     "EXTRA_CI_ARGS"
     "GEMS_LIST"
     "KOKORO_GIT_COMMIT"
-    "KOKORO_KEYSTORE_DIR"
     "PACKAGE"
     "RELEASE_DRY_RUN"
     "RELEASE_PACKAGE"
