@@ -666,7 +666,7 @@ module Google
       class BigLakeConfiguration
         include Google::Apis::Core::Hashable
       
-        # Required. The connection specifying the credentials to be used to read and
+        # Optional. The connection specifying the credentials to be used to read and
         # write to external storage, such as Cloud Storage. The connection_id can have
         # the form ``project`.`location`.`connection_id`` or `projects/`project`/
         # locations/`location`/connections/`connection_id`".
@@ -674,19 +674,19 @@ module Google
         # @return [String]
         attr_accessor :connection_id
       
-        # Required. The file format the table data is stored in.
+        # Optional. The file format the table data is stored in.
         # Corresponds to the JSON property `fileFormat`
         # @return [String]
         attr_accessor :file_format
       
-        # Required. The fully qualified location prefix of the external folder where
+        # Optional. The fully qualified location prefix of the external folder where
         # table data is stored. The '*' wildcard character is not allowed. The URI
         # should be in the format `gs://bucket/path_to_table/`
         # Corresponds to the JSON property `storageUri`
         # @return [String]
         attr_accessor :storage_uri
       
-        # Required. The table format the metadata only snapshots are stored in.
+        # Optional. The table format the metadata only snapshots are stored in.
         # Corresponds to the JSON property `tableFormat`
         # @return [String]
         attr_accessor :table_format
@@ -10724,7 +10724,7 @@ module Google
       
         # The contribution metric. Applies to contribution analysis models. Allowed
         # formats supported are for summable and summable ratio contribution metrics.
-        # These include expressions such as "SUM(x)" or "SUM(x)/SUM(y)", where x and y
+        # These include expressions such as `SUM(x)` or `SUM(x)/SUM(y)`, where x and y
         # are column names from the base table.
         # Corresponds to the JSON property `contributionMetric`
         # @return [String]
