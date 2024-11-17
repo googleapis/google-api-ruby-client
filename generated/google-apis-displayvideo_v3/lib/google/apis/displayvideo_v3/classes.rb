@@ -10258,10 +10258,8 @@ module Google
         attr_accessor :pacing_period
       
         # Required. The type of pacing that defines how the budget amount will be spent
-        # across the pacing_period. *Warning*: Starting on **November 5, 2024**, `
-        # PACING_TYPE_ASAP` will no longer be compatible with pacing_period `
-        # PACING_PERIOD_FLIGHT` for insertion orders. [Read more about this announced
-        # change](/display-video/api/deprecations#features.io_asap).
+        # across the pacing_period. `PACING_TYPE_ASAP` is not compatible with
+        # pacing_period `PACING_PERIOD_FLIGHT` for insertion orders.
         # Corresponds to the JSON property `pacingType`
         # @return [String]
         attr_accessor :pacing_type
