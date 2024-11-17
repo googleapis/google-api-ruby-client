@@ -944,6 +944,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_app_link_info, as: 'androidAppLinkInfo', class: Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfo, decorator: Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfo::Representation
       
+          property :display_text, as: 'displayText', class: Google::Apis::WalletobjectsV1::LocalizedString, decorator: Google::Apis::WalletobjectsV1::LocalizedString::Representation
+      
           property :ios_app_link_info, as: 'iosAppLinkInfo', class: Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfo, decorator: Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfo::Representation
       
           property :web_app_link_info, as: 'webAppLinkInfo', class: Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfo, decorator: Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfo::Representation
