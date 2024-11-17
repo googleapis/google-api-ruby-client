@@ -1164,6 +1164,8 @@ module Google
           collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
       
           property :encryption_key, as: 'encryptionKey'
+          property :encryption_key_revocation_action, as: 'encryptionKeyRevocationAction'
+          property :encryption_key_shutdown_duration, as: 'encryptionKeyShutdownDuration'
           property :execution_environment, as: 'executionEnvironment'
           property :health_check_disabled, as: 'healthCheckDisabled'
           hash :labels, as: 'labels'
