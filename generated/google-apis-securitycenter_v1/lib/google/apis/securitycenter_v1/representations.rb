@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Disk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskPath
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -737,6 +743,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Detection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2Disk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2084,6 +2096,13 @@ module Google
         end
       end
       
+      class Disk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class DiskPath
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2103,6 +2122,7 @@ module Google
       class EffectiveEventThreatDetectionCustomModule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_provider, as: 'cloudProvider'
           hash :config, as: 'config'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -2130,6 +2150,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ancestor_module, as: 'ancestorModule'
+          property :cloud_provider, as: 'cloudProvider'
           hash :config, as: 'config'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -2219,6 +2240,8 @@ module Google
           property :database, as: 'database', class: Google::Apis::SecuritycenterV1::Database, decorator: Google::Apis::SecuritycenterV1::Database::Representation
       
           property :description, as: 'description'
+          property :disk, as: 'disk', class: Google::Apis::SecuritycenterV1::Disk, decorator: Google::Apis::SecuritycenterV1::Disk::Representation
+      
           property :event_time, as: 'eventTime'
           property :exfiltration, as: 'exfiltration', class: Google::Apis::SecuritycenterV1::Exfiltration, decorator: Google::Apis::SecuritycenterV1::Exfiltration::Representation
       
@@ -2376,6 +2399,7 @@ module Google
       class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_provider, as: 'cloudProvider'
           property :custom_config, as: 'customConfig', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig::Representation
       
           property :display_name, as: 'displayName'
@@ -2500,6 +2524,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ancestor_module, as: 'ancestorModule'
+          property :cloud_provider, as: 'cloudProvider'
           property :custom_config, as: 'customConfig', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1CustomConfig::Representation
       
           property :display_name, as: 'displayName'
@@ -2957,6 +2982,13 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2Disk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2DiskPath
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3067,6 +3099,8 @@ module Google
           property :database, as: 'database', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Database, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Database::Representation
       
           property :description, as: 'description'
+          property :disk, as: 'disk', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Disk, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Disk::Representation
+      
           property :event_time, as: 'eventTime'
           property :exfiltration, as: 'exfiltration', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Exfiltration, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Exfiltration::Representation
       

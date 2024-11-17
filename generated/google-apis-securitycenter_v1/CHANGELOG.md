@@ -1,5 +1,9 @@
 # Release history for google-apis-securitycenter_v1
 
+### v0.90.0 (2024-11-17)
+
+* Regenerated from discovery document revision 20241111
+
 ### v0.89.0 (2024-10-27)
 
 * Regenerated from discovery document revision 20241018

@@ -2001,6 +2001,26 @@ module Google
         end
       end
       
+      # Contains information about the disk associated with the finding.
+      class Disk
+        include Google::Apis::Core::Hashable
+      
+        # The name of the disk, for example, "https://www.googleapis.com/compute/v1/
+        # projects/project-id/zones/zone-id/disks/disk-id".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Path of the file in terms of underlying disk/partition identifiers.
       class DiskPath
         include Google::Apis::Core::Hashable
@@ -2067,6 +2087,11 @@ module Google
       class EffectiveEventThreatDetectionCustomModule
         include Google::Apis::Core::Hashable
       
+        # The cloud provider of the custom module.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
         # Output only. Config for the effective module.
         # Corresponds to the JSON property `config`
         # @return [Hash<String,Object>]
@@ -2108,6 +2133,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @config = args[:config] if args.key?(:config)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -2174,6 +2200,11 @@ module Google
         # @return [String]
         attr_accessor :ancestor_module
       
+        # The cloud provider of the custom module.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
         # Config for the module. For the resident module, its config value is defined at
         # this level. For the inherited module, its config value is inherited from the
         # ancestor module.
@@ -2227,6 +2258,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ancestor_module = args[:ancestor_module] if args.key?(:ancestor_module)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @config = args[:config] if args.key?(:config)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -2536,6 +2568,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Contains information about the disk associated with the finding.
+        # Corresponds to the JSON property `disk`
+        # @return [Google::Apis::SecuritycenterV1::Disk]
+        attr_accessor :disk
+      
         # The time the finding was first detected. If an existing finding is updated,
         # then this is the time the update occurred. For example, if the finding
         # represents an open firewall, this property captures the time the detector
@@ -2780,6 +2817,7 @@ module Google
           @data_flow_events = args[:data_flow_events] if args.key?(:data_flow_events)
           @database = args[:database] if args.key?(:database)
           @description = args[:description] if args.key?(:description)
+          @disk = args[:disk] if args.key?(:disk)
           @event_time = args[:event_time] if args.key?(:event_time)
           @exfiltration = args[:exfiltration] if args.key?(:exfiltration)
           @external_systems = args[:external_systems] if args.key?(:external_systems)
@@ -3202,6 +3240,11 @@ module Google
       class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
         include Google::Apis::Core::Hashable
       
+        # The cloud provider of the custom module.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
         # Defines the properties in a custom module configuration for Security Health
         # Analytics. Use the custom module configuration to create custom detectors that
         # generate custom findings for resources that you specify.
@@ -3238,6 +3281,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @custom_config = args[:custom_config] if args.key?(:custom_config)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enablement_state = args[:enablement_state] if args.key?(:enablement_state)
@@ -3699,10 +3743,10 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping]
         attr_accessor :sensitive_data_protection_mapping
       
-        # Required. Tag values combined with `AND` to check against. Values in the form "
-        # tagValues/123" Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]`
-        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-
-        # managing
+        # Required. Tag values combined with `AND` to check against. For Google Cloud
+        # resources, they are tag value IDs in the form of "tagValues/123". Example: `[ "
+        # tagValues/123", "tagValues/456", "tagValues/789" ]` https://cloud.google.com/
+        # resource-manager/docs/tags/tags-creating-and-managing
         # Corresponds to the JSON property `tagValues`
         # @return [Array<String>]
         attr_accessor :tag_values
@@ -3773,6 +3817,11 @@ module Google
         # @return [String]
         attr_accessor :ancestor_module
       
+        # The cloud provider of the custom module.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
         # Defines the properties in a custom module configuration for Security Health
         # Analytics. Use the custom module configuration to create custom detectors that
         # generate custom findings for resources that you specify.
@@ -3822,6 +3871,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ancestor_module = args[:ancestor_module] if args.key?(:ancestor_module)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @custom_config = args[:custom_config] if args.key?(:custom_config)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enablement_state = args[:enablement_state] if args.key?(:enablement_state)
@@ -5636,6 +5686,26 @@ module Google
         end
       end
       
+      # Contains information about the disk associated with the finding.
+      class GoogleCloudSecuritycenterV2Disk
+        include Google::Apis::Core::Hashable
+      
+        # The name of the disk, for example, "https://www.googleapis.com/compute/v1/
+        # projects/project-id/zones/zone-id/disks/disk-id".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Path of the file in terms of underlying disk/partition identifiers.
       class GoogleCloudSecuritycenterV2DiskPath
         include Google::Apis::Core::Hashable
@@ -6054,6 +6124,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Contains information about the disk associated with the finding.
+        # Corresponds to the JSON property `disk`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Disk]
+        attr_accessor :disk
+      
         # The time the finding was first detected. If an existing finding is updated,
         # then this is the time the update occurred. For example, if the finding
         # represents an open firewall, this property captures the time the detector
@@ -6307,6 +6382,7 @@ module Google
           @data_flow_events = args[:data_flow_events] if args.key?(:data_flow_events)
           @database = args[:database] if args.key?(:database)
           @description = args[:description] if args.key?(:description)
+          @disk = args[:disk] if args.key?(:disk)
           @event_time = args[:event_time] if args.key?(:event_time)
           @exfiltration = args[:exfiltration] if args.key?(:exfiltration)
           @external_systems = args[:external_systems] if args.key?(:external_systems)
@@ -7567,9 +7643,10 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping]
         attr_accessor :sensitive_data_protection_mapping
       
-        # Tag values combined with `AND` to check against. Values in the form "tagValues/
-        # 123" Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]` https://
-        # cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
+        # Tag values combined with `AND` to check against. For Google Cloud resources,
+        # they are tag value IDs in the form of "tagValues/123". Example: `[ "tagValues/
+        # 123", "tagValues/456", "tagValues/789" ]` https://cloud.google.com/resource-
+        # manager/docs/tags/tags-creating-and-managing
         # Corresponds to the JSON property `tagValues`
         # @return [Array<String>]
         attr_accessor :tag_values
