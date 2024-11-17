@@ -183,13 +183,6 @@ module Google
         # Stores settings related to Google Cloud Session Length including session
         # duration, the type of challenge (i.e. method) they should face when their
         # session expires, and other related settings.
-        # Corresponds to the JSON property `reauthSettings`
-        # @return [Google::Apis::AccesscontextmanagerV1::ReauthSettings]
-        attr_accessor :reauth_settings
-      
-        # Stores settings related to Google Cloud Session Length including session
-        # duration, the type of challenge (i.e. method) they should face when their
-        # session expires, and other related settings.
         # Corresponds to the JSON property `sessionSettings`
         # @return [Google::Apis::AccesscontextmanagerV1::SessionSettings]
         attr_accessor :session_settings
@@ -201,7 +194,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_levels = args[:access_levels] if args.key?(:access_levels)
-          @reauth_settings = args[:reauth_settings] if args.key?(:reauth_settings)
           @session_settings = args[:session_settings] if args.key?(:session_settings)
         end
       end
@@ -1059,13 +1051,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Stores settings related to Google Cloud Session Length including session
-        # duration, the type of challenge (i.e. method) they should face when their
-        # session expires, and other related settings.
-        # Corresponds to the JSON property `reauthSettings`
-        # @return [Google::Apis::AccesscontextmanagerV1::ReauthSettings]
-        attr_accessor :reauth_settings
-      
         # Optional. A list of applications that are subject to this binding's
         # restrictions. If the list is empty, the binding restrictions will universally
         # apply to all applications.
@@ -1097,7 +1082,6 @@ module Google
           @dry_run_access_levels = args[:dry_run_access_levels] if args.key?(:dry_run_access_levels)
           @group_key = args[:group_key] if args.key?(:group_key)
           @name = args[:name] if args.key?(:name)
-          @reauth_settings = args[:reauth_settings] if args.key?(:reauth_settings)
           @restricted_client_applications = args[:restricted_client_applications] if args.key?(:restricted_client_applications)
           @scoped_access_settings = args[:scoped_access_settings] if args.key?(:scoped_access_settings)
           @session_settings = args[:session_settings] if args.key?(:session_settings)
@@ -1717,61 +1701,6 @@ module Google
         end
       end
       
-      # Stores settings related to Google Cloud Session Length including session
-      # duration, the type of challenge (i.e. method) they should face when their
-      # session expires, and other related settings.
-      class ReauthSettings
-        include Google::Apis::Core::Hashable
-      
-        # Optional. How long a user is allowed to take between actions before a new
-        # access token must be issued. Presently only set for Cloud Apps.
-        # Corresponds to the JSON property `maxInactivity`
-        # @return [String]
-        attr_accessor :max_inactivity
-      
-        # Optional. Reauth method when users GCP session is up.
-        # Corresponds to the JSON property `reauthMethod`
-        # @return [String]
-        attr_accessor :reauth_method
-      
-        # Optional. The session length. Setting this field to zero is equal to disabling.
-        # Reauth. Also can set infinite session by flipping the enabled bit to false
-        # below. If use_oidc_max_age is true, for OIDC apps, the session length will be
-        # the minimum of this field and OIDC max_age param.
-        # Corresponds to the JSON property `sessionLength`
-        # @return [String]
-        attr_accessor :session_length
-      
-        # Optional. Big red button to turn off GCSL. When false, all fields set above
-        # will be disregarded and the session length is basically infinite.
-        # Corresponds to the JSON property `sessionLengthEnabled`
-        # @return [Boolean]
-        attr_accessor :session_length_enabled
-        alias_method :session_length_enabled?, :session_length_enabled
-      
-        # Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if
-        # passed in the authentication request will be ignored. When true, the re-auth
-        # period will be the minimum of the session_length field and the max_age OIDC
-        # param.
-        # Corresponds to the JSON property `useOidcMaxAge`
-        # @return [Boolean]
-        attr_accessor :use_oidc_max_age
-        alias_method :use_oidc_max_age?, :use_oidc_max_age
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @max_inactivity = args[:max_inactivity] if args.key?(:max_inactivity)
-          @reauth_method = args[:reauth_method] if args.key?(:reauth_method)
-          @session_length = args[:session_length] if args.key?(:session_length)
-          @session_length_enabled = args[:session_length_enabled] if args.key?(:session_length_enabled)
-          @use_oidc_max_age = args[:use_oidc_max_age] if args.key?(:use_oidc_max_age)
-        end
-      end
-      
       # A request to replace all existing Access Levels in an Access Policy with the
       # Access Levels provided. This is done atomically.
       class ReplaceAccessLevelsRequest
@@ -1928,6 +1857,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. An opaque identifier for the current version of the `
+        # ServicePerimeter`. Clients should not expect this to be in any specific format.
+        # If etag is not provided, the operation will be performed as if a valid etag
+        # is provided.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Identifier. Resource name for the `ServicePerimeter`. Format: `accessPolicies/`
         # access_policy`/servicePerimeters/`service_perimeter``. The `service_perimeter`
         # component must begin with a letter, followed by alphanumeric characters or `_`.
@@ -1983,6 +1920,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @perimeter_type = args[:perimeter_type] if args.key?(:perimeter_type)
           @spec = args[:spec] if args.key?(:spec)
