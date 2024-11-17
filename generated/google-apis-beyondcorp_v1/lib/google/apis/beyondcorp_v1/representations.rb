@@ -298,12 +298,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpSecuritygatewaysV1Peering
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,12 +305,6 @@ module Google
       end
       
       class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -917,14 +905,6 @@ module Google
         end
       end
       
-      class GoogleCloudBeyondcorpSecuritygatewaysV1Peering
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :dns_zones, as: 'dnsZones'
-          property :target_network, as: 'targetNetwork'
-        end
-      end
-      
       class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -949,16 +929,6 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :peerings, as: 'peerings', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering::Representation
-      
-          property :request_id, as: 'requestId'
-          property :validate_only, as: 'validateOnly'
         end
       end
       
