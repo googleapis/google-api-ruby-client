@@ -1129,6 +1129,12 @@ module Google
       class GoogleCloudDiscoveryengineV1AnswerQueryRequestGroundingSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies whether to enable the filtering based on grounding score
+        # and at what level.
+        # Corresponds to the JSON property `filteringLevel`
+        # @return [String]
+        attr_accessor :filtering_level
+      
         # Optional. Specifies whether to include grounding_supports in the answer. The
         # default value is `false`. When this field is set to `true`, returned answer
         # will have `grounding_score` and will contain GroundingSupports for each claim.
@@ -1143,6 +1149,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @filtering_level = args[:filtering_level] if args.key?(:filtering_level)
           @include_grounding_supports = args[:include_grounding_supports] if args.key?(:include_grounding_supports)
         end
       end
@@ -2616,8 +2623,7 @@ module Google
         # Indicates that this claim required grounding check. When the system decided
         # this claim doesn't require attribution/grounding check, this field will be set
         # to false. In that case, no grounding check was done for the claim and
-        # therefore citation_indices, anti_citation_indices, and score should not be
-        # returned.
+        # therefore citation_indices should not be returned.
         # Corresponds to the JSON property `groundingCheckRequired`
         # @return [Boolean]
         attr_accessor :grounding_check_required
@@ -2714,7 +2720,7 @@ module Google
       
         # Output only. Represents the relevance score based on similarity. Higher score
         # indicates higher chunk relevance. The score is in range [-1.0, 1.0]. Only
-        # populated on SearchService.SearchResponse.
+        # populated on SearchResponse.
         # Corresponds to the JSON property `relevanceScore`
         # @return [Float]
         attr_accessor :relevance_score
@@ -4332,6 +4338,14 @@ module Google
       class GoogleCloudDiscoveryengineV1DocumentInfo
         include Google::Apis::Core::Hashable
       
+        # Optional. The conversion value associated with this Document. Must be set if
+        # UserEvent.event_type is "conversion". For example, a value of 1000 signifies
+        # that 1000 seconds were spent viewing a Document for the `watch` conversion
+        # type.
+        # Corresponds to the JSON property `conversionValue`
+        # @return [Float]
+        attr_accessor :conversion_value
+      
         # The Document resource ID.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -4375,6 +4389,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @conversion_value = args[:conversion_value] if args.key?(:conversion_value)
           @id = args[:id] if args.key?(:id)
           @joined = args[:joined] if args.key?(:joined)
           @name = args[:name] if args.key?(:name)
@@ -4903,77 +4918,6 @@ module Google
           @index = args[:index] if args.key?(:index)
           @source = args[:source] if args.key?(:source)
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
-        end
-      end
-      
-      # Information about the user feedback. This information will be used for logging
-      # and metrics purpose.
-      class GoogleCloudDiscoveryengineV1Feedback
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The additional user comment of the feedback if user gives a thumb
-        # down.
-        # Corresponds to the JSON property `comment`
-        # @return [String]
-        attr_accessor :comment
-      
-        # The conversation information such as the question index and session name.
-        # Corresponds to the JSON property `conversationInfo`
-        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FeedbackConversationInfo]
-        attr_accessor :conversation_info
-      
-        # Required. Indicate whether the user gives a positive or negative feedback. If
-        # the user gives a negative feedback, there might be more feedback details.
-        # Corresponds to the JSON property `feedbackType`
-        # @return [String]
-        attr_accessor :feedback_type
-      
-        # The version of the LLM model that was used to generate the response.
-        # Corresponds to the JSON property `llmModelVersion`
-        # @return [String]
-        attr_accessor :llm_model_version
-      
-        # Optional. The reason if user gives a thumb down.
-        # Corresponds to the JSON property `reasons`
-        # @return [Array<String>]
-        attr_accessor :reasons
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @comment = args[:comment] if args.key?(:comment)
-          @conversation_info = args[:conversation_info] if args.key?(:conversation_info)
-          @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
-          @llm_model_version = args[:llm_model_version] if args.key?(:llm_model_version)
-          @reasons = args[:reasons] if args.key?(:reasons)
-        end
-      end
-      
-      # The conversation information such as the question index and session name.
-      class GoogleCloudDiscoveryengineV1FeedbackConversationInfo
-        include Google::Apis::Core::Hashable
-      
-        # The index of the user input within the conversation messages.
-        # Corresponds to the JSON property `questionIndex`
-        # @return [Fixnum]
-        attr_accessor :question_index
-      
-        # Name of the newly generated or continued session.
-        # Corresponds to the JSON property `session`
-        # @return [String]
-        attr_accessor :session
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @question_index = args[:question_index] if args.key?(:question_index)
-          @session = args[:session] if args.key?(:session)
         end
       end
       
@@ -6742,7 +6686,9 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The score of this record based on the given query and selected model.
+        # The score of this record based on the given query and selected model. The
+        # score will be rounded to 2 decimal places. If the score is close to 0, it will
+        # be rounded to 0.0001 to avoid returning unset.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -8638,6 +8584,11 @@ module Google
         # @return [String]
         attr_accessor :answer
       
+        # Defines an answer.
+        # Corresponds to the JSON property `detailedAnswer`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Answer]
+        attr_accessor :detailed_answer
+      
         # Defines a user inputed query.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Query]
@@ -8650,6 +8601,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @answer = args[:answer] if args.key?(:answer)
+          @detailed_answer = args[:detailed_answer] if args.key?(:detailed_answer)
           @query = args[:query] if args.key?(:query)
         end
       end
@@ -9276,6 +9228,15 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CompletionInfo]
         attr_accessor :completion_info
       
+        # Optional. Conversion type. Required if UserEvent.event_type is `conversion`.
+        # This is a customer-defined conversion name in lowercase letters or numbers
+        # separated by "-", such as "watch", "good-visit" etc. Do not set the field if
+        # UserEvent.event_type is not `conversion`. This mixes the custom conversion
+        # event with predefined events like `search`, `view-item` etc.
+        # Corresponds to the JSON property `conversionType`
+        # @return [String]
+        attr_accessor :conversion_type
+      
         # The DataStore resource full name, of the form `projects/`project`/locations/`
         # location`/collections/`collection_id`/dataStores/`data_store_id``. Optional.
         # Only required for user events whose data store can't by determined by
@@ -9329,16 +9290,11 @@ module Google
         # values: * `add-to-cart`: Add an item(s) to cart, e.g. in Retail online
         # shopping * `purchase`: Purchase an item(s) Media-related values: * `media-play`
         # : Start/resume watching a video, playing a song, etc. * `media-complete`:
-        # Finished or stopped midway through a video, song, etc.
+        # Finished or stopped midway through a video, song, etc. Custom conversion value:
+        # * `conversion`: Customer defined conversion event.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
-      
-        # Information about the user feedback. This information will be used for logging
-        # and metrics purpose.
-        # Corresponds to the JSON property `feedback`
-        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Feedback]
-        attr_accessor :feedback
       
         # The filter syntax consists of an expression language for constructing a
         # predicate from one or more fields of the documents being filtered. One example
@@ -9435,13 +9391,13 @@ module Google
           @attributes = args[:attributes] if args.key?(:attributes)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @completion_info = args[:completion_info] if args.key?(:completion_info)
+          @conversion_type = args[:conversion_type] if args.key?(:conversion_type)
           @data_store = args[:data_store] if args.key?(:data_store)
           @direct_user_request = args[:direct_user_request] if args.key?(:direct_user_request)
           @documents = args[:documents] if args.key?(:documents)
           @engine = args[:engine] if args.key?(:engine)
           @event_time = args[:event_time] if args.key?(:event_time)
           @event_type = args[:event_type] if args.key?(:event_type)
-          @feedback = args[:feedback] if args.key?(:feedback)
           @filter = args[:filter] if args.key?(:filter)
           @media_info = args[:media_info] if args.key?(:media_info)
           @page_info = args[:page_info] if args.key?(:page_info)
@@ -14766,6 +14722,11 @@ module Google
         # @return [String]
         attr_accessor :answer
       
+        # Defines an answer.
+        # Corresponds to the JSON property `detailedAnswer`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswer]
+        attr_accessor :detailed_answer
+      
         # Defines a user inputed query.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaQuery]
@@ -14778,6 +14739,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @answer = args[:answer] if args.key?(:answer)
+          @detailed_answer = args[:detailed_answer] if args.key?(:detailed_answer)
           @query = args[:query] if args.key?(:query)
         end
       end
