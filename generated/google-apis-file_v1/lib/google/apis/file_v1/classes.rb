@@ -342,7 +342,7 @@ module Google
         attr_accessor :max_iops
       
         # Optional. Deprecated: `max_iops` should be used instead of this parameter.
-        # Maximum raw read IOPS.
+        # Maximum read IOPS.
         # Corresponds to the JSON property `maxReadIops`
         # @return [Fixnum]
         attr_accessor :max_read_iops
