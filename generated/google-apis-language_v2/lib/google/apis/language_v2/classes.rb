@@ -58,7 +58,7 @@ module Google
       
         # The language of the text, which will be the same as the language specified in
         # the request or, if not specified, the automatically-detected language. See
-        # Document.language field for more details.
+        # Document.language_code field for more details.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -118,7 +118,7 @@ module Google
       
         # The language of the text, which will be the same as the language specified in
         # the request or, if not specified, the automatically-detected language. See
-        # Document.language field for more details.
+        # Document.language_code field for more details.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -238,15 +238,14 @@ module Google
         attr_accessor :document_sentiment
       
         # Entities, along with their semantic information, in the input document.
-        # Populated if the user enables AnnotateTextRequest.Features.extract_entities or
-        # AnnotateTextRequest.Features.extract_entity_sentiment.
+        # Populated if the user enables AnnotateTextRequest.Features.extract_entities .
         # Corresponds to the JSON property `entities`
         # @return [Array<Google::Apis::LanguageV2::Entity>]
         attr_accessor :entities
       
         # The language of the text, which will be the same as the language specified in
         # the request or, if not specified, the automatically-detected language. See
-        # Document.language field for more details.
+        # Document.language_code field for more details.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -350,7 +349,7 @@ module Google
       
         # The language of the text, which will be the same as the language specified in
         # the request or, if not specified, the automatically-detected language. See
-        # Document.language field for more details.
+        # Document.language_code field for more details.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -780,7 +779,7 @@ module Google
       
         # The language of the text, which will be the same as the language specified in
         # the request or, if not specified, the automatically-detected language. See
-        # Document.language field for more details.
+        # Document.language_code field for more details.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
