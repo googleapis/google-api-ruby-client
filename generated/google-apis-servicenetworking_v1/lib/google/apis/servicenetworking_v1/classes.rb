@@ -2153,6 +2153,13 @@ module Google
         # @return [Google::Apis::ServicenetworkingV1::CommonLanguageSettings]
         attr_accessor :common
       
+        # Map of service names to renamed services. Keys are the package relative
+        # service names and values are the name to be used for the service client and
+        # call options. publishing: go_settings: renamed_services: Publisher: TopicAdmin
+        # Corresponds to the JSON property `renamedServices`
+        # @return [Hash<String,String>]
+        attr_accessor :renamed_services
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2160,6 +2167,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common = args[:common] if args.key?(:common)
+          @renamed_services = args[:renamed_services] if args.key?(:renamed_services)
         end
       end
       

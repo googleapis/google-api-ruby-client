@@ -1309,6 +1309,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServicenetworkingV1::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1::CommonLanguageSettings::Representation
       
+          hash :renamed_services, as: 'renamedServices'
         end
       end
       
