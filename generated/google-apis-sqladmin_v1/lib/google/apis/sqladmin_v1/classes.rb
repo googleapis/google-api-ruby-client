@@ -1736,6 +1736,25 @@ module Google
         end
       end
       
+      # The selected object that Cloud SQL migrates.
+      class ExternalSyncSelectedObject
+        include Google::Apis::Core::Hashable
+      
+        # The name of the database that Cloud SQL migrates.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+        end
+      end
+      
       # Database instance failover context.
       class FailoverContext
         include Google::Apis::Core::Hashable
@@ -3055,10 +3074,21 @@ module Google
         # @return [String]
         attr_accessor :password
       
+        # Optional. A list of objects that the user selects for replication from an
+        # external source instance.
+        # Corresponds to the JSON property `selectedObjects`
+        # @return [Array<Google::Apis::SqladminV1::SelectedObjects>]
+        attr_accessor :selected_objects
+      
         # Reference to another Cloud SQL instance.
         # Corresponds to the JSON property `sourceInstance`
         # @return [Google::Apis::SqladminV1::InstanceReference]
         attr_accessor :source_instance
+      
+        # Optional. SSL option for replica connection to the on-premises source.
+        # Corresponds to the JSON property `sslOption`
+        # @return [String]
+        attr_accessor :ssl_option
       
         # The username for connecting to on-premises instance.
         # Corresponds to the JSON property `username`
@@ -3078,7 +3108,9 @@ module Google
           @host_port = args[:host_port] if args.key?(:host_port)
           @kind = args[:kind] if args.key?(:kind)
           @password = args[:password] if args.key?(:password)
+          @selected_objects = args[:selected_objects] if args.key?(:selected_objects)
           @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @ssl_option = args[:ssl_option] if args.key?(:ssl_option)
           @username = args[:username] if args.key?(:username)
         end
       end
@@ -3756,6 +3788,26 @@ module Google
         end
       end
       
+      # A list of objects that the user selects for replication from an external
+      # source instance.
+      class SelectedObjects
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the database to migrate.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+        end
+      end
+      
       # Database instance settings.
       class Settings
         include Google::Apis::Core::Hashable
@@ -4262,6 +4314,12 @@ module Google
         # @return [Google::Apis::SqladminV1::MySqlSyncConfig]
         attr_accessor :mysql_sync_config
       
+        # Optional. Migrate only the specified objects from the source instance. If this
+        # field is empty, then migrate all objects.
+        # Corresponds to the JSON property `selectedObjects`
+        # @return [Array<Google::Apis::SqladminV1::ExternalSyncSelectedObject>]
+        attr_accessor :selected_objects
+      
         # External sync mode
         # Corresponds to the JSON property `syncMode`
         # @return [String]
@@ -4292,6 +4350,7 @@ module Google
         def update!(**args)
           @migration_type = args[:migration_type] if args.key?(:migration_type)
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
+          @selected_objects = args[:selected_objects] if args.key?(:selected_objects)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
           @sync_parallel_level = args[:sync_parallel_level] if args.key?(:sync_parallel_level)
           @verify_connection_only = args[:verify_connection_only] if args.key?(:verify_connection_only)
