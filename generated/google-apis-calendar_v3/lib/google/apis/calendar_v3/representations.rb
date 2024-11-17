@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventBirthdayProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventDateTime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -545,6 +551,8 @@ module Google
           collection :attendees, as: 'attendees', class: Google::Apis::CalendarV3::EventAttendee, decorator: Google::Apis::CalendarV3::EventAttendee::Representation
       
           property :attendees_omitted, as: 'attendeesOmitted'
+          property :birthday_properties, as: 'birthdayProperties', class: Google::Apis::CalendarV3::EventBirthdayProperties, decorator: Google::Apis::CalendarV3::EventBirthdayProperties::Representation
+      
           property :color_id, as: 'colorId'
           property :conference_data, as: 'conferenceData', class: Google::Apis::CalendarV3::ConferenceData, decorator: Google::Apis::CalendarV3::ConferenceData::Representation
       
@@ -684,6 +692,15 @@ module Google
           property :resource, as: 'resource'
           property :response_status, as: 'responseStatus'
           property :self, as: 'self'
+        end
+      end
+      
+      class EventBirthdayProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact, as: 'contact'
+          property :custom_type_name, as: 'customTypeName'
+          property :type, as: 'type'
         end
       end
       
