@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnrollmentToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Enterprise
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -739,6 +745,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enrollment_token, as: 'enrollmentToken'
+          property :token, as: 'token', class: Google::Apis::AndroidenterpriseV1::EnrollmentToken, decorator: Google::Apis::AndroidenterpriseV1::EnrollmentToken::Representation
+      
         end
       end
       
@@ -792,6 +800,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :device, as: 'device', class: Google::Apis::AndroidenterpriseV1::Device, decorator: Google::Apis::AndroidenterpriseV1::Device::Representation
       
+        end
+      end
+      
+      class EnrollmentToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :enrollment_token_type, as: 'enrollmentTokenType'
+          property :token, as: 'token'
         end
       end
       
