@@ -580,6 +580,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0ResourcesAdGroupAdEffectiveLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0ResourcesAdGroupAdLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -611,6 +617,12 @@ module Google
       end
       
       class GoogleAdsSearchads360V0ResourcesAdGroupCriterion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupCriterionEffectiveLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -905,6 +917,12 @@ module Google
       end
       
       class GoogleAdsSearchads360V0ResourcesUserList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesUserLocationView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1990,12 +2008,23 @@ module Google
           property :ad, as: 'ad', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAd, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAd::Representation
       
           property :creation_time, as: 'creationTime'
+          collection :effective_labels, as: 'effectiveLabels'
           property :engine_id, as: 'engineId'
           property :engine_status, as: 'engineStatus'
           collection :labels, as: 'labels'
           property :last_modified_time, as: 'lastModifiedTime'
           property :resource_name, as: 'resourceName'
           property :status, as: 'status'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupAdEffectiveLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group_ad, as: 'adGroupAd'
+          property :label, as: 'label'
+          property :owner_customer_id, :numeric_string => true, as: 'ownerCustomerId'
+          property :resource_name, as: 'resourceName'
         end
       end
       
@@ -2057,6 +2086,7 @@ module Google
           property :creation_time, as: 'creationTime'
           property :criterion_id, :numeric_string => true, as: 'criterionId'
           property :effective_cpc_bid_micros, :numeric_string => true, as: 'effectiveCpcBidMicros'
+          collection :effective_labels, as: 'effectiveLabels'
           property :engine_id, as: 'engineId'
           property :engine_status, as: 'engineStatus'
           property :final_url_suffix, as: 'finalUrlSuffix'
@@ -2084,6 +2114,16 @@ module Google
       
           property :webpage, as: 'webpage', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo::Representation
       
+        end
+      end
+      
+      class GoogleAdsSearchads360V0ResourcesAdGroupCriterionEffectiveLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group_criterion, as: 'adGroupCriterion'
+          property :label, as: 'label'
+          property :owner_customer_id, :numeric_string => true, as: 'ownerCustomerId'
+          property :resource_name, as: 'resourceName'
         end
       end
       
@@ -2793,6 +2833,15 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0ResourcesUserLocationView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country_criterion_id, :numeric_string => true, as: 'countryCriterionId'
+          property :resource_name, as: 'resourceName'
+          property :targeting_location, as: 'targetingLocation'
+        end
+      end
+      
       class GoogleAdsSearchads360V0ResourcesVisit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2885,6 +2934,8 @@ module Google
       
           property :ad_group_ad, as: 'adGroupAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAd, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAd::Representation
       
+          property :ad_group_ad_effective_label, as: 'adGroupAdEffectiveLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAdEffectiveLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAdEffectiveLabel::Representation
+      
           property :ad_group_ad_label, as: 'adGroupAdLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAdLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAdLabel::Representation
       
           property :ad_group_asset, as: 'adGroupAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAsset::Representation
@@ -2896,6 +2947,8 @@ module Google
           property :ad_group_bid_modifier, as: 'adGroupBidModifier', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupBidModifier, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupBidModifier::Representation
       
           property :ad_group_criterion, as: 'adGroupCriterion', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterion, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterion::Representation
+      
+          property :ad_group_criterion_effective_label, as: 'adGroupCriterionEffectiveLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionEffectiveLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionEffectiveLabel::Representation
       
           property :ad_group_criterion_label, as: 'adGroupCriterionLabel', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel::Representation
       
@@ -2986,6 +3039,8 @@ module Google
           property :shopping_performance_view, as: 'shoppingPerformanceView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesShoppingPerformanceView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesShoppingPerformanceView::Representation
       
           property :user_list, as: 'userList', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserList, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserList::Representation
+      
+          property :user_location_view, as: 'userLocationView', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserLocationView, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserLocationView::Representation
       
           property :visit, as: 'visit', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesVisit, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesVisit::Representation
       

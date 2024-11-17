@@ -4254,6 +4254,12 @@ module Google
         # @return [String]
         attr_accessor :creation_time
       
+        # Output only. The resource names of effective labels attached to this ad. An
+        # effective label is a label inherited or directly assigned to this ad.
+        # Corresponds to the JSON property `effectiveLabels`
+        # @return [Array<String>]
+        attr_accessor :effective_labels
+      
         # Output only. ID of the ad in the external engine account. This field is for
         # Search Ads 360 account only, for example, Yahoo Japan, Microsoft, Baidu etc.
         # For non-Search Ads 360 entity, use "ad_group_ad.ad.id" instead.
@@ -4299,12 +4305,53 @@ module Google
         def update!(**args)
           @ad = args[:ad] if args.key?(:ad)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @effective_labels = args[:effective_labels] if args.key?(:effective_labels)
           @engine_id = args[:engine_id] if args.key?(:engine_id)
           @engine_status = args[:engine_status] if args.key?(:engine_status)
           @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # A relationship between an ad group ad and an effective label. An effective
+      # label is a label inherited or directly assigned to this ad group ad.
+      class GoogleAdsSearchads360V0ResourcesAdGroupAdEffectiveLabel
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The ad group ad to which the effective label is attached.
+        # Corresponds to the JSON property `adGroupAd`
+        # @return [String]
+        attr_accessor :ad_group_ad
+      
+        # Immutable. The effective label assigned to the ad group ad.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Output only. The ID of the Customer which owns the effective label.
+        # Corresponds to the JSON property `ownerCustomerId`
+        # @return [Fixnum]
+        attr_accessor :owner_customer_id
+      
+        # Immutable. The resource name of the ad group ad effective label. Ad group ad
+        # effective label resource names have the form: `customers/`customer_id`/
+        # adGroupAdEffectiveLabels/`ad_group_id`~`ad_id`~`label_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group_ad = args[:ad_group_ad] if args.key?(:ad_group_ad)
+          @label = args[:label] if args.key?(:label)
+          @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -4526,6 +4573,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :effective_cpc_bid_micros
       
+        # Output only. The resource names of effective labels attached to this ad group
+        # criterion. An effective label is a label inherited or directly assigned to
+        # this ad group criterion.
+        # Corresponds to the JSON property `effectiveLabels`
+        # @return [Array<String>]
+        attr_accessor :effective_labels
+      
         # Output only. ID of the ad group criterion in the external engine account. This
         # field is for non-Google Ads account only, for example, Yahoo Japan, Microsoft,
         # Baidu etc. For Google Ads entity, use "ad_group_criterion.criterion_id"
@@ -4652,6 +4706,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @criterion_id = args[:criterion_id] if args.key?(:criterion_id)
           @effective_cpc_bid_micros = args[:effective_cpc_bid_micros] if args.key?(:effective_cpc_bid_micros)
+          @effective_labels = args[:effective_labels] if args.key?(:effective_labels)
           @engine_id = args[:engine_id] if args.key?(:engine_id)
           @engine_status = args[:engine_status] if args.key?(:engine_status)
           @final_url_suffix = args[:final_url_suffix] if args.key?(:final_url_suffix)
@@ -4671,6 +4726,48 @@ module Google
           @type = args[:type] if args.key?(:type)
           @user_list = args[:user_list] if args.key?(:user_list)
           @webpage = args[:webpage] if args.key?(:webpage)
+        end
+      end
+      
+      # A relationship between an ad group criterion and an effective label. An
+      # effective label is a label inherited or directly assigned to this ad group
+      # criterion.
+      class GoogleAdsSearchads360V0ResourcesAdGroupCriterionEffectiveLabel
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The ad group criterion to which the effective label is attached.
+        # Corresponds to the JSON property `adGroupCriterion`
+        # @return [String]
+        attr_accessor :ad_group_criterion
+      
+        # Immutable. The effective label assigned to the ad group criterion.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Output only. The ID of the Customer which owns the effective label.
+        # Corresponds to the JSON property `ownerCustomerId`
+        # @return [Fixnum]
+        attr_accessor :owner_customer_id
+      
+        # Immutable. The resource name of the ad group criterion effective label. Ad
+        # group criterion effective label resource names have the form: `customers/`
+        # customer_id`/adGroupCriterionEffectiveLabels/`ad_group_id`~`criterion_id`~`
+        # label_id``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group_criterion = args[:ad_group_criterion] if args.key?(:ad_group_criterion)
+          @label = args[:label] if args.key?(:label)
+          @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -7712,6 +7809,43 @@ module Google
         end
       end
       
+      # A user location view. User Location View includes all metrics aggregated at
+      # the country level, one row per country. It reports metrics at the actual
+      # physical location of the user by targeted or not targeted location. If other
+      # segment fields are used, you may get more than one row per country.
+      class GoogleAdsSearchads360V0ResourcesUserLocationView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Criterion Id for the country.
+        # Corresponds to the JSON property `countryCriterionId`
+        # @return [Fixnum]
+        attr_accessor :country_criterion_id
+      
+        # Output only. The resource name of the user location view. UserLocation view
+        # resource names have the form: `customers/`customer_id`/userLocationViews/`
+        # country_criterion_id`~`targeting_location``
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. Indicates whether location was targeted or not.
+        # Corresponds to the JSON property `targetingLocation`
+        # @return [Boolean]
+        attr_accessor :targeting_location
+        alias_method :targeting_location?, :targeting_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country_criterion_id = args[:country_criterion_id] if args.key?(:country_criterion_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @targeting_location = args[:targeting_location] if args.key?(:targeting_location)
+        end
+      end
+      
       # A visit.
       class GoogleAdsSearchads360V0ResourcesVisit
         include Google::Apis::Core::Hashable
@@ -8035,6 +8169,12 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAd]
         attr_accessor :ad_group_ad
       
+        # A relationship between an ad group ad and an effective label. An effective
+        # label is a label inherited or directly assigned to this ad group ad.
+        # Corresponds to the JSON property `adGroupAdEffectiveLabel`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAdEffectiveLabel]
+        attr_accessor :ad_group_ad_effective_label
+      
         # A relationship between an ad group ad and a label.
         # Corresponds to the JSON property `adGroupAdLabel`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupAdLabel]
@@ -8068,6 +8208,13 @@ module Google
         # Corresponds to the JSON property `adGroupCriterion`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterion]
         attr_accessor :ad_group_criterion
+      
+        # A relationship between an ad group criterion and an effective label. An
+        # effective label is a label inherited or directly assigned to this ad group
+        # criterion.
+        # Corresponds to the JSON property `adGroupCriterionEffectiveLabel`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupCriterionEffectiveLabel]
+        attr_accessor :ad_group_criterion_effective_label
       
         # A relationship between an ad group criterion and a label.
         # Corresponds to the JSON property `adGroupCriterionLabel`
@@ -8325,6 +8472,14 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserList]
         attr_accessor :user_list
       
+        # A user location view. User Location View includes all metrics aggregated at
+        # the country level, one row per country. It reports metrics at the actual
+        # physical location of the user by targeted or not targeted location. If other
+        # segment fields are used, you may get more than one row per country.
+        # Corresponds to the JSON property `userLocationView`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserLocationView]
+        attr_accessor :user_location_view
+      
         # A visit.
         # Corresponds to the JSON property `visit`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesVisit]
@@ -8344,12 +8499,14 @@ module Google
           @accessible_bidding_strategy = args[:accessible_bidding_strategy] if args.key?(:accessible_bidding_strategy)
           @ad_group = args[:ad_group] if args.key?(:ad_group)
           @ad_group_ad = args[:ad_group_ad] if args.key?(:ad_group_ad)
+          @ad_group_ad_effective_label = args[:ad_group_ad_effective_label] if args.key?(:ad_group_ad_effective_label)
           @ad_group_ad_label = args[:ad_group_ad_label] if args.key?(:ad_group_ad_label)
           @ad_group_asset = args[:ad_group_asset] if args.key?(:ad_group_asset)
           @ad_group_asset_set = args[:ad_group_asset_set] if args.key?(:ad_group_asset_set)
           @ad_group_audience_view = args[:ad_group_audience_view] if args.key?(:ad_group_audience_view)
           @ad_group_bid_modifier = args[:ad_group_bid_modifier] if args.key?(:ad_group_bid_modifier)
           @ad_group_criterion = args[:ad_group_criterion] if args.key?(:ad_group_criterion)
+          @ad_group_criterion_effective_label = args[:ad_group_criterion_effective_label] if args.key?(:ad_group_criterion_effective_label)
           @ad_group_criterion_label = args[:ad_group_criterion_label] if args.key?(:ad_group_criterion_label)
           @ad_group_effective_label = args[:ad_group_effective_label] if args.key?(:ad_group_effective_label)
           @ad_group_label = args[:ad_group_label] if args.key?(:ad_group_label)
@@ -8395,6 +8552,7 @@ module Google
           @segments = args[:segments] if args.key?(:segments)
           @shopping_performance_view = args[:shopping_performance_view] if args.key?(:shopping_performance_view)
           @user_list = args[:user_list] if args.key?(:user_list)
+          @user_location_view = args[:user_location_view] if args.key?(:user_location_view)
           @visit = args[:visit] if args.key?(:visit)
           @webpage_view = args[:webpage_view] if args.key?(:webpage_view)
         end
