@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResolveAccessProposalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Revision
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1123,6 +1129,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :replies, as: 'replies', class: Google::Apis::DriveV3::Reply, decorator: Google::Apis::DriveV3::Reply::Representation
       
+        end
+      end
+      
+      class ResolveAccessProposalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          collection :role, as: 'role'
+          property :send_notification, as: 'sendNotification'
+          property :view, as: 'view'
         end
       end
       
