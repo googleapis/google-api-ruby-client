@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EstablishPeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,18 @@ module Google
       end
       
       class HourlySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HybridPeeringDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HybridReplicationParameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +155,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListQuotaRulesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +221,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotaRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -269,6 +299,12 @@ module Google
       end
       
       class SwitchActiveReplicaZoneRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SyncReplicationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -422,6 +458,16 @@ module Google
         end
       end
       
+      class EstablishPeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :peer_cluster_name, as: 'peerClusterName'
+          collection :peer_ip_addresses, as: 'peerIpAddresses'
+          property :peer_svm_name, as: 'peerSvmName'
+          property :peer_volume_name, as: 'peerVolumeName'
+        end
+      end
+      
       class ExportPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -441,6 +487,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :minute, as: 'minute'
           property :snapshots_to_keep, as: 'snapshotsToKeep'
+        end
+      end
+      
+      class HybridPeeringDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :command, as: 'command'
+          property :command_expiry_time, as: 'commandExpiryTime'
+          property :passphrase, as: 'passphrase'
+          property :subnet_ip, as: 'subnetIp'
+        end
+      end
+      
+      class HybridReplicationParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_location, as: 'clusterLocation'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :peer_cluster_name, as: 'peerClusterName'
+          collection :peer_ip_addresses, as: 'peerIpAddresses'
+          property :peer_svm_name, as: 'peerSvmName'
+          property :peer_volume_name, as: 'peerVolumeName'
+          property :replication, as: 'replication'
         end
       end
       
@@ -524,6 +594,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetappV1::Operation, decorator: Google::Apis::NetappV1::Operation::Representation
       
+        end
+      end
+      
+      class ListQuotaRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :quota_rules, as: 'quotaRules', class: Google::Apis::NetappV1::QuotaRule, decorator: Google::Apis::NetappV1::QuotaRule::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -630,15 +710,34 @@ module Google
         end
       end
       
+      class QuotaRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :disk_limit_mib, as: 'diskLimitMib'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :state_details, as: 'stateDetails'
+          property :target, as: 'target'
+          property :type, as: 'type'
+        end
+      end
+      
       class Replication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_location, as: 'clusterLocation'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :destination_volume, as: 'destinationVolume'
           property :destination_volume_parameters, as: 'destinationVolumeParameters', class: Google::Apis::NetappV1::DestinationVolumeParameters, decorator: Google::Apis::NetappV1::DestinationVolumeParameters::Representation
       
           property :healthy, as: 'healthy'
+          property :hybrid_peering_details, as: 'hybridPeeringDetails', class: Google::Apis::NetappV1::HybridPeeringDetails, decorator: Google::Apis::NetappV1::HybridPeeringDetails::Representation
+      
+          property :hybrid_replication_type, as: 'hybridReplicationType'
           hash :labels, as: 'labels'
           property :mirror_state, as: 'mirrorState'
           property :name, as: 'name'
@@ -772,6 +871,12 @@ module Google
         end
       end
       
+      class SyncReplicationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class TieringPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -823,6 +928,8 @@ module Google
           property :export_policy, as: 'exportPolicy', class: Google::Apis::NetappV1::ExportPolicy, decorator: Google::Apis::NetappV1::ExportPolicy::Representation
       
           property :has_replication, as: 'hasReplication'
+          property :hybrid_replication_parameters, as: 'hybridReplicationParameters', class: Google::Apis::NetappV1::HybridReplicationParameters, decorator: Google::Apis::NetappV1::HybridReplicationParameters::Representation
+      
           property :kerberos_enabled, as: 'kerberosEnabled'
           property :kms_config, as: 'kmsConfig'
           hash :labels, as: 'labels'

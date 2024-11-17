@@ -527,6 +527,47 @@ module Google
         end
       end
       
+      # EstablishPeeringRequest establishes cluster and svm peerings between the
+      # source and the destination replications.
+      class EstablishPeeringRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the user's local source cluster to be peered with the
+        # destination cluster.
+        # Corresponds to the JSON property `peerClusterName`
+        # @return [String]
+        attr_accessor :peer_cluster_name
+      
+        # Optional. List of IPv4 ip addresses to be used for peering.
+        # Corresponds to the JSON property `peerIpAddresses`
+        # @return [Array<String>]
+        attr_accessor :peer_ip_addresses
+      
+        # Required. Name of the user's local source vserver svm to be peered with the
+        # destination vserver svm.
+        # Corresponds to the JSON property `peerSvmName`
+        # @return [String]
+        attr_accessor :peer_svm_name
+      
+        # Required. Name of the user's local source volume to be peered with the
+        # destination volume.
+        # Corresponds to the JSON property `peerVolumeName`
+        # @return [String]
+        attr_accessor :peer_volume_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @peer_cluster_name = args[:peer_cluster_name] if args.key?(:peer_cluster_name)
+          @peer_ip_addresses = args[:peer_ip_addresses] if args.key?(:peer_ip_addresses)
+          @peer_svm_name = args[:peer_svm_name] if args.key?(:peer_svm_name)
+          @peer_volume_name = args[:peer_volume_name] if args.key?(:peer_volume_name)
+        end
+      end
+      
       # Defines the export policy for the volume.
       class ExportPolicy
         include Google::Apis::Core::Hashable
@@ -585,6 +626,110 @@ module Google
         def update!(**args)
           @minute = args[:minute] if args.key?(:minute)
           @snapshots_to_keep = args[:snapshots_to_keep] if args.key?(:snapshots_to_keep)
+        end
+      end
+      
+      # HybridPeeringDetails contains details about the hybrid peering.
+      class HybridPeeringDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Copy-paste-able commands to be used on user's ONTAP to accept
+        # peering requests.
+        # Corresponds to the JSON property `command`
+        # @return [String]
+        attr_accessor :command
+      
+        # Optional. Expiration time for the peering command to be executed on user's
+        # ONTAP.
+        # Corresponds to the JSON property `commandExpiryTime`
+        # @return [String]
+        attr_accessor :command_expiry_time
+      
+        # Optional. Temporary passphrase generated to accept cluster peering command.
+        # Corresponds to the JSON property `passphrase`
+        # @return [String]
+        attr_accessor :passphrase
+      
+        # Optional. IP address of the subnet.
+        # Corresponds to the JSON property `subnetIp`
+        # @return [String]
+        attr_accessor :subnet_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command = args[:command] if args.key?(:command)
+          @command_expiry_time = args[:command_expiry_time] if args.key?(:command_expiry_time)
+          @passphrase = args[:passphrase] if args.key?(:passphrase)
+          @subnet_ip = args[:subnet_ip] if args.key?(:subnet_ip)
+        end
+      end
+      
+      # The Hybrid Replication parameters for the volume.
+      class HybridReplicationParameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of source cluster location associated with the Hybrid
+        # replication. This is a free-form field for the display purpose only.
+        # Corresponds to the JSON property `clusterLocation`
+        # @return [String]
+        attr_accessor :cluster_location
+      
+        # Optional. Description of the replication.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Labels to be added to the replication as the key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Name of the user's local source cluster to be peered with the
+        # destination cluster.
+        # Corresponds to the JSON property `peerClusterName`
+        # @return [String]
+        attr_accessor :peer_cluster_name
+      
+        # Required. List of node ip addresses to be peered with.
+        # Corresponds to the JSON property `peerIpAddresses`
+        # @return [Array<String>]
+        attr_accessor :peer_ip_addresses
+      
+        # Required. Name of the user's local source vserver svm to be peered with the
+        # destination vserver svm.
+        # Corresponds to the JSON property `peerSvmName`
+        # @return [String]
+        attr_accessor :peer_svm_name
+      
+        # Required. Name of the user's local source volume to be peered with the
+        # destination volume.
+        # Corresponds to the JSON property `peerVolumeName`
+        # @return [String]
+        attr_accessor :peer_volume_name
+      
+        # Required. Desired name for the replication of this volume.
+        # Corresponds to the JSON property `replication`
+        # @return [String]
+        attr_accessor :replication
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_location = args[:cluster_location] if args.key?(:cluster_location)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @peer_cluster_name = args[:peer_cluster_name] if args.key?(:peer_cluster_name)
+          @peer_ip_addresses = args[:peer_ip_addresses] if args.key?(:peer_ip_addresses)
+          @peer_svm_name = args[:peer_svm_name] if args.key?(:peer_svm_name)
+          @peer_volume_name = args[:peer_volume_name] if args.key?(:peer_volume_name)
+          @replication = args[:replication] if args.key?(:replication)
         end
       end
       
@@ -862,6 +1007,37 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # ListQuotaRulesResponse is the response to a ListQuotaRulesRequest.
+      class ListQuotaRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of quota rules
+        # Corresponds to the JSON property `quotaRules`
+        # @return [Array<Google::Apis::NetappV1::QuotaRule>]
+        attr_accessor :quota_rules
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @quota_rules = args[:quota_rules] if args.key?(:quota_rules)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1254,10 +1430,85 @@ module Google
         end
       end
       
+      # QuotaRule specifies the maximum disk space a user or group can use within a
+      # volume. They can be used for creating default and individual quota rules.
+      class QuotaRule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time of the quota rule
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the quota rule
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The maximum allowed disk space in MiB.
+        # Corresponds to the JSON property `diskLimitMib`
+        # @return [Fixnum]
+        attr_accessor :disk_limit_mib
+      
+        # Optional. Labels of the quota rule
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the active directory. Format: `projects/`
+        # project_number`/locations/`location_id`/quotaRules/`quota_rule_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the quota rule
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. State details of the quota rule
+        # Corresponds to the JSON property `stateDetails`
+        # @return [String]
+        attr_accessor :state_details
+      
+        # Optional. The quota rule applies to the specified user or group, identified by
+        # a Unix UID/GID, Windows SID, or null for default.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Required. The type of quota rule.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @disk_limit_mib = args[:disk_limit_mib] if args.key?(:disk_limit_mib)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @state_details = args[:state_details] if args.key?(:state_details)
+          @target = args[:target] if args.key?(:target)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Replication is a nested resource under Volume, that describes a cross-region
       # replication relationship between 2 volumes in different regions.
       class Replication
         include Google::Apis::Core::Hashable
+      
+        # Optional. Location of the user cluster.
+        # Corresponds to the JSON property `clusterLocation`
+        # @return [String]
+        attr_accessor :cluster_location
       
         # Output only. Replication create time.
         # Corresponds to the JSON property `createTime`
@@ -1289,6 +1540,16 @@ module Google
         # @return [Boolean]
         attr_accessor :healthy
         alias_method :healthy?, :healthy
+      
+        # HybridPeeringDetails contains details about the hybrid peering.
+        # Corresponds to the JSON property `hybridPeeringDetails`
+        # @return [Google::Apis::NetappV1::HybridPeeringDetails]
+        attr_accessor :hybrid_peering_details
+      
+        # Output only. Type of the hybrid replication.
+        # Corresponds to the JSON property `hybridReplicationType`
+        # @return [String]
+        attr_accessor :hybrid_replication_type
       
         # Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
@@ -1344,11 +1605,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_location = args[:cluster_location] if args.key?(:cluster_location)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @destination_volume = args[:destination_volume] if args.key?(:destination_volume)
           @destination_volume_parameters = args[:destination_volume_parameters] if args.key?(:destination_volume_parameters)
           @healthy = args[:healthy] if args.key?(:healthy)
+          @hybrid_peering_details = args[:hybrid_peering_details] if args.key?(:hybrid_peering_details)
+          @hybrid_replication_type = args[:hybrid_replication_type] if args.key?(:hybrid_replication_type)
           @labels = args[:labels] if args.key?(:labels)
           @mirror_state = args[:mirror_state] if args.key?(:mirror_state)
           @name = args[:name] if args.key?(:name)
@@ -1860,6 +2124,19 @@ module Google
         end
       end
       
+      # SyncReplicationRequest syncs the replication from source to destination.
+      class SyncReplicationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Defines tiering policy for the volume.
       class TieringPolicy
         include Google::Apis::Core::Hashable
@@ -2047,6 +2324,11 @@ module Google
         attr_accessor :has_replication
         alias_method :has_replication?, :has_replication
       
+        # The Hybrid Replication parameters for the volume.
+        # Corresponds to the JSON property `hybridReplicationParameters`
+        # @return [Google::Apis::NetappV1::HybridReplicationParameters]
+        attr_accessor :hybrid_replication_parameters
+      
         # Optional. Flag indicating if the volume is a kerberos volume or not, export
         # policy rules control kerberos security modes (krb5, krb5i, krb5p).
         # Corresponds to the JSON property `kerberosEnabled`
@@ -2218,6 +2500,7 @@ module Google
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @export_policy = args[:export_policy] if args.key?(:export_policy)
           @has_replication = args[:has_replication] if args.key?(:has_replication)
+          @hybrid_replication_parameters = args[:hybrid_replication_parameters] if args.key?(:hybrid_replication_parameters)
           @kerberos_enabled = args[:kerberos_enabled] if args.key?(:kerberos_enabled)
           @kms_config = args[:kms_config] if args.key?(:kms_config)
           @labels = args[:labels] if args.key?(:labels)
