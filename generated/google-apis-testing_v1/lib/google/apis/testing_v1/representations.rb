@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UsesPermissionTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class XcodeVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -723,6 +729,8 @@ module Google
           collection :uses_feature, as: 'usesFeature', class: Google::Apis::TestingV1::UsesFeature, decorator: Google::Apis::TestingV1::UsesFeature::Representation
       
           collection :uses_permission, as: 'usesPermission'
+          collection :uses_permission_tags, as: 'usesPermissionTags', class: Google::Apis::TestingV1::UsesPermissionTag, decorator: Google::Apis::TestingV1::UsesPermissionTag::Representation
+      
           property :version_code, :numeric_string => true, as: 'versionCode'
           property :version_name, as: 'versionName'
         end
@@ -1444,6 +1452,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_required, as: 'isRequired'
+          property :name, as: 'name'
+        end
+      end
+      
+      class UsesPermissionTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_sdk_version, as: 'maxSdkVersion'
           property :name, as: 'name'
         end
       end
