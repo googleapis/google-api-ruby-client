@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DefaultBucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -74,6 +80,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class DefaultBucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket', class: Google::Apis::FirebasestorageV1beta::Bucket, decorator: Google::Apis::FirebasestorageV1beta::Bucket::Representation
+      
+          property :location, as: 'location'
+          property :name, as: 'name'
+          property :storage_class, as: 'storageClass'
         end
       end
       

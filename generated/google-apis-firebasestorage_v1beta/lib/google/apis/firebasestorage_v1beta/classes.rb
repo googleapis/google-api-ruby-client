@@ -54,6 +54,46 @@ module Google
         end
       end
       
+      # Spark tier-eligible Cloud Storage bucket. One per project. This resource
+      # exists if the underlying Cloud Storage bucket exists and it is linked to your
+      # Firebase project. See https://firebase.google.com/pricing for pricing details.
+      class DefaultBucket
+        include Google::Apis::Core::Hashable
+      
+        # A storage bucket and its relation to a parent Firebase project.
+        # Corresponds to the JSON property `bucket`
+        # @return [Google::Apis::FirebasestorageV1beta::Bucket]
+        attr_accessor :bucket
+      
+        # Immutable. Location of the default bucket.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Resource name of the default bucket.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. Storage class of the default bucket. Supported values are available
+        # at https://cloud.google.com/storage/docs/storage-classes#classes.
+        # Corresponds to the JSON property `storageClass`
+        # @return [String]
+        attr_accessor :storage_class
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
+          @storage_class = args[:storage_class] if args.key?(:storage_class)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
