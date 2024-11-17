@@ -491,7 +491,8 @@ module Google
       class CharacterMaskConfig
         include Google::Apis::Core::Hashable
       
-        # Character to mask the sensitive values. If not supplied, defaults to "*".
+        # Optional. Character to mask the sensitive values. If not supplied, defaults to
+        # "*".
         # Corresponds to the JSON property `maskingCharacter`
         # @return [String]
         attr_accessor :masking_character
@@ -998,13 +999,13 @@ module Google
         # @return [Google::Apis::HealthcareV1::ImageConfig]
         attr_accessor :image
       
-        # Configures de-identification of text wherever it is found in the
+        # Optional. Configures de-identification of text wherever it is found in the
         # source_dataset.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::HealthcareV1::TextConfig]
         attr_accessor :text
       
-        # Ensures in-flight data remains in the region of origin during de-
+        # Optional. Ensures in-flight data remains in the region of origin during de-
         # identification. The default value is false. Using this option results in a
         # significant reduction of throughput, and is not compatible with `LOCATION` or `
         # ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig,
@@ -1209,14 +1210,14 @@ module Google
         # @return [Google::Apis::HealthcareV1::TagFilterList]
         attr_accessor :remove_list
       
-        # If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID,
-        # and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare
-        # API regenerates these UIDs by default based on the DICOM Standard's reasoning:
-        # "Whilst these UIDs cannot be mapped directly to an individual out of context,
-        # given access to the original images, or to a database of the original images
-        # containing the UIDs, it would be possible to recover the individual's identity.
-        # " http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.
-        # html
+        # Optional. If true, skip replacing StudyInstanceUID, SeriesInstanceUID,
+        # SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The
+        # Cloud Healthcare API regenerates these UIDs by default based on the DICOM
+        # Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an
+        # individual out of context, given access to the original images, or to a
+        # database of the original images containing the UIDs, it would be possible to
+        # recover the individual's identity." http://dicom.nema.org/medical/dicom/
+        # current/output/chtml/part15/sect_E.3.9.html
         # Corresponds to the JSON property `skipIdRedaction`
         # @return [Boolean]
         attr_accessor :skip_id_redaction
@@ -1914,18 +1915,19 @@ module Google
       class FhirConfig
         include Google::Apis::Core::Hashable
       
-        # The behaviour for handling FHIR extensions that aren't otherwise specified for
-        # de-identification. If true, all extensions are preserved during de-
-        # identification by default. If false or unspecified, all extensions are removed
-        # during de-identification by default.
+        # Optional. The behaviour for handling FHIR extensions that aren't otherwise
+        # specified for de-identification. If true, all extensions are preserved during
+        # de-identification by default. If false or unspecified, all extensions are
+        # removed during de-identification by default.
         # Corresponds to the JSON property `defaultKeepExtensions`
         # @return [Boolean]
         attr_accessor :default_keep_extensions
         alias_method :default_keep_extensions?, :default_keep_extensions
       
-        # Specifies FHIR paths to match and how to transform them. Any field that is not
-        # matched by a FieldMetadata is passed through to the output dataset unmodified.
-        # All extensions will be processed according to `default_keep_extensions`.
+        # Optional. Specifies FHIR paths to match and how to transform them. Any field
+        # that is not matched by a FieldMetadata is passed through to the output dataset
+        # unmodified. All extensions will be processed according to `
+        # default_keep_extensions`.
         # Corresponds to the JSON property `fieldMetadataList`
         # @return [Array<Google::Apis::HealthcareV1::FieldMetadata>]
         attr_accessor :field_metadata_list
@@ -2268,14 +2270,14 @@ module Google
       class FieldMetadata
         include Google::Apis::Core::Hashable
       
-        # Deidentify action for one field.
+        # Optional. Deidentify action for one field.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
-        # List of paths to FHIR fields to be redacted. Each path is a period-separated
-        # list where each component is either a field name or FHIR type name, for
-        # example: Patient, HumanName. For "choice" types (those defined in the FHIR
+        # Optional. List of paths to FHIR fields to be redacted. Each path is a period-
+        # separated list where each component is either a field name or FHIR type name,
+        # for example: Patient, HumanName. For "choice" types (those defined in the FHIR
         # spec with the form: field[x]) we use two separate components. For example, "
         # deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are:
         # AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal,
@@ -3047,7 +3049,7 @@ module Google
       class ImageConfig
         include Google::Apis::Core::Hashable
       
-        # Determines how to redact text from image.
+        # Optional. Determines how to redact text from image.
         # Corresponds to the JSON property `textRedactionMode`
         # @return [String]
         attr_accessor :text_redaction_mode
@@ -3199,8 +3201,8 @@ module Google
         # @return [Google::Apis::HealthcareV1::DateShiftConfig]
         attr_accessor :date_shift_config
       
-        # InfoTypes to apply this transformation to. If this is not specified, the
-        # transformation applies to any info_type.
+        # Optional. InfoTypes to apply this transformation to. If this is not specified,
+        # the transformation applies to any info_type.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<String>]
         attr_accessor :info_types
@@ -5218,10 +5220,10 @@ module Google
       class TagFilterList
         include Google::Apis::Core::Hashable
       
-        # Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or
-        # Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/
-        # dicom/current/output/html/part06.html#table_6-1,. They may be provided by "
-        # Keyword" or "Tag". For example "PatientID", "00100010".
+        # Optional. Tags to be filtered. Tags must be DICOM Data Elements, File Meta
+        # Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.
+        # org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be
+        # provided by "Keyword" or "Tag". For example "PatientID", "00100010".
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -5280,18 +5282,19 @@ module Google
       class TextConfig
         include Google::Apis::Core::Hashable
       
-        # Transformations to apply to the detected data, overridden by `
+        # Optional. Transformations to apply to the detected data, overridden by `
         # exclude_info_types`.
         # Corresponds to the JSON property `additionalTransformations`
         # @return [Array<Google::Apis::HealthcareV1::InfoTypeTransformation>]
         attr_accessor :additional_transformations
       
-        # InfoTypes to skip transforming, overriding `additional_transformations`.
+        # Optional. InfoTypes to skip transforming, overriding `
+        # additional_transformations`.
         # Corresponds to the JSON property `excludeInfoTypes`
         # @return [Array<String>]
         attr_accessor :exclude_info_types
       
-        # The transformations to apply to the detected data. Deprecated. Use `
+        # Optional. The transformations to apply to the detected data. Deprecated. Use `
         # additional_transformations` instead.
         # Corresponds to the JSON property `transformations`
         # @return [Array<Google::Apis::HealthcareV1::InfoTypeTransformation>]
