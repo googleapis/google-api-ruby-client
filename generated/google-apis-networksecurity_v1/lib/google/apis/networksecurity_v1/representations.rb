@@ -40,6 +40,96 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthzPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleFrom
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleFromRequestSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleHeaderMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleRequestResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleRequestResourceTagValueIdSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleStringMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleTo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleToRequestOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleToRequestOperationHeaderSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyCustomProvider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyCustomProviderAuthzExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyCustomProviderCloudIap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +287,12 @@ module Google
       end
       
       class ListAuthorizationPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAuthzPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -411,6 +507,154 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::NetworksecurityV1::Rule, decorator: Google::Apis::NetworksecurityV1::Rule::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AuthzPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :create_time, as: 'createTime'
+          property :custom_provider, as: 'customProvider', class: Google::Apis::NetworksecurityV1::AuthzPolicyCustomProvider, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyCustomProvider::Representation
+      
+          property :description, as: 'description'
+          collection :http_rules, as: 'httpRules', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRule, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRule::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :target, as: 'target', class: Google::Apis::NetworksecurityV1::AuthzPolicyTarget, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyTarget::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AuthzPolicyAuthzRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :from, as: 'from', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleFrom, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleFrom::Representation
+      
+          property :to, as: 'to', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleTo, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleTo::Representation
+      
+          property :when, as: 'when'
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleFrom
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :not_sources, as: 'notSources', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleFromRequestSource, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleFromRequestSource::Representation
+      
+          collection :sources, as: 'sources', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleFromRequestSource, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleFromRequestSource::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleFromRequestSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :principals, as: 'principals', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          collection :resources, as: 'resources', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResource, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResource::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleHeaderMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleRequestResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam_service_account, as: 'iamServiceAccount', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          property :tag_value_id_set, as: 'tagValueIdSet', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResourceTagValueIdSet, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResourceTagValueIdSet::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleRequestResourceTagValueIdSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ids, as: 'ids'
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleStringMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contains, as: 'contains'
+          property :exact, as: 'exact'
+          property :ignore_case, as: 'ignoreCase'
+          property :prefix, as: 'prefix'
+          property :suffix, as: 'suffix'
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleTo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :not_operations, as: 'notOperations', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperation, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperation::Representation
+      
+          collection :operations, as: 'operations', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperation, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperation::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleToRequestOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_set, as: 'headerSet', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperationHeaderSet, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperationHeaderSet::Representation
+      
+          collection :hosts, as: 'hosts', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          collection :methods_prop, as: 'methods'
+          collection :paths, as: 'paths', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleToRequestOperationHeaderSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :headers, as: 'headers', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleHeaderMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleHeaderMatch::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyCustomProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authz_extension, as: 'authzExtension', class: Google::Apis::NetworksecurityV1::AuthzPolicyCustomProviderAuthzExtension, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyCustomProviderAuthzExtension::Representation
+      
+          property :cloud_iap, as: 'cloudIap', class: Google::Apis::NetworksecurityV1::AuthzPolicyCustomProviderCloudIap, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyCustomProviderCloudIap::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyCustomProviderAuthzExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources'
+        end
+      end
+      
+      class AuthzPolicyCustomProviderCloudIap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AuthzPolicyTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
+          collection :resources, as: 'resources'
         end
       end
       
@@ -673,6 +917,16 @@ module Google
           collection :authorization_policies, as: 'authorizationPolicies', class: Google::Apis::NetworksecurityV1::AuthorizationPolicy, decorator: Google::Apis::NetworksecurityV1::AuthorizationPolicy::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAuthzPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authz_policies, as: 'authzPolicies', class: Google::Apis::NetworksecurityV1::AuthzPolicy, decorator: Google::Apis::NetworksecurityV1::AuthzPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
