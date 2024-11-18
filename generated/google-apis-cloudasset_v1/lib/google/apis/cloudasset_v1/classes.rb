@@ -141,7 +141,7 @@ module Google
         # @return [Google::Apis::CloudassetV1::IamPolicyAnalysis]
         attr_accessor :main_analysis
       
-        # The service account impersonation analysis if AnalyzeIamPolicyRequest.
+        # The service account impersonation analysis if IamPolicyAnalysisQuery.Options.
         # analyze_service_account_impersonation is enabled.
         # Corresponds to the JSON property `serviceAccountImpersonationAnalysis`
         # @return [Array<Google::Apis::CloudassetV1::IamPolicyAnalysis>]
@@ -1011,7 +1011,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The [full resource name](https://cloud.google.com/asset-inventory/docs/
-        # resource-name-format) of the ancestor from which an effective_tag is inherited,
+        # resource-name-format) of the ancestor from which effective_tags are inherited,
         # according to [tag inheritance](https://cloud.google.com/resource-manager/docs/
         # tags/tags-overview#inheritance).
         # Corresponds to the JSON property `attachedResource`
@@ -1466,8 +1466,7 @@ module Google
         # @return [Google::Apis::CloudassetV1::GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource]
         attr_accessor :governed_resource
       
-        # The ordered list of all organization policies from the
-        # AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.
+        # The ordered list of all organization policies from the consolidated_policy.
         # attached_resource to the scope specified in the request. If the constraint is
         # defined with default policy, it will also appear in the list.
         # Corresponds to the JSON property `policyBundle`
@@ -1922,8 +1921,7 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # The ordered list of all organization policies from the
-        # AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.
+        # The ordered list of all organization policies from the consolidated_policy.
         # attached_resource. to the scope specified in the request. If the constraint is
         # defined with default policy, it will also appear in the list.
         # Corresponds to the JSON property `policyBundle`
@@ -3563,6 +3561,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. An opaque identifier for the current version of the `
+        # ServicePerimeter`. Clients should not expect this to be in any specific format.
+        # If etag is not provided, the operation will be performed as if a valid etag
+        # is provided.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Identifier. Resource name for the `ServicePerimeter`. Format: `accessPolicies/`
         # access_policy`/servicePerimeters/`service_perimeter``. The `service_perimeter`
         # component must begin with a letter, followed by alphanumeric characters or `_`.
@@ -3618,6 +3624,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @perimeter_type = args[:perimeter_type] if args.key?(:perimeter_type)
           @spec = args[:spec] if args.key?(:spec)
@@ -4558,8 +4565,7 @@ module Google
         # @return [String]
         attr_accessor :organization
       
-        # The ordered list of all organization policies from the
-        # AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.
+        # The ordered list of all organization policies from the consolidated_policy.
         # attached_resource. to the scope specified in the request. If the constraint is
         # defined with default policy, it will also appear in the list.
         # Corresponds to the JSON property `policyBundle`
