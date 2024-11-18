@@ -286,12 +286,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ReauthSettings
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ReplaceAccessLevelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,8 +424,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_levels, as: 'accessLevels'
-          property :reauth_settings, as: 'reauthSettings', class: Google::Apis::AccesscontextmanagerV1::ReauthSettings, decorator: Google::Apis::AccesscontextmanagerV1::ReauthSettings::Representation
-      
           property :session_settings, as: 'sessionSettings', class: Google::Apis::AccesscontextmanagerV1::SessionSettings, decorator: Google::Apis::AccesscontextmanagerV1::SessionSettings::Representation
       
         end
@@ -627,8 +619,6 @@ module Google
           collection :dry_run_access_levels, as: 'dryRunAccessLevels'
           property :group_key, as: 'groupKey'
           property :name, as: 'name'
-          property :reauth_settings, as: 'reauthSettings', class: Google::Apis::AccesscontextmanagerV1::ReauthSettings, decorator: Google::Apis::AccesscontextmanagerV1::ReauthSettings::Representation
-      
           collection :restricted_client_applications, as: 'restrictedClientApplications', class: Google::Apis::AccesscontextmanagerV1::Application, decorator: Google::Apis::AccesscontextmanagerV1::Application::Representation
       
           collection :scoped_access_settings, as: 'scopedAccessSettings', class: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings, decorator: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings::Representation
@@ -800,17 +790,6 @@ module Google
         end
       end
       
-      class ReauthSettings
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_inactivity, as: 'maxInactivity'
-          property :reauth_method, as: 'reauthMethod'
-          property :session_length, as: 'sessionLength'
-          property :session_length_enabled, as: 'sessionLengthEnabled'
-          property :use_oidc_max_age, as: 'useOidcMaxAge'
-        end
-      end
-      
       class ReplaceAccessLevelsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -861,6 +840,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :perimeter_type, as: 'perimeterType'
           property :spec, as: 'spec', class: Google::Apis::AccesscontextmanagerV1::ServicePerimeterConfig, decorator: Google::Apis::AccesscontextmanagerV1::ServicePerimeterConfig::Representation
