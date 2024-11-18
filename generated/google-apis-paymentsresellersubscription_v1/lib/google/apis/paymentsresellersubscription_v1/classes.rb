@@ -193,9 +193,8 @@ module Google
         end
       end
       
-      # LINT.IfChange Partner request for entitling the previously provisioned
-      # subscription to an end user. The end user identity is inferred from the
-      # request OAuth context.
+      # Partner request for entitling the previously provisioned subscription to an
+      # end user. The end user identity is inferred from the request OAuth context.
       class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest
         include Google::Apis::Core::Hashable
       

@@ -461,10 +461,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # This API replaces user authorized OAuth consnet based APIs (Create, Entitle).
+        # This API replaces user authorized OAuth consent based APIs (Create, Entitle).
         # Generates a short-lived token for a user session based on the user intent. You
         # can use the session token to redirect the user to Google to finish the signup
-        # flow. You can re-generate new session token repeatedly for same request if
+        # flow. You can re-generate new session token repeatedly for the same request if
         # necessary, regardless of the previous tokens being expired or not.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
