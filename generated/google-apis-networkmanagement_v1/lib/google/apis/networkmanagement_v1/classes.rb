@@ -726,7 +726,8 @@ module Google
       
         # DNS endpoint of [Google Kubernetes Engine cluster control plane](https://cloud.
         # google.com/kubernetes-engine/docs/concepts/cluster-architecture). Requires
-        # gke_master_cluster to be set, can't be used simultaneoulsly with ip_address.
+        # gke_master_cluster to be set, can't be used simultaneoulsly with ip_address or
+        # network. Applicable only to destination endpoint.
         # Corresponds to the JSON property `fqdn`
         # @return [String]
         attr_accessor :fqdn
@@ -1152,12 +1153,17 @@ module Google
         # @return [String]
         attr_accessor :cluster_uri
       
-        # External IP address of a GKE cluster master.
+        # DNS endpoint of a GKE cluster control plane.
+        # Corresponds to the JSON property `dnsEndpoint`
+        # @return [String]
+        attr_accessor :dns_endpoint
+      
+        # External IP address of a GKE cluster control plane.
         # Corresponds to the JSON property `externalIp`
         # @return [String]
         attr_accessor :external_ip
       
-        # Internal IP address of a GKE cluster master.
+        # Internal IP address of a GKE cluster control plane.
         # Corresponds to the JSON property `internalIp`
         # @return [String]
         attr_accessor :internal_ip
@@ -1170,6 +1176,7 @@ module Google
         def update!(**args)
           @cluster_network_uri = args[:cluster_network_uri] if args.key?(:cluster_network_uri)
           @cluster_uri = args[:cluster_uri] if args.key?(:cluster_uri)
+          @dns_endpoint = args[:dns_endpoint] if args.key?(:dns_endpoint)
           @external_ip = args[:external_ip] if args.key?(:external_ip)
           @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
         end

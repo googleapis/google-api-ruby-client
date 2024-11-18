@@ -633,6 +633,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_network_uri, as: 'clusterNetworkUri'
           property :cluster_uri, as: 'clusterUri'
+          property :dns_endpoint, as: 'dnsEndpoint'
           property :external_ip, as: 'externalIp'
           property :internal_ip, as: 'internalIp'
         end
