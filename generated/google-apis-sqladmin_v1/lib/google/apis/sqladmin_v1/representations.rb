@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalSyncSelectedObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FailoverContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -533,6 +539,12 @@ module Google
       end
       
       class RotateServerCertificateContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SelectedObjects
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1138,6 +1150,13 @@ module Google
         end
       end
       
+      class ExternalSyncSelectedObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+        end
+      end
+      
       class FailoverContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1502,8 +1521,11 @@ module Google
           property :host_port, as: 'hostPort'
           property :kind, as: 'kind'
           property :password, as: 'password'
+          collection :selected_objects, as: 'selectedObjects', class: Google::Apis::SqladminV1::SelectedObjects, decorator: Google::Apis::SqladminV1::SelectedObjects::Representation
+      
           property :source_instance, as: 'sourceInstance', class: Google::Apis::SqladminV1::InstanceReference, decorator: Google::Apis::SqladminV1::InstanceReference::Representation
       
+          property :ssl_option, as: 'sslOption'
           property :username, as: 'username'
         end
       end
@@ -1682,6 +1704,13 @@ module Google
         end
       end
       
+      class SelectedObjects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+        end
+      end
+      
       class Settings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1813,6 +1842,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :migration_type, as: 'migrationType'
           property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1::MySqlSyncConfig, decorator: Google::Apis::SqladminV1::MySqlSyncConfig::Representation
+      
+          collection :selected_objects, as: 'selectedObjects', class: Google::Apis::SqladminV1::ExternalSyncSelectedObject, decorator: Google::Apis::SqladminV1::ExternalSyncSelectedObject::Representation
       
           property :sync_mode, as: 'syncMode'
           property :sync_parallel_level, as: 'syncParallelLevel'
