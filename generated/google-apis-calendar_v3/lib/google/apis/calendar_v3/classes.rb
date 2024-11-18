@@ -1062,6 +1062,11 @@ module Google
         attr_accessor :attendees_omitted
         alias_method :attendees_omitted?, :attendees_omitted
       
+        # Birthday or special event data. Used if eventType is "birthday". Immutable.
+        # Corresponds to the JSON property `birthdayProperties`
+        # @return [Google::Apis::CalendarV3::EventBirthdayProperties]
+        attr_accessor :birthday_properties
+      
         # The color of the event. This is an ID referring to an entry in the event
         # section of the colors definition (see the  colors endpoint). Optional.
         # Corresponds to the JSON property `colorId`
@@ -1365,6 +1370,7 @@ module Google
           @attachments = args[:attachments] if args.key?(:attachments)
           @attendees = args[:attendees] if args.key?(:attendees)
           @attendees_omitted = args[:attendees_omitted] if args.key?(:attendees_omitted)
+          @birthday_properties = args[:birthday_properties] if args.key?(:birthday_properties)
           @color_id = args[:color_id] if args.key?(:color_id)
           @conference_data = args[:conference_data] if args.key?(:conference_data)
           @created = args[:created] if args.key?(:created)
@@ -1778,6 +1784,49 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @response_status = args[:response_status] if args.key?(:response_status)
           @self = args[:self] if args.key?(:self)
+        end
+      end
+      
+      # 
+      class EventBirthdayProperties
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the contact this birthday event is linked to. This can be
+        # used to fetch contact details from People API. Format: "people/c12345". Read-
+        # only.
+        # Corresponds to the JSON property `contact`
+        # @return [String]
+        attr_accessor :contact
+      
+        # Custom type label specified for this event. This is populated if
+        # birthdayProperties.type is set to "custom". Read-only.
+        # Corresponds to the JSON property `customTypeName`
+        # @return [String]
+        attr_accessor :custom_type_name
+      
+        # Type of birthday or special event. Possible values are:
+        # - "anniversary" - An anniversary other than birthday. Always has a contact.
+        # - "birthday" - A birthday event. This is the default value.
+        # - "custom" - A special date whose label is further specified in the
+        # customTypeName field. Always has a contact.
+        # - "other" - A special date which does not fall into the other categories, and
+        # does not have a custom label. Always has a contact.
+        # - "self" - Calendar owner's own birthday. Cannot have a contact.  The Calendar
+        # API only supports creating events with the type "birthday". The type cannot be
+        # changed after the event is created.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contact = args[:contact] if args.key?(:contact)
+          @custom_type_name = args[:custom_type_name] if args.key?(:custom_type_name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
