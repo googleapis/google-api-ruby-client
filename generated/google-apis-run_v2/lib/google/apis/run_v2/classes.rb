@@ -1967,6 +1967,17 @@ module Google
         # @return [String]
         attr_accessor :encryption_key
       
+        # Optional. The action to take if the encryption key is revoked.
+        # Corresponds to the JSON property `encryptionKeyRevocationAction`
+        # @return [String]
+        attr_accessor :encryption_key_revocation_action
+      
+        # Optional. If encryption_key_revocation_action is SHUTDOWN, the duration before
+        # shutting down all instances. The minimum increment is 1 hour.
+        # Corresponds to the JSON property `encryptionKeyShutdownDuration`
+        # @return [String]
+        attr_accessor :encryption_key_shutdown_duration
+      
         # Optional. The sandbox environment to host this Revision.
         # Corresponds to the JSON property `executionEnvironment`
         # @return [String]
@@ -2059,6 +2070,8 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @containers = args[:containers] if args.key?(:containers)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
+          @encryption_key_shutdown_duration = args[:encryption_key_shutdown_duration] if args.key?(:encryption_key_shutdown_duration)
           @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
           @health_check_disabled = args[:health_check_disabled] if args.key?(:health_check_disabled)
           @labels = args[:labels] if args.key?(:labels)
