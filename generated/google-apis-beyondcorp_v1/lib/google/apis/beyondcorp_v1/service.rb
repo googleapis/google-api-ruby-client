@@ -2631,42 +2631,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # This is a custom method to allow customers to create a peering connections
-        # between Google network and customer networks. This is enabled only for the
-        # allowlisted customers.
-        # @param [String] security_gateway
-        #   Required. BeyondCorp SecurityGateway name using the form: `projects/`project`/
-        #   locations/`location`/securityGateways/`security_gateway``
-        # @param [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest] google_cloud_beyondcorp_securitygateways_v1_set_peering_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_project_location_security_gateway_peering(security_gateway, google_cloud_beyondcorp_securitygateways_v1_set_peering_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+securityGateway}:setPeering', options)
-          command.request_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest::Representation
-          command.request_object = google_cloud_beyondcorp_securitygateways_v1_set_peering_request_object
-          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
-          command.params['securityGateway'] = security_gateway unless security_gateway.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns permissions that a caller has on the specified resource. If the
         # resource does not exist, this will return an empty set of permissions, not a `
         # NOT_FOUND` error. Note: This operation is designed to be used for building

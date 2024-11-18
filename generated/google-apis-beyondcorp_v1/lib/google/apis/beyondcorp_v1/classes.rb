@@ -1853,32 +1853,6 @@ module Google
         end
       end
       
-      # VPC Peering details.
-      class GoogleCloudBeyondcorpSecuritygatewaysV1Peering
-        include Google::Apis::Core::Hashable
-      
-        # Optional. List of DNS zones for DNS peering with the customer VPC network.
-        # Corresponds to the JSON property `dnsZones`
-        # @return [Array<String>]
-        attr_accessor :dns_zones
-      
-        # Required. The name of the Target VPC network name in the format: `projects/`
-        # project`/global/networks/`network`
-        # Corresponds to the JSON property `targetNetwork`
-        # @return [String]
-        attr_accessor :target_network
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dns_zones = args[:dns_zones] if args.key?(:dns_zones)
-          @target_network = args[:target_network] if args.key?(:target_network)
-        end
-      end
-      
       # Information about a BeyoncCorp SecurityGateway resource.
       class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
         include Google::Apis::Core::Hashable
@@ -1993,49 +1967,6 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
-        end
-      end
-      
-      # Set Peering request for creating a VPC peering between Google network and
-      # customer networks.
-      class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. List of Peering connection information.
-        # Corresponds to the JSON property `peerings`
-        # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Peering>]
-        attr_accessor :peerings
-      
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes since the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # Corresponds to the JSON property `requestId`
-        # @return [String]
-        attr_accessor :request_id
-      
-        # Optional. If set, validates request by executing a dry-run which would not
-        # alter the resource in any way.
-        # Corresponds to the JSON property `validateOnly`
-        # @return [Boolean]
-        attr_accessor :validate_only
-        alias_method :validate_only?, :validate_only
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @peerings = args[:peerings] if args.key?(:peerings)
-          @request_id = args[:request_id] if args.key?(:request_id)
-          @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
       
