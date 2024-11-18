@@ -178,22 +178,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a space with no members. Can be used to create a named space. Spaces
-        # grouped by topics aren't supported. For an example, see [Create a space](https:
-        # //developers.google.com/workspace/chat/create-spaces). If you receive the
-        # error message `ALREADY_EXISTS` when creating a space, try a different `
-        # displayName`. An existing space within the Google Workspace organization might
-        # already use this display name. If you're a member of the [Developer Preview
-        # program](https://developers.google.com/workspace/preview), you can create a
-        # group chat in import mode using `spaceType.GROUP_CHAT`. Supports the following
-        # types of [authentication](https://developers.google.com/workspace/chat/
-        # authenticate-authorize): - [App authentication](https://developers.google.com/
-        # workspace/chat/authenticate-authorize-chat-app) with [administrator approval](
-        # https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://
-        # developers.google.com/workspace/preview) - [User authentication](https://
-        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) When
-        # authenticating as an app, the `space.customer` field must be set in the
-        # request.
+        # Creates a space with no members. Can be used to create a named space, or a
+        # group chat in `Import mode`. Spaces grouped by topics aren't supported. For an
+        # example, see [Create a space](https://developers.google.com/workspace/chat/
+        # create-spaces). If you receive the error message `ALREADY_EXISTS` when
+        # creating a space, try a different `displayName`. An existing space within the
+        # Google Workspace organization might already use this display name. Supports
+        # the following types of [authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize): - [App authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [
+        # administrator approval](https://support.google.com/a?p=chat-app-auth) in [
+        # Developer Preview](https://developers.google.com/workspace/preview) - [User
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user) When authenticating as an app, the `space.customer` field
+        # must be set in the request.
         # @param [Google::Apis::ChatV1::Space] space_object
         # @param [String] request_id
         #   Optional. A unique identifier for this request. A random UUID is recommended.
@@ -1061,7 +1059,10 @@ module Google
         #   google.com/workspace/chat/create-messages#name_a_created_message).
         # @param [String] message_reply_option
         #   Optional. Specifies whether a message starts a thread or replies to one. Only
-        #   supported in named spaces.
+        #   supported in named spaces. When [responding to user interactions](https://
+        #   developers.google.com/workspace/chat/receive-respond-interactions), this field
+        #   is ignored. For interactions within a thread, the reply is created in the same
+        #   thread. Otherwise, the reply is created as a new thread.
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
@@ -1223,21 +1224,21 @@ module Google
         #   name = spaces/AAAAAAAAAAA/threads/123 ``` Invalid queries are rejected by the
         #   server with an `INVALID_ARGUMENT` error.
         # @param [String] order_by
-        #   Optional. Optional, if resuming from a previous query. How the list of
-        #   messages is ordered. Specify a value to order by an ordering operation. Valid
-        #   ordering operation values are as follows: - `ASC` for ascending. - `DESC` for
-        #   descending. The default ordering is `create_time ASC`.
+        #   Optional. How the list of messages is ordered. Specify a value to order by an
+        #   ordering operation. Valid ordering operation values are as follows: - `ASC`
+        #   for ascending. - `DESC` for descending. The default ordering is `create_time
+        #   ASC`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of messages returned. The service might return
         #   fewer messages than this value. If unspecified, at most 25 are returned. The
         #   maximum value is 1000. If you use a value more than 1000, it's automatically
         #   changed to 1000. Negative values return an `INVALID_ARGUMENT` error.
         # @param [String] page_token
-        #   Optional. Optional, if resuming from a previous query. A page token received
-        #   from a previous list messages call. Provide this parameter to retrieve the
-        #   subsequent page. When paginating, all other parameters provided should match
-        #   the call that provided the page token. Passing different values to the other
-        #   parameters might lead to unexpected results.
+        #   Optional. A page token received from a previous list messages call. Provide
+        #   this parameter to retrieve the subsequent page. When paginating, all other
+        #   parameters provided should match the call that provided the page token.
+        #   Passing different values to the other parameters might lead to unexpected
+        #   results.
         # @param [Boolean] show_deleted
         #   Optional. Whether to include deleted messages. Deleted messages include
         #   deleted time and metadata about their deletion, but message content is

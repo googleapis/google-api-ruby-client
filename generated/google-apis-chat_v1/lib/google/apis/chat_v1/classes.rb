@@ -132,8 +132,8 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # The response of the updated widget. Used to provide autocomplete options for a
-        # widget.
+        # For `selectionInput` widgets, returns autocomplete suggestions for a
+        # multiselect menu.
         # Corresponds to the JSON property `updatedWidget`
         # @return [Google::Apis::ChatV1::UpdatedWidget]
         attr_accessor :updated_widget
@@ -292,8 +292,8 @@ module Google
         # @return [Google::Apis::ChatV1::DriveDataRef]
         attr_accessor :drive_data_ref
       
-        # Resource name of the attachment, in the form `spaces/`space`/messages/`message`
-        # /attachments/`attachment``.
+        # Optional. Resource name of the attachment, in the form `spaces/`space`/
+        # messages/`message`/attachments/`attachment``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -331,15 +331,15 @@ module Google
       class AttachmentDataRef
         include Google::Apis::Core::Hashable
       
-        # Opaque token containing a reference to an uploaded attachment. Treated by
-        # clients as an opaque string and used to create or update Chat messages with
-        # attachments.
+        # Optional. Opaque token containing a reference to an uploaded attachment.
+        # Treated by clients as an opaque string and used to create or update Chat
+        # messages with attachments.
         # Corresponds to the JSON property `attachmentUploadToken`
         # @return [String]
         attr_accessor :attachment_upload_token
       
-        # The resource name of the attachment data. This field is used with the media
-        # API to download the attachment data.
+        # Optional. The resource name of the attachment data. This field is used with
+        # the media API to download the attachment data.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -2871,9 +2871,12 @@ module Google
         attr_accessor :multi_select_max_selected_items
       
         # For multiselect menus, the number of text characters that a user inputs before
-        # the app queries autocomplete and displays suggested items in the menu. If
-        # unspecified, defaults to 0 characters for static data sources and 3 characters
-        # for external data sources.
+        # the menu returns suggested selection items. If unset, the multiselect menu
+        # uses the following default values: * If the menu uses a static array of `
+        # SelectionInput` items, defaults to 0 characters and immediately populates
+        # items from the array. * If the menu uses a dynamic data source (`
+        # multi_select_data_source`), defaults to 3 characters before querying the data
+        # source to return suggested items.
         # Corresponds to the JSON property `multiSelectMinQueryLength`
         # @return [Fixnum]
         attr_accessor :multi_select_min_query_length
@@ -2927,8 +2930,8 @@ module Google
       end
       
       # An item that users can select in a selection input, such as a checkbox or
-      # switch. [Google Workspace Add-ons and Chat apps](https://developers.google.com/
-      # workspace/extend):
+      # switch. Supports up to 100 items. [Google Workspace Add-ons and Chat apps](
+      # https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1SelectionItem
         include Google::Apis::Core::Hashable
       
@@ -4191,12 +4194,12 @@ module Google
         # @return [Array<Google::Apis::ChatV1::CardWithId>]
         attr_accessor :cards_v2
       
-        # Optional. Optional. A custom ID for the message. You can use field to identify
-        # a message, or to get, delete, or update a message. To set a custom ID, specify
-        # the [`messageId`](https://developers.google.com/workspace/chat/api/reference/
-        # rest/v1/spaces.messages/create#body.QUERY_PARAMETERS.message_id) field when
-        # you create the message. For details, see [Name a message](https://developers.
-        # google.com/workspace/chat/create-messages#name_a_created_message).
+        # Optional. A custom ID for the message. You can use field to identify a message,
+        # or to get, delete, or update a message. To set a custom ID, specify the [`
+        # messageId`](https://developers.google.com/workspace/chat/api/reference/rest/v1/
+        # spaces.messages/create#body.QUERY_PARAMETERS.message_id) field when you create
+        # the message. For details, see [Name a message](https://developers.google.com/
+        # workspace/chat/create-messages#name_a_created_message).
         # Corresponds to the JSON property `clientAssignedMessageId`
         # @return [String]
         attr_accessor :client_assigned_message_id
@@ -5716,8 +5719,8 @@ module Google
         end
       end
       
-      # The response of the updated widget. Used to provide autocomplete options for a
-      # widget.
+      # For `selectionInput` widgets, returns autocomplete suggestions for a
+      # multiselect menu.
       class UpdatedWidget
         include Google::Apis::Core::Hashable
       
