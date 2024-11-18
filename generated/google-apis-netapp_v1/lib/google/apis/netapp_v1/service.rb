@@ -1707,6 +1707,189 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new quota rule.
+        # @param [String] parent
+        #   Required. Parent value for CreateQuotaRuleRequest
+        # @param [Google::Apis::NetappV1::QuotaRule] quota_rule_object
+        # @param [String] quota_rule_id
+        #   Required. ID of the quota rule to create. Must be unique within the parent
+        #   resource. Must contain only letters, numbers, underscore and hyphen, with the
+        #   first character a letter or underscore, the last a letter or underscore or a
+        #   number, and a 63 character maximum.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_volume_quota_rule(parent, quota_rule_object = nil, quota_rule_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/quotaRules', options)
+          command.request_representation = Google::Apis::NetappV1::QuotaRule::Representation
+          command.request_object = quota_rule_object
+          command.response_representation = Google::Apis::NetappV1::Operation::Representation
+          command.response_class = Google::Apis::NetappV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['quotaRuleId'] = quota_rule_id unless quota_rule_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a quota rule.
+        # @param [String] name
+        #   Required. Name of the quota rule.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_volume_quota_rule(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetappV1::Operation::Representation
+          command.response_class = Google::Apis::NetappV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns details of the specified quota rule.
+        # @param [String] name
+        #   Required. Name of the quota rule
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::QuotaRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::QuotaRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_volume_quota_rule(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetappV1::QuotaRule::Representation
+          command.response_class = Google::Apis::NetappV1::QuotaRule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns list of all quota rules in a location.
+        # @param [String] parent
+        #   Required. Parent value for ListQuotaRulesRequest
+        # @param [String] filter
+        #   Optional. Filtering results
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, the server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::ListQuotaRulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::ListQuotaRulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_volume_quota_rules(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/quotaRules', options)
+          command.response_representation = Google::Apis::NetappV1::ListQuotaRulesResponse::Representation
+          command.response_class = Google::Apis::NetappV1::ListQuotaRulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a quota rule.
+        # @param [String] name
+        #   Identifier. The resource name of the active directory. Format: `projects/`
+        #   project_number`/locations/`location_id`/quotaRules/`quota_rule_id``.
+        # @param [Google::Apis::NetappV1::QuotaRule] quota_rule_object
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   Quota Rule resource by the update. The fields specified in the update_mask are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. If the user does not provide a mask then all fields will be
+        #   overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_volume_quota_rule(name, quota_rule_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetappV1::QuotaRule::Representation
+          command.request_object = quota_rule_object
+          command.response_representation = Google::Apis::NetappV1::Operation::Representation
+          command.response_class = Google::Apis::NetappV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a new replication for a volume.
         # @param [String] parent
         #   Required. The NetApp volume to create the replications of, in the format `
@@ -1769,6 +1952,41 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_volume_replication(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetappV1::Operation::Representation
+          command.response_class = Google::Apis::NetappV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Establish replication peering.
+        # @param [String] name
+        #   Required. The resource name of the replication, in the format of projects/`
+        #   project_id`/locations/`location`/volumes/`volume_id`/replications/`
+        #   replication_id`.
+        # @param [Google::Apis::NetappV1::EstablishPeeringRequest] establish_peering_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def establish_replication_peering(name, establish_peering_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:establishPeering', options)
+          command.request_representation = Google::Apis::NetappV1::EstablishPeeringRequest::Representation
+          command.request_object = establish_peering_request_object
           command.response_representation = Google::Apis::NetappV1::Operation::Representation
           command.response_class = Google::Apis::NetappV1::Operation
           command.params['name'] = name unless name.nil?
@@ -1989,6 +2207,42 @@ module Google
           command = make_simple_command(:post, 'v1/{+name}:stop', options)
           command.request_representation = Google::Apis::NetappV1::StopReplicationRequest::Representation
           command.request_object = stop_replication_request_object
+          command.response_representation = Google::Apis::NetappV1::Operation::Representation
+          command.response_class = Google::Apis::NetappV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Syncs the replication. This will invoke one time volume data transfer from
+        # source to destination.
+        # @param [String] name
+        #   Required. The resource name of the replication, in the format of projects/`
+        #   project_id`/locations/`location`/volumes/`volume_id`/replications/`
+        #   replication_id`.
+        # @param [Google::Apis::NetappV1::SyncReplicationRequest] sync_replication_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def sync_replication(name, sync_replication_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:sync', options)
+          command.request_representation = Google::Apis::NetappV1::SyncReplicationRequest::Representation
+          command.request_object = sync_replication_request_object
           command.response_representation = Google::Apis::NetappV1::Operation::Representation
           command.response_class = Google::Apis::NetappV1::Operation
           command.params['name'] = name unless name.nil?
