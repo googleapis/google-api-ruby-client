@@ -543,7 +543,7 @@ module Google
         alias_method :existing?, :existing
       
         # Returns true if the Cloud Identity account is associated with a customer of
-        # the Channel Services partner.
+        # the Channel Services partner (with active subscriptions or purchase consents).
         # Corresponds to the JSON property `owned`
         # @return [Boolean]
         attr_accessor :owned
