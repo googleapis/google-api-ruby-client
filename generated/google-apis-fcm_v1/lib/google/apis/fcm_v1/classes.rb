@@ -398,7 +398,13 @@ module Google
         # Optional. [Apple Live Activity](https://developer.apple.com/design/human-
         # interface-guidelines/live-activities) token to send updates to. This token can
         # either be a push token or [push-to-start](https://developer.apple.com/
-        # documentation/activitykit/activity/pushtostarttoken) token from Apple.
+        # documentation/activitykit/activity/pushtostarttoken) token from Apple. To
+        # start, update, or end a live activity remotely using FCM, construct an [`aps
+        # payload`](https://developer.apple.com/documentation/activitykit/starting-and-
+        # updating-live-activities-with-activitykit-push-notifications#Construct-the-
+        # payload-that-starts-a-Live-Activity) and put it in the [`apns.payload`](https:/
+        # /firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#ApnsConfig)
+        # field.
         # Corresponds to the JSON property `liveActivityToken`
         # @return [String]
         attr_accessor :live_activity_token
