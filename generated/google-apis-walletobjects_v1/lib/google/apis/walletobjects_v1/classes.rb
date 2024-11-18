@@ -151,6 +151,11 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfo]
         attr_accessor :android_app_link_info
       
+        # Optional display text for the app link button. Character limit is 30.
+        # Corresponds to the JSON property `displayText`
+        # @return [Google::Apis::WalletobjectsV1::LocalizedString]
+        attr_accessor :display_text
+      
         # Deprecated. Links to open iOS apps are not supported.
         # Corresponds to the JSON property `iosAppLinkInfo`
         # @return [Google::Apis::WalletobjectsV1::AppLinkDataAppLinkInfo]
@@ -168,6 +173,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @android_app_link_info = args[:android_app_link_info] if args.key?(:android_app_link_info)
+          @display_text = args[:display_text] if args.key?(:display_text)
           @ios_app_link_info = args[:ios_app_link_info] if args.key?(:ios_app_link_info)
           @web_app_link_info = args[:web_app_link_info] if args.key?(:web_app_link_info)
         end
