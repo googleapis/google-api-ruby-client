@@ -499,7 +499,10 @@ module Google
         end
       end
       
-      # Message for response to listing Connectors.
+      # Message for response to listing Connectors. By default, `connectors.source`
+      # will not be included in the response. To specify the fields included in the
+      # response, the response field mask can be provided by using the query parameter
+      # `$fields` or the header `X-Goog-FieldMask`.
       class ListConnectorsResponse
         include Google::Apis::Core::Hashable
       
@@ -581,7 +584,10 @@ module Google
         end
       end
       
-      # Message for response to listing Schemas.
+      # Message for response to listing Schemas. By default, `schemas.source` will not
+      # be included in the response. To specify the fields included in the response,
+      # the response field mask can be provided by using the query parameter `$fields`
+      # or the header `X-Goog-FieldMask`.
       class ListSchemasResponse
         include Google::Apis::Core::Hashable
       
