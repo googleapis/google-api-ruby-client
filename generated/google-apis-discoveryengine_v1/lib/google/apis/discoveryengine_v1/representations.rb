@@ -838,18 +838,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1Feedback
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDiscoveryengineV1FeedbackConversationInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3507,6 +3495,7 @@ module Google
       class GoogleCloudDiscoveryengineV1AnswerQueryRequestGroundingSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filtering_level, as: 'filteringLevel'
           property :include_grounding_supports, as: 'includeGroundingSupports'
         end
       end
@@ -4415,6 +4404,7 @@ module Google
       class GoogleCloudDiscoveryengineV1DocumentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversion_value, as: 'conversionValue'
           property :id, as: 'id'
           property :joined, as: 'joined'
           property :name, as: 'name'
@@ -4575,26 +4565,6 @@ module Google
           property :index, as: 'index'
           property :source, as: 'source'
           hash :source_metadata, as: 'sourceMetadata'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1Feedback
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :comment, as: 'comment'
-          property :conversation_info, as: 'conversationInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FeedbackConversationInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FeedbackConversationInfo::Representation
-      
-          property :feedback_type, as: 'feedbackType'
-          property :llm_model_version, as: 'llmModelVersion'
-          collection :reasons, as: 'reasons'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1FeedbackConversationInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :question_index, as: 'questionIndex'
-          property :session, as: 'session'
         end
       end
       
@@ -5579,6 +5549,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :answer, as: 'answer'
+          property :detailed_answer, as: 'detailedAnswer', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Answer, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Answer::Representation
+      
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Query, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Query::Representation
       
         end
@@ -5747,6 +5719,7 @@ module Google
           property :attribution_token, as: 'attributionToken'
           property :completion_info, as: 'completionInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CompletionInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CompletionInfo::Representation
       
+          property :conversion_type, as: 'conversionType'
           property :data_store, as: 'dataStore'
           property :direct_user_request, as: 'directUserRequest'
           collection :documents, as: 'documents', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentInfo::Representation
@@ -5754,8 +5727,6 @@ module Google
           property :engine, as: 'engine'
           property :event_time, as: 'eventTime'
           property :event_type, as: 'eventType'
-          property :feedback, as: 'feedback', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Feedback, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Feedback::Representation
-      
           property :filter, as: 'filter'
           property :media_info, as: 'mediaInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1MediaInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1MediaInfo::Representation
       
@@ -7218,6 +7189,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :answer, as: 'answer'
+          property :detailed_answer, as: 'detailedAnswer', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswer, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswer::Representation
+      
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaQuery, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaQuery::Representation
       
         end
