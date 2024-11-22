@@ -3416,6 +3416,47 @@ module Google
         end
       end
       
+      # Request message for resolving an AccessProposal on a file.
+      class ResolveAccessProposalRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The action to take on the AccessProposal.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Optional. The roles the approver has allowed, if any. Note: This field is
+        # required for the `ACCEPT` action.
+        # Corresponds to the JSON property `role`
+        # @return [Array<String>]
+        attr_accessor :role
+      
+        # Optional. Whether to send an email to the requester when the AccessProposal is
+        # denied or accepted.
+        # Corresponds to the JSON property `sendNotification`
+        # @return [Boolean]
+        attr_accessor :send_notification
+        alias_method :send_notification?, :send_notification
+      
+        # Optional. Indicates the view for this access proposal. This should only be set
+        # when the proposal belongs to a view. `published` is the only supported value.
+        # Corresponds to the JSON property `view`
+        # @return [String]
+        attr_accessor :view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @role = args[:role] if args.key?(:role)
+          @send_notification = args[:send_notification] if args.key?(:send_notification)
+          @view = args[:view] if args.key?(:view)
+        end
+      end
+      
       # The metadata for a revision to a file. Some resource methods (such as `
       # revisions.update`) require a `revisionId`. Use the `revisions.list` method to
       # retrieve the ID for a revision.
