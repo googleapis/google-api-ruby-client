@@ -73,10 +73,17 @@ def list_apis_versions
                         path: "discoveries/index.json", update: true)
   apis_versions = []
   JSON.parse(File.read path)["items"].each do |item|
-    next unless item["preferred"]
+    next unless item["preferred"] || gem_exists?(item)
     apis_versions << [item["name"], item["version"]]
   end
   apis_versions.shuffle
+end
+
+def gem_exists? item
+  name = item["name"]
+  version = item["version"]
+  gem_name = "google-apis-#{name}_#{version}"
+  File.file? "#{context_directory}/generated/#{gem_name}/#{gem_name}.gemspec"
 end
 
 def pr_single_gem api, version, index, total
