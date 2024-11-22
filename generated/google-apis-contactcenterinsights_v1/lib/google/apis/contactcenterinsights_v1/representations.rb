@@ -1636,48 +1636,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleIamV1AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1Binding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1SetIamPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1TestIamPermissionsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1TestIamPermissionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleLongrunningListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1697,12 +1655,6 @@ module Google
       end
       
       class GoogleRpcStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleTypeExpr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2145,6 +2097,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_id, as: 'agentId'
+          property :agent_type, as: 'agentType'
           property :display_name, as: 'displayName'
           property :disposition_code, as: 'dispositionCode'
           property :team, as: 'team'
@@ -2910,7 +2863,6 @@ module Google
           property :answer_value, as: 'answerValue', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue::Representation
       
           property :conversation, as: 'conversation'
-          property :potential_score, as: 'potentialScore'
           property :qa_question, as: 'qaQuestion'
           property :question_body, as: 'questionBody'
           collection :tags, as: 'tags'
@@ -3629,6 +3581,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_id, as: 'agentId'
+          property :agent_type, as: 'agentType'
           property :display_name, as: 'displayName'
           property :disposition_code, as: 'dispositionCode'
           property :team, as: 'team'
@@ -4236,7 +4189,6 @@ module Google
           property :answer_value, as: 'answerValue', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue::Representation
       
           property :conversation, as: 'conversation'
-          property :potential_score, as: 'potentialScore'
           property :qa_question, as: 'qaQuestion'
           property :question_body, as: 'questionBody'
           collection :tags, as: 'tags'
@@ -4517,68 +4469,6 @@ module Google
         end
       end
       
-      class GoogleIamV1AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::ContactcenterinsightsV1::GoogleIamV1AuditLogConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleIamV1AuditLogConfig::Representation
-      
-          property :service, as: 'service'
-        end
-      end
-      
-      class GoogleIamV1AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
-        end
-      end
-      
-      class GoogleIamV1Binding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :condition, as: 'condition', class: Google::Apis::ContactcenterinsightsV1::GoogleTypeExpr, decorator: Google::Apis::ContactcenterinsightsV1::GoogleTypeExpr::Representation
-      
-          collection :members, as: 'members'
-          property :role, as: 'role'
-        end
-      end
-      
-      class GoogleIamV1Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::ContactcenterinsightsV1::GoogleIamV1AuditConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleIamV1AuditConfig::Representation
-      
-          collection :bindings, as: 'bindings', class: Google::Apis::ContactcenterinsightsV1::GoogleIamV1Binding, decorator: Google::Apis::ContactcenterinsightsV1::GoogleIamV1Binding::Representation
-      
-          property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
-        end
-      end
-      
-      class GoogleIamV1SetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy, as: 'policy', class: Google::Apis::ContactcenterinsightsV1::GoogleIamV1Policy, decorator: Google::Apis::ContactcenterinsightsV1::GoogleIamV1Policy::Representation
-      
-          property :update_mask, as: 'updateMask'
-        end
-      end
-      
-      class GoogleIamV1TestIamPermissionsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class GoogleIamV1TestIamPermissionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
       class GoogleLongrunningListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4612,16 +4502,6 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
-        end
-      end
-      
-      class GoogleTypeExpr
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :expression, as: 'expression'
-          property :location, as: 'location'
-          property :title, as: 'title'
         end
       end
       
