@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthzExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +107,12 @@ module Google
       end
       
       class Gateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GatewayRouteView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,7 +316,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAuthzExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEndpointPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGatewayRouteViewsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +365,12 @@ module Google
       end
       
       class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMeshRouteViewsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -407,6 +437,12 @@ module Google
       end
       
       class Mesh
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MeshRouteView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -597,6 +633,25 @@ module Google
         end
       end
       
+      class AuthzExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authority, as: 'authority'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :fail_open, as: 'failOpen'
+          collection :forward_headers, as: 'forwardHeaders'
+          hash :labels, as: 'labels'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          property :service, as: 'service'
+          property :timeout, as: 'timeout'
+          property :update_time, as: 'updateTime'
+          property :wire_format, as: 'wireFormat'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -726,6 +781,17 @@ module Google
           property :subnetwork, as: 'subnetwork'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GatewayRouteView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :route_id, as: 'routeId'
+          property :route_location, as: 'routeLocation'
+          property :route_project_number, :numeric_string => true, as: 'routeProjectNumber'
+          property :route_type, as: 'routeType'
         end
       end
       
@@ -1102,10 +1168,29 @@ module Google
         end
       end
       
+      class ListAuthzExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authz_extensions, as: 'authzExtensions', class: Google::Apis::NetworkservicesV1::AuthzExtension, decorator: Google::Apis::NetworkservicesV1::AuthzExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListEndpointPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :endpoint_policies, as: 'endpointPolicies', class: Google::Apis::NetworkservicesV1::EndpointPolicy, decorator: Google::Apis::NetworkservicesV1::EndpointPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListGatewayRouteViewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gateway_route_views, as: 'gatewayRouteViews', class: Google::Apis::NetworkservicesV1::GatewayRouteView, decorator: Google::Apis::NetworkservicesV1::GatewayRouteView::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1163,6 +1248,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :locations, as: 'locations', class: Google::Apis::NetworkservicesV1::Location, decorator: Google::Apis::NetworkservicesV1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMeshRouteViewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mesh_route_views, as: 'meshRouteViews', class: Google::Apis::NetworkservicesV1::MeshRouteView, decorator: Google::Apis::NetworkservicesV1::MeshRouteView::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1269,6 +1363,17 @@ module Google
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MeshRouteView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :route_id, as: 'routeId'
+          property :route_location, as: 'routeLocation'
+          property :route_project_number, :numeric_string => true, as: 'routeProjectNumber'
+          property :route_type, as: 'routeType'
         end
       end
       

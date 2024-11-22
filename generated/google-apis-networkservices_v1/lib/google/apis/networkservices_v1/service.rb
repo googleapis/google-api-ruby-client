@@ -124,6 +124,229 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new `AuthzExtension` resource in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource of the `AuthzExtension` resource. Must be in the
+        #   format `projects/`project`/locations/`location``.
+        # @param [Google::Apis::NetworkservicesV1::AuthzExtension] authz_extension_object
+        # @param [String] authz_extension_id
+        #   Required. User-provided ID of the `AuthzExtension` resource to be created.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_authz_extension(parent, authz_extension_object = nil, authz_extension_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/authzExtensions', options)
+          command.request_representation = Google::Apis::NetworkservicesV1::AuthzExtension::Representation
+          command.request_object = authz_extension_object
+          command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['authzExtensionId'] = authz_extension_id unless authz_extension_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified `AuthzExtension` resource.
+        # @param [String] name
+        #   Required. The name of the `AuthzExtension` resource to delete. Must be in the
+        #   format `projects/`project`/locations/`location`/authzExtensions/`
+        #   authz_extension``.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes after the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_authz_extension(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of the specified `AuthzExtension` resource.
+        # @param [String] name
+        #   Required. A name of the `AuthzExtension` resource to get. Must be in the
+        #   format `projects/`project`/locations/`location`/authzExtensions/`
+        #   authz_extension``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::AuthzExtension] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::AuthzExtension]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_authz_extension(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::AuthzExtension::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::AuthzExtension
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists `AuthzExtension` resources in a given project and location.
+        # @param [String] parent
+        #   Required. The project and location from which the `AuthzExtension` resources
+        #   are listed, specified in the following format: `projects/`project`/locations/`
+        #   location``.
+        # @param [String] filter
+        #   Optional. Filtering results.
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. The server might return fewer items than
+        #   requested. If unspecified, the server picks an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results that the server returns.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::ListAuthzExtensionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::ListAuthzExtensionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_authz_extensions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/authzExtensions', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::ListAuthzExtensionsResponse::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::ListAuthzExtensionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of the specified `AuthzExtension` resource.
+        # @param [String] name
+        #   Required. Identifier. Name of the `AuthzExtension` resource in the following
+        #   format: `projects/`project`/locations/`location`/authzExtensions/`
+        #   authz_extension``.
+        # @param [Google::Apis::NetworkservicesV1::AuthzExtension] authz_extension_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Used to specify the fields to be overwritten in the `AuthzExtension`
+        #   resource by the update. The fields specified in the `update_mask` are relative
+        #   to the resource, not the full request. A field is overwritten if it is in the
+        #   mask. If the user does not specify a mask, then all fields are overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_authz_extension(name, authz_extension_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkservicesV1::AuthzExtension::Representation
+          command.request_object = authz_extension_object
+          command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -841,6 +1064,77 @@ module Google
           command.response_class = Google::Apis::NetworkservicesV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a single RouteView of a Gateway.
+        # @param [String] name
+        #   Required. Name of the GatewayRouteView resource. Formats: projects/`
+        #   project_number`/locations/`location`/gateways/`gateway_name`/routeViews/`
+        #   route_view_name`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::GatewayRouteView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::GatewayRouteView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_gateway_route_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::GatewayRouteView::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::GatewayRouteView
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists RouteViews
+        # @param [String] parent
+        #   Required. The Gateway to which a Route is associated. Formats: projects/`
+        #   project_number`/locations/`location`/gateways/`gateway_name`
+        # @param [Fixnum] page_size
+        #   Maximum number of GatewayRouteViews to return per call.
+        # @param [String] page_token
+        #   The value returned by the last `ListGatewayRouteViewsResponse` Indicates that
+        #   this is a continuation of a prior `ListGatewayRouteViews` call, and that the
+        #   system should return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::ListGatewayRouteViewsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::ListGatewayRouteViewsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_gateway_route_views(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/routeViews', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::ListGatewayRouteViewsResponse::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::ListGatewayRouteViewsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1831,6 +2125,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get a single RouteView of a Mesh.
+        # @param [String] name
+        #   Required. Name of the MeshRouteView resource. Format: projects/`project_number`
+        #   /locations/`location`/meshes/`mesh_name`/routeViews/`route_view_name`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::MeshRouteView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::MeshRouteView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_mesh_route_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::MeshRouteView::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::MeshRouteView
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists RouteViews
+        # @param [String] parent
+        #   Required. The Mesh to which a Route is associated. Format: projects/`
+        #   project_number`/locations/`location`/meshes/`mesh_name`
+        # @param [Fixnum] page_size
+        #   Maximum number of MeshRouteViews to return per call.
+        # @param [String] page_token
+        #   The value returned by the last `ListMeshRouteViewsResponse` Indicates that
+        #   this is a continuation of a prior `ListMeshRouteViews` call, and that the
+        #   system should return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1::ListMeshRouteViewsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1::ListMeshRouteViewsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_mesh_route_views(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/routeViews', options)
+          command.response_representation = Google::Apis::NetworkservicesV1::ListMeshRouteViewsResponse::Representation
+          command.response_class = Google::Apis::NetworkservicesV1::ListMeshRouteViewsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -2725,8 +3089,8 @@ module Google
         #   Required. A name of the `WasmPlugin` resource to get. Must be in the format `
         #   projects/`project`/locations/global/wasmPlugins/`wasm_plugin``.
         # @param [String] view
-        #   Determine how much data should be returned by the API. See [AIP-157](https://
-        #   google.aip.dev/157).
+        #   Determines how much data must be returned in the response. See [AIP-157](https:
+        #   //google.aip.dev/157).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2762,8 +3126,8 @@ module Google
         #   global`.
         # @param [Fixnum] page_size
         #   Maximum number of `WasmPlugin` resources to return per call. If not specified,
-        #   at most 50 `WasmPlugin`s are returned. The maximum value is 1000; values above
-        #   1000 are coerced to 1000.
+        #   at most 50 `WasmPlugin` resources are returned. The maximum value is 1000;
+        #   values above 1000 are coerced to 1000.
         # @param [String] page_token
         #   The value returned by the last `ListWasmPluginsResponse` call. Indicates that
         #   this is a continuation of a prior `ListWasmPlugins` call, and that the next
@@ -2948,8 +3312,8 @@ module Google
         #   wasmPlugins/`wasm_plugin``.
         # @param [Fixnum] page_size
         #   Maximum number of `WasmPluginVersion` resources to return per call. If not
-        #   specified, at most 50 `WasmPluginVersion`s are returned. The maximum value is
-        #   1000; values above 1000 are coerced to 1000.
+        #   specified, at most 50 `WasmPluginVersion` resources are returned. The maximum
+        #   value is 1000; values above 1000 are coerced to 1000.
         # @param [String] page_token
         #   The value returned by the last `ListWasmPluginVersionsResponse` call.
         #   Indicates that this is a continuation of a prior `ListWasmPluginVersions` call,
