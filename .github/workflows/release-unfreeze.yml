@@ -1,0 +1,23 @@
+name: Unfreeze releases
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-updates:
+    if: ${{ github.repository == 'googleapis/google-api-ruby-client' }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Install Ruby 3.3
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - name: Install tools
+        run: |
+          gem install --no-document toys
+      - name: execute
+        run: |
+          toys freeze-releases -v --fork --off
