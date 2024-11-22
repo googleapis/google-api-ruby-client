@@ -714,10 +714,15 @@ module Google
         # @return [Array<Google::Apis::TestingV1::UsesFeature>]
         attr_accessor :uses_feature
       
-        # Permissions declared to be used by the application
+        # 
         # Corresponds to the JSON property `usesPermission`
         # @return [Array<String>]
         attr_accessor :uses_permission
+      
+        # Permissions declared to be used by the application
+        # Corresponds to the JSON property `usesPermissionTags`
+        # @return [Array<Google::Apis::TestingV1::UsesPermissionTag>]
+        attr_accessor :uses_permission_tags
       
         # Version number used internally by the app.
         # Corresponds to the JSON property `versionCode`
@@ -745,6 +750,7 @@ module Google
           @target_sdk_version = args[:target_sdk_version] if args.key?(:target_sdk_version)
           @uses_feature = args[:uses_feature] if args.key?(:uses_feature)
           @uses_permission = args[:uses_permission] if args.key?(:uses_permission)
+          @uses_permission_tags = args[:uses_permission_tags] if args.key?(:uses_permission_tags)
           @version_code = args[:version_code] if args.key?(:version_code)
           @version_name = args[:version_name] if args.key?(:version_name)
         end
@@ -3180,6 +3186,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_required = args[:is_required] if args.key?(:is_required)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The tag within a manifest. https://developer.android.com/guide/topics/manifest/
+      # uses-permission-element.html
+      class UsesPermissionTag
+        include Google::Apis::Core::Hashable
+      
+        # The android:name value
+        # Corresponds to the JSON property `maxSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :max_sdk_version
+      
+        # The android:name value
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_sdk_version = args[:max_sdk_version] if args.key?(:max_sdk_version)
           @name = args[:name] if args.key?(:name)
         end
       end
