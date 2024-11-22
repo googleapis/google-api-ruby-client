@@ -52,6 +52,68 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Unlinks and deletes the default bucket.
+        # @param [String] name
+        #   Required. The name of the default bucket to delete, `projects/`
+        #   project_id_or_number`/defaultBucket`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasestorageV1beta::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasestorageV1beta::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_default_bucket(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebasestorageV1beta::Empty::Representation
+          command.response_class = Google::Apis::FirebasestorageV1beta::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the default bucket.
+        # @param [String] name
+        #   Required. The name of the default bucket to retrieve, `projects/`
+        #   project_id_or_number`/defaultBucket`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasestorageV1beta::DefaultBucket] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasestorageV1beta::DefaultBucket]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_default_bucket(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebasestorageV1beta::DefaultBucket::Representation
+          command.response_class = Google::Apis::FirebasestorageV1beta::DefaultBucket
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Links a Google Cloud Storage bucket to a Firebase project.
         # @param [String] bucket
         #   Required. Resource name of the bucket, mirrors the ID of the underlying Google
@@ -186,6 +248,43 @@ module Google
           command.response_representation = Google::Apis::FirebasestorageV1beta::Empty::Representation
           command.response_class = Google::Apis::FirebasestorageV1beta::Empty
           command.params['bucket'] = bucket unless bucket.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Spark tier-eligible Cloud Storage bucket and links it to your
+        # Firebase project. If the default bucket already exists, this method will re-
+        # link it to your Firebase project. See https://firebase.google.com/pricing for
+        # pricing details.
+        # @param [String] parent
+        #   Required. The parent resource where the default bucket will be created, `
+        #   projects/`project_id_or_number``.
+        # @param [Google::Apis::FirebasestorageV1beta::DefaultBucket] default_bucket_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasestorageV1beta::DefaultBucket] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasestorageV1beta::DefaultBucket]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_default_bucket(parent, default_bucket_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/defaultBucket', options)
+          command.request_representation = Google::Apis::FirebasestorageV1beta::DefaultBucket::Representation
+          command.request_object = default_bucket_object
+          command.response_representation = Google::Apis::FirebasestorageV1beta::DefaultBucket::Representation
+          command.response_class = Google::Apis::FirebasestorageV1beta::DefaultBucket
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
