@@ -568,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1ControlPromoteAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1ControlRedirectAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1210,6 +1216,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1SearchLinkPromotion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1SearchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1709,6 +1721,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaControlFilterAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaControlPromoteAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2242,6 +2260,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2549,6 +2573,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaControlFilterAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaControlPromoteAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2933,6 +2963,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchLinkPromotion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4101,6 +4137,8 @@ module Google
           property :filter_action, as: 'filterAction', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlFilterAction, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlFilterAction::Representation
       
           property :name, as: 'name'
+          property :promote_action, as: 'promoteAction', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlPromoteAction, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlPromoteAction::Representation
+      
           property :redirect_action, as: 'redirectAction', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlRedirectAction, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlRedirectAction::Representation
       
           property :solution_type, as: 'solutionType'
@@ -4124,6 +4162,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ControlPromoteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          property :search_link_promotion, as: 'searchLinkPromotion', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchLinkPromotion, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchLinkPromotion::Representation
+      
         end
       end
       
@@ -5166,6 +5213,17 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1SearchLinkPromotion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :enabled, as: 'enabled'
+          property :image_uri, as: 'imageUri'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1SearchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5401,6 +5459,8 @@ module Google
       
           property :redirect_uri, as: 'redirectUri'
           collection :results, as: 'results', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseSearchResult, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseSearchResult::Representation
+      
+          collection :search_link_promotions, as: 'searchLinkPromotions', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchLinkPromotion, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchLinkPromotion::Representation
       
           property :session_info, as: 'sessionInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseSessionInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseSessionInfo::Representation
       
@@ -6035,6 +6095,8 @@ module Google
           property :filter_action, as: 'filterAction', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlFilterAction, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlFilterAction::Representation
       
           property :name, as: 'name'
+          property :promote_action, as: 'promoteAction', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlPromoteAction, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlPromoteAction::Representation
+      
           property :redirect_action, as: 'redirectAction', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlRedirectAction, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlRedirectAction::Representation
       
           property :solution_type, as: 'solutionType'
@@ -6058,6 +6120,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaControlPromoteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          property :search_link_promotion, as: 'searchLinkPromotion', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion::Representation
+      
         end
       end
       
@@ -6906,6 +6977,17 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :enabled, as: 'enabled'
+          property :image_uri, as: 'imageUri'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7409,6 +7491,8 @@ module Google
           property :filter_action, as: 'filterAction', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlFilterAction, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlFilterAction::Representation
       
           property :name, as: 'name'
+          property :promote_action, as: 'promoteAction', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlPromoteAction, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlPromoteAction::Representation
+      
           property :redirect_action, as: 'redirectAction', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlRedirectAction, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlRedirectAction::Representation
       
           property :solution_type, as: 'solutionType'
@@ -7432,6 +7516,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaControlPromoteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          property :search_link_promotion, as: 'searchLinkPromotion', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchLinkPromotion, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchLinkPromotion::Representation
+      
         end
       end
       
@@ -8043,6 +8136,17 @@ module Google
           property :json_schema, as: 'jsonSchema'
           property :name, as: 'name'
           hash :struct_schema, as: 'structSchema'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchLinkPromotion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :enabled, as: 'enabled'
+          property :image_uri, as: 'imageUri'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
         end
       end
       

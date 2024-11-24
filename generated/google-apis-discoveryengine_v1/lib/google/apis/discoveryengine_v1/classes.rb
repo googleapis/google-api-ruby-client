@@ -3214,6 +3214,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Promote certain links based on some trigger queries. Example: Promote shoe
+        # store link when searching for `shoe` keyword. The link can be outside of
+        # associated data store.
+        # Corresponds to the JSON property `promoteAction`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlPromoteAction]
+        attr_accessor :promote_action
+      
         # Redirects a shopper to the provided URI.
         # Corresponds to the JSON property `redirectAction`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlRedirectAction]
@@ -3252,6 +3259,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @filter_action = args[:filter_action] if args.key?(:filter_action)
           @name = args[:name] if args.key?(:name)
+          @promote_action = args[:promote_action] if args.key?(:promote_action)
           @redirect_action = args[:redirect_action] if args.key?(:redirect_action)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @synonyms_action = args[:synonyms_action] if args.key?(:synonyms_action)
@@ -3322,6 +3330,34 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Promote certain links based on some trigger queries. Example: Promote shoe
+      # store link when searching for `shoe` keyword. The link can be outside of
+      # associated data store.
+      class GoogleCloudDiscoveryengineV1ControlPromoteAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. Data store with which this promotion is attached to.
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Promotion proto includes uri and other helping information to display the
+        # promotion.
+        # Corresponds to the JSON property `searchLinkPromotion`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchLinkPromotion]
+        attr_accessor :search_link_promotion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @search_link_promotion = args[:search_link_promotion] if args.key?(:search_link_promotion)
         end
       end
       
@@ -6532,12 +6568,15 @@ module Google
         # : Double quoted UserEvent.event_type string. * `eventTime`: in ISO 8601 "zulu"
         # format. * `userPseudoId`: Double quoted string. Specifying this will delete
         # all events associated with a visitor. * `userId`: Double quoted string.
-        # Specifying this will delete all events associated with a user. Examples: *
-        # Deleting all events in a time range: `eventTime > "2012-04-23T18:25:43.511Z"
-        # eventTime < "2012-04-23T18:30:43.511Z"` * Deleting specific eventType: `
-        # eventType = "search"` * Deleting all events for a specific visitor: `
-        # userPseudoId = "visitor1024"` * Deleting all events inside a DataStore: `*`
-        # The filtering fields are assumed to have an implicit AND.
+        # Specifying this will delete all events associated with a user. Note: This API
+        # only supports purging a max range of 30 days. Examples: * Deleting all events
+        # in a time range: `eventTime > "2012-04-23T18:25:43.511Z" eventTime < "2012-04-
+        # 23T18:30:43.511Z"` * Deleting specific eventType in a time range: `eventTime >
+        # "2012-04-23T18:25:43.511Z" eventTime < "2012-04-23T18:30:43.511Z" eventType = "
+        # search"` * Deleting all events for a specific visitor in a time range: `
+        # eventTime > "2012-04-23T18:25:43.511Z" eventTime < "2012-04-23T18:30:43.511Z"
+        # userPseudoId = "visitor1024"` * Deleting the past 30 days of events inside a
+        # DataStore: `*` The filtering fields are assumed to have an implicit AND.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -6722,8 +6761,8 @@ module Google
         # ANY("Hot", "Cold"))` * `(filter_tags: ANY("Red", "Blue")) AND NOT (filter_tags:
         # ANY("Green"))` If `attributeFilteringSyntax` is set to true under the `params`
         # field, then attribute-based expressions are expected instead of the above
-        # described tag-based syntax. Examples: * (launguage: ANY("en", "es")) AND NOT (
-        # categories: ANY("Movie")) * (available: true) AND (launguage: ANY("en", "es"))
+        # described tag-based syntax. Examples: * (language: ANY("en", "es")) AND NOT (
+        # categories: ANY("Movie")) * (available: true) AND (language: ANY("en", "es"))
         # OR (categories: ANY("Movie")) If your filter blocks all results, the API
         # returns generic (unfiltered) popular Documents. If you only want results
         # strictly matching the filters, set `strictFiltering` to `true` in
@@ -7008,6 +7047,53 @@ module Google
         end
       end
       
+      # Promotion proto includes uri and other helping information to display the
+      # promotion.
+      class GoogleCloudDiscoveryengineV1SearchLinkPromotion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Promotion description. Maximum length: 200 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The enabled promotion will be returned for any serving configs
+        # associated with the parent of the control this promotion is attached to. This
+        # flag is used for basic site search only.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. The promotion thumbnail image url.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # Required. The title of the promotion. Maximum length: 160 characters.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Required. The URL for the page the user wants to promote.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Request message for SearchService.Search method.
       class GoogleCloudDiscoveryengineV1SearchRequest
         include Google::Apis::Core::Hashable
@@ -7042,10 +7128,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec]
         attr_accessor :content_search_spec
       
-        # Specs defining dataStores to filter on in a search call and configurations for
-        # those dataStores. This is only considered for engines with multiple dataStores
-        # use case. For single dataStore within an engine, they should use the specs at
-        # the top level.
+        # Specs defining DataStores to filter on in a search call and configurations for
+        # those data stores. This is only considered for Engines with multiple data
+        # stores. For engines with a single data store, the specs directly under
+        # SearchRequest should be used.
         # Corresponds to the JSON property `dataStoreSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
@@ -8104,6 +8190,11 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseSearchResult>]
         attr_accessor :results
       
+        # Promotions for site search.
+        # Corresponds to the JSON property `searchLinkPromotions`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchLinkPromotion>]
+        attr_accessor :search_link_promotions
+      
         # Information about the session.
         # Corresponds to the JSON property `sessionInfo`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseSessionInfo]
@@ -8134,6 +8225,7 @@ module Google
           @query_expansion_info = args[:query_expansion_info] if args.key?(:query_expansion_info)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
           @results = args[:results] if args.key?(:results)
+          @search_link_promotions = args[:search_link_promotions] if args.key?(:search_link_promotions)
           @session_info = args[:session_info] if args.key?(:session_info)
           @summary = args[:summary] if args.key?(:summary)
           @total_size = args[:total_size] if args.key?(:total_size)
@@ -10377,6 +10469,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Promote certain links based on some trigger queries. Example: Promote shoe
+        # store link when searching for `shoe` keyword. The link can be outside of
+        # associated data store.
+        # Corresponds to the JSON property `promoteAction`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlPromoteAction]
+        attr_accessor :promote_action
+      
         # Redirects a shopper to the provided URI.
         # Corresponds to the JSON property `redirectAction`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlRedirectAction]
@@ -10415,6 +10514,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @filter_action = args[:filter_action] if args.key?(:filter_action)
           @name = args[:name] if args.key?(:name)
+          @promote_action = args[:promote_action] if args.key?(:promote_action)
           @redirect_action = args[:redirect_action] if args.key?(:redirect_action)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @synonyms_action = args[:synonyms_action] if args.key?(:synonyms_action)
@@ -10485,6 +10585,34 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Promote certain links based on some trigger queries. Example: Promote shoe
+      # store link when searching for `shoe` keyword. The link can be outside of
+      # associated data store.
+      class GoogleCloudDiscoveryengineV1alphaControlPromoteAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. Data store with which this promotion is attached to.
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Promotion proto includes uri and other helping information to display the
+        # promotion.
+        # Corresponds to the JSON property `searchLinkPromotion`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion]
+        attr_accessor :search_link_promotion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @search_link_promotion = args[:search_link_promotion] if args.key?(:search_link_promotion)
         end
       end
       
@@ -13448,6 +13576,53 @@ module Google
         end
       end
       
+      # Promotion proto includes uri and other helping information to display the
+      # promotion.
+      class GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Promotion description. Maximum length: 200 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The enabled promotion will be returned for any serving configs
+        # associated with the parent of the control this promotion is attached to. This
+        # flag is used for basic site search only.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. The promotion thumbnail image url.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # Required. The title of the promotion. Maximum length: 160 characters.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Required. The URL for the page the user wants to promote.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Request message for SearchService.Search method.
       class GoogleCloudDiscoveryengineV1alphaSearchRequest
         include Google::Apis::Core::Hashable
@@ -13487,10 +13662,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec]
         attr_accessor :custom_fine_tuning_spec
       
-        # Specs defining dataStores to filter on in a search call and configurations for
-        # those dataStores. This is only considered for engines with multiple dataStores
-        # use case. For single dataStore within an engine, they should use the specs at
-        # the top level.
+        # Specs defining DataStores to filter on in a search call and configurations for
+        # those data stores. This is only considered for Engines with multiple data
+        # stores. For engines with a single data store, the specs directly under
+        # SearchRequest should be used.
         # Corresponds to the JSON property `dataStoreSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
@@ -15476,6 +15651,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Promote certain links based on some trigger queries. Example: Promote shoe
+        # store link when searching for `shoe` keyword. The link can be outside of
+        # associated data store.
+        # Corresponds to the JSON property `promoteAction`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlPromoteAction]
+        attr_accessor :promote_action
+      
         # Redirects a shopper to the provided URI.
         # Corresponds to the JSON property `redirectAction`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlRedirectAction]
@@ -15514,6 +15696,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @filter_action = args[:filter_action] if args.key?(:filter_action)
           @name = args[:name] if args.key?(:name)
+          @promote_action = args[:promote_action] if args.key?(:promote_action)
           @redirect_action = args[:redirect_action] if args.key?(:redirect_action)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @synonyms_action = args[:synonyms_action] if args.key?(:synonyms_action)
@@ -15584,6 +15767,34 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Promote certain links based on some trigger queries. Example: Promote shoe
+      # store link when searching for `shoe` keyword. The link can be outside of
+      # associated data store.
+      class GoogleCloudDiscoveryengineV1betaControlPromoteAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. Data store with which this promotion is attached to.
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Promotion proto includes uri and other helping information to display the
+        # promotion.
+        # Corresponds to the JSON property `searchLinkPromotion`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchLinkPromotion]
+        attr_accessor :search_link_promotion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @search_link_promotion = args[:search_link_promotion] if args.key?(:search_link_promotion)
         end
       end
       
@@ -17671,6 +17882,53 @@ module Google
         end
       end
       
+      # Promotion proto includes uri and other helping information to display the
+      # promotion.
+      class GoogleCloudDiscoveryengineV1betaSearchLinkPromotion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Promotion description. Maximum length: 200 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The enabled promotion will be returned for any serving configs
+        # associated with the parent of the control this promotion is attached to. This
+        # flag is used for basic site search only.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. The promotion thumbnail image url.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # Required. The title of the promotion. Maximum length: 160 characters.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Required. The URL for the page the user wants to promote.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Request message for SearchService.Search method.
       class GoogleCloudDiscoveryengineV1betaSearchRequest
         include Google::Apis::Core::Hashable
@@ -17705,10 +17963,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec]
         attr_accessor :content_search_spec
       
-        # Specs defining dataStores to filter on in a search call and configurations for
-        # those dataStores. This is only considered for engines with multiple dataStores
-        # use case. For single dataStore within an engine, they should use the specs at
-        # the top level.
+        # Specs defining DataStores to filter on in a search call and configurations for
+        # those data stores. This is only considered for Engines with multiple data
+        # stores. For engines with a single data store, the specs directly under
+        # SearchRequest should be used.
         # Corresponds to the JSON property `dataStoreSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
