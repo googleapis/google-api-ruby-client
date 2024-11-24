@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RatingQuestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RenewWatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -732,6 +738,8 @@ module Google
           property :grading, as: 'grading', class: Google::Apis::FormsV1::Grading, decorator: Google::Apis::FormsV1::Grading::Representation
       
           property :question_id, as: 'questionId'
+          property :rating_question, as: 'ratingQuestion', class: Google::Apis::FormsV1::RatingQuestion, decorator: Google::Apis::FormsV1::RatingQuestion::Representation
+      
           property :required, as: 'required'
           property :row_question, as: 'rowQuestion', class: Google::Apis::FormsV1::RowQuestion, decorator: Google::Apis::FormsV1::RowQuestion::Representation
       
@@ -770,6 +778,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_quiz, as: 'isQuiz'
+        end
+      end
+      
+      class RatingQuestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :icon_type, as: 'iconType'
+          property :rating_scale_level, as: 'ratingScaleLevel'
         end
       end
       

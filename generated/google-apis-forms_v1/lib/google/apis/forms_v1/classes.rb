@@ -1141,6 +1141,11 @@ module Google
         # @return [String]
         attr_accessor :question_id
       
+        # A rating question. The user has a range of icons to choose from.
+        # Corresponds to the JSON property `ratingQuestion`
+        # @return [Google::Apis::FormsV1::RatingQuestion]
+        attr_accessor :rating_question
+      
         # Whether the question must be answered in order for a respondent to submit
         # their response.
         # Corresponds to the JSON property `required`
@@ -1179,6 +1184,7 @@ module Google
           @file_upload_question = args[:file_upload_question] if args.key?(:file_upload_question)
           @grading = args[:grading] if args.key?(:grading)
           @question_id = args[:question_id] if args.key?(:question_id)
+          @rating_question = args[:rating_question] if args.key?(:rating_question)
           @required = args[:required] if args.key?(:required)
           @row_question = args[:row_question] if args.key?(:row_question)
           @scale_question = args[:scale_question] if args.key?(:scale_question)
@@ -1265,6 +1271,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_quiz = args[:is_quiz] if args.key?(:is_quiz)
+        end
+      end
+      
+      # A rating question. The user has a range of icons to choose from.
+      class RatingQuestion
+        include Google::Apis::Core::Hashable
+      
+        # Required. The icon type to use for the rating.
+        # Corresponds to the JSON property `iconType`
+        # @return [String]
+        attr_accessor :icon_type
+      
+        # Required. The rating scale level of the rating question.
+        # Corresponds to the JSON property `ratingScaleLevel`
+        # @return [Fixnum]
+        attr_accessor :rating_scale_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @icon_type = args[:icon_type] if args.key?(:icon_type)
+          @rating_scale_level = args[:rating_scale_level] if args.key?(:rating_scale_level)
         end
       end
       
