@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CsvExportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,7 +124,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportClusterResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FailoverInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -722,6 +746,13 @@ module Google
         end
       end
       
+      class CsvExportOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :select_query, as: 'selectQuery'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -743,11 +774,37 @@ module Google
         end
       end
       
+      class ExportClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv_export_options, as: 'csvExportOptions', class: Google::Apis::AlloydbV1::CsvExportOptions, decorator: Google::Apis::AlloydbV1::CsvExportOptions::Representation
+      
+          property :database, as: 'database'
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::AlloydbV1::GcsDestination, decorator: Google::Apis::AlloydbV1::GcsDestination::Representation
+      
+        end
+      end
+      
+      class ExportClusterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::AlloydbV1::GcsDestination, decorator: Google::Apis::AlloydbV1::GcsDestination::Representation
+      
+        end
+      end
+      
       class FailoverInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
           property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
         end
       end
       
