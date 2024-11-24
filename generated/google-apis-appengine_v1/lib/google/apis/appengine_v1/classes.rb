@@ -2561,6 +2561,44 @@ module Google
         end
       end
       
+      # The request that is passed to CLH during per-resource events. The request will
+      # be sent with update semantics in all cases except for data governance purge
+      # events. These events will be sent with delete semantics and the CLH is
+      # expected to delete the resource receiving this event.
+      class ResourceEvent
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID for this per-resource event. CLHs can use this value to dedup
+        # repeated calls. required
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # The name of the resource for which this event is. required
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ContainerState contains the externally-visible container state that is used to
+        # communicate the state and reasoning for that state to the CLH. This data is
+        # not persisted by CCFE, but is instead derived from CCFE's internal
+        # representation of the container state.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::AppengineV1::ContainerState]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # A DNS resource record.
       class ResourceRecord
         include Google::Apis::Core::Hashable

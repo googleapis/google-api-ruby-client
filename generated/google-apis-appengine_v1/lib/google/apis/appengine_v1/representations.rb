@@ -406,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceRecord
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1158,6 +1164,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :target_concurrent_requests, as: 'targetConcurrentRequests'
           property :target_request_count_per_second, as: 'targetRequestCountPerSecond'
+        end
+      end
+      
+      class ResourceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_id, as: 'eventId'
+          property :name, as: 'name'
+          property :state, as: 'state', class: Google::Apis::AppengineV1::ContainerState, decorator: Google::Apis::AppengineV1::ContainerState::Representation
+      
         end
       end
       
