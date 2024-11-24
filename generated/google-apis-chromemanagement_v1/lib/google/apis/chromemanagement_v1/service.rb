@@ -292,6 +292,133 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes the data collected from a Chrome browser profile.
+        # @param [String] name
+        #   Required. Format: customers/`customer_id`/profiles/`profile_permanent_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_customer_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Chrome browser profile with customer ID and profile permanent ID.
+        # @param [String] name
+        #   Required. Format: customers/`customer_id`/profiles/`profile_permanent_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfile::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfile
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Chrome browser profiles of a customer based on the given search and
+        # sorting criteria.
+        # @param [String] parent
+        #   Required. Format: customers/`customer_id`
+        # @param [String] filter
+        #   Optional. The filter used to filter profiles. The following fields can be used
+        #   in the filter: - profile_id - display_name - user_email - last_activity_time -
+        #   last_policy_sync_time - last_status_report_time - first_enrollment_time -
+        #   os_platform_type - os_version - browser_version - browser_channel -
+        #   policy_count - extension_count - identity_provider - affiliation_state - ouId
+        #   Any of the above fields can be used to specify a filter, and filtering by
+        #   multiple fields is supported with AND operator. String type fields and enum
+        #   type fields support '=' and '!=' operators. The integer type and the timestamp
+        #   type fields support '=', '!=', '<', '>', '<=' and '>=' operators. Timestamps
+        #   expect an RFC-3339 formatted string (e.g. 2012-04-21T11:30:00-04:00). Wildcard
+        #   '*' can be used with a string type field filter. In addition, string literal
+        #   filtering is also supported, for example, 'ABC' as a filter maps to a filter
+        #   that checks if any of the filterable string type fields contains 'ABC'.
+        #   Organization unit number can be used as a filtering criteria here by
+        #   specifying 'ouId = $`your_org_unit_id`', please note that only single OU ID
+        #   matching is supported.
+        # @param [String] order_by
+        #   Optional. The fields used to specify the ordering of the results. The
+        #   supported fields are: - profile_id - display_name - user_email -
+        #   last_activity_time - last_policy_sync_time - last_status_report_time -
+        #   first_enrollment_time - os_platform_type - os_version - browser_version -
+        #   browser_channel - policy_count - extension_count - identity_provider -
+        #   affiliation_state By default, sorting is in ascending order, to specify
+        #   descending order for a field, a suffix " desc" should be added to the field
+        #   name. The default ordering is the descending order of last_status_report_time.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of profiles to return. The default page size is
+        #   100 if page_size is unspecified, and the maximum page size allowed is 200.
+        # @param [String] page_token
+        #   Optional. The page token used to retrieve a specific page of the listing
+        #   request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_profiles(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/profiles', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Count of Chrome Browsers that have been recently enrolled, have new policy to
         # be synced, or have no recent activity.
         # @param [String] customer

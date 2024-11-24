@@ -4088,6 +4088,732 @@ module Google
         end
       end
       
+      # Information of public key associated with a Chrome browser profile.
+      class GoogleChromeManagementVersionsV1AttestationCredential
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Latest rotation timestamp of the public key rotation.
+        # Corresponds to the JSON property `keyRotationTime`
+        # @return [String]
+        attr_accessor :key_rotation_time
+      
+        # Output only. Trust level of the public key.
+        # Corresponds to the JSON property `keyTrustLevel`
+        # @return [String]
+        attr_accessor :key_trust_level
+      
+        # Output only. Type of the public key.
+        # Corresponds to the JSON property `keyType`
+        # @return [String]
+        attr_accessor :key_type
+      
+        # Output only. Value of the public key.
+        # Corresponds to the JSON property `publicKey`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :public_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_rotation_time = args[:key_rotation_time] if args.key?(:key_rotation_time)
+          @key_trust_level = args[:key_trust_level] if args.key?(:key_trust_level)
+          @key_type = args[:key_type] if args.key?(:key_type)
+          @public_key = args[:public_key] if args.key?(:public_key)
+        end
+      end
+      
+      # A representation of a Chrome browser profile.
+      class GoogleChromeManagementVersionsV1ChromeBrowserProfile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The specific affiliation state of the profile.
+        # Corresponds to the JSON property `affiliationState`
+        # @return [String]
+        attr_accessor :affiliation_state
+      
+        # Optional. Location of the profile annotated by the admin.
+        # Corresponds to the JSON property `annotatedLocation`
+        # @return [String]
+        attr_accessor :annotated_location
+      
+        # Optional. User of the profile annotated by the admin.
+        # Corresponds to the JSON property `annotatedUser`
+        # @return [String]
+        attr_accessor :annotated_user
+      
+        # Information of public key associated with a Chrome browser profile.
+        # Corresponds to the JSON property `attestationCredential`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1AttestationCredential]
+        attr_accessor :attestation_credential
+      
+        # Output only. Channel of the browser on which the profile exists.
+        # Corresponds to the JSON property `browserChannel`
+        # @return [String]
+        attr_accessor :browser_channel
+      
+        # Output only. Version of the browser on which the profile exists.
+        # Corresponds to the JSON property `browserVersion`
+        # @return [String]
+        attr_accessor :browser_version
+      
+        # Information of a device that runs a Chrome browser profile.
+        # Corresponds to the JSON property `deviceInfo`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DeviceInfo]
+        attr_accessor :device_info
+      
+        # Output only. Profile display name set by client.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Etag of this ChromeBrowserProfile resource. This etag can be used
+        # with UPDATE operation to ensure consistency.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. Number of extensions installed on the profile.
+        # Corresponds to the JSON property `extensionCount`
+        # @return [Fixnum]
+        attr_accessor :extension_count
+      
+        # Output only. Timestamp of the first enrollment of the profile.
+        # Corresponds to the JSON property `firstEnrollmentTime`
+        # @return [String]
+        attr_accessor :first_enrollment_time
+      
+        # Output only. Identify provider of the profile.
+        # Corresponds to the JSON property `identityProvider`
+        # @return [String]
+        attr_accessor :identity_provider
+      
+        # Output only. Timestamp of the latest activity by the profile.
+        # Corresponds to the JSON property `lastActivityTime`
+        # @return [String]
+        attr_accessor :last_activity_time
+      
+        # Output only. Timestamp of the latest policy fetch by the profile.
+        # Corresponds to the JSON property `lastPolicyFetchTime`
+        # @return [String]
+        attr_accessor :last_policy_fetch_time
+      
+        # Output only. Timestamp of the latest policy sync by the profile.
+        # Corresponds to the JSON property `lastPolicySyncTime`
+        # @return [String]
+        attr_accessor :last_policy_sync_time
+      
+        # Output only. Timestamp of the latest status report by the profile.
+        # Corresponds to the JSON property `lastStatusReportTime`
+        # @return [String]
+        attr_accessor :last_status_report_time
+      
+        # Identifier. Format: customers/`customer_id`/profiles/`profile_permanent_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. OS platform of the device on which the profile exists.
+        # Corresponds to the JSON property `osPlatformType`
+        # @return [String]
+        attr_accessor :os_platform_type
+      
+        # Output only. Major OS version of the device on which the profile exists. (i.e.
+        # Windows 10)
+        # Corresponds to the JSON property `osPlatformVersion`
+        # @return [String]
+        attr_accessor :os_platform_version
+      
+        # Output only. OS version of the device on which the profile exists.
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        # Output only. Number of policies applied on the profile.
+        # Corresponds to the JSON property `policyCount`
+        # @return [Fixnum]
+        attr_accessor :policy_count
+      
+        # Output only. Chrome client side profile ID.
+        # Corresponds to the JSON property `profileId`
+        # @return [String]
+        attr_accessor :profile_id
+      
+        # Output only. Profile permanent ID is the unique identifier of a profile within
+        # one customer.
+        # Corresponds to the JSON property `profilePermanentId`
+        # @return [String]
+        attr_accessor :profile_permanent_id
+      
+        # Reporting data of a Chrome browser profile.
+        # Corresponds to the JSON property `reportingData`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingData]
+        attr_accessor :reporting_data
+      
+        # Output only. Email address of the user to which the profile belongs.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        # Output only. Unique Directory API ID of the user that can be used in Admin SDK
+        # Users API.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @affiliation_state = args[:affiliation_state] if args.key?(:affiliation_state)
+          @annotated_location = args[:annotated_location] if args.key?(:annotated_location)
+          @annotated_user = args[:annotated_user] if args.key?(:annotated_user)
+          @attestation_credential = args[:attestation_credential] if args.key?(:attestation_credential)
+          @browser_channel = args[:browser_channel] if args.key?(:browser_channel)
+          @browser_version = args[:browser_version] if args.key?(:browser_version)
+          @device_info = args[:device_info] if args.key?(:device_info)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @extension_count = args[:extension_count] if args.key?(:extension_count)
+          @first_enrollment_time = args[:first_enrollment_time] if args.key?(:first_enrollment_time)
+          @identity_provider = args[:identity_provider] if args.key?(:identity_provider)
+          @last_activity_time = args[:last_activity_time] if args.key?(:last_activity_time)
+          @last_policy_fetch_time = args[:last_policy_fetch_time] if args.key?(:last_policy_fetch_time)
+          @last_policy_sync_time = args[:last_policy_sync_time] if args.key?(:last_policy_sync_time)
+          @last_status_report_time = args[:last_status_report_time] if args.key?(:last_status_report_time)
+          @name = args[:name] if args.key?(:name)
+          @os_platform_type = args[:os_platform_type] if args.key?(:os_platform_type)
+          @os_platform_version = args[:os_platform_version] if args.key?(:os_platform_version)
+          @os_version = args[:os_version] if args.key?(:os_version)
+          @policy_count = args[:policy_count] if args.key?(:policy_count)
+          @profile_id = args[:profile_id] if args.key?(:profile_id)
+          @profile_permanent_id = args[:profile_permanent_id] if args.key?(:profile_permanent_id)
+          @reporting_data = args[:reporting_data] if args.key?(:reporting_data)
+          @user_email = args[:user_email] if args.key?(:user_email)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Information of a device that runs a Chrome browser profile.
+      class GoogleChromeManagementVersionsV1DeviceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Device ID that identifies the affiliated device on which the
+        # profile exists. If the device type is CHROME_BROWSER, then this represents a
+        # unique Directory API ID of the device that can be used in Admin SDK Browsers
+        # API.
+        # Corresponds to the JSON property `affiliatedDeviceId`
+        # @return [String]
+        attr_accessor :affiliated_device_id
+      
+        # Output only. Type of the device on which the profile exists.
+        # Corresponds to the JSON property `deviceType`
+        # @return [String]
+        attr_accessor :device_type
+      
+        # Output only. Hostname of the device on which the profile exists.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Output only. Machine name of the device on which the profile exists. On
+        # platforms which do not report the machine name (currently iOS and Android)
+        # this is instead set to the browser's device_id - but note that this is a
+        # different device_id than the |affiliated_device_id|.
+        # Corresponds to the JSON property `machine`
+        # @return [String]
+        attr_accessor :machine
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @affiliated_device_id = args[:affiliated_device_id] if args.key?(:affiliated_device_id)
+          @device_type = args[:device_type] if args.key?(:device_type)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @machine = args[:machine] if args.key?(:machine)
+        end
+      end
+      
+      # Response to ListChromeBrowserProfiles method.
+      class GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of profiles returned.
+        # Corresponds to the JSON property `chromeBrowserProfiles`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfile>]
+        attr_accessor :chrome_browser_profiles
+      
+        # The pagination token that can be used to list the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Total size represents an estimated number of resources returned. Not
+        # guaranteed to be accurate above 10k profiles.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chrome_browser_profiles = args[:chrome_browser_profiles] if args.key?(:chrome_browser_profiles)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Reporting data of a Chrome browser profile.
+      class GoogleChromeManagementVersionsV1ReportingData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Executable path of the installed Chrome browser. A valid path is
+        # included only in affiliated profiles.
+        # Corresponds to the JSON property `browserExecutablePath`
+        # @return [String]
+        attr_accessor :browser_executable_path
+      
+        # Output only. Information of the extensions installed on the profile.
+        # Corresponds to the JSON property `extensionData`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingDataExtensionData>]
+        attr_accessor :extension_data
+      
+        # Output only. Information of the policies applied on the extensions.
+        # Corresponds to the JSON property `extensionPolicyData`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData>]
+        attr_accessor :extension_policy_data
+      
+        # Output only. Updated version of a browser, if it is different from the active
+        # browser version.
+        # Corresponds to the JSON property `installedBrowserVersion`
+        # @return [String]
+        attr_accessor :installed_browser_version
+      
+        # Output only. Information of the policies applied on the profile.
+        # Corresponds to the JSON property `policyData`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingDataPolicyData>]
+        attr_accessor :policy_data
+      
+        # Output only. Path of the profile. A valid path is included only in affiliated
+        # profiles.
+        # Corresponds to the JSON property `profilePath`
+        # @return [String]
+        attr_accessor :profile_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @browser_executable_path = args[:browser_executable_path] if args.key?(:browser_executable_path)
+          @extension_data = args[:extension_data] if args.key?(:extension_data)
+          @extension_policy_data = args[:extension_policy_data] if args.key?(:extension_policy_data)
+          @installed_browser_version = args[:installed_browser_version] if args.key?(:installed_browser_version)
+          @policy_data = args[:policy_data] if args.key?(:policy_data)
+          @profile_path = args[:profile_path] if args.key?(:profile_path)
+        end
+      end
+      
+      # Information of conflicting policy applied on a Chrome browser profile.
+      class GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Source of the policy.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Information of an extension installed on a Chrome browser profile.
+      class GoogleChromeManagementVersionsV1ReportingDataExtensionData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Description of the extension.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. ID of the extension.
+        # Corresponds to the JSON property `extensionId`
+        # @return [String]
+        attr_accessor :extension_id
+      
+        # Output only. Type of the extension.
+        # Corresponds to the JSON property `extensionType`
+        # @return [String]
+        attr_accessor :extension_type
+      
+        # Output only. The URL of the homepage of the extension.
+        # Corresponds to the JSON property `homepageUri`
+        # @return [String]
+        attr_accessor :homepage_uri
+      
+        # Output only. Installation type of the extension.
+        # Corresponds to the JSON property `installationType`
+        # @return [String]
+        attr_accessor :installation_type
+      
+        # Output only. Represents whether the user disabled the extension.
+        # Corresponds to the JSON property `isDisabled`
+        # @return [Boolean]
+        attr_accessor :is_disabled
+        alias_method :is_disabled?, :is_disabled
+      
+        # Output only. Represents whether the extension is from the webstore.
+        # Corresponds to the JSON property `isWebstoreExtension`
+        # @return [Boolean]
+        attr_accessor :is_webstore_extension
+        alias_method :is_webstore_extension?, :is_webstore_extension
+      
+        # Output only. Manifest version of the extension.
+        # Corresponds to the JSON property `manifestVersion`
+        # @return [Fixnum]
+        attr_accessor :manifest_version
+      
+        # Output only. Name of the extension.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Permissions requested by the extension.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        # Output only. Version of the extension.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @extension_id = args[:extension_id] if args.key?(:extension_id)
+          @extension_type = args[:extension_type] if args.key?(:extension_type)
+          @homepage_uri = args[:homepage_uri] if args.key?(:homepage_uri)
+          @installation_type = args[:installation_type] if args.key?(:installation_type)
+          @is_disabled = args[:is_disabled] if args.key?(:is_disabled)
+          @is_webstore_extension = args[:is_webstore_extension] if args.key?(:is_webstore_extension)
+          @manifest_version = args[:manifest_version] if args.key?(:manifest_version)
+          @name = args[:name] if args.key?(:name)
+          @permissions = args[:permissions] if args.key?(:permissions)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Information of the policies applied on an extension.
+      class GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. ID of the extension.
+        # Corresponds to the JSON property `extensionId`
+        # @return [String]
+        attr_accessor :extension_id
+      
+        # Output only. Name of the extension.
+        # Corresponds to the JSON property `extensionName`
+        # @return [String]
+        attr_accessor :extension_name
+      
+        # Output only. Information of the policies applied on the extension.
+        # Corresponds to the JSON property `policyData`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingDataPolicyData>]
+        attr_accessor :policy_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extension_id = args[:extension_id] if args.key?(:extension_id)
+          @extension_name = args[:extension_name] if args.key?(:extension_name)
+          @policy_data = args[:policy_data] if args.key?(:policy_data)
+        end
+      end
+      
+      # Information of a policy applied on a Chrome browser profile.
+      class GoogleChromeManagementVersionsV1ReportingDataPolicyData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Conflicting policy information.
+        # Corresponds to the JSON property `conflicts`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData>]
+        attr_accessor :conflicts
+      
+        # Output only. Error message of the policy, if any.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Output only. Name of the policy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Source of the policy.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. Value of the policy.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conflicts = args[:conflicts] if args.key?(:conflicts)
+          @error = args[:error] if args.key?(:error)
+          @name = args[:name] if args.key?(:name)
+          @source = args[:source] if args.key?(:source)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A certificate provisioning process.
+      class GoogleChromeManagementVersionsV1alpha1CertificateProvisioningProcess
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A JSON string that contains the administrator-provided
+        # configuration for the certification authority service. This field can be
+        # missing if no configuration was given.
+        # Corresponds to the JSON property `caConnectionAdapterConfigReference`
+        # @return [String]
+        attr_accessor :ca_connection_adapter_config_reference
+      
+        # Describes the ChromeOS device that a `CertificateProvisioningProcess` belongs
+        # to.
+        # Corresponds to the JSON property `chromeOsDevice`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1ChromeOsDevice]
+        attr_accessor :chrome_os_device
+      
+        # Describes the ChromeOS user session that a `CertificateProvisioningProcess`
+        # belongs to.
+        # Corresponds to the JSON property `chromeOsUserSession`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1ChromeOsUserSession]
+        attr_accessor :chrome_os_user_session
+      
+        # Output only. A message describing why this `CertificateProvisioningProcess`
+        # failed. Presence of this field indicates that the `
+        # CertificateProvisioningProcess` has failed.
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
+        # Output only. The issued certificate for this `CertificateProvisioningProcess`
+        # in PEM format.
+        # Corresponds to the JSON property `issuedCertificate`
+        # @return [String]
+        attr_accessor :issued_certificate
+      
+        # Identifier. Resource name of the `CertificateProvisioningProcess`. The name
+        # pattern is given as `customers/`customer`/certificateProvisioningProcesses/`
+        # certificate_provisioning_process`` with ``customer`` being the obfuscated
+        # customer id and ``certificate_provisioning_process`` being the certificate
+        # provisioning process id.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. A JSON string that contains the administrator-provided
+        # configuration for the certificate provisioning profile. This field can be
+        # missing if no configuration was given.
+        # Corresponds to the JSON property `profileAdapterConfigReference`
+        # @return [String]
+        attr_accessor :profile_adapter_config_reference
+      
+        # Output only. The ID of the certificate provisioning profile.
+        # Corresponds to the JSON property `provisioningProfileId`
+        # @return [String]
+        attr_accessor :provisioning_profile_id
+      
+        # Output only. The data that the client was asked to sign. This field is only
+        # present after the `SignData` operation has been initiated.
+        # Corresponds to the JSON property `signData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sign_data
+      
+        # Output only. The signature of `signature_algorithm`, generated using the
+        # client's private key using `signature_algorithm`. This field is only present
+        # after the`SignData` operation has finished.
+        # Corresponds to the JSON property `signature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signature
+      
+        # Output only. The signature algorithm that the adapter expects the client and
+        # backend components to use when processing `sign_data`. This field is only
+        # present after the `SignData` operation has been initiated.
+        # Corresponds to the JSON property `signatureAlgorithm`
+        # @return [String]
+        attr_accessor :signature_algorithm
+      
+        # Output only. Server-generated timestamp of when the certificate provisioning
+        # process has been created.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The public key for which a certificate should be provisioned.
+        # Represented as a DER-encoded X.509 SubjectPublicKeyInfo.
+        # Corresponds to the JSON property `subjectPublicKeyInfo`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :subject_public_key_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_connection_adapter_config_reference = args[:ca_connection_adapter_config_reference] if args.key?(:ca_connection_adapter_config_reference)
+          @chrome_os_device = args[:chrome_os_device] if args.key?(:chrome_os_device)
+          @chrome_os_user_session = args[:chrome_os_user_session] if args.key?(:chrome_os_user_session)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @issued_certificate = args[:issued_certificate] if args.key?(:issued_certificate)
+          @name = args[:name] if args.key?(:name)
+          @profile_adapter_config_reference = args[:profile_adapter_config_reference] if args.key?(:profile_adapter_config_reference)
+          @provisioning_profile_id = args[:provisioning_profile_id] if args.key?(:provisioning_profile_id)
+          @sign_data = args[:sign_data] if args.key?(:sign_data)
+          @signature = args[:signature] if args.key?(:signature)
+          @signature_algorithm = args[:signature_algorithm] if args.key?(:signature_algorithm)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @subject_public_key_info = args[:subject_public_key_info] if args.key?(:subject_public_key_info)
+        end
+      end
+      
+      # Describes the ChromeOS device that a `CertificateProvisioningProcess` belongs
+      # to.
+      class GoogleChromeManagementVersionsV1alpha1ChromeOsDevice
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique Directory API ID of the device. This value is the same
+        # as the Admin Console's Directory API ID in the ChromeOS Devices tab.
+        # Corresponds to the JSON property `deviceDirectoryApiId`
+        # @return [String]
+        attr_accessor :device_directory_api_id
+      
+        # Output only. Device serial number. This value is the same as the Admin Console'
+        # s Serial Number in the ChromeOS Devices tab.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [String]
+        attr_accessor :serial_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_directory_api_id = args[:device_directory_api_id] if args.key?(:device_directory_api_id)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
+        end
+      end
+      
+      # Describes the ChromeOS user session that a `CertificateProvisioningProcess`
+      # belongs to.
+      class GoogleChromeManagementVersionsV1alpha1ChromeOsUserSession
+        include Google::Apis::Core::Hashable
+      
+        # Describes the ChromeOS device that a `CertificateProvisioningProcess` belongs
+        # to.
+        # Corresponds to the JSON property `chromeOsDevice`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1ChromeOsDevice]
+        attr_accessor :chrome_os_device
+      
+        # Output only. The unique Directory API ID of the user.
+        # Corresponds to the JSON property `userDirectoryApiId`
+        # @return [String]
+        attr_accessor :user_directory_api_id
+      
+        # Output only. The primary e-mail address of the user.
+        # Corresponds to the JSON property `userPrimaryEmail`
+        # @return [String]
+        attr_accessor :user_primary_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chrome_os_device = args[:chrome_os_device] if args.key?(:chrome_os_device)
+          @user_directory_api_id = args[:user_directory_api_id] if args.key?(:user_directory_api_id)
+          @user_primary_email = args[:user_primary_email] if args.key?(:user_primary_email)
+        end
+      end
+      
+      # Metadata for the long-running operation returned by signData.
+      class GoogleChromeManagementVersionsV1alpha1SignDataMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Start time of the SignData operation.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Response message for requesting a signature from the client that initated a
+      # certificate provisioning process.
+      class GoogleChromeManagementVersionsV1alpha1SignDataResponse
+        include Google::Apis::Core::Hashable
+      
+        # A certificate provisioning process.
+        # Corresponds to the JSON property `certificateProvisioningProcess`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1CertificateProvisioningProcess]
+        attr_accessor :certificate_provisioning_process
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_provisioning_process = args[:certificate_provisioning_process] if args.key?(:certificate_provisioning_process)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
