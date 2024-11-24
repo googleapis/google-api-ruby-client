@@ -1916,6 +1916,11 @@ module Google
         # @return [Google::Apis::YoutubeV3::ChannelToStoreLinkDetailsBillingDetails]
         attr_accessor :billing_details
       
+        # Information specific to merchant affiliate program.
+        # Corresponds to the JSON property `merchantAffiliateProgramDetails`
+        # @return [Google::Apis::YoutubeV3::ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails]
+        attr_accessor :merchant_affiliate_program_details
+      
         # Google Merchant Center id of the store.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
@@ -1938,6 +1943,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @billing_details = args[:billing_details] if args.key?(:billing_details)
+          @merchant_affiliate_program_details = args[:merchant_affiliate_program_details] if args.key?(:merchant_affiliate_program_details)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @store_name = args[:store_name] if args.key?(:store_name)
           @store_url = args[:store_url] if args.key?(:store_url)
@@ -1960,6 +1966,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @billing_status = args[:billing_status] if args.key?(:billing_status)
+        end
+      end
+      
+      # Information specific to merchant affiliate program.
+      class ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails
+        include Google::Apis::Core::Hashable
+      
+        # The current merchant affiliate program status.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
         end
       end
       

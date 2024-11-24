@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChannelTopicDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1738,6 +1744,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_details, as: 'billingDetails', class: Google::Apis::YoutubeV3::ChannelToStoreLinkDetailsBillingDetails, decorator: Google::Apis::YoutubeV3::ChannelToStoreLinkDetailsBillingDetails::Representation
       
+          property :merchant_affiliate_program_details, as: 'merchantAffiliateProgramDetails', class: Google::Apis::YoutubeV3::ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails, decorator: Google::Apis::YoutubeV3::ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails::Representation
+      
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :store_name, as: 'storeName'
           property :store_url, as: 'storeUrl'
@@ -1748,6 +1756,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_status, as: 'billingStatus'
+        end
+      end
+      
+      class ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
         end
       end
       
