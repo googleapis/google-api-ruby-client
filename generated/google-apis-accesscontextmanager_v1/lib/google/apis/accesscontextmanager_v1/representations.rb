@@ -576,6 +576,7 @@ module Google
       
           property :egress_to, as: 'egressTo', class: Google::Apis::AccesscontextmanagerV1::EgressTo, decorator: Google::Apis::AccesscontextmanagerV1::EgressTo::Representation
       
+          property :title, as: 'title'
         end
       end
       
@@ -666,6 +667,7 @@ module Google
       
           property :ingress_to, as: 'ingressTo', class: Google::Apis::AccesscontextmanagerV1::IngressTo, decorator: Google::Apis::AccesscontextmanagerV1::IngressTo::Representation
       
+          property :title, as: 'title'
         end
       end
       
