@@ -1674,6 +1674,14 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :logo
       
+        # Merchant locations. There is a maximum of ten on the class. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -1832,6 +1840,7 @@ module Google
           @localized_issuer_name = args[:localized_issuer_name] if args.key?(:localized_issuer_name)
           @locations = args[:locations] if args.key?(:locations)
           @logo = args[:logo] if args.key?(:logo)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
           @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
@@ -2035,6 +2044,14 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::LatLongPoint>]
         attr_accessor :locations
       
+        # Merchant locations. There is a maximum of ten on the object. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -2160,6 +2177,7 @@ module Google
           @linked_offer_ids = args[:linked_offer_ids] if args.key?(:linked_offer_ids)
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @locations = args[:locations] if args.key?(:locations)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
@@ -2632,6 +2650,14 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::LatLongPoint>]
         attr_accessor :locations
       
+        # Merchant locations. There is a maximum of ten on the class. Any additional
+        # MerchantLocations added beyond the 10 will be rejected by the validator. These
+        # locations will trigger a notification when a user enters within a Google-set
+        # radius of the point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -2755,6 +2781,7 @@ module Google
           @local_scheduled_departure_date_time = args[:local_scheduled_departure_date_time] if args.key?(:local_scheduled_departure_date_time)
           @localized_issuer_name = args[:localized_issuer_name] if args.key?(:localized_issuer_name)
           @locations = args[:locations] if args.key?(:locations)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
           @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
@@ -3002,6 +3029,14 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::LatLongPoint>]
         attr_accessor :locations
       
+        # Merchant locations. There is a maximum of ten on the object. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -3113,6 +3148,7 @@ module Google
           @linked_object_ids = args[:linked_object_ids] if args.key?(:linked_object_ids)
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @locations = args[:locations] if args.key?(:locations)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
@@ -3260,6 +3296,14 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::LinksModuleData]
         attr_accessor :links_module_data
       
+        # Merchant locations. There is a maximum of ten on the class. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -3318,6 +3362,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @image_modules_data = args[:image_modules_data] if args.key?(:image_modules_data)
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
           @redemption_issuers = args[:redemption_issuers] if args.key?(:redemption_issuers)
@@ -3484,6 +3529,14 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :logo
       
+        # Merchant locations. There is a maximum of ten on the object. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -3581,6 +3634,7 @@ module Google
           @linked_object_ids = args[:linked_object_ids] if args.key?(:linked_object_ids)
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @logo = args[:logo] if args.key?(:logo)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @notifications = args[:notifications] if args.key?(:notifications)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
@@ -3798,6 +3852,14 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::LatLongPoint>]
         attr_accessor :locations
       
+        # Merchant locations. There is a maximum of ten on the class. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # Merchant name, such as "Adam's Apparel". The app may display an ellipsis after
         # the first 20 characters to ensure full string is displayed on smaller screens.
         # Corresponds to the JSON property `merchantName`
@@ -3933,6 +3995,7 @@ module Google
           @localized_merchant_name = args[:localized_merchant_name] if args.key?(:localized_merchant_name)
           @localized_pin_label = args[:localized_pin_label] if args.key?(:localized_pin_label)
           @locations = args[:locations] if args.key?(:locations)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @merchant_name = args[:merchant_name] if args.key?(:merchant_name)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
@@ -4135,6 +4198,14 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::LatLongPoint>]
         attr_accessor :locations
       
+        # Merchant locations. There is a maximum of ten on the object. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -4237,6 +4308,7 @@ module Google
           @linked_object_ids = args[:linked_object_ids] if args.key?(:linked_object_ids)
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @locations = args[:locations] if args.key?(:locations)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
@@ -4991,6 +5063,14 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::LatLongPoint>]
         attr_accessor :locations
       
+        # Merchant locations. There is a maximum of ten on the class. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -5147,6 +5227,7 @@ module Google
           @localized_secondary_rewards_tier = args[:localized_secondary_rewards_tier] if args.key?(:localized_secondary_rewards_tier)
           @localized_secondary_rewards_tier_label = args[:localized_secondary_rewards_tier_label] if args.key?(:localized_secondary_rewards_tier_label)
           @locations = args[:locations] if args.key?(:locations)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
           @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
@@ -5353,6 +5434,14 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::LoyaltyPoints]
         attr_accessor :loyalty_points
       
+        # Merchant locations. There is a maximum of ten on the object. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -5459,6 +5548,7 @@ module Google
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @locations = args[:locations] if args.key?(:locations)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
@@ -5916,6 +6006,36 @@ module Google
         end
       end
       
+      # Locations of interest for this class or object. Currently, this location is
+      # used for geofenced notifications. When a user is within a set radius of this
+      # lat/long, and dwells there, Google will trigger a notification. When a user
+      # exits this radius, the notification will be hidden.
+      class MerchantLocation
+        include Google::Apis::Core::Hashable
+      
+        # The latitude specified as any value in the range of -90.0 through +90.0, both
+        # inclusive. Values outside these bounds will be rejected.
+        # Corresponds to the JSON property `latitude`
+        # @return [Float]
+        attr_accessor :latitude
+      
+        # The longitude specified in the range -180.0 through +180.0, both inclusive.
+        # Values outside these bounds will be rejected.
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
+        end
+      end
+      
       # A message that will be displayed with a Valuable
       class Message
         include Google::Apis::Core::Hashable
@@ -6310,6 +6430,14 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::LatLongPoint>]
         attr_accessor :locations
       
+        # Merchant locations. There is a maximum of ten on the class. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -6462,6 +6590,7 @@ module Google
           @localized_short_title = args[:localized_short_title] if args.key?(:localized_short_title)
           @localized_title = args[:localized_title] if args.key?(:localized_title)
           @locations = args[:locations] if args.key?(:locations)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
           @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
@@ -6644,6 +6773,14 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::LatLongPoint>]
         attr_accessor :locations
       
+        # Merchant locations. There is a maximum of ten on the object. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -6737,6 +6874,7 @@ module Google
           @linked_object_ids = args[:linked_object_ids] if args.key?(:linked_object_ids)
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @locations = args[:locations] if args.key?(:locations)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
@@ -8045,6 +8183,14 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :logo
       
+        # Merchant locations. There is a maximum of ten on the class. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -8195,6 +8341,7 @@ module Google
           @localized_issuer_name = args[:localized_issuer_name] if args.key?(:localized_issuer_name)
           @locations = args[:locations] if args.key?(:locations)
           @logo = args[:logo] if args.key?(:logo)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @multiple_devices_and_holders_allowed_status = args[:multiple_devices_and_holders_allowed_status] if args.key?(:multiple_devices_and_holders_allowed_status)
           @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
@@ -8408,6 +8555,14 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::LatLongPoint>]
         attr_accessor :locations
       
+        # Merchant locations. There is a maximum of ten on the object. Any additional
+        # MerchantLocations added beyond the 10 will be rejected. These locations will
+        # trigger a notification when a user enters within a Google-set radius of the
+        # point. This field replaces the deprecated LatLongPoints.
+        # Corresponds to the JSON property `merchantLocations`
+        # @return [Array<Google::Apis::WalletobjectsV1::MerchantLocation>]
+        attr_accessor :merchant_locations
+      
         # An array of messages displayed in the app. All users of this object will
         # receive its associated messages. The maximum number of these fields is 10.
         # Corresponds to the JSON property `messages`
@@ -8569,6 +8724,7 @@ module Google
           @linked_object_ids = args[:linked_object_ids] if args.key?(:linked_object_ids)
           @links_module_data = args[:links_module_data] if args.key?(:links_module_data)
           @locations = args[:locations] if args.key?(:locations)
+          @merchant_locations = args[:merchant_locations] if args.key?(:merchant_locations)
           @messages = args[:messages] if args.key?(:messages)
           @notify_preference = args[:notify_preference] if args.key?(:notify_preference)
           @pass_constraints = args[:pass_constraints] if args.key?(:pass_constraints)
