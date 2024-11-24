@@ -999,20 +999,20 @@ module Google
         #   on which to execute the request. The format is: projects/[
         #   PROJECT_ID_OR_NUMBER]
         # @param [String] filter
-        #   If this field is empty, all custom and system-defined metric descriptors are
-        #   returned. Otherwise, the filter (https://cloud.google.com/monitoring/api/v3/
-        #   filters) specifies which metric descriptors are to be returned. For example,
-        #   the following filter matches all custom metrics (https://cloud.google.com/
-        #   monitoring/custom-metrics): metric.type = starts_with("custom.googleapis.com/")
-        #   
+        #   Optional. If this field is empty, all custom and system-defined metric
+        #   descriptors are returned. Otherwise, the filter (https://cloud.google.com/
+        #   monitoring/api/v3/filters) specifies which metric descriptors are to be
+        #   returned. For example, the following filter matches all custom metrics (https:/
+        #   /cloud.google.com/monitoring/custom-metrics): metric.type = starts_with("
+        #   custom.googleapis.com/")
         # @param [Fixnum] page_size
-        #   A positive number that is the maximum number of results to return. The default
-        #   and maximum value is 10,000. If a page_size <= 0 or > 10,000 is submitted,
-        #   will instead return a maximum of 10,000 results.
+        #   Optional. A positive number that is the maximum number of results to return.
+        #   The default and maximum value is 10,000. If a page_size <= 0 or > 10,000 is
+        #   submitted, will instead return a maximum of 10,000 results.
         # @param [String] page_token
-        #   If this field is not empty then it must contain the nextPageToken value
-        #   returned by a previous call to this method. Using this field causes the method
-        #   to return additional results from the previous method call.
+        #   Optional. If this field is not empty then it must contain the nextPageToken
+        #   value returned by a previous call to this method. Using this field causes the
+        #   method to return additional results from the previous method call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

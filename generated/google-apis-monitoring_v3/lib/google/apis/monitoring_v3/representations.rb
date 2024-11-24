@@ -1720,6 +1720,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alert_rule, as: 'alertRule'
+          property :disable_metric_validation, as: 'disableMetricValidation'
           property :duration, as: 'duration'
           property :evaluation_interval, as: 'evaluationInterval'
           hash :labels, as: 'labels'
