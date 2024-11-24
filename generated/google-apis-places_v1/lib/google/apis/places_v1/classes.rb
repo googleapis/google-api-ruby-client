@@ -2017,12 +2017,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :day
       
-        # The hour in 2 digits. Ranges from 00 to 23.
+        # The hour in 24 hour format. Ranges from 0 to 23.
         # Corresponds to the JSON property `hour`
         # @return [Fixnum]
         attr_accessor :hour
       
-        # The minute in 2 digits. Ranges from 00 to 59.
+        # The minute. Ranges from 0 to 59.
         # Corresponds to the JSON property `minute`
         # @return [Fixnum]
         attr_accessor :minute
