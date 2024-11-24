@@ -41,6 +41,41 @@ module Google
         end
       end
       
+      # The automated backup config for a cluster.
+      class AutomatedBackupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The automated backup mode. If the mode is disabled, the other fields
+        # will be ignored.
+        # Corresponds to the JSON property `automatedBackupMode`
+        # @return [String]
+        attr_accessor :automated_backup_mode
+      
+        # This schedule allows the backup to be triggered at a fixed frequency (
+        # currently only daily is supported).
+        # Corresponds to the JSON property `fixedFrequencySchedule`
+        # @return [Google::Apis::RedisV1::FixedFrequencySchedule]
+        attr_accessor :fixed_frequency_schedule
+      
+        # Optional. How long to keep automated backups before the backups are deleted.
+        # If not specified, the default value is 100 years which is also the maximum
+        # value supported. The minimum value is 1 day.
+        # Corresponds to the JSON property `retention`
+        # @return [String]
+        attr_accessor :retention
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automated_backup_mode = args[:automated_backup_mode] if args.key?(:automated_backup_mode)
+          @fixed_frequency_schedule = args[:fixed_frequency_schedule] if args.key?(:fixed_frequency_schedule)
+          @retention = args[:retention] if args.key?(:retention)
+        end
+      end
+      
       # Configuration for availability of database instance
       class AvailabilityConfiguration
         include Google::Apis::Core::Hashable
@@ -94,6 +129,158 @@ module Google
         end
       end
       
+      # Backup of a cluster.
+      class Backup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of backup files of the backup.
+        # Corresponds to the JSON property `backupFiles`
+        # @return [Array<Google::Apis::RedisV1::BackupFile>]
+        attr_accessor :backup_files
+      
+        # Output only. Type of the backup.
+        # Corresponds to the JSON property `backupType`
+        # @return [String]
+        attr_accessor :backup_type
+      
+        # Output only. Cluster resource path of this backup.
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Output only. Cluster uid of this backup.
+        # Corresponds to the JSON property `clusterUid`
+        # @return [String]
+        attr_accessor :cluster_uid
+      
+        # Output only. The time when the backup was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. redis-7.2, valkey-7.5
+        # Corresponds to the JSON property `engineVersion`
+        # @return [String]
+        attr_accessor :engine_version
+      
+        # Output only. The time when the backup will expire.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Identifier. Full resource path of the backup. the last part of the name is the
+        # backup id with the following format: [YYYYMMDDHHMMSS]_[Shorted Cluster UID] OR
+        # customer specified while backup cluster. Example: 20240515123000_1234
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Node type of the cluster.
+        # Corresponds to the JSON property `nodeType`
+        # @return [String]
+        attr_accessor :node_type
+      
+        # Output only. Number of replicas for the cluster.
+        # Corresponds to the JSON property `replicaCount`
+        # @return [Fixnum]
+        attr_accessor :replica_count
+      
+        # Output only. Number of shards for the cluster.
+        # Corresponds to the JSON property `shardCount`
+        # @return [Fixnum]
+        attr_accessor :shard_count
+      
+        # Output only. State of the backup.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Total size of the backup in bytes.
+        # Corresponds to the JSON property `totalSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :total_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_files = args[:backup_files] if args.key?(:backup_files)
+          @backup_type = args[:backup_type] if args.key?(:backup_type)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @engine_version = args[:engine_version] if args.key?(:engine_version)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @name = args[:name] if args.key?(:name)
+          @node_type = args[:node_type] if args.key?(:node_type)
+          @replica_count = args[:replica_count] if args.key?(:replica_count)
+          @shard_count = args[:shard_count] if args.key?(:shard_count)
+          @state = args[:state] if args.key?(:state)
+          @total_size_bytes = args[:total_size_bytes] if args.key?(:total_size_bytes)
+        end
+      end
+      
+      # Request for [BackupCluster].
+      class BackupClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The id of the backup to be created. If not specified, the default
+        # value ([YYYYMMDDHHMMSS]_[Shortened Cluster UID] is used.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        # Optional. TTL for the backup to expire. Value range is 1 day to 100 years. If
+        # not specified, the default value is 100 years.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # BackupCollection of a cluster.
+      class BackupCollection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The full resource path of the cluster the backup collection
+        # belongs to. Example: projects/`project`/locations/`location`/clusters/`cluster`
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Output only. The cluster uid of the backup collection.
+        # Corresponds to the JSON property `clusterUid`
+        # @return [String]
+        attr_accessor :cluster_uid
+      
+        # Identifier. Full resource path of the backup collection.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Configuration for automatic backups
       class BackupConfiguration
         include Google::Apis::Core::Hashable
@@ -126,6 +313,37 @@ module Google
           @automated_backup_enabled = args[:automated_backup_enabled] if args.key?(:automated_backup_enabled)
           @backup_retention_settings = args[:backup_retention_settings] if args.key?(:backup_retention_settings)
           @point_in_time_recovery_enabled = args[:point_in_time_recovery_enabled] if args.key?(:point_in_time_recovery_enabled)
+        end
+      end
+      
+      # Backup is consisted of multiple backup files.
+      class BackupFile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the backup file was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. e.g: .rdb
+        # Corresponds to the JSON property `fileName`
+        # @return [String]
+        attr_accessor :file_name
+      
+        # Output only. Size of the backup file in bytes.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @file_name = args[:file_name] if args.key?(:file_name)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
         end
       end
       
@@ -222,6 +440,17 @@ module Google
         # @return [String]
         attr_accessor :authorization_mode
       
+        # The automated backup config for a cluster.
+        # Corresponds to the JSON property `automatedBackupConfig`
+        # @return [Google::Apis::RedisV1::AutomatedBackupConfig]
+        attr_accessor :automated_backup_config
+      
+        # Optional. Output only. The backup collection full resource name. Example:
+        # projects/`project`/locations/`location`/backupCollections/`collection`
+        # Corresponds to the JSON property `backupCollection`
+        # @return [String]
+        attr_accessor :backup_collection
+      
         # Optional. A list of cluster enpoints.
         # Corresponds to the JSON property `clusterEndpoints`
         # @return [Array<Google::Apis::RedisV1::ClusterEndpoint>]
@@ -249,6 +478,12 @@ module Google
         # @return [Array<Google::Apis::RedisV1::DiscoveryEndpoint>]
         attr_accessor :discovery_endpoints
       
+        # Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be
+        # the same region as the clusters.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::RedisV1::GcsBackupSource]
+        attr_accessor :gcs_source
+      
         # Maintenance policy per cluster.
         # Corresponds to the JSON property `maintenancePolicy`
         # @return [Google::Apis::RedisV1::ClusterMaintenancePolicy]
@@ -258,6 +493,11 @@ module Google
         # Corresponds to the JSON property `maintenanceSchedule`
         # @return [Google::Apis::RedisV1::ClusterMaintenanceSchedule]
         attr_accessor :maintenance_schedule
+      
+        # Backups that generated and managed by memorystore.
+        # Corresponds to the JSON property `managedBackupSource`
+        # @return [Google::Apis::RedisV1::ManagedBackupSource]
+        attr_accessor :managed_backup_source
       
         # Required. Identifier. Unique name of the resource in this scope including
         # project and location using the form: `projects/`project_id`/locations/`
@@ -355,13 +595,17 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
+          @automated_backup_config = args[:automated_backup_config] if args.key?(:automated_backup_config)
+          @backup_collection = args[:backup_collection] if args.key?(:backup_collection)
           @cluster_endpoints = args[:cluster_endpoints] if args.key?(:cluster_endpoints)
           @create_time = args[:create_time] if args.key?(:create_time)
           @cross_cluster_replication_config = args[:cross_cluster_replication_config] if args.key?(:cross_cluster_replication_config)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @discovery_endpoints = args[:discovery_endpoints] if args.key?(:discovery_endpoints)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
+          @managed_backup_source = args[:managed_backup_source] if args.key?(:managed_backup_source)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
           @persistence_config = args[:persistence_config] if args.key?(:persistence_config)
@@ -1152,6 +1396,25 @@ module Google
         end
       end
       
+      # Request for [ExportBackup].
+      class ExportBackupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage bucket, like "my-bucket".
+        # Corresponds to the JSON property `gcsBucket`
+        # @return [String]
+        attr_accessor :gcs_bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
+        end
+      end
+      
       # Request for Export.
       class ExportInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1188,6 +1451,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_protection_mode = args[:data_protection_mode] if args.key?(:data_protection_mode)
+        end
+      end
+      
+      # This schedule allows the backup to be triggered at a fixed frequency (
+      # currently only daily is supported).
+      class FixedFrequencySchedule
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::RedisV1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be
+      # the same region as the clusters.
+      class GcsBackupSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. URIs of the GCS objects to import. Example: gs://bucket1/object1, gs:
+        # //bucket2/folder2/object2
+        # Corresponds to the JSON property `uris`
+        # @return [Array<String>]
+        attr_accessor :uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uris = args[:uris] if args.key?(:uris)
         end
       end
       
@@ -1721,6 +2027,77 @@ module Google
         end
       end
       
+      # Response for [ListBackupCollections].
+      class ListBackupCollectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of backupCollections in the project. If the `location_id` in the parent
+        # field of the request is "-", all regions available to the project are queried,
+        # and the results aggregated. If in such an aggregated query a location is
+        # unavailable, a placeholder backupCollection entry is included in the response
+        # with the `name` field set to a value of the form `projects/`project_id`/
+        # locations/`location_id`/backupCollections/`- and the `status` field set to
+        # ERROR and `status_message` field set to "location not available for
+        # ListBackupCollections".
+        # Corresponds to the JSON property `backupCollections`
+        # @return [Array<Google::Apis::RedisV1::BackupCollection>]
+        attr_accessor :backup_collections
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_collections = args[:backup_collections] if args.key?(:backup_collections)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for [ListBackups].
+      class ListBackupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of backups in the project.
+        # Corresponds to the JSON property `backups`
+        # @return [Array<Google::Apis::RedisV1::Backup>]
+        attr_accessor :backups
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Backups that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backups = args[:backups] if args.key?(:backups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response for ListClusters.
       class ListClustersResponse
         include Google::Apis::Core::Hashable
@@ -1920,6 +2297,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :shard_count
       
+        # Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto
+        # validations again after bug fix.
+        # Corresponds to the JSON property `vcpuCount`
+        # @return [Float]
+        attr_accessor :vcpu_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1929,6 +2312,7 @@ module Google
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
           @memory_size_in_bytes = args[:memory_size_in_bytes] if args.key?(:memory_size_in_bytes)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
+          @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
         end
       end
       
@@ -2011,6 +2395,29 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @schedule_deadline_time = args[:schedule_deadline_time] if args.key?(:schedule_deadline_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Backups that generated and managed by memorystore.
+      class ManagedBackupSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Example: //redis.googleapis.com/projects/`project`/locations/`
+        # location`/backupCollections/`collection`/backups/`backup` A shorter version (
+        # without the prefix) of the backup name is also supported, like projects/`
+        # project`/locations/`location`/backupCollections/`collection`/backups/`
+        # backup_id` In this case, it assumes the backup is under redis.googleapis.com.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
         end
       end
       
