@@ -1855,6 +1855,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alloydb_cluster_id, as: 'alloydbClusterId'
           property :cloud_sql_id, as: 'cloudSqlId'
+          property :database, as: 'database'
           property :host, as: 'host'
           property :network_architecture, as: 'networkArchitecture'
           property :password, as: 'password'
