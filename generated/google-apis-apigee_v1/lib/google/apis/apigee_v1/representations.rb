@@ -580,6 +580,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfigHeaderIndexAlgorithm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1EnvironmentGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2898,6 +2910,8 @@ module Google
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeAddonsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeAddonsConfig::Representation
       
           property :arc_config_location, as: 'arcConfigLocation'
+          property :client_ip_resolution_config, as: 'clientIpResolutionConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfig::Representation
+      
           property :create_time, as: 'createTime'
           collection :data_collectors, as: 'dataCollectors', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollectorConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollectorConfig::Representation
       
@@ -2929,6 +2943,22 @@ module Google
           property :trace_config, as: 'traceConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfig::Representation
       
           property :uid, as: 'uid'
+        end
+      end
+      
+      class GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_index_algorithm, as: 'headerIndexAlgorithm', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfigHeaderIndexAlgorithm, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfigHeaderIndexAlgorithm::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfigHeaderIndexAlgorithm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_header_index, as: 'ipHeaderIndex'
+          property :ip_header_name, as: 'ipHeaderName'
         end
       end
       
