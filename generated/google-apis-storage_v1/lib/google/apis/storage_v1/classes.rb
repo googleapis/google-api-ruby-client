@@ -2503,6 +2503,11 @@ module Google
         # @return [DateTime]
         attr_accessor :time_deleted
       
+        # The time when the object was finalized.
+        # Corresponds to the JSON property `timeFinalized`
+        # @return [DateTime]
+        attr_accessor :time_finalized
+      
         # The time at which the object's storage class was last changed. When the object
         # is initially created, it will be set to timeCreated.
         # Corresponds to the JSON property `timeStorageClassUpdated`
@@ -2558,6 +2563,7 @@ module Google
           @temporary_hold = args[:temporary_hold] if args.key?(:temporary_hold)
           @time_created = args[:time_created] if args.key?(:time_created)
           @time_deleted = args[:time_deleted] if args.key?(:time_deleted)
+          @time_finalized = args[:time_finalized] if args.key?(:time_finalized)
           @time_storage_class_updated = args[:time_storage_class_updated] if args.key?(:time_storage_class_updated)
           @updated = args[:updated] if args.key?(:updated)
         end
