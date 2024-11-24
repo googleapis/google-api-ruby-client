@@ -711,6 +711,7 @@ module Google
           property :enable_automatic_updates, as: 'enableAutomaticUpdates'
           hash :environment_variables, as: 'environmentVariables'
           property :function_target, as: 'functionTarget'
+          property :project_descriptor, as: 'projectDescriptor'
           property :runtime, as: 'runtime'
         end
       end

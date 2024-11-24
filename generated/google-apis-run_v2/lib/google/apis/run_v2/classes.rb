@@ -96,6 +96,12 @@ module Google
         # @return [String]
         attr_accessor :function_target
       
+        # Optional. project_descriptor stores the path to the project descriptor file.
+        # When empty, it means that there is no project descriptor file in the source.
+        # Corresponds to the JSON property `projectDescriptor`
+        # @return [String]
+        attr_accessor :project_descriptor
+      
         # The runtime name, e.g. 'go113'. Leave blank for generic builds.
         # Corresponds to the JSON property `runtime`
         # @return [String]
@@ -112,6 +118,7 @@ module Google
           @enable_automatic_updates = args[:enable_automatic_updates] if args.key?(:enable_automatic_updates)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
           @function_target = args[:function_target] if args.key?(:function_target)
+          @project_descriptor = args[:project_descriptor] if args.key?(:project_descriptor)
           @runtime = args[:runtime] if args.key?(:runtime)
         end
       end
@@ -2003,8 +2010,8 @@ module Google
         attr_accessor :labels
       
         # Optional. Sets the maximum number of requests that each serving instance can
-        # receive. If not specified or 0, defaults to 80 when requested `CPU >= 1` and
-        # defaults to 1 when requested `CPU < 1`.
+        # receive. If not specified or 0, concurrency defaults to 80 when requested `CPU
+        # >= 1` and defaults to 1 when requested `CPU < 1`.
         # Corresponds to the JSON property `maxInstanceRequestConcurrency`
         # @return [Fixnum]
         attr_accessor :max_instance_request_concurrency
@@ -2162,12 +2169,12 @@ module Google
         # of 0222 will be applied to any non-zero value. * This is an integer
         # representation of the mode bits. So, the octal integer value should look
         # exactly as the chmod numeric notation with a leading zero. Some examples: for
-        # chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=
-        # r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set
-        # to 0755 (octal) or 493 (base-10). * This might be in conflict with other
-        # options that affect the file mode, like fsGroup, and the result can be other
-        # mode bits set. This might be in conflict with other options that affect the
-        # file mode, like fsGroup, and as a result, other mode bits could be set.
+        # chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=
+        # rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in
+        # conflict with other options that affect the file mode, like fsGroup, and the
+        # result can be other mode bits set. This might be in conflict with other
+        # options that affect the file mode, like fsGroup, and as a result, other mode
+        # bits could be set.
         # Corresponds to the JSON property `defaultMode`
         # @return [Fixnum]
         attr_accessor :default_mode
@@ -3123,11 +3130,10 @@ module Google
         # Internally, a umask of 0222 will be applied to any non-zero value. * This is
         # an integer representation of the mode bits. So, the octal integer value should
         # look exactly as the chmod numeric notation with a leading zero. Some examples:
-        # for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=
-        # rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx),
-        # set to 0755 (octal) or 493 (base-10). * This might be in conflict with other
-        # options that affect the file mode, like fsGroup, and the result can be other
-        # mode bits set.
+        # for chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (
+        # u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in
+        # conflict with other options that affect the file mode, like fsGroup, and the
+        # result can be other mode bits set.
         # Corresponds to the JSON property `mode`
         # @return [Fixnum]
         attr_accessor :mode
