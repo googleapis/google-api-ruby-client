@@ -6754,6 +6754,14 @@ module Google
         # @return [String]
         attr_accessor :program_label
       
+        # Optional. The shipping label for the loyalty program. You can use this label
+        # to indicate whether this offer has the loyalty shipping benefit. If not
+        # specified, the item is not eligible for loyalty shipping for the given loyalty
+        # tier.
+        # Corresponds to the JSON property `shippingLabel`
+        # @return [String]
+        attr_accessor :shipping_label
+      
         # Required. The label of the tier within the loyalty program. Must match one of
         # the labels within the program.
         # Corresponds to the JSON property `tierLabel`
@@ -6771,6 +6779,7 @@ module Google
           @member_price_effective_date = args[:member_price_effective_date] if args.key?(:member_price_effective_date)
           @price = args[:price] if args.key?(:price)
           @program_label = args[:program_label] if args.key?(:program_label)
+          @shipping_label = args[:shipping_label] if args.key?(:shipping_label)
           @tier_label = args[:tier_label] if args.key?(:tier_label)
         end
       end
@@ -14041,12 +14050,12 @@ module Google
       class TimeZone
         include Google::Apis::Core::Hashable
       
-        # IANA Time Zone Database time zone, e.g. "America/New_York".
+        # IANA Time Zone Database time zone. For example "America/New_York".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Optional. IANA Time Zone Database version number, e.g. "2019a".
+        # Optional. IANA Time Zone Database version number. For example "2019a".
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
