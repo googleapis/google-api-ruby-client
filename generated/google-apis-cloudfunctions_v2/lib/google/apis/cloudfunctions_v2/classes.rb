@@ -252,9 +252,7 @@ module Google
         # and managed by user with a customer managed encryption key. Otherwise, GCF
         # will create and use a repository named 'gcf-artifacts' for every deployed
         # region. It must match the pattern `projects/`project`/locations/`location`/
-        # repositories/`repository``. Cross-project repositories are not supported.
-        # Cross-location repositories are not supported. Repository format must be '
-        # DOCKER'.
+        # repositories/`repository``. Repository format must be 'DOCKER'.
         # Corresponds to the JSON property `dockerRepository`
         # @return [String]
         attr_accessor :docker_repository
