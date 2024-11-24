@@ -376,8 +376,7 @@ module Google
         #   A token identifying a page of results the server will return. To request the
         #   first page results, page_token must be empty. To request the next page of
         #   results, page_token must be the value of next_page_token returned from the
-        #   previous call to ListJobs. It is an error to switch the value of filter or
-        #   order_by while iterating through pages.
+        #   previous call to ListJobs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
