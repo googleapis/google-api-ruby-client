@@ -16,13 +16,13 @@ module Google
   module Apis
     module PlaydeveloperreportingV1beta1
       # Version of the google-apis-playdeveloperreporting_v1beta1 gem
-      GEM_VERSION = "0.33.0"
+      GEM_VERSION = "0.34.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.15.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20241102"
+      REVISION = "20241120"
     end
   end
 end

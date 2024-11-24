@@ -417,9 +417,9 @@ module Google
         #   Optional. Seconds of minutes of the time. Must normally be from 0 to 59,
         #   defaults to 0. An API may allow the value 60 if it allows leap-seconds.
         # @param [String] interval_end_time_time_zone_id
-        #   IANA Time Zone Database time zone, e.g. "America/New_York".
+        #   IANA Time Zone Database time zone. For example "America/New_York".
         # @param [String] interval_end_time_time_zone_version
-        #   Optional. IANA Time Zone Database version number, e.g. "2019a".
+        #   Optional. IANA Time Zone Database version number. For example "2019a".
         # @param [String] interval_end_time_utc_offset
         #   UTC offset. Must be whole seconds, between -18 hours and +18 hours. For
         #   example, a UTC offset of -4:00 would be represented as ` seconds: -14400 `.
@@ -445,9 +445,9 @@ module Google
         #   Optional. Seconds of minutes of the time. Must normally be from 0 to 59,
         #   defaults to 0. An API may allow the value 60 if it allows leap-seconds.
         # @param [String] interval_start_time_time_zone_id
-        #   IANA Time Zone Database time zone, e.g. "America/New_York".
+        #   IANA Time Zone Database time zone. For example "America/New_York".
         # @param [String] interval_start_time_time_zone_version
-        #   Optional. IANA Time Zone Database version number, e.g. "2019a".
+        #   Optional. IANA Time Zone Database version number. For example "2019a".
         # @param [String] interval_start_time_utc_offset
         #   UTC offset. Must be whole seconds, between -18 hours and +18 hours. For
         #   example, a UTC offset of -4:00 would be represented as ` seconds: -14400 `.
@@ -583,9 +583,9 @@ module Google
         #   Optional. Seconds of minutes of the time. Must normally be from 0 to 59,
         #   defaults to 0. An API may allow the value 60 if it allows leap-seconds.
         # @param [String] interval_end_time_time_zone_id
-        #   IANA Time Zone Database time zone, e.g. "America/New_York".
+        #   IANA Time Zone Database time zone. For example "America/New_York".
         # @param [String] interval_end_time_time_zone_version
-        #   Optional. IANA Time Zone Database version number, e.g. "2019a".
+        #   Optional. IANA Time Zone Database version number. For example "2019a".
         # @param [String] interval_end_time_utc_offset
         #   UTC offset. Must be whole seconds, between -18 hours and +18 hours. For
         #   example, a UTC offset of -4:00 would be represented as ` seconds: -14400 `.
@@ -611,9 +611,9 @@ module Google
         #   Optional. Seconds of minutes of the time. Must normally be from 0 to 59,
         #   defaults to 0. An API may allow the value 60 if it allows leap-seconds.
         # @param [String] interval_start_time_time_zone_id
-        #   IANA Time Zone Database time zone, e.g. "America/New_York".
+        #   IANA Time Zone Database time zone. For example "America/New_York".
         # @param [String] interval_start_time_time_zone_version
-        #   Optional. IANA Time Zone Database version number, e.g. "2019a".
+        #   Optional. IANA Time Zone Database version number. For example "2019a".
         # @param [String] interval_start_time_utc_offset
         #   UTC offset. Must be whole seconds, between -18 hours and +18 hours. For
         #   example, a UTC offset of -4:00 would be represented as ` seconds: -14400 `.
