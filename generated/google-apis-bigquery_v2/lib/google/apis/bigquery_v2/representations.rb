@@ -3630,6 +3630,7 @@ module Google
           hash :labels, as: 'labels'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
           property :location, as: 'location'
+          property :managed_table_type, as: 'managedTableType'
           property :materialized_view, as: 'materializedView', class: Google::Apis::BigqueryV2::MaterializedViewDefinition, decorator: Google::Apis::BigqueryV2::MaterializedViewDefinition::Representation
       
           property :materialized_view_status, as: 'materializedViewStatus', class: Google::Apis::BigqueryV2::MaterializedViewStatus, decorator: Google::Apis::BigqueryV2::MaterializedViewStatus::Representation
