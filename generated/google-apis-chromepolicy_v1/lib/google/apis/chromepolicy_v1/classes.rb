@@ -1695,7 +1695,10 @@ module Google
         attr_accessor :package
       
         # The syntax of the proto file. The supported values are "proto2", "proto3", and
-        # "editions". If `edition` is present, this value must be "editions".
+        # "editions". If `edition` is present, this value must be "editions". WARNING:
+        # This field should only be used by protobuf plugins or special cases like the
+        # proto compiler. Other uses are discouraged and developers should rely on the
+        # protoreflect APIs for their client language.
         # Corresponds to the JSON property `syntax`
         # @return [String]
         attr_accessor :syntax
