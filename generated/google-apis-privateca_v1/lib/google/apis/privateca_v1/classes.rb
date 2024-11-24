@@ -1599,7 +1599,7 @@ module Google
         attr_accessor :ca_pools
       
         # A token to retrieve next page of results. Pass this value in
-        # ListCertificateAuthoritiesRequest.next_page_token to retrieve the next page of
+        # ListCertificateAuthoritiesRequest.page_token to retrieve the next page of
         # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1632,7 +1632,7 @@ module Google
         attr_accessor :certificate_authorities
       
         # A token to retrieve next page of results. Pass this value in
-        # ListCertificateAuthoritiesRequest.next_page_token to retrieve the next page of
+        # ListCertificateAuthoritiesRequest.page_token to retrieve the next page of
         # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1666,8 +1666,8 @@ module Google
         attr_accessor :certificate_revocation_lists
       
         # A token to retrieve next page of results. Pass this value in
-        # ListCertificateRevocationListsRequest.next_page_token to retrieve the next
-        # page of results.
+        # ListCertificateRevocationListsRequest.page_token to retrieve the next page of
+        # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1699,7 +1699,7 @@ module Google
         attr_accessor :certificate_templates
       
         # A token to retrieve next page of results. Pass this value in
-        # ListCertificateTemplatesRequest.next_page_token to retrieve the next page of
+        # ListCertificateTemplatesRequest.page_token to retrieve the next page of
         # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1732,7 +1732,7 @@ module Google
         attr_accessor :certificates
       
         # A token to retrieve next page of results. Pass this value in
-        # ListCertificatesRequest.next_page_token to retrieve the next page of results.
+        # ListCertificatesRequest.page_token to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2041,9 +2041,9 @@ module Google
         attr_accessor :end_time
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # operation. Operations that have successfully been cancelled have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
         # Corresponds to the JSON property `requestedCancellation`
         # @return [Boolean]
         attr_accessor :requested_cancellation
