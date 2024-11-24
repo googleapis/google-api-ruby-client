@@ -1,0 +1,7 @@
+{
+    "api_id": "parallelstore:v1",
+    "name_pretty": "Parallelstore API",
+    "distribution_name": "google-apis-parallelstore_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
