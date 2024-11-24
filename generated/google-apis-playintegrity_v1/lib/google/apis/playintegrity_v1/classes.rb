@@ -185,9 +185,38 @@ module Google
         end
       end
       
+      # Contains information about the device for which the integrity token was
+      # generated, e.g. Android SDK version.
+      class DeviceAttributes
+        include Google::Apis::Core::Hashable
+      
+        # Android SDK version of the device, as defined in the public Android
+        # documentation: https://developer.android.com/reference/android/os/Build.
+        # VERSION_CODES. It won't be set if a necessary requirement was missed. For
+        # example DeviceIntegrity did not meet the minimum bar.
+        # Corresponds to the JSON property `sdkVersion`
+        # @return [Fixnum]
+        attr_accessor :sdk_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sdk_version = args[:sdk_version] if args.key?(:sdk_version)
+        end
+      end
+      
       # Contains the device attestation information.
       class DeviceIntegrity
         include Google::Apis::Core::Hashable
+      
+        # Contains information about the device for which the integrity token was
+        # generated, e.g. Android SDK version.
+        # Corresponds to the JSON property `deviceAttributes`
+        # @return [Google::Apis::PlayintegrityV1::DeviceAttributes]
+        attr_accessor :device_attributes
       
         # Contains the recall bits per device set by the developer.
         # Corresponds to the JSON property `deviceRecall`
@@ -212,6 +241,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @device_attributes = args[:device_attributes] if args.key?(:device_attributes)
           @device_recall = args[:device_recall] if args.key?(:device_recall)
           @device_recognition_verdict = args[:device_recognition_verdict] if args.key?(:device_recognition_verdict)
           @recent_device_activity = args[:recent_device_activity] if args.key?(:recent_device_activity)
