@@ -1,5 +1,10 @@
 # Release history for google-apis-config_v1
 
+### v0.5.0 (2024-11-24)
+
+* Regenerated from discovery document revision 20241106
+* Regenerated using generator version 0.15.1
+
 ### v0.4.0 (2024-07-25)
 
 * Regenerated from discovery document revision 20240710

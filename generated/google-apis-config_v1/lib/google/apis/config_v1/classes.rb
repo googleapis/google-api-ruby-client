@@ -354,7 +354,7 @@ module Google
         # @return [String]
         attr_accessor :quota_validation
       
-        # Optional. User-specified Service Account (SA) credentials to be used when
+        # Required. User-specified Service Account (SA) credentials to be used when
         # actuating resources. Format: `projects/`projectID`/serviceAccounts/`
         # serviceAccount``
         # Corresponds to the JSON property `serviceAccount`
@@ -1303,7 +1303,7 @@ module Google
         # @return [String]
         attr_accessor :preview_mode
       
-        # Optional. User-specified Service Account (SA) credentials to be used when
+        # Required. User-specified Service Account (SA) credentials to be used when
         # previewing resources. Format: `projects/`projectID`/serviceAccounts/`
         # serviceAccount``
         # Corresponds to the JSON property `serviceAccount`
