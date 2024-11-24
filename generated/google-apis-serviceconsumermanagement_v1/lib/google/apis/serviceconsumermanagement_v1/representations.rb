@@ -998,6 +998,7 @@ module Google
       class ExperimentalFeatures
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :protobuf_pythonic_types_enabled, as: 'protobufPythonicTypesEnabled'
           property :rest_async_io_enabled, as: 'restAsyncIoEnabled'
         end
       end
@@ -1033,6 +1034,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServiceconsumermanagementV1::CommonLanguageSettings, decorator: Google::Apis::ServiceconsumermanagementV1::CommonLanguageSettings::Representation
       
+          hash :renamed_services, as: 'renamedServices'
         end
       end
       
