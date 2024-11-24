@@ -882,6 +882,19 @@ module Google
         end
       end
       
+      # Filter for empty values.
+      class EmptyFilter
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An expression to filter dimension or metric values.
       class Filter
         include Google::Apis::Core::Hashable
@@ -890,6 +903,11 @@ module Google
         # Corresponds to the JSON property `betweenFilter`
         # @return [Google::Apis::AnalyticsdataV1beta::BetweenFilter]
         attr_accessor :between_filter
+      
+        # Filter for empty values.
+        # Corresponds to the JSON property `emptyFilter`
+        # @return [Google::Apis::AnalyticsdataV1beta::EmptyFilter]
+        attr_accessor :empty_filter
       
         # The dimension name or metric name. In most methods, dimensions & metrics can
         # be used for the first time in this field. However in a RunPivotReportRequest,
@@ -921,6 +939,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @between_filter = args[:between_filter] if args.key?(:between_filter)
+          @empty_filter = args[:empty_filter] if args.key?(:empty_filter)
           @field_name = args[:field_name] if args.key?(:field_name)
           @in_list_filter = args[:in_list_filter] if args.key?(:in_list_filter)
           @numeric_filter = args[:numeric_filter] if args.key?(:numeric_filter)
