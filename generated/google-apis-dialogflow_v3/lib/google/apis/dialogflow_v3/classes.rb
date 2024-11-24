@@ -660,7 +660,7 @@ module Google
       # utterance has been detected. Note that no-speech event is not expected in this
       # phase. The client provides this configuration in terms of the durations of
       # those two phases. The durations are measured in terms of the audio length from
-      # the the start of the input audio. No-speech event is a response with
+      # the start of the input audio. No-speech event is a response with
       # END_OF_UTTERANCE without any transcript following up.
       class GoogleCloudDialogflowCxV3BargeInConfig
         include Google::Apis::Core::Hashable
@@ -4383,7 +4383,7 @@ module Google
         # utterance has been detected. Note that no-speech event is not expected in this
         # phase. The client provides this configuration in terms of the durations of
         # those two phases. The durations are measured in terms of the audio length from
-        # the the start of the input audio. No-speech event is a response with
+        # the start of the input audio. No-speech event is a response with
         # END_OF_UTTERANCE without any transcript following up.
         # Corresponds to the JSON property `bargeInConfig`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3BargeInConfig]
@@ -9117,7 +9117,7 @@ module Google
       # utterance has been detected. Note that no-speech event is not expected in this
       # phase. The client provides this configuration in terms of the durations of
       # those two phases. The durations are measured in terms of the audio length from
-      # the the start of the input audio. No-speech event is a response with
+      # the start of the input audio. No-speech event is a response with
       # END_OF_UTTERANCE without any transcript following up.
       class GoogleCloudDialogflowCxV3beta1BargeInConfig
         include Google::Apis::Core::Hashable
@@ -10536,7 +10536,7 @@ module Google
         # utterance has been detected. Note that no-speech event is not expected in this
         # phase. The client provides this configuration in terms of the durations of
         # those two phases. The durations are measured in terms of the audio length from
-        # the the start of the input audio. No-speech event is a response with
+        # the start of the input audio. No-speech event is a response with
         # END_OF_UTTERANCE without any transcript following up.
         # Corresponds to the JSON property `bargeInConfig`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1BargeInConfig]
@@ -12875,7 +12875,7 @@ module Google
         end
       end
       
-      # Metadata for a ConversationProfile.ClearSuggestionFeatureConfig operation.
+      # Metadata for a ConversationProfiles.ClearSuggestionFeatureConfig operation.
       class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -13100,7 +13100,7 @@ module Google
         end
       end
       
-      # Metadata for ConversationDatasets.
+      # Metadata for CreateConversationDataset.
       class GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -13193,7 +13193,7 @@ module Google
         end
       end
       
-      # Metadata for ConversationDatasets.
+      # Metadata for DeleteConversationDataset.
       class GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -15213,12 +15213,11 @@ module Google
       
         # The result of sentiment analysis. Sentiment analysis inspects user input and
         # identifies the prevailing subjective opinion, especially to determine a user's
-        # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
-        # needs to be configured in DetectIntentRequest.query_params. For Participants.
-        # StreamingDetectIntent, it needs to be configured in
-        # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
-        # and Participants.StreamingAnalyzeContent, it needs to be configured in
-        # ConversationProfile.human_agent_assistant_config
+        # attitude as positive, negative, or neutral. For DetectIntent, it needs to be
+        # configured in DetectIntentRequest.query_params. For StreamingDetectIntent, it
+        # needs to be configured in StreamingDetectIntentRequest.query_params. And for
+        # Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs
+        # to be configured in ConversationProfile.human_agent_assistant_config
         # Corresponds to the JSON property `sentimentAnalysis`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SentimentAnalysisResult]
         attr_accessor :sentiment_analysis
@@ -15415,12 +15414,11 @@ module Google
       
         # The result of sentiment analysis. Sentiment analysis inspects user input and
         # identifies the prevailing subjective opinion, especially to determine a user's
-        # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
-        # needs to be configured in DetectIntentRequest.query_params. For Participants.
-        # StreamingDetectIntent, it needs to be configured in
-        # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
-        # and Participants.StreamingAnalyzeContent, it needs to be configured in
-        # ConversationProfile.human_agent_assistant_config
+        # attitude as positive, negative, or neutral. For DetectIntent, it needs to be
+        # configured in DetectIntentRequest.query_params. For StreamingDetectIntent, it
+        # needs to be configured in StreamingDetectIntentRequest.query_params. And for
+        # Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs
+        # to be configured in ConversationProfile.human_agent_assistant_config
         # Corresponds to the JSON property `sentimentAnalysisResult`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SentimentAnalysisResult]
         attr_accessor :sentiment_analysis_result
@@ -15504,12 +15502,11 @@ module Google
       
       # The result of sentiment analysis. Sentiment analysis inspects user input and
       # identifies the prevailing subjective opinion, especially to determine a user's
-      # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
-      # needs to be configured in DetectIntentRequest.query_params. For Participants.
-      # StreamingDetectIntent, it needs to be configured in
-      # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
-      # and Participants.StreamingAnalyzeContent, it needs to be configured in
-      # ConversationProfile.human_agent_assistant_config
+      # attitude as positive, negative, or neutral. For DetectIntent, it needs to be
+      # configured in DetectIntentRequest.query_params. For StreamingDetectIntent, it
+      # needs to be configured in StreamingDetectIntentRequest.query_params. And for
+      # Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs
+      # to be configured in ConversationProfile.human_agent_assistant_config
       class GoogleCloudDialogflowV2SentimentAnalysisResult
         include Google::Apis::Core::Hashable
       
@@ -15574,7 +15571,7 @@ module Google
         end
       end
       
-      # Metadata for a ConversationProfile.SetSuggestionFeatureConfig operation.
+      # Metadata for a ConversationProfiles.SetSuggestionFeatureConfig operation.
       class GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata
         include Google::Apis::Core::Hashable
       
