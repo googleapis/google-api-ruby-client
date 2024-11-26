@@ -757,7 +757,7 @@ module Google
         attr_accessor :automatic
       
         # A replication policy that replicates the Secret payload into the locations
-        # specified in Secret.replication.user_managed.replicas
+        # specified in Replication.UserManaged.replicas
         # Corresponds to the JSON property `userManaged`
         # @return [Google::Apis::SecretmanagerV1::UserManaged]
         attr_accessor :user_managed
@@ -1182,7 +1182,7 @@ module Google
       end
       
       # A replication policy that replicates the Secret payload into the locations
-      # specified in Secret.replication.user_managed.replicas
+      # specified in Replication.UserManaged.replicas
       class UserManaged
         include Google::Apis::Core::Hashable
       
