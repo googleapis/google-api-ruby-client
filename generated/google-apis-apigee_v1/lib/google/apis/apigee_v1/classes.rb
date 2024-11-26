@@ -4382,6 +4382,11 @@ module Google
         # @return [String]
         attr_accessor :arc_config_location
       
+        # Configuration for resolving the client ip.
+        # Corresponds to the JSON property `clientIpResolutionConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfig]
+        attr_accessor :client_ip_resolution_config
+      
         # Time that the environment configuration was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -4506,6 +4511,7 @@ module Google
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
           @arc_config_location = args[:arc_config_location] if args.key?(:arc_config_location)
+          @client_ip_resolution_config = args[:client_ip_resolution_config] if args.key?(:client_ip_resolution_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_collectors = args[:data_collectors] if args.key?(:data_collectors)
           @debug_mask = args[:debug_mask] if args.key?(:debug_mask)
@@ -4527,6 +4533,50 @@ module Google
           @targets = args[:targets] if args.key?(:targets)
           @trace_config = args[:trace_config] if args.key?(:trace_config)
           @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Configuration for resolving the client ip.
+      class GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Resolves the client ip based on a custom header.
+        # Corresponds to the JSON property `headerIndexAlgorithm`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfigHeaderIndexAlgorithm]
+        attr_accessor :header_index_algorithm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_index_algorithm = args[:header_index_algorithm] if args.key?(:header_index_algorithm)
+        end
+      end
+      
+      # Resolves the client ip based on a custom header.
+      class GoogleCloudApigeeV1EnvironmentConfigClientIpResolutionConfigHeaderIndexAlgorithm
+        include Google::Apis::Core::Hashable
+      
+        # The index of the ip in the header. (By default, value is 0 if missing)
+        # Corresponds to the JSON property `ipHeaderIndex`
+        # @return [Fixnum]
+        attr_accessor :ip_header_index
+      
+        # The name of the header to extract the client ip from.
+        # Corresponds to the JSON property `ipHeaderName`
+        # @return [String]
+        attr_accessor :ip_header_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_header_index = args[:ip_header_index] if args.key?(:ip_header_index)
+          @ip_header_name = args[:ip_header_name] if args.key?(:ip_header_name)
         end
       end
       
