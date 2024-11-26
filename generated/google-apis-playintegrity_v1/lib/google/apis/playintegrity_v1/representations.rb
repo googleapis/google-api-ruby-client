@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeviceIntegrity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -174,9 +180,18 @@ module Google
         end
       end
       
+      class DeviceAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sdk_version, as: 'sdkVersion'
+        end
+      end
+      
       class DeviceIntegrity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_attributes, as: 'deviceAttributes', class: Google::Apis::PlayintegrityV1::DeviceAttributes, decorator: Google::Apis::PlayintegrityV1::DeviceAttributes::Representation
+      
           property :device_recall, as: 'deviceRecall', class: Google::Apis::PlayintegrityV1::DeviceRecall, decorator: Google::Apis::PlayintegrityV1::DeviceRecall::Representation
       
           collection :device_recognition_verdict, as: 'deviceRecognitionVerdict'
