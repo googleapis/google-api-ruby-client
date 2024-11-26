@@ -837,6 +837,26 @@ module Google
         end
       end
       
+      # Options for exporting data in CSV format. For now, we only support a query to
+      # get the data that needs to be exported.
+      class CsvExportOptions
+        include Google::Apis::Core::Hashable
+      
+        # Required. The select_query used to extract the data.
+        # Corresponds to the JSON property `selectQuery`
+        # @return [String]
+        attr_accessor :select_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @select_query = args[:select_query] if args.key?(:select_query)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -901,6 +921,59 @@ module Google
         end
       end
       
+      # Export cluster request.
+      class ExportClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Options for exporting data in CSV format. For now, we only support a query to
+        # get the data that needs to be exported.
+        # Corresponds to the JSON property `csvExportOptions`
+        # @return [Google::Apis::AlloydbV1::CsvExportOptions]
+        attr_accessor :csv_export_options
+      
+        # Required. Name of the database where the query will be executed. Note - Value
+        # provided should be the same as expected from `SELECT current_database();` and
+        # NOT as a resource reference.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Destination for Export. Export will be done to cloud storage.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::AlloydbV1::GcsDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csv_export_options = args[:csv_export_options] if args.key?(:csv_export_options)
+          @database = args[:database] if args.key?(:database)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # Response of export cluster rpc.
+      class ExportClusterResponse
+        include Google::Apis::Core::Hashable
+      
+        # Destination for Export. Export will be done to cloud storage.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::AlloydbV1::GcsDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
       # Message for triggering failover on an Instance
       class FailoverInstanceRequest
         include Google::Apis::Core::Hashable
@@ -935,6 +1008,27 @@ module Google
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Destination for Export. Export will be done to cloud storage.
+      class GcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The path to the file in Google Cloud Storage where the export will
+        # be stored. The URI is in the form `gs://bucketName/fileName`. If the file
+        # already exists, the request succeeds, but the operation fails.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
