@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EmptyFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Filter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -669,10 +675,18 @@ module Google
         end
       end
       
+      class EmptyFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Filter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :between_filter, as: 'betweenFilter', class: Google::Apis::AnalyticsdataV1beta::BetweenFilter, decorator: Google::Apis::AnalyticsdataV1beta::BetweenFilter::Representation
+      
+          property :empty_filter, as: 'emptyFilter', class: Google::Apis::AnalyticsdataV1beta::EmptyFilter, decorator: Google::Apis::AnalyticsdataV1beta::EmptyFilter::Representation
       
           property :field_name, as: 'fieldName'
           property :in_list_filter, as: 'inListFilter', class: Google::Apis::AnalyticsdataV1beta::InListFilter, decorator: Google::Apis::AnalyticsdataV1beta::InListFilter::Representation
