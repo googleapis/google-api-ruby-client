@@ -856,6 +856,14 @@ module Google
         # @return [Google::Apis::AccesscontextmanagerV1::EgressTo]
         attr_accessor :egress_to
       
+        # Optional. Human-readable title for the egress rule. The title must be unique
+        # within the perimeter and can not exceed 100 characters. Within the access
+        # policy, the combined length of all rule titles must not exceed 240,000
+        # characters.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
         def initialize(**args)
            update!(**args)
         end
@@ -864,6 +872,7 @@ module Google
         def update!(**args)
           @egress_from = args[:egress_from] if args.key?(:egress_from)
           @egress_to = args[:egress_to] if args.key?(:egress_to)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -1218,6 +1227,14 @@ module Google
         # @return [Google::Apis::AccesscontextmanagerV1::IngressTo]
         attr_accessor :ingress_to
       
+        # Optional. Human-readable title for the ingress rule. The title must be unique
+        # within the perimeter and can not exceed 100 characters. Within the access
+        # policy, the combined length of all rule titles must not exceed 240,000
+        # characters.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1226,6 +1243,7 @@ module Google
         def update!(**args)
           @ingress_from = args[:ingress_from] if args.key?(:ingress_from)
           @ingress_to = args[:ingress_to] if args.key?(:ingress_to)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -1858,9 +1876,9 @@ module Google
         attr_accessor :description
       
         # Optional. An opaque identifier for the current version of the `
-        # ServicePerimeter`. Clients should not expect this to be in any specific format.
-        # If etag is not provided, the operation will be performed as if a valid etag
-        # is provided.
+        # ServicePerimeter`. This identifier does not follow any specific format. If an
+        # etag is not provided, the operation will be performed as if a valid etag is
+        # provided.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
