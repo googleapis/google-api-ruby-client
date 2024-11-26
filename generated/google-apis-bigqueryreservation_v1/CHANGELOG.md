@@ -1,5 +1,9 @@
 # Release history for google-apis-bigqueryreservation_v1
 
+### v0.38.0 (2024-11-24)
+
+* Regenerated from discovery document revision 20241110
+
 ### v0.37.0 (2024-11-03)
 
 * Regenerated from discovery document revision 20241023
