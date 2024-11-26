@@ -16,13 +16,13 @@ module Google
   module Apis
     module AddressvalidationV1
       # Version of the google-apis-addressvalidation_v1 gem
-      GEM_VERSION = "0.4.0"
+      GEM_VERSION = "0.5.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.15.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20241110"
+      REVISION = "20241120"
     end
   end
 end
