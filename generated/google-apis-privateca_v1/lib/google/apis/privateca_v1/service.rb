@@ -1175,7 +1175,7 @@ module Google
         # @param [String] certificate_id
         #   Optional. It must be unique within a location and match the regular expression
         #   `[a-zA-Z0-9_-]`1,63``. This field is required when using a
-        #   CertificateAuthority in the Enterprise CertificateAuthority.Tier, but is
+        #   CertificateAuthority in the Enterprise CertificateAuthority.tier, but is
         #   optional and its value is ignored otherwise.
         # @param [String] issuing_certificate_authority_id
         #   Optional. The resource ID of the CertificateAuthority that should issue the
