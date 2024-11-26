@@ -9391,6 +9391,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Optional. If set, overrides the default managed table type configured in the
+        # dataset.
+        # Corresponds to the JSON property `managedTableType`
+        # @return [String]
+        attr_accessor :managed_table_type
+      
         # Definition and configuration of a materialized view.
         # Corresponds to the JSON property `materializedView`
         # @return [Google::Apis::BigqueryV2::MaterializedViewDefinition]
@@ -9619,6 +9625,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location = args[:location] if args.key?(:location)
+          @managed_table_type = args[:managed_table_type] if args.key?(:managed_table_type)
           @materialized_view = args[:materialized_view] if args.key?(:materialized_view)
           @materialized_view_status = args[:materialized_view_status] if args.key?(:materialized_view_status)
           @max_staleness = args[:max_staleness] if args.key?(:max_staleness)
