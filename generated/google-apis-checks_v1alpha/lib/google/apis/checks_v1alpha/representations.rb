@@ -88,6 +88,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChecksRepoScanV1alphaCliAnalysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksRepoScanV1alphaCodeAttribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksRepoScanV1alphaCodeScan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksRepoScanV1alphaGenerateScanRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksRepoScanV1alphaListRepoScansResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksRepoScanV1alphaPullRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksRepoScanV1alphaRepoScan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksRepoScanV1alphaScmMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksRepoScanV1alphaSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChecksRepoScanV1alphaSourceCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChecksReportV1alphaAnalyzeUploadRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -427,6 +493,117 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class GoogleChecksRepoScanV1alphaCliAnalysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :code_scans, as: 'codeScans', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCodeScan, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCodeScan::Representation
+      
+          collection :sources, as: 'sources', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaSource, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaSource::Representation
+      
+        end
+      end
+      
+      class GoogleChecksRepoScanV1alphaCodeAttribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_excerpt, as: 'codeExcerpt'
+          property :line_number, as: 'lineNumber'
+          property :path, as: 'path'
+          property :start_line_number, as: 'startLineNumber'
+        end
+      end
+      
+      class GoogleChecksRepoScanV1alphaCodeScan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_type_classifications, as: 'dataTypeClassifications', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification::Representation
+      
+          property :source_code, as: 'sourceCode', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaSourceCode, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaSourceCode::Representation
+      
+        end
+      end
+      
+      class GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_type, as: 'dataType'
+          property :line_number, as: 'lineNumber'
+        end
+      end
+      
+      class GoogleChecksRepoScanV1alphaGenerateScanRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cli_analysis, as: 'cliAnalysis', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCliAnalysis, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCliAnalysis::Representation
+      
+          property :cli_version, as: 'cliVersion'
+          property :local_scan_path, as: 'localScanPath'
+          property :scm_metadata, as: 'scmMetadata', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaScmMetadata, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaScmMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleChecksRepoScanV1alphaListRepoScansResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :repo_scans, as: 'repoScans', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaRepoScan, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaRepoScan::Representation
+      
+        end
+      end
+      
+      class GoogleChecksRepoScanV1alphaPullRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_branch, as: 'baseBranch'
+          property :pr_number, as: 'prNumber'
+        end
+      end
+      
+      class GoogleChecksRepoScanV1alphaRepoScan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cli_version, as: 'cliVersion'
+          property :local_scan_path, as: 'localScanPath'
+          property :name, as: 'name'
+          property :results_uri, as: 'resultsUri'
+          property :scm_metadata, as: 'scmMetadata', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaScmMetadata, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaScmMetadata::Representation
+      
+          collection :sources, as: 'sources', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaSource, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaSource::Representation
+      
+        end
+      end
+      
+      class GoogleChecksRepoScanV1alphaScmMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch, as: 'branch'
+          property :pull_request, as: 'pullRequest', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaPullRequest, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaPullRequest::Representation
+      
+          property :remote_uri, as: 'remoteUri'
+          property :revision_id, as: 'revisionId'
+        end
+      end
+      
+      class GoogleChecksRepoScanV1alphaSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_attribution, as: 'codeAttribution', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCodeAttribution, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCodeAttribution::Representation
+      
+          property :data_type, as: 'dataType'
+        end
+      end
+      
+      class GoogleChecksRepoScanV1alphaSourceCode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :end_line, as: 'endLine'
+          property :path, as: 'path'
+          property :start_line, as: 'startLine'
         end
       end
       

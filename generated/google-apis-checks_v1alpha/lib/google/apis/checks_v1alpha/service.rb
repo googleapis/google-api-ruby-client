@@ -427,6 +427,119 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uploads the results of local Code Compliance analysis and generates a scan of
+        # privacy issues. Returns a google.longrunning.Operation containing analysis and
+        # findings.
+        # @param [String] parent
+        #   Required. Resource name of the repo. Example: `accounts/123/repos/456`
+        # @param [Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaGenerateScanRequest] google_checks_repo_scan_v1alpha_generate_scan_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChecksV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChecksV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_account_repo_scan(parent, google_checks_repo_scan_v1alpha_generate_scan_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/scans:generate', options)
+          command.request_representation = Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaGenerateScanRequest::Representation
+          command.request_object = google_checks_repo_scan_v1alpha_generate_scan_request_object
+          command.response_representation = Google::Apis::ChecksV1alpha::Operation::Representation
+          command.response_class = Google::Apis::ChecksV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a repo scan. By default, only the name and results_uri fields are
+        # returned. You can include other fields by listing them in the `fields` URL
+        # query parameter. For example, `?fields=name,sources` will return the name and
+        # sources fields.
+        # @param [String] name
+        #   Required. Resource name of the repo scan. Example: `accounts/123/repos/456/
+        #   scans/789`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaRepoScan] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaRepoScan]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_repo_scan(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaRepoScan::Representation
+          command.response_class = Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaRepoScan
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists repo scans for the specified repo.
+        # @param [String] parent
+        #   Required. Resource name of the repo. Example: `accounts/123/repos/456`
+        # @param [String] filter
+        #   Optional. An [AIP-160](https://google.aip.dev/160) filter string to filter
+        #   repo scans. Example: `scmMetadata.branch = main`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of repo scans to return. If unspecified, at most
+        #   10 repo scans will be returned. The maximum value is 50; values above 50 will
+        #   be coerced to 50.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous `ListRepoScans` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListRepoScans` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaListRepoScansResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaListRepoScansResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_repo_scans(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/scans', options)
+          command.response_representation = Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaListRepoScansResponse::Representation
+          command.response_class = Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaListRepoScansResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Analyze a piece of content with the provided set of policies.
         # @param [Google::Apis::ChecksV1alpha::GoogleChecksAisafetyV1alphaClassifyContentRequest] google_checks_aisafety_v1alpha_classify_content_request_object
         # @param [String] fields

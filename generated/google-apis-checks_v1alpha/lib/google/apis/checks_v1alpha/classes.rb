@@ -281,6 +281,358 @@ module Google
         end
       end
       
+      # The results of a Code Compliance CLI analysis.
+      class GoogleChecksRepoScanV1alphaCliAnalysis
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Requested code scans resulting from preliminary CLI analysis.
+        # Corresponds to the JSON property `codeScans`
+        # @return [Array<Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCodeScan>]
+        attr_accessor :code_scans
+      
+        # Optional. Data sources detected in the scan.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaSource>]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code_scans = args[:code_scans] if args.key?(:code_scans)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # Source code attribution.
+      class GoogleChecksRepoScanV1alphaCodeAttribution
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Code excerpt where the source was detected along with surrounding
+        # code.
+        # Corresponds to the JSON property `codeExcerpt`
+        # @return [String]
+        attr_accessor :code_excerpt
+      
+        # Required. Line number (1-based).
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        # Required. Path of the file.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Optional. Start line number of the code excerpt (1-based).
+        # Corresponds to the JSON property `startLineNumber`
+        # @return [Fixnum]
+        attr_accessor :start_line_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code_excerpt = args[:code_excerpt] if args.key?(:code_excerpt)
+          @line_number = args[:line_number] if args.key?(:line_number)
+          @path = args[:path] if args.key?(:path)
+          @start_line_number = args[:start_line_number] if args.key?(:start_line_number)
+        end
+      end
+      
+      # A requested analysis of source code. Contains the source code and processing
+      # state.
+      class GoogleChecksRepoScanV1alphaCodeScan
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Data type classification requests.
+        # Corresponds to the JSON property `dataTypeClassifications`
+        # @return [Array<Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification>]
+        attr_accessor :data_type_classifications
+      
+        # Contains source code from a repo.
+        # Corresponds to the JSON property `sourceCode`
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaSourceCode]
+        attr_accessor :source_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_type_classifications = args[:data_type_classifications] if args.key?(:data_type_classifications)
+          @source_code = args[:source_code] if args.key?(:source_code)
+        end
+      end
+      
+      # A request to classify data types.
+      class GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification
+        include Google::Apis::Core::Hashable
+      
+        # Required. Candidate data type.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Required. Line number (1-based).
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @line_number = args[:line_number] if args.key?(:line_number)
+        end
+      end
+      
+      # The request message for RepoScanService.GenerateScan.
+      class GoogleChecksRepoScanV1alphaGenerateScanRequest
+        include Google::Apis::Core::Hashable
+      
+        # The results of a Code Compliance CLI analysis.
+        # Corresponds to the JSON property `cliAnalysis`
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCliAnalysis]
+        attr_accessor :cli_analysis
+      
+        # Required. CLI version.
+        # Corresponds to the JSON property `cliVersion`
+        # @return [String]
+        attr_accessor :cli_version
+      
+        # Required. Local scan path.
+        # Corresponds to the JSON property `localScanPath`
+        # @return [String]
+        attr_accessor :local_scan_path
+      
+        # SCM metadata.
+        # Corresponds to the JSON property `scmMetadata`
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaScmMetadata]
+        attr_accessor :scm_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cli_analysis = args[:cli_analysis] if args.key?(:cli_analysis)
+          @cli_version = args[:cli_version] if args.key?(:cli_version)
+          @local_scan_path = args[:local_scan_path] if args.key?(:local_scan_path)
+          @scm_metadata = args[:scm_metadata] if args.key?(:scm_metadata)
+        end
+      end
+      
+      # The response message for RepoScanService.ListRepoScans.
+      class GoogleChecksRepoScanV1alphaListRepoScansResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The repo scans for the specified app.
+        # Corresponds to the JSON property `repoScans`
+        # @return [Array<Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaRepoScan>]
+        attr_accessor :repo_scans
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @repo_scans = args[:repo_scans] if args.key?(:repo_scans)
+        end
+      end
+      
+      # Pull request info.
+      class GoogleChecksRepoScanV1alphaPullRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. For PR analysis, we compare against the most recent scan of the base
+        # branch to highlight new issues.
+        # Corresponds to the JSON property `baseBranch`
+        # @return [String]
+        attr_accessor :base_branch
+      
+        # Required. This can be supplied by the user or parsed automatically from
+        # predefined CI environment variables.
+        # Corresponds to the JSON property `prNumber`
+        # @return [String]
+        attr_accessor :pr_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_branch = args[:base_branch] if args.key?(:base_branch)
+          @pr_number = args[:pr_number] if args.key?(:pr_number)
+        end
+      end
+      
+      # Repo scan.
+      class GoogleChecksRepoScanV1alphaRepoScan
+        include Google::Apis::Core::Hashable
+      
+        # CLI version.
+        # Corresponds to the JSON property `cliVersion`
+        # @return [String]
+        attr_accessor :cli_version
+      
+        # Local scan path.
+        # Corresponds to the JSON property `localScanPath`
+        # @return [String]
+        attr_accessor :local_scan_path
+      
+        # Identifier. Resource name of the scan.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A URL to view results.
+        # Corresponds to the JSON property `resultsUri`
+        # @return [String]
+        attr_accessor :results_uri
+      
+        # SCM metadata.
+        # Corresponds to the JSON property `scmMetadata`
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaScmMetadata]
+        attr_accessor :scm_metadata
+      
+        # Data sources detected.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaSource>]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cli_version = args[:cli_version] if args.key?(:cli_version)
+          @local_scan_path = args[:local_scan_path] if args.key?(:local_scan_path)
+          @name = args[:name] if args.key?(:name)
+          @results_uri = args[:results_uri] if args.key?(:results_uri)
+          @scm_metadata = args[:scm_metadata] if args.key?(:scm_metadata)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # SCM metadata.
+      class GoogleChecksRepoScanV1alphaScmMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Required. Branch name.
+        # Corresponds to the JSON property `branch`
+        # @return [String]
+        attr_accessor :branch
+      
+        # Pull request info.
+        # Corresponds to the JSON property `pullRequest`
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaPullRequest]
+        attr_accessor :pull_request
+      
+        # Required. Git remote URL.
+        # Corresponds to the JSON property `remoteUri`
+        # @return [String]
+        attr_accessor :remote_uri
+      
+        # Required. Revision ID, e.g. Git commit hash.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch = args[:branch] if args.key?(:branch)
+          @pull_request = args[:pull_request] if args.key?(:pull_request)
+          @remote_uri = args[:remote_uri] if args.key?(:remote_uri)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+        end
+      end
+      
+      # Represents a data source finding.
+      class GoogleChecksRepoScanV1alphaSource
+        include Google::Apis::Core::Hashable
+      
+        # Source code attribution.
+        # Corresponds to the JSON property `codeAttribution`
+        # @return [Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCodeAttribution]
+        attr_accessor :code_attribution
+      
+        # Required. Data type.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code_attribution = args[:code_attribution] if args.key?(:code_attribution)
+          @data_type = args[:data_type] if args.key?(:data_type)
+        end
+      end
+      
+      # Contains source code from a repo.
+      class GoogleChecksRepoScanV1alphaSourceCode
+        include Google::Apis::Core::Hashable
+      
+        # Required. Source code.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Required. End line number (1-based).
+        # Corresponds to the JSON property `endLine`
+        # @return [Fixnum]
+        attr_accessor :end_line
+      
+        # Required. Path of the file.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Required. Start line number (1-based).
+        # Corresponds to the JSON property `startLine`
+        # @return [Fixnum]
+        attr_accessor :start_line
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @end_line = args[:end_line] if args.key?(:end_line)
+          @path = args[:path] if args.key?(:path)
+          @start_line = args[:start_line] if args.key?(:start_line)
+        end
+      end
+      
       # The request message for ReportService.AnalyzeUpload.
       class GoogleChecksReportV1alphaAnalyzeUploadRequest
         include Google::Apis::Core::Hashable
