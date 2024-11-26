@@ -3562,9 +3562,9 @@ module Google
         attr_accessor :description
       
         # Optional. An opaque identifier for the current version of the `
-        # ServicePerimeter`. Clients should not expect this to be in any specific format.
-        # If etag is not provided, the operation will be performed as if a valid etag
-        # is provided.
+        # ServicePerimeter`. This identifier does not follow any specific format. If an
+        # etag is not provided, the operation will be performed as if a valid etag is
+        # provided.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
