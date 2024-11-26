@@ -3853,6 +3853,11 @@ module Google
         # @return [String]
         attr_accessor :cloud_sql_id
       
+        # Optional. The name of the specific database within the host.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
         # Required. The IP or hostname of the source PostgreSQL database.
         # Corresponds to the JSON property `host`
         # @return [String]
@@ -3916,6 +3921,7 @@ module Google
         def update!(**args)
           @alloydb_cluster_id = args[:alloydb_cluster_id] if args.key?(:alloydb_cluster_id)
           @cloud_sql_id = args[:cloud_sql_id] if args.key?(:cloud_sql_id)
+          @database = args[:database] if args.key?(:database)
           @host = args[:host] if args.key?(:host)
           @network_architecture = args[:network_architecture] if args.key?(:network_architecture)
           @password = args[:password] if args.key?(:password)
