@@ -238,6 +238,60 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatabaseDeploymentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseDeploymentDetailsAggregatedStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseDeploymentTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseDetailsParentDatabaseDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseInstanceNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseObjects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportRowErrorArchiveErrorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportRowErrorCsvErrorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -574,6 +634,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MySqlPlugin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MySqlProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MySqlSchemaDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MySqlStorageEngineDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MySqlVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MysqlDatabaseDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkAdapterDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -665,6 +761,36 @@ module Google
       end
       
       class PlatformDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgreSqlDatabaseDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgreSqlExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgreSqlProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgreSqlSchemaDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgreSqlSetting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -874,6 +1000,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerDatabaseDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerFeature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerSchemaDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerServerFlag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerTraceFlag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1054,6 +1210,10 @@ module Google
           collection :assigned_groups, as: 'assignedGroups'
           hash :attributes, as: 'attributes'
           property :create_time, as: 'createTime'
+          property :database_deployment_details, as: 'databaseDeploymentDetails', class: Google::Apis::MigrationcenterV1::DatabaseDeploymentDetails, decorator: Google::Apis::MigrationcenterV1::DatabaseDeploymentDetails::Representation
+      
+          property :database_details, as: 'databaseDetails', class: Google::Apis::MigrationcenterV1::DatabaseDetails, decorator: Google::Apis::MigrationcenterV1::DatabaseDetails::Representation
+      
           property :insight_list, as: 'insightList', class: Google::Apis::MigrationcenterV1::InsightList, decorator: Google::Apis::MigrationcenterV1::InsightList::Representation
       
           hash :labels, as: 'labels'
@@ -1063,6 +1223,7 @@ module Google
           property :performance_data, as: 'performanceData', class: Google::Apis::MigrationcenterV1::AssetPerformanceData, decorator: Google::Apis::MigrationcenterV1::AssetPerformanceData::Representation
       
           collection :sources, as: 'sources'
+          property :title, as: 'title'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1072,6 +1233,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes'
           property :collection_type, as: 'collectionType'
+          property :database_deployment_details, as: 'databaseDeploymentDetails', class: Google::Apis::MigrationcenterV1::DatabaseDeploymentDetails, decorator: Google::Apis::MigrationcenterV1::DatabaseDeploymentDetails::Representation
+      
+          property :database_details, as: 'databaseDetails', class: Google::Apis::MigrationcenterV1::DatabaseDetails, decorator: Google::Apis::MigrationcenterV1::DatabaseDetails::Representation
+      
           hash :labels, as: 'labels'
           property :machine_details, as: 'machineDetails', class: Google::Apis::MigrationcenterV1::MachineDetails, decorator: Google::Apis::MigrationcenterV1::MachineDetails::Representation
       
@@ -1234,6 +1399,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :iops, as: 'iops', class: Google::Apis::MigrationcenterV1::DailyResourceUsageAggregationStats, decorator: Google::Apis::MigrationcenterV1::DailyResourceUsageAggregationStats::Representation
       
+          property :read_iops, as: 'readIops', class: Google::Apis::MigrationcenterV1::DailyResourceUsageAggregationStats, decorator: Google::Apis::MigrationcenterV1::DailyResourceUsageAggregationStats::Representation
+      
+          property :write_iops, as: 'writeIops', class: Google::Apis::MigrationcenterV1::DailyResourceUsageAggregationStats, decorator: Google::Apis::MigrationcenterV1::DailyResourceUsageAggregationStats::Representation
+      
         end
       end
       
@@ -1262,6 +1431,112 @@ module Google
           property :median, as: 'median'
           property :nintey_fifth_percentile, as: 'ninteyFifthPercentile'
           property :peak, as: 'peak'
+        end
+      end
+      
+      class DatabaseDeploymentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregated_stats, as: 'aggregatedStats', class: Google::Apis::MigrationcenterV1::DatabaseDeploymentDetailsAggregatedStats, decorator: Google::Apis::MigrationcenterV1::DatabaseDeploymentDetailsAggregatedStats::Representation
+      
+          property :edition, as: 'edition'
+          property :generated_id, as: 'generatedId'
+          property :manual_unique_id, as: 'manualUniqueId'
+          property :mysql, as: 'mysql', class: Google::Apis::MigrationcenterV1::MysqlDatabaseDeployment, decorator: Google::Apis::MigrationcenterV1::MysqlDatabaseDeployment::Representation
+      
+          property :postgresql, as: 'postgresql', class: Google::Apis::MigrationcenterV1::PostgreSqlDatabaseDeployment, decorator: Google::Apis::MigrationcenterV1::PostgreSqlDatabaseDeployment::Representation
+      
+          property :sql_server, as: 'sqlServer', class: Google::Apis::MigrationcenterV1::SqlServerDatabaseDeployment, decorator: Google::Apis::MigrationcenterV1::SqlServerDatabaseDeployment::Representation
+      
+          property :topology, as: 'topology', class: Google::Apis::MigrationcenterV1::DatabaseDeploymentTopology, decorator: Google::Apis::MigrationcenterV1::DatabaseDeploymentTopology::Representation
+      
+          property :version, as: 'version'
+        end
+      end
+      
+      class DatabaseDeploymentDetailsAggregatedStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_count, as: 'databaseCount'
+        end
+      end
+      
+      class DatabaseDeploymentTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :core_count, as: 'coreCount'
+          property :core_limit, as: 'coreLimit'
+          property :disk_allocated_bytes, :numeric_string => true, as: 'diskAllocatedBytes'
+          property :disk_used_bytes, :numeric_string => true, as: 'diskUsedBytes'
+          collection :instances, as: 'instances', class: Google::Apis::MigrationcenterV1::DatabaseInstance, decorator: Google::Apis::MigrationcenterV1::DatabaseInstance::Representation
+      
+          property :memory_bytes, :numeric_string => true, as: 'memoryBytes'
+          property :memory_limit_bytes, :numeric_string => true, as: 'memoryLimitBytes'
+          property :physical_core_count, as: 'physicalCoreCount'
+          property :physical_core_limit, as: 'physicalCoreLimit'
+        end
+      end
+      
+      class DatabaseDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_storage_bytes, :numeric_string => true, as: 'allocatedStorageBytes'
+          property :database_name, as: 'databaseName'
+          property :parent_database_deployment, as: 'parentDatabaseDeployment', class: Google::Apis::MigrationcenterV1::DatabaseDetailsParentDatabaseDeployment, decorator: Google::Apis::MigrationcenterV1::DatabaseDetailsParentDatabaseDeployment::Representation
+      
+          collection :schemas, as: 'schemas', class: Google::Apis::MigrationcenterV1::DatabaseSchema, decorator: Google::Apis::MigrationcenterV1::DatabaseSchema::Representation
+      
+        end
+      end
+      
+      class DatabaseDetailsParentDatabaseDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generated_id, as: 'generatedId'
+          property :manual_unique_id, as: 'manualUniqueId'
+        end
+      end
+      
+      class DatabaseInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_name, as: 'instanceName'
+          property :network, as: 'network', class: Google::Apis::MigrationcenterV1::DatabaseInstanceNetwork, decorator: Google::Apis::MigrationcenterV1::DatabaseInstanceNetwork::Representation
+      
+          property :role, as: 'role'
+        end
+      end
+      
+      class DatabaseInstanceNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :host_names, as: 'hostNames'
+          collection :ip_addresses, as: 'ipAddresses'
+          property :primary_mac_address, as: 'primaryMacAddress'
+        end
+      end
+      
+      class DatabaseObjects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :count, :numeric_string => true, as: 'count'
+        end
+      end
+      
+      class DatabaseSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mysql, as: 'mysql', class: Google::Apis::MigrationcenterV1::MySqlSchemaDetails, decorator: Google::Apis::MigrationcenterV1::MySqlSchemaDetails::Representation
+      
+          collection :objects, as: 'objects', class: Google::Apis::MigrationcenterV1::DatabaseObjects, decorator: Google::Apis::MigrationcenterV1::DatabaseObjects::Representation
+      
+          property :postgresql, as: 'postgresql', class: Google::Apis::MigrationcenterV1::PostgreSqlSchemaDetails, decorator: Google::Apis::MigrationcenterV1::PostgreSqlSchemaDetails::Representation
+      
+          property :schema_name, as: 'schemaName'
+          property :sql_server, as: 'sqlServer', class: Google::Apis::MigrationcenterV1::SqlServerSchemaDetails, decorator: Google::Apis::MigrationcenterV1::SqlServerSchemaDetails::Representation
+      
+          property :tables_size_bytes, :numeric_string => true, as: 'tablesSizeBytes'
         end
       end
       
@@ -1346,6 +1621,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :average_iops, as: 'averageIops'
+          property :average_read_iops, as: 'averageReadIops'
+          property :average_write_iops, as: 'averageWriteIops'
         end
       end
       
@@ -1585,6 +1862,9 @@ module Google
       class ImportRowError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_error, as: 'archiveError', class: Google::Apis::MigrationcenterV1::ImportRowErrorArchiveErrorDetails, decorator: Google::Apis::MigrationcenterV1::ImportRowErrorArchiveErrorDetails::Representation
+      
+          property :asset_title, as: 'assetTitle'
           property :csv_error, as: 'csvError', class: Google::Apis::MigrationcenterV1::ImportRowErrorCsvErrorDetails, decorator: Google::Apis::MigrationcenterV1::ImportRowErrorCsvErrorDetails::Representation
       
           collection :errors, as: 'errors', class: Google::Apis::MigrationcenterV1::ImportError, decorator: Google::Apis::MigrationcenterV1::ImportError::Representation
@@ -1594,6 +1874,15 @@ module Google
           property :vm_uuid, as: 'vmUuid'
           property :xlsx_error, as: 'xlsxError', class: Google::Apis::MigrationcenterV1::ImportRowErrorXlsxErrorDetails, decorator: Google::Apis::MigrationcenterV1::ImportRowErrorXlsxErrorDetails::Representation
       
+        end
+      end
+      
+      class ImportRowErrorArchiveErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv_error, as: 'csvError', class: Google::Apis::MigrationcenterV1::ImportRowErrorCsvErrorDetails, decorator: Google::Apis::MigrationcenterV1::ImportRowErrorCsvErrorDetails::Representation
+      
+          property :file_path, as: 'filePath'
         end
       end
       
@@ -1859,6 +2148,63 @@ module Google
         end
       end
       
+      class MySqlPlugin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :plugin, as: 'plugin'
+          property :version, as: 'version'
+        end
+      end
+      
+      class MySqlProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :numeric_value, :numeric_string => true, as: 'numericValue'
+          property :property, as: 'property'
+        end
+      end
+      
+      class MySqlSchemaDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :storage_engines, as: 'storageEngines', class: Google::Apis::MigrationcenterV1::MySqlStorageEngineDetails, decorator: Google::Apis::MigrationcenterV1::MySqlStorageEngineDetails::Representation
+      
+        end
+      end
+      
+      class MySqlStorageEngineDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encrypted_table_count, as: 'encryptedTableCount'
+          property :engine, as: 'engine'
+          property :table_count, as: 'tableCount'
+        end
+      end
+      
+      class MySqlVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :value, as: 'value'
+          property :variable, as: 'variable'
+        end
+      end
+      
+      class MysqlDatabaseDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :plugins, as: 'plugins', class: Google::Apis::MigrationcenterV1::MySqlPlugin, decorator: Google::Apis::MigrationcenterV1::MySqlPlugin::Representation
+      
+          collection :properties, as: 'properties', class: Google::Apis::MigrationcenterV1::MySqlProperty, decorator: Google::Apis::MigrationcenterV1::MySqlProperty::Representation
+      
+          property :resource_groups_count, as: 'resourceGroupsCount'
+          collection :variables, as: 'variables', class: Google::Apis::MigrationcenterV1::MySqlVariable, decorator: Google::Apis::MigrationcenterV1::MySqlVariable::Representation
+      
+        end
+      end
+      
       class NetworkAdapterDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2021,6 +2367,55 @@ module Google
       
           property :vmware_details, as: 'vmwareDetails', class: Google::Apis::MigrationcenterV1::VmwarePlatformDetails, decorator: Google::Apis::MigrationcenterV1::VmwarePlatformDetails::Representation
       
+        end
+      end
+      
+      class PostgreSqlDatabaseDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :properties, as: 'properties', class: Google::Apis::MigrationcenterV1::PostgreSqlProperty, decorator: Google::Apis::MigrationcenterV1::PostgreSqlProperty::Representation
+      
+          collection :settings, as: 'settings', class: Google::Apis::MigrationcenterV1::PostgreSqlSetting, decorator: Google::Apis::MigrationcenterV1::PostgreSqlSetting::Representation
+      
+        end
+      end
+      
+      class PostgreSqlExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :extension, as: 'extension'
+          property :version, as: 'version'
+        end
+      end
+      
+      class PostgreSqlProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :numeric_value, :numeric_string => true, as: 'numericValue'
+          property :property, as: 'property'
+        end
+      end
+      
+      class PostgreSqlSchemaDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :foreign_tables_count, as: 'foreignTablesCount'
+          collection :postgresql_extensions, as: 'postgresqlExtensions', class: Google::Apis::MigrationcenterV1::PostgreSqlExtension, decorator: Google::Apis::MigrationcenterV1::PostgreSqlExtension::Representation
+      
+        end
+      end
+      
+      class PostgreSqlSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :real_value, as: 'realValue'
+          property :setting, as: 'setting'
+          property :source, as: 'source'
+          property :string_value, as: 'stringValue'
+          property :unit, as: 'unit'
         end
       end
       
@@ -2382,6 +2777,50 @@ module Google
           property :state, as: 'state'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SqlServerDatabaseDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :features, as: 'features', class: Google::Apis::MigrationcenterV1::SqlServerFeature, decorator: Google::Apis::MigrationcenterV1::SqlServerFeature::Representation
+      
+          collection :server_flags, as: 'serverFlags', class: Google::Apis::MigrationcenterV1::SqlServerServerFlag, decorator: Google::Apis::MigrationcenterV1::SqlServerServerFlag::Representation
+      
+          collection :trace_flags, as: 'traceFlags', class: Google::Apis::MigrationcenterV1::SqlServerTraceFlag, decorator: Google::Apis::MigrationcenterV1::SqlServerTraceFlag::Representation
+      
+        end
+      end
+      
+      class SqlServerFeature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :feature_name, as: 'featureName'
+        end
+      end
+      
+      class SqlServerSchemaDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clr_object_count, as: 'clrObjectCount'
+        end
+      end
+      
+      class SqlServerServerFlag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :server_flag_name, as: 'serverFlagName'
+          property :value, as: 'value'
+          property :value_in_use, as: 'valueInUse'
+        end
+      end
+      
+      class SqlServerTraceFlag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
+          property :trace_flag_name, as: 'traceFlagName'
         end
       end
       
