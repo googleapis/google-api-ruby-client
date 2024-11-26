@@ -3828,6 +3828,7 @@ module Google
           property :price, as: 'price', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
           property :program_label, as: 'programLabel'
+          property :shipping_label, as: 'shippingLabel'
           property :tier_label, as: 'tierLabel'
         end
       end
