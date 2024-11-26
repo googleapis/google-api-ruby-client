@@ -4154,12 +4154,19 @@ module Google
       class VmwareAdminMetalLbConfig
         include Google::Apis::Core::Hashable
       
+        # Whether MetalLB is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       

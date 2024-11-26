@@ -2103,6 +2103,7 @@ module Google
       class VmwareAdminMetalLbConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
