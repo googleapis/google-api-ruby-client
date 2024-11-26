@@ -760,14 +760,13 @@ module Google
         # Output only. Indicates whether this attribute has been used by any products. `
         # True` if at least one Product is using this attribute in Product.attributes.
         # Otherwise, this field is `False`. CatalogAttribute can be pre-loaded by using
-        # CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or
-        # CatalogService.UpdateAttributesConfig APIs. This field is `False` for pre-
-        # loaded CatalogAttributes. Only pre-loaded catalog attributes that are neither
-        # in use by products nor predefined can be deleted. Catalog attributes that are
-        # either in use by products or are predefined attributes cannot be deleted;
-        # however, their configuration properties will reset to default values upon
-        # removal request. After catalog changes, it takes about 10 minutes for this
-        # field to update.
+        # CatalogService.AddCatalogAttribute or CatalogService.UpdateAttributesConfig
+        # APIs. This field is `False` for pre-loaded CatalogAttributes. Only pre-loaded
+        # catalog attributes that are neither in use by products nor predefined can be
+        # deleted. Catalog attributes that are either in use by products or are
+        # predefined attributes cannot be deleted; however, their configuration
+        # properties will reset to default values upon removal request. After catalog
+        # changes, it takes about 10 minutes for this field to update.
         # Corresponds to the JSON property `inUse`
         # @return [Boolean]
         attr_accessor :in_use
@@ -1577,7 +1576,7 @@ module Google
         end
       end
       
-      # Metadata for active A/B testing Experiment.
+      # Metadata for active A/B testing experiment.
       class GoogleCloudRetailV2ExperimentInfo
         include Google::Apis::Core::Hashable
       
@@ -1608,8 +1607,8 @@ module Google
       class GoogleCloudRetailV2ExperimentInfoServingConfigExperiment
         include Google::Apis::Core::Hashable
       
-        # The fully qualified resource name of the serving config Experiment.VariantArm.
-        # serving_config_id responsible for generating the search response. For example:
+        # The fully qualified resource name of the serving config `Experiment.VariantArm.
+        # serving_config_id` responsible for generating the search response. For example:
         # `projects/*/locations/*/catalogs/*/servingConfigs/*`.
         # Corresponds to the JSON property `experimentServingConfig`
         # @return [String]
@@ -2465,8 +2464,8 @@ module Google
       class GoogleCloudRetailV2LocalInventory
         include Google::Apis::Core::Hashable
       
-        # Additional local inventory attributes, for example, store name, promotion tags,
-        # etc. This field needs to pass all below criteria, otherwise an
+        # Optional. Additional local inventory attributes, for example, store name,
+        # promotion tags, etc. This field needs to pass all below criteria, otherwise an
         # INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The
         # key must be a UTF-8 encoded string with a length limit of 32 characters. * The
         # key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or
@@ -2479,7 +2478,20 @@ module Google
         # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2CustomAttribute>]
         attr_accessor :attributes
       
-        # Input only. Supported fulfillment types. Valid fulfillment type values include
+        # Optional. The availability of the Product at this place_id. Default to
+        # Availability.IN_STOCK. For primary products with variants set the availability
+        # of the primary as Availability.OUT_OF_STOCK and set the true availability at
+        # the variant level. This way the primary product will be considered "in stock"
+        # as long as it has at least one variant in stock. For primary products with no
+        # variants set the true availability at the primary level. Corresponding
+        # properties: Google Merchant Center property [availability](https://support.
+        # google.com/merchants/answer/6324448). Schema.org property [Offer.availability](
+        # https://schema.org/availability).
+        # Corresponds to the JSON property `availability`
+        # @return [String]
+        attr_accessor :availability
+      
+        # Optional. Supported fulfillment types. Valid fulfillment type values include
         # commonly used types (such as pickup in store and same day delivery), and
         # custom types. Customers have to map custom types to their display names before
         # rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-
@@ -2491,7 +2503,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :fulfillment_types
       
-        # The place ID for the current set of inventory information.
+        # Required. The place ID for the current set of inventory information.
         # Corresponds to the JSON property `placeId`
         # @return [String]
         attr_accessor :place_id
@@ -2508,6 +2520,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @availability = args[:availability] if args.key?(:availability)
           @fulfillment_types = args[:fulfillment_types] if args.key?(:fulfillment_types)
           @place_id = args[:place_id] if args.key?(:place_id)
           @price_info = args[:price_info] if args.key?(:price_info)
@@ -5491,7 +5504,7 @@ module Google
         # @return [String]
         attr_accessor :corrected_query
       
-        # Metadata related to A/B testing Experiment associated with this response. Only
+        # Metadata related to A/B testing experiment associated with this response. Only
         # exists when an experiment is triggered.
         # Corresponds to the JSON property `experimentInfo`
         # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2ExperimentInfo>]
@@ -6630,12 +6643,11 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
-        # User agent as included in the HTTP header. Required for getting SearchResponse.
-        # sponsored_results. The field must be a UTF-8 encoded string with a length
-        # limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-        # This should not be set when using the client side event reporting with GTM or
-        # JavaScript tag in UserEventService.CollectUserEvent or if direct_user_request
-        # is set.
+        # User agent as included in the HTTP header. The field must be a UTF-8 encoded
+        # string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT
+        # error is returned. This should not be set when using the client side event
+        # reporting with GTM or JavaScript tag in UserEventService.CollectUserEvent or
+        # if direct_user_request is set.
         # Corresponds to the JSON property `userAgent`
         # @return [String]
         attr_accessor :user_agent
