@@ -870,7 +870,8 @@ module Google
         # @return [Array<Google::Apis::MerchantapiReviewsV1beta::ProductChange>]
         attr_accessor :changes
       
-        # The product expiration time.
+        # The product expiration time. This field will not bet set if the notification
+        # is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
         attr_accessor :expiration_time
