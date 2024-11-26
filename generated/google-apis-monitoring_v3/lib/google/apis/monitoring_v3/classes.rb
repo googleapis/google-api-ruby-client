@@ -3962,6 +3962,16 @@ module Google
         # @return [String]
         attr_accessor :alert_rule
       
+        # Optional. Whether to disable metric existence validation for this condition.
+        # This allows alerting policies to be defined on metrics that do not yet exist,
+        # improving advanced customer workflows such as configuring alerting policies
+        # using Terraform.Users with the monitoring.alertPolicyViewer role are able to
+        # see the name of the non-existent metric in the alerting policy condition.
+        # Corresponds to the JSON property `disableMetricValidation`
+        # @return [Boolean]
+        attr_accessor :disable_metric_validation
+        alias_method :disable_metric_validation?, :disable_metric_validation
+      
         # Optional. Alerts are considered firing once their PromQL expression was
         # evaluated to be "true" for this long. Alerts whose PromQL expression was not
         # evaluated to be "true" for long enough are considered pending. Must be a non-
@@ -4016,6 +4026,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alert_rule = args[:alert_rule] if args.key?(:alert_rule)
+          @disable_metric_validation = args[:disable_metric_validation] if args.key?(:disable_metric_validation)
           @duration = args[:duration] if args.key?(:duration)
           @evaluation_interval = args[:evaluation_interval] if args.key?(:evaluation_interval)
           @labels = args[:labels] if args.key?(:labels)
