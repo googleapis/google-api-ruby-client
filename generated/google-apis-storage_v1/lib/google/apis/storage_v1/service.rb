@@ -976,6 +976,8 @@ module Google
         #   Name of a bucket.
         # @param [Fixnum] generation
         #   Generation of a bucket.
+        # @param [String] projection
+        #   Set of properties to return. Defaults to full.
         # @param [String] user_project
         #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
@@ -989,18 +991,21 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::StorageV1::Bucket] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::StorageV1::Bucket]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_bucket(bucket, generation, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def restore_bucket(bucket, generation, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'b/{bucket}/restore', options)
+          command.response_representation = Google::Apis::StorageV1::Bucket::Representation
+          command.response_class = Google::Apis::StorageV1::Bucket
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['generation'] = generation unless generation.nil?
+          command.query['projection'] = projection unless projection.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
