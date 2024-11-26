@@ -610,6 +610,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MerchantLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Message
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1358,6 +1364,8 @@ module Google
       
           property :logo, as: 'logo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
       
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
@@ -1435,6 +1443,8 @@ module Google
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
+      
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
@@ -1587,6 +1597,8 @@ module Google
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
       
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
@@ -1673,6 +1685,8 @@ module Google
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
       
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :notify_preference, as: 'notifyPreference'
@@ -1742,6 +1756,8 @@ module Google
       
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
@@ -1800,6 +1816,8 @@ module Google
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
           property :logo, as: 'logo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
+      
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
@@ -1885,6 +1903,8 @@ module Google
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
       
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
+      
           property :merchant_name, as: 'merchantName'
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
@@ -1963,6 +1983,8 @@ module Google
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
+      
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
@@ -2219,6 +2241,8 @@ module Google
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
       
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
@@ -2299,6 +2323,8 @@ module Google
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
       
           property :loyalty_points, as: 'loyaltyPoints', class: Google::Apis::WalletobjectsV1::LoyaltyPoints, decorator: Google::Apis::WalletobjectsV1::LoyaltyPoints::Representation
+      
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
@@ -2424,6 +2450,14 @@ module Google
         end
       end
       
+      class MerchantLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
+        end
+      end
+      
       class Message
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2537,6 +2571,8 @@ module Google
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
       
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
@@ -2611,6 +2647,8 @@ module Google
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
+      
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
@@ -3007,6 +3045,8 @@ module Google
       
           property :logo, as: 'logo', class: Google::Apis::WalletobjectsV1::Image, decorator: Google::Apis::WalletobjectsV1::Image::Representation
       
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
+      
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
           property :multiple_devices_and_holders_allowed_status, as: 'multipleDevicesAndHoldersAllowedStatus'
@@ -3089,6 +3129,8 @@ module Google
           property :links_module_data, as: 'linksModuleData', class: Google::Apis::WalletobjectsV1::LinksModuleData, decorator: Google::Apis::WalletobjectsV1::LinksModuleData::Representation
       
           collection :locations, as: 'locations', class: Google::Apis::WalletobjectsV1::LatLongPoint, decorator: Google::Apis::WalletobjectsV1::LatLongPoint::Representation
+      
+          collection :merchant_locations, as: 'merchantLocations', class: Google::Apis::WalletobjectsV1::MerchantLocation, decorator: Google::Apis::WalletobjectsV1::MerchantLocation::Representation
       
           collection :messages, as: 'messages', class: Google::Apis::WalletobjectsV1::Message, decorator: Google::Apis::WalletobjectsV1::Message::Representation
       
