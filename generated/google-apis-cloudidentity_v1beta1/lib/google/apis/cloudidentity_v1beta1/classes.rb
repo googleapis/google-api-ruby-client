@@ -222,13 +222,15 @@ module Google
         end
       end
       
-      # Contains information about browser profiles reported by the Endpoint
-      # Verification extension.
+      # Contains information about browser profiles reported by the [Endpoint
+      # Verification extension](https://chromewebstore.google.com/detail/endpoint-
+      # verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
       class BrowserAttributes
         include Google::Apis::Core::Hashable
       
-        # Browser-specific fields reported by the Endpoint Verification extension. LINT.
-        # IfChange
+        # Browser-specific fields reported by the [Endpoint Verification extension](
+        # https://chromewebstore.google.com/detail/endpoint-verification/
+        # callobklhcbilhphinckomhgkigmfocg?pli=1).
         # Corresponds to the JSON property `chromeBrowserInfo`
         # @return [Google::Apis::CloudidentityV1beta1::BrowserInfo]
         attr_accessor :chrome_browser_info
@@ -239,7 +241,8 @@ module Google
         # @return [String]
         attr_accessor :chrome_profile_id
       
-        # Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+        # Timestamp in milliseconds since the Unix epoch when the profile/gcm id was
+        # last synced.
         # Corresponds to the JSON property `lastProfileSyncTime`
         # @return [String]
         attr_accessor :last_profile_sync_time
@@ -256,8 +259,9 @@ module Google
         end
       end
       
-      # Browser-specific fields reported by the Endpoint Verification extension. LINT.
-      # IfChange
+      # Browser-specific fields reported by the [Endpoint Verification extension](
+      # https://chromewebstore.google.com/detail/endpoint-verification/
+      # callobklhcbilhphinckomhgkigmfocg?pli=1).
       class BrowserInfo
         include Google::Apis::Core::Hashable
       
@@ -266,7 +270,7 @@ module Google
         # @return [String]
         attr_accessor :browser_management_state
       
-        # Version of the request initiating browser.
+        # Version of the request initiating browser. E.g. `91.0.4442.4`.
         # Corresponds to the JSON property `browserVersion`
         # @return [String]
         attr_accessor :browser_version
@@ -423,7 +427,10 @@ module Google
       
         # A Device within the Cloud Identity Devices API. Represents a Device known to
         # Google Cloud, independent of the device ownership, type, and whether it is
-        # assigned or in use by a user.
+        # assigned or in use by a user. Important: Device API scopes require that you
+        # use domain-wide delegation to access the API. For more information, see [Set
+        # up the Devices API](https://cloud.google.com/identity/docs/how-to/setup-
+        # devices).
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::CloudidentityV1beta1::Device]
         attr_accessor :device
@@ -711,7 +718,10 @@ module Google
       
         # A Device within the Cloud Identity Devices API. Represents a Device known to
         # Google Cloud, independent of the device ownership, type, and whether it is
-        # assigned or in use by a user.
+        # assigned or in use by a user. Important: Device API scopes require that you
+        # use domain-wide delegation to access the API. For more information, see [Set
+        # up the Devices API](https://cloud.google.com/identity/docs/how-to/setup-
+        # devices).
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::CloudidentityV1beta1::Device]
         attr_accessor :device
@@ -838,7 +848,10 @@ module Google
       
       # A Device within the Cloud Identity Devices API. Represents a Device known to
       # Google Cloud, independent of the device ownership, type, and whether it is
-      # assigned or in use by a user.
+      # assigned or in use by a user. Important: Device API scopes require that you
+      # use domain-wide delegation to access the API. For more information, see [Set
+      # up the Devices API](https://cloud.google.com/identity/docs/how-to/setup-
+      # devices).
       class Device
         include Google::Apis::Core::Hashable
       
@@ -1246,11 +1259,13 @@ module Google
       class EndpointVerificationSpecificAttributes
         include Google::Apis::Core::Hashable
       
-        # Additional signals reported by Endpoint Verification. It includes the
-        # following attributes: 1. Non-configurable attributes: hotfixes, av_installed,
+        # [Additional signals](https://cloud.google.com/endpoint-verification/docs/
+        # device-information) reported by Endpoint Verification. It includes the
+        # following attributes: * Non-configurable attributes: hotfixes, av_installed,
         # av_enabled, windows_domain_name, is_os_native_firewall_enabled, and
-        # is_secure_boot_enabled. 2. Configurable attributes: file_config,
-        # registry_config, and plist_config.
+        # is_secure_boot_enabled. * [Configurable attributes](https://cloud.google.com/
+        # endpoint-verification/docs/collect-config-attributes): file, folder, and
+        # binary attributes; registry entries; and properties in a plist.
         # Corresponds to the JSON property `additionalSignals`
         # @return [Hash<String,Object>]
         attr_accessor :additional_signals
@@ -1504,7 +1519,7 @@ module Google
       
         # Browser-specific fields reported by the [Endpoint Verification extension](
         # https://chromewebstore.google.com/detail/endpoint-verification/
-        # callobklhcbilhphinckomhgkigmfocg?pli=1). LINT.IfChange
+        # callobklhcbilhphinckomhgkigmfocg?pli=1).
         # Corresponds to the JSON property `chromeBrowserInfo`
         # @return [Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1BrowserInfo]
         attr_accessor :chrome_browser_info
@@ -1515,7 +1530,8 @@ module Google
         # @return [String]
         attr_accessor :chrome_profile_id
       
-        # Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+        # Timestamp in milliseconds since the Unix epoch when the profile/gcm id was
+        # last synced.
         # Corresponds to the JSON property `lastProfileSyncTime`
         # @return [String]
         attr_accessor :last_profile_sync_time
@@ -1534,7 +1550,7 @@ module Google
       
       # Browser-specific fields reported by the [Endpoint Verification extension](
       # https://chromewebstore.google.com/detail/endpoint-verification/
-      # callobklhcbilhphinckomhgkigmfocg?pli=1). LINT.IfChange
+      # callobklhcbilhphinckomhgkigmfocg?pli=1).
       class GoogleAppsCloudidentityDevicesV1BrowserInfo
         include Google::Apis::Core::Hashable
       
@@ -1543,7 +1559,7 @@ module Google
         # @return [String]
         attr_accessor :browser_management_state
       
-        # Version of the request initiating browser.
+        # Version of the request initiating browser. E.g. `91.0.4442.4`.
         # Corresponds to the JSON property `browserVersion`
         # @return [String]
         attr_accessor :browser_version
@@ -2122,7 +2138,10 @@ module Google
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
         # resource_names) of the Device in format: `devices/`device``, where device is
-        # the unique id assigned to the Device.
+        # the unique id assigned to the Device. Important: Device API scopes require
+        # that you use domain-wide delegation to access the API. For more information,
+        # see [Set up the Devices API](https://cloud.google.com/identity/docs/how-to/
+        # setup-devices).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2299,10 +2318,11 @@ module Google
       class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes
         include Google::Apis::Core::Hashable
       
-        # Additional signals reported by Endpoint Verification. It includes the
-        # following attributes: 1. Non-configurable attributes: hotfixes, av_installed,
+        # [Additional signals](https://cloud.google.com/endpoint-verification/docs/
+        # device-information) reported by Endpoint Verification. It includes the
+        # following attributes: * Non-configurable attributes: hotfixes, av_installed,
         # av_enabled, windows_domain_name, is_os_native_firewall_enabled, and
-        # is_secure_boot_enabled. 2. [Configurable attributes](https://cloud.google.com/
+        # is_secure_boot_enabled. * [Configurable attributes](https://cloud.google.com/
         # endpoint-verification/docs/collect-config-attributes): file, folder, and
         # binary attributes; registry entries; and properties in a plist.
         # Corresponds to the JSON property `additionalSignals`
@@ -3002,6 +3022,32 @@ module Google
         end
       end
       
+      # The response message for PoliciesService.ListPolicies.
+      class ListPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The pagination token to retrieve the next page of results. If this field is
+        # empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The results
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::Policy>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
       # Response message for UserInvitation listing request.
       class ListUserInvitationsResponse
         include Google::Apis::Core::Hashable
@@ -3257,8 +3303,8 @@ module Google
       
         # Each edge contains information about the member that belongs to this group.
         # Note: Fields returned here will help identify the specific Membership resource
-        # (e.g name, preferred_member_key and role), but may not be a comprehensive list
-        # of all fields.
+        # (e.g `name`, `preferred_member_key` and `role`), but may not be a
+        # comprehensive list of all fields.
         # Corresponds to the JSON property `edges`
         # @return [Array<Google::Apis::CloudidentityV1beta1::Membership>]
         attr_accessor :edges
@@ -3601,7 +3647,112 @@ module Google
         end
       end
       
+      # A Policy resource binds an instance of a single Setting with the scope of a
+      # PolicyQuery. The Setting instance will be applied to all entities that satisfy
+      # the query.
+      class Policy
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Customer that the Policy belongs to. The value is in the format '
+        # customers/`customerId`'. The `customerId` must begin with "C" To find your
+        # customer ID in Admin Console see https://support.google.com/a/answer/10070793.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # Output only. Identifier. The [resource name](https://cloud.google.com/apis/
+        # design/resource_names) of the Policy. Format: policies/`policy`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # PolicyQuery
+        # Corresponds to the JSON property `policyQuery`
+        # @return [Google::Apis::CloudidentityV1beta1::PolicyQuery]
+        attr_accessor :policy_query
+      
+        # Setting
+        # Corresponds to the JSON property `setting`
+        # @return [Google::Apis::CloudidentityV1beta1::Setting]
+        attr_accessor :setting
+      
+        # Output only. The type of the policy.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+          @name = args[:name] if args.key?(:name)
+          @policy_query = args[:policy_query] if args.key?(:policy_query)
+          @setting = args[:setting] if args.key?(:setting)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # PolicyQuery
+      class PolicyQuery
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The group that the query applies to. This field is only set if
+        # there is a single value for group that satisfies all clauses of the query. If
+        # no group applies, this will be the empty string.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # Required. Immutable. Non-empty default. The OrgUnit the query applies to. This
+        # field is only set if there is a single value for org_unit that satisfies all
+        # clauses of the query.
+        # Corresponds to the JSON property `orgUnit`
+        # @return [String]
+        attr_accessor :org_unit
+      
+        # Immutable. The CEL query that defines which entities the Policy applies to (ex.
+        # a User entity). For details about CEL see https://opensource.google.com/
+        # projects/cel. The OrgUnits the Policy applies to are represented by a clause
+        # like so: entity.org_units.exists(org_unit, org_unit.org_unit_id == orgUnitId('`
+        # orgUnitId`')) The Group the Policy applies to are represented by a clause like
+        # so: entity.groups.exists(group, group.group_id == groupId('`groupId`')) The
+        # Licenses the Policy applies to are represented by a clause like so: entity.
+        # licenses.exists(license, license in ['/product/`productId`/sku/`skuId`']) The
+        # above clauses can be present in any combination, and used in conjunction with
+        # the &&, || and ! operators. The org_unit and group fields below are helper
+        # fields that contain the corresponding value(s) as the query to make the query
+        # easier to use.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Output only. The decimal sort order of this PolicyQuery. The value is relative
+        # to all other policies with the same setting type for the customer. (There are
+        # no duplicates within this set).
+        # Corresponds to the JSON property `sortOrder`
+        # @return [Float]
+        attr_accessor :sort_order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group = args[:group] if args.key?(:group)
+          @org_unit = args[:org_unit] if args.key?(:org_unit)
+          @query = args[:query] if args.key?(:query)
+          @sort_order = args[:sort_order] if args.key?(:sort_order)
+        end
+      end
+      
       # POSIX Group definition to represent a group in a POSIX compliant system.
+      # Caution: POSIX groups are deprecated. As of September 26, 2024, you can no
+      # longer create new POSIX groups. For more information, see https://cloud.google.
+      # com/identity/docs/deprecations/posix-groups
       class PosixGroup
         include Google::Apis::Core::Hashable
       
@@ -3926,6 +4077,31 @@ module Google
         end
       end
       
+      # Setting
+      class Setting
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The type of the Setting. .
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Required. The value of the Setting.
+        # Corresponds to the JSON property `value`
+        # @return [Hash<String,Object>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Controls sign-in behavior.
       class SignInBehavior
         include Google::Apis::Core::Hashable
@@ -4150,7 +4326,10 @@ module Google
       
         # A Device within the Cloud Identity Devices API. Represents a Device known to
         # Google Cloud, independent of the device ownership, type, and whether it is
-        # assigned or in use by a user.
+        # assigned or in use by a user. Important: Device API scopes require that you
+        # use domain-wide delegation to access the API. For more information, see [Set
+        # up the Devices API](https://cloud.google.com/identity/docs/how-to/setup-
+        # devices).
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::CloudidentityV1beta1::Device]
         attr_accessor :device

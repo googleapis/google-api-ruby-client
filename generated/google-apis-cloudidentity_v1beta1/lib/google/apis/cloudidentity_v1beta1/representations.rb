@@ -496,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListUserInvitationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -592,6 +598,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PosixGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -665,6 +683,12 @@ module Google
       end
       
       class SendUserInvitationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Setting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1540,6 +1564,15 @@ module Google
         end
       end
       
+      class ListPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :policies, as: 'policies', class: Google::Apis::CloudidentityV1beta1::Policy, decorator: Google::Apis::CloudidentityV1beta1::Policy::Representation
+      
+        end
+      end
+      
       class ListUserInvitationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1701,6 +1734,29 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+          property :name, as: 'name'
+          property :policy_query, as: 'policyQuery', class: Google::Apis::CloudidentityV1beta1::PolicyQuery, decorator: Google::Apis::CloudidentityV1beta1::PolicyQuery::Representation
+      
+          property :setting, as: 'setting', class: Google::Apis::CloudidentityV1beta1::Setting, decorator: Google::Apis::CloudidentityV1beta1::Setting::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class PolicyQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group'
+          property :org_unit, as: 'orgUnit'
+          property :query, as: 'query'
+          property :sort_order, as: 'sortOrder'
+        end
+      end
+      
       class PosixGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1805,6 +1861,14 @@ module Google
       class SendUserInvitationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Setting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          hash :value, as: 'value'
         end
       end
       
