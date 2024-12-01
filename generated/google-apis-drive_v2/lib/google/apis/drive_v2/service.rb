@@ -1314,7 +1314,9 @@ module Google
         #   The ID for the file in question.
         # @param [Boolean] acknowledge_abuse
         #   Whether the user is acknowledging the risk of downloading known malware or
-        #   other abusive files.
+        #   other abusive files. This is only applicable when the `alt` parameter is set
+        #   to `media` and the user is the owner of the file or an organizer of the shared
+        #   drive in which the file resides.
         # @param [String] include_labels
         #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.
@@ -1503,13 +1505,22 @@ module Google
         #   The maximum number of files to return per page. Partial or empty result pages
         #   are possible even before the end of the files list has been reached.
         # @param [String] order_by
-        #   A comma-separated list of sort keys. Valid keys are `createdDate`, `folder`, `
-        #   lastViewedByMeDate`, `modifiedByMeDate`, `modifiedDate`, `quotaBytesUsed`, `
-        #   recency`, `sharedWithMeDate`, `starred`, `title`, and `title_natural`. Each
-        #   key sorts ascending by default, but may be reversed with the `desc` modifier.
-        #   Example usage: ?orderBy=folder,modifiedDate desc,title. Please note that there
-        #   is a current limitation for users with approximately one million files in
-        #   which the requested sort order is ignored.
+        #   A comma-separated list of sort keys. Valid keys are: * `createdDate`: When the
+        #   file was created. * `folder`: The folder ID. This field is sorted using
+        #   alphabetical ordering. * `lastViewedByMeDate`: The last time the file was
+        #   viewed by the user. * `modifiedByMeDate`: The last time the file was modified
+        #   by the user. * `modifiedDate`: The last time the file was modified by anyone. *
+        #   `quotaBytesUsed`: The number of storage quota bytes used by the file. * `
+        #   recency`: The most recent timestamp from the file's date-time fields. * `
+        #   sharedWithMeDate`: When the file was shared with the user, if applicable. * `
+        #   starred`: Whether the user has starred the file. * `title`: The title of the
+        #   file. This field is sorted using alphabetical ordering, so 1, 12, 2, 22. * `
+        #   title_natural`: The title of the file. This field is sorted using natural sort
+        #   ordering, so 1, 2, 12, 22. Each key sorts ascending by default, but can be
+        #   reversed with the 'desc' modifier. Example usage: `?orderBy=folder,
+        #   modifiedDate desc,title`. Note that there's a current limitation for users
+        #   with approximately one million files in which the requested sort order is
+        #   ignored.
         # @param [String] page_token
         #   Page token for files.
         # @param [String] projection
@@ -2003,7 +2014,9 @@ module Google
         # @param [Google::Apis::DriveV2::Channel] channel_object
         # @param [Boolean] acknowledge_abuse
         #   Whether the user is acknowledging the risk of downloading known malware or
-        #   other abusive files.
+        #   other abusive files. This is only applicable when the `alt` parameter is set
+        #   to `media` and the user is the owner of the file or an organizer of the shared
+        #   drive in which the file resides.
         # @param [String] include_labels
         #   A comma-separated list of IDs of labels to include in the `labelInfo` part of
         #   the response.

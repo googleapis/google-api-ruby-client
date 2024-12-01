@@ -2118,10 +2118,11 @@ module Google
         # @return [Array<Google::Apis::DriveV2::User>]
         attr_accessor :owners
       
-        # Collection of parent folders which contain this file. If not specified as part
-        # of an insert request, the file will be placed directly in the user's My Drive
-        # folder. If not specified as part of a copy request, the file will inherit any
-        # discoverable parents of the source file. Update requests can also use the `
+        # The ID of the parent folder containing the file. A file can only have one
+        # parent folder; specifying multiple parents isn't supported. If not specified
+        # as part of an insert request, the file is placed directly in the user's My
+        # Drive folder. If not specified as part of a copy request, the file inherits
+        # any discoverable parent of the source file. Update requests must use the `
         # addParents` and `removeParents` parameters to modify the parents list.
         # Corresponds to the JSON property `parents`
         # @return [Array<Google::Apis::DriveV2::ParentReference>]
@@ -2221,9 +2222,12 @@ module Google
         attr_accessor :thumbnail
       
         # Output only. A short-lived link to the file's thumbnail, if available.
-        # Typically lasts on the order of hours. Only populated when the requesting app
-        # can access the file's content. If the file isn't shared publicly, the URL
-        # returned in `Files.thumbnailLink` must be fetched using a credentialed request.
+        # Typically lasts on the order of hours. Not intended for direct usage on web
+        # applications due to [Cross-Origin Resource Sharing (CORS)](https://developer.
+        # mozilla.org/en-US/docs/Web/HTTP/CORS), consider using a proxy server. Only
+        # populated when the requesting app can access the file's content. If the file
+        # isn't shared publicly, the URL returned in `Files.thumbnailLink` must be
+        # fetched using a credentialed request.
         # Corresponds to the JSON property `thumbnailLink`
         # @return [String]
         attr_accessor :thumbnail_link
@@ -3532,9 +3536,10 @@ module Google
         end
       end
       
-      # A reference to a file's parent. Some resource methods (such as `parents.get`)
-      # require a `parentId`. Use the `parents.list` method to retrieve the ID for a
-      # parent.
+      # A reference to a file's parent. A file can only have one parent folder;
+      # specifying multiple parents isn't supported. Some resource methods (such as `
+      # parents.get`) require a `parentId`. Use the `parents.list` method to retrieve
+      # the ID for a parent.
       class ParentReference
         include Google::Apis::Core::Hashable
       
