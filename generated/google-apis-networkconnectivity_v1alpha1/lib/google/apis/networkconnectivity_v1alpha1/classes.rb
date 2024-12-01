@@ -488,7 +488,16 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # IP range that this internal range defines.
+        # Optional. Immutable ranges cannot have their fields modified, except for
+        # labels and description.
+        # Corresponds to the JSON property `immutable`
+        # @return [Boolean]
+        attr_accessor :immutable
+        alias_method :immutable?, :immutable
+      
+        # IP range that this internal range defines. NOTE: IPv6 ranges are limited to
+        # usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges this field
+        # is compulsory, i.e. the address range must be specified explicitly.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -497,6 +506,11 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Specification for migration with source and target resource names.
+        # Corresponds to the JSON property `migration`
+        # @return [Google::Apis::NetworkconnectivityV1alpha1::Migration]
+        attr_accessor :migration
       
         # Immutable. The name of an internal range. Format: projects/`project`/locations/
         # `location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
@@ -525,10 +539,13 @@ module Google
         # @return [String]
         attr_accessor :peering
       
-        # An alternative to ip_cidr_range. Can be set when trying to create a
+        # An alternative to ip_cidr_range. Can be set when trying to create an IPv4
         # reservation that automatically finds a free range of the given size. If both
         # ip_cidr_range and prefix_length are set, there is an error if the range sizes
-        # do not match. Can also be used during updates to change the range size.
+        # do not match. Can also be used during updates to change the range size. NOTE:
+        # For IPv6 this field only works if ip_cidr_range is set as well, and both
+        # fields must match. In other words, with IPv6 this field only works as a
+        # redundant parameter.
         # Corresponds to the JSON property `prefixLength`
         # @return [Fixnum]
         attr_accessor :prefix_length
@@ -569,8 +586,10 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @immutable = args[:immutable] if args.key?(:immutable)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @labels = args[:labels] if args.key?(:labels)
+          @migration = args[:migration] if args.key?(:migration)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @overlaps = args[:overlaps] if args.key?(:overlaps)
@@ -748,6 +767,36 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Specification for migration with source and target resource names.
+      class Migration
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Resource path as an URI of the source resource, for example a
+        # subnet. The project for the source resource should match the project for the
+        # InternalRange. An example: /projects/`project`/regions/`region`/subnetworks/`
+        # subnet`
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Immutable. Resource path of the target resource. The target project can be
+        # different, as in the cases when migrating to peer networks. The resource For
+        # example: /projects/`project`/regions/`region`/subnetworks/`subnet`
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source = args[:source] if args.key?(:source)
+          @target = args[:target] if args.key?(:target)
         end
       end
       
