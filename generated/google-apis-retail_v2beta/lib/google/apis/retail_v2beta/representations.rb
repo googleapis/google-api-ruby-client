@@ -598,6 +598,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaAlertConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaAlertConfigAlertPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaAttributesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -617,6 +635,18 @@ module Google
       end
       
       class GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -683,6 +713,12 @@ module Google
       end
       
       class GoogleCloudRetailV2betaCompleteQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -790,7 +826,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaExportProductsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaExportProductsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaExportUserEventsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -815,6 +863,18 @@ module Google
       end
       
       class GoogleCloudRetailV2betaGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaGenerativeQuestionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -893,6 +953,12 @@ module Google
       end
       
       class GoogleCloudRetailV2betaListControlsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -994,6 +1060,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaPinControlMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaPinControlMetadataProductPins
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaPredictRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1025,6 +1103,18 @@ module Google
       end
       
       class GoogleCloudRetailV2betaProduct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaProductAttributeInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaProductAttributeValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1276,6 +1366,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1312,7 +1420,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaSearchRequestTileNavigationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaSearchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaSearchResponseConversationalSearchResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1337,6 +1469,12 @@ module Google
       end
       
       class GoogleCloudRetailV2betaSearchResponseSearchResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaSearchResponseTileNavigationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1372,6 +1510,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaTile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaTuneModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1385,6 +1529,12 @@ module Google
       end
       
       class GoogleCloudRetailV2betaTuneModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2245,6 +2395,32 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaAlertConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_policies, as: 'alertPolicies', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAlertConfigAlertPolicy, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAlertConfigAlertPolicy::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaAlertConfigAlertPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_group, as: 'alertGroup'
+          property :enroll_status, as: 'enrollStatus'
+          collection :recipients, as: 'recipients', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'emailAddress'
+        end
+      end
+      
       class GoogleCloudRetailV2betaAttributesConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2275,6 +2451,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deleted_catalog_attributes, as: 'deletedCatalogAttributes'
           collection :reset_catalog_attributes, as: 'resetCatalogAttributes'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generative_question_configs, as: 'generativeQuestionConfigs', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaGenerativeQuestionConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaGenerativeQuestionConfig::Representation
+      
         end
       end
       
@@ -2357,8 +2549,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :merged_facet_key, as: 'mergedFacetKey'
-          collection :merged_facet_values, as: 'mergedFacetValues', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue::Representation
-      
         end
       end
       
@@ -2389,11 +2579,20 @@ module Google
       class GoogleCloudRetailV2betaCompleteQueryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attribute_results, as: 'attributeResults', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult::Representation
+      
           property :attribution_token, as: 'attributionToken'
           collection :completion_results, as: 'completionResults', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult::Representation
       
           collection :recent_search_results, as: 'recentSearchResults', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :suggestions, as: 'suggestions'
         end
       end
       
@@ -2562,6 +2761,15 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaExportProductsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :output_config, as: 'outputConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudRetailV2betaExportProductsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2570,6 +2778,15 @@ module Google
           property :errors_config, as: 'errorsConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExportErrorsConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExportErrorsConfig::Representation
       
           property :output_result, as: 'outputResult', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputResult, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2betaExportUserEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :output_config, as: 'outputConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputConfig::Representation
       
         end
       end
@@ -2606,6 +2823,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_schema, as: 'dataSchema'
           collection :input_uris, as: 'inputUris'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaGenerativeQuestionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed_in_conversation, as: 'allowedInConversation'
+          property :catalog, as: 'catalog'
+          collection :example_values, as: 'exampleValues'
+          property :facet, as: 'facet'
+          property :final_question, as: 'finalQuestion'
+          property :frequency, as: 'frequency'
+          property :generated_question, as: 'generatedQuestion'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog, as: 'catalog'
+          property :feature_enabled, as: 'featureEnabled'
+          property :minimum_products, as: 'minimumProducts'
         end
       end
       
@@ -2737,6 +2976,14 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generative_question_configs, as: 'generativeQuestionConfigs', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaGenerativeQuestionConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaGenerativeQuestionConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudRetailV2betaListModelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2769,6 +3016,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute::Representation
       
+          property :availability, as: 'availability'
           collection :fulfillment_types, as: 'fulfillmentTypes'
           property :place_id, as: 'placeId'
           property :price_info, as: 'priceInfo', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPriceInfo, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPriceInfo::Representation
@@ -2892,6 +3140,23 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaPinControlMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :all_matched_pins, as: 'allMatchedPins', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPinControlMetadataProductPins, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPinControlMetadataProductPins::Representation
+      
+          hash :dropped_pins, as: 'droppedPins', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPinControlMetadataProductPins, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPinControlMetadataProductPins::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2betaPinControlMetadataProductPins
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :product_id, as: 'productId'
+        end
+      end
+      
       class GoogleCloudRetailV2betaPredictRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2996,6 +3261,23 @@ module Google
           property :uri, as: 'uri'
           collection :variants, as: 'variants', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProduct, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProduct::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2betaProductAttributeInterval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval, as: 'interval', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaInterval, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaInterval::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaProductAttributeValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -3323,6 +3605,8 @@ module Google
       
           property :branch, as: 'branch'
           property :canonical_filter, as: 'canonicalFilter'
+          property :conversational_search_spec, as: 'conversationalSearchSpec', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec::Representation
+      
           property :dynamic_facet_spec, as: 'dynamicFacetSpec', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec::Representation
       
           property :entity, as: 'entity'
@@ -3342,6 +3626,8 @@ module Google
       
           property :search_mode, as: 'searchMode'
           property :spell_correction_spec, as: 'spellCorrectionSpec', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec::Representation
+      
+          property :tile_navigation_spec, as: 'tileNavigationSpec', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestTileNavigationSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestTileNavigationSpec::Representation
       
           property :user_info, as: 'userInfo', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUserInfo, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUserInfo::Representation
       
@@ -3364,6 +3650,35 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boost, as: 'boost'
           property :condition, as: 'condition'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_id, as: 'conversationId'
+          property :followup_conversation_requested, as: 'followupConversationRequested'
+          property :user_answer, as: 'userAnswer', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :selected_answer, as: 'selectedAnswer', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer::Representation
+      
+          property :text_answer, as: 'textAnswer'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_attribute_value, as: 'productAttributeValue', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue::Representation
+      
+          collection :product_attribute_values, as: 'productAttributeValues', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue::Representation
+      
         end
       end
       
@@ -3423,11 +3738,22 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaSearchRequestTileNavigationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applied_tiles, as: 'appliedTiles', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaTile, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaTile::Representation
+      
+          property :tile_navigation_requested, as: 'tileNavigationRequested'
+        end
+      end
+      
       class GoogleCloudRetailV2betaSearchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :applied_controls, as: 'appliedControls'
           property :attribution_token, as: 'attributionToken'
+          property :conversational_search_result, as: 'conversationalSearchResult', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResult, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResult::Representation
+      
           property :corrected_query, as: 'correctedQuery'
           collection :experiment_info, as: 'experimentInfo', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExperimentInfo, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExperimentInfo::Representation
       
@@ -3436,12 +3762,47 @@ module Google
           collection :invalid_condition_boost_specs, as: 'invalidConditionBoostSpecs', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          property :pin_control_metadata, as: 'pinControlMetadata', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPinControlMetadata, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPinControlMetadata::Representation
+      
           property :query_expansion_info, as: 'queryExpansionInfo', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseQueryExpansionInfo::Representation
       
           property :redirect_uri, as: 'redirectUri'
           collection :results, as: 'results', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseSearchResult, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseSearchResult::Representation
       
+          property :tile_navigation_result, as: 'tileNavigationResult', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseTileNavigationResult, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseTileNavigationResult::Representation
+      
           property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaSearchResponseConversationalSearchResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_filter, as: 'additionalFilter', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter::Representation
+      
+          collection :additional_filters, as: 'additionalFilters', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter::Representation
+      
+          property :conversation_id, as: 'conversationId'
+          property :followup_question, as: 'followupQuestion'
+          property :refined_query, as: 'refinedQuery'
+          collection :suggested_answers, as: 'suggestedAnswers', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_attribute_value, as: 'productAttributeValue', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_attribute_value, as: 'productAttributeValue', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue::Representation
+      
         end
       end
       
@@ -3485,6 +3846,14 @@ module Google
           property :product, as: 'product', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProduct, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProduct::Representation
       
           hash :variant_rollup_values, as: 'variantRollupValues'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaSearchResponseTileNavigationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tiles, as: 'tiles', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaTile, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaTile::Representation
+      
         end
       end
       
@@ -3548,6 +3917,17 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaTile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_attribute_interval, as: 'productAttributeInterval', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeInterval, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeInterval::Representation
+      
+          property :product_attribute_value, as: 'productAttributeValue', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue::Representation
+      
+          property :representative_product_id, as: 'representativeProductId'
+        end
+      end
+      
       class GoogleCloudRetailV2betaTuneModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3564,6 +3944,15 @@ module Google
       class GoogleCloudRetailV2betaTuneModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generative_question_config, as: 'generativeQuestionConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaGenerativeQuestionConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaGenerativeQuestionConfig::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
