@@ -594,9 +594,9 @@ module Google
         # instanceLimit": "100/request"`, should be returned as, `"
         # instanceLimitPerRequest": "100"`, if the client exceeds the number of
         # instances that can be created in a single (batch) request.
-        # Corresponds to the JSON property `metadatas`
+        # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
-        attr_accessor :metadatas
+        attr_accessor :metadata
       
         # The reason of the error. This is a constant value that identifies the
         # proximate cause of the error. Error reasons are unique within a particular
@@ -613,7 +613,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @domain = args[:domain] if args.key?(:domain)
-          @metadatas = args[:metadatas] if args.key?(:metadatas)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @reason = args[:reason] if args.key?(:reason)
         end
       end
