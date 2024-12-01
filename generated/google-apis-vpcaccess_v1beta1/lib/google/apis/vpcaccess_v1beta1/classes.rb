@@ -36,8 +36,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The range of internal addresses that follows RFC 4632 notation. Example: `10.
-        # 132.0.0/28`.
+        # Optional. The range of internal addresses that follows RFC 4632 notation.
+        # Example: `10.132.0.0/28`.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -87,7 +87,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Name of a VPC network.
+        # Optional. Name of a VPC network.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -468,16 +468,16 @@ module Google
       class Subnet
         include Google::Apis::Core::Hashable
       
-        # Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink
-        # is https://compute.googleapis.com/compute/v1/projects/`project`/regions/`
-        # region`/subnetworks/`subnetName` the correct input for this field would be `
-        # subnetName`
+        # Optional. Subnet name (relative, not fully qualified). E.g. if the full subnet
+        # selfLink is https://compute.googleapis.com/compute/v1/projects/`project`/
+        # regions/`region`/subnetworks/`subnetName` the correct input for this field
+        # would be `subnetName`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Project in which the subnet exists. If not set, this project is assumed to be
-        # the project for which the connector create request was issued.
+        # Optional. Project in which the subnet exists. If not set, this project is
+        # assumed to be the project for which the connector create request was issued.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
