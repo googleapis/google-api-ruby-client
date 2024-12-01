@@ -322,19 +322,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `lowerBound`
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GoogleTypeDecimal]
         attr_accessor :lower_bound
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `upperBound`
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GoogleTypeDecimal]
         attr_accessor :upper_bound
@@ -527,6 +525,12 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1ErrorIssue
         include Google::Apis::Core::Hashable
       
+        # List of annotations for an issue. Annotations provide additional information
+        # that may help in diagnosing and fixing the issue.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1IssueAnnotation>]
+        attr_accessor :annotations
+      
         # Cause of the issue. Depending on the type this can be either: *
         # APPLICATION_NOT_RESPONDING: the type of ANR that occurred, e.g., 'Input
         # dispatching timed out'. * CRASH: for Java unhandled exception errors, the type
@@ -544,10 +548,9 @@ module Google
         attr_accessor :distinct_users
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `distinctUsersPercent`
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GoogleTypeDecimal]
         attr_accessor :distinct_users_percent
@@ -618,6 +621,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @cause = args[:cause] if args.key?(:cause)
           @distinct_users = args[:distinct_users] if args.key?(:distinct_users)
           @distinct_users_percent = args[:distinct_users_percent] if args.key?(:distinct_users_percent)
@@ -852,6 +856,38 @@ module Google
         end
       end
       
+      # Representation of an annotation message for an issue.
+      class GooglePlayDeveloperReportingV1alpha1IssueAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Contains the contents of the annotation message.
+        # Corresponds to the JSON property `body`
+        # @return [String]
+        attr_accessor :body
+      
+        # Category that the annotation belongs to. An annotation will belong to a single
+        # category. Example categories: "Potential fix", "Insight".
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Title for the annotation.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+          @category = args[:category] if args.key?(:category)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # Response with a list of anomalies in datasets.
       class GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse
         include Google::Apis::Core::Hashable
@@ -882,10 +918,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `decimalValue`
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GoogleTypeDecimal]
         attr_accessor :decimal_value
@@ -2549,10 +2584,9 @@ module Google
       end
       
       # A representation of a decimal value, such as 2.5. Clients may convert values
-      # into language-native decimal formats, such as Java's BigDecimal or Python's
-      # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-      # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-      # org/3/library/decimal.html
+      # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+      # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+      # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
       class GoogleTypeDecimal
         include Google::Apis::Core::Hashable
       
@@ -2610,12 +2644,12 @@ module Google
       class GoogleTypeTimeZone
         include Google::Apis::Core::Hashable
       
-        # IANA Time Zone Database time zone, e.g. "America/New_York".
+        # IANA Time Zone Database time zone. For example "America/New_York".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Optional. IANA Time Zone Database version number, e.g. "2019a".
+        # Optional. IANA Time Zone Database version number. For example "2019a".
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
