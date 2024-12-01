@@ -2053,6 +2053,79 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the details of an relation.
+        # @param [String] name
+        #   Required. Name of the resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MigrationcenterV1alpha1::Relation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MigrationcenterV1alpha1::Relation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_relation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::MigrationcenterV1alpha1::Relation::Representation
+          command.response_class = Google::Apis::MigrationcenterV1alpha1::Relation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the relations in a given project and location.
+        # @param [String] parent
+        #   Required. Parent value for `ListRelationsRequest`.
+        # @param [String] filter
+        #   Filtering results.
+        # @param [String] order_by
+        #   Field to sort by. See https://google.aip.dev/132#ordering for more details.
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer items than requested. If
+        #   unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MigrationcenterV1alpha1::ListRelationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MigrationcenterV1alpha1::ListRelationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_relations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/relations', options)
+          command.response_representation = Google::Apis::MigrationcenterV1alpha1::ListRelationsResponse::Representation
+          command.response_class = Google::Apis::MigrationcenterV1alpha1::ListRelationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a report configuration.
         # @param [String] parent
         #   Required. Value for parent.
