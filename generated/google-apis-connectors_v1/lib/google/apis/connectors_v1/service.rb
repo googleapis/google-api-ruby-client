@@ -1092,6 +1092,8 @@ module Google
         #   Page size.
         # @param [String] page_token
         #   Page token.
+        # @param [Boolean] schema_as_string
+        #   Optional. Flag to indicate if schema should be returned as string or not
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1109,7 +1111,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_connection_runtime_action_schemas(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_connection_runtime_action_schemas(parent, filter: nil, page_size: nil, page_token: nil, schema_as_string: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/runtimeActionSchemas', options)
           command.response_representation = Google::Apis::ConnectorsV1::ListRuntimeActionSchemasResponse::Representation
           command.response_class = Google::Apis::ConnectorsV1::ListRuntimeActionSchemasResponse
@@ -1117,6 +1119,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['schemaAsString'] = schema_as_string unless schema_as_string.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1337,6 +1340,9 @@ module Google
         # @param [String] name
         #   Required. Resource name of the form: `projects/*/locations/*/
         #   endpointAttachments/*`
+        # @param [String] view
+        #   Optional. Specifies which fields of the EndpointAttachment are returned in the
+        #   response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1354,11 +1360,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_endpoint_attachment(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_endpoint_attachment(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ConnectorsV1::EndpointAttachment::Representation
           command.response_class = Google::Apis::ConnectorsV1::EndpointAttachment
           command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1376,6 +1383,9 @@ module Google
         #   Page size.
         # @param [String] page_token
         #   Page token.
+        # @param [String] view
+        #   Optional. Specifies which fields of the EndpointAttachment are returned in the
+        #   response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1393,7 +1403,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_endpoint_attachments(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_endpoint_attachments(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/endpointAttachments', options)
           command.response_representation = Google::Apis::ConnectorsV1::ListEndpointAttachmentsResponse::Representation
           command.response_class = Google::Apis::ConnectorsV1::ListEndpointAttachmentsResponse
@@ -1402,6 +1412,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2389,6 +2400,41 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # fetch and return the list of auth config variables required to override the
+        # connection backend auth.
+        # @param [String] name
+        #   Required. Parent resource of the Connector Version, of the form: `projects/*/
+        #   locations/*/providers/*/connectors/*/versions/*`
+        # @param [String] view
+        #   Optional. View of the AuthSchema. The default value is BASIC.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::FetchAuthSchemaResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::FetchAuthSchemaResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_provider_connector_version_auth_schema(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetchAuthSchema', options)
+          command.response_representation = Google::Apis::ConnectorsV1::FetchAuthSchemaResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::FetchAuthSchemaResponse
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
