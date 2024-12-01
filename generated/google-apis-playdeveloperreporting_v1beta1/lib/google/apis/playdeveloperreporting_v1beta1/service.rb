@@ -380,17 +380,17 @@ module Google
         #   issues that occurred in the requested device brands. Example: `deviceBrand = "
         #   Google". * `deviceType`: Matches error issues that occurred in the requested
         #   device types. Example: `deviceType = "PHONE"`. * `errorIssueType`: Matches
-        #   error issues of the requested types only. Valid candidates: `CRASH`, `ANR`.
-        #   Example: `errorIssueType = CRASH OR errorIssueType = ANR`. * `appProcessState`:
-        #   Matches error issues on the process state of an app, indicating whether an
-        #   app runs in the foreground (user-visible) or background. Valid candidates: `
-        #   FOREGROUND`, `BACKGROUND`. Example: `appProcessState = FOREGROUND`. * `
-        #   isUserPerceived`: Matches error issues that are user-perceived. It is not
-        #   accompanied by any operators. Example: `isUserPerceived`. ** Supported
-        #   operators:** * Comparison operators: The only supported comparison operator is
-        #   equality. The filtered field must appear on the left hand side of the
-        #   comparison. * Logical Operators: Logical operators `AND` and `OR` can be used
-        #   to build complex filters following a conjunctive normal form (CNF), i.e.,
+        #   error issues of the requested types only. Valid candidates: `CRASH`, `ANR`, `
+        #   NON_FATAL`. Example: `errorIssueType = CRASH OR errorIssueType = ANR`. * `
+        #   appProcessState`: Matches error issues on the process state of an app,
+        #   indicating whether an app runs in the foreground (user-visible) or background.
+        #   Valid candidates: `FOREGROUND`, `BACKGROUND`. Example: `appProcessState =
+        #   FOREGROUND`. * `isUserPerceived`: Matches error issues that are user-perceived.
+        #   It is not accompanied by any operators. Example: `isUserPerceived`. **
+        #   Supported operators:** * Comparison operators: The only supported comparison
+        #   operator is equality. The filtered field must appear on the left hand side of
+        #   the comparison. * Logical Operators: Logical operators `AND` and `OR` can be
+        #   used to build complex filters following a conjunctive normal form (CNF), i.e.,
         #   conjunctions of disjunctions. The `OR` operator takes precedence over `AND` so
         #   the use of parenthesis is not necessary when building CNF. The `OR` operator
         #   is only supported to build disjunctions that apply to the same field, e.g., `
@@ -541,7 +541,7 @@ module Google
         #   requested device brands. Example: `deviceBrand = "Google". * `deviceType`:
         #   Matches error reports that occurred in the requested device types. Example: `
         #   deviceType = "PHONE"`. * `errorIssueType`: Matches error reports of the
-        #   requested types only. Valid candidates: `CRASH`, `ANR`. Example: `
+        #   requested types only. Valid candidates: `CRASH`, `ANR`, `NON_FATAL`. Example: `
         #   errorIssueType = CRASH OR errorIssueType = ANR`. * `errorIssueId`: Matches
         #   error reports belonging to the requested error issue ids only. Example: `
         #   errorIssueId = 1234 OR errorIssueId = 4567`. * `errorReportId`: Matches error
