@@ -58,18 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DestinationDataset
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DestinationDatasetReference
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +77,18 @@ module Google
       end
       
       class GetPolicyOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -251,26 +251,6 @@ module Google
         end
       end
       
-      class DestinationDataset
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dataset_reference, as: 'datasetReference', class: Google::Apis::AnalyticshubV1beta1::DestinationDatasetReference, decorator: Google::Apis::AnalyticshubV1beta1::DestinationDatasetReference::Representation
-      
-          property :description, as: 'description'
-          property :friendly_name, as: 'friendlyName'
-          hash :labels, as: 'labels'
-          property :location, as: 'location'
-        end
-      end
-      
-      class DestinationDatasetReference
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dataset_id, as: 'datasetId'
-          property :project_id, as: 'projectId'
-        end
-      end
-      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -299,6 +279,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :requested_policy_version, as: 'requestedPolicyVersion'
+        end
+      end
+      
+      class GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_reference, as: 'datasetReference', class: Google::Apis::AnalyticshubV1beta1::GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference, decorator: Google::Apis::AnalyticshubV1beta1::GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference::Representation
+      
+          property :description, as: 'description'
+          property :friendly_name, as: 'friendlyName'
+          hash :labels, as: 'labels'
+          property :location, as: 'location'
+        end
+      end
+      
+      class GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :project_id, as: 'projectId'
         end
       end
       
@@ -431,7 +431,7 @@ module Google
       class SubscribeListingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :destination_dataset, as: 'destinationDataset', class: Google::Apis::AnalyticshubV1beta1::DestinationDataset, decorator: Google::Apis::AnalyticshubV1beta1::DestinationDataset::Representation
+          property :destination_dataset, as: 'destinationDataset', class: Google::Apis::AnalyticshubV1beta1::GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset, decorator: Google::Apis::AnalyticshubV1beta1::GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset::Representation
       
         end
       end
