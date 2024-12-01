@@ -585,6 +585,12 @@ module Google
         # @return [String]
         attr_accessor :data_type
       
+        # Optional. Whether the finding was marked as a false positive.
+        # Corresponds to the JSON property `falsePositive`
+        # @return [Boolean]
+        attr_accessor :false_positive
+        alias_method :false_positive?, :false_positive
+      
         def initialize(**args)
            update!(**args)
         end
@@ -593,6 +599,7 @@ module Google
         def update!(**args)
           @code_attribution = args[:code_attribution] if args.key?(:code_attribution)
           @data_type = args[:data_type] if args.key?(:data_type)
+          @false_positive = args[:false_positive] if args.key?(:false_positive)
         end
       end
       
