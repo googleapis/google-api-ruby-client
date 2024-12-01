@@ -480,7 +480,9 @@ module Google
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
         #   field. The elements of the repeated paths field may only include these fields:
-        #   * "description" * "directory_services" * "file_shares" * "labels"
+        #   * "description" * "directory_services" * "file_shares" * "labels" * "
+        #   performance_config" * "deletion_protection_enabled" * "
+        #   deletion_protection_reason"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -511,7 +513,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Promote an standby instance (replica).
+        # Promote the standby instance (replica).
         # @param [String] name
         #   Required. The resource name of the instance, in the format `projects/`
         #   project_id`/locations/`location_id`/instances/`instance_id``.
