@@ -153,12 +153,12 @@ module Google
         # @return [Google::Apis::CloudcontrolspartnerV1beta::CustomerOnboardingState]
         attr_accessor :customer_onboarding_state
       
-        # The customer organization's display name. E.g. "google.com".
+        # Required. Display name for the customer
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Indicates whether a customer is fully onboarded
+        # Output only. Indicates whether a customer is fully onboarded
         # Corresponds to the JSON property `isOnboarded`
         # @return [Boolean]
         attr_accessor :is_onboarded
@@ -170,6 +170,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The customer organization domain, extracted from CRM Organization’
+        # s display_name field. e.g. "google.com"
+        # Corresponds to the JSON property `organizationDomain`
+        # @return [String]
+        attr_accessor :organization_domain
+      
         def initialize(**args)
            update!(**args)
         end
@@ -180,6 +186,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @is_onboarded = args[:is_onboarded] if args.key?(:is_onboarded)
           @name = args[:name] if args.key?(:name)
+          @organization_domain = args[:organization_domain] if args.key?(:organization_domain)
         end
       end
       
@@ -321,6 +328,22 @@ module Google
         def update!(**args)
           @ekm_endpoint_uri = args[:ekm_endpoint_uri] if args.key?(:ekm_endpoint_uri)
           @ekm_solution = args[:ekm_solution] if args.key?(:ekm_solution)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
