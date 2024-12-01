@@ -34,7 +34,7 @@ module Google
       
         # The methods, current quota usage and limits per each group. The quota is
         # shared between all methods in the group. The groups are sorted in descending
-        # order based on quotaUsage.
+        # order based on quota_usage.
         # Corresponds to the JSON property `quotaGroups`
         # @return [Array<Google::Apis::MerchantapiQuotaV1beta::QuotaGroup>]
         attr_accessor :quota_groups
@@ -147,6 +147,12 @@ module Google
         # @return [Array<Google::Apis::MerchantapiQuotaV1beta::ProductChange>]
         attr_accessor :changes
       
+        # The product expiration time. This field will not bet set if the notification
+        # is sent for a product deletion event.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
         # The account that manages the merchant's account. can be the same as merchant
         # id if it is standalone account. Format : `accounts/`service_provider_id``
         # Corresponds to the JSON property `managingAccount`
@@ -178,6 +184,7 @@ module Google
           @account = args[:account] if args.key?(:account)
           @attribute = args[:attribute] if args.key?(:attribute)
           @changes = args[:changes] if args.key?(:changes)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @managing_account = args[:managing_account] if args.key?(:managing_account)
           @resource = args[:resource] if args.key?(:resource)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
