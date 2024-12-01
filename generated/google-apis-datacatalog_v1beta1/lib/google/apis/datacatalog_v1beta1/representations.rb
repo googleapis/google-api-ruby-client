@@ -1274,6 +1274,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column, as: 'column'
+          property :dataplex_transfer_status, as: 'dataplexTransferStatus'
           hash :fields, as: 'fields', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1TagField, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1TagField::Representation
       
           property :name, as: 'name'

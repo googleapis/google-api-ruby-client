@@ -1989,6 +1989,11 @@ module Google
         # @return [String]
         attr_accessor :column
       
+        # Output only. Denotes the transfer status of the Tag Template.
+        # Corresponds to the JSON property `dataplexTransferStatus`
+        # @return [String]
+        attr_accessor :dataplex_transfer_status
+      
         # Required. Maps the ID of a tag field to its value and additional information
         # about that field. Tag template defines valid field IDs. A tag must have at
         # least 1 field and at most 500 fields.
@@ -2022,6 +2027,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column = args[:column] if args.key?(:column)
+          @dataplex_transfer_status = args[:dataplex_transfer_status] if args.key?(:dataplex_transfer_status)
           @fields = args[:fields] if args.key?(:fields)
           @name = args[:name] if args.key?(:name)
           @template = args[:template] if args.key?(:template)
