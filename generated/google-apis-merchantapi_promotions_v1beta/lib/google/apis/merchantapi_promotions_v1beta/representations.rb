@@ -220,6 +220,7 @@ module Google
           property :attribute, as: 'attribute'
           collection :changes, as: 'changes', class: Google::Apis::MerchantapiPromotionsV1beta::ProductChange, decorator: Google::Apis::MerchantapiPromotionsV1beta::ProductChange::Representation
       
+          property :expiration_time, as: 'expirationTime'
           property :managing_account, as: 'managingAccount'
           property :resource, as: 'resource'
           property :resource_id, as: 'resourceId'

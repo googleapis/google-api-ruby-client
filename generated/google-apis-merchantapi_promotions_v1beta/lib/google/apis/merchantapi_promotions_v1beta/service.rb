@@ -129,9 +129,9 @@ module Google
         #   account``
         # @param [Fixnum] page_size
         #   Output only. The maximum number of promotions to return. The service may
-        #   return fewer than this value. The maximum value is 1000; values above 1000
-        #   will be coerced to 1000. If unspecified, the maximum number of promotions will
-        #   be returned.
+        #   return fewer than this value. The maximum value is 250; values above 250 will
+        #   be coerced to 250. If unspecified, the maximum number of promotions will be
+        #   returned.
         # @param [String] page_token
         #   Output only. A page token, received from a previous `ListPromotions` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
