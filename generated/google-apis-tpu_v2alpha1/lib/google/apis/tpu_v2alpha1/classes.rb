@@ -755,6 +755,11 @@ module Google
         # @return [String]
         attr_accessor :node_id_prefix
       
+        # Optional. The workload type for the multi-node request.
+        # Corresponds to the JSON property `workloadType`
+        # @return [String]
+        attr_accessor :workload_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -763,6 +768,7 @@ module Google
         def update!(**args)
           @node_count = args[:node_count] if args.key?(:node_count)
           @node_id_prefix = args[:node_id_prefix] if args.key?(:node_id_prefix)
+          @workload_type = args[:workload_type] if args.key?(:workload_type)
         end
       end
       
@@ -948,6 +954,11 @@ module Google
         # @return [Google::Apis::TpuV2alpha1::NetworkConfig]
         attr_accessor :network_config
       
+        # Optional. Repeated network configurations for the TPU node.
+        # Corresponds to the JSON property `networkConfigs`
+        # @return [Array<Google::Apis::TpuV2alpha1::NetworkConfig>]
+        attr_accessor :network_configs
+      
         # Output only. The network endpoints where TPU workers can be accessed and sent
         # work. It is recommended that runtime clients of the node reach out to the 0th
         # entry in this map first.
@@ -996,6 +1007,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # Upcoming Maintenance notification information.
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::TpuV2alpha1::UpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1019,6 +1035,7 @@ module Google
           @multislice_node = args[:multislice_node] if args.key?(:multislice_node)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
+          @network_configs = args[:network_configs] if args.key?(:network_configs)
           @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
           @queued_resource = args[:queued_resource] if args.key?(:queued_resource)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
@@ -1028,6 +1045,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @symptoms = args[:symptoms] if args.key?(:symptoms)
           @tags = args[:tags] if args.key?(:tags)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
       
@@ -1191,6 +1209,38 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Request for PerformMaintenanceQueuedResource.
+      class PerformMaintenanceQueuedResourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The names of the nodes to perform maintenance on.
+        # Corresponds to the JSON property `nodeNames`
+        # @return [Array<String>]
+        attr_accessor :node_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_names = args[:node_names] if args.key?(:node_names)
+        end
+      end
+      
+      # Request for PerformMaintenance.
+      class PerformMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1796,6 +1846,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @node_spec = args[:node_spec] if args.key?(:node_spec)
+        end
+      end
+      
+      # Upcoming Maintenance notification information.
+      class UpcomingMaintenance
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if the maintenance can be customer triggered.
+        # Corresponds to the JSON property `canReschedule`
+        # @return [Boolean]
+        attr_accessor :can_reschedule
+        alias_method :can_reschedule?, :can_reschedule
+      
+        # The latest time for the planned maintenance window to start. This timestamp
+        # value is in RFC3339 text format.
+        # Corresponds to the JSON property `latestWindowStartTime`
+        # @return [String]
+        attr_accessor :latest_window_start_time
+      
+        # The status of the maintenance.
+        # Corresponds to the JSON property `maintenanceStatus`
+        # @return [String]
+        attr_accessor :maintenance_status
+      
+        # Defines the type of maintenance.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The time by which the maintenance disruption will be completed. This timestamp
+        # value is in RFC3339 text format.
+        # Corresponds to the JSON property `windowEndTime`
+        # @return [String]
+        attr_accessor :window_end_time
+      
+        # The current start time of the maintenance window. This timestamp value is in
+        # RFC3339 text format.
+        # Corresponds to the JSON property `windowStartTime`
+        # @return [String]
+        attr_accessor :window_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
+          @latest_window_start_time = args[:latest_window_start_time] if args.key?(:latest_window_start_time)
+          @maintenance_status = args[:maintenance_status] if args.key?(:maintenance_status)
+          @type = args[:type] if args.key?(:type)
+          @window_end_time = args[:window_end_time] if args.key?(:window_end_time)
+          @window_start_time = args[:window_start_time] if args.key?(:window_start_time)
         end
       end
       
