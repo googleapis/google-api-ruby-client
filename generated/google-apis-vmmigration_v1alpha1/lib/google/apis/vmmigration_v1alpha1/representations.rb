@@ -142,12 +142,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CancelDiskMigrationJobRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CancelImageImportJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -496,12 +490,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NetworkInsights
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class NetworkInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,12 +575,6 @@ module Google
       end
       
       class ResumeMigrationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RunDiskMigrationJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -821,8 +803,6 @@ module Google
           collection :inventory_tag_list, as: 'inventoryTagList', class: Google::Apis::VmmigrationV1alpha1::Tag, decorator: Google::Apis::VmmigrationV1alpha1::Tag::Representation
       
           hash :migration_resources_user_tags, as: 'migrationResourcesUserTags'
-          property :network_insights, as: 'networkInsights', class: Google::Apis::VmmigrationV1alpha1::NetworkInsights, decorator: Google::Apis::VmmigrationV1alpha1::NetworkInsights::Representation
-      
           property :public_ip, as: 'publicIp'
           property :state, as: 'state'
         end
@@ -831,6 +811,7 @@ module Google
       class AwsSourceVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1alpha1::AwsDiskDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsDiskDetails::Representation
       
@@ -900,6 +881,7 @@ module Google
       class AzureSourceVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1alpha1::AzureDiskDetails, decorator: Google::Apis::VmmigrationV1alpha1::AzureDiskDetails::Representation
       
@@ -912,6 +894,7 @@ module Google
       class AzureVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :boot_option, as: 'bootOption'
           property :committed_storage_mb, :numeric_string => true, as: 'committedStorageMb'
           property :computer_name, as: 'computerName'
@@ -959,12 +942,6 @@ module Google
       end
       
       class CancelCutoverJobRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class CancelDiskMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1060,10 +1037,13 @@ module Google
           collection :additional_licenses, as: 'additionalLicenses'
           property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1alpha1::AppliedLicense, decorator: Google::Apis::VmmigrationV1alpha1::AppliedLicense::Representation
       
+          property :boot_conversion, as: 'bootConversion'
           property :boot_option, as: 'bootOption'
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1alpha1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1alpha1::ComputeScheduling::Representation
       
           property :disk_type, as: 'diskType'
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_vtpm, as: 'enableVtpm'
           property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
       
           property :hostname, as: 'hostname'
@@ -1089,10 +1069,13 @@ module Google
           collection :additional_licenses, as: 'additionalLicenses'
           property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1alpha1::AppliedLicense, decorator: Google::Apis::VmmigrationV1alpha1::AppliedLicense::Representation
       
+          property :boot_conversion, as: 'bootConversion'
           property :boot_option, as: 'bootOption'
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1alpha1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1alpha1::ComputeScheduling::Representation
       
           property :disk_type, as: 'diskType'
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_vtpm, as: 'enableVtpm'
           property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
       
           property :hostname, as: 'hostname'
@@ -1279,6 +1262,8 @@ module Google
       
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1alpha1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1alpha1::ComputeScheduling::Representation
       
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_vtpm, as: 'enableVtpm'
           property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1alpha1::Encryption, decorator: Google::Apis::VmmigrationV1alpha1::Encryption::Representation
       
           property :hostname, as: 'hostname'
@@ -1697,14 +1682,6 @@ module Google
         end
       end
       
-      class NetworkInsights
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :source_network_config, as: 'sourceNetworkConfig'
-          property :source_network_terraform, as: 'sourceNetworkTerraform'
-        end
-      end
-      
       class NetworkInterface
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1845,12 +1822,6 @@ module Google
       end
       
       class ResumeMigrationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class RunDiskMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -2096,6 +2067,7 @@ module Google
       class VmwareSourceVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
           collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1alpha1::VmwareDiskDetails, decorator: Google::Apis::VmmigrationV1alpha1::VmwareDiskDetails::Representation
       
@@ -2108,6 +2080,7 @@ module Google
       class VmwareVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :boot_option, as: 'bootOption'
           property :committed_storage, :numeric_string => true, as: 'committedStorage'
           property :committed_storage_mb, :numeric_string => true, as: 'committedStorageMb'

@@ -534,10 +534,10 @@ module Google
         # @param [String] parent
         #   Required. The parent, which owns this collection of targets.
         # @param [String] filter
-        #   Optional. The filter request (according to https://google.aip.dev/160).
+        #   Optional. The filter request (according to AIP-160).
         # @param [String] order_by
-        #   Optional. The order by fields for the result (according to https://google.aip.
-        #   dev/132#ordering). Currently ordering is only possible by "name" field.
+        #   Optional. The order by fields for the result (according to AIP-132). Currently
+        #   ordering is only possible by "name" field.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of targets to return. The service may return
         #   fewer than this value. If unspecified, at most 500 targets will be returned.
@@ -645,10 +645,10 @@ module Google
         # @param [String] parent
         #   Required. The parent, which owns this collection of targets.
         # @param [String] filter
-        #   Optional. The filter request (according to https://google.aip.dev/160).
+        #   Optional. The filter request (according to AIP-160).
         # @param [String] order_by
-        #   Optional. The order by fields for the result (according to https://google.aip.
-        #   dev/132#ordering). Currently ordering is only possible by "name" field.
+        #   Optional. The order by fields for the result (according to AIP-132). Currently
+        #   ordering is only possible by "name" field.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of targets to return. The service may return
         #   fewer than this value. If unspecified, at most 500 targets will be returned.
@@ -695,8 +695,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::VmmigrationV1alpha1::CancelOperationRequest] cancel_operation_request_object
@@ -1299,72 +1299,6 @@ module Google
           command.response_representation = Google::Apis::VmmigrationV1alpha1::Operation::Representation
           command.response_class = Google::Apis::VmmigrationV1alpha1::Operation
           command.params['datacenterConnector'] = datacenter_connector unless datacenter_connector.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Cancels the disk migration job.
-        # @param [String] name
-        #   Required. The name of the DiskMigrationJob.
-        # @param [Google::Apis::VmmigrationV1alpha1::CancelDiskMigrationJobRequest] cancel_disk_migration_job_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::VmmigrationV1alpha1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::VmmigrationV1alpha1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_disk_migration_job(name, cancel_disk_migration_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha1/{+name}:cancel', options)
-          command.request_representation = Google::Apis::VmmigrationV1alpha1::CancelDiskMigrationJobRequest::Representation
-          command.request_object = cancel_disk_migration_job_request_object
-          command.response_representation = Google::Apis::VmmigrationV1alpha1::Operation::Representation
-          command.response_class = Google::Apis::VmmigrationV1alpha1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Runs the disk migration job.
-        # @param [String] name
-        #   Required. The name of the DiskMigrationJob.
-        # @param [Google::Apis::VmmigrationV1alpha1::RunDiskMigrationJobRequest] run_disk_migration_job_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::VmmigrationV1alpha1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::VmmigrationV1alpha1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def run_disk_migration_job(name, run_disk_migration_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha1/{+name}:run', options)
-          command.request_representation = Google::Apis::VmmigrationV1alpha1::RunDiskMigrationJobRequest::Representation
-          command.request_object = run_disk_migration_job_request_object
-          command.response_representation = Google::Apis::VmmigrationV1alpha1::Operation::Representation
-          command.response_class = Google::Apis::VmmigrationV1alpha1::Operation
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
