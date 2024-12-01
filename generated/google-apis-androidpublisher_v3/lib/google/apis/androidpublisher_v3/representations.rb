@@ -790,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OneTimeCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OneTimeExternalTransaction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1067,6 +1073,12 @@ module Google
       end
       
       class SdkVersionTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SignupPromotion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1391,6 +1403,12 @@ module Google
       end
       
       class UsesPermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VanityCode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2652,6 +2670,12 @@ module Google
         end
       end
       
+      class OneTimeCode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class OneTimeExternalTransaction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3055,6 +3079,16 @@ module Google
         end
       end
       
+      class SignupPromotion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :one_time_code, as: 'oneTimeCode', class: Google::Apis::AndroidpublisherV3::OneTimeCode, decorator: Google::Apis::AndroidpublisherV3::OneTimeCode::Representation
+      
+          property :vanity_code, as: 'vanityCode', class: Google::Apis::AndroidpublisherV3::VanityCode, decorator: Google::Apis::AndroidpublisherV3::VanityCode::Representation
+      
+        end
+      end
+      
       class SplitApkMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3249,6 +3283,8 @@ module Google
           property :prepaid_plan, as: 'prepaidPlan', class: Google::Apis::AndroidpublisherV3::PrepaidPlan, decorator: Google::Apis::AndroidpublisherV3::PrepaidPlan::Representation
       
           property :product_id, as: 'productId'
+          property :signup_promotion, as: 'signupPromotion', class: Google::Apis::AndroidpublisherV3::SignupPromotion, decorator: Google::Apis::AndroidpublisherV3::SignupPromotion::Representation
+      
         end
       end
       
@@ -3634,6 +3670,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_sdk_version, as: 'maxSdkVersion'
           property :name, as: 'name'
+        end
+      end
+      
+      class VanityCode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :promotion_code, as: 'promotionCode'
         end
       end
       

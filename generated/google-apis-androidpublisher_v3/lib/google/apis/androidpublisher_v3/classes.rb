@@ -3956,6 +3956,19 @@ module Google
         end
       end
       
+      # A single use promotion code.
+      class OneTimeCode
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a one-time transaction.
       class OneTimeExternalTransaction
         include Google::Apis::Core::Hashable
@@ -5241,6 +5254,31 @@ module Google
         end
       end
       
+      # The promotion applied on this item when purchased.
+      class SignupPromotion
+        include Google::Apis::Core::Hashable
+      
+        # A single use promotion code.
+        # Corresponds to the JSON property `oneTimeCode`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeCode]
+        attr_accessor :one_time_code
+      
+        # A multiple use, predefined promotion code.
+        # Corresponds to the JSON property `vanityCode`
+        # @return [Google::Apis::AndroidpublisherV3::VanityCode]
+        attr_accessor :vanity_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @one_time_code = args[:one_time_code] if args.key?(:one_time_code)
+          @vanity_code = args[:vanity_code] if args.key?(:vanity_code)
+        end
+      end
+      
       # Holds data specific to Split APKs.
       class SplitApkMetadata
         include Google::Apis::Core::Hashable
@@ -6027,6 +6065,11 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
+        # The promotion applied on this item when purchased.
+        # Corresponds to the JSON property `signupPromotion`
+        # @return [Google::Apis::AndroidpublisherV3::SignupPromotion]
+        attr_accessor :signup_promotion
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6039,6 +6082,7 @@ module Google
           @offer_details = args[:offer_details] if args.key?(:offer_details)
           @prepaid_plan = args[:prepaid_plan] if args.key?(:prepaid_plan)
           @product_id = args[:product_id] if args.key?(:product_id)
+          @signup_promotion = args[:signup_promotion] if args.key?(:signup_promotion)
         end
       end
       
@@ -7321,6 +7365,25 @@ module Google
         def update!(**args)
           @max_sdk_version = args[:max_sdk_version] if args.key?(:max_sdk_version)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A multiple use, predefined promotion code.
+      class VanityCode
+        include Google::Apis::Core::Hashable
+      
+        # The promotion code.
+        # Corresponds to the JSON property `promotionCode`
+        # @return [String]
+        attr_accessor :promotion_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @promotion_code = args[:promotion_code] if args.key?(:promotion_code)
         end
       end
       
