@@ -268,6 +268,8 @@ module Google
           property :identity_provider, as: 'identityProvider'
           property :issuer, as: 'issuer'
           property :oidc_jwks, :base64 => true, as: 'oidcJwks'
+          property :scope_tenancy_identity_provider, as: 'scopeTenancyIdentityProvider'
+          property :scope_tenancy_workload_identity_pool, as: 'scopeTenancyWorkloadIdentityPool'
           property :workload_identity_pool, as: 'workloadIdentityPool'
         end
       end
