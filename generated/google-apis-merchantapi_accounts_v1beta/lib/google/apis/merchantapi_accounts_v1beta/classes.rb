@@ -22,33 +22,6 @@ module Google
   module Apis
     module MerchantapiAccountsV1beta
       
-      # Reference to a Terms of Service resource.
-      class AcceptTermsOfService
-        include Google::Apis::Core::Hashable
-      
-        # Required. The resource name of the terms of service version.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Required. Region code as defined by [CLDR](https://cldr.unicode.org/). This is
-        # either a country when the ToS applies specifically to that country or `001`
-        # when it applies globally.
-        # Corresponds to the JSON property `regionCode`
-        # @return [String]
-        attr_accessor :region_code
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @region_code = args[:region_code] if args.key?(:region_code)
-        end
-      end
-      
       # Describes the accepted terms of service.
       class Accepted
         include Google::Apis::Core::Hashable
@@ -89,7 +62,15 @@ module Google
         end
       end
       
-      # An account.
+      # The `Account` message represents a merchant's account within Shopping Ads. It'
+      # s the primary entity for managing product data, settings, and interactions
+      # with Google's services and external providers. Accounts can operate as
+      # standalone entities or be part of a multi-client account (MCA) structure. In
+      # an MCA setup the parent account manages multiple sub-accounts. Establishing an
+      # account involves configuring attributes like the account name, time zone, and
+      # language preferences. The `Account` message is the parent entity for many
+      # other resources, for example, `AccountRelationship`, `Homepage`, `BusinessInfo`
+      # and so on.
       class Account
         include Google::Apis::Core::Hashable
       
@@ -150,6 +131,19 @@ module Google
         end
       end
       
+      # `AccountAggregation` payload.
+      class AccountAggregation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An [`AccountIssue`](https://support.google.com/merchants/answer/12153802?sjid=
       # 17798438912526418908-EU#account).
       class AccountIssue
@@ -202,52 +196,16 @@ module Google
         end
       end
       
-      # The tax settings of a merchant account. All methods require the admin role.
-      class AccountTax
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The ID of the account to which these account tax settings belong.
-        # Corresponds to the JSON property `account`
-        # @return [Fixnum]
-        attr_accessor :account
-      
-        # Identifier. The name of the tax setting. Format: "`account_tax.name=accounts/`
-        # account``"
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Tax rules. "Define the tax rules in each region. No tax will be presented if a
-        # region has no rule."
-        # Corresponds to the JSON property `taxRules`
-        # @return [Array<Google::Apis::MerchantapiAccountsV1beta::TaxRule>]
-        attr_accessor :tax_rules
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @account = args[:account] if args.key?(:account)
-          @name = args[:name] if args.key?(:name)
-          @tax_rules = args[:tax_rules] if args.key?(:tax_rules)
-        end
-      end
-      
       # Additional instructions to add account services during creation of the account.
       class AddAccountService
         include Google::Apis::Core::Hashable
       
-        # A generic empty message that you can re-use to avoid defining duplicated empty
-        # messages in your APIs. A typical example is to use it as the request or the
-        # response type of an API method. For instance: service Foo ` rpc Bar(google.
-        # protobuf.Empty) returns (google.protobuf.Empty); `
+        # `AccountAggregation` payload.
         # Corresponds to the JSON property `accountAggregation`
-        # @return [Google::Apis::MerchantapiAccountsV1beta::Empty]
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountAggregation]
         attr_accessor :account_aggregation
       
-        # Optional. The provider of the service. Format: `accounts/`account``
+        # Required. The provider of the service. Format: `accounts/`account``
         # Corresponds to the JSON property `provider`
         # @return [String]
         attr_accessor :provider
@@ -309,6 +267,48 @@ module Google
         end
       end
       
+      # Collection of information related to the [autofeed](https://support.google.com/
+      # merchants/answer/7538732) settings.
+      class AutofeedSettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Determines whether merchant is eligible for being enrolled into
+        # an autofeed.
+        # Corresponds to the JSON property `eligible`
+        # @return [Boolean]
+        attr_accessor :eligible
+        alias_method :eligible?, :eligible
+      
+        # Required. Enables or disables product crawling through the autofeed for the
+        # given account. Autofeed accounts must meet [certain conditions](https://
+        # support.google.com/merchants/answer/7538732#
+        # Configure_automated_feeds_Standard_Experience), which can be checked through
+        # the `eligible` field. The account must **not** be a marketplace. When the
+        # autofeed is enabled for the first time, the products usually appear instantly.
+        # When re-enabling, it might take up to 24 hours for products to appear.
+        # Corresponds to the JSON property `enableProducts`
+        # @return [Boolean]
+        attr_accessor :enable_products
+        alias_method :enable_products?, :enable_products
+      
+        # Identifier. The resource name of the autofeed settings. Format: `accounts/`
+        # account`/autofeedSettings`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eligible = args[:eligible] if args.key?(:eligible)
+          @enable_products = args[:enable_products] if args.key?(:enable_products)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Business days of the warehouse.
       class BusinessDayConfig
         include Google::Apis::Core::Hashable
@@ -349,7 +349,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Whether the identity attributes may be used for promotions.
+        # Required. Whether the identity attributes may be used for promotions.
         # Corresponds to the JSON property `promotionsConsent`
         # @return [String]
         attr_accessor :promotions_consent
@@ -385,20 +385,22 @@ module Google
         end
       end
       
-      # Collection of information related to a business.
+      # The `BusinessInfo` message contains essential information about a merchant's
+      # business. This message captures key business details such as physical address,
+      # customer service contacts, and region-specific identifiers.
       class BusinessInfo
         include Google::Apis::Core::Hashable
       
-        # Represents a postal address, e.g. for postal delivery or payments addresses.
-        # Given a postal address, a postal service can deliver items to a premise, P.O.
-        # Box or similar. It is not intended to model geographical locations (roads,
-        # towns, mountains). In typical usage an address would be created via user input
-        # or from importing existing data, depending on the type of process. Advice on
-        # address input / editing: - Use an internationalization-ready address widget
-        # such as https://github.com/google/libaddressinput) - Users should not be
-        # presented with UI elements for input or editing of fields outside countries
-        # where that field is used. For more guidance on how to use this schema, please
-        # see: https://support.google.com/business/answer/6397478
+        # Represents a postal address. For example for postal delivery or payments
+        # addresses. Given a postal address, a postal service can deliver items to a
+        # premise, P.O. Box or similar. It is not intended to model geographical
+        # locations (roads, towns, mountains). In typical usage an address would be
+        # created by user input or from importing existing data, depending on the type
+        # of process. Advice on address input / editing: - Use an internationalization-
+        # ready address widget such as https://github.com/google/libaddressinput) -
+        # Users should not be presented with UI elements for input or editing of fields
+        # outside countries where that field is used. For more guidance on how to use
+        # this schema, see: https://support.google.com/business/answer/6397478
         # Corresponds to the JSON property `address`
         # @return [Google::Apis::MerchantapiAccountsV1beta::PostalAddress]
         attr_accessor :address
@@ -407,6 +409,13 @@ module Google
         # Corresponds to the JSON property `customerService`
         # @return [Google::Apis::MerchantapiAccountsV1beta::CustomerService]
         attr_accessor :customer_service
+      
+        # Optional. The 10-digit [Korean business registration number](https://support.
+        # google.com/merchants/answer/9037766) separated with dashes in the format: XXX-
+        # XX-XXXXX.
+        # Corresponds to the JSON property `koreanBusinessRegistrationNumber`
+        # @return [String]
+        attr_accessor :korean_business_registration_number
       
         # Identifier. The resource name of the business info. Format: `accounts/`account`
         # /businessInfo`
@@ -444,6 +453,7 @@ module Google
         def update!(**args)
           @address = args[:address] if args.key?(:address)
           @customer_service = args[:customer_service] if args.key?(:customer_service)
+          @korean_business_registration_number = args[:korean_business_registration_number] if args.key?(:korean_business_registration_number)
           @name = args[:name] if args.key?(:name)
           @phone = args[:phone] if args.key?(:phone)
           @phone_verification_state = args[:phone_verification_state] if args.key?(:phone_verification_state)
@@ -451,7 +461,10 @@ module Google
       end
       
       # A list of carrier rates that can be referred to by `main_table` or `
-      # single_value`.
+      # single_value`. Supported carrier services are defined in https://support.
+      # google.com/merchants/answer/12577710?ref_topic=12570808&sjid=
+      # 10662598224319463032-NC#zippy=%2Cdelivery-cost-rate-type%2Ccarrier-rate-au-de-
+      # uk-and-us-only.
       class CarrierRate
         include Google::Apis::Core::Hashable
       
@@ -506,12 +519,21 @@ module Google
       class ClaimHomepageRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. When set to `true`, this option removes any existing claim on the
+        # requested website and replaces it with a claim from the account that makes the
+        # request.
+        # Corresponds to the JSON property `overwrite`
+        # @return [Boolean]
+        attr_accessor :overwrite
+        alias_method :overwrite?, :overwrite
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @overwrite = args[:overwrite] if args.key?(:overwrite)
         end
       end
       
@@ -519,18 +541,25 @@ module Google
       class CreateAndConfigureAccountRequest
         include Google::Apis::Core::Hashable
       
-        # Reference to a Terms of Service resource.
-        # Corresponds to the JSON property `acceptTermsOfService`
-        # @return [Google::Apis::MerchantapiAccountsV1beta::AcceptTermsOfService]
-        attr_accessor :accept_terms_of_service
-      
-        # An account.
+        # The `Account` message represents a merchant's account within Shopping Ads. It'
+        # s the primary entity for managing product data, settings, and interactions
+        # with Google's services and external providers. Accounts can operate as
+        # standalone entities or be part of a multi-client account (MCA) structure. In
+        # an MCA setup the parent account manages multiple sub-accounts. Establishing an
+        # account involves configuring attributes like the account name, time zone, and
+        # language preferences. The `Account` message is the parent entity for many
+        # other resources, for example, `AccountRelationship`, `Homepage`, `BusinessInfo`
+        # and so on.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::MerchantapiAccountsV1beta::Account]
         attr_accessor :account
       
-        # Optional. If specified, an account service between the account to be created
-        # and the provider account is initialized as part of the creation.
+        # Required. An account service between the account to be created and the
+        # provider account is initialized as part of the creation. At least one such
+        # service needs to be provided. Currently exactly one of these needs to be `
+        # account_aggregation`, which means you can only create sub accounts, not
+        # standalone account through this method. Additional `account_management` or `
+        # product_management` services may be provided.
         # Corresponds to the JSON property `service`
         # @return [Array<Google::Apis::MerchantapiAccountsV1beta::AddAccountService>]
         attr_accessor :service
@@ -546,7 +575,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @accept_terms_of_service = args[:accept_terms_of_service] if args.key?(:accept_terms_of_service)
           @account = args[:account] if args.key?(:account)
           @service = args[:service] if args.key?(:service)
           @users = args[:users] if args.key?(:users)
@@ -563,7 +591,10 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # A [user](https://support.google.com/merchants/answer/12160472).
+        # The `User` message represents a user associated with a Merchant Center account.
+        # It is used to manage user permissions and access rights within the account.
+        # For more information, see [Frequently asked questions about people and access
+        # levels](//support.google.com/merchants/answer/12160472).
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::MerchantapiAccountsV1beta::User]
         attr_accessor :user
@@ -759,7 +790,8 @@ module Google
       
         # Maximum number of business days spent before an order is shipped. 0 means same
         # day shipped, 1 means next day shipped. Must be greater than or equal to `
-        # min_handling_days`.
+        # min_handling_days`. 'min_handling_days' and 'max_handling_days' should be
+        # either set or not set at the same time.
         # Corresponds to the JSON property `maxHandlingDays`
         # @return [Fixnum]
         attr_accessor :max_handling_days
@@ -772,7 +804,8 @@ module Google
         attr_accessor :max_transit_days
       
         # Minimum number of business days spent before an order is shipped. 0 means same
-        # day shipped, 1 means next day shipped.
+        # day shipped, 1 means next day shipped. 'min_handling_days' and '
+        # max_handling_days' should be either set or not set at the same time.
         # Corresponds to the JSON property `minHandlingDays`
         # @return [Fixnum]
         attr_accessor :min_handling_days
@@ -1002,7 +1035,12 @@ module Google
         end
       end
       
-      # A store's homepage.
+      # The `Homepage` message represents a merchant's store homepage within the
+      # system. A merchant's homepage is the primary domain where customers interact
+      # with their store. The homepage can be claimed and verified as a proof of
+      # ownership and allows the merchant to unlock features that require a verified
+      # website. For more information, see [Understanding online store URL
+      # verification](//support.google.com/merchants/answer/176793).
       class Homepage
         include Google::Apis::Core::Hashable
       
@@ -1105,36 +1143,6 @@ module Google
         end
       end
       
-      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
-      # Timestamp end (exclusive). The start must be less than or equal to the end.
-      # When the start equals the end, the interval is empty (matches no time). When
-      # both start and end are unspecified, the interval matches any time.
-      class Interval
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Exclusive end of the interval. If specified, a Timestamp matching
-        # this interval will have to be before the end.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Optional. Inclusive start of the interval. If specified, a Timestamp matching
-        # this interval will have to be the same or after the start.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
       # Response message for the `ListAccountIssues` method.
       class ListAccountIssuesResponse
         include Google::Apis::Core::Hashable
@@ -1157,32 +1165,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_issues = args[:account_issues] if args.key?(:account_issues)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Response to account tax list request This method can only be called on a multi-
-      # client account, otherwise it'll return an error.
-      class ListAccountTaxResponse
-        include Google::Apis::Core::Hashable
-      
-        # Page of accounttax settings
-        # Corresponds to the JSON property `accountTaxes`
-        # @return [Array<Google::Apis::MerchantapiAccountsV1beta::AccountTax>]
-        attr_accessor :account_taxes
-      
-        # The token for the retrieval of the next page of account tax settings.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @account_taxes = args[:account_taxes] if args.key?(:account_taxes)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -1482,8 +1464,8 @@ module Google
         attr_accessor :accept_exchange
         alias_method :accept_exchange?, :accept_exchange
       
-        # The countries of sale where the return policy applies. The values must be a
-        # valid 2 letter ISO 3166 code.
+        # Required. Immutable. The countries of sale where the return policy applies.
+        # The values must be a valid 2 letter ISO 3166 code.
         # Corresponds to the JSON property `countries`
         # @return [Array<String>]
         attr_accessor :countries
@@ -1494,13 +1476,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :item_conditions
       
-        # This field represents the unique user-defined label of the return policy. It
-        # is important to note that the same label cannot be used in different return
-        # policies for the same country. Unless a product specifies a specific label
-        # attribute, policies will be automatically labeled as 'default'. To assign a
-        # custom return policy to certain product groups, follow the instructions
-        # provided in the [Return policy label] (https://support.google.com/merchants/
-        # answer/9445425). The label can contain up to 50 characters.
+        # Required. Immutable. This field represents the unique user-defined label of
+        # the return policy. It is important to note that the same label cannot be used
+        # in different return policies for the same country. Unless a product specifies
+        # a specific label attribute, policies will be automatically labeled as 'default'
+        # . To assign a custom return policy to certain product groups, follow the
+        # instructions provided in the [Return policy label] (https://support.google.com/
+        # merchants/answer/9445425). The label can contain up to 50 characters.
         # Corresponds to the JSON property `label`
         # @return [String]
         attr_accessor :label
@@ -1538,8 +1520,8 @@ module Google
         # @return [String]
         attr_accessor :return_policy_id
       
-        # The return policy uri. This can used by Google to do a sanity check for the
-        # policy. It must be a valid URL.
+        # Required. The return policy uri. This can used by Google to do a sanity check
+        # for the policy. It must be a valid URL.
         # Corresponds to the JSON property `returnPolicyUri`
         # @return [String]
         attr_accessor :return_policy_uri
@@ -1591,9 +1573,9 @@ module Google
         # The phone number, represented as a leading plus sign ('+'), followed by a
         # phone number that uses a relaxed ITU E.164 format consisting of the country
         # calling code (1 to 3 digits) and the subscriber number, with no additional
-        # spaces or formatting, e.g.: - correct: "+15552220123" - incorrect: "+1 (555)
-        # 222-01234 x123". The ITU E.164 format limits the latter to 12 digits, but in
-        # practice not all countries respect that, so we relax that restriction here.
+        # spaces or formatting. For example: - correct: "+15552220123" - incorrect: "+1 (
+        # 555) 222-01234 x123". The ITU E.164 format limits the latter to 12 digits, but
+        # in practice not all countries respect that, so we relax that restriction here.
         # National-only numbers are not allowed. References: - https://www.itu.int/rec/T-
         # REC-E.164-201011-I - https://en.wikipedia.org/wiki/E.164. - https://en.
         # wikipedia.org/wiki/List_of_country_calling_codes
@@ -1614,12 +1596,12 @@ module Google
       
         # An object representing a short code, which is a phone number that is typically
         # much shorter than regular phone numbers and can be used to address messages in
-        # MMS and SMS systems, as well as for abbreviated dialing (e.g. "Text 611 to see
-        # how many minutes you have remaining on your plan."). Short codes are
+        # MMS and SMS systems, as well as for abbreviated dialing (For example "Text 611
+        # to see how many minutes you have remaining on your plan."). Short codes are
         # restricted to a region and are not internationally dialable, which means the
         # same short code can exist in different regions, with different usage and
-        # pricing, even if those regions share the same country calling code (e.g. US
-        # and CA).
+        # pricing, even if those regions share the same country calling code (For
+        # example: US and CA).
         # Corresponds to the JSON property `shortCode`
         # @return [Google::Apis::MerchantapiAccountsV1beta::ShortCode]
         attr_accessor :short_code
@@ -1663,35 +1645,36 @@ module Google
         end
       end
       
-      # Represents a postal address, e.g. for postal delivery or payments addresses.
-      # Given a postal address, a postal service can deliver items to a premise, P.O.
-      # Box or similar. It is not intended to model geographical locations (roads,
-      # towns, mountains). In typical usage an address would be created via user input
-      # or from importing existing data, depending on the type of process. Advice on
-      # address input / editing: - Use an internationalization-ready address widget
-      # such as https://github.com/google/libaddressinput) - Users should not be
-      # presented with UI elements for input or editing of fields outside countries
-      # where that field is used. For more guidance on how to use this schema, please
-      # see: https://support.google.com/business/answer/6397478
+      # Represents a postal address. For example for postal delivery or payments
+      # addresses. Given a postal address, a postal service can deliver items to a
+      # premise, P.O. Box or similar. It is not intended to model geographical
+      # locations (roads, towns, mountains). In typical usage an address would be
+      # created by user input or from importing existing data, depending on the type
+      # of process. Advice on address input / editing: - Use an internationalization-
+      # ready address widget such as https://github.com/google/libaddressinput) -
+      # Users should not be presented with UI elements for input or editing of fields
+      # outside countries where that field is used. For more guidance on how to use
+      # this schema, see: https://support.google.com/business/answer/6397478
       class PostalAddress
         include Google::Apis::Core::Hashable
       
         # Unstructured address lines describing the lower levels of an address. Because
         # values in address_lines do not have type information and may sometimes contain
-        # multiple values in a single field (e.g. "Austin, TX"), it is important that
-        # the line order is clear. The order of address lines should be "envelope order"
-        # for the country/region of the address. In places where this can vary (e.g.
-        # Japan), address_language is used to make it explicit (e.g. "ja" for large-to-
-        # small ordering and "ja-Latn" or "en" for small-to-large). This way, the most
-        # specific line of an address can be selected based on the language. The minimum
-        # permitted structural representation of an address consists of a region_code
-        # with all remaining information placed in the address_lines. It would be
-        # possible to format such an address very approximately without geocoding, but
-        # no semantic reasoning could be made about any of the address components until
-        # it was at least partially resolved. Creating an address only containing a
-        # region_code and address_lines, and then geocoding is the recommended way to
-        # handle completely unstructured addresses (as opposed to guessing which parts
-        # of the address should be localities or administrative areas).
+        # multiple values in a single field (For example "Austin, TX"), it is important
+        # that the line order is clear. The order of address lines should be "envelope
+        # order" for the country/region of the address. In places where this can vary (
+        # For example Japan), address_language is used to make it explicit (For example "
+        # ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large).
+        # This way, the most specific line of an address can be selected based on the
+        # language. The minimum permitted structural representation of an address
+        # consists of a region_code with all remaining information placed in the
+        # address_lines. It would be possible to format such an address very
+        # approximately without geocoding, but no semantic reasoning could be made about
+        # any of the address components until it was at least partially resolved.
+        # Creating an address only containing a region_code and address_lines, and then
+        # geocoding is the recommended way to handle completely unstructured addresses (
+        # as opposed to guessing which parts of the address should be localities or
+        # administrative areas).
         # Corresponds to the JSON property `addressLines`
         # @return [Array<String>]
         attr_accessor :address_lines
@@ -1699,9 +1682,9 @@ module Google
         # Optional. Highest administrative subdivision which is used for postal
         # addresses of a country or region. For example, this can be a state, a province,
         # an oblast, or a prefecture. Specifically, for Spain this is the province and
-        # not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many
-        # countries don't use an administrative area in postal addresses. E.g. in
-        # Switzerland this should be left unpopulated.
+        # not the autonomous community (For example "Barcelona" and not "Catalonia").
+        # Many countries don't use an administrative area in postal addresses. For
+        # example in Switzerland this should be left unpopulated.
         # Corresponds to the JSON property `administrativeArea`
         # @return [String]
         attr_accessor :administrative_area
@@ -1733,8 +1716,8 @@ module Google
       
         # Optional. Postal code of the address. Not all countries use or require postal
         # codes to be present, but where they are used, they may trigger additional
-        # validation with other parts of the address (e.g. state/zip validation in the U.
-        # S.A.).
+        # validation with other parts of the address (For example state/zip validation
+        # in the U.S.A.).
         # Corresponds to the JSON property `postalCode`
         # @return [String]
         attr_accessor :postal_code
@@ -1763,9 +1746,9 @@ module Google
       
         # Optional. Additional, country-specific, sorting code. This is not used in most
         # regions. Where it is used, the value is either a string like "CEDEX",
-        # optionally followed by a number (e.g. "CEDEX 7"), or just a number alone,
-        # representing the "sector code" (Jamaica), "delivery area indicator" (Malawi)
-        # or "post office indicator" (e.g. Côte d'Ivoire).
+        # optionally followed by a number (For example "CEDEX 7"), or just a number
+        # alone, representing the "sector code" (Jamaica), "delivery area indicator" (
+        # Malawi) or "post office indicator" (For example Côte d'Ivoire).
         # Corresponds to the JSON property `sortingCode`
         # @return [String]
         attr_accessor :sorting_code
@@ -1944,6 +1927,12 @@ module Google
         # @return [Array<Google::Apis::MerchantapiAccountsV1beta::ProductChange>]
         attr_accessor :changes
       
+        # The product expiration time. This field will not bet set if the notification
+        # is sent for a product deletion event.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
         # The account that manages the merchant's account. can be the same as merchant
         # id if it is standalone account. Format : `accounts/`service_provider_id``
         # Corresponds to the JSON property `managingAccount`
@@ -1975,6 +1964,7 @@ module Google
           @account = args[:account] if args.key?(:account)
           @attribute = args[:attribute] if args.key?(:attribute)
           @changes = args[:changes] if args.key?(:changes)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @managing_account = args[:managing_account] if args.key?(:managing_account)
           @resource = args[:resource] if args.key?(:resource)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
@@ -2254,7 +2244,7 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::Price]
         attr_accessor :fixed_fee
       
-        # Type of return shipping fee.
+        # Required. Type of return shipping fee.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2376,8 +2366,8 @@ module Google
         end
       end
       
-      # The merchant account's [shipping setting]((https://support.google.com/
-      # merchants/answer/6069284).
+      # The merchant account's [shipping setting](https://support.google.com/merchants/
+      # answer/6069284).
       class ShippingSettings
         include Google::Apis::Core::Hashable
       
@@ -2426,17 +2416,17 @@ module Google
       
       # An object representing a short code, which is a phone number that is typically
       # much shorter than regular phone numbers and can be used to address messages in
-      # MMS and SMS systems, as well as for abbreviated dialing (e.g. "Text 611 to see
-      # how many minutes you have remaining on your plan."). Short codes are
+      # MMS and SMS systems, as well as for abbreviated dialing (For example "Text 611
+      # to see how many minutes you have remaining on your plan."). Short codes are
       # restricted to a region and are not internationally dialable, which means the
       # same short code can exist in different regions, with different usage and
-      # pricing, even if those regions share the same country calling code (e.g. US
-      # and CA).
+      # pricing, even if those regions share the same country calling code (For
+      # example: US and CA).
       class ShortCode
         include Google::Apis::Core::Hashable
       
         # Required. The short code digits, without a leading plus ('+') or country
-        # calling code, e.g. "611".
+        # calling code. For example "611".
         # Corresponds to the JSON property `number`
         # @return [String]
         attr_accessor :number
@@ -2568,103 +2558,14 @@ module Google
         end
       end
       
-      # A range of postal codes that defines the area.
-      class TaxPostalCodeRange
-        include Google::Apis::Core::Hashable
-      
-        # The end of the postal code range. Will be the same as start if not specified.
-        # Corresponds to the JSON property `end`
-        # @return [String]
-        attr_accessor :end
-      
-        # Required. The start of the postal code range, which is also the smallest in
-        # the range.
-        # Corresponds to the JSON property `start`
-        # @return [String]
-        attr_accessor :start
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end = args[:end] if args.key?(:end)
-          @start = args[:start] if args.key?(:start)
-        end
-      end
-      
-      # Primary type convension percent micro : 100% = 1 000 000 and 1% = 10 000
-      # cannot be negative. Information about tax nexus and related parameters
-      # applicable to orders delivered to the area covered by a single tax admin.
-      # Nexus is created when a merchant is doing business in an area administered by
-      # tax admin (only US states are supported for nexus configuration). If merchant
-      # has nexus in a US state, merchant needs to pay tax to all tax authorities
-      # associated with the shipping destination. Next Id : 8
-      class TaxRule
-        include Google::Apis::Core::Hashable
-      
-        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
-        # Timestamp end (exclusive). The start must be less than or equal to the end.
-        # When the start equals the end, the interval is empty (matches no time). When
-        # both start and end are unspecified, the interval matches any time.
-        # Corresponds to the JSON property `effectiveTimePeriod`
-        # @return [Google::Apis::MerchantapiAccountsV1beta::Interval]
-        attr_accessor :effective_time_period
-      
-        # The admin_id or criteria_id of the region in which this rule is applicable.
-        # Corresponds to the JSON property `locationId`
-        # @return [Fixnum]
-        attr_accessor :location_id
-      
-        # A range of postal codes that defines the area.
-        # Corresponds to the JSON property `postCodeRange`
-        # @return [Google::Apis::MerchantapiAccountsV1beta::TaxPostalCodeRange]
-        attr_accessor :post_code_range
-      
-        # Region code in which this rule is applicable
-        # Corresponds to the JSON property `regionCode`
-        # @return [String]
-        attr_accessor :region_code
-      
-        # A fixed rate specified in micros, where 100% = 1_000_000. Suitable for origin-
-        # based states.
-        # Corresponds to the JSON property `selfSpecifiedRateMicros`
-        # @return [Fixnum]
-        attr_accessor :self_specified_rate_micros
-      
-        # If set, shipping charge is taxed (at the same rate as product) when delivering
-        # to this admin's area. Can only be set on US states without category.
-        # Corresponds to the JSON property `shippingTaxed`
-        # @return [Boolean]
-        attr_accessor :shipping_taxed
-        alias_method :shipping_taxed?, :shipping_taxed
-      
-        # Rate that depends on delivery location: if merchant has a nexus in
-        # corresponding US state, rates from authorities with jurisdiction over delivery
-        # area are added up.
-        # Corresponds to the JSON property `useGoogleRate`
-        # @return [Boolean]
-        attr_accessor :use_google_rate
-        alias_method :use_google_rate?, :use_google_rate
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @effective_time_period = args[:effective_time_period] if args.key?(:effective_time_period)
-          @location_id = args[:location_id] if args.key?(:location_id)
-          @post_code_range = args[:post_code_range] if args.key?(:post_code_range)
-          @region_code = args[:region_code] if args.key?(:region_code)
-          @self_specified_rate_micros = args[:self_specified_rate_micros] if args.key?(:self_specified_rate_micros)
-          @shipping_taxed = args[:shipping_taxed] if args.key?(:shipping_taxed)
-          @use_google_rate = args[:use_google_rate] if args.key?(:use_google_rate)
-        end
-      end
-      
-      # A `TermsOfService`.
+      # The `TermsOfService` message represents a specific version of the terms of
+      # service that merchants must accept to access certain features or services (see
+      # https://support.google.com/merchants/answer/160173). This message is important
+      # for the onboarding process, ensuring that merchants agree to the necessary
+      # legal agreements for using the service. Merchants can retrieve the latest
+      # terms of service for a given `kind` and `region` through `
+      # RetrieveLatestTermsOfService`, and accept them as required through `
+      # AcceptTermsOfService`.
       class TermsOfService
         include Google::Apis::Core::Hashable
       
@@ -2784,12 +2685,12 @@ module Google
       class TimeZone
         include Google::Apis::Core::Hashable
       
-        # IANA Time Zone Database time zone, e.g. "America/New_York".
+        # IANA Time Zone Database time zone. For example "America/New_York".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Optional. IANA Time Zone Database version number, e.g. "2019a".
+        # Optional. IANA Time Zone Database version number. For example "2019a".
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -2905,7 +2806,10 @@ module Google
         end
       end
       
-      # A [user](https://support.google.com/merchants/answer/12160472).
+      # The `User` message represents a user associated with a Merchant Center account.
+      # It is used to manage user permissions and access rights within the account.
+      # For more information, see [Frequently asked questions about people and access
+      # levels](//support.google.com/merchants/answer/12160472).
       class User
         include Google::Apis::Core::Hashable
       
@@ -2989,7 +2893,7 @@ module Google
         end
       end
       
-      # A fulfillment warehouse, which stores and handles inventory. Next tag: 7
+      # A fulfillment warehouse, which stores and handles inventory.
       class Warehouse
         include Google::Apis::Core::Hashable
       
@@ -3042,7 +2946,9 @@ module Google
       class WarehouseBasedDeliveryTime
         include Google::Apis::Core::Hashable
       
-        # Required. Carrier, such as `"UPS"` or `"Fedex"`.
+        # Required. Carrier, such as `"UPS"` or `"Fedex"`. [supported carriers](https://
+        # support.google.com/merchants/answer/7050921#zippy=%2Ccarrier-rates-au-de-uk-
+        # and-us-only)
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier

@@ -22,12 +22,6 @@ module Google
   module Apis
     module MerchantapiAccountsV1beta
       
-      class AcceptTermsOfService
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Accepted
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -40,13 +34,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AccountIssue
+      class AccountAggregation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AccountTax
+      class AccountIssue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -59,6 +53,12 @@ module Google
       end
       
       class Address
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutofeedSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,19 +202,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Interval
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListAccountIssuesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListAccountTaxResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,18 +412,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TaxPostalCodeRange
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TaxRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TermsOfService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -514,14 +490,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AcceptTermsOfService
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :region_code, as: 'regionCode'
-        end
-      end
-      
       class Accepted
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -546,6 +514,12 @@ module Google
         end
       end
       
+      class AccountAggregation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AccountIssue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -559,20 +533,10 @@ module Google
         end
       end
       
-      class AccountTax
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :account, :numeric_string => true, as: 'account'
-          property :name, as: 'name'
-          collection :tax_rules, as: 'taxRules', class: Google::Apis::MerchantapiAccountsV1beta::TaxRule, decorator: Google::Apis::MerchantapiAccountsV1beta::TaxRule::Representation
-      
-        end
-      end
-      
       class AddAccountService
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_aggregation, as: 'accountAggregation', class: Google::Apis::MerchantapiAccountsV1beta::Empty, decorator: Google::Apis::MerchantapiAccountsV1beta::Empty::Representation
+          property :account_aggregation, as: 'accountAggregation', class: Google::Apis::MerchantapiAccountsV1beta::AccountAggregation, decorator: Google::Apis::MerchantapiAccountsV1beta::AccountAggregation::Representation
       
           property :provider, as: 'provider'
         end
@@ -586,6 +550,15 @@ module Google
           property :postal_code, as: 'postalCode'
           property :region_code, as: 'regionCode'
           property :street_address, as: 'streetAddress'
+        end
+      end
+      
+      class AutofeedSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eligible, as: 'eligible'
+          property :enable_products, as: 'enableProducts'
+          property :name, as: 'name'
         end
       end
       
@@ -621,6 +594,7 @@ module Google
       
           property :customer_service, as: 'customerService', class: Google::Apis::MerchantapiAccountsV1beta::CustomerService, decorator: Google::Apis::MerchantapiAccountsV1beta::CustomerService::Representation
       
+          property :korean_business_registration_number, as: 'koreanBusinessRegistrationNumber'
           property :name, as: 'name'
           property :phone, as: 'phone', class: Google::Apis::MerchantapiAccountsV1beta::PhoneNumber, decorator: Google::Apis::MerchantapiAccountsV1beta::PhoneNumber::Representation
       
@@ -644,14 +618,13 @@ module Google
       class ClaimHomepageRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :overwrite, as: 'overwrite'
         end
       end
       
       class CreateAndConfigureAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :accept_terms_of_service, as: 'acceptTermsOfService', class: Google::Apis::MerchantapiAccountsV1beta::AcceptTermsOfService, decorator: Google::Apis::MerchantapiAccountsV1beta::AcceptTermsOfService::Representation
-      
           property :account, as: 'account', class: Google::Apis::MerchantapiAccountsV1beta::Account, decorator: Google::Apis::MerchantapiAccountsV1beta::Account::Representation
       
           collection :service, as: 'service', class: Google::Apis::MerchantapiAccountsV1beta::AddAccountService, decorator: Google::Apis::MerchantapiAccountsV1beta::AddAccountService::Representation
@@ -817,27 +790,10 @@ module Google
         end
       end
       
-      class Interval
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-        end
-      end
-      
       class ListAccountIssuesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_issues, as: 'accountIssues', class: Google::Apis::MerchantapiAccountsV1beta::AccountIssue, decorator: Google::Apis::MerchantapiAccountsV1beta::AccountIssue::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListAccountTaxResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :account_taxes, as: 'accountTaxes', class: Google::Apis::MerchantapiAccountsV1beta::AccountTax, decorator: Google::Apis::MerchantapiAccountsV1beta::AccountTax::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1035,6 +991,7 @@ module Google
           property :attribute, as: 'attribute'
           collection :changes, as: 'changes', class: Google::Apis::MerchantapiAccountsV1beta::ProductChange, decorator: Google::Apis::MerchantapiAccountsV1beta::ProductChange::Representation
       
+          property :expiration_time, as: 'expirationTime'
           property :managing_account, as: 'managingAccount'
           property :resource, as: 'resource'
           property :resource_id, as: 'resourceId'
@@ -1201,29 +1158,6 @@ module Google
       
           collection :rows, as: 'rows', class: Google::Apis::MerchantapiAccountsV1beta::Row, decorator: Google::Apis::MerchantapiAccountsV1beta::Row::Representation
       
-        end
-      end
-      
-      class TaxPostalCodeRange
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end, as: 'end'
-          property :start, as: 'start'
-        end
-      end
-      
-      class TaxRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :effective_time_period, as: 'effectiveTimePeriod', class: Google::Apis::MerchantapiAccountsV1beta::Interval, decorator: Google::Apis::MerchantapiAccountsV1beta::Interval::Representation
-      
-          property :location_id, :numeric_string => true, as: 'locationId'
-          property :post_code_range, as: 'postCodeRange', class: Google::Apis::MerchantapiAccountsV1beta::TaxPostalCodeRange, decorator: Google::Apis::MerchantapiAccountsV1beta::TaxPostalCodeRange::Representation
-      
-          property :region_code, as: 'regionCode'
-          property :self_specified_rate_micros, :numeric_string => true, as: 'selfSpecifiedRateMicros'
-          property :shipping_taxed, as: 'shippingTaxed'
-          property :use_google_rate, as: 'useGoogleRate'
         end
       end
       
