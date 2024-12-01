@@ -87,8 +87,10 @@ module Google
         
         # Generate content with multimodal inputs.
         # @param [String] model
-        #   Required. The name of the publisher model requested to serve the prediction.
-        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
         # @param [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -121,8 +123,10 @@ module Google
         
         # Generate content with multimodal inputs with streaming support.
         # @param [String] model
-        #   Required. The name of the publisher model requested to serve the prediction.
-        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
         # @param [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
