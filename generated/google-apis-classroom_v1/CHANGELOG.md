@@ -1,5 +1,9 @@
 # Release history for google-apis-classroom_v1
 
+### v0.37.0 (2024-12-01)
+
+* Regenerated from discovery document revision 20241119
+
 ### v0.36.0 (2024-10-13)
 
 * Regenerated from discovery document revision 20241007

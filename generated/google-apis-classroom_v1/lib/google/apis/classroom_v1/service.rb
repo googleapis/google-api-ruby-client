@@ -1344,6 +1344,71 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a rubric. See google.classroom.v1.Rubric for details of which fields
+        # can be updated. Rubric update capabilities are [limited](/classroom/rubrics/
+        # limitations) once grading has started. This request must be made by the Google
+        # Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/
+        # 6158849) used to create the parent course work item. This method returns the
+        # following error codes: * `PERMISSION_DENIED` if the requesting developer
+        # project didn't create the corresponding course work, if the user isn't
+        # permitted to make the requested modification to the rubric, or for access
+        # errors. This error code is also returned if grading has already started on the
+        # rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following
+        # request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested
+        # course, course work, or rubric doesn't exist or if the user doesn't have
+        # access to the corresponding course work. * `INTERNAL` if grading has already
+        # started on the rubric.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] course_work_id
+        #   Required. Identifier of the course work.
+        # @param [Google::Apis::ClassroomV1::Rubric] rubric_object
+        # @param [String] id
+        #   Optional. Identifier of the rubric.
+        # @param [String] update_mask
+        #   Optional. Mask that identifies which fields on the rubric to update. This
+        #   field is required to do an update. The update fails if invalid fields are
+        #   specified. There are multiple options to define the criteria of a rubric: the `
+        #   source_spreadsheet_id` and the `criteria` list. Only one of these can be used
+        #   at a time to define a rubric. The rubric `criteria` list is fully replaced by
+        #   the rubric criteria specified in the update request. For example, if a
+        #   criterion or level is missing from the request, it is deleted. New criteria
+        #   and levels are added and an ID is assigned. Existing criteria and levels
+        #   retain the previously assigned ID if the ID is specified in the request. The
+        #   following fields can be specified by teachers: * `criteria` * `
+        #   source_spreadsheet_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Rubric] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Rubric]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_course_course_work_rubric(course_id, course_work_id, rubric_object = nil, id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/courseWork/{courseWorkId}/rubric', options)
+          command.request_representation = Google::Apis::ClassroomV1::Rubric::Representation
+          command.request_object = rubric_object
+          command.response_representation = Google::Apis::ClassroomV1::Rubric::Representation
+          command.response_class = Google::Apis::ClassroomV1::Rubric
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['courseWorkId'] = course_work_id unless course_work_id.nil?
+          command.query['id'] = id unless id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an add-on attachment under a post. Requires the add-on to have
         # permission to create new attachments on the post. This method returns the
         # following error codes: * `PERMISSION_DENIED` for access errors. * `
@@ -1695,6 +1760,246 @@ module Google
           command.params['attachmentId'] = attachment_id unless attachment_id.nil?
           command.params['submissionId'] = submission_id unless submission_id.nil?
           command.query['postId'] = post_id unless post_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a rubric. This request must be made by the Google Cloud console of the
+        # [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
+        # create the parent course work item. For further details, see [Rubrics
+        # structure and known limitations](/classroom/rubrics/limitations). This method
+        # returns the following error codes: * `PERMISSION_DENIED` if the requesting
+        # user isn't permitted to create rubrics for course work in the requested course.
+        # * `INTERNAL` if the request has insufficient OAuth scopes. * `
+        # INVALID_ARGUMENT` if the request is malformed and for the following request
+        # error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course
+        # or course work don't exist or the user doesn't have access to the course or
+        # course work. * `FAILED_PRECONDITION` for the following request error: * `
+        # AttachmentNotVisible`
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] course_work_id
+        #   Required. Identifier of the course work.
+        # @param [Google::Apis::ClassroomV1::Rubric] rubric_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Rubric] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Rubric]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_course_course_work_rubric(course_id, course_work_id, rubric_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics', options)
+          command.request_representation = Google::Apis::ClassroomV1::Rubric::Representation
+          command.request_object = rubric_object
+          command.response_representation = Google::Apis::ClassroomV1::Rubric::Representation
+          command.response_class = Google::Apis::ClassroomV1::Rubric
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['courseWorkId'] = course_work_id unless course_work_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a rubric. This request must be made by the Google Cloud console of the
+        # [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
+        # create the corresponding rubric. This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting developer project didn't create the
+        # corresponding rubric, or if the requesting user isn't permitted to delete the
+        # requested rubric. * `NOT_FOUND` if no rubric exists with the requested ID or
+        # the user does not have access to the course, course work, or rubric. * `
+        # INVALID_ARGUMENT` if grading has already started on the rubric.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] course_work_id
+        #   Required. Identifier of the course work.
+        # @param [String] id
+        #   Required. Identifier of the rubric.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_course_course_work_rubric(course_id, course_work_id, id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
+          command.response_class = Google::Apis::ClassroomV1::Empty
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['courseWorkId'] = course_work_id unless course_work_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a rubric. This method returns the following error codes: * `
+        # PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+        # malformed. * `NOT_FOUND` if the requested course, course work, or rubric doesn'
+        # t exist or if the user doesn't have access to the corresponding course work.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] course_work_id
+        #   Required. Identifier of the course work.
+        # @param [String] id
+        #   Required. Identifier of the rubric.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Rubric] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Rubric]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_course_work_rubric(course_id, course_work_id, id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Rubric::Representation
+          command.response_class = Google::Apis::ClassroomV1::Rubric
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['courseWorkId'] = course_work_id unless course_work_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of rubrics that the requester is permitted to view. This method
+        # returns the following error codes: * `PERMISSION_DENIED` for access errors. * `
+        # INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested
+        # course or course work doesn't exist or if the user doesn't have access to the
+        # corresponding course work.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] course_work_id
+        #   Required. Identifier of the course work.
+        # @param [Fixnum] page_size
+        #   The maximum number of rubrics to return. If unspecified, at most 1 rubric is
+        #   returned. The maximum value is 1; values above 1 are coerced to 1.
+        # @param [String] page_token
+        #   nextPageToken value returned from a previous list call, indicating that the
+        #   subsequent page of results should be returned. The list request must be
+        #   otherwise identical to the one that resulted in this token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::ListRubricsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::ListRubricsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_course_course_work_rubrics(course_id, course_work_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics', options)
+          command.response_representation = Google::Apis::ClassroomV1::ListRubricsResponse::Representation
+          command.response_class = Google::Apis::ClassroomV1::ListRubricsResponse
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['courseWorkId'] = course_work_id unless course_work_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a rubric. See google.classroom.v1.Rubric for details of which fields
+        # can be updated. Rubric update capabilities are [limited](/classroom/rubrics/
+        # limitations) once grading has started. This request must be made by the Google
+        # Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/
+        # 6158849) used to create the parent course work item. This method returns the
+        # following error codes: * `PERMISSION_DENIED` if the requesting developer
+        # project didn't create the corresponding course work, if the user isn't
+        # permitted to make the requested modification to the rubric, or for access
+        # errors. This error code is also returned if grading has already started on the
+        # rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following
+        # request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested
+        # course, course work, or rubric doesn't exist or if the user doesn't have
+        # access to the corresponding course work. * `INTERNAL` if grading has already
+        # started on the rubric.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] course_work_id
+        #   Required. Identifier of the course work.
+        # @param [String] id
+        #   Optional. Identifier of the rubric.
+        # @param [Google::Apis::ClassroomV1::Rubric] rubric_object
+        # @param [String] update_mask
+        #   Optional. Mask that identifies which fields on the rubric to update. This
+        #   field is required to do an update. The update fails if invalid fields are
+        #   specified. There are multiple options to define the criteria of a rubric: the `
+        #   source_spreadsheet_id` and the `criteria` list. Only one of these can be used
+        #   at a time to define a rubric. The rubric `criteria` list is fully replaced by
+        #   the rubric criteria specified in the update request. For example, if a
+        #   criterion or level is missing from the request, it is deleted. New criteria
+        #   and levels are added and an ID is assigned. Existing criteria and levels
+        #   retain the previously assigned ID if the ID is specified in the request. The
+        #   following fields can be specified by teachers: * `criteria` * `
+        #   source_spreadsheet_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Rubric] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Rubric]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_course_course_work_rubric(course_id, course_work_id, id, rubric_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}', options)
+          command.request_representation = Google::Apis::ClassroomV1::Rubric::Representation
+          command.request_object = rubric_object
+          command.response_representation = Google::Apis::ClassroomV1::Rubric::Representation
+          command.response_class = Google::Apis::ClassroomV1::Rubric
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['courseWorkId'] = course_work_id unless course_work_id.nil?
+          command.params['id'] = id unless id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
