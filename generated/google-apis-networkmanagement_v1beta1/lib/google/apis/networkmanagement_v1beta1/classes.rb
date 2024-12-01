@@ -394,12 +394,6 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # ID of Cloud Run Service this revision belongs to. Was never set, is not
-        # exported to v1 proto and public protos. Do not export to v1beta1 public proto.
-        # Corresponds to the JSON property `serviceName`
-        # @return [String]
-        attr_accessor :service_name
-      
         # URI of Cloud Run service this revision belongs to.
         # Corresponds to the JSON property `serviceUri`
         # @return [String]
@@ -418,7 +412,6 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @location = args[:location] if args.key?(:location)
-          @service_name = args[:service_name] if args.key?(:service_name)
           @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -731,8 +724,16 @@ module Google
         # @return [String]
         attr_accessor :forwarding_rule_target
       
-        # A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/
-        # kubernetes-engine/docs/concepts/cluster-architecture).
+        # DNS endpoint of [Google Kubernetes Engine cluster control plane](https://cloud.
+        # google.com/kubernetes-engine/docs/concepts/cluster-architecture). Requires
+        # gke_master_cluster to be set, can't be used simultaneoulsly with ip_address or
+        # network. Applicable only to destination endpoint.
+        # Corresponds to the JSON property `fqdn`
+        # @return [String]
+        attr_accessor :fqdn
+      
+        # A cluster URI for [Google Kubernetes Engine cluster control plane](https://
+        # cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         # Corresponds to the JSON property `gkeMasterCluster`
         # @return [String]
         attr_accessor :gke_master_cluster
@@ -786,6 +787,16 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # A [Redis Cluster](https://cloud.google.com/memorystore/docs/cluster) URI.
+        # Corresponds to the JSON property `redisCluster`
+        # @return [String]
+        attr_accessor :redis_cluster
+      
+        # A [Redis Instance](https://cloud.google.com/memorystore/docs/redis) URI.
+        # Corresponds to the JSON property `redisInstance`
+        # @return [String]
+        attr_accessor :redis_instance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -798,6 +809,7 @@ module Google
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @forwarding_rule_target = args[:forwarding_rule_target] if args.key?(:forwarding_rule_target)
+          @fqdn = args[:fqdn] if args.key?(:fqdn)
           @gke_master_cluster = args[:gke_master_cluster] if args.key?(:gke_master_cluster)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -807,6 +819,8 @@ module Google
           @network_type = args[:network_type] if args.key?(:network_type)
           @port = args[:port] if args.key?(:port)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @redis_cluster = args[:redis_cluster] if args.key?(:redis_cluster)
+          @redis_instance = args[:redis_instance] if args.key?(:redis_instance)
         end
       end
       
@@ -928,7 +942,7 @@ module Google
       end
       
       # For display only. Metadata associated with a VPC firewall rule, an implied VPC
-      # firewall rule, or a hierarchical firewall policy rule.
+      # firewall rule, or a firewall policy rule.
       class FirewallInfo
         include Google::Apis::Core::Hashable
       
@@ -942,8 +956,8 @@ module Google
         # @return [String]
         attr_accessor :direction
       
-        # The display name of the VPC firewall rule. This field is not applicable to
-        # hierarchical firewall policy rules.
+        # The display name of the firewall rule. This field might be empty for firewall
+        # policy rules.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -959,11 +973,17 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
-        # The hierarchical firewall policy that this rule is associated with. This field
-        # is not applicable to VPC firewall rules.
+        # The name of the firewall policy that this rule is associated with. This field
+        # is not applicable to VPC firewall rules and implied VPC firewall rules.
         # Corresponds to the JSON property `policy`
         # @return [String]
         attr_accessor :policy
+      
+        # The URI of the firewall policy that this rule is associated with. This field
+        # is not applicable to VPC firewall rules and implied VPC firewall rules.
+        # Corresponds to the JSON property `policyUri`
+        # @return [String]
+        attr_accessor :policy_uri
       
         # The priority of the firewall rule.
         # Corresponds to the JSON property `priority`
@@ -976,13 +996,13 @@ module Google
         attr_accessor :target_service_accounts
       
         # The target tags defined by the VPC firewall rule. This field is not applicable
-        # to hierarchical firewall policy rules.
+        # to firewall policy rules.
         # Corresponds to the JSON property `targetTags`
         # @return [Array<String>]
         attr_accessor :target_tags
       
-        # The URI of the VPC firewall rule. This field is not applicable to implied
-        # firewall rules or hierarchical firewall policy rules.
+        # The URI of the firewall rule. This field is not applicable to implied VPC
+        # firewall rules.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -999,6 +1019,7 @@ module Google
           @firewall_rule_type = args[:firewall_rule_type] if args.key?(:firewall_rule_type)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @policy = args[:policy] if args.key?(:policy)
+          @policy_uri = args[:policy_uri] if args.key?(:policy_uri)
           @priority = args[:priority] if args.key?(:priority)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
           @target_tags = args[:target_tags] if args.key?(:target_tags)
@@ -1132,12 +1153,17 @@ module Google
         # @return [String]
         attr_accessor :cluster_uri
       
-        # External IP address of a GKE cluster master.
+        # DNS endpoint of a GKE cluster control plane.
+        # Corresponds to the JSON property `dnsEndpoint`
+        # @return [String]
+        attr_accessor :dns_endpoint
+      
+        # External IP address of a GKE cluster control plane.
         # Corresponds to the JSON property `externalIp`
         # @return [String]
         attr_accessor :external_ip
       
-        # Internal IP address of a GKE cluster master.
+        # Internal IP address of a GKE cluster control plane.
         # Corresponds to the JSON property `internalIp`
         # @return [String]
         attr_accessor :internal_ip
@@ -1150,6 +1176,7 @@ module Google
         def update!(**args)
           @cluster_network_uri = args[:cluster_network_uri] if args.key?(:cluster_network_uri)
           @cluster_uri = args[:cluster_uri] if args.key?(:cluster_uri)
+          @dns_endpoint = args[:dns_endpoint] if args.key?(:dns_endpoint)
           @external_ip = args[:external_ip] if args.key?(:external_ip)
           @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
         end
@@ -1218,6 +1245,11 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
+        # URI of the PSC network attachment the NIC is attached to (if relevant).
+        # Corresponds to the JSON property `pscNetworkAttachmentUri`
+        # @return [String]
+        attr_accessor :psc_network_attachment_uri
+      
         # Service account authorized for the instance.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -1240,6 +1272,7 @@ module Google
           @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @psc_network_attachment_uri = args[:psc_network_attachment_uri] if args.key?(:psc_network_attachment_uri)
           @service_account = args[:service_account] if args.key?(:service_account)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -1368,6 +1401,37 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response for the `ListVpcFlowLogsConfigs` method.
+      class ListVpcFlowLogsConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page token to fetch the next set of configurations.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached (when querying all locations with `-`).
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # List of VPC Flow Log configurations.
+        # Corresponds to the JSON property `vpcFlowLogsConfigs`
+        # @return [Array<Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig>]
+        attr_accessor :vpc_flow_logs_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @vpc_flow_logs_configs = args[:vpc_flow_logs_configs] if args.key?(:vpc_flow_logs_configs)
         end
       end
       
@@ -1679,7 +1743,8 @@ module Google
         end
       end
       
-      # For display only. Metadata associated with a Compute Engine network.
+      # For display only. Metadata associated with a Compute Engine network. Next ID:
+      # 7
       class NetworkInfo
         include Google::Apis::Core::Hashable
       
@@ -1688,10 +1753,20 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The IP range that matches the test.
+        # The IP range of the subnet matching the source IP address of the test.
         # Corresponds to the JSON property `matchedIpRange`
         # @return [String]
         attr_accessor :matched_ip_range
+      
+        # URI of the subnet matching the source IP address of the test.
+        # Corresponds to the JSON property `matchedSubnetUri`
+        # @return [String]
+        attr_accessor :matched_subnet_uri
+      
+        # The region of the subnet matching the source IP address of the test.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
       
         # URI of a Compute Engine network.
         # Corresponds to the JSON property `uri`
@@ -1706,6 +1781,8 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @matched_ip_range = args[:matched_ip_range] if args.key?(:matched_ip_range)
+          @matched_subnet_uri = args[:matched_subnet_uri] if args.key?(:matched_subnet_uri)
+          @region = args[:region] if args.key?(:region)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -2123,6 +2200,107 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a Redis Cluster.
+      class RedisClusterInfo
+        include Google::Apis::Core::Hashable
+      
+        # Discovery endpoint IP address of a Redis Cluster.
+        # Corresponds to the JSON property `discoveryEndpointIpAddress`
+        # @return [String]
+        attr_accessor :discovery_endpoint_ip_address
+      
+        # Name of a Redis Cluster.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Name of the region in which the Redis Cluster is defined. For example, "us-
+        # central1".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # URI of a Redis Cluster network in format "projects/`project_id`/global/
+        # networks/`network_id`".
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Secondary endpoint IP address of a Redis Cluster.
+        # Corresponds to the JSON property `secondaryEndpointIpAddress`
+        # @return [String]
+        attr_accessor :secondary_endpoint_ip_address
+      
+        # URI of a Redis Cluster in format "projects/`project_id`/locations/`location`/
+        # clusters/`cluster_id`"
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovery_endpoint_ip_address = args[:discovery_endpoint_ip_address] if args.key?(:discovery_endpoint_ip_address)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @location = args[:location] if args.key?(:location)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @secondary_endpoint_ip_address = args[:secondary_endpoint_ip_address] if args.key?(:secondary_endpoint_ip_address)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # For display only. Metadata associated with a Cloud Redis Instance.
+      class RedisInstanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of a Cloud Redis Instance.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # URI of a Cloud Redis Instance network.
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Primary endpoint IP address of a Cloud Redis Instance.
+        # Corresponds to the JSON property `primaryEndpointIp`
+        # @return [String]
+        attr_accessor :primary_endpoint_ip
+      
+        # Read endpoint IP address of a Cloud Redis Instance (if applicable).
+        # Corresponds to the JSON property `readEndpointIp`
+        # @return [String]
+        attr_accessor :read_endpoint_ip
+      
+        # Region in which the Cloud Redis Instance is defined.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # URI of a Cloud Redis Instance.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @primary_endpoint_ip = args[:primary_endpoint_ip] if args.key?(:primary_endpoint_ip)
+          @read_endpoint_ip = args[:read_endpoint_ip] if args.key?(:read_endpoint_ip)
+          @region = args[:region] if args.key?(:region)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Request for the `RerunConnectivityTest` method.
       class RerunConnectivityTestRequest
         include Google::Apis::Core::Hashable
@@ -2139,6 +2317,19 @@ module Google
       # For display only. Metadata associated with a Compute Engine route.
       class RouteInfo
         include Google::Apis::Core::Hashable
+      
+        # For advertised routes, the URI of their next hop, i.e. the URI of the hybrid
+        # endpoint (VPN tunnel, Interconnect attachment, NCC router appliance) the
+        # advertised prefix is advertised through, or URI of the source peered network.
+        # Corresponds to the JSON property `advertisedRouteNextHopUri`
+        # @return [String]
+        attr_accessor :advertised_route_next_hop_uri
+      
+        # For advertised dynamic routes, the URI of the Cloud Router that advertised the
+        # corresponding IP prefix.
+        # Corresponds to the JSON property `advertisedRouteSourceRouterUri`
+        # @return [String]
+        attr_accessor :advertised_route_source_router_uri
       
         # Destination IP range of the route.
         # Corresponds to the JSON property `destIpRange`
@@ -2195,6 +2386,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :protocols
       
+        # Region of the route (if applicable).
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # Indicates where route is applicable.
         # Corresponds to the JSON property `routeScope`
         # @return [String]
@@ -2215,9 +2411,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :src_port_ranges
       
-        # URI of a route. Dynamic, peering static and peering dynamic routes do not have
-        # an URI. Advertised route from Google Cloud VPC to on-premises network also
-        # does not have an URI.
+        # URI of a route (if applicable).
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2228,6 +2422,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advertised_route_next_hop_uri = args[:advertised_route_next_hop_uri] if args.key?(:advertised_route_next_hop_uri)
+          @advertised_route_source_router_uri = args[:advertised_route_source_router_uri] if args.key?(:advertised_route_source_router_uri)
           @dest_ip_range = args[:dest_ip_range] if args.key?(:dest_ip_range)
           @dest_port_ranges = args[:dest_port_ranges] if args.key?(:dest_port_ranges)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -2239,6 +2435,7 @@ module Google
           @next_hop_type = args[:next_hop_type] if args.key?(:next_hop_type)
           @priority = args[:priority] if args.key?(:priority)
           @protocols = args[:protocols] if args.key?(:protocols)
+          @region = args[:region] if args.key?(:region)
           @route_scope = args[:route_scope] if args.key?(:route_scope)
           @route_type = args[:route_type] if args.key?(:route_type)
           @src_ip_range = args[:src_ip_range] if args.key?(:src_ip_range)
@@ -2418,7 +2615,7 @@ module Google
         attr_accessor :endpoint
       
         # For display only. Metadata associated with a VPC firewall rule, an implied VPC
-        # firewall rule, or a hierarchical firewall policy rule.
+        # firewall rule, or a firewall policy rule.
         # Corresponds to the JSON property `firewall`
         # @return [Google::Apis::NetworkmanagementV1beta1::FirewallInfo]
         attr_accessor :firewall
@@ -2468,7 +2665,8 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::NatInfo]
         attr_accessor :nat
       
-        # For display only. Metadata associated with a Compute Engine network.
+        # For display only. Metadata associated with a Compute Engine network. Next ID:
+        # 7
         # Corresponds to the JSON property `network`
         # @return [Google::Apis::NetworkmanagementV1beta1::NetworkInfo]
         attr_accessor :network
@@ -2482,6 +2680,16 @@ module Google
         # Corresponds to the JSON property `proxyConnection`
         # @return [Google::Apis::NetworkmanagementV1beta1::ProxyConnectionInfo]
         attr_accessor :proxy_connection
+      
+        # For display only. Metadata associated with a Redis Cluster.
+        # Corresponds to the JSON property `redisCluster`
+        # @return [Google::Apis::NetworkmanagementV1beta1::RedisClusterInfo]
+        attr_accessor :redis_cluster
+      
+        # For display only. Metadata associated with a Cloud Redis Instance.
+        # Corresponds to the JSON property `redisInstance`
+        # @return [Google::Apis::NetworkmanagementV1beta1::RedisInstanceInfo]
+        attr_accessor :redis_instance
       
         # For display only. Metadata associated with a Compute Engine route.
         # Corresponds to the JSON property `route`
@@ -2547,6 +2755,8 @@ module Google
           @network = args[:network] if args.key?(:network)
           @project_id = args[:project_id] if args.key?(:project_id)
           @proxy_connection = args[:proxy_connection] if args.key?(:proxy_connection)
+          @redis_cluster = args[:redis_cluster] if args.key?(:redis_cluster)
+          @redis_instance = args[:redis_instance] if args.key?(:redis_instance)
           @route = args[:route] if args.key?(:route)
           @serverless_neg = args[:serverless_neg] if args.key?(:serverless_neg)
           @state = args[:state] if args.key?(:state)
@@ -2688,6 +2898,115 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @location = args[:location] if args.key?(:location)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A configuration to generate VPC Flow Logs.
+      class VpcFlowLogsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The aggregation interval for the logs. Default value is
+        # INTERVAL_5_SEC.
+        # Corresponds to the JSON property `aggregationInterval`
+        # @return [String]
+        attr_accessor :aggregation_interval
+      
+        # Output only. The time the config was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The user-supplied description of the VPC Flow Logs configuration.
+        # Maximum of 512 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Export filter used to define which VPC Flow Logs should be logged.
+        # Corresponds to the JSON property `filterExpr`
+        # @return [String]
+        attr_accessor :filter_expr
+      
+        # Optional. The value of the field must be in (0, 1]. The sampling rate of VPC
+        # Flow Logs where 1.0 means all collected logs are reported. Setting the
+        # sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
+        # the state field instead. Default value is 1.0.
+        # Corresponds to the JSON property `flowSampling`
+        # @return [Float]
+        attr_accessor :flow_sampling
+      
+        # Traffic will be logged from the Interconnect Attachment. Format: projects/`
+        # project_id`/regions/`region`/interconnectAttachments/`name`
+        # Corresponds to the JSON property `interconnectAttachment`
+        # @return [String]
+        attr_accessor :interconnect_attachment
+      
+        # Optional. Resource labels to represent user-provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. Configures whether all, none or a subset of metadata fields should
+        # be added to the reported VPC flow logs. Default value is INCLUDE_ALL_METADATA.
+        # Corresponds to the JSON property `metadata`
+        # @return [String]
+        attr_accessor :metadata
+      
+        # Optional. Custom metadata fields to include in the reported VPC flow logs. Can
+        # only be specified if "metadata" was set to CUSTOM_METADATA.
+        # Corresponds to the JSON property `metadataFields`
+        # @return [Array<String>]
+        attr_accessor :metadata_fields
+      
+        # Identifier. Unique name of the configuration using the form: `projects/`
+        # project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The state of the VPC Flow Log configuration. Default value is
+        # ENABLED. When creating a new configuration, it must be enabled.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. A diagnostic bit - describes the state of the configured target
+        # resource for diagnostic purposes.
+        # Corresponds to the JSON property `targetResourceState`
+        # @return [String]
+        attr_accessor :target_resource_state
+      
+        # Output only. The time the config was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Traffic will be logged from the VPN Tunnel. Format: projects/`project_id`/
+        # regions/`region`/vpnTunnels/`name`
+        # Corresponds to the JSON property `vpnTunnel`
+        # @return [String]
+        attr_accessor :vpn_tunnel
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_interval = args[:aggregation_interval] if args.key?(:aggregation_interval)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @filter_expr = args[:filter_expr] if args.key?(:filter_expr)
+          @flow_sampling = args[:flow_sampling] if args.key?(:flow_sampling)
+          @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
+          @labels = args[:labels] if args.key?(:labels)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @metadata_fields = args[:metadata_fields] if args.key?(:metadata_fields)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @target_resource_state = args[:target_resource_state] if args.key?(:target_resource_state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @vpn_tunnel = args[:vpn_tunnel] if args.key?(:vpn_tunnel)
         end
       end
       
