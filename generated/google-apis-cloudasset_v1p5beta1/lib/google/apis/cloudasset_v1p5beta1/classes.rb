@@ -1364,9 +1364,10 @@ module Google
       
         # A list of identities that are allowed access through [EgressPolicy].
         # Identities can be an individual user, service account, Google group, or third-
-        # party identity. The `v1` identities that have the prefix `user`, `group`, `
-        # serviceAccount`, `principal`, and `principalSet` in https://cloud.google.com/
-        # iam/docs/principal-identifiers#v1 are supported.
+        # party identity. For third-party identity, only single identities are supported
+        # and other identity types are not supported. The `v1` identities that have the
+        # prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.
+        # google.com/iam/docs/principal-identifiers#v1 are supported.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -1534,9 +1535,10 @@ module Google
       
         # A list of identities that are allowed access through [IngressPolicy].
         # Identities can be an individual user, service account, Google group, or third-
-        # party identity. The `v1` identities that have the prefix `user`, `group`, `
-        # serviceAccount`, `principal`, and `principalSet` in https://cloud.google.com/
-        # iam/docs/principal-identifiers#v1 are supported.
+        # party identity. For third-party identity, only single identities are supported
+        # and other identity types are not supported. The `v1` identities that have the
+        # prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.
+        # google.com/iam/docs/principal-identifiers#v1 are supported.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -1758,6 +1760,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. An opaque identifier for the current version of the `
+        # ServicePerimeter`. This identifier does not follow any specific format. If an
+        # etag is not provided, the operation will be performed as if a valid etag is
+        # provided.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Identifier. Resource name for the `ServicePerimeter`. Format: `accessPolicies/`
         # access_policy`/servicePerimeters/`service_perimeter``. The `service_perimeter`
         # component must begin with a letter, followed by alphanumeric characters or `_`.
@@ -1813,6 +1823,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @perimeter_type = args[:perimeter_type] if args.key?(:perimeter_type)
           @spec = args[:spec] if args.key?(:spec)
