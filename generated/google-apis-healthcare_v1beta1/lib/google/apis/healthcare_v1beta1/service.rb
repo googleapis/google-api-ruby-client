@@ -5076,6 +5076,207 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a FHIR Binary resource. This method can be used to create a Binary
+        # resource either by using one of the accepted FHIR JSON content types, or as a
+        # raw data stream. If a resource is created with this method using the FHIR
+        # content type this method's behavior is the same as [`fhir.create`](https://
+        # cloud.google.com/healthcare-api/docs/reference/rest/v1/projects.locations.
+        # datasets.fhirStores.fhir/create). If a resource type other than Binary is used
+        # in the request it's treated in the same way as non-FHIR data (e.g., images,
+        # zip archives, pdf files, documents). When a non-FHIR content type is used in
+        # the request, a Binary resource will be generated, and the uploaded data will
+        # be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`
+        # R4`). The Binary resource's `contentType` will be filled in using the value of
+        # the `Content-Type` header, and the `securityContext` field (not present in `
+        # DSTU2`) will be populated from the `X-Security-Context` header if it exists.
+        # At this time `securityContext` has no special behavior in the Cloud Healthcare
+        # API. Note: the limit on data ingested through this method is 1 GB. For best
+        # performance, use a non-FHIR data type instead of wrapping the data in a Binary
+        # resource. Some of the Healthcare API features, such as [exporting to BigQuery](
+        # https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or [
+        # Pub/Sub notifications](https://cloud.google.com/healthcare-api/docs/fhir-
+        # pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high) with
+        # full resource content, do not support Binary resources that are larger than 10
+        # MB. In these cases the resource's `data` field will be omitted. Instead, the "
+        # http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be
+        # present to indicate that including the data is `unsupported`. On success, an
+        # empty `201 Created` response is returned. The newly created resource's ID and
+        # version are returned in the Location header. Using `Prefer: representation=
+        # resource` is not allowed for this method. The definition of the Binary REST
+        # API can be found at https://hl7.org/fhir/binary.html#rest.
+        # @param [String] parent
+        #   Required. The name of the FHIR store this resource belongs to.
+        # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def binary_project_location_dataset_fhir_store_fhir_create(parent, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/fhir/Binary', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.request_object = http_body_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the contents of a FHIR Binary resource. This method can be used to
+        # retrieve a Binary resource either by using the FHIR JSON mimetype as the value
+        # for the Accept header, or as a raw data stream. If the FHIR Accept type is
+        # used this method will return a Binary resource with the data base64-encoded,
+        # regardless of how the resource was created. The resource data can be retrieved
+        # in base64-decoded form if the Accept type of the request matches the value of
+        # the resource's `contentType` field. The definition of the Binary REST API can
+        # be found at https://hl7.org/fhir/binary.html#rest.
+        # @param [String] name
+        #   Required. The name of the Binary resource to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def binary_project_location_dataset_fhir_store_fhir_read(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the entire contents of a Binary resource. If the specified resource
+        # does not exist and the FHIR store has enable_update_create set, creates the
+        # resource with the client-specified ID. It is strongly advised not to include
+        # or encode any sensitive data such as patient identifiers in client-specified
+        # resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud
+        # Audit Logs and Pub/Sub notifications. Those IDs can also be contained in
+        # reference fields within other resources. This method can be used to update a
+        # Binary resource either by using one of the accepted FHIR JSON content types,
+        # or as a raw data stream. If a resource is updated with this method using the
+        # FHIR content type this method's behavior is the same as `update`. If a
+        # resource type other than Binary is used in the request it will be treated in
+        # the same way as non-FHIR data. When a non-FHIR content type is used in the
+        # request, a Binary resource will be generated using the ID from the resource
+        # path, and the uploaded data will be stored in the `content` field (`DSTU2` and
+        # `STU3`), or the `data` field (`R4`). The Binary resource's `contentType` will
+        # be filled in using the value of the `Content-Type` header, and the `
+        # securityContext` field (not present in `DSTU2`) will be populated from the `X-
+        # Security-Context` header if it exists. At this time `securityContext` has no
+        # special behavior in the Cloud Healthcare API. Note: the limit on data ingested
+        # through this method is 2 GB. For best performance, use a non-FHIR data type
+        # instead of wrapping the data in a Binary resource. Some of the Healthcare API
+        # features, such as [exporting to BigQuery](https://cloud.google.com/healthcare-
+        # api/docs/how-tos/fhir-export-bigquery) or [Pub/Sub notifications](https://
+        # cloud.google.com/healthcare-api/docs/fhir-pubsub#
+        # behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high) with full
+        # resource content, do not support Binary resources that are larger than 10 MB.
+        # In these cases the resource's `data` field will be omitted. Instead, the "http:
+        # //hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be
+        # present to indicate that including the data is `unsupported`. On success, an
+        # empty 200 OK response will be returned, or a 201 Created if the resource did
+        # not exit. The resource's ID and version are returned in the Location header.
+        # Using `Prefer: representation=resource` is not allowed for this method. The
+        # definition of the Binary REST API can be found at https://hl7.org/fhir/binary.
+        # html#rest.
+        # @param [String] name
+        #   Required. The name of the resource to update.
+        # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def binary_project_location_dataset_fhir_store_fhir_update(name, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.request_object = http_body_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the contents of a version (current or historical) of a FHIR Binary
+        # resource by version ID. This method can be used to retrieve a Binary resource
+        # version either by using the FHIR JSON mimetype as the value for the Accept
+        # header, or as a raw data stream. If the FHIR Accept type is used this method
+        # will return a Binary resource with the data base64-encoded, regardless of how
+        # the resource version was created. The resource data can be retrieved in base64-
+        # decoded form if the Accept type of the request matches the value of the
+        # resource version's `contentType` field. The definition of the Binary REST API
+        # can be found at https://hl7.org/fhir/binary.html#rest.
+        # @param [String] name
+        #   Required. The name of the Binary resource version to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def binary_project_location_dataset_fhir_store_fhir_vread(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Translates a code from one value set to another by searching for appropriate
         # concept maps. Implements the FHIR standard $translate operation ([DSTU2](https:
         # //www.hl7.org/fhir/DSTU2/operation-conceptmap-translate.html), [STU3](https://
@@ -5218,6 +5419,81 @@ module Google
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an Encounter resource and resources related to that Encounter.
+        # Implements the FHIR extended operation Encounter-everything ([DSTU2](http://
+        # hl7.org/implement/standards/fhir/DSTU2/encounter-operations.html#everything), [
+        # STU3](http://hl7.org/implement/standards/fhir/STU3/encounter-operations.html#
+        # everything), or [R4](https://hl7.org/implement/standards/fhir/R4/encounter-
+        # operation-everything.html). On success, the response body contains a JSON-
+        # encoded representation of a `Bundle` resource of type `searchset`, containing
+        # the results of the operation. Errors generated by the FHIR store contain a
+        # JSON-encoded `OperationOutcome` resource describing the reason for the error.
+        # If the request cannot be mapped to a valid API method on a FHIR store, a
+        # generic GCP error might be returned instead. The resources in scope for the
+        # response are: * The Encounter resource itself. * All the resources directly
+        # referenced by the Encounter resource, including attachments and binaries. *
+        # Resources directly referencing the Encounter resource that meet the inclusion
+        # criteria. The inclusion criteria are based on the membership rules in the
+        # Encounter Compartment definition ([DSTU2](http://hl7.org/fhir/DSTU2/
+        # compartment-encounter.html), [STU3](http://www.hl7.org/fhir/stu3/
+        # compartmentdefinition-encounter.html), [R4](http://hl7.org/fhir/R4/
+        # compartmentdefinition-encounter.html)), which details the eligible resource
+        # types and referencing search parameters. * Resources referencing to the
+        # Encounter resource through the "http://hl7.org/fhir/StructureDefinition/
+        # encounter-associatedEncounter" extension.
+        # @param [String] name
+        #   Required. Name of the Encounter resource for which the information is required.
+        # @param [Fixnum] _count
+        #   Optional. Maximum number of resources in a page. If not specified, 100 is used.
+        #   May not be larger than 1000.
+        # @param [String] _page_token
+        #   Optional. Used to retrieve the next or previous page of results when using
+        #   pagination. Set `_page_token` to the value of _page_token set in next or
+        #   previous page links' url. Next and previous page are returned in the response
+        #   bundle's links field, where `link.relation` is "previous" or "next". Omit `
+        #   _page_token` if no previous request has been made.
+        # @param [String] _since
+        #   Optional. If provided, only resources updated after this time are returned.
+        #   The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-
+        #   07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified
+        #   to the second and include a time zone.
+        # @param [String] _type
+        #   Optional. String of comma-delimited FHIR resource types. If provided, only
+        #   resources of the specified resource type(s) are returned. Specifying multiple `
+        #   _type` parameters isn't supported. For example, the result of `_type=
+        #   Observation&_type=Encounter` is undefined. Use `_type=Observation,Encounter`
+        #   instead.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def encounter_project_location_dataset_fhir_store_fhir_everything(name, _count: nil, _page_token: nil, _since: nil, _type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/$everything', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['_count'] = _count unless _count.nil?
+          command.query['_page_token'] = _page_token unless _page_token.nil?
+          command.query['_since'] = _since unless _since.nil?
+          command.query['_type'] = _type unless _type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6784,6 +7060,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Rolls back messages from the HL7v2 store to the specified time. This method
+        # returns an Operation that can be used to track the status of the rollback by
+        # calling GetOperation. Immediate fatal errors appear in the error field, errors
+        # are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](
+        # https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when
+        # the operation finishes, a detailed response of type
+        # RollbackHl7V2MessagesResponse is returned in the response field. The metadata
+        # field type for this operation is OperationMetadata.
+        # @param [String] name
+        #   Required. The name of the HL7v2 store to rollback, in the format of "projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id` /hl7V2Stores/`
+        #   hl7v2_store_id`".
+        # @param [Google::Apis::HealthcareV1beta1::RollbackHl7V2MessagesRequest] rollback_hl7_v2_messages_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rollback_hl7_v2_store_hl7_v2_messages(name, rollback_hl7_v2_messages_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:rollback', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::RollbackHl7V2MessagesRequest::Representation
+          command.request_object = rollback_hl7_v2_messages_request_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
@@ -7183,8 +7501,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::HealthcareV1beta1::CancelOperationRequest] cancel_operation_request_object
