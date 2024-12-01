@@ -22,7 +22,67 @@ module Google
   module Apis
     module DiscoveryengineV1beta
       
+      class GoogleApiDistribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiDistributionBucketOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiDistributionBucketOptionsExplicit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiDistributionBucketOptionsExponential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiDistributionBucketOptionsLinear
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiDistributionExemplar
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiDistributionRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleApiHttpBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiMonitoredResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiMonitoredResourceMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -64,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1BatchCreateTargetSiteMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +137,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1BatchCreateTargetSitesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1CmekConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -107,6 +179,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1ControlFilterAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ControlPromoteAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +227,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1DataStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1DataStoreBillingEstimation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -394,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1SearchLinkPromotion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1SiteVerificationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +514,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1TrainCustomModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1TrainCustomModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1UpdateSchemaMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,7 +544,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1WorkspaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAclConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -479,6 +605,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,6 +682,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaCmekConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -586,6 +724,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaControlPromoteAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaControlRedirectAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -593,6 +737,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaControlSynonymsAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -622,6 +772,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaCreateSitemapMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaCreateTargetSiteMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -646,6 +802,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDeleteDataStoreMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -659,6 +833,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDeleteSitemapMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -826,13 +1006,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1alphaExportUserEventsMetadata
+      class GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1alphaExportUserEventsResponse
+      class GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -946,13 +1126,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1alphaOutputResult
+      class GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult
+      class GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1072,6 +1258,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1186,6 +1378,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1240,6 +1438,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSitemap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaTargetSite
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1282,6 +1486,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1295,6 +1505,66 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaUserInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaWorkspaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1343,6 +1613,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecPromptSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1408,6 +1684,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1463,6 +1745,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfoDocumentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerReferenceStructuredDocumentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1540,6 +1828,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1588,6 +1894,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaim
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1625,6 +1937,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaCloudSqlSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaCmekConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1685,6 +2003,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaControlFilterAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaControlPromoteAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1756,6 +2080,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaCreateSitemapMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaCreateTargetSiteMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1786,6 +2116,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaDeleteDataStoreMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1799,6 +2141,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaDeleteSchemaMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDeleteSitemapMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1835,6 +2183,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaDocumentContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDocumentIndexStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1979,6 +2333,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaFetchDomainVerificationStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaFetchSitemapsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2242,6 +2608,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaPageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2302,7 +2674,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaPurgeErrorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2321,6 +2705,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2440,6 +2830,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchLinkPromotion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2554,6 +2950,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2657,6 +3059,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2770,6 +3178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSitemap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSpannerSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2878,6 +3292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaWorkspaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningCancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2891,6 +3311,30 @@ module Google
       end
       
       class GoogleLongrunningOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMonitoringV3Point
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMonitoringV3TimeInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMonitoringV3TimeSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMonitoringV3TypedValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2914,12 +3358,106 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleApiDistribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bucket_counts, as: 'bucketCounts'
+          property :bucket_options, as: 'bucketOptions', class: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionBucketOptions, decorator: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionBucketOptions::Representation
+      
+          property :count, :numeric_string => true, as: 'count'
+          collection :exemplars, as: 'exemplars', class: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionExemplar, decorator: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionExemplar::Representation
+      
+          property :mean, as: 'mean'
+          property :range, as: 'range', class: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionRange, decorator: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionRange::Representation
+      
+          property :sum_of_squared_deviation, as: 'sumOfSquaredDeviation'
+        end
+      end
+      
+      class GoogleApiDistributionBucketOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :explicit_buckets, as: 'explicitBuckets', class: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionBucketOptionsExplicit, decorator: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionBucketOptionsExplicit::Representation
+      
+          property :exponential_buckets, as: 'exponentialBuckets', class: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionBucketOptionsExponential, decorator: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionBucketOptionsExponential::Representation
+      
+          property :linear_buckets, as: 'linearBuckets', class: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionBucketOptionsLinear, decorator: Google::Apis::DiscoveryengineV1beta::GoogleApiDistributionBucketOptionsLinear::Representation
+      
+        end
+      end
+      
+      class GoogleApiDistributionBucketOptionsExplicit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bounds, as: 'bounds'
+        end
+      end
+      
+      class GoogleApiDistributionBucketOptionsExponential
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :growth_factor, as: 'growthFactor'
+          property :num_finite_buckets, as: 'numFiniteBuckets'
+          property :scale, as: 'scale'
+        end
+      end
+      
+      class GoogleApiDistributionBucketOptionsLinear
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_finite_buckets, as: 'numFiniteBuckets'
+          property :offset, as: 'offset'
+          property :width, as: 'width'
+        end
+      end
+      
+      class GoogleApiDistributionExemplar
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attachments, as: 'attachments'
+          property :timestamp, as: 'timestamp'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleApiDistributionRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max, as: 'max'
+          property :min, as: 'min'
+        end
+      end
+      
       class GoogleApiHttpBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_type, as: 'contentType'
           property :data, :base64 => true, as: 'data'
           collection :extensions, as: 'extensions'
+        end
+      end
+      
+      class GoogleApiMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleApiMonitoredResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleApiMonitoredResourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :system_labels, as: 'systemLabels'
+          hash :user_labels, as: 'userLabels'
         end
       end
       
@@ -2982,6 +3520,12 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1BatchCreateTargetSiteMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2998,11 +3542,24 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1CmekConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_default, as: 'isDefault'
+          property :kms_key, as: 'kmsKey'
+          property :kms_key_version, as: 'kmsKeyVersion'
+          property :last_rotation_timestamp_micros, :numeric_string => true, as: 'lastRotationTimestampMicros'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :active_time_range, as: 'activeTimeRange', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ConditionTimeRange, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ConditionTimeRange::Representation
       
+          property :query_regex, as: 'queryRegex'
           collection :query_terms, as: 'queryTerms', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ConditionQueryTerm, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ConditionQueryTerm::Representation
       
         end
@@ -3036,6 +3593,8 @@ module Google
           property :filter_action, as: 'filterAction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ControlFilterAction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ControlFilterAction::Representation
       
           property :name, as: 'name'
+          property :promote_action, as: 'promoteAction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ControlPromoteAction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ControlPromoteAction::Representation
+      
           property :redirect_action, as: 'redirectAction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ControlRedirectAction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ControlRedirectAction::Representation
       
           property :solution_type, as: 'solutionType'
@@ -3059,6 +3618,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ControlPromoteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          property :search_link_promotion, as: 'searchLinkPromotion', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1SearchLinkPromotion, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1SearchLinkPromotion::Representation
+      
         end
       end
       
@@ -3111,6 +3679,12 @@ module Google
       class GoogleCloudDiscoveryengineV1DataStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_site_search_config, as: 'advancedSiteSearchConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig::Representation
+      
+          property :billing_estimation, as: 'billingEstimation', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataStoreBillingEstimation, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataStoreBillingEstimation::Representation
+      
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1CmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1CmekConfig::Representation
+      
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -3118,10 +3692,34 @@ module Google
           property :document_processing_config, as: 'documentProcessingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfig::Representation
       
           property :industry_vertical, as: 'industryVertical'
+          property :kms_key_name, as: 'kmsKeyName'
           property :name, as: 'name'
+          property :serving_config_data_store, as: 'servingConfigDataStore', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore::Representation
+      
           collection :solution_types, as: 'solutionTypes'
           property :starting_schema, as: 'startingSchema', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1Schema, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1Schema::Representation
       
+          property :workspace_config, as: 'workspaceConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1WorkspaceConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1WorkspaceConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DataStoreBillingEstimation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :structured_data_size, :numeric_string => true, as: 'structuredDataSize'
+          property :structured_data_update_time, as: 'structuredDataUpdateTime'
+          property :unstructured_data_size, :numeric_string => true, as: 'unstructuredDataSize'
+          property :unstructured_data_update_time, as: 'unstructuredDataUpdateTime'
+          property :website_data_size, :numeric_string => true, as: 'websiteDataSize'
+          property :website_data_update_time, as: 'websiteDataUpdateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled_for_serving, as: 'disabledForServing'
         end
       end
       
@@ -3257,6 +3855,7 @@ module Google
       
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
+          property :disable_analytics, as: 'disableAnalytics'
           property :display_name, as: 'displayName'
           property :industry_vertical, as: 'industryVertical'
           property :name, as: 'name'
@@ -3486,6 +4085,17 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1SearchLinkPromotion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :enabled, as: 'enabled'
+          property :image_uri, as: 'imageUri'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1SiteVerificationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3527,6 +4137,35 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1TrainCustomModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1TrainCustomModelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ImportErrorConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ImportErrorConfig::Representation
+      
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
+      
+          hash :metrics, as: 'metrics'
+          property :model_name, as: 'modelName'
+          property :model_status, as: 'modelStatus'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1UpdateSchemaMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3543,12 +4182,30 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1WorkspaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dasher_customer_id, as: 'dasherCustomerId'
+          property :super_admin_email_address, as: 'superAdminEmailAddress'
+          property :super_admin_service_account, as: 'superAdminServiceAccount'
+          property :type, as: 'type'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAclConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfig::Representation
       
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_automatic_refresh, as: 'disableAutomaticRefresh'
+          property :disable_initial_index, as: 'disableInitialIndex'
         end
       end
       
@@ -3611,6 +4268,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunk_info, as: 'chunkInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo::Representation
       
+          property :structured_document_info, as: 'structuredDocumentInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo::Representation
+      
           property :unstructured_document_info, as: 'unstructuredDocumentInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo::Representation
       
         end
@@ -3638,6 +4297,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document, as: 'document'
+          hash :struct_data, as: 'structData'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3655,6 +4322,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :page_identifier, as: 'pageIdentifier'
+          property :relevance_score, as: 'relevanceScore'
         end
       end
       
@@ -3741,11 +4409,24 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaCmekConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_default, as: 'isDefault'
+          property :kms_key, as: 'kmsKey'
+          property :kms_key_version, as: 'kmsKeyVersion'
+          property :last_rotation_timestamp_micros, :numeric_string => true, as: 'lastRotationTimestampMicros'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :active_time_range, as: 'activeTimeRange', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaConditionTimeRange, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaConditionTimeRange::Representation
       
+          property :query_regex, as: 'queryRegex'
           collection :query_terms, as: 'queryTerms', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaConditionQueryTerm, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaConditionQueryTerm::Representation
       
         end
@@ -3779,6 +4460,8 @@ module Google
           property :filter_action, as: 'filterAction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlFilterAction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlFilterAction::Representation
       
           property :name, as: 'name'
+          property :promote_action, as: 'promoteAction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlPromoteAction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlPromoteAction::Representation
+      
           property :redirect_action, as: 'redirectAction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlRedirectAction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlRedirectAction::Representation
       
           property :solution_type, as: 'solutionType'
@@ -3805,6 +4488,15 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaControlPromoteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          property :search_link_promotion, as: 'searchLinkPromotion', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaControlRedirectAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3816,6 +4508,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :synonyms, as: 'synonyms'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :qps_time_series, as: 'qpsTimeSeries', class: Google::Apis::DiscoveryengineV1beta::GoogleMonitoringV3TimeSeries, decorator: Google::Apis::DiscoveryengineV1beta::GoogleMonitoringV3TimeSeries::Representation
+      
         end
       end
       
@@ -3849,6 +4549,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaCreateSitemapMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaCreateTargetSiteMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3869,6 +4577,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :error_message, as: 'errorMessage'
           hash :metrics, as: 'metrics'
           property :model_state, as: 'modelState'
           property :model_version, :numeric_string => true, as: 'modelVersion'
@@ -3881,6 +4590,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acl_enabled, as: 'aclEnabled'
+          property :advanced_site_search_config, as: 'advancedSiteSearchConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig::Representation
+      
+          property :billing_estimation, as: 'billingEstimation', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation::Representation
+      
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCmekConfig::Representation
+      
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -3890,11 +4605,47 @@ module Google
           property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfig::Representation
       
           property :industry_vertical, as: 'industryVertical'
+          property :kms_key_name, as: 'kmsKeyName'
           property :language_info, as: 'languageInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaLanguageInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaLanguageInfo::Representation
       
           property :name, as: 'name'
+          property :natural_language_query_understanding_config, as: 'naturalLanguageQueryUnderstandingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig::Representation
+      
+          property :serving_config_data_store, as: 'servingConfigDataStore', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore::Representation
+      
           collection :solution_types, as: 'solutionTypes'
           property :starting_schema, as: 'startingSchema', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSchema, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSchema::Representation
+      
+          property :workspace_config, as: 'workspaceConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaWorkspaceConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaWorkspaceConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :structured_data_size, :numeric_string => true, as: 'structuredDataSize'
+          property :structured_data_update_time, as: 'structuredDataUpdateTime'
+          property :unstructured_data_size, :numeric_string => true, as: 'unstructuredDataSize'
+          property :unstructured_data_update_time, as: 'unstructuredDataUpdateTime'
+          property :website_data_size, :numeric_string => true, as: 'websiteDataSize'
+          property :website_data_update_time, as: 'websiteDataUpdateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled_for_serving, as: 'disabledForServing'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_refresh_crawl_rate, as: 'autoRefreshCrawlRate', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries::Representation
+      
+          property :user_triggered_crawl_rate, as: 'userTriggeredCrawlRate', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries::Representation
       
         end
       end
@@ -3916,6 +4667,14 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDeleteSitemapMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
@@ -4031,6 +4790,7 @@ module Google
       
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
+          property :disable_analytics, as: 'disableAnalytics'
           property :display_name, as: 'displayName'
           property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig::Representation
@@ -4173,20 +4933,18 @@ module Google
         end
       end
       
-      class GoogleCloudDiscoveryengineV1alphaExportUserEventsMetadata
+      class GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :update_time, as: 'updateTime'
+          collection :sitemaps_metadata, as: 'sitemapsMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata::Representation
+      
         end
       end
       
-      class GoogleCloudDiscoveryengineV1alphaExportUserEventsResponse
+      class GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :output_result, as: 'outputResult', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOutputResult, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOutputResult::Representation
-      
-          property :status, as: 'status', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
+          property :sitemap, as: 'sitemap', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSitemap, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSitemap::Representation
       
         end
       end
@@ -4201,6 +4959,7 @@ module Google
           property :field_type, as: 'fieldType'
           property :indexable_option, as: 'indexableOption'
           property :key_property_type, as: 'keyPropertyType'
+          property :metatag_name, as: 'metatagName'
           property :recs_filterable_option, as: 'recsFilterableOption'
           property :retrievable_option, as: 'retrievableOption'
           collection :schema_org_paths, as: 'schemaOrgPaths'
@@ -4368,19 +5127,33 @@ module Google
         end
       end
       
-      class GoogleCloudDiscoveryengineV1alphaOutputResult
+      class GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :bigquery_result, as: 'bigqueryResult', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult::Representation
-      
+          property :mode, as: 'mode'
         end
       end
       
-      class GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult
+      class GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :dataset_id, as: 'datasetId'
-          property :table_id, as: 'tableId'
+          property :dedicated_crawl_rate_time_series, as: 'dedicatedCrawlRateTimeSeries', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries::Representation
+      
+          property :error, as: 'error', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
+      
+          property :organic_crawl_rate_time_series, as: 'organicCrawlRateTimeSeries', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_organic_crawl_rate, as: 'googleOrganicCrawlRate', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries::Representation
+      
+          property :vertex_ai_organic_crawl_rate, as: 'vertexAiOrganicCrawlRate', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries::Representation
+      
         end
       end
       
@@ -4521,10 +5294,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           collection :invalid_uris, as: 'invalidUris'
+          property :invalid_uris_count, as: 'invalidUrisCount'
           property :pending_count, as: 'pendingCount'
           property :quota_exceeded_count, as: 'quotaExceededCount'
           property :success_count, as: 'successCount'
           property :update_time, as: 'updateTime'
+          collection :uris_not_matching_target_sites, as: 'urisNotMatchingTargetSites'
+          property :uris_not_matching_target_sites_count, as: 'urisNotMatchingTargetSitesCount'
           property :valid_uris_count, as: 'validUrisCount'
         end
       end
@@ -4566,6 +5342,17 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :enabled, as: 'enabled'
+          property :image_uri, as: 'imageUri'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4590,10 +5377,13 @@ module Google
           property :natural_language_query_understanding_spec, as: 'naturalLanguageQueryUnderstandingSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec::Representation
       
           property :offset, as: 'offset'
+          property :one_box_page_size, as: 'oneBoxPageSize'
           property :order_by, as: 'orderBy'
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
           hash :params, as: 'params'
+          property :personalization_spec, as: 'personalizationSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec::Representation
+      
           property :query, as: 'query'
           property :query_expansion_spec, as: 'queryExpansionSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec::Representation
       
@@ -4700,6 +5490,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ignore_adversarial_query, as: 'ignoreAdversarialQuery'
+          property :ignore_jail_breaking_query, as: 'ignoreJailBreakingQuery'
+          property :ignore_low_relevant_content, as: 'ignoreLowRelevantContent'
           property :ignore_non_summary_seeking_query, as: 'ignoreNonSummarySeekingQuery'
           property :include_citations, as: 'includeCitations'
           property :language_code, as: 'languageCode'
@@ -4730,6 +5522,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
+          property :filter, as: 'filter'
         end
       end
       
@@ -4789,6 +5582,13 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4836,6 +5636,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :answer, as: 'answer'
+          property :detailed_answer, as: 'detailedAnswer', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswer, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswer::Representation
+      
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaQuery, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaQuery::Representation
       
         end
@@ -4860,6 +5662,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :site_verification_state, as: 'siteVerificationState'
           property :verify_time, as: 'verifyTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSitemap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :uri, as: 'uri'
         end
       end
       
@@ -4930,6 +5741,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4951,6 +5770,107 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :user_agent, as: 'userAgent'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaWorkspaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dasher_customer_id, as: 'dasherCustomerId'
+          property :super_admin_email_address, as: 'superAdminEmailAddress'
+          property :super_admin_service_account, as: 'superAdminServiceAccount'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost_spec, as: 'boostSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec::Representation
+      
+          property :include_tail_suggestions, as: 'includeTailSuggestions'
+          property :query, as: 'query'
+          property :query_model, as: 'queryModel'
+          collection :suggestion_types, as: 'suggestionTypes'
+          property :user_info, as: 'userInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaUserInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaUserInfo::Representation
+      
+          property :user_pseudo_id, as: 'userPseudoId'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :condition_boost_specs, as: 'conditionBoostSpecs', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost, as: 'boost'
+          property :condition, as: 'condition'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :content_suggestions, as: 'contentSuggestions', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestion, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestion::Representation
+      
+          collection :people_suggestions, as: 'peopleSuggestions', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestion, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestion::Representation
+      
+          collection :query_suggestions, as: 'querySuggestions', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestion, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestion::Representation
+      
+          collection :recent_search_suggestions, as: 'recentSearchSuggestions', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestion, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestion::Representation
+      
+          property :tail_match_triggered, as: 'tailMatchTriggered'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_type, as: 'contentType'
+          property :data_store, as: 'dataStore'
+          property :document, as: 'document', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocument, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocument::Representation
+      
+          property :suggestion, as: 'suggestion'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          property :document, as: 'document', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocument, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocument::Representation
+      
+          property :person_type, as: 'personType'
+          property :suggestion, as: 'suggestion'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :completable_field_paths, as: 'completableFieldPaths'
+          collection :data_store, as: 'dataStore'
+          property :suggestion, as: 'suggestion'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recent_search_time, as: 'recentSearchTime'
+          property :suggestion, as: 'suggestion'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -5010,6 +5930,8 @@ module Google
           property :answer_generation_spec, as: 'answerGenerationSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpec::Representation
       
           property :asynchronous_mode, as: 'asynchronousMode'
+          property :grounding_spec, as: 'groundingSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec::Representation
+      
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery::Representation
       
           property :query_understanding_spec, as: 'queryUnderstandingSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpec::Representation
@@ -5031,6 +5953,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :answer_language_code, as: 'answerLanguageCode'
           property :ignore_adversarial_query, as: 'ignoreAdversarialQuery'
+          property :ignore_jail_breaking_query, as: 'ignoreJailBreakingQuery'
           property :ignore_low_relevant_content, as: 'ignoreLowRelevantContent'
           property :ignore_non_answer_seeking_query, as: 'ignoreNonAnswerSeekingQuery'
           property :include_citations, as: 'includeCitations'
@@ -5052,6 +5975,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preamble, as: 'preamble'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filtering_level, as: 'filteringLevel'
+          property :include_grounding_supports, as: 'includeGroundingSupports'
         end
       end
       
@@ -5113,6 +6044,8 @@ module Google
       
           property :filter, as: 'filter'
           property :max_return_results, as: 'maxReturnResults'
+          property :natural_language_query_understanding_spec, as: 'naturalLanguageQueryUnderstandingSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec::Representation
+      
           property :order_by, as: 'orderBy'
           property :search_result_mode, as: 'searchResultMode'
         end
@@ -5141,6 +6074,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunk, as: 'chunk'
           property :content, as: 'content'
+          property :document_metadata, as: 'documentMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :uri, as: 'uri'
         end
       end
       
@@ -5215,6 +6158,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunk_info, as: 'chunkInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo::Representation
       
+          property :structured_document_info, as: 'structuredDocumentInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceStructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceStructuredDocumentInfo::Representation
+      
           property :unstructured_document_info, as: 'unstructuredDocumentInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfo::Representation
       
         end
@@ -5242,6 +6187,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaAnswerReferenceStructuredDocumentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document, as: 'document'
+          hash :struct_data, as: 'structData'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5259,6 +6212,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :page_identifier, as: 'pageIdentifier'
+          property :relevance_score, as: 'relevanceScore'
         end
       end
       
@@ -5353,6 +6307,33 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :documents_metadata, as: 'documentsMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_ingestion_source, as: 'dataIngestionSource'
+          property :last_refreshed_time, as: 'lastRefreshedTime'
+          property :matcher_value, as: 'matcherValue', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fhir_resource, as: 'fhirResource'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5430,9 +6411,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cited_chunks, as: 'citedChunks', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFactChunk, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFactChunk::Representation
       
+          collection :cited_facts, as: 'citedFacts', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunk, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunk::Representation
+      
           collection :claims, as: 'claims', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaim, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaim::Representation
       
           property :support_score, as: 'supportScore'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk_text, as: 'chunkText'
         end
       end
       
@@ -5510,6 +6500,18 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaCmekConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_default, as: 'isDefault'
+          property :kms_key, as: 'kmsKey'
+          property :kms_key_version, as: 'kmsKeyVersion'
+          property :last_rotation_timestamp_micros, :numeric_string => true, as: 'lastRotationTimestampMicros'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaCompleteQueryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5553,6 +6555,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :active_time_range, as: 'activeTimeRange', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaConditionTimeRange, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaConditionTimeRange::Representation
       
+          property :query_regex, as: 'queryRegex'
           collection :query_terms, as: 'queryTerms', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaConditionQueryTerm, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaConditionQueryTerm::Representation
       
         end
@@ -5586,6 +6589,8 @@ module Google
           property :filter_action, as: 'filterAction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaControlFilterAction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaControlFilterAction::Representation
       
           property :name, as: 'name'
+          property :promote_action, as: 'promoteAction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaControlPromoteAction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaControlPromoteAction::Representation
+      
           property :redirect_action, as: 'redirectAction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaControlRedirectAction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaControlRedirectAction::Representation
       
           property :solution_type, as: 'solutionType'
@@ -5609,6 +6614,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaControlPromoteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          property :search_link_promotion, as: 'searchLinkPromotion', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchLinkPromotion, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchLinkPromotion::Representation
+      
         end
       end
       
@@ -5719,6 +6733,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaCreateSitemapMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaCreateTargetSiteMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5749,6 +6771,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :error_message, as: 'errorMessage'
           hash :metrics, as: 'metrics'
           property :model_state, as: 'modelState'
           property :model_version, :numeric_string => true, as: 'modelVersion'
@@ -5760,6 +6783,12 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDataStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_site_search_config, as: 'advancedSiteSearchConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig::Representation
+      
+          property :billing_estimation, as: 'billingEstimation', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation::Representation
+      
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCmekConfig::Representation
+      
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -5767,12 +6796,38 @@ module Google
           property :document_processing_config, as: 'documentProcessingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig::Representation
       
           property :industry_vertical, as: 'industryVertical'
+          property :kms_key_name, as: 'kmsKeyName'
           property :language_info, as: 'languageInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaLanguageInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaLanguageInfo::Representation
       
           property :name, as: 'name'
+          property :natural_language_query_understanding_config, as: 'naturalLanguageQueryUnderstandingConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig::Representation
+      
+          property :serving_config_data_store, as: 'servingConfigDataStore', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore::Representation
+      
           collection :solution_types, as: 'solutionTypes'
           property :starting_schema, as: 'startingSchema', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSchema, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSchema::Representation
       
+          property :workspace_config, as: 'workspaceConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaWorkspaceConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaWorkspaceConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :structured_data_size, :numeric_string => true, as: 'structuredDataSize'
+          property :structured_data_update_time, as: 'structuredDataUpdateTime'
+          property :unstructured_data_size, :numeric_string => true, as: 'unstructuredDataSize'
+          property :unstructured_data_update_time, as: 'unstructuredDataUpdateTime'
+          property :website_data_size, :numeric_string => true, as: 'websiteDataSize'
+          property :website_data_update_time, as: 'websiteDataUpdateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled_for_serving, as: 'disabledForServing'
         end
       end
       
@@ -5793,6 +6848,14 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaDeleteSchemaMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaDeleteSitemapMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
@@ -5835,6 +6898,8 @@ module Google
       
           hash :derived_struct_data, as: 'derivedStructData'
           property :id, as: 'id'
+          property :index_status, as: 'indexStatus', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentIndexStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentIndexStatus::Representation
+      
           property :index_time, as: 'indexTime'
           property :json_data, as: 'jsonData'
           property :name, as: 'name'
@@ -5853,10 +6918,21 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaDocumentIndexStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
+      
+          property :index_time, as: 'indexTime'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaDocumentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversion_value, as: 'conversionValue'
           property :id, as: 'id'
+          property :joined, as: 'joined'
           property :name, as: 'name'
           collection :promotion_ids, as: 'promotionIds'
           property :quantity, as: 'quantity'
@@ -5970,6 +7046,7 @@ module Google
       
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
+          property :disable_analytics, as: 'disableAnalytics'
           property :display_name, as: 'displayName'
           property :industry_vertical, as: 'industryVertical'
           property :name, as: 'name'
@@ -6076,11 +7153,28 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaFetchSitemapsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sitemaps_metadata, as: 'sitemapsMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sitemap, as: 'sitemap', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSitemap, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSitemap::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaFhirStoreSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fhir_store, as: 'fhirStore'
           property :gcs_staging_dir, as: 'gcsStagingDir'
+          collection :resource_types, as: 'resourceTypes'
         end
       end
       
@@ -6505,6 +7599,13 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaPageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6519,6 +7620,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          collection :documents, as: 'documents', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentInfo::Representation
+      
           property :panel_id, as: 'panelId'
           property :panel_position, as: 'panelPosition'
           property :total_panels, as: 'totalPanels'
@@ -6587,8 +7690,21 @@ module Google
       class GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_config, as: 'errorConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPurgeErrorConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPurgeErrorConfig::Representation
+      
           property :filter, as: 'filter'
           property :force, as: 'force'
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource::Representation
+      
+          property :inline_source, as: 'inlineSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :documents, as: 'documents'
         end
       end
       
@@ -6597,6 +7713,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :purge_count, :numeric_string => true, as: 'purgeCount'
           collection :purge_sample, as: 'purgeSample'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaPurgeErrorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_prefix, as: 'gcsPrefix'
         end
       end
       
@@ -6620,6 +7743,14 @@ module Google
           collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus::Representation
       
           property :purge_count, :numeric_string => true, as: 'purgeCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :force, as: 'force'
         end
       end
       
@@ -6725,6 +7856,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaRecrawlUrisRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :site_credential, as: 'siteCredential'
           collection :uris, as: 'uris'
         end
       end
@@ -6812,6 +7944,17 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchLinkPromotion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :enabled, as: 'enabled'
+          property :image_uri, as: 'imageUri'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6834,15 +7977,19 @@ module Google
           property :natural_language_query_understanding_spec, as: 'naturalLanguageQueryUnderstandingSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec::Representation
       
           property :offset, as: 'offset'
+          property :one_box_page_size, as: 'oneBoxPageSize'
           property :order_by, as: 'orderBy'
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
           hash :params, as: 'params'
+          property :personalization_spec, as: 'personalizationSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec::Representation
+      
           property :query, as: 'query'
           property :query_expansion_spec, as: 'queryExpansionSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec::Representation
       
           property :ranking_expression, as: 'rankingExpression'
           property :region_code, as: 'regionCode'
+          property :relevance_threshold, as: 'relevanceThreshold'
           property :safe_search, as: 'safeSearch'
           property :search_as_you_type_spec, as: 'searchAsYouTypeSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec::Representation
       
@@ -6943,6 +8090,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ignore_adversarial_query, as: 'ignoreAdversarialQuery'
+          property :ignore_jail_breaking_query, as: 'ignoreJailBreakingQuery'
+          property :ignore_low_relevant_content, as: 'ignoreLowRelevantContent'
           property :ignore_non_summary_seeking_query, as: 'ignoreNonSummarySeekingQuery'
           property :include_citations, as: 'includeCitations'
           property :language_code, as: 'languageCode'
@@ -6973,6 +8122,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
+          property :filter, as: 'filter'
         end
       end
       
@@ -7032,6 +8182,13 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7077,10 +8234,14 @@ module Google
           property :natural_language_query_understanding_info, as: 'naturalLanguageQueryUnderstandingInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfo::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :one_box_results, as: 'oneBoxResults', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult::Representation
+      
           property :query_expansion_info, as: 'queryExpansionInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseQueryExpansionInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseQueryExpansionInfo::Representation
       
           property :redirect_uri, as: 'redirectUri'
           collection :results, as: 'results', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult::Representation
+      
+          collection :search_link_promotions, as: 'searchLinkPromotions', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchLinkPromotion, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchLinkPromotion::Representation
       
           property :session_info, as: 'sessionInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo::Representation
       
@@ -7182,6 +8343,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :field_name, as: 'fieldName'
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
           property :radius_in_meters, as: 'radiusInMeters'
         end
       end
@@ -7191,6 +8354,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :comparison, as: 'comparison'
           property :field_name, as: 'fieldName'
+          property :query_segment, as: 'querySegment'
           property :value, as: 'value'
         end
       end
@@ -7207,7 +8371,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :field_name, as: 'fieldName'
+          property :query_segment, as: 'querySegment'
           collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :one_box_type, as: 'oneBoxType'
+          collection :search_results, as: 'searchResults', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult::Representation
+      
         end
       end
       
@@ -7334,6 +8508,9 @@ module Google
           property :model_id, as: 'modelId'
           property :name, as: 'name'
           collection :oneway_synonyms_control_ids, as: 'onewaySynonymsControlIds'
+          property :personalization_spec, as: 'personalizationSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec::Representation
+      
+          collection :promote_control_ids, as: 'promoteControlIds'
           property :ranking_expression, as: 'rankingExpression'
           collection :redirect_control_ids, as: 'redirectControlIds'
           collection :replacement_control_ids, as: 'replacementControlIds'
@@ -7357,6 +8534,7 @@ module Google
           property :content_freshness_cutoff_days, as: 'contentFreshnessCutoffDays'
           property :content_watched_percentage_threshold, as: 'contentWatchedPercentageThreshold'
           property :content_watched_seconds_threshold, as: 'contentWatchedSecondsThreshold'
+          property :demote_content_watched_past_days, as: 'demoteContentWatchedPastDays'
           property :demotion_event_type, as: 'demotionEventType'
         end
       end
@@ -7378,6 +8556,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :answer, as: 'answer'
+          property :detailed_answer, as: 'detailedAnswer', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswer, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswer::Representation
+      
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery::Representation
       
         end
@@ -7395,6 +8575,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :site_verification_state, as: 'siteVerificationState'
           property :verify_time, as: 'verifyTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSitemap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :uri, as: 'uri'
         end
       end
       
@@ -7557,6 +8746,7 @@ module Google
           property :attribution_token, as: 'attributionToken'
           property :completion_info, as: 'completionInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCompletionInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCompletionInfo::Representation
       
+          property :conversion_type, as: 'conversionType'
           property :data_store, as: 'dataStore'
           property :direct_user_request, as: 'directUserRequest'
           collection :documents, as: 'documents', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentInfo::Representation
@@ -7570,6 +8760,8 @@ module Google
           property :page_info, as: 'pageInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPageInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPageInfo::Representation
       
           property :panel, as: 'panel', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPanelInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPanelInfo::Representation
+      
+          collection :panels, as: 'panels', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPanelInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPanelInfo::Representation
       
           collection :promotion_ids, as: 'promotionIds'
           property :search_info, as: 'searchInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchInfo::Representation
@@ -7589,6 +8781,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :user_agent, as: 'userAgent'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaWorkspaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dasher_customer_id, as: 'dasherCustomerId'
+          property :super_admin_email_address, as: 'superAdminEmailAddress'
+          property :super_admin_service_account, as: 'superAdminServiceAccount'
+          property :type, as: 'type'
         end
       end
       
@@ -7616,6 +8818,54 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class GoogleMonitoringV3Point
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval, as: 'interval', class: Google::Apis::DiscoveryengineV1beta::GoogleMonitoringV3TimeInterval, decorator: Google::Apis::DiscoveryengineV1beta::GoogleMonitoringV3TimeInterval::Representation
+      
+          property :value, as: 'value', class: Google::Apis::DiscoveryengineV1beta::GoogleMonitoringV3TypedValue, decorator: Google::Apis::DiscoveryengineV1beta::GoogleMonitoringV3TypedValue::Representation
+      
+        end
+      end
+      
+      class GoogleMonitoringV3TimeInterval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleMonitoringV3TimeSeries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :metadata, as: 'metadata', class: Google::Apis::DiscoveryengineV1beta::GoogleApiMonitoredResourceMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleApiMonitoredResourceMetadata::Representation
+      
+          property :metric, as: 'metric', class: Google::Apis::DiscoveryengineV1beta::GoogleApiMetric, decorator: Google::Apis::DiscoveryengineV1beta::GoogleApiMetric::Representation
+      
+          property :metric_kind, as: 'metricKind'
+          collection :points, as: 'points', class: Google::Apis::DiscoveryengineV1beta::GoogleMonitoringV3Point, decorator: Google::Apis::DiscoveryengineV1beta::GoogleMonitoringV3Point::Representation
+      
+          property :resource, as: 'resource', class: Google::Apis::DiscoveryengineV1beta::GoogleApiMonitoredResource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleApiMonitoredResource::Representation
+      
+          property :unit, as: 'unit'
+          property :value_type, as: 'valueType'
+        end
+      end
+      
+      class GoogleMonitoringV3TypedValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :distribution_value, as: 'distributionValue', class: Google::Apis::DiscoveryengineV1beta::GoogleApiDistribution, decorator: Google::Apis::DiscoveryengineV1beta::GoogleApiDistribution::Representation
+      
+          property :double_value, as: 'doubleValue'
+          property :int64_value, :numeric_string => true, as: 'int64Value'
+          property :string_value, as: 'stringValue'
         end
       end
       
