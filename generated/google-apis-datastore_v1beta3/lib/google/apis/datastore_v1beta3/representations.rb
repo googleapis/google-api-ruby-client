@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FindNearest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDatastoreAdminV1CommonMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +353,12 @@ module Google
       end
       
       class PropertyReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PropertyTransform
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -631,6 +643,20 @@ module Google
         end
       end
       
+      class FindNearest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distance_measure, as: 'distanceMeasure'
+          property :distance_result_property, as: 'distanceResultProperty'
+          property :distance_threshold, as: 'distanceThreshold'
+          property :limit, as: 'limit'
+          property :query_vector, as: 'queryVector', class: Google::Apis::DatastoreV1beta3::Value, decorator: Google::Apis::DatastoreV1beta3::Value::Representation
+      
+          property :vector_property, as: 'vectorProperty', class: Google::Apis::DatastoreV1beta3::PropertyReference, decorator: Google::Apis::DatastoreV1beta3::PropertyReference::Representation
+      
+        end
+      end
+      
       class GoogleDatastoreAdminV1CommonMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -885,11 +911,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :base_version, :numeric_string => true, as: 'baseVersion'
+          property :conflict_resolution_strategy, as: 'conflictResolutionStrategy'
           property :delete, as: 'delete', class: Google::Apis::DatastoreV1beta3::Key, decorator: Google::Apis::DatastoreV1beta3::Key::Representation
       
           property :insert, as: 'insert', class: Google::Apis::DatastoreV1beta3::Entity, decorator: Google::Apis::DatastoreV1beta3::Entity::Representation
       
           property :property_mask, as: 'propertyMask', class: Google::Apis::DatastoreV1beta3::PropertyMask, decorator: Google::Apis::DatastoreV1beta3::PropertyMask::Representation
+      
+          collection :property_transforms, as: 'propertyTransforms', class: Google::Apis::DatastoreV1beta3::PropertyTransform, decorator: Google::Apis::DatastoreV1beta3::PropertyTransform::Representation
       
           property :update, as: 'update', class: Google::Apis::DatastoreV1beta3::Entity, decorator: Google::Apis::DatastoreV1beta3::Entity::Representation
       
@@ -905,6 +934,8 @@ module Google
           property :conflict_detected, as: 'conflictDetected'
           property :create_time, as: 'createTime'
           property :key, as: 'key', class: Google::Apis::DatastoreV1beta3::Key, decorator: Google::Apis::DatastoreV1beta3::Key::Representation
+      
+          collection :transform_results, as: 'transformResults', class: Google::Apis::DatastoreV1beta3::Value, decorator: Google::Apis::DatastoreV1beta3::Value::Representation
       
           property :update_time, as: 'updateTime'
           property :version, :numeric_string => true, as: 'version'
@@ -977,6 +1008,24 @@ module Google
         end
       end
       
+      class PropertyTransform
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :append_missing_elements, as: 'appendMissingElements', class: Google::Apis::DatastoreV1beta3::ArrayValue, decorator: Google::Apis::DatastoreV1beta3::ArrayValue::Representation
+      
+          property :increment, as: 'increment', class: Google::Apis::DatastoreV1beta3::Value, decorator: Google::Apis::DatastoreV1beta3::Value::Representation
+      
+          property :maximum, as: 'maximum', class: Google::Apis::DatastoreV1beta3::Value, decorator: Google::Apis::DatastoreV1beta3::Value::Representation
+      
+          property :minimum, as: 'minimum', class: Google::Apis::DatastoreV1beta3::Value, decorator: Google::Apis::DatastoreV1beta3::Value::Representation
+      
+          property :property, as: 'property'
+          property :remove_all_from_array, as: 'removeAllFromArray', class: Google::Apis::DatastoreV1beta3::ArrayValue, decorator: Google::Apis::DatastoreV1beta3::ArrayValue::Representation
+      
+          property :set_to_server_value, as: 'setToServerValue'
+        end
+      end
+      
       class Query
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -984,6 +1033,8 @@ module Google
       
           property :end_cursor, :base64 => true, as: 'endCursor'
           property :filter, as: 'filter', class: Google::Apis::DatastoreV1beta3::Filter, decorator: Google::Apis::DatastoreV1beta3::Filter::Representation
+      
+          property :find_nearest, as: 'findNearest', class: Google::Apis::DatastoreV1beta3::FindNearest, decorator: Google::Apis::DatastoreV1beta3::FindNearest::Representation
       
           collection :kind, as: 'kind', class: Google::Apis::DatastoreV1beta3::KindExpression, decorator: Google::Apis::DatastoreV1beta3::KindExpression::Representation
       
