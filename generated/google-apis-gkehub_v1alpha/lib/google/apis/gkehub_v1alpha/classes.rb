@@ -232,6 +232,18 @@ module Google
         # @return [String]
         attr_accessor :oidc_jwks
       
+        # Optional. Output only. The identity provider for the scope-tenancy workload
+        # identity pool.
+        # Corresponds to the JSON property `scopeTenancyIdentityProvider`
+        # @return [String]
+        attr_accessor :scope_tenancy_identity_provider
+      
+        # Optional. Output only. The name of the scope-tenancy workload identity pool.
+        # This pool is set in the fleet-level feature.
+        # Corresponds to the JSON property `scopeTenancyWorkloadIdentityPool`
+        # @return [String]
+        attr_accessor :scope_tenancy_workload_identity_pool
+      
         # Output only. The name of the workload identity pool in which `issuer` will be
         # recognized. There is a single Workload Identity Pool per Hub that is shared
         # between all Memberships that belong to that Hub. For a Hub hosted in `
@@ -250,6 +262,8 @@ module Google
           @identity_provider = args[:identity_provider] if args.key?(:identity_provider)
           @issuer = args[:issuer] if args.key?(:issuer)
           @oidc_jwks = args[:oidc_jwks] if args.key?(:oidc_jwks)
+          @scope_tenancy_identity_provider = args[:scope_tenancy_identity_provider] if args.key?(:scope_tenancy_identity_provider)
+          @scope_tenancy_workload_identity_pool = args[:scope_tenancy_workload_identity_pool] if args.key?(:scope_tenancy_workload_identity_pool)
           @workload_identity_pool = args[:workload_identity_pool] if args.key?(:workload_identity_pool)
         end
       end
@@ -874,7 +888,7 @@ module Google
         end
       end
       
-      # CommonFeatureSpec contains Hub-wide configuration information
+      # CommonFeatureSpec contains Fleet-wide configuration information
       class CommonFeatureSpec
         include Google::Apis::Core::Hashable
       
@@ -945,7 +959,7 @@ module Google
         end
       end
       
-      # CommonFeatureState contains Hub-wide Feature status information.
+      # CommonFeatureState contains Fleet-wide Feature status information.
       class CommonFeatureState
         include Google::Apis::Core::Hashable
       
@@ -1034,6 +1048,51 @@ module Google
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @mesh = args[:mesh] if args.key?(:mesh)
           @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
+        end
+      end
+      
+      # CompliancePostureConfig defines the settings needed to enable/disable features
+      # for the Compliance Posture.
+      class CompliancePostureConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of enabled compliance standards.
+        # Corresponds to the JSON property `complianceStandards`
+        # @return [Array<Google::Apis::GkehubV1alpha::ComplianceStandard>]
+        attr_accessor :compliance_standards
+      
+        # Defines the enablement mode for Compliance Posture.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compliance_standards = args[:compliance_standards] if args.key?(:compliance_standards)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # 
+      class ComplianceStandard
+        include Google::Apis::Core::Hashable
+      
+        # Name of the compliance standard.
+        # Corresponds to the JSON property `standard`
+        # @return [String]
+        attr_accessor :standard
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @standard = args[:standard] if args.key?(:standard)
         end
       end
       
@@ -1132,6 +1191,10 @@ module Google
         # enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.
         # metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the
         # namespace `config-management-monitoring` should be bound to the GSA.
+        # Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud
+        # Service Account is no longer needed for exporting Config Sync metrics: https://
+        # cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-
+        # config-sync-cloud-monitoring#custom-monitoring.
         # Corresponds to the JSON property `metricsGcpServiceAccountEmail`
         # @return [String]
         attr_accessor :metrics_gcp_service_account_email
@@ -1155,6 +1218,12 @@ module Google
         # @return [String]
         attr_accessor :source_format
       
+        # Set to true to stop syncing configs for a single cluster. Default to false.
+        # Corresponds to the JSON property `stopSyncing`
+        # @return [Boolean]
+        attr_accessor :stop_syncing
+        alias_method :stop_syncing?, :stop_syncing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1168,6 +1237,7 @@ module Google
           @oci = args[:oci] if args.key?(:oci)
           @prevent_drift = args[:prevent_drift] if args.key?(:prevent_drift)
           @source_format = args[:source_format] if args.key?(:source_format)
+          @stop_syncing = args[:stop_syncing] if args.key?(:stop_syncing)
         end
       end
       
@@ -1261,6 +1331,16 @@ module Google
       class ConfigManagementConfigSyncState
         include Google::Apis::Core::Hashable
       
+        # Whether syncing resources to the cluster is stopped at the cluster level.
+        # Corresponds to the JSON property `clusterLevelStopSyncingState`
+        # @return [String]
+        attr_accessor :cluster_level_stop_syncing_state
+      
+        # Output only. The number of RootSync and RepoSync CRs in the cluster.
+        # Corresponds to the JSON property `crCount`
+        # @return [Fixnum]
+        attr_accessor :cr_count
+      
         # The state of ConfigSync's deployment on a cluster
         # Corresponds to the JSON property `deploymentState`
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementConfigSyncDeploymentState]
@@ -1302,6 +1382,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_level_stop_syncing_state = args[:cluster_level_stop_syncing_state] if args.key?(:cluster_level_stop_syncing_state)
+          @cr_count = args[:cr_count] if args.key?(:cr_count)
           @deployment_state = args[:deployment_state] if args.key?(:deployment_state)
           @errors = args[:errors] if args.key?(:errors)
           @reposync_crd = args[:reposync_crd] if args.key?(:reposync_crd)
@@ -2191,6 +2273,12 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::BinaryAuthorizationConfig]
         attr_accessor :binary_authorization_config
       
+        # CompliancePostureConfig defines the settings needed to enable/disable features
+        # for the Compliance Posture.
+        # Corresponds to the JSON property `compliancePostureConfig`
+        # @return [Google::Apis::GkehubV1alpha::CompliancePostureConfig]
+        attr_accessor :compliance_posture_config
+      
         # SecurityPostureConfig defines the flags needed to enable/disable features for
         # the Security Posture API.
         # Corresponds to the JSON property `securityPostureConfig`
@@ -2204,6 +2292,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @binary_authorization_config = args[:binary_authorization_config] if args.key?(:binary_authorization_config)
+          @compliance_posture_config = args[:compliance_posture_config] if args.key?(:compliance_posture_config)
           @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
         end
       end
@@ -2299,7 +2388,7 @@ module Google
         end
       end
       
-      # Feature represents the settings and status of any Hub Feature.
+      # Feature represents the settings and status of any Fleet Feature.
       class Feature
         include Google::Apis::Core::Hashable
       
@@ -2356,8 +2445,8 @@ module Google
         attr_accessor :name
       
         # FeatureResourceState describes the state of a Feature *resource* in the GkeHub
-        # API. See `FeatureState` for the "running state" of the Feature in the Hub and
-        # across Memberships.
+        # API. See `FeatureState` for the "running state" of the Feature in the Fleet
+        # and across Memberships.
         # Corresponds to the JSON property `resourceState`
         # @return [Google::Apis::GkehubV1alpha::FeatureResourceState]
         attr_accessor :resource_state
@@ -2385,15 +2474,21 @@ module Google
         # @return [Hash<String,Google::Apis::GkehubV1alpha::ScopeFeatureState>]
         attr_accessor :scope_states
       
-        # CommonFeatureSpec contains Hub-wide configuration information
+        # CommonFeatureSpec contains Fleet-wide configuration information
         # Corresponds to the JSON property `spec`
         # @return [Google::Apis::GkehubV1alpha::CommonFeatureSpec]
         attr_accessor :spec
       
-        # CommonFeatureState contains Hub-wide Feature status information.
+        # CommonFeatureState contains Fleet-wide Feature status information.
         # Corresponds to the JSON property `state`
         # @return [Google::Apis::GkehubV1alpha::CommonFeatureState]
         attr_accessor :state
+      
+        # Output only. List of locations that could not be reached while fetching this
+        # feature.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
       
         # Output only. When the Feature resource was last updated.
         # Corresponds to the JSON property `updateTime`
@@ -2418,13 +2513,14 @@ module Google
           @scope_states = args[:scope_states] if args.key?(:scope_states)
           @spec = args[:spec] if args.key?(:spec)
           @state = args[:state] if args.key?(:state)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
       # FeatureResourceState describes the state of a Feature *resource* in the GkeHub
-      # API. See `FeatureState` for the "running state" of the Feature in the Hub and
-      # across Memberships.
+      # API. See `FeatureState` for the "running state" of the Feature in the Fleet
+      # and across Memberships.
       class FeatureResourceState
         include Google::Apis::Core::Hashable
       
@@ -2829,6 +2925,33 @@ module Google
         end
       end
       
+      # The response of the exclusivity artifacts manifests for the client to apply.
+      class GenerateExclusivityManifestResponse
+        include Google::Apis::Core::Hashable
+      
+        # The YAML manifest of the membership CR to apply if a new version of the CR is
+        # available. Empty if no update needs to be applied.
+        # Corresponds to the JSON property `crManifest`
+        # @return [String]
+        attr_accessor :cr_manifest
+      
+        # The YAML manifest of the membership CRD to apply if a newer version of the CRD
+        # is available. Empty if no update needs to be applied.
+        # Corresponds to the JSON property `crdManifest`
+        # @return [String]
+        attr_accessor :crd_manifest
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cr_manifest = args[:cr_manifest] if args.key?(:cr_manifest)
+          @crd_manifest = args[:crd_manifest] if args.key?(:crd_manifest)
+        end
+      end
+      
       # Response for GenerateRBACRoleBindingYAML.
       class GenerateMembershipRbacRoleBindingYamlResponse
         include Google::Apis::Core::Hashable
@@ -3031,6 +3154,33 @@ module Google
         end
       end
       
+      # Configuration options for the AIS diagnostic interface.
+      class IdentityServiceDiagnosticInterface
+        include Google::Apis::Core::Hashable
+      
+        # Determines whether to enable the diagnostic interface.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Determines the expiration time of the diagnostic interface enablement. When
+        # reached, requests to the interface would be automatically rejected.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+        end
+      end
+      
       # Configuration for the Google Plugin Auth flow.
       class IdentityServiceGoogleConfig
         include Google::Apis::Core::Hashable
@@ -3093,8 +3243,12 @@ module Google
       class IdentityServiceIdentityServiceOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. Determines the lifespan of STS tokens issued by Anthos Identity
-        # Service.
+        # Configuration options for the AIS diagnostic interface.
+        # Corresponds to the JSON property `diagnosticInterface`
+        # @return [Google::Apis::GkehubV1alpha::IdentityServiceDiagnosticInterface]
+        attr_accessor :diagnostic_interface
+      
+        # Determines the lifespan of STS tokens issued by Anthos Identity Service.
         # Corresponds to the JSON property `sessionDuration`
         # @return [String]
         attr_accessor :session_duration
@@ -3105,6 +3259,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @diagnostic_interface = args[:diagnostic_interface] if args.key?(:diagnostic_interface)
           @session_duration = args[:session_duration] if args.key?(:session_duration)
         end
       end
@@ -4069,6 +4224,11 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::Authority]
         attr_accessor :authority
       
+        # Output only. The tier of the cluster.
+        # Corresponds to the JSON property `clusterTier`
+        # @return [String]
+        attr_accessor :cluster_tier
+      
         # Output only. When the Membership was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -4155,6 +4315,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authority = args[:authority] if args.key?(:authority)
+          @cluster_tier = args[:cluster_tier] if args.key?(:cluster_tier)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
@@ -4322,7 +4483,7 @@ module Google
       end
       
       # MembershipFeatureSpec contains configuration information for a single
-      # Membership. NOTE: Please use snake case in your feature name.
+      # Membership.
       class MembershipFeatureSpec
         include Google::Apis::Core::Hashable
       
@@ -5637,15 +5798,15 @@ module Google
       class ResourceManifest
         include Google::Apis::Core::Hashable
       
-        # Whether the resource provided in the manifest is `cluster_scoped`. If unset,
-        # the manifest is assumed to be namespace scoped. This field is used for REST
-        # mapping when applying the resource in a cluster.
+        # Output only. Whether the resource provided in the manifest is `cluster_scoped`.
+        # If unset, the manifest is assumed to be namespace scoped. This field is used
+        # for REST mapping when applying the resource in a cluster.
         # Corresponds to the JSON property `clusterScoped`
         # @return [Boolean]
         attr_accessor :cluster_scoped
         alias_method :cluster_scoped?, :cluster_scoped
       
-        # YAML manifest of the resource.
+        # Output only. YAML manifest of the resource.
         # Corresponds to the JSON property `manifest`
         # @return [String]
         attr_accessor :manifest
@@ -6402,6 +6563,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @validation_results = args[:validation_results] if args.key?(:validation_results)
+        end
+      end
+      
+      # The response of exclusivity artifacts validation result status.
+      class ValidateExclusivityResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::GkehubV1alpha::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
         end
       end
       

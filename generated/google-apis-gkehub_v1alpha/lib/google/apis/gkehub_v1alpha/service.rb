@@ -267,6 +267,11 @@ module Google
         # @param [String] name
         #   Required. The Feature resource name in the format `projects/*/locations/*/
         #   features/*`
+        # @param [Boolean] return_partial_success
+        #   Optional. If set to true, the response will return partial results when some
+        #   regions are unreachable and the unreachable field in Feature proto will be
+        #   populated. If set to false, the request will fail when some regions are
+        #   unreachable.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -284,11 +289,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_feature(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_feature(name, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::GkehubV1alpha::Feature::Representation
           command.response_class = Google::Apis::GkehubV1alpha::Feature
           command.params['name'] = name unless name.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -359,6 +365,11 @@ module Google
         # @param [String] page_token
         #   Token returned by previous call to `ListFeatures` which specifies the position
         #   in the list from where to continue listing the resources.
+        # @param [Boolean] return_partial_success
+        #   Optional. If set to true, the response will return partial results when some
+        #   regions are unreachable and the unreachable field in Feature proto will be
+        #   populated. If set to false, the request will fail when some regions are
+        #   unreachable.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -376,7 +387,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_features(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_features(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/features', options)
           command.response_representation = Google::Apis::GkehubV1alpha::ListFeaturesResponse::Representation
           command.response_class = Google::Apis::GkehubV1alpha::ListFeaturesResponse
@@ -385,6 +396,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -859,6 +871,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # GenerateExclusivityManifest generates the manifests to update the exclusivity
+        # artifacts in the cluster if needed. Exclusivity artifacts include the
+        # Membership custom resource definition (CRD) and the singleton Membership
+        # custom resource (CR). Combined with ValidateExclusivity, exclusivity artifacts
+        # guarantee that a Kubernetes cluster is only registered to a single GKE Hub.
+        # The Membership CRD is versioned, and may require conversion when the GKE Hub
+        # API server begins serving a newer version of the CRD and corresponding CR. The
+        # response will be the converted CRD and CR if there are any differences between
+        # the versions.
+        # @param [String] name
+        #   Required. The Membership resource name in the format `projects/*/locations/*/
+        #   memberships/*`.
+        # @param [String] cr_manifest
+        #   Optional. The YAML manifest of the membership CR retrieved by `kubectl get
+        #   memberships membership`. Leave empty if the resource does not exist.
+        # @param [String] crd_manifest
+        #   Optional. The YAML manifest of the membership CRD retrieved by `kubectl get
+        #   customresourcedefinitions membership`. Leave empty if the resource does not
+        #   exist.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::GenerateExclusivityManifestResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::GenerateExclusivityManifestResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_membership_exclusivity_manifest(name, cr_manifest: nil, crd_manifest: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}:generateExclusivityManifest', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::GenerateExclusivityManifestResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::GenerateExclusivityManifestResponse
+          command.params['name'] = name unless name.nil?
+          command.query['crManifest'] = cr_manifest unless cr_manifest.nil?
+          command.query['crdManifest'] = crd_manifest unless crd_manifest.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the details of a Membership.
         # @param [String] name
         #   Required. The Membership resource name in the format `projects/*/locations/*/
@@ -1193,6 +1253,46 @@ module Google
           command.response_representation = Google::Apis::GkehubV1alpha::ValidateCreateMembershipResponse::Representation
           command.response_class = Google::Apis::GkehubV1alpha::ValidateCreateMembershipResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ValidateExclusivity validates the state of exclusivity in the cluster. The
+        # validation does not depend on an existing Hub membership resource.
+        # @param [String] parent
+        #   Required. The parent (project and location) where the Memberships will be
+        #   created. Specified in the format `projects/*/locations/*`.
+        # @param [String] cr_manifest
+        #   Optional. The YAML of the membership CR in the cluster. Empty if the
+        #   membership CR does not exist.
+        # @param [String] intended_membership
+        #   Required. The intended membership name under the `parent`. This method only
+        #   does validation in anticipation of a CreateMembership call with the same name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::ValidateExclusivityResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::ValidateExclusivityResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def validate_project_location_membership_exclusivity(parent, cr_manifest: nil, intended_membership: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/memberships:validateExclusivity', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::ValidateExclusivityResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::ValidateExclusivityResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['crManifest'] = cr_manifest unless cr_manifest.nil?
+          command.query['intendedMembership'] = intended_membership unless intended_membership.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
