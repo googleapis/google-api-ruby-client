@@ -41,9 +41,52 @@ module Google
         end
       end
       
+      # The automated backup config for a cluster.
+      class AutomatedBackupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The automated backup mode. If the mode is disabled, the other fields
+        # will be ignored.
+        # Corresponds to the JSON property `automatedBackupMode`
+        # @return [String]
+        attr_accessor :automated_backup_mode
+      
+        # This schedule allows the backup to be triggered at a fixed frequency (
+        # currently only daily is supported).
+        # Corresponds to the JSON property `fixedFrequencySchedule`
+        # @return [Google::Apis::RedisV1beta1::FixedFrequencySchedule]
+        attr_accessor :fixed_frequency_schedule
+      
+        # Optional. How long to keep automated backups before the backups are deleted.
+        # If not specified, the default value is 100 years which is also the maximum
+        # value supported. The minimum value is 1 day.
+        # Corresponds to the JSON property `retention`
+        # @return [String]
+        attr_accessor :retention
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automated_backup_mode = args[:automated_backup_mode] if args.key?(:automated_backup_mode)
+          @fixed_frequency_schedule = args[:fixed_frequency_schedule] if args.key?(:fixed_frequency_schedule)
+          @retention = args[:retention] if args.key?(:retention)
+        end
+      end
+      
       # Configuration for availability of database instance
       class AvailabilityConfiguration
         include Google::Apis::Core::Hashable
+      
+        # Checks for existence of (multi-cluster) routing configuration that allows
+        # automatic failover to a different zone/region in case of an outage. Applicable
+        # to Bigtable resources.
+        # Corresponds to the JSON property `automaticFailoverRoutingConfigured`
+        # @return [Boolean]
+        attr_accessor :automatic_failover_routing_configured
+        alias_method :automatic_failover_routing_configured?, :automatic_failover_routing_configured
       
         # Availability type. Potential values: * `ZONAL`: The instance serves data from
         # only one zone. Outages in that zone affect data accessibility. * `REGIONAL`:
@@ -78,10 +121,163 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @automatic_failover_routing_configured = args[:automatic_failover_routing_configured] if args.key?(:automatic_failover_routing_configured)
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @cross_region_replica_configured = args[:cross_region_replica_configured] if args.key?(:cross_region_replica_configured)
           @external_replica_configured = args[:external_replica_configured] if args.key?(:external_replica_configured)
           @promotable_replica_configured = args[:promotable_replica_configured] if args.key?(:promotable_replica_configured)
+        end
+      end
+      
+      # Backup of a cluster.
+      class Backup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of backup files of the backup.
+        # Corresponds to the JSON property `backupFiles`
+        # @return [Array<Google::Apis::RedisV1beta1::BackupFile>]
+        attr_accessor :backup_files
+      
+        # Output only. Type of the backup.
+        # Corresponds to the JSON property `backupType`
+        # @return [String]
+        attr_accessor :backup_type
+      
+        # Output only. Cluster resource path of this backup.
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Output only. Cluster uid of this backup.
+        # Corresponds to the JSON property `clusterUid`
+        # @return [String]
+        attr_accessor :cluster_uid
+      
+        # Output only. The time when the backup was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. redis-7.2, valkey-7.5
+        # Corresponds to the JSON property `engineVersion`
+        # @return [String]
+        attr_accessor :engine_version
+      
+        # Output only. The time when the backup will expire.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Identifier. Full resource path of the backup. the last part of the name is the
+        # backup id with the following format: [YYYYMMDDHHMMSS]_[Shorted Cluster UID] OR
+        # customer specified while backup cluster. Example: 20240515123000_1234
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Node type of the cluster.
+        # Corresponds to the JSON property `nodeType`
+        # @return [String]
+        attr_accessor :node_type
+      
+        # Output only. Number of replicas for the cluster.
+        # Corresponds to the JSON property `replicaCount`
+        # @return [Fixnum]
+        attr_accessor :replica_count
+      
+        # Output only. Number of shards for the cluster.
+        # Corresponds to the JSON property `shardCount`
+        # @return [Fixnum]
+        attr_accessor :shard_count
+      
+        # Output only. State of the backup.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Total size of the backup in bytes.
+        # Corresponds to the JSON property `totalSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :total_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_files = args[:backup_files] if args.key?(:backup_files)
+          @backup_type = args[:backup_type] if args.key?(:backup_type)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @engine_version = args[:engine_version] if args.key?(:engine_version)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @name = args[:name] if args.key?(:name)
+          @node_type = args[:node_type] if args.key?(:node_type)
+          @replica_count = args[:replica_count] if args.key?(:replica_count)
+          @shard_count = args[:shard_count] if args.key?(:shard_count)
+          @state = args[:state] if args.key?(:state)
+          @total_size_bytes = args[:total_size_bytes] if args.key?(:total_size_bytes)
+        end
+      end
+      
+      # Request for [BackupCluster].
+      class BackupClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The id of the backup to be created. If not specified, the default
+        # value ([YYYYMMDDHHMMSS]_[Shortened Cluster UID] is used.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        # Optional. TTL for the backup to expire. Value range is 1 day to 100 years. If
+        # not specified, the default value is 100 years.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # BackupCollection of a cluster.
+      class BackupCollection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The full resource path of the cluster the backup collection
+        # belongs to. Example: projects/`project`/locations/`location`/clusters/`cluster`
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Output only. The cluster uid of the backup collection.
+        # Corresponds to the JSON property `clusterUid`
+        # @return [String]
+        attr_accessor :cluster_uid
+      
+        # Identifier. Full resource path of the backup collection.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -117,6 +313,37 @@ module Google
           @automated_backup_enabled = args[:automated_backup_enabled] if args.key?(:automated_backup_enabled)
           @backup_retention_settings = args[:backup_retention_settings] if args.key?(:backup_retention_settings)
           @point_in_time_recovery_enabled = args[:point_in_time_recovery_enabled] if args.key?(:point_in_time_recovery_enabled)
+        end
+      end
+      
+      # Backup is consisted of multiple backup files.
+      class BackupFile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the backup file was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. e.g: .rdb
+        # Corresponds to the JSON property `fileName`
+        # @return [String]
+        attr_accessor :file_name
+      
+        # Output only. Size of the backup file in bytes.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @file_name = args[:file_name] if args.key?(:file_name)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
         end
       end
       
@@ -213,10 +440,31 @@ module Google
         # @return [String]
         attr_accessor :authorization_mode
       
+        # The automated backup config for a cluster.
+        # Corresponds to the JSON property `automatedBackupConfig`
+        # @return [Google::Apis::RedisV1beta1::AutomatedBackupConfig]
+        attr_accessor :automated_backup_config
+      
+        # Optional. Output only. The backup collection full resource name. Example:
+        # projects/`project`/locations/`location`/backupCollections/`collection`
+        # Corresponds to the JSON property `backupCollection`
+        # @return [String]
+        attr_accessor :backup_collection
+      
+        # Optional. A list of cluster enpoints.
+        # Corresponds to the JSON property `clusterEndpoints`
+        # @return [Array<Google::Apis::RedisV1beta1::ClusterEndpoint>]
+        attr_accessor :cluster_endpoints
+      
         # Output only. The timestamp associated with the cluster creation request.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Cross cluster replication config.
+        # Corresponds to the JSON property `crossClusterReplicationConfig`
+        # @return [Google::Apis::RedisV1beta1::CrossClusterReplicationConfig]
+        attr_accessor :cross_cluster_replication_config
       
         # Optional. The delete operation will fail when the value is set to true.
         # Corresponds to the JSON property `deletionProtectionEnabled`
@@ -229,6 +477,27 @@ module Google
         # Corresponds to the JSON property `discoveryEndpoints`
         # @return [Array<Google::Apis::RedisV1beta1::DiscoveryEndpoint>]
         attr_accessor :discovery_endpoints
+      
+        # Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be
+        # the same region as the clusters.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::RedisV1beta1::GcsBackupSource]
+        attr_accessor :gcs_source
+      
+        # Maintenance policy per cluster.
+        # Corresponds to the JSON property `maintenancePolicy`
+        # @return [Google::Apis::RedisV1beta1::ClusterMaintenancePolicy]
+        attr_accessor :maintenance_policy
+      
+        # Upcoming maitenance schedule.
+        # Corresponds to the JSON property `maintenanceSchedule`
+        # @return [Google::Apis::RedisV1beta1::ClusterMaintenanceSchedule]
+        attr_accessor :maintenance_schedule
+      
+        # Backups that generated and managed by memorystore.
+        # Corresponds to the JSON property `managedBackupSource`
+        # @return [Google::Apis::RedisV1beta1::ManagedBackupSource]
+        attr_accessor :managed_backup_source
       
         # Required. Identifier. Unique name of the resource in this scope including
         # project and location using the form: `projects/`project_id`/locations/`
@@ -253,18 +522,23 @@ module Google
         # @return [Float]
         attr_accessor :precise_size_gb
       
-        # Required. Each PscConfig configures the consumer network where IPs will be
+        # Optional. Each PscConfig configures the consumer network where IPs will be
         # designated to the cluster for client access through Private Service Connect
         # Automation. Currently, only one PscConfig is supported.
         # Corresponds to the JSON property `pscConfigs`
         # @return [Array<Google::Apis::RedisV1beta1::PscConfig>]
         attr_accessor :psc_configs
       
-        # Output only. PSC connections for discovery of the cluster topology and
-        # accessing the cluster.
+        # Output only. The list of PSC connections that are auto-created through service
+        # connectivity automation.
         # Corresponds to the JSON property `pscConnections`
         # @return [Array<Google::Apis::RedisV1beta1::PscConnection>]
         attr_accessor :psc_connections
+      
+        # Output only. Service attachment details to configure Psc connections
+        # Corresponds to the JSON property `pscServiceAttachments`
+        # @return [Array<Google::Apis::RedisV1beta1::PscServiceAttachment>]
+        attr_accessor :psc_service_attachments
       
         # Optional. Key/Value pairs of customer overrides for mutable Redis Configs
         # Corresponds to the JSON property `redisConfigs`
@@ -276,7 +550,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :replica_count
       
-        # Required. Number of shards for the Redis cluster.
+        # Optional. Number of shards for the Redis cluster.
         # Corresponds to the JSON property `shardCount`
         # @return [Fixnum]
         attr_accessor :shard_count
@@ -321,15 +595,24 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
+          @automated_backup_config = args[:automated_backup_config] if args.key?(:automated_backup_config)
+          @backup_collection = args[:backup_collection] if args.key?(:backup_collection)
+          @cluster_endpoints = args[:cluster_endpoints] if args.key?(:cluster_endpoints)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @cross_cluster_replication_config = args[:cross_cluster_replication_config] if args.key?(:cross_cluster_replication_config)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @discovery_endpoints = args[:discovery_endpoints] if args.key?(:discovery_endpoints)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
+          @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
+          @managed_backup_source = args[:managed_backup_source] if args.key?(:managed_backup_source)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
           @persistence_config = args[:persistence_config] if args.key?(:persistence_config)
           @precise_size_gb = args[:precise_size_gb] if args.key?(:precise_size_gb)
           @psc_configs = args[:psc_configs] if args.key?(:psc_configs)
           @psc_connections = args[:psc_connections] if args.key?(:psc_connections)
+          @psc_service_attachments = args[:psc_service_attachments] if args.key?(:psc_service_attachments)
           @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
           @replica_count = args[:replica_count] if args.key?(:replica_count)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
@@ -339,6 +622,90 @@ module Google
           @transit_encryption_mode = args[:transit_encryption_mode] if args.key?(:transit_encryption_mode)
           @uid = args[:uid] if args.key?(:uid)
           @zone_distribution_config = args[:zone_distribution_config] if args.key?(:zone_distribution_config)
+        end
+      end
+      
+      # ClusterEndpoint consists of PSC connections that are created as a group in
+      # each VPC network for accessing the cluster. In each group, there shall be one
+      # connection for each service attachment in the cluster.
+      class ClusterEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # A group of PSC connections. They are created in the same VPC network, one for
+        # each service attachment in the cluster.
+        # Corresponds to the JSON property `connections`
+        # @return [Array<Google::Apis::RedisV1beta1::ConnectionDetail>]
+        attr_accessor :connections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connections = args[:connections] if args.key?(:connections)
+        end
+      end
+      
+      # Maintenance policy per cluster.
+      class ClusterMaintenancePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the policy was created i.e. Maintenance Window or
+        # Deny Period was assigned.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time when the policy was updated i.e. Maintenance Window or
+        # Deny Period was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. Maintenance window that is applied to resources covered by this
+        # policy. Minimum 1. For the current version, the maximum number of
+        # weekly_maintenance_window is expected to be one.
+        # Corresponds to the JSON property `weeklyMaintenanceWindow`
+        # @return [Array<Google::Apis::RedisV1beta1::ClusterWeeklyMaintenanceWindow>]
+        attr_accessor :weekly_maintenance_window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @weekly_maintenance_window = args[:weekly_maintenance_window] if args.key?(:weekly_maintenance_window)
+        end
+      end
+      
+      # Upcoming maitenance schedule.
+      class ClusterMaintenanceSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The end time of any upcoming scheduled maintenance for this
+        # instance.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. The start time of any upcoming scheduled maintenance for this
+        # instance.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -373,6 +740,33 @@ module Google
         end
       end
       
+      # Time window specified for weekly operations.
+      class ClusterWeeklyMaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Allows to define schedule that runs specified day of the week.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::RedisV1beta1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Contains compliance information about a security standard indicating unmet
       # recommendations.
       class Compliance
@@ -399,16 +793,82 @@ module Google
         end
       end
       
-      # Any custom metadata associated with the resource. i.e. A spanner instance can
+      # Detailed information of each PSC connection.
+      class ConnectionDetail
+        include Google::Apis::Core::Hashable
+      
+        # Details of consumer resources in a PSC connection.
+        # Corresponds to the JSON property `pscConnection`
+        # @return [Google::Apis::RedisV1beta1::PscConnection]
+        attr_accessor :psc_connection
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @psc_connection = args[:psc_connection] if args.key?(:psc_connection)
+        end
+      end
+      
+      # Cross cluster replication config.
+      class CrossClusterReplicationConfig
+        include Google::Apis::Core::Hashable
+      
+        # The role of the cluster in cross cluster replication.
+        # Corresponds to the JSON property `clusterRole`
+        # @return [String]
+        attr_accessor :cluster_role
+      
+        # An output only view of all the member clusters participating in the cross
+        # cluster replication.
+        # Corresponds to the JSON property `membership`
+        # @return [Google::Apis::RedisV1beta1::Membership]
+        attr_accessor :membership
+      
+        # Details of the remote cluster associated with this cluster in a cross cluster
+        # replication setup.
+        # Corresponds to the JSON property `primaryCluster`
+        # @return [Google::Apis::RedisV1beta1::RemoteCluster]
+        attr_accessor :primary_cluster
+      
+        # List of secondary clusters that are replicating from this primary cluster.
+        # This field is only set for a primary cluster.
+        # Corresponds to the JSON property `secondaryClusters`
+        # @return [Array<Google::Apis::RedisV1beta1::RemoteCluster>]
+        attr_accessor :secondary_clusters
+      
+        # Output only. The last time cross cluster replication config was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_role = args[:cluster_role] if args.key?(:cluster_role)
+          @membership = args[:membership] if args.key?(:membership)
+          @primary_cluster = args[:primary_cluster] if args.key?(:primary_cluster)
+          @secondary_clusters = args[:secondary_clusters] if args.key?(:secondary_clusters)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Any custom metadata associated with the resource. e.g. A spanner instance can
       # have multiple databases with its own unique metadata. Information for these
       # individual databases can be captured in custom metadata data
       class CustomMetadataData
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `databaseMetadata`
-        # @return [Array<Google::Apis::RedisV1beta1::DatabaseMetadata>]
-        attr_accessor :database_metadata
+        # Metadata for individual internal resources in an instance. e.g. spanner
+        # instance can have multiple databases with unique configuration.
+        # Corresponds to the JSON property `internalResourceMetadata`
+        # @return [Array<Google::Apis::RedisV1beta1::InternalResourceMetadata>]
+        attr_accessor :internal_resource_metadata
       
         def initialize(**args)
            update!(**args)
@@ -416,52 +876,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @database_metadata = args[:database_metadata] if args.key?(:database_metadata)
-        end
-      end
-      
-      # Metadata for individual databases created in an instance. i.e. spanner
-      # instance can have multiple databases with unique configuration settings.
-      class DatabaseMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Configuration for automatic backups
-        # Corresponds to the JSON property `backupConfiguration`
-        # @return [Google::Apis::RedisV1beta1::BackupConfiguration]
-        attr_accessor :backup_configuration
-      
-        # A backup run.
-        # Corresponds to the JSON property `backupRun`
-        # @return [Google::Apis::RedisV1beta1::BackupRun]
-        attr_accessor :backup_run
-      
-        # Product specification for Condor resources.
-        # Corresponds to the JSON property `product`
-        # @return [Google::Apis::RedisV1beta1::Product]
-        attr_accessor :product
-      
-        # DatabaseResourceId will serve as primary key for any resource ingestion event.
-        # Corresponds to the JSON property `resourceId`
-        # @return [Google::Apis::RedisV1beta1::DatabaseResourceId]
-        attr_accessor :resource_id
-      
-        # Required. Database name. Resource name to follow CAIS resource_name format as
-        # noted here go/condor-common-datamodel
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
-          @backup_run = args[:backup_run] if args.key?(:backup_run)
-          @product = args[:product] if args.key?(:product)
-          @resource_id = args[:resource_id] if args.key?(:resource_id)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @internal_resource_metadata = args[:internal_resource_metadata] if args.key?(:internal_resource_metadata)
         end
       end
       
@@ -500,7 +915,7 @@ module Google
         # @return [Google::Apis::RedisV1beta1::DatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata.
+        # Common model for database resource instance metadata. Next ID: 23
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::RedisV1beta1::DatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -593,6 +1008,11 @@ module Google
         # @return [String]
         attr_accessor :signal_id
       
+        # The severity of the signal, such as if it's a HIGH or LOW severity.
+        # Corresponds to the JSON property `signalSeverity`
+        # @return [String]
+        attr_accessor :signal_severity
+      
         # Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `
         # LOGGING_MOST_ERRORS`, etc.
         # Corresponds to the JSON property `signalType`
@@ -621,6 +1041,7 @@ module Google
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @signal_class = args[:signal_class] if args.key?(:signal_class)
           @signal_id = args[:signal_id] if args.key?(:signal_id)
+          @signal_severity = args[:signal_severity] if args.key?(:signal_severity)
           @signal_type = args[:signal_type] if args.key?(:signal_type)
           @state = args[:state] if args.key?(:state)
         end
@@ -642,8 +1063,10 @@ module Google
       
         # Required. The type of resource this ID is identifying. Ex redis.googleapis.com/
         # Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster,
-        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance REQUIRED
-        # Please refer go/condor-common-datamodel
+        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance, spanner.
+        # googleapis.com/Database, firestore.googleapis.com/Database, sqladmin.
+        # googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.
+        # googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -667,7 +1090,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata.
+      # Common model for database resource instance metadata. Next ID: 23
       class DatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -697,12 +1120,19 @@ module Google
         # @return [String]
         attr_accessor :current_state
       
-        # Any custom metadata associated with the resource. i.e. A spanner instance can
+        # Any custom metadata associated with the resource. e.g. A spanner instance can
         # have multiple databases with its own unique metadata. Information for these
         # individual databases can be captured in custom metadata data
         # Corresponds to the JSON property `customMetadata`
         # @return [Google::Apis::RedisV1beta1::CustomMetadataData]
         attr_accessor :custom_metadata
+      
+        # Optional. Edition represents whether the instance is ENTERPRISE or
+        # ENTERPRISE_PLUS. This information is core to Cloud SQL only and is used to
+        # identify the edition of the instance.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # Entitlements associated with the resource
         # Corresponds to the JSON property `entitlements`
@@ -742,6 +1172,12 @@ module Google
         # @return [Google::Apis::RedisV1beta1::DatabaseResourceId]
         attr_accessor :primary_resource_id
       
+        # Primary resource location. REQUIRED if the immediate parent exists when first
+        # time resource is getting ingested, otherwise optional.
+        # Corresponds to the JSON property `primaryResourceLocation`
+        # @return [String]
+        attr_accessor :primary_resource_location
+      
         # Product specification for Condor resources.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::RedisV1beta1::Product]
@@ -762,6 +1198,13 @@ module Google
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
+      
+        # Message type for storing tags. Tags provide a way to create annotations for
+        # resources, and in some cases conditionally allow or deny policies based on
+        # whether a resource has a specific tag.
+        # Corresponds to the JSON property `tagsSet`
+        # @return [Google::Apis::RedisV1beta1::Tags]
+        attr_accessor :tags_set
       
         # The time at which the resource was updated and recorded at partner service.
         # Corresponds to the JSON property `updationTime`
@@ -787,6 +1230,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @current_state = args[:current_state] if args.key?(:current_state)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
+          @edition = args[:edition] if args.key?(:edition)
           @entitlements = args[:entitlements] if args.key?(:entitlements)
           @expected_state = args[:expected_state] if args.key?(:expected_state)
           @id = args[:id] if args.key?(:id)
@@ -794,9 +1238,11 @@ module Google
           @location = args[:location] if args.key?(:location)
           @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
           @primary_resource_id = args[:primary_resource_id] if args.key?(:primary_resource_id)
+          @primary_resource_location = args[:primary_resource_location] if args.key?(:primary_resource_location)
           @product = args[:product] if args.key?(:product)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @tags_set = args[:tags_set] if args.key?(:tags_set)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
           @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
         end
@@ -950,6 +1396,25 @@ module Google
         end
       end
       
+      # Request for [ExportBackup].
+      class ExportBackupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage bucket, like "my-bucket".
+        # Corresponds to the JSON property `gcsBucket`
+        # @return [String]
+        attr_accessor :gcs_bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
+        end
+      end
+      
       # Request for Export.
       class ExportInstanceRequest
         include Google::Apis::Core::Hashable
@@ -986,6 +1451,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_protection_mode = args[:data_protection_mode] if args.key?(:data_protection_mode)
+        end
+      end
+      
+      # This schedule allows the backup to be triggered at a fixed frequency (
+      # currently only daily is supported).
+      class FixedFrequencySchedule
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::RedisV1beta1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be
+      # the same region as the clusters.
+      class GcsBackupSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. URIs of the GCS objects to import. Example: gs://bucket1/object1, gs:
+        # //bucket2/folder2/object2
+        # Corresponds to the JSON property `uris`
+        # @return [Array<String>]
+        attr_accessor :uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uris = args[:uris] if args.key?(:uris)
         end
       end
       
@@ -1038,9 +1546,9 @@ module Google
         attr_accessor :api_version
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have been cancelled successfully have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # operation. Operations that have been cancelled successfully have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of `1`,
+        # corresponding to `Code.CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
@@ -1476,6 +1984,123 @@ module Google
         end
       end
       
+      # Metadata for individual internal resources in an instance. e.g. spanner
+      # instance can have multiple databases with unique configuration settings.
+      # Similarly bigtable can have multiple clusters within same bigtable instance.
+      class InternalResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for automatic backups
+        # Corresponds to the JSON property `backupConfiguration`
+        # @return [Google::Apis::RedisV1beta1::BackupConfiguration]
+        attr_accessor :backup_configuration
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::RedisV1beta1::BackupRun]
+        attr_accessor :backup_run
+      
+        # Product specification for Condor resources.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::RedisV1beta1::Product]
+        attr_accessor :product
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::RedisV1beta1::DatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Required. internal resource name for spanner this will be database name e.g."
+        # spanner.googleapis.com/projects/123/abc/instances/inst1/databases/db1"
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @product = args[:product] if args.key?(:product)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Response for [ListBackupCollections].
+      class ListBackupCollectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of backupCollections in the project. If the `location_id` in the parent
+        # field of the request is "-", all regions available to the project are queried,
+        # and the results aggregated. If in such an aggregated query a location is
+        # unavailable, a placeholder backupCollection entry is included in the response
+        # with the `name` field set to a value of the form `projects/`project_id`/
+        # locations/`location_id`/backupCollections/`- and the `status` field set to
+        # ERROR and `status_message` field set to "location not available for
+        # ListBackupCollections".
+        # Corresponds to the JSON property `backupCollections`
+        # @return [Array<Google::Apis::RedisV1beta1::BackupCollection>]
+        attr_accessor :backup_collections
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_collections = args[:backup_collections] if args.key?(:backup_collections)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for [ListBackups].
+      class ListBackupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of backups in the project.
+        # Corresponds to the JSON property `backups`
+        # @return [Array<Google::Apis::RedisV1beta1::Backup>]
+        attr_accessor :backups
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Backups that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backups = args[:backups] if args.key?(:backups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response for ListClusters.
       class ListClustersResponse
         include Google::Apis::Core::Hashable
@@ -1670,6 +2295,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :memory_size_in_bytes
       
+        # Optional. Number of shards (if applicable).
+        # Corresponds to the JSON property `shardCount`
+        # @return [Fixnum]
+        attr_accessor :shard_count
+      
+        # Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto
+        # validations again after bug fix.
+        # Corresponds to the JSON property `vcpuCount`
+        # @return [Float]
+        attr_accessor :vcpu_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1678,6 +2314,8 @@ module Google
         def update!(**args)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
           @memory_size_in_bytes = args[:memory_size_in_bytes] if args.key?(:memory_size_in_bytes)
+          @shard_count = args[:shard_count] if args.key?(:shard_count)
+          @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
         end
       end
       
@@ -1763,6 +2401,29 @@ module Google
         end
       end
       
+      # Backups that generated and managed by memorystore.
+      class ManagedBackupSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Example: //redis.googleapis.com/projects/`project`/locations/`
+        # location`/backupCollections/`collection`/backups/`backup` A shorter version (
+        # without the prefix) of the backup name is also supported, like projects/`
+        # project`/locations/`location`/backupCollections/`collection`/backups/`
+        # backup_id` In this case, it assumes the backup is under redis.googleapis.com.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+        end
+      end
+      
       # 
       class ManagedCertificateAuthority
         include Google::Apis::Core::Hashable
@@ -1779,6 +2440,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ca_certs = args[:ca_certs] if args.key?(:ca_certs)
+        end
+      end
+      
+      # An output only view of all the member clusters participating in the cross
+      # cluster replication.
+      class Membership
+        include Google::Apis::Core::Hashable
+      
+        # Details of the remote cluster associated with this cluster in a cross cluster
+        # replication setup.
+        # Corresponds to the JSON property `primaryCluster`
+        # @return [Google::Apis::RedisV1beta1::RemoteCluster]
+        attr_accessor :primary_cluster
+      
+        # Output only. The list of secondary clusters replicating from the primary
+        # cluster.
+        # Corresponds to the JSON property `secondaryClusters`
+        # @return [Array<Google::Apis::RedisV1beta1::RemoteCluster>]
+        attr_accessor :secondary_clusters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_cluster = args[:primary_cluster] if args.key?(:primary_cluster)
+          @secondary_clusters = args[:secondary_clusters] if args.key?(:secondary_clusters)
         end
       end
       
@@ -2129,34 +2818,54 @@ module Google
       class PscConnection
         include Google::Apis::Core::Hashable
       
-        # Output only. The IP allocated on the consumer network for the PSC forwarding
-        # rule.
+        # Required. The IP allocated on the consumer network for the PSC forwarding rule.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
       
-        # Output only. The URI of the consumer side forwarding rule. Example: projects/`
+        # Output only. Type of the PSC connection.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # Required. The URI of the consumer side forwarding rule. Example: projects/`
         # projectNumOrId`/regions/us-east1/forwardingRules/`resourceId`.
         # Corresponds to the JSON property `forwardingRule`
         # @return [String]
         attr_accessor :forwarding_rule
       
-        # The consumer network where the IP address resides, in the form of projects/`
-        # project_id`/global/networks/`network_id`.
+        # Required. The consumer network where the IP address resides, in the form of
+        # projects/`project_id`/global/networks/`network_id`.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Output only. The consumer project_id where the forwarding rule is created from.
+        # Optional. Project ID of the consumer project where the forwarding rule is
+        # created in.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Output only. The PSC connection id of the forwarding rule connected to the
+        # Required. The PSC connection id of the forwarding rule connected to the
         # service attachment.
         # Corresponds to the JSON property `pscConnectionId`
         # @return [String]
         attr_accessor :psc_connection_id
+      
+        # Output only. The status of the PSC connection. Please note that this value is
+        # updated periodically. To get the latest status of a PSC connection, follow
+        # https://cloud.google.com/vpc/docs/configure-private-service-connect-services#
+        # endpoint-details.
+        # Corresponds to the JSON property `pscConnectionStatus`
+        # @return [String]
+        attr_accessor :psc_connection_status
+      
+        # Required. The service attachment which is the target of the PSC connection, in
+        # the form of projects/`project-id`/regions/`region`/serviceAttachments/`service-
+        # attachment-id`.
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
       
         def initialize(**args)
            update!(**args)
@@ -2165,10 +2874,40 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address = args[:address] if args.key?(:address)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @network = args[:network] if args.key?(:network)
           @project_id = args[:project_id] if args.key?(:project_id)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @psc_connection_status = args[:psc_connection_status] if args.key?(:psc_connection_status)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
+        end
+      end
+      
+      # Configuration of a service attachment of the cluster, for creating PSC
+      # connections.
+      class PscServiceAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Type of a PSC connection targeting this service attachment.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # Output only. Service attachment URI which your self-created PscConnection
+        # should use as target
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
         end
       end
       
@@ -2225,6 +2964,61 @@ module Google
         end
       end
       
+      # Details of the remote cluster associated with this cluster in a cross cluster
+      # replication setup.
+      class RemoteCluster
+        include Google::Apis::Core::Hashable
+      
+        # The full resource path of the remote cluster in the format: projects//
+        # locations//clusters/
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Output only. The unique identifier of the remote cluster.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Request for rescheduling a cluster maintenance.
+      class RescheduleClusterMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. If reschedule type is SPECIFIC_TIME, must set up schedule_time as
+        # well.
+        # Corresponds to the JSON property `rescheduleType`
+        # @return [String]
+        attr_accessor :reschedule_type
+      
+        # Optional. Timestamp when the maintenance shall be rescheduled to if
+        # reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example `2012-11-15T16:
+        # 19:00.094Z`.
+        # Corresponds to the JSON property `scheduleTime`
+        # @return [String]
+        attr_accessor :schedule_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reschedule_type = args[:reschedule_type] if args.key?(:reschedule_type)
+          @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
+        end
+      end
+      
       # Request for RescheduleMaintenance.
       class RescheduleMaintenanceRequest
         include Google::Apis::Core::Hashable
@@ -2257,6 +3051,11 @@ module Google
       class RetentionSettings
         include Google::Apis::Core::Hashable
       
+        # Duration based retention period i.e. 172800 seconds (2 days)
+        # Corresponds to the JSON property `durationBasedRetention`
+        # @return [String]
+        attr_accessor :duration_based_retention
+      
         # 
         # Corresponds to the JSON property `quantityBasedRetention`
         # @return [Fixnum]
@@ -2272,15 +3071,22 @@ module Google
         # @return [String]
         attr_accessor :time_based_retention
       
+        # Timestamp based retention period i.e. 2024-05-01T00:00:00Z
+        # Corresponds to the JSON property `timestampBasedRetentionTime`
+        # @return [String]
+        attr_accessor :timestamp_based_retention_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @duration_based_retention = args[:duration_based_retention] if args.key?(:duration_based_retention)
           @quantity_based_retention = args[:quantity_based_retention] if args.key?(:quantity_based_retention)
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
+          @timestamp_based_retention_time = args[:timestamp_based_retention_time] if args.key?(:timestamp_based_retention_time)
         end
       end
       
@@ -2342,30 +3148,55 @@ module Google
         end
       end
       
+      # Message type for storing tags. Tags provide a way to create annotations for
+      # resources, and in some cases conditionally allow or deny policies based on
+      # whether a resource has a specific tag.
+      class Tags
+        include Google::Apis::Core::Hashable
+      
+        # The Tag key/value mappings.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # Represents a time of day. The date and time zone are either not significant or
       # are specified elsewhere. An API may choose to allow leap seconds. Related
       # types are google.type.Date and `google.protobuf.Timestamp`.
       class TimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
-        # allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # Minutes of hour of day. Must be from 0 to 59.
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
       
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds

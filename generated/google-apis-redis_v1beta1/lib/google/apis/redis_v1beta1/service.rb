@@ -124,6 +124,268 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get a backup collection.
+        # @param [String] name
+        #   Required. Redis backupCollection resource name using the form: `projects/`
+        #   project_id`/locations/`location_id`/backupCollections/`backup_collection_id``
+        #   where `location_id` refers to a GCP region.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1beta1::BackupCollection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1beta1::BackupCollection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_backup_collection(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::RedisV1beta1::BackupCollection::Representation
+          command.response_class = Google::Apis::RedisV1beta1::BackupCollection
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all backup collections owned by a consumer project in either the
+        # specified location (region) or all locations. If `location_id` is specified as
+        # `-` (wildcard), then all regions available to the project are queried, and the
+        # results are aggregated.
+        # @param [String] parent
+        #   Required. The resource name of the backupCollection location using the form: `
+        #   projects/`project_id`/locations/`location_id`` where `location_id` refers to a
+        #   GCP region.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 1000 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's `next_page_token` to determine if there are more clusters left to
+        #   be queried.
+        # @param [String] page_token
+        #   Optional. The `next_page_token` value returned from a previous [
+        #   ListBackupCollections] request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1beta1::ListBackupCollectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1beta1::ListBackupCollectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_backup_collections(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/backupCollections', options)
+          command.response_representation = Google::Apis::RedisV1beta1::ListBackupCollectionsResponse::Representation
+          command.response_class = Google::Apis::RedisV1beta1::ListBackupCollectionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a specific backup.
+        # @param [String] name
+        #   Required. Redis backup resource name using the form: `projects/`project_id`/
+        #   locations/`location_id`/backupCollections/`backup_collection_id`/backups/`
+        #   backup_id``
+        # @param [String] request_id
+        #   Optional. Idempotent request UUID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_backup_collection_backup(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::RedisV1beta1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Exports a specific backup to a customer target Cloud Storage URI.
+        # @param [String] name
+        #   Required. Redis backup resource name using the form: `projects/`project_id`/
+        #   locations/`location_id`/backupCollections/`backup_collection_id`/backups/`
+        #   backup_id``
+        # @param [Google::Apis::RedisV1beta1::ExportBackupRequest] export_backup_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_backup(name, export_backup_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:export', options)
+          command.request_representation = Google::Apis::RedisV1beta1::ExportBackupRequest::Representation
+          command.request_object = export_backup_request_object
+          command.response_representation = Google::Apis::RedisV1beta1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a specific backup.
+        # @param [String] name
+        #   Required. Redis backup resource name using the form: `projects/`project_id`/
+        #   locations/`location_id`/backupCollections/`backup_collection_id`/backups/`
+        #   backup_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1beta1::Backup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1beta1::Backup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_backup_collection_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::RedisV1beta1::Backup::Representation
+          command.response_class = Google::Apis::RedisV1beta1::Backup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all backups owned by a backup collection.
+        # @param [String] parent
+        #   Required. The resource name of the backupCollection using the form: `projects/`
+        #   project_id`/locations/`location_id`/backupCollections/`backup_collection_id``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 1000 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's `next_page_token` to determine if there are more clusters left to
+        #   be queried.
+        # @param [String] page_token
+        #   Optional. The `next_page_token` value returned from a previous [
+        #   ListBackupCollections] request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1beta1::ListBackupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1beta1::ListBackupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_backup_collection_backups(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/backups', options)
+          command.response_representation = Google::Apis::RedisV1beta1::ListBackupsResponse::Representation
+          command.response_class = Google::Apis::RedisV1beta1::ListBackupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Backup Redis Cluster. If this is the first time a backup is being created, a
+        # backup collection will be created at the backend, and this backup belongs to
+        # this collection. Both collection and backup will have a resource name. Backup
+        # will be executed for each shard. A replica (primary if nonHA) will be selected
+        # to perform the execution. Backup call will be rejected if there is an ongoing
+        # backup or update operation.
+        # @param [String] name
+        #   Required. Redis cluster resource name using the form: `projects/`project_id`/
+        #   locations/`location_id`/clusters/`cluster_id`` where `location_id` refers to a
+        #   GCP region.
+        # @param [Google::Apis::RedisV1beta1::BackupClusterRequest] backup_cluster_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def backup_cluster(name, backup_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:backup', options)
+          command.request_representation = Google::Apis::RedisV1beta1::BackupClusterRequest::Representation
+          command.request_object = backup_cluster_request_object
+          command.response_representation = Google::Apis::RedisV1beta1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Redis cluster based on the specified properties. The creation is
         # executed asynchronously and callers may check the returned operation to track
         # its progress. Once the operation is completed the Redis cluster will be fully
@@ -360,6 +622,41 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reschedules upcoming maintenance event.
+        # @param [String] name
+        #   Required. Redis Cluster instance resource name using the form: `projects/`
+        #   project_id`/locations/`location_id`/clusters/`cluster_id`` where `location_id`
+        #   refers to a GCP region.
+        # @param [Google::Apis::RedisV1beta1::RescheduleClusterMaintenanceRequest] reschedule_cluster_maintenance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reschedule_cluster_maintenance(name, reschedule_cluster_maintenance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:rescheduleClusterMaintenance', options)
+          command.request_representation = Google::Apis::RedisV1beta1::RescheduleClusterMaintenanceRequest::Representation
+          command.request_object = reschedule_cluster_maintenance_request_object
+          command.response_representation = Google::Apis::RedisV1beta1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1beta1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -796,8 +1093,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
