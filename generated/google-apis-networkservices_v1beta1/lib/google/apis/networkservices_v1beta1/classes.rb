@@ -22,175 +22,128 @@ module Google
   module Apis
     module NetworkservicesV1beta1
       
-      # Specifies the audit configuration for a service. The configuration determines
-      # which permission types are logged, and what identities, if any, are exempted
-      # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
-      # are AuditConfigs for both `allServices` and a specific service, the union of
-      # the two AuditConfigs is used for that service: the log_types specified in each
-      # AuditConfig are enabled, and the exempted_members in each AuditLogConfig are
-      # exempted. Example Policy with multiple AuditConfigs: ` "audit_configs": [ ` "
-      # service": "allServices", "audit_log_configs": [ ` "log_type": "DATA_READ", "
-      # exempted_members": [ "user:jose@example.com" ] `, ` "log_type": "DATA_WRITE" `,
-      # ` "log_type": "ADMIN_READ" ` ] `, ` "service": "sampleservice.googleapis.com",
-      # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
-      # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
-      # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
-      # exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com`
-      # from DATA_WRITE logging.
-      class AuditConfig
+      # `AuthzExtension` is a resource that allows traffic forwarding to a callout
+      # backend service to make an authorization decision.
+      class AuthzExtension
         include Google::Apis::Core::Hashable
       
-        # The configuration for logging of each type of permission.
-        # Corresponds to the JSON property `auditLogConfigs`
-        # @return [Array<Google::Apis::NetworkservicesV1beta1::AuditLogConfig>]
-        attr_accessor :audit_log_configs
+        # Required. The `:authority` header in the gRPC request sent from Envoy to the
+        # extension service.
+        # Corresponds to the JSON property `authority`
+        # @return [String]
+        attr_accessor :authority
       
-        # Specifies a service that will be enabled for audit logging. For example, `
-        # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
-        # value that covers all services.
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Determines how the proxy behaves if the call to the extension fails
+        # or times out. When set to `TRUE`, request or response processing continues
+        # without error. Any subsequent extensions in the extension chain are also
+        # executed. When set to `FALSE` or the default setting of `FALSE` is used, one
+        # of the following happens: * If response headers have not been delivered to the
+        # downstream client, a generic 500 error is returned to the client. The error
+        # response can be tailored by configuring a custom error response in the load
+        # balancer. * If response headers have been delivered, then the HTTP stream to
+        # the downstream client is reset.
+        # Corresponds to the JSON property `failOpen`
+        # @return [Boolean]
+        attr_accessor :fail_open
+        alias_method :fail_open?, :fail_open
+      
+        # Optional. List of the HTTP headers to forward to the extension (from the
+        # client). If omitted, all headers are sent. Each element is a string indicating
+        # the header name.
+        # Corresponds to the JSON property `forwardHeaders`
+        # @return [Array<String>]
+        attr_accessor :forward_headers
+      
+        # Optional. Set of labels associated with the `AuthzExtension` resource. The
+        # format must comply with [the requirements for labels](/compute/docs/labeling-
+        # resources#requirements) for Google Cloud resources.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. All backend services and forwarding rules referenced by this
+        # extension must share the same load balancing scheme. Supported values: `
+        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Backend
+        # services overview](https://cloud.google.com/load-balancing/docs/backend-
+        # service).
+        # Corresponds to the JSON property `loadBalancingScheme`
+        # @return [String]
+        attr_accessor :load_balancing_scheme
+      
+        # Optional. The metadata provided here is included as part of the `
+        # metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest`
+        # message sent to the extension server. The metadata is available under the
+        # namespace `com.google.authz_extension.`. The following variables are supported
+        # in the metadata Struct: ``forwarding_rule_id`` - substituted with the
+        # forwarding rule's fully qualified resource name.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Required. Identifier. Name of the `AuthzExtension` resource in the following
+        # format: `projects/`project`/locations/`location`/authzExtensions/`
+        # authz_extension``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The reference to the service that runs the extension. To configure a
+        # callout extension, `service` must be a fully-qualified reference to a [backend
+        # service](https://cloud.google.com/compute/docs/reference/rest/v1/
+        # backendServices) in the format: `https://www.googleapis.com/compute/v1/
+        # projects/`project`/regions/`region`/backendServices/`backendService`` or `
+        # https://www.googleapis.com/compute/v1/projects/`project`/global/
+        # backendServices/`backendService``.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
+        # Required. Specifies the timeout for each individual message on the stream. The
+        # timeout must be between 10-10000 milliseconds.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. The format of communication supported by the callout extension. If
+        # not specified, the default is `EXT_PROC_GRPC`.
+        # Corresponds to the JSON property `wireFormat`
+        # @return [String]
+        attr_accessor :wire_format
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
+          @authority = args[:authority] if args.key?(:authority)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @fail_open = args[:fail_open] if args.key?(:fail_open)
+          @forward_headers = args[:forward_headers] if args.key?(:forward_headers)
+          @labels = args[:labels] if args.key?(:labels)
+          @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
           @service = args[:service] if args.key?(:service)
-        end
-      end
-      
-      # Provides the configuration for logging a type of permissions. Example: ` "
-      # audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "user:
-      # jose@example.com" ] `, ` "log_type": "DATA_WRITE" ` ] ` This enables '
-      # DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-      # DATA_READ logging.
-      class AuditLogConfig
-        include Google::Apis::Core::Hashable
-      
-        # Specifies the identities that do not cause logging for this type of permission.
-        # Follows the same format of Binding.members.
-        # Corresponds to the JSON property `exemptedMembers`
-        # @return [Array<String>]
-        attr_accessor :exempted_members
-      
-        # The log type that this config enables.
-        # Corresponds to the JSON property `logType`
-        # @return [String]
-        attr_accessor :log_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
-          @log_type = args[:log_type] if args.key?(:log_type)
-        end
-      end
-      
-      # Associates `members`, or principals, with a `role`.
-      class Binding
-        include Google::Apis::Core::Hashable
-      
-        # Represents a textual expression in the Common Expression Language (CEL) syntax.
-        # CEL is a C-like expression language. The syntax and semantics of CEL are
-        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
-        # "Summary size limit" description: "Determines if a summary is less than 100
-        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
-        # Requestor is owner" description: "Determines if requestor is the document
-        # owner" expression: "document.owner == request.auth.claims.email" Example (
-        # Logic): title: "Public documents" description: "Determine whether the document
-        # should be publicly visible" expression: "document.type != 'private' &&
-        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
-        # string" description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)" The
-        # exact variables and functions that may be referenced within an expression are
-        # determined by the service that evaluates it. See the service documentation for
-        # additional information.
-        # Corresponds to the JSON property `condition`
-        # @return [Google::Apis::NetworkservicesV1beta1::Expr]
-        attr_accessor :condition
-      
-        # Specifies the principals requesting access for a Google Cloud resource. `
-        # members` can have the following values: * `allUsers`: A special identifier
-        # that represents anyone who is on the internet; with or without a Google
-        # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. Does
-        # not include identities that come from external identity providers (IdPs)
-        # through identity federation. * `user:`emailid``: An email address that
-        # represents a specific Google account. For example, `alice@example.com` . * `
-        # serviceAccount:`emailid``: An email address that represents a Google service
-        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
-        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
-        # identifier for a [Kubernetes service account](https://cloud.google.com/
-        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
-        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
-        # email address that represents a Google group. For example, `admins@example.com`
-        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`. * `principal:
-        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
-        # subject_attribute_value``: A single identity in a workforce identity pool. * `
-        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
-        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
-        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
-        # attribute_name`/`attribute_value``: All workforce identities with a specific
-        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
-        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
-        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
-        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
-        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
-        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
-        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
-        # googleapis.com/projects/`project_number`/locations/global/
-        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
-        # All identities in a workload identity pool with a certain attribute. * `
-        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
-        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
-        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
-        # address (plus unique identifier) representing a service account that has been
-        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
-        # 123456789012345678901`. If the service account is undeleted, this value
-        # reverts to `serviceAccount:`emailid`` and the undeleted service account
-        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
-        # An email address (plus unique identifier) representing a Google group that has
-        # been recently deleted. For example, `admins@example.com?uid=
-        # 123456789012345678901`. If the group is recovered, this value reverts to `
-        # group:`emailid`` and the recovered group retains the role in the binding. * `
-        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
-        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
-        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
-        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
-        # Corresponds to the JSON property `members`
-        # @return [Array<String>]
-        attr_accessor :members
-      
-        # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
-        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
-        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
-        # here](https://cloud.google.com/iam/docs/understanding-roles).
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @condition = args[:condition] if args.key?(:condition)
-          @members = args[:members] if args.key?(:members)
-          @role = args[:role] if args.key?(:role)
+          @timeout = args[:timeout] if args.key?(:timeout)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @wire_format = args[:wire_format] if args.key?(:wire_format)
         end
       end
       
@@ -290,7 +243,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Name of the EndpointPolicy resource. It matches pattern `projects/`
+        # Identifier. Name of the EndpointPolicy resource. It matches pattern `projects/`
         # project`/locations/global/endpointPolicies/`endpoint_policy``.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -340,60 +293,6 @@ module Google
         end
       end
       
-      # Represents a textual expression in the Common Expression Language (CEL) syntax.
-      # CEL is a C-like expression language. The syntax and semantics of CEL are
-      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
-      # "Summary size limit" description: "Determines if a summary is less than 100
-      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
-      # Requestor is owner" description: "Determines if requestor is the document
-      # owner" expression: "document.owner == request.auth.claims.email" Example (
-      # Logic): title: "Public documents" description: "Determine whether the document
-      # should be publicly visible" expression: "document.type != 'private' &&
-      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
-      # string" description: "Create a notification string with a timestamp."
-      # expression: "'New message received at ' + string(document.create_time)" The
-      # exact variables and functions that may be referenced within an expression are
-      # determined by the service that evaluates it. See the service documentation for
-      # additional information.
-      class Expr
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Description of the expression. This is a longer text which describes
-        # the expression, e.g. when hovered over it in a UI.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Textual representation of an expression in Common Expression Language syntax.
-        # Corresponds to the JSON property `expression`
-        # @return [String]
-        attr_accessor :expression
-      
-        # Optional. String indicating the location of the expression for error reporting,
-        # e.g. a file name and a position in the file.
-        # Corresponds to the JSON property `location`
-        # @return [String]
-        attr_accessor :location
-      
-        # Optional. Title for the expression, i.e. a short string describing its purpose.
-        # This can be used e.g. in UIs which allow to enter the expression.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @expression = args[:expression] if args.key?(:expression)
-          @location = args[:location] if args.key?(:location)
-          @title = args[:title] if args.key?(:title)
-        end
-      end
-      
       # A single extension chain wrapper that contains the match conditions and
       # extensions to execute.
       class ExtensionChain
@@ -438,7 +337,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The `:authority` header in the gRPC request sent from Envoy to the
-        # extension service. Required for Callout extensions.
+        # extension service. Required for Callout extensions. This field is not
+        # supported for plugin extensions. Setting it results in a validation error.
         # Corresponds to the JSON property `authority`
         # @return [String]
         attr_accessor :authority
@@ -464,6 +364,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :forward_headers
       
+        # Optional. The metadata provided here is included as part of the `
+        # metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest`
+        # message sent to the extension server. The metadata is available under the
+        # namespace `com.google....`. For example: `com.google.lb_traffic_extension.
+        # lbtrafficextension1.chain1.ext1`. The following variables are supported in the
+        # metadata: ``forwarding_rule_id`` - substituted with the forwarding rule's
+        # fully qualified resource name. This field is not supported for plugin
+        # extensions. Setting it results in a validation error.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         # Required. The name for this extension. The name is logged as part of the HTTP
         # request logs. The name must conform with RFC-1034, is restricted to lower-
         # cased letters, numbers and hyphens, and can have a maximum length of 63
@@ -473,26 +385,35 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The reference to the service that runs the extension. Currently only
-        # callout extensions are supported here. To configure a callout extension, `
-        # service` must be a fully-qualified reference to a [backend service](https://
-        # cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
-        # `https://www.googleapis.com/compute/v1/projects/`project`/regions/`region`/
-        # backendServices/`backendService`` or `https://www.googleapis.com/compute/v1/
-        # projects/`project`/global/backendServices/`backendService``.
+        # Required. The reference to the service that runs the extension. To configure a
+        # callout extension, `service` must be a fully-qualified reference to a [backend
+        # service](https://cloud.google.com/compute/docs/reference/rest/v1/
+        # backendServices) in the format: `https://www.googleapis.com/compute/v1/
+        # projects/`project`/regions/`region`/backendServices/`backendService`` or `
+        # https://www.googleapis.com/compute/v1/projects/`project`/global/
+        # backendServices/`backendService``. To configure a plugin extension, `service`
+        # must be a reference to a [`WasmPlugin` resource](https://cloud.google.com/
+        # service-extensions/docs/reference/rest/v1beta1/projects.locations.wasmPlugins)
+        # in the format: `projects/`project`/locations/`location`/wasmPlugins/`plugin``
+        # or `//networkservices.googleapis.com/projects/`project`/locations/`location`/
+        # wasmPlugins/`wasmPlugin``. Plugin extensions are currently supported for the `
+        # LbTrafficExtension` and the `LbRouteExtension` resources.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
         # Optional. A set of events during request or response processing for which this
         # extension is called. This field is required for the `LbTrafficExtension`
-        # resource. It must not be set for the `LbRouteExtension` resource.
+        # resource. It must not be set for the `LbRouteExtension` resource, otherwise a
+        # validation error is returned.
         # Corresponds to the JSON property `supportedEvents`
         # @return [Array<String>]
         attr_accessor :supported_events
       
         # Optional. Specifies the timeout for each individual message on the stream. The
-        # timeout must be between 10-1000 milliseconds. Required for Callout extensions.
+        # timeout must be between `10`-`1000` milliseconds. Required for callout
+        # extensions. This field is not supported for plugin extensions. Setting it
+        # results in a validation error.
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
@@ -506,6 +427,7 @@ module Google
           @authority = args[:authority] if args.key?(:authority)
           @fail_open = args[:fail_open] if args.key?(:fail_open)
           @forward_headers = args[:forward_headers] if args.key?(:forward_headers)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @service = args[:service] if args.key?(:service)
           @supported_events = args[:supported_events] if args.key?(:supported_events)
@@ -593,7 +515,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Name of the Gateway resource. It matches pattern `projects/*/
+        # Identifier. Name of the Gateway resource. It matches pattern `projects/*/
         # locations/*/gateways/`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -613,6 +535,13 @@ module Google
         # Corresponds to the JSON property `ports`
         # @return [Array<Fixnum>]
         attr_accessor :ports
+      
+        # Optional. The routing mode of the Gateway. This field is configurable only for
+        # gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of
+        # type SECURE_WEB_GATEWAY.
+        # Corresponds to the JSON property `routingMode`
+        # @return [String]
+        attr_accessor :routing_mode
       
         # Optional. Scope determines how configuration across multiple Gateway instances
         # are merged. The configuration for multiple Gateway instances with the same
@@ -670,12 +599,58 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @ports = args[:ports] if args.key?(:ports)
+          @routing_mode = args[:routing_mode] if args.key?(:routing_mode)
           @scope = args[:scope] if args.key?(:scope)
           @self_link = args[:self_link] if args.key?(:self_link)
           @server_tls_policy = args[:server_tls_policy] if args.key?(:server_tls_policy)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # GatewayRouteView defines view-only resource for Routes to a Gateway
+      class GatewayRouteView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Identifier. Full path name of the GatewayRouteView resource.
+        # Format: projects/`project_number`/locations/`location`/gateways/`gateway_name`/
+        # routeViews/`route_view_name`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The resource id for the route.
+        # Corresponds to the JSON property `routeId`
+        # @return [String]
+        attr_accessor :route_id
+      
+        # Output only. Location where the route exists.
+        # Corresponds to the JSON property `routeLocation`
+        # @return [String]
+        attr_accessor :route_location
+      
+        # Output only. Project number where the route exists.
+        # Corresponds to the JSON property `routeProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :route_project_number
+      
+        # Output only. Type of the route: HttpRoute,GrpcRoute,TcpRoute, or TlsRoute
+        # Corresponds to the JSON property `routeType`
+        # @return [String]
+        attr_accessor :route_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @route_id = args[:route_id] if args.key?(:route_id)
+          @route_location = args[:route_location] if args.key?(:route_location)
+          @route_project_number = args[:route_project_number] if args.key?(:route_project_number)
+          @route_type = args[:route_type] if args.key?(:route_type)
         end
       end
       
@@ -737,7 +712,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :meshes
       
-        # Required. Name of the GrpcRoute resource. It matches pattern `projects/*/
+        # Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/
         # locations/global/grpcRoutes/`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -974,7 +949,8 @@ module Google
         end
       end
       
-      # The specifications for retries.
+      # The specifications for retries. Specifies one or more conditions for which
+      # this retry rule applies. Valid values are:
       class GrpcRouteRetryPolicy
         include Google::Apis::Core::Hashable
       
@@ -1038,7 +1014,8 @@ module Google
         # @return [String]
         attr_accessor :idle_timeout
       
-        # The specifications for retries.
+        # The specifications for retries. Specifies one or more conditions for which
+        # this retry rule applies. Valid values are:
         # Corresponds to the JSON property `retryPolicy`
         # @return [Google::Apis::NetworkservicesV1beta1::GrpcRouteRetryPolicy]
         attr_accessor :retry_policy
@@ -1214,7 +1191,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :meshes
       
-        # Required. Name of the HttpRoute resource. It matches pattern `projects/*/
+        # Identifier. Name of the HttpRoute resource. It matches pattern `projects/*/
         # locations/global/httpRoutes/http_route_name>`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2084,8 +2061,8 @@ module Google
         attr_accessor :extension_chains
       
         # Required. A list of references to the forwarding rules to which this service
-        # extension is attached to. At least one forwarding rule is required. There can
-        # be only one `LbRouteExtension` resource per forwarding rule.
+        # extension is attached. At least one forwarding rule is required. There can be
+        # only one `LbRouteExtension` resource per forwarding rule.
         # Corresponds to the JSON property `forwardingRules`
         # @return [Array<String>]
         attr_accessor :forwarding_rules
@@ -2099,8 +2076,8 @@ module Google
       
         # Required. All backend services and forwarding rules referenced by this
         # extension must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [
-        # Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-
+        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Backend
+        # services overview](https://cloud.google.com/load-balancing/docs/backend-
         # service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
@@ -2111,7 +2088,8 @@ module Google
         # message sent to the extension server. The metadata is available under the
         # namespace `com.google.lb_route_extension.`. The following variables are
         # supported in the metadata Struct: ``forwarding_rule_id`` - substituted with
-        # the forwarding rule's fully qualified resource name.
+        # the forwarding rule's fully qualified resource name. This field is not
+        # supported for plugin extensions. Setting it results in a validation error.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -2172,9 +2150,9 @@ module Google
         # @return [Array<Google::Apis::NetworkservicesV1beta1::ExtensionChain>]
         attr_accessor :extension_chains
       
-        # Required. A list of references to the forwarding rules to which this service
-        # extension is attached to. At least one forwarding rule is required. There can
-        # be only one `LBTrafficExtension` resource per forwarding rule.
+        # Optional. A list of references to the forwarding rules to which this service
+        # extension is attached. At least one forwarding rule is required. There can be
+        # only one `LBTrafficExtension` resource per forwarding rule.
         # Corresponds to the JSON property `forwardingRules`
         # @return [Array<String>]
         attr_accessor :forwarding_rules
@@ -2188,8 +2166,8 @@ module Google
       
         # Required. All backend services and forwarding rules referenced by this
         # extension must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [
-        # Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-
+        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Backend
+        # services overview](https://cloud.google.com/load-balancing/docs/backend-
         # service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
@@ -2199,7 +2177,8 @@ module Google
         # metadata_context.filter_metadata` map field. The metadata is available under
         # the key `com.google.lb_traffic_extension.`. The following variables are
         # supported in the metadata: ``forwarding_rule_id`` - substituted with the
-        # forwarding rule's fully qualified resource name.
+        # forwarding rule's fully qualified resource name. This field is not supported
+        # for plugin extensions. Setting it results in a validation error.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -2234,6 +2213,37 @@ module Google
         end
       end
       
+      # Message for response to listing `AuthzExtension` resources.
+      class ListAuthzExtensionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `AuthzExtension` resources.
+        # Corresponds to the JSON property `authzExtensions`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::AuthzExtension>]
+        attr_accessor :authz_extensions
+      
+        # A token identifying a page of results that the server returns.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authz_extensions = args[:authz_extensions] if args.key?(:authz_extensions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response returned by the ListEndpointPolicies method.
       class ListEndpointPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -2257,6 +2267,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @endpoint_policies = args[:endpoint_policies] if args.key?(:endpoint_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response returned by the ListGatewayRouteViews method.
+      class ListGatewayRouteViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of GatewayRouteView resources.
+        # Corresponds to the JSON property `gatewayRouteViews`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::GatewayRouteView>]
+        attr_accessor :gateway_route_views
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateway_route_views = args[:gateway_route_views] if args.key?(:gateway_route_views)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2435,6 +2471,32 @@ module Google
         end
       end
       
+      # Response returned by the ListMeshRouteViews method.
+      class ListMeshRouteViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of MeshRouteView resources.
+        # Corresponds to the JSON property `meshRouteViews`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::MeshRouteView>]
+        attr_accessor :mesh_route_views
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mesh_route_views = args[:mesh_route_views] if args.key?(:mesh_route_views)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response returned by the ListMeshes method.
       class ListMeshesResponse
         include Google::Apis::Core::Hashable
@@ -2595,6 +2657,60 @@ module Google
         end
       end
       
+      # Response returned by the `ListWasmPluginVersions` method.
+      class ListWasmPluginVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of `WasmPluginVersion` resources.
+        # Corresponds to the JSON property `wasmPluginVersions`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::WasmPluginVersion>]
+        attr_accessor :wasm_plugin_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @wasm_plugin_versions = args[:wasm_plugin_versions] if args.key?(:wasm_plugin_versions)
+        end
+      end
+      
+      # Response returned by the `ListWasmPlugins` method.
+      class ListWasmPluginsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of `WasmPlugin` resources.
+        # Corresponds to the JSON property `wasmPlugins`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::WasmPlugin>]
+        attr_accessor :wasm_plugins
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @wasm_plugins = args[:wasm_plugins] if args.key?(:wasm_plugins)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -2642,6 +2758,28 @@ module Google
         end
       end
       
+      # The configuration for Platform Telemetry logging for Eventarc Avdvanced
+      # resources.
+      class LoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The minimum severity of logs that will be sent to Stackdriver/
+        # Platform Telemetry. Logs at severitiy ≥ this value will be sent, unless it is
+        # NONE.
+        # Corresponds to the JSON property `logSeverity`
+        # @return [String]
+        attr_accessor :log_severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_severity = args[:log_severity] if args.key?(:log_severity)
+        end
+      end
+      
       # Mesh represents a logical configuration grouping for workload to workload
       # communication within a service mesh. Routes that point to mesh dictate how
       # requests are routed within this logical mesh boundary.
@@ -2679,8 +2817,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Name of the Mesh resource. It matches pattern `projects/*/locations/
-        # global/meshes/`.
+        # Identifier. Name of the Mesh resource. It matches pattern `projects/*/
+        # locations/global/meshes/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2709,6 +2847,51 @@ module Google
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # MeshRouteView defines view-only resource for Routes to a Mesh
+      class MeshRouteView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Identifier. Full path name of the MeshRouteView resource. Format:
+        # projects/`project_number`/locations/`location`/meshes/`mesh_name`/routeViews/`
+        # route_view_name`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The resource id for the route.
+        # Corresponds to the JSON property `routeId`
+        # @return [String]
+        attr_accessor :route_id
+      
+        # Output only. Location where the route exists.
+        # Corresponds to the JSON property `routeLocation`
+        # @return [String]
+        attr_accessor :route_location
+      
+        # Output only. Project number where the route exists.
+        # Corresponds to the JSON property `routeProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :route_project_number
+      
+        # Output only. Type of the route: HttpRoute,GrpcRoute,TcpRoute, or TlsRoute
+        # Corresponds to the JSON property `routeType`
+        # @return [String]
+        attr_accessor :route_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @route_id = args[:route_id] if args.key?(:route_id)
+          @route_location = args[:route_location] if args.key?(:route_location)
+          @route_project_number = args[:route_project_number] if args.key?(:route_project_number)
+          @route_type = args[:route_type] if args.key?(:route_type)
         end
       end
       
@@ -2898,87 +3081,14 @@ module Google
         end
       end
       
-      # An Identity and Access Management (IAM) policy, which specifies access
-      # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-      # A `binding` binds one or more `members`, or principals, to a single `role`.
-      # Principals can be user accounts, service accounts, Google groups, and domains (
-      # such as G Suite). A `role` is a named list of permissions; each `role` can be
-      # an IAM predefined role or a user-created custom role. For some types of Google
-      # Cloud resources, a `binding` can also specify a `condition`, which is a
-      # logical expression that allows access to a resource only if the expression
-      # evaluates to `true`. A condition can add constraints based on attributes of
-      # the request, the resource, or both. To learn which resources support
-      # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
-      # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
-      # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
-      # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
-      # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
-      # ], "condition": ` "title": "expirable access", "description": "Does not grant
-      # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
-      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
-      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
-      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
-      # title: expirable access description: Does not grant access after Sep 2020
-      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
-      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
-      # [IAM documentation](https://cloud.google.com/iam/docs/).
-      class Policy
+      # 
+      class RetryFilterPerRouteConfig
         include Google::Apis::Core::Hashable
       
-        # Specifies cloud audit logging configuration for this policy.
-        # Corresponds to the JSON property `auditConfigs`
-        # @return [Array<Google::Apis::NetworkservicesV1beta1::AuditConfig>]
-        attr_accessor :audit_configs
-      
-        # Associates a list of `members`, or principals, with a `role`. Optionally, may
-        # specify a `condition` that determines how and when the `bindings` are applied.
-        # Each of the `bindings` must contain at least one principal. The `bindings` in
-        # a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
-        # can be Google groups. Each occurrence of a principal counts towards these
-        # limits. For example, if the `bindings` grant 50 different roles to `user:alice@
-        # example.com`, and not to any other principal, then you can add another 1,450
-        # principals to the `bindings` in the `Policy`.
-        # Corresponds to the JSON property `bindings`
-        # @return [Array<Google::Apis::NetworkservicesV1beta1::Binding>]
-        attr_accessor :bindings
-      
-        # `etag` is used for optimistic concurrency control as a way to help prevent
-        # simultaneous updates of a policy from overwriting each other. It is strongly
-        # suggested that systems make use of the `etag` in the read-modify-write cycle
-        # to perform policy updates in order to avoid race conditions: An `etag` is
-        # returned in the response to `getIamPolicy`, and systems are expected to put
-        # that etag in the request to `setIamPolicy` to ensure that their change will be
-        # applied to the same version of the policy. **Important:** If you use IAM
-        # Conditions, you must include the `etag` field whenever you call `setIamPolicy`.
-        # If you omit this field, then IAM allows you to overwrite a version `3` policy
-        # with a version `1` policy, and all of the conditions in the version `3` policy
-        # are lost.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # The name of the crypto key to use for encrypting event data.
+        # Corresponds to the JSON property `cryptoKeyName`
         # @return [String]
-        attr_accessor :etag
-      
-        # Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-        # Requests that specify an invalid value are rejected. Any operation that
-        # affects conditional role bindings must specify version `3`. This requirement
-        # applies to the following operations: * Getting a policy that includes a
-        # conditional role binding * Adding a conditional role binding to a policy *
-        # Changing a conditional role binding in a policy * Removing any role binding,
-        # with or without a condition, from a policy that includes conditions **
-        # Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
-        # to overwrite a version `3` policy with a version `1` policy, and all of the
-        # conditions in the version `3` policy are lost. If a policy does not include
-        # any conditions, operations on that policy may specify any valid version or
-        # leave the field unset. To learn which resources support conditions in their
-        # IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/
-        # conditions/resource-policies).
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
+        attr_accessor :crypto_key_name
       
         def initialize(**args)
            update!(**args)
@@ -2986,10 +3096,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
-          @bindings = args[:bindings] if args.key?(:bindings)
-          @etag = args[:etag] if args.key?(:etag)
-          @version = args[:version] if args.key?(:version)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
         end
       end
       
@@ -3013,8 +3120,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Name of the ServiceBinding resource. It matches pattern `projects/*/
-        # locations/global/serviceBindings/service_binding_name`.
+        # Identifier. Name of the ServiceBinding resource. It matches pattern `projects/*
+        # /locations/global/serviceBindings/service_binding_name`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3092,8 +3199,8 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_algorithm
       
-        # Required. Name of the ServiceLbPolicy resource. It matches pattern `projects/`
-        # project`/locations/`location`/serviceLbPolicies/`service_lb_policy_name``.
+        # Identifier. Name of the ServiceLbPolicy resource. It matches pattern `projects/
+        # `project`/locations/`location`/serviceLbPolicies/`service_lb_policy_name``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3166,59 +3273,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @failover_health_threshold = args[:failover_health_threshold] if args.key?(:failover_health_threshold)
-        end
-      end
-      
-      # Request message for `SetIamPolicy` method.
-      class SetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # An Identity and Access Management (IAM) policy, which specifies access
-        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members`, or principals, to a single `role`.
-        # Principals can be user accounts, service accounts, Google groups, and domains (
-        # such as G Suite). A `role` is a named list of permissions; each `role` can be
-        # an IAM predefined role or a user-created custom role. For some types of Google
-        # Cloud resources, a `binding` can also specify a `condition`, which is a
-        # logical expression that allows access to a resource only if the expression
-        # evaluates to `true`. A condition can add constraints based on attributes of
-        # the request, the resource, or both. To learn which resources support
-        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
-        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
-        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
-        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
-        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
-        # ], "condition": ` "title": "expirable access", "description": "Does not grant
-        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
-        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
-        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
-        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
-        # title: expirable access description: Does not grant access after Sep 2020
-        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
-        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
-        # [IAM documentation](https://cloud.google.com/iam/docs/).
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::NetworkservicesV1beta1::Policy]
-        attr_accessor :policy
-      
-        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-        # the fields in the mask will be modified. If no mask is provided, the following
-        # default mask is used: `paths: "bindings, etag"`
-        # Corresponds to the JSON property `updateMask`
-        # @return [String]
-        attr_accessor :update_mask
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy = args[:policy] if args.key?(:policy)
-          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -3297,7 +3351,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :meshes
       
-        # Required. Name of the TcpRoute resource. It matches pattern `projects/*/
+        # Identifier. Name of the TcpRoute resource. It matches pattern `projects/*/
         # locations/global/tcpRoutes/tcp_route_name>`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3467,46 +3521,6 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @matches = args[:matches] if args.key?(:matches)
-        end
-      end
-      
-      # Request message for `TestIamPermissions` method.
-      class TestIamPermissionsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
-        # Overview](https://cloud.google.com/iam/docs/overview#permissions).
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # Response message for `TestIamPermissions` method.
-      class TestIamPermissionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -3723,6 +3737,333 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # `WasmPlugin` is a resource representing a service executing a customer-
+      # provided Wasm module.
+      class WasmPlugin
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Set of labels associated with the `WasmPlugin` resource. The format
+        # must comply with [the following requirements](/compute/docs/labeling-resources#
+        # requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Specifies the logging options for the activity performed by this plugin. If
+        # logging is enabled, plugin logs are exported to Cloud Logging.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::NetworkservicesV1beta1::WasmPluginLogConfig]
+        attr_accessor :log_config
+      
+        # Optional. The ID of the `WasmPluginVersion` resource that is the currently
+        # serving one. The version referred to must be a child of this `WasmPlugin`
+        # resource.
+        # Corresponds to the JSON property `mainVersionId`
+        # @return [String]
+        attr_accessor :main_version_id
+      
+        # Identifier. Name of the `WasmPlugin` resource in the following format: `
+        # projects/`project`/locations/`location`/wasmPlugins/`wasm_plugin``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. List of all [extensions](https://cloud.google.com/service-
+        # extensions/docs/overview) that use this `WasmPlugin` resource.
+        # Corresponds to the JSON property `usedBy`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::WasmPluginUsedBy>]
+        attr_accessor :used_by
+      
+        # Optional. All versions of this `WasmPlugin` resource in the key-value format.
+        # The key is the resource ID, and the value is the `VersionDetails` object. Lets
+        # you create or update a `WasmPlugin` resource and its versions in a single
+        # request. When the `main_version_id` field is not empty, it must point to one
+        # of the `VersionDetails` objects in the map. If provided in a `PATCH` request,
+        # the new versions replace the previous set. Any version omitted from the `
+        # versions` field is removed. Because the `WasmPluginVersion` resource is
+        # immutable, if a `WasmPluginVersion` resource with the same name already exists
+        # and differs, the request fails. Note: In a `GET` request, this field is
+        # populated only if the field `GetWasmPluginRequest.view` is set to `
+        # WASM_PLUGIN_VIEW_FULL`.
+        # Corresponds to the JSON property `versions`
+        # @return [Hash<String,Google::Apis::NetworkservicesV1beta1::WasmPluginVersionDetails>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @log_config = args[:log_config] if args.key?(:log_config)
+          @main_version_id = args[:main_version_id] if args.key?(:main_version_id)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @used_by = args[:used_by] if args.key?(:used_by)
+          @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
+      # Specifies the logging options for the activity performed by this plugin. If
+      # logging is enabled, plugin logs are exported to Cloud Logging.
+      class WasmPluginLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies whether to enable logging for activity by this plugin.
+        # Defaults to `false`.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        # Non-empty default. Specificies the lowest level of the plugin logs that are
+        # exported to Cloud Logging. This setting relates to the logs generated by using
+        # logging statements in your Wasm code. This field is can be set only if logging
+        # is enabled for the plugin. If the field is not provided when logging is
+        # enabled, it is set to `INFO` by default.
+        # Corresponds to the JSON property `minLogLevel`
+        # @return [String]
+        attr_accessor :min_log_level
+      
+        # Non-empty default. Configures the sampling rate of activity logs, where `1.0`
+        # means all logged activity is reported and `0.0` means no activity is reported.
+        # A floating point value between `0.0` and `1.0` indicates that a percentage of
+        # log messages is stored. The default value when logging is enabled is `1.0`.
+        # The value of the field must be between `0` and `1` (inclusive). This field can
+        # be specified only if logging is enabled for this plugin.
+        # Corresponds to the JSON property `sampleRate`
+        # @return [Float]
+        attr_accessor :sample_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
+          @min_log_level = args[:min_log_level] if args.key?(:min_log_level)
+          @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
+        end
+      end
+      
+      # Defines a resource that uses the `WasmPlugin` resource.
+      class WasmPluginUsedBy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Full name of the resource https://google.aip.dev/122#full-
+        # resource-names, for example `//networkservices.googleapis.com/projects/`
+        # project`/locations/`location`/lbRouteExtensions/`extension``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A single immutable version of a `WasmPlugin` resource. Defines the Wasm module
+      # used and optionally its runtime config.
+      class WasmPluginVersion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The resolved digest for the image specified in the `image` field.
+        # The digest is resolved during the creation of `WasmPluginVersion` resource.
+        # This field holds the digest value, regardless of whether a tag or digest was
+        # originally specified in the `image` field.
+        # Corresponds to the JSON property `imageDigest`
+        # @return [String]
+        attr_accessor :image_digest
+      
+        # Optional. URI of the container image containing the plugin, stored in the
+        # Artifact Registry. When a new `WasmPluginVersion` resource is created, the
+        # digest of the container image is saved in the `image_digest` field. When
+        # downloading an image, the digest value is used instead of an image tag.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # Optional. Set of labels associated with the `WasmPluginVersion` resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Name of the `WasmPluginVersion` resource in the following format: `
+        # projects/`project`/locations/`location`/wasmPlugins/`wasm_plugin`/ versions/`
+        # wasm_plugin_version``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for the plugin. The configuration is provided to the plugin at
+        # runtime through the `ON_CONFIGURE` callback. When a new `WasmPluginVersion`
+        # resource is created, the digest of the contents is saved in the `
+        # plugin_config_digest` field.
+        # Corresponds to the JSON property `pluginConfigData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :plugin_config_data
+      
+        # Output only. This field holds the digest (usually checksum) value for the
+        # plugin configuration. The value is calculated based on the contents of `
+        # plugin_config_data` or the container image defined by the `plugin_config_uri`
+        # field.
+        # Corresponds to the JSON property `pluginConfigDigest`
+        # @return [String]
+        attr_accessor :plugin_config_digest
+      
+        # URI of the plugin configuration stored in the Artifact Registry. The
+        # configuration is provided to the plugin at runtime through the `ON_CONFIGURE`
+        # callback. The container image must contain only a single file with the name `
+        # plugin.config`. When a new `WasmPluginVersion` resource is created, the digest
+        # of the container image is saved in the `plugin_config_digest` field.
+        # Corresponds to the JSON property `pluginConfigUri`
+        # @return [String]
+        attr_accessor :plugin_config_uri
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @image_digest = args[:image_digest] if args.key?(:image_digest)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @plugin_config_data = args[:plugin_config_data] if args.key?(:plugin_config_data)
+          @plugin_config_digest = args[:plugin_config_digest] if args.key?(:plugin_config_digest)
+          @plugin_config_uri = args[:plugin_config_uri] if args.key?(:plugin_config_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Details of a `WasmPluginVersion` resource to be inlined in the `WasmPlugin`
+      # resource.
+      class WasmPluginVersionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The resolved digest for the image specified in `image`. The
+        # digest is resolved during the creation of a `WasmPluginVersion` resource. This
+        # field holds the digest value regardless of whether a tag or digest was
+        # originally specified in the `image` field.
+        # Corresponds to the JSON property `imageDigest`
+        # @return [String]
+        attr_accessor :image_digest
+      
+        # Optional. URI of the container image containing the Wasm module, stored in the
+        # Artifact Registry. The container image must contain only a single file with
+        # the name `plugin.wasm`. When a new `WasmPluginVersion` resource is created,
+        # the URI gets resolved to an image digest and saved in the `image_digest` field.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # Optional. Set of labels associated with the `WasmPluginVersion` resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Configuration for the plugin. The configuration is provided to the plugin at
+        # runtime through the `ON_CONFIGURE` callback. When a new `WasmPluginVersion`
+        # version is created, the digest of the contents is saved in the `
+        # plugin_config_digest` field.
+        # Corresponds to the JSON property `pluginConfigData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :plugin_config_data
+      
+        # Output only. This field holds the digest (usually checksum) value for the
+        # plugin configuration. The value is calculated based on the contents of the `
+        # plugin_config_data` field or the container image defined by the `
+        # plugin_config_uri` field.
+        # Corresponds to the JSON property `pluginConfigDigest`
+        # @return [String]
+        attr_accessor :plugin_config_digest
+      
+        # URI of the plugin configuration stored in the Artifact Registry. The
+        # configuration is provided to the plugin at runtime through the `ON_CONFIGURE`
+        # callback. The container image must contain only a single file with the name `
+        # plugin.config`. When a new `WasmPluginVersion` resource is created, the digest
+        # of the container image is saved in the `plugin_config_digest` field.
+        # Corresponds to the JSON property `pluginConfigUri`
+        # @return [String]
+        attr_accessor :plugin_config_uri
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @image_digest = args[:image_digest] if args.key?(:image_digest)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @labels = args[:labels] if args.key?(:labels)
+          @plugin_config_data = args[:plugin_config_data] if args.key?(:plugin_config_data)
+          @plugin_config_digest = args[:plugin_config_digest] if args.key?(:plugin_config_digest)
+          @plugin_config_uri = args[:plugin_config_uri] if args.key?(:plugin_config_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
     end
