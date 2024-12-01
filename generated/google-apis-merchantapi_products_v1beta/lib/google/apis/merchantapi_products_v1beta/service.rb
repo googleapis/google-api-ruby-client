@@ -56,7 +56,9 @@ module Google
         # processed product can be retrieved.
         # @param [String] name
         #   Required. The name of the product input resource to delete. Format: accounts/`
-        #   account`/productInputs/`product`
+        #   account`/productInputs/`product` where the last section `product` consists of
+        #   4 parts: channel~content_language~feed_label~offer_id example for product name
+        #   is "accounts/123/productInputs/online~en~US~sku123"
         # @param [String] data_source
         #   Required. The primary or supplemental data source from which the product input
         #   should be deleted. Format: `accounts/`account`/dataSources/`datasource``.
@@ -136,7 +138,9 @@ module Google
         # before the updated final product can be retrieved.
         # @param [String] name
         #   Required. The name of the product to retrieve. Format: `accounts/`account`/
-        #   products/`product``
+        #   products/`product`` where the last section `product` consists of 4 parts:
+        #   channel~content_language~feed_label~offer_id example for product name is "
+        #   accounts/123/products/online~en~US~sku123"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -174,8 +178,8 @@ module Google
         #   account`
         # @param [Fixnum] page_size
         #   The maximum number of products to return. The service may return fewer than
-        #   this value. The maximum value is 1000; values above 1000 will be coerced to
-        #   1000. If unspecified, the maximum number of products will be returned.
+        #   this value. The maximum value is 250; values above 250 will be coerced to 250.
+        #   If unspecified, the maximum number of products will be returned.
         # @param [String] page_token
         #   A page token, received from a previous `ListProducts` call. Provide this to
         #   retrieve the subsequent page. When paginating, all other parameters provided
