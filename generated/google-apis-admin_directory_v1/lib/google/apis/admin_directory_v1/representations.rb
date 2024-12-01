@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ByteUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CalendarResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -942,6 +948,14 @@ module Google
         end
       end
       
+      class ByteUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_bytes, :numeric_string => true, as: 'capacityBytes'
+          property :used_bytes, :numeric_string => true, as: 'usedBytes'
+        end
+      end
+      
       class CalendarResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1030,6 +1044,8 @@ module Google
       
           property :device_id, as: 'deviceId'
           property :device_license_type, as: 'deviceLicenseType'
+          property :disk_space_usage, as: 'diskSpaceUsage', class: Google::Apis::AdminDirectoryV1::ByteUsage, decorator: Google::Apis::AdminDirectoryV1::ByteUsage::Representation
+      
           collection :disk_volume_reports, as: 'diskVolumeReports', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport::Representation
       
           property :dock_mac_address, as: 'dockMacAddress'
@@ -1748,6 +1764,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assigned_to, as: 'assignedTo'
           property :assignee_type, as: 'assigneeType'
+          property :condition, as: 'condition'
           property :etag, as: 'etag'
           property :kind, as: 'kind'
           property :org_unit_id, as: 'orgUnitId'
