@@ -22,7 +22,25 @@ module Google
   module Apis
     module TexttospeechV1beta1
       
+      class AdvancedVoiceOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AudioConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomPronunciationParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomPronunciations
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -47,6 +65,12 @@ module Google
       end
       
       class ListVoicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiSpeakerMarkup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,7 +124,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Turn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Voice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VoiceCloneParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,6 +148,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvancedVoiceOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :low_latency_journey_synthesis, as: 'lowLatencyJourneySynthesis'
+        end
+      end
+      
       class AudioConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -121,6 +164,23 @@ module Google
           property :sample_rate_hertz, as: 'sampleRateHertz'
           property :speaking_rate, as: 'speakingRate'
           property :volume_gain_db, as: 'volumeGainDb'
+        end
+      end
+      
+      class CustomPronunciationParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phonetic_encoding, as: 'phoneticEncoding'
+          property :phrase, as: 'phrase'
+          property :pronunciation, as: 'pronunciation'
+        end
+      end
+      
+      class CustomPronunciations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pronunciations, as: 'pronunciations', class: Google::Apis::TexttospeechV1beta1::CustomPronunciationParams, decorator: Google::Apis::TexttospeechV1beta1::CustomPronunciationParams::Representation
+      
         end
       end
       
@@ -158,6 +218,14 @@ module Google
         end
       end
       
+      class MultiSpeakerMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :turns, as: 'turns', class: Google::Apis::TexttospeechV1beta1::Turn, decorator: Google::Apis::TexttospeechV1beta1::Turn::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -182,6 +250,10 @@ module Google
       class SynthesisInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_pronunciations, as: 'customPronunciations', class: Google::Apis::TexttospeechV1beta1::CustomPronunciations, decorator: Google::Apis::TexttospeechV1beta1::CustomPronunciations::Representation
+      
+          property :multi_speaker_markup, as: 'multiSpeakerMarkup', class: Google::Apis::TexttospeechV1beta1::MultiSpeakerMarkup, decorator: Google::Apis::TexttospeechV1beta1::MultiSpeakerMarkup::Representation
+      
           property :ssml, as: 'ssml'
           property :text, as: 'text'
         end
@@ -212,6 +284,8 @@ module Google
       class SynthesizeSpeechRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_voice_options, as: 'advancedVoiceOptions', class: Google::Apis::TexttospeechV1beta1::AdvancedVoiceOptions, decorator: Google::Apis::TexttospeechV1beta1::AdvancedVoiceOptions::Representation
+      
           property :audio_config, as: 'audioConfig', class: Google::Apis::TexttospeechV1beta1::AudioConfig, decorator: Google::Apis::TexttospeechV1beta1::AudioConfig::Representation
       
           collection :enable_time_pointing, as: 'enableTimePointing'
@@ -241,6 +315,14 @@ module Google
         end
       end
       
+      class Turn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speaker, as: 'speaker'
+          property :text, as: 'text'
+        end
+      end
+      
       class Voice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -248,6 +330,13 @@ module Google
           property :name, as: 'name'
           property :natural_sample_rate_hertz, as: 'naturalSampleRateHertz'
           property :ssml_gender, as: 'ssmlGender'
+        end
+      end
+      
+      class VoiceCloneParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :voice_cloning_key, as: 'voiceCloningKey'
         end
       end
       
@@ -259,6 +348,8 @@ module Google
           property :language_code, as: 'languageCode'
           property :name, as: 'name'
           property :ssml_gender, as: 'ssmlGender'
+          property :voice_clone, as: 'voiceClone', class: Google::Apis::TexttospeechV1beta1::VoiceCloneParams, decorator: Google::Apis::TexttospeechV1beta1::VoiceCloneParams::Representation
+      
         end
       end
     end
