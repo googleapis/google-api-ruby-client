@@ -454,6 +454,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -623,6 +659,12 @@ module Google
       end
       
       class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShouldThrottleResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1402,6 +1444,64 @@ module Google
         end
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          collection :endpoint_matchers, as: 'endpointMatchers', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher::Representation
+      
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hostname, as: 'hostname'
+          collection :ports, as: 'ports'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :internet_gateway, as: 'internetGateway', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_ips, as: 'assignedIps'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applications, as: 'applications', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1418,6 +1518,8 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           collection :external_ips, as: 'externalIps'
+          hash :hubs, as: 'hubs', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub::Representation
+      
           property :name, as: 'name'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
@@ -1669,6 +1771,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
+        end
+      end
+      
+      class ShouldThrottleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :should_throttle, as: 'shouldThrottle'
         end
       end
       
