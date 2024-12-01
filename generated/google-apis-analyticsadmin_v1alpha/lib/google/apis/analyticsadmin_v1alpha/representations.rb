@@ -466,18 +466,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAnalyticsAdminV1alphaCustomDimension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +551,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaEventCreateRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaEventEditRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -778,6 +772,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListEventEditRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -887,6 +887,24 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1745,26 +1763,6 @@ module Google
         end
       end
       
-      class GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :subproperty, as: 'subproperty', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
-      
-          property :subproperty_event_filter, as: 'subpropertyEventFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter::Representation
-      
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :subproperty, as: 'subproperty', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
-      
-          property :subproperty_event_filter, as: 'subpropertyEventFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter::Representation
-      
-        end
-      end
-      
       class GoogleAnalyticsAdminV1alphaCustomDimension
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1932,6 +1930,19 @@ module Google
           collection :parameter_mutations, as: 'parameterMutations', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaParameterMutation, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaParameterMutation::Representation
       
           property :source_copy_parameters, as: 'sourceCopyParameters'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaEventEditRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          collection :event_conditions, as: 'eventConditions', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMatchingCondition, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMatchingCondition::Representation
+      
+          property :name, as: 'name'
+          collection :parameter_mutations, as: 'parameterMutations', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaParameterMutation, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaParameterMutation::Representation
+      
+          property :processing_order, :numeric_string => true, as: 'processingOrder'
         end
       end
       
@@ -2258,6 +2269,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaListEventEditRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_edit_rules, as: 'eventEditRules', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2434,6 +2454,33 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_ticket_id, as: 'accountTicketId'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subproperty, as: 'subproperty', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
+      
+          property :subproperty_event_filter, as: 'subpropertyEventFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subproperty, as: 'subproperty', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
+      
+          property :subproperty_event_filter, as: 'subpropertyEventFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_edit_rules, as: 'eventEditRules'
         end
       end
       
