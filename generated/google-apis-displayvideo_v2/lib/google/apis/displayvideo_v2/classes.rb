@@ -111,11 +111,11 @@ module Google
         end
       end
       
-      # Details of Adloox settings.
+      # Details of Adloox brand safety settings.
       class Adloox
         include Google::Apis::Core::Hashable
       
-        # Adloox's brand safety settings.
+        # Adloox categories to exclude.
         # Corresponds to the JSON property `excludedAdlooxCategories`
         # @return [Array<String>]
         attr_accessor :excluded_adloox_categories
@@ -270,7 +270,7 @@ module Google
       class AdvertiserBillingConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The ID of a billing profile assigned to the advertiser.
+        # Required. The ID of a billing profile assigned to the advertiser.
         # Corresponds to the JSON property `billingProfileId`
         # @return [Fixnum]
         attr_accessor :billing_profile_id
@@ -9569,7 +9569,8 @@ module Google
         attr_accessor :pacing_period
       
         # Required. The type of pacing that defines how the budget amount will be spent
-        # across the pacing_period.
+        # across the pacing_period. `PACING_TYPE_ASAP` is not compatible with
+        # pacing_period `PACING_PERIOD_FLIGHT` for insertion orders.
         # Corresponds to the JSON property `pacingType`
         # @return [String]
         attr_accessor :pacing_type
@@ -10515,10 +10516,7 @@ module Google
         # @return [Array<Google::Apis::DisplayvideoV2::ExchangeReviewStatus>]
         attr_accessor :exchange_review_statuses
       
-        # Publisher review statuses for the creative. **Warning:** This field will be
-        # deprecated on June 26th, 2024. After this date, this field will be empty. Read
-        # our [feature deprecation announcement](/display-video/api/deprecations#
-        # features.creative_publisher_review_statuses) for more information.
+        # Publisher review statuses for the creative.
         # Corresponds to the JSON property `publisherReviewStatuses`
         # @return [Array<Google::Apis::DisplayvideoV2::PublisherReviewStatus>]
         attr_accessor :publisher_review_statuses
@@ -11359,7 +11357,7 @@ module Google
       class ThirdPartyVerifierAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Details of Adloox settings.
+        # Details of Adloox brand safety settings.
         # Corresponds to the JSON property `adloox`
         # @return [Google::Apis::DisplayvideoV2::Adloox]
         attr_accessor :adloox
