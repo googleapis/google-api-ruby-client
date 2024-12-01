@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GceTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppengineV1betaLocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,12 @@ module Google
       end
       
       class Reasons
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -270,6 +282,14 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GceTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :parent, as: 'parent'
+          property :tag, as: 'tag'
         end
       end
       
@@ -430,6 +450,8 @@ module Google
           property :consumer_project_id, as: 'consumerProjectId'
           property :consumer_project_number, :numeric_string => true, as: 'consumerProjectNumber'
           property :consumer_project_state, as: 'consumerProjectState'
+          collection :gce_tag, as: 'gceTag', class: Google::Apis::AppengineV1alpha::GceTag, decorator: Google::Apis::AppengineV1alpha::GceTag::Representation
+      
           property :p4_service_account, as: 'p4ServiceAccount'
           property :producer_project_id, as: 'producerProjectId'
           property :producer_project_number, :numeric_string => true, as: 'producerProjectNumber'
@@ -446,6 +468,16 @@ module Google
           property :data_governance, as: 'dataGovernance'
           property :service_activation, as: 'serviceActivation'
           property :service_management, as: 'serviceManagement'
+        end
+      end
+      
+      class ResourceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_id, as: 'eventId'
+          property :name, as: 'name'
+          property :state, as: 'state', class: Google::Apis::AppengineV1alpha::ContainerState, decorator: Google::Apis::AppengineV1alpha::ContainerState::Representation
+      
         end
       end
       
