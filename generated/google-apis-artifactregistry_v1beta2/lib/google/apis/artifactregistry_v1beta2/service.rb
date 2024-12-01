@@ -369,6 +369,8 @@ module Google
         # Lists repositories.
         # @param [String] parent
         #   Required. The name of the parent resource whose repositories will be listed.
+        # @param [String] order_by
+        #   Optional. The field to order the results by.
         # @param [Fixnum] page_size
         #   The maximum number of repositories to return. Maximum page size is 1,000.
         # @param [String] page_token
@@ -390,11 +392,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_repositories(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_repositories(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+parent}/repositories', options)
           command.response_representation = Google::Apis::ArtifactregistryV1beta2::ListRepositoriesResponse::Representation
           command.response_class = Google::Apis::ArtifactregistryV1beta2::ListRepositoriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -667,11 +670,32 @@ module Google
         #   projects/p1/locations/us-central1/repositories/repo1
         # @param [String] filter
         #   An expression for filtering the results of the request. Filter rules are case
-        #   insensitive. The fields eligible for filtering are: * `name` * `owner` An
-        #   example of using a filter: * `name="projects/p1/locations/us-central1/
-        #   repositories/repo1/files/a/b/*"` --> Files with an ID starting with "a/b/". * `
-        #   owner="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/
-        #   versions/1.0"` --> Files owned by the version `1.0` in package `pkg1`.
+        #   insensitive. The fields eligible for filtering are: * `name` * `owner` * `
+        #   annotations` Examples of using a filter: To filter the results of your request
+        #   to files with the name `my_file.txt` in project `my-project` in the `us-
+        #   central` region, in repository `my-repo`, append the following filter
+        #   expression to your request: * `name="projects/my-project/locations/us-central1/
+        #   repositories/my-repo/files/my-file.txt"` You can also use wildcards to match
+        #   any number of characters before or after the value: * `name="projects/my-
+        #   project/locations/us-central1/repositories/my-repo/files/my-*"` * `name="
+        #   projects/my-project/locations/us-central1/repositories/my-repo/files/*file.txt"
+        #   ` * `name="projects/my-project/locations/us-central1/repositories/my-repo/
+        #   files/*file*"` To filter the results of your request to files owned by the
+        #   version `1.0` in package `pkg1`, append the following filter expression to
+        #   your request: * `owner="projects/my-project/locations/us-central1/repositories/
+        #   my-repo/packages/my-package/versions/1.0"` To filter the results of your
+        #   request to files with the annotation key-value pair [`external_link`: `
+        #   external_link_value`], append the following filter expression to your request:
+        #   * `"annotations.external_link:external_link_value"` To filter just for a
+        #   specific annotation key `external_link`, append the following filter
+        #   expression to your request: * `"annotations.external_link"` If the annotation
+        #   key or value contains special characters, you can escape them by surrounding
+        #   the value with backticks. For example, to filter the results of your request
+        #   to files with the annotation key-value pair [`external.link`:`https://example.
+        #   com/my-file`], append the following filter expression to your request: * `` "
+        #   annotations.`external.link`:`https://example.com/my-file`" `` You can also
+        #   filter with annotations with a wildcard to match any number of characters
+        #   before or after the value: * `` "annotations.*_link:`*example.com*`" ``
         # @param [Fixnum] page_size
         #   The maximum number of files to return. Maximum page size is 1,000.
         # @param [String] page_token
@@ -770,6 +794,8 @@ module Google
         # Lists packages.
         # @param [String] parent
         #   Required. The name of the parent resource whose packages will be listed.
+        # @param [String] order_by
+        #   Optional. The field to order the results by.
         # @param [Fixnum] page_size
         #   The maximum number of packages to return. Maximum page size is 1,000.
         # @param [String] page_token
@@ -791,11 +817,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_repository_packages(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_repository_packages(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+parent}/packages', options)
           command.response_representation = Google::Apis::ArtifactregistryV1beta2::ListPackagesResponse::Representation
           command.response_class = Google::Apis::ArtifactregistryV1beta2::ListPackagesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -945,15 +972,21 @@ module Google
         #   projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`.
         # @param [String] filter
         #   An expression for filtering the results of the request. Filter rules are case
-        #   insensitive. The fields eligible for filtering are: * `version` An example of
-        #   using a filter: * `version="projects/p1/locations/us-central1/repositories/
-        #   repo1/packages/pkg1/versions/1.0"` --> Tags that are applied to the version `1.
-        #   0` in package `pkg1`. * `name="projects/p1/locations/us-central1/repositories/
-        #   repo1/packages/pkg1/tags/a%2Fb%2F*"` --> tags with an ID starting with "a/b/".
-        #   * `name="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/
-        #   tags/*%2Fb%2Fc"` --> tags with an ID ending with "/b/c". * `name="projects/p1/
-        #   locations/us-central1/repositories/repo1/packages/pkg1/tags/*%2Fb%2F*"` -->
-        #   tags with an ID containing "/b/".
+        #   insensitive. The fields eligible for filtering are: * `name` * `version`
+        #   Examples of using a filter: To filter the results of your request to tags with
+        #   the name `my-tag` in package `my-package` in repository `my-repo` in project "`
+        #   y-project` in the us-central region, append the following filter expression to
+        #   your request: * `name="projects/my-project/locations/us-central1/repositories/
+        #   my-repo/packages/my-package/tags/my-tag"` You can also use wildcards to match
+        #   any number of characters before or after the value: * `name="projects/my-
+        #   project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my*
+        #   "` * `name="projects/my-project/locations/us-central1/repositories/my-repo/
+        #   packages/my-package/tags/*tag"` * `name="projects/my-project/locations/us-
+        #   central1/repositories/my-repo/packages/my-package/tags/*tag*"` To filter the
+        #   results of your request to tags applied to the version `1.0` in package `my-
+        #   package`, append the following filter expression to your request: * `version="
+        #   projects/my-project/locations/us-central1/repositories/my-repo/packages/my-
+        #   package/versions/1.0"`
         # @param [Fixnum] page_size
         #   The maximum number of tags to return. Maximum page size is 1,000.
         # @param [String] page_token

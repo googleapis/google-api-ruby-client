@@ -1222,8 +1222,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The name of the version the tag refers to, for example: "projects/p1/locations/
-        # us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the
+        # The name of the version the tag refers to, for example: `projects/p1/locations/
+        # us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811` If the
         # package or version ID parts contain slashes, the slashes are escaped.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -1435,8 +1435,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # The name of the version, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/packages/pkg1/versions/art1". If the package or version ID
+        # The name of the version, for example: `projects/p1/locations/us-central1/
+        # repositories/repo1/packages/pkg1/versions/art1`. If the package or version ID
         # parts contain slashes, the slashes are escaped.
         # Corresponds to the JSON property `name`
         # @return [String]
