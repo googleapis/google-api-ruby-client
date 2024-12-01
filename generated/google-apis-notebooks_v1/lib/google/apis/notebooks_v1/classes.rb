@@ -235,7 +235,7 @@ module Google
         # @return [Google::Apis::NotebooksV1::DiagnosticConfig]
         attr_accessor :diagnostic_config
       
-        # Optional. Maxmium amount of time in minutes before the operation times out.
+        # Optional. Maximum amount of time in minutes before the operation times out.
         # Corresponds to the JSON property `timeoutMinutes`
         # @return [Fixnum]
         attr_accessor :timeout_minutes
@@ -260,7 +260,7 @@ module Google
         # @return [Google::Apis::NotebooksV1::DiagnosticConfig]
         attr_accessor :diagnostic_config
       
-        # Optional. Maxmium amount of time in minutes before the operation times out.
+        # Optional. Maximum amount of time in minutes before the operation times out.
         # Corresponds to the JSON property `timeoutMinutes`
         # @return [Fixnum]
         attr_accessor :timeout_minutes
@@ -993,7 +993,7 @@ module Google
         attr_accessor :labels
       
         # Required. The [Compute Engine machine type](https://cloud.google.com/compute/
-        # docs/machine-types) of this instance.
+        # docs/machine-resource) of this instance.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -1103,8 +1103,8 @@ module Google
         # @return [String]
         attr_accessor :subnet
       
-        # Optional. The Compute Engine tags to add to runtime (see [Tagging instances](
-        # https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        # Optional. The Compute Engine network tags to add to runtime (see [Add network
+        # tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -1856,8 +1856,9 @@ module Google
         attr_accessor :endpoint
       
         # Identifies whether the user has requested cancellation of the operation.
-        # Operations that have successfully been cancelled have Operation.error value
-        # with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Operations that have successfully been cancelled have google.longrunning.
+        # Operation.error value with a google.rpc.Status.code of `1`, corresponding to `
+        # Code.CANCELLED`.
         # Corresponds to the JSON property `requestedCancellation`
         # @return [Boolean]
         attr_accessor :requested_cancellation
@@ -2803,7 +2804,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The [Compute Engine machine type](https://cloud.google.com/compute/
-        # docs/machine-types).
+        # docs/machine-resource).
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -3457,8 +3458,8 @@ module Google
         # @return [String]
         attr_accessor :subnet
       
-        # Optional. The Compute Engine tags to add to runtime (see [Tagging instances](
-        # https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        # Optional. The Compute Engine network tags to add to runtime (see [Add network
+        # tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
