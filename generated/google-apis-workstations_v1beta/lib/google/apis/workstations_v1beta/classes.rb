@@ -259,7 +259,7 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
-        # Optional. Required. The id to be used for the boost config.
+        # Optional. Required. The id to be used for the boost configuration.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -646,9 +646,9 @@ module Google
         attr_accessor :tags
       
         # Optional. Resource manager tags to be bound to this instance. Tag keys and
-        # values have the same definition as https://cloud.google.com/resource-manager/
-        # docs/tags/tags-overview Keys must be in the format `tagKeys/`tag_key_id``, and
-        # values are in the format `tagValues/456`.
+        # values have the same definition as [resource manager tags](https://cloud.
+        # google.com/resource-manager/docs/tags/tags-overview). Keys must be in the
+        # format `tagKeys/`tag_key_id``, and values are in the format `tagValues/456`.
         # Corresponds to the JSON property `vmTags`
         # @return [Hash<String,String>]
         attr_accessor :vm_tags
@@ -914,7 +914,7 @@ module Google
         end
       end
       
-      # Http options for the running workstations.
+      # HTTP options for the running workstations.
       class HttpOptions
         include Google::Apis::Core::Hashable
       
@@ -1375,12 +1375,14 @@ module Google
       class PortRange
         include Google::Apis::Core::Hashable
       
-        # Required. Starting port number for the current range of ports.
+        # Required. Starting port number for the current range of ports. Valid ports are
+        # 22, 80, and ports within the range 1024-65535.
         # Corresponds to the JSON property `first`
         # @return [Fixnum]
         attr_accessor :first
       
-        # Required. Ending port number for the current range of ports.
+        # Required. Ending port number for the current range of ports. Valid ports are
+        # 22, 80, and ports within the range 1024-65535.
         # Corresponds to the JSON property `last`
         # @return [Fixnum]
         attr_accessor :last
@@ -1673,8 +1675,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Output only. List of available boost configuration ids that this workstation
-        # can be boosted up to
+        # Output only. List of available boost configuration IDs that this workstation
+        # can be boosted up to.
         # Corresponds to the JSON property `boostConfigs`
         # @return [Array<Google::Apis::WorkstationsV1beta::WorkstationBoostConfig>]
         attr_accessor :boost_configs
@@ -1753,7 +1755,7 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Optional. The source workstation from which this workstations persistent
+        # Optional. The source workstation from which this workstation's persistent
         # directories were cloned on creation.
         # Corresponds to the JSON property `sourceWorkstation`
         # @return [String]
@@ -1808,12 +1810,12 @@ module Google
         end
       end
       
-      # Boost config for this workstation. This object is populated from the parent
-      # workstation config.
+      # Boost configuration for this workstation. This object is populated from the
+      # parent workstation configuration.
       class WorkstationBoostConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. Boost config id.
+        # Output only. Boost configuration ID.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1936,6 +1938,12 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
+        # Optional. Tag keys/values directly bound to this resource. For example: "123/
+        # environment": "production", "123/costCenter": "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. A system-assigned unique identifier for this workstation cluster.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -1969,6 +1977,7 @@ module Google
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @tags = args[:tags] if args.key?(:tags)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1984,8 +1993,10 @@ module Google
       class WorkstationConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. A Single or Range of ports externally accessible in the workstation.
-        # If not specified defaults to ports 22, 80 and ports 1024-65535.
+        # Optional. A list of PortRanges specifying single ports or ranges of ports that
+        # are externally accessible in the workstation. Allowed ports must be one of 22,
+        # 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and
+        # ports 1024-65535.
         # Corresponds to the JSON property `allowedPorts`
         # @return [Array<Google::Apis::WorkstationsV1beta::PortRange>]
         attr_accessor :allowed_ports
@@ -2041,11 +2052,11 @@ module Google
         # enabled, a service_account must also be specified that has `roles/logging.
         # logWriter` and `roles/monitoring.metricWriter` on the project. Operating
         # system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.
-        # com/workstations/docs/audit-logging) and [Container output logging](http://
-        # cloud/workstations/docs/container-output-logging#overview). Operating system
-        # audit logs are available in the [Cloud Logging](https://cloud.google.com/
-        # logging/docs) console by querying: resource.type="gce_instance" log_name:"/
-        # logs/linux-auditd"
+        # com/workstations/docs/audit-logging) and [Container output logging](https://
+        # cloud.google.com/workstations/docs/container-output-logging#overview).
+        # Operating system audit logs are available in the [Cloud Logging](https://cloud.
+        # google.com/logging/docs) console by querying: resource.type="gce_instance"
+        # log_name:"/logs/linux-auditd"
         # Corresponds to the JSON property `enableAuditAgent`
         # @return [Boolean]
         attr_accessor :enable_audit_agent
@@ -2073,12 +2084,21 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Optional. Grant creator of a workstation `roles/workstations.policyAdmin` role
+        # along with `roles/workstations.user` role on the workstation created by them.
+        # This allows workstation users to share access to either their entire
+        # workstation, or individual ports. Defaults to false.
+        # Corresponds to the JSON property `grantWorkstationAdminRoleOnCreate`
+        # @return [Boolean]
+        attr_accessor :grant_workstation_admin_role_on_create
+        alias_method :grant_workstation_admin_role_on_create?, :grant_workstation_admin_role_on_create
+      
         # Runtime host for a workstation.
         # Corresponds to the JSON property `host`
         # @return [Google::Apis::WorkstationsV1beta::Host]
         attr_accessor :host
       
-        # Http options for the running workstations.
+        # HTTP options for the running workstations.
         # Corresponds to the JSON property `httpOptions`
         # @return [Google::Apis::WorkstationsV1beta::HttpOptions]
         attr_accessor :http_options
@@ -2099,6 +2119,18 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Optional. Maximum number of workstations under this configuration a user can
+        # have `workstations.workstation.use` permission on. Only enforced on
+        # CreateWorkstation API calls on the user issuing the API request. Can be
+        # overridden by: - granting a user workstations.workstationConfigs.
+        # exemptMaxUsableWorkstationLimit permission, or - having a user with that
+        # permission create a workstation and granting another user `workstations.
+        # workstation.use` permission on that workstation. If not specified, defaults to
+        # `0`, which indicates unlimited.
+        # Corresponds to the JSON property `maxUsableWorkstations`
+        # @return [Fixnum]
+        attr_accessor :max_usable_workstations
       
         # Identifier. Full name of this workstation configuration.
         # Corresponds to the JSON property `name`
@@ -2193,10 +2225,12 @@ module Google
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @ephemeral_directories = args[:ephemeral_directories] if args.key?(:ephemeral_directories)
           @etag = args[:etag] if args.key?(:etag)
+          @grant_workstation_admin_role_on_create = args[:grant_workstation_admin_role_on_create] if args.key?(:grant_workstation_admin_role_on_create)
           @host = args[:host] if args.key?(:host)
           @http_options = args[:http_options] if args.key?(:http_options)
           @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
           @labels = args[:labels] if args.key?(:labels)
+          @max_usable_workstations = args[:max_usable_workstations] if args.key?(:max_usable_workstations)
           @name = args[:name] if args.key?(:name)
           @persistent_directories = args[:persistent_directories] if args.key?(:persistent_directories)
           @readiness_checks = args[:readiness_checks] if args.key?(:readiness_checks)
