@@ -798,11 +798,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_retrieval_info, as: 'autoRetrievalInfo', class: Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1AutoRetrievalInfo, decorator: Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1AutoRetrievalInfo::Representation
       
+          property :captcha_response, as: 'captchaResponse'
+          property :client_type, as: 'clientType'
           property :ios_receipt, as: 'iosReceipt'
           property :ios_secret, as: 'iosSecret'
           property :phone_number, as: 'phoneNumber'
           property :play_integrity_token, as: 'playIntegrityToken'
           property :recaptcha_token, as: 'recaptchaToken'
+          property :recaptcha_version, as: 'recaptchaVersion'
           property :safety_net_token, as: 'safetyNetToken'
           property :tenant_id, as: 'tenantId'
         end
