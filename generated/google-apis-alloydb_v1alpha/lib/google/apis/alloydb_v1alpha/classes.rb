@@ -247,6 +247,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: ``` "123/environment": "production", "123/costCenter": "
+        # marketing" ```
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # The backup type, which suggests the trigger for the backup.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -289,6 +296,7 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -389,6 +397,38 @@ module Google
         end
       end
       
+      # The source CloudSQL backup resource.
+      class CloudSqlBackupRunSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The CloudSQL backup run ID.
+        # Corresponds to the JSON property `backupRunId`
+        # @return [Fixnum]
+        attr_accessor :backup_run_id
+      
+        # Required. The CloudSQL instance ID.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # The project ID of the source CloudSQL instance. This should be the same as the
+        # AlloyDB cluster's project.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_run_id = args[:backup_run_id] if args.key?(:backup_run_id)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @project = args[:project] if args.key?(:project)
+        end
+      end
+      
       # A cluster is a collection of regional AlloyDB resources. It can include a
       # primary instance and one or more read pool instances. All cluster resources
       # share a storage layer, which scales as needed.
@@ -412,6 +452,11 @@ module Google
         # Corresponds to the JSON property `backupSource`
         # @return [Google::Apis::AlloydbV1alpha::BackupSource]
         attr_accessor :backup_source
+      
+        # The source CloudSQL backup resource.
+        # Corresponds to the JSON property `cloudsqlBackupRunSource`
+        # @return [Google::Apis::AlloydbV1alpha::CloudSqlBackupRunSource]
+        attr_accessor :cloudsql_backup_run_source
       
         # Output only. The type of the cluster. This is an output-only field and it's
         # populated at the Cluster creation time or the Cluster promotion time. The
@@ -586,6 +631,13 @@ module Google
         # @return [String]
         attr_accessor :subscription_type
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: ``` "123/environment": "production", "123/costCenter": "
+        # marketing" ```
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Contains information and all metadata related to TRIAL clusters.
         # Corresponds to the JSON property `trialMetadata`
         # @return [Google::Apis::AlloydbV1alpha::TrialMetadata]
@@ -611,6 +663,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @automated_backup_policy = args[:automated_backup_policy] if args.key?(:automated_backup_policy)
           @backup_source = args[:backup_source] if args.key?(:backup_source)
+          @cloudsql_backup_run_source = args[:cloudsql_backup_run_source] if args.key?(:cloudsql_backup_run_source)
           @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
           @continuous_backup_config = args[:continuous_backup_config] if args.key?(:continuous_backup_config)
           @continuous_backup_info = args[:continuous_backup_info] if args.key?(:continuous_backup_info)
@@ -639,9 +692,61 @@ module Google
           @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @state = args[:state] if args.key?(:state)
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
+          @tags = args[:tags] if args.key?(:tags)
           @trial_metadata = args[:trial_metadata] if args.key?(:trial_metadata)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Upgrade details of a cluster. This cluster can be primary or secondary.
+      class ClusterUpgradeDetails
+        include Google::Apis::Core::Hashable
+      
+        # Cluster type which can either be primary or secondary.
+        # Corresponds to the JSON property `clusterType`
+        # @return [String]
+        attr_accessor :cluster_type
+      
+        # Database version of the cluster after the upgrade operation. This will be the
+        # target version if the upgrade was successful otherwise it remains the same as
+        # that before the upgrade operation.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
+        # Upgrade details of the instances directly associated with this cluster.
+        # Corresponds to the JSON property `instanceUpgradeDetails`
+        # @return [Array<Google::Apis::AlloydbV1alpha::InstanceUpgradeDetails>]
+        attr_accessor :instance_upgrade_details
+      
+        # Normalized name of the cluster
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Array containing stage info associated with this cluster.
+        # Corresponds to the JSON property `stageInfo`
+        # @return [Array<Google::Apis::AlloydbV1alpha::StageInfo>]
+        attr_accessor :stage_info
+      
+        # Upgrade status of the cluster.
+        # Corresponds to the JSON property `upgradeStatus`
+        # @return [String]
+        attr_accessor :upgrade_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
+          @database_version = args[:database_version] if args.key?(:database_version)
+          @instance_upgrade_details = args[:instance_upgrade_details] if args.key?(:instance_upgrade_details)
+          @name = args[:name] if args.key?(:name)
+          @stage_info = args[:stage_info] if args.key?(:stage_info)
+          @upgrade_status = args[:upgrade_status] if args.key?(:upgrade_status)
         end
       end
       
@@ -804,6 +909,50 @@ module Google
         end
       end
       
+      # Options for exporting data in CSV format. For now, we only support a query to
+      # get the data that needs to be exported.
+      class CsvExportOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the character that should appear before a data character
+        # that needs to be escaped. The default is the same as quote character. The
+        # value of this argument has to be a character in Hex ASCII Code.
+        # Corresponds to the JSON property `escapeCharacter`
+        # @return [String]
+        attr_accessor :escape_character
+      
+        # Optional. Specifies the character that separates columns within each row (line)
+        # of the file. The default is comma. The value of this argument has to be a
+        # character in Hex ASCII Code.
+        # Corresponds to the JSON property `fieldDelimiter`
+        # @return [String]
+        attr_accessor :field_delimiter
+      
+        # Optional. Specifies the quoting character to be used when a data value is
+        # quoted. The default is double-quote. The value of this argument has to be a
+        # character in Hex ASCII Code.
+        # Corresponds to the JSON property `quoteCharacter`
+        # @return [String]
+        attr_accessor :quote_character
+      
+        # Required. The select_query used to extract the data.
+        # Corresponds to the JSON property `selectQuery`
+        # @return [String]
+        attr_accessor :select_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @escape_character = args[:escape_character] if args.key?(:escape_character)
+          @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
+          @quote_character = args[:quote_character] if args.key?(:quote_character)
+          @select_query = args[:select_query] if args.key?(:select_query)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -868,26 +1017,67 @@ module Google
         end
       end
       
+      # Export cluster request.
+      class ExportClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Options for exporting data in CSV format. For now, we only support a query to
+        # get the data that needs to be exported.
+        # Corresponds to the JSON property `csvExportOptions`
+        # @return [Google::Apis::AlloydbV1alpha::CsvExportOptions]
+        attr_accessor :csv_export_options
+      
+        # Required. Name of the database where the query will be executed. Note - Value
+        # provided should be the same as expected from `SELECT current_database();` and
+        # NOT as a resource reference.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Destination for Export. Export will be done to cloud storage.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::AlloydbV1alpha::GcsDestination]
+        attr_accessor :gcs_destination
+      
+        # Options for exporting data in SQL format.
+        # Corresponds to the JSON property `sqlExportOptions`
+        # @return [Google::Apis::AlloydbV1alpha::SqlExportOptions]
+        attr_accessor :sql_export_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csv_export_options = args[:csv_export_options] if args.key?(:csv_export_options)
+          @database = args[:database] if args.key?(:database)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @sql_export_options = args[:sql_export_options] if args.key?(:sql_export_options)
+        end
+      end
+      
       # Message for triggering failover on an Instance
       class FailoverInstanceRequest
         include Google::Apis::Core::Hashable
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the failover.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -901,6 +1091,27 @@ module Google
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Destination for Export. Export will be done to cloud storage.
+      class GcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The path to the file in Google Cloud Storage where the export will
+        # be stored. The URI is in the form `gs://bucketName/fileName`. If the file
+        # already exists, the request succeeds, but the operation fails.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1030,24 +1241,28 @@ module Google
       class GoogleTypeTimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
-        # allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # Minutes of hour of day. Must be from 0 to 59.
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
       
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
@@ -1075,21 +1290,22 @@ module Google
         attr_accessor :fault_type
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the fault injection.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -1137,16 +1353,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Database flags. Set at instance level. * They are copied from primary instance
-        # on read instance creation. * Read instances can set new or override existing
-        # flags that are relevant for reads, e.g. for enabling columnar cache on a read
-        # instance. Flags set on read instance may or may not be present on primary.
-        # This is a list of "key": "value" pairs. "key": The name of the flag. These
-        # flags are passed at instance setup time, so include both server options and
-        # system variables for Postgres. Flags are specified with underscores, not
-        # hyphens. "value": The value of the flag. Booleans are set to **on** for true
-        # and **off** for false. This field must be omitted if the flag doesn't take a
-        # value.
+        # Database flags. Set at the instance level. They are copied from the primary
+        # instance on secondary instance creation. Flags that have restrictions default
+        # to the value at primary instance on read instances during creation. Read
+        # instances can set new flags or override existing flags that are relevant for
+        # reads, for example, for enabling columnar cache on a read instance. Flags set
+        # on read instance might or might not be present on the primary instance. This
+        # is a list of "key": "value" pairs. "key": The name of the flag. These flags
+        # are passed at instance setup time, so include both server options and system
+        # variables for Postgres. Flags are specified with underscores, not hyphens. "
+        # value": The value of the flag. Booleans are set to **on** for true and **off**
+        # for false. This field must be omitted if the flag doesn't take a value.
         # Corresponds to the JSON property `databaseFlags`
         # @return [Hash<String,String>]
         attr_accessor :database_flags
@@ -1214,7 +1431,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Metadata related to instance level network configuration.
+        # Metadata related to instance-level network configuration.
         # Corresponds to the JSON property `networkConfig`
         # @return [Google::Apis::AlloydbV1alpha::InstanceNetworkConfig]
         attr_accessor :network_config
@@ -1347,7 +1564,7 @@ module Google
         end
       end
       
-      # Metadata related to instance level network configuration.
+      # Metadata related to instance-level network configuration.
       class InstanceNetworkConfig
         include Google::Apis::Core::Hashable
       
@@ -1378,6 +1595,37 @@ module Google
           @authorized_external_networks = args[:authorized_external_networks] if args.key?(:authorized_external_networks)
           @enable_outbound_public_ip = args[:enable_outbound_public_ip] if args.key?(:enable_outbound_public_ip)
           @enable_public_ip = args[:enable_public_ip] if args.key?(:enable_public_ip)
+        end
+      end
+      
+      # Details regarding the upgrade of instaces associated with a cluster.
+      class InstanceUpgradeDetails
+        include Google::Apis::Core::Hashable
+      
+        # Instance type.
+        # Corresponds to the JSON property `instanceType`
+        # @return [String]
+        attr_accessor :instance_type
+      
+        # Normalized name of the instance.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Upgrade status of the instance.
+        # Corresponds to the JSON property `upgradeStatus`
+        # @return [String]
+        attr_accessor :upgrade_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @name = args[:name] if args.key?(:name)
+          @upgrade_status = args[:upgrade_status] if args.key?(:upgrade_status)
         end
       end
       
@@ -1820,6 +2068,12 @@ module Google
         attr_accessor :track_active_queries
         alias_method :track_active_queries?, :track_active_queries
       
+        # Track client address for an instance. If not set, default value is "off".
+        # Corresponds to the JSON property `trackClientAddress`
+        # @return [Boolean]
+        attr_accessor :track_client_address
+        alias_method :track_client_address?, :track_client_address
+      
         # Output only. Track wait event types during query execution for an instance.
         # This flag is turned "on" by default but tracking is enabled only after
         # observability enabled flag is also turned on. This is read-only flag and only
@@ -1849,6 +2103,7 @@ module Google
           @query_plans_per_minute = args[:query_plans_per_minute] if args.key?(:query_plans_per_minute)
           @record_application_tags = args[:record_application_tags] if args.key?(:record_application_tags)
           @track_active_queries = args[:track_active_queries] if args.key?(:track_active_queries)
+          @track_client_address = args[:track_client_address] if args.key?(:track_client_address)
           @track_wait_event_types = args[:track_wait_event_types] if args.key?(:track_wait_event_types)
           @track_wait_events = args[:track_wait_events] if args.key?(:track_wait_events)
         end
@@ -2008,21 +2263,22 @@ module Google
         attr_accessor :etag
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if original
+        # operation with the same request ID was received, and if so, will ignore the
+        # second request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the delete.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -2051,6 +2307,12 @@ module Google
         attr_accessor :psc_enabled
         alias_method :psc_enabled?, :psc_enabled
       
+        # Output only. The project number that needs to be allowlisted on the network
+        # attachment to enable outbound connectivity.
+        # Corresponds to the JSON property `serviceOwnedProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :service_owned_project_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2058,6 +2320,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
+          @service_owned_project_number = args[:service_owned_project_number] if args.key?(:service_owned_project_number)
         end
       end
       
@@ -2077,6 +2340,13 @@ module Google
         # @return [String]
         attr_accessor :psc_dns_name
       
+        # Optional. Configurations for setting up PSC interfaces attached to the
+        # instance which are used for outbound connectivity. Only primary instances can
+        # have PSC interface attached. Currently we only support 0 or 1 PSC interface.
+        # Corresponds to the JSON property `pscInterfaceConfigs`
+        # @return [Array<Google::Apis::AlloydbV1alpha::PscInterfaceConfig>]
+        attr_accessor :psc_interface_configs
+      
         # Output only. The service attachment created when Private Service Connect (PSC)
         # is enabled for the instance. The name of the resource will be in the format of
         # `projects//regions//serviceAttachments/`
@@ -2092,7 +2362,31 @@ module Google
         def update!(**args)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
           @psc_dns_name = args[:psc_dns_name] if args.key?(:psc_dns_name)
+          @psc_interface_configs = args[:psc_interface_configs] if args.key?(:psc_interface_configs)
           @service_attachment_link = args[:service_attachment_link] if args.key?(:service_attachment_link)
+        end
+      end
+      
+      # Configuration for setting up a PSC interface to enable outbound connectivity.
+      class PscInterfaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # The network attachment resource created in the consumer network to which the
+        # PSC interface will be linked. This is of the format: "projects/$`
+        # CONSUMER_PROJECT`/regions/$`REGION`/networkAttachments/$`
+        # NETWORK_ATTACHMENT_NAME`". The network attachment must be in the same region
+        # as the instance.
+        # Corresponds to the JSON property `networkAttachmentResource`
+        # @return [String]
+        attr_accessor :network_attachment_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachment_resource = args[:network_attachment_resource] if args.key?(:network_attachment_resource)
         end
       end
       
@@ -2216,22 +2510,29 @@ module Google
       class RestartInstanceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Full name of the nodes as obtained from INSTANCE_VIEW_FULL to
+        # restart upon. Applicable only to read instances.
+        # Corresponds to the JSON property `nodeIds`
+        # @return [Array<String>]
+        attr_accessor :node_ids
+      
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the restart.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -2243,6 +2544,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @node_ids = args[:node_ids] if args.key?(:node_ids)
           @request_id = args[:request_id] if args.key?(:request_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
@@ -2276,21 +2578,22 @@ module Google
         attr_accessor :continuous_backup_source
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes since the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the import request.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -2332,6 +2635,48 @@ module Google
         end
       end
       
+      # Options for exporting data in SQL format.
+      class SqlExportOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, output commands to DROP all the dumped database objects
+        # prior to outputting the commands for creating them.
+        # Corresponds to the JSON property `cleanTargetObjects`
+        # @return [Boolean]
+        attr_accessor :clean_target_objects
+        alias_method :clean_target_objects?, :clean_target_objects
+      
+        # Optional. If true, use DROP ... IF EXISTS commands to check for the object's
+        # existence before dropping it in clean_target_objects mode.
+        # Corresponds to the JSON property `ifExistTargetObjects`
+        # @return [Boolean]
+        attr_accessor :if_exist_target_objects
+        alias_method :if_exist_target_objects?, :if_exist_target_objects
+      
+        # Optional. If true, only export the schema.
+        # Corresponds to the JSON property `schemaOnly`
+        # @return [Boolean]
+        attr_accessor :schema_only
+        alias_method :schema_only?, :schema_only
+      
+        # Optional. Tables to export from.
+        # Corresponds to the JSON property `tables`
+        # @return [Array<String>]
+        attr_accessor :tables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clean_target_objects = args[:clean_target_objects] if args.key?(:clean_target_objects)
+          @if_exist_target_objects = args[:if_exist_target_objects] if args.key?(:if_exist_target_objects)
+          @schema_only = args[:schema_only] if args.key?(:schema_only)
+          @tables = args[:tables] if args.key?(:tables)
+        end
+      end
+      
       # SSL configuration.
       class SslConfig
         include Google::Apis::Core::Hashable
@@ -2355,6 +2700,39 @@ module Google
         def update!(**args)
           @ca_source = args[:ca_source] if args.key?(:ca_source)
           @ssl_mode = args[:ssl_mode] if args.key?(:ssl_mode)
+        end
+      end
+      
+      # Stage information for different stages in the upgrade process.
+      class StageInfo
+        include Google::Apis::Core::Hashable
+      
+        # logs_url is the URL for the logs associated with a stage if that stage has
+        # logs. Right now, only three stages have logs: ALLOYDB_PRECHECK,
+        # PG_UPGRADE_CHECK, PRIMARY_INSTANCE_UPGRADE.
+        # Corresponds to the JSON property `logsUrl`
+        # @return [String]
+        attr_accessor :logs_url
+      
+        # The stage.
+        # Corresponds to the JSON property `stage`
+        # @return [String]
+        attr_accessor :stage
+      
+        # Status of the stage.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logs_url = args[:logs_url] if args.key?(:logs_url)
+          @stage = args[:stage] if args.key?(:stage)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -2401,6 +2779,14 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration
         include Google::Apis::Core::Hashable
       
+        # Checks for existence of (multi-cluster) routing configuration that allows
+        # automatic failover to a different zone/region in case of an outage. Applicable
+        # to Bigtable resources.
+        # Corresponds to the JSON property `automaticFailoverRoutingConfigured`
+        # @return [Boolean]
+        attr_accessor :automatic_failover_routing_configured
+        alias_method :automatic_failover_routing_configured?, :automatic_failover_routing_configured
+      
         # Availability type. Potential values: * `ZONAL`: The instance serves data from
         # only one zone. Outages in that zone affect data accessibility. * `REGIONAL`:
         # The instance can serve data from more than one zone in a region (it is highly
@@ -2434,6 +2820,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @automatic_failover_routing_configured = args[:automatic_failover_routing_configured] if args.key?(:automatic_failover_routing_configured)
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @cross_region_replica_configured = args[:cross_region_replica_configured] if args.key?(:cross_region_replica_configured)
           @external_replica_configured = args[:external_replica_configured] if args.key?(:external_replica_configured)
@@ -2539,16 +2926,17 @@ module Google
         end
       end
       
-      # Any custom metadata associated with the resource. i.e. A spanner instance can
+      # Any custom metadata associated with the resource. e.g. A spanner instance can
       # have multiple databases with its own unique metadata. Information for these
       # individual databases can be captured in custom metadata data
       class StorageDatabasecenterPartnerapiV1mainCustomMetadataData
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `databaseMetadata`
-        # @return [Array<Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseMetadata>]
-        attr_accessor :database_metadata
+        # Metadata for individual internal resources in an instance. e.g. spanner
+        # instance can have multiple databases with unique configuration.
+        # Corresponds to the JSON property `internalResourceMetadata`
+        # @return [Array<Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata>]
+        attr_accessor :internal_resource_metadata
       
         def initialize(**args)
            update!(**args)
@@ -2556,52 +2944,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @database_metadata = args[:database_metadata] if args.key?(:database_metadata)
-        end
-      end
-      
-      # Metadata for individual databases created in an instance. i.e. spanner
-      # instance can have multiple databases with unique configuration settings.
-      class StorageDatabasecenterPartnerapiV1mainDatabaseMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Configuration for automatic backups
-        # Corresponds to the JSON property `backupConfiguration`
-        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupConfiguration]
-        attr_accessor :backup_configuration
-      
-        # A backup run.
-        # Corresponds to the JSON property `backupRun`
-        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun]
-        attr_accessor :backup_run
-      
-        # Product specification for Condor resources.
-        # Corresponds to the JSON property `product`
-        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct]
-        attr_accessor :product
-      
-        # DatabaseResourceId will serve as primary key for any resource ingestion event.
-        # Corresponds to the JSON property `resourceId`
-        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
-        attr_accessor :resource_id
-      
-        # Required. Database name. Resource name to follow CAIS resource_name format as
-        # noted here go/condor-common-datamodel
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
-          @backup_run = args[:backup_run] if args.key?(:backup_run)
-          @product = args[:product] if args.key?(:product)
-          @resource_id = args[:resource_id] if args.key?(:resource_id)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @internal_resource_metadata = args[:internal_resource_metadata] if args.key?(:internal_resource_metadata)
         end
       end
       
@@ -2620,7 +2963,7 @@ module Google
         # @return [String]
         attr_accessor :feed_type
       
-        # More feed data would be added in subsequent CLs
+        # 
         # Corresponds to the JSON property `observabilityMetricData`
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData]
         attr_accessor :observability_metric_data
@@ -2640,7 +2983,7 @@ module Google
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata.
+        # Common model for database resource instance metadata. Next ID: 23
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -2733,6 +3076,11 @@ module Google
         # @return [String]
         attr_accessor :signal_id
       
+        # The severity of the signal, such as if it's a HIGH or LOW severity.
+        # Corresponds to the JSON property `signalSeverity`
+        # @return [String]
+        attr_accessor :signal_severity
+      
         # Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `
         # LOGGING_MOST_ERRORS`, etc.
         # Corresponds to the JSON property `signalType`
@@ -2761,6 +3109,7 @@ module Google
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @signal_class = args[:signal_class] if args.key?(:signal_class)
           @signal_id = args[:signal_id] if args.key?(:signal_id)
+          @signal_severity = args[:signal_severity] if args.key?(:signal_severity)
           @signal_type = args[:signal_type] if args.key?(:signal_type)
           @state = args[:state] if args.key?(:state)
         end
@@ -2782,8 +3131,10 @@ module Google
       
         # Required. The type of resource this ID is identifying. Ex redis.googleapis.com/
         # Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster,
-        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance REQUIRED
-        # Please refer go/condor-common-datamodel
+        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance, spanner.
+        # googleapis.com/Database, firestore.googleapis.com/Database, sqladmin.
+        # googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.
+        # googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -2807,7 +3158,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata.
+      # Common model for database resource instance metadata. Next ID: 23
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -2837,12 +3188,19 @@ module Google
         # @return [String]
         attr_accessor :current_state
       
-        # Any custom metadata associated with the resource. i.e. A spanner instance can
+        # Any custom metadata associated with the resource. e.g. A spanner instance can
         # have multiple databases with its own unique metadata. Information for these
         # individual databases can be captured in custom metadata data
         # Corresponds to the JSON property `customMetadata`
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainCustomMetadataData]
         attr_accessor :custom_metadata
+      
+        # Optional. Edition represents whether the instance is ENTERPRISE or
+        # ENTERPRISE_PLUS. This information is core to Cloud SQL only and is used to
+        # identify the edition of the instance.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # Entitlements associated with the resource
         # Corresponds to the JSON property `entitlements`
@@ -2882,6 +3240,12 @@ module Google
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :primary_resource_id
       
+        # Primary resource location. REQUIRED if the immediate parent exists when first
+        # time resource is getting ingested, otherwise optional.
+        # Corresponds to the JSON property `primaryResourceLocation`
+        # @return [String]
+        attr_accessor :primary_resource_location
+      
         # Product specification for Condor resources.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct]
@@ -2902,6 +3266,13 @@ module Google
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
+      
+        # Message type for storing tags. Tags provide a way to create annotations for
+        # resources, and in some cases conditionally allow or deny policies based on
+        # whether a resource has a specific tag.
+        # Corresponds to the JSON property `tagsSet`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainTags]
+        attr_accessor :tags_set
       
         # The time at which the resource was updated and recorded at partner service.
         # Corresponds to the JSON property `updationTime`
@@ -2927,6 +3298,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @current_state = args[:current_state] if args.key?(:current_state)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
+          @edition = args[:edition] if args.key?(:edition)
           @entitlements = args[:entitlements] if args.key?(:entitlements)
           @expected_state = args[:expected_state] if args.key?(:expected_state)
           @id = args[:id] if args.key?(:id)
@@ -2934,9 +3306,11 @@ module Google
           @location = args[:location] if args.key?(:location)
           @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
           @primary_resource_id = args[:primary_resource_id] if args.key?(:primary_resource_id)
+          @primary_resource_location = args[:primary_resource_location] if args.key?(:primary_resource_location)
           @product = args[:product] if args.key?(:product)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @tags_set = args[:tags_set] if args.key?(:tags_set)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
           @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
         end
@@ -3041,6 +3415,52 @@ module Google
         end
       end
       
+      # Metadata for individual internal resources in an instance. e.g. spanner
+      # instance can have multiple databases with unique configuration settings.
+      # Similarly bigtable can have multiple clusters within same bigtable instance.
+      class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for automatic backups
+        # Corresponds to the JSON property `backupConfiguration`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupConfiguration]
+        attr_accessor :backup_configuration
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun]
+        attr_accessor :backup_run
+      
+        # Product specification for Condor resources.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct]
+        attr_accessor :product
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Required. internal resource name for spanner this will be database name e.g."
+        # spanner.googleapis.com/projects/123/abc/instances/inst1/databases/db1"
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @product = args[:product] if args.key?(:product)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
       # MachineConfiguration describes the configuration of a machine specific to
       # Database Resource.
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
@@ -3058,6 +3478,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :memory_size_in_bytes
       
+        # Optional. Number of shards (if applicable).
+        # Corresponds to the JSON property `shardCount`
+        # @return [Fixnum]
+        attr_accessor :shard_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3066,6 +3491,7 @@ module Google
         def update!(**args)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
           @memory_size_in_bytes = args[:memory_size_in_bytes] if args.key?(:memory_size_in_bytes)
+          @shard_count = args[:shard_count] if args.key?(:shard_count)
         end
       end
       
@@ -3149,6 +3575,11 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainRetentionSettings
         include Google::Apis::Core::Hashable
       
+        # Duration based retention period i.e. 172800 seconds (2 days)
+        # Corresponds to the JSON property `durationBasedRetention`
+        # @return [String]
+        attr_accessor :duration_based_retention
+      
         # 
         # Corresponds to the JSON property `quantityBasedRetention`
         # @return [Fixnum]
@@ -3164,15 +3595,43 @@ module Google
         # @return [String]
         attr_accessor :time_based_retention
       
+        # Timestamp based retention period i.e. 2024-05-01T00:00:00Z
+        # Corresponds to the JSON property `timestampBasedRetentionTime`
+        # @return [String]
+        attr_accessor :timestamp_based_retention_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @duration_based_retention = args[:duration_based_retention] if args.key?(:duration_based_retention)
           @quantity_based_retention = args[:quantity_based_retention] if args.key?(:quantity_based_retention)
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
+          @timestamp_based_retention_time = args[:timestamp_based_retention_time] if args.key?(:timestamp_based_retention_time)
+        end
+      end
+      
+      # Message type for storing tags. Tags provide a way to create annotations for
+      # resources, and in some cases conditionally allow or deny policies based on
+      # whether a resource has a specific tag.
+      class StorageDatabasecenterPartnerapiV1mainTags
+        include Google::Apis::Core::Hashable
+      
+        # The Tag key/value mappings.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -3366,21 +3825,22 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. The server will guarantee
-        # that for at least 60 minutes after the first request. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. This prevents clients from accidentally creating
-        # duplicate commitments. The request ID must be a valid UUID with the exception
-        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. If set, performs request validation (e.g. permission checks and any
-        # other type of validation), but do not actually execute the delete.
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -3426,6 +3886,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # grace end time of the cluster.
+        # Corresponds to the JSON property `graceEndTime`
+        # @return [String]
+        attr_accessor :grace_end_time
+      
         # start time of the trial cluster.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -3443,6 +3908,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @grace_end_time = args[:grace_end_time] if args.key?(:grace_end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @upgrade_time = args[:upgrade_time] if args.key?(:upgrade_time)
         end
@@ -3467,6 +3933,90 @@ module Google
         end
       end
       
+      # Upgrades a cluster.
+      class UpgradeClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The current etag of the Cluster. If an etag is provided and does not
+        # match the current etag of the Cluster, upgrade will be blocked and an ABORTED
+        # error will be returned.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server ignores the
+        # request if it has already been completed. The server guarantees that for at
+        # least 60 minutes since the first request. For example, consider a situation
+        # where you make an initial request and the request times out. If you make the
+        # request again with the same request ID, the server can check if the original
+        # operation with the same request ID was received, and if so, ignores the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Optional. If set, performs request validation, for example, permission checks
+        # and any other type of validation, but does not actually execute the create
+        # request.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        # Required. The version the cluster is going to be upgraded to.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # UpgradeClusterResponse contains the response for upgrade cluster operation.
+      class UpgradeClusterResponse
+        include Google::Apis::Core::Hashable
+      
+        # Array of upgrade details for the current cluster and all the secondary
+        # clusters associated with this cluster.
+        # Corresponds to the JSON property `clusterUpgradeDetails`
+        # @return [Array<Google::Apis::AlloydbV1alpha::ClusterUpgradeDetails>]
+        attr_accessor :cluster_upgrade_details
+      
+        # A user friendly message summarising the upgrade operation details and the next
+        # steps for the user if there is any.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Status of upgrade operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_upgrade_details = args[:cluster_upgrade_details] if args.key?(:cluster_upgrade_details)
+          @message = args[:message] if args.key?(:message)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # Message describing User object.
       class User
         include Google::Apis::Core::Hashable
@@ -3476,6 +4026,13 @@ module Google
         # Corresponds to the JSON property `databaseRoles`
         # @return [Array<String>]
         attr_accessor :database_roles
+      
+        # Input only. If the user already exists and it has additional roles, keep them
+        # granted.
+        # Corresponds to the JSON property `keepExtraRoles`
+        # @return [Boolean]
+        attr_accessor :keep_extra_roles
+        alias_method :keep_extra_roles?, :keep_extra_roles
       
         # Output only. Name of the resource in the form of projects/`project`/locations/`
         # location`/cluster/`cluster`/users/`user`.
@@ -3500,6 +4057,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @database_roles = args[:database_roles] if args.key?(:database_roles)
+          @keep_extra_roles = args[:keep_extra_roles] if args.key?(:keep_extra_roles)
           @name = args[:name] if args.key?(:name)
           @password = args[:password] if args.key?(:password)
           @user_type = args[:user_type] if args.key?(:user_type)
