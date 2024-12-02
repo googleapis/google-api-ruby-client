@@ -40,6 +40,96 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthzPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleFrom
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleFromRequestSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleHeaderMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleRequestResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleRequestResourceTagValueIdSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleStringMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleTo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleToRequestOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleToRequestOperationHeaderSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyCustomProvider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyCustomProviderAuthzExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyCustomProviderCloudIap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +149,12 @@ module Google
       end
       
       class CloneAddressGroupItemsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomMirroringProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAuthzPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClientTlsPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +329,30 @@ module Google
       end
       
       class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMirroringDeploymentGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMirroringDeploymentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMirroringEndpointGroupAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMirroringEndpointGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -275,6 +401,42 @@ module Google
       end
       
       class MtlsPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringDeploymentGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringDeploymentGroupConnectedEndpointGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringEndpointGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringEndpointGroupAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringEndpointGroupAssociationLocationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -408,6 +570,154 @@ module Google
         end
       end
       
+      class AuthzPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :create_time, as: 'createTime'
+          property :custom_provider, as: 'customProvider', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyCustomProvider, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyCustomProvider::Representation
+      
+          property :description, as: 'description'
+          collection :http_rules, as: 'httpRules', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRule, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRule::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :target, as: 'target', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyTarget, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyTarget::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AuthzPolicyAuthzRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :from, as: 'from', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleFrom, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleFrom::Representation
+      
+          property :to, as: 'to', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleTo, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleTo::Representation
+      
+          property :when, as: 'when'
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleFrom
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :not_sources, as: 'notSources', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleFromRequestSource, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleFromRequestSource::Representation
+      
+          collection :sources, as: 'sources', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleFromRequestSource, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleFromRequestSource::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleFromRequestSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :principals, as: 'principals', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          collection :resources, as: 'resources', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleRequestResource, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleRequestResource::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleHeaderMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleRequestResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam_service_account, as: 'iamServiceAccount', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          property :tag_value_id_set, as: 'tagValueIdSet', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleRequestResourceTagValueIdSet, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleRequestResourceTagValueIdSet::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleRequestResourceTagValueIdSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ids, as: 'ids'
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleStringMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contains, as: 'contains'
+          property :exact, as: 'exact'
+          property :ignore_case, as: 'ignoreCase'
+          property :prefix, as: 'prefix'
+          property :suffix, as: 'suffix'
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleTo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :not_operations, as: 'notOperations', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleToRequestOperation, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleToRequestOperation::Representation
+      
+          collection :operations, as: 'operations', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleToRequestOperation, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleToRequestOperation::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleToRequestOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_set, as: 'headerSet', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleToRequestOperationHeaderSet, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleToRequestOperationHeaderSet::Representation
+      
+          collection :hosts, as: 'hosts', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          collection :methods_prop, as: 'methods'
+          collection :paths, as: 'paths', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleToRequestOperationHeaderSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :headers, as: 'headers', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleHeaderMatch, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleHeaderMatch::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyCustomProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authz_extension, as: 'authzExtension', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyCustomProviderAuthzExtension, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyCustomProviderAuthzExtension::Representation
+      
+          property :cloud_iap, as: 'cloudIap', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicyCustomProviderCloudIap, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicyCustomProviderCloudIap::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyCustomProviderAuthzExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources'
+        end
+      end
+      
+      class AuthzPolicyCustomProviderCloudIap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AuthzPolicyTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
+          collection :resources, as: 'resources'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -442,6 +752,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
           property :source_address_group, as: 'sourceAddressGroup'
+        end
+      end
+      
+      class CustomMirroringProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mirroring_endpoint_group, as: 'mirroringEndpointGroup'
         end
       end
       
@@ -663,6 +980,16 @@ module Google
         end
       end
       
+      class ListAuthzPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authz_policies, as: 'authzPolicies', class: Google::Apis::NetworksecurityV1beta1::AuthzPolicy, decorator: Google::Apis::NetworksecurityV1beta1::AuthzPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListClientTlsPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -716,6 +1043,43 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :locations, as: 'locations', class: Google::Apis::NetworksecurityV1beta1::Location, decorator: Google::Apis::NetworksecurityV1beta1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMirroringDeploymentGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mirroring_deployment_groups, as: 'mirroringDeploymentGroups', class: Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroup, decorator: Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMirroringDeploymentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mirroring_deployments, as: 'mirroringDeployments', class: Google::Apis::NetworksecurityV1beta1::MirroringDeployment, decorator: Google::Apis::NetworksecurityV1beta1::MirroringDeployment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListMirroringEndpointGroupAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mirroring_endpoint_group_associations, as: 'mirroringEndpointGroupAssociations', class: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociation, decorator: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMirroringEndpointGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mirroring_endpoint_groups, as: 'mirroringEndpointGroups', class: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroup, decorator: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroup::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -798,6 +1162,79 @@ module Google
         end
       end
       
+      class MirroringDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :forwarding_rule, as: 'forwardingRule'
+          hash :labels, as: 'labels'
+          property :mirroring_deployment_group, as: 'mirroringDeploymentGroup'
+          property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MirroringDeploymentGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connected_endpoint_groups, as: 'connectedEndpointGroups', class: Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroupConnectedEndpointGroup, decorator: Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroupConnectedEndpointGroup::Representation
+      
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MirroringDeploymentGroupConnectedEndpointGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class MirroringEndpointGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :mirroring_deployment_group, as: 'mirroringDeploymentGroup'
+          property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MirroringEndpointGroupAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          collection :locations_details, as: 'locationsDetails', class: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationLocationDetails, decorator: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationLocationDetails::Representation
+      
+          property :mirroring_endpoint_group, as: 'mirroringEndpointGroup'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MirroringEndpointGroupAssociationLocationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :state, as: 'state'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -845,6 +1282,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom_mirroring_profile, as: 'customMirroringProfile', class: Google::Apis::NetworksecurityV1beta1::CustomMirroringProfile, decorator: Google::Apis::NetworksecurityV1beta1::CustomMirroringProfile::Representation
+      
           property :description, as: 'description'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
@@ -860,6 +1299,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom_mirroring_profile, as: 'customMirroringProfile'
           property :description, as: 'description'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'

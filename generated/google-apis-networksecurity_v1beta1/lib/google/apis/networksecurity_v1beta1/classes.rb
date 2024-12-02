@@ -194,6 +194,515 @@ module Google
         end
       end
       
+      # `AuthzPolicy` is a resource that allows to forward traffic to a callout
+      # backend designed to scan the traffic for security purposes.
+      class AuthzPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Required. Can be one of `ALLOW`, `DENY`, `CUSTOM`. When the action is `CUSTOM`,
+        # `customProvider` must be specified. When the action is `ALLOW`, only requests
+        # matching the policy will be allowed. When the action is `DENY`, only requests
+        # matching the policy will be denied. When a request arrives, the policies are
+        # evaluated in the following order: 1. If there is a `CUSTOM` policy that
+        # matches the request, the `CUSTOM` policy is evaluated using the custom
+        # authorization providers and the request is denied if the provider rejects the
+        # request. 2. If there are any `DENY` policies that match the request, the
+        # request is denied. 3. If there are no `ALLOW` policies for the resource or if
+        # any of the `ALLOW` policies match the request, the request is allowed. 4. Else
+        # the request is denied by default if none of the configured AuthzPolicies with `
+        # ALLOW` action match the request.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Allows delegating authorization decisions to Cloud IAP or to Service
+        # Extensions.
+        # Corresponds to the JSON property `customProvider`
+        # @return [Google::Apis::NetworksecurityV1beta1::AuthzPolicyCustomProvider]
+        attr_accessor :custom_provider
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. A list of authorization HTTP rules to match against the incoming
+        # request. A policy match occurs when at least one HTTP rule matches the request
+        # or when no HTTP rules are specified in the policy. At least one HTTP Rule is
+        # required for Allow or Deny Action. Limited to 5 rules.
+        # Corresponds to the JSON property `httpRules`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRule>]
+        attr_accessor :http_rules
+      
+        # Optional. Set of labels associated with the `AuthzPolicy` resource. The format
+        # must comply with [the following requirements](/compute/docs/labeling-resources#
+        # requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Identifier. Name of the `AuthzPolicy` resource in the following
+        # format: `projects/`project`/locations/`location`/authzPolicies/`authz_policy``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifies the set of targets to which this policy should be applied to.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::NetworksecurityV1beta1::AuthzPolicyTarget]
+        attr_accessor :target
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_provider = args[:custom_provider] if args.key?(:custom_provider)
+          @description = args[:description] if args.key?(:description)
+          @http_rules = args[:http_rules] if args.key?(:http_rules)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @target = args[:target] if args.key?(:target)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Conditions to match against the incoming request.
+      class AuthzPolicyAuthzRule
+        include Google::Apis::Core::Hashable
+      
+        # Describes properties of one or more sources of a request.
+        # Corresponds to the JSON property `from`
+        # @return [Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleFrom]
+        attr_accessor :from
+      
+        # Describes properties of one or more targets of a request.
+        # Corresponds to the JSON property `to`
+        # @return [Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleTo]
+        attr_accessor :to
+      
+        # Optional. CEL expression that describes the conditions to be satisfied for the
+        # action. The result of the CEL expression is ANDed with the from and to. Refer
+        # to the CEL language reference for a list of available attributes.
+        # Corresponds to the JSON property `when`
+        # @return [String]
+        attr_accessor :when
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @from = args[:from] if args.key?(:from)
+          @to = args[:to] if args.key?(:to)
+          @when = args[:when] if args.key?(:when)
+        end
+      end
+      
+      # Describes properties of one or more sources of a request.
+      class AuthzPolicyAuthzRuleFrom
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Describes the negated properties of request sources. Matches
+        # requests from sources that do not match the criteria specified in this field.
+        # At least one of sources or notSources must be specified.
+        # Corresponds to the JSON property `notSources`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleFromRequestSource>]
+        attr_accessor :not_sources
+      
+        # Optional. Describes the properties of a request's sources. At least one of
+        # sources or notSources must be specified. Limited to 5 sources. A match occurs
+        # when ANY source (in sources or notSources) matches the request. Within a
+        # single source, the match follows AND semantics across fields and OR semantics
+        # within a single field, i.e. a match occurs when ANY principal matches AND ANY
+        # ipBlocks match.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleFromRequestSource>]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @not_sources = args[:not_sources] if args.key?(:not_sources)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # Describes the properties of a single source.
+      class AuthzPolicyAuthzRuleFromRequestSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of identities derived from the client's certificate. This
+        # field will not match on a request unless mutual TLS is enabled for the
+        # Forwarding rule or Gateway. Each identity is a string whose value is matched
+        # against the URI SAN, or DNS SAN or the subject field in the client's
+        # certificate. The match can be exact, prefix, suffix or a substring match. One
+        # of exact, prefix, suffix or contains must be specified. Limited to 5
+        # principals.
+        # Corresponds to the JSON property `principals`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch>]
+        attr_accessor :principals
+      
+        # Optional. A list of resources to match against the resource of the source VM
+        # of a request. Limited to 5 resources.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleRequestResource>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principals = args[:principals] if args.key?(:principals)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Determines how a HTTP header should be matched.
+      class AuthzPolicyAuthzRuleHeaderMatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the name of the header in the request.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Determines how a string value should be matched.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Describes the properties of a client VM resource accessing the internal
+      # application load balancers.
+      class AuthzPolicyAuthzRuleRequestResource
+        include Google::Apis::Core::Hashable
+      
+        # Determines how a string value should be matched.
+        # Corresponds to the JSON property `iamServiceAccount`
+        # @return [Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch]
+        attr_accessor :iam_service_account
+      
+        # Describes a set of resource tag value permanent IDs to match against the
+        # resource manager tags value associated with the source VM of a request.
+        # Corresponds to the JSON property `tagValueIdSet`
+        # @return [Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleRequestResourceTagValueIdSet]
+        attr_accessor :tag_value_id_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_service_account = args[:iam_service_account] if args.key?(:iam_service_account)
+          @tag_value_id_set = args[:tag_value_id_set] if args.key?(:tag_value_id_set)
+        end
+      end
+      
+      # Describes a set of resource tag value permanent IDs to match against the
+      # resource manager tags value associated with the source VM of a request.
+      class AuthzPolicyAuthzRuleRequestResourceTagValueIdSet
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of resource tag value permanent IDs to match against the
+        # resource manager tags value associated with the source VM of a request. The
+        # match follows AND semantics which means all the ids must match. Limited to 5
+        # matches.
+        # Corresponds to the JSON property `ids`
+        # @return [Array<Fixnum>]
+        attr_accessor :ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ids = args[:ids] if args.key?(:ids)
+        end
+      end
+      
+      # Determines how a string value should be matched.
+      class AuthzPolicyAuthzRuleStringMatch
+        include Google::Apis::Core::Hashable
+      
+        # The input string must have the substring specified here. Note: empty contains
+        # match is not allowed, please use regex instead. Examples: * ``abc`` matches
+        # the value ``xyz.abc.def``
+        # Corresponds to the JSON property `contains`
+        # @return [String]
+        attr_accessor :contains
+      
+        # The input string must match exactly the string specified here. Examples: * ``
+        # abc`` only matches the value ``abc``.
+        # Corresponds to the JSON property `exact`
+        # @return [String]
+        attr_accessor :exact
+      
+        # If true, indicates the exact/prefix/suffix/contains matching should be case
+        # insensitive. For example, the matcher ``data`` will match both input string ``
+        # Data`` and ``data`` if set to true.
+        # Corresponds to the JSON property `ignoreCase`
+        # @return [Boolean]
+        attr_accessor :ignore_case
+        alias_method :ignore_case?, :ignore_case
+      
+        # The input string must have the prefix specified here. Note: empty prefix is
+        # not allowed, please use regex instead. Examples: * ``abc`` matches the value ``
+        # abc.xyz``
+        # Corresponds to the JSON property `prefix`
+        # @return [String]
+        attr_accessor :prefix
+      
+        # The input string must have the suffix specified here. Note: empty prefix is
+        # not allowed, please use regex instead. Examples: * ``abc`` matches the value ``
+        # xyz.abc``
+        # Corresponds to the JSON property `suffix`
+        # @return [String]
+        attr_accessor :suffix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contains = args[:contains] if args.key?(:contains)
+          @exact = args[:exact] if args.key?(:exact)
+          @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
+          @prefix = args[:prefix] if args.key?(:prefix)
+          @suffix = args[:suffix] if args.key?(:suffix)
+        end
+      end
+      
+      # Describes properties of one or more targets of a request.
+      class AuthzPolicyAuthzRuleTo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Describes the negated properties of the targets of a request.
+        # Matches requests for operations that do not match the criteria specified in
+        # this field. At least one of operations or notOperations must be specified.
+        # Corresponds to the JSON property `notOperations`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleToRequestOperation>]
+        attr_accessor :not_operations
+      
+        # Optional. Describes properties of one or more targets of a request. At least
+        # one of operations or notOperations must be specified. Limited to 5 operations.
+        # A match occurs when ANY operation (in operations or notOperations) matches.
+        # Within an operation, the match follows AND semantics across fields and OR
+        # semantics within a field, i.e. a match occurs when ANY path matches AND ANY
+        # header matches and ANY method matches.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleToRequestOperation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @not_operations = args[:not_operations] if args.key?(:not_operations)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Describes properties of one or more targets of a request.
+      class AuthzPolicyAuthzRuleToRequestOperation
+        include Google::Apis::Core::Hashable
+      
+        # Describes a set of HTTP headers to match against.
+        # Corresponds to the JSON property `headerSet`
+        # @return [Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleToRequestOperationHeaderSet]
+        attr_accessor :header_set
+      
+        # Optional. A list of HTTP Hosts to match against. The match can be one of exact,
+        # prefix, suffix, or contains (substring match). Matches are always case
+        # sensitive unless the ignoreCase is set. Limited to 5 matches.
+        # Corresponds to the JSON property `hosts`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch>]
+        attr_accessor :hosts
+      
+        # Optional. A list of HTTP methods to match against. Each entry must be a valid
+        # HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only
+        # allows exact match and is always case sensitive.
+        # Corresponds to the JSON property `methods`
+        # @return [Array<String>]
+        attr_accessor :methods_prop
+      
+        # Optional. A list of paths to match against. The match can be one of exact,
+        # prefix, suffix, or contains (substring match). Matches are always case
+        # sensitive unless the ignoreCase is set. Limited to 5 matches. Note that this
+        # path match includes the query parameters. For gRPC services, this should be a
+        # fully-qualified name of the form /package.service/method.
+        # Corresponds to the JSON property `paths`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleStringMatch>]
+        attr_accessor :paths
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_set = args[:header_set] if args.key?(:header_set)
+          @hosts = args[:hosts] if args.key?(:hosts)
+          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
+          @paths = args[:paths] if args.key?(:paths)
+        end
+      end
+      
+      # Describes a set of HTTP headers to match against.
+      class AuthzPolicyAuthzRuleToRequestOperationHeaderSet
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of headers to match against in http header. The match can be
+        # one of exact, prefix, suffix, or contains (substring match). The match follows
+        # AND semantics which means all the headers must match. Matches are always case
+        # sensitive unless the ignoreCase is set. Limited to 5 matches.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRuleHeaderMatch>]
+        attr_accessor :headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+        end
+      end
+      
+      # Allows delegating authorization decisions to Cloud IAP or to Service
+      # Extensions.
+      class AuthzPolicyCustomProvider
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Delegate authorization decision to user authored extension. Only one
+        # of cloudIap or authzExtension can be specified.
+        # Corresponds to the JSON property `authzExtension`
+        # @return [Google::Apis::NetworksecurityV1beta1::AuthzPolicyCustomProviderAuthzExtension]
+        attr_accessor :authz_extension
+      
+        # Optional. Delegates authorization decisions to Cloud IAP. Applicable only for
+        # managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not
+        # compatible with Cloud IAP settings in the BackendService. Enabling IAP in both
+        # places will result in request failure. Ensure that IAP is enabled in either
+        # the AuthzPolicy or the BackendService but not in both places.
+        # Corresponds to the JSON property `cloudIap`
+        # @return [Google::Apis::NetworksecurityV1beta1::AuthzPolicyCustomProviderCloudIap]
+        attr_accessor :cloud_iap
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authz_extension = args[:authz_extension] if args.key?(:authz_extension)
+          @cloud_iap = args[:cloud_iap] if args.key?(:cloud_iap)
+        end
+      end
+      
+      # Optional. Delegate authorization decision to user authored extension. Only one
+      # of cloudIap or authzExtension can be specified.
+      class AuthzPolicyCustomProviderAuthzExtension
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of references to authorization extensions that will be
+        # invoked for requests matching this policy. Limited to 1 custom provider.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<String>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Optional. Delegates authorization decisions to Cloud IAP. Applicable only for
+      # managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not
+      # compatible with Cloud IAP settings in the BackendService. Enabling IAP in both
+      # places will result in request failure. Ensure that IAP is enabled in either
+      # the AuthzPolicy or the BackendService but not in both places.
+      class AuthzPolicyCustomProviderCloudIap
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Specifies the set of targets to which this policy should be applied to.
+      class AuthzPolicyTarget
+        include Google::Apis::Core::Hashable
+      
+        # Required. All gateways and forwarding rules referenced by this policy and
+        # extensions must share the same load balancing scheme. Supported values: `
+        # INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information, refer to [
+        # Backend services overview](https://cloud.google.com/load-balancing/docs/
+        # backend-service).
+        # Corresponds to the JSON property `loadBalancingScheme`
+        # @return [String]
+        attr_accessor :load_balancing_scheme
+      
+        # Required. A list of references to the Forwarding Rules on which this policy
+        # will be applied.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<String>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -330,6 +839,27 @@ module Google
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
           @source_address_group = args[:source_address_group] if args.key?(:source_address_group)
+        end
+      end
+      
+      # CustomMirroringProfile defines an action for mirroring traffic to a collector'
+      # s EndpointGroup
+      class CustomMirroringProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. The MirroringEndpointGroup to which traffic associated with the SP
+        # should be mirrored.
+        # Corresponds to the JSON property `mirroringEndpointGroup`
+        # @return [String]
+        attr_accessor :mirroring_endpoint_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mirroring_endpoint_group = args[:mirroring_endpoint_group] if args.key?(:mirroring_endpoint_group)
         end
       end
       
@@ -1310,6 +1840,37 @@ module Google
         end
       end
       
+      # Message for response to listing `AuthzPolicy` resources.
+      class ListAuthzPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `AuthzPolicy` resources.
+        # Corresponds to the JSON property `authzPolicies`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicy>]
+        attr_accessor :authz_policies
+      
+        # A token identifying a page of results that the server returns.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authz_policies = args[:authz_policies] if args.key?(:authz_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response returned by the ListClientTlsPolicies method.
       class ListClientTlsPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -1486,6 +2047,112 @@ module Google
         # Update properties of this object
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing MirroringDeploymentGroups
+      class ListMirroringDeploymentGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of MirroringDeploymentGroup
+        # Corresponds to the JSON property `mirroringDeploymentGroups`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroup>]
+        attr_accessor :mirroring_deployment_groups
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mirroring_deployment_groups = args[:mirroring_deployment_groups] if args.key?(:mirroring_deployment_groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing MirroringDeployments
+      class ListMirroringDeploymentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of MirroringDeployment
+        # Corresponds to the JSON property `mirroringDeployments`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringDeployment>]
+        attr_accessor :mirroring_deployments
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mirroring_deployments = args[:mirroring_deployments] if args.key?(:mirroring_deployments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing MirroringEndpointGroupAssociations
+      class ListMirroringEndpointGroupAssociationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of MirroringEndpointGroupAssociation
+        # Corresponds to the JSON property `mirroringEndpointGroupAssociations`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociation>]
+        attr_accessor :mirroring_endpoint_group_associations
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mirroring_endpoint_group_associations = args[:mirroring_endpoint_group_associations] if args.key?(:mirroring_endpoint_group_associations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing MirroringEndpointGroups
+      class ListMirroringEndpointGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of MirroringEndpointGroup
+        # Corresponds to the JSON property `mirroringEndpointGroups`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroup>]
+        attr_accessor :mirroring_endpoint_groups
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mirroring_endpoint_groups = args[:mirroring_endpoint_groups] if args.key?(:mirroring_endpoint_groups)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -1748,6 +2415,313 @@ module Google
         end
       end
       
+      # Message describing MirroringDeployment object
+      class MirroringDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Immutable. The regional load balancer which the mirrored traffic
+        # should be forwarded to. Format is: projects/`project`/regions/`region`/
+        # forwardingRules/`forwardingRule`
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Immutable. The Mirroring Deployment Group that this resource is part
+        # of. Format is: `projects/`project`/locations/global/mirroringDeploymentGroups/`
+        # mirroringDeploymentGroup``
+        # Corresponds to the JSON property `mirroringDeploymentGroup`
+        # @return [String]
+        attr_accessor :mirroring_deployment_group
+      
+        # Immutable. Identifier. The name of the MirroringDeployment.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the deployment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. [Output only] Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @labels = args[:labels] if args.key?(:labels)
+          @mirroring_deployment_group = args[:mirroring_deployment_group] if args.key?(:mirroring_deployment_group)
+          @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message describing MirroringDeploymentGroup object
+      class MirroringDeploymentGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of Mirroring Endpoint Groups that are connected to this
+        # resource.
+        # Corresponds to the JSON property `connectedEndpointGroups`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroupConnectedEndpointGroup>]
+        attr_accessor :connected_endpoint_groups
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. Then name of the MirroringDeploymentGroup.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. The network that is being used for the deployment. Format
+        # is: projects/`project`/global/networks/`network`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the deployment group.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. [Output only] Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connected_endpoint_groups = args[:connected_endpoint_groups] if args.key?(:connected_endpoint_groups)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # An endpoint group connected to this deployment group.
+      class MirroringDeploymentGroupConnectedEndpointGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A connected mirroring endpoint group.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Message describing MirroringEndpointGroup object.
+      class MirroringEndpointGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Immutable. The Mirroring Deployment Group that this resource is
+        # connected to. Format is: `projects/`project`/locations/global/
+        # mirroringDeploymentGroups/`mirroringDeploymentGroup``
+        # Corresponds to the JSON property `mirroringDeploymentGroup`
+        # @return [String]
+        attr_accessor :mirroring_deployment_group
+      
+        # Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the endpoint group.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. [Output only] Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @mirroring_deployment_group = args[:mirroring_deployment_group] if args.key?(:mirroring_deployment_group)
+          @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message describing MirroringEndpointGroupAssociation object
+      class MirroringEndpointGroupAssociation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The list of locations that this association is in and its details.
+        # Corresponds to the JSON property `locationsDetails`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationLocationDetails>]
+        attr_accessor :locations_details
+      
+        # Required. Immutable. The Mirroring Endpoint Group that this resource is
+        # connected to. Format is: `projects/`project`/locations/global/
+        # mirroringEndpointGroups/`mirroringEndpointGroup``
+        # Corresponds to the JSON property `mirroringEndpointGroup`
+        # @return [String]
+        attr_accessor :mirroring_endpoint_group
+      
+        # Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. The VPC network associated. Format: projects/`project`/
+        # global/networks/`network`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the endpoint group association.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. [Output only] Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @locations_details = args[:locations_details] if args.key?(:locations_details)
+          @mirroring_endpoint_group = args[:mirroring_endpoint_group] if args.key?(:mirroring_endpoint_group)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Details about the association status in a specific cloud location.
+      class MirroringEndpointGroupAssociationLocationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The cloud location.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Output only. The association state in this location.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -1936,7 +2910,7 @@ module Google
       end
       
       # SecurityProfile is a resource that defines the behavior for one of many
-      # ProfileTypes. Next ID: 11
+      # ProfileTypes. Next ID: 12
       class SecurityProfile
         include Google::Apis::Core::Hashable
       
@@ -1944,6 +2918,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # CustomMirroringProfile defines an action for mirroring traffic to a collector'
+        # s EndpointGroup
+        # Corresponds to the JSON property `customMirroringProfile`
+        # @return [Google::Apis::NetworksecurityV1beta1::CustomMirroringProfile]
+        attr_accessor :custom_mirroring_profile
       
         # Optional. An optional description of the profile. Max length 512 characters.
         # Corresponds to the JSON property `description`
@@ -1992,6 +2972,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_mirroring_profile = args[:custom_mirroring_profile] if args.key?(:custom_mirroring_profile)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
@@ -2003,7 +2984,7 @@ module Google
       end
       
       # SecurityProfileGroup is a resource that defines the behavior for various
-      # ProfileTypes. Next ID: 10
+      # ProfileTypes. Next ID: 11
       class SecurityProfileGroup
         include Google::Apis::Core::Hashable
       
@@ -2011,6 +2992,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. Reference to a SecurityProfile with the CustomMirroring
+        # configuration.
+        # Corresponds to the JSON property `customMirroringProfile`
+        # @return [String]
+        attr_accessor :custom_mirroring_profile
       
         # Optional. An optional description of the profile group. Max length 2048
         # characters.
@@ -2037,8 +3024,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Reference to a SecurityProfile with the threat prevention
-        # configuration for the SecurityProfileGroup.
+        # Optional. Reference to a SecurityProfile with the ThreatPrevention
+        # configuration.
         # Corresponds to the JSON property `threatPreventionProfile`
         # @return [String]
         attr_accessor :threat_prevention_profile
@@ -2055,6 +3042,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_mirroring_profile = args[:custom_mirroring_profile] if args.key?(:custom_mirroring_profile)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
