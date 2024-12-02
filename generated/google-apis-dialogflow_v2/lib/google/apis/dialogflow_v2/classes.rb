@@ -119,13 +119,21 @@ module Google
       class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
         include Google::Apis::Core::Hashable
       
+        # Enables consent-based end-user input redaction, if true, a pre-defined session
+        # parameter `$session.params.conversation-redaction` will be used to determine
+        # if the utterance should be redacted.
+        # Corresponds to the JSON property `enableConsentBasedRedaction`
+        # @return [Boolean]
+        attr_accessor :enable_consent_based_redaction
+        alias_method :enable_consent_based_redaction?, :enable_consent_based_redaction
+      
         # Enables DF Interaction logging.
         # Corresponds to the JSON property `enableInteractionLogging`
         # @return [Boolean]
         attr_accessor :enable_interaction_logging
         alias_method :enable_interaction_logging?, :enable_interaction_logging
       
-        # Enables StackDriver logging.
+        # Enables Google Cloud Logging.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_logging
@@ -137,6 +145,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_consent_based_redaction = args[:enable_consent_based_redaction] if args.key?(:enable_consent_based_redaction)
           @enable_interaction_logging = args[:enable_interaction_logging] if args.key?(:enable_interaction_logging)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
         end
@@ -229,7 +238,7 @@ module Google
       # utterance has been detected. Note that no-speech event is not expected in this
       # phase. The client provides this configuration in terms of the durations of
       # those two phases. The durations are measured in terms of the audio length from
-      # the the start of the input audio. No-speech event is a response with
+      # the start of the input audio. No-speech event is a response with
       # END_OF_UTTERANCE without any transcript following up.
       class GoogleCloudDialogflowCxV3BargeInConfig
         include Google::Apis::Core::Hashable
@@ -501,25 +510,6 @@ module Google
         end
       end
       
-      # Metadata for CreateDocument operation.
-      class GoogleCloudDialogflowCxV3CreateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
       # Metadata associated with the long running operation for Versions.CreateVersion.
       class GoogleCloudDialogflowCxV3CreateVersionOperationMetadata
         include Google::Apis::Core::Hashable
@@ -565,25 +555,6 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
-        end
-      end
-      
-      # Metadata for DeleteDocument operation.
-      class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
@@ -748,7 +719,7 @@ module Google
         alias_method :enable_predeployment_run?, :enable_predeployment_run
       
         # A list of test case names to run. They should be under the same agent. Format
-        # of each test case name: `projects//locations/ /agents//testCases/`
+        # of each test case name: `projects//locations//agents//testCases/`
         # Corresponds to the JSON property `testCases`
         # @return [Array<String>]
         attr_accessor :test_cases
@@ -769,7 +740,9 @@ module Google
       class GoogleCloudDialogflowCxV3EnvironmentVersionConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Format: projects//locations//agents//flows//versions/.
+        # Required. Both flow and playbook versions are supported. Format for flow
+        # version: projects//locations//agents//flows//versions/. Format for playbook
+        # version: projects//locations//agents//playbooks//versions/.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -1445,63 +1418,6 @@ module Google
         end
       end
       
-      # Metadata in google::longrunning::Operation for Knowledge operations.
-      class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Required. Output only. The current state of this operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Metadata for ImportDocuments operation.
-      class GoogleCloudDialogflowCxV3ImportDocumentsOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
-      # Response message for Documents.ImportDocuments.
-      class GoogleCloudDialogflowCxV3ImportDocumentsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Includes details about skipped documents or any other warnings.
-        # Corresponds to the JSON property `warnings`
-        # @return [Array<Google::Apis::DialogflowV2::GoogleRpcStatus>]
-        attr_accessor :warnings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @warnings = args[:warnings] if args.key?(:warnings)
-        end
-      end
-      
       # Metadata returned for the EntityTypes.ImportEntityTypes long running operation.
       class GoogleCloudDialogflowCxV3ImportEntityTypesMetadata
         include Google::Apis::Core::Hashable
@@ -1741,7 +1657,7 @@ module Google
         # utterance has been detected. Note that no-speech event is not expected in this
         # phase. The client provides this configuration in terms of the durations of
         # those two phases. The durations are measured in terms of the audio length from
-        # the the start of the input audio. No-speech event is a response with
+        # the start of the input audio. No-speech event is a response with
         # END_OF_UTTERANCE without any transcript following up.
         # Corresponds to the JSON property `bargeInConfig`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3BargeInConfig]
@@ -2414,25 +2330,6 @@ module Google
         end
       end
       
-      # Metadata for ReloadDocument operation.
-      class GoogleCloudDialogflowCxV3ReloadDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
       # Represents a response message that can be returned by a conversational agent.
       # Response messages are also used for output audio synthesis. The approach is as
       # follows: * If at least one OutputAudioText response is present, then all
@@ -2788,7 +2685,8 @@ module Google
         attr_accessor :allow_playback_interruption
         alias_method :allow_playback_interruption?, :allow_playback_interruption
       
-        # Required. A collection of text responses.
+        # Required. A collection of text response variants. If multiple variants are
+        # defined, only one text response variant is returned at runtime.
         # Corresponds to the JSON property `text`
         # @return [Array<String>]
         attr_accessor :text
@@ -2929,7 +2827,7 @@ module Google
         attr_accessor :last_test_result
       
         # The unique identifier of the test case. TestCases.CreateTestCase will populate
-        # the name automatically. Otherwise use format: `projects//locations//agents/ /
+        # the name automatically. Otherwise use format: `projects//locations//agents//
         # testCases/`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3023,7 +2921,7 @@ module Google
         attr_accessor :environment
       
         # The resource name for the test case result. Format: `projects//locations//
-        # agents//testCases/ /results/`.
+        # agents//testCases//results/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3327,25 +3225,6 @@ module Google
           @sentiment_score = args[:sentiment_score] if args.key?(:sentiment_score)
           @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
           @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
-        end
-      end
-      
-      # Metadata for UpdateDocument operation.
-      class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
@@ -3970,13 +3849,21 @@ module Google
       class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings
         include Google::Apis::Core::Hashable
       
+        # Enables consent-based end-user input redaction, if true, a pre-defined session
+        # parameter `$session.params.conversation-redaction` will be used to determine
+        # if the utterance should be redacted.
+        # Corresponds to the JSON property `enableConsentBasedRedaction`
+        # @return [Boolean]
+        attr_accessor :enable_consent_based_redaction
+        alias_method :enable_consent_based_redaction?, :enable_consent_based_redaction
+      
         # Enables DF Interaction logging.
         # Corresponds to the JSON property `enableInteractionLogging`
         # @return [Boolean]
         attr_accessor :enable_interaction_logging
         alias_method :enable_interaction_logging?, :enable_interaction_logging
       
-        # Enables StackDriver logging.
+        # Enables Google Cloud Logging.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_logging
@@ -3988,6 +3875,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_consent_based_redaction = args[:enable_consent_based_redaction] if args.key?(:enable_consent_based_redaction)
           @enable_interaction_logging = args[:enable_interaction_logging] if args.key?(:enable_interaction_logging)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
         end
@@ -4080,7 +3968,7 @@ module Google
       # utterance has been detected. Note that no-speech event is not expected in this
       # phase. The client provides this configuration in terms of the durations of
       # those two phases. The durations are measured in terms of the audio length from
-      # the the start of the input audio. No-speech event is a response with
+      # the start of the input audio. No-speech event is a response with
       # END_OF_UTTERANCE without any transcript following up.
       class GoogleCloudDialogflowCxV3beta1BargeInConfig
         include Google::Apis::Core::Hashable
@@ -4352,25 +4240,6 @@ module Google
         end
       end
       
-      # Metadata for CreateDocument operation.
-      class GoogleCloudDialogflowCxV3beta1CreateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
       # Metadata associated with the long running operation for Versions.CreateVersion.
       class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
         include Google::Apis::Core::Hashable
@@ -4416,25 +4285,6 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
-        end
-      end
-      
-      # Metadata for DeleteDocument operation.
-      class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
@@ -4599,7 +4449,7 @@ module Google
         alias_method :enable_predeployment_run?, :enable_predeployment_run
       
         # A list of test case names to run. They should be under the same agent. Format
-        # of each test case name: `projects//locations/ /agents//testCases/`
+        # of each test case name: `projects//locations//agents//testCases/`
         # Corresponds to the JSON property `testCases`
         # @return [Array<String>]
         attr_accessor :test_cases
@@ -4620,7 +4470,9 @@ module Google
       class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Format: projects//locations//agents//flows//versions/.
+        # Required. Both flow and playbook versions are supported. Format for flow
+        # version: projects//locations//agents//flows//versions/. Format for playbook
+        # version: projects//locations//agents//playbooks//versions/.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -5296,63 +5148,6 @@ module Google
         end
       end
       
-      # Metadata in google::longrunning::Operation for Knowledge operations.
-      class GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Required. Output only. The current state of this operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Metadata for ImportDocuments operation.
-      class GoogleCloudDialogflowCxV3beta1ImportDocumentsOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
-      # Response message for Documents.ImportDocuments.
-      class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Includes details about skipped documents or any other warnings.
-        # Corresponds to the JSON property `warnings`
-        # @return [Array<Google::Apis::DialogflowV2::GoogleRpcStatus>]
-        attr_accessor :warnings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @warnings = args[:warnings] if args.key?(:warnings)
-        end
-      end
-      
       # Metadata returned for the EntityTypes.ImportEntityTypes long running operation.
       class GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata
         include Google::Apis::Core::Hashable
@@ -5592,7 +5387,7 @@ module Google
         # utterance has been detected. Note that no-speech event is not expected in this
         # phase. The client provides this configuration in terms of the durations of
         # those two phases. The durations are measured in terms of the audio length from
-        # the the start of the input audio. No-speech event is a response with
+        # the start of the input audio. No-speech event is a response with
         # END_OF_UTTERANCE without any transcript following up.
         # Corresponds to the JSON property `bargeInConfig`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1BargeInConfig]
@@ -6271,25 +6066,6 @@ module Google
         end
       end
       
-      # Metadata for ReloadDocument operation.
-      class GoogleCloudDialogflowCxV3beta1ReloadDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
       # Represents a response message that can be returned by a conversational agent.
       # Response messages are also used for output audio synthesis. The approach is as
       # follows: * If at least one OutputAudioText response is present, then all
@@ -6645,7 +6421,8 @@ module Google
         attr_accessor :allow_playback_interruption
         alias_method :allow_playback_interruption?, :allow_playback_interruption
       
-        # Required. A collection of text responses.
+        # Required. A collection of text response variants. If multiple variants are
+        # defined, only one text response variant is returned at runtime.
         # Corresponds to the JSON property `text`
         # @return [Array<String>]
         attr_accessor :text
@@ -6786,7 +6563,7 @@ module Google
         attr_accessor :last_test_result
       
         # The unique identifier of the test case. TestCases.CreateTestCase will populate
-        # the name automatically. Otherwise use format: `projects//locations//agents/ /
+        # the name automatically. Otherwise use format: `projects//locations//agents//
         # testCases/`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -6880,7 +6657,7 @@ module Google
         attr_accessor :environment
       
         # The resource name for the test case result. Format: `projects//locations//
-        # agents//testCases/ /results/`.
+        # agents//testCases//results/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7273,25 +7050,6 @@ module Google
           @sentiment_score = args[:sentiment_score] if args.key?(:sentiment_score)
           @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
           @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
-        end
-      end
-      
-      # Metadata for UpdateDocument operation.
-      class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
@@ -8353,8 +8111,9 @@ module Google
       # A typical workflow for customers provide feedback to an answer is: 1. For
       # human agent assistant, customers get suggestion via ListSuggestions API.
       # Together with the answers, AnswerRecord.name are returned to the customers. 2.
-      # The customer uses the AnswerRecord.name to call the UpdateAnswerRecord method
-      # to send feedback about a specific answer that they believe is wrong.
+      # The customer uses the AnswerRecord.name to call the AnswerRecords.
+      # UpdateAnswerRecord method to send feedback about a specific answer that they
+      # believe is wrong.
       class GoogleCloudDialogflowV2AnswerRecord
         include Google::Apis::Core::Hashable
       
@@ -8822,7 +8581,7 @@ module Google
         end
       end
       
-      # Metadata for a ConversationProfile.ClearSuggestionFeatureConfig operation.
+      # Metadata for a ConversationProfiles.ClearSuggestionFeatureConfig operation.
       class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -8861,7 +8620,7 @@ module Google
         end
       end
       
-      # The request message for ConversationProfiles.ClearFeature.
+      # The request message for ConversationProfiles.ClearSuggestionFeatureConfig.
       class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest
         include Google::Apis::Core::Hashable
       
@@ -9093,6 +8852,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. A read only boolean field reflecting Zone Isolation status of the
+        # dataset.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. A read only boolean field reflecting Zone Separation status of
+        # the dataset.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9106,6 +8879,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @input_config = args[:input_config] if args.key?(:input_config)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
         end
       end
       
@@ -9211,6 +8986,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. A read only boolean field reflecting Zone Isolation status of the
+        # model.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. A read only boolean field reflecting Zone Separation status of
+        # the model.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Metadata for smart reply models.
         # Corresponds to the JSON property `smartReplyModelMetadata`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyModelMetadata]
@@ -9234,6 +9023,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @smart_reply_model_metadata = args[:smart_reply_model_metadata] if args.key?(:smart_reply_model_metadata)
           @state = args[:state] if args.key?(:state)
         end
@@ -9432,7 +9223,7 @@ module Google
         end
       end
       
-      # Metadata for ConversationDatasets.
+      # Metadata for CreateConversationDataset.
       class GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -9544,7 +9335,7 @@ module Google
         end
       end
       
-      # Metadata for ConversationDatasets.
+      # Metadata for DeleteConversationDataset.
       class GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -10499,7 +10290,7 @@ module Google
       end
       
       # Providing examples in the generator (i.e. building a few-shot generator) helps
-      # convey the desired format of the LLM response. NEXT_ID: 10
+      # convey the desired format of the LLM response.
       class GoogleCloudDialogflowV2FewShotExample
         include Google::Apis::Core::Hashable
       
@@ -10837,10 +10628,10 @@ module Google
       class GoogleCloudDialogflowV2GenerateStatelessSummaryResponse
         include Google::Apis::Core::Hashable
       
-        # Number of messages prior to and including last_conversation_message used to
-        # compile the suggestion. It may be smaller than the
-        # GenerateStatelessSummaryRequest.context_size field in the request if there
-        # weren't that many messages in the conversation.
+        # Number of messages prior to and including latest_message used to compile the
+        # suggestion. It may be smaller than the GenerateStatelessSummaryRequest.
+        # max_context_size field in the request if there weren't that many messages in
+        # the conversation.
         # Corresponds to the JSON property `contextSize`
         # @return [Fixnum]
         attr_accessor :context_size
@@ -11272,6 +11063,12 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings]
         attr_accessor :context_filter_settings
       
+        # Optional. The number of recent messages to include in the context. Supported
+        # features: KNOWLEDGE_ASSIST.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
         # Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
         # Corresponds to the JSON property `dialogflowQuerySource`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource]
@@ -11308,6 +11105,7 @@ module Google
         def update!(**args)
           @confidence_threshold = args[:confidence_threshold] if args.key?(:confidence_threshold)
           @context_filter_settings = args[:context_filter_settings] if args.key?(:context_filter_settings)
+          @context_size = args[:context_size] if args.key?(:context_size)
           @dialogflow_query_source = args[:dialogflow_query_source] if args.key?(:dialogflow_query_source)
           @document_query_source = args[:document_query_source] if args.key?(:document_query_source)
           @knowledge_base_query_source = args[:knowledge_base_query_source] if args.key?(:knowledge_base_query_source)
@@ -11974,6 +11772,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :phrase_hints
       
+        # A collection of phrase set resources to use for speech adaptation.
+        # Corresponds to the JSON property `phraseSets`
+        # @return [Array<String>]
+        attr_accessor :phrase_sets
+      
         # Required. Sample rate (in Hertz) of the audio content sent in the query. Refer
         # to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/
         # docs/basics) for more details.
@@ -12016,6 +11819,7 @@ module Google
           @model_variant = args[:model_variant] if args.key?(:model_variant)
           @opt_out_conformer_model_migration = args[:opt_out_conformer_model_migration] if args.key?(:opt_out_conformer_model_migration)
           @phrase_hints = args[:phrase_hints] if args.key?(:phrase_hints)
+          @phrase_sets = args[:phrase_sets] if args.key?(:phrase_sets)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @single_utterance = args[:single_utterance] if args.key?(:single_utterance)
           @speech_contexts = args[:speech_contexts] if args.key?(:speech_contexts)
@@ -13472,6 +13276,11 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
         include Google::Apis::Core::Hashable
       
+        # Metadata of the document.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         # Text taken from that URI.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -13493,6 +13302,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @text = args[:text] if args.key?(:text)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
@@ -14114,12 +13924,11 @@ module Google
       
         # The result of sentiment analysis. Sentiment analysis inspects user input and
         # identifies the prevailing subjective opinion, especially to determine a user's
-        # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
-        # needs to be configured in DetectIntentRequest.query_params. For Participants.
-        # StreamingDetectIntent, it needs to be configured in
-        # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
-        # and Participants.StreamingAnalyzeContent, it needs to be configured in
-        # ConversationProfile.human_agent_assistant_config
+        # attitude as positive, negative, or neutral. For DetectIntent, it needs to be
+        # configured in DetectIntentRequest.query_params. For StreamingDetectIntent, it
+        # needs to be configured in StreamingDetectIntentRequest.query_params. And for
+        # Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs
+        # to be configured in ConversationProfile.human_agent_assistant_config
         # Corresponds to the JSON property `sentimentAnalysis`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SentimentAnalysisResult]
         attr_accessor :sentiment_analysis
@@ -14642,12 +14451,11 @@ module Google
       
         # The result of sentiment analysis. Sentiment analysis inspects user input and
         # identifies the prevailing subjective opinion, especially to determine a user's
-        # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
-        # needs to be configured in DetectIntentRequest.query_params. For Participants.
-        # StreamingDetectIntent, it needs to be configured in
-        # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
-        # and Participants.StreamingAnalyzeContent, it needs to be configured in
-        # ConversationProfile.human_agent_assistant_config
+        # attitude as positive, negative, or neutral. For DetectIntent, it needs to be
+        # configured in DetectIntentRequest.query_params. For StreamingDetectIntent, it
+        # needs to be configured in StreamingDetectIntentRequest.query_params. And for
+        # Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs
+        # to be configured in ConversationProfile.human_agent_assistant_config
         # Corresponds to the JSON property `sentimentAnalysisResult`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SentimentAnalysisResult]
         attr_accessor :sentiment_analysis_result
@@ -14837,6 +14645,11 @@ module Google
       class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource
         include Google::Apis::Core::Hashable
       
+        # Metadata associated with the article.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         # The relevant snippet of the article.
         # Corresponds to the JSON property `snippet`
         # @return [String]
@@ -14858,6 +14671,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @snippet = args[:snippet] if args.key?(:snippet)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
@@ -14880,6 +14694,22 @@ module Google
         # @return [String]
         attr_accessor :conversation_profile
       
+        # Optional. Information about the end-user to improve the relevance and accuracy
+        # of generative answers. This will be interpreted and used by a language model,
+        # so, for good results, the data should be self-descriptive, and in a simple
+        # structure. Example: ```json ` "subscription plan": "Business Premium Plus", "
+        # devices owned": [ `"model": "Google Pixel 7"`, `"model": "Google Pixel Tablet"`
+        # ] ` ```
+        # Corresponds to the JSON property `endUserMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :end_user_metadata
+      
+        # Optional. Whether to search the query exactly without query rewrite.
+        # Corresponds to the JSON property `exactSearch`
+        # @return [Boolean]
+        attr_accessor :exact_search
+        alias_method :exact_search?, :exact_search
+      
         # Optional. The name of the latest conversation message when the request is
         # triggered. Format: `projects//locations//conversations//messages/`.
         # Corresponds to the JSON property `latestMessage`
@@ -14897,7 +14727,17 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput]
         attr_accessor :query
       
-        # Optional. The ID of the search session. The session_id can be combined with
+        # Optional. The source of the query in the request.
+        # Corresponds to the JSON property `querySource`
+        # @return [String]
+        attr_accessor :query_source
+      
+        # Configuration specific to search queries with data stores.
+        # Corresponds to the JSON property `searchConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig]
+        attr_accessor :search_config
+      
+        # Required. The ID of the search session. The session_id can be combined with
         # Dialogflow V3 Agent ID retrieved from conversation profile or on its own to
         # identify a search session. The search history of the same session will impact
         # the search result. It's up to the API caller to choose an appropriate `Session
@@ -14915,10 +14755,245 @@ module Google
         def update!(**args)
           @conversation = args[:conversation] if args.key?(:conversation)
           @conversation_profile = args[:conversation_profile] if args.key?(:conversation_profile)
+          @end_user_metadata = args[:end_user_metadata] if args.key?(:end_user_metadata)
+          @exact_search = args[:exact_search] if args.key?(:exact_search)
           @latest_message = args[:latest_message] if args.key?(:latest_message)
           @parent = args[:parent] if args.key?(:parent)
           @query = args[:query] if args.key?(:query)
+          @query_source = args[:query_source] if args.key?(:query_source)
+          @search_config = args[:search_config] if args.key?(:search_config)
           @session_id = args[:session_id] if args.key?(:session_id)
+        end
+      end
+      
+      # Configuration specific to search queries with data stores.
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Boost specifications for data stores.
+        # Corresponds to the JSON property `boostSpecs`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs>]
+        attr_accessor :boost_specs
+      
+        # Optional. Filter specification for data store queries.
+        # Corresponds to the JSON property `filterSpecs`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs>]
+        attr_accessor :filter_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost_specs = args[:boost_specs] if args.key?(:boost_specs)
+          @filter_specs = args[:filter_specs] if args.key?(:filter_specs)
+        end
+      end
+      
+      # Boost specifications for data stores.
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Data Stores where the boosting configuration is applied. The full
+        # names of the referenced data stores. Formats: `projects/`project`/locations/`
+        # location`/collections/`collection`/dataStores/`data_store`` `projects/`project`
+        # /locations/`location`/dataStores/`data_store``
+        # Corresponds to the JSON property `dataStores`
+        # @return [Array<String>]
+        attr_accessor :data_stores
+      
+        # Optional. A list of boosting specifications.
+        # Corresponds to the JSON property `spec`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec>]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_stores = args[:data_stores] if args.key?(:data_stores)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # Boost specification to boost certain documents. A copy of google.cloud.
+      # discoveryengine.v1main.BoostSpec, field documentation is available at https://
+      # cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/
+      # BoostSpec
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Condition boost specifications. If a document matches multiple
+        # conditions in the specifictions, boost scores from these specifications are
+        # all applied and combined in a non-linear way. Maximum number of specifications
+        # is 20.
+        # Corresponds to the JSON property `conditionBoostSpecs`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec>]
+        attr_accessor :condition_boost_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition_boost_specs = args[:condition_boost_specs] if args.key?(:condition_boost_specs)
+        end
+      end
+      
+      # Boost applies to documents which match a condition.
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Strength of the condition boost, which should be in [-1, 1].
+        # Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the
+        # document a big promotion. However, it does not necessarily mean that the
+        # boosted document will be the top result at all times, nor that other documents
+        # will be excluded. Results could still be shown even when none of them matches
+        # the condition. And results that are significantly more relevant to the search
+        # query can still trump your heavily favored but irrelevant documents. Setting
+        # to -1.0 gives the document a big demotion. However, results that are deeply
+        # relevant might still be shown. The document will have an upstream battle to
+        # get a fairly high ranking, but it is not blocked out completely. Setting to 0.
+        # 0 means no boost applied. The boosting condition is ignored.
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
+      
+        # Specification for custom ranking based on customer specified attribute value.
+        # It provides more controls for customized ranking than the simple (condition,
+        # boost) combination above.
+        # Corresponds to the JSON property `boostControlSpec`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec]
+        attr_accessor :boost_control_spec
+      
+        # Optional. An expression which specifies a boost condition. The syntax and
+        # supported fields are the same as a filter expression. Examples: * To boost
+        # documents with document ID "doc_1" or "doc_2", and color "Red" or "Blue": * (
+        # id: ANY("doc_1", "doc_2")) AND (color: ANY("Red","Blue"))
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
+          @boost_control_spec = args[:boost_control_spec] if args.key?(:boost_control_spec)
+          @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # Specification for custom ranking based on customer specified attribute value.
+      # It provides more controls for customized ranking than the simple (condition,
+      # boost) combination above.
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The attribute type to be used to determine the boost amount. The
+        # attribute value can be derived from the field value of the specified
+        # field_name. In the case of numerical it is straightforward i.e.
+        # attribute_value = numerical_field_value. In the case of freshness however,
+        # attribute_value = (time.now() - datetime_field_value).
+        # Corresponds to the JSON property `attributeType`
+        # @return [String]
+        attr_accessor :attribute_type
+      
+        # Optional. The control points used to define the curve. The monotonic function (
+        # defined through the interpolation_type above) passes through the control
+        # points listed here.
+        # Corresponds to the JSON property `controlPoints`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint>]
+        attr_accessor :control_points
+      
+        # Optional. The name of the field whose value will be used to determine the
+        # boost amount.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Optional. The interpolation type to be applied to connect the control points
+        # listed below.
+        # Corresponds to the JSON property `interpolationType`
+        # @return [String]
+        attr_accessor :interpolation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_type = args[:attribute_type] if args.key?(:attribute_type)
+          @control_points = args[:control_points] if args.key?(:control_points)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @interpolation_type = args[:interpolation_type] if args.key?(:interpolation_type)
+        end
+      end
+      
+      # The control points used to define the curve. The curve defined through these
+      # control points can only be monotonically increasing or decreasing(constant
+      # values are acceptable).
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Can be one of: 1. The numerical field value. 2. The duration spec
+        # for freshness: The value must be formatted as an XSD `dayTimeDuration` value (
+        # a restricted subset of an ISO 8601 duration value). The pattern for this is: `
+        # nDnM]`.
+        # Corresponds to the JSON property `attributeValue`
+        # @return [String]
+        attr_accessor :attribute_value
+      
+        # Optional. The value between -1 to 1 by which to boost the score if the
+        # attribute_value evaluates to the value specified above.
+        # Corresponds to the JSON property `boostAmount`
+        # @return [Float]
+        attr_accessor :boost_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_value = args[:attribute_value] if args.key?(:attribute_value)
+          @boost_amount = args[:boost_amount] if args.key?(:boost_amount)
+        end
+      end
+      
+      # Filter specification for data store queries.
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The data store where the filter configuration is applied. Full
+        # resource name of data store, such as projects/`project`/locations/`location`/
+        # collections/`collectionId`/ dataStores/`dataStoreId`.
+        # Corresponds to the JSON property `dataStores`
+        # @return [Array<String>]
+        attr_accessor :data_stores
+      
+        # Optional. The filter expression to be applied. Expression syntax is documented
+        # at https://cloud.google.com/generative-ai-app-builder/docs/filter-search-
+        # metadata#filter-expression-syntax
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_stores = args[:data_stores] if args.key?(:data_stores)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       
@@ -15000,12 +15075,11 @@ module Google
       
       # The result of sentiment analysis. Sentiment analysis inspects user input and
       # identifies the prevailing subjective opinion, especially to determine a user's
-      # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
-      # needs to be configured in DetectIntentRequest.query_params. For Participants.
-      # StreamingDetectIntent, it needs to be configured in
-      # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
-      # and Participants.StreamingAnalyzeContent, it needs to be configured in
-      # ConversationProfile.human_agent_assistant_config
+      # attitude as positive, negative, or neutral. For DetectIntent, it needs to be
+      # configured in DetectIntentRequest.query_params. For StreamingDetectIntent, it
+      # needs to be configured in StreamingDetectIntentRequest.query_params. And for
+      # Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs
+      # to be configured in ConversationProfile.human_agent_assistant_config
       class GoogleCloudDialogflowV2SentimentAnalysisResult
         include Google::Apis::Core::Hashable
       
@@ -15070,7 +15144,7 @@ module Google
         end
       end
       
-      # Metadata for a ConversationProfile.SetSuggestionFeatureConfig operation.
+      # Metadata for a ConversationProfiles.SetSuggestionFeatureConfig operation.
       class GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -15109,7 +15183,7 @@ module Google
         end
       end
       
-      # The request message for ConversationProfiles.SetSuggestionFeature.
+      # The request message for ConversationProfiles.SetSuggestionFeatureConfig.
       class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest
         include Google::Apis::Core::Hashable
       
@@ -15290,15 +15364,6 @@ module Google
       class GoogleCloudDialogflowV2SpeechToTextConfig
         include Google::Apis::Core::Hashable
       
-        # Defines the list of other language codes in addition to the one provided by
-        # the conversation profile that may be detected as the language code for the
-        # utterances over the conversation. See [Language Support](https://cloud.google.
-        # com/dialogflow/docs/reference/language) for a list of the currently supported
-        # language codes.
-        # Corresponds to the JSON property `alternativeLanguageCodes`
-        # @return [Array<String>]
-        attr_accessor :alternative_language_codes
-      
         # Audio encoding of the audio content to process.
         # Corresponds to the JSON property `audioEncoding`
         # @return [String]
@@ -15338,6 +15403,11 @@ module Google
         # @return [String]
         attr_accessor :model
       
+        # List of names of Cloud Speech phrase sets that are used for transcription.
+        # Corresponds to the JSON property `phraseSets`
+        # @return [Array<String>]
+        attr_accessor :phrase_sets
+      
         # Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud
         # Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics)
         # for more details.
@@ -15367,11 +15437,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @alternative_language_codes = args[:alternative_language_codes] if args.key?(:alternative_language_codes)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @language_code = args[:language_code] if args.key?(:language_code)
           @model = args[:model] if args.key?(:model)
+          @phrase_sets = args[:phrase_sets] if args.key?(:phrase_sets)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @speech_model_variant = args[:speech_model_variant] if args.key?(:speech_model_variant)
           @use_timeout_based_endpointing = args[:use_timeout_based_endpointing] if args.key?(:use_timeout_based_endpointing)
@@ -15484,8 +15554,8 @@ module Google
       class GoogleCloudDialogflowV2SuggestConversationSummaryResponse
         include Google::Apis::Core::Hashable
       
-        # Number of messages prior to and including last_conversation_message used to
-        # compile the suggestion. It may be smaller than the SuggestSummaryRequest.
+        # Number of messages prior to and including latest_message used to compile the
+        # suggestion. It may be smaller than the SuggestConversationSummaryRequest.
         # context_size field in the request if there weren't that many messages in the
         # conversation.
         # Corresponds to the JSON property `contextSize`
@@ -19069,6 +19139,11 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
         include Google::Apis::Core::Hashable
       
+        # Metadata of the document.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         # Text taken from that URI.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -19090,6 +19165,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @text = args[:text] if args.key?(:text)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
@@ -19648,7 +19724,8 @@ module Google
       class GoogleCloudDialogflowV2beta1ResponseMessageText
         include Google::Apis::Core::Hashable
       
-        # A collection of text responses.
+        # A collection of text response variants. If multiple variants are defined, only
+        # one text response variant is returned at runtime.
         # Corresponds to the JSON property `text`
         # @return [Array<String>]
         attr_accessor :text
@@ -20250,120 +20327,6 @@ module Google
         end
       end
       
-      # Metadata for CreateDocument operation.
-      class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
-      # Metadata for DeleteDocument operation.
-      class GoogleCloudDialogflowV3alpha1DeleteDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
-      # Metadata in google::longrunning::Operation for Knowledge operations.
-      class GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Required. Output only. The current state of this operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Metadata for ImportDocuments operation.
-      class GoogleCloudDialogflowV3alpha1ImportDocumentsOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
-      # Response message for Documents.ImportDocuments.
-      class GoogleCloudDialogflowV3alpha1ImportDocumentsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Includes details about skipped documents or any other warnings.
-        # Corresponds to the JSON property `warnings`
-        # @return [Array<Google::Apis::DialogflowV2::GoogleRpcStatus>]
-        attr_accessor :warnings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @warnings = args[:warnings] if args.key?(:warnings)
-        end
-      end
-      
-      # Metadata for ReloadDocument operation.
-      class GoogleCloudDialogflowV3alpha1ReloadDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
-        end
-      end
-      
       # Collection of all signals that were extracted for a single turn of the
       # conversation.
       class GoogleCloudDialogflowV3alpha1TurnSignals
@@ -20451,25 +20414,6 @@ module Google
           @triggered_abandonment_event = args[:triggered_abandonment_event] if args.key?(:triggered_abandonment_event)
           @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
           @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
-        end
-      end
-      
-      # Metadata for UpdateDocument operation.
-      class GoogleCloudDialogflowV3alpha1UpdateDocumentOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Metadata in google::longrunning::Operation for Knowledge operations.
-        # Corresponds to the JSON property `genericMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata]
-        attr_accessor :generic_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
         end
       end
       
