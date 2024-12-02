@@ -327,6 +327,34 @@ module Google
         end
       end
       
+      # For use only by GCE. GceTag is a wrapper around the GCE administrative tag
+      # with parent info.
+      class GceTag
+        include Google::Apis::Core::Hashable
+      
+        # The parents(s) of the tag. Eg. projects/123, folders/456 It usually contains
+        # only one parent. But, in some corner cases, it can contain multiple parents.
+        # Currently, organizations are not supported.
+        # Corresponds to the JSON property `parent`
+        # @return [Array<String>]
+        attr_accessor :parent
+      
+        # The administrative_tag name.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
       # Metadata for the given google.cloud.location.Location.
       class GoogleAppengineV1betaLocationMetadata
         include Google::Apis::Core::Hashable
@@ -921,6 +949,12 @@ module Google
         # @return [String]
         attr_accessor :consumer_project_state
       
+        # The GCE tags associated with the consumer project and those inherited due to
+        # their ancestry, if any. Not supported by CCFE.
+        # Corresponds to the JSON property `gceTag`
+        # @return [Array<Google::Apis::AppengineV1alpha::GceTag>]
+        attr_accessor :gce_tag
+      
         # The service account authorized to operate on the consumer project. Note: CCFE
         # only propagates P4SA with default tag to CLH.
         # Corresponds to the JSON property `p4ServiceAccount`
@@ -956,6 +990,7 @@ module Google
           @consumer_project_id = args[:consumer_project_id] if args.key?(:consumer_project_id)
           @consumer_project_number = args[:consumer_project_number] if args.key?(:consumer_project_number)
           @consumer_project_state = args[:consumer_project_state] if args.key?(:consumer_project_state)
+          @gce_tag = args[:gce_tag] if args.key?(:gce_tag)
           @p4_service_account = args[:p4_service_account] if args.key?(:p4_service_account)
           @producer_project_id = args[:producer_project_id] if args.key?(:producer_project_id)
           @producer_project_number = args[:producer_project_number] if args.key?(:producer_project_number)
@@ -1010,6 +1045,44 @@ module Google
           @data_governance = args[:data_governance] if args.key?(:data_governance)
           @service_activation = args[:service_activation] if args.key?(:service_activation)
           @service_management = args[:service_management] if args.key?(:service_management)
+        end
+      end
+      
+      # The request that is passed to CLH during per-resource events. The request will
+      # be sent with update semantics in all cases except for data governance purge
+      # events. These events will be sent with delete semantics and the CLH is
+      # expected to delete the resource receiving this event.
+      class ResourceEvent
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID for this per-resource event. CLHs can use this value to dedup
+        # repeated calls. required
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # The name of the resource for which this event is. required
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ContainerState contains the externally-visible container state that is used to
+        # communicate the state and reasoning for that state to the CLH. This data is
+        # not persisted by CCFE, but is instead derived from CCFE's internal
+        # representation of the container state.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::AppengineV1alpha::ContainerState]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
