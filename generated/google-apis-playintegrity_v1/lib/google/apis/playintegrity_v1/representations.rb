@@ -195,6 +195,7 @@ module Google
           property :device_recall, as: 'deviceRecall', class: Google::Apis::PlayintegrityV1::DeviceRecall, decorator: Google::Apis::PlayintegrityV1::DeviceRecall::Representation
       
           collection :device_recognition_verdict, as: 'deviceRecognitionVerdict'
+          collection :legacy_device_recognition_verdict, as: 'legacyDeviceRecognitionVerdict'
           property :recent_device_activity, as: 'recentDeviceActivity', class: Google::Apis::PlayintegrityV1::RecentDeviceActivity, decorator: Google::Apis::PlayintegrityV1::RecentDeviceActivity::Representation
       
         end
