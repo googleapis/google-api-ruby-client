@@ -40,6 +40,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Analysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeConsumerPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeConsumerPolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Api
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExperimentalFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -364,6 +394,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleApiServiceusageV2betaAnalysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaAnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaAnalyzeConsumerPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaAnalyzeConsumerPolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaConsumerPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaEnableRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaImpact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Http
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +449,12 @@ module Google
       end
       
       class HttpRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Impact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -670,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SelectiveGapicGeneration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Service
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -777,6 +867,41 @@ module Google
           property :name, as: 'name'
           property :policy_value, :numeric_string => true, as: 'policyValue'
           property :unit, as: 'unit'
+        end
+      end
+      
+      class Analysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis, as: 'analysis', class: Google::Apis::ServiceusageV1beta1::AnalysisResult, decorator: Google::Apis::ServiceusageV1beta1::AnalysisResult::Representation
+      
+          property :analysis_type, as: 'analysisType'
+          property :display_name, as: 'displayName'
+          property :service, as: 'service'
+        end
+      end
+      
+      class AnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blockers, as: 'blockers', class: Google::Apis::ServiceusageV1beta1::Impact, decorator: Google::Apis::ServiceusageV1beta1::Impact::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::ServiceusageV1beta1::Impact, decorator: Google::Apis::ServiceusageV1beta1::Impact::Representation
+      
+        end
+      end
+      
+      class AnalyzeConsumerPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AnalyzeConsumerPolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :analysis, as: 'analysis', class: Google::Apis::ServiceusageV1beta1::Analysis, decorator: Google::Apis::ServiceusageV1beta1::Analysis::Representation
+      
         end
       end
       
@@ -944,6 +1069,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :destinations, as: 'destinations'
           property :reference_docs_uri, as: 'referenceDocsUri'
+          property :selective_gapic_generation, as: 'selectiveGapicGeneration', class: Google::Apis::ServiceusageV1beta1::SelectiveGapicGeneration, decorator: Google::Apis::ServiceusageV1beta1::SelectiveGapicGeneration::Representation
+      
         end
       end
       
@@ -1186,6 +1313,14 @@ module Google
         end
       end
       
+      class ExperimentalFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :protobuf_pythonic_types_enabled, as: 'protobufPythonicTypesEnabled'
+          property :rest_async_io_enabled, as: 'restAsyncIoEnabled'
+        end
+      end
+      
       class Field
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1232,6 +1367,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServiceusageV1beta1::CommonLanguageSettings, decorator: Google::Apis::ServiceusageV1beta1::CommonLanguageSettings::Representation
       
+          hash :renamed_services, as: 'renamedServices'
         end
       end
       
@@ -1377,6 +1513,75 @@ module Google
         end
       end
       
+      class GoogleApiServiceusageV2betaAnalysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis, as: 'analysis', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaAnalysisResult, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaAnalysisResult::Representation
+      
+          property :analysis_type, as: 'analysisType'
+          property :display_name, as: 'displayName'
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blockers, as: 'blockers', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaImpact, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaImpact::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaImpact, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaImpact::Representation
+      
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaAnalyzeConsumerPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaAnalyzeConsumerPolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :analysis, as: 'analysis', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaAnalysis, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaAnalysis::Representation
+      
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaConsumerPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          collection :enable_rules, as: 'enableRules', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaEnableRule, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaEnableRule::Representation
+      
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaEnableRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :services, as: 'services'
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaImpact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          property :impact_type, as: 'impactType'
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Http
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1401,6 +1606,14 @@ module Google
           property :put, as: 'put'
           property :response_body, as: 'responseBody'
           property :selector, as: 'selector'
+        end
+      end
+      
+      class Impact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          property :impact_type, as: 'impactType'
         end
       end
       
@@ -1637,6 +1850,7 @@ module Google
           property :ingest_delay, as: 'ingestDelay'
           property :launch_stage, as: 'launchStage'
           property :sample_period, as: 'samplePeriod'
+          collection :time_series_resource_hierarchy_level, as: 'timeSeriesResourceHierarchyLevel'
         end
       end
       
@@ -1791,6 +2005,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServiceusageV1beta1::CommonLanguageSettings, decorator: Google::Apis::ServiceusageV1beta1::CommonLanguageSettings::Representation
       
+          property :experimental_features, as: 'experimentalFeatures', class: Google::Apis::ServiceusageV1beta1::ExperimentalFeatures, decorator: Google::Apis::ServiceusageV1beta1::ExperimentalFeatures::Representation
+      
         end
       end
       
@@ -1877,6 +2093,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServiceusageV1beta1::CommonLanguageSettings, decorator: Google::Apis::ServiceusageV1beta1::CommonLanguageSettings::Representation
       
+        end
+      end
+      
+      class SelectiveGapicGeneration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :methods_prop, as: 'methods'
         end
       end
       
