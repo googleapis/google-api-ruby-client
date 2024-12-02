@@ -195,7 +195,7 @@ module Google
         end
         
         # Returns all accounts accessible by the caller. Note that these accounts might
-        # not currently have GA4 properties. Soft-deleted (ie: "trashed") accounts are
+        # not currently have GA properties. Soft-deleted (ie: "trashed") accounts are
         # excluded by default. Returns an empty list if no relevant accounts are found.
         # @param [Fixnum] page_size
         #   The maximum number of resources to return. The service may return fewer than
@@ -314,20 +314,22 @@ module Google
         # for a property. Reports may be requested for any property, but dimensions that
         # aren't related to quota can only be requested on Google Analytics 360
         # properties. This method is only available to Administrators. These data access
-        # records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data API, and other
+        # records include GA UI Reporting, GA UI Explorations, GA Data API, and other
         # products like Firebase & Admob that can retrieve data from Google Analytics
         # through a linkage. These records don't include property configuration changes
         # like adding a stream or changing a property's time zone. For configuration
         # change history, see [searchChangeHistoryEvents](https://developers.google.com/
         # analytics/devguides/config/admin/v1/rest/v1alpha/accounts/
-        # searchChangeHistoryEvents).
+        # searchChangeHistoryEvents). To give your feedback on this API, complete the [
+        # Google Analytics Access Reports feedback](https://docs.google.com/forms/d/e/
+        # 1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform) form.
         # @param [String] entity
         #   The Data Access Report supports requesting at the property level or account
         #   level. If requested at the account level, Data Access Reports include all
         #   access for all properties under that account. To request at the property level,
-        #   entity should be for example 'properties/123' if "123" is your GA4 property
-        #   ID. To request at the account level, entity should be for example 'accounts/
-        #   1234' if "1234" is your GA4 Account ID.
+        #   entity should be for example 'properties/123' if "123" is your Google
+        #   Analytics property ID. To request at the account level, entity should be for
+        #   example 'accounts/1234' if "1234" is your Google Analytics Account ID.
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportRequest] google_analytics_admin_v1alpha_run_access_report_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -746,7 +748,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an "GA4" property with the specified location and attributes.
+        # Creates a Google Analytics property with the specified location and attributes.
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty] google_analytics_admin_v1alpha_property_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -838,44 +840,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a subproperty and a subproperty event filter that applies to the
-        # created subproperty.
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest] google_analytics_admin_v1alpha_create_subproperty_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_property_subproperty(google_analytics_admin_v1alpha_create_subproperty_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/properties:createSubproperty', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_create_subproperty_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Marks target Property as soft-deleted (ie: "trashed") and returns it. This API
         # does not have a method to restore soft-deleted properties. However, they can
         # be restored using the Trash Can UI. If the properties are not restored before
         # the expiration time, the Property and all child resources (eg: GoogleAdsLinks,
         # Streams, AccessBindings) will be permanently purged. https://support.google.
-        # com/analytics/answer/6154772 Returns an error if the target is not found, or
-        # is not a GA4 Property.
+        # com/analytics/answer/6154772 Returns an error if the target is not found.
         # @param [String] name
         #   Required. The name of the Property to soft-delete. Format: properties/`
         #   property_id` Example: "properties/1000"
@@ -1002,7 +972,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single "GA4" Property.
+        # Lookup for a single GA Property.
         # @param [String] name
         #   Required. The name of the property to lookup. Format: properties/`property_id`
         #   Example: "properties/1000"
@@ -1126,10 +1096,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns child Properties under the specified parent Account. Only "GA4"
-        # properties will be returned. Properties will be excluded if the caller does
-        # not have access. Soft-deleted (ie: "trashed") properties are excluded by
-        # default. Returns an empty list if no relevant properties are found.
+        # Returns child Properties under the specified parent Account. Properties will
+        # be excluded if the caller does not have access. Soft-deleted (ie: "trashed")
+        # properties are excluded by default. Returns an empty list if no relevant
+        # properties are found.
         # @param [String] filter
         #   Required. An expression for filtering the results of the request. Fields
         #   eligible for filtering are: `parent:`(The resource name of the parent account/
@@ -1254,26 +1224,59 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a subproperty and a subproperty event filter that applies to the
+        # created subproperty.
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest] google_analytics_admin_v1alpha_provision_subproperty_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def provision_property_subproperty(google_analytics_admin_v1alpha_provision_subproperty_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/properties:provisionSubproperty', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest::Representation
+          command.request_object = google_analytics_admin_v1alpha_provision_subproperty_request_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns a customized report of data access records. The report provides
         # records of each time a user reads Google Analytics reporting data. Access
         # records are retained for up to 2 years. Data Access Reports can be requested
         # for a property. Reports may be requested for any property, but dimensions that
         # aren't related to quota can only be requested on Google Analytics 360
         # properties. This method is only available to Administrators. These data access
-        # records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data API, and other
+        # records include GA UI Reporting, GA UI Explorations, GA Data API, and other
         # products like Firebase & Admob that can retrieve data from Google Analytics
         # through a linkage. These records don't include property configuration changes
         # like adding a stream or changing a property's time zone. For configuration
         # change history, see [searchChangeHistoryEvents](https://developers.google.com/
         # analytics/devguides/config/admin/v1/rest/v1alpha/accounts/
-        # searchChangeHistoryEvents).
+        # searchChangeHistoryEvents). To give your feedback on this API, complete the [
+        # Google Analytics Access Reports feedback](https://docs.google.com/forms/d/e/
+        # 1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform) form.
         # @param [String] entity
         #   The Data Access Report supports requesting at the property level or account
         #   level. If requested at the account level, Data Access Reports include all
         #   access for all properties under that account. To request at the property level,
-        #   entity should be for example 'properties/123' if "123" is your GA4 property
-        #   ID. To request at the account level, entity should be for example 'accounts/
-        #   1234' if "1234" is your GA4 Account ID.
+        #   entity should be for example 'properties/123' if "123" is your Google
+        #   Analytics property ID. To request at the account level, entity should be for
+        #   example 'accounts/1234' if "1234" is your Google Analytics Account ID.
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportRequest] google_analytics_admin_v1alpha_run_access_report_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3697,6 +3700,213 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an EventEditRule.
+        # @param [String] parent
+        #   Required. Example format: properties/123/dataStreams/456
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule] google_analytics_admin_v1alpha_event_edit_rule_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_property_data_stream_event_edit_rule(parent, google_analytics_admin_v1alpha_event_edit_rule_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/eventEditRules', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule::Representation
+          command.request_object = google_analytics_admin_v1alpha_event_edit_rule_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an EventEditRule.
+        # @param [String] name
+        #   Required. Example format: properties/123/dataStreams/456/eventEditRules/789
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_property_data_stream_event_edit_rule(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lookup for a single EventEditRule.
+        # @param [String] name
+        #   Required. The name of the EventEditRule to get. Example format: properties/123/
+        #   dataStreams/456/eventEditRules/789
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_data_stream_event_edit_rule(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists EventEditRules on a web data stream.
+        # @param [String] parent
+        #   Required. Example format: properties/123/dataStreams/456
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of resources to return. If unspecified, at most
+        #   50 resources will be returned. The maximum value is 200 (higher values will be
+        #   coerced to the maximum).
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListEventEditRules` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListEventEditRules` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListEventEditRulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListEventEditRulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_property_data_stream_event_edit_rules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/eventEditRules', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListEventEditRulesResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListEventEditRulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an EventEditRule.
+        # @param [String] name
+        #   Identifier. Resource name for this EventEditRule resource. Format: properties/`
+        #   property`/dataStreams/`data_stream`/eventEditRules/`event_edit_rule`
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule] google_analytics_admin_v1alpha_event_edit_rule_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_property_data_stream_event_edit_rule(name, google_analytics_admin_v1alpha_event_edit_rule_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule::Representation
+          command.request_object = google_analytics_admin_v1alpha_event_edit_rule_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes the processing order of event edit rules on the specified stream.
+        # @param [String] parent
+        #   Required. Example format: properties/123/dataStreams/456
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest] google_analytics_admin_v1alpha_reorder_event_edit_rules_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reorder_property_data_stream_event_edit_rule(parent, google_analytics_admin_v1alpha_reorder_event_edit_rules_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/eventEditRules:reorder', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest::Representation
+          command.request_object = google_analytics_admin_v1alpha_reorder_event_edit_rules_request_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a measurement protocol secret.
         # @param [String] parent
         #   Required. The parent resource where this secret will be created. Format:
@@ -3763,7 +3973,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single "GA4" MeasurementProtocolSecret.
+        # Lookup for a single MeasurementProtocolSecret.
         # @param [String] name
         #   Required. The name of the measurement protocol secret to lookup. Format:
         #   properties/`property`/dataStreams/`dataStream`/measurementProtocolSecrets/`
