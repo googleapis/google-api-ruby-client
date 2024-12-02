@@ -251,7 +251,7 @@ module Google
       
           property :gender, as: 'gender'
           property :google_product_category, as: 'googleProductCategory'
-          property :gtin, as: 'gtin'
+          collection :gtin, as: 'gtin'
           property :identifier_exists, as: 'identifierExists'
           property :image_link, as: 'imageLink'
           collection :included_destinations, as: 'includedDestinations'
@@ -456,6 +456,7 @@ module Google
           property :price, as: 'price', class: Google::Apis::MerchantapiProductsV1beta::Price, decorator: Google::Apis::MerchantapiProductsV1beta::Price::Representation
       
           property :program_label, as: 'programLabel'
+          property :shipping_label, as: 'shippingLabel'
           property :tier_label, as: 'tierLabel'
         end
       end
@@ -551,6 +552,7 @@ module Google
           property :attribute, as: 'attribute'
           collection :changes, as: 'changes', class: Google::Apis::MerchantapiProductsV1beta::ProductChange, decorator: Google::Apis::MerchantapiProductsV1beta::ProductChange::Representation
       
+          property :expiration_time, as: 'expirationTime'
           property :managing_account, as: 'managingAccount'
           property :resource, as: 'resource'
           property :resource_id, as: 'resourceId'

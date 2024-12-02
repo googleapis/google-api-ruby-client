@@ -220,10 +220,10 @@ module Google
         # @return [String]
         attr_accessor :google_product_category
       
-        # Global Trade Item Number ([GTIN](https://support.google.com/merchants/answer/
-        # 188494#gtin)) of the item.
+        # Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/
+        # 188494#gtin)) of the item. You can provide up to 10 GTINs.
         # Corresponds to the JSON property `gtin`
-        # @return [String]
+        # @return [Array<String>]
         attr_accessor :gtin
       
         # Set this value to false when the item does not have unique product identifiers
@@ -1093,6 +1093,13 @@ module Google
         # @return [String]
         attr_accessor :program_label
       
+        # The label of the shipping benefit. If the field has value, this offer has
+        # loyalty shipping benefit. If the field value isn't provided, the item is not
+        # eligible for loyalty shipping for the given loyalty tier.
+        # Corresponds to the JSON property `shippingLabel`
+        # @return [String]
+        attr_accessor :shipping_label
+      
         # The label of the tier within the loyalty program. Must match one of the labels
         # within the program.
         # Corresponds to the JSON property `tierLabel`
@@ -1110,6 +1117,7 @@ module Google
           @member_price_effective_date = args[:member_price_effective_date] if args.key?(:member_price_effective_date)
           @price = args[:price] if args.key?(:price)
           @program_label = args[:program_label] if args.key?(:program_label)
+          @shipping_label = args[:shipping_label] if args.key?(:shipping_label)
           @tier_label = args[:tier_label] if args.key?(:tier_label)
         end
       end
@@ -1191,7 +1199,9 @@ module Google
         attr_accessor :feed_label
       
         # The name of the product. Format: `"`product.name=accounts/`account`/products/`
-        # product``"`
+        # product``"` where the last section `product` consists of 4 parts: channel~
+        # content_language~feed_label~offer_id example for product name is "accounts/123/
+        # products/online~en~US~sku123"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1339,7 +1349,7 @@ module Google
       # This resource represents input data you submit for a product, not the
       # processed product that you see in Merchant Center, in Shopping ads, or across
       # Google surfaces. Product inputs, rules and supplemental data source data are
-      # combined to create the processed product. Required product input attributes to
+      # combined to create the processed Product. Required product input attributes to
       # pass data validation checks are primarily defined in the [Products Data
       # Specification](https://support.google.com/merchants/answer/188494). The
       # following attributes are required: feedLabel, contentLanguage and offerId.
@@ -1388,7 +1398,10 @@ module Google
         attr_accessor :feed_label
       
         # Identifier. The name of the product input. Format: `"`productinput.name=
-        # accounts/`account`/productInputs/`productinput``"`
+        # accounts/`account`/productInputs/`productinput``"` where the last section `
+        # productinput` consists of 4 parts: channel~content_language~feed_label~
+        # offer_id example for product input name is "accounts/123/productInputs/online~
+        # en~US~sku123"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1506,6 +1519,12 @@ module Google
         # @return [Array<Google::Apis::MerchantapiProductsV1beta::ProductChange>]
         attr_accessor :changes
       
+        # The product expiration time. This field will not bet set if the notification
+        # is sent for a product deletion event.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
         # The account that manages the merchant's account. can be the same as merchant
         # id if it is standalone account. Format : `accounts/`service_provider_id``
         # Corresponds to the JSON property `managingAccount`
@@ -1537,6 +1556,7 @@ module Google
           @account = args[:account] if args.key?(:account)
           @attribute = args[:attribute] if args.key?(:attribute)
           @changes = args[:changes] if args.key?(:changes)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @managing_account = args[:managing_account] if args.key?(:managing_account)
           @resource = args[:resource] if args.key?(:resource)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
