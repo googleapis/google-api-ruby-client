@@ -643,6 +643,65 @@ module Google
         end
       end
       
+      # Represents the metadata of the long-running operation.
+      class GoogleCloudOsconfigV2betaOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have been cancelled successfully have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
       # An OS Config resource representing a guest configuration policy. These
       # policies represent the desired state for VM instance guest environments
       # including packages to install or remove, package repository configurations,
@@ -2157,24 +2216,28 @@ module Google
       class TimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
-        # allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # Minutes of hour of day. Must be from 0 to 59.
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
       
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
