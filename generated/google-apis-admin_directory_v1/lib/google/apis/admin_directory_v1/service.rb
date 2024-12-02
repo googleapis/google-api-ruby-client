@@ -1624,7 +1624,7 @@ module Google
         # @param [String] user_key
         #   Email or immutable ID of the user if only those groups are to be listed, the
         #   given user is a member of. If it's an ID, it should match with the ID of the
-        #   user object.
+        #   user object. Cannot be used with the `customer` parameter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

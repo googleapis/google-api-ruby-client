@@ -673,6 +673,31 @@ module Google
         end
       end
       
+      # Represents a data capacity with some amount of current usage in bytes.
+      class ByteUsage
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The total capacity value, in bytes.
+        # Corresponds to the JSON property `capacityBytes`
+        # @return [Fixnum]
+        attr_accessor :capacity_bytes
+      
+        # Output only. The current usage value, in bytes.
+        # Corresponds to the JSON property `usedBytes`
+        # @return [Fixnum]
+        attr_accessor :used_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity_bytes = args[:capacity_bytes] if args.key?(:capacity_bytes)
+          @used_bytes = args[:used_bytes] if args.key?(:used_bytes)
+        end
+      end
+      
       # Public API: Resources.calendars
       class CalendarResource
         include Google::Apis::Core::Hashable
@@ -1042,6 +1067,11 @@ module Google
         # @return [String]
         attr_accessor :device_license_type
       
+        # Represents a data capacity with some amount of current usage in bytes.
+        # Corresponds to the JSON property `diskSpaceUsage`
+        # @return [Google::Apis::AdminDirectoryV1::ByteUsage]
+        attr_accessor :disk_space_usage
+      
         # Reports of disk space and other info about mounted/connected volumes.
         # Corresponds to the JSON property `diskVolumeReports`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport>]
@@ -1285,6 +1315,7 @@ module Google
           @device_files = args[:device_files] if args.key?(:device_files)
           @device_id = args[:device_id] if args.key?(:device_id)
           @device_license_type = args[:device_license_type] if args.key?(:device_license_type)
+          @disk_space_usage = args[:disk_space_usage] if args.key?(:disk_space_usage)
           @disk_volume_reports = args[:disk_volume_reports] if args.key?(:disk_volume_reports)
           @dock_mac_address = args[:dock_mac_address] if args.key?(:dock_mac_address)
           @etag = args[:etag] if args.key?(:etag)
@@ -2149,13 +2180,22 @@ module Google
         # following commands support adding payload: * `SET_VOLUME`: Payload is a
         # stringified JSON object in the form: ` "volume": 50 `. The volume has to be an
         # integer in the range [0,100]. * `DEVICE_START_CRD_SESSION`: Payload is
-        # optionally a stringified JSON object in the form: ` "ackedUserPresence": true `
-        # . `ackedUserPresence` is a boolean. By default, `ackedUserPresence` is set to `
-        # false`. To start a Chrome Remote Desktop session for an active device, set `
-        # ackedUserPresence` to `true`. * `REBOOT`: Payload is a stringified JSON object
-        # in the form: ` "user_session_delay_seconds": 300 `. The delay has to be in the
-        # range [0, 300]. * `FETCH_SUPPORT_PACKET`: Payload is optionally a stringified
-        # JSON object in the form: `"supportPacketDetails":` "issueCaseId":
+        # optionally a stringified JSON object in the form: ` "ackedUserPresence": true,
+        # "crdSessionType": string `. `ackedUserPresence` is a boolean. By default, `
+        # ackedUserPresence` is set to `false`. To start a Chrome Remote Desktop session
+        # for an active device, set `ackedUserPresence` to `true`. `crdSessionType` can
+        # only select from values `private` (which grants the remote admin exclusive
+        # control of the ChromeOS device) or `shared` (which allows the admin and the
+        # local user to share control of the ChromeOS device). If not set, `
+        # crdSessionType` defaults to `shared`. * `REBOOT`: Payload is a stringified
+        # JSON object in the form: ` "user_session_delay_seconds": 300 `. The `
+        # user_session_delay_seconds` is the amount of seconds to wait before rebooting
+        # the device if a user is logged in. It has to be an integer in the range [0,300]
+        # . When payload is not present for reboot, 0 delay is the default. Note: This
+        # only applies if an actual user is logged in, including a Guest. If the device
+        # is in the login screen or in Kiosk mode the value is not respected and the
+        # device immediately reboots. * `FETCH_SUPPORT_PACKET`: Payload is optionally a
+        # stringified JSON object in the form: `"supportPacketDetails":` "issueCaseId":
         # optional_support_case_id_string, "issueDescription":
         # optional_issue_description_string, "requestedDataCollectors": []`` The list of
         # available `data_collector_enums` are as following: Chrome System Information (
@@ -3344,13 +3384,7 @@ module Google
       class OrgUnit
         include Google::Apis::Core::Hashable
       
-        # Determines if a sub-organizational unit can inherit the settings of the parent
-        # organization. The default value is `false`, meaning a sub-organizational unit
-        # inherits the settings of the nearest parent organizational unit. This field is
-        # deprecated. Setting it to `true` is no longer supported and can have
-        # _unintended consequences_. For more information about inheritance and users in
-        # an organization structure, see the [administration help center](https://
-        # support.google.com/a/answer/4352075).
+        # This field is deprecated and setting its value has no effect.
         # Corresponds to the JSON property `blockInheritance`
         # @return [Boolean]
         attr_accessor :block_inheritance
@@ -3920,6 +3954,29 @@ module Google
         # @return [String]
         attr_accessor :assignee_type
       
+        # Optional. Note: Feature is available to Enterprise Standard, Enterprise Plus,
+        # Google Workspace for Education Plus and Cloud Identity Premium customers. No
+        # additional setup is needed to use the feature. The condition associated with
+        # this role assignment. A `RoleAssignment` with the `condition` field set will
+        # only take effect when the resource being accessed meets the condition. If `
+        # condition` is empty, the role (`role_id`) is applied to the actor (`
+        # assigned_to`) at the scope (`scope_type`) unconditionally. Currently, only two
+        # conditions are supported: - To make the `RoleAssignment` only applicable to [
+        # Security Groups](https://cloud.google.com/identity/docs/groups#group_types): `
+        # api.getAttribute('cloudidentity.googleapis.com/groups.labels', []).hasAny(['
+        # groups.security']) && resource.type == 'cloudidentity.googleapis.com/Group'` -
+        # To make the `RoleAssignment` not applicable to [Security Groups](https://cloud.
+        # google.com/identity/docs/groups#group_types): `!api.getAttribute('
+        # cloudidentity.googleapis.com/groups.labels', []).hasAny(['groups.security']) &&
+        # resource.type == 'cloudidentity.googleapis.com/Group'` Currently, the two
+        # condition strings have to be verbatim and they only work with the following [
+        # pre-built administrator roles](https://support.google.com/a/answer/2405986): -
+        # Groups Editor - Groups Reader The condition follows [Cloud IAM condition
+        # syntax](https://cloud.google.com/iam/docs/conditions-overview).
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
         # ETag of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -3959,6 +4016,7 @@ module Google
         def update!(**args)
           @assigned_to = args[:assigned_to] if args.key?(:assigned_to)
           @assignee_type = args[:assignee_type] if args.key?(:assignee_type)
+          @condition = args[:condition] if args.key?(:condition)
           @etag = args[:etag] if args.key?(:etag)
           @kind = args[:kind] if args.key?(:kind)
           @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
