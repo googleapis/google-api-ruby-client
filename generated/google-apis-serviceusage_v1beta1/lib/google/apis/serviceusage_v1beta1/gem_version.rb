@@ -16,13 +16,13 @@ module Google
   module Apis
     module ServiceusageV1beta1
       # Version of the google-apis-serviceusage_v1beta1 gem
-      GEM_VERSION = "0.59.0"
+      GEM_VERSION = "0.60.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.15.0"
+      GENERATOR_VERSION = "0.15.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20240712"
+      REVISION = "20241115"
     end
   end
 end
