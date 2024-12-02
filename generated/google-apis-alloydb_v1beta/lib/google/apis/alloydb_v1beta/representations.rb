@@ -58,7 +58,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudSqlBackupRunSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterUpgradeDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CsvExportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,7 +124,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FailoverInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +185,12 @@ module Google
       end
       
       class InstanceNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceUpgradeDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,7 +364,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlExportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,12 +418,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class StorageDatabasecenterPartnerapiV1mainDatabaseMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -412,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +479,12 @@ module Google
       end
       
       class StorageDatabasecenterPartnerapiV1mainRetentionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainTags
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -485,6 +539,18 @@ module Google
       end
       
       class UpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeClusterResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -558,6 +624,7 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :state, as: 'state'
+          hash :tags, as: 'tags'
           property :type, as: 'type'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -589,6 +656,15 @@ module Google
         end
       end
       
+      class CloudSqlBackupRunSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_run_id, :numeric_string => true, as: 'backupRunId'
+          property :instance_id, as: 'instanceId'
+          property :project, as: 'project'
+        end
+      end
+      
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -596,6 +672,8 @@ module Google
           property :automated_backup_policy, as: 'automatedBackupPolicy', class: Google::Apis::AlloydbV1beta::AutomatedBackupPolicy, decorator: Google::Apis::AlloydbV1beta::AutomatedBackupPolicy::Representation
       
           property :backup_source, as: 'backupSource', class: Google::Apis::AlloydbV1beta::BackupSource, decorator: Google::Apis::AlloydbV1beta::BackupSource::Representation
+      
+          property :cloudsql_backup_run_source, as: 'cloudsqlBackupRunSource', class: Google::Apis::AlloydbV1beta::CloudSqlBackupRunSource, decorator: Google::Apis::AlloydbV1beta::CloudSqlBackupRunSource::Representation
       
           property :cluster_type, as: 'clusterType'
           property :continuous_backup_config, as: 'continuousBackupConfig', class: Google::Apis::AlloydbV1beta::ContinuousBackupConfig, decorator: Google::Apis::AlloydbV1beta::ContinuousBackupConfig::Representation
@@ -638,10 +716,25 @@ module Google
       
           property :state, as: 'state'
           property :subscription_type, as: 'subscriptionType'
+          hash :tags, as: 'tags'
           property :trial_metadata, as: 'trialMetadata', class: Google::Apis::AlloydbV1beta::TrialMetadata, decorator: Google::Apis::AlloydbV1beta::TrialMetadata::Representation
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ClusterUpgradeDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_type, as: 'clusterType'
+          property :database_version, as: 'databaseVersion'
+          collection :instance_upgrade_details, as: 'instanceUpgradeDetails', class: Google::Apis::AlloydbV1beta::InstanceUpgradeDetails, decorator: Google::Apis::AlloydbV1beta::InstanceUpgradeDetails::Representation
+      
+          property :name, as: 'name'
+          collection :stage_info, as: 'stageInfo', class: Google::Apis::AlloydbV1beta::StageInfo, decorator: Google::Apis::AlloydbV1beta::StageInfo::Representation
+      
+          property :upgrade_status, as: 'upgradeStatus'
         end
       end
       
@@ -686,6 +779,16 @@ module Google
         end
       end
       
+      class CsvExportOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :escape_character, as: 'escapeCharacter'
+          property :field_delimiter, as: 'fieldDelimiter'
+          property :quote_character, as: 'quoteCharacter'
+          property :select_query, as: 'selectQuery'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -707,11 +810,31 @@ module Google
         end
       end
       
+      class ExportClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv_export_options, as: 'csvExportOptions', class: Google::Apis::AlloydbV1beta::CsvExportOptions, decorator: Google::Apis::AlloydbV1beta::CsvExportOptions::Representation
+      
+          property :database, as: 'database'
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::AlloydbV1beta::GcsDestination, decorator: Google::Apis::AlloydbV1beta::GcsDestination::Representation
+      
+          property :sql_export_options, as: 'sqlExportOptions', class: Google::Apis::AlloydbV1beta::SqlExportOptions, decorator: Google::Apis::AlloydbV1beta::SqlExportOptions::Representation
+      
+        end
+      end
+      
       class FailoverInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
           property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
         end
       end
       
@@ -822,6 +945,15 @@ module Google
       
           property :enable_outbound_public_ip, as: 'enableOutboundPublicIp'
           property :enable_public_ip, as: 'enablePublicIp'
+        end
+      end
+      
+      class InstanceUpgradeDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_type, as: 'instanceType'
+          property :name, as: 'name'
+          property :upgrade_status, as: 'upgradeStatus'
         end
       end
       
@@ -958,6 +1090,7 @@ module Google
           property :query_plans_per_minute, as: 'queryPlansPerMinute'
           property :record_application_tags, as: 'recordApplicationTags'
           property :track_active_queries, as: 'trackActiveQueries'
+          property :track_client_address, as: 'trackClientAddress'
           property :track_wait_event_types, as: 'trackWaitEventTypes'
           property :track_wait_events, as: 'trackWaitEvents'
         end
@@ -1055,6 +1188,7 @@ module Google
       class RestartInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_ids, as: 'nodeIds'
           property :request_id, as: 'requestId'
           property :validate_only, as: 'validateOnly'
         end
@@ -1082,11 +1216,30 @@ module Google
         end
       end
       
+      class SqlExportOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clean_target_objects, as: 'cleanTargetObjects'
+          property :if_exist_target_objects, as: 'ifExistTargetObjects'
+          property :schema_only, as: 'schemaOnly'
+          collection :tables, as: 'tables'
+        end
+      end
+      
       class SslConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ca_source, as: 'caSource'
           property :ssl_mode, as: 'sslMode'
+        end
+      end
+      
+      class StageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :logs_url, as: 'logsUrl'
+          property :stage, as: 'stage'
+          property :status, as: 'status'
         end
       end
       
@@ -1102,6 +1255,7 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic_failover_routing_configured, as: 'automaticFailoverRoutingConfigured'
           property :availability_type, as: 'availabilityType'
           property :cross_region_replica_configured, as: 'crossRegionReplicaConfigured'
           property :external_replica_configured, as: 'externalReplicaConfigured'
@@ -1141,23 +1295,8 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainCustomMetadataData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :database_metadata, as: 'databaseMetadata', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseMetadata, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseMetadata::Representation
+          collection :internal_resource_metadata, as: 'internalResourceMetadata', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata::Representation
       
-        end
-      end
-      
-      class StorageDatabasecenterPartnerapiV1mainDatabaseMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration::Representation
-      
-          property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
-      
-          property :product, as: 'product', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct::Representation
-      
-          property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
-      
-          property :resource_name, as: 'resourceName'
         end
       end
       
@@ -1194,6 +1333,7 @@ module Google
           property :resource_name, as: 'resourceName'
           property :signal_class, as: 'signalClass'
           property :signal_id, as: 'signalId'
+          property :signal_severity, as: 'signalSeverity'
           property :signal_type, as: 'signalType'
           property :state, as: 'state'
         end
@@ -1222,6 +1362,7 @@ module Google
           property :current_state, as: 'currentState'
           property :custom_metadata, as: 'customMetadata', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainCustomMetadataData, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainCustomMetadataData::Representation
       
+          property :edition, as: 'edition'
           collection :entitlements, as: 'entitlements', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainEntitlement, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainEntitlement::Representation
       
           property :expected_state, as: 'expectedState'
@@ -1233,10 +1374,13 @@ module Google
       
           property :primary_resource_id, as: 'primaryResourceId', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
+          property :primary_resource_location, as: 'primaryResourceLocation'
           property :product, as: 'product', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct::Representation
       
           property :resource_container, as: 'resourceContainer'
           property :resource_name, as: 'resourceName'
+          property :tags_set, as: 'tagsSet', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainTags, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainTags::Representation
+      
           property :updation_time, as: 'updationTime'
           property :user_label_set, as: 'userLabelSet', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUserLabels, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUserLabels::Representation
       
@@ -1265,11 +1409,27 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration::Representation
+      
+          property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
+      
+          property :product, as: 'product', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct::Representation
+      
+          property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
+      
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpu_count, as: 'cpuCount'
           property :memory_size_in_bytes, :numeric_string => true, as: 'memorySizeInBytes'
+          property :shard_count, as: 'shardCount'
         end
       end
       
@@ -1297,9 +1457,18 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainRetentionSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_based_retention, as: 'durationBasedRetention'
           property :quantity_based_retention, as: 'quantityBasedRetention'
           property :retention_unit, as: 'retentionUnit'
           property :time_based_retention, as: 'timeBasedRetention'
+          property :timestamp_based_retention_time, as: 'timestampBasedRetentionTime'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainTags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :tags, as: 'tags'
         end
       end
       
@@ -1371,6 +1540,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :grace_end_time, as: 'graceEndTime'
           property :start_time, as: 'startTime'
           property :upgrade_time, as: 'upgradeTime'
         end
@@ -1383,10 +1553,31 @@ module Google
         end
       end
       
+      class UpgradeClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :request_id, as: 'requestId'
+          property :validate_only, as: 'validateOnly'
+          property :version, as: 'version'
+        end
+      end
+      
+      class UpgradeClusterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cluster_upgrade_details, as: 'clusterUpgradeDetails', class: Google::Apis::AlloydbV1beta::ClusterUpgradeDetails, decorator: Google::Apis::AlloydbV1beta::ClusterUpgradeDetails::Representation
+      
+          property :message, as: 'message'
+          property :status, as: 'status'
+        end
+      end
+      
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :database_roles, as: 'databaseRoles'
+          property :keep_extra_roles, as: 'keepExtraRoles'
           property :name, as: 'name'
           property :password, as: 'password'
           property :user_type, as: 'userType'
