@@ -341,10 +341,26 @@ module Google
       class ColumnSettings
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether the column should be left / middle / right aligned
+        # Corresponds to the JSON property `alignment`
+        # @return [String]
+        attr_accessor :alignment
+      
         # Required. The id of the column.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
+      
+        # Optional. Display name of the column
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. The thresholds used to determine how the table cell should be
+        # rendered given the time series' current value.
+        # Corresponds to the JSON property `thresholds`
+        # @return [Array<Google::Apis::MonitoringV1::Threshold>]
+        attr_accessor :thresholds
       
         # Required. Whether the column should be visible on page load.
         # Corresponds to the JSON property `visible`
@@ -358,7 +374,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alignment = args[:alignment] if args.key?(:alignment)
           @column = args[:column] if args.key?(:column)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @thresholds = args[:thresholds] if args.key?(:thresholds)
           @visible = args[:visible] if args.key?(:visible)
         end
       end
@@ -486,12 +505,24 @@ module Google
         # @return [String]
         attr_accessor :filter_type
       
-        # Required. The key for the label
+        # Optional. The key for the label. This must be omitted if the filter_type is
+        # VALUE_ONLY but is required otherwise.
         # Corresponds to the JSON property `labelKey`
         # @return [String]
         attr_accessor :label_key
       
-        # A variable-length string value.
+        # An array of strings
+        # Corresponds to the JSON property `stringArray`
+        # @return [Google::Apis::MonitoringV1::StringArray]
+        attr_accessor :string_array
+      
+        # An array of strings
+        # Corresponds to the JSON property `stringArrayValue`
+        # @return [Google::Apis::MonitoringV1::StringArray]
+        attr_accessor :string_array_value
+      
+        # A variable-length string value. If this field is set, value_type must be set
+        # to STRING or VALUE_TYPE_UNSPECIFIED
         # Corresponds to the JSON property `stringValue`
         # @return [String]
         attr_accessor :string_value
@@ -503,6 +534,19 @@ module Google
         # @return [String]
         attr_accessor :template_variable
       
+        # TimeSeriesQuery collects the set of supported methods for querying time series
+        # data from the Stackdriver metrics API.
+        # Corresponds to the JSON property `timeSeriesQuery`
+        # @return [Google::Apis::MonitoringV1::TimeSeriesQuery]
+        attr_accessor :time_series_query
+      
+        # The type of the filter value. If value_type is not provided, it will be
+        # inferred from the default_value. If neither value_type nor default_value is
+        # provided, value_type will be set to STRING by default.
+        # Corresponds to the JSON property `valueType`
+        # @return [String]
+        attr_accessor :value_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -511,8 +555,12 @@ module Google
         def update!(**args)
           @filter_type = args[:filter_type] if args.key?(:filter_type)
           @label_key = args[:label_key] if args.key?(:label_key)
+          @string_array = args[:string_array] if args.key?(:string_array)
+          @string_array_value = args[:string_array_value] if args.key?(:string_array_value)
           @string_value = args[:string_value] if args.key?(:string_value)
           @template_variable = args[:template_variable] if args.key?(:template_variable)
+          @time_series_query = args[:time_series_query] if args.key?(:time_series_query)
+          @value_type = args[:value_type] if args.key?(:value_type)
         end
       end
       
@@ -1259,7 +1307,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The number of columns in the mosaic grid. The number of columns must be
-        # between 1 and 12, inclusive.
+        # between 1 and 48, inclusive.
         # Corresponds to the JSON property `columns`
         # @return [Fixnum]
         attr_accessor :columns
@@ -1594,8 +1642,8 @@ module Google
         # @return [String]
         attr_accessor :end
       
-        # A PromQL query string. Query lanauge documentation: https://prometheus.io/docs/
-        # prometheus/latest/querying/basics/.
+        # A PromQL query string. Query language documentation: https://prometheus.io/
+        # docs/prometheus/latest/querying/basics/.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -1623,8 +1671,8 @@ module Google
       class QueryInstantRequest
         include Google::Apis::Core::Hashable
       
-        # A PromQL query string. Query lanauge documentation: https://prometheus.io/docs/
-        # prometheus/latest/querying/basics/.
+        # A PromQL query string. Query language documentation: https://prometheus.io/
+        # docs/prometheus/latest/querying/basics/.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -1702,8 +1750,8 @@ module Google
         # @return [String]
         attr_accessor :end
       
-        # A PromQL query string. Query lanauge documentation: https://prometheus.io/docs/
-        # prometheus/latest/querying/basics/.
+        # A PromQL query string. Query language documentation: https://prometheus.io/
+        # docs/prometheus/latest/querying/basics/.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -2134,6 +2182,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # An array of strings
+      class StringArray
+        include Google::Apis::Core::Hashable
+      
+        # The values of the array
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
