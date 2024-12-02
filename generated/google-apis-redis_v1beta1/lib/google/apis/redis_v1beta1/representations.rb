@@ -28,13 +28,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutomatedBackupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AvailabilityConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Backup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupCollection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -64,7 +94,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterMaintenancePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterMaintenanceSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterPersistenceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterWeeklyMaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,13 +130,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CustomMetadataData
+      class ConnectionDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DatabaseMetadata
+      class CrossClusterReplicationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomMetadataData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportBackupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +209,18 @@ module Google
       end
       
       class FailoverInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FixedFrequencySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsBackupSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,6 +280,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InternalResourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBackupCollectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClustersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,7 +346,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedBackupSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedCertificateAuthority
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Membership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscServiceAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RdbConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +437,18 @@ module Google
       end
       
       class ReconciliationOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoteCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RescheduleClusterMaintenanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -347,6 +473,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Tags
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -407,13 +539,61 @@ module Google
         end
       end
       
+      class AutomatedBackupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automated_backup_mode, as: 'automatedBackupMode'
+          property :fixed_frequency_schedule, as: 'fixedFrequencySchedule', class: Google::Apis::RedisV1beta1::FixedFrequencySchedule, decorator: Google::Apis::RedisV1beta1::FixedFrequencySchedule::Representation
+      
+          property :retention, as: 'retention'
+        end
+      end
+      
       class AvailabilityConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic_failover_routing_configured, as: 'automaticFailoverRoutingConfigured'
           property :availability_type, as: 'availabilityType'
           property :cross_region_replica_configured, as: 'crossRegionReplicaConfigured'
           property :external_replica_configured, as: 'externalReplicaConfigured'
           property :promotable_replica_configured, as: 'promotableReplicaConfigured'
+        end
+      end
+      
+      class Backup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_files, as: 'backupFiles', class: Google::Apis::RedisV1beta1::BackupFile, decorator: Google::Apis::RedisV1beta1::BackupFile::Representation
+      
+          property :backup_type, as: 'backupType'
+          property :cluster, as: 'cluster'
+          property :cluster_uid, as: 'clusterUid'
+          property :create_time, as: 'createTime'
+          property :engine_version, as: 'engineVersion'
+          property :expire_time, as: 'expireTime'
+          property :name, as: 'name'
+          property :node_type, as: 'nodeType'
+          property :replica_count, as: 'replicaCount'
+          property :shard_count, as: 'shardCount'
+          property :state, as: 'state'
+          property :total_size_bytes, :numeric_string => true, as: 'totalSizeBytes'
+        end
+      end
+      
+      class BackupClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_id, as: 'backupId'
+          property :ttl, as: 'ttl'
+        end
+      end
+      
+      class BackupCollection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster'
+          property :cluster_uid, as: 'clusterUid'
+          property :name, as: 'name'
         end
       end
       
@@ -424,6 +604,15 @@ module Google
           property :backup_retention_settings, as: 'backupRetentionSettings', class: Google::Apis::RedisV1beta1::RetentionSettings, decorator: Google::Apis::RedisV1beta1::RetentionSettings::Representation
       
           property :point_in_time_recovery_enabled, as: 'pointInTimeRecoveryEnabled'
+        end
+      end
+      
+      class BackupFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :file_name, as: 'fileName'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
         end
       end
       
@@ -458,9 +647,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authorization_mode, as: 'authorizationMode'
+          property :automated_backup_config, as: 'automatedBackupConfig', class: Google::Apis::RedisV1beta1::AutomatedBackupConfig, decorator: Google::Apis::RedisV1beta1::AutomatedBackupConfig::Representation
+      
+          property :backup_collection, as: 'backupCollection'
+          collection :cluster_endpoints, as: 'clusterEndpoints', class: Google::Apis::RedisV1beta1::ClusterEndpoint, decorator: Google::Apis::RedisV1beta1::ClusterEndpoint::Representation
+      
           property :create_time, as: 'createTime'
+          property :cross_cluster_replication_config, as: 'crossClusterReplicationConfig', class: Google::Apis::RedisV1beta1::CrossClusterReplicationConfig, decorator: Google::Apis::RedisV1beta1::CrossClusterReplicationConfig::Representation
+      
           property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           collection :discovery_endpoints, as: 'discoveryEndpoints', class: Google::Apis::RedisV1beta1::DiscoveryEndpoint, decorator: Google::Apis::RedisV1beta1::DiscoveryEndpoint::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::RedisV1beta1::GcsBackupSource, decorator: Google::Apis::RedisV1beta1::GcsBackupSource::Representation
+      
+          property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::RedisV1beta1::ClusterMaintenancePolicy, decorator: Google::Apis::RedisV1beta1::ClusterMaintenancePolicy::Representation
+      
+          property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::RedisV1beta1::ClusterMaintenanceSchedule, decorator: Google::Apis::RedisV1beta1::ClusterMaintenanceSchedule::Representation
+      
+          property :managed_backup_source, as: 'managedBackupSource', class: Google::Apis::RedisV1beta1::ManagedBackupSource, decorator: Google::Apis::RedisV1beta1::ManagedBackupSource::Representation
       
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
@@ -470,6 +674,8 @@ module Google
           collection :psc_configs, as: 'pscConfigs', class: Google::Apis::RedisV1beta1::PscConfig, decorator: Google::Apis::RedisV1beta1::PscConfig::Representation
       
           collection :psc_connections, as: 'pscConnections', class: Google::Apis::RedisV1beta1::PscConnection, decorator: Google::Apis::RedisV1beta1::PscConnection::Representation
+      
+          collection :psc_service_attachments, as: 'pscServiceAttachments', class: Google::Apis::RedisV1beta1::PscServiceAttachment, decorator: Google::Apis::RedisV1beta1::PscServiceAttachment::Representation
       
           hash :redis_configs, as: 'redisConfigs'
           property :replica_count, as: 'replicaCount'
@@ -485,6 +691,32 @@ module Google
         end
       end
       
+      class ClusterEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connections, as: 'connections', class: Google::Apis::RedisV1beta1::ConnectionDetail, decorator: Google::Apis::RedisV1beta1::ConnectionDetail::Representation
+      
+        end
+      end
+      
+      class ClusterMaintenancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
+          collection :weekly_maintenance_window, as: 'weeklyMaintenanceWindow', class: Google::Apis::RedisV1beta1::ClusterWeeklyMaintenanceWindow, decorator: Google::Apis::RedisV1beta1::ClusterWeeklyMaintenanceWindow::Representation
+      
+        end
+      end
+      
+      class ClusterMaintenanceSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class ClusterPersistenceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -492,6 +724,15 @@ module Google
       
           property :mode, as: 'mode'
           property :rdb_config, as: 'rdbConfig', class: Google::Apis::RedisV1beta1::RdbConfig, decorator: Google::Apis::RedisV1beta1::RdbConfig::Representation
+      
+        end
+      end
+      
+      class ClusterWeeklyMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :start_time, as: 'startTime', class: Google::Apis::RedisV1beta1::TimeOfDay, decorator: Google::Apis::RedisV1beta1::TimeOfDay::Representation
       
         end
       end
@@ -504,26 +745,33 @@ module Google
         end
       end
       
-      class CustomMetadataData
+      class ConnectionDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :database_metadata, as: 'databaseMetadata', class: Google::Apis::RedisV1beta1::DatabaseMetadata, decorator: Google::Apis::RedisV1beta1::DatabaseMetadata::Representation
+          property :psc_connection, as: 'pscConnection', class: Google::Apis::RedisV1beta1::PscConnection, decorator: Google::Apis::RedisV1beta1::PscConnection::Representation
       
         end
       end
       
-      class DatabaseMetadata
+      class CrossClusterReplicationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::RedisV1beta1::BackupConfiguration, decorator: Google::Apis::RedisV1beta1::BackupConfiguration::Representation
+          property :cluster_role, as: 'clusterRole'
+          property :membership, as: 'membership', class: Google::Apis::RedisV1beta1::Membership, decorator: Google::Apis::RedisV1beta1::Membership::Representation
       
-          property :backup_run, as: 'backupRun', class: Google::Apis::RedisV1beta1::BackupRun, decorator: Google::Apis::RedisV1beta1::BackupRun::Representation
+          property :primary_cluster, as: 'primaryCluster', class: Google::Apis::RedisV1beta1::RemoteCluster, decorator: Google::Apis::RedisV1beta1::RemoteCluster::Representation
       
-          property :product, as: 'product', class: Google::Apis::RedisV1beta1::Product, decorator: Google::Apis::RedisV1beta1::Product::Representation
+          collection :secondary_clusters, as: 'secondaryClusters', class: Google::Apis::RedisV1beta1::RemoteCluster, decorator: Google::Apis::RedisV1beta1::RemoteCluster::Representation
       
-          property :resource_id, as: 'resourceId', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
+          property :update_time, as: 'updateTime'
+        end
+      end
       
-          property :resource_name, as: 'resourceName'
+      class CustomMetadataData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :internal_resource_metadata, as: 'internalResourceMetadata', class: Google::Apis::RedisV1beta1::InternalResourceMetadata, decorator: Google::Apis::RedisV1beta1::InternalResourceMetadata::Representation
+      
         end
       end
       
@@ -560,6 +808,7 @@ module Google
           property :resource_name, as: 'resourceName'
           property :signal_class, as: 'signalClass'
           property :signal_id, as: 'signalId'
+          property :signal_severity, as: 'signalSeverity'
           property :signal_type, as: 'signalType'
           property :state, as: 'state'
         end
@@ -588,6 +837,7 @@ module Google
           property :current_state, as: 'currentState'
           property :custom_metadata, as: 'customMetadata', class: Google::Apis::RedisV1beta1::CustomMetadataData, decorator: Google::Apis::RedisV1beta1::CustomMetadataData::Representation
       
+          property :edition, as: 'edition'
           collection :entitlements, as: 'entitlements', class: Google::Apis::RedisV1beta1::Entitlement, decorator: Google::Apis::RedisV1beta1::Entitlement::Representation
       
           property :expected_state, as: 'expectedState'
@@ -599,10 +849,13 @@ module Google
       
           property :primary_resource_id, as: 'primaryResourceId', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
       
+          property :primary_resource_location, as: 'primaryResourceLocation'
           property :product, as: 'product', class: Google::Apis::RedisV1beta1::Product, decorator: Google::Apis::RedisV1beta1::Product::Representation
       
           property :resource_container, as: 'resourceContainer'
           property :resource_name, as: 'resourceName'
+          property :tags_set, as: 'tagsSet', class: Google::Apis::RedisV1beta1::Tags, decorator: Google::Apis::RedisV1beta1::Tags::Representation
+      
           property :updation_time, as: 'updationTime'
           property :user_label_set, as: 'userLabelSet', class: Google::Apis::RedisV1beta1::UserLabels, decorator: Google::Apis::RedisV1beta1::UserLabels::Representation
       
@@ -647,6 +900,13 @@ module Google
         end
       end
       
+      class ExportBackupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_bucket, as: 'gcsBucket'
+        end
+      end
+      
       class ExportInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -659,6 +919,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_protection_mode, as: 'dataProtectionMode'
+        end
+      end
+      
+      class FixedFrequencySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime', class: Google::Apis::RedisV1beta1::TimeOfDay, decorator: Google::Apis::RedisV1beta1::TimeOfDay::Representation
+      
+        end
+      end
+      
+      class GcsBackupSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :uris, as: 'uris'
         end
       end
       
@@ -774,6 +1049,41 @@ module Google
         end
       end
       
+      class InternalResourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::RedisV1beta1::BackupConfiguration, decorator: Google::Apis::RedisV1beta1::BackupConfiguration::Representation
+      
+          property :backup_run, as: 'backupRun', class: Google::Apis::RedisV1beta1::BackupRun, decorator: Google::Apis::RedisV1beta1::BackupRun::Representation
+      
+          property :product, as: 'product', class: Google::Apis::RedisV1beta1::Product, decorator: Google::Apis::RedisV1beta1::Product::Representation
+      
+          property :resource_id, as: 'resourceId', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
+      
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class ListBackupCollectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_collections, as: 'backupCollections', class: Google::Apis::RedisV1beta1::BackupCollection, decorator: Google::Apis::RedisV1beta1::BackupCollection::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListBackupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backups, as: 'backups', class: Google::Apis::RedisV1beta1::Backup, decorator: Google::Apis::RedisV1beta1::Backup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListClustersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -828,6 +1138,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpu_count, as: 'cpuCount'
           property :memory_size_in_bytes, :numeric_string => true, as: 'memorySizeInBytes'
+          property :shard_count, as: 'shardCount'
+          property :vcpu_count, as: 'vcpuCount'
         end
       end
       
@@ -852,10 +1164,27 @@ module Google
         end
       end
       
+      class ManagedBackupSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+        end
+      end
+      
       class ManagedCertificateAuthority
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ca_certs, as: 'caCerts', class: Google::Apis::RedisV1beta1::CertChain, decorator: Google::Apis::RedisV1beta1::CertChain::Representation
+      
+        end
+      end
+      
+      class Membership
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_cluster, as: 'primaryCluster', class: Google::Apis::RedisV1beta1::RemoteCluster, decorator: Google::Apis::RedisV1beta1::RemoteCluster::Representation
+      
+          collection :secondary_clusters, as: 'secondaryClusters', class: Google::Apis::RedisV1beta1::RemoteCluster, decorator: Google::Apis::RedisV1beta1::RemoteCluster::Representation
       
         end
       end
@@ -952,10 +1281,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
+          property :connection_type, as: 'connectionType'
           property :forwarding_rule, as: 'forwardingRule'
           property :network, as: 'network'
           property :project_id, as: 'projectId'
           property :psc_connection_id, as: 'pscConnectionId'
+          property :psc_connection_status, as: 'pscConnectionStatus'
+          property :service_attachment, as: 'serviceAttachment'
+        end
+      end
+      
+      class PscServiceAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_type, as: 'connectionType'
+          property :service_attachment, as: 'serviceAttachment'
         end
       end
       
@@ -975,6 +1315,22 @@ module Google
         end
       end
       
+      class RemoteCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster'
+          property :uid, as: 'uid'
+        end
+      end
+      
+      class RescheduleClusterMaintenanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reschedule_type, as: 'rescheduleType'
+          property :schedule_time, as: 'scheduleTime'
+        end
+      end
+      
       class RescheduleMaintenanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -986,9 +1342,11 @@ module Google
       class RetentionSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_based_retention, as: 'durationBasedRetention'
           property :quantity_based_retention, as: 'quantityBasedRetention'
           property :retention_unit, as: 'retentionUnit'
           property :time_based_retention, as: 'timeBasedRetention'
+          property :timestamp_based_retention_time, as: 'timestampBasedRetentionTime'
         end
       end
       
@@ -1006,6 +1364,13 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class Tags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :tags, as: 'tags'
         end
       end
       
