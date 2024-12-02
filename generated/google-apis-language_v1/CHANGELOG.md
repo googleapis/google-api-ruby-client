@@ -1,5 +1,10 @@
 # Release history for google-apis-language_v1
 
+### v0.24.0 (2024-12-02)
+
+* Regenerated from discovery document revision 20241103
+* Regenerated using generator version 0.15.1
+
 ### v0.23.0 (2024-05-19)
 
 * Regenerated from discovery document revision 20240303
