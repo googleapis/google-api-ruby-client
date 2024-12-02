@@ -1005,6 +1005,44 @@ module Google
         end
       end
       
+      # A rubric criterion. Each criterion is a dimension on which performance is
+      # rated.
+      class Criterion
+        include Google::Apis::Core::Hashable
+      
+        # The description of the criterion.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The criterion ID. On creation, an ID is assigned.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The list of levels within this criterion.
+        # Corresponds to the JSON property `levels`
+        # @return [Array<Google::Apis::ClassroomV1::Level>]
+        attr_accessor :levels
+      
+        # The title of the criterion.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @levels = args[:levels] if args.key?(:levels)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
@@ -1502,6 +1540,45 @@ module Google
         end
       end
       
+      # A level of the criterion.
+      class Level
+        include Google::Apis::Core::Hashable
+      
+        # The description of the level.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The level ID. On creation, an ID is assigned.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional points associated with this level. If set, all levels within the
+        # rubric must specify points and the value must be distinct across all levels
+        # within a single criterion. 0 is distinct from no points.
+        # Corresponds to the JSON property `points`
+        # @return [Float]
+        attr_accessor :points
+      
+        # The title of the level. If the level has no points set, title must be set.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @points = args[:points] if args.key?(:points)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # URL item.
       class Link
         include Google::Apis::Core::Hashable
@@ -1766,6 +1843,32 @@ module Google
         def update!(**args)
           @invitations = args[:invitations] if args.key?(:invitations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response when listing rubrics.
+      class ListRubricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token identifying the next page of results to return. If empty, no further
+        # results are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Rubrics that match the request.
+        # Corresponds to the JSON property `rubrics`
+        # @return [Array<Google::Apis::ClassroomV1::Rubric>]
+        attr_accessor :rubrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rubrics = args[:rubrics] if args.key?(:rubrics)
         end
       end
       
@@ -2150,6 +2253,103 @@ module Google
         end
       end
       
+      # The rubric of the course work. A rubric is a scoring guide used to evaluate
+      # student work and give feedback. For further details, see [Rubrics structure
+      # and known limitations](/classroom/rubrics/limitations).
+      class Rubric
+        include Google::Apis::Core::Hashable
+      
+        # Identifier of the course. Read-only.
+        # Corresponds to the JSON property `courseId`
+        # @return [String]
+        attr_accessor :course_id
+      
+        # Identifier for the course work this corresponds to. Read-only.
+        # Corresponds to the JSON property `courseWorkId`
+        # @return [String]
+        attr_accessor :course_work_id
+      
+        # Output only. Timestamp when this rubric was created. Read-only.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # List of criteria. Each criterion is a dimension on which performance is rated.
+        # Corresponds to the JSON property `criteria`
+        # @return [Array<Google::Apis::ClassroomV1::Criterion>]
+        attr_accessor :criteria
+      
+        # Classroom-assigned identifier for the rubric. This is unique among rubrics for
+        # the relevant course work. Read-only.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Input only. Immutable. Google Sheets ID of the spreadsheet. This spreadsheet
+        # must contain formatted rubric settings. See [Create or reuse a rubric for an
+        # assignment](https://support.google.com/edu/classroom/answer/9335069). Use of
+        # this field requires the `https://www.googleapis.com/auth/spreadsheets.readonly`
+        # or `https://www.googleapis.com/auth/spreadsheets` scope.
+        # Corresponds to the JSON property `sourceSpreadsheetId`
+        # @return [String]
+        attr_accessor :source_spreadsheet_id
+      
+        # Output only. Timestamp of the most recent change to this rubric. Read-only.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @course_work_id = args[:course_work_id] if args.key?(:course_work_id)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @criteria = args[:criteria] if args.key?(:criteria)
+          @id = args[:id] if args.key?(:id)
+          @source_spreadsheet_id = args[:source_spreadsheet_id] if args.key?(:source_spreadsheet_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A rubric grade set for the student submission. There is at most one entry per
+      # rubric criterion.
+      class RubricGrade
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Criterion ID.
+        # Corresponds to the JSON property `criterionId`
+        # @return [String]
+        attr_accessor :criterion_id
+      
+        # Optional. Optional level ID of the selected level. If empty, no level was
+        # selected.
+        # Corresponds to the JSON property `levelId`
+        # @return [String]
+        attr_accessor :level_id
+      
+        # Optional. Optional points assigned for this criterion, typically based on the
+        # level. Levels might or might not have points. If unset, no points were set for
+        # this criterion.
+        # Corresponds to the JSON property `points`
+        # @return [Float]
+        attr_accessor :points
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @criterion_id = args[:criterion_id] if args.key?(:criterion_id)
+          @level_id = args[:level_id] if args.key?(:level_id)
+          @points = args[:points] if args.key?(:points)
+        end
+      end
+      
       # Drive file that is used as material for course work.
       class SharedDriveFile
         include Google::Apis::Core::Hashable
@@ -2304,6 +2504,14 @@ module Google
         # @return [Float]
         attr_accessor :assigned_grade
       
+        # Assigned rubric grades based on the rubric's Criteria. This map is empty if
+        # there is no rubric attached to this course work or if a rubric is attached,
+        # but no grades have been set on any Criteria. Entries are only populated for
+        # grades that have been set. Key: The rubric's criterion ID. Read-only.
+        # Corresponds to the JSON property `assignedRubricGrades`
+        # @return [Hash<String,Google::Apis::ClassroomV1::RubricGrade>]
+        attr_accessor :assigned_rubric_grades
+      
         # Student work for an assignment.
         # Corresponds to the JSON property `assignmentSubmission`
         # @return [Google::Apis::ClassroomV1::AssignmentSubmission]
@@ -2344,6 +2552,14 @@ module Google
         # Corresponds to the JSON property `draftGrade`
         # @return [Float]
         attr_accessor :draft_grade
+      
+        # Pending rubric grades based on the rubric's criteria. This map is empty if
+        # there is no rubric attached to this course work or if a rubric is attached,
+        # but no grades have been set on any criteria. Entries are only populated for
+        # grades that have been set. Key: The rubric's criterion ID. Read-only.
+        # Corresponds to the JSON property `draftRubricGrades`
+        # @return [Hash<String,Google::Apis::ClassroomV1::RubricGrade>]
+        attr_accessor :draft_rubric_grades
       
         # Classroom-assigned Identifier for the student submission. This is unique among
         # submissions for the relevant course work. Read-only.
@@ -2396,6 +2612,7 @@ module Google
         def update!(**args)
           @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
           @assigned_grade = args[:assigned_grade] if args.key?(:assigned_grade)
+          @assigned_rubric_grades = args[:assigned_rubric_grades] if args.key?(:assigned_rubric_grades)
           @assignment_submission = args[:assignment_submission] if args.key?(:assignment_submission)
           @associated_with_developer = args[:associated_with_developer] if args.key?(:associated_with_developer)
           @course_id = args[:course_id] if args.key?(:course_id)
@@ -2403,6 +2620,7 @@ module Google
           @course_work_type = args[:course_work_type] if args.key?(:course_work_type)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @draft_grade = args[:draft_grade] if args.key?(:draft_grade)
+          @draft_rubric_grades = args[:draft_rubric_grades] if args.key?(:draft_rubric_grades)
           @id = args[:id] if args.key?(:id)
           @late = args[:late] if args.key?(:late)
           @multiple_choice_submission = args[:multiple_choice_submission] if args.key?(:multiple_choice_submission)

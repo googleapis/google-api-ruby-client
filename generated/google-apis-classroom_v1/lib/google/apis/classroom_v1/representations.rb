@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Criterion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Level
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Link
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +281,12 @@ module Google
       end
       
       class ListInvitationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRubricsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -359,6 +377,18 @@ module Google
       end
       
       class ReturnStudentSubmissionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Rubric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RubricGrade
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -691,6 +721,17 @@ module Google
         end
       end
       
+      class Criterion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :id, as: 'id'
+          collection :levels, as: 'levels', class: Google::Apis::ClassroomV1::Level, decorator: Google::Apis::ClassroomV1::Level::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -830,6 +871,16 @@ module Google
         end
       end
       
+      class Level
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :points, as: 'points'
+          property :title, as: 'title'
+        end
+      end
+      
       class Link
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -917,6 +968,15 @@ module Google
           collection :invitations, as: 'invitations', class: Google::Apis::ClassroomV1::Invitation, decorator: Google::Apis::ClassroomV1::Invitation::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListRubricsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rubrics, as: 'rubrics', class: Google::Apis::ClassroomV1::Rubric, decorator: Google::Apis::ClassroomV1::Rubric::Representation
+      
         end
       end
       
@@ -1051,6 +1111,29 @@ module Google
         end
       end
       
+      class Rubric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_id, as: 'courseId'
+          property :course_work_id, as: 'courseWorkId'
+          property :creation_time, as: 'creationTime'
+          collection :criteria, as: 'criteria', class: Google::Apis::ClassroomV1::Criterion, decorator: Google::Apis::ClassroomV1::Criterion::Representation
+      
+          property :id, as: 'id'
+          property :source_spreadsheet_id, as: 'sourceSpreadsheetId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class RubricGrade
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :criterion_id, as: 'criterionId'
+          property :level_id, as: 'levelId'
+          property :points, as: 'points'
+        end
+      end
+      
       class SharedDriveFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1100,6 +1183,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alternate_link, as: 'alternateLink'
           property :assigned_grade, as: 'assignedGrade'
+          hash :assigned_rubric_grades, as: 'assignedRubricGrades', class: Google::Apis::ClassroomV1::RubricGrade, decorator: Google::Apis::ClassroomV1::RubricGrade::Representation
+      
           property :assignment_submission, as: 'assignmentSubmission', class: Google::Apis::ClassroomV1::AssignmentSubmission, decorator: Google::Apis::ClassroomV1::AssignmentSubmission::Representation
       
           property :associated_with_developer, as: 'associatedWithDeveloper'
@@ -1108,6 +1193,8 @@ module Google
           property :course_work_type, as: 'courseWorkType'
           property :creation_time, as: 'creationTime'
           property :draft_grade, as: 'draftGrade'
+          hash :draft_rubric_grades, as: 'draftRubricGrades', class: Google::Apis::ClassroomV1::RubricGrade, decorator: Google::Apis::ClassroomV1::RubricGrade::Representation
+      
           property :id, as: 'id'
           property :late, as: 'late'
           property :multiple_choice_submission, as: 'multipleChoiceSubmission', class: Google::Apis::ClassroomV1::MultipleChoiceSubmission, decorator: Google::Apis::ClassroomV1::MultipleChoiceSubmission::Representation
