@@ -1401,8 +1401,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The reCAPTCHA config for email/password provider, containing the enforcement
-        # status. The email/password provider contains all related user flows protected
-        # by reCAPTCHA.
+        # status. The email/password provider contains all email related user flows
+        # protected by reCAPTCHA.
         # Corresponds to the JSON property `emailPasswordEnforcementState`
         # @return [String]
         attr_accessor :email_password_enforcement_state
@@ -1413,10 +1413,24 @@ module Google
         # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>]
         attr_accessor :managed_rules
       
+        # The reCAPTCHA config for phone provider, containing the enforcement status.
+        # The phone provider contains all SMS related user flows protected by reCAPTCHA.
+        # Corresponds to the JSON property `phoneEnforcementState`
+        # @return [String]
+        attr_accessor :phone_enforcement_state
+      
         # The reCAPTCHA keys.
         # Corresponds to the JSON property `recaptchaKeys`
         # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaKey>]
         attr_accessor :recaptcha_keys
+      
+        # The managed rules for the authentication action based on reCAPTCHA toll fraud
+        # risk scores. Toll fraud managed rules will only take effect when the
+        # phone_enforcement_state is AUDIT or ENFORCE and use_sms_toll_fraud_protection
+        # is true.
+        # Corresponds to the JSON property `tollFraudManagedRules`
+        # @return [Array<Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule>]
+        attr_accessor :toll_fraud_managed_rules
       
         # Whether to use the account defender for reCAPTCHA assessment. Defaults to `
         # false`.
@@ -1424,6 +1438,21 @@ module Google
         # @return [Boolean]
         attr_accessor :use_account_defender
         alias_method :use_account_defender?, :use_account_defender
+      
+        # Whether to use the rCE bot score for reCAPTCHA phone provider. Can only be
+        # true when the phone_enforcement_state is AUDIT or ENFORCE.
+        # Corresponds to the JSON property `useSmsBotScore`
+        # @return [Boolean]
+        attr_accessor :use_sms_bot_score
+        alias_method :use_sms_bot_score?, :use_sms_bot_score
+      
+        # Whether to use the rCE sms toll fraud protection risk score for reCAPTCHA
+        # phone provider. Can only be true when the phone_enforcement_state is AUDIT or
+        # ENFORCE.
+        # Corresponds to the JSON property `useSmsTollFraudProtection`
+        # @return [Boolean]
+        attr_accessor :use_sms_toll_fraud_protection
+        alias_method :use_sms_toll_fraud_protection?, :use_sms_toll_fraud_protection
       
         def initialize(**args)
            update!(**args)
@@ -1433,8 +1462,12 @@ module Google
         def update!(**args)
           @email_password_enforcement_state = args[:email_password_enforcement_state] if args.key?(:email_password_enforcement_state)
           @managed_rules = args[:managed_rules] if args.key?(:managed_rules)
+          @phone_enforcement_state = args[:phone_enforcement_state] if args.key?(:phone_enforcement_state)
           @recaptcha_keys = args[:recaptcha_keys] if args.key?(:recaptcha_keys)
+          @toll_fraud_managed_rules = args[:toll_fraud_managed_rules] if args.key?(:toll_fraud_managed_rules)
           @use_account_defender = args[:use_account_defender] if args.key?(:use_account_defender)
+          @use_sms_bot_score = args[:use_sms_bot_score] if args.key?(:use_sms_bot_score)
+          @use_sms_toll_fraud_protection = args[:use_sms_toll_fraud_protection] if args.key?(:use_sms_toll_fraud_protection)
         end
       end
       
@@ -1495,6 +1528,39 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @end_score = args[:end_score] if args.key?(:end_score)
+        end
+      end
+      
+      # The config for a reCAPTCHA toll fraud assessment managed rule. Models a single
+      # interval [start_score, end_score]. The end_score is implicit. It is either the
+      # closest smaller end_score (if one is available) or 0. Intervals in aggregate
+      # span [0, 1] without overlapping.
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule
+        include Google::Apis::Core::Hashable
+      
+        # The action taken if the reCAPTCHA score of a request is within the interval [
+        # start_score, end_score].
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # The start score (inclusive) for an action. Must be a value between 0.0 and 1.0,
+        # at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0
+        # indicates the safest request (likely legitimate), whereas 1.0 indicates the
+        # riskiest request (likely toll fraud). See https://cloud.google.com/recaptcha-
+        # enterprise/docs/sms-fraud-detection#create-assessment-sms.
+        # Corresponds to the JSON property `startScore`
+        # @return [Float]
+        attr_accessor :start_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @start_score = args[:start_score] if args.key?(:start_score)
         end
       end
       
@@ -2464,6 +2530,19 @@ module Google
         # @return [String]
         attr_accessor :recaptcha_key
       
+        # Whether to use the rCE bot score for reCAPTCHA phone provider.
+        # Corresponds to the JSON property `useSmsBotScore`
+        # @return [Boolean]
+        attr_accessor :use_sms_bot_score
+        alias_method :use_sms_bot_score?, :use_sms_bot_score
+      
+        # Whether to use the rCE sms toll fraud protection risk score for reCAPTCHA
+        # phone provider.
+        # Corresponds to the JSON property `useSmsTollFraudProtection`
+        # @return [Boolean]
+        attr_accessor :use_sms_toll_fraud_protection
+        alias_method :use_sms_toll_fraud_protection?, :use_sms_toll_fraud_protection
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2472,6 +2551,8 @@ module Google
         def update!(**args)
           @recaptcha_enforcement_state = args[:recaptcha_enforcement_state] if args.key?(:recaptcha_enforcement_state)
           @recaptcha_key = args[:recaptcha_key] if args.key?(:recaptcha_key)
+          @use_sms_bot_score = args[:use_sms_bot_score] if args.key?(:use_sms_bot_score)
+          @use_sms_toll_fraud_protection = args[:use_sms_toll_fraud_protection] if args.key?(:use_sms_toll_fraud_protection)
         end
       end
       
@@ -2643,6 +2724,18 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AutoRetrievalInfo]
         attr_accessor :auto_retrieval_info
       
+        # The reCAPTCHA Enterprise token provided by the reCAPTCHA client-side
+        # integration. Required when reCAPTCHA enterprise is enabled.
+        # Corresponds to the JSON property `captchaResponse`
+        # @return [String]
+        attr_accessor :captcha_response
+      
+        # The client type, web, android or ios. Required when reCAPTCHA Enterprise is
+        # enabled.
+        # Corresponds to the JSON property `clientType`
+        # @return [String]
+        attr_accessor :client_type
+      
         # iOS only. Receipt of successful app token validation with APNS.
         # Corresponds to the JSON property `iosReceipt`
         # @return [String]
@@ -2671,6 +2764,12 @@ module Google
         # @return [String]
         attr_accessor :recaptcha_token
       
+        # The reCAPTCHA version of the reCAPTCHA token in the captcha_response. Required
+        # when reCAPTCHA Enterprise is enabled.
+        # Corresponds to the JSON property `recaptchaVersion`
+        # @return [String]
+        attr_accessor :recaptcha_version
+      
         # Android only. Used to assert application identity in place of a recaptcha
         # token. A SafetyNet Token can be generated via the [SafetyNet Android
         # Attestation API](https://developer.android.com/training/safetynet/attestation.
@@ -2686,11 +2785,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_retrieval_info = args[:auto_retrieval_info] if args.key?(:auto_retrieval_info)
+          @captcha_response = args[:captcha_response] if args.key?(:captcha_response)
+          @client_type = args[:client_type] if args.key?(:client_type)
           @ios_receipt = args[:ios_receipt] if args.key?(:ios_receipt)
           @ios_secret = args[:ios_secret] if args.key?(:ios_secret)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @play_integrity_token = args[:play_integrity_token] if args.key?(:play_integrity_token)
           @recaptcha_token = args[:recaptcha_token] if args.key?(:recaptcha_token)
+          @recaptcha_version = args[:recaptcha_version] if args.key?(:recaptcha_version)
           @safety_net_token = args[:safety_net_token] if args.key?(:safety_net_token)
         end
       end
