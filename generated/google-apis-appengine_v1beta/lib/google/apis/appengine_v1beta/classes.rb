@@ -1236,6 +1236,34 @@ module Google
         end
       end
       
+      # For use only by GCE. GceTag is a wrapper around the GCE administrative tag
+      # with parent info.
+      class GceTag
+        include Google::Apis::Core::Hashable
+      
+        # The parents(s) of the tag. Eg. projects/123, folders/456 It usually contains
+        # only one parent. But, in some corner cases, it can contain multiple parents.
+        # Currently, organizations are not supported.
+        # Corresponds to the JSON property `parent`
+        # @return [Array<String>]
+        attr_accessor :parent
+      
+        # The administrative_tag name.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
       # Metadata for the given google.cloud.location.Location.
       class GoogleAppengineV1betaLocationMetadata
         include Google::Apis::Core::Hashable
@@ -2415,6 +2443,12 @@ module Google
         # @return [String]
         attr_accessor :consumer_project_state
       
+        # The GCE tags associated with the consumer project and those inherited due to
+        # their ancestry, if any. Not supported by CCFE.
+        # Corresponds to the JSON property `gceTag`
+        # @return [Array<Google::Apis::AppengineV1beta::GceTag>]
+        attr_accessor :gce_tag
+      
         # The service account authorized to operate on the consumer project. Note: CCFE
         # only propagates P4SA with default tag to CLH.
         # Corresponds to the JSON property `p4ServiceAccount`
@@ -2450,6 +2484,7 @@ module Google
           @consumer_project_id = args[:consumer_project_id] if args.key?(:consumer_project_id)
           @consumer_project_number = args[:consumer_project_number] if args.key?(:consumer_project_number)
           @consumer_project_state = args[:consumer_project_state] if args.key?(:consumer_project_state)
+          @gce_tag = args[:gce_tag] if args.key?(:gce_tag)
           @p4_service_account = args[:p4_service_account] if args.key?(:p4_service_account)
           @producer_project_id = args[:producer_project_id] if args.key?(:producer_project_id)
           @producer_project_number = args[:producer_project_number] if args.key?(:producer_project_number)
@@ -2602,6 +2637,44 @@ module Google
         def update!(**args)
           @target_concurrent_requests = args[:target_concurrent_requests] if args.key?(:target_concurrent_requests)
           @target_request_count_per_second = args[:target_request_count_per_second] if args.key?(:target_request_count_per_second)
+        end
+      end
+      
+      # The request that is passed to CLH during per-resource events. The request will
+      # be sent with update semantics in all cases except for data governance purge
+      # events. These events will be sent with delete semantics and the CLH is
+      # expected to delete the resource receiving this event.
+      class ResourceEvent
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID for this per-resource event. CLHs can use this value to dedup
+        # repeated calls. required
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # The name of the resource for which this event is. required
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ContainerState contains the externally-visible container state that is used to
+        # communicate the state and reasoning for that state to the CLH. This data is
+        # not persisted by CCFE, but is instead derived from CCFE's internal
+        # representation of the container state.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::AppengineV1beta::ContainerState]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2805,8 +2878,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :generated_customer_metadata
       
-        # Relative name of the service within the application. Example: default.@
-        # OutputOnly
+        # Output only. Relative name of the service within the application. Example:
+        # default.@OutputOnly
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2825,8 +2898,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Full path to the Service resource in the API. Example: apps/myapp/services/
-        # default.@OutputOnly
+        # Output only. Full path to the Service resource in the API. Example: apps/myapp/
+        # services/default.@OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3236,7 +3309,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Email address of the user who created this version.@OutputOnly
+        # Output only. Email address of the user who created this version.@OutputOnly
         # Corresponds to the JSON property `createdBy`
         # @return [String]
         attr_accessor :created_by
@@ -3255,8 +3328,8 @@ module Google
         # @return [Google::Apis::AppengineV1beta::Deployment]
         attr_accessor :deployment
       
-        # Total size in bytes of all the files that are included in this version and
-        # currently hosted on the App Engine disk.@OutputOnly
+        # Output only. Total size in bytes of all the files that are included in this
+        # version and currently hosted on the App Engine disk.@OutputOnly
         # Corresponds to the JSON property `diskUsageBytes`
         # @return [Fixnum]
         attr_accessor :disk_usage_bytes
@@ -3358,8 +3431,8 @@ module Google
         # @return [Google::Apis::AppengineV1beta::ManualScaling]
         attr_accessor :manual_scaling
       
-        # Full path to the Version resource in the API. Example: apps/myapp/services/
-        # default/versions/v1.@OutputOnly
+        # Output only. Full path to the Version resource in the API. Example: apps/myapp/
+        # services/default/versions/v1.@OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3429,8 +3502,8 @@ module Google
         attr_accessor :threadsafe
         alias_method :threadsafe?, :threadsafe
       
-        # Serving URL for this version. Example: "https://myversion-dot-myservice-dot-
-        # myapp.appspot.com"@OutputOnly
+        # Output only. Serving URL for this version. Example: "https://myversion-dot-
+        # myservice-dot-myapp.appspot.com"@OutputOnly
         # Corresponds to the JSON property `versionUrl`
         # @return [String]
         attr_accessor :version_url

@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GceTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppengineV1betaLocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +413,12 @@ module Google
       end
       
       class RequestUtilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -828,6 +840,14 @@ module Google
         end
       end
       
+      class GceTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :parent, as: 'parent'
+          property :tag, as: 'tag'
+        end
+      end
+      
       class GoogleAppengineV1betaLocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1133,6 +1153,8 @@ module Google
           property :consumer_project_id, as: 'consumerProjectId'
           property :consumer_project_number, :numeric_string => true, as: 'consumerProjectNumber'
           property :consumer_project_state, as: 'consumerProjectState'
+          collection :gce_tag, as: 'gceTag', class: Google::Apis::AppengineV1beta::GceTag, decorator: Google::Apis::AppengineV1beta::GceTag::Representation
+      
           property :p4_service_account, as: 'p4ServiceAccount'
           property :producer_project_id, as: 'producerProjectId'
           property :producer_project_number, :numeric_string => true, as: 'producerProjectNumber'
@@ -1176,6 +1198,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :target_concurrent_requests, as: 'targetConcurrentRequests'
           property :target_request_count_per_second, as: 'targetRequestCountPerSecond'
+        end
+      end
+      
+      class ResourceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_id, as: 'eventId'
+          property :name, as: 'name'
+          property :state, as: 'state', class: Google::Apis::AppengineV1beta::ContainerState, decorator: Google::Apis::AppengineV1beta::ContainerState::Representation
+      
         end
       end
       
