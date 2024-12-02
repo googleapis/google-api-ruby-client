@@ -266,6 +266,38 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Gets the latest data source file upload. Only the `latest` alias is accepted
+        # for a file upload.
+        # @param [String] name
+        #   Required. The name of the data source file upload to retrieve. Format: `
+        #   accounts/`account`/dataSources/`datasource`/fileUploads/latest`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiDatasourcesV1beta::FileUpload] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiDatasourcesV1beta::FileUpload]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_data_source_file_upload(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'datasources/v1beta/{+name}', options)
+          command.response_representation = Google::Apis::MerchantapiDatasourcesV1beta::FileUpload::Representation
+          command.response_class = Google::Apis::MerchantapiDatasourcesV1beta::FileUpload
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

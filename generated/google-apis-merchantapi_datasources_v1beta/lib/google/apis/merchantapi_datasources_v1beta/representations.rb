@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataSourceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -52,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FileUpload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Issue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDataSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MerchantReviewDataSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrimaryProductDataSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +101,12 @@ module Google
       end
       
       class ProductChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductReviewDataSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -116,14 +152,35 @@ module Google
           property :input, as: 'input'
           property :local_inventory_data_source, as: 'localInventoryDataSource', class: Google::Apis::MerchantapiDatasourcesV1beta::LocalInventoryDataSource, decorator: Google::Apis::MerchantapiDatasourcesV1beta::LocalInventoryDataSource::Representation
       
+          property :merchant_review_data_source, as: 'merchantReviewDataSource', class: Google::Apis::MerchantapiDatasourcesV1beta::MerchantReviewDataSource, decorator: Google::Apis::MerchantapiDatasourcesV1beta::MerchantReviewDataSource::Representation
+      
           property :name, as: 'name'
           property :primary_product_data_source, as: 'primaryProductDataSource', class: Google::Apis::MerchantapiDatasourcesV1beta::PrimaryProductDataSource, decorator: Google::Apis::MerchantapiDatasourcesV1beta::PrimaryProductDataSource::Representation
+      
+          property :product_review_data_source, as: 'productReviewDataSource', class: Google::Apis::MerchantapiDatasourcesV1beta::ProductReviewDataSource, decorator: Google::Apis::MerchantapiDatasourcesV1beta::ProductReviewDataSource::Representation
       
           property :promotion_data_source, as: 'promotionDataSource', class: Google::Apis::MerchantapiDatasourcesV1beta::PromotionDataSource, decorator: Google::Apis::MerchantapiDatasourcesV1beta::PromotionDataSource::Representation
       
           property :regional_inventory_data_source, as: 'regionalInventoryDataSource', class: Google::Apis::MerchantapiDatasourcesV1beta::RegionalInventoryDataSource, decorator: Google::Apis::MerchantapiDatasourcesV1beta::RegionalInventoryDataSource::Representation
       
           property :supplemental_product_data_source, as: 'supplementalProductDataSource', class: Google::Apis::MerchantapiDatasourcesV1beta::SupplementalProductDataSource, decorator: Google::Apis::MerchantapiDatasourcesV1beta::SupplementalProductDataSource::Representation
+      
+        end
+      end
+      
+      class DataSourceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_data_source_name, as: 'primaryDataSourceName'
+          property :self, as: 'self'
+          property :supplemental_data_source_name, as: 'supplementalDataSourceName'
+        end
+      end
+      
+      class DefaultRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :take_from_data_sources, as: 'takeFromDataSources', class: Google::Apis::MerchantapiDatasourcesV1beta::DataSourceReference, decorator: Google::Apis::MerchantapiDatasourcesV1beta::DataSourceReference::Representation
       
         end
       end
@@ -166,6 +223,33 @@ module Google
         end
       end
       
+      class FileUpload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, :numeric_string => true, as: 'dataSourceId'
+          collection :issues, as: 'issues', class: Google::Apis::MerchantapiDatasourcesV1beta::Issue, decorator: Google::Apis::MerchantapiDatasourcesV1beta::Issue::Representation
+      
+          property :items_created, :numeric_string => true, as: 'itemsCreated'
+          property :items_total, :numeric_string => true, as: 'itemsTotal'
+          property :items_updated, :numeric_string => true, as: 'itemsUpdated'
+          property :name, as: 'name'
+          property :processing_state, as: 'processingState'
+          property :upload_time, as: 'uploadTime'
+        end
+      end
+      
+      class Issue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :count, :numeric_string => true, as: 'count'
+          property :description, as: 'description'
+          property :documentation_uri, as: 'documentationUri'
+          property :severity, as: 'severity'
+          property :title, as: 'title'
+        end
+      end
+      
       class ListDataSourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -183,12 +267,20 @@ module Google
         end
       end
       
+      class MerchantReviewDataSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class PrimaryProductDataSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel, as: 'channel'
           property :content_language, as: 'contentLanguage'
           collection :countries, as: 'countries'
+          property :default_rule, as: 'defaultRule', class: Google::Apis::MerchantapiDatasourcesV1beta::DefaultRule, decorator: Google::Apis::MerchantapiDatasourcesV1beta::DefaultRule::Representation
+      
           property :feed_label, as: 'feedLabel'
         end
       end
@@ -203,6 +295,12 @@ module Google
         end
       end
       
+      class ProductReviewDataSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ProductStatusChangeMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -210,6 +308,7 @@ module Google
           property :attribute, as: 'attribute'
           collection :changes, as: 'changes', class: Google::Apis::MerchantapiDatasourcesV1beta::ProductChange, decorator: Google::Apis::MerchantapiDatasourcesV1beta::ProductChange::Representation
       
+          property :expiration_time, as: 'expirationTime'
           property :managing_account, as: 'managingAccount'
           property :resource, as: 'resource'
           property :resource_id, as: 'resourceId'
@@ -238,6 +337,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_language, as: 'contentLanguage'
           property :feed_label, as: 'feedLabel'
+          collection :referencing_primary_data_sources, as: 'referencingPrimaryDataSources', class: Google::Apis::MerchantapiDatasourcesV1beta::DataSourceReference, decorator: Google::Apis::MerchantapiDatasourcesV1beta::DataSourceReference::Representation
+      
         end
       end
       

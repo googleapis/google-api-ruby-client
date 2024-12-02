@@ -55,6 +55,11 @@ module Google
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::LocalInventoryDataSource]
         attr_accessor :local_inventory_data_source
       
+        # The merchant review data source.
+        # Corresponds to the JSON property `merchantReviewDataSource`
+        # @return [Google::Apis::MerchantapiDatasourcesV1beta::MerchantReviewDataSource]
+        attr_accessor :merchant_review_data_source
+      
         # Identifier. The name of the data source. Format: ``datasource.name=accounts/`
         # account`/dataSources/`datasource```
         # Corresponds to the JSON property `name`
@@ -66,6 +71,11 @@ module Google
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::PrimaryProductDataSource]
         attr_accessor :primary_product_data_source
       
+        # The product review data source.
+        # Corresponds to the JSON property `productReviewDataSource`
+        # @return [Google::Apis::MerchantapiDatasourcesV1beta::ProductReviewDataSource]
+        attr_accessor :product_review_data_source
+      
         # The promotion data source.
         # Corresponds to the JSON property `promotionDataSource`
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::PromotionDataSource]
@@ -76,7 +86,9 @@ module Google
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::RegionalInventoryDataSource]
         attr_accessor :regional_inventory_data_source
       
-        # The supplemental data source for local and online products.
+        # The supplemental data source for local and online products. After creation,
+        # you should make sure to link the supplemental product data source into one or
+        # more primary product data sources.
         # Corresponds to the JSON property `supplementalProductDataSource`
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::SupplementalProductDataSource]
         attr_accessor :supplemental_product_data_source
@@ -92,11 +104,77 @@ module Google
           @file_input = args[:file_input] if args.key?(:file_input)
           @input = args[:input] if args.key?(:input)
           @local_inventory_data_source = args[:local_inventory_data_source] if args.key?(:local_inventory_data_source)
+          @merchant_review_data_source = args[:merchant_review_data_source] if args.key?(:merchant_review_data_source)
           @name = args[:name] if args.key?(:name)
           @primary_product_data_source = args[:primary_product_data_source] if args.key?(:primary_product_data_source)
+          @product_review_data_source = args[:product_review_data_source] if args.key?(:product_review_data_source)
           @promotion_data_source = args[:promotion_data_source] if args.key?(:promotion_data_source)
           @regional_inventory_data_source = args[:regional_inventory_data_source] if args.key?(:regional_inventory_data_source)
           @supplemental_product_data_source = args[:supplemental_product_data_source] if args.key?(:supplemental_product_data_source)
+        end
+      end
+      
+      # Data source reference can be used to manage related data sources within the
+      # data source service.
+      class DataSourceReference
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the primary data source. Format: `accounts/`account`/
+        # dataSources/`datasource``
+        # Corresponds to the JSON property `primaryDataSourceName`
+        # @return [String]
+        attr_accessor :primary_data_source_name
+      
+        # Self should be used to reference the primary data source itself.
+        # Corresponds to the JSON property `self`
+        # @return [Boolean]
+        attr_accessor :self
+        alias_method :self?, :self
+      
+        # Optional. The name of the supplemental data source. Format: `accounts/`account`
+        # /dataSources/`datasource``
+        # Corresponds to the JSON property `supplementalDataSourceName`
+        # @return [String]
+        attr_accessor :supplemental_data_source_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_data_source_name = args[:primary_data_source_name] if args.key?(:primary_data_source_name)
+          @self = args[:self] if args.key?(:self)
+          @supplemental_data_source_name = args[:supplemental_data_source_name] if args.key?(:supplemental_data_source_name)
+        end
+      end
+      
+      # Default rule management of the data source.
+      class DefaultRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of data sources linked in the [default rule](https://
+        # support.google.com/merchants/answer/7450276). This list is ordered by the
+        # default rule priority of joining the data. It might include none or multiple
+        # references to `self` and supplemental data sources. The list must not be empty.
+        # To link the data source to the default rule, you need to add a new reference
+        # to this list (in sequential order). To unlink the data source from the default
+        # rule, you need to remove the given reference from this list. Changing the
+        # order of this list will result in changing the priority of data sources in the
+        # default rule. For example, providing the following list: [`1001`, `self`] will
+        # take attribute values from supplemental data source `1001`, and fallback to `
+        # self` if the attribute is not set in `1001`.
+        # Corresponds to the JSON property `takeFromDataSources`
+        # @return [Array<Google::Apis::MerchantapiDatasourcesV1beta::DataSourceReference>]
+        attr_accessor :take_from_data_sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @take_from_data_sources = args[:take_from_data_sources] if args.key?(:take_from_data_sources)
         end
       end
       
@@ -164,7 +242,7 @@ module Google
         # @return [String]
         attr_accessor :frequency
       
-        # Optional. An optional password for fetch url. Used for [submitting data
+        # Optional. An optional password for fetch_uri. Used for [submitting data
         # sources through SFTP](https://support.google.com/merchants/answer/13813117).
         # Corresponds to the JSON property `password`
         # @return [String]
@@ -183,7 +261,7 @@ module Google
         # @return [String]
         attr_accessor :time_zone
       
-        # Optional. An optional user name for fetch url. Used for [submitting data
+        # Optional. An optional user name for fetch_uri. Used for [submitting data
         # sources through SFTP](https://support.google.com/merchants/answer/13813117).
         # Corresponds to the JSON property `username`
         # @return [String]
@@ -237,6 +315,124 @@ module Google
           @fetch_settings = args[:fetch_settings] if args.key?(:fetch_settings)
           @file_input_type = args[:file_input_type] if args.key?(:file_input_type)
           @file_name = args[:file_name] if args.key?(:file_name)
+        end
+      end
+      
+      # The file upload of a specific data source, that is, the result of the
+      # retrieval of the data source at a certain timestamp computed asynchronously
+      # when the data source processing is finished. Only applicable to file data
+      # sources.
+      class FileUpload
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The data source id.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [Fixnum]
+        attr_accessor :data_source_id
+      
+        # Output only. The list of issues occurring in the data source.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::MerchantapiDatasourcesV1beta::Issue>]
+        attr_accessor :issues
+      
+        # Output only. The number of items in the data source that were created.
+        # Corresponds to the JSON property `itemsCreated`
+        # @return [Fixnum]
+        attr_accessor :items_created
+      
+        # Output only. The number of items in the data source that were processed.
+        # Corresponds to the JSON property `itemsTotal`
+        # @return [Fixnum]
+        attr_accessor :items_total
+      
+        # Output only. The number of items in the data source that were updated.
+        # Corresponds to the JSON property `itemsUpdated`
+        # @return [Fixnum]
+        attr_accessor :items_updated
+      
+        # Identifier. The name of the data source file upload. Format: ``datasource.name=
+        # accounts/`account`/dataSources/`datasource`/fileUploads/`fileupload```
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The processing state of the data source.
+        # Corresponds to the JSON property `processingState`
+        # @return [String]
+        attr_accessor :processing_state
+      
+        # Output only. The date at which the file of the data source was uploaded.
+        # Corresponds to the JSON property `uploadTime`
+        # @return [String]
+        attr_accessor :upload_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+          @issues = args[:issues] if args.key?(:issues)
+          @items_created = args[:items_created] if args.key?(:items_created)
+          @items_total = args[:items_total] if args.key?(:items_total)
+          @items_updated = args[:items_updated] if args.key?(:items_updated)
+          @name = args[:name] if args.key?(:name)
+          @processing_state = args[:processing_state] if args.key?(:processing_state)
+          @upload_time = args[:upload_time] if args.key?(:upload_time)
+        end
+      end
+      
+      # An error occurring in the data source, like "invalid price".
+      class Issue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The code of the error, for example, "validation/invalid_value".
+        # Returns "?" if the code is unknown.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Output only. The number of occurrences of the error in the file upload.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Output only. The error description, for example, "Your data source contains
+        # items which have too many attributes, or are too big. These items will be
+        # dropped".
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Link to the documentation explaining the issue in more details,
+        # if available.
+        # Corresponds to the JSON property `documentationUri`
+        # @return [String]
+        attr_accessor :documentation_uri
+      
+        # Output only. The severity of the issue.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Output only. The title of the issue, for example, "Item too big".
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @count = args[:count] if args.key?(:count)
+          @description = args[:description] if args.key?(:description)
+          @documentation_uri = args[:documentation_uri] if args.key?(:documentation_uri)
+          @severity = args[:severity] if args.key?(:severity)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -295,6 +491,19 @@ module Google
         end
       end
       
+      # The merchant review data source.
+      class MerchantReviewDataSource
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The primary data source for local and online products.
       class PrimaryProductDataSource
         include Google::Apis::Core::Hashable
@@ -320,6 +529,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :countries
       
+        # Default rule management of the data source.
+        # Corresponds to the JSON property `defaultRule`
+        # @return [Google::Apis::MerchantapiDatasourcesV1beta::DefaultRule]
+        attr_accessor :default_rule
+      
         # Optional. Immutable. The feed label that is specified on the data source level.
         # Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and
         # dashes (-). See also [migration to feed labels](https://developers.google.com/
@@ -341,6 +555,7 @@ module Google
           @channel = args[:channel] if args.key?(:channel)
           @content_language = args[:content_language] if args.key?(:content_language)
           @countries = args[:countries] if args.key?(:countries)
+          @default_rule = args[:default_rule] if args.key?(:default_rule)
           @feed_label = args[:feed_label] if args.key?(:feed_label)
         end
       end
@@ -383,6 +598,19 @@ module Google
         end
       end
       
+      # The product review data source.
+      class ProductReviewDataSource
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The message that the merchant will receive to notify about product status
       # change event
       class ProductStatusChangeMessage
@@ -404,6 +632,12 @@ module Google
         # Corresponds to the JSON property `changes`
         # @return [Array<Google::Apis::MerchantapiDatasourcesV1beta::ProductChange>]
         attr_accessor :changes
+      
+        # The product expiration time. This field will not bet set if the notification
+        # is sent for a product deletion event.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
       
         # The account that manages the merchant's account. can be the same as merchant
         # id if it is standalone account. Format : `accounts/`service_provider_id``
@@ -436,6 +670,7 @@ module Google
           @account = args[:account] if args.key?(:account)
           @attribute = args[:attribute] if args.key?(:attribute)
           @changes = args[:changes] if args.key?(:changes)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @managing_account = args[:managing_account] if args.key?(:managing_account)
           @resource = args[:resource] if args.key?(:resource)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
@@ -501,7 +736,9 @@ module Google
         end
       end
       
-      # The supplemental data source for local and online products.
+      # The supplemental data source for local and online products. After creation,
+      # you should make sure to link the supplemental product data source into one or
+      # more primary product data sources.
       class SupplementalProductDataSource
         include Google::Apis::Core::Hashable
       
@@ -519,12 +756,20 @@ module Google
         # dashes (-). See also [migration to feed labels](https://developers.google.com/
         # shopping-content/guides/products/feed-labels). `feedLabel` and `
         # contentLanguage` must be either both set or unset for data sources with
-        # product content type. They must be set for data sources with a file input. If
-        # set, the data source will only accept products matching this combination. If
-        # unset, the data source will accept produts without that restriction.
+        # product content type. They must be set for data sources with a file input. The
+        # fields must be unset for data sources without file input. If set, the data
+        # source will only accept products matching this combination. If unset, the data
+        # source will accept produts without that restriction.
         # Corresponds to the JSON property `feedLabel`
         # @return [String]
         attr_accessor :feed_label
+      
+        # Output only. The (unordered and deduplicated) list of all primary data sources
+        # linked to this data source in either default or custom rules. Supplemental
+        # data source cannot be deleted before all links are removed.
+        # Corresponds to the JSON property `referencingPrimaryDataSources`
+        # @return [Array<Google::Apis::MerchantapiDatasourcesV1beta::DataSourceReference>]
+        attr_accessor :referencing_primary_data_sources
       
         def initialize(**args)
            update!(**args)
@@ -534,6 +779,7 @@ module Google
         def update!(**args)
           @content_language = args[:content_language] if args.key?(:content_language)
           @feed_label = args[:feed_label] if args.key?(:feed_label)
+          @referencing_primary_data_sources = args[:referencing_primary_data_sources] if args.key?(:referencing_primary_data_sources)
         end
       end
       
@@ -543,24 +789,28 @@ module Google
       class TimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
-        # allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # Minutes of hour of day. Must be from 0 to 59.
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
       
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
