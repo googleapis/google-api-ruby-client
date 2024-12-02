@@ -179,19 +179,18 @@ module Google
         end
         
         # Creates a space with no members. Can be used to create a named space, or a
-        # group chat in `Import mode`. Spaces grouped by topics aren't supported. For an
-        # example, see [Create a space](https://developers.google.com/workspace/chat/
-        # create-spaces). If you receive the error message `ALREADY_EXISTS` when
-        # creating a space, try a different `displayName`. An existing space within the
-        # Google Workspace organization might already use this display name. Supports
-        # the following types of [authentication](https://developers.google.com/
-        # workspace/chat/authenticate-authorize): - [App authentication](https://
-        # developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [
-        # administrator approval](https://support.google.com/a?p=chat-app-auth) in [
-        # Developer Preview](https://developers.google.com/workspace/preview) - [User
+        # group chat in `Import mode`. For an example, see [Create a space](https://
+        # developers.google.com/workspace/chat/create-spaces). If you receive the error
+        # message `ALREADY_EXISTS` when creating a space, try a different `displayName`.
+        # An existing space within the Google Workspace organization might already use
+        # this display name. Supports the following types of [authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize): - [App
         # authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user) When authenticating as an app, the `space.customer` field
-        # must be set in the request.
+        # authorize-chat-app) with [administrator approval](https://support.google.com/a?
+        # p=chat-app-auth) in [Developer Preview](https://developers.google.com/
+        # workspace/preview) - [User authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user) When authenticating as an app,
+        # the `space.customer` field must be set in the request.
         # @param [Google::Apis::ChatV1::Space] space_object
         # @param [String] request_id
         #   Optional. A unique identifier for this request. A random UUID is recommended.
