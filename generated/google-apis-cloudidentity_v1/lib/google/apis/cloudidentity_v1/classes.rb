@@ -1288,7 +1288,10 @@ module Google
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
         # resource_names) of the Device in format: `devices/`device``, where device is
-        # the unique id assigned to the Device.
+        # the unique id assigned to the Device. Important: Device API scopes require
+        # that you use domain-wide delegation to access the API. For more information,
+        # see [Set up the Devices API](https://cloud.google.com/identity/docs/how-to/
+        # setup-devices).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2440,8 +2443,8 @@ module Google
       
         # Each edge contains information about the member that belongs to this group.
         # Note: Fields returned here will help identify the specific Membership resource
-        # (e.g name, preferred_member_key and role), but may not be a comprehensive list
-        # of all fields.
+        # (e.g `name`, `preferred_member_key` and `role`), but may not be a
+        # comprehensive list of all fields.
         # Corresponds to the JSON property `edges`
         # @return [Array<Google::Apis::CloudidentityV1::Membership>]
         attr_accessor :edges

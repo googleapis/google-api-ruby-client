@@ -1718,7 +1718,7 @@ module Google
         # @param [Fixnum] page_size
         #   The default page size is 200 (max 1000).
         # @param [String] page_token
-        #   The next_page_token value returned from a previous list request, if any
+        #   The `next_page_token` value returned from a previous list request, if any
         # @param [String] query
         #   Required. A CEL expression that MUST include member specification AND label(s).
         #   Users can search on label attributes of groups. CONTAINS match ('in') is
@@ -1772,7 +1772,7 @@ module Google
         # @param [Fixnum] page_size
         #   The default page size is 200 (max 1000).
         # @param [String] page_token
-        #   The next_page_token value returned from a previous list request, if any.
+        #   The `next_page_token` value returned from a previous list request, if any.
         # @param [String] query
         #   Required. A CEL expression that MUST include member specification AND label(s).
         #   This is a `required` field. Users can search on label attributes of groups.
@@ -1783,7 +1783,7 @@ module Google
         #   optionally contain equality operators on the parent of the group restricting
         #   the search within a particular customer, e.g. `parent == 'customers/`
         #   customer_id`'`. The `customer_id` must begin with "C" (for example, 'C046psxkn'
-        #   ). This filtering is only supported for Admins with groups read permissons on
+        #   ). This filtering is only supported for Admins with groups read permissions on
         #   the input customer. Example query: `member_key_id == 'member_key_id_value' &&
         #   in labels && parent == 'customers/C046psxkn'`
         # @param [String] fields
@@ -1829,7 +1829,7 @@ module Google
         # @param [Fixnum] page_size
         #   The default page size is 200 (max 1000).
         # @param [String] page_token
-        #   The next_page_token value returned from a previous list request, if any.
+        #   The `next_page_token` value returned from a previous list request, if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
