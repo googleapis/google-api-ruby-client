@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalSyncSelectedObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FailoverContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -364,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesListServerCertificatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesReencryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +389,12 @@ module Google
       end
       
       class InstancesRotateServerCaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesRotateServerCertificateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -478,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscAutoConnectionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PscConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -509,6 +533,18 @@ module Google
       end
       
       class RotateServerCaContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RotateServerCertificateContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SelectedObjects
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -797,6 +833,7 @@ module Google
           property :instance, as: 'instance'
           property :kind, as: 'kind'
           property :location, as: 'location'
+          property :max_chargeable_bytes, :numeric_string => true, as: 'maxChargeableBytes'
           property :self_link, as: 'selfLink'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
@@ -836,6 +873,7 @@ module Google
           property :kind, as: 'kind'
           property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
           property :point_in_time, as: 'pointInTime'
+          property :preferred_secondary_zone, as: 'preferredSecondaryZone'
           property :preferred_zone, as: 'preferredZone'
         end
       end
@@ -932,6 +970,7 @@ module Google
           property :replication_cluster, as: 'replicationCluster', class: Google::Apis::SqladminV1beta4::ReplicationCluster, decorator: Google::Apis::SqladminV1beta4::ReplicationCluster::Representation
       
           property :root_password, as: 'rootPassword'
+          property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduled_maintenance, as: 'scheduledMaintenance', class: Google::Apis::SqladminV1beta4::SqlScheduledMaintenance, decorator: Google::Apis::SqladminV1beta4::SqlScheduledMaintenance::Representation
       
@@ -1063,6 +1102,8 @@ module Google
             property :bak_type, as: 'bakType'
             property :copy_only, as: 'copyOnly'
             property :differential_base, as: 'differentialBase'
+            property :export_log_end_time, as: 'exportLogEndTime'
+            property :export_log_start_time, as: 'exportLogStartTime'
             property :stripe_count, as: 'stripeCount'
             property :striped, as: 'striped'
           end
@@ -1106,6 +1147,13 @@ module Google
               property :if_exists, as: 'ifExists'
             end
           end
+        end
+      end
+      
+      class ExternalSyncSelectedObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
         end
       end
       
@@ -1340,6 +1388,18 @@ module Google
         end
       end
       
+      class InstancesListServerCertificatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_version, as: 'activeVersion'
+          collection :ca_certs, as: 'caCerts', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
+      
+          property :kind, as: 'kind'
+          collection :server_certs, as: 'serverCerts', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
+      
+        end
+      end
+      
       class InstancesReencryptRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1360,6 +1420,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rotate_server_ca_context, as: 'rotateServerCaContext', class: Google::Apis::SqladminV1beta4::RotateServerCaContext, decorator: Google::Apis::SqladminV1beta4::RotateServerCaContext::Representation
+      
+        end
+      end
+      
+      class InstancesRotateServerCertificateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rotate_server_certificate_context, as: 'rotateServerCertificateContext', class: Google::Apis::SqladminV1beta4::RotateServerCertificateContext, decorator: Google::Apis::SqladminV1beta4::RotateServerCertificateContext::Representation
       
         end
       end
@@ -1453,8 +1521,11 @@ module Google
           property :host_port, as: 'hostPort'
           property :kind, as: 'kind'
           property :password, as: 'password'
+          collection :selected_objects, as: 'selectedObjects', class: Google::Apis::SqladminV1beta4::SelectedObjects, decorator: Google::Apis::SqladminV1beta4::SelectedObjects::Representation
+      
           property :source_instance, as: 'sourceInstance', class: Google::Apis::SqladminV1beta4::InstanceReference, decorator: Google::Apis::SqladminV1beta4::InstanceReference::Representation
       
+          property :ssl_option, as: 'sslOption'
           property :username, as: 'username'
         end
       end
@@ -1558,10 +1629,23 @@ module Google
         end
       end
       
+      class PscAutoConnectionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
+          property :consumer_network_status, as: 'consumerNetworkStatus'
+          property :consumer_project, as: 'consumerProject'
+          property :ip_address, as: 'ipAddress'
+          property :status, as: 'status'
+        end
+      end
+      
       class PscConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
+          collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::SqladminV1beta4::PscAutoConnectionConfig, decorator: Google::Apis::SqladminV1beta4::PscAutoConnectionConfig::Representation
+      
           property :psc_enabled, as: 'pscEnabled'
         end
       end
@@ -1609,6 +1693,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_version, as: 'nextVersion'
+        end
+      end
+      
+      class RotateServerCertificateContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_version, as: 'nextVersion'
+        end
+      end
+      
+      class SelectedObjects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
         end
       end
       
@@ -1743,6 +1842,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :migration_type, as: 'migrationType'
           property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1beta4::MySqlSyncConfig, decorator: Google::Apis::SqladminV1beta4::MySqlSyncConfig::Representation
+      
+          collection :selected_objects, as: 'selectedObjects', class: Google::Apis::SqladminV1beta4::ExternalSyncSelectedObject, decorator: Google::Apis::SqladminV1beta4::ExternalSyncSelectedObject::Representation
       
           property :sync_mode, as: 'syncMode'
           property :sync_parallel_level, as: 'syncParallelLevel'
