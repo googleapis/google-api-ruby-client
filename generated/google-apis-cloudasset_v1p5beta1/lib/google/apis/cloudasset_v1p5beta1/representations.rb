@@ -619,6 +619,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :perimeter_type, as: 'perimeterType'
           property :spec, as: 'spec', class: Google::Apis::CloudassetV1p5beta1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig, decorator: Google::Apis::CloudassetV1p5beta1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig::Representation
