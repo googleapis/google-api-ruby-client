@@ -157,7 +157,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents the feeling associated with the entire text or entities in the text.
-        # Next ID: 6
         # Corresponds to the JSON property `documentSentiment`
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :document_sentiment
@@ -260,7 +259,7 @@ module Google
         attr_accessor :encoding_type
       
         # All available features for sentiment, syntax, and semantic analysis. Setting
-        # each one to true will enable that specific analysis for the input. Next ID: 12
+        # each one to true will enable that specific analysis for the input.
         # Corresponds to the JSON property `features`
         # @return [Google::Apis::LanguageV1beta2::AnnotateTextRequestFeatures]
         attr_accessor :features
@@ -278,7 +277,7 @@ module Google
       end
       
       # All available features for sentiment, syntax, and semantic analysis. Setting
-      # each one to true will enable that specific analysis for the input. Next ID: 12
+      # each one to true will enable that specific analysis for the input.
       class AnnotateTextRequestFeatures
         include Google::Apis::Core::Hashable
       
@@ -351,7 +350,6 @@ module Google
         attr_accessor :categories
       
         # Represents the feeling associated with the entire text or entities in the text.
-        # Next ID: 6
         # Corresponds to the JSON property `documentSentiment`
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :document_sentiment
@@ -812,7 +810,6 @@ module Google
         attr_accessor :salience
       
         # Represents the feeling associated with the entire text or entities in the text.
-        # Next ID: 6
         # Corresponds to the JSON property `sentiment`
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :sentiment
@@ -843,7 +840,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents the feeling associated with the entire text or entities in the text.
-        # Next ID: 6
         # Corresponds to the JSON property `sentiment`
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :sentiment
@@ -910,7 +906,7 @@ module Google
         end
       end
       
-      # Infra Usage of billing metrics. Next ID: 6
+      # Infra Usage of billing metrics.
       class InfraUsage
         include Google::Apis::Core::Hashable
       
@@ -1128,7 +1124,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents the feeling associated with the entire text or entities in the text.
-        # Next ID: 6
         # Corresponds to the JSON property `sentiment`
         # @return [Google::Apis::LanguageV1beta2::Sentiment]
         attr_accessor :sentiment
@@ -1150,11 +1145,10 @@ module Google
       end
       
       # Represents the feeling associated with the entire text or entities in the text.
-      # Next ID: 6
       class Sentiment
         include Google::Apis::Core::Hashable
       
-        # A non-negative number in the [0, +inf) range, which represents the absolute
+        # A non-negative number in the [0, +inf] range, which represents the absolute
         # magnitude of sentiment regardless of score (positive or negative).
         # Corresponds to the JSON property `magnitude`
         # @return [Float]
@@ -1670,8 +1664,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # =========================================================================== #
-        # The fields below are used exclusively for Forecasting.
+        # 
         # Corresponds to the JSON property `forecastingMetadata`
         # @return [Google::Apis::LanguageV1beta2::XpsColumnSpecForecastingMetadata]
         attr_accessor :forecasting_metadata
@@ -1724,8 +1717,7 @@ module Google
         end
       end
       
-      # =========================================================================== #
-      # The fields below are used exclusively for Forecasting.
+      # 
       class XpsColumnSpecForecastingMetadata
         include Google::Apis::Core::Hashable
       
@@ -2323,7 +2315,8 @@ module Google
         # @return [Array<Google::Apis::LanguageV1beta2::XpsEvaluationMetrics>]
         attr_accessor :evaluation_metrics
       
-        # Spec of input and output files, on external file systems (CNS, GCS, etc).
+        # Spec of input and output files, on external file systems (for example,
+        # Colossus Namespace System or Google Cloud Storage).
         # Corresponds to the JSON property `fileSpec`
         # @return [Google::Apis::LanguageV1beta2::XpsFileSpec]
         attr_accessor :file_spec
@@ -2349,7 +2342,8 @@ module Google
       class XpsExampleSet
         include Google::Apis::Core::Hashable
       
-        # Spec of input and output files, on external file systems (CNS, GCS, etc).
+        # Spec of input and output files, on external file systems (for example,
+        # Colossus Namespace System or Google Cloud Storage).
         # Corresponds to the JSON property `fileSpec`
         # @return [Google::Apis::LanguageV1beta2::XpsFileSpec]
         attr_accessor :file_spec
@@ -2410,14 +2404,14 @@ module Google
         attr_accessor :export_firebase_auxiliary_info
         alias_method :export_firebase_auxiliary_info?, :export_firebase_auxiliary_info
       
-        # The Google Contained Registry (GCR) path the exported files to be pushed to.
-        # This location is set if the exported format is DOCKDER.
+        # The Google Contained Registry path the exported files to be pushed to. This
+        # location is set if the exported format is DOCKDER.
         # Corresponds to the JSON property `outputGcrUri`
         # @return [String]
         attr_accessor :output_gcr_uri
       
-        # The Google Cloud Storage (GCS) directory where XPS will output the exported
-        # models and related files. Format: gs://bucket/directory
+        # The Google Cloud Storage directory where XPS will output the exported models
+        # and related files. Format: gs://bucket/directory
         # Corresponds to the JSON property `outputGcsUri`
         # @return [String]
         attr_accessor :output_gcs_uri
@@ -2457,7 +2451,8 @@ module Google
         end
       end
       
-      # Spec of input and output files, on external file systems (CNS, GCS, etc).
+      # Spec of input and output files, on external file systems (for example,
+      # Colossus Namespace System or Google Cloud Storage).
       class XpsFileSpec
         include Google::Apis::Core::Hashable
       
@@ -2654,8 +2649,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Contains the model format and internal location of the model files to be
-        # exported/downloaded. Use the GCS bucket name which is provided via
-        # TrainRequest.gcs_bucket_name to store the model files.
+        # exported/downloaded. Use the Google Cloud Storage bucket name which is
+        # provided via TrainRequest.gcs_bucket_name to store the model files.
         # Corresponds to the JSON property `exportModelOutputConfig`
         # @return [Array<Google::Apis::LanguageV1beta2::XpsExportModelOutputConfig>]
         attr_accessor :export_model_output_config
@@ -2685,7 +2680,7 @@ module Google
         # @return [Array<Google::Apis::LanguageV1beta2::XpsModelArtifactItem>]
         attr_accessor :export_artifact
       
-        # GCS uri of decoded labels file for model export 'dict.txt'.
+        # Google Cloud Storage URI of decoded labels file for model export 'dict.txt'.
         # Corresponds to the JSON property `labelGcsUri`
         # @return [String]
         attr_accessor :label_gcs_uri
@@ -2695,13 +2690,13 @@ module Google
         # @return [Google::Apis::LanguageV1beta2::XpsModelArtifactItem]
         attr_accessor :serving_artifact
       
-        # GCS uri prefix of Tensorflow JavaScript binary files 'groupX-shardXofX.bin'
-        # Deprecated.
+        # Google Cloud Storage URI prefix of Tensorflow JavaScript binary files 'groupX-
+        # shardXofX.bin'. Deprecated.
         # Corresponds to the JSON property `tfJsBinaryGcsPrefix`
         # @return [String]
         attr_accessor :tf_js_binary_gcs_prefix
       
-        # GCS uri of Tensorflow Lite metadata 'tflite_metadata.json'.
+        # Google Cloud Storage URI of Tensorflow Lite metadata 'tflite_metadata.json'.
         # Corresponds to the JSON property `tfLiteMetadataGcsUri`
         # @return [String]
         attr_accessor :tf_lite_metadata_gcs_uri
@@ -3116,7 +3111,7 @@ module Google
         # @return [String]
         attr_accessor :artifact_format
       
-        # The Google Cloud Storage (GCS) uri that stores the model binary files.
+        # The Google Cloud Storage URI that stores the model binary files.
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
         attr_accessor :gcs_uri
@@ -3132,7 +3127,7 @@ module Google
         end
       end
       
-      # Next ID: 8
+      # 
       class XpsPreprocessResponse
         include Google::Apis::Core::Hashable
       
@@ -3376,7 +3371,7 @@ module Google
       end
       
       # Specification of Model explanation. Feature-based XAI in AutoML Vision ICN is
-      # deprecated, see b/288407203 for context.
+      # deprecated.
       class XpsResponseExplanationSpec
         include Google::Apis::Core::Hashable
       
@@ -3986,7 +3981,7 @@ module Google
         end
       end
       
-      # Metadata for a dataset used for AutoML Tables. Next ID: 6
+      # Metadata for a dataset used for AutoML Tables.
       class XpsTablesDatasetMetadata
         include Google::Apis::Core::Hashable
       
@@ -4167,7 +4162,7 @@ module Google
       class XpsTablesPreprocessResponse
         include Google::Apis::Core::Hashable
       
-        # Metadata for a dataset used for AutoML Tables. Next ID: 6
+        # Metadata for a dataset used for AutoML Tables.
         # Corresponds to the JSON property `tablesDatasetMetadata`
         # @return [Google::Apis::LanguageV1beta2::XpsTablesDatasetMetadata]
         attr_accessor :tables_dataset_metadata
@@ -4326,7 +4321,7 @@ module Google
         end
       end
       
-      # Component model. Next ID: 10
+      # Component model.
       class XpsTextComponentModel
         include Google::Apis::Core::Hashable
       
@@ -4722,7 +4717,7 @@ module Google
         end
       end
       
-      # Next ID: 18
+      # 
       class XpsTrainResponse
         include Google::Apis::Core::Hashable
       
@@ -5147,8 +5142,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Contains the model format and internal location of the model files to be
-        # exported/downloaded. Use the GCS bucket name which is provided via
-        # TrainRequest.gcs_bucket_name to store the model files.
+        # exported/downloaded. Use the Google Cloud Storage bucket name which is
+        # provided via TrainRequest.gcs_bucket_name to store the model files.
         # Corresponds to the JSON property `exportModelOutputConfig`
         # @return [Array<Google::Apis::LanguageV1beta2::XpsExportModelOutputConfig>]
         attr_accessor :export_model_output_config
@@ -5350,7 +5345,7 @@ module Google
       class XpsVisionTrainingOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # Infra Usage of billing metrics. Next ID: 6
+        # Infra Usage of billing metrics.
         # Corresponds to the JSON property `explanationUsage`
         # @return [Google::Apis::LanguageV1beta2::InfraUsage]
         attr_accessor :explanation_usage
