@@ -335,7 +335,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :multipack
       
-        # The number of aggregate offers.
+        # The number of CSS Products.
         # Corresponds to the JSON property `numberOfOffers`
         # @return [Fixnum]
         attr_accessor :number_of_offers
@@ -507,7 +507,7 @@ module Google
         end
       end
       
-      # The processed CSS Product(a.k.a Aggregate Offer internally).
+      # The processed CSS Product.
       class CssProduct
         include Google::Apis::Core::Hashable
       
@@ -738,8 +738,7 @@ module Google
       class DestinationStatus
         include Google::Apis::Core::Hashable
       
-        # List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is
-        # approved.
+        # List of country codes (ISO 3166-1 alpha-2) where the CSS Product is approved.
         # Corresponds to the JSON property `approvedCountries`
         # @return [Array<String>]
         attr_accessor :approved_countries
@@ -749,14 +748,14 @@ module Google
         # @return [String]
         attr_accessor :destination
       
-        # List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is
+        # List of country codes (ISO 3166-1 alpha-2) where the CSS Product is
         # disapproved.
         # Corresponds to the JSON property `disapprovedCountries`
         # @return [Array<String>]
         attr_accessor :disapproved_countries
       
-        # List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is
-        # pending approval.
+        # List of country codes (ISO 3166-1 alpha-2) where the CSS Product is pending
+        # approval.
         # Corresponds to the JSON property `pendingCountries`
         # @return [Array<String>]
         attr_accessor :pending_countries
@@ -856,8 +855,8 @@ module Google
       class ItemLevelIssue
         include Google::Apis::Core::Hashable
       
-        # List of country codes (ISO 3166-1 alpha-2) where issue applies to the
-        # aggregate offer.
+        # List of country codes (ISO 3166-1 alpha-2) where issue applies to the CSS
+        # Product.
         # Corresponds to the JSON property `applicableCountries`
         # @return [Array<String>]
         attr_accessor :applicable_countries
@@ -897,7 +896,7 @@ module Google
         # @return [String]
         attr_accessor :resolution
       
-        # How this issue affects serving of the aggregate offer.
+        # How this issue affects serving of the CSS Product.
         # Corresponds to the JSON property `servability`
         # @return [String]
         attr_accessor :servability
