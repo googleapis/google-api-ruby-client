@@ -43,10 +43,10 @@ module Google
       # View customer related information
       AUTH_ADMIN_DIRECTORY_CUSTOMER_READONLY = 'https://www.googleapis.com/auth/admin.directory.customer.readonly'
 
-      # View and manage your Chrome OS devices' metadata
+      # View and manage your ChromeOS devices' metadata
       AUTH_ADMIN_DIRECTORY_DEVICE_CHROMEOS = 'https://www.googleapis.com/auth/admin.directory.device.chromeos'
 
-      # View your Chrome OS devices' metadata
+      # View your ChromeOS devices' metadata
       AUTH_ADMIN_DIRECTORY_DEVICE_CHROMEOS_READONLY = 'https://www.googleapis.com/auth/admin.directory.device.chromeos.readonly'
 
       # View and manage your mobile devices' metadata
