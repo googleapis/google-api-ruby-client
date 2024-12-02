@@ -314,80 +314,6 @@ module Google
         end
       end
       
-      # Defines the destination bigquery dataset.
-      class DestinationDataset
-        include Google::Apis::Core::Hashable
-      
-        # Contains the reference that identifies a destination bigquery dataset.
-        # Corresponds to the JSON property `datasetReference`
-        # @return [Google::Apis::AnalyticshubV1beta1::DestinationDatasetReference]
-        attr_accessor :dataset_reference
-      
-        # Optional. A user-friendly description of the dataset.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional. A descriptive name for the dataset.
-        # Corresponds to the JSON property `friendlyName`
-        # @return [String]
-        attr_accessor :friendly_name
-      
-        # Optional. The labels associated with this dataset. You can use these to
-        # organize and group your datasets. You can set this property when inserting or
-        # updating a dataset. See https://cloud.google.com/resource-manager/docs/
-        # creating-managing-labels for more information.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Required. The geographic location where the dataset should reside. See https://
-        # cloud.google.com/bigquery/docs/locations for supported locations.
-        # Corresponds to the JSON property `location`
-        # @return [String]
-        attr_accessor :location
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dataset_reference = args[:dataset_reference] if args.key?(:dataset_reference)
-          @description = args[:description] if args.key?(:description)
-          @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
-          @labels = args[:labels] if args.key?(:labels)
-          @location = args[:location] if args.key?(:location)
-        end
-      end
-      
-      # Contains the reference that identifies a destination bigquery dataset.
-      class DestinationDatasetReference
-        include Google::Apis::Core::Hashable
-      
-        # Required. A unique ID for this dataset, without the project name. The ID must
-        # contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The
-        # maximum length is 1,024 characters.
-        # Corresponds to the JSON property `datasetId`
-        # @return [String]
-        attr_accessor :dataset_id
-      
-        # Required. The ID of the project containing this dataset.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
-          @project_id = args[:project_id] if args.key?(:project_id)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -502,6 +428,80 @@ module Google
         # Update properties of this object
         def update!(**args)
           @requested_policy_version = args[:requested_policy_version] if args.key?(:requested_policy_version)
+        end
+      end
+      
+      # Defines the destination bigquery dataset.
+      class GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset
+        include Google::Apis::Core::Hashable
+      
+        # Contains the reference that identifies a destination bigquery dataset.
+        # Corresponds to the JSON property `datasetReference`
+        # @return [Google::Apis::AnalyticshubV1beta1::GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference]
+        attr_accessor :dataset_reference
+      
+        # Optional. A user-friendly description of the dataset.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. A descriptive name for the dataset.
+        # Corresponds to the JSON property `friendlyName`
+        # @return [String]
+        attr_accessor :friendly_name
+      
+        # Optional. The labels associated with this dataset. You can use these to
+        # organize and group your datasets. You can set this property when inserting or
+        # updating a dataset. See https://cloud.google.com/resource-manager/docs/
+        # creating-managing-labels for more information.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The geographic location where the dataset should reside. See https://
+        # cloud.google.com/bigquery/docs/locations for supported locations.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_reference = args[:dataset_reference] if args.key?(:dataset_reference)
+          @description = args[:description] if args.key?(:description)
+          @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # Contains the reference that identifies a destination bigquery dataset.
+      class GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. A unique ID for this dataset, without the project name. The ID must
+        # contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The
+        # maximum length is 1,024 characters.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # Required. The ID of the project containing this dataset.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -1043,7 +1043,7 @@ module Google
       
         # Defines the destination bigquery dataset.
         # Corresponds to the JSON property `destinationDataset`
-        # @return [Google::Apis::AnalyticshubV1beta1::DestinationDataset]
+        # @return [Google::Apis::AnalyticshubV1beta1::GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset]
         attr_accessor :destination_dataset
       
         def initialize(**args)
