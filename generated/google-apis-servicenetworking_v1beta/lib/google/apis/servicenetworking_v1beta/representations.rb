@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExperimentalFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -539,6 +545,12 @@ module Google
       end
       
       class SecondaryIpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SelectiveGapicGeneration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -812,6 +824,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :destinations, as: 'destinations'
           property :reference_docs_uri, as: 'referenceDocsUri'
+          property :selective_gapic_generation, as: 'selectiveGapicGeneration', class: Google::Apis::ServicenetworkingV1beta::SelectiveGapicGeneration, decorator: Google::Apis::ServicenetworkingV1beta::SelectiveGapicGeneration::Representation
+      
         end
       end
       
@@ -1017,6 +1031,14 @@ module Google
         end
       end
       
+      class ExperimentalFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :protobuf_pythonic_types_enabled, as: 'protobufPythonicTypesEnabled'
+          property :rest_async_io_enabled, as: 'restAsyncIoEnabled'
+        end
+      end
+      
       class Field
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1048,6 +1070,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings::Representation
       
+          hash :renamed_services, as: 'renamedServices'
         end
       end
       
@@ -1241,6 +1264,7 @@ module Google
           property :ingest_delay, as: 'ingestDelay'
           property :launch_stage, as: 'launchStage'
           property :sample_period, as: 'samplePeriod'
+          collection :time_series_resource_hierarchy_level, as: 'timeSeriesResourceHierarchyLevel'
         end
       end
       
@@ -1396,6 +1420,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings::Representation
       
+          property :experimental_features, as: 'experimentalFeatures', class: Google::Apis::ServicenetworkingV1beta::ExperimentalFeatures, decorator: Google::Apis::ServicenetworkingV1beta::ExperimentalFeatures::Representation
+      
         end
       end
       
@@ -1488,6 +1514,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
           property :range_name, as: 'rangeName'
+        end
+      end
+      
+      class SelectiveGapicGeneration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :methods_prop, as: 'methods'
         end
       end
       

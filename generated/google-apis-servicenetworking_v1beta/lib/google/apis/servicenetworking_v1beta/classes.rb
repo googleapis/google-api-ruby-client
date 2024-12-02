@@ -774,6 +774,12 @@ module Google
         # @return [String]
         attr_accessor :reference_docs_uri
       
+        # This message is used to configure the generation of a subset of the RPCs in a
+        # service for client libraries.
+        # Corresponds to the JSON property `selectiveGapicGeneration`
+        # @return [Google::Apis::ServicenetworkingV1beta::SelectiveGapicGeneration]
+        attr_accessor :selective_gapic_generation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -782,6 +788,7 @@ module Google
         def update!(**args)
           @destinations = args[:destinations] if args.key?(:destinations)
           @reference_docs_uri = args[:reference_docs_uri] if args.key?(:reference_docs_uri)
+          @selective_gapic_generation = args[:selective_gapic_generation] if args.key?(:selective_gapic_generation)
         end
       end
       
@@ -1601,6 +1608,39 @@ module Google
         end
       end
       
+      # Experimental features to be included during client library generation. These
+      # fields will be deprecated once the feature graduates and is enabled by default.
+      class ExperimentalFeatures
+        include Google::Apis::Core::Hashable
+      
+        # Enables generation of protobuf code using new types that are more Pythonic
+        # which are included in `protobuf>=5.29.x`. This feature will be enabled by
+        # default 1 month after launching the feature in preview packages.
+        # Corresponds to the JSON property `protobufPythonicTypesEnabled`
+        # @return [Boolean]
+        attr_accessor :protobuf_pythonic_types_enabled
+        alias_method :protobuf_pythonic_types_enabled?, :protobuf_pythonic_types_enabled
+      
+        # Enables generation of asynchronous REST clients if `rest` transport is enabled.
+        # By default, asynchronous REST clients will not be generated. This feature
+        # will be enabled by default 1 month after launching the feature in preview
+        # packages.
+        # Corresponds to the JSON property `restAsyncIoEnabled`
+        # @return [Boolean]
+        attr_accessor :rest_async_io_enabled
+        alias_method :rest_async_io_enabled?, :rest_async_io_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @protobuf_pythonic_types_enabled = args[:protobuf_pythonic_types_enabled] if args.key?(:protobuf_pythonic_types_enabled)
+          @rest_async_io_enabled = args[:rest_async_io_enabled] if args.key?(:rest_async_io_enabled)
+        end
+      end
+      
       # A single field of a message type.
       class Field
         include Google::Apis::Core::Hashable
@@ -1730,6 +1770,13 @@ module Google
         # @return [Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings]
         attr_accessor :common
       
+        # Map of service names to renamed services. Keys are the package relative
+        # service names and values are the name to be used for the service client and
+        # call options. publishing: go_settings: renamed_services: Publisher: TopicAdmin
+        # Corresponds to the JSON property `renamedServices`
+        # @return [Hash<String,String>]
+        attr_accessor :renamed_services
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1737,6 +1784,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common = args[:common] if args.key?(:common)
+          @renamed_services = args[:renamed_services] if args.key?(:renamed_services)
         end
       end
       
@@ -2689,6 +2737,11 @@ module Google
         # @return [String]
         attr_accessor :sample_period
       
+        # The scope of the timeseries data of the metric.
+        # Corresponds to the JSON property `timeSeriesResourceHierarchyLevel`
+        # @return [Array<String>]
+        attr_accessor :time_series_resource_hierarchy_level
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2698,6 +2751,7 @@ module Google
           @ingest_delay = args[:ingest_delay] if args.key?(:ingest_delay)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @sample_period = args[:sample_period] if args.key?(:sample_period)
+          @time_series_resource_hierarchy_level = args[:time_series_resource_hierarchy_level] if args.key?(:time_series_resource_hierarchy_level)
         end
       end
       
@@ -2750,7 +2804,7 @@ module Google
       # AccessControl The mixin construct implies that all methods in `AccessControl`
       # are also declared with same name and request/response types in `Storage`. A
       # documentation generator or annotation processor will see the effective `
-      # Storage.GetAcl` method after inherting documentation and annotations as
+      # Storage.GetAcl` method after inheriting documentation and annotations as
       # follows: service Storage ` // Get the underlying ACL object. rpc GetAcl(
       # GetAclRequest) returns (Acl) ` option (google.api.http).get = "/v2/`resource=**
       # `:getAcl"; ` ... ` Note how the version in the path pattern changed from `v1`
@@ -3216,10 +3270,11 @@ module Google
         # granularity. The role must be one of the following: - 'roles/container.
         # hostServiceAgentUser' applied on the shared VPC host project - 'roles/compute.
         # securityAdmin' applied on the shared VPC host project - 'roles/compute.
-        # networkAdmin' applied on the shared VPC host project - 'roles/compute.xpnAdmin'
+        # networkAdmin' applied on the shared VPC host project - 'roles/tpu.xpnAgent'
         # applied on the shared VPC host project - 'roles/dns.admin' applied on the
         # shared VPC host project - 'roles/logging.admin' applied on the shared VPC host
-        # project
+        # project - 'roles/monitoring.viewer' applied on the shared VPC host project - '
+        # roles/servicemanagement.quotaViewer' applied on the shared VPC host project
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -3336,6 +3391,12 @@ module Google
         # @return [Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings]
         attr_accessor :common
       
+        # Experimental features to be included during client library generation. These
+        # fields will be deprecated once the feature graduates and is enabled by default.
+        # Corresponds to the JSON property `experimentalFeatures`
+        # @return [Google::Apis::ServicenetworkingV1beta::ExperimentalFeatures]
+        attr_accessor :experimental_features
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3343,6 +3404,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common = args[:common] if args.key?(:common)
+          @experimental_features = args[:experimental_features] if args.key?(:experimental_features)
         end
       end
       
@@ -3462,11 +3524,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Specify the unit of the quota limit. It uses the same syntax as Metric.unit.
-        # The supported unit kinds are determined by the quota backend system. Here are
-        # some examples: * "1/min/`project`" for quota per minute per project. Note: the
-        # order of unit components is insignificant. The "1" at the beginning is
-        # required to follow the metric unit syntax.
+        # Specify the unit of the quota limit. It uses the same syntax as
+        # MetricDescriptor.unit. The supported unit kinds are determined by the quota
+        # backend system. Here are some examples: * "1/min/`project`" for quota per
+        # minute per project. Note: the order of unit components is insignificant. The "
+        # 1" at the beginning is required to follow the metric unit syntax.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -3692,6 +3754,27 @@ module Google
         def update!(**args)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @range_name = args[:range_name] if args.key?(:range_name)
+        end
+      end
+      
+      # This message is used to configure the generation of a subset of the RPCs in a
+      # service for client libraries.
+      class SelectiveGapicGeneration
+        include Google::Apis::Core::Hashable
+      
+        # An allowlist of the fully qualified names of RPCs that should be included on
+        # public client surfaces.
+        # Corresponds to the JSON property `methods`
+        # @return [Array<String>]
+        attr_accessor :methods_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
         end
       end
       
