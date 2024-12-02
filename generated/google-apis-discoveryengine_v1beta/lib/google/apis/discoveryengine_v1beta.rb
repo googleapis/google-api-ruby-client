@@ -23,7 +23,7 @@ module Google
     #
     # Discovery Engine API.
     #
-    # @see https://cloud.google.com/discovery-engine/docs
+    # @see https://cloud.google.com/generative-ai-app-builder/docs/
     module DiscoveryengineV1beta
       # Version of the Discovery Engine API this client connects to.
       # This is NOT the gem version.
