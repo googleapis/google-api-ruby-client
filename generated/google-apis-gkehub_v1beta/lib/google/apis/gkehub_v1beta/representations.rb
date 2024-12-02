@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CompliancePostureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComplianceStandard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigManagementBinauthzConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -503,6 +515,12 @@ module Google
       end
       
       class IdentityServiceAzureAdConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceDiagnosticInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1055,6 +1073,8 @@ module Google
           property :identity_provider, as: 'identityProvider'
           property :issuer, as: 'issuer'
           property :oidc_jwks, :base64 => true, as: 'oidcJwks'
+          property :scope_tenancy_identity_provider, as: 'scopeTenancyIdentityProvider'
+          property :scope_tenancy_workload_identity_pool, as: 'scopeTenancyWorkloadIdentityPool'
           property :workload_identity_pool, as: 'workloadIdentityPool'
         end
       end
@@ -1245,6 +1265,22 @@ module Google
         end
       end
       
+      class CompliancePostureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :compliance_standards, as: 'complianceStandards', class: Google::Apis::GkehubV1beta::ComplianceStandard, decorator: Google::Apis::GkehubV1beta::ComplianceStandard::Representation
+      
+          property :mode, as: 'mode'
+        end
+      end
+      
+      class ComplianceStandard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :standard, as: 'standard'
+        end
+      end
+      
       class ConfigManagementBinauthzConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1280,6 +1316,7 @@ module Google
       
           property :prevent_drift, as: 'preventDrift'
           property :source_format, as: 'sourceFormat'
+          property :stop_syncing, as: 'stopSyncing'
         end
       end
       
@@ -1308,6 +1345,8 @@ module Google
       class ConfigManagementConfigSyncState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_level_stop_syncing_state, as: 'clusterLevelStopSyncingState'
+          property :cr_count, as: 'crCount'
           property :deployment_state, as: 'deploymentState', class: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncDeploymentState, decorator: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncDeploymentState::Representation
       
           collection :errors, as: 'errors', class: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncError, decorator: Google::Apis::GkehubV1beta::ConfigManagementConfigSyncError::Representation
@@ -1574,6 +1613,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :binary_authorization_config, as: 'binaryAuthorizationConfig', class: Google::Apis::GkehubV1beta::BinaryAuthorizationConfig, decorator: Google::Apis::GkehubV1beta::BinaryAuthorizationConfig::Representation
       
+          property :compliance_posture_config, as: 'compliancePostureConfig', class: Google::Apis::GkehubV1beta::CompliancePostureConfig, decorator: Google::Apis::GkehubV1beta::CompliancePostureConfig::Representation
+      
           property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::GkehubV1beta::SecurityPostureConfig, decorator: Google::Apis::GkehubV1beta::SecurityPostureConfig::Representation
       
         end
@@ -1625,6 +1666,7 @@ module Google
       
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::CommonFeatureState, decorator: Google::Apis::GkehubV1beta::CommonFeatureState::Representation
       
+          collection :unreachable, as: 'unreachable'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1814,6 +1856,14 @@ module Google
         end
       end
       
+      class IdentityServiceDiagnosticInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :expiration_time, as: 'expirationTime'
+        end
+      end
+      
       class IdentityServiceGoogleConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1833,6 +1883,8 @@ module Google
       class IdentityServiceIdentityServiceOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :diagnostic_interface, as: 'diagnosticInterface', class: Google::Apis::GkehubV1beta::IdentityServiceDiagnosticInterface, decorator: Google::Apis::GkehubV1beta::IdentityServiceDiagnosticInterface::Representation
+      
           property :session_duration, as: 'sessionDuration'
         end
       end
@@ -2095,6 +2147,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authority, as: 'authority', class: Google::Apis::GkehubV1beta::Authority, decorator: Google::Apis::GkehubV1beta::Authority::Representation
       
+          property :cluster_tier, as: 'clusterTier'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :description, as: 'description'
@@ -2592,6 +2645,7 @@ module Google
       class ServiceMeshMembershipSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_api, as: 'configApi'
           property :control_plane, as: 'controlPlane'
           property :management, as: 'management'
         end
