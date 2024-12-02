@@ -410,8 +410,8 @@ module Google
         
         # Updates an Application in a host project and location.
         # @param [String] name
-        #   Identifier. The resource name of an Application. Format: "projects/`host-
-        #   project-id`/locations/`location`/applications/`application-id`"
+        #   Identifier. The resource name of an Application. Format: `"projects/`host-
+        #   project-id`/locations/`location`/applications/`application-id`"`
         # @param [Google::Apis::ApphubV1alpha::Application] application_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -714,8 +714,8 @@ module Google
         
         # Updates a Service in an Application.
         # @param [String] name
-        #   Identifier. The resource name of a Service. Format: "projects/`host-project-id`
-        #   /locations/`location`/applications/`application-id`/services/`service-id`"
+        #   Identifier. The resource name of a Service. Format: `"projects/`host-project-
+        #   id`/locations/`location`/applications/`application-id`/services/`service-id`"`
         # @param [Google::Apis::ApphubV1alpha::Service] service_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -942,8 +942,9 @@ module Google
         
         # Updates a Workload in an Application.
         # @param [String] name
-        #   Identifier. The resource name of the Workload. Format: "projects/`host-project-
-        #   id`/locations/`location`/applications/`application-id`/workloads/`workload-id`"
+        #   Identifier. The resource name of the Workload. Format: `"projects/`host-
+        #   project-id`/locations/`location`/applications/`application-id`/workloads/`
+        #   workload-id`"`
         # @param [Google::Apis::ApphubV1alpha::Workload] workload_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
