@@ -56,21 +56,27 @@ module Google
         end
       end
       
-      # Encapsulates an *App Check token*, which are used to access Firebase services
+      # Encapsulates an *App Check token*, which are used to access backend services
       # protected by App Check.
       class GoogleFirebaseAppcheckV1betaAppCheckToken
         include Google::Apis::Core::Hashable
       
-        # An App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/
-        # html/rfc7519) containing claims that identify the attested app and Firebase
-        # project. This token is used to access Firebase services protected by App Check.
+        # The App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/
+        # html/rfc7519) containing claims that identify the attested app and GCP project.
+        # This token is used to access Google services protected by App Check. These
+        # tokens can also be [verified by your own custom backends](https://firebase.
+        # google.com/docs/app-check/custom-resource-backend) using the Firebase Admin
+        # SDK or third-party libraries.
         # Corresponds to the JSON property `attestationToken`
         # @return [String]
         attr_accessor :attestation_token
       
-        # An App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/
-        # html/rfc7519) containing claims that identify the attested app and Firebase
-        # project. This token is used to access Firebase services protected by App Check.
+        # The App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/
+        # html/rfc7519) containing claims that identify the attested app and GCP project.
+        # This token is used to access Google services protected by App Check. These
+        # tokens can also be [verified by your own custom backends](https://firebase.
+        # google.com/docs/app-check/custom-resource-backend) using the Firebase Admin
+        # SDK or third-party libraries.
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
@@ -555,7 +561,7 @@ module Google
       class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse
         include Google::Apis::Core::Hashable
       
-        # Encapsulates an *App Check token*, which are used to access Firebase services
+        # Encapsulates an *App Check token*, which are used to access backend services
         # protected by App Check.
         # Corresponds to the JSON property `appCheckToken`
         # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppCheckToken]
@@ -1229,7 +1235,7 @@ module Google
         end
       end
       
-      # App Check enforcement policy for a specific resource of a Firebase service
+      # App Check enforcement policy for a specific resource of a Google service
       # supported by App Check. Note that this policy will override the service-level
       # configuration.
       class GoogleFirebaseAppcheckV1betaResourcePolicy
@@ -1260,13 +1266,13 @@ module Google
         attr_accessor :name
       
         # Required. Service specific name of the resource object to which this policy
-        # applies, in the format: * `//oauth2.googleapis.com/projects/`project_number`/
-        # oauthClients/`oauth_client_id`` (Google Identity for iOS) Note that the
-        # resource must belong to the service specified in the `name` and be from the
-        # same project as this policy, but the resource is allowed to be missing at the
-        # time of creation of this policy; in that case, we make a best-effort attempt
-        # at respecting this policy, but it may not have any effect until the resource
-        # is fully created.
+        # applies, in the format: * **iOS OAuth clients** (Google Identity for iOS): `//
+        # oauth2.googleapis.com/projects/`project_number`/oauthClients/`oauth_client_id``
+        # Note that the resource must belong to the service specified in the `name` and
+        # be from the same project as this policy, but the resource is allowed to be
+        # missing at the time of creation of this policy; in that case, we make a best-
+        # effort attempt at respecting this policy, but it may not have any effect until
+        # the resource is fully created.
         # Corresponds to the JSON property `targetResource`
         # @return [String]
         attr_accessor :target_resource
@@ -1348,7 +1354,8 @@ module Google
         # following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
         # Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime
         # Database) * `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.
-        # googleapis.com` (Firebase Authentication with Identity Platform)
+        # googleapis.com` (Firebase Authentication with Identity Platform) * `oauth2.
+        # googleapis.com` (Google Identity for iOS)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1377,7 +1384,7 @@ module Google
       class GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest
         include Google::Apis::Core::Hashable
       
-        # App Check enforcement policy for a specific resource of a Firebase service
+        # App Check enforcement policy for a specific resource of a Google service
         # supported by App Check. Note that this policy will override the service-level
         # configuration.
         # Corresponds to the JSON property `resourcePolicy`
