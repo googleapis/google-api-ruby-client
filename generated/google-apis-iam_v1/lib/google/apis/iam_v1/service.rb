@@ -123,14 +123,14 @@ module Google
         # Creates a new WorkforcePool. You cannot reuse the name of a deleted pool until
         # 30 days after deletion.
         # @param [String] location
-        #   The location of the pool to create. Format: `locations/`location``.
+        #   Optional. The location of the pool to create. Format: `locations/`location``.
         # @param [Google::Apis::IamV1::WorkforcePool] workforce_pool_object
         # @param [String] workforce_pool_id
-        #   The ID to use for the pool, which becomes the final component of the resource
-        #   name. The IDs must be a globally unique string of 6 to 63 lowercase letters,
-        #   digits, or hyphens. It must start with a letter, and cannot have a trailing
-        #   hyphen. The prefix `gcp-` is reserved for use by Google, and may not be
-        #   specified.
+        #   Optional. The ID to use for the pool, which becomes the final component of the
+        #   resource name. The IDs must be a globally unique string of 6 to 63 lowercase
+        #   letters, digits, or hyphens. It must start with a letter, and cannot have a
+        #   trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may not
+        #   be specified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1113,11 +1113,12 @@ module Google
         # Policy. * Existing bindings to the custom role are not changed, but they have
         # no effect. * By default, the response from ListRoles does not include the
         # custom role. A deleted custom role still counts toward the [custom role limit](
-        # /iam/quotas#limits) until it is permanently deleted. You have 7 days to
-        # undelete the custom role. After 7 days, the following changes occur: * The
-        # custom role is permanently deleted and cannot be recovered. * If an IAM policy
-        # contains a binding to the custom role, the binding is permanently removed. *
-        # The custom role no longer counts toward your custom role limit.
+        # https://cloud.google.com/iam/help/limits) until it is permanently deleted. You
+        # have 7 days to undelete the custom role. After 7 days, the following changes
+        # occur: * The custom role is permanently deleted and cannot be recovered. * If
+        # an IAM policy contains a binding to the custom role, the binding is
+        # permanently removed. * The custom role no longer counts toward your custom
+        # role limit.
         # @param [String] name
         #   The `name` parameter's value depends on the target resource for the request,
         #   namely [projects](https://cloud.google.com/iam/docs/reference/rest/v1/projects.
@@ -1572,8 +1573,8 @@ module Google
         
         # Updates an existing OauthClient.
         # @param [String] name
-        #   Immutable. The resource name of the OauthClient. Format:`projects/`project`/
-        #   locations/`location`/oauthClients/`oauth_client``.
+        #   Immutable. Identifier. The resource name of the OauthClient. Format:`projects/`
+        #   project`/locations/`location`/oauthClients/`oauth_client``.
         # @param [Google::Apis::IamV1::OauthClient] oauth_client_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
@@ -1777,9 +1778,9 @@ module Google
         
         # Updates an existing OauthClientCredential.
         # @param [String] name
-        #   Immutable. The resource name of the OauthClientCredential. Format: `projects/`
-        #   project`/locations/`location`/oauthClients/`oauth_client`/credentials/`
-        #   credential``
+        #   Immutable. Identifier. The resource name of the OauthClientCredential. Format:
+        #   `projects/`project`/locations/`location`/oauthClients/`oauth_client`/
+        #   credentials/`credential``
         # @param [Google::Apis::IamV1::OauthClientCredential] oauth_client_credential_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
@@ -2661,11 +2662,12 @@ module Google
         # Policy. * Existing bindings to the custom role are not changed, but they have
         # no effect. * By default, the response from ListRoles does not include the
         # custom role. A deleted custom role still counts toward the [custom role limit](
-        # /iam/quotas#limits) until it is permanently deleted. You have 7 days to
-        # undelete the custom role. After 7 days, the following changes occur: * The
-        # custom role is permanently deleted and cannot be recovered. * If an IAM policy
-        # contains a binding to the custom role, the binding is permanently removed. *
-        # The custom role no longer counts toward your custom role limit.
+        # https://cloud.google.com/iam/help/limits) until it is permanently deleted. You
+        # have 7 days to undelete the custom role. After 7 days, the following changes
+        # occur: * The custom role is permanently deleted and cannot be recovered. * If
+        # an IAM policy contains a binding to the custom role, the binding is
+        # permanently removed. * The custom role no longer counts toward your custom
+        # role limit.
         # @param [String] name
         #   The `name` parameter's value depends on the target resource for the request,
         #   namely [projects](https://cloud.google.com/iam/docs/reference/rest/v1/projects.
