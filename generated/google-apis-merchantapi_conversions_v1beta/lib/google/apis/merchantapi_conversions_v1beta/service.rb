@@ -122,7 +122,7 @@ module Google
         # Fetches a conversion source.
         # @param [String] name
         #   Required. The name of the conversion source to be fetched. Format: accounts/`
-        #   account`/conversionsources/`conversion_source`
+        #   account`/conversionSources/`conversion_source`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -205,7 +205,7 @@ module Google
         #   For MerchantCenterDestination sources.
         # @param [Google::Apis::MerchantapiConversionsV1beta::ConversionSource] conversion_source_object
         # @param [String] update_mask
-        #   Required. List of fields being updated.
+        #   Optional. List of fields being updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
