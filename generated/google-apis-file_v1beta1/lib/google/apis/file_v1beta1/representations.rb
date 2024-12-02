@@ -130,7 +130,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IopsPerGb
+      class IopsPerTb
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -389,10 +389,6 @@ module Google
           property :name, as: 'name'
           collection :nfs_export_options, as: 'nfsExportOptions', class: Google::Apis::FileV1beta1::NfsExportOptions, decorator: Google::Apis::FileV1beta1::NfsExportOptions::Representation
       
-          property :performance_config, as: 'performanceConfig', class: Google::Apis::FileV1beta1::PerformanceConfig, decorator: Google::Apis::FileV1beta1::PerformanceConfig::Representation
-      
-          property :performance_limits, as: 'performanceLimits', class: Google::Apis::FileV1beta1::PerformanceLimits, decorator: Google::Apis::FileV1beta1::PerformanceLimits::Representation
-      
           property :source_backup, as: 'sourceBackup'
         end
       end
@@ -400,6 +396,7 @@ module Google
       class FixedIops
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_iops, :numeric_string => true, as: 'maxIops'
           property :max_read_iops, :numeric_string => true, as: 'maxReadIops'
         end
       end
@@ -505,10 +502,11 @@ module Google
         end
       end
       
-      class IopsPerGb
+      class IopsPerTb
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_read_iops_per_gb, :numeric_string => true, as: 'maxReadIopsPerGb'
+          property :max_iops_per_tb, :numeric_string => true, as: 'maxIopsPerTb'
+          property :max_read_iops_per_tb, :numeric_string => true, as: 'maxReadIopsPerTb'
         end
       end
       
@@ -517,7 +515,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
           property :capacity_step_size_gb, :numeric_string => true, as: 'capacityStepSizeGb'
+          property :configurable_performance_enabled, as: 'configurablePerformanceEnabled'
           property :create_time, as: 'createTime'
+          property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
+          property :deletion_protection_reason, as: 'deletionProtectionReason'
           property :description, as: 'description'
           property :directory_services, as: 'directoryServices', class: Google::Apis::FileV1beta1::DirectoryServicesConfig, decorator: Google::Apis::FileV1beta1::DirectoryServicesConfig::Representation
       
@@ -531,6 +532,10 @@ module Google
           property :multi_share_enabled, as: 'multiShareEnabled'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
+      
+          property :performance_config, as: 'performanceConfig', class: Google::Apis::FileV1beta1::PerformanceConfig, decorator: Google::Apis::FileV1beta1::PerformanceConfig::Representation
+      
+          property :performance_limits, as: 'performanceLimits', class: Google::Apis::FileV1beta1::PerformanceLimits, decorator: Google::Apis::FileV1beta1::PerformanceLimits::Representation
       
           property :protocol, as: 'protocol'
           property :replication, as: 'replication', class: Google::Apis::FileV1beta1::Replication, decorator: Google::Apis::FileV1beta1::Replication::Representation
@@ -698,8 +703,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fixed_iops, as: 'fixedIops', class: Google::Apis::FileV1beta1::FixedIops, decorator: Google::Apis::FileV1beta1::FixedIops::Representation
       
-          property :iops_by_capacity, as: 'iopsByCapacity'
-          property :iops_per_gb, as: 'iopsPerGb', class: Google::Apis::FileV1beta1::IopsPerGb, decorator: Google::Apis::FileV1beta1::IopsPerGb::Representation
+          property :iops_per_tb, as: 'iopsPerTb', class: Google::Apis::FileV1beta1::IopsPerTb, decorator: Google::Apis::FileV1beta1::IopsPerTb::Representation
       
         end
       end
@@ -708,9 +712,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_read_iops, :numeric_string => true, as: 'maxReadIops'
-          property :max_read_throughput, :numeric_string => true, as: 'maxReadThroughput'
+          property :max_read_throughput_bps, :numeric_string => true, as: 'maxReadThroughputBps'
           property :max_write_iops, :numeric_string => true, as: 'maxWriteIops'
-          property :max_write_throughput, :numeric_string => true, as: 'maxWriteThroughput'
+          property :max_write_throughput_bps, :numeric_string => true, as: 'maxWriteThroughputBps'
         end
       end
       

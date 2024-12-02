@@ -111,7 +111,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :storage_bytes
       
-        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # Optional. Input only. Immutable. Tag key-value pairs are bound to this
         # resource. For example: "123/environment": "production", "123/costCenter": "
         # marketing"
         # Corresponds to the JSON property `tags`
@@ -277,7 +277,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ManagedActiveDirectoryConfig contains all the parameters for connecting to
-        # Managed Active Directory.
+        # Managed Service for Microsoft Active Directory (Managed Microsoft AD).
         # Corresponds to the JSON property `managedActiveDirectory`
         # @return [Google::Apis::FileV1beta1::ManagedActiveDirectoryConfig]
         attr_accessor :managed_active_directory
@@ -330,18 +330,6 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::NfsExportOptions>]
         attr_accessor :nfs_export_options
       
-        # Performance configuration. Used for setting the performance configuration.
-        # Defaults to `iops_by_capacity` if unset in instance creation.
-        # Corresponds to the JSON property `performanceConfig`
-        # @return [Google::Apis::FileV1beta1::PerformanceConfig]
-        attr_accessor :performance_config
-      
-        # The enforced performance limits, calculated from the instance's performance
-        # configuration.
-        # Corresponds to the JSON property `performanceLimits`
-        # @return [Google::Apis::FileV1beta1::PerformanceLimits]
-        attr_accessor :performance_limits
-      
         # The resource name of the backup, in the format `projects/`project_id`/
         # locations/`location_id`/backups/`backup_id``, that this file share has been
         # restored from.
@@ -358,17 +346,21 @@ module Google
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
           @name = args[:name] if args.key?(:name)
           @nfs_export_options = args[:nfs_export_options] if args.key?(:nfs_export_options)
-          @performance_config = args[:performance_config] if args.key?(:performance_config)
-          @performance_limits = args[:performance_limits] if args.key?(:performance_limits)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
         end
       end
       
-      # Fixed IOPS parameters.
+      # Fixed IOPS (input/output operations per second) parameters.
       class FixedIops
         include Google::Apis::Core::Hashable
       
-        # Required. Maximum raw read IOPS.
+        # Required. Maximum IOPS.
+        # Corresponds to the JSON property `maxIops`
+        # @return [Fixnum]
+        attr_accessor :max_iops
+      
+        # Optional. Deprecated: `max_iops` should be used instead of this parameter.
+        # Maximum read IOPS.
         # Corresponds to the JSON property `maxReadIops`
         # @return [Fixnum]
         attr_accessor :max_read_iops
@@ -379,6 +371,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @max_iops = args[:max_iops] if args.key?(:max_iops)
           @max_read_iops = args[:max_read_iops] if args.key?(:max_read_iops)
         end
       end
@@ -817,14 +810,20 @@ module Google
         end
       end
       
-      # IOPS per capacity parameters.
-      class IopsPerGb
+      # IOPS per TB. Filestore defines TB as 1024^4 bytes (TiB).
+      class IopsPerTb
         include Google::Apis::Core::Hashable
       
-        # Required. Maximum read IOPS per GB.
-        # Corresponds to the JSON property `maxReadIopsPerGb`
+        # Required. Maximum IOPS per TiB.
+        # Corresponds to the JSON property `maxIopsPerTb`
         # @return [Fixnum]
-        attr_accessor :max_read_iops_per_gb
+        attr_accessor :max_iops_per_tb
+      
+        # Optional. Deprecated: `max_iops_per_tb` should be used instead of this
+        # parameter. Maximum read IOPS per TiB.
+        # Corresponds to the JSON property `maxReadIopsPerTb`
+        # @return [Fixnum]
+        attr_accessor :max_read_iops_per_tb
       
         def initialize(**args)
            update!(**args)
@@ -832,7 +831,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @max_read_iops_per_gb = args[:max_read_iops_per_gb] if args.key?(:max_read_iops_per_gb)
+          @max_iops_per_tb = args[:max_iops_per_tb] if args.key?(:max_iops_per_tb)
+          @max_read_iops_per_tb = args[:max_read_iops_per_tb] if args.key?(:max_read_iops_per_tb)
         end
       end
       
@@ -852,10 +852,28 @@ module Google
         # @return [Fixnum]
         attr_accessor :capacity_step_size_gb
       
+        # Output only. Indicates whether this instance's performance is configurable. If
+        # enabled, adjust it using the 'performance_config' field.
+        # Corresponds to the JSON property `configurablePerformanceEnabled`
+        # @return [Boolean]
+        attr_accessor :configurable_performance_enabled
+        alias_method :configurable_performance_enabled?, :configurable_performance_enabled
+      
         # Output only. The time when the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. Indicates whether the instance is protected against deletion.
+        # Corresponds to the JSON property `deletionProtectionEnabled`
+        # @return [Boolean]
+        attr_accessor :deletion_protection_enabled
+        alias_method :deletion_protection_enabled?, :deletion_protection_enabled
+      
+        # Optional. The reason for enabling deletion protection.
+        # Corresponds to the JSON property `deletionProtectionReason`
+        # @return [String]
+        attr_accessor :deletion_protection_reason
       
         # The description of the instance (2048 characters or less).
         # Corresponds to the JSON property `description`
@@ -919,6 +937,22 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::NetworkConfig>]
         attr_accessor :networks
       
+        # Used for setting the performance configuration. If the user doesn't specify
+        # PerformanceConfig, automatically provision the default performance settings as
+        # described in https://cloud.google.com/filestore/docs/performance. Larger
+        # instances will be linearly set to more IOPS. If the instance's capacity is
+        # increased or decreased, its performance will be automatically adjusted upwards
+        # or downwards accordingly (respectively).
+        # Corresponds to the JSON property `performanceConfig`
+        # @return [Google::Apis::FileV1beta1::PerformanceConfig]
+        attr_accessor :performance_config
+      
+        # The enforced performance limits, calculated from the instance's performance
+        # configuration.
+        # Corresponds to the JSON property `performanceLimits`
+        # @return [Google::Apis::FileV1beta1::PerformanceLimits]
+        attr_accessor :performance_limits
+      
         # Immutable. The protocol indicates the access protocol for all shares in the
         # instance. This field is immutable and it cannot be changed after the instance
         # has been created. Default value: `NFS_V3`.
@@ -959,7 +993,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :suspension_reasons
       
-        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # Optional. Input only. Immutable. Tag key-value pairs are bound to this
         # resource. For example: "123/environment": "production", "123/costCenter": "
         # marketing"
         # Corresponds to the JSON property `tags`
@@ -979,7 +1013,10 @@ module Google
         def update!(**args)
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
           @capacity_step_size_gb = args[:capacity_step_size_gb] if args.key?(:capacity_step_size_gb)
+          @configurable_performance_enabled = args[:configurable_performance_enabled] if args.key?(:configurable_performance_enabled)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
+          @deletion_protection_reason = args[:deletion_protection_reason] if args.key?(:deletion_protection_reason)
           @description = args[:description] if args.key?(:description)
           @directory_services = args[:directory_services] if args.key?(:directory_services)
           @etag = args[:etag] if args.key?(:etag)
@@ -991,6 +1028,8 @@ module Google
           @multi_share_enabled = args[:multi_share_enabled] if args.key?(:multi_share_enabled)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
+          @performance_config = args[:performance_config] if args.key?(:performance_config)
+          @performance_limits = args[:performance_limits] if args.key?(:performance_limits)
           @protocol = args[:protocol] if args.key?(:protocol)
           @replication = args[:replication] if args.key?(:replication)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -1318,13 +1357,13 @@ module Google
       end
       
       # ManagedActiveDirectoryConfig contains all the parameters for connecting to
-      # Managed Active Directory.
+      # Managed Service for Microsoft Active Directory (Managed Microsoft AD).
       class ManagedActiveDirectoryConfig
         include Google::Apis::Core::Hashable
       
-        # Required. The computer name is used as a prefix to the mount remote target.
-        # Example: if the computer is `my-computer`, the mount command will look like: `$
-        # mount -o vers=4.1,sec=krb5 my-computer.filestore.: `.
+        # Required. The computer name is used as a prefix in the command to mount the
+        # remote target. For example: if the computer is `my-computer`, the mount
+        # command will look like: `$mount -o vers=4.1,sec=krb5 my-computer.filestore.: `.
         # Corresponds to the JSON property `computer`
         # @return [String]
         attr_accessor :computer
@@ -1589,30 +1628,24 @@ module Google
         end
       end
       
-      # Performance configuration. Used for setting the performance configuration.
-      # Defaults to `iops_by_capacity` if unset in instance creation.
+      # Used for setting the performance configuration. If the user doesn't specify
+      # PerformanceConfig, automatically provision the default performance settings as
+      # described in https://cloud.google.com/filestore/docs/performance. Larger
+      # instances will be linearly set to more IOPS. If the instance's capacity is
+      # increased or decreased, its performance will be automatically adjusted upwards
+      # or downwards accordingly (respectively).
       class PerformanceConfig
         include Google::Apis::Core::Hashable
       
-        # Fixed IOPS parameters.
+        # Fixed IOPS (input/output operations per second) parameters.
         # Corresponds to the JSON property `fixedIops`
         # @return [Google::Apis::FileV1beta1::FixedIops]
         attr_accessor :fixed_iops
       
-        # Automatically provision maximum available IOPS based on the capacity of the
-        # instance. Larger instances will be granted more IOPS. If instance capacity is
-        # increased or decreased, IOPS will be automatically adjusted upwards or
-        # downwards accordingly. The maximum available IOPS for a given capacity is
-        # defined in Filestore documentation.
-        # Corresponds to the JSON property `iopsByCapacity`
-        # @return [Boolean]
-        attr_accessor :iops_by_capacity
-        alias_method :iops_by_capacity?, :iops_by_capacity
-      
-        # IOPS per capacity parameters.
-        # Corresponds to the JSON property `iopsPerGb`
-        # @return [Google::Apis::FileV1beta1::IopsPerGb]
-        attr_accessor :iops_per_gb
+        # IOPS per TB. Filestore defines TB as 1024^4 bytes (TiB).
+        # Corresponds to the JSON property `iopsPerTb`
+        # @return [Google::Apis::FileV1beta1::IopsPerTb]
+        attr_accessor :iops_per_tb
       
         def initialize(**args)
            update!(**args)
@@ -1621,8 +1654,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fixed_iops = args[:fixed_iops] if args.key?(:fixed_iops)
-          @iops_by_capacity = args[:iops_by_capacity] if args.key?(:iops_by_capacity)
-          @iops_per_gb = args[:iops_per_gb] if args.key?(:iops_per_gb)
+          @iops_per_tb = args[:iops_per_tb] if args.key?(:iops_per_tb)
         end
       end
       
@@ -1636,20 +1668,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_read_iops
       
-        # Output only. The max read throughput.
-        # Corresponds to the JSON property `maxReadThroughput`
+        # Output only. The max read throughput in bytes per second.
+        # Corresponds to the JSON property `maxReadThroughputBps`
         # @return [Fixnum]
-        attr_accessor :max_read_throughput
+        attr_accessor :max_read_throughput_bps
       
         # Output only. The max write IOPS.
         # Corresponds to the JSON property `maxWriteIops`
         # @return [Fixnum]
         attr_accessor :max_write_iops
       
-        # Output only. The max write throughput.
-        # Corresponds to the JSON property `maxWriteThroughput`
+        # Output only. The max write throughput in bytes per second.
+        # Corresponds to the JSON property `maxWriteThroughputBps`
         # @return [Fixnum]
-        attr_accessor :max_write_throughput
+        attr_accessor :max_write_throughput_bps
       
         def initialize(**args)
            update!(**args)
@@ -1658,9 +1690,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_read_iops = args[:max_read_iops] if args.key?(:max_read_iops)
-          @max_read_throughput = args[:max_read_throughput] if args.key?(:max_read_throughput)
+          @max_read_throughput_bps = args[:max_read_throughput_bps] if args.key?(:max_read_throughput_bps)
           @max_write_iops = args[:max_write_iops] if args.key?(:max_write_iops)
-          @max_write_throughput = args[:max_write_throughput] if args.key?(:max_write_throughput)
+          @max_write_throughput_bps = args[:max_write_throughput_bps] if args.key?(:max_write_throughput_bps)
         end
       end
       
@@ -1719,8 +1751,8 @@ module Google
       class Replication
         include Google::Apis::Core::Hashable
       
-        # Replicas configuration on the instance. For now, only a single replica config
-        # is supported.
+        # Replication configuration for the replica instance associated with this
+        # instance. Only a single replica is supported.
         # Corresponds to the JSON property `replicas`
         # @return [Array<Google::Apis::FileV1beta1::ReplicaConfig>]
         attr_accessor :replicas
@@ -1944,7 +1976,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # Optional. Input only. Immutable. Tag key-value pairs are bound to this
         # resource. For example: "123/environment": "production", "123/costCenter": "
         # marketing"
         # Corresponds to the JSON property `tags`
@@ -2012,24 +2044,28 @@ module Google
       class TimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
-        # allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # Minutes of hour of day. Must be from 0 to 59.
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
       
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
