@@ -43,7 +43,7 @@ module Google
       class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
         include Google::Apis::Core::Hashable
       
-        # The ids of the collection groups that are being deleted.
+        # The IDs of the collection groups that are being deleted.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
@@ -54,7 +54,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Which namespace ids are being deleted.
+        # Which namespace IDs are being deleted.
         # Corresponds to the JSON property `namespaceIds`
         # @return [Array<String>]
         attr_accessor :namespace_ids
