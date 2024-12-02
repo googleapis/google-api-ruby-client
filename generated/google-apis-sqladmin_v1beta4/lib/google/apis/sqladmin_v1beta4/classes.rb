@@ -403,6 +403,11 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Output only. The maximum chargeable bytes for the backup.
+        # Corresponds to the JSON property `maxChargeableBytes`
+        # @return [Fixnum]
+        attr_accessor :max_chargeable_bytes
+      
         # The URI of this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -457,6 +462,7 @@ module Google
           @instance = args[:instance] if args.key?(:instance)
           @kind = args[:kind] if args.key?(:kind)
           @location = args[:location] if args.key?(:location)
+          @max_chargeable_bytes = args[:max_chargeable_bytes] if args.key?(:max_chargeable_bytes)
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
@@ -575,6 +581,13 @@ module Google
         # @return [String]
         attr_accessor :point_in_time
       
+        # Optional. Copy clone and point-in-time recovery clone of a regional instance
+        # in the specified zones. If not specified, clone to the same secondary zone as
+        # the source instance. This value cannot be the same as the preferred_zone field.
+        # Corresponds to the JSON property `preferredSecondaryZone`
+        # @return [String]
+        attr_accessor :preferred_secondary_zone
+      
         # Optional. Copy clone and point-in-time recovery clone of an instance to the
         # specified zone. If no zone is specified, clone to the same primary zone as the
         # source instance.
@@ -595,6 +608,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
           @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
+          @preferred_secondary_zone = args[:preferred_secondary_zone] if args.key?(:preferred_secondary_zone)
           @preferred_zone = args[:preferred_zone] if args.key?(:preferred_zone)
         end
       end
@@ -980,6 +994,13 @@ module Google
         # @return [String]
         attr_accessor :root_password
       
+        # Output only. This status indicates whether the instance satisfies PZI. The
+        # status is reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
         # This status indicates whether the instance satisfies PZS. The status is
         # reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
@@ -1091,6 +1112,7 @@ module Google
           @replica_names = args[:replica_names] if args.key?(:replica_names)
           @replication_cluster = args[:replication_cluster] if args.key?(:replication_cluster)
           @root_password = args[:root_password] if args.key?(:root_password)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scheduled_maintenance = args[:scheduled_maintenance] if args.key?(:scheduled_maintenance)
           @secondary_gce_zone = args[:secondary_gce_zone] if args.key?(:secondary_gce_zone)
@@ -1515,6 +1537,23 @@ module Google
           attr_accessor :differential_base
           alias_method :differential_base?, :differential_base
         
+          # Optional. The end timestamp when transaction log will be included in the
+          # export operation. [RFC 3339](https://tools.ietf.org/html/rfc3339) format (for
+          # example, `2023-10-01T16:19:00.094`) in UTC. When omitted, all available logs
+          # until current time will be included. Only applied to Cloud SQL for SQL Server.
+          # Corresponds to the JSON property `exportLogEndTime`
+          # @return [String]
+          attr_accessor :export_log_end_time
+        
+          # Optional. The begin timestamp when transaction log will be included in the
+          # export operation. [RFC 3339](https://tools.ietf.org/html/rfc3339) format (for
+          # example, `2023-10-01T16:19:00.094`) in UTC. When omitted, all available logs
+          # from the beginning of retention period will be included. Only applied to Cloud
+          # SQL for SQL Server.
+          # Corresponds to the JSON property `exportLogStartTime`
+          # @return [String]
+          attr_accessor :export_log_start_time
+        
           # Option for specifying how many stripes to use for the export. If blank, and
           # the value of the striped field is true, the number of stripes is automatically
           # chosen.
@@ -1537,6 +1576,8 @@ module Google
             @bak_type = args[:bak_type] if args.key?(:bak_type)
             @copy_only = args[:copy_only] if args.key?(:copy_only)
             @differential_base = args[:differential_base] if args.key?(:differential_base)
+            @export_log_end_time = args[:export_log_end_time] if args.key?(:export_log_end_time)
+            @export_log_start_time = args[:export_log_start_time] if args.key?(:export_log_start_time)
             @stripe_count = args[:stripe_count] if args.key?(:stripe_count)
             @striped = args[:striped] if args.key?(:striped)
           end
@@ -1691,6 +1732,25 @@ module Google
               @if_exists = args[:if_exists] if args.key?(:if_exists)
             end
           end
+        end
+      end
+      
+      # The selected object that Cloud SQL migrates.
+      class ExternalSyncSelectedObject
+        include Google::Apis::Core::Hashable
+      
+        # The name of the database that Cloud SQL migrates.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
         end
       end
       
@@ -2516,6 +2576,44 @@ module Google
         end
       end
       
+      # Instances ListServerCertificatess response.
+      class InstancesListServerCertificatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `sha1_fingerprint` of the active certificate from `server_certs`.
+        # Corresponds to the JSON property `activeVersion`
+        # @return [String]
+        attr_accessor :active_version
+      
+        # List of server CA certificates for the instance.
+        # Corresponds to the JSON property `caCerts`
+        # @return [Array<Google::Apis::SqladminV1beta4::SslCert>]
+        attr_accessor :ca_certs
+      
+        # This is always `sql#instancesListServerCertificates`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # List of server certificates for the instance, signed by the corresponding CA
+        # from the `ca_certs` list.
+        # Corresponds to the JSON property `serverCerts`
+        # @return [Array<Google::Apis::SqladminV1beta4::SslCert>]
+        attr_accessor :server_certs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_version = args[:active_version] if args.key?(:active_version)
+          @ca_certs = args[:ca_certs] if args.key?(:ca_certs)
+          @kind = args[:kind] if args.key?(:kind)
+          @server_certs = args[:server_certs] if args.key?(:server_certs)
+        end
+      end
+      
       # Database Instance reencrypt request.
       class InstancesReencryptRequest
         include Google::Apis::Core::Hashable
@@ -2571,6 +2669,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rotate_server_ca_context = args[:rotate_server_ca_context] if args.key?(:rotate_server_ca_context)
+        end
+      end
+      
+      # Rotate Server Certificate request.
+      class InstancesRotateServerCertificateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Instance rotate server certificate context.
+        # Corresponds to the JSON property `rotateServerCertificateContext`
+        # @return [Google::Apis::SqladminV1beta4::RotateServerCertificateContext]
+        attr_accessor :rotate_server_certificate_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rotate_server_certificate_context = args[:rotate_server_certificate_context] if args.key?(:rotate_server_certificate_context)
         end
       end
       
@@ -2957,10 +3074,21 @@ module Google
         # @return [String]
         attr_accessor :password
       
+        # Optional. A list of objects that the user selects for replication from an
+        # external source instance.
+        # Corresponds to the JSON property `selectedObjects`
+        # @return [Array<Google::Apis::SqladminV1beta4::SelectedObjects>]
+        attr_accessor :selected_objects
+      
         # Reference to another Cloud SQL instance.
         # Corresponds to the JSON property `sourceInstance`
         # @return [Google::Apis::SqladminV1beta4::InstanceReference]
         attr_accessor :source_instance
+      
+        # Optional. SslOption for replica connection to the on-premises source.
+        # Corresponds to the JSON property `sslOption`
+        # @return [String]
+        attr_accessor :ssl_option
       
         # The username for connecting to on-premises instance.
         # Corresponds to the JSON property `username`
@@ -2980,7 +3108,9 @@ module Google
           @host_port = args[:host_port] if args.key?(:host_port)
           @kind = args[:kind] if args.key?(:kind)
           @password = args[:password] if args.key?(:password)
+          @selected_objects = args[:selected_objects] if args.key?(:selected_objects)
           @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @ssl_option = args[:ssl_option] if args.key?(:ssl_option)
           @username = args[:username] if args.key?(:username)
         end
       end
@@ -3366,6 +3496,54 @@ module Google
         end
       end
       
+      # Settings for an automatically-setup Private Service Connect consumer endpoint
+      # that is used to connect to a Cloud SQL instance.
+      class PscAutoConnectionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The consumer network of this consumer endpoint. This must be a resource path
+        # that includes both the host project and the network name. For example, `
+        # projects/project1/global/networks/network1`. The consumer host project of this
+        # network might be different from the consumer service project.
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
+        # The connection policy status of the consumer network.
+        # Corresponds to the JSON property `consumerNetworkStatus`
+        # @return [String]
+        attr_accessor :consumer_network_status
+      
+        # This is the project ID of consumer service project of this consumer endpoint.
+        # Optional. This is only applicable if consumer_network is a shared vpc network.
+        # Corresponds to the JSON property `consumerProject`
+        # @return [String]
+        attr_accessor :consumer_project
+      
+        # The IP address of the consumer endpoint.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # The connection status of the consumer endpoint.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
+          @consumer_network_status = args[:consumer_network_status] if args.key?(:consumer_network_status)
+          @consumer_project = args[:consumer_project] if args.key?(:consumer_project)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # PSC settings for a Cloud SQL instance.
       class PscConfig
         include Google::Apis::Core::Hashable
@@ -3377,6 +3555,12 @@ module Google
         # Corresponds to the JSON property `allowedConsumerProjects`
         # @return [Array<String>]
         attr_accessor :allowed_consumer_projects
+      
+        # Optional. The list of settings for requested Private Service Connect consumer
+        # endpoints that can be used to connect to this Cloud SQL instance.
+        # Corresponds to the JSON property `pscAutoConnections`
+        # @return [Array<Google::Apis::SqladminV1beta4::PscAutoConnectionConfig>]
+        attr_accessor :psc_auto_connections
       
         # Whether PSC connectivity is enabled for this instance.
         # Corresponds to the JSON property `pscEnabled`
@@ -3391,6 +3575,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
+          @psc_auto_connections = args[:psc_auto_connections] if args.key?(:psc_auto_connections)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
         end
       end
@@ -3574,6 +3759,53 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @next_version = args[:next_version] if args.key?(:next_version)
+        end
+      end
+      
+      # Instance rotate server certificate context.
+      class RotateServerCertificateContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. This is always `sql#rotateServerCertificateContext`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Optional. The fingerprint of the next version to be rotated to. If left
+        # unspecified, will be rotated to the most recently added server certificate
+        # version.
+        # Corresponds to the JSON property `nextVersion`
+        # @return [String]
+        attr_accessor :next_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_version = args[:next_version] if args.key?(:next_version)
+        end
+      end
+      
+      # A list of objects that the user selects for replication from an external
+      # source instance.
+      class SelectedObjects
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the database to migrate.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
         end
       end
       
@@ -4083,6 +4315,12 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::MySqlSyncConfig]
         attr_accessor :mysql_sync_config
       
+        # Optional. Migrate only the specified objects from the source instance. If this
+        # field is empty, then migrate all objects.
+        # Corresponds to the JSON property `selectedObjects`
+        # @return [Array<Google::Apis::SqladminV1beta4::ExternalSyncSelectedObject>]
+        attr_accessor :selected_objects
+      
         # External sync mode
         # Corresponds to the JSON property `syncMode`
         # @return [String]
@@ -4113,6 +4351,7 @@ module Google
         def update!(**args)
           @migration_type = args[:migration_type] if args.key?(:migration_type)
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
+          @selected_objects = args[:selected_objects] if args.key?(:selected_objects)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
           @sync_parallel_level = args[:sync_parallel_level] if args.key?(:sync_parallel_level)
           @verify_connection_only = args[:verify_connection_only] if args.key?(:verify_connection_only)
