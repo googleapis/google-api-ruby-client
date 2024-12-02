@@ -650,6 +650,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::AzureSubscription]
         attr_accessor :subscription
       
+        # Represents a Microsoft Entra tenant.
+        # Corresponds to the JSON property `tenant`
+        # @return [Google::Apis::SecuritycenterV1beta1::AzureTenant]
+        attr_accessor :tenant
+      
         def initialize(**args)
            update!(**args)
         end
@@ -659,12 +664,18 @@ module Google
           @management_groups = args[:management_groups] if args.key?(:management_groups)
           @resource_group = args[:resource_group] if args.key?(:resource_group)
           @subscription = args[:subscription] if args.key?(:subscription)
+          @tenant = args[:tenant] if args.key?(:tenant)
         end
       end
       
       # Represents an Azure resource group.
       class AzureResourceGroup
         include Google::Apis::Core::Hashable
+      
+        # The ID of the Azure resource group.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
       
         # The name of the Azure resource group. This is not a UUID.
         # Corresponds to the JSON property `name`
@@ -677,6 +688,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -692,6 +704,32 @@ module Google
       
         # The UUID of the Azure subscription, for example, `291bba3f-e0a5-47bc-a099-
         # 3bdcb2a50a05`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Represents a Microsoft Entra tenant.
+      class AzureTenant
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the Azure tenant.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The ID of the Microsoft Entra tenant, for example, "a11aaa11-aa11-1aa1-11aa-
+        # 1aaa11a".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1315,10 +1353,20 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::Cvssv3]
         attr_accessor :cvssv3
       
+        # Date the first publicly available exploit or PoC was released.
+        # Corresponds to the JSON property `exploitReleaseDate`
+        # @return [String]
+        attr_accessor :exploit_release_date
+      
         # The exploitation activity of the vulnerability in the wild.
         # Corresponds to the JSON property `exploitationActivity`
         # @return [String]
         attr_accessor :exploitation_activity
+      
+        # Date of the earliest known exploitation.
+        # Corresponds to the JSON property `firstExploitationDate`
+        # @return [String]
+        attr_accessor :first_exploitation_date
       
         # The unique identifier for the vulnerability. e.g. CVE-2021-34527
         # Corresponds to the JSON property `id`
@@ -1361,7 +1409,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
+          @exploit_release_date = args[:exploit_release_date] if args.key?(:exploit_release_date)
           @exploitation_activity = args[:exploitation_activity] if args.key?(:exploitation_activity)
+          @first_exploitation_date = args[:first_exploitation_date] if args.key?(:first_exploitation_date)
           @id = args[:id] if args.key?(:id)
           @impact = args[:impact] if args.key?(:impact)
           @observed_in_the_wild = args[:observed_in_the_wild] if args.key?(:observed_in_the_wild)
@@ -1445,6 +1495,91 @@ module Google
           @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
           @scope = args[:scope] if args.key?(:scope)
           @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+        end
+      end
+      
+      # Details about a data access attempt made by a principal not authorized under
+      # applicable data security policy.
+      class DataAccessEvent
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for data access event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # Timestamp of data access event.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # The operation performed by the principal to access the data.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The email address of the principal that accessed the data. The principal could
+        # be a user account, service account, Google group, or other.
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @operation = args[:operation] if args.key?(:operation)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
+        end
+      end
+      
+      # Details about a data flow event, in which either the data is moved to or is
+      # accessed from a non-compliant geo-location, as defined in the applicable data
+      # security policy.
+      class DataFlowEvent
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for data flow event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # Timestamp of data flow event.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # The operation performed by the principal for the data flow event.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The email address of the principal that initiated the data flow event. The
+        # principal could be a user account, service account, Google group, or other.
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        # Non-compliant location of the principal or the data destination.
+        # Corresponds to the JSON property `violatedLocation`
+        # @return [String]
+        attr_accessor :violated_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @operation = args[:operation] if args.key?(:operation)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @violated_location = args[:violated_location] if args.key?(:violated_location)
         end
       end
       
@@ -1536,6 +1671,26 @@ module Google
         end
       end
       
+      # Contains information about the disk associated with the finding.
+      class Disk
+        include Google::Apis::Core::Hashable
+      
+        # The name of the disk, for example, "https://www.googleapis.com/compute/v1/
+        # projects/project-id/zones/zone-id/disks/disk-id".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Path of the file in terms of underlying disk/partition identifiers.
       class DiskPath
         include Google::Apis::Core::Hashable
@@ -1560,6 +1715,33 @@ module Google
         def update!(**args)
           @partition_uuid = args[:partition_uuid] if args.key?(:partition_uuid)
           @relative_path = args[:relative_path] if args.key?(:relative_path)
+        end
+      end
+      
+      # The record of a dynamic mute rule that matches the finding.
+      class DynamicMuteRecord
+        include Google::Apis::Core::Hashable
+      
+        # When the dynamic mute rule first matched the finding.
+        # Corresponds to the JSON property `matchTime`
+        # @return [String]
+        attr_accessor :match_time
+      
+        # The relative resource name of the mute rule, represented by a mute config,
+        # that created this record, for example `organizations/123/muteConfigs/
+        # mymuteconfig` or `organizations/123/locations/global/muteConfigs/mymuteconfig`.
+        # Corresponds to the JSON property `muteConfig`
+        # @return [String]
+        attr_accessor :mute_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @match_time = args[:match_time] if args.key?(:match_time)
+          @mute_config = args[:mute_config] if args.key?(:mute_config)
         end
       end
       
@@ -1877,6 +2059,16 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Data access events associated with the finding.
+        # Corresponds to the JSON property `dataAccessEvents`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::DataAccessEvent>]
+        attr_accessor :data_access_events
+      
+        # Data flow events associated with the finding.
+        # Corresponds to the JSON property `dataFlowEvents`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::DataFlowEvent>]
+        attr_accessor :data_flow_events
+      
         # Represents database access information, such as queries. A database may be a
         # sub-resource of an instance (as in the case of Cloud SQL instances or Cloud
         # Spanner instances), or the database instance itself. Some database resources
@@ -1892,6 +2084,11 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Contains information about the disk associated with the finding.
+        # Corresponds to the JSON property `disk`
+        # @return [Google::Apis::SecuritycenterV1beta1::Disk]
+        attr_accessor :disk
       
         # The time the finding was first detected. If an existing finding is updated,
         # then this is the time the update occurred. For example, if the finding
@@ -1993,6 +2190,12 @@ module Google
         # Corresponds to the JSON property `mute`
         # @return [String]
         attr_accessor :mute
+      
+        # Mute information about the finding, including whether the finding has a static
+        # mute or any matching dynamic mute rules.
+        # Corresponds to the JSON property `muteInfo`
+        # @return [Google::Apis::SecuritycenterV1beta1::MuteInfo]
+        attr_accessor :mute_info
       
         # Records additional information about the mute operation, for example, the [
         # mute configuration](/security-command-center/docs/how-to-mute-findings) that
@@ -2127,8 +2330,11 @@ module Google
           @contacts = args[:contacts] if args.key?(:contacts)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_access_events = args[:data_access_events] if args.key?(:data_access_events)
+          @data_flow_events = args[:data_flow_events] if args.key?(:data_flow_events)
           @database = args[:database] if args.key?(:database)
           @description = args[:description] if args.key?(:description)
+          @disk = args[:disk] if args.key?(:disk)
           @event_time = args[:event_time] if args.key?(:event_time)
           @exfiltration = args[:exfiltration] if args.key?(:exfiltration)
           @external_systems = args[:external_systems] if args.key?(:external_systems)
@@ -2145,6 +2351,7 @@ module Google
           @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
           @module_name = args[:module_name] if args.key?(:module_name)
           @mute = args[:mute] if args.key?(:mute)
+          @mute_info = args[:mute_info] if args.key?(:mute_info)
           @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
@@ -2550,6 +2757,11 @@ module Google
       class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
         include Google::Apis::Core::Hashable
       
+        # The cloud provider of the custom module.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
         # Defines the properties in a custom module configuration for Security Health
         # Analytics. Use the custom module configuration to create custom detectors that
         # generate custom findings for resources that you specify.
@@ -2586,6 +2798,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @custom_config = args[:custom_config] if args.key?(:custom_config)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enablement_state = args[:enablement_state] if args.key?(:enablement_state)
@@ -2699,6 +2912,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. The expiry of the mute config. Only applicable for dynamic configs.
+        # If the expiry is set, when the config expires, it is removed from all findings.
+        # Corresponds to the JSON property `expiryTime`
+        # @return [String]
+        attr_accessor :expiry_time
+      
         # Required. An expression that defines the filter to apply across create/update
         # events of findings. While creating a filter string, be mindful of the scope in
         # which the mute configuration is being created. E.g., If a filter contains
@@ -2730,6 +2949,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The type of the mute config, which determines what type of mute
+        # state the config affects. The static mute state takes precedence over the
+        # dynamic mute state. Immutable after creation. STATIC by default if not set
+        # during creation.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Output only. The most recent time at which the mute config was updated. This
         # field is set by the server and will be ignored if provided on config creation
         # or update.
@@ -2746,9 +2973,11 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
           @filter = args[:filter] if args.key?(:filter)
           @most_recent_editor = args[:most_recent_editor] if args.key?(:most_recent_editor)
           @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -3031,10 +3260,10 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping]
         attr_accessor :sensitive_data_protection_mapping
       
-        # Required. Tag values combined with `AND` to check against. Values in the form "
-        # tagValues/123" Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]`
-        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-
-        # managing
+        # Required. Tag values combined with `AND` to check against. For Google Cloud
+        # resources, they are tag value IDs in the form of "tagValues/123". Example: `[ "
+        # tagValues/123", "tagValues/456", "tagValues/789" ]` https://cloud.google.com/
+        # resource-manager/docs/tags/tags-creating-and-managing
         # Corresponds to the JSON property `tagValues`
         # @return [Array<String>]
         attr_accessor :tag_values
@@ -3105,6 +3334,11 @@ module Google
         # @return [String]
         attr_accessor :ancestor_module
       
+        # The cloud provider of the custom module.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
         # Defines the properties in a custom module configuration for Security Health
         # Analytics. Use the custom module configuration to create custom detectors that
         # generate custom findings for resources that you specify.
@@ -3154,6 +3388,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ancestor_module = args[:ancestor_module] if args.key?(:ancestor_module)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @custom_config = args[:custom_config] if args.key?(:custom_config)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enablement_state = args[:enablement_state] if args.key?(:enablement_state)
@@ -4120,6 +4355,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AzureSubscription]
         attr_accessor :subscription
       
+        # Represents a Microsoft Entra tenant.
+        # Corresponds to the JSON property `tenant`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AzureTenant]
+        attr_accessor :tenant
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4129,12 +4369,18 @@ module Google
           @management_groups = args[:management_groups] if args.key?(:management_groups)
           @resource_group = args[:resource_group] if args.key?(:resource_group)
           @subscription = args[:subscription] if args.key?(:subscription)
+          @tenant = args[:tenant] if args.key?(:tenant)
         end
       end
       
       # Represents an Azure resource group.
       class GoogleCloudSecuritycenterV2AzureResourceGroup
         include Google::Apis::Core::Hashable
+      
+        # The ID of the Azure resource group.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
       
         # The name of the Azure resource group. This is not a UUID.
         # Corresponds to the JSON property `name`
@@ -4147,6 +4393,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -4162,6 +4409,32 @@ module Google
       
         # The UUID of the Azure subscription, for example, `291bba3f-e0a5-47bc-a099-
         # 3bdcb2a50a05`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Represents a Microsoft Entra tenant.
+      class GoogleCloudSecuritycenterV2AzureTenant
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the Azure tenant.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The ID of the Microsoft Entra tenant, for example, "a11aaa11-aa11-1aa1-11aa-
+        # 1aaa11a".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4745,10 +5018,20 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Cvssv3]
         attr_accessor :cvssv3
       
+        # Date the first publicly available exploit or PoC was released.
+        # Corresponds to the JSON property `exploitReleaseDate`
+        # @return [String]
+        attr_accessor :exploit_release_date
+      
         # The exploitation activity of the vulnerability in the wild.
         # Corresponds to the JSON property `exploitationActivity`
         # @return [String]
         attr_accessor :exploitation_activity
+      
+        # Date of the earliest known exploitation.
+        # Corresponds to the JSON property `firstExploitationDate`
+        # @return [String]
+        attr_accessor :first_exploitation_date
       
         # The unique identifier for the vulnerability. e.g. CVE-2021-34527
         # Corresponds to the JSON property `id`
@@ -4791,7 +5074,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
+          @exploit_release_date = args[:exploit_release_date] if args.key?(:exploit_release_date)
           @exploitation_activity = args[:exploitation_activity] if args.key?(:exploitation_activity)
+          @first_exploitation_date = args[:first_exploitation_date] if args.key?(:first_exploitation_date)
           @id = args[:id] if args.key?(:id)
           @impact = args[:impact] if args.key?(:impact)
           @observed_in_the_wild = args[:observed_in_the_wild] if args.key?(:observed_in_the_wild)
@@ -4875,6 +5160,91 @@ module Google
           @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
           @scope = args[:scope] if args.key?(:scope)
           @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+        end
+      end
+      
+      # Details about a data access attempt made by a principal not authorized under
+      # applicable data security policy.
+      class GoogleCloudSecuritycenterV2DataAccessEvent
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for data access event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # Timestamp of data access event.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # The operation performed by the principal to access the data.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The email address of the principal that accessed the data. The principal could
+        # be a user account, service account, Google group, or other.
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @operation = args[:operation] if args.key?(:operation)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
+        end
+      end
+      
+      # Details about a data flow event, in which either the data is moved to or is
+      # accessed from a non-compliant geo-location, as defined in the applicable data
+      # security policy.
+      class GoogleCloudSecuritycenterV2DataFlowEvent
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for data flow event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # Timestamp of data flow event.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # The operation performed by the principal for the data flow event.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The email address of the principal that initiated the data flow event. The
+        # principal could be a user account, service account, Google group, or other.
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        # Non-compliant location of the principal or the data destination.
+        # Corresponds to the JSON property `violatedLocation`
+        # @return [String]
+        attr_accessor :violated_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @operation = args[:operation] if args.key?(:operation)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @violated_location = args[:violated_location] if args.key?(:violated_location)
         end
       end
       
@@ -4966,6 +5336,26 @@ module Google
         end
       end
       
+      # Contains information about the disk associated with the finding.
+      class GoogleCloudSecuritycenterV2Disk
+        include Google::Apis::Core::Hashable
+      
+        # The name of the disk, for example, "https://www.googleapis.com/compute/v1/
+        # projects/project-id/zones/zone-id/disks/disk-id".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Path of the file in terms of underlying disk/partition identifiers.
       class GoogleCloudSecuritycenterV2DiskPath
         include Google::Apis::Core::Hashable
@@ -4990,6 +5380,33 @@ module Google
         def update!(**args)
           @partition_uuid = args[:partition_uuid] if args.key?(:partition_uuid)
           @relative_path = args[:relative_path] if args.key?(:relative_path)
+        end
+      end
+      
+      # The record of a dynamic mute rule that matches the finding.
+      class GoogleCloudSecuritycenterV2DynamicMuteRecord
+        include Google::Apis::Core::Hashable
+      
+        # When the dynamic mute rule first matched the finding.
+        # Corresponds to the JSON property `matchTime`
+        # @return [String]
+        attr_accessor :match_time
+      
+        # The relative resource name of the mute rule, represented by a mute config,
+        # that created this record, for example `organizations/123/muteConfigs/
+        # mymuteconfig` or `organizations/123/locations/global/muteConfigs/mymuteconfig`.
+        # Corresponds to the JSON property `muteConfig`
+        # @return [String]
+        attr_accessor :mute_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @match_time = args[:match_time] if args.key?(:match_time)
+          @mute_config = args[:mute_config] if args.key?(:mute_config)
         end
       end
       
@@ -5331,6 +5748,16 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Data access events associated with the finding.
+        # Corresponds to the JSON property `dataAccessEvents`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2DataAccessEvent>]
+        attr_accessor :data_access_events
+      
+        # Data flow events associated with the finding.
+        # Corresponds to the JSON property `dataFlowEvents`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2DataFlowEvent>]
+        attr_accessor :data_flow_events
+      
         # Represents database access information, such as queries. A database may be a
         # sub-resource of an instance (as in the case of Cloud SQL instances or Cloud
         # Spanner instances), or the database instance itself. Some database resources
@@ -5346,6 +5773,11 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Contains information about the disk associated with the finding.
+        # Corresponds to the JSON property `disk`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Disk]
+        attr_accessor :disk
       
         # The time the finding was first detected. If an existing finding is updated,
         # then this is the time the update occurred. For example, if the finding
@@ -5447,6 +5879,12 @@ module Google
         # Corresponds to the JSON property `mute`
         # @return [String]
         attr_accessor :mute
+      
+        # Mute information about the finding, including whether the finding has a static
+        # mute or any matching dynamic mute rules.
+        # Corresponds to the JSON property `muteInfo`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2MuteInfo]
+        attr_accessor :mute_info
       
         # Records additional information about the mute operation, for example, the [
         # mute configuration](https://cloud.google.com/security-command-center/docs/how-
@@ -5590,8 +6028,11 @@ module Google
           @contacts = args[:contacts] if args.key?(:contacts)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_access_events = args[:data_access_events] if args.key?(:data_access_events)
+          @data_flow_events = args[:data_flow_events] if args.key?(:data_flow_events)
           @database = args[:database] if args.key?(:database)
           @description = args[:description] if args.key?(:description)
+          @disk = args[:disk] if args.key?(:disk)
           @event_time = args[:event_time] if args.key?(:event_time)
           @exfiltration = args[:exfiltration] if args.key?(:exfiltration)
           @external_systems = args[:external_systems] if args.key?(:external_systems)
@@ -5608,6 +6049,7 @@ module Google
           @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
           @module_name = args[:module_name] if args.key?(:module_name)
           @mute = args[:mute] if args.key?(:mute)
+          @mute_info = args[:mute_info] if args.key?(:mute_info)
           @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
@@ -6080,6 +6522,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. The expiry of the mute config. Only applicable for dynamic configs.
+        # If the expiry is set, when the config expires, it is removed from all findings.
+        # Corresponds to the JSON property `expiryTime`
+        # @return [String]
+        attr_accessor :expiry_time
+      
         # Required. An expression that defines the filter to apply across create/update
         # events of findings. While creating a filter string, be mindful of the scope in
         # which the mute configuration is being created. E.g., If a filter contains
@@ -6133,11 +6581,40 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
           @filter = args[:filter] if args.key?(:filter)
           @most_recent_editor = args[:most_recent_editor] if args.key?(:most_recent_editor)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Mute information about the finding, including whether the finding has a static
+      # mute or any matching dynamic mute rules.
+      class GoogleCloudSecuritycenterV2MuteInfo
+        include Google::Apis::Core::Hashable
+      
+        # The list of dynamic mute rules that currently match the finding.
+        # Corresponds to the JSON property `dynamicMuteRecords`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2DynamicMuteRecord>]
+        attr_accessor :dynamic_mute_records
+      
+        # Information about the static mute state. A static mute state overrides any
+        # dynamic mute rules that apply to this finding. The static mute state can be
+        # set by a static mute rule or by muting the finding directly.
+        # Corresponds to the JSON property `staticMute`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2StaticMute]
+        attr_accessor :static_mute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_mute_records = args[:dynamic_mute_records] if args.key?(:dynamic_mute_records)
+          @static_mute = args[:static_mute] if args.key?(:static_mute)
         end
       end
       
@@ -6816,9 +7293,10 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping]
         attr_accessor :sensitive_data_protection_mapping
       
-        # Tag values combined with `AND` to check against. Values in the form "tagValues/
-        # 123" Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]` https://
-        # cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
+        # Tag values combined with `AND` to check against. For Google Cloud resources,
+        # they are tag value IDs in the form of "tagValues/123". Example: `[ "tagValues/
+        # 123", "tagValues/456", "tagValues/789" ]` https://cloud.google.com/resource-
+        # manager/docs/tags/tags-creating-and-managing
         # Corresponds to the JSON property `tagValues`
         # @return [Array<String>]
         attr_accessor :tag_values
@@ -7125,6 +7603,34 @@ module Google
         def update!(**args)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
           @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
+        end
+      end
+      
+      # Information about the static mute state. A static mute state overrides any
+      # dynamic mute rules that apply to this finding. The static mute state can be
+      # set by a static mute rule or by muting the finding directly.
+      class GoogleCloudSecuritycenterV2StaticMute
+        include Google::Apis::Core::Hashable
+      
+        # When the static mute was applied.
+        # Corresponds to the JSON property `applyTime`
+        # @return [String]
+        attr_accessor :apply_time
+      
+        # The static mute state. If the value is `MUTED` or `UNMUTED`, then the finding'
+        # s overall mute state will have the same value.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_time = args[:apply_time] if args.key?(:apply_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -8081,6 +8587,34 @@ module Google
           @primary_tactic = args[:primary_tactic] if args.key?(:primary_tactic)
           @primary_techniques = args[:primary_techniques] if args.key?(:primary_techniques)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Mute information about the finding, including whether the finding has a static
+      # mute or any matching dynamic mute rules.
+      class MuteInfo
+        include Google::Apis::Core::Hashable
+      
+        # The list of dynamic mute rules that currently match the finding.
+        # Corresponds to the JSON property `dynamicMuteRecords`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::DynamicMuteRecord>]
+        attr_accessor :dynamic_mute_records
+      
+        # Information about the static mute state. A static mute state overrides any
+        # dynamic mute rules that apply to this finding. The static mute state can be
+        # set by a static mute rule or by muting the finding directly.
+        # Corresponds to the JSON property `staticMute`
+        # @return [Google::Apis::SecuritycenterV1beta1::StaticMute]
+        attr_accessor :static_mute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_mute_records = args[:dynamic_mute_records] if args.key?(:dynamic_mute_records)
+          @static_mute = args[:static_mute] if args.key?(:static_mute)
         end
       end
       
@@ -9077,7 +9611,8 @@ module Google
       class SetFindingStateRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The time at which the updated state takes effect.
+        # Optional. The time at which the updated state takes effect. If not set uses
+        # the current time.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -9190,6 +9725,34 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Information about the static mute state. A static mute state overrides any
+      # dynamic mute rules that apply to this finding. The static mute state can be
+      # set by a static mute rule or by muting the finding directly.
+      class StaticMute
+        include Google::Apis::Core::Hashable
+      
+        # When the static mute was applied.
+        # Corresponds to the JSON property `applyTime`
+        # @return [String]
+        attr_accessor :apply_time
+      
+        # The static mute state. If the value is `MUTED` or `UNMUTED`, then the finding'
+        # s overall mute state will have the same value.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_time = args[:apply_time] if args.key?(:apply_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
