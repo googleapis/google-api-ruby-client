@@ -1211,6 +1211,11 @@ module Google
         #   Required. The resource name of InsightMetadata using the form: `organizations/`
         #   organization_id`/locations/`location`` `projects/`project_id`/locations/`
         #   location_id``
+        # @param [String] aggregation
+        #   Optional. Aggregation type. The default is 'DAILY'.
+        # @param [String] end_time
+        #   Optional. Ending time for the duration for which insights are to be pulled.
+        #   The default is the current time.
         # @param [String] filter
         #   Optional. Filter expression to restrict the insights returned. Supported
         #   filter fields: * `type` * `category` * `subCategory` Examples: * "category =
@@ -1230,6 +1235,9 @@ module Google
         #   size is 50.
         # @param [String] page_token
         #   Optional. A token identifying a page of results the server should return.
+        # @param [String] start_time
+        #   Optional. Starting time for the duration for which insights are to be pulled.
+        #   The default is 7 days before the current time.
         # @param [String] view
         #   Required. List only metadata or full data.
         # @param [String] fields
@@ -1249,15 +1257,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_insights(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_insights(parent, aggregation: nil, end_time: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, start_time: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/insights', options)
           command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse::Representation
           command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['aggregation'] = aggregation unless aggregation.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['startTime'] = start_time unless start_time.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2832,6 +2843,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Calls the Bouncer method ShouldThrottle to check if a request should be
+        # throttled.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [Fixnum] port
+        #   Optional. The port that is being throttled
+        # @param [Fixnum] requested_amount
+        #   Optional. The current throughput through the port (mbps)
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::ShouldThrottleResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::ShouldThrottleResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def should_project_location_app_gateway_throttle(name, port: nil, requested_amount: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}:shouldThrottle', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::ShouldThrottleResponse::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::ShouldThrottleResponse
+          command.params['name'] = name unless name.nil?
+          command.query['port'] = port unless port.nil?
+          command.query['requestedAmount'] = requested_amount unless requested_amount.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns permissions that a caller has on the specified resource. If the
         # resource does not exist, this will return an empty set of permissions, not a `
         # NOT_FOUND` error. Note: This operation is designed to be used for building
@@ -4189,6 +4237,138 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new Application in a given project and location.
+        # @param [String] parent
+        #   Required. The resource name of the parent SecurityGateway using the form: `
+        #   projects/`project_id`/locations/global/securityGateways/`security_gateway_id``
+        # @param [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication] google_cloud_beyondcorp_securitygateways_v1alpha_application_object
+        # @param [String] application_id
+        #   Optional. User-settable Application resource ID. * Must start with a letter. *
+        #   Must contain between 4-63 characters from `/a-z-/`. * Must end with a number
+        #   or letter.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_global_security_gateway_application(parent, google_cloud_beyondcorp_securitygateways_v1alpha_application_object = nil, application_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/applications', options)
+          command.request_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication::Representation
+          command.request_object = google_cloud_beyondcorp_securitygateways_v1alpha_application_object
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['applicationId'] = application_id unless application_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single Application.
+        # @param [String] name
+        #   Identifier. Name of the resource.
+        # @param [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication] google_cloud_beyondcorp_securitygateways_v1alpha_application_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request timed out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Mutable fields include: display_name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_global_security_gateway_application(name, google_cloud_beyondcorp_securitygateways_v1alpha_application_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication::Representation
+          command.request_object = google_cloud_beyondcorp_securitygateways_v1alpha_application_object
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_project_location_global_security_gateway_application_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsRequest::Representation
+          command.request_object = google_iam_v1_test_iam_permissions_request_object
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the value for a selected particular insight based on the provided filters.
         # Use the organization level path for fetching at org level and project level
         # path for fetching the insight value specific to a particular project.
@@ -4318,6 +4498,11 @@ module Google
         #   Required. The resource name of InsightMetadata using the form: `organizations/`
         #   organization_id`/locations/`location`` `projects/`project_id`/locations/`
         #   location_id``
+        # @param [String] aggregation
+        #   Optional. Aggregation type. The default is 'DAILY'.
+        # @param [String] end_time
+        #   Optional. Ending time for the duration for which insights are to be pulled.
+        #   The default is the current time.
         # @param [String] filter
         #   Optional. Filter expression to restrict the insights returned. Supported
         #   filter fields: * `type` * `category` * `subCategory` Examples: * "category =
@@ -4337,6 +4522,9 @@ module Google
         #   size is 50.
         # @param [String] page_token
         #   Optional. A token identifying a page of results the server should return.
+        # @param [String] start_time
+        #   Optional. Starting time for the duration for which insights are to be pulled.
+        #   The default is 7 days before the current time.
         # @param [String] view
         #   Required. List only metadata or full data.
         # @param [String] fields
@@ -4356,137 +4544,19 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_insights(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_insights(parent, aggregation: nil, end_time: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, start_time: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/insights', options)
           command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse::Representation
           command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['aggregation'] = aggregation unless aggregation.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['startTime'] = start_time unless start_time.nil?
           command.query['view'] = view unless view.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the access control policy for a resource. Returns an empty policy if the
-        # resource exists and does not have a policy set.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See [Resource
-        #   names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
-        # @param [Fixnum] options_requested_policy_version
-        #   Optional. The maximum policy version that will be used to format the policy.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected. Requests for policies with any conditional role bindings must
-        #   specify version 3. Policies with no conditional role bindings may specify any
-        #   valid value or leave the field unset. The policy in the response might use the
-        #   policy version that you specified, or it might use a lower policy version. For
-        #   example, if you specify version 3, but the policy has no conditional role
-        #   bindings, the response uses version 1. To learn which resources support
-        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        #   google.com/iam/help/conditions/resource-policies).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_net_connection_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/{+resource}:getIamPolicy', options)
-          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy::Representation
-          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
-        # PERMISSION_DENIED` errors.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See [Resource
-        #   names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
-        # @param [Google::Apis::BeyondcorpV1alpha::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_project_location_net_connection_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+resource}:setIamPolicy', options)
-          command.request_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1SetIamPolicyRequest::Representation
-          command.request_object = google_iam_v1_set_iam_policy_request_object
-          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy::Representation
-          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns permissions that a caller has on the specified resource. If the
-        # resource does not exist, this will return an empty set of permissions, not a `
-        # NOT_FOUND` error. Note: This operation is designed to be used for building
-        # permission-aware UIs and command-line tools, not for authorization checking.
-        # This operation may "fail open" without warning.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See [
-        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
-        # @param [Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def test_project_location_net_connection_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+resource}:testIamPermissions', options)
-          command.request_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsRequest::Representation
-          command.request_object = google_iam_v1_test_iam_permissions_request_object
-          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse::Representation
-          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse
-          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4872,7 +4942,7 @@ module Google
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
-        #   Required. Mutable fields include: display_name, gateway_regions.
+        #   Required. Mutable fields include: display_name, hubs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4974,6 +5044,218 @@ module Google
           command.request_object = google_iam_v1_test_iam_permissions_request_object
           command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Application.
+        # @param [String] name
+        #   Required. Name of the resource.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validates request by executing a dry-run which would not
+        #   alter the resource in any way.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_security_gateway_application(name, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Application.
+        # @param [String] name
+        #   Required. The resource name of the Application using the form: `projects/`
+        #   project_id`/locations/global/securityGateway/`security_gateway_id`/
+        #   applications/`application_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_security_gateway_application(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_security_gateway_application_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Applications in a given project and location.
+        # @param [String] parent
+        #   Required. The parent location to which the resources belong. `projects/`
+        #   project_id`/locations/global/securityGateways/`security_gateway_id``
+        # @param [String] filter
+        #   Optional. A filter specifying constraints of a list operation. All fields in
+        #   the Application message are supported. For example, the following query will
+        #   return the Application with displayName "test-application" For more
+        #   information, please refer to https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. Specifies the ordering of results. See [Sorting order](https://cloud.
+        #   google.com/apis/design/design_patterns#sorting_order) for more information.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 50 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous
+        #   ListApplicationsRequest, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_security_gateway_applications(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/applications', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::BeyondcorpV1alpha::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_security_gateway_application_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1SetIamPolicyRequest::Representation
+          command.request_object = google_iam_v1_set_iam_policy_request_object
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -2853,6 +2853,212 @@ module Google
         end
       end
       
+      # Represents the metadata of the long-running operation.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have been cancelled successfully have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # A Beyondcorp Application resource information.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An arbitrary user-provided name for the Application resource. Cannot
+        # exceed 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Endpoint matchers associated with an application. A combination of
+        # hostname and ports as endpoint matcher is used to match the application. Match
+        # conditions for OR logic. An array of match conditions to allow for multiple
+        # matching criteria. The rule is considered a match if one the conditions are
+        # met. The conditions can be one of the following combination (Hostname), (
+        # Hostname & Ports) EXAMPLES: Hostname - ("*.abc.com"), ("xyz.abc.com") Hostname
+        # and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
+        # Corresponds to the JSON property `endpointMatchers`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher>]
+        attr_accessor :endpoint_matchers
+      
+        # Identifier. Name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when the resource was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @endpoint_matchers = args[:endpoint_matchers] if args.key?(:endpoint_matchers)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # EndpointMatcher contains the information of the endpoint that will match the
+      # application.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher
+        include Google::Apis::Core::Hashable
+      
+        # Required. Hostname of the application.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Optional. Ports of the application.
+        # Corresponds to the JSON property `ports`
+        # @return [Array<Fixnum>]
+        attr_accessor :ports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # The Hub message contains information pertaining to the regional data path
+      # deployments.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub
+        include Google::Apis::Core::Hashable
+      
+        # Represents the Internet Gateway configuration.
+        # Corresponds to the JSON property `internetGateway`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway]
+        attr_accessor :internet_gateway
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @internet_gateway = args[:internet_gateway] if args.key?(:internet_gateway)
+        end
+      end
+      
+      # Represents the Internet Gateway configuration.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of IP addresses assigned to the Cloud NAT.
+        # Corresponds to the JSON property `assignedIps`
+        # @return [Array<String>]
+        attr_accessor :assigned_ips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_ips = args[:assigned_ips] if args.key?(:assigned_ips)
+        end
+      end
+      
+      # Message for response to listing Applications.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of BeyondCorp Application in the project.
+        # Corresponds to the JSON property `applications`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication>]
+        attr_accessor :applications
+      
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applications = args[:applications] if args.key?(:applications)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Message for response to listing SecurityGateways.
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse
         include Google::Apis::Core::Hashable
@@ -2906,6 +3112,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :external_ips
       
+        # Optional. Map of Hubs that represents regional data path deployment with GCP
+        # region as a key.
+        # Corresponds to the JSON property `hubs`
+        # @return [Hash<String,Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub>]
+        attr_accessor :hubs
+      
         # Identifier. Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2930,6 +3142,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @external_ips = args[:external_ips] if args.key?(:external_ips)
+          @hubs = args[:hubs] if args.key?(:hubs)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -3947,6 +4160,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # Response message for calling ShouldThrottle
+      class ShouldThrottleResponse
+        include Google::Apis::Core::Hashable
+      
+        # Whether the port should be throttled
+        # Corresponds to the JSON property `shouldThrottle`
+        # @return [Boolean]
+        attr_accessor :should_throttle
+        alias_method :should_throttle?, :should_throttle
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @should_throttle = args[:should_throttle] if args.key?(:should_throttle)
         end
       end
       
