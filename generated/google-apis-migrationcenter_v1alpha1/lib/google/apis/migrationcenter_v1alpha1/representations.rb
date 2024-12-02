@@ -154,7 +154,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssetsExportJobInventory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssetsExportJobNetworkDependencies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssetsExportJobPerformanceData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +209,18 @@ module Google
       end
       
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CascadeLogicalDBsRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CascadingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -257,6 +281,12 @@ module Google
       end
       
       class CpuUsageSample
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CsvOutputFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +359,12 @@ module Google
       end
       
       class DatabaseInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseInstanceNetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -598,12 +634,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ImportRowErrorJsonErrorDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ImportRowErrorXlsxErrorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -695,6 +725,12 @@ module Google
       end
       
       class ListPreferenceSetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRelationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -880,6 +916,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OutputFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OutputFileList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PayloadFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -941,6 +989,12 @@ module Google
       end
       
       class RegionPreferences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Relation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1240,6 +1294,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VMwareEngineMachinePreferences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ValidateImportJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1506,12 +1566,17 @@ module Google
           property :condition, as: 'condition', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExportCondition, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExportCondition::Representation
       
           property :create_time, as: 'createTime'
+          property :inventory, as: 'inventory', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobInventory, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobInventory::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network_dependencies, as: 'networkDependencies', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobNetworkDependencies, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobNetworkDependencies::Representation
       
+          property :performance_data, as: 'performanceData', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobPerformanceData, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobPerformanceData::Representation
+      
           collection :recent_executions, as: 'recentExecutions', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecution, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecution::Representation
       
+          property :show_hidden, as: 'showHidden'
           property :signed_uri_destination, as: 'signedUriDestination', class: Google::Apis::MigrationcenterV1alpha1::SignedUriDestination, decorator: Google::Apis::MigrationcenterV1alpha1::SignedUriDestination::Representation
       
           property :update_time, as: 'updateTime'
@@ -1524,6 +1589,7 @@ module Google
           property :end_time, as: 'endTime'
           property :execution_id, as: 'executionId'
           property :expire_time, as: 'expireTime'
+          property :requested_asset_count, as: 'requestedAssetCount'
           property :result, as: 'result', class: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecutionResult, decorator: Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecutionResult::Representation
       
           property :start_time, as: 'startTime'
@@ -1534,6 +1600,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error, as: 'error', class: Google::Apis::MigrationcenterV1alpha1::Status, decorator: Google::Apis::MigrationcenterV1alpha1::Status::Representation
+      
+          property :output_files, as: 'outputFiles', class: Google::Apis::MigrationcenterV1alpha1::OutputFileList, decorator: Google::Apis::MigrationcenterV1alpha1::OutputFileList::Representation
       
           property :signed_uris, as: 'signedUris', class: Google::Apis::MigrationcenterV1alpha1::SignedUris, decorator: Google::Apis::MigrationcenterV1alpha1::SignedUris::Representation
       
@@ -1547,7 +1615,20 @@ module Google
         end
       end
       
+      class AssetsExportJobInventory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AssetsExportJobNetworkDependencies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_days, as: 'maxDays'
+        end
+      end
+      
+      class AssetsExportJobPerformanceData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_days, as: 'maxDays'
@@ -1557,6 +1638,7 @@ module Google
       class AwsEc2PlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hyperthreading, as: 'hyperthreading'
           property :location, as: 'location'
           property :machine_type_label, as: 'machineTypeLabel'
         end
@@ -1565,6 +1647,7 @@ module Google
       class AzureVmPlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hyperthreading, as: 'hyperthreading'
           property :location, as: 'location'
           property :machine_type_label, as: 'machineTypeLabel'
           property :provisioning_state, as: 'provisioningState'
@@ -1575,6 +1658,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_missing, as: 'allowMissing'
+          collection :cascading_rules, as: 'cascadingRules', class: Google::Apis::MigrationcenterV1alpha1::CascadingRule, decorator: Google::Apis::MigrationcenterV1alpha1::CascadingRule::Representation
+      
           collection :names, as: 'names'
         end
       end
@@ -1609,6 +1694,20 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CascadeLogicalDBsRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CascadingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cascade_logical_dbs, as: 'cascadeLogicalDbs', class: Google::Apis::MigrationcenterV1alpha1::CascadeLogicalDBsRule, decorator: Google::Apis::MigrationcenterV1alpha1::CascadeLogicalDBsRule::Representation
+      
         end
       end
       
@@ -1726,6 +1825,16 @@ module Google
         end
       end
       
+      class CsvOutputFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :columns_count, as: 'columnsCount'
+          property :row_count, as: 'rowCount'
+          property :signed_uri, as: 'signedUri', class: Google::Apis::MigrationcenterV1alpha1::SignedUri, decorator: Google::Apis::MigrationcenterV1alpha1::SignedUri::Representation
+      
+        end
+      end
+      
       class DailyResourceUsageAggregation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1828,6 +1937,8 @@ module Google
       
           property :memory_bytes, :numeric_string => true, as: 'memoryBytes'
           property :memory_limit_bytes, :numeric_string => true, as: 'memoryLimitBytes'
+          property :physical_core_count, as: 'physicalCoreCount'
+          property :physical_core_limit, as: 'physicalCoreLimit'
         end
       end
       
@@ -1855,7 +1966,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_name, as: 'instanceName'
+          property :network, as: 'network', class: Google::Apis::MigrationcenterV1alpha1::DatabaseInstanceNetwork, decorator: Google::Apis::MigrationcenterV1alpha1::DatabaseInstanceNetwork::Representation
+      
           property :role, as: 'role'
+        end
+      end
+      
+      class DatabaseInstanceNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :host_names, as: 'hostNames'
+          collection :ip_addresses, as: 'ipAddresses'
+          property :primary_mac_address, as: 'primaryMacAddress'
         end
       end
       
@@ -2157,6 +2279,7 @@ module Google
       class GenericPlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hyperthreading, as: 'hyperthreading'
           property :location, as: 'location'
         end
       end
@@ -2313,8 +2436,6 @@ module Google
       
           collection :errors, as: 'errors', class: Google::Apis::MigrationcenterV1alpha1::ImportError, decorator: Google::Apis::MigrationcenterV1alpha1::ImportError::Representation
       
-          property :json_error, as: 'jsonError', class: Google::Apis::MigrationcenterV1alpha1::ImportRowErrorJsonErrorDetails, decorator: Google::Apis::MigrationcenterV1alpha1::ImportRowErrorJsonErrorDetails::Representation
-      
           property :row_number, as: 'rowNumber'
           property :vm_name, as: 'vmName'
           property :vm_uuid, as: 'vmUuid'
@@ -2336,12 +2457,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :row_number, as: 'rowNumber'
-        end
-      end
-      
-      class ImportRowErrorJsonErrorDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2497,6 +2612,15 @@ module Google
           collection :preference_sets, as: 'preferenceSets', class: Google::Apis::MigrationcenterV1alpha1::PreferenceSet, decorator: Google::Apis::MigrationcenterV1alpha1::PreferenceSet::Representation
       
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListRelationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :relations, as: 'relations', class: Google::Apis::MigrationcenterV1alpha1::Relation, decorator: Google::Apis::MigrationcenterV1alpha1::Relation::Representation
+      
         end
       end
       
@@ -2797,6 +2921,23 @@ module Google
         end
       end
       
+      class OutputFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv_output_file, as: 'csvOutputFile', class: Google::Apis::MigrationcenterV1alpha1::CsvOutputFile, decorator: Google::Apis::MigrationcenterV1alpha1::CsvOutputFile::Representation
+      
+          property :file_size_bytes, as: 'fileSizeBytes'
+        end
+      end
+      
+      class OutputFileList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::MigrationcenterV1alpha1::OutputFile, decorator: Google::Apis::MigrationcenterV1alpha1::OutputFile::Representation
+      
+        end
+      end
+      
       class PayloadFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2823,6 +2964,7 @@ module Google
       class PhysicalPlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hyperthreading, as: 'hyperthreading'
           property :location, as: 'location'
         end
       end
@@ -2913,6 +3055,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :preferred_regions, as: 'preferredRegions'
+        end
+      end
+      
+      class Relation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :dst_asset, as: 'dstAsset'
+          property :name, as: 'name'
+          property :src_asset, as: 'srcAsset'
+          property :type, as: 'type'
         end
       end
       
@@ -3069,11 +3222,15 @@ module Google
       
           property :monthly_cost_database_licensing, as: 'monthlyCostDatabaseLicensing', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
       
+          property :monthly_cost_gcve_protected, as: 'monthlyCostGcveProtected', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
+      
           property :monthly_cost_network_egress, as: 'monthlyCostNetworkEgress', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
       
           property :monthly_cost_os_license, as: 'monthlyCostOsLicense', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
       
           property :monthly_cost_other, as: 'monthlyCostOther', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
+      
+          property :monthly_cost_portable_vmware_license, as: 'monthlyCostPortableVmwareLicense', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
       
           property :monthly_cost_storage, as: 'monthlyCostStorage', class: Google::Apis::MigrationcenterV1alpha1::Money, decorator: Google::Apis::MigrationcenterV1alpha1::Money::Representation
       
@@ -3276,6 +3433,7 @@ module Google
       class Settings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_consent_for_google_sales_to_access_migration_center, as: 'customerConsentForGoogleSalesToAccessMigrationCenter'
           property :disable_cloud_logging, as: 'disableCloudLogging'
           property :name, as: 'name'
           property :preference_set, as: 'preferenceSet'
@@ -3372,6 +3530,7 @@ module Google
       class SqlServerSchemaDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :clr_object_count, as: 'clrObjectCount'
         end
       end
       
@@ -3425,6 +3584,16 @@ module Google
           hash :headers, as: 'headers'
           property :signed_uri, as: 'signedUri'
           property :uri_expiration_time, as: 'uriExpirationTime'
+        end
+      end
+      
+      class VMwareEngineMachinePreferences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_machine_series, as: 'allowedMachineSeries', class: Google::Apis::MigrationcenterV1alpha1::MachineSeries, decorator: Google::Apis::MigrationcenterV1alpha1::MachineSeries::Representation
+      
+          property :protected_nodes, as: 'protectedNodes'
+          property :storage_only_nodes, as: 'storageOnlyNodes'
         end
       end
       
@@ -3571,7 +3740,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :commitment_plan, as: 'commitmentPlan'
           property :cpu_overcommit_ratio, as: 'cpuOvercommitRatio'
+          property :license_discount_percentage, as: 'licenseDiscountPercentage'
+          property :machine_preferences, as: 'machinePreferences', class: Google::Apis::MigrationcenterV1alpha1::VMwareEngineMachinePreferences, decorator: Google::Apis::MigrationcenterV1alpha1::VMwareEngineMachinePreferences::Representation
+      
           property :memory_overcommit_ratio, as: 'memoryOvercommitRatio'
+          property :service_type, as: 'serviceType'
           property :storage_deduplication_compression_ratio, as: 'storageDeduplicationCompressionRatio'
         end
       end
@@ -3579,6 +3752,7 @@ module Google
       class VmwarePlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :esx_hyperthreading, as: 'esxHyperthreading'
           property :esx_version, as: 'esxVersion'
           property :osid, as: 'osid'
           property :vcenter_version, as: 'vcenterVersion'

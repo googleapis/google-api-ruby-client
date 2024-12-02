@@ -617,6 +617,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Configuration for asset inventory details exports.
+        # Corresponds to the JSON property `inventory`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AssetsExportJobInventory]
+        attr_accessor :inventory
+      
         # Optional. Labels as key value pairs. Labels must meet the following
         # constraints: * Keys and values can contain only lowercase letters, numeric
         # characters, underscores, and dashes. * All characters must use UTF-8 encoding,
@@ -638,10 +643,22 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::AssetsExportJobNetworkDependencies]
         attr_accessor :network_dependencies
       
+        # Configuration for performance data exports.
+        # Corresponds to the JSON property `performanceData`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AssetsExportJobPerformanceData]
+        attr_accessor :performance_data
+      
         # Output only. Recent non expired executions of the job.
         # Corresponds to the JSON property `recentExecutions`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecution>]
         attr_accessor :recent_executions
+      
+        # Optional. When this value is set to 'true' the response will include all
+        # assets, including those that are hidden.
+        # Corresponds to the JSON property `showHidden`
+        # @return [Boolean]
+        attr_accessor :show_hidden
+        alias_method :show_hidden?, :show_hidden
       
         # Signed URI destination configuration.
         # Corresponds to the JSON property `signedUriDestination`
@@ -661,10 +678,13 @@ module Google
         def update!(**args)
           @condition = args[:condition] if args.key?(:condition)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @inventory = args[:inventory] if args.key?(:inventory)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network_dependencies = args[:network_dependencies] if args.key?(:network_dependencies)
+          @performance_data = args[:performance_data] if args.key?(:performance_data)
           @recent_executions = args[:recent_executions] if args.key?(:recent_executions)
+          @show_hidden = args[:show_hidden] if args.key?(:show_hidden)
           @signed_uri_destination = args[:signed_uri_destination] if args.key?(:signed_uri_destination)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -689,6 +709,12 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Output only. Number of assets requested for export after resolving the
+        # requested filters.
+        # Corresponds to the JSON property `requestedAssetCount`
+        # @return [Fixnum]
+        attr_accessor :requested_asset_count
+      
         # Contains the result of the assets export.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::MigrationcenterV1alpha1::AssetsExportJobExecutionResult]
@@ -708,6 +734,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @execution_id = args[:execution_id] if args.key?(:execution_id)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @requested_asset_count = args[:requested_asset_count] if args.key?(:requested_asset_count)
           @result = args[:result] if args.key?(:result)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
@@ -727,6 +754,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::Status]
         attr_accessor :error
       
+        # Contains a list of output files.
+        # Corresponds to the JSON property `outputFiles`
+        # @return [Google::Apis::MigrationcenterV1alpha1::OutputFileList]
+        attr_accessor :output_files
+      
         # Contains a list of Signed URIs.
         # Corresponds to the JSON property `signedUris`
         # @return [Google::Apis::MigrationcenterV1alpha1::SignedUris]
@@ -739,6 +771,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
+          @output_files = args[:output_files] if args.key?(:output_files)
           @signed_uris = args[:signed_uris] if args.key?(:signed_uris)
         end
       end
@@ -759,6 +792,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Configuration for asset inventory details exports.
+      class AssetsExportJobInventory
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -783,9 +829,37 @@ module Google
         end
       end
       
+      # Configuration for performance data exports.
+      class AssetsExportJobPerformanceData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When this value is set to a positive integer, performance data will
+        # be returned for the most recent days for which data is available. When this
+        # value is unset (or set to zero), all available data is returned. The maximum
+        # value is 420; values above 420 will be coerced to 420. If unset (0 value) a
+        # default value of 40 will be used.
+        # Corresponds to the JSON property `maxDays`
+        # @return [Fixnum]
+        attr_accessor :max_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_days = args[:max_days] if args.key?(:max_days)
+        end
+      end
+      
       # AWS EC2 specific details.
       class AwsEc2PlatformDetails
         include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the machine is hyperthreaded.
+        # Corresponds to the JSON property `hyperthreading`
+        # @return [String]
+        attr_accessor :hyperthreading
       
         # The location of the machine in the AWS format.
         # Corresponds to the JSON property `location`
@@ -803,6 +877,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
           @location = args[:location] if args.key?(:location)
           @machine_type_label = args[:machine_type_label] if args.key?(:machine_type_label)
         end
@@ -811,6 +886,11 @@ module Google
       # Azure VM specific details.
       class AzureVmPlatformDetails
         include Google::Apis::Core::Hashable
+      
+        # Whether the machine is hyperthreaded.
+        # Corresponds to the JSON property `hyperthreading`
+        # @return [String]
+        attr_accessor :hyperthreading
       
         # The location of the machine in the Azure format.
         # Corresponds to the JSON property `location`
@@ -833,6 +913,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
           @location = args[:location] if args.key?(:location)
           @machine_type_label = args[:machine_type_label] if args.key?(:machine_type_label)
           @provisioning_state = args[:provisioning_state] if args.key?(:provisioning_state)
@@ -851,6 +932,11 @@ module Google
         attr_accessor :allow_missing
         alias_method :allow_missing?, :allow_missing
       
+        # Optional. Optional cascading rules for deleting related assets.
+        # Corresponds to the JSON property `cascadingRules`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::CascadingRule>]
+        attr_accessor :cascading_rules
+      
         # Required. The IDs of the assets to delete. A maximum of 1000 assets can be
         # deleted in a batch. Format: projects/`project`/locations/`location`/assets/`
         # name`.
@@ -865,6 +951,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @cascading_rules = args[:cascading_rules] if args.key?(:cascading_rules)
           @names = args[:names] if args.key?(:names)
         end
       end
@@ -965,6 +1052,38 @@ module Google
         end
       end
       
+      # Cascading rule for related logical DBs.
+      class CascadeLogicalDBsRule
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Specifies cascading rules for traversing relations.
+      class CascadingRule
+        include Google::Apis::Core::Hashable
+      
+        # Cascading rule for related logical DBs.
+        # Corresponds to the JSON property `cascadeLogicalDbs`
+        # @return [Google::Apis::MigrationcenterV1alpha1::CascadeLogicalDBsRule]
+        attr_accessor :cascade_logical_dbs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cascade_logical_dbs = args[:cascade_logical_dbs] if args.key?(:cascade_logical_dbs)
+        end
+      end
+      
       # Cloud database migration target.
       class CloudDatabaseMigrationTarget
         include Google::Apis::Core::Hashable
@@ -974,7 +1093,7 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::CloudSqlForMySqlShape]
         attr_accessor :cloud_sql_for_mysql_shape
       
-        # Cloud SQL for Postgres database shape.
+        # Cloud SQL for PostgreSQL database shape.
         # Corresponds to the JSON property `cloudSqlForPostgresqlShape`
         # @return [Google::Apis::MigrationcenterV1alpha1::CloudSqlForPostgreSqlShape]
         attr_accessor :cloud_sql_for_postgresql_shape
@@ -1057,7 +1176,7 @@ module Google
         end
       end
       
-      # Cloud SQL for Postgres database shape.
+      # Cloud SQL for PostgreSQL database shape.
       class CloudSqlForPostgreSqlShape
         include Google::Apis::Core::Hashable
       
@@ -1335,7 +1454,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :size_gb
       
-        # Disk type backing the storage.
+        # Output only. Disk type backing the storage.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1368,6 +1487,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @utilized_percentage = args[:utilized_percentage] if args.key?(:utilized_percentage)
+        end
+      end
+      
+      # Contains a single output file of type CSV.
+      class CsvOutputFile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Number of columns in the file.
+        # Corresponds to the JSON property `columnsCount`
+        # @return [Fixnum]
+        attr_accessor :columns_count
+      
+        # Output only. Number of rows in the file.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        # Contains a signed URI.
+        # Corresponds to the JSON property `signedUri`
+        # @return [Google::Apis::MigrationcenterV1alpha1::SignedUri]
+        attr_accessor :signed_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns_count = args[:columns_count] if args.key?(:columns_count)
+          @row_count = args[:row_count] if args.key?(:row_count)
+          @signed_uri = args[:signed_uri] if args.key?(:signed_uri)
         end
       end
       
@@ -1677,6 +1827,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :memory_limit_bytes
       
+        # Optional. Number of total physical cores.
+        # Corresponds to the JSON property `physicalCoreCount`
+        # @return [Fixnum]
+        attr_accessor :physical_core_count
+      
+        # Optional. Number of total physical cores limited by db deployment.
+        # Corresponds to the JSON property `physicalCoreLimit`
+        # @return [Fixnum]
+        attr_accessor :physical_core_limit
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1690,6 +1850,8 @@ module Google
           @instances = args[:instances] if args.key?(:instances)
           @memory_bytes = args[:memory_bytes] if args.key?(:memory_bytes)
           @memory_limit_bytes = args[:memory_limit_bytes] if args.key?(:memory_limit_bytes)
+          @physical_core_count = args[:physical_core_count] if args.key?(:physical_core_count)
+          @physical_core_limit = args[:physical_core_limit] if args.key?(:physical_core_limit)
         end
       end
       
@@ -1764,6 +1926,11 @@ module Google
         # @return [String]
         attr_accessor :instance_name
       
+        # Network details of a database instance.
+        # Corresponds to the JSON property `network`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DatabaseInstanceNetwork]
+        attr_accessor :network
+      
         # The instance role in the database engine.
         # Corresponds to the JSON property `role`
         # @return [String]
@@ -1776,7 +1943,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instance_name = args[:instance_name] if args.key?(:instance_name)
+          @network = args[:network] if args.key?(:network)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Network details of a database instance.
+      class DatabaseInstanceNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The instance's host names.
+        # Corresponds to the JSON property `hostNames`
+        # @return [Array<String>]
+        attr_accessor :host_names
+      
+        # Optional. The instance's IP addresses.
+        # Corresponds to the JSON property `ipAddresses`
+        # @return [Array<String>]
+        attr_accessor :ip_addresses
+      
+        # Optional. The instance's primary MAC address.
+        # Corresponds to the JSON property `primaryMacAddress`
+        # @return [String]
+        attr_accessor :primary_mac_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_names = args[:host_names] if args.key?(:host_names)
+          @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
+          @primary_mac_address = args[:primary_mac_address] if args.key?(:primary_mac_address)
         end
       end
       
@@ -1852,7 +2051,7 @@ module Google
         # @return [String]
         attr_accessor :commitment_plan
       
-        # Optional. Cloud SQL edition. For SQL Server, only Enterprise is available.
+        # Optional. Preferred Cloud SQL edition.
         # Corresponds to the JSON property `edition`
         # @return [String]
         attr_accessor :edition
@@ -1898,7 +2097,7 @@ module Google
       class DatabasePreferencesCloudSqlCommonBackup
         include Google::Apis::Core::Hashable
       
-        # Optional. Mode of automated backups.
+        # Optional. Automated backup mode.
         # Corresponds to the JSON property `backupMode`
         # @return [String]
         attr_accessor :backup_mode
@@ -2623,7 +2822,7 @@ module Google
       class FitDescriptor
         include Google::Apis::Core::Hashable
       
-        # Fit level.
+        # Output only. Fit level.
         # Corresponds to the JSON property `fitLevel`
         # @return [String]
         attr_accessor :fit_level
@@ -2818,6 +3017,11 @@ module Google
       class GenericPlatformDetails
         include Google::Apis::Core::Hashable
       
+        # Whether the machine is hyperthreaded.
+        # Corresponds to the JSON property `hyperthreading`
+        # @return [String]
+        attr_accessor :hyperthreading
+      
         # Free text representation of the machine location. The format of this field
         # should not be relied on. Different VMs in the same location may have different
         # string values for this field.
@@ -2831,6 +3035,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
           @location = args[:location] if args.key?(:location)
         end
       end
@@ -3132,7 +3337,7 @@ module Google
       class HostsEntryList
         include Google::Apis::Core::Hashable
       
-        # Hosts entries.
+        # Output only. Hosts entries.
         # Corresponds to the JSON property `entries`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::HostsEntry>]
         attr_accessor :entries
@@ -3330,11 +3535,6 @@ module Google
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::ImportError>]
         attr_accessor :errors
       
-        # Error details for a JSON file.
-        # Corresponds to the JSON property `jsonError`
-        # @return [Google::Apis::MigrationcenterV1alpha1::ImportRowErrorJsonErrorDetails]
-        attr_accessor :json_error
-      
         # The row number where the error was detected.
         # Corresponds to the JSON property `rowNumber`
         # @return [Fixnum]
@@ -3365,7 +3565,6 @@ module Google
           @asset_title = args[:asset_title] if args.key?(:asset_title)
           @csv_error = args[:csv_error] if args.key?(:csv_error)
           @errors = args[:errors] if args.key?(:errors)
-          @json_error = args[:json_error] if args.key?(:json_error)
           @row_number = args[:row_number] if args.key?(:row_number)
           @vm_name = args[:vm_name] if args.key?(:vm_name)
           @vm_uuid = args[:vm_uuid] if args.key?(:vm_uuid)
@@ -3414,19 +3613,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @row_number = args[:row_number] if args.key?(:row_number)
-        end
-      end
-      
-      # Error details for a JSON file.
-      class ImportRowErrorJsonErrorDetails
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -3899,6 +4085,31 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @preference_sets = args[:preference_sets] if args.key?(:preference_sets)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for listing relations.
+      class ListRelationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of relations.
+        # Corresponds to the JSON property `relations`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::Relation>]
+        attr_accessor :relations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @relations = args[:relations] if args.key?(:relations)
         end
       end
       
@@ -4883,6 +5094,50 @@ module Google
         end
       end
       
+      # Contains a single output file.
+      class OutputFile
+        include Google::Apis::Core::Hashable
+      
+        # Contains a single output file of type CSV.
+        # Corresponds to the JSON property `csvOutputFile`
+        # @return [Google::Apis::MigrationcenterV1alpha1::CsvOutputFile]
+        attr_accessor :csv_output_file
+      
+        # Output only. File size in bytes.
+        # Corresponds to the JSON property `fileSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :file_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csv_output_file = args[:csv_output_file] if args.key?(:csv_output_file)
+          @file_size_bytes = args[:file_size_bytes] if args.key?(:file_size_bytes)
+        end
+      end
+      
+      # Contains a list of output files.
+      class OutputFileList
+        include Google::Apis::Core::Hashable
+      
+        # List of output files.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::OutputFile>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
       # Payload file for inline import job payload.
       class PayloadFile
         include Google::Apis::Core::Hashable
@@ -4956,6 +5211,11 @@ module Google
       class PhysicalPlatformDetails
         include Google::Apis::Core::Hashable
       
+        # Whether the machine is hyperthreaded.
+        # Corresponds to the JSON property `hyperthreading`
+        # @return [String]
+        attr_accessor :hyperthreading
+      
         # Free text representation of the machine location. The format of this field
         # should not be relied on. Different machines in the same location may have
         # different string values for this field.
@@ -4969,6 +5229,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
           @location = args[:location] if args.key?(:location)
         end
       end
@@ -5263,6 +5524,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @preferred_regions = args[:preferred_regions] if args.key?(:preferred_regions)
+        end
+      end
+      
+      # Message representing a relation between 2 resource.
+      class Relation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the relation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The destination asset name in the relation.
+        # Corresponds to the JSON property `dstAsset`
+        # @return [String]
+        attr_accessor :dst_asset
+      
+        # Output only. Identifier. The identifier of the relation.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The source asset name in the relation.
+        # Corresponds to the JSON property `srcAsset`
+        # @return [String]
+        attr_accessor :src_asset
+      
+        # Optional. The type of the relation.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @dst_asset = args[:dst_asset] if args.key?(:dst_asset)
+          @name = args[:name] if args.key?(:name)
+          @src_asset = args[:src_asset] if args.key?(:src_asset)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -5782,6 +6086,11 @@ module Google
         attr_accessor :monthly_cost_database_licensing
       
         # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `monthlyCostGcveProtected`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Money]
+        attr_accessor :monthly_cost_gcve_protected
+      
+        # Represents an amount of money with its currency type.
         # Corresponds to the JSON property `monthlyCostNetworkEgress`
         # @return [Google::Apis::MigrationcenterV1alpha1::Money]
         attr_accessor :monthly_cost_network_egress
@@ -5795,6 +6104,11 @@ module Google
         # Corresponds to the JSON property `monthlyCostOther`
         # @return [Google::Apis::MigrationcenterV1alpha1::Money]
         attr_accessor :monthly_cost_other
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `monthlyCostPortableVmwareLicense`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Money]
+        attr_accessor :monthly_cost_portable_vmware_license
       
         # Represents an amount of money with its currency type.
         # Corresponds to the JSON property `monthlyCostStorage`
@@ -5850,9 +6164,11 @@ module Google
           @monthly_cost_compute = args[:monthly_cost_compute] if args.key?(:monthly_cost_compute)
           @monthly_cost_database_backup = args[:monthly_cost_database_backup] if args.key?(:monthly_cost_database_backup)
           @monthly_cost_database_licensing = args[:monthly_cost_database_licensing] if args.key?(:monthly_cost_database_licensing)
+          @monthly_cost_gcve_protected = args[:monthly_cost_gcve_protected] if args.key?(:monthly_cost_gcve_protected)
           @monthly_cost_network_egress = args[:monthly_cost_network_egress] if args.key?(:monthly_cost_network_egress)
           @monthly_cost_os_license = args[:monthly_cost_os_license] if args.key?(:monthly_cost_os_license)
           @monthly_cost_other = args[:monthly_cost_other] if args.key?(:monthly_cost_other)
+          @monthly_cost_portable_vmware_license = args[:monthly_cost_portable_vmware_license] if args.key?(:monthly_cost_portable_vmware_license)
           @monthly_cost_storage = args[:monthly_cost_storage] if args.key?(:monthly_cost_storage)
           @monthly_cost_total = args[:monthly_cost_total] if args.key?(:monthly_cost_total)
           @preference_set = args[:preference_set] if args.key?(:preference_set)
@@ -6466,6 +6782,13 @@ module Google
       class Settings
         include Google::Apis::Core::Hashable
       
+        # Customer consent for Google sales to access their Cloud Migration Center
+        # project.
+        # Corresponds to the JSON property `customerConsentForGoogleSalesToAccessMigrationCenter`
+        # @return [Boolean]
+        attr_accessor :customer_consent_for_google_sales_to_access_migration_center
+        alias_method :customer_consent_for_google_sales_to_access_migration_center?, :customer_consent_for_google_sales_to_access_migration_center
+      
         # Disable Cloud Logging for the Migration Center API. Users are billed for the
         # logs.
         # Corresponds to the JSON property `disableCloudLogging`
@@ -6489,6 +6812,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @customer_consent_for_google_sales_to_access_migration_center = args[:customer_consent_for_google_sales_to_access_migration_center] if args.key?(:customer_consent_for_google_sales_to_access_migration_center)
           @disable_cloud_logging = args[:disable_cloud_logging] if args.key?(:disable_cloud_logging)
           @name = args[:name] if args.key?(:name)
           @preference_set = args[:preference_set] if args.key?(:preference_set)
@@ -6781,12 +7105,18 @@ module Google
       class SqlServerSchemaDetails
         include Google::Apis::Core::Hashable
       
+        # Optional. SqlServer number of CLR objects.
+        # Corresponds to the JSON property `clrObjectCount`
+        # @return [Fixnum]
+        attr_accessor :clr_object_count
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @clr_object_count = args[:clr_object_count] if args.key?(:clr_object_count)
         end
       end
       
@@ -6989,6 +7319,41 @@ module Google
         end
       end
       
+      # The type of machines to consider when calculating virtual machine migration
+      # insights and recommendations for VMware Engine. Not all machine types are
+      # available in all zones and regions.
+      class VMwareEngineMachinePreferences
+        include Google::Apis::Core::Hashable
+      
+        # Optional. VMware Engine on Google Cloud machine series to consider for
+        # insights and recommendations. If empty, no restriction is applied on the
+        # machine series.
+        # Corresponds to the JSON property `allowedMachineSeries`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::MachineSeries>]
+        attr_accessor :allowed_machine_series
+      
+        # Optional. Whether to use VMware Engine Protected offering.
+        # Corresponds to the JSON property `protectedNodes`
+        # @return [String]
+        attr_accessor :protected_nodes
+      
+        # Optional. Whether to use storage-only nodes, if those are available.
+        # Corresponds to the JSON property `storageOnlyNodes`
+        # @return [String]
+        attr_accessor :storage_only_nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_machine_series = args[:allowed_machine_series] if args.key?(:allowed_machine_series)
+          @protected_nodes = args[:protected_nodes] if args.key?(:protected_nodes)
+          @storage_only_nodes = args[:storage_only_nodes] if args.key?(:storage_only_nodes)
+        end
+      end
+      
       # A request to validate an import job.
       class ValidateImportJobRequest
         include Google::Apis::Core::Hashable
@@ -7071,7 +7436,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :cpu_socket_count
       
-        # Number of CPU threads allocated to the machine.
+        # Deprecated: use VirtualMachineDetails.core_count instead. Number of CPU
+        # threads allocated to the machine.
         # Corresponds to the JSON property `cpuThreadCount`
         # @return [Fixnum]
         attr_accessor :cpu_thread_count
@@ -7510,10 +7876,29 @@ module Google
         # @return [Float]
         attr_accessor :cpu_overcommit_ratio
       
+        # Optional. Discount percentage for the license type offered to you by Broadcom.
+        # Must be between 0 and 100. Only valid when service_type is set to
+        # SERVICE_TYPE_PORTABLE_LICENSE.
+        # Corresponds to the JSON property `licenseDiscountPercentage`
+        # @return [Float]
+        attr_accessor :license_discount_percentage
+      
+        # The type of machines to consider when calculating virtual machine migration
+        # insights and recommendations for VMware Engine. Not all machine types are
+        # available in all zones and regions.
+        # Corresponds to the JSON property `machinePreferences`
+        # @return [Google::Apis::MigrationcenterV1alpha1::VMwareEngineMachinePreferences]
+        attr_accessor :machine_preferences
+      
         # Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
         # Corresponds to the JSON property `memoryOvercommitRatio`
         # @return [Float]
         attr_accessor :memory_overcommit_ratio
+      
+        # Optional. VMWare Service Type (Fully Licensed or Portable License).
+        # Corresponds to the JSON property `serviceType`
+        # @return [String]
+        attr_accessor :service_type
       
         # The Deduplication and Compression ratio is based on the logical (Used Before)
         # space required to store data before applying deduplication and compression, in
@@ -7534,7 +7919,10 @@ module Google
         def update!(**args)
           @commitment_plan = args[:commitment_plan] if args.key?(:commitment_plan)
           @cpu_overcommit_ratio = args[:cpu_overcommit_ratio] if args.key?(:cpu_overcommit_ratio)
+          @license_discount_percentage = args[:license_discount_percentage] if args.key?(:license_discount_percentage)
+          @machine_preferences = args[:machine_preferences] if args.key?(:machine_preferences)
           @memory_overcommit_ratio = args[:memory_overcommit_ratio] if args.key?(:memory_overcommit_ratio)
+          @service_type = args[:service_type] if args.key?(:service_type)
           @storage_deduplication_compression_ratio = args[:storage_deduplication_compression_ratio] if args.key?(:storage_deduplication_compression_ratio)
         end
       end
@@ -7542,6 +7930,11 @@ module Google
       # VMware specific details.
       class VmwarePlatformDetails
         include Google::Apis::Core::Hashable
+      
+        # Whether the ESX is hyperthreaded.
+        # Corresponds to the JSON property `esxHyperthreading`
+        # @return [String]
+        attr_accessor :esx_hyperthreading
       
         # ESX version.
         # Corresponds to the JSON property `esxVersion`
@@ -7566,6 +7959,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @esx_hyperthreading = args[:esx_hyperthreading] if args.key?(:esx_hyperthreading)
           @esx_version = args[:esx_version] if args.key?(:esx_version)
           @osid = args[:osid] if args.key?(:osid)
           @vcenter_version = args[:vcenter_version] if args.key?(:vcenter_version)
