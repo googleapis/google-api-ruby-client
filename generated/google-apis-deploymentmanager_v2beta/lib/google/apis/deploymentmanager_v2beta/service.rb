@@ -58,6 +58,7 @@ module Google
         #   The project ID for this request.
         # @param [String] composite_type
         #   The name of the type for this request.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -75,12 +76,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_composite_type(project, composite_type, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_composite_type(project, composite_type, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Operation
           command.params['project'] = project unless project.nil?
           command.params['compositeType'] = composite_type unless composite_type.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -91,6 +93,7 @@ module Google
         #   The project ID for this request.
         # @param [String] composite_type
         #   The name of the composite type for this request.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -108,12 +111,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_composite_type(project, composite_type, fields: nil, quota_user: nil, options: nil, &block)
+        def get_composite_type(project, composite_type, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::CompositeType::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::CompositeType
           command.params['project'] = project unless project.nil?
           command.params['compositeType'] = composite_type unless composite_type.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -123,6 +127,7 @@ module Google
         # @param [String] project
         #   The project ID for this request.
         # @param [Google::Apis::DeploymentmanagerV2beta::CompositeType] composite_type_object
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -140,13 +145,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_composite_type(project, composite_type_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_composite_type(project, composite_type_object = nil, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'deploymentmanager/v2beta/projects/{project}/global/compositeTypes', options)
           command.request_representation = Google::Apis::DeploymentmanagerV2beta::CompositeType::Representation
           command.request_object = composite_type_object
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -240,6 +246,7 @@ module Google
         # @param [String] composite_type
         #   The name of the composite type for this request.
         # @param [Google::Apis::DeploymentmanagerV2beta::CompositeType] composite_type_object
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -257,7 +264,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_composite_type(project, composite_type, composite_type_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_composite_type(project, composite_type, composite_type_object = nil, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}', options)
           command.request_representation = Google::Apis::DeploymentmanagerV2beta::CompositeType::Representation
           command.request_object = composite_type_object
@@ -265,6 +272,7 @@ module Google
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Operation
           command.params['project'] = project unless project.nil?
           command.params['compositeType'] = composite_type unless composite_type.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -276,6 +284,7 @@ module Google
         # @param [String] composite_type
         #   The name of the composite type for this request.
         # @param [Google::Apis::DeploymentmanagerV2beta::CompositeType] composite_type_object
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -293,7 +302,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_composite_type(project, composite_type, composite_type_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_composite_type(project, composite_type, composite_type_object = nil, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}', options)
           command.request_representation = Google::Apis::DeploymentmanagerV2beta::CompositeType::Representation
           command.request_object = composite_type_object
@@ -301,6 +310,7 @@ module Google
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Operation
           command.params['project'] = project unless project.nil?
           command.params['compositeType'] = composite_type unless composite_type.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -349,6 +359,7 @@ module Google
         #   The name of the deployment for this request.
         # @param [String] delete_policy
         #   Sets the policy to use for deleting resources.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -366,13 +377,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_deployment(project, deployment, delete_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_deployment(project, deployment, delete_policy: nil, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Operation
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['deletePolicy'] = delete_policy unless delete_policy.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -383,6 +395,7 @@ module Google
         #   The project ID for this request.
         # @param [String] deployment
         #   The name of the deployment for this request.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -400,12 +413,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_deployment(project, deployment, fields: nil, quota_user: nil, options: nil, &block)
+        def get_deployment(project, deployment, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::Deployment::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Deployment
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -417,6 +431,7 @@ module Google
         #   Project ID for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [Fixnum] options_requested_policy_version
         #   Requested IAM Policy version.
         # @param [String] fields
@@ -436,12 +451,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_deployment_iam_policy(project, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_deployment_iam_policy(project, resource, header_bypass_billing_filter: nil, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::Policy::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Policy
           command.params['project'] = project unless project.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -455,6 +471,7 @@ module Google
         # @param [Google::Apis::DeploymentmanagerV2beta::Deployment] deployment_object
         # @param [String] create_policy
         #   Sets the policy to use for creating new resources.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [Boolean] preview
         #   If set to true, creates a deployment and creates "shell" resources but does
         #   not actually instantiate these resources. This allows you to preview what your
@@ -480,7 +497,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_deployment(project, deployment_object = nil, create_policy: nil, preview: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_deployment(project, deployment_object = nil, create_policy: nil, header_bypass_billing_filter: nil, preview: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'deploymentmanager/v2beta/projects/{project}/global/deployments', options)
           command.request_representation = Google::Apis::DeploymentmanagerV2beta::Deployment::Representation
           command.request_object = deployment_object
@@ -488,6 +505,7 @@ module Google
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Operation
           command.params['project'] = project unless project.nil?
           command.query['createPolicy'] = create_policy unless create_policy.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['preview'] = preview unless preview.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -587,6 +605,7 @@ module Google
         #   Sets the policy to use for creating new resources.
         # @param [String] delete_policy
         #   Sets the policy to use for deleting resources.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [Boolean] preview
         #   If set to true, updates the deployment and creates and updates the "shell"
         #   resources but does not actually alter or instantiate these resources. This
@@ -615,7 +634,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_deployment(project, deployment, deployment_object = nil, create_policy: nil, delete_policy: nil, preview: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_deployment(project, deployment, deployment_object = nil, create_policy: nil, delete_policy: nil, header_bypass_billing_filter: nil, preview: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', options)
           command.request_representation = Google::Apis::DeploymentmanagerV2beta::Deployment::Representation
           command.request_object = deployment_object
@@ -625,6 +644,7 @@ module Google
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['createPolicy'] = create_policy unless create_policy.nil?
           command.query['deletePolicy'] = delete_policy unless delete_policy.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['preview'] = preview unless preview.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -711,6 +731,7 @@ module Google
         # @param [String] resource
         #   Name or id of the resource for this request.
         # @param [Google::Apis::DeploymentmanagerV2beta::TestPermissionsRequest] test_permissions_request_object
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -728,7 +749,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def test_deployment_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def test_deployment_iam_permissions(project, resource, test_permissions_request_object = nil, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::DeploymentmanagerV2beta::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
@@ -736,6 +757,7 @@ module Google
           command.response_class = Google::Apis::DeploymentmanagerV2beta::TestPermissionsResponse
           command.params['project'] = project unless project.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -752,6 +774,7 @@ module Google
         #   Sets the policy to use for creating new resources.
         # @param [String] delete_policy
         #   Sets the policy to use for deleting resources.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [Boolean] preview
         #   If set to true, updates the deployment and creates and updates the "shell"
         #   resources but does not actually alter or instantiate these resources. This
@@ -780,7 +803,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_deployment(project, deployment, deployment_object = nil, create_policy: nil, delete_policy: nil, preview: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_deployment(project, deployment, deployment_object = nil, create_policy: nil, delete_policy: nil, header_bypass_billing_filter: nil, preview: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', options)
           command.request_representation = Google::Apis::DeploymentmanagerV2beta::Deployment::Representation
           command.request_object = deployment_object
@@ -790,6 +813,7 @@ module Google
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['createPolicy'] = create_policy unless create_policy.nil?
           command.query['deletePolicy'] = delete_policy unless delete_policy.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['preview'] = preview unless preview.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -803,6 +827,7 @@ module Google
         #   The name of the deployment for this request.
         # @param [String] manifest
         #   The name of the manifest for this request.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -820,13 +845,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_manifest(project, deployment, manifest, fields: nil, quota_user: nil, options: nil, &block)
+        def get_manifest(project, deployment, manifest, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/manifests/{manifest}', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::Manifest::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Manifest
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.params['manifest'] = manifest unless manifest.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -922,6 +948,7 @@ module Google
         #   The project ID for this request.
         # @param [String] operation
         #   The name of the operation for this request.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -939,12 +966,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_operation(project, operation, fields: nil, quota_user: nil, options: nil, &block)
+        def get_operation(project, operation, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2beta/projects/{project}/global/operations/{operation}', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Operation
           command.params['project'] = project unless project.nil?
           command.params['operation'] = operation unless operation.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1039,6 +1067,7 @@ module Google
         #   The name of the deployment for this request.
         # @param [String] resource
         #   The name of the resource for this request.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1056,13 +1085,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_resource(project, deployment, resource, fields: nil, quota_user: nil, options: nil, &block)
+        def get_resource(project, deployment, resource, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/resources/{resource}', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::Resource::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Resource
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1158,6 +1188,7 @@ module Google
         #   The project ID for this request.
         # @param [String] type_provider
         #   The name of the type provider for this request.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1175,12 +1206,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_type_provider(project, type_provider, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_type_provider(project, type_provider, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Operation
           command.params['project'] = project unless project.nil?
           command.params['typeProvider'] = type_provider unless type_provider.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1191,6 +1223,7 @@ module Google
         #   The project ID for this request.
         # @param [String] type_provider
         #   The name of the type provider for this request.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1208,12 +1241,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_type_provider(project, type_provider, fields: nil, quota_user: nil, options: nil, &block)
+        def get_type_provider(project, type_provider, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::TypeProvider::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::TypeProvider
           command.params['project'] = project unless project.nil?
           command.params['typeProvider'] = type_provider unless type_provider.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1226,6 +1260,7 @@ module Google
         #   The name of the type provider for this request.
         # @param [String] type
         #   The name of the type provider type for this request.
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1243,13 +1278,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_type_provider_type(project, type_provider, type, fields: nil, quota_user: nil, options: nil, &block)
+        def get_type_provider_type(project, type_provider, type, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}/types/{type}', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::TypeInfo::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::TypeInfo
           command.params['project'] = project unless project.nil?
           command.params['typeProvider'] = type_provider unless type_provider.nil?
           command.params['type'] = type unless type.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1259,6 +1295,7 @@ module Google
         # @param [String] project
         #   The project ID for this request.
         # @param [Google::Apis::DeploymentmanagerV2beta::TypeProvider] type_provider_object
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1276,13 +1313,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_type_provider(project, type_provider_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_type_provider(project, type_provider_object = nil, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'deploymentmanager/v2beta/projects/{project}/global/typeProviders', options)
           command.request_representation = Google::Apis::DeploymentmanagerV2beta::TypeProvider::Representation
           command.request_object = type_provider_object
           command.response_representation = Google::Apis::DeploymentmanagerV2beta::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1461,6 +1499,7 @@ module Google
         # @param [String] type_provider
         #   The name of the type provider for this request.
         # @param [Google::Apis::DeploymentmanagerV2beta::TypeProvider] type_provider_object
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1478,7 +1517,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_type_provider(project, type_provider, type_provider_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_type_provider(project, type_provider, type_provider_object = nil, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', options)
           command.request_representation = Google::Apis::DeploymentmanagerV2beta::TypeProvider::Representation
           command.request_object = type_provider_object
@@ -1486,6 +1525,7 @@ module Google
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Operation
           command.params['project'] = project unless project.nil?
           command.params['typeProvider'] = type_provider unless type_provider.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1497,6 +1537,7 @@ module Google
         # @param [String] type_provider
         #   The name of the type provider for this request.
         # @param [Google::Apis::DeploymentmanagerV2beta::TypeProvider] type_provider_object
+        # @param [Boolean] header_bypass_billing_filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1514,7 +1555,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_type_provider(project, type_provider, type_provider_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_type_provider(project, type_provider, type_provider_object = nil, header_bypass_billing_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', options)
           command.request_representation = Google::Apis::DeploymentmanagerV2beta::TypeProvider::Representation
           command.request_object = type_provider_object
@@ -1522,6 +1563,7 @@ module Google
           command.response_class = Google::Apis::DeploymentmanagerV2beta::Operation
           command.params['project'] = project unless project.nil?
           command.params['typeProvider'] = type_provider unless type_provider.nil?
+          command.query['header.bypassBillingFilter'] = header_bypass_billing_filter unless header_bypass_billing_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
