@@ -46,6 +46,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthorizationCodeLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchAuthSchemaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +371,12 @@ module Google
       end
       
       class Jms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JsonAuthSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -556,6 +592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Oauth2AuthCodeFlowGoogleManaged
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Oauth2ClientCredentials
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -580,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartnerMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PerSliSloEligibility
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,6 +647,12 @@ module Google
       end
       
       class ProvisionedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublishStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -754,6 +808,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StandardAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StandardEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -814,6 +880,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WebhookSubscriptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WeeklyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -846,6 +918,8 @@ module Google
           property :auth_type, as: 'authType'
           property :oauth2_auth_code_flow, as: 'oauth2AuthCodeFlow', class: Google::Apis::ConnectorsV1::Oauth2AuthCodeFlow, decorator: Google::Apis::ConnectorsV1::Oauth2AuthCodeFlow::Representation
       
+          property :oauth2_auth_code_flow_google_managed, as: 'oauth2AuthCodeFlowGoogleManaged', class: Google::Apis::ConnectorsV1::Oauth2AuthCodeFlowGoogleManaged, decorator: Google::Apis::ConnectorsV1::Oauth2AuthCodeFlowGoogleManaged::Representation
+      
           property :oauth2_client_credentials, as: 'oauth2ClientCredentials', class: Google::Apis::ConnectorsV1::Oauth2ClientCredentials, decorator: Google::Apis::ConnectorsV1::Oauth2ClientCredentials::Representation
       
           property :oauth2_jwt_bearer, as: 'oauth2JwtBearer', class: Google::Apis::ConnectorsV1::Oauth2JwtBearer, decorator: Google::Apis::ConnectorsV1::Oauth2JwtBearer::Representation
@@ -866,6 +940,51 @@ module Google
       
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :is_default, as: 'isDefault'
+        end
+      end
+      
+      class AuthField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_type, as: 'dataType'
+          property :description, as: 'description'
+          property :key, as: 'key'
+        end
+      end
+      
+      class AuthObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_properties, as: 'additionalProperties'
+          property :auth_key, as: 'authKey'
+          property :auth_type, as: 'authType'
+          property :description, as: 'description'
+          property :is_default, as: 'isDefault'
+          hash :properties, as: 'properties', class: Google::Apis::ConnectorsV1::AuthProperty, decorator: Google::Apis::ConnectorsV1::AuthProperty::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class AuthProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :type, as: 'type'
+        end
+      end
+      
+      class AuthSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auth_fields, as: 'authFields', class: Google::Apis::ConnectorsV1::AuthField, decorator: Google::Apis::ConnectorsV1::AuthField::Representation
+      
+          property :auth_key, as: 'authKey'
+          property :auth_type, as: 'authType'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :is_default, as: 'isDefault'
         end
       end
       
@@ -873,6 +992,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
+      
           property :enable_pkce, as: 'enablePkce'
           property :omit_query_params, as: 'omitQueryParams'
           collection :scopes, as: 'scopes'
@@ -949,6 +1070,7 @@ module Google
           property :async_operations_enabled, as: 'asyncOperationsEnabled'
           property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
       
+          property :auth_override_enabled, as: 'authOverrideEnabled'
           property :billing_config, as: 'billingConfig', class: Google::Apis::ConnectorsV1::BillingConfig, decorator: Google::Apis::ConnectorsV1::BillingConfig::Representation
       
           collection :config_variables, as: 'configVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
@@ -968,6 +1090,7 @@ module Google
           property :eventing_enablement_type, as: 'eventingEnablementType'
           property :eventing_runtime_data, as: 'eventingRuntimeData', class: Google::Apis::ConnectorsV1::EventingRuntimeData, decorator: Google::Apis::ConnectorsV1::EventingRuntimeData::Representation
       
+          property :host, as: 'host'
           property :image_location, as: 'imageLocation'
           property :is_trusted_tester, as: 'isTrustedTester'
           hash :labels, as: 'labels'
@@ -986,6 +1109,7 @@ module Google
       
           property :subscription_type, as: 'subscriptionType'
           property :suspended, as: 'suspended'
+          property :tls_service_directory, as: 'tlsServiceDirectory'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1036,12 +1160,17 @@ module Google
       class ConnectorInfraConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :always_allocate_cpu, as: 'alwaysAllocateCpu'
           property :connection_ratelimit_window_seconds, :numeric_string => true, as: 'connectionRatelimitWindowSeconds'
+          property :connector_versioning_enabled, as: 'connectorVersioningEnabled'
           property :deployment_model, as: 'deploymentModel'
           property :hpa_config, as: 'hpaConfig', class: Google::Apis::ConnectorsV1::HpaConfig, decorator: Google::Apis::ConnectorsV1::HpaConfig::Representation
       
           property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
+          property :max_instance_request_concurrency, as: 'maxInstanceRequestConcurrency'
           property :migrate_deployment_model, as: 'migrateDeploymentModel'
+          property :migrate_tls, as: 'migrateTls'
+          property :provision_cloud_spanner, as: 'provisionCloudSpanner'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
           property :resource_limits, as: 'resourceLimits', class: Google::Apis::ConnectorsV1::ResourceLimits, decorator: Google::Apis::ConnectorsV1::ResourceLimits::Representation
       
@@ -1069,6 +1198,9 @@ module Google
       
           property :eventing_config_template, as: 'eventingConfigTemplate', class: Google::Apis::ConnectorsV1::EventingConfigTemplate, decorator: Google::Apis::ConnectorsV1::EventingConfigTemplate::Representation
       
+          property :is_async_operations_supported, as: 'isAsyncOperationsSupported'
+          property :is_custom_actions_supported, as: 'isCustomActionsSupported'
+          property :is_custom_entities_supported, as: 'isCustomEntitiesSupported'
           hash :labels, as: 'labels'
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
@@ -1082,6 +1214,10 @@ module Google
           property :ssl_config_template, as: 'sslConfigTemplate', class: Google::Apis::ConnectorsV1::SslConfigTemplate, decorator: Google::Apis::ConnectorsV1::SslConfigTemplate::Representation
       
           property :supported_runtime_features, as: 'supportedRuntimeFeatures', class: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures, decorator: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures::Representation
+      
+          collection :supported_standard_actions, as: 'supportedStandardActions', class: Google::Apis::ConnectorsV1::StandardAction, decorator: Google::Apis::ConnectorsV1::StandardAction::Representation
+      
+          collection :supported_standard_entities, as: 'supportedStandardEntities', class: Google::Apis::ConnectorsV1::StandardEntity, decorator: Google::Apis::ConnectorsV1::StandardEntity::Representation
       
           collection :unsupported_connection_types, as: 'unsupportedConnectionTypes'
           property :update_time, as: 'updateTime'
@@ -1097,12 +1233,14 @@ module Google
           property :hpa_config, as: 'hpaConfig', class: Google::Apis::ConnectorsV1::HpaConfig, decorator: Google::Apis::ConnectorsV1::HpaConfig::Representation
       
           property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
+          property :max_instance_request_concurrency, as: 'maxInstanceRequestConcurrency'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
           property :resource_limits, as: 'resourceLimits', class: Google::Apis::ConnectorsV1::ResourceLimits, decorator: Google::Apis::ConnectorsV1::ResourceLimits::Representation
       
           property :resource_requests, as: 'resourceRequests', class: Google::Apis::ConnectorsV1::ResourceRequests, decorator: Google::Apis::ConnectorsV1::ResourceRequests::Representation
       
           property :shared_deployment, as: 'sharedDeployment'
+          property :tls_migration_state, as: 'tlsMigrationState'
         end
       end
       
@@ -1119,6 +1257,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :active_connector_versions, as: 'activeConnectorVersions'
           collection :all_connector_versions, as: 'allConnectorVersions'
+          collection :all_marketplace_versions, as: 'allMarketplaceVersions'
           property :create_time, as: 'createTime'
           property :custom_connector_type, as: 'customConnectorType'
           property :description, as: 'description'
@@ -1126,6 +1265,7 @@ module Google
           hash :labels, as: 'labels'
           property :logo, as: 'logo'
           property :name, as: 'name'
+          collection :published_marketplace_versions, as: 'publishedMarketplaceVersions'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1143,6 +1283,10 @@ module Google
           property :enable_backend_destination_config, as: 'enableBackendDestinationConfig'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ConnectorsV1::PartnerMetadata, decorator: Google::Apis::ConnectorsV1::PartnerMetadata::Representation
+      
+          property :publish_status, as: 'publishStatus', class: Google::Apis::ConnectorsV1::PublishStatus, decorator: Google::Apis::ConnectorsV1::PublishStatus::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :spec_location, as: 'specLocation'
           collection :spec_server_urls, as: 'specServerUrls'
@@ -1279,6 +1423,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :service_attachment, as: 'serviceAttachment'
+          property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1412,6 +1557,8 @@ module Google
       
           property :webhook_data, as: 'webhookData', class: Google::Apis::ConnectorsV1::WebhookData, decorator: Google::Apis::ConnectorsV1::WebhookData::Representation
       
+          property :webhook_subscriptions, as: 'webhookSubscriptions', class: Google::Apis::ConnectorsV1::WebhookSubscriptions, decorator: Google::Apis::ConnectorsV1::WebhookSubscriptions::Representation
+      
         end
       end
       
@@ -1446,6 +1593,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :extraction_rule, as: 'extractionRule', class: Google::Apis::ConnectorsV1::ExtractionRule, decorator: Google::Apis::ConnectorsV1::ExtractionRule::Representation
+      
+        end
+      end
+      
+      class FetchAuthSchemaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auth_schemas, as: 'authSchemas', class: Google::Apis::ConnectorsV1::AuthSchema, decorator: Google::Apis::ConnectorsV1::AuthSchema::Representation
+      
+          property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV1::JsonAuthSchema, decorator: Google::Apis::ConnectorsV1::JsonAuthSchema::Representation
       
         end
       end
@@ -1539,6 +1696,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :type, as: 'type'
+        end
+      end
+      
+      class JsonAuthSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :_schema, as: '$schema'
+          collection :one_of, as: 'oneOf', class: Google::Apis::ConnectorsV1::AuthObject, decorator: Google::Apis::ConnectorsV1::AuthObject::Representation
+      
         end
       end
       
@@ -1890,6 +2056,15 @@ module Google
         end
       end
       
+      class Oauth2AuthCodeFlowGoogleManaged
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_code, as: 'authCode'
+          property :redirect_uri, as: 'redirectUri'
+          collection :scopes, as: 'scopes'
+        end
+      end
+      
       class Oauth2ClientCredentials
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1934,6 +2109,27 @@ module Google
         end
       end
       
+      class PartnerMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accept_gcp_tos, as: 'acceptGcpTos'
+          property :additional_comments, as: 'additionalComments'
+          property :confirm_partner_requirements, as: 'confirmPartnerRequirements'
+          property :demo_uri, as: 'demoUri'
+          property :integration_templates, as: 'integrationTemplates'
+          property :marketplace_product, as: 'marketplaceProduct'
+          property :marketplace_product_id, as: 'marketplaceProductId'
+          property :marketplace_product_project_id, as: 'marketplaceProductProjectId'
+          property :marketplace_product_uri, as: 'marketplaceProductUri'
+          property :partner, as: 'partner'
+          property :partner_connector_display_name, as: 'partnerConnectorDisplayName'
+          property :publish_request_time, as: 'publishRequestTime'
+          property :target_application, as: 'targetApplication'
+          property :target_customer_segment, as: 'targetCustomerSegment'
+          property :use_cases, as: 'useCases'
+        end
+      end
+      
       class PerSliSloEligibility
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1975,6 +2171,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_type, as: 'resourceType'
           property :resource_url, as: 'resourceUrl'
+        end
+      end
+      
+      class PublishStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :publish_state, as: 'publishState'
+          property :publish_time, as: 'publishTime'
+          property :published_as, as: 'publishedAs'
+          property :published_source, as: 'publishedSource'
         end
       end
       
@@ -2066,10 +2272,12 @@ module Google
       
           collection :input_parameters, as: 'inputParameters', class: Google::Apis::ConnectorsV1::InputParameter, decorator: Google::Apis::ConnectorsV1::InputParameter::Representation
       
+          property :input_schema_as_string, as: 'inputSchemaAsString'
           property :result_json_schema, as: 'resultJsonSchema', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
       
           collection :result_metadata, as: 'resultMetadata', class: Google::Apis::ConnectorsV1::ResultMetadata, decorator: Google::Apis::ConnectorsV1::ResultMetadata::Representation
       
+          property :result_schema_as_string, as: 'resultSchemaAsString'
         end
       end
       
@@ -2239,6 +2447,20 @@ module Google
         end
       end
       
+      class StandardAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class StandardEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2327,6 +2549,14 @@ module Google
           property :name, as: 'name'
           property :next_refresh_time, as: 'nextRefreshTime'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class WebhookSubscriptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :webhook_data, as: 'webhookData', class: Google::Apis::ConnectorsV1::WebhookData, decorator: Google::Apis::ConnectorsV1::WebhookData::Representation
+      
         end
       end
       

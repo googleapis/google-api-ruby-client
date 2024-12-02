@@ -118,6 +118,13 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Oauth2AuthCodeFlow]
         attr_accessor :oauth2_auth_code_flow
       
+        # Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google
+        # Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1
+        # for more details.
+        # Corresponds to the JSON property `oauth2AuthCodeFlowGoogleManaged`
+        # @return [Google::Apis::ConnectorsV1::Oauth2AuthCodeFlowGoogleManaged]
+        attr_accessor :oauth2_auth_code_flow_google_managed
+      
         # Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See
         # https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
         # Corresponds to the JSON property `oauth2ClientCredentials`
@@ -151,6 +158,7 @@ module Google
           @auth_key = args[:auth_key] if args.key?(:auth_key)
           @auth_type = args[:auth_type] if args.key?(:auth_type)
           @oauth2_auth_code_flow = args[:oauth2_auth_code_flow] if args.key?(:oauth2_auth_code_flow)
+          @oauth2_auth_code_flow_google_managed = args[:oauth2_auth_code_flow_google_managed] if args.key?(:oauth2_auth_code_flow_google_managed)
           @oauth2_client_credentials = args[:oauth2_client_credentials] if args.key?(:oauth2_client_credentials)
           @oauth2_jwt_bearer = args[:oauth2_jwt_bearer] if args.key?(:oauth2_jwt_bearer)
           @ssh_public_key = args[:ssh_public_key] if args.key?(:ssh_public_key)
@@ -187,6 +195,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Whether the auth config is the default one.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
         def initialize(**args)
            update!(**args)
         end
@@ -198,6 +212,170 @@ module Google
           @config_variable_templates = args[:config_variable_templates] if args.key?(:config_variable_templates)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @is_default = args[:is_default] if args.key?(:is_default)
+        end
+      end
+      
+      # AuthField defines a field in an authentication type.
+      class AuthField
+        include Google::Apis::Core::Hashable
+      
+        # Data type of the field.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Description of the field.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Key of the field.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @description = args[:description] if args.key?(:description)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
+      # AuthObject defines a JSON schema of an authentication type.
+      class AuthObject
+        include Google::Apis::Core::Hashable
+      
+        # Whether the object has additional properties.
+        # Corresponds to the JSON property `additionalProperties`
+        # @return [Boolean]
+        attr_accessor :additional_properties
+        alias_method :additional_properties?, :additional_properties
+      
+        # Auth key of the object.
+        # Corresponds to the JSON property `authKey`
+        # @return [String]
+        attr_accessor :auth_key
+      
+        # Auth type of the object.
+        # Corresponds to the JSON property `authType`
+        # @return [String]
+        attr_accessor :auth_type
+      
+        # Description of the object.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Whether the object is the default one.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
+        # Properties of the object.
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,Google::Apis::ConnectorsV1::AuthProperty>]
+        attr_accessor :properties
+      
+        # Type of the object.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_properties = args[:additional_properties] if args.key?(:additional_properties)
+          @auth_key = args[:auth_key] if args.key?(:auth_key)
+          @auth_type = args[:auth_type] if args.key?(:auth_type)
+          @description = args[:description] if args.key?(:description)
+          @is_default = args[:is_default] if args.key?(:is_default)
+          @properties = args[:properties] if args.key?(:properties)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # AuthProperty defines a property of an authentication type.
+      class AuthProperty
+        include Google::Apis::Core::Hashable
+      
+        # Description of the property.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Type of the property.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # AuthSchema defines the schema of an authentication type.
+      class AuthSchema
+        include Google::Apis::Core::Hashable
+      
+        # List of AuthFields.
+        # Corresponds to the JSON property `authFields`
+        # @return [Array<Google::Apis::ConnectorsV1::AuthField>]
+        attr_accessor :auth_fields
+      
+        # Auth key of the schema.
+        # Corresponds to the JSON property `authKey`
+        # @return [String]
+        attr_accessor :auth_key
+      
+        # Auth type of the schema.
+        # Corresponds to the JSON property `authType`
+        # @return [String]
+        attr_accessor :auth_type
+      
+        # Description of the schema.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name of the schema.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether the auth schema is the default one.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_fields = args[:auth_fields] if args.key?(:auth_fields)
+          @auth_key = args[:auth_key] if args.key?(:auth_key)
+          @auth_type = args[:auth_type] if args.key?(:auth_type)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @is_default = args[:is_default] if args.key?(:is_default)
         end
       end
       
@@ -211,6 +389,11 @@ module Google
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [Google::Apis::ConnectorsV1::Secret]
+        attr_accessor :client_secret
       
         # Whether to enable PKCE for the auth code flow.
         # Corresponds to the JSON property `enablePkce`
@@ -242,6 +425,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
           @enable_pkce = args[:enable_pkce] if args.key?(:enable_pkce)
           @omit_query_params = args[:omit_query_params] if args.key?(:omit_query_params)
           @scopes = args[:scopes] if args.key?(:scopes)
@@ -564,6 +748,14 @@ module Google
         # @return [Google::Apis::ConnectorsV1::AuthConfig]
         attr_accessor :auth_config
       
+        # Optional. Auth override enabled for the connection. If Auth Override is
+        # enabled, Connection allows the backend service auth to be overridden in the
+        # entities/actions API.
+        # Corresponds to the JSON property `authOverrideEnabled`
+        # @return [Boolean]
+        attr_accessor :auth_override_enabled
+        alias_method :auth_override_enabled?, :auth_override_enabled
+      
         # Billing config for the connection.
         # Corresponds to the JSON property `billingConfig`
         # @return [Google::Apis::ConnectorsV1::BillingConfig]
@@ -635,6 +827,12 @@ module Google
         # Corresponds to the JSON property `eventingRuntimeData`
         # @return [Google::Apis::ConnectorsV1::EventingRuntimeData]
         attr_accessor :eventing_runtime_data
+      
+        # Output only. The name of the Hostname of the Service Directory service with
+        # TLS.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
       
         # Output only. GCR location where the runtime image is stored. formatted like:
         # gcr.io/`bucketName`/`imageName`
@@ -713,6 +911,11 @@ module Google
         attr_accessor :suspended
         alias_method :suspended?, :suspended
       
+        # Output only. The name of the Service Directory service with TLS.
+        # Corresponds to the JSON property `tlsServiceDirectory`
+        # @return [String]
+        attr_accessor :tls_service_directory
+      
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -726,6 +929,7 @@ module Google
         def update!(**args)
           @async_operations_enabled = args[:async_operations_enabled] if args.key?(:async_operations_enabled)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
+          @auth_override_enabled = args[:auth_override_enabled] if args.key?(:auth_override_enabled)
           @billing_config = args[:billing_config] if args.key?(:billing_config)
           @config_variables = args[:config_variables] if args.key?(:config_variables)
           @connection_revision = args[:connection_revision] if args.key?(:connection_revision)
@@ -739,6 +943,7 @@ module Google
           @eventing_config = args[:eventing_config] if args.key?(:eventing_config)
           @eventing_enablement_type = args[:eventing_enablement_type] if args.key?(:eventing_enablement_type)
           @eventing_runtime_data = args[:eventing_runtime_data] if args.key?(:eventing_runtime_data)
+          @host = args[:host] if args.key?(:host)
           @image_location = args[:image_location] if args.key?(:image_location)
           @is_trusted_tester = args[:is_trusted_tester] if args.key?(:is_trusted_tester)
           @labels = args[:labels] if args.key?(:labels)
@@ -752,6 +957,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
           @suspended = args[:suspended] if args.key?(:suspended)
+          @tls_service_directory = args[:tls_service_directory] if args.key?(:tls_service_directory)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -952,10 +1158,22 @@ module Google
       class ConnectorInfraConfig
         include Google::Apis::Core::Hashable
       
+        # Indicates that the Cloud Run CPU should always be allocated.
+        # Corresponds to the JSON property `alwaysAllocateCpu`
+        # @return [Boolean]
+        attr_accessor :always_allocate_cpu
+        alias_method :always_allocate_cpu?, :always_allocate_cpu
+      
         # The window used for ratelimiting runtime requests to connections.
         # Corresponds to the JSON property `connectionRatelimitWindowSeconds`
         # @return [Fixnum]
         attr_accessor :connection_ratelimit_window_seconds
+      
+        # Indicate whether connector versioning is enabled.
+        # Corresponds to the JSON property `connectorVersioningEnabled`
+        # @return [Boolean]
+        attr_accessor :connector_versioning_enabled
+        alias_method :connector_versioning_enabled?, :connector_versioning_enabled
       
         # Indicate whether connector is deployed on GKE/CloudRun
         # Corresponds to the JSON property `deploymentModel`
@@ -972,11 +1190,28 @@ module Google
         # @return [Fixnum]
         attr_accessor :internalclient_ratelimit_threshold
       
+        # Max Instance Request Conncurrency for Cloud Run service.
+        # Corresponds to the JSON property `maxInstanceRequestConcurrency`
+        # @return [Fixnum]
+        attr_accessor :max_instance_request_concurrency
+      
         # Indicate whether connector is being migrated to cloud run deployment model.
         # Corresponds to the JSON property `migrateDeploymentModel`
         # @return [Boolean]
         attr_accessor :migrate_deployment_model
         alias_method :migrate_deployment_model?, :migrate_deployment_model
+      
+        # Indicate whether connector is being migrated to TLS.
+        # Corresponds to the JSON property `migrateTls`
+        # @return [Boolean]
+        attr_accessor :migrate_tls
+        alias_method :migrate_tls?, :migrate_tls
+      
+        # Indicate whether cloud spanner is required for connector job.
+        # Corresponds to the JSON property `provisionCloudSpanner`
+        # @return [Boolean]
+        attr_accessor :provision_cloud_spanner
+        alias_method :provision_cloud_spanner?, :provision_cloud_spanner
       
         # Max QPS supported by the connector version before throttling of requests.
         # Corresponds to the JSON property `ratelimitThreshold`
@@ -1004,11 +1239,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @always_allocate_cpu = args[:always_allocate_cpu] if args.key?(:always_allocate_cpu)
           @connection_ratelimit_window_seconds = args[:connection_ratelimit_window_seconds] if args.key?(:connection_ratelimit_window_seconds)
+          @connector_versioning_enabled = args[:connector_versioning_enabled] if args.key?(:connector_versioning_enabled)
           @deployment_model = args[:deployment_model] if args.key?(:deployment_model)
           @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
           @internalclient_ratelimit_threshold = args[:internalclient_ratelimit_threshold] if args.key?(:internalclient_ratelimit_threshold)
+          @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @migrate_deployment_model = args[:migrate_deployment_model] if args.key?(:migrate_deployment_model)
+          @migrate_tls = args[:migrate_tls] if args.key?(:migrate_tls)
+          @provision_cloud_spanner = args[:provision_cloud_spanner] if args.key?(:provision_cloud_spanner)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
           @resource_requests = args[:resource_requests] if args.key?(:resource_requests)
@@ -1070,6 +1310,24 @@ module Google
         # @return [Google::Apis::ConnectorsV1::EventingConfigTemplate]
         attr_accessor :eventing_config_template
       
+        # Output only. Is async operations supported.
+        # Corresponds to the JSON property `isAsyncOperationsSupported`
+        # @return [Boolean]
+        attr_accessor :is_async_operations_supported
+        alias_method :is_async_operations_supported?, :is_async_operations_supported
+      
+        # Output only. Is custom actions supported.
+        # Corresponds to the JSON property `isCustomActionsSupported`
+        # @return [Boolean]
+        attr_accessor :is_custom_actions_supported
+        alias_method :is_custom_actions_supported?, :is_custom_actions_supported
+      
+        # Output only. Is custom entities supported.
+        # Corresponds to the JSON property `isCustomEntitiesSupported`
+        # @return [Boolean]
+        attr_accessor :is_custom_entities_supported
+        alias_method :is_custom_entities_supported?, :is_custom_entities_supported
+      
         # Output only. Resource labels to represent user-provided metadata. Refer to
         # cloud documentation on labels for more details. https://cloud.google.com/
         # compute/docs/labeling-resources
@@ -1123,6 +1381,16 @@ module Google
         # @return [Google::Apis::ConnectorsV1::SupportedRuntimeFeatures]
         attr_accessor :supported_runtime_features
       
+        # Output only. Supported standard actions.
+        # Corresponds to the JSON property `supportedStandardActions`
+        # @return [Array<Google::Apis::ConnectorsV1::StandardAction>]
+        attr_accessor :supported_standard_actions
+      
+        # Output only. Supported standard entities.
+        # Corresponds to the JSON property `supportedStandardEntities`
+        # @return [Array<Google::Apis::ConnectorsV1::StandardEntity>]
+        attr_accessor :supported_standard_entities
+      
         # Output only. Unsupported connection types.
         # Corresponds to the JSON property `unsupportedConnectionTypes`
         # @return [Array<String>]
@@ -1148,6 +1416,9 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @egress_control_config = args[:egress_control_config] if args.key?(:egress_control_config)
           @eventing_config_template = args[:eventing_config_template] if args.key?(:eventing_config_template)
+          @is_async_operations_supported = args[:is_async_operations_supported] if args.key?(:is_async_operations_supported)
+          @is_custom_actions_supported = args[:is_custom_actions_supported] if args.key?(:is_custom_actions_supported)
+          @is_custom_entities_supported = args[:is_custom_entities_supported] if args.key?(:is_custom_entities_supported)
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
@@ -1157,6 +1428,8 @@ module Google
           @schema_refresh_config = args[:schema_refresh_config] if args.key?(:schema_refresh_config)
           @ssl_config_template = args[:ssl_config_template] if args.key?(:ssl_config_template)
           @supported_runtime_features = args[:supported_runtime_features] if args.key?(:supported_runtime_features)
+          @supported_standard_actions = args[:supported_standard_actions] if args.key?(:supported_standard_actions)
+          @supported_standard_entities = args[:supported_standard_entities] if args.key?(:supported_standard_entities)
           @unsupported_connection_types = args[:unsupported_connection_types] if args.key?(:unsupported_connection_types)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1192,6 +1465,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :internalclient_ratelimit_threshold
       
+        # Output only. Max instance request concurrency.
+        # Corresponds to the JSON property `maxInstanceRequestConcurrency`
+        # @return [Fixnum]
+        attr_accessor :max_instance_request_concurrency
+      
         # Output only. Max QPS supported by the connector version before throttling of
         # requests.
         # Corresponds to the JSON property `ratelimitThreshold`
@@ -1213,6 +1491,11 @@ module Google
         # @return [String]
         attr_accessor :shared_deployment
       
+        # Output only. Status of the TLS migration.
+        # Corresponds to the JSON property `tlsMigrationState`
+        # @return [String]
+        attr_accessor :tls_migration_state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1224,10 +1507,12 @@ module Google
           @deployment_model_migration_state = args[:deployment_model_migration_state] if args.key?(:deployment_model_migration_state)
           @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
           @internalclient_ratelimit_threshold = args[:internalclient_ratelimit_threshold] if args.key?(:internalclient_ratelimit_threshold)
+          @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
           @resource_requests = args[:resource_requests] if args.key?(:resource_requests)
           @shared_deployment = args[:shared_deployment] if args.key?(:shared_deployment)
+          @tls_migration_state = args[:tls_migration_state] if args.key?(:tls_migration_state)
         end
       end
       
@@ -1272,6 +1557,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :all_connector_versions
       
+        # Output only. All marketplace versions.
+        # Corresponds to the JSON property `allMarketplaceVersions`
+        # @return [Array<String>]
+        attr_accessor :all_marketplace_versions
+      
         # Output only. Created time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1310,6 +1600,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Published marketplace versions.
+        # Corresponds to the JSON property `publishedMarketplaceVersions`
+        # @return [Array<String>]
+        attr_accessor :published_marketplace_versions
+      
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1323,6 +1618,7 @@ module Google
         def update!(**args)
           @active_connector_versions = args[:active_connector_versions] if args.key?(:active_connector_versions)
           @all_connector_versions = args[:all_connector_versions] if args.key?(:all_connector_versions)
+          @all_marketplace_versions = args[:all_marketplace_versions] if args.key?(:all_marketplace_versions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_connector_type = args[:custom_connector_type] if args.key?(:custom_connector_type)
           @description = args[:description] if args.key?(:description)
@@ -1330,6 +1626,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @logo = args[:logo] if args.key?(:logo)
           @name = args[:name] if args.key?(:name)
+          @published_marketplace_versions = args[:published_marketplace_versions] if args.key?(:published_marketplace_versions)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1381,6 +1678,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Partner metadata details. This will be populated when publishing the custom
+        # connector as a partner connector version. On publishing, parntner connector
+        # version will be created using the fields in PartnerMetadata.
+        # Corresponds to the JSON property `partnerMetadata`
+        # @return [Google::Apis::ConnectorsV1::PartnerMetadata]
+        attr_accessor :partner_metadata
+      
+        # Publish status of a custom connector.
+        # Corresponds to the JSON property `publishStatus`
+        # @return [Google::Apis::ConnectorsV1::PublishStatus]
+        attr_accessor :publish_status
+      
         # Optional. Service account used by runtime plane to access auth config secrets.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -1421,6 +1730,8 @@ module Google
           @enable_backend_destination_config = args[:enable_backend_destination_config] if args.key?(:enable_backend_destination_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
+          @publish_status = args[:publish_status] if args.key?(:publish_status)
           @service_account = args[:service_account] if args.key?(:service_account)
           @spec_location = args[:spec_location] if args.key?(:spec_location)
           @spec_server_urls = args[:spec_server_urls] if args.key?(:spec_server_urls)
@@ -1884,6 +2195,12 @@ module Google
         # @return [String]
         attr_accessor :service_attachment
       
+        # Output only. The Private Service Connect Connection Endpoint State. This value
+        # is only available in the Full view.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1902,6 +2219,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
+          @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -2380,6 +2698,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::WebhookData]
         attr_accessor :webhook_data
       
+        # WebhookSubscriptions has details of webhook subscriptions.
+        # Corresponds to the JSON property `webhookSubscriptions`
+        # @return [Google::Apis::ConnectorsV1::WebhookSubscriptions]
+        attr_accessor :webhook_subscriptions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2390,6 +2713,7 @@ module Google
           @events_listener_psc_sa = args[:events_listener_psc_sa] if args.key?(:events_listener_psc_sa)
           @status = args[:status] if args.key?(:status)
           @webhook_data = args[:webhook_data] if args.key?(:webhook_data)
+          @webhook_subscriptions = args[:webhook_subscriptions] if args.key?(:webhook_subscriptions)
         end
       end
       
@@ -2515,6 +2839,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @extraction_rule = args[:extraction_rule] if args.key?(:extraction_rule)
+        end
+      end
+      
+      # Response message for Connectors.GetAuthSchema.
+      class FetchAuthSchemaResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of AuthSchemas.
+        # Corresponds to the JSON property `authSchemas`
+        # @return [Array<Google::Apis::ConnectorsV1::AuthSchema>]
+        attr_accessor :auth_schemas
+      
+        # JsonAuthSchema defines the JSON schema of all authentication types.
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [Google::Apis::ConnectorsV1::JsonAuthSchema]
+        attr_accessor :json_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_schemas = args[:auth_schemas] if args.key?(:auth_schemas)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
         end
       end
       
@@ -2921,6 +3270,31 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # JsonAuthSchema defines the JSON schema of all authentication types.
+      class JsonAuthSchema
+        include Google::Apis::Core::Hashable
+      
+        # JSON schema of the AuthSchemas.
+        # Corresponds to the JSON property `$schema`
+        # @return [String]
+        attr_accessor :_schema
+      
+        # List of AuthObjects.
+        # Corresponds to the JSON property `oneOf`
+        # @return [Array<Google::Apis::ConnectorsV1::AuthObject>]
+        attr_accessor :one_of
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @_schema = args[:_schema] if args.key?(:_schema)
+          @one_of = args[:one_of] if args.key?(:one_of)
         end
       end
       
@@ -4092,6 +4466,40 @@ module Google
         end
       end
       
+      # Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google
+      # Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1
+      # for more details.
+      class Oauth2AuthCodeFlowGoogleManaged
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Authorization code to be exchanged for access and refresh tokens.
+        # Corresponds to the JSON property `authCode`
+        # @return [String]
+        attr_accessor :auth_code
+      
+        # Optional. Redirect URI to be provided during the auth code exchange.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        # Required. Scopes the connection will request when the user performs the auth
+        # code flow.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_code = args[:auth_code] if args.key?(:auth_code)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
       # Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See
       # https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
       class Oauth2ClientCredentials
@@ -4263,6 +4671,118 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Partner metadata details. This will be populated when publishing the custom
+      # connector as a partner connector version. On publishing, parntner connector
+      # version will be created using the fields in PartnerMetadata.
+      class PartnerMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Required. Whether the user has accepted the Google Cloud Platform Terms of
+        # Service (https://cloud.google.com/terms/) and the Google Cloud Marketplace
+        # Terms of Service (https://cloud.google.com/terms/marketplace/launcher?hl=en).
+        # Corresponds to the JSON property `acceptGcpTos`
+        # @return [Boolean]
+        attr_accessor :accept_gcp_tos
+        alias_method :accept_gcp_tos?, :accept_gcp_tos
+      
+        # Optional. Additional comments for the submission.
+        # Corresponds to the JSON property `additionalComments`
+        # @return [String]
+        attr_accessor :additional_comments
+      
+        # Required. Confirmation that connector meets all applicable requirements
+        # mentioned in the Partner Connector Publishing requirements list and Partner
+        # onboardiong requirements list (https://cloud.google.com/marketplace/docs/
+        # partners/get-started#requirements).
+        # Corresponds to the JSON property `confirmPartnerRequirements`
+        # @return [Boolean]
+        attr_accessor :confirm_partner_requirements
+        alias_method :confirm_partner_requirements?, :confirm_partner_requirements
+      
+        # Required. Public URL for the demo video.
+        # Corresponds to the JSON property `demoUri`
+        # @return [String]
+        attr_accessor :demo_uri
+      
+        # Required. Integration example templates for the custom connector.
+        # Corresponds to the JSON property `integrationTemplates`
+        # @return [String]
+        attr_accessor :integration_templates
+      
+        # Optional. Marketplace product name.
+        # Corresponds to the JSON property `marketplaceProduct`
+        # @return [String]
+        attr_accessor :marketplace_product
+      
+        # Required. Marketplace product ID.
+        # Corresponds to the JSON property `marketplaceProductId`
+        # @return [String]
+        attr_accessor :marketplace_product_id
+      
+        # Optional. Marketplace product project ID.
+        # Corresponds to the JSON property `marketplaceProductProjectId`
+        # @return [String]
+        attr_accessor :marketplace_product_project_id
+      
+        # Optional. Marketplace product URL.
+        # Corresponds to the JSON property `marketplaceProductUri`
+        # @return [String]
+        attr_accessor :marketplace_product_uri
+      
+        # Required. Partner name.
+        # Corresponds to the JSON property `partner`
+        # @return [String]
+        attr_accessor :partner
+      
+        # Required. Partner connector display name.
+        # Corresponds to the JSON property `partnerConnectorDisplayName`
+        # @return [String]
+        attr_accessor :partner_connector_display_name
+      
+        # Output only. Publish request time.
+        # Corresponds to the JSON property `publishRequestTime`
+        # @return [String]
+        attr_accessor :publish_request_time
+      
+        # Required. Target application for which partner connector is built.
+        # Corresponds to the JSON property `targetApplication`
+        # @return [String]
+        attr_accessor :target_application
+      
+        # Required. Target customer segment for the partner connector.
+        # Corresponds to the JSON property `targetCustomerSegment`
+        # @return [String]
+        attr_accessor :target_customer_segment
+      
+        # Required. Details about partner connector use cases.
+        # Corresponds to the JSON property `useCases`
+        # @return [String]
+        attr_accessor :use_cases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accept_gcp_tos = args[:accept_gcp_tos] if args.key?(:accept_gcp_tos)
+          @additional_comments = args[:additional_comments] if args.key?(:additional_comments)
+          @confirm_partner_requirements = args[:confirm_partner_requirements] if args.key?(:confirm_partner_requirements)
+          @demo_uri = args[:demo_uri] if args.key?(:demo_uri)
+          @integration_templates = args[:integration_templates] if args.key?(:integration_templates)
+          @marketplace_product = args[:marketplace_product] if args.key?(:marketplace_product)
+          @marketplace_product_id = args[:marketplace_product_id] if args.key?(:marketplace_product_id)
+          @marketplace_product_project_id = args[:marketplace_product_project_id] if args.key?(:marketplace_product_project_id)
+          @marketplace_product_uri = args[:marketplace_product_uri] if args.key?(:marketplace_product_uri)
+          @partner = args[:partner] if args.key?(:partner)
+          @partner_connector_display_name = args[:partner_connector_display_name] if args.key?(:partner_connector_display_name)
+          @publish_request_time = args[:publish_request_time] if args.key?(:publish_request_time)
+          @target_application = args[:target_application] if args.key?(:target_application)
+          @target_customer_segment = args[:target_customer_segment] if args.key?(:target_customer_segment)
+          @use_cases = args[:use_cases] if args.key?(:use_cases)
         end
       end
       
@@ -4494,6 +5014,45 @@ module Google
         def update!(**args)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @resource_url = args[:resource_url] if args.key?(:resource_url)
+        end
+      end
+      
+      # Publish status of a custom connector.
+      class PublishStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Publish state of the custom connector.
+        # Corresponds to the JSON property `publishState`
+        # @return [String]
+        attr_accessor :publish_state
+      
+        # Output only. Publish time.
+        # Corresponds to the JSON property `publishTime`
+        # @return [String]
+        attr_accessor :publish_time
+      
+        # Output only. Partner connector name. Will be set on the custom connector.
+        # Format: providers/partner/connectors//versions/
+        # Corresponds to the JSON property `publishedAs`
+        # @return [String]
+        attr_accessor :published_as
+      
+        # Output only. Custom connector name. Will be set on the partner connector.
+        # Format: providers/customconnectors/connectors//versions/
+        # Corresponds to the JSON property `publishedSource`
+        # @return [String]
+        attr_accessor :published_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publish_state = args[:publish_state] if args.key?(:publish_state)
+          @publish_time = args[:publish_time] if args.key?(:publish_time)
+          @published_as = args[:published_as] if args.key?(:published_as)
+          @published_source = args[:published_source] if args.key?(:published_source)
         end
       end
       
@@ -4773,6 +5332,11 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV1::InputParameter>]
         attr_accessor :input_parameters
       
+        # Output only. Input schema as string.
+        # Corresponds to the JSON property `inputSchemaAsString`
+        # @return [String]
+        attr_accessor :input_schema_as_string
+      
         # JsonSchema representation of schema metadata
         # Corresponds to the JSON property `resultJsonSchema`
         # @return [Google::Apis::ConnectorsV1::JsonSchema]
@@ -4782,6 +5346,11 @@ module Google
         # Corresponds to the JSON property `resultMetadata`
         # @return [Array<Google::Apis::ConnectorsV1::ResultMetadata>]
         attr_accessor :result_metadata
+      
+        # Output only. Result schema as string.
+        # Corresponds to the JSON property `resultSchemaAsString`
+        # @return [String]
+        attr_accessor :result_schema_as_string
       
         def initialize(**args)
            update!(**args)
@@ -4794,8 +5363,10 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @input_json_schema = args[:input_json_schema] if args.key?(:input_json_schema)
           @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @input_schema_as_string = args[:input_schema_as_string] if args.key?(:input_schema_as_string)
           @result_json_schema = args[:result_json_schema] if args.key?(:result_json_schema)
           @result_metadata = args[:result_metadata] if args.key?(:result_metadata)
+          @result_schema_as_string = args[:result_schema_as_string] if args.key?(:result_schema_as_string)
         end
       end
       
@@ -5398,6 +5969,44 @@ module Google
         end
       end
       
+      # Standard action
+      class StandardAction
+        include Google::Apis::Core::Hashable
+      
+        # Name of the standard action.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Standard entity
+      class StandardEntity
+        include Google::Apis::Core::Hashable
+      
+        # Name of the standard entity.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -5517,24 +6126,28 @@ module Google
       class TimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
-        # allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # Minutes of hour of day. Must be from 0 to 59.
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
       
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
@@ -5709,6 +6322,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @next_refresh_time = args[:next_refresh_time] if args.key?(:next_refresh_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # WebhookSubscriptions has details of webhook subscriptions.
+      class WebhookSubscriptions
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Webhook data.
+        # Corresponds to the JSON property `webhookData`
+        # @return [Array<Google::Apis::ConnectorsV1::WebhookData>]
+        attr_accessor :webhook_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @webhook_data = args[:webhook_data] if args.key?(:webhook_data)
         end
       end
       
