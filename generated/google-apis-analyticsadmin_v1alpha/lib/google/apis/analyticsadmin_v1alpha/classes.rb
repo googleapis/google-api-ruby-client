@@ -667,7 +667,7 @@ module Google
       end
       
       # A virtual resource representing an overview of an account and all its child
-      # GA4 properties.
+      # Google Analytics properties.
       class GoogleAnalyticsAdminV1alphaAccountSummary
         include Google::Apis::Core::Hashable
       
@@ -743,12 +743,13 @@ module Google
         end
       end
       
-      # A link between a GA4 Property and an AdSense for Content ad client.
+      # A link between a Google Analytics property and an AdSense for Content ad
+      # client.
       class GoogleAnalyticsAdminV1alphaAdSenseLink
         include Google::Apis::Core::Hashable
       
-        # Immutable. The AdSense ad client code that the GA4 property is linked to.
-        # Example format: "ca-pub-1234567890"
+        # Immutable. The AdSense ad client code that the Google Analytics property is
+        # linked to. Example format: "ca-pub-1234567890"
         # Corresponds to the JSON property `adClientCode`
         # @return [String]
         attr_accessor :ad_client_code
@@ -788,7 +789,8 @@ module Google
       class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse
         include Google::Apis::Core::Hashable
       
-        # A link between a GA4 property and a Display & Video 360 advertiser.
+        # A link between a Google Analytics property and a Display & Video 360
+        # advertiser.
         # Corresponds to the JSON property `displayVideo360AdvertiserLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink]
         attr_accessor :display_video360_advertiser_link
@@ -893,7 +895,7 @@ module Google
         end
       end
       
-      # A resource message representing a GA4 Audience.
+      # A resource message representing an Audience.
       class GoogleAnalyticsAdminV1alphaAudience
         include Google::Apis::Core::Hashable
       
@@ -1549,7 +1551,7 @@ module Google
         end
       end
       
-      # A link between a GA4 Property and BigQuery project.
+      # A link between a Google Analytics property and BigQuery project.
       class GoogleAnalyticsAdminV1alphaBigQueryLink
         include Google::Apis::Core::Hashable
       
@@ -1774,7 +1776,8 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount]
         attr_accessor :account
       
-        # A link between a GA4 Property and an AdSense for Content ad client.
+        # A link between a Google Analytics property and an AdSense for Content ad
+        # client.
         # Corresponds to the JSON property `adsenseLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAdSenseLink]
         attr_accessor :adsense_link
@@ -1785,12 +1788,12 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAttributionSettings]
         attr_accessor :attribution_settings
       
-        # A resource message representing a GA4 Audience.
+        # A resource message representing an Audience.
         # Corresponds to the JSON property `audience`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudience]
         attr_accessor :audience
       
-        # A link between a GA4 Property and BigQuery project.
+        # A link between a Google Analytics property and BigQuery project.
         # Corresponds to the JSON property `bigqueryLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink]
         attr_accessor :bigquery_link
@@ -1835,15 +1838,16 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream]
         attr_accessor :data_stream
       
-        # A link between a GA4 property and a Display & Video 360 advertiser.
+        # A link between a Google Analytics property and a Display & Video 360
+        # advertiser.
         # Corresponds to the JSON property `displayVideo360AdvertiserLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink]
         attr_accessor :display_video360_advertiser_link
       
-        # A proposal for a link between a GA4 property and a Display & Video 360
-        # advertiser. A proposal is converted to a DisplayVideo360AdvertiserLink once
-        # approved. Google Analytics admins approve inbound proposals while Display &
-        # Video 360 admins approve outbound proposals.
+        # A proposal for a link between a Google Analytics property and a Display &
+        # Video 360 advertiser. A proposal is converted to a
+        # DisplayVideo360AdvertiserLink once approved. Google Analytics admins approve
+        # inbound proposals while Display & Video 360 admins approve outbound proposals.
         # Corresponds to the JSON property `displayVideo360AdvertiserLinkProposal`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal]
         attr_accessor :display_video360_advertiser_link_proposal
@@ -1864,17 +1868,17 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventCreateRule]
         attr_accessor :event_create_rule
       
-        # A resource message representing a GA4 ExpandedDataSet.
+        # A resource message representing an `ExpandedDataSet`.
         # Corresponds to the JSON property `expandedDataSet`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet]
         attr_accessor :expanded_data_set
       
-        # A link between a GA4 property and a Firebase project.
+        # A link between a Google Analytics property and a Firebase project.
         # Corresponds to the JSON property `firebaseLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink]
         attr_accessor :firebase_link
       
-        # A link between a GA4 property and a Google Ads account.
+        # A link between a Google Analytics property and a Google Ads account.
         # Corresponds to the JSON property `googleAdsLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink]
         attr_accessor :google_ads_link
@@ -1889,12 +1893,12 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret]
         attr_accessor :measurement_protocol_secret
       
-        # A resource message representing a Google Analytics GA4 property.
+        # A resource message representing a Google Analytics property.
         # Corresponds to the JSON property `property`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
         attr_accessor :property
       
-        # A link between a GA4 property and a Search Ads 360 entity.
+        # A link between a Google Analytics property and a Search Ads 360 entity.
         # Corresponds to the JSON property `searchAds360Link`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link]
         attr_accessor :search_ads360_link
@@ -2435,7 +2439,7 @@ module Google
       class GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest
         include Google::Apis::Core::Hashable
       
-        # A resource message representing a Google Analytics GA4 property.
+        # A resource message representing a Google Analytics property.
         # Corresponds to the JSON property `rollupProperty`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
         attr_accessor :rollup_property
@@ -2461,7 +2465,7 @@ module Google
       class GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse
         include Google::Apis::Core::Hashable
       
-        # A resource message representing a Google Analytics GA4 property.
+        # A resource message representing a Google Analytics property.
         # Corresponds to the JSON property `rollupProperty`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
         attr_accessor :rollup_property
@@ -2479,56 +2483,6 @@ module Google
         def update!(**args)
           @rollup_property = args[:rollup_property] if args.key?(:rollup_property)
           @rollup_property_source_links = args[:rollup_property_source_links] if args.key?(:rollup_property_source_links)
-        end
-      end
-      
-      # Request message for CreateSubproperty RPC.
-      class GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest
-        include Google::Apis::Core::Hashable
-      
-        # A resource message representing a Google Analytics GA4 property.
-        # Corresponds to the JSON property `subproperty`
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
-        attr_accessor :subproperty
-      
-        # A resource message representing a GA4 Subproperty event filter.
-        # Corresponds to the JSON property `subpropertyEventFilter`
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter]
-        attr_accessor :subproperty_event_filter
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @subproperty = args[:subproperty] if args.key?(:subproperty)
-          @subproperty_event_filter = args[:subproperty_event_filter] if args.key?(:subproperty_event_filter)
-        end
-      end
-      
-      # Response message for CreateSubproperty RPC.
-      class GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse
-        include Google::Apis::Core::Hashable
-      
-        # A resource message representing a Google Analytics GA4 property.
-        # Corresponds to the JSON property `subproperty`
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
-        attr_accessor :subproperty
-      
-        # A resource message representing a GA4 Subproperty event filter.
-        # Corresponds to the JSON property `subpropertyEventFilter`
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter]
-        attr_accessor :subproperty_event_filter
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @subproperty = args[:subproperty] if args.key?(:subproperty)
-          @subproperty_event_filter = args[:subproperty_event_filter] if args.key?(:subproperty_event_filter)
         end
       end
       
@@ -2998,7 +2952,8 @@ module Google
         end
       end
       
-      # A link between a GA4 property and a Display & Video 360 advertiser.
+      # A link between a Google Analytics property and a Display & Video 360
+      # advertiser.
       class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink
         include Google::Apis::Core::Hashable
       
@@ -3020,19 +2975,19 @@ module Google
         attr_accessor :advertiser_id
       
         # Immutable. Enables the import of campaign data from Display & Video 360 into
-        # the GA4 property. After link creation, this can only be updated from the
-        # Display & Video 360 product. If this field is not set on create, it will be
-        # defaulted to true.
+        # the Google Analytics property. After link creation, this can only be updated
+        # from the Display & Video 360 product. If this field is not set on create, it
+        # will be defaulted to true.
         # Corresponds to the JSON property `campaignDataSharingEnabled`
         # @return [Boolean]
         attr_accessor :campaign_data_sharing_enabled
         alias_method :campaign_data_sharing_enabled?, :campaign_data_sharing_enabled
       
         # Immutable. Enables the import of cost data from Display & Video 360 into the
-        # GA4 property. This can only be enabled if campaign_data_sharing_enabled is
-        # enabled. After link creation, this can only be updated from the Display &
-        # Video 360 product. If this field is not set on create, it will be defaulted to
-        # true.
+        # Google Analytics property. This can only be enabled if `
+        # campaign_data_sharing_enabled` is true. After link creation, this can only be
+        # updated from the Display & Video 360 product. If this field is not set on
+        # create, it will be defaulted to true.
         # Corresponds to the JSON property `costDataSharingEnabled`
         # @return [Boolean]
         attr_accessor :cost_data_sharing_enabled
@@ -3060,10 +3015,10 @@ module Google
         end
       end
       
-      # A proposal for a link between a GA4 property and a Display & Video 360
-      # advertiser. A proposal is converted to a DisplayVideo360AdvertiserLink once
-      # approved. Google Analytics admins approve inbound proposals while Display &
-      # Video 360 admins approve outbound proposals.
+      # A proposal for a link between a Google Analytics property and a Display &
+      # Video 360 advertiser. A proposal is converted to a
+      # DisplayVideo360AdvertiserLink once approved. Google Analytics admins approve
+      # inbound proposals while Display & Video 360 admins approve outbound proposals.
       class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal
         include Google::Apis::Core::Hashable
       
@@ -3297,12 +3252,66 @@ module Google
         end
       end
       
+      # An Event Edit Rule defines conditions that will trigger the creation of an
+      # entirely new event based upon matched criteria of a source event. Additional
+      # mutations of the parameters from the source event can be defined. Unlike Event
+      # Create rules, Event Edit Rules are applied in their defined order. Event Edit
+      # rules can't be used to modify an event created from an Event Create rule.
+      class GoogleAnalyticsAdminV1alphaEventEditRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. The display name of this event edit rule. Maximum of 255 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Conditions on the source event must match for this rule to be
+        # applied. Must have at least one condition, and can have up to 10 max.
+        # Corresponds to the JSON property `eventConditions`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMatchingCondition>]
+        attr_accessor :event_conditions
+      
+        # Identifier. Resource name for this EventEditRule resource. Format: properties/`
+        # property`/dataStreams/`data_stream`/eventEditRules/`event_edit_rule`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Parameter mutations define parameter behavior on the new event, and
+        # are applied in order. A maximum of 20 mutations can be applied.
+        # Corresponds to the JSON property `parameterMutations`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaParameterMutation>]
+        attr_accessor :parameter_mutations
+      
+        # Output only. The order for which this rule will be processed. Rules with an
+        # order value lower than this will be processed before this rule, rules with an
+        # order value higher than this will be processed after this rule. New event edit
+        # rules will be assigned an order value at the end of the order. This value does
+        # not apply to event create rules.
+        # Corresponds to the JSON property `processingOrder`
+        # @return [Fixnum]
+        attr_accessor :processing_order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @event_conditions = args[:event_conditions] if args.key?(:event_conditions)
+          @name = args[:name] if args.key?(:name)
+          @parameter_mutations = args[:parameter_mutations] if args.key?(:parameter_mutations)
+          @processing_order = args[:processing_order] if args.key?(:processing_order)
+        end
+      end
+      
       # Event setting conditions to match an event.
       class GoogleAnalyticsAdminV1alphaEventMapping
         include Google::Apis::Core::Hashable
       
-        # Required. Name of the GA4 event. It must always be set. The max allowed
-        # display name length is 40 UTF-16 code units.
+        # Required. Name of the Google Analytics event. It must always be set. The max
+        # allowed display name length is 40 UTF-16 code units.
         # Corresponds to the JSON property `eventName`
         # @return [String]
         attr_accessor :event_name
@@ -3348,7 +3357,7 @@ module Google
         end
       end
       
-      # A resource message representing a GA4 ExpandedDataSet.
+      # A resource message representing an `ExpandedDataSet`.
       class GoogleAnalyticsAdminV1alphaExpandedDataSet
         include Google::Apis::Core::Hashable
       
@@ -3614,7 +3623,7 @@ module Google
         end
       end
       
-      # A link between a GA4 property and a Firebase project.
+      # A link between a Google Analytics property and a Firebase project.
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         include Google::Apis::Core::Hashable
       
@@ -3678,7 +3687,7 @@ module Google
         end
       end
       
-      # A link between a GA4 property and a Google Ads account.
+      # A link between a Google Analytics property and a Google Ads account.
       class GoogleAnalyticsAdminV1alphaGoogleAdsLink
         include Google::Apis::Core::Hashable
       
@@ -4355,6 +4364,33 @@ module Google
         end
       end
       
+      # Response message for ListEventEditRules RPC.
+      class GoogleAnalyticsAdminV1alphaListEventEditRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of EventEditRules. These will be ordered stably, but in an arbitrary
+        # order.
+        # Corresponds to the JSON property `eventEditRules`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEventEditRule>]
+        attr_accessor :event_edit_rules
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_edit_rules = args[:event_edit_rules] if args.key?(:event_edit_rules)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListExpandedDataSets RPC.
       class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse
         include Google::Apis::Core::Hashable
@@ -4790,7 +4826,7 @@ module Google
         end
       end
       
-      # A resource message representing a Google Analytics GA4 property.
+      # A resource message representing a Google Analytics property.
       class GoogleAnalyticsAdminV1alphaProperty
         include Google::Apis::Core::Hashable
       
@@ -4896,7 +4932,7 @@ module Google
         end
       end
       
-      # A virtual resource representing metadata for a GA4 property.
+      # A virtual resource representing metadata for a Google Analytics property.
       class GoogleAnalyticsAdminV1alphaPropertySummary
         include Google::Apis::Core::Hashable
       
@@ -4978,6 +5014,77 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_ticket_id = args[:account_ticket_id] if args.key?(:account_ticket_id)
+        end
+      end
+      
+      # Request message for CreateSubproperty RPC.
+      class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest
+        include Google::Apis::Core::Hashable
+      
+        # A resource message representing a Google Analytics property.
+        # Corresponds to the JSON property `subproperty`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
+        attr_accessor :subproperty
+      
+        # A resource message representing a Google Analytics subproperty event filter.
+        # Corresponds to the JSON property `subpropertyEventFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter]
+        attr_accessor :subproperty_event_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subproperty = args[:subproperty] if args.key?(:subproperty)
+          @subproperty_event_filter = args[:subproperty_event_filter] if args.key?(:subproperty_event_filter)
+        end
+      end
+      
+      # Response message for ProvisionSubproperty RPC.
+      class GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse
+        include Google::Apis::Core::Hashable
+      
+        # A resource message representing a Google Analytics property.
+        # Corresponds to the JSON property `subproperty`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
+        attr_accessor :subproperty
+      
+        # A resource message representing a Google Analytics subproperty event filter.
+        # Corresponds to the JSON property `subpropertyEventFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter]
+        attr_accessor :subproperty_event_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subproperty = args[:subproperty] if args.key?(:subproperty)
+          @subproperty_event_filter = args[:subproperty_event_filter] if args.key?(:subproperty_event_filter)
+        end
+      end
+      
+      # Request message for ReorderEventEditRules RPC.
+      class GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. EventEditRule resource names for the specified data stream, in the
+        # needed processing order. All EventEditRules for the stream must be present in
+        # the list.
+        # Corresponds to the JSON property `eventEditRules`
+        # @return [Array<String>]
+        attr_accessor :event_edit_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_edit_rules = args[:event_edit_rules] if args.key?(:event_edit_rules)
         end
       end
       
@@ -5235,7 +5342,7 @@ module Google
         end
       end
       
-      # A link between a GA4 property and a Search Ads 360 entity.
+      # A link between a Google Analytics property and a Search Ads 360 entity.
       class GoogleAnalyticsAdminV1alphaSearchAds360Link
         include Google::Apis::Core::Hashable
       
@@ -5259,18 +5366,18 @@ module Google
         attr_accessor :advertiser_id
       
         # Immutable. Enables the import of campaign data from Search Ads 360 into the
-        # GA4 property. After link creation, this can only be updated from the Search
-        # Ads 360 product. If this field is not set on create, it will be defaulted to
-        # true.
+        # Google Analytics property. After link creation, this can only be updated from
+        # the Search Ads 360 product. If this field is not set on create, it will be
+        # defaulted to true.
         # Corresponds to the JSON property `campaignDataSharingEnabled`
         # @return [Boolean]
         attr_accessor :campaign_data_sharing_enabled
         alias_method :campaign_data_sharing_enabled?, :campaign_data_sharing_enabled
       
-        # Immutable. Enables the import of cost data from Search Ads 360 to the GA4
-        # property. This can only be enabled if campaign_data_sharing_enabled is enabled.
-        # After link creation, this can only be updated from the Search Ads 360 product.
-        # If this field is not set on create, it will be defaulted to true.
+        # Immutable. Enables the import of cost data from Search Ads 360 to the Google
+        # Analytics property. This can only be enabled if campaign_data_sharing_enabled
+        # is enabled. After link creation, this can only be updated from the Search Ads
+        # 360 product. If this field is not set on create, it will be defaulted to true.
         # Corresponds to the JSON property `costDataSharingEnabled`
         # @return [Boolean]
         attr_accessor :cost_data_sharing_enabled
@@ -5445,7 +5552,7 @@ module Google
         end
       end
       
-      # A resource message representing a GA4 Subproperty event filter.
+      # A resource message representing a Google Analytics subproperty event filter.
       class GoogleAnalyticsAdminV1alphaSubpropertyEventFilter
         include Google::Apis::Core::Hashable
       
