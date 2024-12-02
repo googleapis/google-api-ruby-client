@@ -722,6 +722,7 @@ module Google
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :subnetwork, as: 'subnetwork'
+          hash :tags, as: 'tags'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -748,12 +749,14 @@ module Google
           collection :ephemeral_directories, as: 'ephemeralDirectories', class: Google::Apis::WorkstationsV1beta::EphemeralDirectory, decorator: Google::Apis::WorkstationsV1beta::EphemeralDirectory::Representation
       
           property :etag, as: 'etag'
+          property :grant_workstation_admin_role_on_create, as: 'grantWorkstationAdminRoleOnCreate'
           property :host, as: 'host', class: Google::Apis::WorkstationsV1beta::Host, decorator: Google::Apis::WorkstationsV1beta::Host::Representation
       
           property :http_options, as: 'httpOptions', class: Google::Apis::WorkstationsV1beta::HttpOptions, decorator: Google::Apis::WorkstationsV1beta::HttpOptions::Representation
       
           property :idle_timeout, as: 'idleTimeout'
           hash :labels, as: 'labels'
+          property :max_usable_workstations, as: 'maxUsableWorkstations'
           property :name, as: 'name'
           collection :persistent_directories, as: 'persistentDirectories', class: Google::Apis::WorkstationsV1beta::PersistentDirectory, decorator: Google::Apis::WorkstationsV1beta::PersistentDirectory::Representation
       
