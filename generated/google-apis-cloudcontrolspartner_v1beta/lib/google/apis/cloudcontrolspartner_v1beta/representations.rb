@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Gcloud
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -216,6 +222,7 @@ module Google
           property :display_name, as: 'displayName'
           property :is_onboarded, as: 'isOnboarded'
           property :name, as: 'name'
+          property :organization_domain, as: 'organizationDomain'
         end
       end
       
@@ -261,6 +268,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ekm_endpoint_uri, as: 'ekmEndpointUri'
           property :ekm_solution, as: 'ekmSolution'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

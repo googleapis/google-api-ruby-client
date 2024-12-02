@@ -82,6 +82,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new customer.
+        # @param [String] parent
+        #   Required. Parent resource Format: `organizations/`organization`/locations/`
+        #   location``
+        # @param [Google::Apis::CloudcontrolspartnerV1beta::Customer] customer_object
+        # @param [String] customer_id
+        #   Required. The customer id to use for the customer, which will become the final
+        #   component of the customer's resource name. The specified value must be a valid
+        #   Google cloud organization id.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudcontrolspartnerV1beta::Customer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudcontrolspartnerV1beta::Customer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_customer(parent, customer_object = nil, customer_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/customers', options)
+          command.request_representation = Google::Apis::CloudcontrolspartnerV1beta::Customer::Representation
+          command.request_object = customer_object
+          command.response_representation = Google::Apis::CloudcontrolspartnerV1beta::Customer::Representation
+          command.response_class = Google::Apis::CloudcontrolspartnerV1beta::Customer
+          command.params['parent'] = parent unless parent.nil?
+          command.query['customerId'] = customer_id unless customer_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete details of a single customer
+        # @param [String] name
+        #   Required. name of the resource to be deleted format: name=organizations/*/
+        #   locations/*/customers/*
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudcontrolspartnerV1beta::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudcontrolspartnerV1beta::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_customer(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::CloudcontrolspartnerV1beta::Empty::Representation
+          command.response_class = Google::Apis::CloudcontrolspartnerV1beta::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details of a single customer
         # @param [String] name
         #   Required. Format: `organizations/`organization`/locations/`location`/customers/
@@ -153,6 +223,43 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update details of a single customer
+        # @param [String] name
+        #   Identifier. Format: `organizations/`organization`/locations/`location`/
+        #   customers/`customer``
+        # @param [Google::Apis::CloudcontrolspartnerV1beta::Customer] customer_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudcontrolspartnerV1beta::Customer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudcontrolspartnerV1beta::Customer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_customer(name, customer_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::CloudcontrolspartnerV1beta::Customer::Representation
+          command.request_object = customer_object
+          command.response_representation = Google::Apis::CloudcontrolspartnerV1beta::Customer::Representation
+          command.response_class = Google::Apis::CloudcontrolspartnerV1beta::Customer
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
