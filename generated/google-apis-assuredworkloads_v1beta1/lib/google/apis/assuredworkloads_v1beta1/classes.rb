@@ -96,6 +96,75 @@ module Google
         end
       end
       
+      # Operation metadata to give request details of ApplyWorkloadUpdate.
+      class GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The time the operation was created.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Optional. Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The resource name of the update
+        # Corresponds to the JSON property `updateName`
+        # @return [String]
+        attr_accessor :update_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_name = args[:update_name] if args.key?(:update_name)
+        end
+      end
+      
+      # Request to apply update to a workload.
+      class GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateRequest
+        include Google::Apis::Core::Hashable
+      
+        # The action to be performed on the update.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+        end
+      end
+      
+      # Response for ApplyWorkloadUpdate endpoint.
+      class GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateResponse
+        include Google::Apis::Core::Hashable
+      
+        # A workload update is a change to the workload's compliance configuration.
+        # Corresponds to the JSON property `appliedUpdate`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate]
+        attr_accessor :applied_update
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applied_update = args[:applied_update] if args.key?(:applied_update)
+        end
+      end
+      
       # Represents move analysis results for an asset.
       class GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis
         include Google::Apis::Core::Hashable
@@ -226,6 +295,31 @@ module Google
         end
       end
       
+      # Response of listing the compliance updates per workload with pagination.
+      class GoogleCloudAssuredworkloadsV1beta1ListWorkloadUpdatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next page token. Return empty if reached the last page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of workload updates for a given workload.
+        # Corresponds to the JSON property `workloadUpdates`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate>]
+        attr_accessor :workload_updates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workload_updates = args[:workload_updates] if args.key?(:workload_updates)
+        end
+      end
+      
       # Response of ListWorkloads endpoint.
       class GoogleCloudAssuredworkloadsV1beta1ListWorkloadsResponse
         include Google::Apis::Core::Hashable
@@ -335,6 +429,154 @@ module Google
         end
       end
       
+      # This assured workload service object is used to represent the org policy
+      # attached to a resource. It servces the same purpose as the orgpolicy.v2.Policy
+      # object but with functionality that is limited to what is supported by Assured
+      # Workloads(e.g. only one rule under one OrgPolicy object, no conditions, etc).
+      class GoogleCloudAssuredworkloadsV1beta1OrgPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The constraint name of the OrgPolicy. e.g. "constraints/gcp.resourceLocations".
+        # Corresponds to the JSON property `constraint`
+        # @return [String]
+        attr_accessor :constraint
+      
+        # If `inherit` is true, policy rules of the lowest ancestor in the resource
+        # hierarchy chain are inherited. If it is false, policy rules are not inherited.
+        # Corresponds to the JSON property `inherit`
+        # @return [Boolean]
+        attr_accessor :inherit
+        alias_method :inherit?, :inherit
+      
+        # Ignores policies set above this resource and restores to the `
+        # constraint_default` value. `reset` can only be true when `rules` is empty and `
+        # inherit` is false.
+        # Corresponds to the JSON property `reset`
+        # @return [Boolean]
+        attr_accessor :reset
+        alias_method :reset?, :reset
+      
+        # Resource that the OrgPolicy attaches to. Format: folders/123" projects/123".
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # A rule used to express this policy.
+        # Corresponds to the JSON property `rule`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1OrgPolicyPolicyRule]
+        attr_accessor :rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint = args[:constraint] if args.key?(:constraint)
+          @inherit = args[:inherit] if args.key?(:inherit)
+          @reset = args[:reset] if args.key?(:reset)
+          @resource = args[:resource] if args.key?(:resource)
+          @rule = args[:rule] if args.key?(:rule)
+        end
+      end
+      
+      # A rule used to express this policy.
+      class GoogleCloudAssuredworkloadsV1beta1OrgPolicyPolicyRule
+        include Google::Apis::Core::Hashable
+      
+        # ListPolicy only when all values are allowed.
+        # Corresponds to the JSON property `allowAll`
+        # @return [Boolean]
+        attr_accessor :allow_all
+        alias_method :allow_all?, :allow_all
+      
+        # ListPolicy only when all values are denied.
+        # Corresponds to the JSON property `denyAll`
+        # @return [Boolean]
+        attr_accessor :deny_all
+        alias_method :deny_all?, :deny_all
+      
+        # BooleanPolicy only.
+        # Corresponds to the JSON property `enforce`
+        # @return [Boolean]
+        attr_accessor :enforce
+        alias_method :enforce?, :enforce
+      
+        # The values allowed for a ListPolicy.
+        # Corresponds to the JSON property `values`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1OrgPolicyPolicyRuleStringValues]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_all = args[:allow_all] if args.key?(:allow_all)
+          @deny_all = args[:deny_all] if args.key?(:deny_all)
+          @enforce = args[:enforce] if args.key?(:enforce)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # The values allowed for a ListPolicy.
+      class GoogleCloudAssuredworkloadsV1beta1OrgPolicyPolicyRuleStringValues
+        include Google::Apis::Core::Hashable
+      
+        # List of values allowed at this resource.
+        # Corresponds to the JSON property `allowedValues`
+        # @return [Array<String>]
+        attr_accessor :allowed_values
+      
+        # List of values denied at this resource.
+        # Corresponds to the JSON property `deniedValues`
+        # @return [Array<String>]
+        attr_accessor :denied_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_values = args[:allowed_values] if args.key?(:allowed_values)
+          @denied_values = args[:denied_values] if args.key?(:denied_values)
+        end
+      end
+      
+      # Represents an update for an org policy control applied on an Assured Workload
+      # resource. The inherited org policy is not considered.
+      class GoogleCloudAssuredworkloadsV1beta1OrgPolicyUpdate
+        include Google::Apis::Core::Hashable
+      
+        # This assured workload service object is used to represent the org policy
+        # attached to a resource. It servces the same purpose as the orgpolicy.v2.Policy
+        # object but with functionality that is limited to what is supported by Assured
+        # Workloads(e.g. only one rule under one OrgPolicy object, no conditions, etc).
+        # Corresponds to the JSON property `appliedPolicy`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1OrgPolicy]
+        attr_accessor :applied_policy
+      
+        # This assured workload service object is used to represent the org policy
+        # attached to a resource. It servces the same purpose as the orgpolicy.v2.Policy
+        # object but with functionality that is limited to what is supported by Assured
+        # Workloads(e.g. only one rule under one OrgPolicy object, no conditions, etc).
+        # Corresponds to the JSON property `suggestedPolicy`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1OrgPolicy]
+        attr_accessor :suggested_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applied_policy = args[:applied_policy] if args.key?(:applied_policy)
+          @suggested_policy = args[:suggested_policy] if args.key?(:suggested_policy)
+        end
+      end
+      
       # Request for restricting list of available resources in Workload environment.
       class GoogleCloudAssuredworkloadsV1beta1RestrictAllowedResourcesRequest
         include Google::Apis::Core::Hashable
@@ -365,6 +607,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The details of the update.
+      class GoogleCloudAssuredworkloadsV1beta1UpdateDetails
+        include Google::Apis::Core::Hashable
+      
+        # Represents an update for an org policy control applied on an Assured Workload
+        # resource. The inherited org policy is not considered.
+        # Corresponds to the JSON property `orgPolicyUpdate`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1OrgPolicyUpdate]
+        attr_accessor :org_policy_update
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @org_policy_update = args[:org_policy_update] if args.key?(:org_policy_update)
         end
       end
       
@@ -679,6 +941,11 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1Workload
         include Google::Apis::Core::Hashable
       
+        # Output only. The number of updates available for the workload.
+        # Corresponds to the JSON property `availableUpdates`
+        # @return [Fixnum]
+        attr_accessor :available_updates
+      
         # Optional. The billing account used for the resources which are direct children
         # of workload. This billing account is initially associated with the resources
         # created as part of Workload creation. After the initial creation of these
@@ -796,6 +1063,15 @@ module Google
         # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions]
         attr_accessor :partner_permissions
       
+        # Optional. Billing account necessary for purchasing services from Sovereign
+        # Partners. This field is required for creating SIA/PSN/CNTXT partner workloads.
+        # The caller should have 'billing.resourceAssociations.create' IAM permission on
+        # this billing-account. The format of this string is billingAccounts/AAAAAA-
+        # BBBBBB-CCCCCC
+        # Corresponds to the JSON property `partnerServicesBillingAccount`
+        # @return [String]
+        attr_accessor :partner_services_billing_account
+      
         # Input only. The parent resource for the resources managed by this Assured
         # Workload. May be either empty or a folder resource which is a child of the
         # Workload parent. If not specified all resources are created under the parent
@@ -841,12 +1117,18 @@ module Google
         attr_accessor :violation_notifications_enabled
         alias_method :violation_notifications_enabled?, :violation_notifications_enabled
       
+        # Options to be set for the given created workload.
+        # Corresponds to the JSON property `workloadOptions`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadWorkloadOptions]
+        attr_accessor :workload_options
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @available_updates = args[:available_updates] if args.key?(:available_updates)
           @billing_account = args[:billing_account] if args.key?(:billing_account)
           @cjis_settings = args[:cjis_settings] if args.key?(:cjis_settings)
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
@@ -867,12 +1149,14 @@ module Google
           @name = args[:name] if args.key?(:name)
           @partner = args[:partner] if args.key?(:partner)
           @partner_permissions = args[:partner_permissions] if args.key?(:partner_permissions)
+          @partner_services_billing_account = args[:partner_services_billing_account] if args.key?(:partner_services_billing_account)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
           @resource_monitoring_enabled = args[:resource_monitoring_enabled] if args.key?(:resource_monitoring_enabled)
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
           @resources = args[:resources] if args.key?(:resources)
           @saa_enrollment_response = args[:saa_enrollment_response] if args.key?(:saa_enrollment_response)
           @violation_notifications_enabled = args[:violation_notifications_enabled] if args.key?(:violation_notifications_enabled)
+          @workload_options = args[:workload_options] if args.key?(:workload_options)
         end
       end
       
@@ -1053,6 +1337,12 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions
         include Google::Apis::Core::Hashable
       
+        # Optional. Allow partner to view support case details for an AXT log
+        # Corresponds to the JSON property `accessTransparencyLogsSupportCaseViewer`
+        # @return [Boolean]
+        attr_accessor :access_transparency_logs_support_case_viewer
+        alias_method :access_transparency_logs_support_case_viewer?, :access_transparency_logs_support_case_viewer
+      
         # Optional. Allow partner to view violation alerts.
         # Corresponds to the JSON property `assuredWorkloadsMonitoring`
         # @return [Boolean]
@@ -1077,6 +1367,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_transparency_logs_support_case_viewer = args[:access_transparency_logs_support_case_viewer] if args.key?(:access_transparency_logs_support_case_viewer)
           @assured_workloads_monitoring = args[:assured_workloads_monitoring] if args.key?(:assured_workloads_monitoring)
           @data_logs_viewer = args[:data_logs_viewer] if args.key?(:data_logs_viewer)
           @service_access_approver = args[:service_access_approver] if args.key?(:service_access_approver)
@@ -1166,6 +1457,70 @@ module Google
         def update!(**args)
           @setup_errors = args[:setup_errors] if args.key?(:setup_errors)
           @setup_status = args[:setup_status] if args.key?(:setup_status)
+        end
+      end
+      
+      # A workload update is a change to the workload's compliance configuration.
+      class GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate
+        include Google::Apis::Core::Hashable
+      
+        # The time the update was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The details of the update.
+        # Corresponds to the JSON property `details`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1UpdateDetails]
+        attr_accessor :details
+      
+        # Output only. Immutable. Identifier. Resource name of the WorkloadUpdate.
+        # Format: organizations/`organization`/locations/`location`/workloads/`workload`/
+        # updates/`update`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the update.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The time the update was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @details = args[:details] if args.key?(:details)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Options to be set for the given created workload.
+      class GoogleCloudAssuredworkloadsV1beta1WorkloadWorkloadOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies type of KAJ Enrollment if provided.
+        # Corresponds to the JSON property `kajEnrollmentType`
+        # @return [String]
+        attr_accessor :kaj_enrollment_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kaj_enrollment_type = args[:kaj_enrollment_type] if args.key?(:kaj_enrollment_type)
         end
       end
       
