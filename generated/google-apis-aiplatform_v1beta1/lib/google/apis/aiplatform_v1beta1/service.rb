@@ -52,6 +52,552 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a Dataset.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset] google_cloud_aiplatform_v1beta1_dataset_object
+        # @param [String] parent
+        #   Required. The resource name of the Location to create the Dataset in. Format: `
+        #   projects/`project`/locations/`location``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_dataset(google_cloud_aiplatform_v1beta1_dataset_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/datasets', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_dataset_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Dataset.
+        # @param [String] name
+        #   Required. The resource name of the Dataset to delete. Format: `projects/`
+        #   project`/locations/`location`/datasets/`dataset``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_dataset(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Dataset.
+        # @param [String] name
+        #   Required. The name of the Dataset resource.
+        # @param [String] read_mask
+        #   Mask specifying which fields to read.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_dataset(name, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset
+          command.params['name'] = name unless name.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Datasets in a Location.
+        # @param [String] filter
+        #   An expression for filtering the results of the request. For field names both
+        #   snake_case and camelCase are supported. * `display_name`: supports = and != * `
+        #   metadata_schema_uri`: supports = and != * `labels` supports general map
+        #   functions that is: * `labels.key=value` - key:value equality * `labels.key:*
+        #   or labels:key - key existence * A key including a space must be quoted. `
+        #   labels."a key"`. Some examples: * `displayName="myDisplayName"` * `labels.
+        #   myKey="myValue"`
+        # @param [String] order_by
+        #   A comma-separated list of fields to order by, sorted in ascending order. Use "
+        #   desc" after a field name for descending. Supported fields: * `display_name` * `
+        #   create_time` * `update_time`
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [String] parent
+        #   Required. The name of the Dataset's parent resource. Format: `projects/`
+        #   project`/locations/`location``
+        # @param [String] read_mask
+        #   Mask specifying which fields to read.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListDatasetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListDatasetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_datasets(filter: nil, order_by: nil, page_size: nil, page_token: nil, parent: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/datasets', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListDatasetsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListDatasetsResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Dataset.
+        # @param [String] name
+        #   Output only. Identifier. The resource name of the Dataset.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset] google_cloud_aiplatform_v1beta1_dataset_object
+        # @param [String] update_mask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see google.protobuf.FieldMask. Updatable fields: * `display_name` *
+        #   `description` * `labels`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_dataset(name, google_cloud_aiplatform_v1beta1_dataset_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_dataset_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Dataset
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a version from a Dataset.
+        # @param [String] parent
+        #   Required. The name of the Dataset resource. Format: `projects/`project`/
+        #   locations/`location`/datasets/`dataset``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion] google_cloud_aiplatform_v1beta1_dataset_version_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_dataset_dataset_version(parent, google_cloud_aiplatform_v1beta1_dataset_version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/datasetVersions', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_dataset_version_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Dataset version.
+        # @param [String] name
+        #   Required. The resource name of the Dataset version to delete. Format: `
+        #   projects/`project`/locations/`location`/datasets/`dataset`/datasetVersions/`
+        #   dataset_version``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_dataset_dataset_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Dataset version.
+        # @param [String] name
+        #   Required. The resource name of the Dataset version to delete. Format: `
+        #   projects/`project`/locations/`location`/datasets/`dataset`/datasetVersions/`
+        #   dataset_version``
+        # @param [String] read_mask
+        #   Mask specifying which fields to read.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_dataset_dataset_version(name, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion
+          command.params['name'] = name unless name.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DatasetVersions in a Dataset.
+        # @param [String] parent
+        #   Required. The resource name of the Dataset to list DatasetVersions from.
+        #   Format: `projects/`project`/locations/`location`/datasets/`dataset``
+        # @param [String] filter
+        #   Optional. The standard list filter.
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order. Use "desc" after a field name for descending.
+        # @param [Fixnum] page_size
+        #   Optional. The standard list page size.
+        # @param [String] page_token
+        #   Optional. The standard list page token.
+        # @param [String] read_mask
+        #   Optional. Mask specifying which fields to read.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListDatasetVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListDatasetVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_dataset_dataset_versions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/datasetVersions', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListDatasetVersionsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListDatasetVersionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a DatasetVersion.
+        # @param [String] name
+        #   Output only. Identifier. The resource name of the DatasetVersion.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion] google_cloud_aiplatform_v1beta1_dataset_version_object
+        # @param [String] update_mask
+        #   Required. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see google.protobuf.FieldMask. Updatable fields: * `display_name`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_dataset_dataset_version(name, google_cloud_aiplatform_v1beta1_dataset_version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_dataset_version_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetVersion
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Restores a dataset version.
+        # @param [String] name
+        #   Required. The name of the DatasetVersion resource. Format: `projects/`project`/
+        #   locations/`location`/datasets/`dataset`/datasetVersions/`dataset_version``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_dataset_dataset_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}:restore', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Return a list of tokens based on the input text.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to get lists of tokens and token
+        #   ids.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensRequest] google_cloud_aiplatform_v1beta1_compute_tokens_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def compute_endpoint_tokens(endpoint, google_cloud_aiplatform_v1beta1_compute_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:computeTokens', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_compute_tokens_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Perform a token counting.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to perform token counting. Format:
+        #   `projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensRequest] google_cloud_aiplatform_v1beta1_count_tokens_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_endpoint_tokens(endpoint, google_cloud_aiplatform_v1beta1_count_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:countTokens', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_count_tokens_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate content with multimodal inputs.
+        # @param [String] model
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_endpoint_content(model, google_cloud_aiplatform_v1beta1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+model}:generateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate content with multimodal inputs with streaming support.
+        # @param [String] model
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_endpoint_generate_content(model, google_cloud_aiplatform_v1beta1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+model}:streamGenerateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Upload a file into a RagCorpus.
         # @param [String] parent
         #   Required. The name of the RagCorpus resource into which to upload the file.
@@ -155,6 +701,79 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Given an input prompt, it returns augmented prompt from vertex rag store to
+        # guide LLM towards generating grounded responses.
+        # @param [String] parent
+        #   Required. The resource name of the Location from which to augment prompt. The
+        #   users must have permission to make a call in the project. Format: `projects/`
+        #   project`/locations/`location``.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AugmentPromptRequest] google_cloud_aiplatform_v1beta1_augment_prompt_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AugmentPromptResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AugmentPromptResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def augment_project_location_prompt(parent, google_cloud_aiplatform_v1beta1_augment_prompt_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}:augmentPrompt', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AugmentPromptRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_augment_prompt_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AugmentPromptResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AugmentPromptResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Given an input text, it returns a score that evaluates the factuality of the
+        # text. It also extracts and returns claims from the text and provides
+        # supporting facts.
+        # @param [String] parent
+        #   Required. The resource name of the Location from which to corroborate text.
+        #   The users must have permission to make a call in the project. Format: `
+        #   projects/`project`/locations/`location``.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CorroborateContentRequest] google_cloud_aiplatform_v1beta1_corroborate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CorroborateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CorroborateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def corroborate_project_location_content(parent, google_cloud_aiplatform_v1beta1_corroborate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}:corroborateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CorroborateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_corroborate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CorroborateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CorroborateContentResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -308,8 +927,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -491,8 +1110,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -1229,8 +1848,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -1600,8 +2219,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -2167,8 +2786,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -2391,7 +3010,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Annotations belongs to a dataitem
+        # Lists Annotations belongs to a dataitem This RPC is only available in
+        # InternalDatasetService. It is only used for exporting conversation data to
+        # CCAI Insights.
         # @param [String] parent
         #   Required. The resource name of the DataItem to list Annotations from. Format: `
         #   projects/`project`/locations/`location`/datasets/`dataset`/dataItems/`
@@ -2445,8 +3066,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -2628,8 +3249,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -3027,8 +3648,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -3288,8 +3909,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -3690,8 +4311,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -3873,8 +4494,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -4335,10 +4956,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetch an asynchronous online prediction operation.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint`` or `projects/`
+        #   project`/locations/`location`/publishers/`publisher`/models/`model``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FetchPredictOperationRequest] google_cloud_aiplatform_v1beta1_fetch_predict_operation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_endpoint_predict_operation(endpoint, google_cloud_aiplatform_v1beta1_fetch_predict_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:fetchPredictOperation', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FetchPredictOperationRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_fetch_predict_operation_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generate content with multimodal inputs.
         # @param [String] model
-        #   Required. The name of the publisher model requested to serve the prediction.
-        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4607,6 +5265,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # 
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint`` or `projects/`
+        #   project`/locations/`location`/publishers/`publisher`/models/`model``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PredictLongRunningRequest] google_cloud_aiplatform_v1beta1_predict_long_running_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def predict_project_location_endpoint_long_running(endpoint, google_cloud_aiplatform_v1beta1_predict_long_running_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:predictLongRunning', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PredictLongRunningRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_predict_long_running_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Perform an online prediction with an arbitrary HTTP payload. The response
         # includes the following HTTP headers: * `X-Vertex-AI-Endpoint-Id`: ID of the
         # Endpoint that served this prediction. * `X-Vertex-AI-Deployed-Model-Id`: ID of
@@ -4718,8 +5411,10 @@ module Google
         
         # Generate content with multimodal inputs with streaming support.
         # @param [String] model
-        #   Required. The name of the publisher model requested to serve the prediction.
-        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4860,10 +5555,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates an Endpoint with a long running operation.
+        # @param [String] name
+        #   Output only. The resource name of the Endpoint.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UpdateEndpointLongRunningRequest] google_cloud_aiplatform_v1beta1_update_endpoint_long_running_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_endpoint(name, google_cloud_aiplatform_v1beta1_update_endpoint_long_running_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:update', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UpdateEndpointLongRunningRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_update_endpoint_long_running_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Exposes an OpenAI-compatible endpoint for chat completions.
         # @param [String] endpoint
-        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
-        #   projects/`project`/locations/`location`/endpoints/openapi`
+        #   Required. The name of the endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
         # @param [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] google_api_http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4900,8 +5628,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -5229,8 +5957,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -5412,8 +6140,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -5845,8 +6573,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -6029,7 +6757,7 @@ module Google
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureGroup] google_cloud_aiplatform_v1beta1_feature_group_object
         # @param [String] feature_group_id
         #   Required. The ID to use for this FeatureGroup, which will become the final
-        #   component of the FeatureGroup's resource name. This value may be up to 60
+        #   component of the FeatureGroup's resource name. This value may be up to 128
         #   characters, and valid characters are `[a-z0-9_]`. The first character cannot
         #   be a number. The value must be unique within the project and location.
         # @param [String] fields
@@ -6149,9 +6877,9 @@ module Google
         #   than this value. If unspecified, at most 100 FeatureGroups will be returned.
         #   The maximum value is 100; any value greater than 100 will be coerced to 100.
         # @param [String] page_token
-        #   A page token, received from a previous FeatureGroupAdminService.
+        #   A page token, received from a previous FeatureRegistryService.
         #   ListFeatureGroups call. Provide this to retrieve the subsequent page. When
-        #   paginating, all other parameters provided to FeatureGroupAdminService.
+        #   paginating, all other parameters provided to FeatureRegistryService.
         #   ListFeatureGroups must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6222,6 +6950,473 @@ module Google
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new FeatureMonitor in a given project, location and FeatureGroup.
+        # @param [String] parent
+        #   Required. The resource name of FeatureGroup to create FeatureMonitor. Format: `
+        #   projects/`project`/locations/`location`/featureGroups/`featuregroup``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitor] google_cloud_aiplatform_v1beta1_feature_monitor_object
+        # @param [String] feature_monitor_id
+        #   Required. The ID to use for this FeatureMonitor, which will become the final
+        #   component of the FeatureGroup's resource name. This value may be up to 60
+        #   characters, and valid characters are `[a-z0-9_]`. The first character cannot
+        #   be a number. The value must be unique within the FeatureGroup.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_feature_group_feature_monitor(parent, google_cloud_aiplatform_v1beta1_feature_monitor_object = nil, feature_monitor_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/featureMonitors', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitor::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_feature_monitor_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['featureMonitorId'] = feature_monitor_id unless feature_monitor_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single FeatureMonitor.
+        # @param [String] name
+        #   Required. The name of the FeatureMonitor to be deleted. Format: `projects/`
+        #   project`/locations/`location`/featureGroups/`feature_group`/featureMonitors/`
+        #   feature_monitor``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_feature_group_feature_monitor(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single FeatureMonitor.
+        # @param [String] name
+        #   Required. The name of the FeatureMonitor resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitor] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitor]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_feature_group_feature_monitor(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitor::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitor
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists FeatureGroups in a given project and location.
+        # @param [String] parent
+        #   Required. The resource name of the FeatureGroup to list FeatureMonitors.
+        #   Format: `projects/`project`/locations/`location`/featureGroups/`featureGroup``
+        # @param [String] filter
+        #   Optional. Lists the FeatureMonitors that match the filter expression. The
+        #   following fields are supported: * `create_time`: Supports `=`, `!=`, `<`, `>`,
+        #   `<=`, and `>=` comparisons. Values must be in RFC 3339 format. * `update_time`:
+        #   Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons. Values must be in
+        #   RFC 3339 format. * `labels`: Supports key-value equality and key presence.
+        #   Examples: * `create_time > "2020-01-01" OR update_time > "2020-01-01"`
+        #   FeatureMonitors created or updated after 2020-01-01. * `labels.env = "prod"`
+        #   FeatureGroups with label "env" set to "prod".
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order. Use "desc" after a field name for descending. Supported Fields: * `
+        #   create_time` * `update_time`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of FeatureGroups to return. The service may
+        #   return fewer than this value. If unspecified, at most 100 FeatureMonitors will
+        #   be returned. The maximum value is 100; any value greater than 100 will be
+        #   coerced to 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous FeatureRegistryService.
+        #   ListFeatureMonitors call. Provide this to retrieve the subsequent page. When
+        #   paginating, all other parameters provided to FeatureRegistryService.
+        #   ListFeatureMonitors must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeatureMonitorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeatureMonitorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_feature_group_feature_monitors(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/featureMonitors', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeatureMonitorsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeatureMonitorsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new feature monitor job.
+        # @param [String] parent
+        #   Required. The resource name of FeatureMonitor to create FeatureMonitorJob.
+        #   Format: `projects/`project`/locations/`location`/featureGroups/`feature_group`/
+        #   featureMonitors/`feature_monitor``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitorJob] google_cloud_aiplatform_v1beta1_feature_monitor_job_object
+        # @param [Fixnum] feature_monitor_job_id
+        #   Optional. Output only. System-generated ID for feature monitor job.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitorJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitorJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_feature_group_feature_monitor_feature_monitor_job(parent, google_cloud_aiplatform_v1beta1_feature_monitor_job_object = nil, feature_monitor_job_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/featureMonitorJobs', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitorJob::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_feature_monitor_job_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitorJob::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitorJob
+          command.params['parent'] = parent unless parent.nil?
+          command.query['featureMonitorJobId'] = feature_monitor_job_id unless feature_monitor_job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a feature monitor job.
+        # @param [String] name
+        #   Required. The name of the FeatureMonitorJob resource. Format: `projects/`
+        #   project`/locations/`location`/featureGroups/`feature_group`/featureMonitors/`
+        #   feature_monitor`/featureMonitorJobs/`feature_monitor_job``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitorJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitorJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_feature_group_feature_monitor_feature_monitor_job(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitorJob::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureMonitorJob
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List feature monitor jobs.
+        # @param [String] parent
+        #   Required. The resource name of the FeatureMonitor to list FeatureMonitorJobs.
+        #   Format: `projects/`project`/locations/`location`/featureGroups/`feature_group`/
+        #   featureMonitors/`feature_monitor``
+        # @param [String] filter
+        #   Optional. Lists the FeatureMonitorJobs that match the filter expression. The
+        #   following fields are supported: * `create_time`: Supports `=`, `!=`, `<`, `>`,
+        #   `<=`, and `>=` comparisons. Values must be Examples: * `create_time > "2020-01-
+        #   01"` FeatureMonitorJobs created after 2020-01-01.
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order. Use "desc" after a field name for descending. Supported Fields: * `
+        #   create_time`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of FeatureMonitorJobs to return. The service may
+        #   return fewer than this value. If unspecified, at most 100 FeatureMonitorJobs
+        #   will be returned. The maximum value is 100; any value greater than 100 will be
+        #   coerced to 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous FeatureRegistryService.
+        #   ListFeatureMonitorJobs call. Provide this to retrieve the subsequent page.
+        #   When paginating, all other parameters provided to FeatureRegistryService.
+        #   ListFeatureMonitorJobs must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeatureMonitorJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeatureMonitorJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_feature_group_feature_monitor_feature_monitor_jobs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/featureMonitorJobs', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeatureMonitorJobsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeatureMonitorJobsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation resource to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_feature_group_feature_monitor_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_feature_group_feature_monitor_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation's parent resource.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_feature_group_feature_monitor_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/operations', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningListOperationsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningListOperationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Waits until the specified long-running operation is done or reaches at most a
+        # specified timeout, returning the latest state. If the operation is already
+        # done, the latest state is immediately returned. If the timeout specified is
+        # greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If
+        # the server does not support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return
+        # the latest state before the specified timeout (including immediately), meaning
+        # even an immediate response is no guarantee that the operation is done.
+        # @param [String] name
+        #   The name of the operation resource to wait on.
+        # @param [String] timeout
+        #   The maximum duration to wait before timing out. If left blank, the wait will
+        #   be at most the time permitted by the underlying HTTP/RPC protocol. If RPC
+        #   context deadline is also specified, the shorter one will be used.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def wait_project_location_feature_group_feature_monitor_operation(name, timeout: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:wait', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['timeout'] = timeout unless timeout.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a batch of Features in a given FeatureGroup.
+        # @param [String] parent
+        #   Required. The resource name of the EntityType/FeatureGroup to create the batch
+        #   of Features under. Format: `projects/`project`/locations/`location`/
+        #   featurestores/`featurestore`/entityTypes/`entity_type`` `projects/`project`/
+        #   locations/`location`/featureGroups/`feature_group``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BatchCreateFeaturesRequest] google_cloud_aiplatform_v1beta1_batch_create_features_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_feature_group_feature_create(parent, google_cloud_aiplatform_v1beta1_batch_create_features_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/features:batchCreate', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BatchCreateFeaturesRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_batch_create_features_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6309,6 +7504,16 @@ module Google
         #   projects/`project`/locations/`location`/featurestores/`featurestore`/
         #   entityTypes/`entity_type`` Format for feature_group as parent: `projects/`
         #   project`/locations/`location`/featureGroups/`feature_group``
+        # @param [Fixnum] feature_stats_and_anomaly_spec_latest_stats_count
+        #   Optional. If set, returns the most recent count of stats. Valid value is [0,
+        #   100]. If stats_time_range is set, return most recent count of stats within the
+        #   stats_time_range.
+        # @param [String] feature_stats_and_anomaly_spec_stats_time_range_end_time
+        #   Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        #   this interval will have to be before the end.
+        # @param [String] feature_stats_and_anomaly_spec_stats_time_range_start_time
+        #   Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        #   this interval will have to be the same or after the start.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6326,11 +7531,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_feature_group_feature(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_feature_group_feature(name, feature_stats_and_anomaly_spec_latest_stats_count: nil, feature_stats_and_anomaly_spec_stats_time_range_end_time: nil, feature_stats_and_anomaly_spec_stats_time_range_start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Feature::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Feature
           command.params['name'] = name unless name.nil?
+          command.query['featureStatsAndAnomalySpec.latestStatsCount'] = feature_stats_and_anomaly_spec_latest_stats_count unless feature_stats_and_anomaly_spec_latest_stats_count.nil?
+          command.query['featureStatsAndAnomalySpec.statsTimeRange.endTime'] = feature_stats_and_anomaly_spec_stats_time_range_end_time unless feature_stats_and_anomaly_spec_stats_time_range_end_time.nil?
+          command.query['featureStatsAndAnomalySpec.statsTimeRange.startTime'] = feature_stats_and_anomaly_spec_stats_time_range_start_time unless feature_stats_and_anomaly_spec_stats_time_range_start_time.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -7346,7 +8554,8 @@ module Google
         #   override all fields. Updatable fields: * `labels` * `service_agent_type` * `
         #   big_query_source` * `big_query_source.uri` * `big_query_source.
         #   entity_id_columns` * `feature_registry_source` * `feature_registry_source.
-        #   feature_groups` * `sync_config` * `sync_config.cron`
+        #   feature_groups` * `sync_config` * `sync_config.cron` * `optimized_config.
+        #   automatic_resources`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8961,9 +10170,10 @@ module Google
         
         # Creates a batch of Features in a given EntityType.
         # @param [String] parent
-        #   Required. The resource name of the EntityType to create the batch of Features
-        #   under. Format: `projects/`project`/locations/`location`/featurestores/`
-        #   featurestore`/entityTypes/`entity_type``
+        #   Required. The resource name of the EntityType/FeatureGroup to create the batch
+        #   of Features under. Format: `projects/`project`/locations/`location`/
+        #   featurestores/`featurestore`/entityTypes/`entity_type`` `projects/`project`/
+        #   locations/`location`/featureGroups/`feature_group``
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BatchCreateFeaturesRequest] google_cloud_aiplatform_v1beta1_batch_create_features_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -9076,6 +10286,16 @@ module Google
         #   projects/`project`/locations/`location`/featurestores/`featurestore`/
         #   entityTypes/`entity_type`` Format for feature_group as parent: `projects/`
         #   project`/locations/`location`/featureGroups/`feature_group``
+        # @param [Fixnum] feature_stats_and_anomaly_spec_latest_stats_count
+        #   Optional. If set, returns the most recent count of stats. Valid value is [0,
+        #   100]. If stats_time_range is set, return most recent count of stats within the
+        #   stats_time_range.
+        # @param [String] feature_stats_and_anomaly_spec_stats_time_range_end_time
+        #   Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        #   this interval will have to be before the end.
+        # @param [String] feature_stats_and_anomaly_spec_stats_time_range_start_time
+        #   Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        #   this interval will have to be the same or after the start.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9093,11 +10313,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_featurestore_entity_type_feature(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_featurestore_entity_type_feature(name, feature_stats_and_anomaly_spec_latest_stats_count: nil, feature_stats_and_anomaly_spec_stats_time_range_end_time: nil, feature_stats_and_anomaly_spec_stats_time_range_start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Feature::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Feature
           command.params['name'] = name unless name.nil?
+          command.query['featureStatsAndAnomalySpec.latestStatsCount'] = feature_stats_and_anomaly_spec_latest_stats_count unless feature_stats_and_anomaly_spec_latest_stats_count.nil?
+          command.query['featureStatsAndAnomalySpec.statsTimeRange.endTime'] = feature_stats_and_anomaly_spec_stats_time_range_end_time unless feature_stats_and_anomaly_spec_stats_time_range_end_time.nil?
+          command.query['featureStatsAndAnomalySpec.statsTimeRange.startTime'] = feature_stats_and_anomaly_spec_stats_time_range_start_time unless feature_stats_and_anomaly_spec_stats_time_range_start_time.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -9231,8 +10454,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -9414,8 +10637,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -9597,8 +10820,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -9975,8 +11198,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -10521,8 +11744,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -10950,8 +12173,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -11596,8 +12819,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -12181,8 +13404,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -12688,8 +13911,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -12991,8 +14214,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -13246,8 +14469,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -13741,8 +14964,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -14327,8 +15550,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -15165,8 +16388,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -15461,8 +16684,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -16055,8 +17278,8 @@ module Google
         #   Optional. The standard list page size.
         # @param [String] page_token
         #   Optional. The standard list page token. Typically obtained via
-        #   ListNotebookExecutionJobs.next_page_token of the previous NotebookService.
-        #   ListNotebookExecutionJobs call.
+        #   ListNotebookExecutionJobsResponse.next_page_token of the previous
+        #   NotebookService.ListNotebookExecutionJobs call.
         # @param [String] view
         #   Optional. The NotebookExecutionJob view. Defaults to BASIC.
         # @param [String] fields
@@ -16131,8 +17354,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -16637,8 +17860,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -17093,6 +18316,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Stops a NotebookRuntime.
+        # @param [String] name
+        #   Required. The name of the NotebookRuntime resource to be stopped. Instead of
+        #   checking whether the name is in valid NotebookRuntime resource name format,
+        #   directly throw NotFound exception if there is no such NotebookRuntime in
+        #   spanner.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StopNotebookRuntimeRequest] google_cloud_aiplatform_v1beta1_stop_notebook_runtime_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_project_location_notebook_runtime(name, google_cloud_aiplatform_v1beta1_stop_notebook_runtime_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:stop', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StopNotebookRuntimeRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_stop_notebook_runtime_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Upgrades a NotebookRuntime.
         # @param [String] name
         #   Required. The name of the NotebookRuntime resource to be upgrade. Instead of
@@ -17135,8 +18394,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -17318,8 +18577,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -17605,7 +18864,7 @@ module Google
         #   Optional. The standard list page size.
         # @param [String] page_token
         #   Optional. The standard list page token. Typically obtained via
-        #   ListPersistentResourceResponse.next_page_token of the previous
+        #   ListPersistentResourcesResponse.next_page_token of the previous
         #   PersistentResourceService.ListPersistentResource call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -17714,8 +18973,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -18186,8 +19445,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -18431,10 +19690,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetch an asynchronous online prediction operation.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint`` or `projects/`
+        #   project`/locations/`location`/publishers/`publisher`/models/`model``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FetchPredictOperationRequest] google_cloud_aiplatform_v1beta1_fetch_predict_operation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_publisher_model_predict_operation(endpoint, google_cloud_aiplatform_v1beta1_fetch_predict_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:fetchPredictOperation', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FetchPredictOperationRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_fetch_predict_operation_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generate content with multimodal inputs.
         # @param [String] model
-        #   Required. The name of the publisher model requested to serve the prediction.
-        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -18544,6 +19840,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # 
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint`` or `projects/`
+        #   project`/locations/`location`/publishers/`publisher`/models/`model``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PredictLongRunningRequest] google_cloud_aiplatform_v1beta1_predict_long_running_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def predict_project_location_publisher_model_long_running(endpoint, google_cloud_aiplatform_v1beta1_predict_long_running_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:predictLongRunning', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PredictLongRunningRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_predict_long_running_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Perform an online prediction with an arbitrary HTTP payload. The response
         # includes the following HTTP headers: * `X-Vertex-AI-Endpoint-Id`: ID of the
         # Endpoint that served this prediction. * `X-Vertex-AI-Deployed-Model-Id`: ID of
@@ -18618,8 +19949,10 @@ module Google
         
         # Generate content with multimodal inputs with streaming support.
         # @param [String] model
-        #   Required. The name of the publisher model requested to serve the prediction.
-        #   Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -18823,14 +20156,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a RagCorpus.
+        # @param [String] name
+        #   Output only. The resource name of the RagCorpus.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpus] google_cloud_aiplatform_v1beta1_rag_corpus_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_rag_corpora(name, google_cloud_aiplatform_v1beta1_rag_corpus_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagCorpus::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_rag_corpus_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -19147,8 +20513,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -19466,7 +20832,7 @@ module Google
         #   Identifier. The resource name of the ReasoningEngine.
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngine] google_cloud_aiplatform_v1beta1_reasoning_engine_object
         # @param [String] update_mask
-        #   Required. Mask specifying which fields to update.
+        #   Optional. Mask specifying which fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19537,8 +20903,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -19957,7 +21323,7 @@ module Google
         # state to 'ACTIVE'. Only paused Schedule can be resumed. When the Schedule is
         # resumed, new runs will be scheduled starting from the next execution time
         # after the current time based on the time_specification in the Schedule. If
-        # Schedule.catchUp is set up true, all missed runs will be scheduled for
+        # Schedule.catch_up is set up true, all missed runs will be scheduled for
         # backfill first.
         # @param [String] name
         #   Required. The name of the Schedule resource to be resumed. Format: `projects/`
@@ -19998,8 +21364,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -20464,8 +21830,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -20817,8 +22183,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -21346,8 +22712,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -22090,8 +23456,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -22542,8 +23908,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -23035,8 +24401,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -23218,8 +24584,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -23594,8 +24960,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -23887,8 +25253,9 @@ module Google
         # @param [Fixnum] page_size
         #   Optional. The standard list page size.
         # @param [String] page_token
-        #   Optional. The standard list page token. Typically obtained via ListTuningJob.
-        #   next_page_token of the previous GenAiTuningService.ListTuningJob][] call.
+        #   Optional. The standard list page token. Typically obtained via
+        #   ListTuningJobsResponse.next_page_token of the previous GenAiTuningService.
+        #   ListTuningJob][] call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23919,10 +25286,183 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Rebase a TunedModel.
+        # @param [String] parent
+        #   Required. The resource name of the Location into which to rebase the Model.
+        #   Format: `projects/`project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RebaseTunedModelRequest] google_cloud_aiplatform_v1beta1_rebase_tuned_model_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rebase_project_location_tuning_job_tuned_model(parent, google_cloud_aiplatform_v1beta1_rebase_tuned_model_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/tuningJobs:rebaseTunedModel', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RebaseTunedModelRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_rebase_tuned_model_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation resource to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_tuning_job_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Return a list of tokens based on the input text.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to get lists of tokens and token
+        #   ids.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensRequest] google_cloud_aiplatform_v1beta1_compute_tokens_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def compute_publisher_model_tokens(endpoint, google_cloud_aiplatform_v1beta1_compute_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:computeTokens', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_compute_tokens_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ComputeTokensResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Perform a token counting.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to perform token counting. Format:
+        #   `projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensRequest] google_cloud_aiplatform_v1beta1_count_tokens_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_publisher_model_tokens(endpoint, google_cloud_aiplatform_v1beta1_count_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}:countTokens', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_count_tokens_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CountTokensResponse
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate content with multimodal inputs.
+        # @param [String] model
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_publisher_model_content(model, google_cloud_aiplatform_v1beta1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+model}:generateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a Model Garden publisher model.
         # @param [String] name
         #   Required. The name of the PublisherModel resource. Format: `publishers/`
         #   publisher`/models/`publisher_model``
+        # @param [String] hugging_face_token
+        #   Optional. Token used to access Hugging Face gated models.
         # @param [Boolean] is_hugging_face_model
         #   Optional. Boolean indicates whether the requested model is a Hugging Face
         #   model.
@@ -23948,11 +25488,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_publisher_model(name, is_hugging_face_model: nil, language_code: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_publisher_model(name, hugging_face_token: nil, is_hugging_face_model: nil, language_code: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModel::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModel
           command.params['name'] = name unless name.nil?
+          command.query['huggingFaceToken'] = hugging_face_token unless hugging_face_token.nil?
           command.query['isHuggingFaceModel'] = is_hugging_face_model unless is_hugging_face_model.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['view'] = view unless view.nil?
@@ -24010,6 +25551,42 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate content with multimodal inputs with streaming support.
+        # @param [String] model
+        #   Required. The fully qualified name of the publisher model or tuned model
+        #   endpoint to use. Publisher model format: `projects/`project`/locations/`
+        #   location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        #   project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest] google_cloud_aiplatform_v1beta1_generate_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_publisher_model_generate_content(model, google_cloud_aiplatform_v1beta1_generate_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+model}:streamGenerateContent', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_content_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponse
+          command.params['model'] = model unless model.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
