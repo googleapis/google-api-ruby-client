@@ -559,6 +559,9 @@ module Google
         #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
         #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
         #   clusters/`cluster`/containerThreatDetectionSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -576,11 +579,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_folder_container_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_folder_container_threat_detection_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -597,6 +601,9 @@ module Google
         #   Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
         #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -614,11 +621,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_folder_event_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_folder_event_threat_detection_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -675,6 +683,9 @@ module Google
         #   Formats: * organizations/`organization`/securityHealthAnalyticsSettings *
         #   folders/`folder`/securityHealthAnalyticsSettings * projects/`project`/
         #   securityHealthAnalyticsSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -692,11 +703,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_folder_security_health_analytics_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_folder_security_health_analytics_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -714,6 +726,9 @@ module Google
         #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
         #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
         #   virtualMachineThreatDetectionSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -731,11 +746,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_folder_virtual_machine_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_folder_virtual_machine_threat_detection_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -752,6 +768,9 @@ module Google
         #   Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
         #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
         #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -769,11 +788,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_folder_web_security_scanner_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_folder_web_security_scanner_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1317,6 +1337,9 @@ module Google
         #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
         #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
         #   clusters/`cluster`/containerThreatDetectionSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1334,11 +1357,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_organization_container_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_organization_container_threat_detection_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1355,6 +1379,9 @@ module Google
         #   Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
         #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1372,11 +1399,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_organization_event_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_organization_event_threat_detection_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1433,6 +1461,9 @@ module Google
         #   Formats: * organizations/`organization`/securityHealthAnalyticsSettings *
         #   folders/`folder`/securityHealthAnalyticsSettings * projects/`project`/
         #   securityHealthAnalyticsSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1450,11 +1481,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_organization_security_health_analytics_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_organization_security_health_analytics_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1472,6 +1504,9 @@ module Google
         #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
         #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
         #   virtualMachineThreatDetectionSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1489,11 +1524,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_organization_virtual_machine_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_organization_virtual_machine_threat_detection_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1510,6 +1546,9 @@ module Google
         #   Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
         #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
         #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1527,11 +1566,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_organization_web_security_scanner_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_organization_web_security_scanner_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2044,6 +2084,9 @@ module Google
         #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
         #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
         #   clusters/`cluster`/containerThreatDetectionSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2061,11 +2104,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_project_container_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_project_container_threat_detection_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2082,6 +2126,9 @@ module Google
         #   Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
         #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2099,11 +2146,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_project_event_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_project_event_threat_detection_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2201,6 +2249,9 @@ module Google
         #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
         #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
         #   clusters/`cluster`/containerThreatDetectionSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2218,11 +2269,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_project_location_cluster_container_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_project_location_cluster_container_threat_detection_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2279,6 +2331,9 @@ module Google
         #   Formats: * organizations/`organization`/securityHealthAnalyticsSettings *
         #   folders/`folder`/securityHealthAnalyticsSettings * projects/`project`/
         #   securityHealthAnalyticsSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2296,11 +2351,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_project_security_health_analytics_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_project_security_health_analytics_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2318,6 +2374,9 @@ module Google
         #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
         #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
         #   virtualMachineThreatDetectionSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2335,11 +2394,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_project_virtual_machine_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_project_virtual_machine_threat_detection_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2356,6 +2416,9 @@ module Google
         #   Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
         #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
         #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
+        # @param [Boolean] show_eligible_modules_only
+        #   Optional. When set, will only retrieve the modules that are in scope. By
+        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2373,11 +2436,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def calculate_project_web_security_scanner_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+        def calculate_project_web_security_scanner_setting(name, show_eligible_modules_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings
           command.params['name'] = name unless name.nil?
+          command.query['showEligibleModulesOnly'] = show_eligible_modules_only unless show_eligible_modules_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
