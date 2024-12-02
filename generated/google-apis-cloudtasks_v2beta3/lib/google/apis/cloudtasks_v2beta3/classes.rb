@@ -744,7 +744,7 @@ module Google
         # headers will be ignored or replaced. A partial list of headers that will be
         # ignored or replaced is: * Any header that is prefixed with "X-CloudTasks-"
         # will be treated as service header. Service headers define properties of the
-        # task and are predefined in CloudTask. * Host: This will be computed by Cloud
+        # task and are predefined in Cloud Tasks. * Host: This will be computed by Cloud
         # Tasks and derived from HttpRequest.url. * Content-Length: This will be
         # computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-
         # Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `
@@ -832,8 +832,9 @@ module Google
         attr_accessor :header_overrides
       
         # The HTTP method to use for the request. When specified, it overrides
-        # HttpRequest for the task. Note that if the value is set to HttpMethod the
-        # HttpRequest of the task will be ignored at execution time.
+        # HttpRequest.http_method for the task. Note that if the value is set to
+        # HttpMethod.GET the HttpRequest.body of the task will be ignored at execution
+        # time.
         # Corresponds to the JSON property `httpMethod`
         # @return [String]
         attr_accessor :http_method
