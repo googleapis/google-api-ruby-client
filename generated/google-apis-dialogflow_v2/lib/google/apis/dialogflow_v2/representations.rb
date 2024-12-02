@@ -100,12 +100,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowCxV3CreateDocumentOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowCxV3CreateVersionOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,12 +107,6 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3DataStoreConnection
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -280,24 +268,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowCxV3ImportDocumentsOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowCxV3ImportDocumentsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowCxV3ImportEntityTypesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,12 +401,6 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3QueryInput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowCxV3ReloadDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -592,12 +556,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowCxV3Webhook
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -742,12 +700,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowCxV3beta1CreateDocumentOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -755,12 +707,6 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1DataStoreConnection
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -922,24 +868,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowCxV3beta1ImportDocumentsOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1073,12 +1001,6 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1QueryInput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowCxV3beta1ReloadDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1247,12 +1169,6 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1TurnSignals
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2465,6 +2381,48 @@ module Google
       end
       
       class GoogleCloudDialogflowV2SearchKnowledgeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3346,49 +3304,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV3alpha1DeleteDocumentOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV3alpha1ImportDocumentsOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV3alpha1ImportDocumentsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV3alpha1ReloadDocumentOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV3alpha1TurnSignals
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV3alpha1UpdateDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3464,6 +3380,7 @@ module Google
       class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_consent_based_redaction, as: 'enableConsentBasedRedaction'
           property :enable_interaction_logging, as: 'enableInteractionLogging'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
         end
@@ -3569,14 +3486,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowCxV3CreateDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata::Representation
-      
-        end
-      end
-      
       class GoogleCloudDialogflowCxV3CreateVersionOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3589,14 +3498,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
           property :data_store_type, as: 'dataStoreType'
-        end
-      end
-      
-      class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata::Representation
-      
         end
       end
       
@@ -3840,29 +3741,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :state, as: 'state'
-        end
-      end
-      
-      class GoogleCloudDialogflowCxV3ImportDocumentsOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowCxV3ImportDocumentsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2::GoogleRpcStatus::Representation
-      
-        end
-      end
-      
       class GoogleCloudDialogflowCxV3ImportEntityTypesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4091,14 +3969,6 @@ module Google
       
           property :language_code, as: 'languageCode'
           property :text, as: 'text', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3TextInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3TextInput::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowCxV3ReloadDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata::Representation
       
         end
       end
@@ -4346,14 +4216,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata::Representation
-      
-        end
-      end
-      
       class GoogleCloudDialogflowCxV3Webhook
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4519,6 +4381,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_consent_based_redaction, as: 'enableConsentBasedRedaction'
           property :enable_interaction_logging, as: 'enableInteractionLogging'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
         end
@@ -4624,14 +4487,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowCxV3beta1CreateDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata::Representation
-      
-        end
-      end
-      
       class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4644,14 +4499,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
           property :data_store_type, as: 'dataStoreType'
-        end
-      end
-      
-      class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata::Representation
-      
         end
       end
       
@@ -4895,29 +4742,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :state, as: 'state'
-        end
-      end
-      
-      class GoogleCloudDialogflowCxV3beta1ImportDocumentsOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2::GoogleRpcStatus::Representation
-      
-        end
-      end
-      
       class GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5148,14 +4972,6 @@ module Google
           property :text, as: 'text', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1TextInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1TextInput::Representation
       
           property :tool_call_result, as: 'toolCallResult', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ToolCallResult, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ToolCallResult::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowCxV3beta1ReloadDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata::Representation
       
         end
       end
@@ -5428,14 +5244,6 @@ module Google
           property :sentiment_score, as: 'sentimentScore'
           property :user_escalated, as: 'userEscalated'
           collection :webhook_statuses, as: 'webhookStatuses'
-        end
-      end
-      
-      class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata::Representation
-      
         end
       end
       
@@ -5912,6 +5720,8 @@ module Google
           property :input_config, as: 'inputConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputConfig::Representation
       
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
         end
       end
       
@@ -5945,6 +5755,8 @@ module Google
           property :display_name, as: 'displayName'
           property :language_code, as: 'languageCode'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :smart_reply_model_metadata, as: 'smartReplyModelMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyModelMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyModelMetadata::Representation
       
           property :state, as: 'state'
@@ -6503,6 +6315,7 @@ module Google
           property :confidence_threshold, as: 'confidenceThreshold'
           property :context_filter_settings, as: 'contextFilterSettings', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings::Representation
       
+          property :context_size, as: 'contextSize'
           property :dialogflow_query_source, as: 'dialogflowQuerySource', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource::Representation
       
           property :document_query_source, as: 'documentQuerySource', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource::Representation
@@ -6706,6 +6519,7 @@ module Google
           property :model_variant, as: 'modelVariant'
           property :opt_out_conformer_model_migration, as: 'optOutConformerModelMigration'
           collection :phrase_hints, as: 'phraseHints'
+          collection :phrase_sets, as: 'phraseSets'
           property :sample_rate_hertz, as: 'sampleRateHertz'
           property :single_utterance, as: 'singleUtterance'
           collection :speech_contexts, as: 'speechContexts', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechContext, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechContext::Representation
@@ -7146,6 +6960,7 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
           property :text, as: 'text'
           property :title, as: 'title'
           property :uri, as: 'uri'
@@ -7518,6 +7333,7 @@ module Google
       class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
           property :snippet, as: 'snippet'
           property :title, as: 'title'
           property :uri, as: 'uri'
@@ -7529,11 +7345,80 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conversation, as: 'conversation'
           property :conversation_profile, as: 'conversationProfile'
+          hash :end_user_metadata, as: 'endUserMetadata'
+          property :exact_search, as: 'exactSearch'
           property :latest_message, as: 'latestMessage'
           property :parent, as: 'parent'
           property :query, as: 'query', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput::Representation
       
+          property :query_source, as: 'querySource'
+          property :search_config, as: 'searchConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig::Representation
+      
           property :session_id, as: 'sessionId'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :boost_specs, as: 'boostSpecs', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs::Representation
+      
+          collection :filter_specs, as: 'filterSpecs', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_stores, as: 'dataStores'
+          collection :spec, as: 'spec', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :condition_boost_specs, as: 'conditionBoostSpecs', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost, as: 'boost'
+          property :boost_control_spec, as: 'boostControlSpec', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec::Representation
+      
+          property :condition, as: 'condition'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_type, as: 'attributeType'
+          collection :control_points, as: 'controlPoints', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint::Representation
+      
+          property :field_name, as: 'fieldName'
+          property :interpolation_type, as: 'interpolationType'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_value, as: 'attributeValue'
+          property :boost_amount, as: 'boostAmount'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_stores, as: 'dataStores'
+          property :filter, as: 'filter'
         end
       end
       
@@ -7643,11 +7528,11 @@ module Google
       class GoogleCloudDialogflowV2SpeechToTextConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :alternative_language_codes, as: 'alternativeLanguageCodes'
           property :audio_encoding, as: 'audioEncoding'
           property :enable_word_info, as: 'enableWordInfo'
           property :language_code, as: 'languageCode'
           property :model, as: 'model'
+          collection :phrase_sets, as: 'phraseSets'
           property :sample_rate_hertz, as: 'sampleRateHertz'
           property :speech_model_variant, as: 'speechModelVariant'
           property :use_timeout_based_endpointing, as: 'useTimeoutBasedEndpointing'
@@ -8704,6 +8589,7 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
           property :text, as: 'text'
           property :title, as: 'title'
           property :uri, as: 'uri'
@@ -9010,53 +8896,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowV3alpha1DeleteDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :state, as: 'state'
-        end
-      end
-      
-      class GoogleCloudDialogflowV3alpha1ImportDocumentsOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowV3alpha1ImportDocumentsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2::GoogleRpcStatus::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowV3alpha1ReloadDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata::Representation
-      
-        end
-      end
-      
       class GoogleCloudDialogflowV3alpha1TurnSignals
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9071,14 +8910,6 @@ module Google
           property :triggered_abandonment_event, as: 'triggeredAbandonmentEvent'
           property :user_escalated, as: 'userEscalated'
           collection :webhook_statuses, as: 'webhookStatuses'
-        end
-      end
-      
-      class GoogleCloudDialogflowV3alpha1UpdateDocumentOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata::Representation
-      
         end
       end
       
