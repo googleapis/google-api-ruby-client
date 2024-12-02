@@ -876,6 +876,13 @@ module Google
       class HealthCheckTargets
         include Google::Apis::Core::Hashable
       
+        # The Internet IP addresses to be health checked. The format matches the format
+        # of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (
+        # section 3.6.1)
+        # Corresponds to the JSON property `externalEndpoints`
+        # @return [Array<String>]
+        attr_accessor :external_endpoints
+      
         # Configuration for internal load balancers to be health checked.
         # Corresponds to the JSON property `internalLoadBalancer`
         # @return [Array<Google::Apis::DomainsV1alpha2::LoadBalancerTarget>]
@@ -887,6 +894,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @external_endpoints = args[:external_endpoints] if args.key?(:external_endpoints)
           @internal_load_balancer = args[:internal_load_balancer] if args.key?(:internal_load_balancer)
         end
       end
@@ -1615,6 +1623,13 @@ module Google
         # @return [Google::Apis::DomainsV1alpha2::GeoPolicy]
         attr_accessor :geo_policy
       
+        # The selfLink attribute of the HealthCheck resource to use for this
+        # RRSetRoutingPolicy. https://cloud.google.com/compute/docs/reference/rest/v1/
+        # healthChecks
+        # Corresponds to the JSON property `healthCheck`
+        # @return [String]
+        attr_accessor :health_check
+      
         # Configures a RRSetRoutingPolicy such that all queries are responded with the
         # primary_targets if they are healthy. And if all of them are unhealthy, then we
         # fallback to a geo localized policy.
@@ -1640,6 +1655,7 @@ module Google
         def update!(**args)
           @geo = args[:geo] if args.key?(:geo)
           @geo_policy = args[:geo_policy] if args.key?(:geo_policy)
+          @health_check = args[:health_check] if args.key?(:health_check)
           @primary_backup = args[:primary_backup] if args.key?(:primary_backup)
           @wrr = args[:wrr] if args.key?(:wrr)
           @wrr_policy = args[:wrr_policy] if args.key?(:wrr_policy)
