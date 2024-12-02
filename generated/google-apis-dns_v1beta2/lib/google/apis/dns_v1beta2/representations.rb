@@ -845,6 +845,7 @@ module Google
           property :gke_clusters_per_managed_zone, as: 'gkeClustersPerManagedZone'
           property :gke_clusters_per_policy, as: 'gkeClustersPerPolicy'
           property :gke_clusters_per_response_policy, as: 'gkeClustersPerResponsePolicy'
+          property :internet_health_checks_per_managed_zone, as: 'internetHealthChecksPerManagedZone'
           property :items_per_routing_policy, as: 'itemsPerRoutingPolicy'
           property :kind, as: 'kind'
           property :managed_zones, as: 'managedZones'
@@ -877,6 +878,7 @@ module Google
       
           property :geo_policy, as: 'geoPolicy', class: Google::Apis::DnsV1beta2::RrSetRoutingPolicyGeoPolicy, decorator: Google::Apis::DnsV1beta2::RrSetRoutingPolicyGeoPolicy::Representation
       
+          property :health_check, as: 'healthCheck'
           property :kind, as: 'kind'
           property :primary_backup, as: 'primaryBackup', class: Google::Apis::DnsV1beta2::RrSetRoutingPolicyPrimaryBackupPolicy, decorator: Google::Apis::DnsV1beta2::RrSetRoutingPolicyPrimaryBackupPolicy::Representation
       
@@ -912,6 +914,7 @@ module Google
       class RrSetRoutingPolicyHealthCheckTargets
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :external_endpoints, as: 'externalEndpoints'
           collection :internal_load_balancers, as: 'internalLoadBalancers', class: Google::Apis::DnsV1beta2::RrSetRoutingPolicyLoadBalancerTarget, decorator: Google::Apis::DnsV1beta2::RrSetRoutingPolicyLoadBalancerTarget::Representation
       
         end
