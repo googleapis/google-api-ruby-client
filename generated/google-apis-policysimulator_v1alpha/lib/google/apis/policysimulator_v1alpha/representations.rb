@@ -379,6 +379,7 @@ module Google
       
           property :deny_all, as: 'denyAll'
           property :enforce, as: 'enforce'
+          hash :parameters, as: 'parameters'
           property :values, as: 'values', class: Google::Apis::PolicysimulatorV1alpha::GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues, decorator: Google::Apis::PolicysimulatorV1alpha::GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues::Representation
       
         end
