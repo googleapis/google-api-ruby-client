@@ -1916,7 +1916,8 @@ module Google
         #   following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
         #   Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime
         #   Database) * `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.
-        #   googleapis.com` (Firebase Authentication with Identity Platform)
+        #   googleapis.com` (Firebase Authentication with Identity Platform) * `oauth2.
+        #   googleapis.com` (Google Identity for iOS)
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaService] google_firebase_appcheck_v1beta_service_object
         # @param [String] update_mask
         #   Required. A comma-separated list of names of fields in the Service to update.
