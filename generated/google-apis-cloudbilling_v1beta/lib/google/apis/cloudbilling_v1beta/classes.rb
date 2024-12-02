@@ -179,7 +179,21 @@ module Google
       # applies when you move or copy data from one Cloud Storage bucket to another or
       # when another Google Cloud service accesses data in your Cloud Storage bucket.
       # This includes the network data transfer within Google Cloud and the general
-      # network usage.
+      # network usage. * If transferring data between two regions, the source and
+      # destination fields are set to different values. For example: `source_continent`
+      # = "SOURCE_CONTINENT_ASIA_PACIFIC", `destination_continent` = "
+      # SOURCE_CONTINENT_SOUTH_AMERICA". * If transferring data within one region, the
+      # source and destination fields are set to the same value. For example: `
+      # source_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC", `destination_continent` =
+      # "SOURCE_CONTINENT_ASIA_PACIFIC". Some examples for the Network data transfer
+      # traffic type on the pricing page. * Data moves between different locations on
+      # the same continent. `source_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC", `
+      # destination_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC". * Data moves between
+      # different continents and neither is Australia. `source_continent` = "
+      # SOURCE_CONTINENT_NORTH_AMERICA", `destination_continent` = "
+      # SOURCE_CONTINENT_ASIA_PACIFIC". * Data moves between different continents and
+      # one is Australia. `source_continent` = "SOURCE_CONTINENT_NORTH_AMERICA", `
+      # destination_continent` = "SOURCE_CONTINENT_AUSTRALIA".
       class CloudStorageEgressWorkload
         include Google::Apis::Core::Hashable
       
@@ -566,10 +580,9 @@ module Google
       end
       
       # A representation of a decimal value, such as 2.5. Clients may convert values
-      # into language-native decimal formats, such as Java's BigDecimal or Python's
-      # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-      # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-      # org/3/library/decimal.html
+      # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+      # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+      # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
       class Decimal
         include Google::Apis::Core::Hashable
       
@@ -834,10 +847,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `discountPercent`
         # @return [Google::Apis::CloudbillingV1beta::Decimal]
         attr_accessor :discount_percent
@@ -891,10 +903,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `discountPercent`
         # @return [Google::Apis::CloudbillingV1beta::Decimal]
         attr_accessor :discount_percent
@@ -1116,10 +1127,9 @@ module Google
         attr_accessor :contract_price
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `effectiveDiscountPercent`
         # @return [Google::Apis::CloudbillingV1beta::Decimal]
         attr_accessor :effective_discount_percent
@@ -1130,10 +1140,9 @@ module Google
         attr_accessor :list_price
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `startAmount`
         # @return [Google::Apis::CloudbillingV1beta::Decimal]
         attr_accessor :start_amount
@@ -1166,10 +1175,9 @@ module Google
         attr_accessor :unit_description
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `unitQuantity`
         # @return [Google::Apis::CloudbillingV1beta::Decimal]
         attr_accessor :unit_quantity
@@ -1893,10 +1901,9 @@ module Google
         attr_accessor :list_price
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `startAmount`
         # @return [Google::Apis::CloudbillingV1beta::Decimal]
         attr_accessor :start_amount
@@ -1927,10 +1934,9 @@ module Google
         attr_accessor :unit_description
       
         # A representation of a decimal value, such as 2.5. Clients may convert values
-        # into language-native decimal formats, such as Java's BigDecimal or Python's
-        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
-        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
-        # org/3/library/decimal.html
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
         # Corresponds to the JSON property `unitQuantity`
         # @return [Google::Apis::CloudbillingV1beta::Decimal]
         attr_accessor :unit_quantity
@@ -3003,7 +3009,21 @@ module Google
         # applies when you move or copy data from one Cloud Storage bucket to another or
         # when another Google Cloud service accesses data in your Cloud Storage bucket.
         # This includes the network data transfer within Google Cloud and the general
-        # network usage.
+        # network usage. * If transferring data between two regions, the source and
+        # destination fields are set to different values. For example: `source_continent`
+        # = "SOURCE_CONTINENT_ASIA_PACIFIC", `destination_continent` = "
+        # SOURCE_CONTINENT_SOUTH_AMERICA". * If transferring data within one region, the
+        # source and destination fields are set to the same value. For example: `
+        # source_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC", `destination_continent` =
+        # "SOURCE_CONTINENT_ASIA_PACIFIC". Some examples for the Network data transfer
+        # traffic type on the pricing page. * Data moves between different locations on
+        # the same continent. `source_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC", `
+        # destination_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC". * Data moves between
+        # different continents and neither is Australia. `source_continent` = "
+        # SOURCE_CONTINENT_NORTH_AMERICA", `destination_continent` = "
+        # SOURCE_CONTINENT_ASIA_PACIFIC". * Data moves between different continents and
+        # one is Australia. `source_continent` = "SOURCE_CONTINENT_NORTH_AMERICA", `
+        # destination_continent` = "SOURCE_CONTINENT_AUSTRALIA".
         # Corresponds to the JSON property `cloudStorageEgressWorkload`
         # @return [Google::Apis::CloudbillingV1beta::CloudStorageEgressWorkload]
         attr_accessor :cloud_storage_egress_workload
