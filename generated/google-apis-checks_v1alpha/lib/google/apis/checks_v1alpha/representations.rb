@@ -594,6 +594,7 @@ module Google
           property :code_attribution, as: 'codeAttribution', class: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCodeAttribution, decorator: Google::Apis::ChecksV1alpha::GoogleChecksRepoScanV1alphaCodeAttribution::Representation
       
           property :data_type, as: 'dataType'
+          property :false_positive, as: 'falsePositive'
         end
       end
       
