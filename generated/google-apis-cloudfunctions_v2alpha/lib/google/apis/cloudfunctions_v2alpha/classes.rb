@@ -252,9 +252,7 @@ module Google
         # and managed by user with a customer managed encryption key. Otherwise, GCF
         # will create and use a repository named 'gcf-artifacts' for every deployed
         # region. It must match the pattern `projects/`project`/locations/`location`/
-        # repositories/`repository``. Cross-project repositories are not supported.
-        # Cross-location repositories are not supported. Repository format must be '
-        # DOCKER'.
+        # repositories/`repository``. Repository format must be 'DOCKER'.
         # Corresponds to the JSON property `dockerRepository`
         # @return [String]
         attr_accessor :docker_repository
@@ -286,7 +284,8 @@ module Google
         # @return [String]
         attr_accessor :runtime
       
-        # [Preview] Service account to be used for building the container
+        # Service account to be used for building the container. The format of this
+        # field is `projects/`projectId`/serviceAccounts/`serviceAccountEmail``.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -602,9 +601,9 @@ module Google
         # @return [Google::Apis::CloudfunctionsV2alpha::EventTrigger]
         attr_accessor :event_trigger
       
-        # [Preview] Resource name of a KMS crypto key (managed by the user) used to
-        # encrypt/decrypt function resources. It must match the pattern `projects/`
-        # project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``.
+        # Resource name of a KMS crypto key (managed by the user) used to encrypt/
+        # decrypt function resources. It must match the pattern `projects/`project`/
+        # locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -648,7 +647,8 @@ module Google
         attr_accessor :update_time
       
         # Information related to: * A function's eligibility for 1st Gen to 2nd Gen
-        # migration * Current state of migration for function undergoing migration.
+        # migration and 2nd Gen to CRf detach. * Current state of migration for function
+        # undergoing migration/detach.
         # Corresponds to the JSON property `upgradeInfo`
         # @return [Google::Apis::CloudfunctionsV2alpha::UpgradeInfo]
         attr_accessor :upgrade_info
@@ -726,14 +726,14 @@ module Google
         # @return [String]
         attr_accessor :environment
       
-        # [Preview] Resource name of a KMS crypto key (managed by the user) used to
-        # encrypt/decrypt function source code objects in intermediate Cloud Storage
-        # buckets. When you generate an upload url and upload your source code, it gets
-        # copied to an intermediate Cloud Storage bucket. The source code is then copied
-        # to a versioned directory in the sources bucket in the consumer project during
-        # the function deployment. It must match the pattern `projects/`project`/
-        # locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``. The Google
-        # Cloud Functions service account (service-`project_number`@gcf-admin-robot.iam.
+        # Resource name of a KMS crypto key (managed by the user) used to encrypt/
+        # decrypt function source code objects in intermediate Cloud Storage buckets.
+        # When you generate an upload url and upload your source code, it gets copied to
+        # an intermediate Cloud Storage bucket. The source code is then copied to a
+        # versioned directory in the sources bucket in the consumer project during the
+        # function deployment. It must match the pattern `projects/`project`/locations/`
+        # location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``. The Google Cloud
+        # Functions service account (service-`project_number`@gcf-admin-robot.iam.
         # gserviceaccount.com) must be granted the role 'Cloud KMS CryptoKey Encrypter/
         # Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/
         # Project/Organization (least access preferred).
@@ -780,189 +780,6 @@ module Google
       end
       
       # Extra GCF specific location information.
-      class GoogleCloudFunctionsV2LocationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The Cloud Function environments this location supports.
-        # Corresponds to the JSON property `environments`
-        # @return [Array<String>]
-        attr_accessor :environments
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @environments = args[:environments] if args.key?(:environments)
-        end
-      end
-      
-      # Represents the metadata of the long-running operation.
-      class GoogleCloudFunctionsV2OperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # API version used to start the operation.
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # Identifies whether the user has requested cancellation of the operation.
-        # Operations that have successfully been cancelled have google.longrunning.
-        # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
-        # Code.CANCELLED`.
-        # Corresponds to the JSON property `cancelRequested`
-        # @return [Boolean]
-        attr_accessor :cancel_requested
-        alias_method :cancel_requested?, :cancel_requested
-      
-        # The time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The time the operation finished running.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # The operation type.
-        # Corresponds to the JSON property `operationType`
-        # @return [String]
-        attr_accessor :operation_type
-      
-        # The original request that started the operation.
-        # Corresponds to the JSON property `requestResource`
-        # @return [Hash<String,Object>]
-        attr_accessor :request_resource
-      
-        # An identifier for Firebase function sources. Disclaimer: This field is only
-        # supported for Firebase function deployments.
-        # Corresponds to the JSON property `sourceToken`
-        # @return [String]
-        attr_accessor :source_token
-      
-        # Mechanism for reporting in-progress stages
-        # Corresponds to the JSON property `stages`
-        # @return [Array<Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2Stage>]
-        attr_accessor :stages
-      
-        # Human-readable status of the operation, if any.
-        # Corresponds to the JSON property `statusDetail`
-        # @return [String]
-        attr_accessor :status_detail
-      
-        # Server-defined resource path for the target of the operation.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # Name of the verb executed by the operation.
-        # Corresponds to the JSON property `verb`
-        # @return [String]
-        attr_accessor :verb
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
-          @request_resource = args[:request_resource] if args.key?(:request_resource)
-          @source_token = args[:source_token] if args.key?(:source_token)
-          @stages = args[:stages] if args.key?(:stages)
-          @status_detail = args[:status_detail] if args.key?(:status_detail)
-          @target = args[:target] if args.key?(:target)
-          @verb = args[:verb] if args.key?(:verb)
-        end
-      end
-      
-      # Each Stage of the deployment process
-      class GoogleCloudFunctionsV2Stage
-        include Google::Apis::Core::Hashable
-      
-        # Message describing the Stage
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # Name of the Stage. This will be unique for each Stage.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Resource of the Stage
-        # Corresponds to the JSON property `resource`
-        # @return [String]
-        attr_accessor :resource
-      
-        # Link to the current Stage resource
-        # Corresponds to the JSON property `resourceUri`
-        # @return [String]
-        attr_accessor :resource_uri
-      
-        # Current state of the Stage
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # State messages from the current Stage.
-        # Corresponds to the JSON property `stateMessages`
-        # @return [Array<Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2StateMessage>]
-        attr_accessor :state_messages
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @name = args[:name] if args.key?(:name)
-          @resource = args[:resource] if args.key?(:resource)
-          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
-          @state = args[:state] if args.key?(:state)
-          @state_messages = args[:state_messages] if args.key?(:state_messages)
-        end
-      end
-      
-      # Informational messages about the state of the Cloud Function or Operation.
-      class GoogleCloudFunctionsV2StateMessage
-        include Google::Apis::Core::Hashable
-      
-        # The message.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # Severity of the state message.
-        # Corresponds to the JSON property `severity`
-        # @return [String]
-        attr_accessor :severity
-      
-        # One-word CamelCase type of the state message.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @severity = args[:severity] if args.key?(:severity)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Extra GCF specific location information.
       class GoogleCloudFunctionsV2alphaLocationMetadata
         include Google::Apis::Core::Hashable
       
@@ -989,6 +806,11 @@ module Google
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
+      
+        # The build name of the function for create and update operations.
+        # Corresponds to the JSON property `buildName`
+        # @return [String]
+        attr_accessor :build_name
       
         # Identifies whether the user has requested cancellation of the operation.
         # Operations that have successfully been cancelled have google.longrunning.
@@ -1052,6 +874,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_version = args[:api_version] if args.key?(:api_version)
+          @build_name = args[:build_name] if args.key?(:build_name)
           @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -1116,189 +939,6 @@ module Google
       
       # Informational messages about the state of the Cloud Function or Operation.
       class GoogleCloudFunctionsV2alphaStateMessage
-        include Google::Apis::Core::Hashable
-      
-        # The message.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # Severity of the state message.
-        # Corresponds to the JSON property `severity`
-        # @return [String]
-        attr_accessor :severity
-      
-        # One-word CamelCase type of the state message.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @severity = args[:severity] if args.key?(:severity)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Extra GCF specific location information.
-      class GoogleCloudFunctionsV2betaLocationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The Cloud Function environments this location supports.
-        # Corresponds to the JSON property `environments`
-        # @return [Array<String>]
-        attr_accessor :environments
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @environments = args[:environments] if args.key?(:environments)
-        end
-      end
-      
-      # Represents the metadata of the long-running operation.
-      class GoogleCloudFunctionsV2betaOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # API version used to start the operation.
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # Identifies whether the user has requested cancellation of the operation.
-        # Operations that have successfully been cancelled have google.longrunning.
-        # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
-        # Code.CANCELLED`.
-        # Corresponds to the JSON property `cancelRequested`
-        # @return [Boolean]
-        attr_accessor :cancel_requested
-        alias_method :cancel_requested?, :cancel_requested
-      
-        # The time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The time the operation finished running.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # The operation type.
-        # Corresponds to the JSON property `operationType`
-        # @return [String]
-        attr_accessor :operation_type
-      
-        # The original request that started the operation.
-        # Corresponds to the JSON property `requestResource`
-        # @return [Hash<String,Object>]
-        attr_accessor :request_resource
-      
-        # An identifier for Firebase function sources. Disclaimer: This field is only
-        # supported for Firebase function deployments.
-        # Corresponds to the JSON property `sourceToken`
-        # @return [String]
-        attr_accessor :source_token
-      
-        # Mechanism for reporting in-progress stages
-        # Corresponds to the JSON property `stages`
-        # @return [Array<Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2betaStage>]
-        attr_accessor :stages
-      
-        # Human-readable status of the operation, if any.
-        # Corresponds to the JSON property `statusDetail`
-        # @return [String]
-        attr_accessor :status_detail
-      
-        # Server-defined resource path for the target of the operation.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # Name of the verb executed by the operation.
-        # Corresponds to the JSON property `verb`
-        # @return [String]
-        attr_accessor :verb
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
-          @request_resource = args[:request_resource] if args.key?(:request_resource)
-          @source_token = args[:source_token] if args.key?(:source_token)
-          @stages = args[:stages] if args.key?(:stages)
-          @status_detail = args[:status_detail] if args.key?(:status_detail)
-          @target = args[:target] if args.key?(:target)
-          @verb = args[:verb] if args.key?(:verb)
-        end
-      end
-      
-      # Each Stage of the deployment process
-      class GoogleCloudFunctionsV2betaStage
-        include Google::Apis::Core::Hashable
-      
-        # Message describing the Stage
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # Name of the Stage. This will be unique for each Stage.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Resource of the Stage
-        # Corresponds to the JSON property `resource`
-        # @return [String]
-        attr_accessor :resource
-      
-        # Link to the current Stage resource
-        # Corresponds to the JSON property `resourceUri`
-        # @return [String]
-        attr_accessor :resource_uri
-      
-        # Current state of the Stage
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # State messages from the current Stage.
-        # Corresponds to the JSON property `stateMessages`
-        # @return [Array<Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2betaStateMessage>]
-        attr_accessor :state_messages
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @name = args[:name] if args.key?(:name)
-          @resource = args[:resource] if args.key?(:resource)
-          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
-          @state = args[:state] if args.key?(:state)
-          @state_messages = args[:state_messages] if args.key?(:state_messages)
-        end
-      end
-      
-      # Informational messages about the state of the Cloud Function or Operation.
-      class GoogleCloudFunctionsV2betaStateMessage
         include Google::Apis::Core::Hashable
       
         # The message.
@@ -2405,7 +2045,8 @@ module Google
       end
       
       # Information related to: * A function's eligibility for 1st Gen to 2nd Gen
-      # migration * Current state of migration for function undergoing migration.
+      # migration and 2nd Gen to CRf detach. * Current state of migration for function
+      # undergoing migration/detach.
       class UpgradeInfo
         include Google::Apis::Core::Hashable
       
