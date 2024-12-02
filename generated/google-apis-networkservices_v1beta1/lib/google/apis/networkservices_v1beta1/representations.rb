@@ -22,19 +22,7 @@ module Google
   module Apis
     module NetworkservicesV1beta1
       
-      class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Binding
+      class AuthzExtension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -64,12 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Expr
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ExtensionChain
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +71,12 @@ module Google
       end
       
       class Gateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GatewayRouteView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,7 +280,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAuthzExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEndpointPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGatewayRouteViewsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMeshRouteViewsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListMeshesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,13 +376,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListWasmPluginVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWasmPluginsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Mesh
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MeshRouteView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -406,7 +436,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Policy
+      class RetryFilterPerRouteConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -431,12 +461,6 @@ module Google
       end
       
       class ServiceLbPolicyFailoverConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -478,18 +502,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TestIamPermissionsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestIamPermissionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TlsRoute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -526,30 +538,52 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuditConfig
+      class WasmPlugin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WasmPluginLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WasmPluginUsedBy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WasmPluginVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WasmPluginVersionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzExtension
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::NetworkservicesV1beta1::AuditLogConfig, decorator: Google::Apis::NetworkservicesV1beta1::AuditLogConfig::Representation
-      
+          property :authority, as: 'authority'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :fail_open, as: 'failOpen'
+          collection :forward_headers, as: 'forwardHeaders'
+          hash :labels, as: 'labels'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
           property :service, as: 'service'
-        end
-      end
-      
-      class AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
-        end
-      end
-      
-      class Binding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :condition, as: 'condition', class: Google::Apis::NetworkservicesV1beta1::Expr, decorator: Google::Apis::NetworkservicesV1beta1::Expr::Representation
-      
-          collection :members, as: 'members'
-          property :role, as: 'role'
+          property :timeout, as: 'timeout'
+          property :update_time, as: 'updateTime'
+          property :wire_format, as: 'wireFormat'
         end
       end
       
@@ -592,16 +626,6 @@ module Google
         end
       end
       
-      class Expr
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :expression, as: 'expression'
-          property :location, as: 'location'
-          property :title, as: 'title'
-        end
-      end
-      
       class ExtensionChain
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -619,6 +643,7 @@ module Google
           property :authority, as: 'authority'
           property :fail_open, as: 'failOpen'
           collection :forward_headers, as: 'forwardHeaders'
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :service, as: 'service'
           collection :supported_events, as: 'supportedEvents'
@@ -647,12 +672,24 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           collection :ports, as: 'ports'
+          property :routing_mode, as: 'routingMode'
           property :scope, as: 'scope'
           property :self_link, as: 'selfLink'
           property :server_tls_policy, as: 'serverTlsPolicy'
           property :subnetwork, as: 'subnetwork'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GatewayRouteView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :route_id, as: 'routeId'
+          property :route_location, as: 'routeLocation'
+          property :route_project_number, :numeric_string => true, as: 'routeProjectNumber'
+          property :route_type, as: 'routeType'
         end
       end
       
@@ -1029,10 +1066,29 @@ module Google
         end
       end
       
+      class ListAuthzExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authz_extensions, as: 'authzExtensions', class: Google::Apis::NetworkservicesV1beta1::AuthzExtension, decorator: Google::Apis::NetworkservicesV1beta1::AuthzExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListEndpointPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :endpoint_policies, as: 'endpointPolicies', class: Google::Apis::NetworkservicesV1beta1::EndpointPolicy, decorator: Google::Apis::NetworkservicesV1beta1::EndpointPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListGatewayRouteViewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gateway_route_views, as: 'gatewayRouteViews', class: Google::Apis::NetworkservicesV1beta1::GatewayRouteView, decorator: Google::Apis::NetworkservicesV1beta1::GatewayRouteView::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1095,6 +1151,15 @@ module Google
         end
       end
       
+      class ListMeshRouteViewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mesh_route_views, as: 'meshRouteViews', class: Google::Apis::NetworkservicesV1beta1::MeshRouteView, decorator: Google::Apis::NetworkservicesV1beta1::MeshRouteView::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListMeshesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1149,6 +1214,24 @@ module Google
         end
       end
       
+      class ListWasmPluginVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :wasm_plugin_versions, as: 'wasmPluginVersions', class: Google::Apis::NetworkservicesV1beta1::WasmPluginVersion, decorator: Google::Apis::NetworkservicesV1beta1::WasmPluginVersion::Representation
+      
+        end
+      end
+      
+      class ListWasmPluginsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :wasm_plugins, as: 'wasmPlugins', class: Google::Apis::NetworkservicesV1beta1::WasmPlugin, decorator: Google::Apis::NetworkservicesV1beta1::WasmPlugin::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1157,6 +1240,13 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class LoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_severity, as: 'logSeverity'
         end
       end
       
@@ -1171,6 +1261,17 @@ module Google
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MeshRouteView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :route_id, as: 'routeId'
+          property :route_location, as: 'routeLocation'
+          property :route_project_number, :numeric_string => true, as: 'routeProjectNumber'
+          property :route_type, as: 'routeType'
         end
       end
       
@@ -1216,15 +1317,10 @@ module Google
         end
       end
       
-      class Policy
+      class RetryFilterPerRouteConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::NetworkservicesV1beta1::AuditConfig, decorator: Google::Apis::NetworkservicesV1beta1::AuditConfig::Representation
-      
-          collection :bindings, as: 'bindings', class: Google::Apis::NetworkservicesV1beta1::Binding, decorator: Google::Apis::NetworkservicesV1beta1::Binding::Representation
-      
-          property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
+          property :crypto_key_name, as: 'cryptoKeyName'
         end
       end
       
@@ -1268,15 +1364,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failover_health_threshold, as: 'failoverHealthThreshold'
-        end
-      end
-      
-      class SetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy, as: 'policy', class: Google::Apis::NetworkservicesV1beta1::Policy, decorator: Google::Apis::NetworkservicesV1beta1::Policy::Representation
-      
-          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -1341,20 +1428,6 @@ module Google
         end
       end
       
-      class TestIamPermissionsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class TestIamPermissionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
       class TlsRoute
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1410,6 +1483,71 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ports, as: 'ports'
+        end
+      end
+      
+      class WasmPlugin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :log_config, as: 'logConfig', class: Google::Apis::NetworkservicesV1beta1::WasmPluginLogConfig, decorator: Google::Apis::NetworkservicesV1beta1::WasmPluginLogConfig::Representation
+      
+          property :main_version_id, as: 'mainVersionId'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+          collection :used_by, as: 'usedBy', class: Google::Apis::NetworkservicesV1beta1::WasmPluginUsedBy, decorator: Google::Apis::NetworkservicesV1beta1::WasmPluginUsedBy::Representation
+      
+          hash :versions, as: 'versions', class: Google::Apis::NetworkservicesV1beta1::WasmPluginVersionDetails, decorator: Google::Apis::NetworkservicesV1beta1::WasmPluginVersionDetails::Representation
+      
+        end
+      end
+      
+      class WasmPluginLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+          property :min_log_level, as: 'minLogLevel'
+          property :sample_rate, as: 'sampleRate'
+        end
+      end
+      
+      class WasmPluginUsedBy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class WasmPluginVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :image_digest, as: 'imageDigest'
+          property :image_uri, as: 'imageUri'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :plugin_config_data, :base64 => true, as: 'pluginConfigData'
+          property :plugin_config_digest, as: 'pluginConfigDigest'
+          property :plugin_config_uri, as: 'pluginConfigUri'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class WasmPluginVersionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :image_digest, as: 'imageDigest'
+          property :image_uri, as: 'imageUri'
+          hash :labels, as: 'labels'
+          property :plugin_config_data, :base64 => true, as: 'pluginConfigData'
+          property :plugin_config_digest, as: 'pluginConfigDigest'
+          property :plugin_config_uri, as: 'pluginConfigUri'
+          property :update_time, as: 'updateTime'
         end
       end
     end
