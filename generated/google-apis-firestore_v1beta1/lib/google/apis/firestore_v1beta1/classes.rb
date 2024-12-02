@@ -637,10 +637,7 @@ module Google
       # A Document has changed. May be the result of multiple writes, including
       # deletes, that ultimately resulted in a new value for the Document. Multiple
       # DocumentChange messages may be returned for the same logical change, if
-      # multiple targets are affected. For PipelineQueryTargets, `document` will be in
-      # the new pipeline format, For a Listen stream with both QueryTargets and
-      # PipelineQueryTargets present, if a document matches both types of queries,
-      # then a separate DocumentChange messages will be sent out one for each set.
+      # multiple targets are affected.
       class DocumentChange
         include Google::Apis::Core::Hashable
       
@@ -1112,6 +1109,22 @@ module Google
         # @return [String]
         attr_accessor :distance_measure
       
+        # Optional. Optional name of the field to output the result of the vector
+        # distance calculation. Must conform to document field name limitations.
+        # Corresponds to the JSON property `distanceResultField`
+        # @return [String]
+        attr_accessor :distance_result_field
+      
+        # Optional. Option to specify a threshold for which no less similar documents
+        # will be returned. The behavior of the specified `distance_measure` will affect
+        # the meaning of the distance threshold. Since DOT_PRODUCT distances increase
+        # when the vectors are more similar, the comparison is inverted. * For EUCLIDEAN,
+        # COSINE: WHERE distance <= distance_threshold * For DOT_PRODUCT: WHERE
+        # distance >= distance_threshold
+        # Corresponds to the JSON property `distanceThreshold`
+        # @return [Float]
+        attr_accessor :distance_threshold
+      
         # Required. The number of nearest neighbors to return. Must be a positive
         # integer of no more than 1000.
         # Corresponds to the JSON property `limit`
@@ -1135,6 +1148,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @distance_measure = args[:distance_measure] if args.key?(:distance_measure)
+          @distance_result_field = args[:distance_result_field] if args.key?(:distance_result_field)
+          @distance_threshold = args[:distance_threshold] if args.key?(:distance_threshold)
           @limit = args[:limit] if args.key?(:limit)
           @query_vector = args[:query_vector] if args.key?(:query_vector)
           @vector_field = args[:vector_field] if args.key?(:vector_field)
@@ -1146,7 +1161,7 @@ module Google
       class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata
         include Google::Apis::Core::Hashable
       
-        # The ids of the collection groups that are being deleted.
+        # The IDs of the collection groups that are being deleted.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
@@ -1157,7 +1172,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Which namespace ids are being deleted.
+        # Which namespace IDs are being deleted.
         # Corresponds to the JSON property `namespaceIds`
         # @return [Array<String>]
         attr_accessor :namespace_ids
@@ -1912,10 +1927,7 @@ module Google
         # A Document has changed. May be the result of multiple writes, including
         # deletes, that ultimately resulted in a new value for the Document. Multiple
         # DocumentChange messages may be returned for the same logical change, if
-        # multiple targets are affected. For PipelineQueryTargets, `document` will be in
-        # the new pipeline format, For a Listen stream with both QueryTargets and
-        # PipelineQueryTargets present, if a document matches both types of queries,
-        # then a separate DocumentChange messages will be sent out one for each set.
+        # multiple targets are affected.
         # Corresponds to the JSON property `documentChange`
         # @return [Google::Apis::FirestoreV1beta1::DocumentChange]
         attr_accessor :document_change
@@ -2052,7 +2064,8 @@ module Google
         attr_accessor :read_time
       
         # A Firestore query. The query stages are executed in the following order: 1.
-        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit
+        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
+        # find_nearest
         # Corresponds to the JSON property `structuredQuery`
         # @return [Google::Apis::FirestoreV1beta1::StructuredQuery]
         attr_accessor :structured_query
@@ -2190,7 +2203,8 @@ module Google
         attr_accessor :parent
       
         # A Firestore query. The query stages are executed in the following order: 1.
-        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit
+        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
+        # find_nearest
         # Corresponds to the JSON property `structuredQuery`
         # @return [Google::Apis::FirestoreV1beta1::StructuredQuery]
         attr_accessor :structured_query
@@ -2383,7 +2397,8 @@ module Google
         attr_accessor :read_time
       
         # A Firestore query. The query stages are executed in the following order: 1.
-        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit
+        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
+        # find_nearest
         # Corresponds to the JSON property `structuredQuery`
         # @return [Google::Apis::FirestoreV1beta1::StructuredQuery]
         attr_accessor :structured_query
@@ -2519,7 +2534,8 @@ module Google
         attr_accessor :aggregations
       
         # A Firestore query. The query stages are executed in the following order: 1.
-        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit
+        # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
+        # find_nearest
         # Corresponds to the JSON property `structuredQuery`
         # @return [Google::Apis::FirestoreV1beta1::StructuredQuery]
         attr_accessor :structured_query
@@ -2536,7 +2552,8 @@ module Google
       end
       
       # A Firestore query. The query stages are executed in the following order: 1.
-      # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit
+      # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
+      # find_nearest
       class StructuredQuery
         include Google::Apis::Core::Hashable
       
