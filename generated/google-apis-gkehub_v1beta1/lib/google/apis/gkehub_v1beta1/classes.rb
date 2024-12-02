@@ -146,6 +146,18 @@ module Google
         # @return [String]
         attr_accessor :oidc_jwks
       
+        # Optional. Output only. The identity provider for the scope-tenancy workload
+        # identity pool.
+        # Corresponds to the JSON property `scopeTenancyIdentityProvider`
+        # @return [String]
+        attr_accessor :scope_tenancy_identity_provider
+      
+        # Optional. Output only. The name of the scope-tenancy workload identity pool.
+        # This pool is set in the fleet-level feature.
+        # Corresponds to the JSON property `scopeTenancyWorkloadIdentityPool`
+        # @return [String]
+        attr_accessor :scope_tenancy_workload_identity_pool
+      
         # Output only. The name of the workload identity pool in which `issuer` will be
         # recognized. There is a single Workload Identity Pool per Hub that is shared
         # between all Memberships that belong to that Hub. For a Hub hosted in `
@@ -164,6 +176,8 @@ module Google
           @identity_provider = args[:identity_provider] if args.key?(:identity_provider)
           @issuer = args[:issuer] if args.key?(:issuer)
           @oidc_jwks = args[:oidc_jwks] if args.key?(:oidc_jwks)
+          @scope_tenancy_identity_provider = args[:scope_tenancy_identity_provider] if args.key?(:scope_tenancy_identity_provider)
+          @scope_tenancy_workload_identity_pool = args[:scope_tenancy_workload_identity_pool] if args.key?(:scope_tenancy_workload_identity_pool)
           @workload_identity_pool = args[:workload_identity_pool] if args.key?(:workload_identity_pool)
         end
       end
