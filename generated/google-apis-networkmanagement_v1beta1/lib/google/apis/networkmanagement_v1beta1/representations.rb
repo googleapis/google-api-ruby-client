@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListVpcFlowLogsConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LoadBalancerBackend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +286,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RedisClusterInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RedisInstanceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RerunConnectivityTestRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +359,12 @@ module Google
       end
       
       class VpcConnectorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpcFlowLogsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -447,7 +471,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :location, as: 'location'
-          property :service_name, as: 'serviceName'
           property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
         end
@@ -535,6 +558,7 @@ module Google
           property :cloud_sql_instance, as: 'cloudSqlInstance'
           property :forwarding_rule, as: 'forwardingRule'
           property :forwarding_rule_target, as: 'forwardingRuleTarget'
+          property :fqdn, as: 'fqdn'
           property :gke_master_cluster, as: 'gkeMasterCluster'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
@@ -544,6 +568,8 @@ module Google
           property :network_type, as: 'networkType'
           property :port, as: 'port'
           property :project_id, as: 'projectId'
+          property :redis_cluster, as: 'redisCluster'
+          property :redis_instance, as: 'redisInstance'
         end
       end
       
@@ -580,6 +606,7 @@ module Google
           property :firewall_rule_type, as: 'firewallRuleType'
           property :network_uri, as: 'networkUri'
           property :policy, as: 'policy'
+          property :policy_uri, as: 'policyUri'
           property :priority, as: 'priority'
           collection :target_service_accounts, as: 'targetServiceAccounts'
           collection :target_tags, as: 'targetTags'
@@ -618,6 +645,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_network_uri, as: 'clusterNetworkUri'
           property :cluster_uri, as: 'clusterUri'
+          property :dns_endpoint, as: 'dnsEndpoint'
           property :external_ip, as: 'externalIp'
           property :internal_ip, as: 'internalIp'
         end
@@ -640,6 +668,7 @@ module Google
           property :internal_ip, as: 'internalIp'
           collection :network_tags, as: 'networkTags'
           property :network_uri, as: 'networkUri'
+          property :psc_network_attachment_uri, as: 'pscNetworkAttachmentUri'
           property :service_account, as: 'serviceAccount'
           property :uri, as: 'uri'
         end
@@ -685,6 +714,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetworkmanagementV1beta1::Operation, decorator: Google::Apis::NetworkmanagementV1beta1::Operation::Representation
+      
+        end
+      end
+      
+      class ListVpcFlowLogsConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :vpc_flow_logs_configs, as: 'vpcFlowLogsConfigs', class: Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig, decorator: Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig::Representation
       
         end
       end
@@ -763,6 +802,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :matched_ip_range, as: 'matchedIpRange'
+          property :matched_subnet_uri, as: 'matchedSubnetUri'
+          property :region, as: 'region'
           property :uri, as: 'uri'
         end
       end
@@ -852,6 +893,30 @@ module Google
         end
       end
       
+      class RedisClusterInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discovery_endpoint_ip_address, as: 'discoveryEndpointIpAddress'
+          property :display_name, as: 'displayName'
+          property :location, as: 'location'
+          property :network_uri, as: 'networkUri'
+          property :secondary_endpoint_ip_address, as: 'secondaryEndpointIpAddress'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class RedisInstanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :network_uri, as: 'networkUri'
+          property :primary_endpoint_ip, as: 'primaryEndpointIp'
+          property :read_endpoint_ip, as: 'readEndpointIp'
+          property :region, as: 'region'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class RerunConnectivityTestRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -861,6 +926,8 @@ module Google
       class RouteInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertised_route_next_hop_uri, as: 'advertisedRouteNextHopUri'
+          property :advertised_route_source_router_uri, as: 'advertisedRouteSourceRouterUri'
           property :dest_ip_range, as: 'destIpRange'
           collection :dest_port_ranges, as: 'destPortRanges'
           property :display_name, as: 'displayName'
@@ -872,6 +939,7 @@ module Google
           property :next_hop_type, as: 'nextHopType'
           property :priority, as: 'priority'
           collection :protocols, as: 'protocols'
+          property :region, as: 'region'
           property :route_scope, as: 'routeScope'
           property :route_type, as: 'routeType'
           property :src_ip_range, as: 'srcIpRange'
@@ -949,6 +1017,10 @@ module Google
           property :project_id, as: 'projectId'
           property :proxy_connection, as: 'proxyConnection', class: Google::Apis::NetworkmanagementV1beta1::ProxyConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::ProxyConnectionInfo::Representation
       
+          property :redis_cluster, as: 'redisCluster', class: Google::Apis::NetworkmanagementV1beta1::RedisClusterInfo, decorator: Google::Apis::NetworkmanagementV1beta1::RedisClusterInfo::Representation
+      
+          property :redis_instance, as: 'redisInstance', class: Google::Apis::NetworkmanagementV1beta1::RedisInstanceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::RedisInstanceInfo::Representation
+      
           property :route, as: 'route', class: Google::Apis::NetworkmanagementV1beta1::RouteInfo, decorator: Google::Apis::NetworkmanagementV1beta1::RouteInfo::Representation
       
           property :serverless_neg, as: 'serverlessNeg', class: Google::Apis::NetworkmanagementV1beta1::ServerlessNegInfo, decorator: Google::Apis::NetworkmanagementV1beta1::ServerlessNegInfo::Representation
@@ -1003,6 +1075,26 @@ module Google
           property :display_name, as: 'displayName'
           property :location, as: 'location'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class VpcFlowLogsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_interval, as: 'aggregationInterval'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :filter_expr, as: 'filterExpr'
+          property :flow_sampling, as: 'flowSampling'
+          property :interconnect_attachment, as: 'interconnectAttachment'
+          hash :labels, as: 'labels'
+          property :metadata, as: 'metadata'
+          collection :metadata_fields, as: 'metadataFields'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :target_resource_state, as: 'targetResourceState'
+          property :update_time, as: 'updateTime'
+          property :vpn_tunnel, as: 'vpnTunnel'
         end
       end
       
