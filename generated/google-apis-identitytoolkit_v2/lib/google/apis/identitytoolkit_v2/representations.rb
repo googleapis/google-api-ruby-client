@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2RequestLogging
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1006,9 +1012,14 @@ module Google
           property :email_password_enforcement_state, as: 'emailPasswordEnforcementState'
           collection :managed_rules, as: 'managedRules', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule::Representation
       
+          property :phone_enforcement_state, as: 'phoneEnforcementState'
           collection :recaptcha_keys, as: 'recaptchaKeys', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaKey, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaKey::Representation
       
+          collection :toll_fraud_managed_rules, as: 'tollFraudManagedRules', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule::Representation
+      
           property :use_account_defender, as: 'useAccountDefender'
+          property :use_sms_bot_score, as: 'useSmsBotScore'
+          property :use_sms_toll_fraud_protection, as: 'useSmsTollFraudProtection'
         end
       end
       
@@ -1025,6 +1036,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           property :end_score, as: 'endScore'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :start_score, as: 'startScore'
         end
       end
       
@@ -1309,6 +1328,8 @@ module Google
           collection :recaptcha_enforcement_state, as: 'recaptchaEnforcementState', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState::Representation
       
           property :recaptcha_key, as: 'recaptchaKey'
+          property :use_sms_bot_score, as: 'useSmsBotScore'
+          property :use_sms_toll_fraud_protection, as: 'useSmsTollFraudProtection'
         end
       end
       
@@ -1365,11 +1386,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_retrieval_info, as: 'autoRetrievalInfo', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AutoRetrievalInfo, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitV2AutoRetrievalInfo::Representation
       
+          property :captcha_response, as: 'captchaResponse'
+          property :client_type, as: 'clientType'
           property :ios_receipt, as: 'iosReceipt'
           property :ios_secret, as: 'iosSecret'
           property :phone_number, as: 'phoneNumber'
           property :play_integrity_token, as: 'playIntegrityToken'
           property :recaptcha_token, as: 'recaptchaToken'
+          property :recaptcha_version, as: 'recaptchaVersion'
           property :safety_net_token, as: 'safetyNetToken'
         end
       end
