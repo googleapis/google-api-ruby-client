@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1CodeExecutionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1Content
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +71,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1CountTokensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1DynamicRetrievalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExecutableCode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,6 +148,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigAutoRoutingMode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -166,13 +202,73 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1LogprobsResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1LogprobsResultCandidate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1LogprobsResultTopCandidates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1Part
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfigFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfigHybridSearch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfigRanking
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1Retrieval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RetrievalMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -209,6 +305,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1Tool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ToolCodeExecution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -270,6 +372,7 @@ module Google
       class GoogleCloudAiplatformV1beta1Candidate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :avg_logprobs, as: 'avgLogprobs'
           property :citation_metadata, as: 'citationMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CitationMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CitationMetadata::Representation
       
           property :content, as: 'content', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content::Representation
@@ -279,6 +382,8 @@ module Google
           property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingMetadata::Representation
       
           property :index, as: 'index'
+          property :logprobs_result, as: 'logprobsResult', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResult, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResult::Representation
+      
           collection :safety_ratings, as: 'safetyRatings', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating::Representation
       
         end
@@ -305,6 +410,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1CodeExecutionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :outcome, as: 'outcome'
+          property :output, as: 'output'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1Content
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -318,6 +431,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :contents, as: 'contents', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content::Representation
+      
+          property :generation_config, as: 'generationConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfig::Representation
       
           collection :instances, as: 'instances'
           property :model, as: 'model'
@@ -333,6 +448,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :total_billable_characters, as: 'totalBillableCharacters'
           property :total_tokens, as: 'totalTokens'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1DynamicRetrievalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dynamic_threshold, as: 'dynamicThreshold'
+          property :mode, as: 'mode'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExecutableCode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :language, as: 'language'
         end
       end
       
@@ -388,6 +519,7 @@ module Google
       
           property :generation_config, as: 'generationConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfig::Representation
       
+          hash :labels, as: 'labels'
           collection :safety_settings, as: 'safetySettings', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetySetting, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetySetting::Representation
       
           property :system_instruction, as: 'systemInstruction', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content::Representation
@@ -404,6 +536,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :candidates, as: 'candidates', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Candidate, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Candidate::Representation
       
+          property :model_version, as: 'modelVersion'
           property :prompt_feedback, as: 'promptFeedback', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback::Representation
       
           property :usage_metadata, as: 'usageMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata::Representation
@@ -424,6 +557,7 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cached_content_token_count, as: 'cachedContentTokenCount'
           property :candidates_token_count, as: 'candidatesTokenCount'
           property :prompt_token_count, as: 'promptTokenCount'
           property :total_token_count, as: 'totalTokenCount'
@@ -433,13 +567,19 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_timestamp, as: 'audioTimestamp'
           property :candidate_count, as: 'candidateCount'
           property :frequency_penalty, as: 'frequencyPenalty'
+          property :logprobs, as: 'logprobs'
           property :max_output_tokens, as: 'maxOutputTokens'
           property :presence_penalty, as: 'presencePenalty'
+          property :response_logprobs, as: 'responseLogprobs'
           property :response_mime_type, as: 'responseMimeType'
           property :response_schema, as: 'responseSchema', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
+          property :routing_config, as: 'routingConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig::Representation
+      
+          property :seed, as: 'seed'
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
           property :top_k, as: 'topK'
@@ -447,9 +587,35 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_mode, as: 'autoMode', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigAutoRoutingMode, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigAutoRoutingMode::Representation
+      
+          property :manual_mode, as: 'manualMode', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigAutoRoutingMode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_routing_preference, as: 'modelRoutingPreference'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_name, as: 'modelName'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dynamic_retrieval_config, as: 'dynamicRetrievalConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1DynamicRetrievalConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1DynamicRetrievalConfig::Representation
+      
         end
       end
       
@@ -466,6 +632,7 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
           property :title, as: 'title'
           property :uri, as: 'uri'
         end
@@ -486,6 +653,8 @@ module Google
       
           collection :grounding_supports, as: 'groundingSupports', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingSupport, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingSupport::Representation
       
+          property :retrieval_metadata, as: 'retrievalMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RetrievalMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RetrievalMetadata::Representation
+      
           collection :retrieval_queries, as: 'retrievalQueries'
           property :search_entry_point, as: 'searchEntryPoint', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SearchEntryPoint, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SearchEntryPoint::Representation
       
@@ -503,9 +672,40 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1LogprobsResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :chosen_candidates, as: 'chosenCandidates', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResultCandidate, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResultCandidate::Representation
+      
+          collection :top_candidates, as: 'topCandidates', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResultTopCandidates, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResultTopCandidates::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1LogprobsResultCandidate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_probability, as: 'logProbability'
+          property :token, as: 'token'
+          property :token_id, as: 'tokenId'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1LogprobsResultTopCandidates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :candidates, as: 'candidates', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResultCandidate, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResultCandidate::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1Part
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_execution_result, as: 'codeExecutionResult', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CodeExecutionResult, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CodeExecutionResult::Representation
+      
+          property :executable_code, as: 'executableCode', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExecutableCode, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExecutableCode::Representation
+      
           property :file_data, as: 'fileData', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FileData, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FileData::Representation
       
           property :function_call, as: 'functionCall', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCall, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCall::Representation
@@ -520,6 +720,59 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfigFilter, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfigFilter::Representation
+      
+          property :hybrid_search, as: 'hybridSearch', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfigHybridSearch, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfigHybridSearch::Representation
+      
+          property :ranking, as: 'ranking', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfigRanking, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfigRanking::Representation
+      
+          property :top_k, as: 'topK'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfigFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata_filter, as: 'metadataFilter'
+          property :vector_distance_threshold, as: 'vectorDistanceThreshold'
+          property :vector_similarity_threshold, as: 'vectorSimilarityThreshold'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfigHybridSearch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alpha, as: 'alpha'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfigRanking
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :llm_ranker, as: 'llmRanker', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker::Representation
+      
+          property :rank_service, as: 'rankService', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_name, as: 'modelName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_name, as: 'modelName'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1Retrieval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -528,6 +781,13 @@ module Google
       
           property :vertex_rag_store, as: 'vertexRagStore', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStore, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStore::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RetrievalMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_search_dynamic_retrieval_score, as: 'googleSearchDynamicRetrievalScore'
         end
       end
       
@@ -555,6 +815,8 @@ module Google
       class GoogleCloudAiplatformV1beta1Schema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :any_of, as: 'anyOf', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
+      
           property :default, as: 'default'
           property :description, as: 'description'
           collection :enum, as: 'enum'
@@ -574,6 +836,7 @@ module Google
           property :pattern, as: 'pattern'
           hash :properties, as: 'properties', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
+          collection :property_ordering, as: 'propertyOrdering'
           collection :required, as: 'required'
           property :title, as: 'title'
           property :type, as: 'type'
@@ -601,12 +864,20 @@ module Google
       class GoogleCloudAiplatformV1beta1Tool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_execution, as: 'codeExecution', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution::Representation
+      
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration::Representation
       
           property :google_search_retrieval, as: 'googleSearchRetrieval', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval::Representation
       
           property :retrieval, as: 'retrieval', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Retrieval, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Retrieval::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ToolCodeExecution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -630,6 +901,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :rag_corpora, as: 'ragCorpora'
           collection :rag_resources, as: 'ragResources', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStoreRagResource, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VertexRagStoreRagResource::Representation
+      
+          property :rag_retrieval_config, as: 'ragRetrievalConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RagRetrievalConfig::Representation
       
           property :similarity_top_k, as: 'similarityTopK'
           property :vector_distance_threshold, as: 'vectorDistanceThreshold'
