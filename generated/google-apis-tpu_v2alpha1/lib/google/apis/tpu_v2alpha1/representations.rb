@@ -244,6 +244,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerformMaintenanceQueuedResourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerformMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProvisioningData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +377,12 @@ module Google
       end
       
       class Tpu
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpcomingMaintenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -624,6 +642,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :node_count, as: 'nodeCount'
           property :node_id_prefix, as: 'nodeIdPrefix'
+          property :workload_type, as: 'workloadType'
         end
       end
       
@@ -672,6 +691,8 @@ module Google
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::TpuV2alpha1::NetworkConfig, decorator: Google::Apis::TpuV2alpha1::NetworkConfig::Representation
       
+          collection :network_configs, as: 'networkConfigs', class: Google::Apis::TpuV2alpha1::NetworkConfig, decorator: Google::Apis::TpuV2alpha1::NetworkConfig::Representation
+      
           collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::TpuV2alpha1::NetworkEndpoint, decorator: Google::Apis::TpuV2alpha1::NetworkEndpoint::Representation
       
           property :queued_resource, as: 'queuedResource'
@@ -686,6 +707,8 @@ module Google
           collection :symptoms, as: 'symptoms', class: Google::Apis::TpuV2alpha1::Symptom, decorator: Google::Apis::TpuV2alpha1::Symptom::Representation
       
           collection :tags, as: 'tags'
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::TpuV2alpha1::UpcomingMaintenance, decorator: Google::Apis::TpuV2alpha1::UpcomingMaintenance::Representation
+      
         end
       end
       
@@ -723,6 +746,19 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PerformMaintenanceQueuedResourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_names, as: 'nodeNames'
+        end
+      end
+      
+      class PerformMaintenanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -918,6 +954,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :node_spec, as: 'nodeSpec', class: Google::Apis::TpuV2alpha1::NodeSpec, decorator: Google::Apis::TpuV2alpha1::NodeSpec::Representation
       
+        end
+      end
+      
+      class UpcomingMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_reschedule, as: 'canReschedule'
+          property :latest_window_start_time, as: 'latestWindowStartTime'
+          property :maintenance_status, as: 'maintenanceStatus'
+          property :type, as: 'type'
+          property :window_end_time, as: 'windowEndTime'
+          property :window_start_time, as: 'windowStartTime'
         end
       end
       
