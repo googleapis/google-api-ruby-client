@@ -84,9 +84,14 @@ module Google
         
         # Deletes the specified account regardless of its type: standalone, MCA or sub-
         # account. Deleting an MCA leads to the deletion of all of its sub-accounts.
-        # Executing this method requires admin access.
+        # Executing this method requires admin access. The deletion succeeds only if the
+        # account does not provide services to any other account and has no processed
+        # offers. You can use the `force` parameter to override this.
         # @param [String] name
         #   Required. The name of the account to delete. Format: `accounts/`account``
+        # @param [Boolean] force
+        #   Optional. If set to `true`, the account is deleted even if it provides
+        #   services to other accounts or has processed offers.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -104,11 +109,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_account(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_account(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'accounts/v1beta/{+name}', options)
           command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Empty::Representation
           command.response_class = Google::Apis::MerchantapiAccountsV1beta::Empty
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -149,7 +155,8 @@ module Google
         # Lists accounts accessible to the calling user and matching the constraints of
         # the request such as page size or filters. This is not just listing the sub-
         # accounts of an MCA, but all accounts the calling user has access to including
-        # other MCAs, linked accounts, standalone accounts and so on.
+        # other MCAs, linked accounts, standalone accounts and so on. If no filter is
+        # provided, then it returns accounts the user is directly added to.
         # @param [String] filter
         #   Optional. Returns only accounts that match the [filter](/merchant/api/guides/
         #   accounts/filter). For more details, see the [filter syntax reference](/
@@ -196,7 +203,7 @@ module Google
         # the same results as calling `ListsAccounts` with the following filter: `
         # relationship(providerId=`parent` AND service(type="ACCOUNT_AGGREGATION"))`
         # @param [String] provider
-        #   Required. The parent account. Format: `accounts/`account``
+        #   Required. The aggregation service provider. Format: `providers/`providerId``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of accounts to return. The service may return
         #   fewer than this value. If unspecified, at most 250 accounts are returned. The
@@ -240,7 +247,9 @@ module Google
         #   Identifier. The resource name of the account. Format: `accounts/`account``
         # @param [Google::Apis::MerchantapiAccountsV1beta::Account] account_object
         # @param [String] update_mask
-        #   Required. List of fields being updated.
+        #   Optional. List of fields being updated. The following fields are supported (in
+        #   both `snake_case` and `lowerCamelCase`): - `account_name` - `adult_content` - `
+        #   language_code` - `time_zone`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -271,9 +280,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the tax rules that match the conditions of GetAccountTaxRequest
+        # Retrieves the autofeed settings of an account.
         # @param [String] name
-        #   Required. The name from which tax settings will be retrieved
+        #   Required. The resource name of the autofeed settings. Format: `accounts/`
+        #   account`/autofeedSettings`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -283,70 +293,31 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AccountTax] parsed result object
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AutofeedSettings] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountTax]
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AutofeedSettings]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_accounttax(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_account_autofeed_setting_autofeed_settings(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AccountTax::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AccountTax
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AutofeedSettings::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AutofeedSettings
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the tax settings of the sub-accounts only in your Merchant Center
-        # account. This method can only be called on a multi-client account, otherwise
-        # it'll return an error.
-        # @param [String] parent
-        #   Required. The parent, which owns this collection of account tax. Format:
-        #   accounts/`account`
-        # @param [Fixnum] page_size
-        #   The maximum number of tax settings to return in the response, used for paging.
-        # @param [String] page_token
-        #   The token returned by the previous request.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::ListAccountTaxResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::ListAccountTaxResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_accounttaxes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'accounts/v1beta/{+parent}/accounttax', options)
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::ListAccountTaxResponse::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::ListAccountTaxResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the tax settings of the account.
+        # Updates the autofeed settings of an account.
         # @param [String] name
-        #   Identifier. The name of the tax setting. Format: "`account_tax.name=accounts/`
-        #   account``"
-        # @param [Google::Apis::MerchantapiAccountsV1beta::AccountTax] account_tax_object
+        #   Identifier. The resource name of the autofeed settings. Format: `accounts/`
+        #   account`/autofeedSettings`.
+        # @param [Google::Apis::MerchantapiAccountsV1beta::AutofeedSettings] autofeed_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated
+        #   Required. List of fields being updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -356,20 +327,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AccountTax] parsed result object
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::AutofeedSettings] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountTax]
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AutofeedSettings]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account_accounttax(name, account_tax_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_account_autofeed_setting_autofeed_settings(name, autofeed_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
-          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::AccountTax::Representation
-          command.request_object = account_tax_object
-          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AccountTax::Representation
-          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AccountTax
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::AutofeedSettings::Representation
+          command.request_object = autofeed_settings_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::AutofeedSettings::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::AutofeedSettings
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -415,7 +386,9 @@ module Google
         #   account`/businessIdentity`
         # @param [Google::Apis::MerchantapiAccountsV1beta::BusinessIdentity] business_identity_object
         # @param [String] update_mask
-        #   Required. List of fields being updated.
+        #   Optional. List of fields being updated. The following fields are supported (in
+        #   both `snake_case` and `lowerCamelCase`): - `black_owned` - `latino_owned` - `
+        #   promotions_consent` - `small_business` - `veteran_owned` - `women_owned`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -484,7 +457,9 @@ module Google
         #   /businessInfo`
         # @param [Google::Apis::MerchantapiAccountsV1beta::BusinessInfo] business_info_object
         # @param [String] update_mask
-        #   Required. List of fields being updated.
+        #   Optional. List of fields being updated. The following fields are supported (in
+        #   both `snake_case` and `lowerCamelCase`): - `address` - `customer_service` - `
+        #   korean_business_registration_number`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -515,9 +490,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the email preferences for a Merchant Center account user. Use the name=
-        # accounts/*/users/me/emailPreferences alias to get preferences for the
-        # authenticated user.
+        # Returns the email preferences for a Merchant Center account user. This service
+        # only permits retrieving and updating email preferences for the authenticated
+        # user. Use the name=accounts/*/users/me/emailPreferences alias to get
+        # preferences for the authenticated user.
         # @param [String] name
         #   Required. The name of the `EmailPreferences` resource. Format: `accounts/`
         #   account`/users/`email`/emailPreferences`
@@ -538,7 +514,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_emailpreference_email_preferences(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_account_email_preference_email_preferences(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'accounts/v1beta/{+name}', options)
           command.response_representation = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences::Representation
           command.response_class = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences
@@ -559,7 +535,8 @@ module Google
         #   for the authenticated user.
         # @param [Google::Apis::MerchantapiAccountsV1beta::EmailPreferences] email_preferences_object
         # @param [String] update_mask
-        #   Required. List of fields being updated.
+        #   Required. List of fields being updated. The following fields are supported (in
+        #   both `snake_case` and `lowerCamelCase`): - `news_and_tips`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -577,7 +554,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_emailpreference_email_preferences(name, email_preferences_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_account_email_preference_email_preferences(name, email_preferences_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'accounts/v1beta/{+name}', options)
           command.request_representation = Google::Apis::MerchantapiAccountsV1beta::EmailPreferences::Representation
           command.request_object = email_preferences_object
@@ -703,7 +680,8 @@ module Google
         #   account`/homepage`
         # @param [Google::Apis::MerchantapiAccountsV1beta::Homepage] homepage_object
         # @param [String] update_mask
-        #   Required. List of fields being updated.
+        #   Optional. List of fields being updated. The following fields are supported (in
+        #   both `snake_case` and `lowerCamelCase`): - `uri`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -751,10 +729,10 @@ module Google
         #   Provide this to retrieve the subsequent page. When paginating, all other
         #   parameters provided to `ListAccountIssues` must match the call that provided
         #   the page token.
-        # @param [String] time_zone_id
-        #   IANA Time Zone Database time zone, e.g. "America/New_York".
-        # @param [String] time_zone_version
-        #   Optional. IANA Time Zone Database version number, e.g. "2019a".
+        # @param [String] time_zone
+        #   Optional. The [IANA](https://www.iana.org/time-zones) timezone used to
+        #   localize times in human-readable fields. For example 'America/Los_Angeles'. If
+        #   not set, 'America/Los_Angeles' will be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -772,7 +750,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_issues(parent, language_code: nil, page_size: nil, page_token: nil, time_zone_id: nil, time_zone_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_account_issues(parent, language_code: nil, page_size: nil, page_token: nil, time_zone: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'accounts/v1beta/{+parent}/issues', options)
           command.response_representation = Google::Apis::MerchantapiAccountsV1beta::ListAccountIssuesResponse::Representation
           command.response_class = Google::Apis::MerchantapiAccountsV1beta::ListAccountIssuesResponse
@@ -780,14 +758,13 @@ module Google
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['timeZone.id'] = time_zone_id unless time_zone_id.nil?
-          command.query['timeZone.version'] = time_zone_version unless time_zone_version.nil?
+          command.query['timeZone'] = time_zone unless time_zone.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an existing return policy.
+        # Gets an existing return policy for a given merchant.
         # @param [String] name
         #   Required. The name of the return policy to retrieve. Format: `accounts/`
         #   account`/onlineReturnPolicies/`return_policy``
@@ -818,7 +795,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all existing return policies.
+        # Lists all existing return policies for a given merchant.
         # @param [String] parent
         #   Required. The merchant account for which to list return policies. Format: `
         #   accounts/`account``
@@ -1352,7 +1329,8 @@ module Google
         end
         
         # Deletes a Merchant Center account user. Executing this method requires admin
-        # access.
+        # access. The user to be deleted can't be the last admin user of that account.
+        # Also a user is protected from deletion if it is managed by Business Manager"
         # @param [String] name
         #   Required. The name of the user to delete. Format: `accounts/`account`/users/`
         #   email`` It is also possible to delete the user corresponding to the caller by
@@ -1465,7 +1443,8 @@ module Google
         #   account`/users/me`.
         # @param [Google::Apis::MerchantapiAccountsV1beta::User] user_object
         # @param [String] update_mask
-        #   Required. List of fields being updated.
+        #   Optional. List of fields being updated. The following fields are supported (in
+        #   both `snake_case` and `lowerCamelCase`): - `access_rights`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1569,11 +1548,11 @@ module Google
         # Retrieves the latest version of the `TermsOfService` for a given `kind` and `
         # region_code`.
         # @param [String] kind
-        #   The Kind this terms of service version applies to.
+        #   Required. The Kind this terms of service version applies to.
         # @param [String] region_code
-        #   Region code as defined by [CLDR](https://cldr.unicode.org/). This is either a
-        #   country when the ToS applies specifically to that country or 001 when it
-        #   applies globally.
+        #   Required. Region code as defined by [CLDR](https://cldr.unicode.org/). This is
+        #   either a country when the ToS applies specifically to that country or 001 when
+        #   it applies globally.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
