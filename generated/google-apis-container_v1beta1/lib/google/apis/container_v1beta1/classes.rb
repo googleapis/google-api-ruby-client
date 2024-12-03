@@ -112,6 +112,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::MaxPodsConstraint]
         attr_accessor :max_pods_per_node
       
+        # The name of the network attachment for pods to communicate to; cannot be
+        # specified along with subnetwork or secondary_pod_range.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
         # The name of the secondary range on the subnet which provides IP address for
         # this pod range.
         # Corresponds to the JSON property `secondaryPodRange`
@@ -130,6 +136,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_pods_per_node = args[:max_pods_per_node] if args.key?(:max_pods_per_node)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @secondary_pod_range = args[:secondary_pod_range] if args.key?(:secondary_pod_range)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
@@ -236,6 +243,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NetworkPolicyConfig]
         attr_accessor :network_policy_config
       
+        # Configuration for the Cloud Storage Parallelstore CSI driver.
+        # Corresponds to the JSON property `parallelstoreCsiDriverConfig`
+        # @return [Google::Apis::ContainerV1beta1::ParallelstoreCsiDriverConfig]
+        attr_accessor :parallelstore_csi_driver_config
+      
         # Configuration options for the Ray Operator add-on.
         # Corresponds to the JSON property `rayOperatorConfig`
         # @return [Google::Apis::ContainerV1beta1::RayOperatorConfig]
@@ -265,6 +277,7 @@ module Google
           @kalm_config = args[:kalm_config] if args.key?(:kalm_config)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
+          @parallelstore_csi_driver_config = args[:parallelstore_csi_driver_config] if args.key?(:parallelstore_csi_driver_config)
           @ray_operator_config = args[:ray_operator_config] if args.key?(:ray_operator_config)
           @stateful_ha_config = args[:stateful_ha_config] if args.key?(:stateful_ha_config)
         end
@@ -357,6 +370,26 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @security_group = args[:security_group] if args.key?(:security_group)
+        end
+      end
+      
+      # AutoMonitoringConfig defines the configuration for GKE Workload Auto-
+      # Monitoring.
+      class AutoMonitoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Scope for GKE Workload Auto-Monitoring.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
         end
       end
       
@@ -1059,6 +1092,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ConfidentialNodes]
         attr_accessor :confidential_nodes
       
+        # Configuration for all of the cluster's control plane endpoints.
+        # Corresponds to the JSON property `controlPlaneEndpointsConfig`
+        # @return [Google::Apis::ContainerV1beta1::ControlPlaneEndpointsConfig]
+        attr_accessor :control_plane_endpoints_config
+      
         # Configuration for fine-grained cost management feature.
         # Corresponds to the JSON property `costManagementConfig`
         # @return [Google::Apis::ContainerV1beta1::CostManagementConfig]
@@ -1374,6 +1412,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ParentProductConfig]
         attr_accessor :parent_product_config
       
+        # PodAutoscaling is used for configuration of parameters for workload
+        # autoscaling.
+        # Corresponds to the JSON property `podAutoscaling`
+        # @return [Google::Apis::ContainerV1beta1::PodAutoscaling]
+        attr_accessor :pod_autoscaling
+      
         # Configuration for the PodSecurityPolicy feature.
         # Corresponds to the JSON property `podSecurityPolicyConfig`
         # @return [Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig]
@@ -1398,6 +1442,12 @@ module Google
         # Corresponds to the JSON property `protectConfig`
         # @return [Google::Apis::ContainerV1beta1::ProtectConfig]
         attr_accessor :protect_config
+      
+        # RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings
+        # that can be created.
+        # Corresponds to the JSON property `rbacBindingConfig`
+        # @return [Google::Apis::ContainerV1beta1::RbacBindingConfig]
+        attr_accessor :rbac_binding_config
       
         # ReleaseChannel indicates which release channel a cluster is subscribed to.
         # Release channels are arranged in order of risk. When a cluster is subscribed
@@ -1489,6 +1539,12 @@ module Google
         # @return [String]
         attr_accessor :tpu_ipv4_cidr_block
       
+        # UserManagedKeysConfig holds the resource address to Keys which are used for
+        # signing certs and token that are used for communication within cluster.
+        # Corresponds to the JSON property `userManagedKeysConfig`
+        # @return [Google::Apis::ContainerV1beta1::UserManagedKeysConfig]
+        attr_accessor :user_managed_keys_config
+      
         # VerticalPodAutoscaling contains global, per-cluster information required by
         # Vertical Pod Autoscaler to automatically adjust the resources of pods
         # controlled by it.
@@ -1534,6 +1590,7 @@ module Google
           @compliance_posture_config = args[:compliance_posture_config] if args.key?(:compliance_posture_config)
           @conditions = args[:conditions] if args.key?(:conditions)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
+          @control_plane_endpoints_config = args[:control_plane_endpoints_config] if args.key?(:control_plane_endpoints_config)
           @cost_management_config = args[:cost_management_config] if args.key?(:cost_management_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
@@ -1581,10 +1638,12 @@ module Google
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @parent_product_config = args[:parent_product_config] if args.key?(:parent_product_config)
+          @pod_autoscaling = args[:pod_autoscaling] if args.key?(:pod_autoscaling)
           @pod_security_policy_config = args[:pod_security_policy_config] if args.key?(:pod_security_policy_config)
           @private_cluster = args[:private_cluster] if args.key?(:private_cluster)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @protect_config = args[:protect_config] if args.key?(:protect_config)
+          @rbac_binding_config = args[:rbac_binding_config] if args.key?(:rbac_binding_config)
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
@@ -1600,6 +1659,7 @@ module Google
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @tpu_config = args[:tpu_config] if args.key?(:tpu_config)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
+          @user_managed_keys_config = args[:user_managed_keys_config] if args.key?(:user_managed_keys_config)
           @vertical_pod_autoscaling = args[:vertical_pod_autoscaling] if args.key?(:vertical_pod_autoscaling)
           @workload_alts_config = args[:workload_alts_config] if args.key?(:workload_alts_config)
           @workload_certificates = args[:workload_certificates] if args.key?(:workload_certificates)
@@ -1740,10 +1800,21 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ClusterTelemetry]
         attr_accessor :desired_cluster_telemetry
       
+        # CompliancePostureConfig defines the settings needed to enable/disable features
+        # for the Compliance Posture.
+        # Corresponds to the JSON property `desiredCompliancePostureConfig`
+        # @return [Google::Apis::ContainerV1beta1::CompliancePostureConfig]
+        attr_accessor :desired_compliance_posture_config
+      
         # ContainerdConfig contains configuration to customize containerd.
         # Corresponds to the JSON property `desiredContainerdConfig`
         # @return [Google::Apis::ContainerV1beta1::ContainerdConfig]
         attr_accessor :desired_containerd_config
+      
+        # Configuration for all of the cluster's control plane endpoints.
+        # Corresponds to the JSON property `desiredControlPlaneEndpointsConfig`
+        # @return [Google::Apis::ContainerV1beta1::ControlPlaneEndpointsConfig]
+        attr_accessor :desired_control_plane_endpoints_config
       
         # Configuration for fine-grained cost management feature.
         # Corresponds to the JSON property `desiredCostManagementConfig`
@@ -1759,6 +1830,13 @@ module Google
         # Corresponds to the JSON property `desiredDatapathProvider`
         # @return [String]
         attr_accessor :desired_datapath_provider
+      
+        # Override the default setting of whether future created nodes have private IP
+        # addresses only, namely NetworkConfig.default_enable_private_nodes
+        # Corresponds to the JSON property `desiredDefaultEnablePrivateNodes`
+        # @return [Boolean]
+        attr_accessor :desired_default_enable_private_nodes
+        alias_method :desired_default_enable_private_nodes?, :desired_default_enable_private_nodes
       
         # DefaultSnatStatus contains the desired state of whether default sNAT should be
         # disabled on the cluster.
@@ -1789,11 +1867,20 @@ module Google
         attr_accessor :desired_enable_multi_networking
         alias_method :desired_enable_multi_networking?, :desired_enable_multi_networking
       
-        # Enable/Disable private endpoint for the cluster's master.
+        # Enable/Disable private endpoint for the cluster's master. Deprecated: Use
+        # desired_control_plane_endpoints_config.ip_endpoints_config.
+        # enable_public_endpoint instead. Note that the value of enable_public_endpoint
+        # is reversed: if enable_private_endpoint is false, then enable_public_endpoint
+        # will be true.
         # Corresponds to the JSON property `desiredEnablePrivateEndpoint`
         # @return [Boolean]
         attr_accessor :desired_enable_private_endpoint
         alias_method :desired_enable_private_endpoint?, :desired_enable_private_endpoint
+      
+        # DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
+        # Corresponds to the JSON property `desiredEnterpriseConfig`
+        # @return [Google::Apis::ContainerV1beta1::DesiredEnterpriseConfig]
+        attr_accessor :desired_enterprise_config
       
         # Fleet is the fleet configuration for the cluster.
         # Corresponds to the JSON property `desiredFleet`
@@ -1936,6 +2023,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodeKubeletConfig]
         attr_accessor :desired_node_pool_auto_config_kubelet_config
       
+        # Parameters that can be configured on Linux nodes.
+        # Corresponds to the JSON property `desiredNodePoolAutoConfigLinuxNodeConfig`
+        # @return [Google::Apis::ContainerV1beta1::LinuxNodeConfig]
+        attr_accessor :desired_node_pool_auto_config_linux_node_config
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
         # docs/reference/rest/v1/NodeConfig)).
@@ -1994,6 +2086,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ParentProductConfig]
         attr_accessor :desired_parent_product_config
       
+        # PodAutoscaling is used for configuration of parameters for workload
+        # autoscaling.
+        # Corresponds to the JSON property `desiredPodAutoscaling`
+        # @return [Google::Apis::ContainerV1beta1::PodAutoscaling]
+        attr_accessor :desired_pod_autoscaling
+      
         # Configuration for the PodSecurityPolicy feature.
         # Corresponds to the JSON property `desiredPodSecurityPolicyConfig`
         # @return [Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig]
@@ -2014,6 +2112,12 @@ module Google
         # Corresponds to the JSON property `desiredProtectConfig`
         # @return [Google::Apis::ContainerV1beta1::ProtectConfig]
         attr_accessor :desired_protect_config
+      
+        # RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings
+        # that can be created.
+        # Corresponds to the JSON property `desiredRbacBindingConfig`
+        # @return [Google::Apis::ContainerV1beta1::RbacBindingConfig]
+        attr_accessor :desired_rbac_binding_config
       
         # ReleaseChannel indicates which release channel a cluster is subscribed to.
         # Release channels are arranged in order of risk. When a cluster is subscribed
@@ -2106,6 +2210,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AdditionalPodRangesConfig]
         attr_accessor :removed_additional_pod_ranges_config
       
+        # UserManagedKeysConfig holds the resource address to Keys which are used for
+        # signing certs and token that are used for communication within cluster.
+        # Corresponds to the JSON property `userManagedKeysConfig`
+        # @return [Google::Apis::ContainerV1beta1::UserManagedKeysConfig]
+        attr_accessor :user_managed_keys_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2119,16 +2229,20 @@ module Google
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_cluster_telemetry = args[:desired_cluster_telemetry] if args.key?(:desired_cluster_telemetry)
+          @desired_compliance_posture_config = args[:desired_compliance_posture_config] if args.key?(:desired_compliance_posture_config)
           @desired_containerd_config = args[:desired_containerd_config] if args.key?(:desired_containerd_config)
+          @desired_control_plane_endpoints_config = args[:desired_control_plane_endpoints_config] if args.key?(:desired_control_plane_endpoints_config)
           @desired_cost_management_config = args[:desired_cost_management_config] if args.key?(:desired_cost_management_config)
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
+          @desired_default_enable_private_nodes = args[:desired_default_enable_private_nodes] if args.key?(:desired_default_enable_private_nodes)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
           @desired_enable_cilium_clusterwide_network_policy = args[:desired_enable_cilium_clusterwide_network_policy] if args.key?(:desired_enable_cilium_clusterwide_network_policy)
           @desired_enable_fqdn_network_policy = args[:desired_enable_fqdn_network_policy] if args.key?(:desired_enable_fqdn_network_policy)
           @desired_enable_multi_networking = args[:desired_enable_multi_networking] if args.key?(:desired_enable_multi_networking)
           @desired_enable_private_endpoint = args[:desired_enable_private_endpoint] if args.key?(:desired_enable_private_endpoint)
+          @desired_enterprise_config = args[:desired_enterprise_config] if args.key?(:desired_enterprise_config)
           @desired_fleet = args[:desired_fleet] if args.key?(:desired_fleet)
           @desired_gateway_api_config = args[:desired_gateway_api_config] if args.key?(:desired_gateway_api_config)
           @desired_gcfs_config = args[:desired_gcfs_config] if args.key?(:desired_gcfs_config)
@@ -2151,6 +2265,7 @@ module Google
           @desired_network_performance_config = args[:desired_network_performance_config] if args.key?(:desired_network_performance_config)
           @desired_node_kubelet_config = args[:desired_node_kubelet_config] if args.key?(:desired_node_kubelet_config)
           @desired_node_pool_auto_config_kubelet_config = args[:desired_node_pool_auto_config_kubelet_config] if args.key?(:desired_node_pool_auto_config_kubelet_config)
+          @desired_node_pool_auto_config_linux_node_config = args[:desired_node_pool_auto_config_linux_node_config] if args.key?(:desired_node_pool_auto_config_linux_node_config)
           @desired_node_pool_auto_config_network_tags = args[:desired_node_pool_auto_config_network_tags] if args.key?(:desired_node_pool_auto_config_network_tags)
           @desired_node_pool_auto_config_resource_manager_tags = args[:desired_node_pool_auto_config_resource_manager_tags] if args.key?(:desired_node_pool_auto_config_resource_manager_tags)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
@@ -2159,10 +2274,12 @@ module Google
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
           @desired_notification_config = args[:desired_notification_config] if args.key?(:desired_notification_config)
           @desired_parent_product_config = args[:desired_parent_product_config] if args.key?(:desired_parent_product_config)
+          @desired_pod_autoscaling = args[:desired_pod_autoscaling] if args.key?(:desired_pod_autoscaling)
           @desired_pod_security_policy_config = args[:desired_pod_security_policy_config] if args.key?(:desired_pod_security_policy_config)
           @desired_private_cluster_config = args[:desired_private_cluster_config] if args.key?(:desired_private_cluster_config)
           @desired_private_ipv6_google_access = args[:desired_private_ipv6_google_access] if args.key?(:desired_private_ipv6_google_access)
           @desired_protect_config = args[:desired_protect_config] if args.key?(:desired_protect_config)
+          @desired_rbac_binding_config = args[:desired_rbac_binding_config] if args.key?(:desired_rbac_binding_config)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_secret_manager_config = args[:desired_secret_manager_config] if args.key?(:desired_secret_manager_config)
@@ -2179,6 +2296,62 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @removed_additional_pod_ranges_config = args[:removed_additional_pod_ranges_config] if args.key?(:removed_additional_pod_ranges_config)
+          @user_managed_keys_config = args[:user_managed_keys_config] if args.key?(:user_managed_keys_config)
+        end
+      end
+      
+      # ClusterUpgradeInfo contains the upgrade information of a cluster.
+      class ClusterUpgradeInfo
+        include Google::Apis::Core::Hashable
+      
+        # The auto upgrade status.
+        # Corresponds to the JSON property `autoUpgradeStatus`
+        # @return [Array<String>]
+        attr_accessor :auto_upgrade_status
+      
+        # The cluster's current minor version's end of extended support timestamp.
+        # Corresponds to the JSON property `endOfExtendedSupportTimestamp`
+        # @return [String]
+        attr_accessor :end_of_extended_support_timestamp
+      
+        # The cluster's current minor version's end of standard support timestamp.
+        # Corresponds to the JSON property `endOfStandardSupportTimestamp`
+        # @return [String]
+        attr_accessor :end_of_standard_support_timestamp
+      
+        # minor_target_version indicates the target version for minor upgrade.
+        # Corresponds to the JSON property `minorTargetVersion`
+        # @return [String]
+        attr_accessor :minor_target_version
+      
+        # patch_target_version indicates the target version for patch upgrade.
+        # Corresponds to the JSON property `patchTargetVersion`
+        # @return [String]
+        attr_accessor :patch_target_version
+      
+        # The auto upgrade paused reason.
+        # Corresponds to the JSON property `pausedReason`
+        # @return [Array<String>]
+        attr_accessor :paused_reason
+      
+        # The list of past auto upgrades.
+        # Corresponds to the JSON property `upgradeDetails`
+        # @return [Array<Google::Apis::ContainerV1beta1::UpgradeDetails>]
+        attr_accessor :upgrade_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_upgrade_status = args[:auto_upgrade_status] if args.key?(:auto_upgrade_status)
+          @end_of_extended_support_timestamp = args[:end_of_extended_support_timestamp] if args.key?(:end_of_extended_support_timestamp)
+          @end_of_standard_support_timestamp = args[:end_of_standard_support_timestamp] if args.key?(:end_of_standard_support_timestamp)
+          @minor_target_version = args[:minor_target_version] if args.key?(:minor_target_version)
+          @patch_target_version = args[:patch_target_version] if args.key?(:patch_target_version)
+          @paused_reason = args[:paused_reason] if args.key?(:paused_reason)
+          @upgrade_details = args[:upgrade_details] if args.key?(:upgrade_details)
         end
       end
       
@@ -2366,6 +2539,31 @@ module Google
         end
       end
       
+      # Configuration for all of the cluster's control plane endpoints.
+      class ControlPlaneEndpointsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Describes the configuration of a DNS endpoint.
+        # Corresponds to the JSON property `dnsEndpointConfig`
+        # @return [Google::Apis::ContainerV1beta1::DnsEndpointConfig]
+        attr_accessor :dns_endpoint_config
+      
+        # IP endpoints configuration.
+        # Corresponds to the JSON property `ipEndpointsConfig`
+        # @return [Google::Apis::ContainerV1beta1::IpEndpointsConfig]
+        attr_accessor :ip_endpoints_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_endpoint_config = args[:dns_endpoint_config] if args.key?(:dns_endpoint_config)
+          @ip_endpoints_config = args[:ip_endpoints_config] if args.key?(:ip_endpoints_config)
+        end
+      end
+      
       # Configuration for fine-grained cost management feature.
       class CostManagementConfig
         include Google::Apis::Core::Hashable
@@ -2519,6 +2717,36 @@ module Google
         end
       end
       
+      # Describes the configuration of a DNS endpoint.
+      class DnsEndpointConfig
+        include Google::Apis::Core::Hashable
+      
+        # Controls whether user traffic is allowed over this endpoint. Note that GCP-
+        # managed services may still use the endpoint even if this is false.
+        # Corresponds to the JSON property `allowExternalTraffic`
+        # @return [Boolean]
+        attr_accessor :allow_external_traffic
+        alias_method :allow_external_traffic?, :allow_external_traffic
+      
+        # Output only. The cluster's DNS endpoint configuration. A DNS format address.
+        # This is accessible from the public internet. Ex: uid.us-central1.gke.goog.
+        # Always present, but the behavior may change according to the value of
+        # DNSEndpointConfig.allow_external_traffic.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_external_traffic = args[:allow_external_traffic] if args.key?(:allow_external_traffic)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+        end
+      end
+      
       # Time window specified for daily maintenance operations.
       class DailyMaintenanceWindow
         include Google::Apis::Core::Hashable
@@ -2653,6 +2881,25 @@ module Google
         end
       end
       
+      # DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
+      class DesiredEnterpriseConfig
+        include Google::Apis::Core::Hashable
+      
+        # desired_tier specifies the desired tier of the cluster.
+        # Corresponds to the JSON property `desiredTier`
+        # @return [String]
+        attr_accessor :desired_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @desired_tier = args[:desired_tier] if args.key?(:desired_tier)
+        end
+      end
+      
       # Configuration for NodeLocal DNSCache
       class DnsCacheConfig
         include Google::Apis::Core::Hashable
@@ -2693,10 +2940,15 @@ module Google
       class EnterpriseConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. cluster_tier specifies the premium tier of the cluster.
+        # Output only. cluster_tier indicates the effective tier of the cluster.
         # Corresponds to the JSON property `clusterTier`
         # @return [String]
         attr_accessor :cluster_tier
+      
+        # desired_tier specifies the desired tier of the cluster.
+        # Corresponds to the JSON property `desiredTier`
+        # @return [String]
+        attr_accessor :desired_tier
       
         def initialize(**args)
            update!(**args)
@@ -2705,6 +2957,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_tier = args[:cluster_tier] if args.key?(:cluster_tier)
+          @desired_tier = args[:desired_tier] if args.key?(:desired_tier)
         end
       end
       
@@ -3465,6 +3718,76 @@ module Google
         end
       end
       
+      # IP endpoints configuration.
+      class IpEndpointsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration options for the master authorized networks feature. Enabled
+        # master authorized networks will disallow all external traffic to access
+        # Kubernetes master through HTTPS except traffic from the given CIDR blocks,
+        # Google Compute Engine Public IPs and Google Prod IPs.
+        # Corresponds to the JSON property `authorizedNetworksConfig`
+        # @return [Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig]
+        attr_accessor :authorized_networks_config
+      
+        # Controls whether the control plane allows access through a public IP. It is
+        # invalid to specify both PrivateClusterConfig.enablePrivateEndpoint and this
+        # field at the same time.
+        # Corresponds to the JSON property `enablePublicEndpoint`
+        # @return [Boolean]
+        attr_accessor :enable_public_endpoint
+        alias_method :enable_public_endpoint?, :enable_public_endpoint
+      
+        # Controls whether to allow direct IP access.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Controls whether the control plane's private endpoint is accessible from
+        # sources in other regions. It is invalid to specify both
+        # PrivateClusterMasterGlobalAccessConfig.enabled and this field at the same time.
+        # Corresponds to the JSON property `globalAccess`
+        # @return [Boolean]
+        attr_accessor :global_access
+        alias_method :global_access?, :global_access
+      
+        # Output only. The internal IP address of this cluster's control plane. Only
+        # populated if enabled.
+        # Corresponds to the JSON property `privateEndpoint`
+        # @return [String]
+        attr_accessor :private_endpoint
+      
+        # Subnet to provision the master's private endpoint during cluster creation.
+        # Specified in projects/*/regions/*/subnetworks/* format. It is invalid to
+        # specify both PrivateClusterConfig.privateEndpointSubnetwork and this field at
+        # the same time.
+        # Corresponds to the JSON property `privateEndpointSubnetwork`
+        # @return [String]
+        attr_accessor :private_endpoint_subnetwork
+      
+        # Output only. The external IP address of this cluster's control plane. Only
+        # populated if enabled.
+        # Corresponds to the JSON property `publicEndpoint`
+        # @return [String]
+        attr_accessor :public_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_networks_config = args[:authorized_networks_config] if args.key?(:authorized_networks_config)
+          @enable_public_endpoint = args[:enable_public_endpoint] if args.key?(:enable_public_endpoint)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @global_access = args[:global_access] if args.key?(:global_access)
+          @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
+          @private_endpoint_subnetwork = args[:private_endpoint_subnetwork] if args.key?(:private_endpoint_subnetwork)
+          @public_endpoint = args[:public_endpoint] if args.key?(:public_endpoint)
+        end
+      end
+      
       # IdentityServiceConfig is configuration for Identity Service which allows
       # customers to use external identity providers with the K8S API
       class IdentityServiceConfig
@@ -3700,7 +4023,7 @@ module Google
         # the nodes. The following parameters are supported. net.core.busy_poll net.core.
         # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default
         # net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.
-        # ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+        # ipv4.tcp_wmem net.ipv4.tcp_tw_reuse kernel.shmmni kernel.shmmax kernel.shmall
         # Corresponds to the JSON property `sysctls`
         # @return [Hash<String,String>]
         attr_accessor :sysctls
@@ -4052,6 +4375,12 @@ module Google
       class ManagedPrometheusConfig
         include Google::Apis::Core::Hashable
       
+        # AutoMonitoringConfig defines the configuration for GKE Workload Auto-
+        # Monitoring.
+        # Corresponds to the JSON property `autoMonitoringConfig`
+        # @return [Google::Apis::ContainerV1beta1::AutoMonitoringConfig]
+        attr_accessor :auto_monitoring_config
+      
         # Enable Managed Collection.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
@@ -4064,6 +4393,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_monitoring_config = args[:auto_monitoring_config] if args.key?(:auto_monitoring_config)
           @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
@@ -4087,7 +4417,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Base64-encoded public certificate used by clients to authenticate
-        # to the cluster endpoint.
+        # to the cluster endpoint. Issued only if client_certificate_config is set.
         # Corresponds to the JSON property `clientCertificate`
         # @return [String]
         attr_accessor :client_certificate
@@ -4171,6 +4501,12 @@ module Google
         attr_accessor :gcp_public_cidrs_access_enabled
         alias_method :gcp_public_cidrs_access_enabled?, :gcp_public_cidrs_access_enabled
       
+        # Whether master authorized networks is enforced on private endpoint or not.
+        # Corresponds to the JSON property `privateEndpointEnforcementEnabled`
+        # @return [Boolean]
+        attr_accessor :private_endpoint_enforcement_enabled
+        alias_method :private_endpoint_enforcement_enabled?, :private_endpoint_enforcement_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4180,6 +4516,7 @@ module Google
           @cidr_blocks = args[:cidr_blocks] if args.key?(:cidr_blocks)
           @enabled = args[:enabled] if args.key?(:enabled)
           @gcp_public_cidrs_access_enabled = args[:gcp_public_cidrs_access_enabled] if args.key?(:gcp_public_cidrs_access_enabled)
+          @private_endpoint_enforcement_enabled = args[:private_endpoint_enforcement_enabled] if args.key?(:private_endpoint_enforcement_enabled)
         end
       end
       
@@ -4326,6 +4663,15 @@ module Google
         # @return [String]
         attr_accessor :datapath_provider
       
+        # Controls whether by default nodes have private IP addresses only. It is
+        # invalid to specify both PrivateClusterConfig.enablePrivateNodes and this field
+        # at the same time. To update the default setting, use ClusterUpdate.
+        # desired_default_enable_private_nodes
+        # Corresponds to the JSON property `defaultEnablePrivateNodes`
+        # @return [Boolean]
+        attr_accessor :default_enable_private_nodes
+        alias_method :default_enable_private_nodes?, :default_enable_private_nodes
+      
         # DefaultSnatStatus contains the desired state of whether default sNAT should be
         # disabled on the cluster.
         # Corresponds to the JSON property `defaultSnatStatus`
@@ -4415,6 +4761,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
+          @default_enable_private_nodes = args[:default_enable_private_nodes] if args.key?(:default_enable_private_nodes)
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
           @dns_config = args[:dns_config] if args.key?(:dns_config)
           @enable_cilium_clusterwide_network_policy = args[:enable_cilium_clusterwide_network_policy] if args.key?(:enable_cilium_clusterwide_network_policy)
@@ -4610,6 +4957,14 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Output only. effective_cgroup_mode is the cgroup mode actually used by the
+        # node pool. It is determined by the cgroup mode specified in the
+        # LinuxNodeConfig or the default cgroup mode based on the cluster creation
+        # version.
+        # Corresponds to the JSON property `effectiveCgroupMode`
+        # @return [String]
+        attr_accessor :effective_cgroup_mode
+      
         # Optional. Reserved for future use.
         # Corresponds to the JSON property `enableConfidentialStorage`
         # @return [Boolean]
@@ -4690,6 +5045,12 @@ module Google
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
         attr_accessor :local_ssd_count
+      
+        # Specifies which method should be used for encrypting the Local SSDs attahced
+        # to the node.
+        # Corresponds to the JSON property `localSsdEncryptionMode`
+        # @return [String]
+        attr_accessor :local_ssd_encryption_mode
       
         # NodePoolLoggingConfig specifies logging configuration for nodepools.
         # Corresponds to the JSON property `loggingConfig`
@@ -4822,6 +5183,11 @@ module Google
         attr_accessor :spot
         alias_method :spot?, :spot
       
+        # List of Storage Pools where boot disks are provisioned.
+        # Corresponds to the JSON property `storagePools`
+        # @return [Array<String>]
+        attr_accessor :storage_pools
+      
         # The list of instance tags applied to all nodes. Tags are used to identify
         # valid sources or targets for network firewalls and are specified by the client
         # during cluster or node pool creation. Each tag within the list must comply
@@ -4863,6 +5229,7 @@ module Google
           @containerd_config = args[:containerd_config] if args.key?(:containerd_config)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @effective_cgroup_mode = args[:effective_cgroup_mode] if args.key?(:effective_cgroup_mode)
           @enable_confidential_storage = args[:enable_confidential_storage] if args.key?(:enable_confidential_storage)
           @ephemeral_storage_config = args[:ephemeral_storage_config] if args.key?(:ephemeral_storage_config)
           @ephemeral_storage_local_ssd_config = args[:ephemeral_storage_local_ssd_config] if args.key?(:ephemeral_storage_local_ssd_config)
@@ -4876,6 +5243,7 @@ module Google
           @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @local_nvme_ssd_block_config = args[:local_nvme_ssd_block_config] if args.key?(:local_nvme_ssd_block_config)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
+          @local_ssd_encryption_mode = args[:local_ssd_encryption_mode] if args.key?(:local_ssd_encryption_mode)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -4893,6 +5261,7 @@ module Google
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @sole_tenant_config = args[:sole_tenant_config] if args.key?(:sole_tenant_config)
           @spot = args[:spot] if args.key?(:spot)
+          @storage_pools = args[:storage_pools] if args.key?(:storage_pools)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @windows_node_config = args[:windows_node_config] if args.key?(:windows_node_config)
@@ -5089,8 +5458,8 @@ module Google
         alias_method :create_pod_range?, :create_pod_range
       
         # Whether nodes have internal IP addresses only. If enable_private_nodes is not
-        # specified, then the value is derived from cluster.privateClusterConfig.
-        # enablePrivateNodes
+        # specified, then the value is derived from Cluster.NetworkConfig.
+        # default_enable_private_nodes
         # Corresponds to the JSON property `enablePrivateNodes`
         # @return [Boolean]
         attr_accessor :enable_private_nodes
@@ -5351,6 +5720,11 @@ module Google
       class NodePoolAutoConfig
         include Google::Apis::Core::Hashable
       
+        # Parameters that can be configured on Linux nodes.
+        # Corresponds to the JSON property `linuxNodeConfig`
+        # @return [Google::Apis::ContainerV1beta1::LinuxNodeConfig]
+        attr_accessor :linux_node_config
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
         # docs/reference/rest/v1/NodeConfig)).
@@ -5378,6 +5752,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @node_kubelet_config = args[:node_kubelet_config] if args.key?(:node_kubelet_config)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
@@ -5406,19 +5781,19 @@ module Google
         # @return [String]
         attr_accessor :location_policy
       
-        # Maximum number of nodes for one location in the NodePool. Must be >=
+        # Maximum number of nodes for one location in the node pool. Must be >=
         # min_node_count. There has to be enough quota to scale up the cluster.
         # Corresponds to the JSON property `maxNodeCount`
         # @return [Fixnum]
         attr_accessor :max_node_count
       
-        # Minimum number of nodes for one location in the NodePool. Must be >= 1 and <=
-        # max_node_count.
+        # Minimum number of nodes for one location in the node pool. Must be greater
+        # than or equal to 0 and less than or equal to max_node_count.
         # Corresponds to the JSON property `minNodeCount`
         # @return [Fixnum]
         attr_accessor :min_node_count
       
-        # Maximum number of nodes in the node pool. Must be greater than
+        # Maximum number of nodes in the node pool. Must be greater than or equal to
         # total_min_node_count. There has to be enough quota to scale up the cluster.
         # The total_*_node_count fields are mutually exclusive with the *_node_count
         # fields.
@@ -5426,9 +5801,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_max_node_count
       
-        # Minimum number of nodes in the node pool. Must be greater than 1 less than
-        # total_max_node_count. The total_*_node_count fields are mutually exclusive
-        # with the *_node_count fields.
+        # Minimum number of nodes in the node pool. Must be greater than or equal to 0
+        # and less than or equal to total_max_node_count. The total_*_node_count fields
+        # are mutually exclusive with the *_node_count fields.
         # Corresponds to the JSON property `totalMinNodeCount`
         # @return [Fixnum]
         attr_accessor :total_min_node_count
@@ -5484,6 +5859,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @variant_config = args[:variant_config] if args.key?(:variant_config)
+        end
+      end
+      
+      # NodePoolUpgradeInfo contains the upgrade information of a nodepool.
+      class NodePoolUpgradeInfo
+        include Google::Apis::Core::Hashable
+      
+        # The auto upgrade status.
+        # Corresponds to the JSON property `autoUpgradeStatus`
+        # @return [Array<String>]
+        attr_accessor :auto_upgrade_status
+      
+        # The nodepool's current minor version's end of extended support timestamp.
+        # Corresponds to the JSON property `endOfExtendedSupportTimestamp`
+        # @return [String]
+        attr_accessor :end_of_extended_support_timestamp
+      
+        # The nodepool's current minor version's end of standard support timestamp.
+        # Corresponds to the JSON property `endOfStandardSupportTimestamp`
+        # @return [String]
+        attr_accessor :end_of_standard_support_timestamp
+      
+        # minor_target_version indicates the target version for minor upgrade.
+        # Corresponds to the JSON property `minorTargetVersion`
+        # @return [String]
+        attr_accessor :minor_target_version
+      
+        # patch_target_version indicates the target version for patch upgrade.
+        # Corresponds to the JSON property `patchTargetVersion`
+        # @return [String]
+        attr_accessor :patch_target_version
+      
+        # The auto upgrade paused reason.
+        # Corresponds to the JSON property `pausedReason`
+        # @return [Array<String>]
+        attr_accessor :paused_reason
+      
+        # The list of past auto upgrades.
+        # Corresponds to the JSON property `upgradeDetails`
+        # @return [Array<Google::Apis::ContainerV1beta1::UpgradeDetails>]
+        attr_accessor :upgrade_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_upgrade_status = args[:auto_upgrade_status] if args.key?(:auto_upgrade_status)
+          @end_of_extended_support_timestamp = args[:end_of_extended_support_timestamp] if args.key?(:end_of_extended_support_timestamp)
+          @end_of_standard_support_timestamp = args[:end_of_standard_support_timestamp] if args.key?(:end_of_standard_support_timestamp)
+          @minor_target_version = args[:minor_target_version] if args.key?(:minor_target_version)
+          @patch_target_version = args[:patch_target_version] if args.key?(:patch_target_version)
+          @paused_reason = args[:paused_reason] if args.key?(:paused_reason)
+          @upgrade_details = args[:upgrade_details] if args.key?(:upgrade_details)
         end
       end
       
@@ -5797,6 +6227,26 @@ module Google
         end
       end
       
+      # Configuration for the Cloud Storage Parallelstore CSI driver.
+      class ParallelstoreCsiDriverConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Cloud Storage Parallelstore CSI driver is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # ParentProductConfig is the configuration of the parent product of the cluster.
       # This field is used by Google internal products that are built on top of a GKE
       # cluster and take the ownership of the cluster.
@@ -5855,6 +6305,26 @@ module Google
           @policy_name = args[:policy_name] if args.key?(:policy_name)
           @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # PodAutoscaling is used for configuration of parameters for workload
+      # autoscaling.
+      class PodAutoscaling
+        include Google::Apis::Core::Hashable
+      
+        # Selected Horizontal Pod Autoscaling profile.
+        # Corresponds to the JSON property `hpaProfile`
+        # @return [String]
+        attr_accessor :hpa_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hpa_profile = args[:hpa_profile] if args.key?(:hpa_profile)
         end
       end
       
@@ -5925,7 +6395,10 @@ module Google
       class PrivateClusterConfig
         include Google::Apis::Core::Hashable
       
-        # Whether the master's internal IP address is used as the cluster endpoint.
+        # Whether the master's internal IP address is used as the cluster endpoint. Use
+        # ControlPlaneEndpointsConfig.IPEndpointsConfig.enable_public_endpoint instead.
+        # Note that the value of enable_public_endpoint is reversed: if
+        # enable_private_endpoint is false, then enable_public_endpoint will be true.
         # Corresponds to the JSON property `enablePrivateEndpoint`
         # @return [Boolean]
         attr_accessor :enable_private_endpoint
@@ -5933,7 +6406,7 @@ module Google
       
         # Whether nodes have internal IP addresses only. If enabled, all nodes are given
         # only RFC 1918 private addresses and communicate with the master via private
-        # networking.
+        # networking. Deprecated: Use NetworkConfig.default_enable_private_nodes instead.
         # Corresponds to the JSON property `enablePrivateNodes`
         # @return [Boolean]
         attr_accessor :enable_private_nodes
@@ -5958,17 +6431,23 @@ module Google
         attr_accessor :peering_name
       
         # Output only. The internal IP address of this cluster's master endpoint.
+        # Deprecated: Use ControlPlaneEndpointsConfig.IPEndpointsConfig.private_endpoint
+        # instead.
         # Corresponds to the JSON property `privateEndpoint`
         # @return [String]
         attr_accessor :private_endpoint
       
         # Subnet to provision the master's private endpoint during cluster creation.
-        # Specified in projects/*/regions/*/subnetworks/* format.
+        # Specified in projects/*/regions/*/subnetworks/* format. Deprecated: Use
+        # ControlPlaneEndpointsConfig.IPEndpointsConfig.private_endpoint_subnetwork
+        # instead.
         # Corresponds to the JSON property `privateEndpointSubnetwork`
         # @return [String]
         attr_accessor :private_endpoint_subnetwork
       
         # Output only. The external IP address of this cluster's master endpoint.
+        # Deprecated: Use ControlPlaneEndpointsConfig.IPEndpointsConfig.public_endpoint
+        # instead.
         # Corresponds to the JSON property `publicEndpoint`
         # @return [String]
         attr_accessor :public_endpoint
@@ -6118,6 +6597,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings
+      # that can be created.
+      class RbacBindingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Setting this to true will allow any ClusterRoleBinding and RoleBinding with
+        # subjects system:authenticated.
+        # Corresponds to the JSON property `enableInsecureBindingSystemAuthenticated`
+        # @return [Boolean]
+        attr_accessor :enable_insecure_binding_system_authenticated
+        alias_method :enable_insecure_binding_system_authenticated?, :enable_insecure_binding_system_authenticated
+      
+        # Setting this to true will allow any ClusterRoleBinding and RoleBinding with
+        # subjets system:anonymous or system:unauthenticated.
+        # Corresponds to the JSON property `enableInsecureBindingSystemUnauthenticated`
+        # @return [Boolean]
+        attr_accessor :enable_insecure_binding_system_unauthenticated
+        alias_method :enable_insecure_binding_system_unauthenticated?, :enable_insecure_binding_system_unauthenticated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_insecure_binding_system_authenticated = args[:enable_insecure_binding_system_authenticated] if args.key?(:enable_insecure_binding_system_authenticated)
+          @enable_insecure_binding_system_unauthenticated = args[:enable_insecure_binding_system_unauthenticated] if args.key?(:enable_insecure_binding_system_unauthenticated)
         end
       end
       
@@ -6299,6 +6808,11 @@ module Google
         # @return [String]
         attr_accessor :default_version
       
+        # The auto upgrade target version for clusters on the channel.
+        # Corresponds to the JSON property `upgradeTargetVersion`
+        # @return [String]
+        attr_accessor :upgrade_target_version
+      
         # List of valid versions for the channel.
         # Corresponds to the JSON property `validVersions`
         # @return [Array<String>]
@@ -6313,6 +6827,7 @@ module Google
           @available_versions = args[:available_versions] if args.key?(:available_versions)
           @channel = args[:channel] if args.key?(:channel)
           @default_version = args[:default_version] if args.key?(:default_version)
+          @upgrade_target_version = args[:upgrade_target_version] if args.key?(:upgrade_target_version)
           @valid_versions = args[:valid_versions] if args.key?(:valid_versions)
         end
       end
@@ -6591,7 +7106,7 @@ module Google
       class SecretManagerConfig
         include Google::Apis::Core::Hashable
       
-        # Whether the cluster is configured to use secret manager CSI component.
+        # Enable/Disable Secret Manager Config.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -8043,6 +8558,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ResourceManagerTags]
         attr_accessor :resource_manager_tags
       
+        # List of Storage Pools where boot disks are provisioned. Existing Storage Pools
+        # will be replaced with storage-pools.
+        # Corresponds to the JSON property `storagePools`
+        # @return [Array<String>]
+        attr_accessor :storage_pools
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
         # docs/reference/rest/v1/NodeConfig)).
@@ -8142,6 +8663,7 @@ module Google
           @queued_provisioning = args[:queued_provisioning] if args.key?(:queued_provisioning)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+          @storage_pools = args[:storage_pools] if args.key?(:storage_pools)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
@@ -8199,6 +8721,50 @@ module Google
         end
       end
       
+      # UpgradeDetails contains detailed information of each individual upgrade
+      # operation.
+      class UpgradeDetails
+        include Google::Apis::Core::Hashable
+      
+        # The end timestamp of the upgrade.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The version before the upgrade.
+        # Corresponds to the JSON property `initialVersion`
+        # @return [String]
+        attr_accessor :initial_version
+      
+        # The start timestamp of the upgrade.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The state of the upgrade.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The version after the upgrade.
+        # Corresponds to the JSON property `targetVersion`
+        # @return [String]
+        attr_accessor :target_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @initial_version = args[:initial_version] if args.key?(:initial_version)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @target_version = args[:target_version] if args.key?(:target_version)
+        end
+      end
+      
       # UpgradeEvent is a notification sent to customers by the cluster server when a
       # resource is upgrading.
       class UpgradeEvent
@@ -8246,6 +8812,75 @@ module Google
           @operation_start_time = args[:operation_start_time] if args.key?(:operation_start_time)
           @resource = args[:resource] if args.key?(:resource)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @target_version = args[:target_version] if args.key?(:target_version)
+        end
+      end
+      
+      # UpgradeInfoEvent is a notification sent to customers about the upgrade
+      # information of a resource.
+      class UpgradeInfoEvent
+        include Google::Apis::Core::Hashable
+      
+        # The current version before the upgrade.
+        # Corresponds to the JSON property `currentVersion`
+        # @return [String]
+        attr_accessor :current_version
+      
+        # A brief description of the event.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The time when the operation ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The operation associated with this upgrade.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # Optional relative path to the resource. For example in node pool upgrades, the
+        # relative path of the node pool.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # The resource type associated with the upgrade.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # The time when the operation was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The state of the upgrade.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The target version for the upgrade.
+        # Corresponds to the JSON property `targetVersion`
+        # @return [String]
+        attr_accessor :target_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_version = args[:current_version] if args.key?(:current_version)
+          @description = args[:description] if args.key?(:description)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @operation = args[:operation] if args.key?(:operation)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
           @target_version = args[:target_version] if args.key?(:target_version)
         end
       end
@@ -8396,6 +9031,78 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @range_name = args[:range_name] if args.key?(:range_name)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # UserManagedKeysConfig holds the resource address to Keys which are used for
+      # signing certs and token that are used for communication within cluster.
+      class UserManagedKeysConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Certificate Authority Service caPool to use for the aggregation CA in this
+        # cluster.
+        # Corresponds to the JSON property `aggregationCa`
+        # @return [String]
+        attr_accessor :aggregation_ca
+      
+        # The Certificate Authority Service caPool to use for the cluster CA in this
+        # cluster.
+        # Corresponds to the JSON property `clusterCa`
+        # @return [String]
+        attr_accessor :cluster_ca
+      
+        # The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane
+        # nodes.
+        # Corresponds to the JSON property `controlPlaneDiskEncryptionKey`
+        # @return [String]
+        attr_accessor :control_plane_disk_encryption_key
+      
+        # Resource path of the Certificate Authority Service caPool to use for the etcd
+        # API CA in this cluster.
+        # Corresponds to the JSON property `etcdApiCa`
+        # @return [String]
+        attr_accessor :etcd_api_ca
+      
+        # Resource path of the Certificate Authority Service caPool to use for the etcd
+        # peer CA in this cluster.
+        # Corresponds to the JSON property `etcdPeerCa`
+        # @return [String]
+        attr_accessor :etcd_peer_ca
+      
+        # Resource path of the Cloud KMS cryptoKey to use for encryption of internal
+        # etcd backups.
+        # Corresponds to the JSON property `gkeopsEtcdBackupEncryptionKey`
+        # @return [String]
+        attr_accessor :gkeops_etcd_backup_encryption_key
+      
+        # The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued
+        # by this cluster. Format: `projects/`project`/locations/`location`/keyRings/`
+        # keyring`/cryptoKeys/`cryptoKey`/cryptoKeyVersions/`cryptoKeyVersion``
+        # Corresponds to the JSON property `serviceAccountSigningKeys`
+        # @return [Array<String>]
+        attr_accessor :service_account_signing_keys
+      
+        # The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs
+        # issued by this cluster. Format: `projects/`project`/locations/`location`/
+        # keyRings/`keyring`/cryptoKeys/`cryptoKey`/cryptoKeyVersions/`cryptoKeyVersion``
+        # Corresponds to the JSON property `serviceAccountVerificationKeys`
+        # @return [Array<String>]
+        attr_accessor :service_account_verification_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_ca = args[:aggregation_ca] if args.key?(:aggregation_ca)
+          @cluster_ca = args[:cluster_ca] if args.key?(:cluster_ca)
+          @control_plane_disk_encryption_key = args[:control_plane_disk_encryption_key] if args.key?(:control_plane_disk_encryption_key)
+          @etcd_api_ca = args[:etcd_api_ca] if args.key?(:etcd_api_ca)
+          @etcd_peer_ca = args[:etcd_peer_ca] if args.key?(:etcd_peer_ca)
+          @gkeops_etcd_backup_encryption_key = args[:gkeops_etcd_backup_encryption_key] if args.key?(:gkeops_etcd_backup_encryption_key)
+          @service_account_signing_keys = args[:service_account_signing_keys] if args.key?(:service_account_signing_keys)
+          @service_account_verification_keys = args[:service_account_verification_keys] if args.key?(:service_account_verification_keys)
         end
       end
       
