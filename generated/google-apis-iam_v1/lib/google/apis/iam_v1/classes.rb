@@ -752,13 +752,13 @@ module Google
         # @return [String]
         attr_accessor :issuer_uri
       
-        # OIDC JWKs in JSON String format. For details on the definition of a JWK, see
-        # https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the
-        # discovery document(fetched from the .well-known path of the `issuer_uri`) will
-        # be used. Currently, RSA and EC asymmetric keys are supported. The JWK must use
-        # following format and include only the following fields: ` "keys": [ ` "kty": "
-        # RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "", "y": ""
-        # , "crv": "" ` ] `
+        # Optional. OIDC JWKs in JSON String format. For details on the definition of a
+        # JWK, see https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from
+        # the discovery document(fetched from the .well-known path of the `issuer_uri`)
+        # will be used. Currently, RSA and EC asymmetric keys are supported. The JWK
+        # must use following format and include only the following fields: ` "keys": [ `
+        # "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "",
+        # "y": "", "crv": "" ` ] `
         # Corresponds to the JSON property `jwksJson`
         # @return [String]
         attr_accessor :jwks_json
@@ -805,8 +805,9 @@ module Google
       class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue
         include Google::Apis::Core::Hashable
       
-        # Input only. The plain text of the client secret value. For security reasons,
-        # this field is only used for input and will never be populated in any response.
+        # Optional. Input only. The plain text of the client secret value. For security
+        # reasons, this field is only used for input and will never be populated in any
+        # response.
         # Corresponds to the JSON property `plainText`
         # @return [String]
         attr_accessor :plain_text
@@ -831,9 +832,9 @@ module Google
       class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig
         include Google::Apis::Core::Hashable
       
-        # Additional scopes to request for in the OIDC authentication request on top of
-        # scopes requested by default. By default, the `openid`, `profile` and `email`
-        # scopes that are supported by the identity provider are requested. Each
+        # Optional. Additional scopes to request for in the OIDC authentication request
+        # on top of scopes requested by default. By default, the `openid`, `profile` and
+        # `email` scopes that are supported by the identity provider are requested. Each
         # additional scope may be at most 256 characters. A maximum of 10 additional
         # scopes may be configured.
         # Corresponds to the JSON property `additionalScopes`
@@ -1396,8 +1397,8 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Immutable. The resource name of the OauthClient. Format:`projects/`project`/
-        # locations/`location`/oauthClients/`oauth_client``.
+        # Immutable. Identifier. The resource name of the OauthClient. Format:`projects/`
+        # project`/locations/`location`/oauthClients/`oauth_client``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1455,9 +1456,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Immutable. The resource name of the OauthClientCredential. Format: `projects/`
-        # project`/locations/`location`/oauthClients/`oauth_client`/credentials/`
-        # credential``
+        # Immutable. Identifier. The resource name of the OauthClientCredential. Format:
+        # `projects/`project`/locations/`location`/oauthClients/`oauth_client`/
+        # credentials/`credential``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1479,11 +1480,11 @@ module Google
       class Oidc
         include Google::Apis::Core::Hashable
       
-        # Acceptable values for the `aud` field (audience) in the OIDC token. Token
-        # exchange requests are rejected if the token audience does not match one of the
-        # configured values. Each audience may be at most 256 characters. A maximum of
-        # 10 audiences may be configured. If this list is empty, the OIDC token audience
-        # must be equal to the full canonical resource name of the
+        # Optional. Acceptable values for the `aud` field (audience) in the OIDC token.
+        # Token exchange requests are rejected if the token audience does not match one
+        # of the configured values. Each audience may be at most 256 characters. A
+        # maximum of 10 audiences may be configured. If this list is empty, the OIDC
+        # token audience must be equal to the full canonical resource name of the
         # WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ``
         # ` //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
         # https://iam.googleapis.com/projects//locations//workloadIdentityPools//
@@ -1592,9 +1593,9 @@ module Google
         attr_accessor :api_version
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have been cancelled successfully have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # operation. Operations that have been cancelled successfully have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of `1`,
+        # corresponding to `Code.CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
@@ -1691,8 +1692,7 @@ module Google
         # @return [String]
         attr_accessor :custom_roles_support_level
       
-        # A brief description of what this Permission is used for. This permission can
-        # ONLY be used in predefined roles.
+        # A brief description of what this Permission is used for.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1935,7 +1935,7 @@ module Google
         attr_accessor :full_resource_name
       
         # Optional limit on the number of roles to include in the response. The default
-        # is 300, and the maximum is 1,000.
+        # is 300, and the maximum is 2,000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
@@ -2830,21 +2830,22 @@ module Google
         # @return [Google::Apis::IamV1::AccessRestrictions]
         attr_accessor :access_restrictions
       
-        # A user-specified description of the pool. Cannot exceed 256 characters.
+        # Optional. A user-specified description of the pool. Cannot exceed 256
+        # characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Disables the workforce pool. You cannot use a disabled pool to exchange tokens,
-        # or use existing tokens to access resources. If the pool is re-enabled,
-        # existing tokens grant access again.
+        # Optional. Disables the workforce pool. You cannot use a disabled pool to
+        # exchange tokens, or use existing tokens to access resources. If the pool is re-
+        # enabled, existing tokens grant access again.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # A user-specified display name of the pool in Google Cloud Console. Cannot
-        # exceed 32 characters.
+        # Optional. A user-specified display name of the pool in Google Cloud Console.
+        # Cannot exceed 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2866,12 +2867,13 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # Duration that the Google Cloud access tokens, console sign-in sessions, and `
-        # gcloud` sign-in sessions from this pool are valid. Must be greater than 15
-        # minutes (900s) and less than 12 hours (43200s). If `session_duration` is not
-        # configured, minted credentials have a default duration of one hour (3600s).
-        # For SAML providers, the lifetime of the token is the minimum of the `
-        # session_duration` and the `SessionNotOnOrAfter` claim in the SAML assertion.
+        # Optional. Duration that the Google Cloud access tokens, console sign-in
+        # sessions, and `gcloud` sign-in sessions from this pool are valid. Must be
+        # greater than 15 minutes (900s) and less than 12 hours (43200s). If `
+        # session_duration` is not configured, minted credentials have a default
+        # duration of one hour (3600s). For SAML providers, the lifetime of the token is
+        # the minimum of the `session_duration` and the `SessionNotOnOrAfter` claim in
+        # the SAML assertion.
         # Corresponds to the JSON property `sessionDuration`
         # @return [String]
         attr_accessor :session_duration
@@ -2903,20 +2905,20 @@ module Google
       class WorkforcePoolProvider
         include Google::Apis::Core::Hashable
       
-        # A [Common Expression Language](https://opensource.google/projects/cel)
-        # expression, in plain text, to restrict what otherwise valid authentication
-        # credentials issued by the provider should not be accepted. The expression must
-        # output a boolean representing whether to allow the federation. The following
-        # keywords may be referenced in the expressions: * `assertion`: JSON
-        # representing the authentication credential issued by the provider. * `google`:
-        # The Google attributes mapped from the assertion in the `attribute_mappings`. `
-        # google.profile_photo`, `google.display_name` and `google.posix_username` are
-        # not supported. * `attribute`: The custom attributes mapped from the assertion
-        # in the `attribute_mappings`. The maximum length of the attribute condition
-        # expression is 4096 characters. If unspecified, all valid authentication
-        # credentials will be accepted. The following example shows how to only allow
-        # credentials with a mapped `google.groups` value of `admins`: ``` "'admins' in
-        # google.groups" ```
+        # Optional. A [Common Expression Language](https://opensource.google/projects/
+        # cel) expression, in plain text, to restrict what otherwise valid
+        # authentication credentials issued by the provider should not be accepted. The
+        # expression must output a boolean representing whether to allow the federation.
+        # The following keywords may be referenced in the expressions: * `assertion`:
+        # JSON representing the authentication credential issued by the provider. * `
+        # google`: The Google attributes mapped from the assertion in the `
+        # attribute_mappings`. `google.profile_photo`, `google.display_name` and `google.
+        # posix_username` are not supported. * `attribute`: The custom attributes mapped
+        # from the assertion in the `attribute_mappings`. The maximum length of the
+        # attribute condition expression is 4096 characters. If unspecified, all valid
+        # authentication credentials will be accepted. The following example shows how
+        # to only allow credentials with a mapped `google.groups` value of `admins`: ```
+        # "'admins' in google.groups" ```
         # Corresponds to the JSON property `attributeCondition`
         # @return [String]
         attr_accessor :attribute_condition
@@ -2966,19 +2968,21 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attribute_mapping
       
-        # A user-specified description of the provider. Cannot exceed 256 characters.
+        # Optional. A user-specified description of the provider. Cannot exceed 256
+        # characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Disables the workforce pool provider. You cannot use a disabled provider to
-        # exchange tokens. However, existing tokens still grant access.
+        # Optional. Disables the workforce pool provider. You cannot use a disabled
+        # provider to exchange tokens. However, existing tokens still grant access.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # A user-specified display name for the provider. Cannot exceed 32 characters.
+        # Optional. A user-specified display name for the provider. Cannot exceed 32
+        # characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3091,20 +3095,20 @@ module Google
       class WorkloadIdentityPool
         include Google::Apis::Core::Hashable
       
-        # A description of the pool. Cannot exceed 256 characters.
+        # Optional. A description of the pool. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Whether the pool is disabled. You cannot use a disabled pool to exchange
-        # tokens, or use existing tokens to access resources. If the pool is re-enabled,
-        # existing tokens grant access again.
+        # Optional. Whether the pool is disabled. You cannot use a disabled pool to
+        # exchange tokens, or use existing tokens to access resources. If the pool is re-
+        # enabled, existing tokens grant access again.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # A display name for the pool. Cannot exceed 32 characters.
+        # Optional. A display name for the pool. Cannot exceed 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3157,59 +3161,61 @@ module Google
       class WorkloadIdentityPoolProvider
         include Google::Apis::Core::Hashable
       
-        # [A Common Expression Language](https://opensource.google/projects/cel)
-        # expression, in plain text, to restrict what otherwise valid authentication
-        # credentials issued by the provider should not be accepted. The expression must
-        # output a boolean representing whether to allow the federation. The following
-        # keywords may be referenced in the expressions: * `assertion`: JSON
-        # representing the authentication credential issued by the provider. * `google`:
-        # The Google attributes mapped from the assertion in the `attribute_mappings`. *
-        # `attribute`: The custom attributes mapped from the assertion in the `
-        # attribute_mappings`. The maximum length of the attribute condition expression
-        # is 4096 characters. If unspecified, all valid authentication credential are
-        # accepted. The following example shows how to only allow credentials with a
-        # mapped `google.groups` value of `admins`: ``` "'admins' in google.groups" ```
+        # Optional. [A Common Expression Language](https://opensource.google/projects/
+        # cel) expression, in plain text, to restrict what otherwise valid
+        # authentication credentials issued by the provider should not be accepted. The
+        # expression must output a boolean representing whether to allow the federation.
+        # The following keywords may be referenced in the expressions: * `assertion`:
+        # JSON representing the authentication credential issued by the provider. * `
+        # google`: The Google attributes mapped from the assertion in the `
+        # attribute_mappings`. * `attribute`: The custom attributes mapped from the
+        # assertion in the `attribute_mappings`. The maximum length of the attribute
+        # condition expression is 4096 characters. If unspecified, all valid
+        # authentication credential are accepted. The following example shows how to
+        # only allow credentials with a mapped `google.groups` value of `admins`: ``` "'
+        # admins' in google.groups" ```
         # Corresponds to the JSON property `attributeCondition`
         # @return [String]
         attr_accessor :attribute_condition
       
-        # Maps attributes from authentication credentials issued by an external
-        # identity provider to Google Cloud attributes, such as `subject` and `segment`.
-        # Each key must be a string specifying the Google Cloud IAM attribute to map to.
-        # The following keys are supported: * `google.subject`: The principal IAM is
-        # authenticating. You can reference this value in IAM bindings. This is also the
-        # subject that appears in Cloud Logging logs. Cannot exceed 127 bytes. * `google.
-        # groups`: Groups the external identity belongs to. You can grant groups access
-        # to resources using an IAM `principalSet` binding; access applies to all
-        # members of the group. You can also provide custom attributes by specifying `
-        # attribute.`custom_attribute``, where ``custom_attribute`` is the name of the
-        # custom attribute to be mapped. You can define a maximum of 50 custom
-        # attributes. The maximum length of a mapped attribute key is 100 characters,
-        # and the key may only contain the characters [a-z0-9_]. You can reference these
-        # attributes in IAM policies to define fine-grained access for a workload to
-        # Google Cloud resources. For example: * `google.subject`: `principal://iam.
-        # googleapis.com/projects/`project`/locations/`location`/workloadIdentityPools/`
-        # pool`/subject/`value`` * `google.groups`: `principalSet://iam.googleapis.com/
-        # projects/`project`/locations/`location`/workloadIdentityPools/`pool`/group/`
-        # value`` * `attribute.`custom_attribute``: `principalSet://iam.googleapis.com/
-        # projects/`project`/locations/`location`/workloadIdentityPools/`pool`/attribute.
-        # `custom_attribute`/`value`` Each value must be a [Common Expression Language] (
-        # https://opensource.google/projects/cel) function that maps an identity
-        # provider credential to the normalized attribute specified by the corresponding
-        # map key. You can use the `assertion` keyword in the expression to access a
-        # JSON representation of the authentication credential issued by the provider.
-        # The maximum length of an attribute mapping expression is 2048 characters. When
-        # evaluated, the total size of all mapped attributes must not exceed 8KB. For
-        # AWS providers, if no attribute mapping is defined, the following default
-        # mapping applies: ``` ` "google.subject":"assertion.arn", "attribute.aws_role":
-        # "assertion.arn.contains('assumed-role')" " ? assertion.arn.extract('`
-        # account_arn`assumed-role/')" " + 'assumed-role/'" " + assertion.arn.extract('
-        # assumed-role/`role_name`/')" " : assertion.arn", ` ``` If any custom attribute
-        # mappings are defined, they must include a mapping to the `google.subject`
-        # attribute. For OIDC providers, you must supply a custom mapping, which must
-        # include the `google.subject` attribute. For example, the following maps the `
-        # sub` claim of the incoming credential to the `subject` attribute on a Google
-        # token: ``` `"google.subject": "assertion.sub"` ```
+        # Optional. Maps attributes from authentication credentials issued by an
+        # external identity provider to Google Cloud attributes, such as `subject` and `
+        # segment`. Each key must be a string specifying the Google Cloud IAM attribute
+        # to map to. The following keys are supported: * `google.subject`: The principal
+        # IAM is authenticating. You can reference this value in IAM bindings. This is
+        # also the subject that appears in Cloud Logging logs. Cannot exceed 127 bytes. *
+        # `google.groups`: Groups the external identity belongs to. You can grant
+        # groups access to resources using an IAM `principalSet` binding; access applies
+        # to all members of the group. You can also provide custom attributes by
+        # specifying `attribute.`custom_attribute``, where ``custom_attribute`` is the
+        # name of the custom attribute to be mapped. You can define a maximum of 50
+        # custom attributes. The maximum length of a mapped attribute key is 100
+        # characters, and the key may only contain the characters [a-z0-9_]. You can
+        # reference these attributes in IAM policies to define fine-grained access for a
+        # workload to Google Cloud resources. For example: * `google.subject`: `
+        # principal://iam.googleapis.com/projects/`project`/locations/`location`/
+        # workloadIdentityPools/`pool`/subject/`value`` * `google.groups`: `principalSet:
+        # //iam.googleapis.com/projects/`project`/locations/`location`/
+        # workloadIdentityPools/`pool`/group/`value`` * `attribute.`custom_attribute``: `
+        # principalSet://iam.googleapis.com/projects/`project`/locations/`location`/
+        # workloadIdentityPools/`pool`/attribute.`custom_attribute`/`value`` Each value
+        # must be a [Common Expression Language] (https://opensource.google/projects/cel)
+        # function that maps an identity provider credential to the normalized
+        # attribute specified by the corresponding map key. You can use the `assertion`
+        # keyword in the expression to access a JSON representation of the
+        # authentication credential issued by the provider. The maximum length of an
+        # attribute mapping expression is 2048 characters. When evaluated, the total
+        # size of all mapped attributes must not exceed 8KB. For AWS providers, if no
+        # attribute mapping is defined, the following default mapping applies: ``` ` "
+        # google.subject":"assertion.arn", "attribute.aws_role": "assertion.arn.contains(
+        # 'assumed-role')" " ? assertion.arn.extract('`account_arn`assumed-role/')" " + '
+        # assumed-role/'" " + assertion.arn.extract('assumed-role/`role_name`/')" " :
+        # assertion.arn", ` ``` If any custom attribute mappings are defined, they must
+        # include a mapping to the `google.subject` attribute. For OIDC providers, you
+        # must supply a custom mapping, which must include the `google.subject`
+        # attribute. For example, the following maps the `sub` claim of the incoming
+        # credential to the `subject` attribute on a Google token: ``` `"google.subject":
+        # "assertion.sub"` ```
         # Corresponds to the JSON property `attributeMapping`
         # @return [Hash<String,String>]
         attr_accessor :attribute_mapping
@@ -3219,19 +3225,19 @@ module Google
         # @return [Google::Apis::IamV1::Aws]
         attr_accessor :aws
       
-        # A description for the provider. Cannot exceed 256 characters.
+        # Optional. A description for the provider. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Whether the provider is disabled. You cannot use a disabled provider to
-        # exchange tokens. However, existing tokens still grant access.
+        # Optional. Whether the provider is disabled. You cannot use a disabled provider
+        # to exchange tokens. However, existing tokens still grant access.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # A display name for the provider. Cannot exceed 32 characters.
+        # Optional. A display name for the provider. Cannot exceed 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
