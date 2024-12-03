@@ -412,10 +412,10 @@ module Google
         
         # Lists labels for metrics.
         # @param [String] name
-        #   The workspace on which to execute the request. It is not part of the open
-        #   source API but used as a request path prefix to distinguish different virtual
-        #   Prometheus instances of Google Prometheus Engine. The format is: projects/
-        #   PROJECT_ID_OR_NUMBER.
+        #   Required. The workspace on which to execute the request. It is not part of the
+        #   open source API but used as a request path prefix to distinguish different
+        #   virtual Prometheus instances of Google Prometheus Engine. The format is:
+        #   projects/PROJECT_ID_OR_NUMBER.
         # @param [String] location
         #   Location of the resource information. Has to be "global" now.
         # @param [Google::Apis::MonitoringV1::QueryLabelsRequest] query_labels_request_object
@@ -451,10 +451,10 @@ module Google
         
         # Evaluate a PromQL query at a single point in time.
         # @param [String] name
-        #   The project on which to execute the request. Data associcated with the project'
-        #   s workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER.
-        #   Open source API but used as a request path prefix to distinguish different
-        #   virtual Prometheus instances of Google Prometheus Engine.
+        #   Required. The project on which to execute the request. Data associcated with
+        #   the project's workspace stored under the The format is: projects/
+        #   PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to
+        #   distinguish different virtual Prometheus instances of Google Prometheus Engine.
         # @param [String] location
         #   Location of the resource information. Has to be "global" now.
         # @param [Google::Apis::MonitoringV1::QueryInstantRequest] query_instant_request_object
@@ -490,10 +490,10 @@ module Google
         
         # Lists exemplars relevant to a given PromQL query,
         # @param [String] name
-        #   The project on which to execute the request. Data associcated with the project'
-        #   s workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER.
-        #   Open source API but used as a request path prefix to distinguish different
-        #   virtual Prometheus instances of Google Prometheus Engine.
+        #   Required. The project on which to execute the request. Data associcated with
+        #   the project's workspace stored under the The format is: projects/
+        #   PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to
+        #   distinguish different virtual Prometheus instances of Google Prometheus Engine.
         # @param [String] location
         #   Location of the resource information. Has to be "global" now.
         # @param [Google::Apis::MonitoringV1::QueryExemplarsRequest] query_exemplars_request_object
@@ -529,10 +529,10 @@ module Google
         
         # Evaluate a PromQL query with start, end time range.
         # @param [String] name
-        #   The project on which to execute the request. Data associcated with the project'
-        #   s workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER.
-        #   Open source API but used as a request path prefix to distinguish different
-        #   virtual Prometheus instances of Google Prometheus Engine.
+        #   Required. The project on which to execute the request. Data associcated with
+        #   the project's workspace stored under the The format is: projects/
+        #   PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to
+        #   distinguish different virtual Prometheus instances of Google Prometheus Engine.
         # @param [String] location
         #   Location of the resource information. Has to be "global" now.
         # @param [Google::Apis::MonitoringV1::QueryRangeRequest] query_range_request_object
@@ -607,10 +607,10 @@ module Google
         
         # Lists possible values for a given label name.
         # @param [String] name
-        #   The workspace on which to execute the request. It is not part of the open
-        #   source API but used as a request path prefix to distinguish different virtual
-        #   Prometheus instances of Google Prometheus Engine. The format is: projects/
-        #   PROJECT_ID_OR_NUMBER.
+        #   Required. The workspace on which to execute the request. It is not part of the
+        #   open source API but used as a request path prefix to distinguish different
+        #   virtual Prometheus instances of Google Prometheus Engine. The format is:
+        #   projects/PROJECT_ID_OR_NUMBER.
         # @param [String] location
         #   Location of the resource information. Has to be "global" now.
         # @param [String] label

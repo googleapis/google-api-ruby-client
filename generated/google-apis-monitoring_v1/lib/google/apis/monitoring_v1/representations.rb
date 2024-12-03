@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StringArray
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TableDataSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -522,7 +528,11 @@ module Google
       class ColumnSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alignment, as: 'alignment'
           property :column, as: 'column'
+          property :display_name, as: 'displayName'
+          collection :thresholds, as: 'thresholds', class: Google::Apis::MonitoringV1::Threshold, decorator: Google::Apis::MonitoringV1::Threshold::Representation
+      
           property :visible, as: 'visible'
         end
       end
@@ -563,8 +573,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filter_type, as: 'filterType'
           property :label_key, as: 'labelKey'
+          property :string_array, as: 'stringArray', class: Google::Apis::MonitoringV1::StringArray, decorator: Google::Apis::MonitoringV1::StringArray::Representation
+      
+          property :string_array_value, as: 'stringArrayValue', class: Google::Apis::MonitoringV1::StringArray, decorator: Google::Apis::MonitoringV1::StringArray::Representation
+      
           property :string_value, as: 'stringValue'
           property :template_variable, as: 'templateVariable'
+          property :time_series_query, as: 'timeSeriesQuery', class: Google::Apis::MonitoringV1::TimeSeriesQuery, decorator: Google::Apis::MonitoringV1::TimeSeriesQuery::Representation
+      
+          property :value_type, as: 'valueType'
         end
       end
       
@@ -984,6 +1001,13 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StringArray
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
         end
       end
       
