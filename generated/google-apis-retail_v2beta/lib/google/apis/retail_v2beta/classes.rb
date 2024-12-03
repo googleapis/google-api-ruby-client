@@ -2635,6 +2635,85 @@ module Google
         end
       end
       
+      # Project level alert config.
+      class GoogleCloudRetailV2betaAlertConfig
+        include Google::Apis::Core::Hashable
+      
+        # Alert policies for a customer. They must be unique by [AlertPolicy.alert_group]
+        # Corresponds to the JSON property `alertPolicies`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAlertConfigAlertPolicy>]
+        attr_accessor :alert_policies
+      
+        # Required. Immutable. The name of the AlertConfig singleton resource. Format:
+        # projects/*/alertConfig
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policies = args[:alert_policies] if args.key?(:alert_policies)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Alert policy for a customer.
+      class GoogleCloudRetailV2betaAlertConfigAlertPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The feature that provides alerting capability. Supported value: - `search-data-
+        # quality` for retail search customers. - `conv-data-quality` for retail
+        # conversation customers.
+        # Corresponds to the JSON property `alertGroup`
+        # @return [String]
+        attr_accessor :alert_group
+      
+        # The enrollment status of a customer.
+        # Corresponds to the JSON property `enrollStatus`
+        # @return [String]
+        attr_accessor :enroll_status
+      
+        # Recipients for the alert policy. One alert policy should not exceed 20
+        # recipients.
+        # Corresponds to the JSON property `recipients`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient>]
+        attr_accessor :recipients
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_group = args[:alert_group] if args.key?(:alert_group)
+          @enroll_status = args[:enroll_status] if args.key?(:enroll_status)
+          @recipients = args[:recipients] if args.key?(:recipients)
+        end
+      end
+      
+      # Recipient contact information.
+      class GoogleCloudRetailV2betaAlertConfigAlertPolicyRecipient
+        include Google::Apis::Core::Hashable
+      
+        # Email address of the recipient.
+        # Corresponds to the JSON property `emailAddress`
+        # @return [String]
+        attr_accessor :email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_address = args[:email_address] if args.key?(:email_address)
+        end
+      end
+      
       # Catalog level attribute config.
       class GoogleCloudRetailV2betaAttributesConfig
         include Google::Apis::Core::Hashable
@@ -2754,6 +2833,44 @@ module Google
         def update!(**args)
           @deleted_catalog_attributes = args[:deleted_catalog_attributes] if args.key?(:deleted_catalog_attributes)
           @reset_catalog_attributes = args[:reset_catalog_attributes] if args.key?(:reset_catalog_attributes)
+        end
+      end
+      
+      # Request for BatchUpdateGenerativeQuestionConfig method.
+      class GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The updates question configs.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Aggregated response for UpdateGenerativeQuestionConfig method.
+      class GoogleCloudRetailV2betaBatchUpdateGenerativeQuestionConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The updates question configs.
+        # Corresponds to the JSON property `generativeQuestionConfigs`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaGenerativeQuestionConfig>]
+        attr_accessor :generative_question_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generative_question_configs = args[:generative_question_configs] if args.key?(:generative_question_configs)
         end
       end
       
@@ -2926,14 +3043,13 @@ module Google
         # Output only. Indicates whether this attribute has been used by any products. `
         # True` if at least one Product is using this attribute in Product.attributes.
         # Otherwise, this field is `False`. CatalogAttribute can be pre-loaded by using
-        # CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or
-        # CatalogService.UpdateAttributesConfig APIs. This field is `False` for pre-
-        # loaded CatalogAttributes. Only pre-loaded catalog attributes that are neither
-        # in use by products nor predefined can be deleted. Catalog attributes that are
-        # either in use by products or are predefined attributes cannot be deleted;
-        # however, their configuration properties will reset to default values upon
-        # removal request. After catalog changes, it takes about 10 minutes for this
-        # field to update.
+        # CatalogService.AddCatalogAttribute or CatalogService.UpdateAttributesConfig
+        # APIs. This field is `False` for pre-loaded CatalogAttributes. Only pre-loaded
+        # catalog attributes that are neither in use by products nor predefined can be
+        # deleted. Catalog attributes that are either in use by products or are
+        # predefined attributes cannot be deleted; however, their configuration
+        # properties will reset to default values upon removal request. After catalog
+        # changes, it takes about 10 minutes for this field to update.
         # Corresponds to the JSON property `inUse`
         # @return [Boolean]
         attr_accessor :in_use
@@ -3134,13 +3250,6 @@ module Google
         # @return [String]
         attr_accessor :merged_facet_key
       
-        # Each instance is a list of facet values that map into the same (possibly
-        # different) merged facet value. For the current attribute config, each facet
-        # value should map to at most one merged facet value.
-        # Corresponds to the JSON property `mergedFacetValues`
-        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue>]
-        attr_accessor :merged_facet_values
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3148,7 +3257,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @merged_facet_key = args[:merged_facet_key] if args.key?(:merged_facet_key)
-          @merged_facet_values = args[:merged_facet_values] if args.key?(:merged_facet_values)
         end
       end
       
@@ -3261,6 +3369,12 @@ module Google
       class GoogleCloudRetailV2betaCompleteQueryResponse
         include Google::Apis::Core::Hashable
       
+        # A map of matched attribute suggestions. This field is only available for "
+        # cloud-retail" dataset. Current supported keys: * `brands` * `categories`
+        # Corresponds to the JSON property `attributeResults`
+        # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult>]
+        attr_accessor :attribute_results
+      
         # A unique complete token. This should be included in the UserEvent.
         # completion_detail for search events resulting from this completion, which
         # enables accurate attribution of complete model performance.
@@ -3293,9 +3407,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attribute_results = args[:attribute_results] if args.key?(:attribute_results)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @completion_results = args[:completion_results] if args.key?(:completion_results)
           @recent_search_results = args[:recent_search_results] if args.key?(:recent_search_results)
+        end
+      end
+      
+      # Resource that represents attribute results. The list of suggestions for the
+      # attribute.
+      class GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `suggestions`
+        # @return [Array<String>]
+        attr_accessor :suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggestions = args[:suggestions] if args.key?(:suggestions)
         end
       end
       
@@ -3327,7 +3462,7 @@ module Google
         end
       end
       
-      # Recent search of this user.
+      # Deprecated: Recent search of this user.
       class GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult
         include Google::Apis::Core::Hashable
       
@@ -3739,7 +3874,7 @@ module Google
         end
       end
       
-      # Metadata for active A/B testing Experiment.
+      # Metadata for active A/B testing experiment.
       class GoogleCloudRetailV2betaExperimentInfo
         include Google::Apis::Core::Hashable
       
@@ -3770,8 +3905,8 @@ module Google
       class GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment
         include Google::Apis::Core::Hashable
       
-        # The fully qualified resource name of the serving config Experiment.VariantArm.
-        # serving_config_id responsible for generating the search response. For example:
+        # The fully qualified resource name of the serving config `Experiment.VariantArm.
+        # serving_config_id` responsible for generating the search response. For example:
         # `projects/*/locations/*/catalogs/*/servingConfigs/*`.
         # Corresponds to the JSON property `experimentServingConfig`
         # @return [String]
@@ -3910,6 +4045,58 @@ module Google
         end
       end
       
+      # Request message for ExportProducts method.
+      class GoogleCloudRetailV2betaExportProductsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A filtering expression to specify restrictions on returned events. The
+        # expression is a sequence of terms. Each term applies a restriction to the
+        # returned products. Use this expression to restrict results to a specific time
+        # range, tag, or stock state or to filter products by product type. For example,
+        # `lastModifiedTime > "2012-04-23T18:25:43.511Z" lastModifiedTime<"2012-04-23T18:
+        # 25:43.511Z" productType=primary` We expect only four types of fields: * `
+        # lastModifiedTime`: This can be specified twice, once with a less than operator
+        # and once with a greater than operator. The `lastModifiedTime` restriction
+        # should result in one, contiguous, valid, last-modified, time range. * `
+        # productType`: Supported values are `primary` and `variant`. The Boolean
+        # operators `OR` and `NOT` are supported if the expression is enclosed in
+        # parentheses and must be separated from the `productType` values by a space. * `
+        # availability`: Supported values are `IN_STOCK`, `OUT_OF_STOCK`, `PREORDER`,
+        # and `BACKORDER`. Boolean operators `OR` and `NOT` are supported if the
+        # expression is enclosed in parentheses and must be separated from the `
+        # availability` values by a space. * `Tag expressions`: Restricts output to
+        # products that match all of the specified tags. Boolean operators `OR` and `NOT`
+        # are supported if the expression is enclosed in parentheses and the operators
+        # are separated from the tag values by a space. Also supported is '`-"tagA"`',
+        # which is equivalent to '`NOT "tagA"`'. Tag values must be double-quoted, UTF-8
+        # encoded strings and have a size limit of 1,000 characters. Some examples of
+        # valid filters expressions: * Example 1: `lastModifiedTime > "2012-04-23T18:25:
+        # 43.511Z" lastModifiedTime < "2012-04-23T18:30:43.511Z"` * Example 2: `
+        # lastModifiedTime > "2012-04-23T18:25:43.511Z" productType = "variant"` *
+        # Example 3: `tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT "promotional")
+        # productType = "primary" lastModifiedTime < "2018-04-23T18:30:43.511Z"` *
+        # Example 4: `lastModifiedTime > "2012-04-23T18:25:43.511Z"` * Example 5: `
+        # availability = (IN_STOCK OR BACKORDER)`
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The output configuration setting.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
       # Response of the ExportProductsRequest. If the long running operation is done,
       # then this message is returned by the google.longrunning.Operations.response
       # field if the operation was successful.
@@ -3941,6 +4128,51 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @errors_config = args[:errors_config] if args.key?(:errors_config)
           @output_result = args[:output_result] if args.key?(:output_result)
+        end
+      end
+      
+      # Request message for the `ExportUserEvents` method.
+      class GoogleCloudRetailV2betaExportUserEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A filtering expression to specify restrictions on returned events. The
+        # expression is a sequence of terms. Each term applies a restriction to the
+        # returned user events. Use this expression to restrict results to a specific
+        # time range or to filter events by eventType. For example, `eventTime > "2012-
+        # 04-23T18:25:43.511Z" eventsMissingCatalogItems eventTime<"2012-04-23T18:25:43.
+        # 511Z" eventType=search` We expect only three types of fields: * `eventTime`:
+        # This can be specified twice, once with a less than operator and once with a
+        # greater than operator. The `eventTime` restriction should result in one,
+        # contiguous, valid, `eventTime` range. * `eventType`: Boolean operators `OR`
+        # and `NOT` are supported if the expression is enclosed in parentheses and the
+        # operators are separated from the tag values by a space. * `
+        # eventsMissingCatalogItems`: This restricts results to events for which catalog
+        # items were not found in the catalog. The default behavior is to return only
+        # those events for which catalog items were found. Some examples of valid
+        # filters expressions: * Example 1: `eventTime > "2012-04-23T18:25:43.511Z"
+        # eventTime < "2012-04-23T18:30:43.511Z"` * Example 2: `eventTime > "2012-04-
+        # 23T18:25:43.511Z" eventType = detail-page-view` * Example 3: `
+        # eventsMissingCatalogItems eventType = (NOT search) eventTime < "2018-04-23T18:
+        # 30:43.511Z"` * Example 4: `eventTime > "2012-04-23T18:25:43.511Z"` * Example 5:
+        # `eventType = (detail-page-view OR search)` * Example 6: `
+        # eventsMissingCatalogItems`
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The output configuration setting.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @output_config = args[:output_config] if args.key?(:output_config)
         end
       end
       
@@ -4070,6 +4302,99 @@ module Google
         def update!(**args)
           @data_schema = args[:data_schema] if args.key?(:data_schema)
           @input_uris = args[:input_uris] if args.key?(:input_uris)
+        end
+      end
+      
+      # Configuration for a single generated question.
+      class GoogleCloudRetailV2betaGenerativeQuestionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the question is asked at serving time.
+        # Corresponds to the JSON property `allowedInConversation`
+        # @return [Boolean]
+        attr_accessor :allowed_in_conversation
+        alias_method :allowed_in_conversation?, :allowed_in_conversation
+      
+        # Required. Resource name of the catalog. Format: projects/`project`/locations/`
+        # location`/catalogs/`catalog`
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # Output only. Values that can be used to answer the question.
+        # Corresponds to the JSON property `exampleValues`
+        # @return [Array<String>]
+        attr_accessor :example_values
+      
+        # Required. The facet to which the question is associated.
+        # Corresponds to the JSON property `facet`
+        # @return [String]
+        attr_accessor :facet
+      
+        # Optional. The question that will be used at serving time. Question can have a
+        # max length of 300 bytes. When not populated, generated_question should be used.
+        # Corresponds to the JSON property `finalQuestion`
+        # @return [String]
+        attr_accessor :final_question
+      
+        # Output only. The ratio of how often a question was asked.
+        # Corresponds to the JSON property `frequency`
+        # @return [Float]
+        attr_accessor :frequency
+      
+        # Output only. The LLM generated question.
+        # Corresponds to the JSON property `generatedQuestion`
+        # @return [String]
+        attr_accessor :generated_question
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_in_conversation = args[:allowed_in_conversation] if args.key?(:allowed_in_conversation)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @example_values = args[:example_values] if args.key?(:example_values)
+          @facet = args[:facet] if args.key?(:facet)
+          @final_question = args[:final_question] if args.key?(:final_question)
+          @frequency = args[:frequency] if args.key?(:frequency)
+          @generated_question = args[:generated_question] if args.key?(:generated_question)
+        end
+      end
+      
+      # Configuration for overall generative question feature state.
+      class GoogleCloudRetailV2betaGenerativeQuestionsFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource name of the affected catalog. Format: projects/`project`/
+        # locations/`location`/catalogs/`catalog`
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # Optional. Determines whether questions will be used at serving time. Note:
+        # This feature cannot be enabled until initial data requirements are satisfied.
+        # Corresponds to the JSON property `featureEnabled`
+        # @return [Boolean]
+        attr_accessor :feature_enabled
+        alias_method :feature_enabled?, :feature_enabled
+      
+        # Optional. Minimum number of products in the response to trigger follow-up
+        # questions. Value must be 0 or positive.
+        # Corresponds to the JSON property `minimumProducts`
+        # @return [Fixnum]
+        attr_accessor :minimum_products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @feature_enabled = args[:feature_enabled] if args.key?(:feature_enabled)
+          @minimum_products = args[:minimum_products] if args.key?(:minimum_products)
         end
       end
       
@@ -4503,6 +4828,25 @@ module Google
         end
       end
       
+      # Response for ListQuestions method.
+      class GoogleCloudRetailV2betaListGenerativeQuestionConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the questions for a given catalog.
+        # Corresponds to the JSON property `generativeQuestionConfigs`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaGenerativeQuestionConfig>]
+        attr_accessor :generative_question_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generative_question_configs = args[:generative_question_configs] if args.key?(:generative_question_configs)
+        end
+      end
+      
       # Response to a ListModelRequest.
       class GoogleCloudRetailV2betaListModelsResponse
         include Google::Apis::Core::Hashable
@@ -4583,8 +4927,8 @@ module Google
       class GoogleCloudRetailV2betaLocalInventory
         include Google::Apis::Core::Hashable
       
-        # Additional local inventory attributes, for example, store name, promotion tags,
-        # etc. This field needs to pass all below criteria, otherwise an
+        # Optional. Additional local inventory attributes, for example, store name,
+        # promotion tags, etc. This field needs to pass all below criteria, otherwise an
         # INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The
         # key must be a UTF-8 encoded string with a length limit of 32 characters. * The
         # key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or
@@ -4597,7 +4941,20 @@ module Google
         # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute>]
         attr_accessor :attributes
       
-        # Input only. Supported fulfillment types. Valid fulfillment type values include
+        # Optional. The availability of the Product at this place_id. Default to
+        # Availability.IN_STOCK. For primary products with variants set the availability
+        # of the primary as Availability.OUT_OF_STOCK and set the true availability at
+        # the variant level. This way the primary product will be considered "in stock"
+        # as long as it has at least one variant in stock. For primary products with no
+        # variants set the true availability at the primary level. Corresponding
+        # properties: Google Merchant Center property [availability](https://support.
+        # google.com/merchants/answer/6324448). Schema.org property [Offer.availability](
+        # https://schema.org/availability).
+        # Corresponds to the JSON property `availability`
+        # @return [String]
+        attr_accessor :availability
+      
+        # Optional. Supported fulfillment types. Valid fulfillment type values include
         # commonly used types (such as pickup in store and same day delivery), and
         # custom types. Customers have to map custom types to their display names before
         # rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-
@@ -4609,7 +4966,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :fulfillment_types
       
-        # The place ID for the current set of inventory information.
+        # Required. The place ID for the current set of inventory information.
         # Corresponds to the JSON property `placeId`
         # @return [String]
         attr_accessor :place_id
@@ -4626,6 +4983,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @availability = args[:availability] if args.key?(:availability)
           @fulfillment_types = args[:fulfillment_types] if args.key?(:fulfillment_types)
           @place_id = args[:place_id] if args.key?(:place_id)
           @price_info = args[:price_info] if args.key?(:price_info)
@@ -5074,6 +5432,52 @@ module Google
         end
       end
       
+      # Metadata for pinning to be returned in the response. This is used for
+      # distinguishing between applied vs dropped pins.
+      class GoogleCloudRetailV2betaPinControlMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Map of all matched pins, keyed by pin position.
+        # Corresponds to the JSON property `allMatchedPins`
+        # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPinControlMetadataProductPins>]
+        attr_accessor :all_matched_pins
+      
+        # Map of pins that were dropped due to overlap with other matching pins, keyed
+        # by pin position.
+        # Corresponds to the JSON property `droppedPins`
+        # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPinControlMetadataProductPins>]
+        attr_accessor :dropped_pins
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_matched_pins = args[:all_matched_pins] if args.key?(:all_matched_pins)
+          @dropped_pins = args[:dropped_pins] if args.key?(:dropped_pins)
+        end
+      end
+      
+      # List of product ids which have associated pins.
+      class GoogleCloudRetailV2betaPinControlMetadataProductPins
+        include Google::Apis::Core::Hashable
+      
+        # List of product ids which have associated pins.
+        # Corresponds to the JSON property `productId`
+        # @return [Array<String>]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
       # Request message for Predict method.
       class GoogleCloudRetailV2betaPredictRequest
         include Google::Apis::Core::Hashable
@@ -5385,10 +5789,15 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAudience]
         attr_accessor :audience
       
-        # The online availability of the Product. Default to Availability.IN_STOCK.
-        # Corresponding properties: Google Merchant Center property [availability](https:
-        # //support.google.com/merchants/answer/6324448). Schema.org property [Offer.
-        # availability](https://schema.org/availability).
+        # The online availability of the Product. Default to Availability.IN_STOCK. For
+        # primary products with variants set the availability of the primary as
+        # Availability.OUT_OF_STOCK and set the true availability at the variant level.
+        # This way the primary product will be considered "in stock" as long as it has
+        # at least one variant in stock. For primary products with no variants set the
+        # true availability at the primary level. Corresponding properties: Google
+        # Merchant Center property [availability](https://support.google.com/merchants/
+        # answer/6324448). Schema.org property [Offer.availability](https://schema.org/
+        # availability).
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability
@@ -5616,10 +6025,9 @@ module Google
         # attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION,
         # the following fields are always returned in SearchResponse by default: * name
         # For Type.VARIANT, the following fields are always returned in by default: *
-        # name * color_info The maximum number of paths is 30. Otherwise, an
-        # INVALID_ARGUMENT error is returned. Note: Returning more fields in
-        # SearchResponse can increase response payload size and serving latency. This
-        # field is deprecated. Use the retrievable site-wide control instead.
+        # name * color_info Note: Returning more fields in SearchResponse can increase
+        # response payload size and serving latency. This field is deprecated. Use the
+        # retrievable site-wide control instead.
         # Corresponds to the JSON property `retrievableFields`
         # @return [String]
         attr_accessor :retrievable_fields
@@ -5741,6 +6149,58 @@ module Google
           @type = args[:type] if args.key?(:type)
           @uri = args[:uri] if args.key?(:uri)
           @variants = args[:variants] if args.key?(:variants)
+        end
+      end
+      
+      # Product attribute name and numeric interval.
+      class GoogleCloudRetailV2betaProductAttributeInterval
+        include Google::Apis::Core::Hashable
+      
+        # A floating point interval.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaInterval]
+        attr_accessor :interval
+      
+        # The attribute name (e.g. "length")
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Product attribute which structured by an attribute name and value. This
+      # structure is used in conversational search filters and answers. For example,
+      # if we have `name=color` and `value=red`, this means that the color is `red`.
+      class GoogleCloudRetailV2betaProductAttributeValue
+        include Google::Apis::Core::Hashable
+      
+        # The attribute name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The attribute value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -6685,7 +7145,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Each instance corresponds to a force return attribute for the given condition.
-        # There can't be more 3 instances here.
+        # There can't be more 15 instances here.
         # Corresponds to the JSON property `facetPositionAdjustments`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>]
         attr_accessor :facet_position_adjustments
@@ -6917,6 +7377,12 @@ module Google
         # @return [String]
         attr_accessor :canonical_filter
       
+        # This field specifies all conversational related parameters addition to
+        # traditional retail search.
+        # Corresponds to the JSON property `conversationalSearchSpec`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec]
+        attr_accessor :conversational_search_spec
+      
         # The specifications of dynamically generated facets.
         # Corresponds to the JSON property `dynamicFacetSpec`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec]
@@ -7033,6 +7499,11 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec]
         attr_accessor :spell_correction_spec
       
+        # This field specifies tile navigation related parameters.
+        # Corresponds to the JSON property `tileNavigationSpec`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestTileNavigationSpec]
+        attr_accessor :tile_navigation_spec
+      
         # Information of an end user.
         # Corresponds to the JSON property `userInfo`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUserInfo]
@@ -7087,6 +7558,7 @@ module Google
           @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
           @branch = args[:branch] if args.key?(:branch)
           @canonical_filter = args[:canonical_filter] if args.key?(:canonical_filter)
+          @conversational_search_spec = args[:conversational_search_spec] if args.key?(:conversational_search_spec)
           @dynamic_facet_spec = args[:dynamic_facet_spec] if args.key?(:dynamic_facet_spec)
           @entity = args[:entity] if args.key?(:entity)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
@@ -7102,6 +7574,7 @@ module Google
           @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
           @search_mode = args[:search_mode] if args.key?(:search_mode)
           @spell_correction_spec = args[:spell_correction_spec] if args.key?(:spell_correction_spec)
+          @tile_navigation_spec = args[:tile_navigation_spec] if args.key?(:tile_navigation_spec)
           @user_info = args[:user_info] if args.key?(:user_info)
           @variant_rollup_keys = args[:variant_rollup_keys] if args.key?(:variant_rollup_keys)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
@@ -7174,6 +7647,102 @@ module Google
         def update!(**args)
           @boost = args[:boost] if args.key?(:boost)
           @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # This field specifies all conversational related parameters addition to
+      # traditional retail search.
+      class GoogleCloudRetailV2betaSearchRequestConversationalSearchSpec
+        include Google::Apis::Core::Hashable
+      
+        # This field specifies the conversation id, which maintains the state of the
+        # conversation between client side and server side. Use the value from the
+        # previous ConversationalSearchResult.conversation_id. For the initial request,
+        # this should be empty.
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # This field specifies whether the customer would like to do conversational
+        # search. If this field is set to true, conversational related extra information
+        # will be returned from server side, including follow-up question, answer
+        # options, etc.
+        # Corresponds to the JSON property `followupConversationRequested`
+        # @return [Boolean]
+        attr_accessor :followup_conversation_requested
+        alias_method :followup_conversation_requested?, :followup_conversation_requested
+      
+        # This field specifies the current user answer during the conversational search.
+        # This can be either user selected from suggested answers or user input plain
+        # text.
+        # Corresponds to the JSON property `userAnswer`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer]
+        attr_accessor :user_answer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @followup_conversation_requested = args[:followup_conversation_requested] if args.key?(:followup_conversation_requested)
+          @user_answer = args[:user_answer] if args.key?(:user_answer)
+        end
+      end
+      
+      # This field specifies the current user answer during the conversational search.
+      # This can be either user selected from suggested answers or user input plain
+      # text.
+      class GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswer
+        include Google::Apis::Core::Hashable
+      
+        # This field specifies the selected answers during the conversational search.
+        # Corresponds to the JSON property `selectedAnswer`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer]
+        attr_accessor :selected_answer
+      
+        # This field specifies the incremental input text from the user during the
+        # conversational search.
+        # Corresponds to the JSON property `textAnswer`
+        # @return [String]
+        attr_accessor :text_answer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @selected_answer = args[:selected_answer] if args.key?(:selected_answer)
+          @text_answer = args[:text_answer] if args.key?(:text_answer)
+        end
+      end
+      
+      # This field specifies the selected answers during the conversational search.
+      class GoogleCloudRetailV2betaSearchRequestConversationalSearchSpecUserAnswerSelectedAnswer
+        include Google::Apis::Core::Hashable
+      
+        # Product attribute which structured by an attribute name and value. This
+        # structure is used in conversational search filters and answers. For example,
+        # if we have `name=color` and `value=red`, this means that the color is `red`.
+        # Corresponds to the JSON property `productAttributeValue`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue]
+        attr_accessor :product_attribute_value
+      
+        # This field is deprecated and should not be set.
+        # Corresponds to the JSON property `productAttributeValues`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue>]
+        attr_accessor :product_attribute_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_attribute_value = args[:product_attribute_value] if args.key?(:product_attribute_value)
+          @product_attribute_values = args[:product_attribute_values] if args.key?(:product_attribute_values)
         end
       end
       
@@ -7455,6 +8024,35 @@ module Google
         end
       end
       
+      # This field specifies tile navigation related parameters.
+      class GoogleCloudRetailV2betaSearchRequestTileNavigationSpec
+        include Google::Apis::Core::Hashable
+      
+        # This field specifies the tiles which are already clicked in client side. NOTE:
+        # This field is not being used for filtering search products. Client side should
+        # also put all the applied tiles in SearchRequest.filter.
+        # Corresponds to the JSON property `appliedTiles`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaTile>]
+        attr_accessor :applied_tiles
+      
+        # This field specifies whether the customer would like to request tile
+        # navigation.
+        # Corresponds to the JSON property `tileNavigationRequested`
+        # @return [Boolean]
+        attr_accessor :tile_navigation_requested
+        alias_method :tile_navigation_requested?, :tile_navigation_requested
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applied_tiles = args[:applied_tiles] if args.key?(:applied_tiles)
+          @tile_navigation_requested = args[:tile_navigation_requested] if args.key?(:tile_navigation_requested)
+        end
+      end
+      
       # Response message for SearchService.Search method.
       class GoogleCloudRetailV2betaSearchResponse
         include Google::Apis::Core::Hashable
@@ -7472,6 +8070,12 @@ module Google
         # @return [String]
         attr_accessor :attribution_token
       
+        # This field specifies all related information that is needed on client side for
+        # UI rendering of conversational retail search.
+        # Corresponds to the JSON property `conversationalSearchResult`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResult]
+        attr_accessor :conversational_search_result
+      
         # Contains the spell corrected query, if found. If the spell correction type is
         # AUTOMATIC, then the search results are based on corrected_query. Otherwise the
         # original query is used for search.
@@ -7479,7 +8083,7 @@ module Google
         # @return [String]
         attr_accessor :corrected_query
       
-        # Metadata related to A/B testing Experiment associated with this response. Only
+        # Metadata related to A/B testing experiment associated with this response. Only
         # exists when an experiment is triggered.
         # Corresponds to the JSON property `experimentInfo`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExperimentInfo>]
@@ -7502,6 +8106,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Metadata for pinning to be returned in the response. This is used for
+        # distinguishing between applied vs dropped pins.
+        # Corresponds to the JSON property `pinControlMetadata`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPinControlMetadata]
+        attr_accessor :pin_control_metadata
+      
         # Information describing query expansion including whether expansion has
         # occurred.
         # Corresponds to the JSON property `queryExpansionInfo`
@@ -7520,6 +8130,12 @@ module Google
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseSearchResult>]
         attr_accessor :results
       
+        # This field specifies all related information for tile navigation that will be
+        # used in client side.
+        # Corresponds to the JSON property `tileNavigationResult`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseTileNavigationResult]
+        attr_accessor :tile_navigation_result
+      
         # The estimated total count of matched items irrespective of pagination. The
         # count of results returned by pagination may be less than the total_size that
         # matches.
@@ -7535,15 +8151,120 @@ module Google
         def update!(**args)
           @applied_controls = args[:applied_controls] if args.key?(:applied_controls)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
+          @conversational_search_result = args[:conversational_search_result] if args.key?(:conversational_search_result)
           @corrected_query = args[:corrected_query] if args.key?(:corrected_query)
           @experiment_info = args[:experiment_info] if args.key?(:experiment_info)
           @facets = args[:facets] if args.key?(:facets)
           @invalid_condition_boost_specs = args[:invalid_condition_boost_specs] if args.key?(:invalid_condition_boost_specs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @pin_control_metadata = args[:pin_control_metadata] if args.key?(:pin_control_metadata)
           @query_expansion_info = args[:query_expansion_info] if args.key?(:query_expansion_info)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
           @results = args[:results] if args.key?(:results)
+          @tile_navigation_result = args[:tile_navigation_result] if args.key?(:tile_navigation_result)
           @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # This field specifies all related information that is needed on client side for
+      # UI rendering of conversational retail search.
+      class GoogleCloudRetailV2betaSearchResponseConversationalSearchResult
+        include Google::Apis::Core::Hashable
+      
+        # Additional filter that client side need to apply.
+        # Corresponds to the JSON property `additionalFilter`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter]
+        attr_accessor :additional_filter
+      
+        # This field is deprecated but will be kept for backward compatibility. There is
+        # expected to have only one additional filter and the value will be the same to
+        # the same as field `additional_filter`.
+        # Corresponds to the JSON property `additionalFilters`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter>]
+        attr_accessor :additional_filters
+      
+        # Conversation UUID. This field will be stored in client side storage to
+        # maintain the conversation session with server and will be used for next search
+        # request's SearchRequest.ConversationalSearchSpec.conversation_id to restore
+        # conversation state in server.
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # The follow-up question. e.g., `What is the color?`
+        # Corresponds to the JSON property `followupQuestion`
+        # @return [String]
+        attr_accessor :followup_question
+      
+        # The current refined query for the conversational search. This field will be
+        # used in customer UI that the query in the search bar should be replaced with
+        # the refined query. For example, if SearchRequest.query is `dress` and next
+        # SearchRequest.ConversationalSearchSpec.UserAnswer.text_answer is `red color`,
+        # which does not match any product attribute value filters, the refined query
+        # will be `dress, red color`.
+        # Corresponds to the JSON property `refinedQuery`
+        # @return [String]
+        attr_accessor :refined_query
+      
+        # The answer options provided to client for the follow-up question.
+        # Corresponds to the JSON property `suggestedAnswers`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer>]
+        attr_accessor :suggested_answers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_filter = args[:additional_filter] if args.key?(:additional_filter)
+          @additional_filters = args[:additional_filters] if args.key?(:additional_filters)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @followup_question = args[:followup_question] if args.key?(:followup_question)
+          @refined_query = args[:refined_query] if args.key?(:refined_query)
+          @suggested_answers = args[:suggested_answers] if args.key?(:suggested_answers)
+        end
+      end
+      
+      # Additional filter that client side need to apply.
+      class GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter
+        include Google::Apis::Core::Hashable
+      
+        # Product attribute which structured by an attribute name and value. This
+        # structure is used in conversational search filters and answers. For example,
+        # if we have `name=color` and `value=red`, this means that the color is `red`.
+        # Corresponds to the JSON property `productAttributeValue`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue]
+        attr_accessor :product_attribute_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_attribute_value = args[:product_attribute_value] if args.key?(:product_attribute_value)
+        end
+      end
+      
+      # Suggested answers to the follow-up question.
+      class GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswer
+        include Google::Apis::Core::Hashable
+      
+        # Product attribute which structured by an attribute name and value. This
+        # structure is used in conversational search filters and answers. For example,
+        # if we have `name=color` and `value=red`, this means that the color is `red`.
+        # Corresponds to the JSON property `productAttributeValue`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue]
+        attr_accessor :product_attribute_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_attribute_value = args[:product_attribute_value] if args.key?(:product_attribute_value)
         end
       end
       
@@ -7719,6 +8440,26 @@ module Google
           @personal_labels = args[:personal_labels] if args.key?(:personal_labels)
           @product = args[:product] if args.key?(:product)
           @variant_rollup_values = args[:variant_rollup_values] if args.key?(:variant_rollup_values)
+        end
+      end
+      
+      # This field specifies all related information for tile navigation that will be
+      # used in client side.
+      class GoogleCloudRetailV2betaSearchResponseTileNavigationResult
+        include Google::Apis::Core::Hashable
+      
+        # The current tiles that are used for tile navigation, sorted by engagement.
+        # Corresponds to the JSON property `tiles`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaTile>]
+        attr_accessor :tiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tiles = args[:tiles] if args.key?(:tiles)
         end
       end
       
@@ -8032,6 +8773,41 @@ module Google
         end
       end
       
+      # This field specifies the tile information including an attribute key,
+      # attribute value. More fields will be added in the future, eg: product id or
+      # product counts, etc.
+      class GoogleCloudRetailV2betaTile
+        include Google::Apis::Core::Hashable
+      
+        # Product attribute name and numeric interval.
+        # Corresponds to the JSON property `productAttributeInterval`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeInterval]
+        attr_accessor :product_attribute_interval
+      
+        # Product attribute which structured by an attribute name and value. This
+        # structure is used in conversational search filters and answers. For example,
+        # if we have `name=color` and `value=red`, this means that the color is `red`.
+        # Corresponds to the JSON property `productAttributeValue`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductAttributeValue]
+        attr_accessor :product_attribute_value
+      
+        # The representative product id for this tile.
+        # Corresponds to the JSON property `representativeProductId`
+        # @return [String]
+        attr_accessor :representative_product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_attribute_interval = args[:product_attribute_interval] if args.key?(:product_attribute_interval)
+          @product_attribute_value = args[:product_attribute_value] if args.key?(:product_attribute_value)
+          @representative_product_id = args[:representative_product_id] if args.key?(:representative_product_id)
+        end
+      end
+      
       # Metadata associated with a tune operation.
       class GoogleCloudRetailV2betaTuneModelMetadata
         include Google::Apis::Core::Hashable
@@ -8077,6 +8853,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request for UpdateGenerativeQuestionConfig method.
+      class GoogleCloudRetailV2betaUpdateGenerativeQuestionConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a single generated question.
+        # Corresponds to the JSON property `generativeQuestionConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaGenerativeQuestionConfig]
+        attr_accessor :generative_question_config
+      
+        # Optional. Indicates which fields in the provided GenerativeQuestionConfig to
+        # update. The following are NOT supported: * GenerativeQuestionConfig.frequency
+        # If not set or empty, all supported fields are updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generative_question_config = args[:generative_question_config] if args.key?(:generative_question_config)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -8419,12 +9222,11 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
-        # User agent as included in the HTTP header. Required for getting SearchResponse.
-        # sponsored_results. The field must be a UTF-8 encoded string with a length
-        # limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-        # This should not be set when using the client side event reporting with GTM or
-        # JavaScript tag in UserEventService.CollectUserEvent or if direct_user_request
-        # is set.
+        # User agent as included in the HTTP header. The field must be a UTF-8 encoded
+        # string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT
+        # error is returned. This should not be set when using the client side event
+        # reporting with GTM or JavaScript tag in UserEventService.CollectUserEvent or
+        # if direct_user_request is set.
         # Corresponds to the JSON property `userAgent`
         # @return [String]
         attr_accessor :user_agent
