@@ -228,6 +228,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :device_recognition_verdict
       
+        # Contains legacy details about the integrity of the device the app is running
+        # on. Only for devices with Android version T or higher and only for apps opted
+        # in to the new verdicts. Only available during the transition period to the new
+        # verdicts system and will be removed afterwards.
+        # Corresponds to the JSON property `legacyDeviceRecognitionVerdict`
+        # @return [Array<String>]
+        attr_accessor :legacy_device_recognition_verdict
+      
         # Recent device activity can help developers identify devices that have
         # exhibited hyperactive attestation activity, which could be a sign of an attack
         # or token farming.
@@ -244,6 +252,7 @@ module Google
           @device_attributes = args[:device_attributes] if args.key?(:device_attributes)
           @device_recall = args[:device_recall] if args.key?(:device_recall)
           @device_recognition_verdict = args[:device_recognition_verdict] if args.key?(:device_recognition_verdict)
+          @legacy_device_recognition_verdict = args[:legacy_device_recognition_verdict] if args.key?(:legacy_device_recognition_verdict)
           @recent_device_activity = args[:recent_device_activity] if args.key?(:recent_device_activity)
         end
       end
