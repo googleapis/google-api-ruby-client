@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Migration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -258,8 +264,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :immutable, as: 'immutable'
           property :ip_cidr_range, as: 'ipCidrRange'
           hash :labels, as: 'labels'
+          property :migration, as: 'migration', class: Google::Apis::NetworkconnectivityV1alpha1::Migration, decorator: Google::Apis::NetworkconnectivityV1alpha1::Migration::Representation
+      
           property :name, as: 'name'
           property :network, as: 'network'
           collection :overlaps, as: 'overlaps'
@@ -319,6 +328,14 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class Migration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source'
+          property :target, as: 'target'
         end
       end
       
