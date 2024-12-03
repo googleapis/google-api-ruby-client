@@ -118,30 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudFunctionsV2LocationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudFunctionsV2OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudFunctionsV2Stage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudFunctionsV2StateMessage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudFunctionsV2alphaLocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,30 +137,6 @@ module Google
       end
       
       class GoogleCloudFunctionsV2alphaStateMessage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudFunctionsV2betaLocationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudFunctionsV2betaOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudFunctionsV2betaStage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudFunctionsV2betaStateMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -514,53 +466,6 @@ module Google
         end
       end
       
-      class GoogleCloudFunctionsV2LocationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :environments, as: 'environments'
-        end
-      end
-      
-      class GoogleCloudFunctionsV2OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :cancel_requested, as: 'cancelRequested'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :operation_type, as: 'operationType'
-          hash :request_resource, as: 'requestResource'
-          property :source_token, as: 'sourceToken'
-          collection :stages, as: 'stages', class: Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2Stage, decorator: Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2Stage::Representation
-      
-          property :status_detail, as: 'statusDetail'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-        end
-      end
-      
-      class GoogleCloudFunctionsV2Stage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, as: 'message'
-          property :name, as: 'name'
-          property :resource, as: 'resource'
-          property :resource_uri, as: 'resourceUri'
-          property :state, as: 'state'
-          collection :state_messages, as: 'stateMessages', class: Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2StateMessage, decorator: Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2StateMessage::Representation
-      
-        end
-      end
-      
-      class GoogleCloudFunctionsV2StateMessage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, as: 'message'
-          property :severity, as: 'severity'
-          property :type, as: 'type'
-        end
-      end
-      
       class GoogleCloudFunctionsV2alphaLocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -572,6 +477,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
+          property :build_name, as: 'buildName'
           property :cancel_requested, as: 'cancelRequested'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
@@ -600,53 +506,6 @@ module Google
       end
       
       class GoogleCloudFunctionsV2alphaStateMessage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, as: 'message'
-          property :severity, as: 'severity'
-          property :type, as: 'type'
-        end
-      end
-      
-      class GoogleCloudFunctionsV2betaLocationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :environments, as: 'environments'
-        end
-      end
-      
-      class GoogleCloudFunctionsV2betaOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :cancel_requested, as: 'cancelRequested'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :operation_type, as: 'operationType'
-          hash :request_resource, as: 'requestResource'
-          property :source_token, as: 'sourceToken'
-          collection :stages, as: 'stages', class: Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2betaStage, decorator: Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2betaStage::Representation
-      
-          property :status_detail, as: 'statusDetail'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-        end
-      end
-      
-      class GoogleCloudFunctionsV2betaStage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, as: 'message'
-          property :name, as: 'name'
-          property :resource, as: 'resource'
-          property :resource_uri, as: 'resourceUri'
-          property :state, as: 'state'
-          collection :state_messages, as: 'stateMessages', class: Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2betaStateMessage, decorator: Google::Apis::CloudfunctionsV2alpha::GoogleCloudFunctionsV2betaStateMessage::Representation
-      
-        end
-      end
-      
-      class GoogleCloudFunctionsV2betaStateMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
