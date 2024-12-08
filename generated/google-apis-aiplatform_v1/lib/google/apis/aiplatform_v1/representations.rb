@@ -3310,6 +3310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1PrebuiltVoiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1PredefinedSplit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3707,6 +3713,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1RagVectorDbConfigPinecone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1RagVectorDbConfigRagManagedDb
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5242,6 +5254,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1SharePointSources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SharePointSourcesSharePointSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1ShieldedVmConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5273,6 +5297,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1SpecialistPool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SpeechConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5686,6 +5716,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1ToolCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1ToolCallValidInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5717,6 +5753,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1ToolConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ToolGoogleSearch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5819,6 +5861,192 @@ module Google
       end
       
       class GoogleCloudAiplatformV1TrainingPipeline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1Trajectory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryAnyOrderMatchSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryExactMatchInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryExactMatchInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryExactMatchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryExactMatchSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryInOrderMatchInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryInOrderMatchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryInOrderMatchSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryPrecisionInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryPrecisionInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryPrecisionResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryPrecisionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryRecallInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryRecallInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryRecallMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryRecallResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryRecallSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectorySingleToolUseInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectorySingleToolUseInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectorySingleToolUseResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TrajectorySingleToolUseSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6094,6 +6322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1VoiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1WorkerPoolSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6361,7 +6595,7 @@ module Google
       class CloudAiLargeModelsVisionVideo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :encoded_video, :base64 => true, as: 'encodedVideo'
+          property :encoded_video, as: 'encodedVideo'
           property :encoding, as: 'encoding'
           property :uri, as: 'uri'
           property :video, :base64 => true, as: 'video'
@@ -8210,6 +8444,18 @@ module Google
       
           property :tool_parameter_kv_match_input, as: 'toolParameterKvMatchInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchInput::Representation
       
+          property :trajectory_any_order_match_input, as: 'trajectoryAnyOrderMatchInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput::Representation
+      
+          property :trajectory_exact_match_input, as: 'trajectoryExactMatchInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryExactMatchInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryExactMatchInput::Representation
+      
+          property :trajectory_in_order_match_input, as: 'trajectoryInOrderMatchInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryInOrderMatchInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryInOrderMatchInput::Representation
+      
+          property :trajectory_precision_input, as: 'trajectoryPrecisionInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryPrecisionInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryPrecisionInput::Representation
+      
+          property :trajectory_recall_input, as: 'trajectoryRecallInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryRecallInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryRecallInput::Representation
+      
+          property :trajectory_single_tool_use_input, as: 'trajectorySingleToolUseInput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectorySingleToolUseInput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectorySingleToolUseInput::Representation
+      
         end
       end
       
@@ -8265,6 +8511,18 @@ module Google
           property :tool_parameter_key_match_results, as: 'toolParameterKeyMatchResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKeyMatchResults::Representation
       
           property :tool_parameter_kv_match_results, as: 'toolParameterKvMatchResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolParameterKvMatchResults::Representation
+      
+          property :trajectory_any_order_match_results, as: 'trajectoryAnyOrderMatchResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults::Representation
+      
+          property :trajectory_exact_match_results, as: 'trajectoryExactMatchResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryExactMatchResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryExactMatchResults::Representation
+      
+          property :trajectory_in_order_match_results, as: 'trajectoryInOrderMatchResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryInOrderMatchResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryInOrderMatchResults::Representation
+      
+          property :trajectory_precision_results, as: 'trajectoryPrecisionResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryPrecisionResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryPrecisionResults::Representation
+      
+          property :trajectory_recall_results, as: 'trajectoryRecallResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryRecallResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryRecallResults::Representation
+      
+          property :trajectory_single_tool_use_results, as: 'trajectorySingleToolUseResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectorySingleToolUseResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectorySingleToolUseResults::Representation
       
         end
       end
@@ -9474,13 +9732,17 @@ module Google
           property :presence_penalty, as: 'presencePenalty'
           property :response_logprobs, as: 'responseLogprobs'
           property :response_mime_type, as: 'responseMimeType'
+          collection :response_modalities, as: 'responseModalities'
           property :response_schema, as: 'responseSchema', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema::Representation
       
           property :routing_config, as: 'routingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfig::Representation
       
           property :seed, as: 'seed'
+          property :speech_config, as: 'speechConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SpeechConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SpeechConfig::Representation
+      
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
+          property :token_resolution, as: 'tokenResolution'
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
         end
@@ -9781,6 +10043,8 @@ module Google
           property :partial_failure_gcs_sink, as: 'partialFailureGcsSink', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination::Representation
       
           property :rag_file_transformation_config, as: 'ragFileTransformationConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileTransformationConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagFileTransformationConfig::Representation
+      
+          property :share_point_sources, as: 'sharePointSources', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SharePointSources, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SharePointSources::Representation
       
           property :slack_source, as: 'slackSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SlackSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SlackSource::Representation
       
@@ -11541,9 +11805,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :data_persistent_disk_spec, as: 'dataPersistentDiskSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PersistentDiskSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PersistentDiskSpec::Representation
+      
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec::Representation
+      
+          property :euc_config, as: 'eucConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookEucConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookEucConfig::Representation
       
           property :expiration_time, as: 'expirationTime'
           property :health_state, as: 'healthState'
@@ -11551,7 +11819,11 @@ module Google
       
           property :is_upgradable, as: 'isUpgradable'
           hash :labels, as: 'labels'
+          property :machine_spec, as: 'machineSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MachineSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MachineSpec::Representation
+      
           property :name, as: 'name'
+          property :network_spec, as: 'networkSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NetworkSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NetworkSpec::Representation
+      
           collection :network_tags, as: 'networkTags'
           property :notebook_runtime_template_ref, as: 'notebookRuntimeTemplateRef', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntimeTemplateRef, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1NotebookRuntimeTemplateRef::Representation
       
@@ -11562,6 +11834,8 @@ module Google
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
+          property :shielded_vm_config, as: 'shieldedVmConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ShieldedVmConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ShieldedVmConfig::Representation
+      
           property :update_time, as: 'updateTime'
           property :version, as: 'version'
         end
@@ -11962,6 +12236,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_port, as: 'containerPort'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1PrebuiltVoiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :voice_name, as: 'voiceName'
         end
       end
       
@@ -12550,6 +12831,8 @@ module Google
           property :jira_source, as: 'jiraSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1JiraSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1JiraSource::Representation
       
           property :name, as: 'name'
+          property :share_point_sources, as: 'sharePointSources', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SharePointSources, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SharePointSources::Representation
+      
           property :slack_source, as: 'slackSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SlackSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SlackSource::Representation
       
           property :update_time, as: 'updateTime'
@@ -12616,6 +12899,8 @@ module Google
       
           property :rag_embedding_model_config, as: 'ragEmbeddingModelConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagEmbeddingModelConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagEmbeddingModelConfig::Representation
       
+          property :rag_managed_db, as: 'ragManagedDb', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagVectorDbConfigRagManagedDb, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagVectorDbConfigRagManagedDb::Representation
+      
           property :vertex_vector_search, as: 'vertexVectorSearch', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagVectorDbConfigVertexVectorSearch, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagVectorDbConfigVertexVectorSearch::Representation
       
         end
@@ -12625,6 +12910,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :index_name, as: 'indexName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1RagVectorDbConfigRagManagedDb
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -15124,6 +15415,30 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1SharePointSources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :share_point_sources, as: 'sharePointSources', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SharePointSourcesSharePointSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SharePointSourcesSharePointSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SharePointSourcesSharePointSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ApiAuthApiKeyConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ApiAuthApiKeyConfig::Representation
+      
+          property :drive_id, as: 'driveId'
+          property :drive_name, as: 'driveName'
+          property :file_id, as: 'fileId'
+          property :sharepoint_folder_id, as: 'sharepointFolderId'
+          property :sharepoint_folder_path, as: 'sharepointFolderPath'
+          property :sharepoint_site_name, as: 'sharepointSiteName'
+          property :tenant_id, as: 'tenantId'
+        end
+      end
+      
       class GoogleCloudAiplatformV1ShieldedVmConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15177,6 +15492,14 @@ module Google
           collection :specialist_manager_emails, as: 'specialistManagerEmails'
           property :specialist_managers_count, as: 'specialistManagersCount'
           collection :specialist_worker_emails, as: 'specialistWorkerEmails'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SpeechConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :voice_config, as: 'voiceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VoiceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VoiceConfig::Representation
+      
         end
       end
       
@@ -15867,10 +16190,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionDeclaration::Representation
       
+          property :google_search, as: 'googleSearch', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolGoogleSearch, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolGoogleSearch::Representation
+      
           property :google_search_retrieval, as: 'googleSearchRetrieval', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleSearchRetrieval, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GoogleSearchRetrieval::Representation
       
           property :retrieval, as: 'retrieval', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Retrieval, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Retrieval::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tool_input, as: 'toolInput'
+          property :tool_name, as: 'toolName'
         end
       end
       
@@ -15918,6 +16251,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function_calling_config, as: 'functionCallingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionCallingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionCallingConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ToolGoogleSearch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -16070,6 +16409,259 @@ module Google
           property :training_task_inputs, as: 'trainingTaskInputs'
           property :training_task_metadata, as: 'trainingTaskMetadata'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1Trajectory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_calls, as: 'toolCalls', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCall, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ToolCall::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryAnyOrderMatchSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryAnyOrderMatchSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :predicted_trajectory, as: 'predictedTrajectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory::Representation
+      
+          property :reference_trajectory, as: 'referenceTrajectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :trajectory_any_order_match_metric_values, as: 'trajectoryAnyOrderMatchMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryAnyOrderMatchSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryExactMatchInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryExactMatchInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryExactMatchInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryExactMatchSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryExactMatchSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryExactMatchInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :predicted_trajectory, as: 'predictedTrajectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory::Representation
+      
+          property :reference_trajectory, as: 'referenceTrajectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryExactMatchResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :trajectory_exact_match_metric_values, as: 'trajectoryExactMatchMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryExactMatchSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryInOrderMatchInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryInOrderMatchSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryInOrderMatchSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :predicted_trajectory, as: 'predictedTrajectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory::Representation
+      
+          property :reference_trajectory, as: 'referenceTrajectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryInOrderMatchResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :trajectory_in_order_match_metric_values, as: 'trajectoryInOrderMatchMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryInOrderMatchSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryPrecisionInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryPrecisionInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryPrecisionInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryPrecisionSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryPrecisionSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryPrecisionInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :predicted_trajectory, as: 'predictedTrajectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory::Representation
+      
+          property :reference_trajectory, as: 'referenceTrajectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryPrecisionResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :trajectory_precision_metric_values, as: 'trajectoryPrecisionMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryPrecisionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryRecallInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryRecallInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryRecallInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryRecallSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryRecallSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryRecallInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :predicted_trajectory, as: 'predictedTrajectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory::Representation
+      
+          property :reference_trajectory, as: 'referenceTrajectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryRecallMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryRecallResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :trajectory_recall_metric_values, as: 'trajectoryRecallMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryRecallMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectoryRecallMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectoryRecallSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectorySingleToolUseInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectorySingleToolUseInstance, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectorySingleToolUseInstance::Representation
+      
+          property :metric_spec, as: 'metricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectorySingleToolUseSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectorySingleToolUseSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectorySingleToolUseInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :predicted_trajectory, as: 'predictedTrajectory', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Trajectory::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectorySingleToolUseResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :trajectory_single_tool_use_metric_values, as: 'trajectorySingleToolUseMetricValues', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TrajectorySingleToolUseSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tool_name, as: 'toolName'
         end
       end
       
@@ -16475,6 +17067,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_offset, as: 'endOffset'
           property :start_offset, as: 'startOffset'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1VoiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prebuilt_voice_config, as: 'prebuiltVoiceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrebuiltVoiceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrebuiltVoiceConfig::Representation
+      
         end
       end
       
