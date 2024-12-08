@@ -412,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscAutoConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PscConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -577,6 +583,7 @@ module Google
           property :shard_count, as: 'shardCount'
           property :state, as: 'state'
           property :total_size_bytes, :numeric_string => true, as: 'totalSizeBytes'
+          property :uid, as: 'uid'
         end
       end
       
@@ -594,6 +601,7 @@ module Google
           property :cluster, as: 'cluster'
           property :cluster_uid, as: 'clusterUid'
           property :name, as: 'name'
+          property :uid, as: 'uid'
         end
       end
       
@@ -748,6 +756,8 @@ module Google
       class ConnectionDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :psc_auto_connection, as: 'pscAutoConnection', class: Google::Apis::RedisV1beta1::PscAutoConnection, decorator: Google::Apis::RedisV1beta1::PscAutoConnection::Representation
+      
           property :psc_connection, as: 'pscConnection', class: Google::Apis::RedisV1beta1::PscConnection, decorator: Google::Apis::RedisV1beta1::PscConnection::Representation
       
         end
@@ -1267,6 +1277,20 @@ module Google
           property :engine, as: 'engine'
           property :type, as: 'type'
           property :version, as: 'version'
+        end
+      end
+      
+      class PscAutoConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :connection_type, as: 'connectionType'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :network, as: 'network'
+          property :project_id, as: 'projectId'
+          property :psc_connection_id, as: 'pscConnectionId'
+          property :psc_connection_status, as: 'pscConnectionStatus'
+          property :service_attachment, as: 'serviceAttachment'
         end
       end
       
