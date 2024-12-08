@@ -792,6 +792,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # A score in the range of [0, 1] describing how grounded the answer is by the
+        # reference chunks.
+        # Corresponds to the JSON property `groundingScore`
+        # @return [Float]
+        attr_accessor :grounding_score
+      
+        # Optional. Grounding supports.
+        # Corresponds to the JSON property `groundingSupports`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerGroundingSupport>]
+        attr_accessor :grounding_supports
+      
         # Immutable. Fully qualified name `projects/`project`/locations/global/
         # collections/`collection`/engines/`engine`/sessions/*/answers/*`
         # Corresponds to the JSON property `name`
@@ -834,6 +845,8 @@ module Google
           @citations = args[:citations] if args.key?(:citations)
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @grounding_score = args[:grounding_score] if args.key?(:grounding_score)
+          @grounding_supports = args[:grounding_supports] if args.key?(:grounding_supports)
           @name = args[:name] if args.key?(:name)
           @query_understanding_info = args[:query_understanding_info] if args.key?(:query_understanding_info)
           @references = args[:references] if args.key?(:references)
@@ -893,6 +906,56 @@ module Google
         end
       end
       
+      # Grounding support for a claim in `answer_text`.
+      class GoogleCloudDiscoveryengineV1AnswerGroundingSupport
+        include Google::Apis::Core::Hashable
+      
+        # Required. End of the claim, exclusive.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # Indicates that this claim required grounding check. When the system decided
+        # this claim didn't require attribution/grounding check, this field is set to
+        # false. In that case, no grounding check was done for the claim and therefore `
+        # grounding_score`, `sources` is not returned.
+        # Corresponds to the JSON property `groundingCheckRequired`
+        # @return [Boolean]
+        attr_accessor :grounding_check_required
+        alias_method :grounding_check_required?, :grounding_check_required
+      
+        # A score in the range of [0, 1] describing how grounded is a specific claim by
+        # the references. Higher value means that the claim is better supported by the
+        # reference chunks.
+        # Corresponds to the JSON property `groundingScore`
+        # @return [Float]
+        attr_accessor :grounding_score
+      
+        # Optional. Citation sources for the claim.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerCitationSource>]
+        attr_accessor :sources
+      
+        # Required. Index indicates the start of the claim, measured in bytes (UTF-8
+        # unicode).
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @grounding_check_required = args[:grounding_check_required] if args.key?(:grounding_check_required)
+          @grounding_score = args[:grounding_score] if args.key?(:grounding_score)
+          @sources = args[:sources] if args.key?(:sources)
+          @start_index = args[:start_index] if args.key?(:start_index)
+        end
+      end
+      
       # Request message for ConversationalSearchService.AnswerQuery method.
       class GoogleCloudDiscoveryengineV1AnswerQueryRequest
         include Google::Apis::Core::Hashable
@@ -933,7 +996,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequestRelatedQuestionsSpec]
         attr_accessor :related_questions_spec
       
-        # Safety specification.
+        # Safety specification. There are two use cases: 1. when only safety_spec.enable
+        # is set, the BLOCK_LOW_AND_ABOVE threshold will be applied for all categories.
+        # 2. when safety_spec.enable is set and some safety_settings are set, only
+        # specified safety_settings are applied.
         # Corresponds to the JSON property `safetySpec`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpec]
         attr_accessor :safety_spec
@@ -1214,6 +1280,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_rephrase_steps
       
+        # Query Rephraser Model specification.
+        # Corresponds to the JSON property `modelSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec]
+        attr_accessor :model_spec
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1222,6 +1293,27 @@ module Google
         def update!(**args)
           @disable = args[:disable] if args.key?(:disable)
           @max_rephrase_steps = args[:max_rephrase_steps] if args.key?(:max_rephrase_steps)
+          @model_spec = args[:model_spec] if args.key?(:model_spec)
+        end
+      end
+      
+      # Query Rephraser Model specification.
+      class GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Enabled query rephraser model type. If not set, it will use LARGE by
+        # default.
+        # Corresponds to the JSON property `modelType`
+        # @return [String]
+        attr_accessor :model_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_type = args[:model_type] if args.key?(:model_type)
         end
       end
       
@@ -1245,7 +1337,10 @@ module Google
         end
       end
       
-      # Safety specification.
+      # Safety specification. There are two use cases: 1. when only safety_spec.enable
+      # is set, the BLOCK_LOW_AND_ABOVE threshold will be applied for all categories.
+      # 2. when safety_spec.enable is set and some safety_settings are set, only
+      # specified safety_settings are applied.
       class GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpec
         include Google::Apis::Core::Hashable
       
@@ -5017,6 +5112,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_types
       
+        # Optional. Whether to update the DataStore schema to the latest predefined
+        # schema. If true, the DataStore schema will be updated to include any FHIR
+        # fields or resource types that have been added since the last import and
+        # corresponding FHIR resources will be imported from the FHIR store. Note this
+        # field cannot be used in conjunction with `resource_types`. It should be used
+        # after initial import.
+        # Corresponds to the JSON property `updateFromLatestPredefinedSchema`
+        # @return [Boolean]
+        attr_accessor :update_from_latest_predefined_schema
+        alias_method :update_from_latest_predefined_schema?, :update_from_latest_predefined_schema
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5026,6 +5132,7 @@ module Google
           @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
           @gcs_staging_dir = args[:gcs_staging_dir] if args.key?(:gcs_staging_dir)
           @resource_types = args[:resource_types] if args.key?(:resource_types)
+          @update_from_latest_predefined_schema = args[:update_from_latest_predefined_schema] if args.key?(:update_from_latest_predefined_schema)
         end
       end
       
@@ -7840,6 +7947,11 @@ module Google
       class GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec
         include Google::Apis::Core::Hashable
       
+        # Boost specification to boost certain documents.
+        # Corresponds to the JSON property `boostSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestBoostSpec]
+        attr_accessor :boost_spec
+      
         # Required. Full resource name of DataStore, such as `projects/`project`/
         # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
         # Corresponds to the JSON property `dataStore`
@@ -7859,6 +7971,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
         end
@@ -8616,14 +8729,292 @@ module Google
         end
       end
       
+      # Configures metadata that is used to generate serving time results (e.g. search
+      # results or recommendation predictions). The ServingConfig is passed in the
+      # search and predict request and generates results.
+      class GoogleCloudDiscoveryengineV1ServingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Boost controls to use in serving path. All triggered boost controls will be
+        # applied. Boost controls must be in the same data store as the serving config.
+        # Maximum of 20 boost controls.
+        # Corresponds to the JSON property `boostControlIds`
+        # @return [Array<String>]
+        attr_accessor :boost_control_ids
+      
+        # Output only. ServingConfig created timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The human readable serving config display name. Used in Discovery UI.
+        # This field must be a UTF-8 encoded string with a length limit of 128
+        # characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Condition do not associate specifications. If multiple do not associate
+        # conditions match, all matching do not associate controls in the list will
+        # execute. Order does not matter. Maximum number of specifications is 100. Can
+        # only be set if SolutionType is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `dissociateControlIds`
+        # @return [Array<String>]
+        attr_accessor :dissociate_control_ids
+      
+        # How much diversity to use in recommendation model results e.g. `medium-
+        # diversity` or `high-diversity`. Currently supported values: * `no-diversity` *
+        # `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If
+        # not specified, we choose default based on recommendation model type. Default
+        # value: `no-diversity`. Can only be set if SolutionType is
+        # SOLUTION_TYPE_RECOMMENDATION.
+        # Corresponds to the JSON property `diversityLevel`
+        # @return [String]
+        attr_accessor :diversity_level
+      
+        # Filter controls to use in serving path. All triggered filter controls will be
+        # applied. Filter controls must be in the same data store as the serving config.
+        # Maximum of 20 filter controls.
+        # Corresponds to the JSON property `filterControlIds`
+        # @return [Array<String>]
+        attr_accessor :filter_control_ids
+      
+        # Specifies the configurations needed for Generic Discovery.Currently we support:
+        # * `content_search_spec`: configuration for generic content search.
+        # Corresponds to the JSON property `genericConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfigGenericConfig]
+        attr_accessor :generic_config
+      
+        # Condition ignore specifications. If multiple ignore conditions match, all
+        # matching ignore controls in the list will execute. Order does not matter.
+        # Maximum number of specifications is 100.
+        # Corresponds to the JSON property `ignoreControlIds`
+        # @return [Array<String>]
+        attr_accessor :ignore_control_ids
+      
+        # Specifies the configurations needed for Media Discovery. Currently we support:
+        # * `demote_content_watched`: Threshold for watched content demotion. Customers
+        # can specify if using watched content demotion or use viewed detail page. Using
+        # the content watched demotion, customers need to specify the watched minutes or
+        # percentage exceeds the threshold, the content will be demoted in the
+        # recommendation result. * `promote_fresh_content`: cutoff days for fresh
+        # content promotion. Customers can specify if using content freshness promotion.
+        # If the content was published within the cutoff days, the content will be
+        # promoted in the recommendation result. Can only be set if SolutionType is
+        # SOLUTION_TYPE_RECOMMENDATION.
+        # Corresponds to the JSON property `mediaConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfigMediaConfig]
+        attr_accessor :media_config
+      
+        # The id of the model to use at serving time. Currently only
+        # RecommendationModels are supported. Can be changed but only to a compatible
+        # model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when
+        # SolutionType is SOLUTION_TYPE_RECOMMENDATION.
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        # Immutable. Fully qualified name `projects/`project`/locations/`location`/
+        # collections/`collection_id`/engines/`engine_id`/servingConfigs/`
+        # serving_config_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Condition oneway synonyms specifications. If multiple oneway synonyms
+        # conditions match, all matching oneway synonyms controls in the list will
+        # execute. Maximum number of specifications is 100. Can only be set if
+        # SolutionType is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `onewaySynonymsControlIds`
+        # @return [Array<String>]
+        attr_accessor :oneway_synonyms_control_ids
+      
+        # Condition promote specifications. Maximum number of specifications is 100.
+        # Corresponds to the JSON property `promoteControlIds`
+        # @return [Array<String>]
+        attr_accessor :promote_control_ids
+      
+        # The ranking expression controls the customized ranking on retrieval documents.
+        # To leverage this, document embedding is required. The ranking expression
+        # setting in ServingConfig applies to all search requests served by the serving
+        # config. However, if SearchRequest.ranking_expression is specified, it
+        # overrides the ServingConfig ranking expression. The ranking expression is a
+        # single function or multiple functions that are joined by "+". *
+        # ranking_expression = function, ` " + ", function `; Supported functions: *
+        # double * relevance_score * double * dotProduct(embedding_field_path) Function
+        # variables: * `relevance_score`: pre-defined keywords, used for measure
+        # relevance between query and document. * `embedding_field_path`: the document
+        # embedding field used with query embedding vector. * `dotProduct`: embedding
+        # function between embedding_field_path and query embedding vector. Example
+        # ranking expression: If document has an embedding field doc_embedding, the
+        # ranking expression could be `0.5 * relevance_score + 0.3 * dotProduct(
+        # doc_embedding)`.
+        # Corresponds to the JSON property `rankingExpression`
+        # @return [String]
+        attr_accessor :ranking_expression
+      
+        # IDs of the redirect controls. Only the first triggered redirect action is
+        # applied, even if multiple apply. Maximum number of specifications is 100. Can
+        # only be set if SolutionType is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `redirectControlIds`
+        # @return [Array<String>]
+        attr_accessor :redirect_control_ids
+      
+        # Condition replacement specifications. Applied according to the order in the
+        # list. A previously replaced term can not be re-replaced. Maximum number of
+        # specifications is 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `replacementControlIds`
+        # @return [Array<String>]
+        attr_accessor :replacement_control_ids
+      
+        # Required. Immutable. Specifies the solution type that a serving config can be
+        # associated with.
+        # Corresponds to the JSON property `solutionType`
+        # @return [String]
+        attr_accessor :solution_type
+      
+        # Condition synonyms specifications. If multiple synonyms conditions match, all
+        # matching synonyms controls in the list will execute. Maximum number of
+        # specifications is 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `synonymsControlIds`
+        # @return [Array<String>]
+        attr_accessor :synonyms_control_ids
+      
+        # Output only. ServingConfig updated timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost_control_ids = args[:boost_control_ids] if args.key?(:boost_control_ids)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @dissociate_control_ids = args[:dissociate_control_ids] if args.key?(:dissociate_control_ids)
+          @diversity_level = args[:diversity_level] if args.key?(:diversity_level)
+          @filter_control_ids = args[:filter_control_ids] if args.key?(:filter_control_ids)
+          @generic_config = args[:generic_config] if args.key?(:generic_config)
+          @ignore_control_ids = args[:ignore_control_ids] if args.key?(:ignore_control_ids)
+          @media_config = args[:media_config] if args.key?(:media_config)
+          @model_id = args[:model_id] if args.key?(:model_id)
+          @name = args[:name] if args.key?(:name)
+          @oneway_synonyms_control_ids = args[:oneway_synonyms_control_ids] if args.key?(:oneway_synonyms_control_ids)
+          @promote_control_ids = args[:promote_control_ids] if args.key?(:promote_control_ids)
+          @ranking_expression = args[:ranking_expression] if args.key?(:ranking_expression)
+          @redirect_control_ids = args[:redirect_control_ids] if args.key?(:redirect_control_ids)
+          @replacement_control_ids = args[:replacement_control_ids] if args.key?(:replacement_control_ids)
+          @solution_type = args[:solution_type] if args.key?(:solution_type)
+          @synonyms_control_ids = args[:synonyms_control_ids] if args.key?(:synonyms_control_ids)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Specifies the configurations needed for Generic Discovery.Currently we support:
+      # * `content_search_spec`: configuration for generic content search.
+      class GoogleCloudDiscoveryengineV1ServingConfigGenericConfig
+        include Google::Apis::Core::Hashable
+      
+        # A specification for configuring the behavior of content search.
+        # Corresponds to the JSON property `contentSearchSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec]
+        attr_accessor :content_search_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_search_spec = args[:content_search_spec] if args.key?(:content_search_spec)
+        end
+      end
+      
+      # Specifies the configurations needed for Media Discovery. Currently we support:
+      # * `demote_content_watched`: Threshold for watched content demotion. Customers
+      # can specify if using watched content demotion or use viewed detail page. Using
+      # the content watched demotion, customers need to specify the watched minutes or
+      # percentage exceeds the threshold, the content will be demoted in the
+      # recommendation result. * `promote_fresh_content`: cutoff days for fresh
+      # content promotion. Customers can specify if using content freshness promotion.
+      # If the content was published within the cutoff days, the content will be
+      # promoted in the recommendation result. Can only be set if SolutionType is
+      # SOLUTION_TYPE_RECOMMENDATION.
+      class GoogleCloudDiscoveryengineV1ServingConfigMediaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the content freshness used for recommendation result. Contents will
+        # be demoted if contents were published for more than content freshness cutoff
+        # days.
+        # Corresponds to the JSON property `contentFreshnessCutoffDays`
+        # @return [Fixnum]
+        attr_accessor :content_freshness_cutoff_days
+      
+        # Specifies the content watched percentage threshold for demotion. Threshold
+        # value must be between [0, 1.0] inclusive.
+        # Corresponds to the JSON property `contentWatchedPercentageThreshold`
+        # @return [Float]
+        attr_accessor :content_watched_percentage_threshold
+      
+        # Specifies the content watched minutes threshold for demotion.
+        # Corresponds to the JSON property `contentWatchedSecondsThreshold`
+        # @return [Float]
+        attr_accessor :content_watched_seconds_threshold
+      
+        # Optional. Specifies the number of days to look back for demoting watched
+        # content. If set to zero or unset, defaults to the maximum of 365 days.
+        # Corresponds to the JSON property `demoteContentWatchedPastDays`
+        # @return [Fixnum]
+        attr_accessor :demote_content_watched_past_days
+      
+        # Specifies the event type used for demoting recommendation result. Currently
+        # supported values: * `view-item`: Item viewed. * `media-play`: Start/resume
+        # watching a video, playing a song, etc. * `media-complete`: Finished or stopped
+        # midway through a video, song, etc. If unset, watch history demotion will not
+        # be applied. Content freshness demotion will still be applied.
+        # Corresponds to the JSON property `demotionEventType`
+        # @return [String]
+        attr_accessor :demotion_event_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_freshness_cutoff_days = args[:content_freshness_cutoff_days] if args.key?(:content_freshness_cutoff_days)
+          @content_watched_percentage_threshold = args[:content_watched_percentage_threshold] if args.key?(:content_watched_percentage_threshold)
+          @content_watched_seconds_threshold = args[:content_watched_seconds_threshold] if args.key?(:content_watched_seconds_threshold)
+          @demote_content_watched_past_days = args[:demote_content_watched_past_days] if args.key?(:demote_content_watched_past_days)
+          @demotion_event_type = args[:demotion_event_type] if args.key?(:demotion_event_type)
+        end
+      end
+      
       # External session proto definition.
       class GoogleCloudDiscoveryengineV1Session
         include Google::Apis::Core::Hashable
+      
+        # Optional. The display name of the session. This field is used to identify the
+        # session in the UI. By default, the display name is the first turn query text
+        # in the session.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
       
         # Output only. The time the session finished.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # Optional. Whether the session is pinned, pinned session will be displayed on
+        # the top of the session list.
+        # Corresponds to the JSON property `isPinned`
+        # @return [Boolean]
+        attr_accessor :is_pinned
+        alias_method :is_pinned?, :is_pinned
       
         # Immutable. Fully qualified name `projects/`project`/locations/global/
         # collections/`collection`/engines/`engine`/sessions/*`
@@ -8657,7 +9048,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @is_pinned = args[:is_pinned] if args.key?(:is_pinned)
           @name = args[:name] if args.key?(:name)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
@@ -9664,6 +10057,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # A score in the range of [0, 1] describing how grounded the answer is by the
+        # reference chunks.
+        # Corresponds to the JSON property `groundingScore`
+        # @return [Float]
+        attr_accessor :grounding_score
+      
+        # Optional. Grounding supports.
+        # Corresponds to the JSON property `groundingSupports`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerGroundingSupport>]
+        attr_accessor :grounding_supports
+      
         # Immutable. Fully qualified name `projects/`project`/locations/global/
         # collections/`collection`/engines/`engine`/sessions/*/answers/*`
         # Corresponds to the JSON property `name`
@@ -9706,6 +10110,8 @@ module Google
           @citations = args[:citations] if args.key?(:citations)
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @grounding_score = args[:grounding_score] if args.key?(:grounding_score)
+          @grounding_supports = args[:grounding_supports] if args.key?(:grounding_supports)
           @name = args[:name] if args.key?(:name)
           @query_understanding_info = args[:query_understanding_info] if args.key?(:query_understanding_info)
           @references = args[:references] if args.key?(:references)
@@ -9762,6 +10168,56 @@ module Google
         # Update properties of this object
         def update!(**args)
           @reference_id = args[:reference_id] if args.key?(:reference_id)
+        end
+      end
+      
+      # Grounding support for a claim in `answer_text`.
+      class GoogleCloudDiscoveryengineV1alphaAnswerGroundingSupport
+        include Google::Apis::Core::Hashable
+      
+        # Required. End of the claim, exclusive.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # Indicates that this claim required grounding check. When the system decided
+        # this claim didn't require attribution/grounding check, this field is set to
+        # false. In that case, no grounding check was done for the claim and therefore `
+        # grounding_score`, `sources` is not returned.
+        # Corresponds to the JSON property `groundingCheckRequired`
+        # @return [Boolean]
+        attr_accessor :grounding_check_required
+        alias_method :grounding_check_required?, :grounding_check_required
+      
+        # A score in the range of [0, 1] describing how grounded is a specific claim by
+        # the references. Higher value means that the claim is better supported by the
+        # reference chunks.
+        # Corresponds to the JSON property `groundingScore`
+        # @return [Float]
+        attr_accessor :grounding_score
+      
+        # Optional. Citation sources for the claim.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerCitationSource>]
+        attr_accessor :sources
+      
+        # Required. Index indicates the start of the claim, measured in bytes (UTF-8
+        # unicode).
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @grounding_check_required = args[:grounding_check_required] if args.key?(:grounding_check_required)
+          @grounding_score = args[:grounding_score] if args.key?(:grounding_score)
+          @sources = args[:sources] if args.key?(:sources)
+          @start_index = args[:start_index] if args.key?(:start_index)
         end
       end
       
@@ -11240,6 +11696,27 @@ module Google
         end
       end
       
+      # Request for DeleteSession method.
+      class GoogleCloudDiscoveryengineV1alphaDeleteSessionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the Session to delete. Format: `projects/`
+        # project`/locations/`location`/collections/`collection`/dataStores/`
+        # data_store_id`/sessions/`session_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Metadata related to the progress of the SiteSearchEngineService.DeleteSitemap
       # operation. This will be returned by the google.longrunning.Operation.metadata
       # field.
@@ -12308,6 +12785,35 @@ module Google
         end
       end
       
+      # Request for GetSession method.
+      class GoogleCloudDiscoveryengineV1alphaGetSessionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, the full session including all answer details will
+        # be returned.
+        # Corresponds to the JSON property `includeAnswerDetails`
+        # @return [Boolean]
+        attr_accessor :include_answer_details
+        alias_method :include_answer_details?, :include_answer_details
+      
+        # Required. The resource name of the Session to get. Format: `projects/`project`/
+        # locations/`location`/collections/`collection`/dataStores/`data_store_id`/
+        # sessions/`session_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_answer_details = args[:include_answer_details] if args.key?(:include_answer_details)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Response message for SiteSearchEngineService.GetUriPatternDocumentData method.
       class GoogleCloudDiscoveryengineV1alphaGetUriPatternDocumentDataResponse
         include Google::Apis::Core::Hashable
@@ -12835,6 +13341,82 @@ module Google
         # Update properties of this object
         def update!(**args)
           @models = args[:models] if args.key?(:models)
+        end
+      end
+      
+      # Request for ListSessions method.
+      class GoogleCloudDiscoveryengineV1alphaListSessionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A filter to apply on the list results. The supported features are:
+        # user_pseudo_id, state. Example: "user_pseudo_id = some_id"
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # A comma-separated list of fields to order by, sorted in ascending order. Use "
+        # desc" after a field name for descending. Supported fields: * `update_time` * `
+        # create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "
+        # create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned
+        # first, then by update_time.
+        # Corresponds to the JSON property `orderBy`
+        # @return [String]
+        attr_accessor :order_by
+      
+        # Maximum number of results to return. If unspecified, defaults to 50. Max
+        # allowed value is 1000.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # A page token, received from a previous `ListSessions` call. Provide this to
+        # retrieve the subsequent page.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Required. The data store resource name. Format: `projects/`project`/locations/`
+        # location`/collections/`collection`/dataStores/`data_store_id``
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @order_by = args[:order_by] if args.key?(:order_by)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Response for ListSessions method.
+      class GoogleCloudDiscoveryengineV1alphaListSessionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pagination token, if not returned indicates the last page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # All the Sessions for a given data store.
+        # Corresponds to the JSON property `sessions`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSession>]
+        attr_accessor :sessions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sessions = args[:sessions] if args.key?(:sessions)
         end
       end
       
@@ -14440,6 +15022,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec
         include Google::Apis::Core::Hashable
       
+        # Boost specification to boost certain documents.
+        # Corresponds to the JSON property `boostSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec]
+        attr_accessor :boost_spec
+      
         # Required. Full resource name of DataStore, such as `projects/`project`/
         # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
         # Corresponds to the JSON property `dataStore`
@@ -14459,6 +15046,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
         end
@@ -14841,10 +15429,24 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSession
         include Google::Apis::Core::Hashable
       
+        # Optional. The display name of the session. This field is used to identify the
+        # session in the UI. By default, the display name is the first turn query text
+        # in the session.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Output only. The time the session finished.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # Optional. Whether the session is pinned, pinned session will be displayed on
+        # the top of the session list.
+        # Corresponds to the JSON property `isPinned`
+        # @return [Boolean]
+        attr_accessor :is_pinned
+        alias_method :is_pinned?, :is_pinned
       
         # Immutable. Fully qualified name `projects/`project`/locations/global/
         # collections/`collection`/engines/`engine`/sessions/*`
@@ -14878,7 +15480,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @is_pinned = args[:is_pinned] if args.key?(:is_pinned)
           @name = args[:name] if args.key?(:name)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
@@ -15302,6 +15906,33 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request for UpdateSession method.
+      class GoogleCloudDiscoveryengineV1alphaUpdateSessionRequest
+        include Google::Apis::Core::Hashable
+      
+        # External session proto definition.
+        # Corresponds to the JSON property `session`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSession]
+        attr_accessor :session
+      
+        # Indicates which fields in the provided Session to update. The following are
+        # NOT supported: * Session.name If not set or empty, all supported fields are
+        # updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session = args[:session] if args.key?(:session)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -18740,6 +19371,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec
         include Google::Apis::Core::Hashable
       
+        # Boost specification to boost certain documents.
+        # Corresponds to the JSON property `boostSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec]
+        attr_accessor :boost_spec
+      
         # Required. Full resource name of DataStore, such as `projects/`project`/
         # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
         # Corresponds to the JSON property `dataStore`
@@ -18759,6 +19395,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
         end
