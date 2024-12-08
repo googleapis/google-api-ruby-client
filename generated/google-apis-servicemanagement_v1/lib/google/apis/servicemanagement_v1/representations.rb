@@ -946,6 +946,7 @@ module Google
       class Documentation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_iam_info, as: 'additionalIamInfo'
           property :documentation_root_url, as: 'documentationRootUrl'
           property :overview, as: 'overview'
           collection :pages, as: 'pages', class: Google::Apis::ServicemanagementV1::Page, decorator: Google::Apis::ServicemanagementV1::Page::Representation
@@ -1115,6 +1116,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServicemanagementV1::CommonLanguageSettings, decorator: Google::Apis::ServicemanagementV1::CommonLanguageSettings::Representation
       
+          hash :renamed_services, as: 'renamedServices'
         end
       end
       

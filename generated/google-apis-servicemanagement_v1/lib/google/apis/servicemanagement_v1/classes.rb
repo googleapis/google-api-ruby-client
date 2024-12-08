@@ -1230,6 +1230,12 @@ module Google
       class Documentation
         include Google::Apis::Core::Hashable
       
+        # Optional information about the IAM configuration. This is typically used to
+        # link to documentation about a product's IAM roles and permissions.
+        # Corresponds to the JSON property `additionalIamInfo`
+        # @return [String]
+        attr_accessor :additional_iam_info
+      
         # The URL to the root of documentation.
         # Corresponds to the JSON property `documentationRootUrl`
         # @return [String]
@@ -1282,6 +1288,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_iam_info = args[:additional_iam_info] if args.key?(:additional_iam_info)
           @documentation_root_url = args[:documentation_root_url] if args.key?(:documentation_root_url)
           @overview = args[:overview] if args.key?(:overview)
           @pages = args[:pages] if args.key?(:pages)
@@ -1910,6 +1917,13 @@ module Google
         # @return [Google::Apis::ServicemanagementV1::CommonLanguageSettings]
         attr_accessor :common
       
+        # Map of service names to renamed services. Keys are the package relative
+        # service names and values are the name to be used for the service client and
+        # call options. publishing: go_settings: renamed_services: Publisher: TopicAdmin
+        # Corresponds to the JSON property `renamedServices`
+        # @return [Hash<String,String>]
+        attr_accessor :renamed_services
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1917,6 +1931,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common = args[:common] if args.key?(:common)
+          @renamed_services = args[:renamed_services] if args.key?(:renamed_services)
         end
       end
       
