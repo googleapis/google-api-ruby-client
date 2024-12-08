@@ -54,8 +54,8 @@ module Google
         
         # Lists the user's customer accounts.
         # @param [Fixnum] page_size
-        #   The maximum number of customers to show in a page of results. A number between
-        #   1 and 100 (inclusive).
+        #   Required. The maximum number of customers to show in a page of results. A
+        #   number between 1 and 100 (inclusive).
         # @param [String] page_token
         #   A token specifying which result page to return. This field has custom
         #   validations in ListCustomersRequestValidator
@@ -330,8 +330,8 @@ module Google
         #   Required. The customer managing the devices. An API resource name in the
         #   format `customers/[CUSTOMER_ID]`.
         # @param [Fixnum] page_size
-        #   The maximum number of devices to show in a page of results. Must be between 1
-        #   and 100 inclusive.
+        #   Required. The maximum number of devices to show in a page of results. Must be
+        #   between 1 and 100 inclusive.
         # @param [String] page_token
         #   A token specifying which result page to return.
         # @param [String] fields
