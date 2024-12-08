@@ -1,6 +1,6 @@
-# Simple REST client for version V1beta of the Firebase Realtime Database API
+# Simple REST client for version V1beta of the Firebase Realtime Database Management API
 
-This is a simple client library for version V1beta of the Firebase Realtime Database API. It provides:
+This is a simple client library for version V1beta of the Firebase Realtime Database Management API. It provides:
 
 * A client object that connects to the HTTP/JSON REST endpoint for the service.
 * Ruby objects for data structures related to the service.
@@ -65,7 +65,7 @@ More detailed descriptions of the Google simple REST clients are available in tw
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Firebasedatabase service in particular.)
 
-For reference information on specific calls in the Firebase Realtime Database API, see the {Google::Apis::FirebasedatabaseV1beta::FirebaseRealtimeDatabaseService class reference docs}.
+For reference information on specific calls in the Firebase Realtime Database Management API, see the {Google::Apis::FirebasedatabaseV1beta::FirebaseRealtimeDatabaseService class reference docs}.
 
 ## Which client should I use?
 
