@@ -109,6 +109,12 @@ module Google
         attr_accessor :supports_dry_run
         alias_method :supports_dry_run?, :supports_dry_run
       
+        # Shows if simulation is supported for this constraint or not.
+        # Corresponds to the JSON property `supportsSimulation`
+        # @return [Boolean]
+        attr_accessor :supports_simulation
+        alias_method :supports_simulation?, :supports_simulation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -122,6 +128,7 @@ module Google
           @list_constraint = args[:list_constraint] if args.key?(:list_constraint)
           @name = args[:name] if args.key?(:name)
           @supports_dry_run = args[:supports_dry_run] if args.key?(:supports_dry_run)
+          @supports_simulation = args[:supports_simulation] if args.key?(:supports_simulation)
         end
       end
       
@@ -613,6 +620,14 @@ module Google
         attr_accessor :enforce
         alias_method :enforce?, :enforce
       
+        # Optional. Required for GMCs if parameters defined in constraints. Pass
+        # parameter values when policy enforcement is enabled. Ensure that parameter
+        # value types match those defined in the constraint definition. For example: ` "
+        # allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true `
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
         # A message that holds specific allowed and denied values. This message can
         # define specific values and subtrees of the Resource Manager resource hierarchy
         # (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is
@@ -639,6 +654,7 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @deny_all = args[:deny_all] if args.key?(:deny_all)
           @enforce = args[:enforce] if args.key?(:enforce)
+          @parameters = args[:parameters] if args.key?(:parameters)
           @values = args[:values] if args.key?(:values)
         end
       end
