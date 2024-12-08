@@ -1154,7 +1154,7 @@ module Google
       end
       
       # Information about how a class may be discovered and instantiated from within
-      # the Android Pay app. This is done by searching for a loyalty or gift card
+      # the Google Wallet app. This is done by searching for a loyalty or gift card
       # program and scanning or manually entering.
       class DiscoverableProgram
         include Google::Apis::Core::Hashable
@@ -4938,7 +4938,7 @@ module Google
         attr_accessor :country_code
       
         # Information about how a class may be discovered and instantiated from within
-        # the Android Pay app. This is done by searching for a loyalty or gift card
+        # the Google Wallet app. This is done by searching for a loyalty or gift card
         # program and scanning or manually entering.
         # Corresponds to the JSON property `discoverableProgram`
         # @return [Google::Apis::WalletobjectsV1::DiscoverableProgram]
