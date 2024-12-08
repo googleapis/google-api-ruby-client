@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1RagRetrievalConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1SpeechConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1Tool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +329,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ToolConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ToolGoogleSearch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +359,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1VideoMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1VoiceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -572,14 +596,18 @@ module Google
           property :frequency_penalty, as: 'frequencyPenalty'
           property :logprobs, as: 'logprobs'
           property :max_output_tokens, as: 'maxOutputTokens'
+          property :media_resolution, as: 'mediaResolution'
           property :presence_penalty, as: 'presencePenalty'
           property :response_logprobs, as: 'responseLogprobs'
           property :response_mime_type, as: 'responseMimeType'
+          collection :response_modalities, as: 'responseModalities'
           property :response_schema, as: 'responseSchema', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Schema::Representation
       
           property :routing_config, as: 'routingConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig::Representation
       
           property :seed, as: 'seed'
+          property :speech_config, as: 'speechConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SpeechConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SpeechConfig::Representation
+      
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
           property :top_k, as: 'topK'
@@ -717,6 +745,13 @@ module Google
           property :text, as: 'text'
           property :video_metadata, as: 'videoMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoMetadata::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :voice_name, as: 'voiceName'
         end
       end
       
@@ -861,12 +896,22 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1SpeechConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :voice_config, as: 'voiceConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VoiceConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VoiceConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1Tool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_execution, as: 'codeExecution', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution::Representation
       
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration::Representation
+      
+          property :google_search, as: 'googleSearch', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolGoogleSearch, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolGoogleSearch::Representation
       
           property :google_search_retrieval, as: 'googleSearchRetrieval', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval::Representation
       
@@ -886,6 +931,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function_calling_config, as: 'functionCallingConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCallingConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCallingConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ToolGoogleSearch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -922,6 +973,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_offset, as: 'endOffset'
           property :start_offset, as: 'startOffset'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1VoiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prebuilt_voice_config, as: 'prebuiltVoiceConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig::Representation
+      
         end
       end
       
