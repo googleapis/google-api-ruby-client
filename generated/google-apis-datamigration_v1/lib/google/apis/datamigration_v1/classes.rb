@@ -2172,9 +2172,9 @@ module Google
         attr_accessor :end_time
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # operation. Operations that have successfully been cancelled have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
         # Corresponds to the JSON property `requestedCancellation`
         # @return [Boolean]
         attr_accessor :requested_cancellation
@@ -2500,6 +2500,31 @@ module Google
         end
       end
       
+      # Response containing the objects for a migration job.
+      class ListMigrationJobObjectsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of migration job objects.
+        # Corresponds to the JSON property `migrationJobObjects`
+        # @return [Array<Google::Apis::DatamigrationV1::MigrationJobObject>]
+        attr_accessor :migration_job_objects
+      
+        # A token, which can be sent as `page_token` to retrieve the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @migration_job_objects = args[:migration_job_objects] if args.key?(:migration_job_objects)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for 'ListMigrationJobs' request.
       class ListMigrationJobsResponse
         include Google::Apis::Core::Hashable
@@ -2671,6 +2696,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request for looking up a specific migration job object by its source object
+      # identifier.
+      class LookupMigrationJobObjectRequest
+        include Google::Apis::Core::Hashable
+      
+        # An identifier for the Migration Job Object.
+        # Corresponds to the JSON property `sourceObjectIdentifier`
+        # @return [Google::Apis::DatamigrationV1::SourceObjectIdentifier]
+        attr_accessor :source_object_identifier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_object_identifier = args[:source_object_identifier] if args.key?(:source_object_identifier)
         end
       end
       
@@ -2926,6 +2971,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :custom_features
       
+        # View indices.
+        # Corresponds to the JSON property `indices`
+        # @return [Array<Google::Apis::DatamigrationV1::IndexEntity>]
+        attr_accessor :indices
+      
         # The SQL code which creates the view.
         # Corresponds to the JSON property `sqlCode`
         # @return [String]
@@ -2938,6 +2988,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @indices = args[:indices] if args.key?(:indices)
           @sql_code = args[:sql_code] if args.key?(:sql_code)
         end
       end
@@ -3046,6 +3097,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configuration for the objects to be migrated.
+        # Corresponds to the JSON property `objectsConfig`
+        # @return [Google::Apis::DatamigrationV1::MigrationJobObjectsConfig]
+        attr_accessor :objects_config
+      
         # Configuration for heterogeneous **Oracle to Cloud SQL for PostgreSQL** and **
         # Oracle to AlloyDB for PostgreSQL** migrations.
         # Corresponds to the JSON property `oracleToPostgresConfig`
@@ -3140,6 +3196,7 @@ module Google
           @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @objects_config = args[:objects_config] if args.key?(:objects_config)
           @oracle_to_postgres_config = args[:oracle_to_postgres_config] if args.key?(:oracle_to_postgres_config)
           @performance_config = args[:performance_config] if args.key?(:performance_config)
           @phase = args[:phase] if args.key?(:phase)
@@ -3152,6 +3209,85 @@ module Google
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vpc_peering_connectivity = args[:vpc_peering_connectivity] if args.key?(:vpc_peering_connectivity)
+        end
+      end
+      
+      # A specific Migration Job Object (e.g. a specifc DB Table)
+      class MigrationJobObject
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation time of the migration job object.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DatamigrationV1::Status]
+        attr_accessor :error
+      
+        # The object's name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The phase of the migration job object.
+        # Corresponds to the JSON property `phase`
+        # @return [String]
+        attr_accessor :phase
+      
+        # An identifier for the Migration Job Object.
+        # Corresponds to the JSON property `sourceObject`
+        # @return [Google::Apis::DatamigrationV1::SourceObjectIdentifier]
+        attr_accessor :source_object
+      
+        # The state of the migration job object.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The last update time of the migration job object.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @error = args[:error] if args.key?(:error)
+          @name = args[:name] if args.key?(:name)
+          @phase = args[:phase] if args.key?(:phase)
+          @source_object = args[:source_object] if args.key?(:source_object)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configuration for the objects to be migrated.
+      class MigrationJobObjectsConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of configurations for the source objects to be migrated.
+        # Corresponds to the JSON property `sourceObjectsConfig`
+        # @return [Google::Apis::DatamigrationV1::SourceObjectsConfig]
+        attr_accessor :source_objects_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_objects_config = args[:source_objects_config] if args.key?(:source_objects_config)
         end
       end
       
@@ -4135,18 +4271,29 @@ module Google
       class PromoteMigrationJobRequest
         include Google::Apis::Core::Hashable
       
+        # Configuration for the objects to be migrated.
+        # Corresponds to the JSON property `objectsFilter`
+        # @return [Google::Apis::DatamigrationV1::MigrationJobObjectsConfig]
+        attr_accessor :objects_filter
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @objects_filter = args[:objects_filter] if args.key?(:objects_filter)
         end
       end
       
       # Request message for 'RestartMigrationJob' request.
       class RestartMigrationJobRequest
         include Google::Apis::Core::Hashable
+      
+        # Configuration for the objects to be migrated.
+        # Corresponds to the JSON property `objectsFilter`
+        # @return [Google::Apis::DatamigrationV1::MigrationJobObjectsConfig]
+        attr_accessor :objects_filter
       
         # Optional. Restart the migration job without running prior configuration
         # verification. Defaults to `false`.
@@ -4161,6 +4308,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @objects_filter = args[:objects_filter] if args.key?(:objects_filter)
           @skip_validation = args[:skip_validation] if args.key?(:skip_validation)
         end
       end
@@ -4738,6 +4886,76 @@ module Google
         end
       end
       
+      # Config for a single migration job object.
+      class SourceObjectConfig
+        include Google::Apis::Core::Hashable
+      
+        # An identifier for the Migration Job Object.
+        # Corresponds to the JSON property `objectIdentifier`
+        # @return [Google::Apis::DatamigrationV1::SourceObjectIdentifier]
+        attr_accessor :object_identifier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_identifier = args[:object_identifier] if args.key?(:object_identifier)
+        end
+      end
+      
+      # An identifier for the Migration Job Object.
+      class SourceObjectIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # The database name. This will be required only if the object uses a database
+        # name as part of its unique identifier.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Required. The type of the migration job object.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # List of configurations for the source objects to be migrated.
+      class SourceObjectsConfig
+        include Google::Apis::Core::Hashable
+      
+        # The list of the objects to be migrated.
+        # Corresponds to the JSON property `objectConfigs`
+        # @return [Array<Google::Apis::DatamigrationV1::SourceObjectConfig>]
+        attr_accessor :object_configs
+      
+        # Optional. The objects selection type of the migration job.
+        # Corresponds to the JSON property `objectsSelectionType`
+        # @return [String]
+        attr_accessor :objects_selection_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_configs = args[:object_configs] if args.key?(:object_configs)
+          @objects_selection_type = args[:objects_selection_type] if args.key?(:objects_selection_type)
+        end
+      end
+      
       # Options to configure rule type SourceSqlChange. The rule is used to alter the
       # sql code for database entities. The rule filter field can refer to one entity.
       # The rule scope can be: StoredProcedure, Function, Trigger, View
@@ -5033,17 +5251,21 @@ module Google
       class SqlServerEncryptionOptions
         include Google::Apis::Core::Hashable
       
-        # Required. Path to certificate.
+        # Required. Path to the Certificate (.cer) in Cloud Storage, in the form `gs://
+        # bucketName/fileName`. The instance must have write permissions to the bucket
+        # and read access to the file.
         # Corresponds to the JSON property `certPath`
         # @return [String]
         attr_accessor :cert_path
       
-        # Required. Input only. Private key password.
+        # Required. Input only. Password that encrypts the private key.
         # Corresponds to the JSON property `pvkPassword`
         # @return [String]
         attr_accessor :pvk_password
       
-        # Required. Path to certificate private key.
+        # Required. Path to the Certificate Private Key (.pvk) in Cloud Storage, in the
+        # form `gs://bucketName/fileName`. The instance must have write permissions to
+        # the bucket and read access to the file.
         # Corresponds to the JSON property `pvkPath`
         # @return [String]
         attr_accessor :pvk_path

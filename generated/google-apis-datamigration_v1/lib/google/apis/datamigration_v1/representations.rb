@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMigrationJobObjectsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListMigrationJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LookupMigrationJobObjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MachineConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +455,18 @@ module Google
       end
       
       class MigrationJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MigrationJobObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MigrationJobObjectsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -671,6 +695,24 @@ module Google
       end
       
       class SourceNumericFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceObjectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceObjectsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1525,6 +1567,15 @@ module Google
         end
       end
       
+      class ListMigrationJobObjectsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :migration_job_objects, as: 'migrationJobObjects', class: Google::Apis::DatamigrationV1::MigrationJobObject, decorator: Google::Apis::DatamigrationV1::MigrationJobObject::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListMigrationJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1576,6 +1627,14 @@ module Google
       class LogMiner
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class LookupMigrationJobObjectRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_object_identifier, as: 'sourceObjectIdentifier', class: Google::Apis::DatamigrationV1::SourceObjectIdentifier, decorator: Google::Apis::DatamigrationV1::SourceObjectIdentifier::Representation
+      
         end
       end
       
@@ -1638,6 +1697,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :custom_features, as: 'customFeatures'
+          collection :indices, as: 'indices', class: Google::Apis::DatamigrationV1::IndexEntity, decorator: Google::Apis::DatamigrationV1::IndexEntity::Representation
+      
           property :sql_code, as: 'sqlCode'
         end
       end
@@ -1664,6 +1725,8 @@ module Google
           property :filter, as: 'filter'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :objects_config, as: 'objectsConfig', class: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig, decorator: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig::Representation
+      
           property :oracle_to_postgres_config, as: 'oracleToPostgresConfig', class: Google::Apis::DatamigrationV1::OracleToPostgresConfig, decorator: Google::Apis::DatamigrationV1::OracleToPostgresConfig::Representation
       
           property :performance_config, as: 'performanceConfig', class: Google::Apis::DatamigrationV1::PerformanceConfig, decorator: Google::Apis::DatamigrationV1::PerformanceConfig::Representation
@@ -1682,6 +1745,29 @@ module Google
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
           property :vpc_peering_connectivity, as: 'vpcPeeringConnectivity', class: Google::Apis::DatamigrationV1::VpcPeeringConnectivity, decorator: Google::Apis::DatamigrationV1::VpcPeeringConnectivity::Representation
+      
+        end
+      end
+      
+      class MigrationJobObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :error, as: 'error', class: Google::Apis::DatamigrationV1::Status, decorator: Google::Apis::DatamigrationV1::Status::Representation
+      
+          property :name, as: 'name'
+          property :phase, as: 'phase'
+          property :source_object, as: 'sourceObject', class: Google::Apis::DatamigrationV1::SourceObjectIdentifier, decorator: Google::Apis::DatamigrationV1::SourceObjectIdentifier::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MigrationJobObjectsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_objects_config, as: 'sourceObjectsConfig', class: Google::Apis::DatamigrationV1::SourceObjectsConfig, decorator: Google::Apis::DatamigrationV1::SourceObjectsConfig::Representation
       
         end
       end
@@ -1927,12 +2013,16 @@ module Google
       class PromoteMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :objects_filter, as: 'objectsFilter', class: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig, decorator: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig::Representation
+      
         end
       end
       
       class RestartMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :objects_filter, as: 'objectsFilter', class: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig, decorator: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig::Representation
+      
           property :skip_validation, as: 'skipValidation'
         end
       end
@@ -2080,6 +2170,31 @@ module Google
           property :source_max_scale_filter, as: 'sourceMaxScaleFilter'
           property :source_min_precision_filter, as: 'sourceMinPrecisionFilter'
           property :source_min_scale_filter, as: 'sourceMinScaleFilter'
+        end
+      end
+      
+      class SourceObjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_identifier, as: 'objectIdentifier', class: Google::Apis::DatamigrationV1::SourceObjectIdentifier, decorator: Google::Apis::DatamigrationV1::SourceObjectIdentifier::Representation
+      
+        end
+      end
+      
+      class SourceObjectIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :type, as: 'type'
+        end
+      end
+      
+      class SourceObjectsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :object_configs, as: 'objectConfigs', class: Google::Apis::DatamigrationV1::SourceObjectConfig, decorator: Google::Apis::DatamigrationV1::SourceObjectConfig::Representation
+      
+          property :objects_selection_type, as: 'objectsSelectionType'
         end
       end
       
