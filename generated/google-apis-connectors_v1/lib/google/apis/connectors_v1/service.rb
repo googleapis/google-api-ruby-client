@@ -1267,6 +1267,78 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Publish request for the CustomConnectorVersion. Once approved, the
+        # CustomConnectorVersion will be published as PartnerConnector.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/`project`/locations/`location`/
+        #   customConnectors/`custom_connector`/customConnectorVersions/`
+        #   custom_connector_version``
+        # @param [Google::Apis::ConnectorsV1::PublishCustomConnectorVersionRequest] publish_custom_connector_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def publish_custom_connector_version(name, publish_custom_connector_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:publish', options)
+          command.request_representation = Google::Apis::ConnectorsV1::PublishCustomConnectorVersionRequest::Representation
+          command.request_object = publish_custom_connector_version_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Withdraw the publish request for the CustomConnectorVersion. This can only be
+        # used before the CustomConnectorVersion is published.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/`project`/locations/`location`/
+        #   customConnectors/`custom_connector`/customConnectorVersions/`
+        #   custom_connector_version``
+        # @param [Google::Apis::ConnectorsV1::WithdrawCustomConnectorVersionRequest] withdraw_custom_connector_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def withdraw_custom_connector_version(name, withdraw_custom_connector_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:withdraw', options)
+          command.request_representation = Google::Apis::ConnectorsV1::WithdrawCustomConnectorVersionRequest::Representation
+          command.request_object = withdraw_custom_connector_version_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new EndpointAttachment in a given project and location.
         # @param [String] parent
         #   Required. Parent resource of the EndpointAttachment, of the form: `projects/*/
@@ -2006,8 +2078,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::ConnectorsV1::CancelOperationRequest] cancel_operation_request_object
