@@ -808,6 +808,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_output_tokens
       
+        # Optional. If specified, the media resolution specified will be used.
+        # Corresponds to the JSON property `mediaResolution`
+        # @return [String]
+        attr_accessor :media_resolution
+      
         # Optional. Positive penalties.
         # Corresponds to the JSON property `presencePenalty`
         # @return [Float]
@@ -828,6 +833,11 @@ module Google
         # @return [String]
         attr_accessor :response_mime_type
       
+        # Optional. The modalities of the response.
+        # Corresponds to the JSON property `responseModalities`
+        # @return [Array<String>]
+        attr_accessor :response_modalities
+      
         # Schema is used to define the format of input/output data. Represents a select
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
         # schema-object). More fields may be added in the future as needed.
@@ -844,6 +854,11 @@ module Google
         # Corresponds to the JSON property `seed`
         # @return [Fixnum]
         attr_accessor :seed
+      
+        # The speech generation config.
+        # Corresponds to the JSON property `speechConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SpeechConfig]
+        attr_accessor :speech_config
       
         # Optional. Stop sequences.
         # Corresponds to the JSON property `stopSequences`
@@ -876,12 +891,15 @@ module Google
           @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
           @logprobs = args[:logprobs] if args.key?(:logprobs)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
+          @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @response_logprobs = args[:response_logprobs] if args.key?(:response_logprobs)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
+          @response_modalities = args[:response_modalities] if args.key?(:response_modalities)
           @response_schema = args[:response_schema] if args.key?(:response_schema)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
           @seed = args[:seed] if args.key?(:seed)
+          @speech_config = args[:speech_config] if args.key?(:speech_config)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
           @top_k = args[:top_k] if args.key?(:top_k)
@@ -1285,6 +1303,25 @@ module Google
           @inline_data = args[:inline_data] if args.key?(:inline_data)
           @text = args[:text] if args.key?(:text)
           @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
+        end
+      end
+      
+      # The configuration for the prebuilt speaker to use.
+      class GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the preset voice to use.
+        # Corresponds to the JSON property `voiceName`
+        # @return [String]
+        attr_accessor :voice_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @voice_name = args[:voice_name] if args.key?(:voice_name)
         end
       end
       
@@ -1809,6 +1846,25 @@ module Google
         end
       end
       
+      # The speech generation config.
+      class GoogleCloudAiplatformV1beta1SpeechConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for the voice to use.
+        # Corresponds to the JSON property `voiceConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VoiceConfig]
+        attr_accessor :voice_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @voice_config = args[:voice_config] if args.key?(:voice_config)
+        end
+      end
+      
       # Tool details that the model may use to generate response. A `Tool` is a piece
       # of code that enables the system to interact with external systems to perform
       # an action, or set of actions, outside of knowledge and scope of the model. A
@@ -1834,6 +1890,12 @@ module Google
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration>]
         attr_accessor :function_declarations
       
+        # GoogleSearch tool type. Tool to support Google Search in Model. Powered by
+        # Google.
+        # Corresponds to the JSON property `googleSearch`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolGoogleSearch]
+        attr_accessor :google_search
+      
         # Tool to retrieve public web data for grounding, powered by Google.
         # Corresponds to the JSON property `googleSearchRetrieval`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval]
@@ -1852,6 +1914,7 @@ module Google
         def update!(**args)
           @code_execution = args[:code_execution] if args.key?(:code_execution)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
+          @google_search = args[:google_search] if args.key?(:google_search)
           @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
           @retrieval = args[:retrieval] if args.key?(:retrieval)
         end
@@ -1888,6 +1951,20 @@ module Google
         # Update properties of this object
         def update!(**args)
           @function_calling_config = args[:function_calling_config] if args.key?(:function_calling_config)
+        end
+      end
+      
+      # GoogleSearch tool type. Tool to support Google Search in Model. Powered by
+      # Google.
+      class GoogleCloudAiplatformV1beta1ToolGoogleSearch
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2007,6 +2084,25 @@ module Google
         def update!(**args)
           @end_offset = args[:end_offset] if args.key?(:end_offset)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
+        end
+      end
+      
+      # The configuration for the voice to use.
+      class GoogleCloudAiplatformV1beta1VoiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for the prebuilt speaker to use.
+        # Corresponds to the JSON property `prebuiltVoiceConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig]
+        attr_accessor :prebuilt_voice_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prebuilt_voice_config = args[:prebuilt_voice_config] if args.key?(:prebuilt_voice_config)
         end
       end
       
