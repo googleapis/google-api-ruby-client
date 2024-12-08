@@ -220,7 +220,12 @@ module Google
         end
       end
       
-      # A configuration that workstations can boost to.
+      # A boost configuration is a set of resources that a workstation can use to
+      # increase its performance. If a boost configuration is specified, when starting
+      # a workstation, users can choose to use a VM provisioned under the boost config
+      # by passing the boost config id in the start request. If no boost config id is
+      # provided in the start request, the system will choose a VM from the pool
+      # provisioned under the default config.
       class BoostConfig
         include Google::Apis::Core::Hashable
       
@@ -259,7 +264,7 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
-        # Optional. Required. The id to be used for the boost configuration.
+        # Required. The id to be used for the boost configuration.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -531,7 +536,9 @@ module Google
         attr_accessor :accelerators
       
         # Optional. A list of the boost configurations that workstations created using
-        # this workstation configuration are allowed to use.
+        # this workstation configuration are allowed to use. If specified, users will
+        # have the option to choose from the list of boost configs when starting a
+        # workstation.
         # Corresponds to the JSON property `boostConfigs`
         # @return [Array<Google::Apis::WorkstationsV1beta::BoostConfig>]
         attr_accessor :boost_configs
