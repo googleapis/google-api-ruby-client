@@ -145,6 +145,7 @@ module Google
       
           property :name, as: 'name'
           property :supports_dry_run, as: 'supportsDryRun'
+          property :supports_simulation, as: 'supportsSimulation'
         end
       end
       
@@ -270,6 +271,7 @@ module Google
       
           property :deny_all, as: 'denyAll'
           property :enforce, as: 'enforce'
+          hash :parameters, as: 'parameters'
           property :values, as: 'values', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues::Representation
       
         end
