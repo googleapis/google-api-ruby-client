@@ -1,0 +1,7 @@
+{
+    "api_id": "metastore:v2",
+    "name_pretty": "Dataproc Metastore API",
+    "distribution_name": "google-apis-metastore_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
