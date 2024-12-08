@@ -4237,6 +4237,11 @@ module Google
         # @return [String]
         attr_accessor :personal_play_store_mode
       
+        # Optional. Controls whether a private space is allowed on the device.
+        # Corresponds to the JSON property `privateSpacePolicy`
+        # @return [String]
+        attr_accessor :private_space_policy
+      
         # If true, screen capture is disabled for all users.
         # Corresponds to the JSON property `screenCaptureDisabled`
         # @return [Boolean]
@@ -4254,6 +4259,7 @@ module Google
           @max_days_with_work_off = args[:max_days_with_work_off] if args.key?(:max_days_with_work_off)
           @personal_applications = args[:personal_applications] if args.key?(:personal_applications)
           @personal_play_store_mode = args[:personal_play_store_mode] if args.key?(:personal_play_store_mode)
+          @private_space_policy = args[:private_space_policy] if args.key?(:private_space_policy)
           @screen_capture_disabled = args[:screen_capture_disabled] if args.key?(:screen_capture_disabled)
         end
       end
@@ -4512,7 +4518,8 @@ module Google
         alias_method :install_unknown_sources_allowed?, :install_unknown_sources_allowed
       
         # If true, this disables the Lock Screen (https://source.android.com/docs/core/
-        # display/multi_display/lock-screen) for primary and/or secondary displays.
+        # display/multi_display/lock-screen) for primary and/or secondary displays. This
+        # policy is supported only in dedicated device management mode.
         # Corresponds to the JSON property `keyguardDisabled`
         # @return [Boolean]
         attr_accessor :keyguard_disabled

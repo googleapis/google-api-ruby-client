@@ -1928,6 +1928,7 @@ module Google
           collection :personal_applications, as: 'personalApplications', class: Google::Apis::AndroidmanagementV1::PersonalApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::PersonalApplicationPolicy::Representation
       
           property :personal_play_store_mode, as: 'personalPlayStoreMode'
+          property :private_space_policy, as: 'privateSpacePolicy'
           property :screen_capture_disabled, as: 'screenCaptureDisabled'
         end
       end
