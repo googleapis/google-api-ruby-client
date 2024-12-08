@@ -219,6 +219,11 @@ module Google
         # @return [String]
         attr_accessor :crypto_key_name
       
+        # Optional. Resource labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Required. The resource name of the channel. Must be unique within the location
         # on the project and must be in `projects/`project`/locations/`location`/
         # channels/`channel_id`` format.
@@ -273,6 +278,7 @@ module Google
           @activation_token = args[:activation_token] if args.key?(:activation_token)
           @create_time = args[:create_time] if args.key?(:create_time)
           @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @provider = args[:provider] if args.key?(:provider)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
@@ -308,6 +314,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Resource labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Required. The name of the connection.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -333,6 +344,7 @@ module Google
           @activation_token = args[:activation_token] if args.key?(:activation_token)
           @channel = args[:channel] if args.key?(:channel)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -806,7 +818,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The configuration for Platform Telemetry logging for Eventarc Avdvanced
+        # The configuration for Platform Telemetry logging for Eventarc Advanced
         # resources.
         # Corresponds to the JSON property `loggingConfig`
         # @return [Google::Apis::EventarcV1::LoggingConfig]
@@ -1105,47 +1117,47 @@ module Google
         # by adding an additional header to the HTTP headers of the CloudEvent HTTP
         # Binding Binary Content Mode representation of the final message and by
         # overwriting the body of the request: ``` ` "headers": headers.merge(`"new-
-        # header-key": "new-header-value"`), "body": "new-body" ` ``` Additionally, the
-        # following CEL extension functions are provided for use in this CEL expression:
-        # - toBase64Url: map.toBase64Url() -> string - Converts a CelValue to a
-        # base64url encoded string - toJsonString: map.toJsonString() -> string -
-        # Converts a CelValue to a JSON string - merge: map1.merge(map2) -> map3 -
-        # Merges the passed CEL map with the existing CEL map the function is applied to.
-        # - If the same key exists in both maps, if the key's value is type map both
-        # maps are merged else the value from the passed map is used. - denormalize: map.
-        # denormalize() -> map - Denormalizes a CEL map such that every value of type
-        # map or key in the map is expanded to return a single level map. - The
-        # resulting keys are "." separated indices of the map keys. - For example: ` "a":
-        # 1, "b": ` "c": 2, "d": 3 ` "e": [4, 5] ` .denormalize() -> ` "a": 1, "b.c": 2,
-        # "b.d": 3, "e.0": 4, "e.1": 5 ` - setField: map.setField(key, value) ->
-        # message - Sets the field of the message with the given key to the given value.
-        # - If the field is not present it will be added. - If the field is present it
-        # will be overwritten. - The key can be a dot separated path to set a field in a
-        # nested message. - Key must be of type string. - Value may be any valid type. -
-        # removeFields: map.removeFields([key1, key2, ...]) -> message - Removes the
-        # fields of the map with the given keys. - The keys can be a dot separated path
-        # to remove a field in a nested message. - If a key is not found it will be
-        # ignored. - Keys must be of type string. - toMap: [map1, map2, ...].toMap() ->
-        # map - Converts a CEL list of CEL maps to a single CEL map -
-        # toDestinationPayloadFormat(): message.data.toDestinationPayloadFormat() ->
-        # string or bytes - Converts the message data to the destination payload format
-        # specified in Pipeline.Destination.output_payload_format - This function is
-        # meant to be applied to the message.data field. - If the destination payload
-        # format is not set, the function will return the message data unchanged. -
+        # header-key": "new-header-value"`), "body": "new-body" ` ``` - The default
+        # binding for the message payload can be accessed using the `body` variable. It
+        # conatins a string representation of the message payload in the format
+        # specified by the `output_payload_format` field. If the `input_payload_format`
+        # field is not set, the `body` variable contains the same message payload bytes
+        # that were published. Additionally, the following CEL extension functions are
+        # provided for use in this CEL expression: - toBase64Url: map.toBase64Url() ->
+        # string - Converts a CelValue to a base64url encoded string - toJsonString: map.
+        # toJsonString() -> string - Converts a CelValue to a JSON string - merge: map1.
+        # merge(map2) -> map3 - Merges the passed CEL map with the existing CEL map the
+        # function is applied to. - If the same key exists in both maps, if the key's
+        # value is type map both maps are merged else the value from the passed map is
+        # used. - denormalize: map.denormalize() -> map - Denormalizes a CEL map such
+        # that every value of type map or key in the map is expanded to return a single
+        # level map. - The resulting keys are "." separated indices of the map keys. -
+        # For example: ` "a": 1, "b": ` "c": 2, "d": 3 ` "e": [4, 5] ` .denormalize() ->
+        # ` "a": 1, "b.c": 2, "b.d": 3, "e.0": 4, "e.1": 5 ` - setField: map.setField(
+        # key, value) -> message - Sets the field of the message with the given key to
+        # the given value. - If the field is not present it will be added. - If the
+        # field is present it will be overwritten. - The key can be a dot separated path
+        # to set a field in a nested message. - Key must be of type string. - Value may
+        # be any valid type. - removeFields: map.removeFields([key1, key2, ...]) ->
+        # message - Removes the fields of the map with the given keys. - The keys can be
+        # a dot separated path to remove a field in a nested message. - If a key is not
+        # found it will be ignored. - Keys must be of type string. - toMap: [map1, map2,
+        # ...].toMap() -> map - Converts a CEL list of CEL maps to a single CEL map -
         # toCloudEventJsonWithPayloadFormat: message.toCloudEventJsonWithPayloadFormat()
         # -> map - Converts a message to the corresponding structure of JSON format for
-        # CloudEvents - This function applies toDestinationPayloadFormat() to the
-        # message data. It also sets the corresponding datacontenttype of the CloudEvent,
-        # as indicated by Pipeline.Destination.output_payload_format. If no
-        # output_payload_format is set it will use the existing datacontenttype on the
-        # CloudEvent if present, else leave datacontenttype absent. - This function
-        # expects that the content of the message will adhere to the standard CloudEvent
-        # format. If it doesn't then this function will fail. - The result is a CEL map
-        # that corresponds to the JSON representation of the CloudEvent. To convert that
-        # data to a JSON string it can be chained with the toJsonString function. The
-        # Pipeline expects that the message it receives adheres to the standard
-        # CloudEvent format. If it doesn't then the outgoing message request may fail
-        # with a persistent error.
+        # CloudEvents. - It converts `data` to destination payload format specified in `
+        # output_payload_format`. If `output_payload_format` is not set, the data will
+        # remain unchanged. - It also sets the corresponding datacontenttype of the
+        # CloudEvent, as indicated by `output_payload_format`. If no `
+        # output_payload_format` is set it will use the value of the "datacontenttype"
+        # attribute on the CloudEvent if present, else remove "datacontenttype"
+        # attribute. - This function expects that the content of the message will adhere
+        # to the standard CloudEvent format. If it doesn't then this function will fail.
+        # - The result is a CEL map that corresponds to the JSON representation of the
+        # CloudEvent. To convert that data to a JSON string it can be chained with the
+        # toJsonString function. The Pipeline expects that the message it receives
+        # adheres to the standard CloudEvent format. If it doesn't then the outgoing
+        # message request may fail with a persistent error.
         # Corresponds to the JSON property `messageBindingTemplate`
         # @return [String]
         attr_accessor :message_binding_template
@@ -1907,7 +1919,7 @@ module Google
         end
       end
       
-      # The configuration for Platform Telemetry logging for Eventarc Avdvanced
+      # The configuration for Platform Telemetry logging for Eventarc Advanced
       # resources.
       class LoggingConfig
         include Google::Apis::Core::Hashable
@@ -1970,7 +1982,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The configuration for Platform Telemetry logging for Eventarc Avdvanced
+        # The configuration for Platform Telemetry logging for Eventarc Advanced
         # resources.
         # Corresponds to the JSON property `loggingConfig`
         # @return [Google::Apis::EventarcV1::LoggingConfig]
@@ -2146,7 +2158,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The configuration for Platform Telemetry logging for Eventarc Avdvanced
+        # The configuration for Platform Telemetry logging for Eventarc Advanced
         # resources.
         # Corresponds to the JSON property `loggingConfig`
         # @return [Google::Apis::EventarcV1::LoggingConfig]

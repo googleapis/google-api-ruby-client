@@ -771,7 +771,7 @@ module Google
         # @param [Google::Apis::EventarcV1::Enrollment] enrollment_object
         # @param [String] enrollment_id
         #   Required. The user-provided ID to be assigned to the Enrollment. It should
-        #   match the format (^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$).
+        #   match the format `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`.
         # @param [Boolean] validate_only
         #   Optional. If set, validate the request and preview the review, but do not post
         #   it.
@@ -1101,7 +1101,7 @@ module Google
         # @param [Google::Apis::EventarcV1::GoogleApiSource] google_api_source_object
         # @param [String] google_api_source_id
         #   Required. The user-provided ID to be assigned to the GoogleApiSource. It
-        #   should match the format (^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$).
+        #   should match the format `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`.
         # @param [Boolean] validate_only
         #   Optional. If set, validate the request and preview the review, but do not post
         #   it.
@@ -1431,7 +1431,7 @@ module Google
         # @param [Google::Apis::EventarcV1::MessageBus] message_bus_object
         # @param [String] message_bus_id
         #   Required. The user-provided ID to be assigned to the MessageBus. It should
-        #   match the format (^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$)
+        #   match the format `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`.
         # @param [Boolean] validate_only
         #   Optional. If set, validate the request and preview the review, but do not post
         #   it.
@@ -1800,8 +1800,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::EventarcV1::GoogleLongrunningCancelOperationRequest] google_longrunning_cancel_operation_request_object
@@ -1943,7 +1943,8 @@ module Google
         #   Required. The parent collection in which to add this pipeline.
         # @param [Google::Apis::EventarcV1::Pipeline] pipeline_object
         # @param [String] pipeline_id
-        #   Required. The user-provided ID to be assigned to the Pipeline.
+        #   Required. The user-provided ID to be assigned to the Pipeline. It should match
+        #   the format `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`.
         # @param [Boolean] validate_only
         #   Optional. If set, validate the request and preview the review, but do not post
         #   it.
