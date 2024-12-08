@@ -325,7 +325,7 @@ module Google
         attr_accessor :not_sources
       
         # Optional. Describes the properties of a request's sources. At least one of
-        # sources or notSources must be specified. Limited to 5 sources. A match occurs
+        # sources or notSources must be specified. Limited to 1 source. A match occurs
         # when ANY source (in sources or notSources) matches the request. Within a
         # single source, the match follows AND semantics across fields and OR semantics
         # within a single field, i.e. a match occurs when ANY principal matches AND ANY
@@ -517,7 +517,7 @@ module Google
         attr_accessor :not_operations
       
         # Optional. Describes properties of one or more targets of a request. At least
-        # one of operations or notOperations must be specified. Limited to 5 operations.
+        # one of operations or notOperations must be specified. Limited to 1 operation.
         # A match occurs when ANY operation (in operations or notOperations) matches.
         # Within an operation, the match follows AND semantics across fields and OR
         # semantics within a field, i.e. a match occurs when ANY path matches AND ANY
@@ -839,6 +839,27 @@ module Google
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
           @source_address_group = args[:source_address_group] if args.key?(:source_address_group)
+        end
+      end
+      
+      # CustomInterceptProfile defines the Packet Intercept Endpoint Group used to
+      # intercept traffic to a third-party firewall in a Firewall rule.
+      class CustomInterceptProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. The InterceptEndpointGroup to which traffic associated with the SP
+        # should be mirrored.
+        # Corresponds to the JSON property `interceptEndpointGroup`
+        # @return [String]
+        attr_accessor :intercept_endpoint_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intercept_endpoint_group = args[:intercept_endpoint_group] if args.key?(:intercept_endpoint_group)
         end
       end
       
@@ -1728,6 +1749,362 @@ module Google
         end
       end
       
+      # Message describing InterceptDeployment object
+      class InterceptDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Immutable. The regional load balancer which the intercepted traffic
+        # should be forwarded to. Format is: projects/`project`/regions/`region`/
+        # forwardingRules/`forwardingRule`
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # Required. Immutable. The Intercept Deployment Group that this resource is part
+        # of. Format is: `projects/`project`/locations/global/interceptDeploymentGroups/`
+        # interceptDeploymentGroup``
+        # Corresponds to the JSON property `interceptDeploymentGroup`
+        # @return [String]
+        attr_accessor :intercept_deployment_group
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. The name of the InterceptDeployment.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the deployment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. [Output only] Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @intercept_deployment_group = args[:intercept_deployment_group] if args.key?(:intercept_deployment_group)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message describing InterceptDeploymentGroup object
+      class InterceptDeploymentGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of Intercept Endpoint Groups that are connected to this
+        # resource.
+        # Corresponds to the JSON property `connectedEndpointGroups`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroupConnectedEndpointGroup>]
+        attr_accessor :connected_endpoint_groups
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. Then name of the InterceptDeploymentGroup.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. The network that is being used for the deployment. Format
+        # is: projects/`project`/global/networks/`network`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the deployment group.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. [Output only] Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connected_endpoint_groups = args[:connected_endpoint_groups] if args.key?(:connected_endpoint_groups)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # An endpoint group connected to this deployment group.
+      class InterceptDeploymentGroupConnectedEndpointGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A connected intercept endpoint group.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Message describing InterceptEndpointGroup object.
+      class InterceptEndpointGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of Intercept Endpoint Group Associations that are associated
+        # to this endpoint group.
+        # Corresponds to the JSON property `associations`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationDetails>]
+        attr_accessor :associations
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User-provided description of the endpoint group. Used as additional
+        # context for the endpoint group.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Immutable. The Intercept Deployment Group that this resource is
+        # connected to. Format is: `projects/`project`/locations/global/
+        # interceptDeploymentGroups/`interceptDeploymentGroup``
+        # Corresponds to the JSON property `interceptDeploymentGroup`
+        # @return [String]
+        attr_accessor :intercept_deployment_group
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. The name of the InterceptEndpointGroup.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the endpoint group.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. [Output only] Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associations = args[:associations] if args.key?(:associations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @intercept_deployment_group = args[:intercept_deployment_group] if args.key?(:intercept_deployment_group)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message describing InterceptEndpointGroupAssociation object
+      class InterceptEndpointGroupAssociation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Immutable. The Intercept Endpoint Group that this resource is
+        # connected to. Format is: `projects/`project`/locations/global/
+        # interceptEndpointGroups/`interceptEndpointGroup``
+        # Corresponds to the JSON property `interceptEndpointGroup`
+        # @return [String]
+        attr_accessor :intercept_endpoint_group
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The list of locations that this association is in and its details.
+        # Corresponds to the JSON property `locationsDetails`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationLocationDetails>]
+        attr_accessor :locations_details
+      
+        # Immutable. Identifier. The name of the InterceptEndpointGroupAssociation.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. The VPC network associated. Format: projects/`project`/
+        # global/networks/`network`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. Whether reconciling is in progress, recommended per https://
+        # google.aip.dev/128.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Current state of the endpoint group association.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. [Output only] Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @intercept_endpoint_group = args[:intercept_endpoint_group] if args.key?(:intercept_endpoint_group)
+          @labels = args[:labels] if args.key?(:labels)
+          @locations_details = args[:locations_details] if args.key?(:locations_details)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # This is a subset of the InterceptEndpointGroupAssociation message, containing
+      # fields to be used by the consumer.
+      class InterceptEndpointGroupAssociationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the InterceptEndpointGroupAssociation.
+        # Format: projects/`project`/locations/`location`/
+        # interceptEndpointGroupAssociations/`interceptEndpointGroupAssociation`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The VPC network associated. Format: projects/`project`/global/
+        # networks/`name`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. Current state of the association.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Details about the association status in a specific cloud location.
+      class InterceptEndpointGroupAssociationLocationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The cloud location.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Output only. The association state in this location.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Response of the ListAddressGroupReferences method.
       class ListAddressGroupReferencesResponse
         include Google::Apis::Core::Hashable
@@ -2023,6 +2400,112 @@ module Google
           @gateway_security_policy_rules = args[:gateway_security_policy_rules] if args.key?(:gateway_security_policy_rules)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing InterceptDeploymentGroups
+      class ListInterceptDeploymentGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of InterceptDeploymentGroup
+        # Corresponds to the JSON property `interceptDeploymentGroups`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroup>]
+        attr_accessor :intercept_deployment_groups
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intercept_deployment_groups = args[:intercept_deployment_groups] if args.key?(:intercept_deployment_groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing InterceptDeployments
+      class ListInterceptDeploymentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of InterceptDeployment
+        # Corresponds to the JSON property `interceptDeployments`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptDeployment>]
+        attr_accessor :intercept_deployments
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intercept_deployments = args[:intercept_deployments] if args.key?(:intercept_deployments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing InterceptEndpointGroupAssociations
+      class ListInterceptEndpointGroupAssociationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of InterceptEndpointGroupAssociation
+        # Corresponds to the JSON property `interceptEndpointGroupAssociations`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociation>]
+        attr_accessor :intercept_endpoint_group_associations
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intercept_endpoint_group_associations = args[:intercept_endpoint_group_associations] if args.key?(:intercept_endpoint_group_associations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing InterceptEndpointGroups
+      class ListInterceptEndpointGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of InterceptEndpointGroup
+        # Corresponds to the JSON property `interceptEndpointGroups`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroup>]
+        attr_accessor :intercept_endpoint_groups
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intercept_endpoint_groups = args[:intercept_endpoint_groups] if args.key?(:intercept_endpoint_groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2482,7 +2965,7 @@ module Google
         end
       end
       
-      # Message describing MirroringDeploymentGroup object
+      # Message describing MirroringDeploymentGroup object NEXT ID: 10
       class MirroringDeploymentGroup
         include Google::Apis::Core::Hashable
       
@@ -2910,7 +3393,7 @@ module Google
       end
       
       # SecurityProfile is a resource that defines the behavior for one of many
-      # ProfileTypes. Next ID: 12
+      # ProfileTypes.
       class SecurityProfile
         include Google::Apis::Core::Hashable
       
@@ -2918,6 +3401,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # CustomInterceptProfile defines the Packet Intercept Endpoint Group used to
+        # intercept traffic to a third-party firewall in a Firewall rule.
+        # Corresponds to the JSON property `customInterceptProfile`
+        # @return [Google::Apis::NetworksecurityV1beta1::CustomInterceptProfile]
+        attr_accessor :custom_intercept_profile
       
         # CustomMirroringProfile defines an action for mirroring traffic to a collector'
         # s EndpointGroup
@@ -2972,6 +3461,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_intercept_profile = args[:custom_intercept_profile] if args.key?(:custom_intercept_profile)
           @custom_mirroring_profile = args[:custom_mirroring_profile] if args.key?(:custom_mirroring_profile)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
@@ -2984,7 +3474,7 @@ module Google
       end
       
       # SecurityProfileGroup is a resource that defines the behavior for various
-      # ProfileTypes. Next ID: 11
+      # ProfileTypes.
       class SecurityProfileGroup
         include Google::Apis::Core::Hashable
       
@@ -2992,6 +3482,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. Reference to a SecurityProfile with the CustomIntercept
+        # configuration.
+        # Corresponds to the JSON property `customInterceptProfile`
+        # @return [String]
+        attr_accessor :custom_intercept_profile
       
         # Optional. Reference to a SecurityProfile with the CustomMirroring
         # configuration.
@@ -3042,6 +3538,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_intercept_profile = args[:custom_intercept_profile] if args.key?(:custom_intercept_profile)
           @custom_mirroring_profile = args[:custom_mirroring_profile] if args.key?(:custom_mirroring_profile)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
