@@ -1901,6 +1901,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does
+        # not exist.
+        # @param [String] name
+        #   Immutable. Fully qualified name `projects/`project`/locations/`location`/
+        #   collections/`collection_id`/engines/`engine_id`/servingConfigs/`
+        #   serving_config_id``
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig] google_cloud_discoveryengine_v1_serving_config_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided ServingConfig to update. The following
+        #   are NOT supported: * ServingConfig.name If not set, all supported fields are
+        #   updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_collection_data_store_serving_config(name, google_cloud_discoveryengine_v1_serving_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1_serving_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Makes a recommendation, which requires a contextual user event.
         # @param [String] serving_config
         #   Required. Full resource name of a ServingConfig: `projects/*/locations/global/
@@ -2024,6 +2065,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Answer query method (streaming). It takes one AnswerQueryRequest and returns
+        # multiple AnswerQueryResponse messages in a stream.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/*/servingConfigs/default_serving_config`. This
+        #   field is used to identify the serving configuration name, set of models used
+        #   to make the search.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequest] google_cloud_discoveryengine_v1_answer_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_collection_data_store_serving_config_answer(serving_config, google_cloud_discoveryengine_v1_answer_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+servingConfig}:streamAnswer', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_answer_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Session. If the Session to create already exists, an ALREADY_EXISTS
         # error is returned.
         # @param [String] parent
@@ -2097,6 +2177,9 @@ module Google
         #   Required. The resource name of the Session to get. Format: `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
         #   sessions/`session_id``
+        # @param [Boolean] include_answer_details
+        #   Optional. If set to true, the full session including all answer details will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2114,11 +2197,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_data_store_session(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_collection_data_store_session(name, include_answer_details: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Session::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Session
           command.params['name'] = name unless name.nil?
+          command.query['includeAnswerDetails'] = include_answer_details unless include_answer_details.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2134,7 +2218,9 @@ module Google
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
-        #   create_time` * `session_name` Example: "update_time desc" "create_time"
+        #   create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "
+        #   create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned
+        #   first, then by update_time.
         # @param [Fixnum] page_size
         #   Maximum number of results to return. If unspecified, defaults to 50. Max
         #   allowed value is 1000.
@@ -2864,8 +2950,12 @@ module Google
         # only by the Discovery Engine API JavaScript pixel and Google Tag Manager.
         # Users should not call this method directly.
         # @param [String] parent
-        #   Required. The parent DataStore resource name, such as `projects/`project`/
-        #   locations/`location`/collections/`collection`/dataStores/`data_store``.
+        #   Required. The parent resource name. If the collect user event action is
+        #   applied in DataStore level, the format is: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store``. If the collect
+        #   user event action is applied in Location level, for example, the event with
+        #   Document across multiple DataStore, the format is: `projects/`project`/
+        #   locations/`location``.
         # @param [Fixnum] ets
         #   The event timestamp in milliseconds. This prevents browser caching of
         #   otherwise identical get requests. The name is abbreviated to reduce the
@@ -3742,6 +3832,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does
+        # not exist.
+        # @param [String] name
+        #   Immutable. Fully qualified name `projects/`project`/locations/`location`/
+        #   collections/`collection_id`/engines/`engine_id`/servingConfigs/`
+        #   serving_config_id``
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig] google_cloud_discoveryengine_v1_serving_config_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided ServingConfig to update. The following
+        #   are NOT supported: * ServingConfig.name If not set, all supported fields are
+        #   updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_collection_engine_serving_config(name, google_cloud_discoveryengine_v1_serving_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1_serving_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Makes a recommendation, which requires a contextual user event.
         # @param [String] serving_config
         #   Required. Full resource name of a ServingConfig: `projects/*/locations/global/
@@ -3865,6 +3996,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Answer query method (streaming). It takes one AnswerQueryRequest and returns
+        # multiple AnswerQueryResponse messages in a stream.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/*/servingConfigs/default_serving_config`. This
+        #   field is used to identify the serving configuration name, set of models used
+        #   to make the search.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequest] google_cloud_discoveryengine_v1_answer_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_collection_engine_serving_config_answer(serving_config, google_cloud_discoveryengine_v1_answer_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+servingConfig}:streamAnswer', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_answer_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Session. If the Session to create already exists, an ALREADY_EXISTS
         # error is returned.
         # @param [String] parent
@@ -3938,6 +4108,9 @@ module Google
         #   Required. The resource name of the Session to get. Format: `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
         #   sessions/`session_id``
+        # @param [Boolean] include_answer_details
+        #   Optional. If set to true, the full session including all answer details will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3955,11 +4128,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_engine_session(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_collection_engine_session(name, include_answer_details: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Session::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Session
           command.params['name'] = name unless name.nil?
+          command.query['includeAnswerDetails'] = include_answer_details unless include_answer_details.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3975,7 +4149,9 @@ module Google
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
-        #   create_time` * `session_name` Example: "update_time desc" "create_time"
+        #   create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "
+        #   create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned
+        #   first, then by update_time.
         # @param [Fixnum] page_size
         #   Maximum number of results to return. If unspecified, defaults to 50. Max
         #   allowed value is 1000.
@@ -5760,6 +5936,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does
+        # not exist.
+        # @param [String] name
+        #   Immutable. Fully qualified name `projects/`project`/locations/`location`/
+        #   collections/`collection_id`/engines/`engine_id`/servingConfigs/`
+        #   serving_config_id``
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig] google_cloud_discoveryengine_v1_serving_config_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided ServingConfig to update. The following
+        #   are NOT supported: * ServingConfig.name If not set, all supported fields are
+        #   updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_data_store_serving_config(name, google_cloud_discoveryengine_v1_serving_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1_serving_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Makes a recommendation, which requires a contextual user event.
         # @param [String] serving_config
         #   Required. Full resource name of a ServingConfig: `projects/*/locations/global/
@@ -5883,6 +6100,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Answer query method (streaming). It takes one AnswerQueryRequest and returns
+        # multiple AnswerQueryResponse messages in a stream.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/*/servingConfigs/default_serving_config`. This
+        #   field is used to identify the serving configuration name, set of models used
+        #   to make the search.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequest] google_cloud_discoveryengine_v1_answer_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_data_store_serving_config_answer(serving_config, google_cloud_discoveryengine_v1_answer_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+servingConfig}:streamAnswer', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_answer_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerQueryResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Session. If the Session to create already exists, an ALREADY_EXISTS
         # error is returned.
         # @param [String] parent
@@ -5956,6 +6212,9 @@ module Google
         #   Required. The resource name of the Session to get. Format: `projects/`project`/
         #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
         #   sessions/`session_id``
+        # @param [Boolean] include_answer_details
+        #   Optional. If set to true, the full session including all answer details will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5973,11 +6232,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_data_store_session(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_data_store_session(name, include_answer_details: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Session::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Session
           command.params['name'] = name unless name.nil?
+          command.query['includeAnswerDetails'] = include_answer_details unless include_answer_details.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5993,7 +6253,9 @@ module Google
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
-        #   create_time` * `session_name` Example: "update_time desc" "create_time"
+        #   create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "
+        #   create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned
+        #   first, then by update_time.
         # @param [Fixnum] page_size
         #   Maximum number of results to return. If unspecified, defaults to 50. Max
         #   allowed value is 1000.
@@ -6500,8 +6762,12 @@ module Google
         # only by the Discovery Engine API JavaScript pixel and Google Tag Manager.
         # Users should not call this method directly.
         # @param [String] parent
-        #   Required. The parent DataStore resource name, such as `projects/`project`/
-        #   locations/`location`/collections/`collection`/dataStores/`data_store``.
+        #   Required. The parent resource name. If the collect user event action is
+        #   applied in DataStore level, the format is: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store``. If the collect
+        #   user event action is applied in Location level, for example, the event with
+        #   Document across multiple DataStore, the format is: `projects/`project`/
+        #   locations/`location``.
         # @param [Fixnum] ets
         #   The event timestamp in milliseconds. This prevents browser caching of
         #   otherwise identical get requests. The name is abbreviated to reduce the
@@ -6876,8 +7142,12 @@ module Google
         # only by the Discovery Engine API JavaScript pixel and Google Tag Manager.
         # Users should not call this method directly.
         # @param [String] parent
-        #   Required. The parent DataStore resource name, such as `projects/`project`/
-        #   locations/`location`/collections/`collection`/dataStores/`data_store``.
+        #   Required. The parent resource name. If the collect user event action is
+        #   applied in DataStore level, the format is: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store``. If the collect
+        #   user event action is applied in Location level, for example, the event with
+        #   Document across multiple DataStore, the format is: `projects/`project`/
+        #   locations/`location``.
         # @param [Fixnum] ets
         #   The event timestamp in milliseconds. This prevents browser caching of
         #   otherwise identical get requests. The name is abbreviated to reduce the
