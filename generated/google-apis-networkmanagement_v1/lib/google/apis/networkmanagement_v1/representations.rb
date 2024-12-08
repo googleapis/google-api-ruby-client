@@ -493,6 +493,9 @@ module Google
           property :reachability_details, as: 'reachabilityDetails', class: Google::Apis::NetworkmanagementV1::ReachabilityDetails, decorator: Google::Apis::NetworkmanagementV1::ReachabilityDetails::Representation
       
           collection :related_projects, as: 'relatedProjects'
+          property :return_reachability_details, as: 'returnReachabilityDetails', class: Google::Apis::NetworkmanagementV1::ReachabilityDetails, decorator: Google::Apis::NetworkmanagementV1::ReachabilityDetails::Representation
+      
+          property :round_trip, as: 'roundTrip'
           property :source, as: 'source', class: Google::Apis::NetworkmanagementV1::Endpoint, decorator: Google::Apis::NetworkmanagementV1::Endpoint::Representation
       
           property :update_time, as: 'updateTime'

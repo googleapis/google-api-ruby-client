@@ -531,6 +531,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :related_projects
       
+        # Results of the configuration analysis from the last run of the test.
+        # Corresponds to the JSON property `returnReachabilityDetails`
+        # @return [Google::Apis::NetworkmanagementV1::ReachabilityDetails]
+        attr_accessor :return_reachability_details
+      
+        # Whether run analysis for the return path from destination to source. Default
+        # value is false.
+        # Corresponds to the JSON property `roundTrip`
+        # @return [Boolean]
+        attr_accessor :round_trip
+        alias_method :round_trip?, :round_trip
+      
         # Source or destination of the Connectivity Test.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::NetworkmanagementV1::Endpoint]
@@ -558,6 +570,8 @@ module Google
           @protocol = args[:protocol] if args.key?(:protocol)
           @reachability_details = args[:reachability_details] if args.key?(:reachability_details)
           @related_projects = args[:related_projects] if args.key?(:related_projects)
+          @return_reachability_details = args[:return_reachability_details] if args.key?(:return_reachability_details)
+          @round_trip = args[:round_trip] if args.key?(:round_trip)
           @source = args[:source] if args.key?(:source)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
