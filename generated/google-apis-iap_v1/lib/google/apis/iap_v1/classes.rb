@@ -1048,9 +1048,7 @@ module Google
         # Services not integrated with custom org policy can omit this field. Services
         # integrated with custom org policy must populate this field for all requests
         # where the API call changes the state of the resource. Custom org policy
-        # backend uses these attributes to enforce custom org policies. When a proto is
-        # wrapped, it is generally the One Platform API proto. When a JSON string is
-        # wrapped, use `google.protobuf.StringValue` for the inner value. For create
+        # backend uses these attributes to enforce custom org policies. For create
         # operations, GCP service is expected to pass resource from customer request as
         # is. For update/patch operations, GCP service is expected to compute the next
         # state with the patch provided by the user. See go/custom-constraints-org-
