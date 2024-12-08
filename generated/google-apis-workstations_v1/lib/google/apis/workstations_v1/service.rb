@@ -130,8 +130,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::WorkstationsV1::CancelOperationRequest] cancel_operation_request_object
@@ -894,7 +894,8 @@ module Google
         end
         
         # Returns a short-lived credential that can be used to send authenticated and
-        # authorized traffic to a workstation.
+        # authorized traffic to a workstation. Once generated this token cannot be
+        # revoked and is good for the lifetime of the token.
         # @param [String] workstation
         #   Required. Name of the workstation for which the access token should be
         #   generated.
