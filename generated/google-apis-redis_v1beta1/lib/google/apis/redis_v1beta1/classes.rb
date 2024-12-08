@@ -58,8 +58,8 @@ module Google
         attr_accessor :fixed_frequency_schedule
       
         # Optional. How long to keep automated backups before the backups are deleted.
-        # If not specified, the default value is 100 years which is also the maximum
-        # value supported. The minimum value is 1 day.
+        # The value should be between 1 day and 365 days. If not specified, the default
+        # value is 35 days.
         # Corresponds to the JSON property `retention`
         # @return [String]
         attr_accessor :retention
@@ -200,6 +200,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_size_bytes
       
+        # Output only. System assigned unique identifier of the backup.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         def initialize(**args)
            update!(**args)
         end
@@ -219,6 +224,7 @@ module Google
           @shard_count = args[:shard_count] if args.key?(:shard_count)
           @state = args[:state] if args.key?(:state)
           @total_size_bytes = args[:total_size_bytes] if args.key?(:total_size_bytes)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
@@ -269,6 +275,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. System assigned unique identifier of the backup collection.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         def initialize(**args)
            update!(**args)
         end
@@ -278,6 +289,7 @@ module Google
           @cluster = args[:cluster] if args.key?(:cluster)
           @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
           @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
@@ -797,6 +809,12 @@ module Google
       class ConnectionDetail
         include Google::Apis::Core::Hashable
       
+        # Details of consumer resources in a PSC connection that is created through
+        # Service Connectivity Automation.
+        # Corresponds to the JSON property `pscAutoConnection`
+        # @return [Google::Apis::RedisV1beta1::PscAutoConnection]
+        attr_accessor :psc_auto_connection
+      
         # Details of consumer resources in a PSC connection.
         # Corresponds to the JSON property `pscConnection`
         # @return [Google::Apis::RedisV1beta1::PscConnection]
@@ -808,6 +826,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @psc_auto_connection = args[:psc_auto_connection] if args.key?(:psc_auto_connection)
           @psc_connection = args[:psc_connection] if args.key?(:psc_connection)
         end
       end
@@ -2790,6 +2809,76 @@ module Google
           @engine = args[:engine] if args.key?(:engine)
           @type = args[:type] if args.key?(:type)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Details of consumer resources in a PSC connection that is created through
+      # Service Connectivity Automation.
+      class PscAutoConnection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The IP allocated on the consumer network for the PSC forwarding
+        # rule.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Output only. Type of the PSC connection.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # Output only. The URI of the consumer side forwarding rule. Example: projects/`
+        # projectNumOrId`/regions/us-east1/forwardingRules/`resourceId`.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # Required. The consumer network where the IP address resides, in the form of
+        # projects/`project_id`/global/networks/`network_id`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Required. The consumer project_id where the forwarding rule is created from.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Output only. The PSC connection id of the forwarding rule connected to the
+        # service attachment.
+        # Corresponds to the JSON property `pscConnectionId`
+        # @return [String]
+        attr_accessor :psc_connection_id
+      
+        # Output only. The status of the PSC connection. Please note that this value is
+        # updated periodically. Please use Private Service Connect APIs for the latest
+        # status.
+        # Corresponds to the JSON property `pscConnectionStatus`
+        # @return [String]
+        attr_accessor :psc_connection_status
+      
+        # Output only. The service attachment which is the target of the PSC connection,
+        # in the form of projects/`project-id`/regions/`region`/serviceAttachments/`
+        # service-attachment-id`.
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @network = args[:network] if args.key?(:network)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @psc_connection_status = args[:psc_connection_status] if args.key?(:psc_connection_status)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
         end
       end
       
