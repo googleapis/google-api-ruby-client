@@ -1575,10 +1575,21 @@ module Google
         # @return [String]
         attr_accessor :disposition_code
       
-        # A user-specified string representing the agent's team.
+        # The agent's location.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # A user-specified string representing the agent's team. Deprecated in favor of
+        # the `teams` field.
         # Corresponds to the JSON property `team`
         # @return [String]
         attr_accessor :team
+      
+        # User-specified strings representing the agent's teams.
+        # Corresponds to the JSON property `teams`
+        # @return [Array<String>]
+        attr_accessor :teams
       
         def initialize(**args)
            update!(**args)
@@ -1590,7 +1601,9 @@ module Google
           @agent_type = args[:agent_type] if args.key?(:agent_type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
+          @location = args[:location] if args.key?(:location)
           @team = args[:team] if args.key?(:team)
+          @teams = args[:teams] if args.key?(:teams)
         end
       end
       
@@ -6701,10 +6714,21 @@ module Google
         # @return [String]
         attr_accessor :disposition_code
       
-        # A user-specified string representing the agent's team.
+        # The agent's location.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # A user-specified string representing the agent's team. Deprecated in favor of
+        # the `teams` field.
         # Corresponds to the JSON property `team`
         # @return [String]
         attr_accessor :team
+      
+        # User-specified strings representing the agent's teams.
+        # Corresponds to the JSON property `teams`
+        # @return [Array<String>]
+        attr_accessor :teams
       
         def initialize(**args)
            update!(**args)
@@ -6716,7 +6740,9 @@ module Google
           @agent_type = args[:agent_type] if args.key?(:agent_type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
+          @location = args[:location] if args.key?(:location)
           @team = args[:team] if args.key?(:team)
+          @teams = args[:teams] if args.key?(:teams)
         end
       end
       

@@ -2100,7 +2100,9 @@ module Google
           property :agent_type, as: 'agentType'
           property :display_name, as: 'displayName'
           property :disposition_code, as: 'dispositionCode'
+          property :location, as: 'location'
           property :team, as: 'team'
+          collection :teams, as: 'teams'
         end
       end
       
@@ -3584,7 +3586,9 @@ module Google
           property :agent_type, as: 'agentType'
           property :display_name, as: 'displayName'
           property :disposition_code, as: 'dispositionCode'
+          property :location, as: 'location'
           property :team, as: 'team'
+          collection :teams, as: 'teams'
         end
       end
       
