@@ -442,7 +442,6 @@ module Google
       
         # Base 64 encoded video bytes.
         # Corresponds to the JSON property `encodedVideo`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :encoded_video
       
@@ -6249,6 +6248,63 @@ module Google
         end
       end
       
+      # Request message for ModelGardenService.DeployPublisherModel.
+      class GoogleCloudAiplatformV1beta1DeployPublisherModelRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the user accepts the End User License Agreement (EULA) for
+        # the model.
+        # Corresponds to the JSON property `acceptEula`
+        # @return [Boolean]
+        attr_accessor :accept_eula
+        alias_method :accept_eula?, :accept_eula
+      
+        # A description of resources that are dedicated to a DeployedModel, and that
+        # need a higher degree of manual configuration.
+        # Corresponds to the JSON property `dedicatedResources`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DedicatedResources]
+        attr_accessor :dedicated_resources
+      
+        # Optional. The user-specified display name of the endpoint. If not set, a
+        # default name will be used.
+        # Corresponds to the JSON property `endpointDisplayName`
+        # @return [String]
+        attr_accessor :endpoint_display_name
+      
+        # Optional. The Hugging Face read access token used to access the model
+        # artifacts of gated models.
+        # Corresponds to the JSON property `huggingFaceAccessToken`
+        # @return [String]
+        attr_accessor :hugging_face_access_token
+      
+        # Required. The name of the PublisherModel resource. Format: `publishers/`
+        # publisher`/models/`publisher_model`@`version_id``, or `publishers/hf-`hugging-
+        # face-author`/models/`hugging-face-model-name`@001`
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Optional. The user-specified display name of the uploaded model. If not set, a
+        # default name will be used.
+        # Corresponds to the JSON property `modelDisplayName`
+        # @return [String]
+        attr_accessor :model_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accept_eula = args[:accept_eula] if args.key?(:accept_eula)
+          @dedicated_resources = args[:dedicated_resources] if args.key?(:dedicated_resources)
+          @endpoint_display_name = args[:endpoint_display_name] if args.key?(:endpoint_display_name)
+          @hugging_face_access_token = args[:hugging_face_access_token] if args.key?(:hugging_face_access_token)
+          @model = args[:model] if args.key?(:model)
+          @model_display_name = args[:model_display_name] if args.key?(:model_display_name)
+        end
+      end
+      
       # Runtime operation information for SolverService.DeploySolver.
       class GoogleCloudAiplatformV1beta1DeploySolverOperationMetadata
         include Google::Apis::Core::Hashable
@@ -6991,14 +7047,15 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DistillationHyperParameters]
         attr_accessor :hyper_parameters
       
-        # Required. A path in a Cloud Storage bucket, which will be treated as the root
-        # output directory of the distillation pipeline. It is used by the system to
-        # generate the paths of output artifacts.
+        # Required. Deprecated. A path in a Cloud Storage bucket, which will be treated
+        # as the root output directory of the distillation pipeline. It is used by the
+        # system to generate the paths of output artifacts.
         # Corresponds to the JSON property `pipelineRootDirectory`
         # @return [String]
         attr_accessor :pipeline_root_directory
       
         # The student model that is being tuned, e.g., "google/gemma-2b-1.1-it".
+        # Deprecated. Use base_model instead.
         # Corresponds to the JSON property `studentModel`
         # @return [String]
         attr_accessor :student_model
@@ -7617,6 +7674,36 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKvMatchInput]
         attr_accessor :tool_parameter_kv_match_input
       
+        # Instances and metric spec for TrajectoryAnyOrderMatch metric.
+        # Corresponds to the JSON property `trajectoryAnyOrderMatchInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchInput]
+        attr_accessor :trajectory_any_order_match_input
+      
+        # Instances and metric spec for TrajectoryExactMatch metric.
+        # Corresponds to the JSON property `trajectoryExactMatchInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryExactMatchInput]
+        attr_accessor :trajectory_exact_match_input
+      
+        # Instances and metric spec for TrajectoryInOrderMatch metric.
+        # Corresponds to the JSON property `trajectoryInOrderMatchInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInput]
+        attr_accessor :trajectory_in_order_match_input
+      
+        # Instances and metric spec for TrajectoryPrecision metric.
+        # Corresponds to the JSON property `trajectoryPrecisionInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryPrecisionInput]
+        attr_accessor :trajectory_precision_input
+      
+        # Instances and metric spec for TrajectoryRecall metric.
+        # Corresponds to the JSON property `trajectoryRecallInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryRecallInput]
+        attr_accessor :trajectory_recall_input
+      
+        # Instances and metric spec for TrajectorySingleToolUse metric.
+        # Corresponds to the JSON property `trajectorySingleToolUseInput`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectorySingleToolUseInput]
+        attr_accessor :trajectory_single_tool_use_input
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7648,6 +7735,12 @@ module Google
           @tool_name_match_input = args[:tool_name_match_input] if args.key?(:tool_name_match_input)
           @tool_parameter_key_match_input = args[:tool_parameter_key_match_input] if args.key?(:tool_parameter_key_match_input)
           @tool_parameter_kv_match_input = args[:tool_parameter_kv_match_input] if args.key?(:tool_parameter_kv_match_input)
+          @trajectory_any_order_match_input = args[:trajectory_any_order_match_input] if args.key?(:trajectory_any_order_match_input)
+          @trajectory_exact_match_input = args[:trajectory_exact_match_input] if args.key?(:trajectory_exact_match_input)
+          @trajectory_in_order_match_input = args[:trajectory_in_order_match_input] if args.key?(:trajectory_in_order_match_input)
+          @trajectory_precision_input = args[:trajectory_precision_input] if args.key?(:trajectory_precision_input)
+          @trajectory_recall_input = args[:trajectory_recall_input] if args.key?(:trajectory_recall_input)
+          @trajectory_single_tool_use_input = args[:trajectory_single_tool_use_input] if args.key?(:trajectory_single_tool_use_input)
         end
       end
       
@@ -7782,6 +7875,36 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParameterKvMatchResults]
         attr_accessor :tool_parameter_kv_match_results
       
+        # Results for TrajectoryAnyOrderMatch metric.
+        # Corresponds to the JSON property `trajectoryAnyOrderMatchResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchResults]
+        attr_accessor :trajectory_any_order_match_results
+      
+        # Results for TrajectoryExactMatch metric.
+        # Corresponds to the JSON property `trajectoryExactMatchResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryExactMatchResults]
+        attr_accessor :trajectory_exact_match_results
+      
+        # Results for TrajectoryInOrderMatch metric.
+        # Corresponds to the JSON property `trajectoryInOrderMatchResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchResults]
+        attr_accessor :trajectory_in_order_match_results
+      
+        # Results for TrajectoryPrecision metric.
+        # Corresponds to the JSON property `trajectoryPrecisionResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryPrecisionResults]
+        attr_accessor :trajectory_precision_results
+      
+        # Results for TrajectoryRecall metric.
+        # Corresponds to the JSON property `trajectoryRecallResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryRecallResults]
+        attr_accessor :trajectory_recall_results
+      
+        # Results for TrajectorySingleToolUse metric.
+        # Corresponds to the JSON property `trajectorySingleToolUseResults`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectorySingleToolUseResults]
+        attr_accessor :trajectory_single_tool_use_results
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7813,6 +7936,12 @@ module Google
           @tool_name_match_results = args[:tool_name_match_results] if args.key?(:tool_name_match_results)
           @tool_parameter_key_match_results = args[:tool_parameter_key_match_results] if args.key?(:tool_parameter_key_match_results)
           @tool_parameter_kv_match_results = args[:tool_parameter_kv_match_results] if args.key?(:tool_parameter_kv_match_results)
+          @trajectory_any_order_match_results = args[:trajectory_any_order_match_results] if args.key?(:trajectory_any_order_match_results)
+          @trajectory_exact_match_results = args[:trajectory_exact_match_results] if args.key?(:trajectory_exact_match_results)
+          @trajectory_in_order_match_results = args[:trajectory_in_order_match_results] if args.key?(:trajectory_in_order_match_results)
+          @trajectory_precision_results = args[:trajectory_precision_results] if args.key?(:trajectory_precision_results)
+          @trajectory_recall_results = args[:trajectory_recall_results] if args.key?(:trajectory_recall_results)
+          @trajectory_single_tool_use_results = args[:trajectory_single_tool_use_results] if args.key?(:trajectory_single_tool_use_results)
         end
       end
       
@@ -9973,6 +10102,22 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. A Service Account unique to this FeatureGroup. The role bigquery.
+        # dataViewer should be granted to this service account to allow Vertex AI
+        # Feature Store to access source data while running jobs under this FeatureGroup.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Optional. Service agent type used during jobs under a FeatureGroup. By default,
+        # the Vertex AI Service Agent is used. When using an IAM Policy to isolate this
+        # FeatureGroup within a project, a separate service account should be
+        # provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_GROUP`. This
+        # will generate a separate service account to access the BigQuery source table.
+        # Corresponds to the JSON property `serviceAgentType`
+        # @return [String]
+        attr_accessor :service_agent_type
+      
         # Output only. Timestamp when this FeatureGroup was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -9990,6 +10135,8 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @service_agent_type = args[:service_agent_type] if args.key?(:service_agent_type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -13062,6 +13209,11 @@ module Google
         # @return [String]
         attr_accessor :response_mime_type
       
+        # Optional. The modalities of the response.
+        # Corresponds to the JSON property `responseModalities`
+        # @return [Array<String>]
+        attr_accessor :response_modalities
+      
         # Schema is used to define the format of input/output data. Represents a select
         # subset of an [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#
         # schema-object). More fields may be added in the future as needed.
@@ -13079,6 +13231,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :seed
       
+        # The speech generation config.
+        # Corresponds to the JSON property `speechConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SpeechConfig]
+        attr_accessor :speech_config
+      
         # Optional. Stop sequences.
         # Corresponds to the JSON property `stopSequences`
         # @return [Array<String>]
@@ -13088,6 +13245,11 @@ module Google
         # Corresponds to the JSON property `temperature`
         # @return [Float]
         attr_accessor :temperature
+      
+        # Optional. If specified, the token resolution specified will be used.
+        # Corresponds to the JSON property `tokenResolution`
+        # @return [String]
+        attr_accessor :token_resolution
       
         # Optional. If specified, top-k sampling will be used.
         # Corresponds to the JSON property `topK`
@@ -13113,11 +13275,14 @@ module Google
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @response_logprobs = args[:response_logprobs] if args.key?(:response_logprobs)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
+          @response_modalities = args[:response_modalities] if args.key?(:response_modalities)
           @response_schema = args[:response_schema] if args.key?(:response_schema)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
           @seed = args[:seed] if args.key?(:seed)
+          @speech_config = args[:speech_config] if args.key?(:speech_config)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
+          @token_resolution = args[:token_resolution] if args.key?(:token_resolution)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
         end
@@ -21757,6 +21922,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Represents the spec of persistent disk options.
+        # Corresponds to the JSON property `dataPersistentDiskSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PersistentDiskSpec]
+        attr_accessor :data_persistent_disk_spec
+      
         # The description of the NotebookRuntime.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -21773,6 +21943,11 @@ module Google
         # Corresponds to the JSON property `encryptionSpec`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec]
         attr_accessor :encryption_spec
+      
+        # The euc configuration of NotebookRuntimeTemplate.
+        # Corresponds to the JSON property `eucConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookEucConfig]
+        attr_accessor :euc_config
       
         # Output only. Timestamp when this NotebookRuntime will be expired: 1. System
         # Predefined NotebookRuntime: 24 hours after creation. After expiration, system
@@ -21817,10 +21992,20 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Specification of a single machine.
+        # Corresponds to the JSON property `machineSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec]
+        attr_accessor :machine_spec
+      
         # Output only. The resource name of the NotebookRuntime.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Network spec.
+        # Corresponds to the JSON property `networkSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NetworkSpec]
+        attr_accessor :network_spec
       
         # Optional. The Compute Engine tags to add to runtime (see [Tagging instances](
         # https://cloud.google.com/vpc/docs/add-remove-network-tags)).
@@ -21865,10 +22050,22 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Output only. The service account that the NotebookRuntime workload runs as.
+        # Output only. Deprecated: This field is no longer used and the "Vertex AI
+        # Notebook Service Account" (service-PROJECT_NUMBER@gcp-sa-aiplatform-vm.iam.
+        # gserviceaccount.com) is used for the runtime workload identity. See https://
+        # cloud.google.com/iam/docs/service-agents#vertex-ai-notebook-service-account
+        # for more details. The service account that the NotebookRuntime workload runs
+        # as.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
+      
+        # A set of Shielded Instance options. See [Images using supported Shielded VM
+        # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
+        # vm).
+        # Corresponds to the JSON property `shieldedVmConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ShieldedVmConfig]
+        attr_accessor :shielded_vm_config
       
         # Output only. Timestamp when this NotebookRuntime was most recently updated.
         # Corresponds to the JSON property `updateTime`
@@ -21887,15 +22084,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_persistent_disk_spec = args[:data_persistent_disk_spec] if args.key?(:data_persistent_disk_spec)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
+          @euc_config = args[:euc_config] if args.key?(:euc_config)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @health_state = args[:health_state] if args.key?(:health_state)
           @idle_shutdown_config = args[:idle_shutdown_config] if args.key?(:idle_shutdown_config)
           @is_upgradable = args[:is_upgradable] if args.key?(:is_upgradable)
           @labels = args[:labels] if args.key?(:labels)
+          @machine_spec = args[:machine_spec] if args.key?(:machine_spec)
           @name = args[:name] if args.key?(:name)
+          @network_spec = args[:network_spec] if args.key?(:network_spec)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @notebook_runtime_template_ref = args[:notebook_runtime_template_ref] if args.key?(:notebook_runtime_template_ref)
           @notebook_runtime_type = args[:notebook_runtime_type] if args.key?(:notebook_runtime_type)
@@ -21905,6 +22106,7 @@ module Google
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)
         end
@@ -21960,7 +22162,8 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig]
         attr_accessor :idle_shutdown_config
       
-        # Output only. The default template to use if not specified.
+        # Output only. Deprecated: This field has no behavior. Use notebook_runtime_type
+        # = 'ONE_CLICK' instead. The default template to use if not specified.
         # Corresponds to the JSON property `isDefault`
         # @return [Boolean]
         attr_accessor :is_default
@@ -22001,7 +22204,12 @@ module Google
         # @return [String]
         attr_accessor :notebook_runtime_type
       
-        # The service account that the runtime workload runs as. You can use any service
+        # Deprecated: This field is ignored and the "Vertex AI Notebook Service Account"
+        # (service-PROJECT_NUMBER@gcp-sa-aiplatform-vm.iam.gserviceaccount.com) is used
+        # for the runtime workload identity. See https://cloud.google.com/iam/docs/
+        # service-agents#vertex-ai-notebook-service-account for more details. For
+        # NotebookExecutionJob, use NotebookExecutionJob.service_account instead. The
+        # service account that the runtime workload runs as. You can use any service
         # account within the same project, but you must have the service account user
         # permission to use the instance. If not specified, the [Compute Engine default
         # service account](https://cloud.google.com/compute/docs/access/service-accounts#
@@ -23058,8 +23266,9 @@ module Google
       class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigDefaultRuntime
         include Google::Apis::Core::Hashable
       
-        # Persistent resource based runtime detail. For more information, refer to https:
-        # //cloud.google.com/vertex-ai/docs/training/persistent-resource-overview
+        # Persistent resource based runtime detail. For more information about
+        # persistent resource, refer to https://cloud.google.com/vertex-ai/docs/training/
+        # persistent-resource-overview
         # Corresponds to the JSON property `persistentResourceRuntimeDetail`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail]
         attr_accessor :persistent_resource_runtime_detail
@@ -23096,8 +23305,9 @@ module Google
         end
       end
       
-      # Persistent resource based runtime detail. For more information, refer to https:
-      # //cloud.google.com/vertex-ai/docs/training/persistent-resource-overview
+      # Persistent resource based runtime detail. For more information about
+      # persistent resource, refer to https://cloud.google.com/vertex-ai/docs/training/
+      # persistent-resource-overview
       class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail
         include Google::Apis::Core::Hashable
       
@@ -23602,6 +23812,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @container_port = args[:container_port] if args.key?(:container_port)
+        end
+      end
+      
+      # The configuration for the prebuilt speaker to use.
+      class GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the preset voice to use.
+        # Corresponds to the JSON property `voiceName`
+        # @return [String]
+        attr_accessor :voice_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @voice_name = args[:voice_name] if args.key?(:voice_name)
         end
       end
       
@@ -36291,6 +36520,25 @@ module Google
         end
       end
       
+      # The speech generation config.
+      class GoogleCloudAiplatformV1beta1SpeechConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for the voice to use.
+        # Corresponds to the JSON property `voiceConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VoiceConfig]
+        attr_accessor :voice_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @voice_config = args[:voice_config] if args.key?(:voice_config)
+        end
+      end
+      
       # Metadata information for NotebookService.StartNotebookRuntime.
       class GoogleCloudAiplatformV1beta1StartNotebookRuntimeOperationMetadata
         include Google::Apis::Core::Hashable
@@ -36402,6 +36650,33 @@ module Google
           @test_fraction = args[:test_fraction] if args.key?(:test_fraction)
           @training_fraction = args[:training_fraction] if args.key?(:training_fraction)
           @validation_fraction = args[:validation_fraction] if args.key?(:validation_fraction)
+        end
+      end
+      
+      # Request message for ReasoningEngineExecutionService.StreamQuery.
+      class GoogleCloudAiplatformV1beta1StreamQueryReasoningEngineRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Class method to be used for the stream query. It is optional and
+        # defaults to "stream_query" if unspecified.
+        # Corresponds to the JSON property `classMethod`
+        # @return [String]
+        attr_accessor :class_method
+      
+        # Optional. Input content provided by users in JSON object format. Examples
+        # include text query, function calling parameters, media bytes, etc.
+        # Corresponds to the JSON property `input`
+        # @return [Hash<String,Object>]
+        attr_accessor :input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @class_method = args[:class_method] if args.key?(:class_method)
+          @input = args[:input] if args.key?(:input)
         end
       end
       
@@ -38971,6 +39246,12 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionDeclaration>]
         attr_accessor :function_declarations
       
+        # GoogleSearch tool type. Tool to support Google Search in Model. Powered by
+        # Google.
+        # Corresponds to the JSON property `googleSearch`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolGoogleSearch]
+        attr_accessor :google_search
+      
         # Tool to retrieve public web data for grounding, powered by Google.
         # Corresponds to the JSON property `googleSearchRetrieval`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval]
@@ -38989,8 +39270,34 @@ module Google
         def update!(**args)
           @code_execution = args[:code_execution] if args.key?(:code_execution)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
+          @google_search = args[:google_search] if args.key?(:google_search)
           @google_search_retrieval = args[:google_search_retrieval] if args.key?(:google_search_retrieval)
           @retrieval = args[:retrieval] if args.key?(:retrieval)
+        end
+      end
+      
+      # Spec for tool call.
+      class GoogleCloudAiplatformV1beta1ToolCall
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Spec for tool input
+        # Corresponds to the JSON property `toolInput`
+        # @return [String]
+        attr_accessor :tool_input
+      
+        # Required. Spec for tool name
+        # Corresponds to the JSON property `toolName`
+        # @return [String]
+        attr_accessor :tool_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_input = args[:tool_input] if args.key?(:tool_input)
+          @tool_name = args[:tool_name] if args.key?(:tool_name)
         end
       end
       
@@ -39126,6 +39433,20 @@ module Google
         # Update properties of this object
         def update!(**args)
           @function_calling_config = args[:function_calling_config] if args.key?(:function_calling_config)
+        end
+      end
+      
+      # GoogleSearch tool type. Tool to support Google Search in Model. Powered by
+      # Google.
+      class GoogleCloudAiplatformV1beta1ToolGoogleSearch
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -39685,6 +40006,645 @@ module Google
           @training_task_inputs = args[:training_task_inputs] if args.key?(:training_task_inputs)
           @training_task_metadata = args[:training_task_metadata] if args.key?(:training_task_metadata)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Spec for trajectory.
+      class GoogleCloudAiplatformV1beta1Trajectory
+        include Google::Apis::Core::Hashable
+      
+        # Required. Tool calls in the trajectory.
+        # Corresponds to the JSON property `toolCalls`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCall>]
+        attr_accessor :tool_calls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_calls = args[:tool_calls] if args.key?(:tool_calls)
+        end
+      end
+      
+      # Instances and metric spec for TrajectoryAnyOrderMatch metric.
+      class GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated TrajectoryAnyOrderMatch instance.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchInstance>]
+        attr_accessor :instances
+      
+        # Spec for TrajectoryAnyOrderMatch metric - returns 1 if all tool calls in the
+        # reference trajectory appear in the predicted trajectory in any order, else 0.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for TrajectoryAnyOrderMatch instance.
+      class GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchInstance
+        include Google::Apis::Core::Hashable
+      
+        # Spec for trajectory.
+        # Corresponds to the JSON property `predictedTrajectory`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Trajectory]
+        attr_accessor :predicted_trajectory
+      
+        # Spec for trajectory.
+        # Corresponds to the JSON property `referenceTrajectory`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Trajectory]
+        attr_accessor :reference_trajectory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predicted_trajectory = args[:predicted_trajectory] if args.key?(:predicted_trajectory)
+          @reference_trajectory = args[:reference_trajectory] if args.key?(:reference_trajectory)
+        end
+      end
+      
+      # TrajectoryAnyOrderMatch metric value for an instance.
+      class GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectoryAnyOrderMatch score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for TrajectoryAnyOrderMatch metric.
+      class GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectoryAnyOrderMatch metric values.
+        # Corresponds to the JSON property `trajectoryAnyOrderMatchMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValue>]
+        attr_accessor :trajectory_any_order_match_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trajectory_any_order_match_metric_values = args[:trajectory_any_order_match_metric_values] if args.key?(:trajectory_any_order_match_metric_values)
+        end
+      end
+      
+      # Spec for TrajectoryAnyOrderMatch metric - returns 1 if all tool calls in the
+      # reference trajectory appear in the predicted trajectory in any order, else 0.
+      class GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Instances and metric spec for TrajectoryExactMatch metric.
+      class GoogleCloudAiplatformV1beta1TrajectoryExactMatchInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated TrajectoryExactMatch instance.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryExactMatchInstance>]
+        attr_accessor :instances
+      
+        # Spec for TrajectoryExactMatch metric - returns 1 if tool calls in the
+        # reference trajectory exactly match the predicted trajectory, else 0.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryExactMatchSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for TrajectoryExactMatch instance.
+      class GoogleCloudAiplatformV1beta1TrajectoryExactMatchInstance
+        include Google::Apis::Core::Hashable
+      
+        # Spec for trajectory.
+        # Corresponds to the JSON property `predictedTrajectory`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Trajectory]
+        attr_accessor :predicted_trajectory
+      
+        # Spec for trajectory.
+        # Corresponds to the JSON property `referenceTrajectory`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Trajectory]
+        attr_accessor :reference_trajectory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predicted_trajectory = args[:predicted_trajectory] if args.key?(:predicted_trajectory)
+          @reference_trajectory = args[:reference_trajectory] if args.key?(:reference_trajectory)
+        end
+      end
+      
+      # TrajectoryExactMatch metric value for an instance.
+      class GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectoryExactMatch score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for TrajectoryExactMatch metric.
+      class GoogleCloudAiplatformV1beta1TrajectoryExactMatchResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectoryExactMatch metric values.
+        # Corresponds to the JSON property `trajectoryExactMatchMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValue>]
+        attr_accessor :trajectory_exact_match_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trajectory_exact_match_metric_values = args[:trajectory_exact_match_metric_values] if args.key?(:trajectory_exact_match_metric_values)
+        end
+      end
+      
+      # Spec for TrajectoryExactMatch metric - returns 1 if tool calls in the
+      # reference trajectory exactly match the predicted trajectory, else 0.
+      class GoogleCloudAiplatformV1beta1TrajectoryExactMatchSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Instances and metric spec for TrajectoryInOrderMatch metric.
+      class GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated TrajectoryInOrderMatch instance.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInstance>]
+        attr_accessor :instances
+      
+        # Spec for TrajectoryInOrderMatch metric - returns 1 if tool calls in the
+        # reference trajectory appear in the predicted trajectory in the same order,
+        # else 0.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for TrajectoryInOrderMatch instance.
+      class GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInstance
+        include Google::Apis::Core::Hashable
+      
+        # Spec for trajectory.
+        # Corresponds to the JSON property `predictedTrajectory`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Trajectory]
+        attr_accessor :predicted_trajectory
+      
+        # Spec for trajectory.
+        # Corresponds to the JSON property `referenceTrajectory`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Trajectory]
+        attr_accessor :reference_trajectory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predicted_trajectory = args[:predicted_trajectory] if args.key?(:predicted_trajectory)
+          @reference_trajectory = args[:reference_trajectory] if args.key?(:reference_trajectory)
+        end
+      end
+      
+      # TrajectoryInOrderMatch metric value for an instance.
+      class GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectoryInOrderMatch score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for TrajectoryInOrderMatch metric.
+      class GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectoryInOrderMatch metric values.
+        # Corresponds to the JSON property `trajectoryInOrderMatchMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValue>]
+        attr_accessor :trajectory_in_order_match_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trajectory_in_order_match_metric_values = args[:trajectory_in_order_match_metric_values] if args.key?(:trajectory_in_order_match_metric_values)
+        end
+      end
+      
+      # Spec for TrajectoryInOrderMatch metric - returns 1 if tool calls in the
+      # reference trajectory appear in the predicted trajectory in the same order,
+      # else 0.
+      class GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Instances and metric spec for TrajectoryPrecision metric.
+      class GoogleCloudAiplatformV1beta1TrajectoryPrecisionInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated TrajectoryPrecision instance.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryPrecisionInstance>]
+        attr_accessor :instances
+      
+        # Spec for TrajectoryPrecision metric - returns a float score based on average
+        # precision of individual tool calls.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryPrecisionSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for TrajectoryPrecision instance.
+      class GoogleCloudAiplatformV1beta1TrajectoryPrecisionInstance
+        include Google::Apis::Core::Hashable
+      
+        # Spec for trajectory.
+        # Corresponds to the JSON property `predictedTrajectory`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Trajectory]
+        attr_accessor :predicted_trajectory
+      
+        # Spec for trajectory.
+        # Corresponds to the JSON property `referenceTrajectory`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Trajectory]
+        attr_accessor :reference_trajectory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predicted_trajectory = args[:predicted_trajectory] if args.key?(:predicted_trajectory)
+          @reference_trajectory = args[:reference_trajectory] if args.key?(:reference_trajectory)
+        end
+      end
+      
+      # TrajectoryPrecision metric value for an instance.
+      class GoogleCloudAiplatformV1beta1TrajectoryPrecisionMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectoryPrecision score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for TrajectoryPrecision metric.
+      class GoogleCloudAiplatformV1beta1TrajectoryPrecisionResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectoryPrecision metric values.
+        # Corresponds to the JSON property `trajectoryPrecisionMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryPrecisionMetricValue>]
+        attr_accessor :trajectory_precision_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trajectory_precision_metric_values = args[:trajectory_precision_metric_values] if args.key?(:trajectory_precision_metric_values)
+        end
+      end
+      
+      # Spec for TrajectoryPrecision metric - returns a float score based on average
+      # precision of individual tool calls.
+      class GoogleCloudAiplatformV1beta1TrajectoryPrecisionSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Instances and metric spec for TrajectoryRecall metric.
+      class GoogleCloudAiplatformV1beta1TrajectoryRecallInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated TrajectoryRecall instance.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryRecallInstance>]
+        attr_accessor :instances
+      
+        # Spec for TrajectoryRecall metric - returns a float score based on average
+        # recall of individual tool calls.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryRecallSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for TrajectoryRecall instance.
+      class GoogleCloudAiplatformV1beta1TrajectoryRecallInstance
+        include Google::Apis::Core::Hashable
+      
+        # Spec for trajectory.
+        # Corresponds to the JSON property `predictedTrajectory`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Trajectory]
+        attr_accessor :predicted_trajectory
+      
+        # Spec for trajectory.
+        # Corresponds to the JSON property `referenceTrajectory`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Trajectory]
+        attr_accessor :reference_trajectory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predicted_trajectory = args[:predicted_trajectory] if args.key?(:predicted_trajectory)
+          @reference_trajectory = args[:reference_trajectory] if args.key?(:reference_trajectory)
+        end
+      end
+      
+      # TrajectoryRecall metric value for an instance.
+      class GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectoryRecall score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for TrajectoryRecall metric.
+      class GoogleCloudAiplatformV1beta1TrajectoryRecallResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectoryRecall metric values.
+        # Corresponds to the JSON property `trajectoryRecallMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValue>]
+        attr_accessor :trajectory_recall_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trajectory_recall_metric_values = args[:trajectory_recall_metric_values] if args.key?(:trajectory_recall_metric_values)
+        end
+      end
+      
+      # Spec for TrajectoryRecall metric - returns a float score based on average
+      # recall of individual tool calls.
+      class GoogleCloudAiplatformV1beta1TrajectoryRecallSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Instances and metric spec for TrajectorySingleToolUse metric.
+      class GoogleCloudAiplatformV1beta1TrajectorySingleToolUseInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. Repeated TrajectorySingleToolUse instance.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectorySingleToolUseInstance>]
+        attr_accessor :instances
+      
+        # Spec for TrajectorySingleToolUse metric - returns 1 if tool is present in the
+        # predicted trajectory, else 0.
+        # Corresponds to the JSON property `metricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectorySingleToolUseSpec]
+        attr_accessor :metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @metric_spec = args[:metric_spec] if args.key?(:metric_spec)
+        end
+      end
+      
+      # Spec for TrajectorySingleToolUse instance.
+      class GoogleCloudAiplatformV1beta1TrajectorySingleToolUseInstance
+        include Google::Apis::Core::Hashable
+      
+        # Spec for trajectory.
+        # Corresponds to the JSON property `predictedTrajectory`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Trajectory]
+        attr_accessor :predicted_trajectory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predicted_trajectory = args[:predicted_trajectory] if args.key?(:predicted_trajectory)
+        end
+      end
+      
+      # TrajectorySingleToolUse metric value for an instance.
+      class GoogleCloudAiplatformV1beta1TrajectorySingleToolUseMetricValue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectorySingleToolUse score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Results for TrajectorySingleToolUse metric.
+      class GoogleCloudAiplatformV1beta1TrajectorySingleToolUseResults
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TrajectorySingleToolUse metric values.
+        # Corresponds to the JSON property `trajectorySingleToolUseMetricValues`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TrajectorySingleToolUseMetricValue>]
+        attr_accessor :trajectory_single_tool_use_metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trajectory_single_tool_use_metric_values = args[:trajectory_single_tool_use_metric_values] if args.key?(:trajectory_single_tool_use_metric_values)
+        end
+      end
+      
+      # Spec for TrajectorySingleToolUse metric - returns 1 if tool is present in the
+      # predicted trajectory, else 0.
+      class GoogleCloudAiplatformV1beta1TrajectorySingleToolUseSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. Spec for tool name to be checked for in the predicted trajectory.
+        # Corresponds to the JSON property `toolName`
+        # @return [String]
+        attr_accessor :tool_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_name = args[:tool_name] if args.key?(:tool_name)
         end
       end
       
@@ -41045,6 +42005,25 @@ module Google
         def update!(**args)
           @end_offset = args[:end_offset] if args.key?(:end_offset)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
+        end
+      end
+      
+      # The configuration for the voice to use.
+      class GoogleCloudAiplatformV1beta1VoiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for the prebuilt speaker to use.
+        # Corresponds to the JSON property `prebuiltVoiceConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig]
+        attr_accessor :prebuilt_voice_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prebuilt_voice_config = args[:prebuilt_voice_config] if args.key?(:prebuilt_voice_config)
         end
       end
       

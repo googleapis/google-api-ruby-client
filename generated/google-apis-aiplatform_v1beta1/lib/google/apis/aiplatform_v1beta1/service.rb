@@ -779,6 +779,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deploys publisher models.
+        # @param [String] destination
+        #   Required. The resource name of the Location to deploy the model in. Format: `
+        #   projects/`project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployPublisherModelRequest] google_cloud_aiplatform_v1beta1_deploy_publisher_model_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deploy_project_location(destination, google_cloud_aiplatform_v1beta1_deploy_publisher_model_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+destination}:deploy', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DeployPublisherModelRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_deploy_publisher_model_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['destination'] = destination unless destination.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Evaluates instances based on a given metric.
         # @param [String] location
         #   Required. The resource name of the Location to evaluate the instances. Format:
@@ -17690,9 +17724,11 @@ module Google
         #   labels` supports general map functions that is: * `labels.key=value` - key:
         #   value equality * `labels.key:* or labels:key - key existence * A key including
         #   a space must be quoted. `labels."a key"`. * `notebookRuntimeType` supports =
-        #   and !=. notebookRuntimeType enum: [USER_DEFINED, ONE_CLICK]. Some examples: * `
+        #   and !=. notebookRuntimeType enum: [USER_DEFINED, ONE_CLICK]. * `machineType`
+        #   supports = and !=. * `acceleratorType` supports = and !=. Some examples: * `
         #   notebookRuntimeTemplate=notebookRuntimeTemplate123` * `displayName="
         #   myDisplayName"` * `labels.myKey="myValue"` * `notebookRuntimeType=USER_DEFINED`
+        #   * `machineType=e2-standard-4` * `acceleratorType=NVIDIA_TESLA_T4`
         # @param [String] order_by
         #   Optional. A comma-separated list of fields to order by, sorted in ascending
         #   order. Use "desc" after a field name for descending. Supported fields: * `
@@ -18195,12 +18231,14 @@ module Google
         #   UI_RESOURCE_STATE_UNSPECIFIED, UI_RESOURCE_STATE_BEING_CREATED,
         #   UI_RESOURCE_STATE_ACTIVE, UI_RESOURCE_STATE_BEING_DELETED,
         #   UI_RESOURCE_STATE_CREATION_FAILED]. * `notebookRuntimeType` supports = and !=.
-        #   notebookRuntimeType enum: [USER_DEFINED, ONE_CLICK]. Some examples: * `
+        #   notebookRuntimeType enum: [USER_DEFINED, ONE_CLICK]. * `machineType` supports =
+        #   and !=. * `acceleratorType` supports = and !=. Some examples: * `
         #   notebookRuntime="notebookRuntime123"` * `displayName="myDisplayName"` and `
         #   displayName=~"myDisplayNameRegex"` * `notebookRuntimeTemplate="
         #   notebookRuntimeTemplate321"` * `healthState=HEALTHY` * `runtimeState=RUNNING` *
         #   `runtimeUser="test@google.com"` * `uiState=UI_RESOURCE_STATE_BEING_DELETED` *
-        #   `notebookRuntimeType=USER_DEFINED`
+        #   `notebookRuntimeType=USER_DEFINED` * `machineType=e2-standard-4` * `
+        #   acceleratorType=NVIDIA_TESLA_T4`
         # @param [String] order_by
         #   Optional. A comma-separated list of fields to order by, sorted in ascending
         #   order. Use "desc" after a field name for descending. Supported fields: * `
@@ -20891,6 +20929,40 @@ module Google
           command.request_object = google_cloud_aiplatform_v1beta1_query_reasoning_engine_request_object
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QueryReasoningEngineResponse::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1QueryReasoningEngineResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Streams queries using a reasoning engine.
+        # @param [String] name
+        #   Required. The name of the ReasoningEngine resource to use. Format: `projects/`
+        #   project`/locations/`location`/reasoningEngines/`reasoning_engine``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StreamQueryReasoningEngineRequest] google_cloud_aiplatform_v1beta1_stream_query_reasoning_engine_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_reasoning_engine_query(name, google_cloud_aiplatform_v1beta1_stream_query_reasoning_engine_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:streamQuery', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1StreamQueryReasoningEngineRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_stream_query_reasoning_engine_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -25512,6 +25584,8 @@ module Google
         #   Optional. The IETF BCP-47 language code representing the language in which the
         #   publisher models' text information should be written in. If not set, by
         #   default English (en).
+        # @param [Boolean] list_all_versions
+        #   Optional. List all publisher model versions if the flag is set to true.
         # @param [String] order_by
         #   Optional. A comma-separated list of fields to order by, sorted in ascending
         #   order. Use "desc" after a field name for descending.
@@ -25540,13 +25614,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_publisher_models(parent, filter: nil, language_code: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_publisher_models(parent, filter: nil, language_code: nil, list_all_versions: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/models', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListPublisherModelsResponse::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListPublisherModelsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['listAllVersions'] = list_all_versions unless list_all_versions.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
