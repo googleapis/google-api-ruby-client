@@ -1471,6 +1471,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves objects from the source database that can be selected for data
+        # migration. This is applicable for the following migrations: 1. PostgreSQL to
+        # Cloud SQL for PostgreSQL 2. PostgreSQL to AlloyDB for PostgreSQL.
+        # @param [String] name
+        #   Required. The resource name for the migration job for which source objects
+        #   should be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_migration_job_source_objects(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetchSourceObjects', options)
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generate a SSH configuration script to configure the reverse SSH connectivity.
         # @param [String] migration_job
         #   Name of the migration job resource to generate the SSH script.
@@ -1991,6 +2024,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Use this method to get details about a migration job object.
+        # @param [String] name
+        #   Required. The name of the migration job object resource to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::MigrationJobObject] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::MigrationJobObject]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_migration_job_object(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DatamigrationV1::MigrationJobObject::Representation
+          command.response_class = Google::Apis::DatamigrationV1::MigrationJobObject
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -2031,6 +2094,80 @@ module Google
           command.response_class = Google::Apis::DatamigrationV1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Use this method to list the objects of a specific migration job.
+        # @param [String] parent
+        #   Required. The parent migration job that owns the collection of objects.
+        # @param [Fixnum] page_size
+        #   Maximum number of objects to return. Default is 50. The maximum value is 1000;
+        #   values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Page token received from a previous `ListMigrationJObObjectsRequest` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListMigrationJobObjectsRequest` must match the call
+        #   that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::ListMigrationJobObjectsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::ListMigrationJobObjectsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_migration_job_objects(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/objects', options)
+          command.response_representation = Google::Apis::DatamigrationV1::ListMigrationJobObjectsResponse::Representation
+          command.response_class = Google::Apis::DatamigrationV1::ListMigrationJobObjectsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Use this method to look up a migration job object by its source object
+        # identifier.
+        # @param [String] parent
+        #   Required. The parent migration job that owns the collection of objects.
+        # @param [Google::Apis::DatamigrationV1::LookupMigrationJobObjectRequest] lookup_migration_job_object_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::MigrationJobObject] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::MigrationJobObject]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lookup_migration_job_object(parent, lookup_migration_job_object_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/objects:lookup', options)
+          command.request_representation = Google::Apis::DatamigrationV1::LookupMigrationJobObjectRequest::Representation
+          command.request_object = lookup_migration_job_object_request_object
+          command.response_representation = Google::Apis::DatamigrationV1::MigrationJobObject::Representation
+          command.response_class = Google::Apis::DatamigrationV1::MigrationJobObject
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2118,8 +2255,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::DatamigrationV1::CancelOperationRequest] cancel_operation_request_object
