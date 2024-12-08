@@ -325,7 +325,7 @@ module Google
         attr_accessor :not_sources
       
         # Optional. Describes the properties of a request's sources. At least one of
-        # sources or notSources must be specified. Limited to 5 sources. A match occurs
+        # sources or notSources must be specified. Limited to 1 source. A match occurs
         # when ANY source (in sources or notSources) matches the request. Within a
         # single source, the match follows AND semantics across fields and OR semantics
         # within a single field, i.e. a match occurs when ANY principal matches AND ANY
@@ -517,7 +517,7 @@ module Google
         attr_accessor :not_operations
       
         # Optional. Describes properties of one or more targets of a request. At least
-        # one of operations or notOperations must be specified. Limited to 5 operations.
+        # one of operations or notOperations must be specified. Limited to 1 operation.
         # A match occurs when ANY operation (in operations or notOperations) matches.
         # Within an operation, the match follows AND semantics across fields and OR
         # semantics within a field, i.e. a match occurs when ANY path matches AND ANY
@@ -839,6 +839,27 @@ module Google
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
           @source_address_group = args[:source_address_group] if args.key?(:source_address_group)
+        end
+      end
+      
+      # CustomInterceptProfile defines the Packet Intercept Endpoint Group used to
+      # intercept traffic to a third-party firewall in a Firewall rule.
+      class CustomInterceptProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. The InterceptEndpointGroup to which traffic associated with the SP
+        # should be mirrored.
+        # Corresponds to the JSON property `interceptEndpointGroup`
+        # @return [String]
+        attr_accessor :intercept_endpoint_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intercept_endpoint_group = args[:intercept_endpoint_group] if args.key?(:intercept_endpoint_group)
         end
       end
       
@@ -2497,7 +2518,7 @@ module Google
       end
       
       # SecurityProfile is a resource that defines the behavior for one of many
-      # ProfileTypes. Next ID: 12
+      # ProfileTypes.
       class SecurityProfile
         include Google::Apis::Core::Hashable
       
@@ -2505,6 +2526,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # CustomInterceptProfile defines the Packet Intercept Endpoint Group used to
+        # intercept traffic to a third-party firewall in a Firewall rule.
+        # Corresponds to the JSON property `customInterceptProfile`
+        # @return [Google::Apis::NetworksecurityV1::CustomInterceptProfile]
+        attr_accessor :custom_intercept_profile
       
         # CustomMirroringProfile defines an action for mirroring traffic to a collector'
         # s EndpointGroup
@@ -2559,6 +2586,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_intercept_profile = args[:custom_intercept_profile] if args.key?(:custom_intercept_profile)
           @custom_mirroring_profile = args[:custom_mirroring_profile] if args.key?(:custom_mirroring_profile)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
@@ -2571,7 +2599,7 @@ module Google
       end
       
       # SecurityProfileGroup is a resource that defines the behavior for various
-      # ProfileTypes. Next ID: 11
+      # ProfileTypes.
       class SecurityProfileGroup
         include Google::Apis::Core::Hashable
       
@@ -2579,6 +2607,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. Reference to a SecurityProfile with the CustomIntercept
+        # configuration.
+        # Corresponds to the JSON property `customInterceptProfile`
+        # @return [String]
+        attr_accessor :custom_intercept_profile
       
         # Optional. Reference to a SecurityProfile with the CustomMirroring
         # configuration.
@@ -2629,6 +2663,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_intercept_profile = args[:custom_intercept_profile] if args.key?(:custom_intercept_profile)
           @custom_mirroring_profile = args[:custom_mirroring_profile] if args.key?(:custom_mirroring_profile)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)

@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomInterceptProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomMirroringProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -695,6 +701,13 @@ module Google
         end
       end
       
+      class CustomInterceptProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intercept_endpoint_group, as: 'interceptEndpointGroup'
+        end
+      end
+      
       class CustomMirroringProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1112,6 +1125,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom_intercept_profile, as: 'customInterceptProfile', class: Google::Apis::NetworksecurityV1::CustomInterceptProfile, decorator: Google::Apis::NetworksecurityV1::CustomInterceptProfile::Representation
+      
           property :custom_mirroring_profile, as: 'customMirroringProfile', class: Google::Apis::NetworksecurityV1::CustomMirroringProfile, decorator: Google::Apis::NetworksecurityV1::CustomMirroringProfile::Representation
       
           property :description, as: 'description'
@@ -1129,6 +1144,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom_intercept_profile, as: 'customInterceptProfile'
           property :custom_mirroring_profile, as: 'customMirroringProfile'
           property :description, as: 'description'
           property :etag, as: 'etag'
