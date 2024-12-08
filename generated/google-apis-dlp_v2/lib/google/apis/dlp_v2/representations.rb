@@ -3551,6 +3551,7 @@ module Google
       
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :example, as: 'example'
           property :name, as: 'name'
           property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
       

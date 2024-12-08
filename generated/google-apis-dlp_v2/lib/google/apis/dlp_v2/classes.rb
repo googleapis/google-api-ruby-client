@@ -5651,6 +5651,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # A sample true positive for this infoType.
+        # Corresponds to the JSON property `example`
+        # @return [String]
+        attr_accessor :example
+      
         # Internal name of the infoType.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -5681,6 +5686,7 @@ module Google
           @categories = args[:categories] if args.key?(:categories)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @example = args[:example] if args.key?(:example)
           @name = args[:name] if args.key?(:name)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @supported_by = args[:supported_by] if args.key?(:supported_by)
