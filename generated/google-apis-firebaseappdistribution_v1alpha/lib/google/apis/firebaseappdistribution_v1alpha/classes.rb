@@ -305,7 +305,7 @@ module Google
         end
       end
       
-      # 
+      # An app.
       class GoogleFirebaseAppdistroV1alphaApp
         include Google::Apis::Core::Hashable
       
@@ -432,11 +432,11 @@ module Google
         end
       end
       
-      # 
+      # The request message for `CreateReleaseNotes`.
       class GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest
         include Google::Apis::Core::Hashable
       
-        # The actual release notes body from the user
+        # Release notes for a release.
         # Corresponds to the JSON property `releaseNotes`
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaReleaseNotes]
         attr_accessor :release_notes
@@ -451,7 +451,7 @@ module Google
         end
       end
       
-      # 
+      # The response message for `CreateReleaseNotes`.
       class GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse
         include Google::Apis::Core::Hashable
       
@@ -667,7 +667,7 @@ module Google
         end
       end
       
-      # 
+      # The request message for `EnableAccessOnRelease`.
       class GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest
         include Google::Apis::Core::Hashable
       
@@ -709,7 +709,7 @@ module Google
         end
       end
       
-      # 
+      # The response message for `EnableAccessOnRelease`.
       class GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse
         include Google::Apis::Core::Hashable
       
@@ -760,7 +760,7 @@ module Google
         end
       end
       
-      # 
+      # The response message for `GetUploadStatus`.
       class GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse
         include Google::Apis::Core::Hashable
       
@@ -850,11 +850,11 @@ module Google
         end
       end
       
-      # 
+      # A JWT token.
       class GoogleFirebaseAppdistroV1alphaJwt
         include Google::Apis::Core::Hashable
       
-        # 
+        # The JWT token (three Base64URL-encoded strings joined by dots).
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
@@ -990,7 +990,7 @@ module Google
         end
       end
       
-      # 
+      # The response message for `ProvisionApp`.
       class GoogleFirebaseAppdistroV1alphaProvisionAppResponse
         include Google::Apis::Core::Hashable
       
@@ -1082,11 +1082,11 @@ module Google
         end
       end
       
-      # 
+      # Release notes for a release.
       class GoogleFirebaseAppdistroV1alphaReleaseNotes
         include Google::Apis::Core::Hashable
       
-        # 
+        # The actual release notes text from the user.
         # Corresponds to the JSON property `releaseNotes`
         # @return [String]
         attr_accessor :release_notes
@@ -1137,6 +1137,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The test case that was used to generate this release test. Note: The
+        # test case may have changed or been deleted since the release test was created.
+        # Format: `projects/`project_number`/apps/`app`/testCases/`test_case``
+        # Corresponds to the JSON property `testCase`
+        # @return [String]
+        attr_accessor :test_case
+      
         # Output only. The state of the release test.
         # Corresponds to the JSON property `testState`
         # @return [String]
@@ -1154,6 +1161,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @login_credential = args[:login_credential] if args.key?(:login_credential)
           @name = args[:name] if args.key?(:name)
+          @test_case = args[:test_case] if args.key?(:test_case)
           @test_state = args[:test_state] if args.key?(:test_state)
         end
       end

@@ -16,13 +16,13 @@ module Google
   module Apis
     module FirebaseappdistributionV1alpha
       # Version of the google-apis-firebaseappdistribution_v1alpha gem
-      GEM_VERSION = "0.8.0"
+      GEM_VERSION = "0.9.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.15.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20241121"
+      REVISION = "20241204"
     end
   end
 end
