@@ -2758,7 +2758,7 @@ module Google
         end
       end
       
-      # The configuration for Platform Telemetry logging for Eventarc Avdvanced
+      # The configuration for Platform Telemetry logging for Eventarc Advanced
       # resources.
       class LoggingConfig
         include Google::Apis::Core::Hashable
