@@ -641,6 +641,7 @@ module Google
           property :login_credential, as: 'loginCredential', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaLoginCredential, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaLoginCredential::Representation
       
           property :name, as: 'name'
+          property :test_case, as: 'testCase'
           property :test_state, as: 'testState'
         end
       end
