@@ -762,6 +762,7 @@ module Google
           property :owner, as: 'owner'
           property :repository, as: 'repository'
           property :signature, as: 'signature'
+          property :template_developer_id, as: 'templateDeveloperId'
           property :version, as: 'version'
         end
       end

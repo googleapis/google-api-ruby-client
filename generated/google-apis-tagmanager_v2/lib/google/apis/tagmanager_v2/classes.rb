@@ -1369,6 +1369,12 @@ module Google
         # @return [String]
         attr_accessor :signature
       
+        # The developer id of the community gallery template. This value is set whenever
+        # the template is created from the gallery.
+        # Corresponds to the JSON property `templateDeveloperId`
+        # @return [String]
+        attr_accessor :template_developer_id
+      
         # The version of the community gallery template.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -1385,6 +1391,7 @@ module Google
           @owner = args[:owner] if args.key?(:owner)
           @repository = args[:repository] if args.key?(:repository)
           @signature = args[:signature] if args.key?(:signature)
+          @template_developer_id = args[:template_developer_id] if args.key?(:template_developer_id)
           @version = args[:version] if args.key?(:version)
         end
       end
