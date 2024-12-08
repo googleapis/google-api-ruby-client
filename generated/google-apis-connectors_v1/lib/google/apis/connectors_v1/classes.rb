@@ -384,8 +384,8 @@ module Google
       class AuthorizationCodeLink
         include Google::Apis::Core::Hashable
       
-        # The client ID assigned to the Google Cloud Connectors OAuth app for the
-        # connector data source.
+        # Optional. The client ID assigned to the Google Cloud Connectors OAuth app for
+        # the connector data source.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
@@ -395,7 +395,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Secret]
         attr_accessor :client_secret
       
-        # Whether to enable PKCE for the auth code flow.
+        # Optional. Whether to enable PKCE for the auth code flow.
         # Corresponds to the JSON property `enablePkce`
         # @return [Boolean]
         attr_accessor :enable_pkce
@@ -407,13 +407,14 @@ module Google
         attr_accessor :omit_query_params
         alias_method :omit_query_params?, :omit_query_params
       
-        # The scopes for which the user will authorize Google Cloud Connectors on the
-        # connector data source.
+        # Optional. The scopes for which the user will authorize Google Cloud Connectors
+        # on the connector data source.
         # Corresponds to the JSON property `scopes`
         # @return [Array<String>]
         attr_accessor :scopes
       
-        # The base URI the user must click to trigger the authorization code login flow.
+        # Optional. The base URI the user must click to trigger the authorization code
+        # login flow.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -628,17 +629,17 @@ module Google
         # @return [Google::Apis::ConnectorsV1::AuthorizationCodeLink]
         attr_accessor :authorization_code_link
       
-        # Description.
+        # Optional. Description.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Display name of the parameter.
+        # Optional. Display name of the parameter.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Enum options. To be populated if `ValueType` is `ENUM`
+        # Optional. Enum options. To be populated if `ValueType` is `ENUM`
         # Corresponds to the JSON property `enumOptions`
         # @return [Array<Google::Apis::ConnectorsV1::EnumOption>]
         attr_accessor :enum_options
@@ -648,13 +649,13 @@ module Google
         # @return [String]
         attr_accessor :enum_source
       
-        # Indicates if current template is part of advanced settings
+        # Optional. Indicates if current template is part of advanced settings
         # Corresponds to the JSON property `isAdvanced`
         # @return [Boolean]
         attr_accessor :is_advanced
         alias_method :is_advanced?, :is_advanced
       
-        # Key of the config variable.
+        # Optional. Key of the config variable.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -670,7 +671,8 @@ module Google
         # @return [Google::Apis::ConnectorsV1::MultipleSelectConfig]
         attr_accessor :multiple_select_config
       
-        # Flag represents that this `ConfigVariable` must be provided for a connection.
+        # Optional. Flag represents that this `ConfigVariable` must be provided for a
+        # connection.
         # Corresponds to the JSON property `required`
         # @return [Boolean]
         attr_accessor :required
@@ -690,19 +692,19 @@ module Google
         # @return [Google::Apis::ConnectorsV1::RoleGrant]
         attr_accessor :role_grant
       
-        # State of the config variable.
+        # Output only. State of the config variable.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Regular expression in RE2 syntax used for validating the `value` of a `
-        # ConfigVariable`.
+        # Optional. Regular expression in RE2 syntax used for validating the `value` of
+        # a `ConfigVariable`.
         # Corresponds to the JSON property `validationRegex`
         # @return [String]
         attr_accessor :validation_regex
       
-        # Type of the parameter: string, int, bool etc. consider custom type for the
-        # benefit for the validation.
+        # Optional. Type of the parameter: string, int, bool etc. consider custom type
+        # for the benefit for the validation.
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
@@ -1108,6 +1110,11 @@ module Google
         # @return [String]
         attr_accessor :launch_stage
       
+        # Marketplace connector details.
+        # Corresponds to the JSON property `marketplaceConnectorDetails`
+        # @return [Google::Apis::ConnectorsV1::MarketplaceConnectorDetails]
+        attr_accessor :marketplace_connector_details
+      
         # Output only. Resource name of the Connector. Format: projects/`project`/
         # locations/`location`/providers/`provider`/connectors/`connector` Only global
         # location is supported for Connector resource.
@@ -1146,6 +1153,7 @@ module Google
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @marketplace_connector_details = args[:marketplace_connector_details] if args.key?(:marketplace_connector_details)
           @name = args[:name] if args.key?(:name)
           @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1445,7 +1453,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :connection_ratelimit_window_seconds
       
-        # Optional. Indicates whether connector is deployed on GKE/CloudRun
+        # Output only. Indicates whether connector is deployed on GKE/CloudRun
         # Corresponds to the JSON property `deploymentModel`
         # @return [String]
         attr_accessor :deployment_model
@@ -2228,12 +2236,12 @@ module Google
       class EnumOption
         include Google::Apis::Core::Hashable
       
-        # Display name of the option.
+        # Optional. Display name of the option.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Id of the option.
+        # Optional. Id of the option.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2333,6 +2341,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::EndPoint]
         attr_accessor :endpoint
       
+        # GSUtil message includes details of the Destination Cloud Storage bucket.
+        # Corresponds to the JSON property `gsutil`
+        # @return [Google::Apis::ConnectorsV1::GsUtil]
+        attr_accessor :gsutil
+      
         # Service account needed for runtime plane to trigger IP workflow.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -2350,6 +2363,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @gsutil = args[:gsutil] if args.key?(:gsutil)
           @service_account = args[:service_account] if args.key?(:service_account)
           @type = args[:type] if args.key?(:type)
         end
@@ -2450,7 +2464,7 @@ module Google
       class EventingConfig
         include Google::Apis::Core::Hashable
       
-        # Additional eventing related field values
+        # Optional. Additional eventing related field values
         # Corresponds to the JSON property `additionalVariables`
         # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
         attr_accessor :additional_variables
@@ -2465,7 +2479,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::DeadLetterConfig]
         attr_accessor :dead_letter_config
       
-        # Enrichment Enabled.
+        # Optional. Enrichment Enabled.
         # Corresponds to the JSON property `enrichmentEnabled`
         # @return [Boolean]
         attr_accessor :enrichment_enabled
@@ -2950,7 +2964,7 @@ module Google
         attr_accessor :bool_value
         alias_method :bool_value?, :bool_value
       
-        # Comparator to use for comparing the field value.
+        # Optional. Comparator to use for comparing the field value.
         # Corresponds to the JSON property `comparator`
         # @return [String]
         attr_accessor :comparator
@@ -2960,7 +2974,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :int_value
       
-        # Key of the field.
+        # Optional. Key of the field.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -2981,6 +2995,25 @@ module Google
           @int_value = args[:int_value] if args.key?(:int_value)
           @key = args[:key] if args.key?(:key)
           @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # GSUtil message includes details of the Destination Cloud Storage bucket.
+      class GsUtil
+        include Google::Apis::Core::Hashable
+      
+        # Required. The URI of the Cloud Storage bucket.
+        # Corresponds to the JSON property `gsutilUri`
+        # @return [String]
+        attr_accessor :gsutil_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gsutil_uri = args[:gsutil_uri] if args.key?(:gsutil_uri)
         end
       end
       
@@ -3958,17 +3991,17 @@ module Google
       class LogicalExpression
         include Google::Apis::Core::Hashable
       
-        # A list of fields to be compared.
+        # Optional. A list of fields to be compared.
         # Corresponds to the JSON property `fieldComparisons`
         # @return [Array<Google::Apis::ConnectorsV1::FieldComparison>]
         attr_accessor :field_comparisons
       
-        # A list of nested conditions to be compared.
+        # Optional. A list of nested conditions to be compared.
         # Corresponds to the JSON property `logicalExpressions`
         # @return [Array<Google::Apis::ConnectorsV1::LogicalExpression>]
         attr_accessor :logical_expressions
       
-        # The logical operator to use between the fields and conditions.
+        # Optional. The logical operator to use between the fields and conditions.
         # Corresponds to the JSON property `logicalOperator`
         # @return [String]
         attr_accessor :logical_operator
@@ -4226,6 +4259,43 @@ module Google
           @target_project = args[:target_project] if args.key?(:target_project)
           @target_vpc = args[:target_vpc] if args.key?(:target_vpc)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Marketplace connector details.
+      class MarketplaceConnectorDetails
+        include Google::Apis::Core::Hashable
+      
+        # Marketplace product name.
+        # Corresponds to the JSON property `marketplaceProduct`
+        # @return [String]
+        attr_accessor :marketplace_product
+      
+        # Marketplace product ID.
+        # Corresponds to the JSON property `marketplaceProductId`
+        # @return [String]
+        attr_accessor :marketplace_product_id
+      
+        # Marketplace product URL.
+        # Corresponds to the JSON property `marketplaceProductUri`
+        # @return [String]
+        attr_accessor :marketplace_product_uri
+      
+        # The name of the partner.
+        # Corresponds to the JSON property `partner`
+        # @return [String]
+        attr_accessor :partner
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @marketplace_product = args[:marketplace_product] if args.key?(:marketplace_product)
+          @marketplace_product_id = args[:marketplace_product_id] if args.key?(:marketplace_product_id)
+          @marketplace_product_uri = args[:marketplace_product_uri] if args.key?(:marketplace_product_uri)
+          @partner = args[:partner] if args.key?(:partner)
         end
       end
       
@@ -5017,6 +5087,27 @@ module Google
         end
       end
       
+      # Request message for ConnectorsService.PublishCustomConnectorVersion
+      class PublishCustomConnectorVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Partner metadata details. This will be populated when publishing the custom
+        # connector as a partner connector version. On publishing, parntner connector
+        # version will be created using the fields in PartnerMetadata.
+        # Corresponds to the JSON property `partnerMetadata`
+        # @return [Google::Apis::ConnectorsV1::PartnerMetadata]
+        attr_accessor :partner_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
+        end
+      end
+      
       # Publish status of a custom connector.
       class PublishStatus
         include Google::Apis::Core::Hashable
@@ -5125,14 +5216,14 @@ module Google
       class Resource
         include Google::Apis::Core::Hashable
       
-        # Template to uniquely represent a Google Cloud resource in a format IAM expects
-        # This is a template that can have references to other values provided in the
-        # config variable template.
+        # Optional. Template to uniquely represent a Google Cloud resource in a format
+        # IAM expects This is a template that can have references to other values
+        # provided in the config variable template.
         # Corresponds to the JSON property `pathTemplate`
         # @return [String]
         attr_accessor :path_template
       
-        # Different types of resource supported.
+        # Optional. Different types of resource supported.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5270,12 +5361,12 @@ module Google
       class RoleGrant
         include Google::Apis::Core::Hashable
       
-        # Template that UI can use to provide helper text to customers.
+        # Optional. Template that UI can use to provide helper text to customers.
         # Corresponds to the JSON property `helperTextTemplate`
         # @return [String]
         attr_accessor :helper_text_template
       
-        # Prinicipal/Identity for whom the role need to assigned.
+        # Optional. Prinicipal/Identity for whom the role need to assigned.
         # Corresponds to the JSON property `principal`
         # @return [String]
         attr_accessor :principal
@@ -5285,7 +5376,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Resource]
         attr_accessor :resource
       
-        # List of roles that need to be granted.
+        # Optional. List of roles that need to be granted.
         # Corresponds to the JSON property `roles`
         # @return [Array<String>]
         attr_accessor :roles
@@ -5855,12 +5946,12 @@ module Google
       class SslConfig
         include Google::Apis::Core::Hashable
       
-        # Additional SSL related field values
+        # Optional. Additional SSL related field values
         # Corresponds to the JSON property `additionalVariables`
         # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
         attr_accessor :additional_variables
       
-        # Type of Client Cert (PEM/JKS/.. etc.)
+        # Optional. Type of Client Cert (PEM/JKS/.. etc.)
         # Corresponds to the JSON property `clientCertType`
         # @return [String]
         attr_accessor :client_cert_type
@@ -5885,22 +5976,22 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Secret]
         attr_accessor :private_server_certificate
       
-        # Type of Server Cert (PEM/JKS/.. etc.)
+        # Optional. Type of Server Cert (PEM/JKS/.. etc.)
         # Corresponds to the JSON property `serverCertType`
         # @return [String]
         attr_accessor :server_cert_type
       
-        # Trust Model of the SSL connection
+        # Optional. Trust Model of the SSL connection
         # Corresponds to the JSON property `trustModel`
         # @return [String]
         attr_accessor :trust_model
       
-        # Controls the ssl type for the given connector version.
+        # Optional. Controls the ssl type for the given connector version.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Bool for enabling SSL
+        # Optional. Bool for enabling SSL
         # Corresponds to the JSON property `useSsl`
         # @return [Boolean]
         attr_accessor :use_ssl
@@ -6360,6 +6451,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @schedule = args[:schedule] if args.key?(:schedule)
+        end
+      end
+      
+      # Request message for ConnectorsService.WithdrawCustomConnectorVersion
+      class WithdrawCustomConnectorVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end

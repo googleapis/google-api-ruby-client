@@ -346,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GsUtil
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HpaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -550,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MarketplaceConnectorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MultipleSelectConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -647,6 +659,12 @@ module Google
       end
       
       class ProvisionedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublishCustomConnectorVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -887,6 +905,12 @@ module Google
       end
       
       class WeeklyCycle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WithdrawCustomConnectorVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1150,6 +1174,8 @@ module Google
           property :external_uri, as: 'externalUri'
           hash :labels, as: 'labels'
           property :launch_stage, as: 'launchStage'
+          property :marketplace_connector_details, as: 'marketplaceConnectorDetails', class: Google::Apis::ConnectorsV1::MarketplaceConnectorDetails, decorator: Google::Apis::ConnectorsV1::MarketplaceConnectorDetails::Representation
+      
           property :name, as: 'name'
           collection :tags, as: 'tags'
           property :update_time, as: 'updateTime'
@@ -1461,6 +1487,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint, as: 'endpoint', class: Google::Apis::ConnectorsV1::EndPoint, decorator: Google::Apis::ConnectorsV1::EndPoint::Representation
       
+          property :gsutil, as: 'gsutil', class: Google::Apis::ConnectorsV1::GsUtil, decorator: Google::Apis::ConnectorsV1::GsUtil::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :type, as: 'type'
         end
@@ -1631,6 +1659,13 @@ module Google
           property :int_value, :numeric_string => true, as: 'intValue'
           property :key, as: 'key'
           property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class GsUtil
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gsutil_uri, as: 'gsutilUri'
         end
       end
       
@@ -1988,6 +2023,16 @@ module Google
         end
       end
       
+      class MarketplaceConnectorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :marketplace_product, as: 'marketplaceProduct'
+          property :marketplace_product_id, as: 'marketplaceProductId'
+          property :marketplace_product_uri, as: 'marketplaceProductUri'
+          property :partner, as: 'partner'
+        end
+      end
+      
       class MultipleSelectConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2171,6 +2216,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_type, as: 'resourceType'
           property :resource_url, as: 'resourceUrl'
+        end
+      end
+      
+      class PublishCustomConnectorVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ConnectorsV1::PartnerMetadata, decorator: Google::Apis::ConnectorsV1::PartnerMetadata::Representation
+      
         end
       end
       
@@ -2565,6 +2618,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :schedule, as: 'schedule', class: Google::Apis::ConnectorsV1::Schedule, decorator: Google::Apis::ConnectorsV1::Schedule::Representation
       
+        end
+      end
+      
+      class WithdrawCustomConnectorVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end
