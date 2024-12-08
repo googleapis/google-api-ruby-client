@@ -99,7 +99,7 @@ module Google
         #   1, and 3. Requests specifying an invalid value will be rejected. Requests for
         #   conditional access policy binding in datasets must specify version 3. Dataset
         #   with no conditional role bindings in access policy may specify any valid value
-        #   or leave the field unset. This field will be maped to [IAM Policy version] (
+        #   or leave the field unset. This field will be mapped to [IAM Policy version] (
         #   https://cloud.google.com/iam/docs/policies#versions) and will be used to fetch
         #   policy from IAM. If unset or if 0 or 1 value is used for dataset with
         #   conditional bindings, access entry with condition will have role string
@@ -154,7 +154,7 @@ module Google
         #   access policy binding in datasets must specify version 3. * But dataset with
         #   no conditional role bindings in access policy may specify any valid value or
         #   leave the field unset. If unset or if 0 or 1 value is used for dataset with
-        #   conditional bindings, request will be rejected. This field will be maped to
+        #   conditional bindings, request will be rejected. This field will be mapped to
         #   IAM Policy version (https://cloud.google.com/iam/docs/policies#versions) and
         #   will be used to set policy in IAM.
         # @param [String] fields
@@ -256,7 +256,7 @@ module Google
         #   condition. * But dataset with no conditional role bindings in access policy
         #   may specify any valid value or leave the field unset. If unset or if 0 or 1
         #   value is used for dataset with conditional bindings, request will be rejected.
-        #   This field will be maped to IAM Policy version (https://cloud.google.com/iam/
+        #   This field will be mapped to IAM Policy version (https://cloud.google.com/iam/
         #   docs/policies#versions) and will be used to set policy in IAM.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -347,7 +347,7 @@ module Google
         #   condition. * But dataset with no conditional role bindings in access policy
         #   may specify any valid value or leave the field unset. If unset or if 0 or 1
         #   value is used for dataset with conditional bindings, request will be rejected.
-        #   This field will be maped to IAM Policy version (https://cloud.google.com/iam/
+        #   This field will be mapped to IAM Policy version (https://cloud.google.com/iam/
         #   docs/policies#versions) and will be used to set policy in IAM.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
