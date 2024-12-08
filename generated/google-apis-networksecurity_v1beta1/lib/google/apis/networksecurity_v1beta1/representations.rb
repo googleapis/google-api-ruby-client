@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomInterceptProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomMirroringProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +274,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterceptDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterceptDeploymentGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterceptDeploymentGroupConnectedEndpointGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterceptEndpointGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterceptEndpointGroupAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterceptEndpointGroupAssociationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterceptEndpointGroupAssociationLocationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAddressGroupReferencesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +371,30 @@ module Google
       end
       
       class ListGatewaySecurityPolicyRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInterceptDeploymentGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInterceptDeploymentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInterceptEndpointGroupAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInterceptEndpointGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -755,6 +827,13 @@ module Google
         end
       end
       
+      class CustomInterceptProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intercept_endpoint_group, as: 'interceptEndpointGroup'
+        end
+      end
+      
       class CustomMirroringProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -944,6 +1023,91 @@ module Google
         end
       end
       
+      class InterceptDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :intercept_deployment_group, as: 'interceptDeploymentGroup'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class InterceptDeploymentGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connected_endpoint_groups, as: 'connectedEndpointGroups', class: Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroupConnectedEndpointGroup, decorator: Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroupConnectedEndpointGroup::Representation
+      
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class InterceptDeploymentGroupConnectedEndpointGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class InterceptEndpointGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationDetails, decorator: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationDetails::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :intercept_deployment_group, as: 'interceptDeploymentGroup'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class InterceptEndpointGroupAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :intercept_endpoint_group, as: 'interceptEndpointGroup'
+          hash :labels, as: 'labels'
+          collection :locations_details, as: 'locationsDetails', class: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationLocationDetails, decorator: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociationLocationDetails::Representation
+      
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class InterceptEndpointGroupAssociationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :state, as: 'state'
+        end
+      end
+      
+      class InterceptEndpointGroupAssociationLocationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :state, as: 'state'
+        end
+      end
+      
       class ListAddressGroupReferencesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1036,6 +1200,43 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListInterceptDeploymentGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :intercept_deployment_groups, as: 'interceptDeploymentGroups', class: Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroup, decorator: Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListInterceptDeploymentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :intercept_deployments, as: 'interceptDeployments', class: Google::Apis::NetworksecurityV1beta1::InterceptDeployment, decorator: Google::Apis::NetworksecurityV1beta1::InterceptDeployment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListInterceptEndpointGroupAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :intercept_endpoint_group_associations, as: 'interceptEndpointGroupAssociations', class: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociation, decorator: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroupAssociation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListInterceptEndpointGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :intercept_endpoint_groups, as: 'interceptEndpointGroups', class: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroup, decorator: Google::Apis::NetworksecurityV1beta1::InterceptEndpointGroup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -1282,6 +1483,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom_intercept_profile, as: 'customInterceptProfile', class: Google::Apis::NetworksecurityV1beta1::CustomInterceptProfile, decorator: Google::Apis::NetworksecurityV1beta1::CustomInterceptProfile::Representation
+      
           property :custom_mirroring_profile, as: 'customMirroringProfile', class: Google::Apis::NetworksecurityV1beta1::CustomMirroringProfile, decorator: Google::Apis::NetworksecurityV1beta1::CustomMirroringProfile::Representation
       
           property :description, as: 'description'
@@ -1299,6 +1502,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom_intercept_profile, as: 'customInterceptProfile'
           property :custom_mirroring_profile, as: 'customMirroringProfile'
           property :description, as: 'description'
           property :etag, as: 'etag'
