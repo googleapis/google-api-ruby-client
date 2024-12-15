@@ -2421,16 +2421,16 @@ module Google
       class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue
         include Google::Apis::Core::Hashable
       
-        # Represents a postal address, e.g. for postal delivery or payments addresses.
-        # Given a postal address, a postal service can deliver items to a premise, P.O.
-        # Box or similar. It is not intended to model geographical locations (roads,
-        # towns, mountains). In typical usage an address would be created via user input
-        # or from importing existing data, depending on the type of process. Advice on
-        # address input / editing: - Use an internationalization-ready address widget
-        # such as https://github.com/google/libaddressinput) - Users should not be
-        # presented with UI elements for input or editing of fields outside countries
-        # where that field is used. For more guidance on how to use this schema, please
-        # see: https://support.google.com/business/answer/6397478
+        # Represents a postal address. For example for postal delivery or payments
+        # addresses. Given a postal address, a postal service can deliver items to a
+        # premise, P.O. Box or similar. It is not intended to model geographical
+        # locations (roads, towns, mountains). In typical usage an address would be
+        # created by user input or from importing existing data, depending on the type
+        # of process. Advice on address input / editing: - Use an internationalization-
+        # ready address widget such as https://github.com/google/libaddressinput) -
+        # Users should not be presented with UI elements for input or editing of fields
+        # outside countries where that field is used. For more guidance on how to use
+        # this schema, see: https://support.google.com/business/answer/6397478
         # Corresponds to the JSON property `addressValue`
         # @return [Google::Apis::DocumentaiV1::GoogleTypePostalAddress]
         attr_accessor :address_value
@@ -7761,35 +7761,36 @@ module Google
         end
       end
       
-      # Represents a postal address, e.g. for postal delivery or payments addresses.
-      # Given a postal address, a postal service can deliver items to a premise, P.O.
-      # Box or similar. It is not intended to model geographical locations (roads,
-      # towns, mountains). In typical usage an address would be created via user input
-      # or from importing existing data, depending on the type of process. Advice on
-      # address input / editing: - Use an internationalization-ready address widget
-      # such as https://github.com/google/libaddressinput) - Users should not be
-      # presented with UI elements for input or editing of fields outside countries
-      # where that field is used. For more guidance on how to use this schema, please
-      # see: https://support.google.com/business/answer/6397478
+      # Represents a postal address. For example for postal delivery or payments
+      # addresses. Given a postal address, a postal service can deliver items to a
+      # premise, P.O. Box or similar. It is not intended to model geographical
+      # locations (roads, towns, mountains). In typical usage an address would be
+      # created by user input or from importing existing data, depending on the type
+      # of process. Advice on address input / editing: - Use an internationalization-
+      # ready address widget such as https://github.com/google/libaddressinput) -
+      # Users should not be presented with UI elements for input or editing of fields
+      # outside countries where that field is used. For more guidance on how to use
+      # this schema, see: https://support.google.com/business/answer/6397478
       class GoogleTypePostalAddress
         include Google::Apis::Core::Hashable
       
         # Unstructured address lines describing the lower levels of an address. Because
         # values in address_lines do not have type information and may sometimes contain
-        # multiple values in a single field (e.g. "Austin, TX"), it is important that
-        # the line order is clear. The order of address lines should be "envelope order"
-        # for the country/region of the address. In places where this can vary (e.g.
-        # Japan), address_language is used to make it explicit (e.g. "ja" for large-to-
-        # small ordering and "ja-Latn" or "en" for small-to-large). This way, the most
-        # specific line of an address can be selected based on the language. The minimum
-        # permitted structural representation of an address consists of a region_code
-        # with all remaining information placed in the address_lines. It would be
-        # possible to format such an address very approximately without geocoding, but
-        # no semantic reasoning could be made about any of the address components until
-        # it was at least partially resolved. Creating an address only containing a
-        # region_code and address_lines, and then geocoding is the recommended way to
-        # handle completely unstructured addresses (as opposed to guessing which parts
-        # of the address should be localities or administrative areas).
+        # multiple values in a single field (For example "Austin, TX"), it is important
+        # that the line order is clear. The order of address lines should be "envelope
+        # order" for the country/region of the address. In places where this can vary (
+        # For example Japan), address_language is used to make it explicit (For example "
+        # ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large).
+        # This way, the most specific line of an address can be selected based on the
+        # language. The minimum permitted structural representation of an address
+        # consists of a region_code with all remaining information placed in the
+        # address_lines. It would be possible to format such an address very
+        # approximately without geocoding, but no semantic reasoning could be made about
+        # any of the address components until it was at least partially resolved.
+        # Creating an address only containing a region_code and address_lines, and then
+        # geocoding is the recommended way to handle completely unstructured addresses (
+        # as opposed to guessing which parts of the address should be localities or
+        # administrative areas).
         # Corresponds to the JSON property `addressLines`
         # @return [Array<String>]
         attr_accessor :address_lines
@@ -7797,9 +7798,9 @@ module Google
         # Optional. Highest administrative subdivision which is used for postal
         # addresses of a country or region. For example, this can be a state, a province,
         # an oblast, or a prefecture. Specifically, for Spain this is the province and
-        # not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many
-        # countries don't use an administrative area in postal addresses. E.g. in
-        # Switzerland this should be left unpopulated.
+        # not the autonomous community (For example "Barcelona" and not "Catalonia").
+        # Many countries don't use an administrative area in postal addresses. For
+        # example in Switzerland this should be left unpopulated.
         # Corresponds to the JSON property `administrativeArea`
         # @return [String]
         attr_accessor :administrative_area
@@ -7831,8 +7832,8 @@ module Google
       
         # Optional. Postal code of the address. Not all countries use or require postal
         # codes to be present, but where they are used, they may trigger additional
-        # validation with other parts of the address (e.g. state/zip validation in the U.
-        # S.A.).
+        # validation with other parts of the address (For example state/zip validation
+        # in the U.S.A.).
         # Corresponds to the JSON property `postalCode`
         # @return [String]
         attr_accessor :postal_code
@@ -7861,9 +7862,9 @@ module Google
       
         # Optional. Additional, country-specific, sorting code. This is not used in most
         # regions. Where it is used, the value is either a string like "CEDEX",
-        # optionally followed by a number (e.g. "CEDEX 7"), or just a number alone,
-        # representing the "sector code" (Jamaica), "delivery area indicator" (Malawi)
-        # or "post office indicator" (e.g. Côte d'Ivoire).
+        # optionally followed by a number (For example "CEDEX 7"), or just a number
+        # alone, representing the "sector code" (Jamaica), "delivery area indicator" (
+        # Malawi) or "post office indicator" (For example Côte d'Ivoire).
         # Corresponds to the JSON property `sortingCode`
         # @return [String]
         attr_accessor :sorting_code
@@ -7899,12 +7900,12 @@ module Google
       class GoogleTypeTimeZone
         include Google::Apis::Core::Hashable
       
-        # IANA Time Zone Database time zone, e.g. "America/New_York".
+        # IANA Time Zone Database time zone. For example "America/New_York".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Optional. IANA Time Zone Database version number, e.g. "2019a".
+        # Optional. IANA Time Zone Database version number. For example "2019a".
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
