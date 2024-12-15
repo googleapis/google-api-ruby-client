@@ -4172,6 +4172,11 @@ module Google
       class GoogleCloudHealthcareV1beta1FhirBigQueryDestination
         include Google::Apis::Core::Hashable
       
+        # BigQuery Change Data Capture configuration.
+        # Corresponds to the JSON property `changeDataCaptureConfig`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirChangeDataCaptureConfig]
+        attr_accessor :change_data_capture_config
+      
         # BigQuery URI to an existing dataset, up to 2000 characters long, in the format
         # `bq://projectId.bqDatasetId`.
         # Corresponds to the JSON property `datasetUri`
@@ -4205,10 +4210,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @change_data_capture_config = args[:change_data_capture_config] if args.key?(:change_data_capture_config)
           @dataset_uri = args[:dataset_uri] if args.key?(:dataset_uri)
           @force = args[:force] if args.key?(:force)
           @schema_config = args[:schema_config] if args.key?(:schema_config)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
+        end
+      end
+      
+      # BigQuery Change Data Capture configuration.
+      class GoogleCloudHealthcareV1beta1FhirChangeDataCaptureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Configures how historical versions of FHIR resources will be
+        # reflected in the destination table through updates and deletes. Defaults to `
+        # HistoryMode.KEEP_LATEST_VERSION` if unspecified.
+        # Corresponds to the JSON property `historyMode`
+        # @return [String]
+        attr_accessor :history_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @history_mode = args[:history_mode] if args.key?(:history_mode)
         end
       end
       

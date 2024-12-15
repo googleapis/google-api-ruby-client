@@ -718,6 +718,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudHealthcareV1beta1FhirChangeDataCaptureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudHealthcareV1beta1FhirExportResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2498,11 +2504,20 @@ module Google
       class GoogleCloudHealthcareV1beta1FhirBigQueryDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_data_capture_config, as: 'changeDataCaptureConfig', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirChangeDataCaptureConfig, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirChangeDataCaptureConfig::Representation
+      
           property :dataset_uri, as: 'datasetUri'
           property :force, as: 'force'
           property :schema_config, as: 'schemaConfig', class: Google::Apis::HealthcareV1beta1::SchemaConfig, decorator: Google::Apis::HealthcareV1beta1::SchemaConfig::Representation
       
           property :write_disposition, as: 'writeDisposition'
+        end
+      end
+      
+      class GoogleCloudHealthcareV1beta1FhirChangeDataCaptureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :history_mode, as: 'historyMode'
         end
       end
       
