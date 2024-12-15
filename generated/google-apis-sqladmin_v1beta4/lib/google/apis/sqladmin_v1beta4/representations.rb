@@ -652,6 +652,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlSubOperationType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslCert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -882,6 +888,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_type, as: 'backendType'
+          collection :custom_subject_alternative_names, as: 'customSubjectAlternativeNames'
           property :database_version, as: 'databaseVersion'
           property :dns_name, as: 'dnsName'
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1beta4::IpMapping, decorator: Google::Apis::SqladminV1beta4::IpMapping::Representation
@@ -985,6 +992,7 @@ module Google
           property :state, as: 'state'
           collection :suspension_reason, as: 'suspensionReason'
           property :switch_transaction_logs_to_cloud_storage_enabled, as: 'switchTransactionLogsToCloudStorageEnabled'
+          hash :tags, as: 'tags'
           collection :upgradable_database_versions, as: 'upgradableDatabaseVersions', class: Google::Apis::SqladminV1beta4::AvailableDatabaseVersion, decorator: Google::Apis::SqladminV1beta4::AvailableDatabaseVersion::Representation
       
           property :write_endpoint, as: 'writeEndpoint'
@@ -1446,6 +1454,7 @@ module Google
           property :allocated_ip_range, as: 'allocatedIpRange'
           collection :authorized_networks, as: 'authorizedNetworks', class: Google::Apis::SqladminV1beta4::AclEntry, decorator: Google::Apis::SqladminV1beta4::AclEntry::Representation
       
+          collection :custom_subject_alternative_names, as: 'customSubjectAlternativeNames'
           property :enable_private_path_for_google_cloud_services, as: 'enablePrivatePathForGoogleCloudServices'
           property :ipv4_enabled, as: 'ipv4Enabled'
           property :private_network, as: 'privateNetwork'
@@ -1453,6 +1462,7 @@ module Google
       
           property :require_ssl, as: 'requireSsl'
           property :server_ca_mode, as: 'serverCaMode'
+          property :server_ca_pool, as: 'serverCaPool'
           property :ssl_mode, as: 'sslMode'
         end
       end
@@ -1553,6 +1563,8 @@ module Google
           property :self_link, as: 'selfLink'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
+          property :sub_operation_type, as: 'subOperationType', class: Google::Apis::SqladminV1beta4::SqlSubOperationType, decorator: Google::Apis::SqladminV1beta4::SqlSubOperationType::Representation
+      
           property :target_id, as: 'targetId'
           property :target_link, as: 'targetLink'
           property :target_project, as: 'targetProject'
@@ -1904,6 +1916,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled, as: 'disabled'
           collection :server_roles, as: 'serverRoles'
+        end
+      end
+      
+      class SqlSubOperationType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_type, as: 'maintenanceType'
         end
       end
       
