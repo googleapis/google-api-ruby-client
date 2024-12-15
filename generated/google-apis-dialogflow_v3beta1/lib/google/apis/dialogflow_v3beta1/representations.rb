@@ -1150,6 +1150,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1379,6 +1385,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1708,6 +1720,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1PlaybookInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1841,6 +1859,18 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4885,6 +4915,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ConversationInteraction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_feedback, as: 'answerFeedback', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AnswerFeedback, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AnswerFeedback::Representation
+      
           property :create_time, as: 'createTime'
           property :missing_transition, as: 'missingTransition', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationInteractionMissingTransition, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationInteractionMissingTransition::Representation
       
@@ -5456,6 +5488,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_format, as: 'dataFormat'
+          property :playbook_uri, as: 'playbookUri'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5530,6 +5570,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1FlowInvocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :flow, as: 'flow'
           property :flow_state, as: 'flowState'
           hash :input_action_parameters, as: 'inputActionParameters'
@@ -5844,6 +5885,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :entity_display_names, as: 'entityDisplayNames'
           collection :intent_display_names, as: 'intentDisplayNames'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :import_strategy, as: 'importStrategy', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy::Representation
+      
+          property :playbook_content, :base64 => true, as: 'playbookContent'
+          property :playbook_uri, as: 'playbookUri'
         end
       end
       
@@ -6379,6 +6430,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :main_playbook_import_strategy, as: 'mainPlaybookImportStrategy'
+          property :nested_resource_import_strategy, as: 'nestedResourceImportStrategy'
+          property :tool_import_strategy, as: 'toolImportStrategy'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1PlaybookInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6398,6 +6458,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1PlaybookInvocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :playbook, as: 'playbook'
           property :playbook_input, as: 'playbookInput', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookInput, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookInput::Representation
       
@@ -6651,6 +6712,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :tracking_branch, as: 'trackingBranch'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :playbook, as: 'playbook', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Playbook, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Playbook::Representation
+      
         end
       end
       
@@ -7101,6 +7176,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :display_name, as: 'displayName'
           hash :input_action_parameters, as: 'inputActionParameters'
           hash :output_action_parameters, as: 'outputActionParameters'
           property :tool, as: 'tool'

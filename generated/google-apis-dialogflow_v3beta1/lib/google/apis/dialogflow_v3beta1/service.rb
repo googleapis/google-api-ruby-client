@@ -3658,6 +3658,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Exports the specified playbook to a binary file. Note that resources (e.g.
+        # examples, tools) that the playbook references will also be exported.
+        # @param [String] name
+        #   Required. The name of the playbook to export. Format: `projects//locations//
+        #   agents//playbooks/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest] google_cloud_dialogflow_cx_v3beta1_export_playbook_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project_location_agent_playbook(name, google_cloud_dialogflow_cx_v3beta1_export_playbook_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+name}:export', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_export_playbook_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the specified Playbook.
         # @param [String] name
         #   Required. The name of the playbook. Format: `projects//locations//agents//
@@ -3684,6 +3719,40 @@ module Google
           command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Playbook::Representation
           command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Playbook
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports the specified playbook to the specified agent from a binary file.
+        # @param [String] parent
+        #   Required. The agent to import the playbook into. Format: `projects//locations//
+        #   agents/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest] google_cloud_dialogflow_cx_v3beta1_import_playbook_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_project_location_agent_playbook(parent, google_cloud_dialogflow_cx_v3beta1_import_playbook_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+parent}/playbooks:import', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_import_playbook_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4071,6 +4140,41 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified version of the Playbook and stores it as the current
+        # playbook draft, returning the playbook with resources updated.
+        # @param [String] name
+        #   Required. The name of the playbook version. Format: `projects//locations//
+        #   agents//playbooks//versions/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest] google_cloud_dialogflow_cx_v3beta1_restore_playbook_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_project_location_agent_playbook_version(name, google_cloud_dialogflow_cx_v3beta1_restore_playbook_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+name}:restore', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_restore_playbook_version_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5536,8 +5640,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -5819,8 +5923,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
