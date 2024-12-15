@@ -2990,6 +2990,103 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Moves the source object to the destination object in the same bucket.
+        # @param [String] bucket
+        #   Name of the bucket in which the object resides.
+        # @param [String] source_object
+        #   Name of the source object. For information about how to URL encode object
+        #   names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/
+        #   storage/docs/request-endpoints#encoding).
+        # @param [String] destination_object
+        #   Name of the destination object. For information about how to URL encode object
+        #   names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/
+        #   storage/docs/request-endpoints#encoding).
+        # @param [Fixnum] if_generation_match
+        #   Makes the operation conditional on whether the destination object's current
+        #   generation matches the given value. Setting to 0 makes the operation succeed
+        #   only if there are no live versions of the object. `ifGenerationMatch` and `
+        #   ifGenerationNotMatch` conditions are mutually exclusive: it's an error for
+        #   both of them to be set in the request.
+        # @param [Fixnum] if_generation_not_match
+        #   Makes the operation conditional on whether the destination object's current
+        #   generation does not match the given value. If no live object exists, the
+        #   precondition fails. Setting to 0 makes the operation succeed only if there is
+        #   a live version of the object.`ifGenerationMatch` and `ifGenerationNotMatch`
+        #   conditions are mutually exclusive: it's an error for both of them to be set in
+        #   the request.
+        # @param [Fixnum] if_metageneration_match
+        #   Makes the operation conditional on whether the destination object's current
+        #   metageneration matches the given value. `ifMetagenerationMatch` and `
+        #   ifMetagenerationNotMatch` conditions are mutually exclusive: it's an error for
+        #   both of them to be set in the request.
+        # @param [Fixnum] if_metageneration_not_match
+        #   Makes the operation conditional on whether the destination object's current
+        #   metageneration does not match the given value. `ifMetagenerationMatch` and `
+        #   ifMetagenerationNotMatch` conditions are mutually exclusive: it's an error for
+        #   both of them to be set in the request.
+        # @param [Fixnum] if_source_generation_match
+        #   Makes the operation conditional on whether the source object's current
+        #   generation matches the given value. `ifSourceGenerationMatch` and `
+        #   ifSourceGenerationNotMatch` conditions are mutually exclusive: it's an error
+        #   for both of them to be set in the request.
+        # @param [Fixnum] if_source_generation_not_match
+        #   Makes the operation conditional on whether the source object's current
+        #   generation does not match the given value. `ifSourceGenerationMatch` and `
+        #   ifSourceGenerationNotMatch` conditions are mutually exclusive: it's an error
+        #   for both of them to be set in the request.
+        # @param [Fixnum] if_source_metageneration_match
+        #   Makes the operation conditional on whether the source object's current
+        #   metageneration matches the given value. `ifSourceMetagenerationMatch` and `
+        #   ifSourceMetagenerationNotMatch` conditions are mutually exclusive: it's an
+        #   error for both of them to be set in the request.
+        # @param [Fixnum] if_source_metageneration_not_match
+        #   Makes the operation conditional on whether the source object's current
+        #   metageneration does not match the given value. `ifSourceMetagenerationMatch`
+        #   and `ifSourceMetagenerationNotMatch` conditions are mutually exclusive: it's
+        #   an error for both of them to be set in the request.
+        # @param [String] user_project
+        #   The project to be billed for this request. Required for Requester Pays buckets.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Object] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Object]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def move_object(bucket, source_object, destination_object, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/o/{sourceObject}/moveTo/o/{destinationObject}', options)
+          command.response_representation = Google::Apis::StorageV1::Object::Representation
+          command.response_class = Google::Apis::StorageV1::Object
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['sourceObject'] = source_object unless source_object.nil?
+          command.params['destinationObject'] = destination_object unless destination_object.nil?
+          command.query['ifGenerationMatch'] = if_generation_match unless if_generation_match.nil?
+          command.query['ifGenerationNotMatch'] = if_generation_not_match unless if_generation_not_match.nil?
+          command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
+          command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
+          command.query['ifSourceGenerationMatch'] = if_source_generation_match unless if_source_generation_match.nil?
+          command.query['ifSourceGenerationNotMatch'] = if_source_generation_not_match unless if_source_generation_not_match.nil?
+          command.query['ifSourceMetagenerationMatch'] = if_source_metageneration_match unless if_source_metageneration_match.nil?
+          command.query['ifSourceMetagenerationNotMatch'] = if_source_metageneration_not_match unless if_source_metageneration_not_match.nil?
+          command.query['userProject'] = user_project unless user_project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Patches an object's metadata.
         # @param [String] bucket
         #   Name of the bucket in which the object resides.
