@@ -2249,6 +2249,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns effective security policies applied to this backend service.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] backend_service
+        #   Name of the Backend Service for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::BackendServicesGetEffectiveSecurityPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::BackendServicesGetEffectiveSecurityPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_backend_service_effective_security_policies(project, backend_service, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/backendServices/{backendService}/getEffectiveSecurityPolicies', options)
+          command.response_representation = Google::Apis::ComputeAlpha::BackendServicesGetEffectiveSecurityPoliciesResponse::Representation
+          command.response_class = Google::Apis::ComputeAlpha::BackendServicesGetEffectiveSecurityPoliciesResponse
+          command.params['project'] = project unless project.nil?
+          command.params['backendService'] = backend_service unless backend_service.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the most recent health check results for this BackendService. Example
         # request body: ` "group": "/zones/us-east1-b/instanceGroups/lb-backend-example"
         # `
@@ -2947,9 +2983,7 @@ module Google
         #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
         #   MixerMutationRequestBuilder
         # @param [Boolean] validate_only
-        #   [Input Only] Validate the new configuration, but don't create it. If
-        #   applicable, any configuration notices are returned in the `
-        #   configurationNotices` field.
+        #   [Input Only] Validate the new configuration, but don't create it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3094,10 +3128,10 @@ module Google
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
         #   MixerMutationRequestBuilder
+        # @param [String] update_mask
+        #   update_mask indicates fields to be updated as part of this request.
         # @param [Boolean] validate_only
-        #   [Input Only] Validate the new configuration, but don't update it. If
-        #   applicable, any configuration notices are returned in the `
-        #   configurationNotices` field.
+        #   [Input Only] Validate the new configuration, but don't update it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3117,7 +3151,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_cross_site_network(project, cross_site_network, cross_site_network_object = nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_cross_site_network(project, cross_site_network, cross_site_network_object = nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:patch, 'projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}', options)
           command.request_representation = Google::Apis::ComputeAlpha::CrossSiteNetwork::Representation
           command.request_object = cross_site_network_object
@@ -3126,6 +3160,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['crossSiteNetwork'] = cross_site_network unless cross_site_network.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -14364,7 +14399,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a network interface to an instance.
+        # Adds one dynamic network interface to an active instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -14701,7 +14736,7 @@ module Google
         # @param [String] instance
         #   Name of the instance resource to delete.
         # @param [Boolean] no_graceful_shutdown
-        #   If true, skips Graceful Shutdown.
+        #   If set to true, Graceful Shutdown is skipped.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -14802,11 +14837,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes one network interface from an active instance.
+        # Deletes one dynamic network interface from an active instance.
         # InstancesDeleteNetworkInterfaceRequest indicates: - instance from which to
-        # delete, using project+zone+resource_id fields; - network interface to be
-        # deleted, using network_interface_name field; Only VLAN interface deletion is
-        # supported for now.
+        # delete, using project+zone+resource_id fields; - dynamic network interface to
+        # be deleted, using network_interface_name field;
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -14815,8 +14849,7 @@ module Google
         #   The instance name for this request stored as resource_id. Name should conform
         #   to RFC1035 or be an unsigned long integer.
         # @param [String] network_interface_name
-        #   The name of the network interface to be deleted from the instance. Only VLAN
-        #   network interface deletion is supported.
+        #   The name of the dynamic network interface to be deleted from the instance.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -15188,7 +15221,9 @@ module Google
         #   and the adjusted start position is returned as the `start` property value. You
         #   can also provide a negative start position, which translates to the most
         #   recent number of bytes written to the serial port. For example, -3 is
-        #   interpreted as the most recent 3 bytes written to the serial console.
+        #   interpreted as the most recent 3 bytes written to the serial console. Note
+        #   that the negative start is bounded by the retained buffer size, and the
+        #   returned serial console output will not exceed the max buffer size.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16896,7 +16931,7 @@ module Google
         #   false, Local SSD data will be preserved when the instance is suspended. If
         #   true, the contents of any attached Local SSD disks will be discarded.
         # @param [Boolean] no_graceful_shutdown
-        #   If true, skips Graceful Shutdown.
+        #   If set to true, Graceful Shutdown is skipped.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -21022,6 +21057,61 @@ module Google
           command.response_class = Google::Apis::ComputeAlpha::TestPermissionsResponse
           command.params['project'] = project unless project.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a License resource in the specified project. *Caution* This resource
+        # is intended for use only by third-party partners who are creating Cloud
+        # Marketplace images.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] license
+        #   The license name for this request.
+        # @param [Google::Apis::ComputeAlpha::License] license_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   update_mask indicates fields to be updated as part of this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_license(project, license, license_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'projects/{project}/global/licenses/{license}', options)
+          command.request_representation = Google::Apis::ComputeAlpha::License::Representation
+          command.request_object = license_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['license'] = license unless license.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -39358,6 +39448,60 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the labels on a security policy. To learn more about labels, read the
+        # Labeling Resources documentation.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeAlpha::RegionSetLabelsRequest] region_set_labels_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_region_security_policy_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/securityPolicies/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeAlpha::RegionSetLabelsRequest::Representation
+          command.request_object = region_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get region snapshot settings.
         # @param [String] project
         #   Project ID for this request.
@@ -42451,6 +42595,64 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Allows customers to perform maintenance on a reservation block
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   Name of the zone for this request. Zone name should conform to RFC1035.
+        # @param [String] reservation
+        #   The name of the reservation. Name should conform to RFC1035 or be a resource
+        #   ID.
+        # @param [String] reservation_block
+        #   The name of the reservation block. Name should conform to RFC1035 or be a
+        #   resource ID.
+        # @param [Google::Apis::ComputeAlpha::ReservationsBlocksPerformMaintenanceRequest] reservations_blocks_perform_maintenance_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def perform_reservation_block_maintenance(project, zone, reservation, reservation_block, reservations_blocks_perform_maintenance_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/reservations/{reservation}/reservationBlocks/{reservationBlock}/performMaintenance', options)
+          command.request_representation = Google::Apis::ComputeAlpha::ReservationsBlocksPerformMaintenanceRequest::Representation
+          command.request_object = reservations_blocks_perform_maintenance_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['reservation'] = reservation unless reservation.nil?
+          command.params['reservationBlock'] = reservation_block unless reservation_block.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of reservations. To prevent failure, Google
         # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
@@ -42827,6 +43029,60 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Perform maintenance on an extended reservation
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   Name of the zone for this request. Zone name should conform to RFC1035.
+        # @param [String] reservation
+        #   The name of the reservation. Name should conform to RFC1035 or be a resource
+        #   ID.
+        # @param [Google::Apis::ComputeAlpha::ReservationsPerformMaintenanceRequest] reservations_perform_maintenance_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def perform_reservation_maintenance(project, zone, reservation, reservations_perform_maintenance_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/reservations/{reservation}/performMaintenance', options)
+          command.request_representation = Google::Apis::ComputeAlpha::ReservationsPerformMaintenanceRequest::Representation
+          command.request_object = reservations_perform_maintenance_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['reservation'] = reservation unless reservation.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -55236,9 +55492,7 @@ module Google
         #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
         #   MixerMutationRequestBuilder
         # @param [Boolean] validate_only
-        #   [Input Only] Validate the new configuration, but don't create it. If
-        #   applicable, any configuration notices are returned in the `
-        #   configurationNotices` field.
+        #   [Input Only] Validate the new configuration, but don't create it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -55390,9 +55644,7 @@ module Google
         # @param [String] update_mask
         #   update_mask indicates fields to be updated as part of this request.
         # @param [Boolean] validate_only
-        #   [Input Only] Validate the new configuration, but don't update it. If
-        #   applicable, any configuration notices are returned in the `
-        #   configurationNotices` field.
+        #   [Input Only] Validate the new configuration, but don't update it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
