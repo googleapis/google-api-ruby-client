@@ -211,7 +211,7 @@ module Google
         #   Required. Resource name of the `Release`. Format: `projects/`project_id`/
         #   releases/`release_id``
         # @param [String] executable_version
-        #   The requested runtime executable version. Defaults to
+        #   Optional. The requested runtime executable version. Defaults to
         #   FIREBASE_RULES_EXECUTABLE_V1.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -247,26 +247,26 @@ module Google
         # @param [String] name
         #   Required. Resource name for the project. Format: `projects/`project_id``
         # @param [String] filter
-        #   `Release` filter. The list method supports filters with restrictions on the `
-        #   Release.name`, and `Release.ruleset_name`. Example 1: A filter of 'name=prod*'
-        #   might return `Release`s with names within 'projects/foo' prefixed with 'prod':
-        #   Name -> Ruleset Name: * projects/foo/releases/prod -> projects/foo/rulesets/
-        #   uuid1234 * projects/foo/releases/prod/v1 -> projects/foo/rulesets/uuid1234 *
-        #   projects/foo/releases/prod/v2 -> projects/foo/rulesets/uuid8888 Example 2: A
-        #   filter of `name=prod* ruleset_name=uuid1234` would return only `Release`
-        #   instances for 'projects/foo' with names prefixed with 'prod' referring to the
-        #   same `Ruleset` name of 'uuid1234': Name -> Ruleset Name: * projects/foo/
-        #   releases/prod -> projects/foo/rulesets/1234 * projects/foo/releases/prod/v1 ->
-        #   projects/foo/rulesets/1234 In the examples, the filter parameters refer to the
-        #   search filters are relative to the project. Fully qualified prefixed may also
-        #   be used.
+        #   Optional. `Release` filter. The list method supports filters with restrictions
+        #   on the `Release.name`, and `Release.ruleset_name`. Example 1: A filter of '
+        #   name=prod*' might return `Release`s with names within 'projects/foo' prefixed
+        #   with 'prod': Name -> Ruleset Name: * projects/foo/releases/prod -> projects/
+        #   foo/rulesets/uuid1234 * projects/foo/releases/prod/v1 -> projects/foo/rulesets/
+        #   uuid1234 * projects/foo/releases/prod/v2 -> projects/foo/rulesets/uuid8888
+        #   Example 2: A filter of `name=prod* ruleset_name=uuid1234` would return only `
+        #   Release` instances for 'projects/foo' with names prefixed with 'prod'
+        #   referring to the same `Ruleset` name of 'uuid1234': Name -> Ruleset Name: *
+        #   projects/foo/releases/prod -> projects/foo/rulesets/1234 * projects/foo/
+        #   releases/prod/v1 -> projects/foo/rulesets/1234 In the examples, the filter
+        #   parameters refer to the search filters are relative to the project. Fully
+        #   qualified prefixed may also be used.
         # @param [Fixnum] page_size
-        #   Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a
-        #   hint and the service may choose to load fewer than `page_size` results due to
-        #   the size of the output. To traverse all of the releases, the caller should
-        #   iterate until the `page_token` on the response is empty.
+        #   Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size`
+        #   is just a hint and the service may choose to load fewer than `page_size`
+        #   results due to the size of the output. To traverse all of the releases, the
+        #   caller should iterate until the `page_token` on the response is empty.
         # @param [String] page_token
-        #   Next page token for the next batch of `Release` instances.
+        #   Optional. Next page token for the next batch of `Release` instances.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -439,17 +439,18 @@ module Google
         # @param [String] name
         #   Required. Resource name for the project. Format: `projects/`project_id``
         # @param [String] filter
-        #   `Ruleset` filter. The list method supports filters with restrictions on `
-        #   Ruleset.name`. Filters on `Ruleset.create_time` should use the `date` function
-        #   which parses strings that conform to the RFC 3339 date/time specifications.
-        #   Example: `create_time > date("2017-01-01T00:00:00Z") AND name=UUID-*`
+        #   Optional. `Ruleset` filter. The list method supports filters with restrictions
+        #   on `Ruleset.name`. Filters on `Ruleset.create_time` should use the `date`
+        #   function which parses strings that conform to the RFC 3339 date/time
+        #   specifications. Example: `create_time > date("2017-01-01T00:00:00Z") AND name=
+        #   UUID-*`
         # @param [Fixnum] page_size
-        #   Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a
-        #   hint and the service may choose to load less than `page_size` due to the size
-        #   of the output. To traverse all of the releases, caller should iterate until
-        #   the `page_token` is empty.
+        #   Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size`
+        #   is just a hint and the service may choose to load less than `page_size` due to
+        #   the size of the output. To traverse all of the releases, caller should iterate
+        #   until the `page_token` is empty.
         # @param [String] page_token
-        #   Next page token for loading the next batch of `Ruleset` instances.
+        #   Optional. Next page token for loading the next batch of `Ruleset` instances.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
