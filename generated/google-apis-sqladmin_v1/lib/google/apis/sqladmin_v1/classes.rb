@@ -625,6 +625,11 @@ module Google
         # @return [String]
         attr_accessor :backend_type
       
+        # Custom subject alternative names for the server certificate.
+        # Corresponds to the JSON property `customSubjectAlternativeNames`
+        # @return [Array<String>]
+        attr_accessor :custom_subject_alternative_names
+      
         # The database engine type and version. The `databaseVersion` field cannot be
         # changed after instance creation. MySQL instances: `MYSQL_8_0`, `MYSQL_5_7` (
         # default), or `MYSQL_5_6`. PostgreSQL instances: `POSTGRES_9_6`, `POSTGRES_10`,
@@ -681,6 +686,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backend_type = args[:backend_type] if args.key?(:backend_type)
+          @custom_subject_alternative_names = args[:custom_subject_alternative_names] if args.key?(:custom_subject_alternative_names)
           @database_version = args[:database_version] if args.key?(:database_version)
           @dns_name = args[:dns_name] if args.key?(:dns_name)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
@@ -984,7 +990,8 @@ module Google
       
         # A primary instance and disaster recovery (DR) replica pair. A DR replica is a
         # cross-region replica that you designate for failover in the event that the
-        # primary instance experiences regional failure. Only applicable to MySQL.
+        # primary instance experiences regional failure. Applicable to MySQL and
+        # PostgreSQL.
         # Corresponds to the JSON property `replicationCluster`
         # @return [Google::Apis::SqladminV1::ReplicationCluster]
         attr_accessor :replication_cluster
@@ -1065,6 +1072,16 @@ module Google
         attr_accessor :switch_transaction_logs_to_cloud_storage_enabled
         alias_method :switch_transaction_logs_to_cloud_storage_enabled?, :switch_transaction_logs_to_cloud_storage_enabled
       
+        # Optional. Input only. Immutable. Tag keys and tag values that are bound to
+        # this instance. You must represent each item in the map as: `"" : ""`. For
+        # example, a single resource can have the following tags: ``` "123/environment":
+        # "production", "123/costCenter": "marketing", ``` For more information on tag
+        # creation and management, see https://cloud.google.com/resource-manager/docs/
+        # tags/tags-overview.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. All database versions that are available for upgrade.
         # Corresponds to the JSON property `upgradableDatabaseVersions`
         # @return [Array<Google::Apis::SqladminV1::AvailableDatabaseVersion>]
@@ -1125,6 +1142,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
           @switch_transaction_logs_to_cloud_storage_enabled = args[:switch_transaction_logs_to_cloud_storage_enabled] if args.key?(:switch_transaction_logs_to_cloud_storage_enabled)
+          @tags = args[:tags] if args.key?(:tags)
           @upgradable_database_versions = args[:upgradable_database_versions] if args.key?(:upgradable_database_versions)
           @write_endpoint = args[:write_endpoint] if args.key?(:write_endpoint)
         end
@@ -2730,6 +2748,11 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::AclEntry>]
         attr_accessor :authorized_networks
       
+        # Optional. Custom Subject Alternative Name(SAN)s for a Cloud SQL instance.
+        # Corresponds to the JSON property `customSubjectAlternativeNames`
+        # @return [Array<String>]
+        attr_accessor :custom_subject_alternative_names
+      
         # Controls connectivity to private IP instances from Google services, such as
         # BigQuery.
         # Corresponds to the JSON property `enablePrivatePathForGoogleCloudServices`
@@ -2773,6 +2796,13 @@ module Google
         # @return [String]
         attr_accessor :server_ca_mode
       
+        # Optional. The resource name of the server CA pool for an instance with `
+        # CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`. Format: projects//locations//
+        # caPools/
+        # Corresponds to the JSON property `serverCaPool`
+        # @return [String]
+        attr_accessor :server_ca_pool
+      
         # Specify how SSL/TLS is enforced in database connections. If you must use the `
         # require_ssl` flag for backward compatibility, then only the following value
         # pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=
@@ -2798,12 +2828,14 @@ module Google
         def update!(**args)
           @allocated_ip_range = args[:allocated_ip_range] if args.key?(:allocated_ip_range)
           @authorized_networks = args[:authorized_networks] if args.key?(:authorized_networks)
+          @custom_subject_alternative_names = args[:custom_subject_alternative_names] if args.key?(:custom_subject_alternative_names)
           @enable_private_path_for_google_cloud_services = args[:enable_private_path_for_google_cloud_services] if args.key?(:enable_private_path_for_google_cloud_services)
           @ipv4_enabled = args[:ipv4_enabled] if args.key?(:ipv4_enabled)
           @private_network = args[:private_network] if args.key?(:private_network)
           @psc_config = args[:psc_config] if args.key?(:psc_config)
           @require_ssl = args[:require_ssl] if args.key?(:require_ssl)
           @server_ca_mode = args[:server_ca_mode] if args.key?(:server_ca_mode)
+          @server_ca_pool = args[:server_ca_pool] if args.key?(:server_ca_pool)
           @ssl_mode = args[:ssl_mode] if args.key?(:ssl_mode)
         end
       end
@@ -3198,6 +3230,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # The sub operation type based on the operation type.
+        # Corresponds to the JSON property `subOperationType`
+        # @return [Google::Apis::SqladminV1::SqlSubOperationType]
+        attr_accessor :sub_operation_type
+      
         # Name of the database instance related to this operation.
         # Corresponds to the JSON property `targetId`
         # @return [String]
@@ -3238,6 +3275,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
+          @sub_operation_type = args[:sub_operation_type] if args.key?(:sub_operation_type)
           @target_id = args[:target_id] if args.key?(:target_id)
           @target_link = args[:target_link] if args.key?(:target_link)
           @target_project = args[:target_project] if args.key?(:target_project)
@@ -3311,9 +3349,9 @@ module Google
         attr_accessor :api_version
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have been cancelled successfully have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # operation. Operations that have been cancelled successfully have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of `1`,
+        # corresponding to `Code.CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
@@ -3627,7 +3665,8 @@ module Google
       
       # A primary instance and disaster recovery (DR) replica pair. A DR replica is a
       # cross-region replica that you designate for failover in the event that the
-      # primary instance experiences regional failure. Only applicable to MySQL.
+      # primary instance experiences regional failure. Applicable to MySQL and
+      # PostgreSQL.
       class ReplicationCluster
         include Google::Apis::Core::Hashable
       
@@ -3648,13 +3687,13 @@ module Google
         # @return [String]
         attr_accessor :failover_dr_replica_name
       
-        # Output only. If set, it indicates this instance has a private service access (
-        # PSA) dns endpoint that is pointing to the primary instance of the cluster. If
-        # this instance is the primary, the dns should be pointing to this instance.
-        # After Switchover or Replica failover, this DNS endpoint points to the promoted
-        # instance. This is a read-only field, returned to the user as information. This
-        # field can exist even if a standalone instance does not yet have a replica, or
-        # had a DR replica that was deleted.
+        # Output only. If set, this field indicates this instance has a private service
+        # access (PSA) DNS endpoint that is pointing to the primary instance of the
+        # cluster. If this instance is the primary, then the DNS endpoint points to this
+        # instance. After a switchover or replica failover operation, this DNS endpoint
+        # points to the promoted instance. This is a read-only field, returned to the
+        # user as information. This field can exist even if a standalone instance doesn'
+        # t have a DR replica yet or the DR replica is deleted.
         # Corresponds to the JSON property `psaWriteEndpoint`
         # @return [String]
         attr_accessor :psa_write_endpoint
@@ -4542,6 +4581,25 @@ module Google
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
           @server_roles = args[:server_roles] if args.key?(:server_roles)
+        end
+      end
+      
+      # The sub operation type based on the operation type.
+      class SqlSubOperationType
+        include Google::Apis::Core::Hashable
+      
+        # The type of maintenance to be performed on the instance.
+        # Corresponds to the JSON property `maintenanceType`
+        # @return [String]
+        attr_accessor :maintenance_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_type = args[:maintenance_type] if args.key?(:maintenance_type)
         end
       end
       
