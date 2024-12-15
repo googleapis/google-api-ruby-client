@@ -1065,14 +1065,15 @@ module Google
         # Optional. The CEL expression used to modify how the destination-bound HTTP
         # request is constructed. If a binding expression is not specified here, the
         # message is treated as a CloudEvent and is mapped to the HTTP request according
-        # to the CloudEvent HTTP Protocol Binding Binary Content Mode. In this
-        # representation, all fields except the `data` and `datacontenttype` field on
-        # the message are mapped to HTTP request headers with a prefix of `ce-`. To
-        # construct the HTTP request payload and the value of the content-type HTTP
-        # header, the payload format is defined as follows: 1) Use the
-        # output_payload_format_type on the Pipeline.Destination if it is set, else: 2)
-        # Use the input_payload_format_type on the Pipeline if it is set, else: 3) Treat
-        # the payload as opaque binary data. The `data` field of the message is
+        # to the CloudEvent HTTP Protocol Binding Binary Content Mode (https://github.
+        # com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#
+        # 31-binary-content-mode). In this representation, all fields except the `data`
+        # and `datacontenttype` field on the message are mapped to HTTP request headers
+        # with a prefix of `ce-`. To construct the HTTP request payload and the value of
+        # the content-type HTTP header, the payload format is defined as follows: 1) Use
+        # the output_payload_format_type on the Pipeline.Destination if it is set, else:
+        # 2) Use the input_payload_format_type on the Pipeline if it is set, else: 3)
+        # Treat the payload as opaque binary data. The `data` field of the message is
         # converted to the payload format or left as-is for case 3) and then attached as
         # the payload of the HTTP request. The `content-type` header on the HTTP request
         # is set to the payload format type or left empty for case 3). However, if a

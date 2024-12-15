@@ -1585,7 +1585,7 @@ module Google
         
         # List message buses.
         # @param [String] parent
-        #   Required. The parent collection to list triggers on.
+        #   Required. The parent collection to list message buses on.
         # @param [String] filter
         #   Optional. The filter field that the list request will filter on. Possible
         #   filtersare described in https://google.aip.dev/160.
