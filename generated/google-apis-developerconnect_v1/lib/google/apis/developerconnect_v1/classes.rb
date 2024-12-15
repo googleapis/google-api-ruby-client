@@ -119,7 +119,7 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Output only. A system-assigned unique identifier for a the GitRepositoryLink.
+        # Output only. A system-assigned unique identifier for the Connection.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -614,7 +614,7 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Output only. A system-assigned unique identifier for a the GitRepositoryLink.
+        # Output only. A system-assigned unique identifier for the GitRepositoryLink.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
