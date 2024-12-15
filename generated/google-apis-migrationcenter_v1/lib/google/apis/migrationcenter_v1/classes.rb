@@ -3181,6 +3181,11 @@ module Google
         # @return [String]
         attr_accessor :cpu_architecture
       
+        # Optional. CPU manufacturer, e.g., "Intel", "AMD".
+        # Corresponds to the JSON property `cpuManufacturer`
+        # @return [String]
+        attr_accessor :cpu_manufacturer
+      
         # CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc.
         # Corresponds to the JSON property `cpuName`
         # @return [String]
@@ -3220,6 +3225,7 @@ module Google
         def update!(**args)
           @bios = args[:bios] if args.key?(:bios)
           @cpu_architecture = args[:cpu_architecture] if args.key?(:cpu_architecture)
+          @cpu_manufacturer = args[:cpu_manufacturer] if args.key?(:cpu_manufacturer)
           @cpu_name = args[:cpu_name] if args.key?(:cpu_name)
           @cpu_socket_count = args[:cpu_socket_count] if args.key?(:cpu_socket_count)
           @cpu_thread_count = args[:cpu_thread_count] if args.key?(:cpu_thread_count)

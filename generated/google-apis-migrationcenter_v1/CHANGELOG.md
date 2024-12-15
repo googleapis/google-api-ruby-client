@@ -1,5 +1,9 @@
 # Release history for google-apis-migrationcenter_v1
 
+### v0.20.0 (2024-12-15)
+
+* Regenerated from discovery document revision 20241205
+
 ### v0.19.0 (2024-11-24)
 
 * Regenerated from discovery document revision 20241114
