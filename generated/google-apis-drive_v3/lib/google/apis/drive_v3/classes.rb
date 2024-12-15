@@ -3054,9 +3054,12 @@ module Google
       end
       
       # A permission for a file. A permission grants a user, group, domain, or the
-      # world access to a file or a folder hierarchy. Some resource methods (such as `
-      # permissions.update`) require a `permissionId`. Use the `permissions.list`
-      # method to retrieve the ID for a file, folder, or shared drive.
+      # world access to a file or a folder hierarchy. By default, permissions requests
+      # only return a subset of fields. Permission kind, ID, type, and role are always
+      # returned. To retrieve specific fields, see https://developers.google.com/drive/
+      # api/guides/fields-parameter. Some resource methods (such as `permissions.
+      # update`) require a `permissionId`. Use the `permissions.list` method to
+      # retrieve the ID for a file, folder, or shared drive.
       class Permission
         include Google::Apis::Core::Hashable
       

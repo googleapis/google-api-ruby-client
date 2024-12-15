@@ -52,6 +52,10 @@ module Google
         end
         
         # Gets information about the user, the user's Drive, and system capabilities.
+        # For more information, see [Return user info](https://developers.google.com/
+        # drive/api/guides/user-info). Required: The `fields` parameter must be set. To
+        # return the exact fields you need, see [Return specific fields](https://
+        # developers.google.com/drive/api/guides/fields-parameter).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -182,7 +186,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a specific app.
+        # Gets a specific app. For more information, see [Return user info](https://
+        # developers.google.com/drive/api/guides/user-info).
         # @param [String] app_id
         #   The ID of the app.
         # @param [String] fields
@@ -212,7 +217,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists a user's installed apps.
+        # Lists a user's installed apps. For more information, see [Return user info](
+        # https://developers.google.com/drive/api/guides/user-info).
         # @param [String] app_filter_extensions
         #   A comma-separated list of file extensions to limit returned results. All
         #   results within the given app query scope which can open any of the given file
@@ -255,7 +261,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the starting pageToken for listing future changes.
+        # Gets the starting pageToken for listing future changes. For more information,
+        # see [Retrieve changes](https://developers.google.com/drive/api/guides/manage-
+        # changes).
         # @param [String] drive_id
         #   The ID of the shared drive for which the starting pageToken for listing future
         #   changes from that shared drive will be returned.
@@ -295,7 +303,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the changes for a user or shared drive.
+        # Lists the changes for a user or shared drive. For more information, see [
+        # Retrieve changes](https://developers.google.com/drive/api/guides/manage-
+        # changes).
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of 'nextPageToken' from the previous response or to the
@@ -377,7 +387,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Subscribes to changes for a user.
+        # Subscribes to changes for a user. For more information, see [Notifications for
+        # resource changes](https://developers.google.com/drive/api/guides/push).
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of 'nextPageToken' from the previous response or to the
@@ -462,7 +473,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Stops watching resources through this channel.
+        # Stops watching resources through this channel. For more information, see [
+        # Notifications for resource changes](https://developers.google.com/drive/api/
+        # guides/push).
         # @param [Google::Apis::DriveV3::Channel] channel_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -490,7 +503,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a comment on a file.
+        # Creates a comment on a file. For more information, see [Manage comments and
+        # replies](https://developers.google.com/drive/api/guides/manage-comments).
+        # Required: The `fields` parameter must be set. To return the exact fields you
+        # need, see [Return specific fields](https://developers.google.com/drive/api/
+        # guides/fields-parameter).
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::Comment] comment_object
@@ -523,7 +540,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a comment.
+        # Deletes a comment. For more information, see [Manage comments and replies](
+        # https://developers.google.com/drive/api/guides/manage-comments). Required: The
+        # `fields` parameter must be set. To return the exact fields you need, see [
+        # Return specific fields](https://developers.google.com/drive/api/guides/fields-
+        # parameter).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -554,7 +575,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a comment by ID.
+        # Gets a comment by ID. For more information, see [Manage comments and replies](
+        # https://developers.google.com/drive/api/guides/manage-comments). Required: The
+        # `fields` parameter must be set. To return the exact fields you need, see [
+        # Return specific fields](https://developers.google.com/drive/api/guides/fields-
+        # parameter).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -591,7 +616,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists a file's comments.
+        # Lists a file's comments. For more information, see [Manage comments and
+        # replies](https://developers.google.com/drive/api/guides/manage-comments).
+        # Required: The `fields` parameter must be set. To return the exact fields you
+        # need, see [Return specific fields](https://developers.google.com/drive/api/
+        # guides/fields-parameter).
         # @param [String] file_id
         #   The ID of the file.
         # @param [Boolean] include_deleted
@@ -636,7 +665,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a comment with patch semantics.
+        # Updates a comment with patch semantics. For more information, see [Manage
+        # comments and replies](https://developers.google.com/drive/api/guides/manage-
+        # comments). Required: The `fields` parameter must be set. To return the exact
+        # fields you need, see [Return specific fields](https://developers.google.com/
+        # drive/api/guides/fields-parameter).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
