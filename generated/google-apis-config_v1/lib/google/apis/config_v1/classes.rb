@@ -758,7 +758,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of Previewss.
+        # List of Previews.
         # Corresponds to the JSON property `previews`
         # @return [Array<Google::Apis::ConfigV1::Preview>]
         attr_accessor :previews
@@ -790,7 +790,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of Resourcess.
+        # List of Resources.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ConfigV1::Resource>]
         attr_accessor :resources
@@ -1077,9 +1077,9 @@ module Google
         attr_accessor :preview_metadata
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # operation. Operations that have successfully been cancelled have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of `1`,
+        # corresponding to `Code.CANCELLED`.
         # Corresponds to the JSON property `requestedCancellation`
         # @return [Boolean]
         attr_accessor :requested_cancellation
@@ -1850,7 +1850,7 @@ module Google
         # @return [Google::Apis::ConfigV1::GitSource]
         attr_accessor :git_source
       
-        # Input variable values for the Terraform blueprint.
+        # Optional. Input variable values for the Terraform blueprint.
         # Corresponds to the JSON property `inputValues`
         # @return [Hash<String,Google::Apis::ConfigV1::TerraformVariable>]
         attr_accessor :input_values
@@ -1943,7 +1943,7 @@ module Google
       class TerraformVariable
         include Google::Apis::Core::Hashable
       
-        # Input variable value.
+        # Optional. Input variable value.
         # Corresponds to the JSON property `inputValue`
         # @return [Object]
         attr_accessor :input_value
