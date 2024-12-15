@@ -1,5 +1,9 @@
 # Release history for google-apis-domains_v1beta1
 
+### v0.41.0 (2024-12-15)
+
+* Regenerated from discovery document revision 20241209
+
 ### v0.40.0 (2024-12-02)
 
 * Regenerated from discovery document revision 20240724
