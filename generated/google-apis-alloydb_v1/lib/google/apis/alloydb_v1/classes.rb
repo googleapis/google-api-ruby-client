@@ -837,12 +837,32 @@ module Google
         end
       end
       
-      # Options for exporting data in CSV format. For now, we only support a query to
-      # get the data that needs to be exported.
+      # Options for exporting data in CSV format.
       class CsvExportOptions
         include Google::Apis::Core::Hashable
       
-        # Required. The select_query used to extract the data.
+        # Optional. Specifies the character that should appear before a data character
+        # that needs to be escaped. The default is the same as quote character. The
+        # value of this argument has to be a character in Hex ASCII Code.
+        # Corresponds to the JSON property `escapeCharacter`
+        # @return [String]
+        attr_accessor :escape_character
+      
+        # Optional. Specifies the character that separates columns within each row (line)
+        # of the file. The default is comma. The value of this argument has to be a
+        # character in Hex ASCII Code.
+        # Corresponds to the JSON property `fieldDelimiter`
+        # @return [String]
+        attr_accessor :field_delimiter
+      
+        # Optional. Specifies the quoting character to be used when a data value is
+        # quoted. The default is double-quote. The value of this argument has to be a
+        # character in Hex ASCII Code.
+        # Corresponds to the JSON property `quoteCharacter`
+        # @return [String]
+        attr_accessor :quote_character
+      
+        # Required. The SELECT query used to extract the data.
         # Corresponds to the JSON property `selectQuery`
         # @return [String]
         attr_accessor :select_query
@@ -853,6 +873,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @escape_character = args[:escape_character] if args.key?(:escape_character)
+          @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
+          @quote_character = args[:quote_character] if args.key?(:quote_character)
           @select_query = args[:select_query] if args.key?(:select_query)
         end
       end
@@ -925,15 +948,14 @@ module Google
       class ExportClusterRequest
         include Google::Apis::Core::Hashable
       
-        # Options for exporting data in CSV format. For now, we only support a query to
-        # get the data that needs to be exported.
+        # Options for exporting data in CSV format.
         # Corresponds to the JSON property `csvExportOptions`
         # @return [Google::Apis::AlloydbV1::CsvExportOptions]
         attr_accessor :csv_export_options
       
-        # Required. Name of the database where the query will be executed. Note - Value
-        # provided should be the same as expected from `SELECT current_database();` and
-        # NOT as a resource reference.
+        # Required. Name of the database where the export command will be executed. Note
+        # - Value provided should be the same as expected from `SELECT current_database()
+        # ;` and NOT as a resource reference.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -942,6 +964,11 @@ module Google
         # Corresponds to the JSON property `gcsDestination`
         # @return [Google::Apis::AlloydbV1::GcsDestination]
         attr_accessor :gcs_destination
+      
+        # Options for exporting data in SQL format.
+        # Corresponds to the JSON property `sqlExportOptions`
+        # @return [Google::Apis::AlloydbV1::SqlExportOptions]
+        attr_accessor :sql_export_options
       
         def initialize(**args)
            update!(**args)
@@ -952,6 +979,7 @@ module Google
           @csv_export_options = args[:csv_export_options] if args.key?(:csv_export_options)
           @database = args[:database] if args.key?(:database)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @sql_export_options = args[:sql_export_options] if args.key?(:sql_export_options)
         end
       end
       
@@ -1016,8 +1044,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The path to the file in Google Cloud Storage where the export will
-        # be stored. The URI is in the form `gs://bucketName/fileName`. If the file
-        # already exists, the request succeeds, but the operation fails.
+        # be stored. The URI is in the form `gs://bucketName/fileName`.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1950,9 +1977,9 @@ module Google
         attr_accessor :end_time
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # operation. Operations that have successfully been cancelled have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
         # Corresponds to the JSON property `requestedCancellation`
         # @return [Boolean]
         attr_accessor :requested_cancellation
@@ -2353,6 +2380,48 @@ module Google
         # Update properties of this object
         def update!(**args)
           @primary_cluster_name = args[:primary_cluster_name] if args.key?(:primary_cluster_name)
+        end
+      end
+      
+      # Options for exporting data in SQL format.
+      class SqlExportOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, output commands to DROP all the dumped database objects
+        # prior to outputting the commands for creating them.
+        # Corresponds to the JSON property `cleanTargetObjects`
+        # @return [Boolean]
+        attr_accessor :clean_target_objects
+        alias_method :clean_target_objects?, :clean_target_objects
+      
+        # Optional. If true, use DROP ... IF EXISTS commands to check for the object's
+        # existence before dropping it in clean_target_objects mode.
+        # Corresponds to the JSON property `ifExistTargetObjects`
+        # @return [Boolean]
+        attr_accessor :if_exist_target_objects
+        alias_method :if_exist_target_objects?, :if_exist_target_objects
+      
+        # Optional. If true, only export the schema.
+        # Corresponds to the JSON property `schemaOnly`
+        # @return [Boolean]
+        attr_accessor :schema_only
+        alias_method :schema_only?, :schema_only
+      
+        # Optional. Tables to export from.
+        # Corresponds to the JSON property `tables`
+        # @return [Array<String>]
+        attr_accessor :tables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clean_target_objects = args[:clean_target_objects] if args.key?(:clean_target_objects)
+          @if_exist_target_objects = args[:if_exist_target_objects] if args.key?(:if_exist_target_objects)
+          @schema_only = args[:schema_only] if args.key?(:schema_only)
+          @tables = args[:tables] if args.key?(:tables)
         end
       end
       
@@ -3162,6 +3231,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :shard_count
       
+        # Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto
+        # validations again after bug fix.
+        # Corresponds to the JSON property `vcpuCount`
+        # @return [Float]
+        attr_accessor :vcpu_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3171,6 +3246,7 @@ module Google
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
           @memory_size_in_bytes = args[:memory_size_in_bytes] if args.key?(:memory_size_in_bytes)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
+          @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
         end
       end
       

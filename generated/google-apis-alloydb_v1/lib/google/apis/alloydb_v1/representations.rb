@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlExportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -749,6 +755,9 @@ module Google
       class CsvExportOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :escape_character, as: 'escapeCharacter'
+          property :field_delimiter, as: 'fieldDelimiter'
+          property :quote_character, as: 'quoteCharacter'
           property :select_query, as: 'selectQuery'
         end
       end
@@ -781,6 +790,8 @@ module Google
       
           property :database, as: 'database'
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::AlloydbV1::GcsDestination, decorator: Google::Apis::AlloydbV1::GcsDestination::Representation
+      
+          property :sql_export_options, as: 'sqlExportOptions', class: Google::Apis::AlloydbV1::SqlExportOptions, decorator: Google::Apis::AlloydbV1::SqlExportOptions::Representation
       
         end
       end
@@ -1151,6 +1162,16 @@ module Google
         end
       end
       
+      class SqlExportOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clean_target_objects, as: 'cleanTargetObjects'
+          property :if_exist_target_objects, as: 'ifExistTargetObjects'
+          property :schema_only, as: 'schemaOnly'
+          collection :tables, as: 'tables'
+        end
+      end
+      
       class SslConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1355,6 +1376,7 @@ module Google
           property :cpu_count, as: 'cpuCount'
           property :memory_size_in_bytes, :numeric_string => true, as: 'memorySizeInBytes'
           property :shard_count, as: 'shardCount'
+          property :vcpu_count, as: 'vcpuCount'
         end
       end
       
