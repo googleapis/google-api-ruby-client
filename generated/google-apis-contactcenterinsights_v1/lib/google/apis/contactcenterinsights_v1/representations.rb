@@ -2490,6 +2490,8 @@ module Google
       class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue_model, as: 'issueModel', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModel, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModel::Representation
+      
         end
       end
       
@@ -3963,6 +3965,8 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue_model, as: 'issueModel', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModel, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModel::Representation
+      
         end
       end
       

@@ -2870,12 +2870,18 @@ module Google
       class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse
         include Google::Apis::Core::Hashable
       
+        # The issue model resource.
+        # Corresponds to the JSON property `issueModel`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModel]
+        attr_accessor :issue_model
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @issue_model = args[:issue_model] if args.key?(:issue_model)
         end
       end
       
@@ -7976,12 +7982,18 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse
         include Google::Apis::Core::Hashable
       
+        # The issue model resource.
+        # Corresponds to the JSON property `issueModel`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModel]
+        attr_accessor :issue_model
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @issue_model = args[:issue_model] if args.key?(:issue_model)
         end
       end
       
