@@ -22,7 +22,7 @@ module Google
     module GamesV1
       # Google Play Game Services
       #
-      # The Google Play games service allows developers to enhance games with social
+      # The Google Play Games Service allows developers to enhance games with social
       #  leaderboards, achievements, game state, sign-in with Google, and more.
       #
       # @example
