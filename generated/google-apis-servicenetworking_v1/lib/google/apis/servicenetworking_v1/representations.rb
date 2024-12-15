@@ -1176,6 +1176,7 @@ module Google
       class Documentation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_iam_info, as: 'additionalIamInfo'
           property :documentation_root_url, as: 'documentationRootUrl'
           property :overview, as: 'overview'
           collection :pages, as: 'pages', class: Google::Apis::ServicenetworkingV1::Page, decorator: Google::Apis::ServicenetworkingV1::Page::Representation
