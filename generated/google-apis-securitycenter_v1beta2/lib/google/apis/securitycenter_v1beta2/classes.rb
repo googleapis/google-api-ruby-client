@@ -1390,6 +1390,59 @@ module Google
         end
       end
       
+      # Details about data retention deletion violations, in which the data is non-
+      # compliant based on their retention or deletion time, as defined in the
+      # applicable data security policy. The Data Retention Deletion (DRD) control is
+      # a control of the DSPM (Data Security Posture Management) suite that enables
+      # organizations to manage data retention and deletion policies in compliance
+      # with regulations, such as GDPR and CRPA. DRD supports two primary policy types:
+      # maximum storage length (max TTL) and minimum storage length (min TTL). Both
+      # are aimed at helping organizations meet regulatory and data management
+      # commitments.
+      class DataRetentionDeletionEvent
+        include Google::Apis::Core::Hashable
+      
+        # Number of objects that violated the policy for this resource. If the number is
+        # less than 1,000, then the value of this field is the exact number. If the
+        # number of objects that violated the policy is greater than or equal to 1,000,
+        # then the value of this field is 1000.
+        # Corresponds to the JSON property `dataObjectCount`
+        # @return [Fixnum]
+        attr_accessor :data_object_count
+      
+        # Timestamp indicating when the event was detected.
+        # Corresponds to the JSON property `eventDetectionTime`
+        # @return [String]
+        attr_accessor :event_detection_time
+      
+        # Type of the DRD event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Maximum duration of retention allowed from the DRD control. This comes from
+        # the DRD control where users set a max TTL for their data. For example, suppose
+        # that a user set the max TTL for a Cloud Storage bucket to 90 days. However, an
+        # object in that bucket is 100 days old. In this case, a
+        # DataRetentionDeletionEvent will be generated for that Cloud Storage bucket,
+        # and the max_retention_allowed is 90 days.
+        # Corresponds to the JSON property `maxRetentionAllowed`
+        # @return [String]
+        attr_accessor :max_retention_allowed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_object_count = args[:data_object_count] if args.key?(:data_object_count)
+          @event_detection_time = args[:event_detection_time] if args.key?(:event_detection_time)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @max_retention_allowed = args[:max_retention_allowed] if args.key?(:max_retention_allowed)
+        end
+      end
+      
       # Represents database access information, such as queries. A database may be a
       # sub-resource of an instance (as in the case of Cloud SQL instances or Cloud
       # Spanner instances), or the database instance itself. Some database resources
@@ -1933,6 +1986,11 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta2::DataFlowEvent>]
         attr_accessor :data_flow_events
       
+        # Data retention deletion events associated with the finding.
+        # Corresponds to the JSON property `dataRetentionDeletionEvents`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::DataRetentionDeletionEvent>]
+        attr_accessor :data_retention_deletion_events
+      
         # Represents database access information, such as queries. A database may be a
         # sub-resource of an instance (as in the case of Cloud SQL instances or Cloud
         # Spanner instances), or the database instance itself. Some database resources
@@ -2196,6 +2254,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_access_events = args[:data_access_events] if args.key?(:data_access_events)
           @data_flow_events = args[:data_flow_events] if args.key?(:data_flow_events)
+          @data_retention_deletion_events = args[:data_retention_deletion_events] if args.key?(:data_retention_deletion_events)
           @database = args[:database] if args.key?(:database)
           @description = args[:description] if args.key?(:description)
           @disk = args[:disk] if args.key?(:disk)
@@ -4932,6 +4991,59 @@ module Google
         end
       end
       
+      # Details about data retention deletion violations, in which the data is non-
+      # compliant based on their retention or deletion time, as defined in the
+      # applicable data security policy. The Data Retention Deletion (DRD) control is
+      # a control of the DSPM (Data Security Posture Management) suite that enables
+      # organizations to manage data retention and deletion policies in compliance
+      # with regulations, such as GDPR and CRPA. DRD supports two primary policy types:
+      # maximum storage length (max TTL) and minimum storage length (min TTL). Both
+      # are aimed at helping organizations meet regulatory and data management
+      # commitments.
+      class GoogleCloudSecuritycenterV2DataRetentionDeletionEvent
+        include Google::Apis::Core::Hashable
+      
+        # Number of objects that violated the policy for this resource. If the number is
+        # less than 1,000, then the value of this field is the exact number. If the
+        # number of objects that violated the policy is greater than or equal to 1,000,
+        # then the value of this field is 1000.
+        # Corresponds to the JSON property `dataObjectCount`
+        # @return [Fixnum]
+        attr_accessor :data_object_count
+      
+        # Timestamp indicating when the event was detected.
+        # Corresponds to the JSON property `eventDetectionTime`
+        # @return [String]
+        attr_accessor :event_detection_time
+      
+        # Type of the DRD event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Maximum duration of retention allowed from the DRD control. This comes from
+        # the DRD control where users set a max TTL for their data. For example, suppose
+        # that a user set the max TTL for a Cloud Storage bucket to 90 days. However, an
+        # object in that bucket is 100 days old. In this case, a
+        # DataRetentionDeletionEvent will be generated for that Cloud Storage bucket,
+        # and the max_retention_allowed is 90 days.
+        # Corresponds to the JSON property `maxRetentionAllowed`
+        # @return [String]
+        attr_accessor :max_retention_allowed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_object_count = args[:data_object_count] if args.key?(:data_object_count)
+          @event_detection_time = args[:event_detection_time] if args.key?(:event_detection_time)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @max_retention_allowed = args[:max_retention_allowed] if args.key?(:max_retention_allowed)
+        end
+      end
+      
       # Represents database access information, such as queries. A database may be a
       # sub-resource of an instance (as in the case of Cloud SQL instances or Cloud
       # Spanner instances), or the database instance itself. Some database resources
@@ -5442,6 +5554,11 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DataFlowEvent>]
         attr_accessor :data_flow_events
       
+        # Data retention deletion events associated with the finding.
+        # Corresponds to the JSON property `dataRetentionDeletionEvents`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DataRetentionDeletionEvent>]
+        attr_accessor :data_retention_deletion_events
+      
         # Represents database access information, such as queries. A database may be a
         # sub-resource of an instance (as in the case of Cloud SQL instances or Cloud
         # Spanner instances), or the database instance itself. Some database resources
@@ -5714,6 +5831,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_access_events = args[:data_access_events] if args.key?(:data_access_events)
           @data_flow_events = args[:data_flow_events] if args.key?(:data_flow_events)
+          @data_retention_deletion_events = args[:data_retention_deletion_events] if args.key?(:data_retention_deletion_events)
           @database = args[:database] if args.key?(:database)
           @description = args[:description] if args.key?(:description)
           @disk = args[:disk] if args.key?(:disk)
@@ -5898,6 +6016,485 @@ module Google
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @signatures = args[:signatures] if args.key?(:signatures)
           @uris = args[:uris] if args.key?(:uris)
+        end
+      end
+      
+      # Security Command Center Issue.
+      class GoogleCloudSecuritycenterV2Issue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the issue was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The description of the issue in Markdown format.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The finding category or rule name that generated the issue.
+        # Corresponds to the JSON property `detection`
+        # @return [String]
+        attr_accessor :detection
+      
+        # The domains of the issue.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueDomain>]
+        attr_accessor :domains
+      
+        # The exposure score of the issue.
+        # Corresponds to the JSON property `exposureScore`
+        # @return [Float]
+        attr_accessor :exposure_score
+      
+        # The type of the issue.
+        # Corresponds to the JSON property `issueType`
+        # @return [String]
+        attr_accessor :issue_type
+      
+        # The time the issue was last observed.
+        # Corresponds to the JSON property `lastObservationTime`
+        # @return [String]
+        attr_accessor :last_observation_time
+      
+        # The mute information of the issue.
+        # Corresponds to the JSON property `mute`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueMute]
+        attr_accessor :mute
+      
+        # Identifier. The name of the issue. Format: organizations/`organization`/
+        # locations/`location`/issues/`issue`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A resource associated with the an issue.
+        # Corresponds to the JSON property `primaryResource`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResource]
+        attr_accessor :primary_resource
+      
+        # The findings related to the issue.
+        # Corresponds to the JSON property `relatedFindings`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueFinding>]
+        attr_accessor :related_findings
+      
+        # Approaches to remediate the issue in Markdown format.
+        # Corresponds to the JSON property `remediations`
+        # @return [Array<String>]
+        attr_accessor :remediations
+      
+        # Additional resources associated with the issue.
+        # Corresponds to the JSON property `secondaryResources`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResource>]
+        attr_accessor :secondary_resources
+      
+        # The security context of the issue.
+        # Corresponds to the JSON property `securityContexts`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueSecurityContext>]
+        attr_accessor :security_contexts
+      
+        # The severity of the issue.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Output only. The state of the issue.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time the issue was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @detection = args[:detection] if args.key?(:detection)
+          @domains = args[:domains] if args.key?(:domains)
+          @exposure_score = args[:exposure_score] if args.key?(:exposure_score)
+          @issue_type = args[:issue_type] if args.key?(:issue_type)
+          @last_observation_time = args[:last_observation_time] if args.key?(:last_observation_time)
+          @mute = args[:mute] if args.key?(:mute)
+          @name = args[:name] if args.key?(:name)
+          @primary_resource = args[:primary_resource] if args.key?(:primary_resource)
+          @related_findings = args[:related_findings] if args.key?(:related_findings)
+          @remediations = args[:remediations] if args.key?(:remediations)
+          @secondary_resources = args[:secondary_resources] if args.key?(:secondary_resources)
+          @security_contexts = args[:security_contexts] if args.key?(:security_contexts)
+          @severity = args[:severity] if args.key?(:severity)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The domains of an issue.
+      class GoogleCloudSecuritycenterV2IssueDomain
+        include Google::Apis::Core::Hashable
+      
+        # The domain category of the issue.
+        # Corresponds to the JSON property `domainCategory`
+        # @return [String]
+        attr_accessor :domain_category
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_category = args[:domain_category] if args.key?(:domain_category)
+        end
+      end
+      
+      # Finding related to an issue.
+      class GoogleCloudSecuritycenterV2IssueFinding
+        include Google::Apis::Core::Hashable
+      
+        # The CVE of the finding.
+        # Corresponds to the JSON property `cve`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueFindingCve]
+        attr_accessor :cve
+      
+        # The name of the finding.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The security bulletin of the finding.
+        # Corresponds to the JSON property `securityBulletin`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin]
+        attr_accessor :security_bulletin
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cve = args[:cve] if args.key?(:cve)
+          @name = args[:name] if args.key?(:name)
+          @security_bulletin = args[:security_bulletin] if args.key?(:security_bulletin)
+        end
+      end
+      
+      # The CVE of the finding.
+      class GoogleCloudSecuritycenterV2IssueFindingCve
+        include Google::Apis::Core::Hashable
+      
+        # The CVE name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The security bulletin of the finding.
+      class GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin
+        include Google::Apis::Core::Hashable
+      
+        # The security bulletin name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The mute information of the issue.
+      class GoogleCloudSecuritycenterV2IssueMute
+        include Google::Apis::Core::Hashable
+      
+        # The email address of the user who last changed the mute state of the issue.
+        # Corresponds to the JSON property `muteInitiator`
+        # @return [String]
+        attr_accessor :mute_initiator
+      
+        # The user-provided reason for muting the issue.
+        # Corresponds to the JSON property `muteReason`
+        # @return [String]
+        attr_accessor :mute_reason
+      
+        # Output only. The mute state of the issue.
+        # Corresponds to the JSON property `muteState`
+        # @return [String]
+        attr_accessor :mute_state
+      
+        # The time the issue was muted.
+        # Corresponds to the JSON property `muteUpdateTime`
+        # @return [String]
+        attr_accessor :mute_update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
+          @mute_reason = args[:mute_reason] if args.key?(:mute_reason)
+          @mute_state = args[:mute_state] if args.key?(:mute_state)
+          @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
+        end
+      end
+      
+      # A resource associated with the an issue.
+      class GoogleCloudSecuritycenterV2IssueResource
+        include Google::Apis::Core::Hashable
+      
+        # The AWS metadata of a resource associated with an issue.
+        # Corresponds to the JSON property `awsMetadata`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAwsMetadata]
+        attr_accessor :aws_metadata
+      
+        # The Azure metadata of a resource associated with an issue.
+        # Corresponds to the JSON property `azureMetadata`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAzureMetadata]
+        attr_accessor :azure_metadata
+      
+        # The cloud provider of the resource associated with the issue.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
+        # The resource-type specific display name of the resource associated with the
+        # issue.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Google Cloud metadata of a resource associated with an issue.
+        # Corresponds to the JSON property `googleCloudMetadata`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata]
+        attr_accessor :google_cloud_metadata
+      
+        # The full resource name of the resource associated with the issue.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of the resource associated with the issue.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
+          @azure_metadata = args[:azure_metadata] if args.key?(:azure_metadata)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @google_cloud_metadata = args[:google_cloud_metadata] if args.key?(:google_cloud_metadata)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The AWS metadata of a resource associated with an issue.
+      class GoogleCloudSecuritycenterV2IssueResourceAwsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The AWS account of the resource associated with the issue.
+        # Corresponds to the JSON property `account`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount]
+        attr_accessor :account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account = args[:account] if args.key?(:account)
+        end
+      end
+      
+      # The AWS account of the resource associated with the issue.
+      class GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount
+        include Google::Apis::Core::Hashable
+      
+        # The AWS account ID of the resource associated with the issue.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The AWS account name of the resource associated with the issue.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The Azure metadata of a resource associated with an issue.
+      class GoogleCloudSecuritycenterV2IssueResourceAzureMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The Azure subscription of the resource associated with the issue.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
+      # The Azure subscription of the resource associated with the issue.
+      class GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription
+        include Google::Apis::Core::Hashable
+      
+        # The Azure subscription display name of the resource associated with the issue.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The Azure subscription ID of the resource associated with the issue.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Google Cloud metadata of a resource associated with an issue.
+      class GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The project ID that the resource associated with the issue belongs to.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Security context associated with an issue.
+      class GoogleCloudSecuritycenterV2IssueSecurityContext
+        include Google::Apis::Core::Hashable
+      
+        # Aggregated count of a security context.
+        # Corresponds to the JSON property `aggregatedCount`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount]
+        attr_accessor :aggregated_count
+      
+        # Context of a security context.
+        # Corresponds to the JSON property `context`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueSecurityContextContext]
+        attr_accessor :context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregated_count = args[:aggregated_count] if args.key?(:aggregated_count)
+          @context = args[:context] if args.key?(:context)
+        end
+      end
+      
+      # Aggregated count of a security context.
+      class GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount
+        include Google::Apis::Core::Hashable
+      
+        # Aggregation key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Aggregation value.
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Context of a security context.
+      class GoogleCloudSecuritycenterV2IssueSecurityContextContext
+        include Google::Apis::Core::Hashable
+      
+        # Context type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Context values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
