@@ -160,12 +160,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListQuotaRulesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListReplicationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,12 +215,6 @@ module Google
       end
       
       class OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class QuotaRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -317,6 +305,12 @@ module Google
       end
       
       class TransferStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateDirectoryServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -448,6 +442,8 @@ module Google
           property :description, as: 'description'
           property :share_name, as: 'shareName'
           property :storage_pool, as: 'storagePool'
+          property :tiering_policy, as: 'tieringPolicy', class: Google::Apis::NetappV1::TieringPolicy, decorator: Google::Apis::NetappV1::TieringPolicy::Representation
+      
           property :volume_id, as: 'volumeId'
         end
       end
@@ -597,16 +593,6 @@ module Google
         end
       end
       
-      class ListQuotaRulesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :quota_rules, as: 'quotaRules', class: Google::Apis::NetappV1::QuotaRule, decorator: Google::Apis::NetappV1::QuotaRule::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListReplicationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -707,21 +693,6 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
-        end
-      end
-      
-      class QuotaRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :disk_limit_mib, as: 'diskLimitMib'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :state, as: 'state'
-          property :state_details, as: 'stateDetails'
-          property :target, as: 'target'
-          property :type, as: 'type'
         end
       end
       
@@ -896,6 +867,13 @@ module Google
           property :total_transfer_duration, as: 'totalTransferDuration'
           property :transfer_bytes, :numeric_string => true, as: 'transferBytes'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ValidateDirectoryServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :directory_service_type, as: 'directoryServiceType'
         end
       end
       
