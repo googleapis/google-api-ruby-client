@@ -996,6 +996,31 @@ module Google
         end
       end
       
+      # The gauge value of a metric.
+      class DataflowGaugeValue
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp when the gauge was recorded.
+        # Corresponds to the JSON property `measuredTime`
+        # @return [String]
+        attr_accessor :measured_time
+      
+        # The value of the gauge.
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @measured_time = args[:measured_time] if args.key?(:measured_time)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Summary statistics for a population of values. HistogramValue contains a
       # sequence of buckets and gives a count of values that fall into each bucket.
       # Bucket boundares are defined by a formula and bucket widths are either fixed
@@ -3493,6 +3518,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metric_labels
       
+        # The gauge value of a metric.
+        # Corresponds to the JSON property `valueGauge64`
+        # @return [Google::Apis::DataflowV1b3::DataflowGaugeValue]
+        attr_accessor :value_gauge64
+      
         # Summary statistics for a population of values. HistogramValue contains a
         # sequence of buckets and gives a count of values that fall into each bucket.
         # Bucket boundares are defined by a formula and bucket widths are either fixed
@@ -3514,6 +3544,7 @@ module Google
         def update!(**args)
           @metric = args[:metric] if args.key?(:metric)
           @metric_labels = args[:metric_labels] if args.key?(:metric_labels)
+          @value_gauge64 = args[:value_gauge64] if args.key?(:value_gauge64)
           @value_histogram = args[:value_histogram] if args.key?(:value_histogram)
           @value_int64 = args[:value_int64] if args.key?(:value_int64)
         end

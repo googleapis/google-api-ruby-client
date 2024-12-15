@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataflowGaugeValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataflowHistogramValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1417,6 +1423,14 @@ module Google
         end
       end
       
+      class DataflowGaugeValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :measured_time, as: 'measuredTime'
+          property :value, :numeric_string => true, as: 'value'
+        end
+      end
+      
       class DataflowHistogramValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2067,6 +2081,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metric, as: 'metric'
           hash :metric_labels, as: 'metricLabels'
+          property :value_gauge64, as: 'valueGauge64', class: Google::Apis::DataflowV1b3::DataflowGaugeValue, decorator: Google::Apis::DataflowV1b3::DataflowGaugeValue::Representation
+      
           property :value_histogram, as: 'valueHistogram', class: Google::Apis::DataflowV1b3::DataflowHistogramValue, decorator: Google::Apis::DataflowV1b3::DataflowHistogramValue::Representation
       
           property :value_int64, :numeric_string => true, as: 'valueInt64'
