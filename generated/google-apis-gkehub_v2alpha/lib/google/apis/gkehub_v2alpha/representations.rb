@@ -250,12 +250,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FeatureConfigRef
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class FeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -960,15 +954,6 @@ module Google
         end
       end
       
-      class FeatureConfigRef
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :config, as: 'config'
-          property :config_update_time, as: 'configUpdateTime'
-          property :uuid, as: 'uuid'
-        end
-      end
-      
       class FeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1240,8 +1225,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
-          property :feature_config_ref, as: 'featureConfigRef', class: Google::Apis::GkehubV2alpha::FeatureConfigRef, decorator: Google::Apis::GkehubV2alpha::FeatureConfigRef::Representation
-      
           hash :labels, as: 'labels'
           property :lifecycle_state, as: 'lifecycleState', class: Google::Apis::GkehubV2alpha::LifecycleState, decorator: Google::Apis::GkehubV2alpha::LifecycleState::Representation
       
