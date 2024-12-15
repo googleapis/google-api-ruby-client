@@ -437,8 +437,7 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # WorkloadPolicyConfig is the configuration of workload policy for autopilot
-        # clusters.
+        # WorkloadPolicyConfig is the configuration related to GCW workload policy
         # Corresponds to the JSON property `workloadPolicyConfig`
         # @return [Google::Apis::ContainerV1beta1::WorkloadPolicyConfig]
         attr_accessor :workload_policy_config
@@ -1777,8 +1776,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig]
         attr_accessor :desired_authenticator_groups_config
       
-        # WorkloadPolicyConfig is the configuration of workload policy for autopilot
-        # clusters.
+        # WorkloadPolicyConfig is the configuration related to GCW workload policy
         # Corresponds to the JSON property `desiredAutopilotWorkloadPolicyConfig`
         # @return [Google::Apis::ContainerV1beta1::WorkloadPolicyConfig]
         attr_accessor :desired_autopilot_workload_policy_config
@@ -5064,6 +5062,12 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # The maximum duration for the nodes to exist. If unspecified, the nodes can
+        # exist indefinitely.
+        # Corresponds to the JSON property `maxRunDuration`
+        # @return [String]
+        attr_accessor :max_run_duration
+      
         # The metadata key/value pairs assigned to instances in the cluster. Keys must
         # conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length.
         # These are reflected as part of a URL in the metadata server. Additionally, to
@@ -5246,6 +5250,7 @@ module Google
           @local_ssd_encryption_mode = args[:local_ssd_encryption_mode] if args.key?(:local_ssd_encryption_mode)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @node_group = args[:node_group] if args.key?(:node_group)
@@ -8503,6 +8508,12 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # The maximum duration for the nodes to exist. If unspecified, the nodes can
+        # exist indefinitely.
+        # Corresponds to the JSON property `maxRunDuration`
+        # @return [String]
+        attr_accessor :max_run_duration
+      
         # The name (project, location, cluster, node pool) of the node pool to update.
         # Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
         # Corresponds to the JSON property `name`
@@ -8655,6 +8666,7 @@ module Google
           @locations = args[:locations] if args.key?(:locations)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
           @name = args[:name] if args.key?(:name)
           @node_network_config = args[:node_network_config] if args.key?(:node_network_config)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
@@ -9350,8 +9362,7 @@ module Google
         end
       end
       
-      # WorkloadPolicyConfig is the configuration of workload policy for autopilot
-      # clusters.
+      # WorkloadPolicyConfig is the configuration related to GCW workload policy
       class WorkloadPolicyConfig
         include Google::Apis::Core::Hashable
       

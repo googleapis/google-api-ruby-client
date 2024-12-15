@@ -2688,6 +2688,7 @@ module Google
           property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig::Representation
       
           property :machine_type, as: 'machineType'
+          property :max_run_duration, as: 'maxRunDuration'
           hash :metadata, as: 'metadata'
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :node_group, as: 'nodeGroup'
@@ -3558,6 +3559,7 @@ module Google
           property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig::Representation
       
           property :machine_type, as: 'machineType'
+          property :max_run_duration, as: 'maxRunDuration'
           property :name, as: 'name'
           property :node_network_config, as: 'nodeNetworkConfig', class: Google::Apis::ContainerV1beta1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1beta1::NodeNetworkConfig::Representation
       
