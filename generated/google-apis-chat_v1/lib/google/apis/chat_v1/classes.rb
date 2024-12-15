@@ -500,21 +500,24 @@ module Google
         # components of a card or dialog](https://developers.google.com/workspace/chat/
         # design-components-card-dialog). * For Google Workspace Add-ons, see [Card-
         # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
-        # cards). **Example: Card message for a Google Chat app** ![Example contact card]
-        # (https://developers.google.com/workspace/chat/images/card_api_reference.png)
-        # To create the sample card message in Google Chat, use the following JSON: ``` `
-        # "cardsV2": [ ` "cardId": "unique-card-id", "card": ` "header": ` "title": "
-        # Sasha", "subtitle": "Software Engineer", "imageUrl": "https://developers.
-        # google.com/workspace/chat/images/quickstart-app-avatar.png", "imageType": "
-        # CIRCLE", "imageAltText": "Avatar for Sasha" `, "sections": [ ` "header": "
-        # Contact Info", "collapsible": true, "uncollapsibleWidgetsCount": 1, "widgets":
-        # [ ` "decoratedText": ` "startIcon": ` "knownIcon": "EMAIL" `, "text": "sasha@
-        # example.com" ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PERSON" `,
-        # "text": "Online" ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE"
-        # `, "text": "+1 (555) 555-1234" ` `, ` "buttonList": ` "buttons": [ ` "text": "
-        # Share", "onClick": ` "openLink": ` "url": "https://example.com/share" ` ` `, `
-        # "text": "Edit", "onClick": ` "action": ` "function": "goToView", "parameters":
-        # [ ` "key": "viewType", "value": "EDIT" ` ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
+        # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
+        # limit are ignored. This limit applies to both card messages and dialogs in
+        # Google Chat apps, and to cards in Google Workspace Add-ons. **Example: Card
+        # message for a Google Chat app** ![Example contact card](https://developers.
+        # google.com/workspace/chat/images/card_api_reference.png) To create the sample
+        # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
+        # cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle":
+        # "Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
+        # images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "
+        # Avatar for Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible":
+        # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
+        # startIcon": ` "knownIcon": "EMAIL" `, "text": "sasha@example.com" ` `, ` "
+        # decoratedText": ` "startIcon": ` "knownIcon": "PERSON" `, "text": "Online" ` `,
+        # ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE" `, "text": "+1 (555)
+        # 555-1234" ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": ` "
+        # openLink": ` "url": "https://example.com/share" ` ` `, ` "text": "Edit", "
+        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+        # viewType", "value": "EDIT" ` ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :card
@@ -1045,21 +1048,24 @@ module Google
         # components of a card or dialog](https://developers.google.com/workspace/chat/
         # design-components-card-dialog). * For Google Workspace Add-ons, see [Card-
         # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
-        # cards). **Example: Card message for a Google Chat app** ![Example contact card]
-        # (https://developers.google.com/workspace/chat/images/card_api_reference.png)
-        # To create the sample card message in Google Chat, use the following JSON: ``` `
-        # "cardsV2": [ ` "cardId": "unique-card-id", "card": ` "header": ` "title": "
-        # Sasha", "subtitle": "Software Engineer", "imageUrl": "https://developers.
-        # google.com/workspace/chat/images/quickstart-app-avatar.png", "imageType": "
-        # CIRCLE", "imageAltText": "Avatar for Sasha" `, "sections": [ ` "header": "
-        # Contact Info", "collapsible": true, "uncollapsibleWidgetsCount": 1, "widgets":
-        # [ ` "decoratedText": ` "startIcon": ` "knownIcon": "EMAIL" `, "text": "sasha@
-        # example.com" ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PERSON" `,
-        # "text": "Online" ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE"
-        # `, "text": "+1 (555) 555-1234" ` `, ` "buttonList": ` "buttons": [ ` "text": "
-        # Share", "onClick": ` "openLink": ` "url": "https://example.com/share" ` ` `, `
-        # "text": "Edit", "onClick": ` "action": ` "function": "goToView", "parameters":
-        # [ ` "key": "viewType", "value": "EDIT" ` ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
+        # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
+        # limit are ignored. This limit applies to both card messages and dialogs in
+        # Google Chat apps, and to cards in Google Workspace Add-ons. **Example: Card
+        # message for a Google Chat app** ![Example contact card](https://developers.
+        # google.com/workspace/chat/images/card_api_reference.png) To create the sample
+        # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
+        # cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle":
+        # "Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
+        # images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "
+        # Avatar for Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible":
+        # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
+        # startIcon": ` "knownIcon": "EMAIL" `, "text": "sasha@example.com" ` `, ` "
+        # decoratedText": ` "startIcon": ` "knownIcon": "PERSON" `, "text": "Online" ` `,
+        # ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE" `, "text": "+1 (555)
+        # 555-1234" ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": ` "
+        # openLink": ` "url": "https://example.com/share" ` ` `, ` "text": "Edit", "
+        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+        # viewType", "value": "EDIT" ` ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
         # Corresponds to the JSON property `body`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :body
@@ -1573,21 +1579,24 @@ module Google
       # components of a card or dialog](https://developers.google.com/workspace/chat/
       # design-components-card-dialog). * For Google Workspace Add-ons, see [Card-
       # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
-      # cards). **Example: Card message for a Google Chat app** ![Example contact card]
-      # (https://developers.google.com/workspace/chat/images/card_api_reference.png)
-      # To create the sample card message in Google Chat, use the following JSON: ``` `
-      # "cardsV2": [ ` "cardId": "unique-card-id", "card": ` "header": ` "title": "
-      # Sasha", "subtitle": "Software Engineer", "imageUrl": "https://developers.
-      # google.com/workspace/chat/images/quickstart-app-avatar.png", "imageType": "
-      # CIRCLE", "imageAltText": "Avatar for Sasha" `, "sections": [ ` "header": "
-      # Contact Info", "collapsible": true, "uncollapsibleWidgetsCount": 1, "widgets":
-      # [ ` "decoratedText": ` "startIcon": ` "knownIcon": "EMAIL" `, "text": "sasha@
-      # example.com" ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PERSON" `,
-      # "text": "Online" ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE"
-      # `, "text": "+1 (555) 555-1234" ` `, ` "buttonList": ` "buttons": [ ` "text": "
-      # Share", "onClick": ` "openLink": ` "url": "https://example.com/share" ` ` `, `
-      # "text": "Edit", "onClick": ` "action": ` "function": "goToView", "parameters":
-      # [ ` "key": "viewType", "value": "EDIT" ` ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
+      # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
+      # limit are ignored. This limit applies to both card messages and dialogs in
+      # Google Chat apps, and to cards in Google Workspace Add-ons. **Example: Card
+      # message for a Google Chat app** ![Example contact card](https://developers.
+      # google.com/workspace/chat/images/card_api_reference.png) To create the sample
+      # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
+      # cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle":
+      # "Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
+      # images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "
+      # Avatar for Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible":
+      # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
+      # startIcon": ` "knownIcon": "EMAIL" `, "text": "sasha@example.com" ` `, ` "
+      # decoratedText": ` "startIcon": ` "knownIcon": "PERSON" `, "text": "Online" ` `,
+      # ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE" `, "text": "+1 (555)
+      # 555-1234" ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": ` "
+      # openLink": ` "url": "https://example.com/share" ` ` `, ` "text": "Edit", "
+      # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+      # viewType", "value": "EDIT" ` ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
       class GoogleAppsCardV1Card
         include Google::Apis::Core::Hashable
       
@@ -1795,6 +1804,62 @@ module Google
           @image_url = args[:image_url] if args.key?(:image_url)
           @subtitle = args[:subtitle] if args.key?(:subtitle)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # [Developer Preview](https://developers.google.com/workspace/preview): A
+      # carousel, also known as a slider, rotates and displays a list of widgets in a
+      # slideshow format, with buttons navigating to the previous or next widget. For
+      # example, this is a JSON representation of a carousel that contains three text
+      # paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "textParagraph": `
+      # "text": "First text paragraph in carousel", ` ` ] `, ` "widgets": [ ` "
+      # textParagraph": ` "text": "Second text paragraph in carousel", ` ` ] `, ` "
+      # widgets": [ ` "textParagraph": ` "text": "Third text paragraph in carousel", `
+      # ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/workspace/chat):
+      class GoogleAppsCardV1Carousel
+        include Google::Apis::Core::Hashable
+      
+        # A list of cards included in the carousel.
+        # Corresponds to the JSON property `carouselCards`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1CarouselCard>]
+        attr_accessor :carousel_cards
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carousel_cards = args[:carousel_cards] if args.key?(:carousel_cards)
+        end
+      end
+      
+      # [Developer Preview](https://developers.google.com/workspace/preview): A card
+      # that can be displayed as a carousel item. [Google Chat apps](https://
+      # developers.google.com/workspace/chat):
+      class GoogleAppsCardV1CarouselCard
+        include Google::Apis::Core::Hashable
+      
+        # A list of widgets displayed at the bottom of the carousel card. The widgets
+        # are displayed in the order that they are specified.
+        # Corresponds to the JSON property `footerWidgets`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1NestedWidget>]
+        attr_accessor :footer_widgets
+      
+        # A list of widgets displayed in the carousel card. The widgets are displayed in
+        # the order that they are specified.
+        # Corresponds to the JSON property `widgets`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1NestedWidget>]
+        attr_accessor :widgets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @footer_widgets = args[:footer_widgets] if args.key?(:footer_widgets)
+          @widgets = args[:widgets] if args.key?(:widgets)
         end
       end
       
@@ -2554,6 +2619,54 @@ module Google
         end
       end
       
+      # [Developer Preview](https://developers.google.com/workspace/preview): A list
+      # of widgets that can be displayed in a containing layout, such as a `
+      # CarouselCard`. [Google Chat apps](https://developers.google.com/workspace/chat)
+      # :
+      class GoogleAppsCardV1NestedWidget
+        include Google::Apis::Core::Hashable
+      
+        # A list of buttons layed out horizontally. For an example in Google Chat apps,
+        # see [Add a button](https://developers.google.com/workspace/chat/design-
+        # interactive-card-dialog#add_a_button). [Google Workspace Add-ons and Chat apps]
+        # (https://developers.google.com/workspace/extend):
+        # Corresponds to the JSON property `buttonList`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
+        attr_accessor :button_list
+      
+        # An image that is specified by a URL and can have an `onClick` action. For an
+        # example, see [Add an image](https://developers.google.com/workspace/chat/add-
+        # text-image-card-dialog#add_an_image). [Google Workspace Add-ons and Chat apps](
+        # https://developers.google.com/workspace/extend):
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Image]
+        attr_accessor :image
+      
+        # A paragraph of text that supports formatting. For an example in Google Chat
+        # apps, see [Add a paragraph of formatted text](https://developers.google.com/
+        # workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
+        # For more information about formatting text, see [Formatting text in Google
+        # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
+        # formatting) and [Formatting text in Google Workspace Add-ons](https://
+        # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [
+        # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend):
+        # Corresponds to the JSON property `textParagraph`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
+        attr_accessor :text_paragraph
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @button_list = args[:button_list] if args.key?(:button_list)
+          @image = args[:image] if args.key?(:image)
+          @text_paragraph = args[:text_paragraph] if args.key?(:text_paragraph)
+        end
+      end
+      
       # Represents how to respond when users click an interactive element on a card,
       # such as a button. [Google Workspace Add-ons and Chat apps](https://developers.
       # google.com/workspace/extend):
@@ -2577,21 +2690,24 @@ module Google
         # components of a card or dialog](https://developers.google.com/workspace/chat/
         # design-components-card-dialog). * For Google Workspace Add-ons, see [Card-
         # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
-        # cards). **Example: Card message for a Google Chat app** ![Example contact card]
-        # (https://developers.google.com/workspace/chat/images/card_api_reference.png)
-        # To create the sample card message in Google Chat, use the following JSON: ``` `
-        # "cardsV2": [ ` "cardId": "unique-card-id", "card": ` "header": ` "title": "
-        # Sasha", "subtitle": "Software Engineer", "imageUrl": "https://developers.
-        # google.com/workspace/chat/images/quickstart-app-avatar.png", "imageType": "
-        # CIRCLE", "imageAltText": "Avatar for Sasha" `, "sections": [ ` "header": "
-        # Contact Info", "collapsible": true, "uncollapsibleWidgetsCount": 1, "widgets":
-        # [ ` "decoratedText": ` "startIcon": ` "knownIcon": "EMAIL" `, "text": "sasha@
-        # example.com" ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PERSON" `,
-        # "text": "Online" ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE"
-        # `, "text": "+1 (555) 555-1234" ` `, ` "buttonList": ` "buttons": [ ` "text": "
-        # Share", "onClick": ` "openLink": ` "url": "https://example.com/share" ` ` `, `
-        # "text": "Edit", "onClick": ` "action": ` "function": "goToView", "parameters":
-        # [ ` "key": "viewType", "value": "EDIT" ` ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
+        # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
+        # limit are ignored. This limit applies to both card messages and dialogs in
+        # Google Chat apps, and to cards in Google Workspace Add-ons. **Example: Card
+        # message for a Google Chat app** ![Example contact card](https://developers.
+        # google.com/workspace/chat/images/card_api_reference.png) To create the sample
+        # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
+        # cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle":
+        # "Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
+        # images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "
+        # Avatar for Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible":
+        # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
+        # startIcon": ` "knownIcon": "EMAIL" `, "text": "sasha@example.com" ` `, ` "
+        # decoratedText": ` "startIcon": ` "knownIcon": "PERSON" `, "text": "Online" ` `,
+        # ` "decoratedText": ` "startIcon": ` "knownIcon": "PHONE" `, "text": "+1 (555)
+        # 555-1234" ` `, ` "buttonList": ` "buttons": [ ` "text": "Share", "onClick": ` "
+        # openLink": ` "url": "https://example.com/share" ` ` `, ` "text": "Edit", "
+        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+        # viewType", "value": "EDIT" ` ] ` ` ` ] ` ` ] ` ] ` ` ] ` ```
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :card
@@ -3245,6 +3361,19 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
         attr_accessor :button_list
       
+        # [Developer Preview](https://developers.google.com/workspace/preview): A
+        # carousel, also known as a slider, rotates and displays a list of widgets in a
+        # slideshow format, with buttons navigating to the previous or next widget. For
+        # example, this is a JSON representation of a carousel that contains three text
+        # paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "textParagraph": `
+        # "text": "First text paragraph in carousel", ` ` ] `, ` "widgets": [ ` "
+        # textParagraph": ` "text": "Second text paragraph in carousel", ` ` ] `, ` "
+        # widgets": [ ` "textParagraph": ` "text": "Third text paragraph in carousel", `
+        # ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/workspace/chat):
+        # Corresponds to the JSON property `carousel`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Carousel]
+        attr_accessor :carousel
+      
         # A list of chips layed out horizontally, which can either scroll horizontally
         # or wrap to the next line. [Google Chat apps](https://developers.google.com/
         # workspace/chat):
@@ -3389,6 +3518,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @button_list = args[:button_list] if args.key?(:button_list)
+          @carousel = args[:carousel] if args.key?(:carousel)
           @chip_list = args[:chip_list] if args.key?(:chip_list)
           @columns = args[:columns] if args.key?(:columns)
           @date_time_picker = args[:date_time_picker] if args.key?(:date_time_picker)
@@ -4901,7 +5031,7 @@ module Google
       
         # Optional. The Google Chat users or groups to invite to join the space. Omit
         # the calling user, as they are added automatically. The set currently allows up
-        # to 20 memberships (in addition to the caller). For human membership, the `
+        # to 49 memberships (in addition to the caller). For human membership, the `
         # Membership.member` field must contain a `user` with `name` populated (format: `
         # users/`user``) and `type` set to `User.Type.HUMAN`. You can only add human
         # users when setting up a space (adding Chat apps is only supported for direct
@@ -5077,6 +5207,14 @@ module Google
         attr_accessor :import_mode
         alias_method :import_mode?, :import_mode
       
+        # Output only. The time when the space will be automatically deleted by the
+        # system if it remains in import mode. Each space created in import mode must
+        # exit this mode before this expire time using `spaces.completeImport`. This
+        # field is only populated for spaces that were created with import mode.
+        # Corresponds to the JSON property `importModeExpireTime`
+        # @return [String]
+        attr_accessor :import_mode_expire_time
+      
         # Output only. Timestamp of the last message in the space.
         # Corresponds to the JSON property `lastActiveTime`
         # @return [String]
@@ -5169,6 +5307,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @external_user_allowed = args[:external_user_allowed] if args.key?(:external_user_allowed)
           @import_mode = args[:import_mode] if args.key?(:import_mode)
+          @import_mode_expire_time = args[:import_mode_expire_time] if args.key?(:import_mode_expire_time)
           @last_active_time = args[:last_active_time] if args.key?(:last_active_time)
           @membership_count = args[:membership_count] if args.key?(:membership_count)
           @name = args[:name] if args.key?(:name)
