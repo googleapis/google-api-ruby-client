@@ -493,6 +493,11 @@ module Google
         # @return [String]
         attr_accessor :storage_pool
       
+        # Defines tiering policy for the volume.
+        # Corresponds to the JSON property `tieringPolicy`
+        # @return [Google::Apis::NetappV1::TieringPolicy]
+        attr_accessor :tiering_policy
+      
         # Desired destination volume resource id. If not specified, source volume's
         # resource id will be used. This value must start with a lowercase letter
         # followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end
@@ -510,6 +515,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @share_name = args[:share_name] if args.key?(:share_name)
           @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
+          @tiering_policy = args[:tiering_policy] if args.key?(:tiering_policy)
           @volume_id = args[:volume_id] if args.key?(:volume_id)
         end
       end
@@ -1010,37 +1016,6 @@ module Google
         end
       end
       
-      # ListQuotaRulesResponse is the response to a ListQuotaRulesRequest.
-      class ListQuotaRulesResponse
-        include Google::Apis::Core::Hashable
-      
-        # A token identifying a page of results the server should return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # List of quota rules
-        # Corresponds to the JSON property `quotaRules`
-        # @return [Array<Google::Apis::NetappV1::QuotaRule>]
-        attr_accessor :quota_rules
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @quota_rules = args[:quota_rules] if args.key?(:quota_rules)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
       # ListReplicationsResponse is the result of ListReplicationsRequest.
       class ListReplicationsResponse
         include Google::Apis::Core::Hashable
@@ -1427,76 +1402,6 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
-        end
-      end
-      
-      # QuotaRule specifies the maximum disk space a user or group can use within a
-      # volume. They can be used for creating default and individual quota rules.
-      class QuotaRule
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Create time of the quota rule
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Optional. Description of the quota rule
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Required. The maximum allowed disk space in MiB.
-        # Corresponds to the JSON property `diskLimitMib`
-        # @return [Fixnum]
-        attr_accessor :disk_limit_mib
-      
-        # Optional. Labels of the quota rule
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Identifier. The resource name of the active directory. Format: `projects/`
-        # project_number`/locations/`location_id`/quotaRules/`quota_rule_id``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. State of the quota rule
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Output only. State details of the quota rule
-        # Corresponds to the JSON property `stateDetails`
-        # @return [String]
-        attr_accessor :state_details
-      
-        # Optional. The quota rule applies to the specified user or group, identified by
-        # a Unix UID/GID, Windows SID, or null for default.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # Required. The type of quota rule.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @description = args[:description] if args.key?(:description)
-          @disk_limit_mib = args[:disk_limit_mib] if args.key?(:disk_limit_mib)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-          @state = args[:state] if args.key?(:state)
-          @state_details = args[:state_details] if args.key?(:state_details)
-          @target = args[:target] if args.key?(:target)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -2223,6 +2128,26 @@ module Google
           @total_transfer_duration = args[:total_transfer_duration] if args.key?(:total_transfer_duration)
           @transfer_bytes = args[:transfer_bytes] if args.key?(:transfer_bytes)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # ValidateDirectoryServiceRequest validates the directory service policy
+      # attached to the storage pool.
+      class ValidateDirectoryServiceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Type of directory service policy attached to the storage pool.
+        # Corresponds to the JSON property `directoryServiceType`
+        # @return [String]
+        attr_accessor :directory_service_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @directory_service_type = args[:directory_service_type] if args.key?(:directory_service_type)
         end
       end
       
