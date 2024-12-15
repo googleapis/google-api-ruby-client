@@ -882,8 +882,7 @@ module Google
         end
       end
       
-      # Options for exporting data in CSV format. For now, we only support a query to
-      # get the data that needs to be exported.
+      # Options for exporting data in CSV format.
       class CsvExportOptions
         include Google::Apis::Core::Hashable
       
@@ -908,7 +907,7 @@ module Google
         # @return [String]
         attr_accessor :quote_character
       
-        # Required. The select_query used to extract the data.
+        # Required. The SELECT query used to extract the data.
         # Corresponds to the JSON property `selectQuery`
         # @return [String]
         attr_accessor :select_query
@@ -994,15 +993,14 @@ module Google
       class ExportClusterRequest
         include Google::Apis::Core::Hashable
       
-        # Options for exporting data in CSV format. For now, we only support a query to
-        # get the data that needs to be exported.
+        # Options for exporting data in CSV format.
         # Corresponds to the JSON property `csvExportOptions`
         # @return [Google::Apis::AlloydbV1beta::CsvExportOptions]
         attr_accessor :csv_export_options
       
-        # Required. Name of the database where the query will be executed. Note - Value
-        # provided should be the same as expected from `SELECT current_database();` and
-        # NOT as a resource reference.
+        # Required. Name of the database where the export command will be executed. Note
+        # - Value provided should be the same as expected from `SELECT current_database()
+        # ;` and NOT as a resource reference.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -1072,8 +1070,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The path to the file in Google Cloud Storage where the export will
-        # be stored. The URI is in the form `gs://bucketName/fileName`. If the file
-        # already exists, the request succeeds, but the operation fails.
+        # be stored. The URI is in the form `gs://bucketName/fileName`.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2157,9 +2154,9 @@ module Google
         attr_accessor :end_time
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # operation. Operations that have successfully been cancelled have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
         # Corresponds to the JSON property `requestedCancellation`
         # @return [Boolean]
         attr_accessor :requested_cancellation
@@ -2539,6 +2536,39 @@ module Google
           @continuous_backup_source = args[:continuous_backup_source] if args.key?(:continuous_backup_source)
           @request_id = args[:request_id] if args.key?(:request_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Message for registering Restoring from CloudSQL resource.
+      class RestoreFromCloudSqlRequest
+        include Google::Apis::Core::Hashable
+      
+        # The source CloudSQL backup resource.
+        # Corresponds to the JSON property `cloudsqlBackupRunSource`
+        # @return [Google::Apis::AlloydbV1beta::CloudSqlBackupRunSource]
+        attr_accessor :cloudsql_backup_run_source
+      
+        # A cluster is a collection of regional AlloyDB resources. It can include a
+        # primary instance and one or more read pool instances. All cluster resources
+        # share a storage layer, which scales as needed.
+        # Corresponds to the JSON property `cluster`
+        # @return [Google::Apis::AlloydbV1beta::Cluster]
+        attr_accessor :cluster
+      
+        # Required. ID of the requesting object.
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloudsql_backup_run_source = args[:cloudsql_backup_run_source] if args.key?(:cloudsql_backup_run_source)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
         end
       end
       
@@ -3411,6 +3441,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :shard_count
       
+        # Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto
+        # validations again after bug fix.
+        # Corresponds to the JSON property `vcpuCount`
+        # @return [Float]
+        attr_accessor :vcpu_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3420,6 +3456,7 @@ module Google
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
           @memory_size_in_bytes = args[:memory_size_in_bytes] if args.key?(:memory_size_in_bytes)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
+          @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
         end
       end
       
