@@ -370,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreFromCloudSqlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecondaryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1240,6 +1246,17 @@ module Google
         end
       end
       
+      class RestoreFromCloudSqlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloudsql_backup_run_source, as: 'cloudsqlBackupRunSource', class: Google::Apis::AlloydbV1alpha::CloudSqlBackupRunSource, decorator: Google::Apis::AlloydbV1alpha::CloudSqlBackupRunSource::Representation
+      
+          property :cluster, as: 'cluster', class: Google::Apis::AlloydbV1alpha::Cluster, decorator: Google::Apis::AlloydbV1alpha::Cluster::Representation
+      
+          property :cluster_id, as: 'clusterId'
+        end
+      end
+      
       class SecondaryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1461,6 +1478,7 @@ module Google
           property :cpu_count, as: 'cpuCount'
           property :memory_size_in_bytes, :numeric_string => true, as: 'memorySizeInBytes'
           property :shard_count, as: 'shardCount'
+          property :vcpu_count, as: 'vcpuCount'
         end
       end
       
