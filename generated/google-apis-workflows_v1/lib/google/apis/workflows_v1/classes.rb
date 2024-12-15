@@ -480,6 +480,11 @@ module Google
         # @return [Google::Apis::WorkflowsV1::StateError]
         attr_accessor :state_error
       
+        # Optional. Input only. Immutable. Tags associated with this workflow.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. The timestamp for when the workflow was last updated. This is a
         # workflow-wide field and is not tied to a specific revision.
         # Corresponds to the JSON property `updateTime`
@@ -515,6 +520,7 @@ module Google
           @source_contents = args[:source_contents] if args.key?(:source_contents)
           @state = args[:state] if args.key?(:state)
           @state_error = args[:state_error] if args.key?(:state_error)
+          @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_env_vars = args[:user_env_vars] if args.key?(:user_env_vars)
         end
