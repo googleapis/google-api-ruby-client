@@ -980,6 +980,11 @@ module Google
         # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>]
         attr_accessor :line_items
       
+        # Describes the details of the migrated subscription.
+        # Corresponds to the JSON property `migrationDetails`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails]
+        attr_accessor :migration_details
+      
         # Identifier. Resource name of the subscription. It will have the format of "
         # partners/`partner_id`/subscriptions/`subscription_id`". This is available for
         # authorizeAddon, but otherwise is response only.
@@ -1083,6 +1088,7 @@ module Google
           @end_user_entitled = args[:end_user_entitled] if args.key?(:end_user_entitled)
           @free_trial_end_time = args[:free_trial_end_time] if args.key?(:free_trial_end_time)
           @line_items = args[:line_items] if args.key?(:line_items)
+          @migration_details = args[:migration_details] if args.key?(:migration_details)
           @name = args[:name] if args.key?(:name)
           @partner_user_token = args[:partner_user_token] if args.key?(:partner_user_token)
           @processing_state = args[:processing_state] if args.key?(:processing_state)
@@ -1253,6 +1259,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service_period = args[:service_period] if args.key?(:service_period)
+        end
+      end
+      
+      # Describes the details of the migrated subscription.
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The migrated subscription id in the legacy system.
+        # Corresponds to the JSON property `migratedSubscriptionId`
+        # @return [String]
+        attr_accessor :migrated_subscription_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @migrated_subscription_id = args[:migrated_subscription_id] if args.key?(:migrated_subscription_id)
         end
       end
       

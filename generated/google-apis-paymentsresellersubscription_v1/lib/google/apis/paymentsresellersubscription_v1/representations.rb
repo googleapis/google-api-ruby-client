@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -574,6 +580,8 @@ module Google
           property :free_trial_end_time, as: 'freeTrialEndTime'
           collection :line_items, as: 'lineItems', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem::Representation
       
+          property :migration_details, as: 'migrationDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails::Representation
+      
           property :name, as: 'name'
           property :partner_user_token, as: 'partnerUserToken'
           property :processing_state, as: 'processingState'
@@ -637,6 +645,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service_period, as: 'servicePeriod', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod::Representation
       
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :migrated_subscription_id, as: 'migratedSubscriptionId'
         end
       end
       
