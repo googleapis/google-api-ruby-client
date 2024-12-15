@@ -3812,6 +3812,7 @@ module Google
       class SetDataValidationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filtered_rows_included, as: 'filteredRowsIncluded'
           property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
           property :rule, as: 'rule', class: Google::Apis::SheetsV4::DataValidationRule, decorator: Google::Apis::SheetsV4::DataValidationRule::Representation
