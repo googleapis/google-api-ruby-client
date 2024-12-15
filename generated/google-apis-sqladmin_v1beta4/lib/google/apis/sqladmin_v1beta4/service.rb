@@ -1177,12 +1177,11 @@ module Google
         # @param [String] instance
         #   Cloud SQL read replica instance name.
         # @param [Boolean] failover
-        #   Set to true to invoke a replica failover to the designated DR replica. As part
-        #   of replica failover, the promote operation attempts to add the original
-        #   primary instance as a replica of the promoted DR replica when the original
-        #   primary instance comes back online. If set to false or not specified, then the
-        #   original primary instance becomes an independent Cloud SQL primary instance.
-        #   Only applicable to MySQL.
+        #   Set to true to invoke a replica failover to the DR replica. As part of replica
+        #   failover, the promote operation attempts to add the original primary instance
+        #   as a replica of the promoted DR replica when the original primary instance
+        #   comes back online. If set to false or not specified, then the original primary
+        #   instance becomes an independent Cloud SQL primary instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1493,15 +1492,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Switches over from the primary instance to the designated DR replica instance.
+        # Switches over from the primary instance to the DR replica instance.
         # @param [String] project
         #   ID of the project that contains the replica.
         # @param [String] instance
         #   Cloud SQL read replica instance name.
         # @param [String] db_timeout
-        #   Optional. (MySQL only) Cloud SQL instance operations timeout, which is a sum
-        #   of all database operations. Default value is 10 minutes and can be modified to
-        #   a maximum value of 24 hours.
+        #   Optional. (MySQL and PostgreSQL only) Cloud SQL instance operations timeout,
+        #   which is a sum of all database operations. Default value is 10 minutes and can
+        #   be modified to a maximum value of 24 hours.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
