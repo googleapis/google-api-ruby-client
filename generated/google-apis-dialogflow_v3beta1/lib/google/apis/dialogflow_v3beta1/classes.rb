@@ -5091,6 +5091,11 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ConversationInteraction
         include Google::Apis::Core::Hashable
       
+        # Stores information about feedback provided by users about a response.
+        # Corresponds to the JSON property `answerFeedback`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AnswerFeedback]
+        attr_accessor :answer_feedback
+      
         # The time that the interaction was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -5136,6 +5141,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @answer_feedback = args[:answer_feedback] if args.key?(:answer_feedback)
           @create_time = args[:create_time] if args.key?(:create_time)
           @missing_transition = args[:missing_transition] if args.key?(:missing_transition)
           @partial_responses = args[:partial_responses] if args.key?(:partial_responses)
@@ -7210,6 +7216,38 @@ module Google
         end
       end
       
+      # The request message for Playbooks.ExportPlaybook.
+      class GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The data format of the exported agent. If not specified, `BLOB` is
+        # assumed.
+        # Corresponds to the JSON property `dataFormat`
+        # @return [String]
+        attr_accessor :data_format
+      
+        # Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)
+        # URI to export the playbook to. The format of this URI must be `gs:///`. If
+        # left unspecified, the serialized playbook is returned inline. Dialogflow
+        # performs a write operation for the Cloud Storage object on the caller's behalf,
+        # so your request authentication must have write permissions for the object.
+        # For more information, see [Dialogflow access control](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/access-control#storage).
+        # Corresponds to the JSON property `playbookUri`
+        # @return [String]
+        attr_accessor :playbook_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_format = args[:data_format] if args.key?(:data_format)
+          @playbook_uri = args[:playbook_uri] if args.key?(:playbook_uri)
+        end
+      end
+      
       # Metadata returned for the TestCases.ExportTestCases long running operation.
       # This message currently has no fields.
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
@@ -7515,6 +7553,11 @@ module Google
       class GoogleCloudDialogflowCxV3beta1FlowInvocation
         include Google::Apis::Core::Hashable
       
+        # Output only. The display name of the flow.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Required. The unique identifier of the flow. Format: `projects//locations//
         # agents//flows/`.
         # Corresponds to the JSON property `flow`
@@ -7542,6 +7585,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @flow = args[:flow] if args.key?(:flow)
           @flow_state = args[:flow_state] if args.key?(:flow_state)
           @input_action_parameters = args[:input_action_parameters] if args.key?(:input_action_parameters)
@@ -8666,6 +8710,40 @@ module Google
         def update!(**args)
           @entity_display_names = args[:entity_display_names] if args.key?(:entity_display_names)
           @intent_display_names = args[:intent_display_names] if args.key?(:intent_display_names)
+        end
+      end
+      
+      # The request message for Playbooks.ImportPlaybook.
+      class GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest
+        include Google::Apis::Core::Hashable
+      
+        # The playbook import strategy used for resource conflict resolution associated
+        # with an ImportPlaybookRequest.
+        # Corresponds to the JSON property `importStrategy`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy]
+        attr_accessor :import_strategy
+      
+        # Uncompressed raw byte content for playbook.
+        # Corresponds to the JSON property `playbookContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :playbook_content
+      
+        # [Dialogflow access control] (https://cloud.google.com/dialogflow/cx/docs/
+        # concept/access-control#storage).
+        # Corresponds to the JSON property `playbookUri`
+        # @return [String]
+        attr_accessor :playbook_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @import_strategy = args[:import_strategy] if args.key?(:import_strategy)
+          @playbook_content = args[:playbook_content] if args.key?(:playbook_content)
+          @playbook_uri = args[:playbook_uri] if args.key?(:playbook_uri)
         end
       end
       
@@ -10599,6 +10677,43 @@ module Google
         end
       end
       
+      # The playbook import strategy used for resource conflict resolution associated
+      # with an ImportPlaybookRequest.
+      class GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the import strategy used when resolving conflicts with the
+        # main playbook. If not specified, 'CREATE_NEW' is assumed.
+        # Corresponds to the JSON property `mainPlaybookImportStrategy`
+        # @return [String]
+        attr_accessor :main_playbook_import_strategy
+      
+        # Optional. Specifies the import strategy used when resolving referenced
+        # playbook/flow conflicts. If not specified, 'CREATE_NEW' is assumed.
+        # Corresponds to the JSON property `nestedResourceImportStrategy`
+        # @return [String]
+        attr_accessor :nested_resource_import_strategy
+      
+        # Optional. Specifies the import strategy used when resolving tool conflicts. If
+        # not specified, 'CREATE_NEW' is assumed. This will be applied after the main
+        # playbook and nested resource import strategies, meaning if the playbook that
+        # references the tool is skipped, the tool will also be skipped.
+        # Corresponds to the JSON property `toolImportStrategy`
+        # @return [String]
+        attr_accessor :tool_import_strategy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @main_playbook_import_strategy = args[:main_playbook_import_strategy] if args.key?(:main_playbook_import_strategy)
+          @nested_resource_import_strategy = args[:nested_resource_import_strategy] if args.key?(:nested_resource_import_strategy)
+          @tool_import_strategy = args[:tool_import_strategy] if args.key?(:tool_import_strategy)
+        end
+      end
+      
       # Input of the playbook.
       class GoogleCloudDialogflowCxV3beta1PlaybookInput
         include Google::Apis::Core::Hashable
@@ -10648,6 +10763,11 @@ module Google
       class GoogleCloudDialogflowCxV3beta1PlaybookInvocation
         include Google::Apis::Core::Hashable
       
+        # Output only. The display name of the playbook.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Required. The unique identifier of the playbook. Format: `projects//locations//
         # agents//playbooks/`.
         # Corresponds to the JSON property `playbook`
@@ -10675,6 +10795,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @playbook = args[:playbook] if args.key?(:playbook)
           @playbook_input = args[:playbook_input] if args.key?(:playbook_input)
           @playbook_output = args[:playbook_output] if args.key?(:playbook_output)
@@ -11710,6 +11831,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tracking_branch = args[:tracking_branch] if args.key?(:tracking_branch)
+        end
+      end
+      
+      # The request message for Playbooks.RestorePlaybookVersion.
+      class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for Playbooks.RestorePlaybookVersion.
+      class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Playbook is the basic building block to instruct the LLM how to execute a
+        # certain task. A playbook consists of a goal to accomplish, an optional list of
+        # step by step instructions (the step instruction may refers to name of the
+        # custom or default plugin tools to use) to perform the task, a list of
+        # contextual input data to be passed in at the beginning of the invoked, and a
+        # list of output parameters to store the playbook result.
+        # Corresponds to the JSON property `playbook`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Playbook]
+        attr_accessor :playbook
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @playbook = args[:playbook] if args.key?(:playbook)
         end
       end
       
@@ -13232,6 +13390,11 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # Output only. The display name of the tool.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Optional. A list of input parameters for the action.
         # Corresponds to the JSON property `inputActionParameters`
         # @return [Hash<String,Object>]
@@ -13255,6 +13418,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @input_action_parameters = args[:input_action_parameters] if args.key?(:input_action_parameters)
           @output_action_parameters = args[:output_action_parameters] if args.key?(:output_action_parameters)
           @tool = args[:tool] if args.key?(:tool)
