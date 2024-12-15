@@ -793,6 +793,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Restores an AlloyDB cluster from a CloudSQL resource.
+        # @param [String] parent
+        #   Required. The location of the new cluster. For the required format, see the
+        #   comment on Cluster.name field.
+        # @param [Google::Apis::AlloydbV1alpha::RestoreFromCloudSqlRequest] restore_from_cloud_sql_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AlloydbV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AlloydbV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_cluster_from_cloud_sql(parent, restore_from_cloud_sql_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/clusters:restoreFromCloudSQL', options)
+          command.request_representation = Google::Apis::AlloydbV1alpha::RestoreFromCloudSqlRequest::Representation
+          command.request_object = restore_from_cloud_sql_request_object
+          command.response_representation = Google::Apis::AlloydbV1alpha::Operation::Representation
+          command.response_class = Google::Apis::AlloydbV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Switches the roles of PRIMARY and SECONDARY clusters without any data loss.
         # This promotes the SECONDARY cluster to PRIMARY and sets up the original
         # PRIMARY cluster to replicate from this newly promoted cluster.
@@ -1557,8 +1591,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::AlloydbV1alpha::CancelOperationRequest] cancel_operation_request_object
