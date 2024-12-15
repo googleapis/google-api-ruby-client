@@ -1,5 +1,9 @@
 # Release history for google-apis-compute_alpha
 
+### v0.107.0 (2024-12-15)
+
+* Regenerated from discovery document revision 20241201
+
 ### v0.106.0 (2024-12-02)
 
 * Regenerated from discovery document revision 20241112

@@ -3304,7 +3304,8 @@ module Google
         # CACHE_ALL_STATIC Automatically cache static content, including common image
         # formats, media (video and audio), and web assets (JavaScript and CSS).
         # Requests and responses that are marked as uncacheable, as well as dynamic
-        # content (including HTML), will not be cached.
+        # content (including HTML), will not be cached. If no value is provided for
+        # cdnPolicy.cacheMode, it defaults to CACHE_ALL_STATIC.
         # Corresponds to the JSON property `cacheMode`
         # @return [String]
         attr_accessor :cache_mode
@@ -4448,7 +4449,8 @@ module Google
         # CACHE_ALL_STATIC Automatically cache static content, including common image
         # formats, media (video and audio), and web assets (JavaScript and CSS).
         # Requests and responses that are marked as uncacheable, as well as dynamic
-        # content (including HTML), will not be cached.
+        # content (including HTML), will not be cached. If no value is provided for
+        # cdnPolicy.cacheMode, it defaults to CACHE_ALL_STATIC.
         # Corresponds to the JSON property `cacheMode`
         # @return [String]
         attr_accessor :cache_mode
@@ -5554,6 +5556,25 @@ module Google
       end
       
       # 
+      class BackendServicesGetEffectiveSecurityPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Effective security policies for the backend service.
+        # Corresponds to the JSON property `securityPolicies`
+        # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicy>]
+        attr_accessor :security_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @security_policies = args[:security_policies] if args.key?(:security_policies)
+        end
+      end
+      
+      # 
       class BackendServicesScopedList
         include Google::Apis::Core::Hashable
       
@@ -6317,6 +6338,11 @@ module Google
       class CacheInvalidationRule
         include Google::Apis::Core::Hashable
       
+        # Not implemented.
+        # Corresponds to the JSON property `cacheTags`
+        # @return [Array<String>]
+        attr_accessor :cache_tags
+      
         # If set, this invalidation rule will only apply to requests with a Host header
         # matching host.
         # Corresponds to the JSON property `host`
@@ -6334,6 +6360,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cache_tags = args[:cache_tags] if args.key?(:cache_tags)
           @host = args[:host] if args.key?(:host)
           @path = args[:path] if args.key?(:path)
         end
@@ -8702,10 +8729,10 @@ module Google
         # replication after starting the replication. -
         # ASYNC_REPLICATION_STATE_REPLICATING_HEALTHY: The primary disk is healthily
         # replicating to the secondary device i.e. last_replication_time is within RPO. -
-        # ASYNC_REPLICATION_STATE_REPLICATING_BEHIND: The replication is lagging above
-        # the SLO limit due to some internal issue. -
-        # ASYNC_REPLICATION_STATE_REPLICATING_UNHEALTHY: The replication is lagging, and
-        # the RPO is not being met due to some internal issue. . -
+        # ASYNC_REPLICATION_STATE_REPLICATING_BEHIND_HIGH_CHURN: The replication is
+        # lagging above the SLO limit due to some internal issue. -
+        # ASYNC_REPLICATION_STATE_REPLICATING_BEHIND_SYSTEM_LAGGING: The replication is
+        # lagging, and the RPO is not being met due to some internal issue. -
         # ASYNC_REPLICATION_STATE_REPLICATION_STUCK: The replication is completely stuck
         # due to some internal error. - ASYNC_REPLICATION_STATE_STOPPING: The
         # replication is under the process of being stopped. This is a transient state. -
@@ -12157,6 +12184,13 @@ module Google
       class FutureReservation
         include Google::Apis::Core::Hashable
       
+        # This reservation type is specified by total resource amounts (e.g. total count
+        # of CPUs) and can account for multiple instance SKUs. In other words, one can
+        # create instances of varying shapes against this reservation.
+        # Corresponds to the JSON property `aggregateReservation`
+        # @return [Google::Apis::ComputeAlpha::AllocationAggregateReservation]
+        attr_accessor :aggregate_reservation
+      
         # Future timestamp when the FR auto-created reservations will be deleted by
         # Compute Engine. Format of this field must be a valid href="https://www.ietf.
         # org/rfc/rfc3339.txt">RFC3339 value.
@@ -12206,24 +12240,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Indicates if this group of VMs have opportunistic maintenance enabled. This
-        # will be set on the FR by customers, and will be used for reservation and
-        # reservation block maintenance .
-        # Corresponds to the JSON property `enableOpportunisticMaintenance`
-        # @return [Boolean]
-        attr_accessor :enable_opportunistic_maintenance
-        alias_method :enable_opportunistic_maintenance?, :enable_opportunistic_maintenance
-      
         # [Output Only] A unique identifier for this future reservation. The server
         # defines this identifier.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
-      
-        # Action to take during reservation termination.
-        # Corresponds to the JSON property `instanceTerminationAction`
-        # @return [String]
-        attr_accessor :instance_termination_action
       
         # [Output Only] Type of the resource. Always compute#futureReservation for
         # future reservations.
@@ -12253,6 +12274,12 @@ module Google
         # Corresponds to the JSON property `planningStatus`
         # @return [String]
         attr_accessor :planning_status
+      
+        # The reservation mode which determines reservation-termination behavior and
+        # expected pricing.
+        # Corresponds to the JSON property `reservationMode`
+        # @return [String]
+        attr_accessor :reservation_mode
       
         # Name of reservations where the capacity is provisioned at the time of delivery
         # of future reservations. If the reservation with the given name does not exist
@@ -12318,6 +12345,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aggregate_reservation = args[:aggregate_reservation] if args.key?(:aggregate_reservation)
           @auto_created_reservations_delete_time = args[:auto_created_reservations_delete_time] if args.key?(:auto_created_reservations_delete_time)
           @auto_created_reservations_duration = args[:auto_created_reservations_duration] if args.key?(:auto_created_reservations_duration)
           @auto_delete_auto_created_reservations = args[:auto_delete_auto_created_reservations] if args.key?(:auto_delete_auto_created_reservations)
@@ -12325,13 +12353,12 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
-          @enable_opportunistic_maintenance = args[:enable_opportunistic_maintenance] if args.key?(:enable_opportunistic_maintenance)
           @id = args[:id] if args.key?(:id)
-          @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @name_prefix = args[:name_prefix] if args.key?(:name_prefix)
           @planning_status = args[:planning_status] if args.key?(:planning_status)
+          @reservation_mode = args[:reservation_mode] if args.key?(:reservation_mode)
           @reservation_name = args[:reservation_name] if args.key?(:reservation_name)
           @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -13383,13 +13410,6 @@ module Google
       class GroupMaintenanceInfo
         include Google::Apis::Core::Hashable
       
-        # This setting enables or disables opportunistic maintenance. If enabled,
-        # maintenance is performed on unused reservations whenever possible.
-        # Corresponds to the JSON property `enableOpportunisticMaintenance`
-        # @return [Boolean]
-        attr_accessor :enable_opportunistic_maintenance
-        alias_method :enable_opportunistic_maintenance?, :enable_opportunistic_maintenance
-      
         # Progress for ongoing maintenance for this group of VMs/hosts. Describes number
         # of hosts in the block that have ongoing maintenance.
         # Corresponds to the JSON property `maintenanceOngoingCount`
@@ -13418,7 +13438,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enable_opportunistic_maintenance = args[:enable_opportunistic_maintenance] if args.key?(:enable_opportunistic_maintenance)
           @maintenance_ongoing_count = args[:maintenance_ongoing_count] if args.key?(:maintenance_ongoing_count)
           @maintenance_pending_count = args[:maintenance_pending_count] if args.key?(:maintenance_pending_count)
           @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
@@ -15995,12 +16014,10 @@ module Google
       
         # In response to a matching matchRule, the load balancer performs advanced
         # routing actions, such as URL rewrites and header transformations, before
-        # forwarding the request to the selected backend. If routeAction specifies any
-        # weightedBackendServices, service must not be set. Conversely if service is set,
-        # routeAction cannot contain any weightedBackendServices. Only one of
-        # urlRedirect, service or routeAction.weightedBackendService must be set. URL
-        # maps for classic Application Load Balancers only support the urlRewrite action
-        # within a route rule's routeAction.
+        # forwarding the request to the selected backend. Only one of urlRedirect,
+        # service or routeAction.weightedBackendService can be set. URL maps for classic
+        # Application Load Balancers only support the urlRewrite action within a route
+        # rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :route_action
@@ -16008,10 +16025,8 @@ module Google
         # The full or partial URL of the backend service resource to which traffic is
         # directed if this rule is matched. If routeAction is also specified, advanced
         # routing actions, such as URL rewrites, take effect before sending the request
-        # to the backend. However, if service is specified, routeAction cannot contain
-        # any weightedBackendServices. Conversely, if routeAction specifies any
-        # weightedBackendServices, service must not be specified. Only one of
-        # urlRedirect, service or routeAction.weightedBackendService must be set.
+        # to the backend. Only one of urlRedirect, service or routeAction.
+        # weightedBackendService can be set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -18631,11 +18646,12 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicy
         include Google::Apis::Core::Hashable
       
-        # The action that a MIG performs on a failed or an unhealthy VM. A VM is marked
-        # as unhealthy when the application running on that VM fails a health check.
-        # Valid values are - REPAIR (default): MIG automatically repairs a failed or an
-        # unhealthy VM by recreating it. For more information, see About repairing VMs
-        # in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
+        # The action that a MIG performs on a failed VM. If the value of the
+        # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+        # applies to the VMs on which your application fails a health check. Valid
+        # values are - REPAIR (default): MIG automatically repairs a failed VM by
+        # recreating it. For more information, see about repairing VMs in a MIG. -
+        # DO_NOTHING: MIG does not repair a failed VM.
         # Corresponds to the JSON property `defaultActionOnFailure`
         # @return [String]
         attr_accessor :default_action_on_failure
@@ -18665,13 +18681,11 @@ module Google
       
         # The action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy
         # when the application running on that VM fails a health check. Valid values are:
-        # - DEFAULT_ACTION (default): The MIG performs the same action as specified in
-        # the instanceLifecyclePolicy.defaultActionOnFailure field. If the
-        # defaultActionOnFailure field is set to REPAIR, then the MIG repairs unhealthy
-        # VMs. If the defaultActionOnFailure field is set to DO_NOTHING, then the MIG
-        # doesn't repair unhealthy VMs. - REPAIR: The MIG repairs unhealthy VMs by
-        # recreating it. - DO_NOTHING: The MIG doesn't repair unhealthy VMs. For more
-        # information, see About repairing VMs in a MIG.
+        # - DEFAULT_ACTION (default): MIG uses the same action configured for
+        # instanceLifecyclePolicy.defaultActionOnFailure field. - REPAIR: MIG
+        # automatically repairs an unhealthy VM by recreating it. - DO_NOTHING: MIG
+        # doesn't repair an unhealthy VM. For more information, see about repairing VMs
+        # in a MIG.
         # Corresponds to the JSON property `onFailedHealthCheck`
         # @return [String]
         attr_accessor :on_failed_health_check
@@ -22150,6 +22164,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] The packet mirroring rules that apply to the instance.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
         # [Output only] Priority of firewall policy association. Not applicable for type=
         # HIERARCHY.
         # Corresponds to the JSON property `priority`
@@ -22182,6 +22201,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @short_name = args[:short_name] if args.key?(:short_name)
@@ -23561,6 +23581,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # [Output Only] A list of the URLs of all CrossSiteNetwork WireGroups configured
+        # to use this Interconnect. The Interconnect cannot be deleted if this list is
+        # non-empty.
+        # Corresponds to the JSON property `wireGroups`
+        # @return [Array<String>]
+        attr_accessor :wire_groups
+      
         def initialize(**args)
            update!(**args)
         end
@@ -23601,6 +23628,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @state = args[:state] if args.key?(:state)
+          @wire_groups = args[:wire_groups] if args.key?(:wire_groups)
         end
       end
       
@@ -25940,7 +25968,7 @@ module Google
         attr_accessor :availability_zone
       
         # [Output only] List of features available at this InterconnectLocation, which
-        # can take one of the following values: - MACSEC
+        # can take one of the following values: - IF_MACSEC
         # Corresponds to the JSON property `availableFeatures`
         # @return [Array<String>]
         attr_accessor :available_features
@@ -25968,6 +25996,13 @@ module Google
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
+      
+        # [Output Only] A list of InterconnectLocation.CrossSiteInterconnectInfo objects,
+        # that describe parameters pertaining to the relation between this
+        # InterconnectLocation and various Interconnect metros.
+        # Corresponds to the JSON property `crossSiteInterconnectInfos`
+        # @return [Array<Google::Apis::ComputeAlpha::InterconnectLocationCrossSiteInterconnectInfo>]
+        attr_accessor :cross_site_interconnect_infos
       
         # [Output Only] An optional description of the resource.
         # Corresponds to the JSON property `description`
@@ -26052,6 +26087,7 @@ module Google
           @city = args[:city] if args.key?(:city)
           @continent = args[:continent] if args.key?(:continent)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @cross_site_interconnect_infos = args[:cross_site_interconnect_infos] if args.key?(:cross_site_interconnect_infos)
           @description = args[:description] if args.key?(:description)
           @facility_provider = args[:facility_provider] if args.key?(:facility_provider)
           @facility_provider_facility_id = args[:facility_provider_facility_id] if args.key?(:facility_provider_facility_id)
@@ -26064,6 +26100,33 @@ module Google
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
           @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
+        end
+      end
+      
+      # Information about any potential WireGroups between an Interconnect at a
+      # specific InterconnectLocation, and an Interconnect in another metro.
+      class InterconnectLocationCrossSiteInterconnectInfo
+        include Google::Apis::Core::Hashable
+      
+        # Metropolitan area designator
+        # Corresponds to the JSON property `city`
+        # @return [String]
+        attr_accessor :city
+      
+        # The maximum gbps for a single flow to this metro. This limits the total
+        # bandwidth which may be configured per wire.
+        # Corresponds to the JSON property `maxSingleFlowGbps`
+        # @return [Fixnum]
+        attr_accessor :max_single_flow_gbps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @city = args[:city] if args.key?(:city)
+          @max_single_flow_gbps = args[:max_single_flow_gbps] if args.key?(:max_single_flow_gbps)
         end
       end
       
@@ -27342,7 +27405,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :required_coattached_licenses
       
-        # 
+        # [Input Only] Deprecated.
         # Corresponds to the JSON property `resourceRequirements`
         # @return [Google::Apis::ComputeAlpha::LicenseResourceRequirements]
         attr_accessor :resource_requirements
@@ -27614,14 +27677,14 @@ module Google
       class LicenseResourceRequirements
         include Google::Apis::Core::Hashable
       
-        # Minimum number of guest cpus required to use the Instance. Enforced at
-        # Instance creation and Instance start.
+        # [Input Only] Deprecated. This field no longer reflects the minimum number of
+        # guest cpus required to use the Instance.
         # Corresponds to the JSON property `minGuestCpuCount`
         # @return [Fixnum]
         attr_accessor :min_guest_cpu_count
       
-        # Minimum memory required to use the Instance. Enforced at Instance creation and
-        # Instance start.
+        # [Input Only] Deprecated. This field no longer reflects the minimum memory
+        # required to use the Instance.
         # Corresponds to the JSON property `minMemoryMb`
         # @return [Fixnum]
         attr_accessor :min_memory_mb
@@ -29454,12 +29517,6 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Policy regarding where to create managed instance groups. Initially only zonal
-        # managed instance groups in the same zone are supported.
-        # Corresponds to the JSON property `locationPolicy`
-        # @return [Google::Apis::ComputeAlpha::MultiMigLocationPolicy]
-        attr_accessor :location_policy
-      
         # The name of the multi-MIG. The name must be 1-63 characters long, and comply
         # with RFC1035. Specifically, the name must be 1-63 characters long and match
         # the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
@@ -29469,13 +29526,6 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # Map of user-provided names associated with their parts. Keys in the map are
-        # arbitrary names chosen by the user for parts. Keys need to be alphanumeric and
-        # not longer than 64 characters.
-        # Corresponds to the JSON property `parts`
-        # @return [Hash<String,Google::Apis::ComputeAlpha::MultiMigPart>]
-        attr_accessor :parts
       
         # [Output only] The URL of the region where the resource resides. You must
         # specify this field as part of the HTTP request URL. You cannot set the region
@@ -29489,11 +29539,6 @@ module Google
         # Corresponds to the JSON property `resourcePolicies`
         # @return [Google::Apis::ComputeAlpha::MultiMigResourcePolicies]
         attr_accessor :resource_policies
-      
-        # Policy for handling provisioning and other scheduling-related events.
-        # Corresponds to the JSON property `schedulingPolicy`
-        # @return [Google::Apis::ComputeAlpha::MultiMigSchedulingPolicy]
-        attr_accessor :scheduling_policy
       
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
@@ -29520,67 +29565,12 @@ module Google
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
-          @location_policy = args[:location_policy] if args.key?(:location_policy)
           @name = args[:name] if args.key?(:name)
-          @parts = args[:parts] if args.key?(:parts)
           @region = args[:region] if args.key?(:region)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
-          @scheduling_policy = args[:scheduling_policy] if args.key?(:scheduling_policy)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # Policy regarding where to create managed instance groups. Initially only zonal
-      # managed instance groups in the same zone are supported.
-      class MultiMigLocationPolicy
-        include Google::Apis::Core::Hashable
-      
-        # List of zones where managed instance groups will be provisioned. Should be
-        # valid RFC1035 name.
-        # Corresponds to the JSON property `provisioningZones`
-        # @return [Array<String>]
-        attr_accessor :provisioning_zones
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @provisioning_zones = args[:provisioning_zones] if args.key?(:provisioning_zones)
-        end
-      end
-      
-      # Part represents a single managed instance group, either as a reference to an
-      # existing one or as a structure containing properties necessary to create one.
-      # A multi-MIG can contain zero or more parts.
-      class MultiMigPart
-        include Google::Apis::Core::Hashable
-      
-        # The URL of a managed instance group that you want to attach to the multi-MIG.
-        # Corresponds to the JSON property `instanceGroupManager`
-        # @return [String]
-        attr_accessor :instance_group_manager
-      
-        # Represents a Managed Instance Group resource. An instance group is a
-        # collection of VM instances that you can manage as a single entity. For more
-        # information, read Instance groups. For zonal Managed Instance Group, use the
-        # instanceGroupManagers resource. For regional Managed Instance Group, use the
-        # regionInstanceGroupManagers resource.
-        # Corresponds to the JSON property `instanceGroupManagerProperties`
-        # @return [Google::Apis::ComputeAlpha::InstanceGroupManager]
-        attr_accessor :instance_group_manager_properties
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @instance_group_manager = args[:instance_group_manager] if args.key?(:instance_group_manager)
-          @instance_group_manager_properties = args[:instance_group_manager_properties] if args.key?(:instance_group_manager_properties)
         end
       end
       
@@ -29606,26 +29596,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @workload_policy = args[:workload_policy] if args.key?(:workload_policy)
-        end
-      end
-      
-      # Policy for handling provisioning and other scheduling-related events.
-      class MultiMigSchedulingPolicy
-        include Google::Apis::Core::Hashable
-      
-        # How provisioning of parts (instance group managers) should be scheduled (
-        # coordinated or not).
-        # Corresponds to the JSON property `provisioning`
-        # @return [String]
-        attr_accessor :provisioning
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @provisioning = args[:provisioning] if args.key?(:provisioning)
         end
       end
       
@@ -30046,7 +30016,7 @@ module Google
       
         # A full or partial URL of the network profile to apply to this network. This
         # field can be set only at resource creation time. For example, the following
-        # are valid URLs: - https://www.googleapis.com/compute/alpha/projects/`
+        # are valid URLs: - https://www.googleapis.com/compute/`api_version`/projects/`
         # project_id`/global/networkProfiles/`network_profile_name` - projects/`
         # project_id`/global/networkProfiles/`network_profile_name`
         # Corresponds to the JSON property `networkProfile`
@@ -32124,8 +32094,7 @@ module Google
         # @return [String]
         attr_accessor :nic_type
       
-        # Name of the parent network interface of a VLAN based nic. If this field is
-        # specified, vlan must be set.
+        # Name of the parent network interface of a dynamic network interface.
         # Corresponds to the JSON property `parentNicName`
         # @return [String]
         attr_accessor :parent_nic_name
@@ -32165,9 +32134,8 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # VLAN tag of a VLAN based network interface, must be in range from 2 to 4094
-        # inclusively. This field is mandatory if the parent network interface name is
-        # set.
+        # VLAN tag of a dynamic network interface, must be in range from 2 to 4094
+        # inclusively.
         # Corresponds to the JSON property `vlan`
         # @return [Fixnum]
         attr_accessor :vlan
@@ -32543,6 +32511,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Output Only] Location to which the network is restricted.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::ComputeAlpha::NetworkProfileLocation]
+        attr_accessor :location
+      
         # [Output Only] Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -32574,10 +32547,36 @@ module Google
           @features = args[:features] if args.key?(:features)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class NetworkProfileLocation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @scope = args[:scope] if args.key?(:scope)
         end
       end
       
@@ -32887,6 +32886,17 @@ module Google
         # @return [String]
         attr_accessor :bgp_inter_region_cost
       
+        # [Output Only] Effective value of the bgp_always_compare_med field.
+        # Corresponds to the JSON property `effectiveBgpAlwaysCompareMed`
+        # @return [Boolean]
+        attr_accessor :effective_bgp_always_compare_med
+        alias_method :effective_bgp_always_compare_med?, :effective_bgp_always_compare_med
+      
+        # [Output Only] Effective value of the bgp_inter_region_cost field.
+        # Corresponds to the JSON property `effectiveBgpInterRegionCost`
+        # @return [String]
+        attr_accessor :effective_bgp_inter_region_cost
+      
         # The network-wide routing mode to use. If set to REGIONAL, this network's Cloud
         # Routers will only advertise routes with subnets of this network in the same
         # region as the router. If set to GLOBAL, this network's Cloud Routers will
@@ -32904,6 +32914,8 @@ module Google
           @bgp_always_compare_med = args[:bgp_always_compare_med] if args.key?(:bgp_always_compare_med)
           @bgp_best_path_selection_mode = args[:bgp_best_path_selection_mode] if args.key?(:bgp_best_path_selection_mode)
           @bgp_inter_region_cost = args[:bgp_inter_region_cost] if args.key?(:bgp_inter_region_cost)
+          @effective_bgp_always_compare_med = args[:effective_bgp_always_compare_med] if args.key?(:effective_bgp_always_compare_med)
+          @effective_bgp_inter_region_cost = args[:effective_bgp_inter_region_cost] if args.key?(:effective_bgp_inter_region_cost)
           @routing_mode = args[:routing_mode] if args.key?(:routing_mode)
         end
       end
@@ -33020,6 +33032,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] The packet mirroring rules that apply to the network.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
         # [Output only] Priority of firewall policy association. Not applicable for type=
         # HIERARCHY.
         # Corresponds to the JSON property `priority`
@@ -33049,6 +33066,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @short_name = args[:short_name] if args.key?(:short_name)
@@ -34531,6 +34549,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :local_ssd_gb
       
+        # [Output Only] Maximum number of VMs that can be created for this node type.
+        # Corresponds to the JSON property `maxVms`
+        # @return [Fixnum]
+        attr_accessor :max_vms
+      
         # [Output Only] The amount of physical memory available to the node type,
         # defined in MB.
         # Corresponds to the JSON property `memoryMb`
@@ -34572,6 +34595,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @local_ssd_gb = args[:local_ssd_gb] if args.key?(:local_ssd_gb)
+          @max_vms = args[:max_vms] if args.key?(:max_vms)
           @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -36981,11 +37005,8 @@ module Google
         # defaultRouteAction takes effect when none of the pathRules or routeRules match.
         # The load balancer performs advanced routing actions, such as URL rewrites and
         # header transformations, before forwarding the request to the selected backend.
-        # If defaultRouteAction specifies any weightedBackendServices, defaultService
-        # must not be set. Conversely if defaultService is set, defaultRouteAction
-        # cannot contain any weightedBackendServices. If defaultRouteAction is specified,
-        # don't set defaultUrlRedirect. If defaultRouteAction.weightedBackendServices
-        # is specified, don't set defaultService. URL maps for classic Application Load
+        # Only one of defaultUrlRedirect, defaultService or defaultRouteAction.
+        # weightedBackendService can be set. URL maps for classic Application Load
         # Balancers only support the urlRewrite action within a path matcher's
         # defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
@@ -36999,14 +37020,11 @@ module Google
         # backendService - compute/v1/projects/project/global/backendServices/
         # backendService - global/backendServices/backendService If defaultRouteAction
         # is also specified, advanced routing actions, such as URL rewrites, take effect
-        # before sending the request to the backend. However, if defaultService is
-        # specified, defaultRouteAction cannot contain any weightedBackendServices.
-        # Conversely, if defaultRouteAction specifies any weightedBackendServices,
-        # defaultService must not be specified. If defaultService is specified, then set
-        # either defaultUrlRedirect or defaultRouteAction.weightedBackendService. Don't
-        # set both. Authorization requires one or more of the following Google IAM
-        # permissions on the specified resource default_service: - compute.
-        # backendBuckets.use - compute.backendServices.use
+        # before sending the request to the backend. Only one of defaultUrlRedirect,
+        # defaultService or defaultRouteAction.weightedBackendService can be set.
+        # Authorization requires one or more of the following Google IAM permissions on
+        # the specified resource default_service: - compute.backendBuckets.use - compute.
+        # backendServices.use
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -37090,11 +37108,10 @@ module Google
       
         # In response to a matching path, the load balancer performs advanced routing
         # actions, such as URL rewrites and header transformations, before forwarding
-        # the request to the selected backend. If routeAction specifies any
-        # weightedBackendServices, service must not be set. Conversely if service is set,
-        # routeAction cannot contain any weightedBackendServices. Only one of
-        # routeAction or urlRedirect must be set. URL maps for classic Application Load
-        # Balancers only support the urlRewrite action within a path rule's routeAction.
+        # the request to the selected backend. Only one of urlRedirect, service or
+        # routeAction.weightedBackendService can be set. URL maps for classic
+        # Application Load Balancers only support the urlRewrite action within a path
+        # rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :route_action
@@ -37102,10 +37119,8 @@ module Google
         # The full or partial URL of the backend service resource to which traffic is
         # directed if this rule is matched. If routeAction is also specified, advanced
         # routing actions, such as URL rewrites, take effect before sending the request
-        # to the backend. However, if service is specified, routeAction cannot contain
-        # any weightedBackendServices. Conversely, if routeAction specifies any
-        # weightedBackendServices, service must not be specified. Only one of
-        # urlRedirect, service or routeAction.weightedBackendService must be set.
+        # to the backend. Only one of urlRedirect, service or routeAction.
+        # weightedBackendService can be set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -37167,7 +37182,7 @@ module Google
         # Serves as a merge key during UpdatePerInstanceConfigs operations, that is, if
         # a per-instance configuration with the same name exists then it will be updated,
         # otherwise a new one will be created for the VM instance with the same name.
-        # An attempt to create a per-instance configconfiguration for a VM instance that
+        # An attempt to create a per-instance configuration for a VM instance that
         # either doesn't exist or is not part of the group will result in an error.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -37654,7 +37669,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Restricted features enabled for use on this project.
+        # An optional list of restricted features enabled for use on this project.
         # Corresponds to the JSON property `enabledFeatures`
         # @return [Array<String>]
         attr_accessor :enabled_features
@@ -41390,6 +41405,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output only] The packet mirroring rules that apply to the network.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
         # [Output only] Priority of firewall policy association. Not applicable for type=
         # HIERARCHY.
         # Corresponds to the JSON property `priority`
@@ -41415,6 +41435,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @type = args[:type] if args.key?(:type)
@@ -41726,12 +41747,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Instance termination action is invoked when the reservation is deleted. This
-        # only applies to reservations with a Deployment type.
-        # Corresponds to the JSON property `instanceTerminationAction`
-        # @return [String]
-        attr_accessor :instance_termination_action
-      
         # [Output Only] Type of the resource. Always compute#reservations for
         # reservations.
         # Corresponds to the JSON property `kind`
@@ -41829,7 +41844,6 @@ module Google
           @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
-          @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @reservation_sharing_policy = args[:reservation_sharing_policy] if args.key?(:reservation_sharing_policy)
@@ -42385,6 +42399,44 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class ReservationsBlocksPerformMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifies if all, running or unused hosts are in scope for this request.
+        # Corresponds to the JSON property `maintenanceScope`
+        # @return [String]
+        attr_accessor :maintenance_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_scope = args[:maintenance_scope] if args.key?(:maintenance_scope)
+        end
+      end
+      
+      # 
+      class ReservationsPerformMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifies if all, running or unused hosts are in scope for this request.
+        # Corresponds to the JSON property `maintenanceScope`
+        # @return [String]
+        attr_accessor :maintenance_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_scope = args[:maintenance_scope] if args.key?(:maintenance_scope)
         end
       end
       
@@ -43585,7 +43637,9 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ResourceStatusLastInstanceTerminationDetails]
         attr_accessor :last_instance_termination_details
       
-        # [Output Only] An opaque ID of the host on which the VM is running.
+        # [Output Only] The precise location of your instance within the zone's data
+        # center, including the block, sub-block, and host. The field is formatted as
+        # follows: blockId/subBlockId/hostId.
         # Corresponds to the JSON property `physicalHost`
         # @return [String]
         attr_accessor :physical_host
@@ -43606,8 +43660,8 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus>]
         attr_accessor :service_integration_statuses
       
-        # Specifies if the instance is in `SHUTTING_DOWN` state or there is a instance
-        # stopping scheduled.
+        # Specifies if the instance is in `PENDING_STOP` state or there is a programmed
+        # stop scheduled.
         # Corresponds to the JSON property `shutdownDetails`
         # @return [Google::Apis::ComputeAlpha::ResourceStatusShutdownDetails]
         attr_accessor :shutdown_details
@@ -43765,22 +43819,27 @@ module Google
       class ResourceStatusPhysicalHostTopology
         include Google::Apis::Core::Hashable
       
-        # 
+        # [Output Only] The ID of the block in which the running instance is located.
+        # Instances within the same block experience low network latency.
         # Corresponds to the JSON property `block`
         # @return [String]
         attr_accessor :block
       
-        # 
+        # [Output Only] The global name of the Compute Engine cluster where the running
+        # instance is located.
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
       
-        # 
+        # [Output Only] The ID of the host on which the running instance is located.
+        # Instances on the same host experience the lowest possible network latency.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
-        # 
+        # [Output Only] The ID of the sub-block in which the running instance is located.
+        # Instances in the same sub-block experience lower network latency than
+        # instances in the same block.
         # Corresponds to the JSON property `subblock`
         # @return [String]
         attr_accessor :subblock
@@ -43876,8 +43935,8 @@ module Google
         end
       end
       
-      # Specifies if the instance is in `SHUTTING_DOWN` state or there is a instance
-      # stopping scheduled.
+      # Specifies if the instance is in `PENDING_STOP` state or there is a programmed
+      # stop scheduled.
       class ResourceStatusShutdownDetails
         include Google::Apis::Core::Hashable
       
@@ -46970,7 +47029,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_memory_mb
       
-        # Configuration for gracefully shutting down the instance.
+        # The configuration for gracefully shutting down the instance.
         # Corresponds to the JSON property `gracefulShutdown`
         # @return [Google::Apis::ComputeAlpha::SchedulingGracefulShutdown]
         attr_accessor :graceful_shutdown
@@ -47120,7 +47179,7 @@ module Google
         end
       end
       
-      # Configuration for gracefully shutting down the instance.
+      # The configuration for gracefully shutting down the instance.
       class SchedulingGracefulShutdown
         include Google::Apis::Core::Hashable
       
@@ -47956,6 +48015,12 @@ module Google
         # @return [String]
         attr_accessor :log_level
       
+        # The maximum request size chosen by the customer with Waf enabled. Currently
+        # only "8KB" and "128KB" are supported. Values are case insensitive.
+        # Corresponds to the JSON property `requestBodyInspectionSize`
+        # @return [String]
+        attr_accessor :request_body_inspection_size
+      
         # An optional list of case-insensitive request header names to use for resolving
         # the callers client IP address.
         # Corresponds to the JSON property `userIpRequestHeaders`
@@ -47971,6 +48036,7 @@ module Google
           @json_custom_config = args[:json_custom_config] if args.key?(:json_custom_config)
           @json_parsing = args[:json_parsing] if args.key?(:json_parsing)
           @log_level = args[:log_level] if args.key?(:log_level)
+          @request_body_inspection_size = args[:request_body_inspection_size] if args.key?(:request_body_inspection_size)
           @user_ip_request_headers = args[:user_ip_request_headers] if args.key?(:user_ip_request_headers)
         end
       end
@@ -48929,7 +48995,9 @@ module Google
         # originating client, which is resolved based on "userIpRequestHeaders"
         # configured with the security policy. If there is no "userIpRequestHeaders"
         # configuration or an IP address cannot be resolved from it, the key type
-        # defaults to IP.
+        # defaults to IP. - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client
+        # connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type
+        # defaults to ALL.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
@@ -49030,7 +49098,9 @@ module Google
         # originating client, which is resolved based on "userIpRequestHeaders"
         # configured with the security policy. If there is no "userIpRequestHeaders"
         # configuration or an IP address cannot be resolved from it, the key type
-        # defaults to IP.
+        # defaults to IP. - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client
+        # connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type
+        # defaults to ALL.
         # Corresponds to the JSON property `enforceOnKeyType`
         # @return [String]
         attr_accessor :enforce_on_key_type
@@ -54209,15 +54279,17 @@ module Google
         attr_accessor :private_ipv6_google_access
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
-        # PRIVATE is the default purpose for user-created subnets or subnets that are
-        # automatically created in auto mode networks. Subnets with purpose set to
-        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
-        # that are reserved for Envoy-based load balancers. A subnet with purpose set to
-        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
-        # Connect. If unspecified, the subnet purpose defaults to PRIVATE. The
-        # enableFlowLogs field isn't supported if the subnet purpose field is set to
-        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION or
+        # PRIVATE_SERVICE_CONNECT. PRIVATE is the default purpose for user-created
+        # subnets or subnets that are automatically created in auto mode networks.
+        # Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are
+        # user-created subnetworks that are reserved for Envoy-based load balancers. A
+        # subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services
+        # using Private Service Connect. A subnet with purpose set to PEER_MIGRATION is
+        # used for subnet migration from one peered VPC to another. If unspecified, the
+        # subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported
+        # if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
+        # REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -55883,14 +55955,14 @@ module Google
       # Represents a Target HTTPS Proxy resource. Google Compute Engine has two Target
       # HTTPS Proxy resources: * [Global](/compute/docs/reference/rest/alpha/
       # targetHttpsProxies) * [Regional](/compute/docs/reference/rest/alpha/
-      # regionTargetHttpsProxies) A target HTTPS proxy is a component of GCP HTTPS
-      # load balancers. * targetHttpProxies are used by global external Application
-      # Load Balancers, classic Application Load Balancers, cross-region internal
-      # Application Load Balancers, and Traffic Director. * regionTargetHttpProxies
-      # are used by regional internal Application Load Balancers and regional external
-      # Application Load Balancers. Forwarding rules reference a target HTTPS proxy,
-      # and the target proxy then references a URL map. For more information, read
-      # Using Target Proxies and Forwarding rule concepts.
+      # regionTargetHttpsProxies) A target HTTPS proxy is a component of Google Cloud
+      # HTTPS load balancers. * targetHttpProxies are used by global external
+      # Application Load Balancers, classic Application Load Balancers, cross-region
+      # internal Application Load Balancers, and Traffic Director. *
+      # regionTargetHttpProxies are used by regional internal Application Load
+      # Balancers and regional external Application Load Balancers. Forwarding rules
+      # reference a target HTTPS proxy, and the target proxy then references a URL map.
+      # For more information, read Using Target Proxies and Forwarding rule concepts.
       class TargetHttpsProxy
         include Google::Apis::Core::Hashable
       
@@ -59053,11 +59125,9 @@ module Google
       
         # defaultRouteAction takes effect when none of the hostRules match. The load
         # balancer performs advanced routing actions, such as URL rewrites and header
-        # transformations, before forwarding the request to the selected backend. If
-        # defaultRouteAction specifies any weightedBackendServices, defaultService must
-        # not be set. Conversely if defaultService is set, defaultRouteAction cannot
-        # contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. URL maps for classic Application Load
+        # transformations, before forwarding the request to the selected backend. Only
+        # one of defaultUrlRedirect, defaultService or defaultRouteAction.
+        # weightedBackendService can be set. URL maps for classic Application Load
         # Balancers only support the urlRewrite action within defaultRouteAction.
         # defaultRouteAction has no effect when the URL map is bound to a target gRPC
         # proxy that has the validateForProxyless field set to true.
@@ -59068,14 +59138,10 @@ module Google
         # The full or partial URL of the defaultService resource to which traffic is
         # directed if none of the hostRules match. If defaultRouteAction is also
         # specified, advanced routing actions, such as URL rewrites, take effect before
-        # sending the request to the backend. However, if defaultService is specified,
-        # defaultRouteAction cannot contain any defaultRouteAction.
-        # weightedBackendServices. Conversely, if defaultRouteAction specifies any
-        # defaultRouteAction.weightedBackendServices, defaultService must not be
-        # specified. If defaultService is specified, then set either defaultUrlRedirect ,
-        # or defaultRouteAction.weightedBackendService Don't set both. defaultService
-        # has no effect when the URL map is bound to a target gRPC proxy that has the
-        # validateForProxyless field set to true.
+        # sending the request to the backend. Only one of defaultUrlRedirect,
+        # defaultService or defaultRouteAction.weightedBackendService can be set.
+        # defaultService has no effect when the URL map is bound to a target gRPC proxy
+        # that has the validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -59838,15 +59904,17 @@ module Google
         attr_accessor :network
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
-        # PRIVATE is the default purpose for user-created subnets or subnets that are
-        # automatically created in auto mode networks. Subnets with purpose set to
-        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
-        # that are reserved for Envoy-based load balancers. A subnet with purpose set to
-        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
-        # Connect. If unspecified, the subnet purpose defaults to PRIVATE. The
-        # enableFlowLogs field isn't supported if the subnet purpose field is set to
-        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION or
+        # PRIVATE_SERVICE_CONNECT. PRIVATE is the default purpose for user-created
+        # subnets or subnets that are automatically created in auto mode networks.
+        # Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are
+        # user-created subnetworks that are reserved for Envoy-based load balancers. A
+        # subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services
+        # using Private Service Connect. A subnet with purpose set to PEER_MIGRATION is
+        # used for subnet migration from one peered VPC to another. If unspecified, the
+        # subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported
+        # if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
+        # REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -61804,6 +61872,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::WireGroupServiceLevel]
         attr_accessor :service_level
       
+        # Topology details for the wire group.
+        # Corresponds to the JSON property `topology`
+        # @return [Google::Apis::ComputeAlpha::WireGroupTopology]
+        attr_accessor :topology
+      
         # The properties of a wire group. These properties determine how a group of
         # redundant wires are created and managed.
         # Corresponds to the JSON property `wireGroupProperties`
@@ -61844,6 +61917,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @service_level = args[:service_level] if args.key?(:service_level)
+          @topology = args[:topology] if args.key?(:topology)
           @wire_group_properties = args[:wire_group_properties] if args.key?(:wire_group_properties)
           @wire_inputs = args[:wire_inputs] if args.key?(:wire_inputs)
           @wire_properties = args[:wire_properties] if args.key?(:wire_properties)
@@ -62079,7 +62153,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Output Only] The availability SLA that the wire group qualifies for. One of
-        # the following: `NO_AVAILABILITY_SLA`, `AVAILABILITY_99`, or `AVAILABILITY_999`.
+        # the following: `NO_AVAILABILITY_SLA`, `AVAILABILITY_99`, `AVAILABILITY_999`,
+        # or `AVAILABILITY_9995`.
         # Corresponds to the JSON property `availabilityClass`
         # @return [String]
         attr_accessor :availability_class
@@ -62091,6 +62166,51 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability_class = args[:availability_class] if args.key?(:availability_class)
+        end
+      end
+      
+      # Topology details for the wire group.
+      class WireGroupTopology
+        include Google::Apis::Core::Hashable
+      
+        # Topology details for all endpoints in the wire group.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::ComputeAlpha::WireGroupTopologyEndpoint>]
+        attr_accessor :endpoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+        end
+      end
+      
+      # Topology details for a single wire group endpoint.
+      class WireGroupTopologyEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # The InterconnectLocation.city (metropolitan area designator) that all
+        # interconnects are located in.
+        # Corresponds to the JSON property `city`
+        # @return [String]
+        attr_accessor :city
+      
+        # Endpoint label from the wire group.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @city = args[:city] if args.key?(:city)
+          @label = args[:label] if args.key?(:label)
         end
       end
       
