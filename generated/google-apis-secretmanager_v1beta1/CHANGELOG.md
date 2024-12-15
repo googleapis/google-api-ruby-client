@@ -1,5 +1,10 @@
 # Release history for google-apis-secretmanager_v1beta1
 
+### v0.34.0 (2024-12-15)
+
+* Regenerated from discovery document revision 20241209
+* Regenerated using generator version 0.15.1
+
 ### v0.33.0 (2024-05-19)
 
 * Regenerated from discovery document revision 20240424
