@@ -3251,9 +3251,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The relative resource name of the scan, of the form: projects/`
-        # project`/locations/`location_id`/dataScans/`datascan_id`, where project refers
-        # to a project_id or project_number and location_id refers to a GCP region.
+        # Output only. Identifier. The relative resource name of the scan, of the form:
+        # projects/`project`/locations/`location_id`/dataScans/`datascan_id`, where
+        # project refers to a project_id or project_number and location_id refers to a
+        # GCP region.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3635,12 +3636,12 @@ module Google
         # @return [String]
         attr_accessor :latest_job_create_time
       
-        # The time when the latest DataScanJob ended.
+        # Optional. The time when the latest DataScanJob ended.
         # Corresponds to the JSON property `latestJobEndTime`
         # @return [String]
         attr_accessor :latest_job_end_time
       
-        # The time when the latest DataScanJob started.
+        # Optional. The time when the latest DataScanJob started.
         # Corresponds to the JSON property `latestJobStartTime`
         # @return [String]
         attr_accessor :latest_job_start_time
@@ -3707,8 +3708,8 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # Output only. The relative resource name of the DataScanJob, of the form:
-        # projects/`project`/locations/`location_id`/dataScans/`datascan_id`/jobs/`
+        # Output only. Identifier. The relative resource name of the DataScanJob, of the
+        # form: projects/`project`/locations/`location_id`/dataScans/`datascan_id`/jobs/`
         # job_id`, where project refers to a project_id or project_number and
         # location_id refers to a GCP region.
         # Corresponds to the JSON property `name`
@@ -5043,13 +5044,13 @@ module Google
         # The aspects to modify. Supports the following syntaxes: `aspect_type_reference`
         # : matches aspects that belong to the specified aspect type and are attached
         # directly to the entry. `aspect_type_reference`@`path`: matches aspects that
-        # belong to the specified aspect type and path. `aspect_type_reference`@*:
-        # matches aspects that belong to the specified aspect type for all paths.Replace
-        # `aspect_type_reference` with a reference to the aspect type, in the format `
-        # project_id_or_number`.`location_id`.`aspect_type_id`.If you leave this field
-        # empty, it is treated as specifying exactly those aspects that are present
-        # within the specified entry.In FULL entry sync mode, Dataplex implicitly adds
-        # the keys for all of the required aspects of an entry.
+        # belong to the specified aspect type and path. @* : matches aspects of the
+        # given type for all paths. *@path : matches aspects of all types on the given
+        # path. Replace `aspect_type_reference` with a reference to the aspect type, in
+        # the format `project_id_or_number`.`location_id`.`aspect_type_id`.If you leave
+        # this field empty, it is treated as specifying exactly those aspects that are
+        # present within the specified entry.In FULL entry sync mode, Dataplex
+        # implicitly adds the keys for all of the required aspects of an entry.
         # Corresponds to the JSON property `aspectKeys`
         # @return [Array<String>]
         attr_accessor :aspect_keys
