@@ -1632,8 +1632,9 @@ module Google
       class GoogleCloudIdentitytoolkitV1ResetPasswordRequest
         include Google::Apis::Core::Hashable
       
-        # The email of the account to be modified. Specify this and the old password in
-        # order to change an account's password without using an out-of-band code.
+        # Optional. The email of the account to be modified. Specify this and the old
+        # password in order to change an account's password without using an out-of-band
+        # code.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -1659,7 +1660,7 @@ module Google
         # @return [String]
         attr_accessor :oob_code
       
-        # The tenant ID of the Identity Platform tenant the account belongs to.
+        # Optional. The tenant ID of the Identity Platform tenant the account belongs to.
         # Corresponds to the JSON property `tenantId`
         # @return [String]
         attr_accessor :tenant_id
