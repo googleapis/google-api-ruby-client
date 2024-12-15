@@ -22,6 +22,29 @@ module Google
   module Apis
     module HealthcareV1
       
+      # Configures consent audit log config for FHIR create, read, update, and delete (
+      # CRUD) operations. Cloud audit log for healthcare API must be [enabled](https://
+      # cloud.google.com/logging/docs/audit/configure-data-access#config-console-
+      # enable). The consent-related logs are included as part of `protoPayload.
+      # metadata`.
+      class AccessDeterminationLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Controls the amount of detail to include as part of the audit logs.
+        # Corresponds to the JSON property `logLevel`
+        # @return [String]
+        attr_accessor :log_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_level = args[:log_level] if args.key?(:log_level)
+        end
+      end
+      
       # Activates the latest revision of the specified Consent by committing a new
       # revision with `state` updated to `ACTIVE`. If the latest revision of the given
       # Consent is in the `ACTIVE` state, no new revision is committed. A
@@ -58,6 +81,30 @@ module Google
           @consent_artifact = args[:consent_artifact] if args.key?(:consent_artifact)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # List of admin Consent resources to be applied.
+      class AdminConsents
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The versioned names of the admin Consent resource(s), in the format `
+        # projects/`project_id`/locations/`location`/datasets/`dataset_id`/fhirStores/`
+        # fhir_store_id`/fhir/Consent/`resource_id`/_history/`version_id``. For FHIR
+        # stores with `disable_resource_versioning=true`, the format is `projects/`
+        # project_id`/locations/`location`/datasets/`dataset_id`/fhirStores/`
+        # fhir_store_id`/fhir/Consent/`resource_id``.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
         end
       end
       
@@ -132,6 +179,194 @@ module Google
           @entity_mentions = args[:entity_mentions] if args.key?(:entity_mentions)
           @fhir_bundle = args[:fhir_bundle] if args.key?(:fhir_bundle)
           @relationships = args[:relationships] if args.key?(:relationships)
+        end
+      end
+      
+      # Contains the error details of the unsupported admin Consent resources for when
+      # the ApplyAdminConsents method fails to apply one or more Consent resources.
+      class ApplyAdminConsentsErrorDetail
+        include Google::Apis::Core::Hashable
+      
+        # The list of Consent resources that are unsupported or cannot be applied and
+        # the error associated with each of them.
+        # Corresponds to the JSON property `consentErrors`
+        # @return [Array<Google::Apis::HealthcareV1::ConsentErrors>]
+        attr_accessor :consent_errors
+      
+        # The currently in progress non-validate-only ApplyAdminConsents operation ID if
+        # exist.
+        # Corresponds to the JSON property `existingOperationId`
+        # @return [Fixnum]
+        attr_accessor :existing_operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_errors = args[:consent_errors] if args.key?(:consent_errors)
+          @existing_operation_id = args[:existing_operation_id] if args.key?(:existing_operation_id)
+        end
+      end
+      
+      # Request to apply the admin Consent resources for the specified FHIR store.
+      class ApplyAdminConsentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of admin Consent resources to be applied.
+        # Corresponds to the JSON property `newConsentsList`
+        # @return [Google::Apis::HealthcareV1::AdminConsents]
+        attr_accessor :new_consents_list
+      
+        # Optional. If true, the method only validates Consent resources to make sure
+        # they are supported. Otherwise, the method applies the aggregate consent
+        # information to update the enforcement model and reindex the FHIR resources. If
+        # all Consent resources can be applied successfully, the
+        # ApplyAdminConsentsResponse is returned containing the following fields: * `
+        # consent_apply_success` to indicate the number of Consent resources applied. * `
+        # affected_resources` to indicate the number of resources that might have had
+        # their consent access changed. If, however, one or more Consent resources are
+        # unsupported or cannot be applied, the method fails and
+        # ApplyAdminConsentsErrorDetail is is returned with details about the
+        # unsupported Consent resources.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_consents_list = args[:new_consents_list] if args.key?(:new_consents_list)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Response when all admin Consent resources in scope were processed and all
+      # affected resources were reindexed successfully. This structure will be
+      # included in the response when the operation finishes successfully.
+      class ApplyAdminConsentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The number of resources (including the Consent resources) that may have
+        # consent access change.
+        # Corresponds to the JSON property `affectedResources`
+        # @return [Fixnum]
+        attr_accessor :affected_resources
+      
+        # If `validate_only=false` in ApplyAdminConsentsRequest, this counter contains
+        # the number of Consent resources that were successfully applied. Otherwise, it
+        # is the number of Consent resources that are supported.
+        # Corresponds to the JSON property `consentApplySuccess`
+        # @return [Fixnum]
+        attr_accessor :consent_apply_success
+      
+        # The number of resources (including the Consent resources) that
+        # ApplyAdminConsents failed to re-index.
+        # Corresponds to the JSON property `failedResources`
+        # @return [Fixnum]
+        attr_accessor :failed_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @affected_resources = args[:affected_resources] if args.key?(:affected_resources)
+          @consent_apply_success = args[:consent_apply_success] if args.key?(:consent_apply_success)
+          @failed_resources = args[:failed_resources] if args.key?(:failed_resources)
+        end
+      end
+      
+      # Request to apply the Consent resources for the specified FHIR store.
+      class ApplyConsentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Apply consents given by a list of patients.
+        # Corresponds to the JSON property `patientScope`
+        # @return [Google::Apis::HealthcareV1::PatientScope]
+        attr_accessor :patient_scope
+      
+        # Apply consents given by patients whose most recent consent changes are in the
+        # time range. Note that after identifying these patients, the server applies all
+        # Consent resources given by those patients, not just the Consent resources
+        # within the timestamp in the range.
+        # Corresponds to the JSON property `timeRange`
+        # @return [Google::Apis::HealthcareV1::TimeRange]
+        attr_accessor :time_range
+      
+        # Optional. If true, the method only validates Consent resources to make sure
+        # they are supported. When the operation completes, ApplyConsentsResponse is
+        # returned where `consent_apply_success` and `consent_apply_failure` indicate
+        # supported and unsupported (or invalid) Consent resources, respectively.
+        # Otherwise, the method propagates the aggregate consensual information to the
+        # patient's resources. Upon success, `affected_resources` in the
+        # ApplyConsentsResponse indicates the number of resources that may have
+        # consensual access changed.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @patient_scope = args[:patient_scope] if args.key?(:patient_scope)
+          @time_range = args[:time_range] if args.key?(:time_range)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Response when all Consent resources in scope were processed and all affected
+      # resources were reindexed successfully. This structure is included in the
+      # response when the operation finishes successfully.
+      class ApplyConsentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The number of resources (including the Consent resources) that may have
+        # consensual access change.
+        # Corresponds to the JSON property `affectedResources`
+        # @return [Fixnum]
+        attr_accessor :affected_resources
+      
+        # If `validate_only = false` in ApplyConsentsRequest, this counter is the number
+        # of Consent resources that were failed to apply. Otherwise, it is the number of
+        # Consent resources that are not supported or invalid.
+        # Corresponds to the JSON property `consentApplyFailure`
+        # @return [Fixnum]
+        attr_accessor :consent_apply_failure
+      
+        # If `validate_only = false` in ApplyConsentsRequest, this counter is the number
+        # of Consent resources that were successfully applied. Otherwise, it is the
+        # number of Consent resources that are supported.
+        # Corresponds to the JSON property `consentApplySuccess`
+        # @return [Fixnum]
+        attr_accessor :consent_apply_success
+      
+        # The number of resources (including the Consent resources) that ApplyConsents
+        # failed to re-index.
+        # Corresponds to the JSON property `failedResources`
+        # @return [Fixnum]
+        attr_accessor :failed_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @affected_resources = args[:affected_resources] if args.key?(:affected_resources)
+          @consent_apply_failure = args[:consent_apply_failure] if args.key?(:consent_apply_failure)
+          @consent_apply_success = args[:consent_apply_success] if args.key?(:consent_apply_success)
+          @failed_resources = args[:failed_resources] if args.key?(:failed_resources)
         end
       end
       
@@ -662,6 +897,41 @@ module Google
         end
       end
       
+      # The accessor scope that describes who can access, for what purpose, in which
+      # environment.
+      class ConsentAccessorScope
+        include Google::Apis::Core::Hashable
+      
+        # An individual, group, or access role that identifies the accessor or a
+        # characteristic of the accessor. This can be a resource ID (such as ``
+        # resourceType`/`id``) or an external URI. This value must be present.
+        # Corresponds to the JSON property `actor`
+        # @return [String]
+        attr_accessor :actor
+      
+        # An abstract identifier that describes the environment or conditions under
+        # which the accessor is acting. Can be "*" if it applies to all environments.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # The intent of data use. Can be "*" if it applies to all purposes.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actor = args[:actor] if args.key?(:actor)
+          @environment = args[:environment] if args.key?(:environment)
+          @purpose = args[:purpose] if args.key?(:purpose)
+        end
+      end
+      
       # Documentation of a user's consent.
       class ConsentArtifact
         include Google::Apis::Core::Hashable
@@ -729,6 +999,100 @@ module Google
         end
       end
       
+      # Configures whether to enforce consent for the FHIR store and which consent
+      # enforcement version is being used.
+      class ConsentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configures consent audit log config for FHIR create, read, update, and delete (
+        # CRUD) operations. Cloud audit log for healthcare API must be [enabled](https://
+        # cloud.google.com/logging/docs/audit/configure-data-access#config-console-
+        # enable). The consent-related logs are included as part of `protoPayload.
+        # metadata`.
+        # Corresponds to the JSON property `accessDeterminationLogConfig`
+        # @return [Google::Apis::HealthcareV1::AccessDeterminationLogConfig]
+        attr_accessor :access_determination_log_config
+      
+        # Optional. The default value is false. If set to true, when accessing FHIR
+        # resources, the consent headers will be verified against consents given by
+        # patients. See the ConsentEnforcementVersion for the supported consent headers.
+        # Corresponds to the JSON property `accessEnforced`
+        # @return [Boolean]
+        attr_accessor :access_enforced
+        alias_method :access_enforced?, :access_enforced
+      
+        # How the server handles the consent header.
+        # Corresponds to the JSON property `consentHeaderHandling`
+        # @return [Google::Apis::HealthcareV1::ConsentHeaderHandling]
+        attr_accessor :consent_header_handling
+      
+        # Output only. The versioned names of the enforced admin Consent resource(s), in
+        # the format `projects/`project_id`/locations/`location`/datasets/`dataset_id`/
+        # fhirStores/`fhir_store_id`/fhir/Consent/`resource_id`/_history/`version_id``.
+        # For FHIR stores with `disable_resource_versioning=true`, the format is `
+        # projects/`project_id`/locations/`location`/datasets/`dataset_id`/fhirStores/`
+        # fhir_store_id`/fhir/Consent/`resource_id``. This field can only be updated
+        # using ApplyAdminConsents.
+        # Corresponds to the JSON property `enforcedAdminConsents`
+        # @return [Array<String>]
+        attr_accessor :enforced_admin_consents
+      
+        # Required. Specifies which consent enforcement version is being used for this
+        # FHIR store. This field can only be set once by either CreateFhirStore or
+        # UpdateFhirStore. After that, you must call ApplyConsents to change the version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_determination_log_config = args[:access_determination_log_config] if args.key?(:access_determination_log_config)
+          @access_enforced = args[:access_enforced] if args.key?(:access_enforced)
+          @consent_header_handling = args[:consent_header_handling] if args.key?(:consent_header_handling)
+          @enforced_admin_consents = args[:enforced_admin_consents] if args.key?(:enforced_admin_consents)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The Consent resource name and error.
+      class ConsentErrors
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::HealthcareV1::Status]
+        attr_accessor :error
+      
+        # The versioned name of the admin Consent resource, in the format `projects/`
+        # project_id`/locations/`location`/datasets/`dataset_id`/fhirStores/`
+        # fhir_store_id`/fhir/Consent/`resource_id`/_history/`version_id``. For FHIR
+        # stores with `disable_resource_versioning=true`, the format is `projects/`
+        # project_id`/locations/`location`/datasets/`dataset_id`/fhirStores/`
+        # fhir_store_id`/fhir/Consent/`resource_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # The detailed evaluation of a particular Consent.
       class ConsentEvaluation
         include Google::Apis::Core::Hashable
@@ -745,6 +1109,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @evaluation_result = args[:evaluation_result] if args.key?(:evaluation_result)
+        end
+      end
+      
+      # How the server handles the consent header.
+      class ConsentHeaderHandling
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the default server behavior when the header is empty. If
+        # not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+        # Corresponds to the JSON property `profile`
+        # @return [String]
+        attr_accessor :profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @profile = args[:profile] if args.key?(:profile)
         end
       end
       
@@ -1627,6 +2011,139 @@ module Google
         end
       end
       
+      # The enforcing consent's metadata.
+      class ExplainDataAccessConsentInfo
+        include Google::Apis::Core::Hashable
+      
+        # The compartment base resources that matched a cascading policy. Each resource
+        # has the following format: `projects/`project_id`/locations/`location_id`/
+        # datasets/`dataset_id`/fhirStores/`fhir_store_id`/fhir/`resource_type`/`
+        # resource_id``
+        # Corresponds to the JSON property `cascadeOrigins`
+        # @return [Array<String>]
+        attr_accessor :cascade_origins
+      
+        # The resource name of this consent resource, in the format: `projects/`
+        # project_id`/locations/`location`/datasets/`dataset_id`/fhirStores/`
+        # fhir_store_id`/fhir/Consent/`resource_id``.
+        # Corresponds to the JSON property `consentResource`
+        # @return [String]
+        attr_accessor :consent_resource
+      
+        # Last enforcement timestamp of this consent resource.
+        # Corresponds to the JSON property `enforcementTime`
+        # @return [String]
+        attr_accessor :enforcement_time
+      
+        # A list of all the matching accessor scopes of this consent policy that
+        # enforced ExplainDataAccessConsentScope.accessor_scope.
+        # Corresponds to the JSON property `matchingAccessorScopes`
+        # @return [Array<Google::Apis::HealthcareV1::ConsentAccessorScope>]
+        attr_accessor :matching_accessor_scopes
+      
+        # The patient owning the consent (only applicable for patient consents), in the
+        # format: `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # fhirStores/`fhir_store_id`/fhir/Patient/`patient_id``
+        # Corresponds to the JSON property `patientConsentOwner`
+        # @return [String]
+        attr_accessor :patient_consent_owner
+      
+        # The policy type of consent resource (e.g. PATIENT, ADMIN).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The consent's variant combinations. A single consent may have multiple
+        # variants.
+        # Corresponds to the JSON property `variants`
+        # @return [Array<String>]
+        attr_accessor :variants
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cascade_origins = args[:cascade_origins] if args.key?(:cascade_origins)
+          @consent_resource = args[:consent_resource] if args.key?(:consent_resource)
+          @enforcement_time = args[:enforcement_time] if args.key?(:enforcement_time)
+          @matching_accessor_scopes = args[:matching_accessor_scopes] if args.key?(:matching_accessor_scopes)
+          @patient_consent_owner = args[:patient_consent_owner] if args.key?(:patient_consent_owner)
+          @type = args[:type] if args.key?(:type)
+          @variants = args[:variants] if args.key?(:variants)
+        end
+      end
+      
+      # A single consent scope that provides info on who has access to the requested
+      # resource scope for a particular purpose and environment, enforced by which
+      # consent.
+      class ExplainDataAccessConsentScope
+        include Google::Apis::Core::Hashable
+      
+        # The accessor scope that describes who can access, for what purpose, in which
+        # environment.
+        # Corresponds to the JSON property `accessorScope`
+        # @return [Google::Apis::HealthcareV1::ConsentAccessorScope]
+        attr_accessor :accessor_scope
+      
+        # Whether the current consent scope is permitted or denied access on the
+        # requested resource.
+        # Corresponds to the JSON property `decision`
+        # @return [String]
+        attr_accessor :decision
+      
+        # Metadata of the consent resources that enforce the consent scope's access.
+        # Corresponds to the JSON property `enforcingConsents`
+        # @return [Array<Google::Apis::HealthcareV1::ExplainDataAccessConsentInfo>]
+        attr_accessor :enforcing_consents
+      
+        # Other consent scopes that created exceptions within this scope.
+        # Corresponds to the JSON property `exceptions`
+        # @return [Array<Google::Apis::HealthcareV1::ExplainDataAccessConsentScope>]
+        attr_accessor :exceptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accessor_scope = args[:accessor_scope] if args.key?(:accessor_scope)
+          @decision = args[:decision] if args.key?(:decision)
+          @enforcing_consents = args[:enforcing_consents] if args.key?(:enforcing_consents)
+          @exceptions = args[:exceptions] if args.key?(:exceptions)
+        end
+      end
+      
+      # List of consent scopes that are applicable to the explained access on a given
+      # resource.
+      class ExplainDataAccessResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of applicable consent scopes. Sorted in order of actor such that scopes
+        # belonging to the same actor will be adjacent to each other in the list.
+        # Corresponds to the JSON property `consentScopes`
+        # @return [Array<Google::Apis::HealthcareV1::ExplainDataAccessConsentScope>]
+        attr_accessor :consent_scopes
+      
+        # Warnings associated with this response. It inform user with exceeded scope
+        # limit errors.
+        # Corresponds to the JSON property `warning`
+        # @return [String]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_scopes = args[:consent_scopes] if args.key?(:consent_scopes)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+      end
+      
       # Exports data from the specified DICOM store. If a given resource, such as a
       # DICOM object with the same SOPInstance UID, already exists in the output, it
       # is overwritten with the version in the source dataset. Exported DICOM data
@@ -2034,6 +2551,12 @@ module Google
         # @return [String]
         attr_accessor :complex_data_type_reference_parsing
       
+        # Configures whether to enforce consent for the FHIR store and which consent
+        # enforcement version is being used.
+        # Corresponds to the JSON property `consentConfig`
+        # @return [Google::Apis::HealthcareV1::ConsentConfig]
+        attr_accessor :consent_config
+      
         # Optional. If true, overrides the default search behavior for this FHIR store
         # to `handling=strict` which returns an error for unrecognized search parameters.
         # If false, uses the FHIR specification default `handling=lenient` which
@@ -2147,6 +2670,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @complex_data_type_reference_parsing = args[:complex_data_type_reference_parsing] if args.key?(:complex_data_type_reference_parsing)
+          @consent_config = args[:consent_config] if args.key?(:consent_config)
           @default_search_handling_strict = args[:default_search_handling_strict] if args.key?(:default_search_handling_strict)
           @disable_referential_integrity = args[:disable_referential_integrity] if args.key?(:disable_referential_integrity)
           @disable_resource_versioning = args[:disable_resource_versioning] if args.key?(:disable_resource_versioning)
@@ -4059,6 +4583,27 @@ module Google
         end
       end
       
+      # Apply consents given by a list of patients.
+      class PatientScope
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of patient IDs whose Consent resources will be enforced. At
+        # most 10,000 patients can be specified. An empty list is equivalent to all
+        # patients (meaning the entire FHIR store).
+        # Corresponds to the JSON property `patientIds`
+        # @return [Array<String>]
+        attr_accessor :patient_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @patient_ids = args[:patient_ids] if args.key?(:patient_ids)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -5359,6 +5904,36 @@ module Google
         def update!(**args)
           @expiration_ms = args[:expiration_ms] if args.key?(:expiration_ms)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Apply consents given by patients whose most recent consent changes are in the
+      # time range. Note that after identifying these patients, the server applies all
+      # Consent resources given by those patients, not just the Consent resources
+      # within the timestamp in the range.
+      class TimeRange
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The latest consent change time, in format YYYY-MM-DDThh:mm:ss.sss+zz:
+        # zz If not specified, the system uses the time when ApplyConsents was called.
+        # Corresponds to the JSON property `end`
+        # @return [String]
+        attr_accessor :end
+      
+        # Optional. The earliest consent change time, in format YYYY-MM-DDThh:mm:ss.sss+
+        # zz:zz If not specified, the system uses the FHIR store creation time.
+        # Corresponds to the JSON property `start`
+        # @return [String]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
