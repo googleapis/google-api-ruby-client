@@ -30,7 +30,7 @@ module Google
       #    Parallelstore = Google::Apis::ParallelstoreV1 # Alias the module
       #    service = Parallelstore::ParallelstoreService.new
       #
-      # @see https://cloud.google.com/
+      # @see https://cloud.google.com/parallelstore
       class ParallelstoreService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://parallelstore.$UNIVERSE_DOMAIN$/"
 
