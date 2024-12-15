@@ -496,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerLsnPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlServerObjectIdentifier
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1405,6 +1411,8 @@ module Google
       
           property :oracle_scn_position, as: 'oracleScnPosition', class: Google::Apis::DatastreamV1::OracleScnPosition, decorator: Google::Apis::DatastreamV1::OracleScnPosition::Representation
       
+          property :sql_server_lsn_position, as: 'sqlServerLsnPosition', class: Google::Apis::DatastreamV1::SqlServerLsnPosition, decorator: Google::Apis::DatastreamV1::SqlServerLsnPosition::Representation
+      
         end
       end
       
@@ -1425,6 +1433,13 @@ module Google
           property :precision, as: 'precision'
           property :primary_key, as: 'primaryKey'
           property :scale, as: 'scale'
+        end
+      end
+      
+      class SqlServerLsnPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lsn, as: 'lsn'
         end
       end
       

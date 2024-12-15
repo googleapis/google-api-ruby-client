@@ -375,7 +375,7 @@ module Google
         
         # Use this method to update the parameters of a connection profile.
         # @param [String] name
-        #   Output only. The resource's name.
+        #   Output only. Identifier. The resource's name.
         # @param [Google::Apis::DatastreamV1::ConnectionProfile] connection_profile_object
         # @param [Boolean] force
         #   Optional. Update the connection profile without validating it.
@@ -438,8 +438,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::DatastreamV1::CancelOperationRequest] cancel_operation_request_object
@@ -1095,7 +1095,7 @@ module Google
         
         # Use this method to update the configuration of a stream.
         # @param [String] name
-        #   Output only. The stream's name.
+        #   Output only. Identifier. The stream's name.
         # @param [Google::Apis::DatastreamV1::Stream] stream_object
         # @param [Boolean] force
         #   Optional. Update the stream without validating it.
