@@ -1834,6 +1834,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerStandbyPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1948,6 +1954,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagersResumeInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagersScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1973,6 +1985,24 @@ module Google
       end
       
       class InstanceGroupManagersSetTargetPoolsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersStartInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersStopInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersSuspendInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3190,6 +3220,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkProfileLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkProfileNetworkFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkProfilesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkRoutingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4114,6 +4180,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionInstanceGroupManagersResumeInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionInstanceGroupManagersSetTargetPoolsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4121,6 +4193,24 @@ module Google
       end
       
       class RegionInstanceGroupManagersSetTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersStartInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersStopInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersSuspendInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9862,12 +9952,16 @@ module Google
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
+          property :standby_policy, as: 'standbyPolicy', class: Google::Apis::ComputeV1::InstanceGroupManagerStandbyPolicy, decorator: Google::Apis::ComputeV1::InstanceGroupManagerStandbyPolicy::Representation
+      
           property :stateful_policy, as: 'statefulPolicy', class: Google::Apis::ComputeV1::StatefulPolicy, decorator: Google::Apis::ComputeV1::StatefulPolicy::Representation
       
           property :status, as: 'status', class: Google::Apis::ComputeV1::InstanceGroupManagerStatus, decorator: Google::Apis::ComputeV1::InstanceGroupManagerStatus::Representation
       
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'
+          property :target_stopped_size, as: 'targetStoppedSize'
+          property :target_suspended_size, as: 'targetSuspendedSize'
           property :update_policy, as: 'updatePolicy', class: Google::Apis::ComputeV1::InstanceGroupManagerUpdatePolicy, decorator: Google::Apis::ComputeV1::InstanceGroupManagerUpdatePolicy::Representation
       
           collection :versions, as: 'versions', class: Google::Apis::ComputeV1::InstanceGroupManagerVersion, decorator: Google::Apis::ComputeV1::InstanceGroupManagerVersion::Representation
@@ -10136,6 +10230,14 @@ module Google
         end
       end
       
+      class InstanceGroupManagerStandbyPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :initial_delay_sec, as: 'initialDelaySec'
+          property :mode, as: 'mode'
+        end
+      end
+      
       class InstanceGroupManagerStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10308,6 +10410,13 @@ module Google
         end
       end
       
+      class InstanceGroupManagersResumeInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
       class InstanceGroupManagersScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10348,6 +10457,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :target_pools, as: 'targetPools'
+        end
+      end
+      
+      class InstanceGroupManagersStartInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class InstanceGroupManagersStopInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_stop, as: 'forceStop'
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class InstanceGroupManagersSuspendInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_suspend, as: 'forceSuspend'
+          collection :instances, as: 'instances'
         end
       end
       
@@ -12057,6 +12189,7 @@ module Google
           property :mtu, as: 'mtu'
           property :name, as: 'name'
           property :network_firewall_policy_enforcement_order, as: 'networkFirewallPolicyEnforcementOrder'
+          property :network_profile, as: 'networkProfile'
           collection :peerings, as: 'peerings', class: Google::Apis::ComputeV1::NetworkPeering, decorator: Google::Apis::ComputeV1::NetworkPeering::Representation
       
           property :routing_config, as: 'routingConfig', class: Google::Apis::ComputeV1::NetworkRoutingConfig, decorator: Google::Apis::ComputeV1::NetworkRoutingConfig::Representation
@@ -12589,9 +12722,100 @@ module Google
         end
       end
       
+      class NetworkProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :features, as: 'features', class: Google::Apis::ComputeV1::NetworkProfileNetworkFeatures, decorator: Google::Apis::ComputeV1::NetworkProfileNetworkFeatures::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :location, as: 'location', class: Google::Apis::ComputeV1::NetworkProfileLocation, decorator: Google::Apis::ComputeV1::NetworkProfileLocation::Representation
+      
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class NetworkProfileLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :scope, as: 'scope'
+        end
+      end
+      
+      class NetworkProfileNetworkFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :address_purposes, as: 'addressPurposes'
+          property :allow_alias_ip_ranges, as: 'allowAliasIpRanges'
+          property :allow_auto_mode_subnet, as: 'allowAutoModeSubnet'
+          property :allow_class_d_firewalls, as: 'allowClassDFirewalls'
+          property :allow_cloud_nat, as: 'allowCloudNat'
+          property :allow_cloud_router, as: 'allowCloudRouter'
+          property :allow_external_ip_access, as: 'allowExternalIpAccess'
+          property :allow_interconnect, as: 'allowInterconnect'
+          property :allow_load_balancing, as: 'allowLoadBalancing'
+          property :allow_multi_nic_in_same_network, as: 'allowMultiNicInSameNetwork'
+          property :allow_packet_mirroring, as: 'allowPacketMirroring'
+          property :allow_private_google_access, as: 'allowPrivateGoogleAccess'
+          property :allow_psc, as: 'allowPsc'
+          property :allow_same_network_unicast, as: 'allowSameNetworkUnicast'
+          property :allow_static_routes, as: 'allowStaticRoutes'
+          property :allow_sub_interfaces, as: 'allowSubInterfaces'
+          property :allow_vpc_peering, as: 'allowVpcPeering'
+          property :allow_vpn, as: 'allowVpn'
+          collection :interface_types, as: 'interfaceTypes'
+          collection :subnet_purposes, as: 'subnetPurposes'
+          collection :subnet_stack_types, as: 'subnetStackTypes'
+          property :unicast, as: 'unicast'
+        end
+      end
+      
+      class NetworkProfilesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::NetworkProfile, decorator: Google::Apis::ComputeV1::NetworkProfile::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NetworkProfilesListResponse::Warning, decorator: Google::Apis::ComputeV1::NetworkProfilesListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NetworkProfilesListResponse::Warning::Datum, decorator: Google::Apis::ComputeV1::NetworkProfilesListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class NetworkRoutingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bgp_always_compare_med, as: 'bgpAlwaysCompareMed'
+          property :bgp_best_path_selection_mode, as: 'bgpBestPathSelectionMode'
+          property :bgp_inter_region_cost, as: 'bgpInterRegionCost'
           property :routing_mode, as: 'routingMode'
         end
       end
@@ -14271,6 +14495,13 @@ module Google
         end
       end
       
+      class RegionInstanceGroupManagersResumeInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
       class RegionInstanceGroupManagersSetTargetPoolsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14283,6 +14514,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_template, as: 'instanceTemplate'
+        end
+      end
+      
+      class RegionInstanceGroupManagersStartInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersStopInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_stop, as: 'forceStop'
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersSuspendInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_suspend, as: 'forceSuspend'
+          collection :instances, as: 'instances'
         end
       end
       
@@ -14877,8 +15131,11 @@ module Google
           property :next_hop_hub, as: 'nextHopHub'
           property :next_hop_ilb, as: 'nextHopIlb'
           property :next_hop_instance, as: 'nextHopInstance'
+          property :next_hop_inter_region_cost, as: 'nextHopInterRegionCost'
           property :next_hop_ip, as: 'nextHopIp'
+          property :next_hop_med, as: 'nextHopMed'
           property :next_hop_network, as: 'nextHopNetwork'
+          property :next_hop_origin, as: 'nextHopOrigin'
           property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
           property :priority, as: 'priority'
