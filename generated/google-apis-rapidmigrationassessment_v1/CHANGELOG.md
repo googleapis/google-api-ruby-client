@@ -1,5 +1,10 @@
 # Release history for google-apis-rapidmigrationassessment_v1
 
+### v0.5.0 (2024-12-15)
+
+* Regenerated from discovery document revision 20241211
+* Regenerated using generator version 0.15.1
+
 ### v0.4.0 (2024-05-19)
 
 * Regenerated using generator version 0.15.0
