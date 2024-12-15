@@ -2401,6 +2401,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the attack paths for a set of simulation results or valued resources and
+        # filter.
+        # @param [String] parent
+        #   Required. Name of parent to list attack paths. Valid formats: `organizations/`
+        #   organization``, `organizations/`organization`/simulations/`simulation`` `
+        #   organizations/`organization`/simulations/`simulation`/attackExposureResults/`
+        #   attack_exposure_result_v2`` `organizations/`organization`/simulations/`
+        #   simulation`/valuedResources/`valued_resource``
+        # @param [String] filter
+        #   The filter expression that filters the attack path in the response. Supported
+        #   fields: * `valued_resources` supports =
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last `ListAttackPathsResponse`; indicates that this
+        #   is a continuation of a prior `ListAttackPaths` call, and that the system
+        #   should return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListAttackPathsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListAttackPathsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_attack_paths(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/attackPaths', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListAttackPathsResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListAttackPathsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a BigQuery export.
         # @param [String] parent
         #   Required. The name of the parent resource of the new BigQuery export. Its
@@ -3494,8 +3542,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
