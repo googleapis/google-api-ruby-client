@@ -205,7 +205,9 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::AccountAggregation]
         attr_accessor :account_aggregation
       
-        # Required. The provider of the service. Format: `accounts/`account``
+        # Required. The provider of the service. Either the reference to an account such
+        # as `providers/123` or a well-known service provider (one of `providers/
+        # GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`).
         # Corresponds to the JSON property `provider`
         # @return [String]
         attr_accessor :provider
