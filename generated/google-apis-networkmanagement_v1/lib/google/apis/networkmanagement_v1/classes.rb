@@ -1418,6 +1418,37 @@ module Google
         end
       end
       
+      # Response for the `ListVpcFlowLogsConfigs` method.
+      class ListVpcFlowLogsConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page token to fetch the next set of configurations.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached (when querying all locations with `-`).
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # List of VPC Flow Log configurations.
+        # Corresponds to the JSON property `vpcFlowLogsConfigs`
+        # @return [Array<Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig>]
+        attr_accessor :vpc_flow_logs_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @vpc_flow_logs_configs = args[:vpc_flow_logs_configs] if args.key?(:vpc_flow_logs_configs)
+        end
+      end
+      
       # For display only. Metadata associated with a specific load balancer backend.
       class LoadBalancerBackend
         include Google::Apis::Core::Hashable
@@ -2301,14 +2332,15 @@ module Google
       class RouteInfo
         include Google::Apis::Core::Hashable
       
-        # For advertised routes, the URI of their next hop, i.e. the URI of the hybrid
+        # For ADVERTISED routes, the URI of their next hop, i.e. the URI of the hybrid
         # endpoint (VPN tunnel, Interconnect attachment, NCC router appliance) the
         # advertised prefix is advertised through, or URI of the source peered network.
+        # Deprecated in favor of the next_hop_uri field, not used in new tests.
         # Corresponds to the JSON property `advertisedRouteNextHopUri`
         # @return [String]
         attr_accessor :advertised_route_next_hop_uri
       
-        # For advertised dynamic routes, the URI of the Cloud Router that advertised the
+        # For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised the
         # corresponding IP prefix.
         # Corresponds to the JSON property `advertisedRouteSourceRouterUri`
         # @return [String]
@@ -2319,7 +2351,7 @@ module Google
         # @return [String]
         attr_accessor :dest_ip_range
       
-        # Destination port ranges of the route. Policy based routes only.
+        # Destination port ranges of the route. POLICY_BASED routes only.
         # Corresponds to the JSON property `destPortRanges`
         # @return [Array<String>]
         attr_accessor :dest_port_ranges
@@ -2334,47 +2366,82 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_tags
       
-        # URI of a NCC Hub. NCC_HUB routes only.
+        # For PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub,
+        # the URI of the corresponding route in NCC Hub's routing table.
+        # Corresponds to the JSON property `nccHubRouteUri`
+        # @return [String]
+        attr_accessor :ncc_hub_route_uri
+      
+        # URI of the NCC Hub the route is advertised by. PEERING_SUBNET and
+        # PEERING_DYNAMIC routes that are advertised by NCC Hub only.
         # Corresponds to the JSON property `nccHubUri`
         # @return [String]
         attr_accessor :ncc_hub_uri
       
-        # URI of a NCC Spoke. NCC_HUB routes only.
+        # URI of the destination NCC Spoke. PEERING_SUBNET and PEERING_DYNAMIC routes
+        # that are advertised by NCC Hub only.
         # Corresponds to the JSON property `nccSpokeUri`
         # @return [String]
         attr_accessor :ncc_spoke_uri
       
-        # URI of a Compute Engine network. NETWORK routes only.
+        # URI of a VPC network where route is located.
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
       
-        # Next hop of the route.
+        # String type of the next hop of the route (for example, "VPN tunnel").
+        # Deprecated in favor of the next_hop_type and next_hop_uri fields, not used in
+        # new tests.
         # Corresponds to the JSON property `nextHop`
         # @return [String]
         attr_accessor :next_hop
+      
+        # URI of a VPC network where the next hop resource is located.
+        # Corresponds to the JSON property `nextHopNetworkUri`
+        # @return [String]
+        attr_accessor :next_hop_network_uri
       
         # Type of next hop.
         # Corresponds to the JSON property `nextHopType`
         # @return [String]
         attr_accessor :next_hop_type
       
+        # URI of the next hop resource.
+        # Corresponds to the JSON property `nextHopUri`
+        # @return [String]
+        attr_accessor :next_hop_uri
+      
+        # For PEERING_SUBNET, PEERING_STATIC and PEERING_DYNAMIC routes, the name of the
+        # originating SUBNET/STATIC/DYNAMIC route.
+        # Corresponds to the JSON property `originatingRouteDisplayName`
+        # @return [String]
+        attr_accessor :originating_route_display_name
+      
+        # For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating
+        # SUBNET/STATIC route.
+        # Corresponds to the JSON property `originatingRouteUri`
+        # @return [String]
+        attr_accessor :originating_route_uri
+      
         # Priority of the route.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
       
-        # Protocols of the route. Policy based routes only.
+        # Protocols of the route. POLICY_BASED routes only.
         # Corresponds to the JSON property `protocols`
         # @return [Array<String>]
         attr_accessor :protocols
       
-        # Region of the route (if applicable).
+        # Region of the route. DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED
+        # routes only. If set for POLICY_BASED route, this is a region of VLAN
+        # attachments for Cloud Interconnect the route applies to.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
-        # Indicates where route is applicable.
+        # Indicates where route is applicable. Deprecated, routes with NCC_HUB scope are
+        # not included in the trace in new tests.
         # Corresponds to the JSON property `routeScope`
         # @return [String]
         attr_accessor :route_scope
@@ -2384,17 +2451,18 @@ module Google
         # @return [String]
         attr_accessor :route_type
       
-        # Source IP address range of the route. Policy based routes only.
+        # Source IP address range of the route. POLICY_BASED routes only.
         # Corresponds to the JSON property `srcIpRange`
         # @return [String]
         attr_accessor :src_ip_range
       
-        # Source port ranges of the route. Policy based routes only.
+        # Source port ranges of the route. POLICY_BASED routes only.
         # Corresponds to the JSON property `srcPortRanges`
         # @return [Array<String>]
         attr_accessor :src_port_ranges
       
-        # URI of a route (if applicable).
+        # URI of a route. SUBNET, STATIC, PEERING_SUBNET (only for peering network) and
+        # POLICY_BASED routes only.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2411,11 +2479,16 @@ module Google
           @dest_port_ranges = args[:dest_port_ranges] if args.key?(:dest_port_ranges)
           @display_name = args[:display_name] if args.key?(:display_name)
           @instance_tags = args[:instance_tags] if args.key?(:instance_tags)
+          @ncc_hub_route_uri = args[:ncc_hub_route_uri] if args.key?(:ncc_hub_route_uri)
           @ncc_hub_uri = args[:ncc_hub_uri] if args.key?(:ncc_hub_uri)
           @ncc_spoke_uri = args[:ncc_spoke_uri] if args.key?(:ncc_spoke_uri)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @next_hop = args[:next_hop] if args.key?(:next_hop)
+          @next_hop_network_uri = args[:next_hop_network_uri] if args.key?(:next_hop_network_uri)
           @next_hop_type = args[:next_hop_type] if args.key?(:next_hop_type)
+          @next_hop_uri = args[:next_hop_uri] if args.key?(:next_hop_uri)
+          @originating_route_display_name = args[:originating_route_display_name] if args.key?(:originating_route_display_name)
+          @originating_route_uri = args[:originating_route_uri] if args.key?(:originating_route_uri)
           @priority = args[:priority] if args.key?(:priority)
           @protocols = args[:protocols] if args.key?(:protocols)
           @region = args[:region] if args.key?(:region)
@@ -2881,6 +2954,115 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @location = args[:location] if args.key?(:location)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A configuration to generate VPC Flow Logs.
+      class VpcFlowLogsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The aggregation interval for the logs. Default value is
+        # INTERVAL_5_SEC.
+        # Corresponds to the JSON property `aggregationInterval`
+        # @return [String]
+        attr_accessor :aggregation_interval
+      
+        # Output only. The time the config was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The user-supplied description of the VPC Flow Logs configuration.
+        # Maximum of 512 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Export filter used to define which VPC Flow Logs should be logged.
+        # Corresponds to the JSON property `filterExpr`
+        # @return [String]
+        attr_accessor :filter_expr
+      
+        # Optional. The value of the field must be in (0, 1]. The sampling rate of VPC
+        # Flow Logs where 1.0 means all collected logs are reported. Setting the
+        # sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
+        # the state field instead. Default value is 1.0.
+        # Corresponds to the JSON property `flowSampling`
+        # @return [Float]
+        attr_accessor :flow_sampling
+      
+        # Traffic will be logged from the Interconnect Attachment. Format: projects/`
+        # project_id`/regions/`region`/interconnectAttachments/`name`
+        # Corresponds to the JSON property `interconnectAttachment`
+        # @return [String]
+        attr_accessor :interconnect_attachment
+      
+        # Optional. Resource labels to represent user-provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. Configures whether all, none or a subset of metadata fields should
+        # be added to the reported VPC flow logs. Default value is INCLUDE_ALL_METADATA.
+        # Corresponds to the JSON property `metadata`
+        # @return [String]
+        attr_accessor :metadata
+      
+        # Optional. Custom metadata fields to include in the reported VPC flow logs. Can
+        # only be specified if "metadata" was set to CUSTOM_METADATA.
+        # Corresponds to the JSON property `metadataFields`
+        # @return [Array<String>]
+        attr_accessor :metadata_fields
+      
+        # Identifier. Unique name of the configuration using the form: `projects/`
+        # project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The state of the VPC Flow Log configuration. Default value is
+        # ENABLED. When creating a new configuration, it must be enabled.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. A diagnostic bit - describes the state of the configured target
+        # resource for diagnostic purposes.
+        # Corresponds to the JSON property `targetResourceState`
+        # @return [String]
+        attr_accessor :target_resource_state
+      
+        # Output only. The time the config was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Traffic will be logged from the VPN Tunnel. Format: projects/`project_id`/
+        # regions/`region`/vpnTunnels/`name`
+        # Corresponds to the JSON property `vpnTunnel`
+        # @return [String]
+        attr_accessor :vpn_tunnel
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_interval = args[:aggregation_interval] if args.key?(:aggregation_interval)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @filter_expr = args[:filter_expr] if args.key?(:filter_expr)
+          @flow_sampling = args[:flow_sampling] if args.key?(:flow_sampling)
+          @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
+          @labels = args[:labels] if args.key?(:labels)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @metadata_fields = args[:metadata_fields] if args.key?(:metadata_fields)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @target_resource_state = args[:target_resource_state] if args.key?(:target_resource_state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @vpn_tunnel = args[:vpn_tunnel] if args.key?(:vpn_tunnel)
         end
       end
       

@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListVpcFlowLogsConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LoadBalancerBackend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +359,12 @@ module Google
       end
       
       class VpcConnectorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpcFlowLogsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -709,6 +721,16 @@ module Google
         end
       end
       
+      class ListVpcFlowLogsConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :vpc_flow_logs_configs, as: 'vpcFlowLogsConfigs', class: Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig, decorator: Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig::Representation
+      
+        end
+      end
+      
       class LoadBalancerBackend
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -913,11 +935,16 @@ module Google
           collection :dest_port_ranges, as: 'destPortRanges'
           property :display_name, as: 'displayName'
           collection :instance_tags, as: 'instanceTags'
+          property :ncc_hub_route_uri, as: 'nccHubRouteUri'
           property :ncc_hub_uri, as: 'nccHubUri'
           property :ncc_spoke_uri, as: 'nccSpokeUri'
           property :network_uri, as: 'networkUri'
           property :next_hop, as: 'nextHop'
+          property :next_hop_network_uri, as: 'nextHopNetworkUri'
           property :next_hop_type, as: 'nextHopType'
+          property :next_hop_uri, as: 'nextHopUri'
+          property :originating_route_display_name, as: 'originatingRouteDisplayName'
+          property :originating_route_uri, as: 'originatingRouteUri'
           property :priority, as: 'priority'
           collection :protocols, as: 'protocols'
           property :region, as: 'region'
@@ -1056,6 +1083,26 @@ module Google
           property :display_name, as: 'displayName'
           property :location, as: 'location'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class VpcFlowLogsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_interval, as: 'aggregationInterval'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :filter_expr, as: 'filterExpr'
+          property :flow_sampling, as: 'flowSampling'
+          property :interconnect_attachment, as: 'interconnectAttachment'
+          hash :labels, as: 'labels'
+          property :metadata, as: 'metadata'
+          collection :metadata_fields, as: 'metadataFields'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :target_resource_state, as: 'targetResourceState'
+          property :update_time, as: 'updateTime'
+          property :vpn_tunnel, as: 'vpnTunnel'
         end
       end
       
