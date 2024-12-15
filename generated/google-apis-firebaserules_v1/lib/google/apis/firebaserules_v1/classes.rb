@@ -744,7 +744,7 @@ module Google
         # @return [Google::Apis::FirebaserulesV1::Release]
         attr_accessor :release
       
-        # Specifies which fields to update.
+        # Optional. Specifies which fields to update.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
