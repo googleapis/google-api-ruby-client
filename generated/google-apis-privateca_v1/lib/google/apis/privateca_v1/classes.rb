@@ -342,8 +342,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. Identifier. The resource name for this CaPool in the format `
-        # projects/*/locations/*/caPools/*`.
+        # Identifier. The resource name for this CaPool in the format `projects/*/
+        # locations/*/caPools/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -457,7 +457,7 @@ module Google
         # @return [String]
         attr_accessor :lifetime
       
-        # Output only. The resource name for this Certificate in the format `projects/*/
+        # Identifier. The resource name for this Certificate in the format `projects/*/
         # locations/*/caPools/*/certificates/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -583,8 +583,8 @@ module Google
         # @return [String]
         attr_accessor :lifetime
       
-        # Output only. Identifier. The resource name for this CertificateAuthority in
-        # the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        # Identifier. The resource name for this CertificateAuthority in the format `
+        # projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -920,8 +920,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The resource name for this CertificateRevocationList in the
-        # format `projects/*/locations/*/caPools/*certificateAuthorities/*/
+        # Identifier. The resource name for this CertificateRevocationList in the format
+        # `projects/*/locations/*/caPools/*certificateAuthorities/*/
         # certificateRevocationLists/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1013,7 +1013,7 @@ module Google
         # @return [String]
         attr_accessor :maximum_lifetime
       
-        # Output only. The resource name for this CertificateTemplate in the format `
+        # Identifier. The resource name for this CertificateTemplate in the format `
         # projects/*/locations/*/certificateTemplates/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
