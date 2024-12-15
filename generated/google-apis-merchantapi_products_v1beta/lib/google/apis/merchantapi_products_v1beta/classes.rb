@@ -497,8 +497,7 @@ module Google
         # @return [Google::Apis::MerchantapiProductsV1beta::SubscriptionCost]
         attr_accessor :subscription_cost
       
-        # The tax category of the product, used to configure detailed tax nexus in
-        # account-level tax settings.
+        # The tax category of the product.
         # Corresponds to the JSON property `taxCategory`
         # @return [String]
         attr_accessor :tax_category
