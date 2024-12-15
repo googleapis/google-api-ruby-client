@@ -523,6 +523,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :resource_size_bytes
       
+        # Optional. Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Optional. Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The list of BackupLocks taken by the service to prevent the
         # deletion of the backup.
         # Corresponds to the JSON property `serviceLocks`
@@ -559,6 +571,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @resource_size_bytes = args[:resource_size_bytes] if args.key?(:resource_size_bytes)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_locks = args[:service_locks] if args.key?(:service_locks)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -862,7 +876,7 @@ module Google
       
         # Required. The resource type to which the `BackupPlan` will be applied.
         # Examples include, "compute.googleapis.com/Instance", "sqladmin.googleapis.com/
-        # Instance" and "storage.googleapis.com/Bucket".
+        # Instance", or "alloydb.googleapis.com/Cluster".
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -913,9 +927,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Output Only. Resource name of data source which will be used as
-        # storage location for backups taken. Format : projects/`project`/locations/`
-        # location`/backupVaults/`backupvault`/dataSources/`datasource`
+        # Output only. Resource name of data source which will be used as storage
+        # location for backups taken. Format : projects/`project`/locations/`location`/
+        # backupVaults/`backupvault`/dataSources/`datasource`
         # Corresponds to the JSON property `dataSource`
         # @return [String]
         attr_accessor :data_source
@@ -932,7 +946,7 @@ module Google
         # @return [String]
         attr_accessor :resource
       
-        # Optional. Required. Resource type of workload on which backupplan is applied
+        # Required. Immutable. Resource type of workload on which backupplan is applied
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -980,7 +994,7 @@ module Google
         # is 90 for hourly backups. Minimum value is 1 and maximum value is 90 for daily
         # backups. Minimum value is 7 and maximum value is 186 for weekly backups.
         # Minimum value is 30 and maximum value is 732 for monthly backups. Minimum
-        # value is 30 and maximum value is 36159 for yearly backups.
+        # value is 365 and maximum value is 36159 for yearly backups.
         # Corresponds to the JSON property `backupRetentionDays`
         # @return [Fixnum]
         attr_accessor :backup_retention_days
@@ -1017,8 +1031,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Note: This field is added for future use case and will not be
-        # supported in the current release. Optional. Access restriction for the backup
-        # vault. Default value is WITHIN_ORGANIZATION if not provided during creation.
+        # supported in the current release. Access restriction for the backup vault.
+        # Default value is WITHIN_ORGANIZATION if not provided during creation.
         # Corresponds to the JSON property `accessRestriction`
         # @return [String]
         attr_accessor :access_restriction
@@ -1099,8 +1113,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_stored_bytes
       
-        # Output only. Output only Immutable after resource creation until resource
-        # deletion.
+        # Output only. Immutable after resource creation until resource deletion.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -2323,6 +2336,42 @@ module Google
         end
       end
       
+      # Request message for initializing the service.
+      class InitializeServiceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. For example, consider a
+        # situation where you make an initial request and t he request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. The resource type to which the default service config will be
+        # applied. Examples include, "compute.googleapis.com/Instance" and "storage.
+        # googleapis.com/Bucket".
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
       # request message for InitiateBackup.
       class InitiateBackupRequest
         include Google::Apis::Core::Hashable
@@ -3166,9 +3215,9 @@ module Google
         attr_accessor :end_time
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to 'Code.
-        # CANCELLED'.
+        # operation. Operations that have successfully been cancelled have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to 'Code.CANCELLED'.
         # Corresponds to the JSON property `requestedCancellation`
         # @return [Boolean]
         attr_accessor :requested_cancellation
@@ -3415,7 +3464,7 @@ module Google
         # @return [String]
         attr_accessor :last_successful_backup_consistency_time
       
-        # Output only. Output Only. Backup Rule id fetched from backup plan.
+        # Output only. Backup Rule id fetched from backup plan.
         # Corresponds to the JSON property `ruleId`
         # @return [String]
         attr_accessor :rule_id
