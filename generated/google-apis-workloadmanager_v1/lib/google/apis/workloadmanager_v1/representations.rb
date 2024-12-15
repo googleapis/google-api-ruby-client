@@ -304,6 +304,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Summary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TorsoValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ViolationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -368,6 +380,7 @@ module Google
           property :create_time, as: 'createTime'
           property :custom_rules_bucket, as: 'customRulesBucket'
           property :description, as: 'description'
+          property :evaluation_type, as: 'evaluationType'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :resource_filter, as: 'resourceFilter', class: Google::Apis::WorkloadmanagerV1::ResourceFilter, decorator: Google::Apis::WorkloadmanagerV1::ResourceFilter::Representation
@@ -392,6 +405,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           collection :notices, as: 'notices', class: Google::Apis::WorkloadmanagerV1::Notice, decorator: Google::Apis::WorkloadmanagerV1::Notice::Representation
+      
+          property :result_summary, as: 'resultSummary', class: Google::Apis::WorkloadmanagerV1::Summary, decorator: Google::Apis::WorkloadmanagerV1::Summary::Representation
       
           collection :rule_results, as: 'ruleResults', class: Google::Apis::WorkloadmanagerV1::RuleExecutionResult, decorator: Google::Apis::WorkloadmanagerV1::RuleExecutionResult::Representation
       
@@ -445,6 +460,8 @@ module Google
       
           property :sent_time, as: 'sentTime'
           property :sqlserver_validation, as: 'sqlserverValidation', class: Google::Apis::WorkloadmanagerV1::SqlserverValidation, decorator: Google::Apis::WorkloadmanagerV1::SqlserverValidation::Representation
+      
+          property :torso_validation, as: 'torsoValidation', class: Google::Apis::WorkloadmanagerV1::TorsoValidation, decorator: Google::Apis::WorkloadmanagerV1::TorsoValidation::Representation
       
         end
       end
@@ -825,6 +842,26 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class Summary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failures, :numeric_string => true, as: 'failures'
+          property :new_failures, :numeric_string => true, as: 'newFailures'
+          property :new_fixes, :numeric_string => true, as: 'newFixes'
+        end
+      end
+      
+      class TorsoValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_version, as: 'agentVersion'
+          property :instance_name, as: 'instanceName'
+          property :project_id, as: 'projectId'
+          hash :validation_details, as: 'validationDetails'
+          property :workload_type, as: 'workloadType'
         end
       end
       

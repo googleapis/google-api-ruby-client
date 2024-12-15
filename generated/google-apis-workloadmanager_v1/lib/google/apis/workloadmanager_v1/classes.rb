@@ -152,6 +152,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Evaluation type
+        # Corresponds to the JSON property `evaluationType`
+        # @return [String]
+        attr_accessor :evaluation_type
+      
         # Labels as key value pairs
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -205,6 +210,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_rules_bucket = args[:custom_rules_bucket] if args.key?(:custom_rules_bucket)
           @description = args[:description] if args.key?(:description)
+          @evaluation_type = args[:evaluation_type] if args.key?(:evaluation_type)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @resource_filter = args[:resource_filter] if args.key?(:resource_filter)
@@ -256,6 +262,11 @@ module Google
         # @return [Array<Google::Apis::WorkloadmanagerV1::Notice>]
         attr_accessor :notices
       
+        # Message for execution summary
+        # Corresponds to the JSON property `resultSummary`
+        # @return [Google::Apis::WorkloadmanagerV1::Summary]
+        attr_accessor :result_summary
+      
         # Output only. execution result summary per rule
         # Corresponds to the JSON property `ruleResults`
         # @return [Array<Google::Apis::WorkloadmanagerV1::RuleExecutionResult>]
@@ -290,6 +301,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @notices = args[:notices] if args.key?(:notices)
+          @result_summary = args[:result_summary] if args.key?(:result_summary)
           @rule_results = args[:rule_results] if args.key?(:rule_results)
           @run_type = args[:run_type] if args.key?(:run_type)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -449,6 +461,11 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::SqlserverValidation]
         attr_accessor :sqlserver_validation
       
+        # The schema of torso workload validation data.
+        # Corresponds to the JSON property `torsoValidation`
+        # @return [Google::Apis::WorkloadmanagerV1::TorsoValidation]
+        attr_accessor :torso_validation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -460,6 +477,7 @@ module Google
           @sap_validation = args[:sap_validation] if args.key?(:sap_validation)
           @sent_time = args[:sent_time] if args.key?(:sent_time)
           @sqlserver_validation = args[:sqlserver_validation] if args.key?(:sqlserver_validation)
+          @torso_validation = args[:torso_validation] if args.key?(:torso_validation)
         end
       end
       
@@ -1820,6 +1838,84 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Message for execution summary
+      class Summary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Number of failures
+        # Corresponds to the JSON property `failures`
+        # @return [Fixnum]
+        attr_accessor :failures
+      
+        # Output only. Number of new failures compared to the previous execution
+        # Corresponds to the JSON property `newFailures`
+        # @return [Fixnum]
+        attr_accessor :new_failures
+      
+        # Output only. Number of new fixes compared to the previous execution
+        # Corresponds to the JSON property `newFixes`
+        # @return [Fixnum]
+        attr_accessor :new_fixes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failures = args[:failures] if args.key?(:failures)
+          @new_failures = args[:new_failures] if args.key?(:new_failures)
+          @new_fixes = args[:new_fixes] if args.key?(:new_fixes)
+        end
+      end
+      
+      # The schema of torso workload validation data.
+      class TorsoValidation
+        include Google::Apis::Core::Hashable
+      
+        # Required. agent_version lists the version of the agent that collected this
+        # data.
+        # Corresponds to the JSON property `agentVersion`
+        # @return [String]
+        attr_accessor :agent_version
+      
+        # Required. instance_name lists the human readable name of the instance that the
+        # data comes from.
+        # Corresponds to the JSON property `instanceName`
+        # @return [String]
+        attr_accessor :instance_name
+      
+        # Required. project_id lists the human readable cloud project that the data
+        # comes from.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. validation_details contains the pairs of validation data: field name
+        # & field value.
+        # Corresponds to the JSON property `validationDetails`
+        # @return [Hash<String,String>]
+        attr_accessor :validation_details
+      
+        # Required. workload_type specifies the type of torso workload.
+        # Corresponds to the JSON property `workloadType`
+        # @return [String]
+        attr_accessor :workload_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_version = args[:agent_version] if args.key?(:agent_version)
+          @instance_name = args[:instance_name] if args.key?(:instance_name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @validation_details = args[:validation_details] if args.key?(:validation_details)
+          @workload_type = args[:workload_type] if args.key?(:workload_type)
         end
       end
       
