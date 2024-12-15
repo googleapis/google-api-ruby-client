@@ -47,46 +47,6 @@ module Google
         end
       end
       
-      # Provides the mapping of a cloud asset to a direct physical location or to a
-      # proxy that defines the location on its behalf.
-      class AssetLocation
-        include Google::Apis::Core::Hashable
-      
-        # Defines the customer expectation around ZI/ZS for this asset and ZI/ZS state
-        # of the region at the time of asset creation.
-        # Corresponds to the JSON property `expected`
-        # @return [Google::Apis::DatafusionV1::IsolationExpectations]
-        attr_accessor :expected
-      
-        # Defines extra parameters required for specific asset types.
-        # Corresponds to the JSON property `extraParameters`
-        # @return [Array<Google::Apis::DatafusionV1::ExtraParameter>]
-        attr_accessor :extra_parameters
-      
-        # Contains all kinds of physical location definitions for this asset.
-        # Corresponds to the JSON property `locationData`
-        # @return [Array<Google::Apis::DatafusionV1::LocationData>]
-        attr_accessor :location_data
-      
-        # Defines parents assets if any in order to allow later generation of
-        # child_asset_location data via child assets.
-        # Corresponds to the JSON property `parentAsset`
-        # @return [Array<Google::Apis::DatafusionV1::CloudAsset>]
-        attr_accessor :parent_asset
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @expected = args[:expected] if args.key?(:expected)
-          @extra_parameters = args[:extra_parameters] if args.key?(:extra_parameters)
-          @location_data = args[:location_data] if args.key?(:location_data)
-          @parent_asset = args[:parent_asset] if args.key?(:parent_asset)
-        end
-      end
-      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -259,26 +219,6 @@ module Google
         end
       end
       
-      # Policy ID that identified data placement in Blobstore as per go/blobstore-user-
-      # guide#data-metadata-placement-and-failure-domains
-      class BlobstoreLocation
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `policyId`
-        # @return [Array<String>]
-        attr_accessor :policy_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_id = args[:policy_id] if args.key?(:policy_id)
-        end
-      end
-      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -292,58 +232,14 @@ module Google
         end
       end
       
-      # 
-      class CloudAsset
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `assetName`
-        # @return [String]
-        attr_accessor :asset_name
-      
-        # 
-        # Corresponds to the JSON property `assetType`
-        # @return [String]
-        attr_accessor :asset_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @asset_name = args[:asset_name] if args.key?(:asset_name)
-          @asset_type = args[:asset_type] if args.key?(:asset_type)
-        end
-      end
-      
-      # 
-      class CloudAssetComposition
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `childAsset`
-        # @return [Array<Google::Apis::DatafusionV1::CloudAsset>]
-        attr_accessor :child_asset
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @child_asset = args[:child_asset] if args.key?(:child_asset)
-        end
-      end
-      
       # The crypto key configuration. This field is used by the Customer-managed
       # encryption keys (CMEK) feature.
       class CryptoKeyConfig
         include Google::Apis::Core::Hashable
       
-        # The name of the key which is used to encrypt/decrypt customer data. For key in
-        # Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/
-        # */cryptoKeys/*`.
+        # Optional. The name of the key which is used to encrypt/decrypt customer data.
+        # For key in Cloud KMS, the key should be in the format of `projects/*/locations/
+        # */keyRings/*/cryptoKeys/*`.
         # Corresponds to the JSON property `keyReference`
         # @return [String]
         attr_accessor :key_reference
@@ -355,25 +251,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @key_reference = args[:key_reference] if args.key?(:key_reference)
-        end
-      end
-      
-      # 
-      class DirectLocationAssignment
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `location`
-        # @return [Array<Google::Apis::DatafusionV1::LocationAssignment>]
-        attr_accessor :location
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @location = args[:location] if args.key?(:location)
         end
       end
       
@@ -392,8 +269,8 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Required. The resource name of the dns peering zone. Format: projects/`project`
-        # /locations/`location`/instances/`instance`/dnsPeerings/`dns_peering`
+        # Identifier. The resource name of the dns peering zone. Format: projects/`
+        # project`/locations/`location`/instances/`instance`/dnsPeerings/`dns_peering`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -519,26 +396,6 @@ module Google
         end
       end
       
-      # Defines parameters that should only be used for specific asset types.
-      class ExtraParameter
-        include Google::Apis::Core::Hashable
-      
-        # To be used for specifying the intended distribution of regional compute.
-        # googleapis.com/InstanceGroupManager instances
-        # Corresponds to the JSON property `regionalMigDistributionPolicy`
-        # @return [Google::Apis::DatafusionV1::RegionalMigDistributionPolicy]
-        attr_accessor :regional_mig_distribution_policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @regional_mig_distribution_policy = args[:regional_mig_distribution_policy] if args.key?(:regional_mig_distribution_policy)
-        end
-      end
-      
       # Represents a Data Fusion instance.
       class Instance
         include Google::Apis::Core::Hashable
@@ -576,14 +433,14 @@ module Google
         attr_accessor :dataplex_data_lineage_integration_enabled
         alias_method :dataplex_data_lineage_integration_enabled?, :dataplex_data_lineage_integration_enabled
       
-        # User-managed service account to set on Dataproc when Cloud Data Fusion creates
-        # Dataproc to run data processing pipelines. This allows users to have fine-
-        # grained access control on Dataproc's accesses to cloud resources.
+        # Optional. User-managed service account to set on Dataproc when Cloud Data
+        # Fusion creates Dataproc to run data processing pipelines. This allows users to
+        # have fine-grained access control on Dataproc's accesses to cloud resources.
         # Corresponds to the JSON property `dataprocServiceAccount`
         # @return [String]
         attr_accessor :dataproc_service_account
       
-        # A description of this instance.
+        # Optional. A description of this instance.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -594,30 +451,30 @@ module Google
         # @return [Array<String>]
         attr_accessor :disabled_reason
       
-        # Display name for an instance.
+        # Optional. Display name for an instance.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Option to enable granular role-based access control.
+        # Optional. Option to enable granular role-based access control.
         # Corresponds to the JSON property `enableRbac`
         # @return [Boolean]
         attr_accessor :enable_rbac
         alias_method :enable_rbac?, :enable_rbac
       
-        # Option to enable Stackdriver Logging.
+        # Optional. Option to enable Stackdriver Logging.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_logging
         alias_method :enable_stackdriver_logging?, :enable_stackdriver_logging
       
-        # Option to enable Stackdriver Monitoring.
+        # Optional. Option to enable Stackdriver Monitoring.
         # Corresponds to the JSON property `enableStackdriverMonitoring`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_monitoring
         alias_method :enable_stackdriver_monitoring?, :enable_stackdriver_monitoring
       
-        # Option to enable granular zone separation.
+        # Output only. Option to enable granular zone separation.
         # Corresponds to the JSON property `enableZoneSeparation`
         # @return [Boolean]
         attr_accessor :enable_zone_separation
@@ -678,9 +535,9 @@ module Google
         # @return [String]
         attr_accessor :patch_revision
       
-        # Specifies whether the Data Fusion instance should be private. If set to true,
-        # all Data Fusion nodes will have private IP addresses and will not be able to
-        # access the public internet.
+        # Optional. Specifies whether the Data Fusion instance should be private. If set
+        # to true, all Data Fusion nodes will have private IP addresses and will not be
+        # able to access the public internet.
         # Corresponds to the JSON property `privateInstance`
         # @return [Boolean]
         attr_accessor :private_instance
@@ -729,7 +586,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Current version of the Data Fusion. Only specifiable in Update.
+        # Optional. Current version of the Data Fusion. Only specifiable in Update.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -740,8 +597,8 @@ module Google
         # @return [String]
         attr_accessor :workforce_identity_service_endpoint
       
-        # Name of the zone in which the Data Fusion instance will be created. Only
-        # DEVELOPER instances use this field.
+        # Optional. Name of the zone in which the Data Fusion instance will be created.
+        # Only DEVELOPER instances use this field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -790,68 +647,12 @@ module Google
         end
       end
       
-      # 
-      class IsolationExpectations
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `ziOrgPolicy`
-        # @return [String]
-        attr_accessor :zi_org_policy
-      
-        # 
-        # Corresponds to the JSON property `ziRegionPolicy`
-        # @return [String]
-        attr_accessor :zi_region_policy
-      
-        # 
-        # Corresponds to the JSON property `ziRegionState`
-        # @return [String]
-        attr_accessor :zi_region_state
-      
-        # Deprecated: use zi_org_policy, zi_region_policy and zi_region_state instead
-        # for setting ZI expectations as per go/zicy-publish-physical-location.
-        # Corresponds to the JSON property `zoneIsolation`
-        # @return [String]
-        attr_accessor :zone_isolation
-      
-        # Deprecated: use zs_org_policy, and zs_region_stateinstead for setting Zs
-        # expectations as per go/zicy-publish-physical-location.
-        # Corresponds to the JSON property `zoneSeparation`
-        # @return [String]
-        attr_accessor :zone_separation
-      
-        # 
-        # Corresponds to the JSON property `zsOrgPolicy`
-        # @return [String]
-        attr_accessor :zs_org_policy
-      
-        # 
-        # Corresponds to the JSON property `zsRegionState`
-        # @return [String]
-        attr_accessor :zs_region_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @zi_org_policy = args[:zi_org_policy] if args.key?(:zi_org_policy)
-          @zi_region_policy = args[:zi_region_policy] if args.key?(:zi_region_policy)
-          @zi_region_state = args[:zi_region_state] if args.key?(:zi_region_state)
-          @zone_isolation = args[:zone_isolation] if args.key?(:zone_isolation)
-          @zone_separation = args[:zone_separation] if args.key?(:zone_separation)
-          @zs_org_policy = args[:zs_org_policy] if args.key?(:zs_org_policy)
-          @zs_region_state = args[:zs_region_state] if args.key?(:zs_region_state)
-        end
-      end
-      
       # Response message for the list available versions request.
       class ListAvailableVersionsResponse
         include Google::Apis::Core::Hashable
       
-        # Represents a list of versions that are supported.
+        # Represents a list of versions that are supported. Deprecated: Use versions
+        # field instead.
         # Corresponds to the JSON property `availableVersions`
         # @return [Array<Google::Apis::DatafusionV1::Version>]
         attr_accessor :available_versions
@@ -862,6 +663,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Represents a list of all versions.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::DatafusionV1::Version>]
+        attr_accessor :versions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -870,6 +676,7 @@ module Google
         def update!(**args)
           @available_versions = args[:available_versions] if args.key?(:available_versions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @versions = args[:versions] if args.key?(:versions)
         end
       end
       
@@ -1025,82 +832,6 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # 
-      class LocationAssignment
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `location`
-        # @return [String]
-        attr_accessor :location
-      
-        # 
-        # Corresponds to the JSON property `locationType`
-        # @return [String]
-        attr_accessor :location_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @location = args[:location] if args.key?(:location)
-          @location_type = args[:location_type] if args.key?(:location_type)
-        end
-      end
-      
-      # 
-      class LocationData
-        include Google::Apis::Core::Hashable
-      
-        # Policy ID that identified data placement in Blobstore as per go/blobstore-user-
-        # guide#data-metadata-placement-and-failure-domains
-        # Corresponds to the JSON property `blobstoreLocation`
-        # @return [Google::Apis::DatafusionV1::BlobstoreLocation]
-        attr_accessor :blobstore_location
-      
-        # 
-        # Corresponds to the JSON property `childAssetLocation`
-        # @return [Google::Apis::DatafusionV1::CloudAssetComposition]
-        attr_accessor :child_asset_location
-      
-        # 
-        # Corresponds to the JSON property `directLocation`
-        # @return [Google::Apis::DatafusionV1::DirectLocationAssignment]
-        attr_accessor :direct_location
-      
-        # 
-        # Corresponds to the JSON property `gcpProjectProxy`
-        # @return [Google::Apis::DatafusionV1::TenantProjectProxy]
-        attr_accessor :gcp_project_proxy
-      
-        # Message describing that the location of the customer resource is tied to
-        # placer allocations
-        # Corresponds to the JSON property `placerLocation`
-        # @return [Google::Apis::DatafusionV1::PlacerLocation]
-        attr_accessor :placer_location
-      
-        # 
-        # Corresponds to the JSON property `spannerLocation`
-        # @return [Google::Apis::DatafusionV1::SpannerLocation]
-        attr_accessor :spanner_location
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @blobstore_location = args[:blobstore_location] if args.key?(:blobstore_location)
-          @child_asset_location = args[:child_asset_location] if args.key?(:child_asset_location)
-          @direct_location = args[:direct_location] if args.key?(:direct_location)
-          @gcp_project_proxy = args[:gcp_project_proxy] if args.key?(:gcp_project_proxy)
-          @placer_location = args[:placer_location] if args.key?(:placer_location)
-          @spanner_location = args[:spanner_location] if args.key?(:spanner_location)
         end
       end
       
@@ -1329,27 +1060,6 @@ module Google
         end
       end
       
-      # Message describing that the location of the customer resource is tied to
-      # placer allocations
-      class PlacerLocation
-        include Google::Apis::Core::Hashable
-      
-        # Directory with a config related to it in placer (e.g. "/placer/prod/home/my-
-        # root/my-dir")
-        # Corresponds to the JSON property `placerConfig`
-        # @return [String]
-        attr_accessor :placer_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @placer_config = args[:placer_config] if args.key?(:placer_config)
-        end
-      end
-      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -1520,33 +1230,6 @@ module Google
         end
       end
       
-      # To be used for specifying the intended distribution of regional compute.
-      # googleapis.com/InstanceGroupManager instances
-      class RegionalMigDistributionPolicy
-        include Google::Apis::Core::Hashable
-      
-        # The shape in which the group converges around distribution of resources.
-        # Instance of proto2 enum
-        # Corresponds to the JSON property `targetShape`
-        # @return [Fixnum]
-        attr_accessor :target_shape
-      
-        # Cloud zones used by regional MIG to create instances.
-        # Corresponds to the JSON property `zones`
-        # @return [Array<Google::Apis::DatafusionV1::ZoneConfiguration>]
-        attr_accessor :zones
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @target_shape = args[:target_shape] if args.key?(:target_shape)
-          @zones = args[:zones] if args.key?(:zones)
-        end
-      end
-      
       # Request message for restarting a Data Fusion instance.
       class RestartInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1613,32 +1296,6 @@ module Google
         end
       end
       
-      # 
-      class SpannerLocation
-        include Google::Apis::Core::Hashable
-      
-        # Set of backups used by the resource with name in the same format as what is
-        # available at http://table/spanner_automon.backup_metadata
-        # Corresponds to the JSON property `backupName`
-        # @return [Array<String>]
-        attr_accessor :backup_name
-      
-        # Set of databases used by the resource in format /span//
-        # Corresponds to the JSON property `dbName`
-        # @return [Array<String>]
-        attr_accessor :db_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @backup_name = args[:backup_name] if args.key?(:backup_name)
-          @db_name = args[:db_name] if args.key?(:db_name)
-        end
-      end
-      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -1675,25 +1332,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # 
-      class TenantProjectProxy
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `projectNumbers`
-        # @return [Array<String>]
-        attr_accessor :project_numbers
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @project_numbers = args[:project_numbers] if args.key?(:project_numbers)
         end
       end
       
@@ -1801,25 +1439,6 @@ module Google
           @default_version = args[:default_version] if args.key?(:default_version)
           @type = args[:type] if args.key?(:type)
           @version_number = args[:version_number] if args.key?(:version_number)
-        end
-      end
-      
-      # 
-      class ZoneConfiguration
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @zone = args[:zone] if args.key?(:zone)
         end
       end
     end
