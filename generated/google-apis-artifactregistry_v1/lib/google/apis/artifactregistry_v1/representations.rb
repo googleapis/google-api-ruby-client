@@ -1372,6 +1372,7 @@ module Google
       
           property :mode, as: 'mode'
           property :name, as: 'name'
+          property :registry_uri, as: 'registryUri'
           property :remote_repository_config, as: 'remoteRepositoryConfig', class: Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
