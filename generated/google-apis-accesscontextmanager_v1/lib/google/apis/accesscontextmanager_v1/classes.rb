@@ -2020,27 +2020,28 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. How long a user is allowed to take between actions before a new
-        # access token must be issued. Presently only set for Cloud Apps.
+        # access token must be issued. Only set for Google Cloud apps.
         # Corresponds to the JSON property `maxInactivity`
         # @return [String]
         attr_accessor :max_inactivity
       
-        # Optional. The session length. Setting this field to zero is equal to disabling.
-        # Session. Also can set infinite session by flipping the enabled bit to false
+        # Optional. The session length. Setting this field to zero is equal to disabling
+        # session. Also can set infinite session by flipping the enabled bit to false
         # below. If use_oidc_max_age is true, for OIDC apps, the session length will be
         # the minimum of this field and OIDC max_age param.
         # Corresponds to the JSON property `sessionLength`
         # @return [String]
         attr_accessor :session_length
       
-        # Optional. Big red button to turn off GCSL. When false, all fields set above
-        # will be disregarded and the session length is basically infinite.
+        # Optional. This field enables or disables Google Cloud session length. When
+        # false, all fields set above will be disregarded and the session length is
+        # basically infinite.
         # Corresponds to the JSON property `sessionLengthEnabled`
         # @return [Boolean]
         attr_accessor :session_length_enabled
         alias_method :session_length_enabled?, :session_length_enabled
       
-        # Optional. Session method when users GCP session is up.
+        # Optional. Session method when user's Google Cloud session is up.
         # Corresponds to the JSON property `sessionReauthMethod`
         # @return [String]
         attr_accessor :session_reauth_method
