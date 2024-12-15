@@ -75,7 +75,7 @@ module Google
         # @return [String]
         attr_accessor :imagery_quality
       
-        # The resource name for the building, of the format `building/`.
+        # The resource name for the building, of the format `buildings/`place_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
