@@ -2898,7 +2898,7 @@ module Google
         end
       end
       
-      # Message describing MirroringDeployment object
+      # Message describing MirroringDeployment object NEXT ID: 10
       class MirroringDeployment
         include Google::Apis::Core::Hashable
       
