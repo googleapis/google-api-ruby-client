@@ -923,7 +923,7 @@ module Google
         # @return [String]
         attr_accessor :ekm_provisioning_error_mapping
       
-        # Indicates Ekm enrollment Provisioning of a given workload.
+        # Output only. Indicates Ekm enrollment Provisioning of a given workload.
         # Corresponds to the JSON property `ekmProvisioningState`
         # @return [String]
         attr_accessor :ekm_provisioning_state
@@ -985,7 +985,8 @@ module Google
         attr_accessor :assured_workloads_monitoring
         alias_method :assured_workloads_monitoring?, :assured_workloads_monitoring
       
-        # Allow the partner to view inspectability logs and monitoring violations.
+        # Optional. Allow the partner to view inspectability logs and monitoring
+        # violations.
         # Corresponds to the JSON property `dataLogsViewer`
         # @return [Boolean]
         attr_accessor :data_logs_viewer
@@ -1014,7 +1015,7 @@ module Google
       class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo
         include Google::Apis::Core::Hashable
       
-        # Resource identifier. For a project this represents project_number.
+        # Output only. Resource identifier. For a project this represents project_number.
         # Corresponds to the JSON property `resourceId`
         # @return [Fixnum]
         attr_accessor :resource_id
@@ -1080,7 +1081,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :setup_errors
       
-        # Indicates SAA enrollment status of a given workload.
+        # Output only. Indicates SAA enrollment status of a given workload.
         # Corresponds to the JSON property `setupStatus`
         # @return [String]
         attr_accessor :setup_status
