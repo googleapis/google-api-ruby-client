@@ -1839,8 +1839,8 @@ module Google
         attr_accessor :display_name
       
         # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: If unspecified, default to `GENERIC`.
-        # Vertical on Engine has to match vertical of the DataStore linked to the engine.
+        # industry vertical is based on DataStore: Vertical on Engine has to match
+        # vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -4982,71 +4982,6 @@ module Google
         end
       end
       
-      # Metadata that describes a custom tuned model.
-      class GoogleCloudDiscoveryengineV1alphaCustomTuningModel
-        include Google::Apis::Core::Hashable
-      
-        # Deprecated: Timestamp the Model was created at.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The display name of the model.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Currently this is only populated if the model state is `
-        # INPUT_VALIDATION_FAILED`.
-        # Corresponds to the JSON property `errorMessage`
-        # @return [String]
-        attr_accessor :error_message
-      
-        # The metrics of the trained model.
-        # Corresponds to the JSON property `metrics`
-        # @return [Hash<String,Float>]
-        attr_accessor :metrics
-      
-        # The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).
-        # Corresponds to the JSON property `modelState`
-        # @return [String]
-        attr_accessor :model_state
-      
-        # The version of the model.
-        # Corresponds to the JSON property `modelVersion`
-        # @return [Fixnum]
-        attr_accessor :model_version
-      
-        # Required. The fully qualified resource name of the model. Format: `projects/`
-        # project`/locations/`location`/collections/`collection`/dataStores/`data_store`/
-        # customTuningModels/`custom_tuning_model``. Model must be an alpha-numerical
-        # string with limit of 40 characters.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Timestamp the model training was initiated.
-        # Corresponds to the JSON property `trainingStartTime`
-        # @return [String]
-        attr_accessor :training_start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @error_message = args[:error_message] if args.key?(:error_message)
-          @metrics = args[:metrics] if args.key?(:metrics)
-          @model_state = args[:model_state] if args.key?(:model_state)
-          @model_version = args[:model_version] if args.key?(:model_version)
-          @name = args[:name] if args.key?(:name)
-          @training_start_time = args[:training_start_time] if args.key?(:training_start_time)
-        end
-      end
-      
       # DataStore captures global settings and configs at the DataStore level.
       class GoogleCloudDiscoveryengineV1alphaDataStore
         include Google::Apis::Core::Hashable
@@ -5759,8 +5694,8 @@ module Google
         attr_accessor :display_name
       
         # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: If unspecified, default to `GENERIC`.
-        # Vertical on Engine has to match vertical of the DataStore linked to the engine.
+        # industry vertical is based on DataStore: Vertical on Engine has to match
+        # vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical
@@ -6997,25 +6932,6 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @normalized_language_code = args[:normalized_language_code] if args.key?(:normalized_language_code)
           @region = args[:region] if args.key?(:region)
-        end
-      end
-      
-      # Response message for SearchTuningService.ListCustomModels method.
-      class GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse
-        include Google::Apis::Core::Hashable
-      
-        # List of custom tuning models.
-        # Corresponds to the JSON property `models`
-        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCustomTuningModel>]
-        attr_accessor :models
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @models = args[:models] if args.key?(:models)
         end
       end
       
@@ -14287,8 +14203,8 @@ module Google
         attr_accessor :display_name
       
         # The industry vertical that the engine registers. The restriction of the Engine
-        # industry vertical is based on DataStore: If unspecified, default to `GENERIC`.
-        # Vertical on Engine has to match vertical of the DataStore linked to the engine.
+        # industry vertical is based on DataStore: Vertical on Engine has to match
+        # vertical of the DataStore linked to the engine.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
         attr_accessor :industry_vertical

@@ -856,12 +856,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDiscoveryengineV1alphaCustomTuningModel
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDiscoveryengineV1alphaDataStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1193,12 +1187,6 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaLanguageInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4816,20 +4804,6 @@ module Google
         end
       end
       
-      class GoogleCloudDiscoveryengineV1alphaCustomTuningModel
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :display_name, as: 'displayName'
-          property :error_message, as: 'errorMessage'
-          hash :metrics, as: 'metrics'
-          property :model_state, as: 'modelState'
-          property :model_version, :numeric_string => true, as: 'modelVersion'
-          property :name, as: 'name'
-          property :training_start_time, as: 'trainingStartTime'
-        end
-      end
-      
       class GoogleCloudDiscoveryengineV1alphaDataStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5375,14 +5349,6 @@ module Google
           property :language_code, as: 'languageCode'
           property :normalized_language_code, as: 'normalizedLanguageCode'
           property :region, as: 'region'
-        end
-      end
-      
-      class GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :models, as: 'models', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCustomTuningModel, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCustomTuningModel::Representation
-      
         end
       end
       
