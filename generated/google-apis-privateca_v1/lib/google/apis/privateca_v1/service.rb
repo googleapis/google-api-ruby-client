@@ -385,8 +385,8 @@ module Google
         
         # Update a CaPool.
         # @param [String] name
-        #   Output only. Identifier. The resource name for this CaPool in the format `
-        #   projects/*/locations/*/caPools/*`.
+        #   Identifier. The resource name for this CaPool in the format `projects/*/
+        #   locations/*/caPools/*`.
         # @param [Google::Apis::PrivatecaV1::CaPool] ca_pool_object
         # @param [String] request_id
         #   Optional. An ID to identify requests. Specify a unique request ID so that if
@@ -836,8 +836,8 @@ module Google
         
         # Update a CertificateAuthority.
         # @param [String] name
-        #   Output only. Identifier. The resource name for this CertificateAuthority in
-        #   the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        #   Identifier. The resource name for this CertificateAuthority in the format `
+        #   projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         # @param [Google::Apis::PrivatecaV1::CertificateAuthority] certificate_authority_object
         # @param [String] request_id
         #   Optional. An ID to identify requests. Specify a unique request ID so that if
@@ -1043,8 +1043,8 @@ module Google
         
         # Update a CertificateRevocationList.
         # @param [String] name
-        #   Output only. The resource name for this CertificateRevocationList in the
-        #   format `projects/*/locations/*/caPools/*certificateAuthorities/*/
+        #   Identifier. The resource name for this CertificateRevocationList in the format
+        #   `projects/*/locations/*/caPools/*certificateAuthorities/*/
         #   certificateRevocationLists/*`.
         # @param [Google::Apis::PrivatecaV1::CertificateRevocationList] certificate_revocation_list_object
         # @param [String] request_id
@@ -1322,7 +1322,7 @@ module Google
         # Update a Certificate. Currently, the only field you can update is the labels
         # field.
         # @param [String] name
-        #   Output only. The resource name for this Certificate in the format `projects/*/
+        #   Identifier. The resource name for this Certificate in the format `projects/*/
         #   locations/*/caPools/*/certificates/*`.
         # @param [Google::Apis::PrivatecaV1::Certificate] certificate_object
         # @param [String] request_id
@@ -1620,7 +1620,7 @@ module Google
         
         # Update a CertificateTemplate.
         # @param [String] name
-        #   Output only. The resource name for this CertificateTemplate in the format `
+        #   Identifier. The resource name for this CertificateTemplate in the format `
         #   projects/*/locations/*/certificateTemplates/*`.
         # @param [Google::Apis::PrivatecaV1::CertificateTemplate] certificate_template_object
         # @param [String] request_id
@@ -1749,8 +1749,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::PrivatecaV1::CancelOperationRequest] cancel_operation_request_object
