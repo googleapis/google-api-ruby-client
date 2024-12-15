@@ -483,6 +483,7 @@ module Google
           property :create_time, as: 'createTime'
           property :creator, as: 'creator'
           property :disable_proxy_access, as: 'disableProxyAccess'
+          property :enable_third_party_identity, as: 'enableThirdPartyIdentity'
           property :gce_setup, as: 'gceSetup', class: Google::Apis::NotebooksV2::GceSetup, decorator: Google::Apis::NotebooksV2::GceSetup::Representation
       
           hash :health_info, as: 'healthInfo'

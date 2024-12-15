@@ -768,6 +768,13 @@ module Google
         attr_accessor :disable_proxy_access
         alias_method :disable_proxy_access?, :disable_proxy_access
       
+        # Optional. Flag that specifies that a notebook can be accessed with third party
+        # identity provider.
+        # Corresponds to the JSON property `enableThirdPartyIdentity`
+        # @return [Boolean]
+        attr_accessor :enable_third_party_identity
+        alias_method :enable_third_party_identity?, :enable_third_party_identity
+      
         # The definition of how to configure a VM instance outside of Resources and
         # Identity.
         # Corresponds to the JSON property `gceSetup`
@@ -859,6 +866,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
           @disable_proxy_access = args[:disable_proxy_access] if args.key?(:disable_proxy_access)
+          @enable_third_party_identity = args[:enable_third_party_identity] if args.key?(:enable_third_party_identity)
           @gce_setup = args[:gce_setup] if args.key?(:gce_setup)
           @health_info = args[:health_info] if args.key?(:health_info)
           @health_state = args[:health_state] if args.key?(:health_state)
