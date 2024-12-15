@@ -8807,6 +8807,13 @@ module Google
       class SetDataValidationRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the data validation rule will be applied to the filtered
+        # rows as well.
+        # Corresponds to the JSON property `filteredRowsIncluded`
+        # @return [Boolean]
+        attr_accessor :filtered_rows_included
+        alias_method :filtered_rows_included?, :filtered_rows_included
+      
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
@@ -8835,6 +8842,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @filtered_rows_included = args[:filtered_rows_included] if args.key?(:filtered_rows_included)
           @range = args[:range] if args.key?(:range)
           @rule = args[:rule] if args.key?(:rule)
         end
