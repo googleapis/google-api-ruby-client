@@ -443,7 +443,8 @@ module Google
         #   Required. The project to which the request should be attributed in the
         #   following form: projects/`project`/locations/`location`.
         # @param [String] order_by
-        #   Optional. Specifies the ordering of results.
+        #   Optional. Specifies the ordering of results. Supported values are: * relevance
+        #   (default) * last_modified_timestamp * last_modified_timestamp asc
         # @param [Fixnum] page_size
         #   Optional. Number of results in the search page. If <=0, then defaults to 10.
         #   Max limit for page_size is 1000. Throws an invalid argument for page_size >
@@ -452,7 +453,9 @@ module Google
         #   Optional. Page token received from a previous SearchEntries call. Provide this
         #   to retrieve the subsequent page.
         # @param [String] query
-        #   Required. The query against which entries in scope should be matched.
+        #   Required. The query against which entries in scope should be matched. The
+        #   query syntax is defined in Search syntax for Dataplex Catalog (https://cloud.
+        #   google.com/dataplex/docs/search-syntax).
         # @param [String] scope
         #   Optional. The scope under which the search should be operating. It must either
         #   be organizations/ or projects/. If it is unspecified, it defaults to the
@@ -1191,6 +1194,10 @@ module Google
         #   Required. The resource name of the dataScan: projects/`project`/locations/`
         #   location_id`/dataScans/`data_scan_id` where project refers to a project_id or
         #   project_number and location_id refers to a GCP region.
+        # @param [Boolean] force
+        #   Optional. If set to true, any child resources of this data scan will also be
+        #   deleted. (Otherwise, the request will only work if the data scan has no child
+        #   resources.)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1208,11 +1215,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_data_scan(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_data_scan(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1386,12 +1394,13 @@ module Google
         
         # Updates a DataScan resource.
         # @param [String] name
-        #   Output only. The relative resource name of the scan, of the form: projects/`
-        #   project`/locations/`location_id`/dataScans/`datascan_id`, where project refers
-        #   to a project_id or project_number and location_id refers to a GCP region.
+        #   Output only. Identifier. The relative resource name of the scan, of the form:
+        #   projects/`project`/locations/`location_id`/dataScans/`datascan_id`, where
+        #   project refers to a project_id or project_number and location_id refers to a
+        #   GCP region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan] google_cloud_dataplex_v1_data_scan_object
         # @param [String] update_mask
-        #   Required. Mask of fields to update.
+        #   Optional. Mask of fields to update.
         # @param [Boolean] validate_only
         #   Optional. Only validate the request, but do not perform mutations. The default
         #   is false.
@@ -2821,7 +2830,7 @@ module Google
         #   supports the following syntaxes: - matches an aspect of the given type and
         #   empty path. @path - matches an aspect of the given type and specified path.
         #   For example, to attach an aspect to a field that is specified by the schema
-        #   aspect, the path should have the format Schema.. * - matches aspects of the
+        #   aspect, the path should have the format Schema.. @* - matches aspects of the
         #   given type for all paths. *@path - matches aspects of all types on the given
         #   path.The service will not remove existing aspects matching the syntax unless
         #   delete_missing_aspects is set to true.If this field is left empty, the service
