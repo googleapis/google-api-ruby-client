@@ -328,7 +328,7 @@ module Google
         # @return [Google::Apis::DatastreamV1::MysqlProfile]
         attr_accessor :mysql_profile
       
-        # Output only. The resource's name.
+        # Output only. Identifier. The resource's name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1582,9 +1582,9 @@ module Google
         attr_accessor :end_time
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # operation. Operations that have successfully been cancelled have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
         # Corresponds to the JSON property `requestedCancellation`
         # @return [Boolean]
         attr_accessor :requested_cancellation
@@ -1627,7 +1627,7 @@ module Google
         end
       end
       
-      # Configuration for Oracle Automatic Storage Management (ASM) connection.
+      # Configuration for Oracle Automatic Storage Management (ASM) connection. .
       class OracleAsmConfig
         include Google::Apis::Core::Hashable
       
@@ -1651,7 +1651,7 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleSslConfig]
         attr_accessor :oracle_ssl_config
       
-        # Required. Password for the Oracle ASM connection.
+        # Optional. Password for the Oracle ASM connection.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
@@ -1808,7 +1808,7 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
-        # Configuration for Oracle Automatic Storage Management (ASM) connection.
+        # Configuration for Oracle Automatic Storage Management (ASM) connection. .
         # Corresponds to the JSON property `oracleAsmConfig`
         # @return [Google::Apis::DatastreamV1::OracleAsmConfig]
         attr_accessor :oracle_asm_config
@@ -2311,7 +2311,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The resource's name.
+        # Output only. Identifier. The resource's name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2399,7 +2399,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The resource's name.
+        # Output only. Identifier. The resource's name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2586,6 +2586,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleScnPosition]
         attr_accessor :oracle_scn_position
       
+        # SQL Server LSN position
+        # Corresponds to the JSON property `sqlServerLsnPosition`
+        # @return [Google::Apis::DatastreamV1::SqlServerLsnPosition]
+        attr_accessor :sql_server_lsn_position
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2594,6 +2599,7 @@ module Google
         def update!(**args)
           @mysql_log_position = args[:mysql_log_position] if args.key?(:mysql_log_position)
           @oracle_scn_position = args[:oracle_scn_position] if args.key?(:oracle_scn_position)
+          @sql_server_lsn_position = args[:sql_server_lsn_position] if args.key?(:sql_server_lsn_position)
         end
       end
       
@@ -2670,6 +2676,25 @@ module Google
           @precision = args[:precision] if args.key?(:precision)
           @primary_key = args[:primary_key] if args.key?(:primary_key)
           @scale = args[:scale] if args.key?(:scale)
+        end
+      end
+      
+      # SQL Server LSN position
+      class SqlServerLsnPosition
+        include Google::Apis::Core::Hashable
+      
+        # Required. Log sequence number (LSN) from where Logs will be read
+        # Corresponds to the JSON property `lsn`
+        # @return [String]
+        attr_accessor :lsn
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lsn = args[:lsn] if args.key?(:lsn)
         end
       end
       
@@ -3046,7 +3071,7 @@ module Google
         # @return [String]
         attr_accessor :last_recovery_time
       
-        # Output only. The stream's name.
+        # Output only. Identifier. The stream's name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3125,7 +3150,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::Error>]
         attr_accessor :errors
       
-        # Output only. The object resource's name.
+        # Output only. Identifier. The object resource's name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
