@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InitializeServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InitiateBackupRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -664,6 +670,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :resource_size_bytes, :numeric_string => true, as: 'resourceSizeBytes'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           collection :service_locks, as: 'serviceLocks', class: Google::Apis::BackupdrV1::BackupLock, decorator: Google::Apis::BackupdrV1::BackupLock::Representation
       
           property :state, as: 'state'
@@ -1084,6 +1092,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_name, as: 'diskName'
           collection :replica_zones, as: 'replicaZones'
+        end
+      end
+      
+      class InitializeServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          property :resource_type, as: 'resourceType'
         end
       end
       
