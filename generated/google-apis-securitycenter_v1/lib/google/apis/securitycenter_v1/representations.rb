@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataRetentionDeletionEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Database
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -736,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2DataRetentionDeletionEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Database
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -827,6 +839,96 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Indicator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2Issue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueDomain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueFinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueFindingCve
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueMute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAwsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAzureMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueSecurityContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueSecurityContextContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2076,6 +2178,16 @@ module Google
         end
       end
       
+      class DataRetentionDeletionEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_object_count, :numeric_string => true, as: 'dataObjectCount'
+          property :event_detection_time, as: 'eventDetectionTime'
+          property :event_type, as: 'eventType'
+          property :max_retention_allowed, as: 'maxRetentionAllowed'
+        end
+      end
+      
       class Database
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2236,6 +2348,8 @@ module Google
           collection :data_access_events, as: 'dataAccessEvents', class: Google::Apis::SecuritycenterV1::DataAccessEvent, decorator: Google::Apis::SecuritycenterV1::DataAccessEvent::Representation
       
           collection :data_flow_events, as: 'dataFlowEvents', class: Google::Apis::SecuritycenterV1::DataFlowEvent, decorator: Google::Apis::SecuritycenterV1::DataFlowEvent::Representation
+      
+          collection :data_retention_deletion_events, as: 'dataRetentionDeletionEvents', class: Google::Apis::SecuritycenterV1::DataRetentionDeletionEvent, decorator: Google::Apis::SecuritycenterV1::DataRetentionDeletionEvent::Representation
       
           property :database, as: 'database', class: Google::Apis::SecuritycenterV1::Database, decorator: Google::Apis::SecuritycenterV1::Database::Representation
       
@@ -2962,6 +3076,16 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2DataRetentionDeletionEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_object_count, :numeric_string => true, as: 'dataObjectCount'
+          property :event_detection_time, as: 'eventDetectionTime'
+          property :event_type, as: 'eventType'
+          property :max_retention_allowed, as: 'maxRetentionAllowed'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2Database
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3096,6 +3220,8 @@ module Google
       
           collection :data_flow_events, as: 'dataFlowEvents', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DataFlowEvent, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DataFlowEvent::Representation
       
+          collection :data_retention_deletion_events, as: 'dataRetentionDeletionEvents', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DataRetentionDeletionEvent, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2DataRetentionDeletionEvent::Representation
+      
           property :database, as: 'database', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Database, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Database::Representation
       
           property :description, as: 'description'
@@ -3197,6 +3323,158 @@ module Google
           collection :signatures, as: 'signatures', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ProcessSignature, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ProcessSignature::Representation
       
           collection :uris, as: 'uris'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2Issue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :detection, as: 'detection'
+          collection :domains, as: 'domains', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueDomain, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueDomain::Representation
+      
+          property :exposure_score, as: 'exposureScore'
+          property :issue_type, as: 'issueType'
+          property :last_observation_time, as: 'lastObservationTime'
+          property :mute, as: 'mute', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueMute, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueMute::Representation
+      
+          property :name, as: 'name'
+          property :primary_resource, as: 'primaryResource', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResource, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResource::Representation
+      
+          collection :related_findings, as: 'relatedFindings', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueFinding, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueFinding::Representation
+      
+          collection :remediations, as: 'remediations'
+          collection :secondary_resources, as: 'secondaryResources', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResource, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResource::Representation
+      
+          collection :security_contexts, as: 'securityContexts', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueSecurityContext, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueSecurityContext::Representation
+      
+          property :severity, as: 'severity'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueDomain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain_category, as: 'domainCategory'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueFinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cve, as: 'cve', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueFindingCve, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueFindingCve::Representation
+      
+          property :name, as: 'name'
+          property :security_bulletin, as: 'securityBulletin', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueFindingCve
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueMute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mute_initiator, as: 'muteInitiator'
+          property :mute_reason, as: 'muteReason'
+          property :mute_state, as: 'muteState'
+          property :mute_update_time, as: 'muteUpdateTime'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceAwsMetadata, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceAwsMetadata::Representation
+      
+          property :azure_metadata, as: 'azureMetadata', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceAzureMetadata, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceAzureMetadata::Representation
+      
+          property :cloud_provider, as: 'cloudProvider'
+          property :display_name, as: 'displayName'
+          property :google_cloud_metadata, as: 'googleCloudMetadata', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata::Representation
+      
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAwsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account, as: 'account', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAzureMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription, as: 'subscription', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueSecurityContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregated_count, as: 'aggregatedCount', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount::Representation
+      
+          property :context, as: 'context', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueSecurityContextContext, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueSecurityContextContext::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueSecurityContextContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          collection :values, as: 'values'
         end
       end
       
