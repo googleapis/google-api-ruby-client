@@ -1544,7 +1544,7 @@ module Google
         end
       end
       
-      # Response for PolicyBasedRouting.ListPolicyBasedRoutes method.
+      # Response for PolicyBasedRoutingService.ListPolicyBasedRoutes method.
       class ListPolicyBasedRoutesResponse
         include Google::Apis::Core::Hashable
       
@@ -2075,9 +2075,9 @@ module Google
         attr_accessor :end_time
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have been cancelled successfully have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # operation. Operations that have been cancelled successfully have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
         # Corresponds to the JSON property `requestedCancellation`
         # @return [Boolean]
         attr_accessor :requested_cancellation
@@ -2608,7 +2608,7 @@ module Google
         # Optional. The IP Address of the Regional Endpoint. When no address is provided,
         # an IP from the subnetwork is allocated. Use one of the following formats: *
         # IPv4 address as in `10.0.0.1` * Address resource URI as in `projects/`project`/
-        # regions/`region`/addresses/`address_name``
+        # regions/`region`/addresses/`address_name`` for an IPv4 or IPv6 address.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
