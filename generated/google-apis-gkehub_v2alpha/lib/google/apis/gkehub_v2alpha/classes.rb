@@ -1374,38 +1374,6 @@ module Google
         end
       end
       
-      # Information of the FeatureConfig applied on the MembershipFeature.
-      class FeatureConfigRef
-        include Google::Apis::Core::Hashable
-      
-        # Input only. Resource name of FeatureConfig, in the format: `projects/`project`/
-        # locations/global/featureConfigs/`feature_config``.
-        # Corresponds to the JSON property `config`
-        # @return [String]
-        attr_accessor :config
-      
-        # Output only. When the FeatureConfig was last applied and copied to FeatureSpec.
-        # Corresponds to the JSON property `configUpdateTime`
-        # @return [String]
-        attr_accessor :config_update_time
-      
-        # Output only. An id that uniquely identify a FeatureConfig object.
-        # Corresponds to the JSON property `uuid`
-        # @return [String]
-        attr_accessor :uuid
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @config = args[:config] if args.key?(:config)
-          @config_update_time = args[:config_update_time] if args.key?(:config_update_time)
-          @uuid = args[:uuid] if args.key?(:uuid)
-        end
-      end
-      
       # FeatureSpec contains user input per-feature spec information.
       class FeatureSpec
         include Google::Apis::Core::Hashable
@@ -2377,11 +2345,6 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
-        # Information of the FeatureConfig applied on the MembershipFeature.
-        # Corresponds to the JSON property `featureConfigRef`
-        # @return [Google::Apis::GkehubV2alpha::FeatureConfigRef]
-        attr_accessor :feature_config_ref
-      
         # GCP labels for this MembershipFeature.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -2426,7 +2389,6 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
-          @feature_config_ref = args[:feature_config_ref] if args.key?(:feature_config_ref)
           @labels = args[:labels] if args.key?(:labels)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
           @name = args[:name] if args.key?(:name)
