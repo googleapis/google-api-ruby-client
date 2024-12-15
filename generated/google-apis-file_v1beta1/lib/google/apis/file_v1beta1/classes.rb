@@ -111,9 +111,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :storage_bytes
       
-        # Optional. Input only. Immutable. Tag key-value pairs are bound to this
-        # resource. For example: "123/environment": "production", "123/costCenter": "
-        # marketing"
+        # Optional. Input only. Immutable. Tag key-value pairs bound to this resource.
+        # Each key must be a namespaced name and each value a short name. Example: "
+        # 123456789012/environment" : "production", "123456789013/costCenter" : "
+        # marketing" See the documentation for more information: - Namespaced name:
+        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#
+        # retrieving_tag_key - Short name: https://cloud.google.com/resource-manager/
+        # docs/tags/tags-creating-and-managing#retrieving_tag_value
         # Corresponds to the JSON property `tags`
         # @return [Hash<String,String>]
         attr_accessor :tags
@@ -359,12 +363,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_iops
       
-        # Optional. Deprecated: `max_iops` should be used instead of this parameter.
-        # Maximum read IOPS.
-        # Corresponds to the JSON property `maxReadIops`
-        # @return [Fixnum]
-        attr_accessor :max_read_iops
-      
         def initialize(**args)
            update!(**args)
         end
@@ -372,7 +370,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_iops = args[:max_iops] if args.key?(:max_iops)
-          @max_read_iops = args[:max_read_iops] if args.key?(:max_read_iops)
         end
       end
       
@@ -819,12 +816,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_iops_per_tb
       
-        # Optional. Deprecated: `max_iops_per_tb` should be used instead of this
-        # parameter. Maximum read IOPS per TiB.
-        # Corresponds to the JSON property `maxReadIopsPerTb`
-        # @return [Fixnum]
-        attr_accessor :max_read_iops_per_tb
-      
         def initialize(**args)
            update!(**args)
         end
@@ -832,7 +823,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_iops_per_tb = args[:max_iops_per_tb] if args.key?(:max_iops_per_tb)
-          @max_read_iops_per_tb = args[:max_read_iops_per_tb] if args.key?(:max_read_iops_per_tb)
         end
       end
       
@@ -993,9 +983,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :suspension_reasons
       
-        # Optional. Input only. Immutable. Tag key-value pairs are bound to this
-        # resource. For example: "123/environment": "production", "123/costCenter": "
-        # marketing"
+        # Optional. Input only. Immutable. Tag key-value pairs bound to this resource.
+        # Each key must be a namespaced name and each value a short name. Example: "
+        # 123456789012/environment" : "production", "123456789013/costCenter" : "
+        # marketing" See the documentation for more information: - Namespaced name:
+        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#
+        # retrieving_tag_key - Short name: https://cloud.google.com/resource-manager/
+        # docs/tags/tags-creating-and-managing#retrieving_tag_value
         # Corresponds to the JSON property `tags`
         # @return [Hash<String,String>]
         attr_accessor :tags
@@ -1061,7 +1055,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations that could not be reached.
+        # Unordered list. Locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1097,7 +1091,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations that could not be reached.
+        # Unordered list. Locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1179,7 +1173,7 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::Share>]
         attr_accessor :shares
       
-        # Locations that could not be reached.
+        # Unordered list. Locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1211,6 +1205,11 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::Snapshot>]
         attr_accessor :snapshots
       
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1219,6 +1218,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @snapshots = args[:snapshots] if args.key?(:snapshots)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1579,9 +1579,9 @@ module Google
         attr_accessor :api_version
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have been cancelled successfully have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # operation. Operations that have been cancelled successfully have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of `1`,
+        # corresponding to `Code.CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
@@ -1976,9 +1976,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Optional. Input only. Immutable. Tag key-value pairs are bound to this
-        # resource. For example: "123/environment": "production", "123/costCenter": "
-        # marketing"
+        # Optional. Input only. Immutable. Tag key-value pairs bound to this resource.
+        # Each key must be a namespaced name and each value a short name. Example: "
+        # 123456789012/environment" : "production", "123456789013/costCenter" : "
+        # marketing" See the documentation for more information: - Namespaced name:
+        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#
+        # retrieving_tag_key - Short name: https://cloud.google.com/resource-manager/
+        # docs/tags/tags-creating-and-managing#retrieving_tag_value
         # Corresponds to the JSON property `tags`
         # @return [Hash<String,String>]
         attr_accessor :tags
