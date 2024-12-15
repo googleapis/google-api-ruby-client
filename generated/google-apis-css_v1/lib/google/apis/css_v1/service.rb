@@ -99,7 +99,7 @@ module Google
         # @param [Fixnum] page_size
         #   Optional. The maximum number of accounts to return. The service may return
         #   fewer than this value. If unspecified, at most 50 accounts will be returned.
-        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   The maximum value is 100; values above 100 will be coerced to 100.
         # @param [String] page_token
         #   Optional. A page token, received from a previous `ListChildAccounts` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
@@ -216,7 +216,7 @@ module Google
         #   accounts/`account`
         # @param [Google::Apis::CssV1::CssProductInput] css_product_input_object
         # @param [Fixnum] feed_id
-        #   Required. The primary or supplemental feed id. If CSS Product already exists
+        #   Optional. The primary or supplemental feed id. If CSS Product already exists
         #   and feed id provided is different, then the CSS Product will be moved to a new
         #   feed. Note: For now, CSSs do not need to provide feed ids as we create feeds
         #   on the fly. We do not have supplemental feed support for CSS Products yet.
