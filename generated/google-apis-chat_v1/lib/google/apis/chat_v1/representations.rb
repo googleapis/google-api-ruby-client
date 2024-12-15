@@ -280,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCardV1Carousel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1CarouselCard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCardV1Chip
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +377,12 @@ module Google
       end
       
       class GoogleAppsCardV1MaterialIcon
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1NestedWidget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1286,6 +1304,24 @@ module Google
         end
       end
       
+      class GoogleAppsCardV1Carousel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :carousel_cards, as: 'carouselCards', class: Google::Apis::ChatV1::GoogleAppsCardV1CarouselCard, decorator: Google::Apis::ChatV1::GoogleAppsCardV1CarouselCard::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCardV1CarouselCard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :footer_widgets, as: 'footerWidgets', class: Google::Apis::ChatV1::GoogleAppsCardV1NestedWidget, decorator: Google::Apis::ChatV1::GoogleAppsCardV1NestedWidget::Representation
+      
+          collection :widgets, as: 'widgets', class: Google::Apis::ChatV1::GoogleAppsCardV1NestedWidget, decorator: Google::Apis::ChatV1::GoogleAppsCardV1NestedWidget::Representation
+      
+        end
+      end
+      
       class GoogleAppsCardV1Chip
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1458,6 +1494,18 @@ module Google
         end
       end
       
+      class GoogleAppsCardV1NestedWidget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :button_list, as: 'buttonList', class: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList::Representation
+      
+          property :image, as: 'image', class: Google::Apis::ChatV1::GoogleAppsCardV1Image, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Image::Representation
+      
+          property :text_paragraph, as: 'textParagraph', class: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph::Representation
+      
+        end
+      end
+      
       class GoogleAppsCardV1OnClick
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1612,6 +1660,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :button_list, as: 'buttonList', class: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ButtonList::Representation
+      
+          property :carousel, as: 'carousel', class: Google::Apis::ChatV1::GoogleAppsCardV1Carousel, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Carousel::Representation
       
           property :chip_list, as: 'chipList', class: Google::Apis::ChatV1::GoogleAppsCardV1ChipList, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ChipList::Representation
       
@@ -2128,6 +2178,7 @@ module Google
           property :display_name, as: 'displayName'
           property :external_user_allowed, as: 'externalUserAllowed'
           property :import_mode, as: 'importMode'
+          property :import_mode_expire_time, as: 'importModeExpireTime'
           property :last_active_time, as: 'lastActiveTime'
           property :membership_count, as: 'membershipCount', class: Google::Apis::ChatV1::MembershipCount, decorator: Google::Apis::ChatV1::MembershipCount::Representation
       
