@@ -2233,6 +2233,32 @@ module Google
         end
       end
       
+      # The response message for PoliciesService.ListPolicies.
+      class ListPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The pagination token to retrieve the next page of results. If this field is
+        # empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The results
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::CloudidentityV1::Policy>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
       # Response message for UserInvitation listing request.
       class ListUserInvitationsResponse
         include Google::Apis::Core::Hashable
@@ -2700,6 +2726,108 @@ module Google
         end
       end
       
+      # A Policy resource binds an instance of a single Setting with the scope of a
+      # PolicyQuery. The Setting instance will be applied to all entities that satisfy
+      # the query.
+      class Policy
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Customer that the Policy belongs to. The value is in the format '
+        # customers/`customerId`'. The `customerId` must begin with "C" To find your
+        # customer ID in Admin Console see https://support.google.com/a/answer/10070793.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # Output only. Identifier. The [resource name](https://cloud.google.com/apis/
+        # design/resource_names) of the Policy. Format: policies/`policy`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # PolicyQuery
+        # Corresponds to the JSON property `policyQuery`
+        # @return [Google::Apis::CloudidentityV1::PolicyQuery]
+        attr_accessor :policy_query
+      
+        # Setting
+        # Corresponds to the JSON property `setting`
+        # @return [Google::Apis::CloudidentityV1::Setting]
+        attr_accessor :setting
+      
+        # Output only. The type of the policy.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+          @name = args[:name] if args.key?(:name)
+          @policy_query = args[:policy_query] if args.key?(:policy_query)
+          @setting = args[:setting] if args.key?(:setting)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # PolicyQuery
+      class PolicyQuery
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The group that the query applies to. This field is only set if
+        # there is a single value for group that satisfies all clauses of the query. If
+        # no group applies, this will be the empty string.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # Required. Immutable. Non-empty default. The OrgUnit the query applies to. This
+        # field is only set if there is a single value for org_unit that satisfies all
+        # clauses of the query.
+        # Corresponds to the JSON property `orgUnit`
+        # @return [String]
+        attr_accessor :org_unit
+      
+        # Immutable. The CEL query that defines which entities the Policy applies to (ex.
+        # a User entity). For details about CEL see https://opensource.google.com/
+        # projects/cel. The OrgUnits the Policy applies to are represented by a clause
+        # like so: entity.org_units.exists(org_unit, org_unit.org_unit_id == orgUnitId('`
+        # orgUnitId`')) The Group the Policy applies to are represented by a clause like
+        # so: entity.groups.exists(group, group.group_id == groupId('`groupId`')) The
+        # Licenses the Policy applies to are represented by a clause like so: entity.
+        # licenses.exists(license, license in ['/product/`productId`/sku/`skuId`']) The
+        # above clauses can be present in any combination, and used in conjunction with
+        # the &&, || and ! operators. The org_unit and group fields below are helper
+        # fields that contain the corresponding value(s) as the query to make the query
+        # easier to use.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Output only. The decimal sort order of this PolicyQuery. The value is relative
+        # to all other policies with the same setting type for the customer. (There are
+        # no duplicates within this set).
+        # Corresponds to the JSON property `sortOrder`
+        # @return [Float]
+        attr_accessor :sort_order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group = args[:group] if args.key?(:group)
+          @org_unit = args[:org_unit] if args.key?(:org_unit)
+          @query = args[:query] if args.key?(:query)
+          @sort_order = args[:sort_order] if args.key?(:sort_order)
+        end
+      end
+      
       # The evaluated state of this restriction.
       class RestrictionEvaluation
         include Google::Apis::Core::Hashable
@@ -2990,6 +3118,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Setting
+      class Setting
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The type of the Setting. .
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Required. The value of the Setting.
+        # Corresponds to the JSON property `value`
+        # @return [Hash<String,Object>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

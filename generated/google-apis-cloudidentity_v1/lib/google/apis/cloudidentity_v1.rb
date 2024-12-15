@@ -50,6 +50,12 @@ module Google
       # See all of the Inbound SSO profiles and their assignments to any Org Units or Google Groups in your Cloud Identity Organization.
       AUTH_CLOUD_IDENTITY_INBOUNDSSO_READONLY = 'https://www.googleapis.com/auth/cloud-identity.inboundsso.readonly'
 
+      # See and edit policies in your Cloud Identity Organization.
+      AUTH_CLOUD_IDENTITY_POLICIES = 'https://www.googleapis.com/auth/cloud-identity.policies'
+
+      # See policies in your Cloud Identity Organization.
+      AUTH_CLOUD_IDENTITY_POLICIES_READONLY = 'https://www.googleapis.com/auth/cloud-identity.policies.readonly'
+
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end

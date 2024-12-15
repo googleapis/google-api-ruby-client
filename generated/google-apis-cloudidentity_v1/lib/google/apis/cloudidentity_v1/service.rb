@@ -2371,6 +2371,89 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Get a Policy
+        # @param [String] name
+        #   Required. The name of the policy to retrieve. Format: "policies/`policy`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::Policy::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Policy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List Policies
+        # @param [String] filter
+        #   Optional. A CEL expression for filtering the results. Policies can be filtered
+        #   by application with this expression: setting.name = 'settings/gmail.*'
+        #   Policies can be filtered by setting type with this expression: setting.name = '
+        #   *.service_status' A maximum of one of the above setting.name clauses can be
+        #   used. Policies can be filtered by customer with this expression: customer = "
+        #   customers/`customer`" Where `customer` is the `id` from the [Admin SDK `
+        #   Customer` resource](https://developers.google.com/admin-sdk/directory/
+        #   reference/rest/v1/customers). You may use `customers/my_customer` to specify
+        #   your own organization. When no customer is mentioned it will be default to
+        #   customers/my_customer. A maximum of one customer clause can be used. The above
+        #   clauses can only be combined together in a single filter expression with the `&
+        #   &` operator.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return. The service can return
+        #   fewer than this number. If omitted or set to 0, the default is 50 results per
+        #   page. The maximum allowed value is 100. `page_size` values greater than 100
+        #   default to 100.
+        # @param [String] page_token
+        #   Optional. The pagination token received from a prior call to PoliciesService.
+        #   ListPolicies to retrieve the next page of results. When paginating, all other
+        #   parameters provided to `ListPoliciesRequest` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::ListPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::ListPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_policies(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/policies', options)
+          command.response_representation = Google::Apis::CloudidentityV1::ListPoliciesResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::ListPoliciesResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
