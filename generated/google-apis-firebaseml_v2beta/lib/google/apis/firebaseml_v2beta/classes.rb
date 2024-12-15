@@ -63,7 +63,7 @@ module Google
         end
       end
       
-      # Content blob. It's preferred to send as text directly rather than raw bytes.
+      # Content blob.
       class GoogleCloudAiplatformV1beta1Blob
         include Google::Apis::Core::Hashable
       
@@ -1274,7 +1274,7 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionResponse]
         attr_accessor :function_response
       
-        # Content blob. It's preferred to send as text directly rather than raw bytes.
+        # Content blob.
         # Corresponds to the JSON property `inlineData`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob]
         attr_accessor :inline_data
