@@ -2055,6 +2055,7 @@ module Google
           property :bios, as: 'bios', class: Google::Apis::MigrationcenterV1::BiosDetails, decorator: Google::Apis::MigrationcenterV1::BiosDetails::Representation
       
           property :cpu_architecture, as: 'cpuArchitecture'
+          property :cpu_manufacturer, as: 'cpuManufacturer'
           property :cpu_name, as: 'cpuName'
           property :cpu_socket_count, as: 'cpuSocketCount'
           property :cpu_thread_count, as: 'cpuThreadCount'
