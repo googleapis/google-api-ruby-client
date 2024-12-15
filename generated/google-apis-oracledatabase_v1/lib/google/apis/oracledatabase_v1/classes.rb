@@ -1534,7 +1534,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :storage_size_gb
       
-        # Output only. Operating system version of the image.
+        # Optional. Operating system version of the image.
         # Corresponds to the JSON property `systemVersion`
         # @return [String]
         attr_accessor :system_version
@@ -2878,12 +2878,12 @@ module Google
       class TimeZone
         include Google::Apis::Core::Hashable
       
-        # IANA Time Zone Database time zone, e.g. "America/New_York".
+        # IANA Time Zone Database time zone. For example "America/New_York".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Optional. IANA Time Zone Database version number, e.g. "2019a".
+        # Optional. IANA Time Zone Database version number. For example "2019a".
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
