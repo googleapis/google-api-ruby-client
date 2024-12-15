@@ -22,8 +22,8 @@ module Google
     module GamesManagementV1management
       # Google Play Game Management
       #
-      # The Google Play Game Management API allows developers to manage resources from
-      #  the Google Play Game service.
+      # The Google Play Games Management API allows developers to manage resources
+      #  from the Google Play Game service.
       #
       # @example
       #    require 'google/apis/games_management_v1management'

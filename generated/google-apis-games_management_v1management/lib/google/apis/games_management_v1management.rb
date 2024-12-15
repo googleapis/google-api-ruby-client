@@ -21,8 +21,8 @@ module Google
   module Apis
     # Google Play Game Management
     #
-    # The Google Play Game Management API allows developers to manage resources from
-    # the Google Play Game service.
+    # The Google Play Games Management API allows developers to manage resources
+    # from the Google Play Game service.
     #
     # @see https://developers.google.com/games/
     module GamesManagementV1management
