@@ -2501,6 +2501,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The repository endpoint, for example: `us-docker.pkg.dev/my-proj/
+        # my-repo`.
+        # Corresponds to the JSON property `registryUri`
+        # @return [String]
+        attr_accessor :registry_uri
+      
         # Remote repository configuration.
         # Corresponds to the JSON property `remoteRepositoryConfig`
         # @return [Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig]
@@ -2559,6 +2565,7 @@ module Google
           @maven_config = args[:maven_config] if args.key?(:maven_config)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
+          @registry_uri = args[:registry_uri] if args.key?(:registry_uri)
           @remote_repository_config = args[:remote_repository_config] if args.key?(:remote_repository_config)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
