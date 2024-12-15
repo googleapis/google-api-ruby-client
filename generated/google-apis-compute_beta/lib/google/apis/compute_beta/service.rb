@@ -2158,6 +2158,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns effective security policies applied to this backend service.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] backend_service
+        #   Name of the Backend Service for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::BackendServicesGetEffectiveSecurityPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::BackendServicesGetEffectiveSecurityPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_backend_service_effective_security_policies(project, backend_service, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/backendServices/{backendService}/getEffectiveSecurityPolicies', options)
+          command.response_representation = Google::Apis::ComputeBeta::BackendServicesGetEffectiveSecurityPoliciesResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::BackendServicesGetEffectiveSecurityPoliciesResponse
+          command.params['project'] = project unless project.nil?
+          command.params['backendService'] = backend_service unless backend_service.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the most recent health check results for this BackendService. Example
         # request body: ` "group": "/zones/us-east1-b/instanceGroups/lb-backend-example"
         # `
@@ -14047,6 +14083,8 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance resource to delete.
+        # @param [Boolean] no_graceful_shutdown
+        #   If set to true, Graceful Shutdown is skipped.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -14076,13 +14114,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_instance(project, zone, instance, no_graceful_shutdown: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'projects/{project}/zones/{zone}/instances/{instance}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['noGracefulShutdown'] = no_graceful_shutdown unless no_graceful_shutdown.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -14473,7 +14512,9 @@ module Google
         #   and the adjusted start position is returned as the `start` property value. You
         #   can also provide a negative start position, which translates to the most
         #   recent number of bytes written to the serial port. For example, -3 is
-        #   interpreted as the most recent 3 bytes written to the serial console.
+        #   interpreted as the most recent 3 bytes written to the serial console. Note
+        #   that the negative start is bounded by the retained buffer size, and the
+        #   returned serial console output will not exceed the max buffer size.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16127,6 +16168,8 @@ module Google
         #   This property is required if the instance has any attached Local SSD disks. If
         #   false, Local SSD data will be preserved when the instance is suspended. If
         #   true, the contents of any attached Local SSD disks will be discarded.
+        # @param [Boolean] no_graceful_shutdown
+        #   If set to true, Graceful Shutdown is skipped.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -16156,7 +16199,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_instance(project, zone, instance, discard_local_ssd: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_instance(project, zone, instance, discard_local_ssd: nil, no_graceful_shutdown: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instances/{instance}/stop', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
@@ -16164,6 +16207,7 @@ module Google
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['discardLocalSsd'] = discard_local_ssd unless discard_local_ssd.nil?
+          command.query['noGracefulShutdown'] = no_graceful_shutdown unless no_graceful_shutdown.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -35856,6 +35900,60 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
           command.query['priority'] = priority unless priority.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the labels on a security policy. To learn more about labels, read the
+        # Labeling Resources documentation.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::RegionSetLabelsRequest] region_set_labels_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_region_security_policy_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/securityPolicies/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeBeta::RegionSetLabelsRequest::Representation
+          command.request_object = region_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

@@ -3142,7 +3142,8 @@ module Google
         # CACHE_ALL_STATIC Automatically cache static content, including common image
         # formats, media (video and audio), and web assets (JavaScript and CSS).
         # Requests and responses that are marked as uncacheable, as well as dynamic
-        # content (including HTML), will not be cached.
+        # content (including HTML), will not be cached. If no value is provided for
+        # cdnPolicy.cacheMode, it defaults to CACHE_ALL_STATIC.
         # Corresponds to the JSON property `cacheMode`
         # @return [String]
         attr_accessor :cache_mode
@@ -4130,7 +4131,8 @@ module Google
         # CACHE_ALL_STATIC Automatically cache static content, including common image
         # formats, media (video and audio), and web assets (JavaScript and CSS).
         # Requests and responses that are marked as uncacheable, as well as dynamic
-        # content (including HTML), will not be cached.
+        # content (including HTML), will not be cached. If no value is provided for
+        # cdnPolicy.cacheMode, it defaults to CACHE_ALL_STATIC.
         # Corresponds to the JSON property `cacheMode`
         # @return [String]
         attr_accessor :cache_mode
@@ -4978,6 +4980,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # 
+      class BackendServicesGetEffectiveSecurityPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Effective security policies for the backend service.
+        # Corresponds to the JSON property `securityPolicies`
+        # @return [Array<Google::Apis::ComputeBeta::SecurityPolicy>]
+        attr_accessor :security_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @security_policies = args[:security_policies] if args.key?(:security_policies)
         end
       end
       
@@ -11044,24 +11065,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Indicates if this group of VMs have opportunistic maintenance enabled. This
-        # will be set on the FR by customers, and will be used for reservation and
-        # reservation block maintenance .
-        # Corresponds to the JSON property `enableOpportunisticMaintenance`
-        # @return [Boolean]
-        attr_accessor :enable_opportunistic_maintenance
-        alias_method :enable_opportunistic_maintenance?, :enable_opportunistic_maintenance
-      
         # [Output Only] A unique identifier for this future reservation. The server
         # defines this identifier.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
-      
-        # Action to take during reservation termination.
-        # Corresponds to the JSON property `instanceTerminationAction`
-        # @return [String]
-        attr_accessor :instance_termination_action
       
         # [Output Only] Type of the resource. Always compute#futureReservation for
         # future reservations.
@@ -11162,9 +11170,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
-          @enable_opportunistic_maintenance = args[:enable_opportunistic_maintenance] if args.key?(:enable_opportunistic_maintenance)
           @id = args[:id] if args.key?(:id)
-          @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @name_prefix = args[:name_prefix] if args.key?(:name_prefix)
@@ -12088,13 +12094,6 @@ module Google
       class GroupMaintenanceInfo
         include Google::Apis::Core::Hashable
       
-        # This setting enables or disables opportunistic maintenance. If enabled,
-        # maintenance is performed on unused reservations whenever possible.
-        # Corresponds to the JSON property `enableOpportunisticMaintenance`
-        # @return [Boolean]
-        attr_accessor :enable_opportunistic_maintenance
-        alias_method :enable_opportunistic_maintenance?, :enable_opportunistic_maintenance
-      
         # Progress for ongoing maintenance for this group of VMs/hosts. Describes number
         # of hosts in the block that have ongoing maintenance.
         # Corresponds to the JSON property `maintenanceOngoingCount`
@@ -12123,7 +12122,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enable_opportunistic_maintenance = args[:enable_opportunistic_maintenance] if args.key?(:enable_opportunistic_maintenance)
           @maintenance_ongoing_count = args[:maintenance_ongoing_count] if args.key?(:maintenance_ongoing_count)
           @maintenance_pending_count = args[:maintenance_pending_count] if args.key?(:maintenance_pending_count)
           @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
@@ -14404,12 +14402,10 @@ module Google
       
         # In response to a matching matchRule, the load balancer performs advanced
         # routing actions, such as URL rewrites and header transformations, before
-        # forwarding the request to the selected backend. If routeAction specifies any
-        # weightedBackendServices, service must not be set. Conversely if service is set,
-        # routeAction cannot contain any weightedBackendServices. Only one of
-        # urlRedirect, service or routeAction.weightedBackendService must be set. URL
-        # maps for classic Application Load Balancers only support the urlRewrite action
-        # within a route rule's routeAction.
+        # forwarding the request to the selected backend. Only one of urlRedirect,
+        # service or routeAction.weightedBackendService can be set. URL maps for classic
+        # Application Load Balancers only support the urlRewrite action within a route
+        # rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
         attr_accessor :route_action
@@ -14417,10 +14413,8 @@ module Google
         # The full or partial URL of the backend service resource to which traffic is
         # directed if this rule is matched. If routeAction is also specified, advanced
         # routing actions, such as URL rewrites, take effect before sending the request
-        # to the backend. However, if service is specified, routeAction cannot contain
-        # any weightedBackendServices. Conversely, if routeAction specifies any
-        # weightedBackendServices, service must not be specified. Only one of
-        # urlRedirect, service or routeAction.weightedBackendService must be set.
+        # to the backend. Only one of urlRedirect, service or routeAction.
+        # weightedBackendService can be set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -20131,6 +20125,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] The packet mirroring rules that apply to the instance.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
         # [Output only] Priority of firewall policy association. Not applicable for type=
         # HIERARCHY.
         # Corresponds to the JSON property `priority`
@@ -20163,6 +20162,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @short_name = args[:short_name] if args.key?(:short_name)
@@ -22672,7 +22672,7 @@ module Google
         attr_accessor :availability_zone
       
         # [Output only] List of features available at this InterconnectLocation, which
-        # can take one of the following values: - MACSEC
+        # can take one of the following values: - IF_MACSEC
         # Corresponds to the JSON property `availableFeatures`
         # @return [Array<String>]
         attr_accessor :available_features
@@ -23612,7 +23612,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # 
+        # [Input Only] Deprecated.
         # Corresponds to the JSON property `resourceRequirements`
         # @return [Google::Apis::ComputeBeta::LicenseResourceRequirements]
         attr_accessor :resource_requirements
@@ -23782,14 +23782,14 @@ module Google
       class LicenseResourceRequirements
         include Google::Apis::Core::Hashable
       
-        # Minimum number of guest cpus required to use the Instance. Enforced at
-        # Instance creation and Instance start.
+        # [Input Only] Deprecated. This field no longer reflects the minimum number of
+        # guest cpus required to use the Instance.
         # Corresponds to the JSON property `minGuestCpuCount`
         # @return [Fixnum]
         attr_accessor :min_guest_cpu_count
       
-        # Minimum memory required to use the Instance. Enforced at Instance creation and
-        # Instance start.
+        # [Input Only] Deprecated. This field no longer reflects the minimum memory
+        # required to use the Instance.
         # Corresponds to the JSON property `minMemoryMb`
         # @return [Fixnum]
         attr_accessor :min_memory_mb
@@ -25322,7 +25322,8 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Resource policies for this multi-MIG.
+        # Resource policies message for a multi-MIG. Specifies the workload policy
+        # configuration of the multi-MIG.
         # Corresponds to the JSON property `resourcePolicies`
         # @return [Google::Apis::ComputeBeta::MultiMigResourcePolicies]
         attr_accessor :resource_policies
@@ -25349,11 +25350,17 @@ module Google
         end
       end
       
-      # 
+      # Resource policies message for a multi-MIG. Specifies the workload policy
+      # configuration of the multi-MIG.
       class MultiMigResourcePolicies
         include Google::Apis::Core::Hashable
       
-        # 
+        # The URL of the workload policy for this multi-MIG. It can be a full or partial
+        # URL. For example, the following are all valid URLs to a workload policy: -
+        # https://www.googleapis.com/compute/v1/projects/project/regions/region /
+        # resourcePolicies/resourcePolicy - projects/project/regions/region/
+        # resourcePolicies/resourcePolicy - regions/region/resourcePolicies/
+        # resourcePolicy
         # Corresponds to the JSON property `workloadPolicy`
         # @return [String]
         attr_accessor :workload_policy
@@ -25698,7 +25705,7 @@ module Google
       
         # A full or partial URL of the network profile to apply to this network. This
         # field can be set only at resource creation time. For example, the following
-        # are valid URLs: - https://www.googleapis.com/compute/alpha/projects/`
+        # are valid URLs: - https://www.googleapis.com/compute/`api_version`/projects/`
         # project_id`/global/networkProfiles/`network_profile_name` - projects/`
         # project_id`/global/networkProfiles/`network_profile_name`
         # Corresponds to the JSON property `networkProfile`
@@ -28077,6 +28084,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Output Only] Location to which the network is restricted.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::ComputeBeta::NetworkProfileLocation]
+        attr_accessor :location
+      
         # [Output Only] Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -28108,10 +28120,36 @@ module Google
           @features = args[:features] if args.key?(:features)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class NetworkProfileLocation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @scope = args[:scope] if args.key?(:scope)
         end
       end
       
@@ -28421,6 +28459,17 @@ module Google
         # @return [String]
         attr_accessor :bgp_inter_region_cost
       
+        # [Output Only] Effective value of the bgp_always_compare_med field.
+        # Corresponds to the JSON property `effectiveBgpAlwaysCompareMed`
+        # @return [Boolean]
+        attr_accessor :effective_bgp_always_compare_med
+        alias_method :effective_bgp_always_compare_med?, :effective_bgp_always_compare_med
+      
+        # [Output Only] Effective value of the bgp_inter_region_cost field.
+        # Corresponds to the JSON property `effectiveBgpInterRegionCost`
+        # @return [String]
+        attr_accessor :effective_bgp_inter_region_cost
+      
         # The network-wide routing mode to use. If set to REGIONAL, this network's Cloud
         # Routers will only advertise routes with subnets of this network in the same
         # region as the router. If set to GLOBAL, this network's Cloud Routers will
@@ -28438,6 +28487,8 @@ module Google
           @bgp_always_compare_med = args[:bgp_always_compare_med] if args.key?(:bgp_always_compare_med)
           @bgp_best_path_selection_mode = args[:bgp_best_path_selection_mode] if args.key?(:bgp_best_path_selection_mode)
           @bgp_inter_region_cost = args[:bgp_inter_region_cost] if args.key?(:bgp_inter_region_cost)
+          @effective_bgp_always_compare_med = args[:effective_bgp_always_compare_med] if args.key?(:effective_bgp_always_compare_med)
+          @effective_bgp_inter_region_cost = args[:effective_bgp_inter_region_cost] if args.key?(:effective_bgp_inter_region_cost)
           @routing_mode = args[:routing_mode] if args.key?(:routing_mode)
         end
       end
@@ -28538,6 +28589,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] The packet mirroring rules that apply to the network.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
         # [Output only] Priority of firewall policy association. Not applicable for type=
         # HIERARCHY.
         # Corresponds to the JSON property `priority`
@@ -28567,6 +28623,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @short_name = args[:short_name] if args.key?(:short_name)
@@ -32227,11 +32284,8 @@ module Google
         # defaultRouteAction takes effect when none of the pathRules or routeRules match.
         # The load balancer performs advanced routing actions, such as URL rewrites and
         # header transformations, before forwarding the request to the selected backend.
-        # If defaultRouteAction specifies any weightedBackendServices, defaultService
-        # must not be set. Conversely if defaultService is set, defaultRouteAction
-        # cannot contain any weightedBackendServices. If defaultRouteAction is specified,
-        # don't set defaultUrlRedirect. If defaultRouteAction.weightedBackendServices
-        # is specified, don't set defaultService. URL maps for classic Application Load
+        # Only one of defaultUrlRedirect, defaultService or defaultRouteAction.
+        # weightedBackendService can be set. URL maps for classic Application Load
         # Balancers only support the urlRewrite action within a path matcher's
         # defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
@@ -32245,14 +32299,11 @@ module Google
         # backendService - compute/v1/projects/project/global/backendServices/
         # backendService - global/backendServices/backendService If defaultRouteAction
         # is also specified, advanced routing actions, such as URL rewrites, take effect
-        # before sending the request to the backend. However, if defaultService is
-        # specified, defaultRouteAction cannot contain any weightedBackendServices.
-        # Conversely, if defaultRouteAction specifies any weightedBackendServices,
-        # defaultService must not be specified. If defaultService is specified, then set
-        # either defaultUrlRedirect or defaultRouteAction.weightedBackendService. Don't
-        # set both. Authorization requires one or more of the following Google IAM
-        # permissions on the specified resource default_service: - compute.
-        # backendBuckets.use - compute.backendServices.use
+        # before sending the request to the backend. Only one of defaultUrlRedirect,
+        # defaultService or defaultRouteAction.weightedBackendService can be set.
+        # Authorization requires one or more of the following Google IAM permissions on
+        # the specified resource default_service: - compute.backendBuckets.use - compute.
+        # backendServices.use
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -32336,11 +32387,10 @@ module Google
       
         # In response to a matching path, the load balancer performs advanced routing
         # actions, such as URL rewrites and header transformations, before forwarding
-        # the request to the selected backend. If routeAction specifies any
-        # weightedBackendServices, service must not be set. Conversely if service is set,
-        # routeAction cannot contain any weightedBackendServices. Only one of
-        # routeAction or urlRedirect must be set. URL maps for classic Application Load
-        # Balancers only support the urlRewrite action within a path rule's routeAction.
+        # the request to the selected backend. Only one of urlRedirect, service or
+        # routeAction.weightedBackendService can be set. URL maps for classic
+        # Application Load Balancers only support the urlRewrite action within a path
+        # rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
         attr_accessor :route_action
@@ -32348,10 +32398,8 @@ module Google
         # The full or partial URL of the backend service resource to which traffic is
         # directed if this rule is matched. If routeAction is also specified, advanced
         # routing actions, such as URL rewrites, take effect before sending the request
-        # to the backend. However, if service is specified, routeAction cannot contain
-        # any weightedBackendServices. Conversely, if routeAction specifies any
-        # weightedBackendServices, service must not be specified. Only one of
-        # urlRedirect, service or routeAction.weightedBackendService must be set.
+        # to the backend. Only one of urlRedirect, service or routeAction.
+        # weightedBackendService can be set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -32392,7 +32440,7 @@ module Google
         # Serves as a merge key during UpdatePerInstanceConfigs operations, that is, if
         # a per-instance configuration with the same name exists then it will be updated,
         # otherwise a new one will be created for the VM instance with the same name.
-        # An attempt to create a per-instance configconfiguration for a VM instance that
+        # An attempt to create a per-instance configuration for a VM instance that
         # either doesn't exist or is not part of the group will result in an error.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -32707,7 +32755,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Restricted features enabled for use on this project.
+        # An optional list of restricted features enabled for use on this project.
         # Corresponds to the JSON property `enabledFeatures`
         # @return [Array<String>]
         attr_accessor :enabled_features
@@ -35736,6 +35784,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output only] The packet mirroring rules that apply to the network.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
         # [Output only] Priority of firewall policy association. Not applicable for type=
         # HIERARCHY.
         # Corresponds to the JSON property `priority`
@@ -35761,6 +35814,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @type = args[:type] if args.key?(:type)
@@ -36000,12 +36054,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Instance termination action is invoked when the reservation is deleted. This
-        # only applies to reservations with a Deployment type.
-        # Corresponds to the JSON property `instanceTerminationAction`
-        # @return [String]
-        attr_accessor :instance_termination_action
-      
         # [Output Only] Type of the resource. Always compute#reservations for
         # reservations.
         # Corresponds to the JSON property `kind`
@@ -36098,7 +36146,6 @@ module Google
           @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
-          @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @reservation_sharing_policy = args[:reservation_sharing_policy] if args.key?(:reservation_sharing_policy)
@@ -37733,15 +37780,27 @@ module Google
       class ResourceStatus
         include Google::Apis::Core::Hashable
       
-        # [Output Only] An opaque ID of the host on which the VM is running.
+        # [Output Only] The precise location of your instance within the zone's data
+        # center, including the block, sub-block, and host. The field is formatted as
+        # follows: blockId/subBlockId/hostId.
         # Corresponds to the JSON property `physicalHost`
         # @return [String]
         attr_accessor :physical_host
+      
+        # Represents the physical host topology of the host on which the VM is running.
+        # Corresponds to the JSON property `physicalHostTopology`
+        # @return [Google::Apis::ComputeBeta::ResourceStatusPhysicalHostTopology]
+        attr_accessor :physical_host_topology
       
         # 
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeBeta::ResourceStatusScheduling]
         attr_accessor :scheduling
+      
+        # [Output Only] Details about the instance stopping state.
+        # Corresponds to the JSON property `shutdownDetails`
+        # @return [Google::Apis::ComputeBeta::ResourceStatusShutdownDetails]
+        attr_accessor :shutdown_details
       
         # Upcoming Maintenance notification information.
         # Corresponds to the JSON property `upcomingMaintenance`
@@ -37755,8 +37814,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @physical_host = args[:physical_host] if args.key?(:physical_host)
+          @physical_host_topology = args[:physical_host_topology] if args.key?(:physical_host_topology)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @shutdown_details = args[:shutdown_details] if args.key?(:shutdown_details)
           @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
+        end
+      end
+      
+      # Represents the physical host topology of the host on which the VM is running.
+      class ResourceStatusPhysicalHostTopology
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The ID of the block in which the running instance is located.
+        # Instances within the same block experience low network latency.
+        # Corresponds to the JSON property `block`
+        # @return [String]
+        attr_accessor :block
+      
+        # [Output Only] The global name of the Compute Engine cluster where the running
+        # instance is located.
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # [Output Only] The ID of the host on which the running instance is located.
+        # Instances on the same host experience the lowest possible network latency.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # [Output Only] The ID of the sub-block in which the running instance is located.
+        # Instances in the same sub-block experience lower network latency than
+        # instances in the same block.
+        # Corresponds to the JSON property `subblock`
+        # @return [String]
+        attr_accessor :subblock
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block = args[:block] if args.key?(:block)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @host = args[:host] if args.key?(:host)
+          @subblock = args[:subblock] if args.key?(:subblock)
         end
       end
       
@@ -37784,6 +37887,46 @@ module Google
         def update!(**args)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
           @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
+        end
+      end
+      
+      # 
+      class ResourceStatusShutdownDetails
+        include Google::Apis::Core::Hashable
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :max_duration
+      
+        # 
+        # Corresponds to the JSON property `requestTimestamp`
+        # @return [String]
+        attr_accessor :request_timestamp
+      
+        # 
+        # Corresponds to the JSON property `stopState`
+        # @return [String]
+        attr_accessor :stop_state
+      
+        # 
+        # Corresponds to the JSON property `targetState`
+        # @return [String]
+        attr_accessor :target_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @request_timestamp = args[:request_timestamp] if args.key?(:request_timestamp)
+          @stop_state = args[:stop_state] if args.key?(:stop_state)
+          @target_state = args[:target_state] if args.key?(:target_state)
         end
       end
       
@@ -39275,6 +39418,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # List of Subnetwork resources whose traffic should be translated by NAT64
+        # Gateway. It is used only when LIST_OF_IPV6_SUBNETWORKS is selected for the
+        # SubnetworkIpRangeToNat64Option above.
+        # Corresponds to the JSON property `nat64Subnetworks`
+        # @return [Array<Google::Apis::ComputeBeta::RouterNatSubnetworkToNat64>]
+        attr_accessor :nat64_subnetworks
+      
         # Specify the NatIpAllocateOption, which can take one of the following values: -
         # MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are
         # not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY:
@@ -39306,6 +39456,18 @@ module Google
         # Corresponds to the JSON property `sourceSubnetworkIpRangesToNat`
         # @return [String]
         attr_accessor :source_subnetwork_ip_ranges_to_nat
+      
+        # Specify the Nat option for NAT64, which can take one of the following values: -
+        # ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to
+        # Nat. - LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (
+        # specified in the field nat64_subnetwork below) The default is
+        # NAT64_OPTION_UNSPECIFIED. Note that if this field contains
+        # NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also
+        # enable NAT64 for any Subnetworks in this network. Other Router.Nat sections
+        # can still be present to enable NAT44 only.
+        # Corresponds to the JSON property `sourceSubnetworkIpRangesToNat64`
+        # @return [String]
+        attr_accessor :source_subnetwork_ip_ranges_to_nat64
       
         # A list of Subnetwork resources whose traffic should be translated by NAT
         # Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the
@@ -39359,10 +39521,12 @@ module Google
           @max_ports_per_vm = args[:max_ports_per_vm] if args.key?(:max_ports_per_vm)
           @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
           @name = args[:name] if args.key?(:name)
+          @nat64_subnetworks = args[:nat64_subnetworks] if args.key?(:nat64_subnetworks)
           @nat_ip_allocate_option = args[:nat_ip_allocate_option] if args.key?(:nat_ip_allocate_option)
           @nat_ips = args[:nat_ips] if args.key?(:nat_ips)
           @rules = args[:rules] if args.key?(:rules)
           @source_subnetwork_ip_ranges_to_nat = args[:source_subnetwork_ip_ranges_to_nat] if args.key?(:source_subnetwork_ip_ranges_to_nat)
+          @source_subnetwork_ip_ranges_to_nat64 = args[:source_subnetwork_ip_ranges_to_nat64] if args.key?(:source_subnetwork_ip_ranges_to_nat64)
           @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
           @tcp_established_idle_timeout_sec = args[:tcp_established_idle_timeout_sec] if args.key?(:tcp_established_idle_timeout_sec)
           @tcp_time_wait_timeout_sec = args[:tcp_time_wait_timeout_sec] if args.key?(:tcp_time_wait_timeout_sec)
@@ -39527,6 +39691,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @secondary_ip_range_names = args[:secondary_ip_range_names] if args.key?(:secondary_ip_range_names)
           @source_ip_ranges_to_nat = args[:source_ip_ranges_to_nat] if args.key?(:source_ip_ranges_to_nat)
+        end
+      end
+      
+      # Specifies a subnetwork to enable NAT64.
+      class RouterNatSubnetworkToNat64
+        include Google::Apis::Core::Hashable
+      
+        # URL for the subnetwork resource that will use NAT64.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -40557,6 +40740,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :availability_domain
       
+        # The configuration for gracefully shutting down the instance.
+        # Corresponds to the JSON property `gracefulShutdown`
+        # @return [Google::Apis::ComputeBeta::SchedulingGracefulShutdown]
+        attr_accessor :graceful_shutdown
+      
         # Specify the time in seconds for host error detection, the value must be within
         # the range of [90, 330] with the increment of 30, if unset, the default
         # behavior of host error recovery will be used.
@@ -40657,6 +40845,7 @@ module Google
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
+          @graceful_shutdown = args[:graceful_shutdown] if args.key?(:graceful_shutdown)
           @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @local_ssd_recovery_timeout = args[:local_ssd_recovery_timeout] if args.key?(:local_ssd_recovery_timeout)
@@ -40671,6 +40860,35 @@ module Google
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
+        end
+      end
+      
+      # The configuration for gracefully shutting down the instance.
+      class SchedulingGracefulShutdown
+        include Google::Apis::Core::Hashable
+      
+        # Opts-in for graceful shutdown.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :max_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
         end
       end
       
@@ -41454,6 +41672,12 @@ module Google
         # @return [String]
         attr_accessor :log_level
       
+        # The maximum request size chosen by the customer with Waf enabled. Currently
+        # only "8KB" and "128KB" are supported. Values are case insensitive.
+        # Corresponds to the JSON property `requestBodyInspectionSize`
+        # @return [String]
+        attr_accessor :request_body_inspection_size
+      
         # An optional list of case-insensitive request header names to use for resolving
         # the callers client IP address.
         # Corresponds to the JSON property `userIpRequestHeaders`
@@ -41469,6 +41693,7 @@ module Google
           @json_custom_config = args[:json_custom_config] if args.key?(:json_custom_config)
           @json_parsing = args[:json_parsing] if args.key?(:json_parsing)
           @log_level = args[:log_level] if args.key?(:log_level)
+          @request_body_inspection_size = args[:request_body_inspection_size] if args.key?(:request_body_inspection_size)
           @user_ip_request_headers = args[:user_ip_request_headers] if args.key?(:user_ip_request_headers)
         end
       end
@@ -42342,7 +42567,9 @@ module Google
         # originating client, which is resolved based on "userIpRequestHeaders"
         # configured with the security policy. If there is no "userIpRequestHeaders"
         # configuration or an IP address cannot be resolved from it, the key type
-        # defaults to IP.
+        # defaults to IP. - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client
+        # connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type
+        # defaults to ALL.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
@@ -42437,7 +42664,9 @@ module Google
         # originating client, which is resolved based on "userIpRequestHeaders"
         # configured with the security policy. If there is no "userIpRequestHeaders"
         # configuration or an IP address cannot be resolved from it, the key type
-        # defaults to IP.
+        # defaults to IP. - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client
+        # connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type
+        # defaults to ALL.
         # Corresponds to the JSON property `enforceOnKeyType`
         # @return [String]
         attr_accessor :enforce_on_key_type
@@ -46940,6 +47169,18 @@ module Google
         # @return [String]
         attr_accessor :ip_cidr_range
       
+        # Reference to the source of IP, like a PublicDelegatedPrefix (PDP) for BYOIP.
+        # The PDP must be a sub-PDP in EXTERNAL_IPV6_SUBNETWORK_CREATION mode. Use one
+        # of the following formats to specify a sub-PDP when creating a dual stack
+        # subnetwork with external access using BYOIP: - Full resource URL, as in https:/
+        # /www.googleapis.com/compute/v1/projects/projectId/regions/region /
+        # publicDelegatedPrefixes/sub-pdp-name - Partial URL, as in - projects/projectId/
+        # regions/region/publicDelegatedPrefixes/ sub-pdp-name - regions/region/
+        # publicDelegatedPrefixes/sub-pdp-name
+        # Corresponds to the JSON property `ipCollection`
+        # @return [String]
+        attr_accessor :ip_collection
+      
         # The access type of IPv6 address this subnet holds. It's immutable and can only
         # be specified during creation or the first time the subnet is updated into
         # IPV4_IPV6 dual stack.
@@ -46951,6 +47192,18 @@ module Google
         # Corresponds to the JSON property `ipv6CidrRange`
         # @return [String]
         attr_accessor :ipv6_cidr_range
+      
+        # [Output Only] Possible endpoints of this subnetwork. It can be one of the
+        # following: - VM_ONLY: The subnetwork can be used for creating instances and
+        # IPv6 addresses with VM endpoint type. Such a subnetwork gets external IPv6
+        # ranges from a public delegated prefix and cannot be used to create NetLb. -
+        # VM_AND_FR: The subnetwork can be used for creating both VM instances and
+        # Forwarding Rules. It can also be used to reserve IPv6 addresses with both VM
+        # and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP
+        # Pool directly.
+        # Corresponds to the JSON property `ipv6GceEndpoint`
+        # @return [String]
+        attr_accessor :ipv6_gce_endpoint
       
         # [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork
         # resources.
@@ -46995,15 +47248,17 @@ module Google
         attr_accessor :private_ipv6_google_access
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
-        # PRIVATE is the default purpose for user-created subnets or subnets that are
-        # automatically created in auto mode networks. Subnets with purpose set to
-        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
-        # that are reserved for Envoy-based load balancers. A subnet with purpose set to
-        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
-        # Connect. If unspecified, the subnet purpose defaults to PRIVATE. The
-        # enableFlowLogs field isn't supported if the subnet purpose field is set to
-        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION or
+        # PRIVATE_SERVICE_CONNECT. PRIVATE is the default purpose for user-created
+        # subnets or subnets that are automatically created in auto mode networks.
+        # Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are
+        # user-created subnetworks that are reserved for Envoy-based load balancers. A
+        # subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services
+        # using Private Service Connect. A subnet with purpose set to PEER_MIGRATION is
+        # used for subnet migration from one peered VPC to another. If unspecified, the
+        # subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported
+        # if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
+        # REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -47076,8 +47331,10 @@ module Google
           @id = args[:id] if args.key?(:id)
           @internal_ipv6_prefix = args[:internal_ipv6_prefix] if args.key?(:internal_ipv6_prefix)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @ipv6_cidr_range = args[:ipv6_cidr_range] if args.key?(:ipv6_cidr_range)
+          @ipv6_gce_endpoint = args[:ipv6_gce_endpoint] if args.key?(:ipv6_gce_endpoint)
           @kind = args[:kind] if args.key?(:kind)
           @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
@@ -48552,14 +48809,14 @@ module Google
       # Represents a Target HTTPS Proxy resource. Google Compute Engine has two Target
       # HTTPS Proxy resources: * [Global](/compute/docs/reference/rest/beta/
       # targetHttpsProxies) * [Regional](/compute/docs/reference/rest/beta/
-      # regionTargetHttpsProxies) A target HTTPS proxy is a component of GCP HTTPS
-      # load balancers. * targetHttpProxies are used by global external Application
-      # Load Balancers, classic Application Load Balancers, cross-region internal
-      # Application Load Balancers, and Traffic Director. * regionTargetHttpProxies
-      # are used by regional internal Application Load Balancers and regional external
-      # Application Load Balancers. Forwarding rules reference a target HTTPS proxy,
-      # and the target proxy then references a URL map. For more information, read
-      # Using Target Proxies and Forwarding rule concepts.
+      # regionTargetHttpsProxies) A target HTTPS proxy is a component of Google Cloud
+      # HTTPS load balancers. * targetHttpProxies are used by global external
+      # Application Load Balancers, classic Application Load Balancers, cross-region
+      # internal Application Load Balancers, and Traffic Director. *
+      # regionTargetHttpProxies are used by regional internal Application Load
+      # Balancers and regional external Application Load Balancers. Forwarding rules
+      # reference a target HTTPS proxy, and the target proxy then references a URL map.
+      # For more information, read Using Target Proxies and Forwarding rule concepts.
       class TargetHttpsProxy
         include Google::Apis::Core::Hashable
       
@@ -51495,11 +51752,9 @@ module Google
       
         # defaultRouteAction takes effect when none of the hostRules match. The load
         # balancer performs advanced routing actions, such as URL rewrites and header
-        # transformations, before forwarding the request to the selected backend. If
-        # defaultRouteAction specifies any weightedBackendServices, defaultService must
-        # not be set. Conversely if defaultService is set, defaultRouteAction cannot
-        # contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. URL maps for classic Application Load
+        # transformations, before forwarding the request to the selected backend. Only
+        # one of defaultUrlRedirect, defaultService or defaultRouteAction.
+        # weightedBackendService can be set. URL maps for classic Application Load
         # Balancers only support the urlRewrite action within defaultRouteAction.
         # defaultRouteAction has no effect when the URL map is bound to a target gRPC
         # proxy that has the validateForProxyless field set to true.
@@ -51510,14 +51765,10 @@ module Google
         # The full or partial URL of the defaultService resource to which traffic is
         # directed if none of the hostRules match. If defaultRouteAction is also
         # specified, advanced routing actions, such as URL rewrites, take effect before
-        # sending the request to the backend. However, if defaultService is specified,
-        # defaultRouteAction cannot contain any defaultRouteAction.
-        # weightedBackendServices. Conversely, if defaultRouteAction specifies any
-        # defaultRouteAction.weightedBackendServices, defaultService must not be
-        # specified. If defaultService is specified, then set either defaultUrlRedirect ,
-        # or defaultRouteAction.weightedBackendService Don't set both. defaultService
-        # has no effect when the URL map is bound to a target gRPC proxy that has the
-        # validateForProxyless field set to true.
+        # sending the request to the backend. Only one of defaultUrlRedirect,
+        # defaultService or defaultRouteAction.weightedBackendService can be set.
+        # defaultService has no effect when the URL map is bound to a target gRPC proxy
+        # that has the validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -52266,15 +52517,17 @@ module Google
         attr_accessor :network
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
-        # PRIVATE is the default purpose for user-created subnets or subnets that are
-        # automatically created in auto mode networks. Subnets with purpose set to
-        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
-        # that are reserved for Envoy-based load balancers. A subnet with purpose set to
-        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
-        # Connect. If unspecified, the subnet purpose defaults to PRIVATE. The
-        # enableFlowLogs field isn't supported if the subnet purpose field is set to
-        # GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION or
+        # PRIVATE_SERVICE_CONNECT. PRIVATE is the default purpose for user-created
+        # subnets or subnets that are automatically created in auto mode networks.
+        # Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are
+        # user-created subnetworks that are reserved for Envoy-based load balancers. A
+        # subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services
+        # using Private Service Connect. A subnet with purpose set to PEER_MIGRATION is
+        # used for subnet migration from one peered VPC to another. If unspecified, the
+        # subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported
+        # if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
+        # REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose

@@ -574,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServicesGetEffectiveSecurityPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServicesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3502,6 +3508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkProfileLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkProfileNetworkFeatures
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4924,7 +4936,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceStatusPhysicalHostTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceStatusScheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceStatusShutdownDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5104,6 +5128,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterNatSubnetworkToNat64
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5225,6 +5255,12 @@ module Google
       end
       
       class Scheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchedulingGracefulShutdown
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8209,6 +8245,14 @@ module Google
         end
       end
       
+      class BackendServicesGetEffectiveSecurityPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :security_policies, as: 'securityPolicies', class: Google::Apis::ComputeBeta::SecurityPolicy, decorator: Google::Apis::ComputeBeta::SecurityPolicy::Representation
+      
+        end
+      end
+      
       class BackendServicesScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9571,9 +9615,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :deployment_type, as: 'deploymentType'
           property :description, as: 'description'
-          property :enable_opportunistic_maintenance, as: 'enableOpportunisticMaintenance'
           property :id, :numeric_string => true, as: 'id'
-          property :instance_termination_action, as: 'instanceTerminationAction'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :name_prefix, as: 'namePrefix'
@@ -9836,7 +9878,6 @@ module Google
       class GroupMaintenanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :enable_opportunistic_maintenance, as: 'enableOpportunisticMaintenance'
           property :maintenance_ongoing_count, as: 'maintenanceOngoingCount'
           property :maintenance_pending_count, as: 'maintenancePendingCount'
           property :scheduling_type, as: 'schedulingType'
@@ -11828,6 +11869,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+      
           property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
       
@@ -13795,10 +13838,20 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :location, as: 'location', class: Google::Apis::ComputeBeta::NetworkProfileLocation, decorator: Google::Apis::ComputeBeta::NetworkProfileLocation::Representation
+      
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class NetworkProfileLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :scope, as: 'scope'
         end
       end
       
@@ -13870,6 +13923,8 @@ module Google
           property :bgp_always_compare_med, as: 'bgpAlwaysCompareMed'
           property :bgp_best_path_selection_mode, as: 'bgpBestPathSelectionMode'
           property :bgp_inter_region_cost, as: 'bgpInterRegionCost'
+          property :effective_bgp_always_compare_med, as: 'effectiveBgpAlwaysCompareMed'
+          property :effective_bgp_inter_region_cost, as: 'effectiveBgpInterRegionCost'
           property :routing_mode, as: 'routingMode'
         end
       end
@@ -13902,6 +13957,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+      
           property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
       
@@ -15801,6 +15858,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+      
           property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
       
@@ -15863,7 +15922,6 @@ module Google
           property :deployment_type, as: 'deploymentType'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
-          property :instance_termination_action, as: 'instanceTerminationAction'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeBeta::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeBeta::AllocationReservationSharingPolicy::Representation
@@ -16339,10 +16397,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :physical_host, as: 'physicalHost'
+          property :physical_host_topology, as: 'physicalHostTopology', class: Google::Apis::ComputeBeta::ResourceStatusPhysicalHostTopology, decorator: Google::Apis::ComputeBeta::ResourceStatusPhysicalHostTopology::Representation
+      
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::ResourceStatusScheduling, decorator: Google::Apis::ComputeBeta::ResourceStatusScheduling::Representation
+      
+          property :shutdown_details, as: 'shutdownDetails', class: Google::Apis::ComputeBeta::ResourceStatusShutdownDetails, decorator: Google::Apis::ComputeBeta::ResourceStatusShutdownDetails::Representation
       
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeBeta::UpcomingMaintenance, decorator: Google::Apis::ComputeBeta::UpcomingMaintenance::Representation
       
+        end
+      end
+      
+      class ResourceStatusPhysicalHostTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block, as: 'block'
+          property :cluster, as: 'cluster'
+          property :host, as: 'host'
+          property :subblock, as: 'subblock'
         end
       end
       
@@ -16351,6 +16423,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain, as: 'availabilityDomain'
           property :termination_timestamp, as: 'terminationTimestamp'
+        end
+      end
+      
+      class ResourceStatusShutdownDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_duration, as: 'maxDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
+      
+          property :request_timestamp, as: 'requestTimestamp'
+          property :stop_state, as: 'stopState'
+          property :target_state, as: 'targetState'
         end
       end
       
@@ -16675,11 +16758,14 @@ module Google
           property :max_ports_per_vm, as: 'maxPortsPerVm'
           property :min_ports_per_vm, as: 'minPortsPerVm'
           property :name, as: 'name'
+          collection :nat64_subnetworks, as: 'nat64Subnetworks', class: Google::Apis::ComputeBeta::RouterNatSubnetworkToNat64, decorator: Google::Apis::ComputeBeta::RouterNatSubnetworkToNat64::Representation
+      
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
           collection :nat_ips, as: 'natIps'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::RouterNatRule, decorator: Google::Apis::ComputeBeta::RouterNatRule::Representation
       
           property :source_subnetwork_ip_ranges_to_nat, as: 'sourceSubnetworkIpRangesToNat'
+          property :source_subnetwork_ip_ranges_to_nat64, as: 'sourceSubnetworkIpRangesToNat64'
           collection :subnetworks, as: 'subnetworks', class: Google::Apis::ComputeBeta::RouterNatSubnetworkToNat, decorator: Google::Apis::ComputeBeta::RouterNatSubnetworkToNat::Representation
       
           property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
@@ -16725,6 +16811,13 @@ module Google
           property :name, as: 'name'
           collection :secondary_ip_range_names, as: 'secondaryIpRangeNames'
           collection :source_ip_ranges_to_nat, as: 'sourceIpRangesToNat'
+        end
+      end
+      
+      class RouterNatSubnetworkToNat64
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -16980,6 +17073,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
           property :availability_domain, as: 'availabilityDomain'
+          property :graceful_shutdown, as: 'gracefulShutdown', class: Google::Apis::ComputeBeta::SchedulingGracefulShutdown, decorator: Google::Apis::ComputeBeta::SchedulingGracefulShutdown::Representation
+      
           property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :instance_termination_action, as: 'instanceTerminationAction'
           property :local_ssd_recovery_timeout, as: 'localSsdRecoveryTimeout', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
@@ -16998,6 +17093,15 @@ module Google
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
           property :termination_time, as: 'terminationTime'
+        end
+      end
+      
+      class SchedulingGracefulShutdown
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :max_duration, as: 'maxDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
+      
         end
       end
       
@@ -17201,6 +17305,7 @@ module Google
       
           property :json_parsing, as: 'jsonParsing'
           property :log_level, as: 'logLevel'
+          property :request_body_inspection_size, as: 'requestBodyInspectionSize'
           collection :user_ip_request_headers, as: 'userIpRequestHeaders'
         end
       end
@@ -18576,8 +18681,10 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :internal_ipv6_prefix, as: 'internalIpv6Prefix'
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :ip_collection, as: 'ipCollection'
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_cidr_range, as: 'ipv6CidrRange'
+          property :ipv6_gce_endpoint, as: 'ipv6GceEndpoint'
           property :kind, as: 'kind'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::SubnetworkLogConfig, decorator: Google::Apis::ComputeBeta::SubnetworkLogConfig::Representation
       
