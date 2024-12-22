@@ -574,6 +574,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1EnvironmentClientIpResolutionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1EnvironmentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2887,6 +2899,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_proxy_type, as: 'apiProxyType'
+          property :client_ip_resolution_config, as: 'clientIpResolutionConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentClientIpResolutionConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentClientIpResolutionConfig::Representation
+      
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :deployment_type, as: 'deploymentType'
           property :description, as: 'description'
@@ -2901,6 +2915,22 @@ module Google
       
           property :state, as: 'state'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudApigeeV1EnvironmentClientIpResolutionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_index_algorithm, as: 'headerIndexAlgorithm', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_header_index, as: 'ipHeaderIndex'
+          property :ip_header_name, as: 'ipHeaderName'
         end
       end
       
