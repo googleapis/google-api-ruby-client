@@ -2501,32 +2501,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Writes a single user event from the browser. This uses a GET request to due to
-        # browser restriction of POST-ing to a 3rd party domain. This method is used
-        # only by the Retail API JavaScript pixel and Google Tag Manager. Users should
-        # not call this method directly.
+        # Writes a single user event from the browser. For larger user event payload
+        # over 16 KB, the POST method should be used instead, otherwise a 400 Bad
+        # Request error is returned. This method is used only by the Retail API
+        # JavaScript pixel and Google Tag Manager. Users should not call this method
+        # directly.
         # @param [String] parent
         #   Required. The parent catalog name, such as `projects/1234/locations/global/
         #   catalogs/default_catalog`.
-        # @param [Fixnum] ets
-        #   The event timestamp in milliseconds. This prevents browser caching of
-        #   otherwise identical get requests. The name is abbreviated to reduce the
-        #   payload bytes.
-        # @param [String] prebuilt_rule
-        #   The prebuilt rule name that can convert a specific type of raw_json. For
-        #   example: "ga4_bq" rule for the GA4 user event schema.
-        # @param [String] raw_json
-        #   An arbitrary serialized JSON string that contains necessary information that
-        #   can comprise a user event. When this field is specified, the user_event field
-        #   will be ignored. Note: line-delimited JSON is not supported, a single JSON
-        #   only.
-        # @param [String] uri
-        #   The URL including cgi-parameters but excluding the hash fragment with a length
-        #   limit of 5,000 characters. This is often more useful than the referer URL,
-        #   because many browsers only send the domain for 3rd party requests.
-        # @param [String] user_event
-        #   Required. URL encoded UserEvent proto with a length limit of 2,000,000
-        #   characters.
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCollectUserEventRequest] google_cloud_retail_v2beta_collect_user_event_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2544,16 +2527,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def collect_project_location_catalog_user_event(parent, ets: nil, prebuilt_rule: nil, raw_json: nil, uri: nil, user_event: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2beta/{+parent}/userEvents:collect', options)
+        def collect_project_location_catalog_user_event(parent, google_cloud_retail_v2beta_collect_user_event_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+parent}/userEvents:collect', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCollectUserEventRequest::Representation
+          command.request_object = google_cloud_retail_v2beta_collect_user_event_request_object
           command.response_representation = Google::Apis::RetailV2beta::GoogleApiHttpBody::Representation
           command.response_class = Google::Apis::RetailV2beta::GoogleApiHttpBody
           command.params['parent'] = parent unless parent.nil?
-          command.query['ets'] = ets unless ets.nil?
-          command.query['prebuiltRule'] = prebuilt_rule unless prebuilt_rule.nil?
-          command.query['rawJson'] = raw_json unless raw_json.nil?
-          command.query['uri'] = uri unless uri.nil?
-          command.query['userEvent'] = user_event unless user_event.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
