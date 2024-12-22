@@ -382,6 +382,32 @@ module Google
         end
       end
       
+      # Data structure to storing column's sort strategy
+      class ColumnSortingOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Column name to sort data by
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Optional. A sorting direction that determines ascending or descending order.
+        # This is a legacy field kept for backwards compatibility with table.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @direction = args[:direction] if args.key?(:direction)
+        end
+      end
+      
       # A Google Stackdriver dashboard. Dashboards define the content and layout of
       # pages in the Stackdriver web application.
       class Dashboard
@@ -604,6 +630,12 @@ module Google
         # @return [String]
         attr_accessor :plot_type
       
+        # Optional. A collection of sort options, affects the order of the data and
+        # legend.
+        # Corresponds to the JSON property `sort`
+        # @return [Array<Google::Apis::MonitoringV1::ColumnSortingOptions>]
+        attr_accessor :sort
+      
         # Optional. The target axis to use for plotting the metric.
         # Corresponds to the JSON property `targetAxis`
         # @return [String]
@@ -627,6 +659,7 @@ module Google
           @measures = args[:measures] if args.key?(:measures)
           @min_alignment_period = args[:min_alignment_period] if args.key?(:min_alignment_period)
           @plot_type = args[:plot_type] if args.key?(:plot_type)
+          @sort = args[:sort] if args.key?(:sort)
           @target_axis = args[:target_axis] if args.key?(:target_axis)
           @time_series_query = args[:time_series_query] if args.key?(:time_series_query)
         end
