@@ -1693,6 +1693,8 @@ module Google
       
           property :price_change_details, as: 'priceChangeDetails', class: Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails, decorator: Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails::Representation
       
+          property :recurring_price, as: 'recurringPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
         end
       end
       
