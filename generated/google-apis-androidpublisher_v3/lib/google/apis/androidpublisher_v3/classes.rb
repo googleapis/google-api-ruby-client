@@ -731,8 +731,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Account hold period of the subscription, specified in ISO 8601
-        # format. Acceptable values must be in DAYS and in the range P0D (zero days) to
-        # P30D (30 days). If not specified, the default value is P30D (30 days).
+        # format. Acceptable values must be in days and between P0D and P60D. If not
+        # specified, the default value is P30D. The sum of gracePeriodDuration and
+        # accountHoldDuration must be between P30D and P60D days, inclusive.
         # Corresponds to the JSON property `accountHoldDuration`
         # @return [String]
         attr_accessor :account_hold_duration
@@ -745,9 +746,10 @@ module Google
         attr_accessor :billing_period_duration
       
         # Grace period of the subscription, specified in ISO 8601 format. Acceptable
-        # values are P0D (zero days), P3D (3 days), P7D (7 days), P14D (14 days), and
-        # P30D (30 days). If not specified, a default value will be used based on the
-        # recurring period duration.
+        # values must be in days and between P0D and the lesser of 30D and base plan
+        # billing period. If not specified, a default value will be used based on the
+        # billing period. The sum of gracePeriodDuration and accountHoldDuration must be
+        # between P30D and P60D days, inclusive.
         # Corresponds to the JSON property `gracePeriodDuration`
         # @return [String]
         attr_accessor :grace_period_duration
@@ -820,6 +822,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails]
         attr_accessor :price_change_details
       
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `recurringPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :recurring_price
+      
         def initialize(**args)
            update!(**args)
         end
@@ -829,6 +836,7 @@ module Google
           @auto_renew_enabled = args[:auto_renew_enabled] if args.key?(:auto_renew_enabled)
           @installment_details = args[:installment_details] if args.key?(:installment_details)
           @price_change_details = args[:price_change_details] if args.key?(:price_change_details)
+          @recurring_price = args[:recurring_price] if args.key?(:recurring_price)
         end
       end
       
@@ -3259,9 +3267,10 @@ module Google
       class InstallmentsBasePlanType
         include Google::Apis::Core::Hashable
       
-        # Optional. Account hold period of the subscription, specified exclusively in
-        # days and in ISO 8601 format. Acceptable values are P0D (zero days) to P30D (
-        # 30days). If not specified, the default value is P30D (30 days).
+        # Optional. Account hold period of the subscription, specified in ISO 8601
+        # format. Acceptable values must be in days and between P0D and P60D. If not
+        # specified, the default value is P30D. The sum of gracePeriodDuration and
+        # accountHoldDuration must be between P30D and P60D days, inclusive.
         # Corresponds to the JSON property `accountHoldDuration`
         # @return [String]
         attr_accessor :account_hold_duration
@@ -3280,9 +3289,10 @@ module Google
         attr_accessor :committed_payments_count
       
         # Grace period of the subscription, specified in ISO 8601 format. Acceptable
-        # values are P0D (zero days), P3D (3 days), P7D (7 days), P14D (14 days), and
-        # P30D (30 days). If not specified, a default value will be used based on the
-        # recurring period duration.
+        # values must be in days and between P0D and the lesser of 30D and base plan
+        # billing period. If not specified, a default value will be used based on the
+        # billing period. The sum of gracePeriodDuration and accountHoldDuration must be
+        # between P30D and P60D days, inclusive.
         # Corresponds to the JSON property `gracePeriodDuration`
         # @return [String]
         attr_accessor :grace_period_duration
