@@ -1,5 +1,11 @@
 # Release History
 
+### 0.16.0 (2024-12-08)
+
+#### Features
+
+* add ECONNRESET error as retriable error ([#20354](https://github.com/googleapis/google-api-ruby-client/issues/20354)) 
+
 ### 0.15.1 (2024-07-29)
 
 #### Bug Fixes
