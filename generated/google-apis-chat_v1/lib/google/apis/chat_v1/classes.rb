@@ -1526,8 +1526,7 @@ module Google
       
         # Optional. The type of a button. If unset, button type defaults to `OUTLINED`.
         # If the `color` field is set, the button type is forced to `FILLED` and any
-        # value set for this field is ignored. [Google Chat apps](https://developers.
-        # google.com/workspace/chat):
+        # value set for this field is ignored.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1863,8 +1862,8 @@ module Google
         end
       end
       
-      # A text, icon, or text and icon chip that users can click. [Google Chat apps](
-      # https://developers.google.com/workspace/chat):
+      # A text, icon, or text and icon chip that users can click. [Google Workspace
+      # Add-ons and Chat apps](https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1Chip
         include Google::Apis::Core::Hashable
       
@@ -1929,8 +1928,8 @@ module Google
       end
       
       # A list of chips layed out horizontally, which can either scroll horizontally
-      # or wrap to the next line. [Google Chat apps](https://developers.google.com/
-      # workspace/chat):
+      # or wrap to the next line. [Google Workspace Add-ons and Chat apps](https://
+      # developers.google.com/workspace/extend):
       class GoogleAppsCardV1ChipList
         include Google::Apis::Core::Hashable
       
@@ -1955,8 +1954,8 @@ module Google
         end
       end
       
-      # Represent an expand and collapse control. [Google Chat apps](https://
-      # developers.google.com/workspace/chat):
+      # Represent an expand and collapse control. [Google Workspace Add-ons and Chat
+      # apps](https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1CollapseControl
         include Google::Apis::Core::Hashable
       
@@ -2730,7 +2729,8 @@ module Google
         # invoke. For example, showing non-primary actions in a card. You can use this
         # widget when actions don't fit in the available space. To use, specify this
         # widget in the `OnClick` action of widgets that support it. For example, in a `
-        # Button`. [Google Chat apps](https://developers.google.com/workspace/chat):
+        # Button`. [Google Workspace Add-ons and Chat apps](https://developers.google.
+        # com/workspace/extend):
         # Corresponds to the JSON property `overflowMenu`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OverflowMenu]
         attr_accessor :overflow_menu
@@ -2788,7 +2788,8 @@ module Google
       # invoke. For example, showing non-primary actions in a card. You can use this
       # widget when actions don't fit in the available space. To use, specify this
       # widget in the `OnClick` action of widgets that support it. For example, in a `
-      # Button`. [Google Chat apps](https://developers.google.com/workspace/chat):
+      # Button`. [Google Workspace Add-ons and Chat apps](https://developers.google.
+      # com/workspace/extend):
       class GoogleAppsCardV1OverflowMenu
         include Google::Apis::Core::Hashable
       
@@ -2807,8 +2808,8 @@ module Google
         end
       end
       
-      # An option that users can invoke in an overflow menu. [Google Chat apps](https:/
-      # /developers.google.com/workspace/chat):
+      # An option that users can invoke in an overflow menu. [Google Workspace Add-ons
+      # and Chat apps](https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1OverflowMenuItem
         include Google::Apis::Core::Hashable
       
@@ -2891,8 +2892,8 @@ module Google
       class GoogleAppsCardV1Section
         include Google::Apis::Core::Hashable
       
-        # Represent an expand and collapse control. [Google Chat apps](https://
-        # developers.google.com/workspace/chat):
+        # Represent an expand and collapse control. [Google Workspace Add-ons and Chat
+        # apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `collapseControl`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CollapseControl]
         attr_accessor :collapse_control
@@ -3326,8 +3327,7 @@ module Google
         # concealed behind a **show more** button. If the text is equal or shorter than
         # the specified maximum number of lines, a **show more** button isn't displayed.
         # The default value is 0, in which case all context is displayed. Negative
-        # values are ignored. [Google Chat apps](https://developers.google.com/workspace/
-        # chat):
+        # values are ignored.
         # Corresponds to the JSON property `maxLines`
         # @return [Fixnum]
         attr_accessor :max_lines
@@ -3375,8 +3375,8 @@ module Google
         attr_accessor :carousel
       
         # A list of chips layed out horizontally, which can either scroll horizontally
-        # or wrap to the next line. [Google Chat apps](https://developers.google.com/
-        # workspace/chat):
+        # or wrap to the next line. [Google Workspace Add-ons and Chat apps](https://
+        # developers.google.com/workspace/extend):
         # Corresponds to the JSON property `chipList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ChipList]
         attr_accessor :chip_list
@@ -3547,8 +3547,8 @@ module Google
         attr_accessor :button_list
       
         # A list of chips layed out horizontally, which can either scroll horizontally
-        # or wrap to the next line. [Google Chat apps](https://developers.google.com/
-        # workspace/chat):
+        # or wrap to the next line. [Google Workspace Add-ons and Chat apps](https://
+        # developers.google.com/workspace/extend):
         # Corresponds to the JSON property `chipList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ChipList]
         attr_accessor :chip_list
