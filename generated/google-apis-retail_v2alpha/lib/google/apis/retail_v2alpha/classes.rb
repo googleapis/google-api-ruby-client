@@ -2232,6 +2232,58 @@ module Google
         end
       end
       
+      # Request message for CollectUserEvent method.
+      class GoogleCloudRetailV2alphaCollectUserEventRequest
+        include Google::Apis::Core::Hashable
+      
+        # The event timestamp in milliseconds. This prevents browser caching of
+        # otherwise identical get requests. The name is abbreviated to reduce the
+        # payload bytes.
+        # Corresponds to the JSON property `ets`
+        # @return [Fixnum]
+        attr_accessor :ets
+      
+        # The prebuilt rule name that can convert a specific type of raw_json. For
+        # example: "ga4_bq" rule for the GA4 user event schema.
+        # Corresponds to the JSON property `prebuiltRule`
+        # @return [String]
+        attr_accessor :prebuilt_rule
+      
+        # An arbitrary serialized JSON string that contains necessary information that
+        # can comprise a user event. When this field is specified, the user_event field
+        # will be ignored. Note: line-delimited JSON is not supported, a single JSON
+        # only.
+        # Corresponds to the JSON property `rawJson`
+        # @return [String]
+        attr_accessor :raw_json
+      
+        # The URL including cgi-parameters but excluding the hash fragment with a length
+        # limit of 5,000 characters. This is often more useful than the referer URL,
+        # because many browsers only send the domain for 3rd party requests.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Required. URL encoded UserEvent proto with a length limit of 2,000,000
+        # characters.
+        # Corresponds to the JSON property `userEvent`
+        # @return [String]
+        attr_accessor :user_event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ets = args[:ets] if args.key?(:ets)
+          @prebuilt_rule = args[:prebuilt_rule] if args.key?(:prebuilt_rule)
+          @raw_json = args[:raw_json] if args.key?(:raw_json)
+          @uri = args[:uri] if args.key?(:uri)
+          @user_event = args[:user_event] if args.key?(:user_event)
+        end
+      end
+      
       # The color information of a Product.
       class GoogleCloudRetailV2alphaColorInfo
         include Google::Apis::Core::Hashable
