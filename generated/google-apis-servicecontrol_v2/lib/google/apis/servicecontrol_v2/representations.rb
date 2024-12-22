@@ -326,6 +326,7 @@ module Google
       class CheckResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :dynamic_metadata, as: 'dynamicMetadata'
           hash :headers, as: 'headers'
           property :status, as: 'status', class: Google::Apis::ServicecontrolV2::Status, decorator: Google::Apis::ServicecontrolV2::Status::Representation
       
