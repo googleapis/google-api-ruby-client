@@ -1366,6 +1366,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductSustainabilityIncentive
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductTax
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4367,6 +4373,8 @@ module Google
       
           property :subscription_cost, as: 'subscriptionCost', class: Google::Apis::ContentV2_1::ProductSubscriptionCost, decorator: Google::Apis::ContentV2_1::ProductSubscriptionCost::Representation
       
+          collection :sustainability_incentives, as: 'sustainabilityIncentives', class: Google::Apis::ContentV2_1::ProductSustainabilityIncentive, decorator: Google::Apis::ContentV2_1::ProductSustainabilityIncentive::Representation
+      
           property :target_country, as: 'targetCountry'
           property :tax_category, as: 'taxCategory'
           collection :taxes, as: 'taxes', class: Google::Apis::ContentV2_1::ProductTax, decorator: Google::Apis::ContentV2_1::ProductTax::Representation
@@ -4583,6 +4591,16 @@ module Google
       
           property :period, as: 'period'
           property :period_length, :numeric_string => true, as: 'periodLength'
+        end
+      end
+      
+      class ProductSustainabilityIncentive
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :percentage, as: 'percentage'
+          property :type, as: 'type'
         end
       end
       
