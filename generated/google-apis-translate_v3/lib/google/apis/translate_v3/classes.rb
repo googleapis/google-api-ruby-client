@@ -1046,6 +1046,12 @@ module Google
       class GlossaryConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. If set to true, the glossary will be used for contextual translation.
+        # Corresponds to the JSON property `contextualTranslationEnabled`
+        # @return [Boolean]
+        attr_accessor :contextual_translation_enabled
+        alias_method :contextual_translation_enabled?, :contextual_translation_enabled
+      
         # Required. The `glossary` to be applied for this translation. The format
         # depends on the glossary: - User-provided custom glossary: `projects/`project-
         # number-or-id`/locations/`location-id`/glossaries/`glossary-id``
@@ -1066,6 +1072,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contextual_translation_enabled = args[:contextual_translation_enabled] if args.key?(:contextual_translation_enabled)
           @glossary = args[:glossary] if args.key?(:glossary)
           @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
         end
@@ -2238,6 +2245,12 @@ module Google
       class TranslateTextGlossaryConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. If set to true, the glossary will be used for contextual translation.
+        # Corresponds to the JSON property `contextualTranslationEnabled`
+        # @return [Boolean]
+        attr_accessor :contextual_translation_enabled
+        alias_method :contextual_translation_enabled?, :contextual_translation_enabled
+      
         # Required. The `glossary` to be applied for this translation. The format
         # depends on the glossary: - User-provided custom glossary: `projects/`project-
         # number-or-id`/locations/`location-id`/glossaries/`glossary-id``
@@ -2258,6 +2271,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contextual_translation_enabled = args[:contextual_translation_enabled] if args.key?(:contextual_translation_enabled)
           @glossary = args[:glossary] if args.key?(:glossary)
           @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
         end
