@@ -1310,14 +1310,21 @@ module Google
       class GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfig
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the SecretManager secret version resource storing the
+        # Optional. The name of the SecretManager secret version resource storing the
         # API key. Format: `projects/`project`/secrets/`secrete`/versions/`version`` -
-        # If specified, the `secretmanager.versions.access` permission should be granted
-        # to Vertex AI Extension Service Agent (https://cloud.google.com/vertex-ai/docs/
-        # general/access-control#service-agents) on the specified resource.
+        # If both `api_key_secret` and `api_key_string` are specified, this field takes
+        # precedence over `api_key_string`. - If specified, the `secretmanager.versions.
+        # access` permission should be granted to Vertex AI Extension Service Agent (
+        # https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents)
+        # on the specified resource.
         # Corresponds to the JSON property `apiKeySecret`
         # @return [String]
         attr_accessor :api_key_secret
+      
+        # Optional. The API key to be used in the request directly.
+        # Corresponds to the JSON property `apiKeyString`
+        # @return [String]
+        attr_accessor :api_key_string
       
         # Required. The location of the API key.
         # Corresponds to the JSON property `httpElementLocation`
@@ -1337,6 +1344,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_key_secret = args[:api_key_secret] if args.key?(:api_key_secret)
+          @api_key_string = args[:api_key_string] if args.key?(:api_key_string)
           @http_element_location = args[:http_element_location] if args.key?(:http_element_location)
           @name = args[:name] if args.key?(:name)
         end
@@ -2738,7 +2746,7 @@ module Google
         end
       end
       
-      # Content blob. It's preferred to send as text directly rather than raw bytes.
+      # Content blob.
       class GoogleCloudAiplatformV1beta1Blob
         include Google::Apis::Core::Hashable
       
@@ -5504,7 +5512,8 @@ module Google
         # @return [String]
         attr_accessor :model_reference
       
-        # Output only. Identifier. The resource name of the Dataset.
+        # Output only. Identifier. The resource name of the Dataset. Format: `projects/`
+        # project`/locations/`location`/datasets/`dataset``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7047,9 +7056,9 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DistillationHyperParameters]
         attr_accessor :hyper_parameters
       
-        # Required. Deprecated. A path in a Cloud Storage bucket, which will be treated
-        # as the root output directory of the distillation pipeline. It is used by the
-        # system to generate the paths of output artifacts.
+        # Deprecated. A path in a Cloud Storage bucket, which will be treated as the
+        # root output directory of the distillation pipeline. It is used by the system
+        # to generate the paths of output artifacts.
         # Corresponds to the JSON property `pipelineRootDirectory`
         # @return [String]
         attr_accessor :pipeline_root_directory
@@ -7060,7 +7069,7 @@ module Google
         # @return [String]
         attr_accessor :student_model
       
-        # Required. Cloud Storage path to file containing training dataset for tuning.
+        # Deprecated. Cloud Storage path to file containing training dataset for tuning.
         # The dataset must be formatted as a JSONL file.
         # Corresponds to the JSON property `trainingDatasetUri`
         # @return [String]
@@ -13189,6 +13198,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_output_tokens
       
+        # Optional. If specified, the media resolution specified will be used.
+        # Corresponds to the JSON property `mediaResolution`
+        # @return [String]
+        attr_accessor :media_resolution
+      
         # Optional. Positive penalties.
         # Corresponds to the JSON property `presencePenalty`
         # @return [Float]
@@ -13246,11 +13260,6 @@ module Google
         # @return [Float]
         attr_accessor :temperature
       
-        # Optional. If specified, the token resolution specified will be used.
-        # Corresponds to the JSON property `tokenResolution`
-        # @return [String]
-        attr_accessor :token_resolution
-      
         # Optional. If specified, top-k sampling will be used.
         # Corresponds to the JSON property `topK`
         # @return [Float]
@@ -13272,6 +13281,7 @@ module Google
           @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
           @logprobs = args[:logprobs] if args.key?(:logprobs)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
+          @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @response_logprobs = args[:response_logprobs] if args.key?(:response_logprobs)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
@@ -13282,7 +13292,6 @@ module Google
           @speech_config = args[:speech_config] if args.key?(:speech_config)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
-          @token_resolution = args[:token_resolution] if args.key?(:token_resolution)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
         end
@@ -18110,6 +18119,12 @@ module Google
         # @return [String]
         attr_accessor :image_uri
       
+        # Probe describes a health check to be performed against a container to
+        # determine whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `livenessProbe`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe]
+        attr_accessor :liveness_probe
+      
         # Immutable. List of ports to expose from the container. Vertex AI sends any
         # prediction requests that it receives to the first port on this list. Vertex AI
         # also sends [liveness and health checks](https://cloud.google.com/vertex-ai/
@@ -18172,6 +18187,7 @@ module Google
           @health_probe = args[:health_probe] if args.key?(:health_probe)
           @health_route = args[:health_route] if args.key?(:health_route)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @liveness_probe = args[:liveness_probe] if args.key?(:liveness_probe)
           @ports = args[:ports] if args.key?(:ports)
           @predict_route = args[:predict_route] if args.key?(:predict_route)
           @shared_memory_size_mb = args[:shared_memory_size_mb] if args.key?(:shared_memory_size_mb)
@@ -22691,7 +22707,7 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionResponse]
         attr_accessor :function_response
       
-        # Content blob. It's preferred to send as text directly rather than raw bytes.
+        # Content blob.
         # Corresponds to the JSON property `inlineData`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Blob]
         attr_accessor :inline_data
@@ -22700,6 +22716,12 @@ module Google
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
+      
+        # Optional. Indicates if the part is thought from the model.
+        # Corresponds to the JSON property `thought`
+        # @return [Boolean]
+        attr_accessor :thought
+        alias_method :thought?, :thought
       
         # Metadata describes the input video content.
         # Corresponds to the JSON property `videoMetadata`
@@ -22719,6 +22741,7 @@ module Google
           @function_response = args[:function_response] if args.key?(:function_response)
           @inline_data = args[:inline_data] if args.key?(:inline_data)
           @text = args[:text] if args.key?(:text)
+          @thought = args[:thought] if args.key?(:thought)
           @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
         end
       end
@@ -24221,12 +24244,28 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeExecAction]
         attr_accessor :exec
       
+        # GrpcAction checks the health of a container using a gRPC service.
+        # Corresponds to the JSON property `grpc`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeGrpcAction]
+        attr_accessor :grpc
+      
+        # HttpGetAction describes an action based on HTTP Get requests.
+        # Corresponds to the JSON property `httpGet`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeHttpGetAction]
+        attr_accessor :http_get
+      
         # How often (in seconds) to perform the probe. Default to 10 seconds. Minimum
         # value is 1. Must be less than timeout_seconds. Maps to Kubernetes probe
         # argument 'periodSeconds'.
         # Corresponds to the JSON property `periodSeconds`
         # @return [Fixnum]
         attr_accessor :period_seconds
+      
+        # TcpSocketAction probes the health of a container by opening a TCP socket
+        # connection.
+        # Corresponds to the JSON property `tcpSocket`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeTcpSocketAction]
+        attr_accessor :tcp_socket
       
         # Number of seconds after which the probe times out. Defaults to 1 second.
         # Minimum value is 1. Must be greater or equal to period_seconds. Maps to
@@ -24242,7 +24281,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exec = args[:exec] if args.key?(:exec)
+          @grpc = args[:grpc] if args.key?(:grpc)
+          @http_get = args[:http_get] if args.key?(:http_get)
           @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
+          @tcp_socket = args[:tcp_socket] if args.key?(:tcp_socket)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
         end
       end
@@ -24268,6 +24310,133 @@ module Google
         # Update properties of this object
         def update!(**args)
           @command = args[:command] if args.key?(:command)
+        end
+      end
+      
+      # GrpcAction checks the health of a container using a gRPC service.
+      class GoogleCloudAiplatformV1beta1ProbeGrpcAction
+        include Google::Apis::Core::Hashable
+      
+        # Port number of the gRPC service. Number must be in the range 1 to 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Service is the name of the service to place in the gRPC HealthCheckRequest (
+        # see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this
+        # is not specified, the default behavior is defined by gRPC.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port = args[:port] if args.key?(:port)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # HttpGetAction describes an action based on HTTP Get requests.
+      class GoogleCloudAiplatformV1beta1ProbeHttpGetAction
+        include Google::Apis::Core::Hashable
+      
+        # Host name to connect to, defaults to the model serving container's IP. You
+        # probably want to set "Host" in httpHeaders instead.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Custom headers to set in the request. HTTP allows repeated headers.
+        # Corresponds to the JSON property `httpHeaders`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeHttpHeader>]
+        attr_accessor :http_headers
+      
+        # Path to access on the HTTP server.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Number of the port to access on the container. Number must be in the range 1
+        # to 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Scheme to use for connecting to the host. Defaults to HTTP. Acceptable values
+        # are "HTTP" or "HTTPS".
+        # Corresponds to the JSON property `scheme`
+        # @return [String]
+        attr_accessor :scheme
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @http_headers = args[:http_headers] if args.key?(:http_headers)
+          @path = args[:path] if args.key?(:path)
+          @port = args[:port] if args.key?(:port)
+          @scheme = args[:scheme] if args.key?(:scheme)
+        end
+      end
+      
+      # HttpHeader describes a custom header to be used in HTTP probes
+      class GoogleCloudAiplatformV1beta1ProbeHttpHeader
+        include Google::Apis::Core::Hashable
+      
+        # The header field name. This will be canonicalized upon output, so case-variant
+        # names will be understood as the same header.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The header field value
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # TcpSocketAction probes the health of a container by opening a TCP socket
+      # connection.
+      class GoogleCloudAiplatformV1beta1ProbeTcpSocketAction
+        include Google::Apis::Core::Hashable
+      
+        # Optional: Host name to connect to, defaults to the model serving container's
+        # IP.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Number of the port to access on the container. Number must be in the range 1
+        # to 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @port = args[:port] if args.key?(:port)
         end
       end
       
@@ -26215,6 +26384,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfigLayoutParser]
         attr_accessor :layout_parser
       
+        # Specifies the advanced parsing for RagFiles.
+        # Corresponds to the JSON property `llmParser`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfigLlmParser]
+        attr_accessor :llm_parser
+      
         # Whether to use advanced PDF parsing.
         # Corresponds to the JSON property `useAdvancedPdfParsing`
         # @return [Boolean]
@@ -26229,6 +26403,7 @@ module Google
         def update!(**args)
           @advanced_parser = args[:advanced_parser] if args.key?(:advanced_parser)
           @layout_parser = args[:layout_parser] if args.key?(:layout_parser)
+          @llm_parser = args[:llm_parser] if args.key?(:llm_parser)
           @use_advanced_pdf_parsing = args[:use_advanced_pdf_parsing] if args.key?(:use_advanced_pdf_parsing)
         end
       end
@@ -26283,6 +26458,40 @@ module Google
         def update!(**args)
           @max_parsing_requests_per_min = args[:max_parsing_requests_per_min] if args.key?(:max_parsing_requests_per_min)
           @processor_name = args[:processor_name] if args.key?(:processor_name)
+        end
+      end
+      
+      # Specifies the advanced parsing for RagFiles.
+      class GoogleCloudAiplatformV1beta1RagFileParsingConfigLlmParser
+        include Google::Apis::Core::Hashable
+      
+        # The prompt to use for parsing. If not specified, a default prompt will be used.
+        # Corresponds to the JSON property `customParsingPrompt`
+        # @return [String]
+        attr_accessor :custom_parsing_prompt
+      
+        # The maximum number of requests the job is allowed to make to the LLM model per
+        # minute. Consult https://cloud.google.com/vertex-ai/generative-ai/docs/quotas
+        # and your document size to set an appropriate value here. If unspecified, a
+        # default value of 5000 QPM would be used.
+        # Corresponds to the JSON property `maxParsingRequestsPerMin`
+        # @return [Fixnum]
+        attr_accessor :max_parsing_requests_per_min
+      
+        # The name of a LLM model used for parsing. Format: `gemini-1.5-pro-002`
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_parsing_prompt = args[:custom_parsing_prompt] if args.key?(:custom_parsing_prompt)
+          @max_parsing_requests_per_min = args[:max_parsing_requests_per_min] if args.key?(:max_parsing_requests_per_min)
+          @model_name = args[:model_name] if args.key?(:model_name)
         end
       end
       

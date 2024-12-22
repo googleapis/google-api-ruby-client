@@ -3940,6 +3940,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ProbeGrpcAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ProbeHttpGetAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ProbeHttpHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ProbeTcpSocketAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1PscAutomatedEndpoints
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4295,6 +4319,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1RagFileParsingConfigLayoutParser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagFileParsingConfigLlmParser
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7666,6 +7696,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_key_secret, as: 'apiKeySecret'
+          property :api_key_string, as: 'apiKeyString'
           property :http_element_location, as: 'httpElementLocation'
           property :name, as: 'name'
         end
@@ -11024,6 +11055,7 @@ module Google
           property :frequency_penalty, as: 'frequencyPenalty'
           property :logprobs, as: 'logprobs'
           property :max_output_tokens, as: 'maxOutputTokens'
+          property :media_resolution, as: 'mediaResolution'
           property :presence_penalty, as: 'presencePenalty'
           property :response_logprobs, as: 'responseLogprobs'
           property :response_mime_type, as: 'responseMimeType'
@@ -11037,7 +11069,6 @@ module Google
       
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
-          property :token_resolution, as: 'tokenResolution'
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
         end
@@ -12452,6 +12483,8 @@ module Google
       
           property :health_route, as: 'healthRoute'
           property :image_uri, as: 'imageUri'
+          property :liveness_probe, as: 'livenessProbe', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Probe::Representation
+      
           collection :ports, as: 'ports', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Port, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Port::Representation
       
           property :predict_route, as: 'predictRoute'
@@ -13747,6 +13780,7 @@ module Google
           property :inline_data, as: 'inlineData', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Blob, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Blob::Representation
       
           property :text, as: 'text'
+          property :thought, as: 'thought'
           property :video_metadata, as: 'videoMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VideoMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1VideoMetadata::Representation
       
         end
@@ -14153,7 +14187,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exec, as: 'exec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeExecAction, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeExecAction::Representation
       
+          property :grpc, as: 'grpc', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeGrpcAction, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeGrpcAction::Representation
+      
+          property :http_get, as: 'httpGet', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeHttpGetAction, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeHttpGetAction::Representation
+      
           property :period_seconds, as: 'periodSeconds'
+          property :tcp_socket, as: 'tcpSocket', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeTcpSocketAction, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeTcpSocketAction::Representation
+      
           property :timeout_seconds, as: 'timeoutSeconds'
         end
       end
@@ -14162,6 +14202,42 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :command, as: 'command'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ProbeGrpcAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port, as: 'port'
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ProbeHttpGetAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          collection :http_headers, as: 'httpHeaders', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeHttpHeader, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ProbeHttpHeader::Representation
+      
+          property :path, as: 'path'
+          property :port, as: 'port'
+          property :scheme, as: 'scheme'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ProbeHttpHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ProbeTcpSocketAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
         end
       end
       
@@ -14759,6 +14835,8 @@ module Google
       
           property :layout_parser, as: 'layoutParser', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfigLayoutParser, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfigLayoutParser::Representation
       
+          property :llm_parser, as: 'llmParser', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfigLlmParser, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagFileParsingConfigLlmParser::Representation
+      
           property :use_advanced_pdf_parsing, as: 'useAdvancedPdfParsing'
         end
       end
@@ -14775,6 +14853,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_parsing_requests_per_min, as: 'maxParsingRequestsPerMin'
           property :processor_name, as: 'processorName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagFileParsingConfigLlmParser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_parsing_prompt, as: 'customParsingPrompt'
+          property :max_parsing_requests_per_min, as: 'maxParsingRequestsPerMin'
+          property :model_name, as: 'modelName'
         end
       end
       
