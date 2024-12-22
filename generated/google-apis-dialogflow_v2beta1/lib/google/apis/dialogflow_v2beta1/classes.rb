@@ -7852,6 +7852,33 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Message]
         attr_accessor :new_message_payload
       
+        # Contains a speech recognition result corresponding to a portion of the audio
+        # that is currently being processed or an indication that this is the end of the
+        # single requested utterance. While end-user audio is being processed,
+        # Dialogflow sends a series of results. Each result may contain a `transcript`
+        # value. A transcript represents a portion of the utterance. While the
+        # recognizer is processing audio, transcript values may be interim values or
+        # finalized values. Once a transcript is finalized, the `is_final` value is set
+        # to true and processing continues for the next transcript. If `
+        # StreamingDetectIntentRequest.query_input.audio_config.single_utterance` was
+        # true, and the recognizer has completed processing audio, the `message_type`
+        # value is set to `END_OF_SINGLE_UTTERANCE and the following (last) result
+        # contains the last finalized transcript. The complete end-user utterance is
+        # determined by concatenating the finalized transcript values received for the
+        # series of results. In the following example, single utterance is enabled. In
+        # the case where single utterance is not enabled, result 7 would not occur. ```
+        # Num | transcript | message_type | is_final --- | ----------------------- | ----
+        # ------------------- | -------- 1 | "tube" | TRANSCRIPT | false 2 | "to be a" |
+        # TRANSCRIPT | false 3 | "to be" | TRANSCRIPT | false 4 | "to be or not to be" |
+        # TRANSCRIPT | true 5 | "that's" | TRANSCRIPT | false 6 | "that is | TRANSCRIPT |
+        # false 7 | unset | END_OF_SINGLE_UTTERANCE | unset 8 | " that is the question"
+        # | TRANSCRIPT | true ``` Concatenating the finalized transcripts with `is_final`
+        # set to true, the complete utterance becomes "to be or not to be that is the
+        # question".
+        # Corresponds to the JSON property `newRecognitionResultPayload`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2StreamingRecognitionResult]
+        attr_accessor :new_recognition_result_payload
+      
         # The type of the event that this notification refers to.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -7866,6 +7893,7 @@ module Google
           @conversation = args[:conversation] if args.key?(:conversation)
           @error_status = args[:error_status] if args.key?(:error_status)
           @new_message_payload = args[:new_message_payload] if args.key?(:new_message_payload)
+          @new_recognition_result_payload = args[:new_recognition_result_payload] if args.key?(:new_recognition_result_payload)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -10514,6 +10542,140 @@ module Google
         end
       end
       
+      # Information for a word recognized by the speech recognizer.
+      class GoogleCloudDialogflowV2SpeechWordInfo
+        include Google::Apis::Core::Hashable
+      
+        # The Speech confidence between 0.0 and 1.0 for this word. A higher number
+        # indicates an estimated greater likelihood that the recognized word is correct.
+        # The default of 0.0 is a sentinel value indicating that confidence was not set.
+        # This field is not guaranteed to be fully stable over time for the same audio
+        # input. Users should also not rely on it to always be provided.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Time offset relative to the beginning of the audio that corresponds to the end
+        # of the spoken word. This is an experimental feature and the accuracy of the
+        # time offset can vary.
+        # Corresponds to the JSON property `endOffset`
+        # @return [String]
+        attr_accessor :end_offset
+      
+        # Time offset relative to the beginning of the audio that corresponds to the
+        # start of the spoken word. This is an experimental feature and the accuracy of
+        # the time offset can vary.
+        # Corresponds to the JSON property `startOffset`
+        # @return [String]
+        attr_accessor :start_offset
+      
+        # The word this info is for.
+        # Corresponds to the JSON property `word`
+        # @return [String]
+        attr_accessor :word
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
+          @word = args[:word] if args.key?(:word)
+        end
+      end
+      
+      # Contains a speech recognition result corresponding to a portion of the audio
+      # that is currently being processed or an indication that this is the end of the
+      # single requested utterance. While end-user audio is being processed,
+      # Dialogflow sends a series of results. Each result may contain a `transcript`
+      # value. A transcript represents a portion of the utterance. While the
+      # recognizer is processing audio, transcript values may be interim values or
+      # finalized values. Once a transcript is finalized, the `is_final` value is set
+      # to true and processing continues for the next transcript. If `
+      # StreamingDetectIntentRequest.query_input.audio_config.single_utterance` was
+      # true, and the recognizer has completed processing audio, the `message_type`
+      # value is set to `END_OF_SINGLE_UTTERANCE and the following (last) result
+      # contains the last finalized transcript. The complete end-user utterance is
+      # determined by concatenating the finalized transcript values received for the
+      # series of results. In the following example, single utterance is enabled. In
+      # the case where single utterance is not enabled, result 7 would not occur. ```
+      # Num | transcript | message_type | is_final --- | ----------------------- | ----
+      # ------------------- | -------- 1 | "tube" | TRANSCRIPT | false 2 | "to be a" |
+      # TRANSCRIPT | false 3 | "to be" | TRANSCRIPT | false 4 | "to be or not to be" |
+      # TRANSCRIPT | true 5 | "that's" | TRANSCRIPT | false 6 | "that is | TRANSCRIPT |
+      # false 7 | unset | END_OF_SINGLE_UTTERANCE | unset 8 | " that is the question"
+      # | TRANSCRIPT | true ``` Concatenating the finalized transcripts with `is_final`
+      # set to true, the complete utterance becomes "to be or not to be that is the
+      # question".
+      class GoogleCloudDialogflowV2StreamingRecognitionResult
+        include Google::Apis::Core::Hashable
+      
+        # The Speech confidence between 0.0 and 1.0 for the current portion of audio. A
+        # higher number indicates an estimated greater likelihood that the recognized
+        # words are correct. The default of 0.0 is a sentinel value indicating that
+        # confidence was not set. This field is typically only provided if `is_final` is
+        # true and you should not rely on it being accurate or even set.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # If `false`, the `StreamingRecognitionResult` represents an interim result that
+        # may change. If `true`, the recognizer will not return any further hypotheses
+        # about this piece of the audio. May only be populated for `message_type` = `
+        # TRANSCRIPT`.
+        # Corresponds to the JSON property `isFinal`
+        # @return [Boolean]
+        attr_accessor :is_final
+        alias_method :is_final?, :is_final
+      
+        # Detected language code for the transcript.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Type of the result message.
+        # Corresponds to the JSON property `messageType`
+        # @return [String]
+        attr_accessor :message_type
+      
+        # Time offset of the end of this Speech recognition result relative to the
+        # beginning of the audio. Only populated for `message_type` = `TRANSCRIPT`.
+        # Corresponds to the JSON property `speechEndOffset`
+        # @return [String]
+        attr_accessor :speech_end_offset
+      
+        # Word-specific information for the words recognized by Speech in transcript.
+        # Populated if and only if `message_type` = `TRANSCRIPT` and [InputAudioConfig.
+        # enable_word_info] is set.
+        # Corresponds to the JSON property `speechWordInfo`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SpeechWordInfo>]
+        attr_accessor :speech_word_info
+      
+        # Transcript text representing the words that the user spoke. Populated if and
+        # only if `message_type` = `TRANSCRIPT`.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @is_final = args[:is_final] if args.key?(:is_final)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @message_type = args[:message_type] if args.key?(:message_type)
+          @speech_end_offset = args[:speech_end_offset] if args.key?(:speech_end_offset)
+          @speech_word_info = args[:speech_word_info] if args.key?(:speech_word_info)
+          @transcript = args[:transcript] if args.key?(:transcript)
+        end
+      end
+      
       # The response message for Participants.SuggestArticles.
       class GoogleCloudDialogflowV2SuggestArticlesResponse
         include Google::Apis::Core::Hashable
@@ -11199,13 +11361,14 @@ module Google
       
         # Optional. The send time of the message from end user or human agent's
         # perspective. It is used for identifying the same message under one participant.
-        # Given two messages under the same participant: * If send time are different
+        # For BatchCreateMessages API only: Given two messages under the same
+        # participant: * If send time are different regardless of whether the content of
+        # the messages are exactly the same, the conversation will regard them as two
+        # distinct messages sent by the participant. * If send time is the same
         # regardless of whether the content of the messages are exactly the same, the
-        # conversation will regard them as two distinct messages sent by the participant.
-        # * If send time is the same regardless of whether the content of the messages
-        # are exactly the same, the conversation will regard them as same message, and
-        # ignore the message received later. If the value is not provided, a new request
-        # will always be regarded as a new message without any de-duplication.
+        # conversation will regard them as same message, and ignore the message received
+        # later. If the value is not provided, a new request will always be regarded as
+        # a new message without any de-duplication.
         # Corresponds to the JSON property `messageSendTime`
         # @return [String]
         attr_accessor :message_send_time
@@ -12411,6 +12574,33 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Message]
         attr_accessor :new_message_payload
       
+        # Contains a speech recognition result corresponding to a portion of the audio
+        # that is currently being processed or an indication that this is the end of the
+        # single requested utterance. While end-user audio is being processed,
+        # Dialogflow sends a series of results. Each result may contain a `transcript`
+        # value. A transcript represents a portion of the utterance. While the
+        # recognizer is processing audio, transcript values may be interim values or
+        # finalized values. Once a transcript is finalized, the `is_final` value is set
+        # to true and processing continues for the next transcript. If `
+        # StreamingDetectIntentRequest.query_input.audio_config.single_utterance` was
+        # true, and the recognizer has completed processing audio, the `message_type`
+        # value is set to `END_OF_SINGLE_UTTERANCE and the following (last) result
+        # contains the last finalized transcript. The complete end-user utterance is
+        # determined by concatenating the finalized transcript values received for the
+        # series of results. In the following example, single utterance is enabled. In
+        # the case where single utterance is not enabled, result 7 would not occur. ```
+        # Num | transcript | message_type | is_final --- | ----------------------- | ----
+        # ------------------- | -------- 1 | "tube" | TRANSCRIPT | false 2 | "to be a" |
+        # TRANSCRIPT | false 3 | "to be" | TRANSCRIPT | false 4 | "to be or not to be" |
+        # TRANSCRIPT | true 5 | "that's" | TRANSCRIPT | false 6 | "that is | TRANSCRIPT |
+        # false 7 | unset | END_OF_SINGLE_UTTERANCE | unset 8 | " that is the question"
+        # | TRANSCRIPT | true ``` Concatenating the finalized transcripts with `is_final`
+        # set to true, the complete utterance becomes "to be or not to be that is the
+        # question".
+        # Corresponds to the JSON property `newRecognitionResultPayload`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1StreamingRecognitionResult]
+        attr_accessor :new_recognition_result_payload
+      
         # Required. The type of the event that this notification refers to.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -12425,6 +12615,7 @@ module Google
           @conversation = args[:conversation] if args.key?(:conversation)
           @error_status = args[:error_status] if args.key?(:error_status)
           @new_message_payload = args[:new_message_payload] if args.key?(:new_message_payload)
+          @new_recognition_result_payload = args[:new_recognition_result_payload] if args.key?(:new_recognition_result_payload)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -12505,6 +12696,11 @@ module Google
         attr_accessor :new_message_event_notification_config
       
         # Defines notification behavior.
+        # Corresponds to the JSON property `newRecognitionResultNotificationConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1NotificationConfig]
+        attr_accessor :new_recognition_result_notification_config
+      
+        # Defines notification behavior.
         # Corresponds to the JSON property `notificationConfig`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1NotificationConfig]
         attr_accessor :notification_config
@@ -12552,6 +12748,7 @@ module Google
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @name = args[:name] if args.key?(:name)
           @new_message_event_notification_config = args[:new_message_event_notification_config] if args.key?(:new_message_event_notification_config)
+          @new_recognition_result_notification_config = args[:new_recognition_result_notification_config] if args.key?(:new_recognition_result_notification_config)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @security_settings = args[:security_settings] if args.key?(:security_settings)
           @stt_config = args[:stt_config] if args.key?(:stt_config)
@@ -19186,6 +19383,157 @@ module Google
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @speech_model_variant = args[:speech_model_variant] if args.key?(:speech_model_variant)
           @use_timeout_based_endpointing = args[:use_timeout_based_endpointing] if args.key?(:use_timeout_based_endpointing)
+        end
+      end
+      
+      # Information for a word recognized by the speech recognizer.
+      class GoogleCloudDialogflowV2beta1SpeechWordInfo
+        include Google::Apis::Core::Hashable
+      
+        # The Speech confidence between 0.0 and 1.0 for this word. A higher number
+        # indicates an estimated greater likelihood that the recognized word is correct.
+        # The default of 0.0 is a sentinel value indicating that confidence was not set.
+        # This field is not guaranteed to be fully stable over time for the same audio
+        # input. Users should also not rely on it to always be provided.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Time offset relative to the beginning of the audio that corresponds to the end
+        # of the spoken word. This is an experimental feature and the accuracy of the
+        # time offset can vary.
+        # Corresponds to the JSON property `endOffset`
+        # @return [String]
+        attr_accessor :end_offset
+      
+        # Time offset relative to the beginning of the audio that corresponds to the
+        # start of the spoken word. This is an experimental feature and the accuracy of
+        # the time offset can vary.
+        # Corresponds to the JSON property `startOffset`
+        # @return [String]
+        attr_accessor :start_offset
+      
+        # The word this info is for.
+        # Corresponds to the JSON property `word`
+        # @return [String]
+        attr_accessor :word
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
+          @word = args[:word] if args.key?(:word)
+        end
+      end
+      
+      # Contains a speech recognition result corresponding to a portion of the audio
+      # that is currently being processed or an indication that this is the end of the
+      # single requested utterance. While end-user audio is being processed,
+      # Dialogflow sends a series of results. Each result may contain a `transcript`
+      # value. A transcript represents a portion of the utterance. While the
+      # recognizer is processing audio, transcript values may be interim values or
+      # finalized values. Once a transcript is finalized, the `is_final` value is set
+      # to true and processing continues for the next transcript. If `
+      # StreamingDetectIntentRequest.query_input.audio_config.single_utterance` was
+      # true, and the recognizer has completed processing audio, the `message_type`
+      # value is set to `END_OF_SINGLE_UTTERANCE and the following (last) result
+      # contains the last finalized transcript. The complete end-user utterance is
+      # determined by concatenating the finalized transcript values received for the
+      # series of results. In the following example, single utterance is enabled. In
+      # the case where single utterance is not enabled, result 7 would not occur. ```
+      # Num | transcript | message_type | is_final --- | ----------------------- | ----
+      # ------------------- | -------- 1 | "tube" | TRANSCRIPT | false 2 | "to be a" |
+      # TRANSCRIPT | false 3 | "to be" | TRANSCRIPT | false 4 | "to be or not to be" |
+      # TRANSCRIPT | true 5 | "that's" | TRANSCRIPT | false 6 | "that is | TRANSCRIPT |
+      # false 7 | unset | END_OF_SINGLE_UTTERANCE | unset 8 | " that is the question"
+      # | TRANSCRIPT | true ``` Concatenating the finalized transcripts with `is_final`
+      # set to true, the complete utterance becomes "to be or not to be that is the
+      # question".
+      class GoogleCloudDialogflowV2beta1StreamingRecognitionResult
+        include Google::Apis::Core::Hashable
+      
+        # The Speech confidence between 0.0 and 1.0 for the current portion of audio. A
+        # higher number indicates an estimated greater likelihood that the recognized
+        # words are correct. The default of 0.0 is a sentinel value indicating that
+        # confidence was not set. This field is typically only provided if `is_final` is
+        # true and you should not rely on it being accurate or even set.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # A wrapper of repeated TelephonyDtmf digits.
+        # Corresponds to the JSON property `dtmfDigits`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TelephonyDtmfEvents]
+        attr_accessor :dtmf_digits
+      
+        # If `false`, the `StreamingRecognitionResult` represents an interim result that
+        # may change. If `true`, the recognizer will not return any further hypotheses
+        # about this piece of the audio. May only be populated for `message_type` = `
+        # TRANSCRIPT`.
+        # Corresponds to the JSON property `isFinal`
+        # @return [Boolean]
+        attr_accessor :is_final
+        alias_method :is_final?, :is_final
+      
+        # Detected language code for the transcript.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Type of the result message.
+        # Corresponds to the JSON property `messageType`
+        # @return [String]
+        attr_accessor :message_type
+      
+        # Time offset of the end of this Speech recognition result relative to the
+        # beginning of the audio. Only populated for `message_type` = `TRANSCRIPT`.
+        # Corresponds to the JSON property `speechEndOffset`
+        # @return [String]
+        attr_accessor :speech_end_offset
+      
+        # Word-specific information for the words recognized by Speech in transcript.
+        # Populated if and only if `message_type` = `TRANSCRIPT` and [InputAudioConfig.
+        # enable_word_info] is set.
+        # Corresponds to the JSON property `speechWordInfo`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechWordInfo>]
+        attr_accessor :speech_word_info
+      
+        # An estimate of the likelihood that the speech recognizer will not change its
+        # guess about this interim recognition result: * If the value is unspecified or
+        # 0.0, Dialogflow didn't compute the stability. In particular, Dialogflow will
+        # only provide stability for `TRANSCRIPT` results with `is_final = false`. *
+        # Otherwise, the value is in (0.0, 1.0] where 0.0 means completely unstable and
+        # 1.0 means completely stable.
+        # Corresponds to the JSON property `stability`
+        # @return [Float]
+        attr_accessor :stability
+      
+        # Transcript text representing the words that the user spoke. Populated if and
+        # only if `message_type` = `TRANSCRIPT`.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @dtmf_digits = args[:dtmf_digits] if args.key?(:dtmf_digits)
+          @is_final = args[:is_final] if args.key?(:is_final)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @message_type = args[:message_type] if args.key?(:message_type)
+          @speech_end_offset = args[:speech_end_offset] if args.key?(:speech_end_offset)
+          @speech_word_info = args[:speech_word_info] if args.key?(:speech_word_info)
+          @stability = args[:stability] if args.key?(:stability)
+          @transcript = args[:transcript] if args.key?(:transcript)
         end
       end
       

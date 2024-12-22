@@ -1720,6 +1720,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2SpeechWordInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2StreamingRecognitionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2SuggestArticlesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3083,6 +3095,18 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1SpeechToTextConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SpeechWordInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1StreamingRecognitionResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5455,6 +5479,8 @@ module Google
       
           property :new_message_payload, as: 'newMessagePayload', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Message, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Message::Representation
       
+          property :new_recognition_result_payload, as: 'newRecognitionResultPayload', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2StreamingRecognitionResult, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2StreamingRecognitionResult::Representation
+      
           property :type, as: 'type'
         end
       end
@@ -6196,6 +6222,30 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2SpeechWordInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :end_offset, as: 'endOffset'
+          property :start_offset, as: 'startOffset'
+          property :word, as: 'word'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2StreamingRecognitionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :is_final, as: 'isFinal'
+          property :language_code, as: 'languageCode'
+          property :message_type, as: 'messageType'
+          property :speech_end_offset, as: 'speechEndOffset'
+          collection :speech_word_info, as: 'speechWordInfo', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SpeechWordInfo, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SpeechWordInfo::Representation
+      
+          property :transcript, as: 'transcript'
+        end
+      end
+      
       class GoogleCloudDialogflowV2SuggestArticlesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6697,6 +6747,8 @@ module Google
       
           property :new_message_payload, as: 'newMessagePayload', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Message, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Message::Representation
       
+          property :new_recognition_result_payload, as: 'newRecognitionResultPayload', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1StreamingRecognitionResult, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1StreamingRecognitionResult::Representation
+      
           property :type, as: 'type'
         end
       end
@@ -6724,6 +6776,8 @@ module Google
       
           property :name, as: 'name'
           property :new_message_event_notification_config, as: 'newMessageEventNotificationConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1NotificationConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1NotificationConfig::Representation
+      
+          property :new_recognition_result_notification_config, as: 'newRecognitionResultNotificationConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1NotificationConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1NotificationConfig::Representation
       
           property :notification_config, as: 'notificationConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1NotificationConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1NotificationConfig::Representation
       
@@ -8551,6 +8605,33 @@ module Google
           property :sample_rate_hertz, as: 'sampleRateHertz'
           property :speech_model_variant, as: 'speechModelVariant'
           property :use_timeout_based_endpointing, as: 'useTimeoutBasedEndpointing'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SpeechWordInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :end_offset, as: 'endOffset'
+          property :start_offset, as: 'startOffset'
+          property :word, as: 'word'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1StreamingRecognitionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :dtmf_digits, as: 'dtmfDigits', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TelephonyDtmfEvents, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TelephonyDtmfEvents::Representation
+      
+          property :is_final, as: 'isFinal'
+          property :language_code, as: 'languageCode'
+          property :message_type, as: 'messageType'
+          property :speech_end_offset, as: 'speechEndOffset'
+          collection :speech_word_info, as: 'speechWordInfo', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechWordInfo, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechWordInfo::Representation
+      
+          property :stability, as: 'stability'
+          property :transcript, as: 'transcript'
         end
       end
       
