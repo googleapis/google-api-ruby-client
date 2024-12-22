@@ -1850,6 +1850,37 @@ module Google
         end
       end
       
+      # Metadata for creating an issue.
+      class GoogleCloudContactcenterinsightsV1CreateIssueMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The request to create an issue.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CreateIssueRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
       # Metadata for creating an issue model.
       class GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata
         include Google::Apis::Core::Hashable
@@ -1902,6 +1933,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @issue_model = args[:issue_model] if args.key?(:issue_model)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # The request to create an issue.
+      class GoogleCloudContactcenterinsightsV1CreateIssueRequest
+        include Google::Apis::Core::Hashable
+      
+        # The issue resource.
+        # Corresponds to the JSON property `issue`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Issue]
+        attr_accessor :issue
+      
+        # Required. The parent resource of the issue.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue = args[:issue] if args.key?(:issue)
           @parent = args[:parent] if args.key?(:parent)
         end
       end
@@ -6995,6 +7051,37 @@ module Google
         end
       end
       
+      # Metadata for creating an issue.
+      class GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The request to create an issue.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
       # Metadata for creating an issue model.
       class GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata
         include Google::Apis::Core::Hashable
@@ -7047,6 +7134,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @issue_model = args[:issue_model] if args.key?(:issue_model)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # The request to create an issue.
+      class GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest
+        include Google::Apis::Core::Hashable
+      
+        # The issue resource.
+        # Corresponds to the JSON property `issue`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1Issue]
+        attr_accessor :issue
+      
+        # Required. The parent resource of the issue.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue = args[:issue] if args.key?(:issue)
           @parent = args[:parent] if args.key?(:parent)
         end
       end
@@ -8388,6 +8500,57 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The issue resource.
+      class GoogleCloudContactcenterinsightsV1alpha1Issue
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which this issue was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Representative description of the issue.
+        # Corresponds to the JSON property `displayDescription`
+        # @return [String]
+        attr_accessor :display_description
+      
+        # The representative name for the issue.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Immutable. The resource name of the issue. Format: projects/`project`/
+        # locations/`location`/issueModels/`issue_model`/issues/`issue`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Resource names of the sample representative utterances that match
+        # to this issue.
+        # Corresponds to the JSON property `sampleUtterances`
+        # @return [Array<String>]
+        attr_accessor :sample_utterances
+      
+        # Output only. The most recent time that this issue was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_description = args[:display_description] if args.key?(:display_description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @sample_utterances = args[:sample_utterances] if args.key?(:sample_utterances)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
