@@ -2537,6 +2537,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :manual_instance_count
       
+        # Optional. total max instances for the service. This number of instances is
+        # divided among all revisions with specified traffic based on the percent of
+        # traffic they are receiving.
+        # Corresponds to the JSON property `maxInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :max_instance_count
+      
         # Optional. total min instances for the service. This number of instances is
         # divided among all revisions with specified traffic based on the percent of
         # traffic they are receiving.
@@ -2556,6 +2563,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @manual_instance_count = args[:manual_instance_count] if args.key?(:manual_instance_count)
+          @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
           @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
           @scaling_mode = args[:scaling_mode] if args.key?(:scaling_mode)
         end
