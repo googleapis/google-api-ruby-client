@@ -4126,6 +4126,120 @@ module Google
         end
       end
       
+      # A certificate provisioning process.
+      class GoogleChromeManagementVersionsV1CertificateProvisioningProcess
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A JSON string that contains the administrator-provided
+        # configuration for the certification authority service. This field can be
+        # missing if no configuration was given.
+        # Corresponds to the JSON property `caConnectionAdapterConfigReference`
+        # @return [String]
+        attr_accessor :ca_connection_adapter_config_reference
+      
+        # Describes the ChromeOS device that a `CertificateProvisioningProcess` belongs
+        # to.
+        # Corresponds to the JSON property `chromeOsDevice`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsDevice]
+        attr_accessor :chrome_os_device
+      
+        # Describes the ChromeOS user session that a `CertificateProvisioningProcess`
+        # belongs to.
+        # Corresponds to the JSON property `chromeOsUserSession`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsUserSession]
+        attr_accessor :chrome_os_user_session
+      
+        # Output only. A message describing why this `CertificateProvisioningProcess`
+        # failed. Presence of this field indicates that the `
+        # CertificateProvisioningProcess` has failed.
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
+        # Output only. The issued certificate for this `CertificateProvisioningProcess`
+        # in PEM format.
+        # Corresponds to the JSON property `issuedCertificate`
+        # @return [String]
+        attr_accessor :issued_certificate
+      
+        # Identifier. Resource name of the `CertificateProvisioningProcess`. The name
+        # pattern is given as `customers/`customer`/certificateProvisioningProcesses/`
+        # certificate_provisioning_process`` with ``customer`` being the obfuscated
+        # customer id and ``certificate_provisioning_process`` being the certificate
+        # provisioning process id.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. A JSON string that contains the administrator-provided
+        # configuration for the certificate provisioning profile. This field can be
+        # missing if no configuration was given.
+        # Corresponds to the JSON property `profileAdapterConfigReference`
+        # @return [String]
+        attr_accessor :profile_adapter_config_reference
+      
+        # Output only. The ID of the certificate provisioning profile.
+        # Corresponds to the JSON property `provisioningProfileId`
+        # @return [String]
+        attr_accessor :provisioning_profile_id
+      
+        # Output only. The data that the client was asked to sign. This field is only
+        # present after the `SignData` operation has been initiated.
+        # Corresponds to the JSON property `signData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sign_data
+      
+        # Output only. The signature of `signature_algorithm`, generated using the
+        # client's private key using `signature_algorithm`. This field is only present
+        # after the`SignData` operation has finished.
+        # Corresponds to the JSON property `signature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signature
+      
+        # Output only. The signature algorithm that the adapter expects the client and
+        # backend components to use when processing `sign_data`. This field is only
+        # present after the `SignData` operation has been initiated.
+        # Corresponds to the JSON property `signatureAlgorithm`
+        # @return [String]
+        attr_accessor :signature_algorithm
+      
+        # Output only. Server-generated timestamp of when the certificate provisioning
+        # process has been created.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The public key for which a certificate should be provisioned.
+        # Represented as a DER-encoded X.509 SubjectPublicKeyInfo.
+        # Corresponds to the JSON property `subjectPublicKeyInfo`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :subject_public_key_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_connection_adapter_config_reference = args[:ca_connection_adapter_config_reference] if args.key?(:ca_connection_adapter_config_reference)
+          @chrome_os_device = args[:chrome_os_device] if args.key?(:chrome_os_device)
+          @chrome_os_user_session = args[:chrome_os_user_session] if args.key?(:chrome_os_user_session)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @issued_certificate = args[:issued_certificate] if args.key?(:issued_certificate)
+          @name = args[:name] if args.key?(:name)
+          @profile_adapter_config_reference = args[:profile_adapter_config_reference] if args.key?(:profile_adapter_config_reference)
+          @provisioning_profile_id = args[:provisioning_profile_id] if args.key?(:provisioning_profile_id)
+          @sign_data = args[:sign_data] if args.key?(:sign_data)
+          @signature = args[:signature] if args.key?(:signature)
+          @signature_algorithm = args[:signature_algorithm] if args.key?(:signature_algorithm)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @subject_public_key_info = args[:subject_public_key_info] if args.key?(:subject_public_key_info)
+        end
+      end
+      
       # A representation of a Chrome browser profile.
       class GoogleChromeManagementVersionsV1ChromeBrowserProfile
         include Google::Apis::Core::Hashable
@@ -4296,6 +4410,67 @@ module Google
           @reporting_data = args[:reporting_data] if args.key?(:reporting_data)
           @user_email = args[:user_email] if args.key?(:user_email)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Describes the ChromeOS device that a `CertificateProvisioningProcess` belongs
+      # to.
+      class GoogleChromeManagementVersionsV1ChromeOsDevice
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique Directory API ID of the device. This value is the same
+        # as the Admin Console's Directory API ID in the ChromeOS Devices tab.
+        # Corresponds to the JSON property `deviceDirectoryApiId`
+        # @return [String]
+        attr_accessor :device_directory_api_id
+      
+        # Output only. Device serial number. This value is the same as the Admin Console'
+        # s Serial Number in the ChromeOS Devices tab.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [String]
+        attr_accessor :serial_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_directory_api_id = args[:device_directory_api_id] if args.key?(:device_directory_api_id)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
+        end
+      end
+      
+      # Describes the ChromeOS user session that a `CertificateProvisioningProcess`
+      # belongs to.
+      class GoogleChromeManagementVersionsV1ChromeOsUserSession
+        include Google::Apis::Core::Hashable
+      
+        # Describes the ChromeOS device that a `CertificateProvisioningProcess` belongs
+        # to.
+        # Corresponds to the JSON property `chromeOsDevice`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsDevice]
+        attr_accessor :chrome_os_device
+      
+        # Output only. The unique Directory API ID of the user.
+        # Corresponds to the JSON property `userDirectoryApiId`
+        # @return [String]
+        attr_accessor :user_directory_api_id
+      
+        # Output only. The primary e-mail address of the user.
+        # Corresponds to the JSON property `userPrimaryEmail`
+        # @return [String]
+        attr_accessor :user_primary_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chrome_os_device = args[:chrome_os_device] if args.key?(:chrome_os_device)
+          @user_directory_api_id = args[:user_directory_api_id] if args.key?(:user_directory_api_id)
+          @user_primary_email = args[:user_primary_email] if args.key?(:user_primary_email)
         end
       end
       
@@ -4597,6 +4772,45 @@ module Google
           @name = args[:name] if args.key?(:name)
           @source = args[:source] if args.key?(:source)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Metadata for the long-running operation returned by signData.
+      class GoogleChromeManagementVersionsV1SignDataMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Start time of the SignData operation.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Response message for requesting a signature from the client that initated a
+      # certificate provisioning process.
+      class GoogleChromeManagementVersionsV1SignDataResponse
+        include Google::Apis::Core::Hashable
+      
+        # A certificate provisioning process.
+        # Corresponds to the JSON property `certificateProvisioningProcess`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess]
+        attr_accessor :certificate_provisioning_process
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_provisioning_process = args[:certificate_provisioning_process] if args.key?(:certificate_provisioning_process)
         end
       end
       

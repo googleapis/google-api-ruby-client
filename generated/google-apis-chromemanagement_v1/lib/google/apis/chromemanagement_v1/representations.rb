@@ -592,7 +592,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1CertificateProvisioningProcess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1ChromeBrowserProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1ChromeOsDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1ChromeOsUserSession
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -635,6 +653,18 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1ReportingDataPolicyData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1SignDataMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1SignDataResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1758,6 +1788,27 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1CertificateProvisioningProcess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_connection_adapter_config_reference, as: 'caConnectionAdapterConfigReference'
+          property :chrome_os_device, as: 'chromeOsDevice', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsDevice, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsDevice::Representation
+      
+          property :chrome_os_user_session, as: 'chromeOsUserSession', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsUserSession, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsUserSession::Representation
+      
+          property :failure_message, as: 'failureMessage'
+          property :issued_certificate, as: 'issuedCertificate'
+          property :name, as: 'name'
+          property :profile_adapter_config_reference, as: 'profileAdapterConfigReference'
+          property :provisioning_profile_id, as: 'provisioningProfileId'
+          property :sign_data, :base64 => true, as: 'signData'
+          property :signature, :base64 => true, as: 'signature'
+          property :signature_algorithm, as: 'signatureAlgorithm'
+          property :start_time, as: 'startTime'
+          property :subject_public_key_info, :base64 => true, as: 'subjectPublicKeyInfo'
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1ChromeBrowserProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1790,6 +1841,24 @@ module Google
       
           property :user_email, as: 'userEmail'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ChromeOsDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_directory_api_id, as: 'deviceDirectoryApiId'
+          property :serial_number, as: 'serialNumber'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ChromeOsUserSession
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chrome_os_device, as: 'chromeOsDevice', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsDevice, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsDevice::Representation
+      
+          property :user_directory_api_id, as: 'userDirectoryApiId'
+          property :user_primary_email, as: 'userPrimaryEmail'
         end
       end
       
@@ -1871,6 +1940,21 @@ module Google
           property :name, as: 'name'
           property :source, as: 'source'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1SignDataMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1SignDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_provisioning_process, as: 'certificateProvisioningProcess', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess::Representation
+      
         end
       end
       

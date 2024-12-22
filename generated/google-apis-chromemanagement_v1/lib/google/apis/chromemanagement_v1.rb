@@ -25,7 +25,7 @@ module Google
     # administrators to view, manage and gain insights on their Chrome OS and Chrome
     # Browser devices.
     #
-    # @see http://developers.google.com/chrome/management/
+    # @see https://developers.google.com/chrome/management/
     module ChromemanagementV1
       # Version of the Chrome Management API this client connects to.
       # This is NOT the gem version.
