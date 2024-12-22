@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2CollectUserEventRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2ColorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1795,6 +1801,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :facet_values, as: 'facetValues'
           property :rerank_facet, as: 'rerankFacet'
+        end
+      end
+      
+      class GoogleCloudRetailV2CollectUserEventRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ets, :numeric_string => true, as: 'ets'
+          property :prebuilt_rule, as: 'prebuiltRule'
+          property :raw_json, as: 'rawJson'
+          property :uri, as: 'uri'
+          property :user_event, as: 'userEvent'
         end
       end
       
