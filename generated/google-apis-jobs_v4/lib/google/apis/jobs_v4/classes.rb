@@ -1090,17 +1090,17 @@ module Google
         # immediately on creation. This kind of job can not be updated. And when
         # creating a job with past timestamp, the posting_publish_time must be set
         # before posting_expire_time. The purpose of this feature is to allow other
-        # objects, such as Application, to refer a job that didn't exist in the system
-        # prior to becoming expired. If you want to modify a job that was expired on
-        # creation, delete it and create a new one. If this value isn't provided at the
-        # time of job creation or is invalid, the job posting expires after 30 days from
-        # the job's creation time. For example, if the job was created on 2017/01/01 13:
-        # 00AM UTC with an unspecified expiration date, the job expires after 2017/01/31
-        # 13:00AM UTC. If this value isn't provided on job update, it depends on the
-        # field masks set by UpdateJobRequest.update_mask. If the field masks include
-        # job_end_time, or the masks are empty meaning that every field is updated, the
-        # job posting expires after 30 days from the job's last update time. Otherwise
-        # the expiration date isn't updated.
+        # objects, such as ApplicationInfo, to refer a job that didn't exist in the
+        # system prior to becoming expired. If you want to modify a job that was expired
+        # on creation, delete it and create a new one. If this value isn't provided at
+        # the time of job creation or is invalid, the job posting expires after 30 days
+        # from the job's creation time. For example, if the job was created on 2017/01/
+        # 01 13:00AM UTC with an unspecified expiration date, the job expires after 2017/
+        # 01/31 13:00AM UTC. If this value isn't provided on job update, it depends on
+        # the field masks set by UpdateJobRequest.update_mask. If the field masks
+        # include job_end_time, or the masks are empty meaning that every field is
+        # updated, the job posting expires after 30 days from the job's last update time.
+        # Otherwise the expiration date isn't updated.
         # Corresponds to the JSON property `postingExpireTime`
         # @return [String]
         attr_accessor :posting_expire_time
@@ -1599,16 +1599,16 @@ module Google
         # @return [String]
         attr_accessor :location_type
       
-        # Represents a postal address, e.g. for postal delivery or payments addresses.
-        # Given a postal address, a postal service can deliver items to a premise, P.O.
-        # Box or similar. It is not intended to model geographical locations (roads,
-        # towns, mountains). In typical usage an address would be created via user input
-        # or from importing existing data, depending on the type of process. Advice on
-        # address input / editing: - Use an internationalization-ready address widget
-        # such as https://github.com/google/libaddressinput) - Users should not be
-        # presented with UI elements for input or editing of fields outside countries
-        # where that field is used. For more guidance on how to use this schema, please
-        # see: https://support.google.com/business/answer/6397478
+        # Represents a postal address. For example for postal delivery or payments
+        # addresses. Given a postal address, a postal service can deliver items to a
+        # premise, P.O. Box or similar. It is not intended to model geographical
+        # locations (roads, towns, mountains). In typical usage an address would be
+        # created by user input or from importing existing data, depending on the type
+        # of process. Advice on address input / editing: - Use an internationalization-
+        # ready address widget such as https://github.com/google/libaddressinput) -
+        # Users should not be presented with UI elements for input or editing of fields
+        # outside countries where that field is used. For more guidance on how to use
+        # this schema, see: https://support.google.com/business/answer/6397478
         # Corresponds to the JSON property `postalAddress`
         # @return [Google::Apis::JobsV4::PostalAddress]
         attr_accessor :postal_address
@@ -1681,7 +1681,7 @@ module Google
         # TelecommutePreference.TELECOMMUTE_EXCLUDED, the telecommute status of the jobs
         # is ignored. Jobs that have PostingRegion.TELECOMMUTE and have additional Job.
         # addresses may still be matched based on other location filters using address
-        # or latlng. This filter can be used by itself to search exclusively for
+        # or lat_lng. This filter can be used by itself to search exclusively for
         # telecommuting jobs, or it can be combined with another location filter to
         # search for a combination of job locations, such as "Mountain View" or "
         # telecommuting" jobs. However, when used in combination with other location
@@ -1854,35 +1854,36 @@ module Google
         end
       end
       
-      # Represents a postal address, e.g. for postal delivery or payments addresses.
-      # Given a postal address, a postal service can deliver items to a premise, P.O.
-      # Box or similar. It is not intended to model geographical locations (roads,
-      # towns, mountains). In typical usage an address would be created via user input
-      # or from importing existing data, depending on the type of process. Advice on
-      # address input / editing: - Use an internationalization-ready address widget
-      # such as https://github.com/google/libaddressinput) - Users should not be
-      # presented with UI elements for input or editing of fields outside countries
-      # where that field is used. For more guidance on how to use this schema, please
-      # see: https://support.google.com/business/answer/6397478
+      # Represents a postal address. For example for postal delivery or payments
+      # addresses. Given a postal address, a postal service can deliver items to a
+      # premise, P.O. Box or similar. It is not intended to model geographical
+      # locations (roads, towns, mountains). In typical usage an address would be
+      # created by user input or from importing existing data, depending on the type
+      # of process. Advice on address input / editing: - Use an internationalization-
+      # ready address widget such as https://github.com/google/libaddressinput) -
+      # Users should not be presented with UI elements for input or editing of fields
+      # outside countries where that field is used. For more guidance on how to use
+      # this schema, see: https://support.google.com/business/answer/6397478
       class PostalAddress
         include Google::Apis::Core::Hashable
       
         # Unstructured address lines describing the lower levels of an address. Because
         # values in address_lines do not have type information and may sometimes contain
-        # multiple values in a single field (e.g. "Austin, TX"), it is important that
-        # the line order is clear. The order of address lines should be "envelope order"
-        # for the country/region of the address. In places where this can vary (e.g.
-        # Japan), address_language is used to make it explicit (e.g. "ja" for large-to-
-        # small ordering and "ja-Latn" or "en" for small-to-large). This way, the most
-        # specific line of an address can be selected based on the language. The minimum
-        # permitted structural representation of an address consists of a region_code
-        # with all remaining information placed in the address_lines. It would be
-        # possible to format such an address very approximately without geocoding, but
-        # no semantic reasoning could be made about any of the address components until
-        # it was at least partially resolved. Creating an address only containing a
-        # region_code and address_lines, and then geocoding is the recommended way to
-        # handle completely unstructured addresses (as opposed to guessing which parts
-        # of the address should be localities or administrative areas).
+        # multiple values in a single field (For example "Austin, TX"), it is important
+        # that the line order is clear. The order of address lines should be "envelope
+        # order" for the country/region of the address. In places where this can vary (
+        # For example Japan), address_language is used to make it explicit (For example "
+        # ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large).
+        # This way, the most specific line of an address can be selected based on the
+        # language. The minimum permitted structural representation of an address
+        # consists of a region_code with all remaining information placed in the
+        # address_lines. It would be possible to format such an address very
+        # approximately without geocoding, but no semantic reasoning could be made about
+        # any of the address components until it was at least partially resolved.
+        # Creating an address only containing a region_code and address_lines, and then
+        # geocoding is the recommended way to handle completely unstructured addresses (
+        # as opposed to guessing which parts of the address should be localities or
+        # administrative areas).
         # Corresponds to the JSON property `addressLines`
         # @return [Array<String>]
         attr_accessor :address_lines
@@ -1890,9 +1891,9 @@ module Google
         # Optional. Highest administrative subdivision which is used for postal
         # addresses of a country or region. For example, this can be a state, a province,
         # an oblast, or a prefecture. Specifically, for Spain this is the province and
-        # not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many
-        # countries don't use an administrative area in postal addresses. E.g. in
-        # Switzerland this should be left unpopulated.
+        # not the autonomous community (For example "Barcelona" and not "Catalonia").
+        # Many countries don't use an administrative area in postal addresses. For
+        # example in Switzerland this should be left unpopulated.
         # Corresponds to the JSON property `administrativeArea`
         # @return [String]
         attr_accessor :administrative_area
@@ -1924,8 +1925,8 @@ module Google
       
         # Optional. Postal code of the address. Not all countries use or require postal
         # codes to be present, but where they are used, they may trigger additional
-        # validation with other parts of the address (e.g. state/zip validation in the U.
-        # S.A.).
+        # validation with other parts of the address (For example state/zip validation
+        # in the U.S.A.).
         # Corresponds to the JSON property `postalCode`
         # @return [String]
         attr_accessor :postal_code
@@ -1954,9 +1955,9 @@ module Google
       
         # Optional. Additional, country-specific, sorting code. This is not used in most
         # regions. Where it is used, the value is either a string like "CEDEX",
-        # optionally followed by a number (e.g. "CEDEX 7"), or just a number alone,
-        # representing the "sector code" (Jamaica), "delivery area indicator" (Malawi)
-        # or "post office indicator" (e.g. Côte d'Ivoire).
+        # optionally followed by a number (For example "CEDEX 7"), or just a number
+        # alone, representing the "sector code" (Jamaica), "delivery area indicator" (
+        # Malawi) or "post office indicator" (For example Côte d'Ivoire).
         # Corresponds to the JSON property `sortingCode`
         # @return [String]
         attr_accessor :sorting_code
@@ -2293,6 +2294,14 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
+        # Optional. The relevance threshold of the search results. Default to Google
+        # defined threshold, leveraging a balance of precision and recall to deliver
+        # both highly accurate results and comprehensive coverage of relevant
+        # information.
+        # Corresponds to the JSON property `relevanceThreshold`
+        # @return [String]
+        attr_accessor :relevance_threshold
+      
         # Meta information related to the job searcher or entity conducting the job
         # search. This information is used to improve the performance of the service.
         # Corresponds to the JSON property `requestMetadata`
@@ -2322,6 +2331,7 @@ module Google
           @offset = args[:offset] if args.key?(:offset)
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_token = args[:page_token] if args.key?(:page_token)
+          @relevance_threshold = args[:relevance_threshold] if args.key?(:relevance_threshold)
           @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
           @search_mode = args[:search_mode] if args.key?(:search_mode)
         end
@@ -2511,24 +2521,28 @@ module Google
       class TimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
-        # allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # Minutes of hour of day. Must be from 0 to 59.
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
       
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
