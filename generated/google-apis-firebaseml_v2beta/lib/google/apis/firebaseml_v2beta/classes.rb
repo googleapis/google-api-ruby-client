@@ -1284,6 +1284,12 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # Output only. Indicates if the part is thought from the model.
+        # Corresponds to the JSON property `thought`
+        # @return [Boolean]
+        attr_accessor :thought
+        alias_method :thought?, :thought
+      
         # Metadata describes the input video content.
         # Corresponds to the JSON property `videoMetadata`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoMetadata]
@@ -1302,6 +1308,7 @@ module Google
           @function_response = args[:function_response] if args.key?(:function_response)
           @inline_data = args[:inline_data] if args.key?(:inline_data)
           @text = args[:text] if args.key?(:text)
+          @thought = args[:thought] if args.key?(:thought)
           @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
         end
       end
