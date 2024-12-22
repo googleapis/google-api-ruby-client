@@ -988,6 +988,7 @@ module Google
         attr_accessor :enable_shadow_removal_native_pdf
         alias_method :enable_shadow_removal_native_pdf?, :enable_shadow_removal_native_pdf
       
+        # -----------------------------------------------------------------------------
         # Configures which glossary should be used for a specific target language, and
         # defines options for applying that glossary.
         # Corresponds to the JSON property `glossaryConfig`
@@ -1066,6 +1067,7 @@ module Google
         # @return [Google::Apis::TranslateV3beta1::DocumentTranslation]
         attr_accessor :document_translation
       
+        # -----------------------------------------------------------------------------
         # Configures which glossary should be used for a specific target language, and
         # defines options for applying that glossary.
         # Corresponds to the JSON property `glossaryConfig`
@@ -1099,10 +1101,17 @@ module Google
         end
       end
       
+      # -----------------------------------------------------------------------------
       # Configures which glossary should be used for a specific target language, and
       # defines options for applying that glossary.
       class TranslateTextGlossaryConfig
         include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, the glossary will be used for contextual translation.
+        # Corresponds to the JSON property `contextualTranslationEnabled`
+        # @return [Boolean]
+        attr_accessor :contextual_translation_enabled
+        alias_method :contextual_translation_enabled?, :contextual_translation_enabled
       
         # Required. Specifies the glossary used for this translation. Use this format:
         # projects/*/locations/*/glossaries/*
@@ -1123,6 +1132,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contextual_translation_enabled = args[:contextual_translation_enabled] if args.key?(:contextual_translation_enabled)
           @glossary = args[:glossary] if args.key?(:glossary)
           @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
         end
@@ -1139,6 +1149,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :contents
       
+        # -----------------------------------------------------------------------------
         # Configures which glossary should be used for a specific target language, and
         # defines options for applying that glossary.
         # Corresponds to the JSON property `glossaryConfig`
@@ -1243,6 +1254,7 @@ module Google
         # @return [String]
         attr_accessor :detected_language_code
       
+        # -----------------------------------------------------------------------------
         # Configures which glossary should be used for a specific target language, and
         # defines options for applying that glossary.
         # Corresponds to the JSON property `glossaryConfig`
