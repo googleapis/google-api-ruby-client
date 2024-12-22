@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductSustainabilityIncentive
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductWeight
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -319,6 +325,8 @@ module Google
           property :structured_title, as: 'structuredTitle', class: Google::Apis::MerchantapiProductsV1beta::ProductStructuredTitle, decorator: Google::Apis::MerchantapiProductsV1beta::ProductStructuredTitle::Representation
       
           property :subscription_cost, as: 'subscriptionCost', class: Google::Apis::MerchantapiProductsV1beta::SubscriptionCost, decorator: Google::Apis::MerchantapiProductsV1beta::SubscriptionCost::Representation
+      
+          collection :sustainability_incentives, as: 'sustainabilityIncentives', class: Google::Apis::MerchantapiProductsV1beta::ProductSustainabilityIncentive, decorator: Google::Apis::MerchantapiProductsV1beta::ProductSustainabilityIncentive::Representation
       
           property :tax_category, as: 'taxCategory'
           collection :taxes, as: 'taxes', class: Google::Apis::MerchantapiProductsV1beta::Tax, decorator: Google::Apis::MerchantapiProductsV1beta::Tax::Representation
@@ -573,6 +581,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :digital_source_type, as: 'digitalSourceType'
+        end
+      end
+      
+      class ProductSustainabilityIncentive
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::MerchantapiProductsV1beta::Price, decorator: Google::Apis::MerchantapiProductsV1beta::Price::Representation
+      
+          property :percentage, as: 'percentage'
+          property :type, as: 'type'
         end
       end
       

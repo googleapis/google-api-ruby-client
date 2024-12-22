@@ -497,6 +497,11 @@ module Google
         # @return [Google::Apis::MerchantapiProductsV1beta::SubscriptionCost]
         attr_accessor :subscription_cost
       
+        # The list of sustainability incentive programs.
+        # Corresponds to the JSON property `sustainabilityIncentives`
+        # @return [Array<Google::Apis::MerchantapiProductsV1beta::ProductSustainabilityIncentive>]
+        attr_accessor :sustainability_incentives
+      
         # The tax category of the product.
         # Corresponds to the JSON property `taxCategory`
         # @return [String]
@@ -625,6 +630,7 @@ module Google
           @structured_description = args[:structured_description] if args.key?(:structured_description)
           @structured_title = args[:structured_title] if args.key?(:structured_title)
           @subscription_cost = args[:subscription_cost] if args.key?(:subscription_cost)
+          @sustainability_incentives = args[:sustainability_incentives] if args.key?(:sustainability_incentives)
           @tax_category = args[:tax_category] if args.key?(:tax_category)
           @taxes = args[:taxes] if args.key?(:taxes)
           @title = args[:title] if args.key?(:title)
@@ -1614,6 +1620,38 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @digital_source_type = args[:digital_source_type] if args.key?(:digital_source_type)
+        end
+      end
+      
+      # Information regarding sustainability-related incentive programs such as
+      # rebates or tax relief.
+      class ProductSustainabilityIncentive
+        include Google::Apis::Core::Hashable
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::MerchantapiProductsV1beta::Price]
+        attr_accessor :amount
+      
+        # The percentage of the sale price that the incentive is applied to.
+        # Corresponds to the JSON property `percentage`
+        # @return [Float]
+        attr_accessor :percentage
+      
+        # Sustainability incentive program.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @percentage = args[:percentage] if args.key?(:percentage)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
