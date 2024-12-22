@@ -2437,7 +2437,7 @@ module Google
         end
       end
       
-      # Content blob. It's preferred to send as text directly rather than raw bytes.
+      # Content blob.
       class GoogleCloudAiplatformV1Blob
         include Google::Apis::Core::Hashable
       
@@ -5077,7 +5077,8 @@ module Google
         # @return [String]
         attr_accessor :model_reference
       
-        # Output only. Identifier. The resource name of the Dataset.
+        # Output only. Identifier. The resource name of the Dataset. Format: `projects/`
+        # project`/locations/`location`/datasets/`dataset``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -11572,6 +11573,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_output_tokens
       
+        # Optional. If specified, the media resolution specified will be used.
+        # Corresponds to the JSON property `mediaResolution`
+        # @return [String]
+        attr_accessor :media_resolution
+      
         # Optional. Positive penalties.
         # Corresponds to the JSON property `presencePenalty`
         # @return [Float]
@@ -11629,11 +11635,6 @@ module Google
         # @return [Float]
         attr_accessor :temperature
       
-        # Optional. If specified, the token resolution specified will be used.
-        # Corresponds to the JSON property `tokenResolution`
-        # @return [String]
-        attr_accessor :token_resolution
-      
         # Optional. If specified, top-k sampling will be used.
         # Corresponds to the JSON property `topK`
         # @return [Float]
@@ -11655,6 +11656,7 @@ module Google
           @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
           @logprobs = args[:logprobs] if args.key?(:logprobs)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
+          @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
           @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @response_logprobs = args[:response_logprobs] if args.key?(:response_logprobs)
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
@@ -11665,7 +11667,6 @@ module Google
           @speech_config = args[:speech_config] if args.key?(:speech_config)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
-          @token_resolution = args[:token_resolution] if args.key?(:token_resolution)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
         end
@@ -16286,6 +16287,12 @@ module Google
         # @return [String]
         attr_accessor :image_uri
       
+        # Probe describes a health check to be performed against a container to
+        # determine whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `livenessProbe`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Probe]
+        attr_accessor :liveness_probe
+      
         # Immutable. List of ports to expose from the container. Vertex AI sends any
         # prediction requests that it receives to the first port on this list. Vertex AI
         # also sends [liveness and health checks](https://cloud.google.com/vertex-ai/
@@ -16348,6 +16355,7 @@ module Google
           @health_probe = args[:health_probe] if args.key?(:health_probe)
           @health_route = args[:health_route] if args.key?(:health_route)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @liveness_probe = args[:liveness_probe] if args.key?(:liveness_probe)
           @ports = args[:ports] if args.key?(:ports)
           @predict_route = args[:predict_route] if args.key?(:predict_route)
           @shared_memory_size_mb = args[:shared_memory_size_mb] if args.key?(:shared_memory_size_mb)
@@ -19660,7 +19668,7 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionResponse]
         attr_accessor :function_response
       
-        # Content blob. It's preferred to send as text directly rather than raw bytes.
+        # Content blob.
         # Corresponds to the JSON property `inlineData`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Blob]
         attr_accessor :inline_data
@@ -20915,12 +20923,28 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeExecAction]
         attr_accessor :exec
       
+        # GrpcAction checks the health of a container using a gRPC service.
+        # Corresponds to the JSON property `grpc`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeGrpcAction]
+        attr_accessor :grpc
+      
+        # HttpGetAction describes an action based on HTTP Get requests.
+        # Corresponds to the JSON property `httpGet`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeHttpGetAction]
+        attr_accessor :http_get
+      
         # How often (in seconds) to perform the probe. Default to 10 seconds. Minimum
         # value is 1. Must be less than timeout_seconds. Maps to Kubernetes probe
         # argument 'periodSeconds'.
         # Corresponds to the JSON property `periodSeconds`
         # @return [Fixnum]
         attr_accessor :period_seconds
+      
+        # TcpSocketAction probes the health of a container by opening a TCP socket
+        # connection.
+        # Corresponds to the JSON property `tcpSocket`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeTcpSocketAction]
+        attr_accessor :tcp_socket
       
         # Number of seconds after which the probe times out. Defaults to 1 second.
         # Minimum value is 1. Must be greater or equal to period_seconds. Maps to
@@ -20936,7 +20960,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exec = args[:exec] if args.key?(:exec)
+          @grpc = args[:grpc] if args.key?(:grpc)
+          @http_get = args[:http_get] if args.key?(:http_get)
           @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
+          @tcp_socket = args[:tcp_socket] if args.key?(:tcp_socket)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
         end
       end
@@ -20962,6 +20989,133 @@ module Google
         # Update properties of this object
         def update!(**args)
           @command = args[:command] if args.key?(:command)
+        end
+      end
+      
+      # GrpcAction checks the health of a container using a gRPC service.
+      class GoogleCloudAiplatformV1ProbeGrpcAction
+        include Google::Apis::Core::Hashable
+      
+        # Port number of the gRPC service. Number must be in the range 1 to 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Service is the name of the service to place in the gRPC HealthCheckRequest (
+        # see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this
+        # is not specified, the default behavior is defined by gRPC.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port = args[:port] if args.key?(:port)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # HttpGetAction describes an action based on HTTP Get requests.
+      class GoogleCloudAiplatformV1ProbeHttpGetAction
+        include Google::Apis::Core::Hashable
+      
+        # Host name to connect to, defaults to the model serving container's IP. You
+        # probably want to set "Host" in httpHeaders instead.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Custom headers to set in the request. HTTP allows repeated headers.
+        # Corresponds to the JSON property `httpHeaders`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeHttpHeader>]
+        attr_accessor :http_headers
+      
+        # Path to access on the HTTP server.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Number of the port to access on the container. Number must be in the range 1
+        # to 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Scheme to use for connecting to the host. Defaults to HTTP. Acceptable values
+        # are "HTTP" or "HTTPS".
+        # Corresponds to the JSON property `scheme`
+        # @return [String]
+        attr_accessor :scheme
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @http_headers = args[:http_headers] if args.key?(:http_headers)
+          @path = args[:path] if args.key?(:path)
+          @port = args[:port] if args.key?(:port)
+          @scheme = args[:scheme] if args.key?(:scheme)
+        end
+      end
+      
+      # HttpHeader describes a custom header to be used in HTTP probes
+      class GoogleCloudAiplatformV1ProbeHttpHeader
+        include Google::Apis::Core::Hashable
+      
+        # The header field name. This will be canonicalized upon output, so case-variant
+        # names will be understood as the same header.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The header field value
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # TcpSocketAction probes the health of a container by opening a TCP socket
+      # connection.
+      class GoogleCloudAiplatformV1ProbeTcpSocketAction
+        include Google::Apis::Core::Hashable
+      
+        # Optional: Host name to connect to, defaults to the model serving container's
+        # IP.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Number of the port to access on the container. Number must be in the range 1
+        # to 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @port = args[:port] if args.key?(:port)
         end
       end
       
@@ -32289,6 +32443,33 @@ module Google
           @test_fraction = args[:test_fraction] if args.key?(:test_fraction)
           @training_fraction = args[:training_fraction] if args.key?(:training_fraction)
           @validation_fraction = args[:validation_fraction] if args.key?(:validation_fraction)
+        end
+      end
+      
+      # Request message for ReasoningEngineExecutionService.StreamQuery.
+      class GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Class method to be used for the stream query. It is optional and
+        # defaults to "stream_query" if unspecified.
+        # Corresponds to the JSON property `classMethod`
+        # @return [String]
+        attr_accessor :class_method
+      
+        # Optional. Input content provided by users in JSON object format. Examples
+        # include text query, function calling parameters, media bytes, etc.
+        # Corresponds to the JSON property `input`
+        # @return [Hash<String,Object>]
+        attr_accessor :input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @class_method = args[:class_method] if args.key?(:class_method)
+          @input = args[:input] if args.key?(:input)
         end
       end
       

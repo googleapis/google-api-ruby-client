@@ -3382,6 +3382,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1ProbeGrpcAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ProbeHttpGetAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ProbeHttpHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ProbeTcpSocketAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1PscAutomatedEndpoints
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5333,6 +5357,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1StratifiedSplit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9729,6 +9759,7 @@ module Google
           property :frequency_penalty, as: 'frequencyPenalty'
           property :logprobs, as: 'logprobs'
           property :max_output_tokens, as: 'maxOutputTokens'
+          property :media_resolution, as: 'mediaResolution'
           property :presence_penalty, as: 'presencePenalty'
           property :response_logprobs, as: 'responseLogprobs'
           property :response_mime_type, as: 'responseMimeType'
@@ -9742,7 +9773,6 @@ module Google
       
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
-          property :token_resolution, as: 'tokenResolution'
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
         end
@@ -11085,6 +11115,8 @@ module Google
       
           property :health_route, as: 'healthRoute'
           property :image_uri, as: 'imageUri'
+          property :liveness_probe, as: 'livenessProbe', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Probe, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Probe::Representation
+      
           collection :ports, as: 'ports', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Port, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Port::Representation
       
           property :predict_route, as: 'predictRoute'
@@ -12332,7 +12364,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exec, as: 'exec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeExecAction, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeExecAction::Representation
       
+          property :grpc, as: 'grpc', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeGrpcAction, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeGrpcAction::Representation
+      
+          property :http_get, as: 'httpGet', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeHttpGetAction, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeHttpGetAction::Representation
+      
           property :period_seconds, as: 'periodSeconds'
+          property :tcp_socket, as: 'tcpSocket', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeTcpSocketAction, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeTcpSocketAction::Representation
+      
           property :timeout_seconds, as: 'timeoutSeconds'
         end
       end
@@ -12341,6 +12379,42 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :command, as: 'command'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ProbeGrpcAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port, as: 'port'
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ProbeHttpGetAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          collection :http_headers, as: 'httpHeaders', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeHttpHeader, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ProbeHttpHeader::Representation
+      
+          property :path, as: 'path'
+          property :port, as: 'port'
+          property :scheme, as: 'scheme'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ProbeHttpHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ProbeTcpSocketAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
         end
       end
       
@@ -15537,6 +15611,14 @@ module Google
           property :test_fraction, as: 'testFraction'
           property :training_fraction, as: 'trainingFraction'
           property :validation_fraction, as: 'validationFraction'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :class_method, as: 'classMethod'
+          hash :input, as: 'input'
         end
       end
       
