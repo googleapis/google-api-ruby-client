@@ -838,6 +838,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ConversationMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2842,6 +2848,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2SpeechWordInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2StreamingRecognitionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2SuggestArticlesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3448,6 +3466,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1SpeechWordInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1StreamingRecognitionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1SuggestArticlesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3479,6 +3509,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1SuggestionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1TelephonyDtmfEvents
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4928,6 +4964,8 @@ module Google
           property :response, as: 'response', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentResponse, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentResponse::Representation
       
           property :response_utterances, as: 'responseUtterances'
+          collection :step_metrics, as: 'stepMetrics', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetrics, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetrics::Representation
+      
         end
       end
       
@@ -4936,6 +4974,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :intent_display_name, as: 'intentDisplayName'
           property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency, as: 'latency'
+          property :name, as: 'name'
         end
       end
       
@@ -7599,6 +7645,8 @@ module Google
       
           property :new_message_payload, as: 'newMessagePayload', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2Message, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2Message::Representation
       
+          property :new_recognition_result_payload, as: 'newRecognitionResultPayload', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2StreamingRecognitionResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2StreamingRecognitionResult::Representation
+      
           property :type, as: 'type'
         end
       end
@@ -8340,6 +8388,30 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2SpeechWordInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :end_offset, as: 'endOffset'
+          property :start_offset, as: 'startOffset'
+          property :word, as: 'word'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2StreamingRecognitionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :is_final, as: 'isFinal'
+          property :language_code, as: 'languageCode'
+          property :message_type, as: 'messageType'
+          property :speech_end_offset, as: 'speechEndOffset'
+          collection :speech_word_info, as: 'speechWordInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SpeechWordInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SpeechWordInfo::Representation
+      
+          property :transcript, as: 'transcript'
+        end
+      end
+      
       class GoogleCloudDialogflowV2SuggestArticlesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8495,6 +8567,8 @@ module Google
           property :error_status, as: 'errorStatus', class: Google::Apis::DialogflowV3beta1::GoogleRpcStatus, decorator: Google::Apis::DialogflowV3beta1::GoogleRpcStatus::Representation
       
           property :new_message_payload, as: 'newMessagePayload', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1Message, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1Message::Representation
+      
+          property :new_recognition_result_payload, as: 'newRecognitionResultPayload', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1StreamingRecognitionResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1StreamingRecognitionResult::Representation
       
           property :type, as: 'type'
         end
@@ -9379,6 +9453,33 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1SpeechWordInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :end_offset, as: 'endOffset'
+          property :start_offset, as: 'startOffset'
+          property :word, as: 'word'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1StreamingRecognitionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :dtmf_digits, as: 'dtmfDigits', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1TelephonyDtmfEvents, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1TelephonyDtmfEvents::Representation
+      
+          property :is_final, as: 'isFinal'
+          property :language_code, as: 'languageCode'
+          property :message_type, as: 'messageType'
+          property :speech_end_offset, as: 'speechEndOffset'
+          collection :speech_word_info, as: 'speechWordInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SpeechWordInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SpeechWordInfo::Representation
+      
+          property :stability, as: 'stability'
+          property :transcript, as: 'transcript'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1SuggestArticlesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9446,6 +9547,13 @@ module Google
       
           property :suggest_smart_replies_response, as: 'suggestSmartRepliesResponse', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1TelephonyDtmfEvents
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dtmf_events, as: 'dtmfEvents'
         end
       end
       
