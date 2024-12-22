@@ -2023,6 +2023,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :objects_filter, as: 'objectsFilter', class: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig, decorator: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig::Representation
       
+          property :restart_failed_objects, as: 'restartFailedObjects'
           property :skip_validation, as: 'skipValidation'
         end
       end
