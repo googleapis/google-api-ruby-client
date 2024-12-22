@@ -2332,14 +2332,15 @@ module Google
       class RouteInfo
         include Google::Apis::Core::Hashable
       
-        # For advertised routes, the URI of their next hop, i.e. the URI of the hybrid
+        # For ADVERTISED routes, the URI of their next hop, i.e. the URI of the hybrid
         # endpoint (VPN tunnel, Interconnect attachment, NCC router appliance) the
         # advertised prefix is advertised through, or URI of the source peered network.
+        # Deprecated in favor of the next_hop_uri field, not used in new tests.
         # Corresponds to the JSON property `advertisedRouteNextHopUri`
         # @return [String]
         attr_accessor :advertised_route_next_hop_uri
       
-        # For advertised dynamic routes, the URI of the Cloud Router that advertised the
+        # For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised the
         # corresponding IP prefix.
         # Corresponds to the JSON property `advertisedRouteSourceRouterUri`
         # @return [String]
@@ -2350,7 +2351,7 @@ module Google
         # @return [String]
         attr_accessor :dest_ip_range
       
-        # Destination port ranges of the route. Policy based routes only.
+        # Destination port ranges of the route. POLICY_BASED routes only.
         # Corresponds to the JSON property `destPortRanges`
         # @return [Array<String>]
         attr_accessor :dest_port_ranges
@@ -2365,47 +2366,82 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_tags
       
-        # URI of a NCC Hub. NCC_HUB routes only.
+        # For PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub,
+        # the URI of the corresponding route in NCC Hub's routing table.
+        # Corresponds to the JSON property `nccHubRouteUri`
+        # @return [String]
+        attr_accessor :ncc_hub_route_uri
+      
+        # URI of the NCC Hub the route is advertised by. PEERING_SUBNET and
+        # PEERING_DYNAMIC routes that are advertised by NCC Hub only.
         # Corresponds to the JSON property `nccHubUri`
         # @return [String]
         attr_accessor :ncc_hub_uri
       
-        # URI of a NCC Spoke. NCC_HUB routes only.
+        # URI of the destination NCC Spoke. PEERING_SUBNET and PEERING_DYNAMIC routes
+        # that are advertised by NCC Hub only.
         # Corresponds to the JSON property `nccSpokeUri`
         # @return [String]
         attr_accessor :ncc_spoke_uri
       
-        # URI of a Compute Engine network. NETWORK routes only.
+        # URI of a VPC network where route is located.
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
       
-        # Next hop of the route.
+        # String type of the next hop of the route (for example, "VPN tunnel").
+        # Deprecated in favor of the next_hop_type and next_hop_uri fields, not used in
+        # new tests.
         # Corresponds to the JSON property `nextHop`
         # @return [String]
         attr_accessor :next_hop
+      
+        # URI of a VPC network where the next hop resource is located.
+        # Corresponds to the JSON property `nextHopNetworkUri`
+        # @return [String]
+        attr_accessor :next_hop_network_uri
       
         # Type of next hop.
         # Corresponds to the JSON property `nextHopType`
         # @return [String]
         attr_accessor :next_hop_type
       
+        # URI of the next hop resource.
+        # Corresponds to the JSON property `nextHopUri`
+        # @return [String]
+        attr_accessor :next_hop_uri
+      
+        # For PEERING_SUBNET, PEERING_STATIC and PEERING_DYNAMIC routes, the name of the
+        # originating SUBNET/STATIC/DYNAMIC route.
+        # Corresponds to the JSON property `originatingRouteDisplayName`
+        # @return [String]
+        attr_accessor :originating_route_display_name
+      
+        # For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating
+        # SUBNET/STATIC route.
+        # Corresponds to the JSON property `originatingRouteUri`
+        # @return [String]
+        attr_accessor :originating_route_uri
+      
         # Priority of the route.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
       
-        # Protocols of the route. Policy based routes only.
+        # Protocols of the route. POLICY_BASED routes only.
         # Corresponds to the JSON property `protocols`
         # @return [Array<String>]
         attr_accessor :protocols
       
-        # Region of the route (if applicable).
+        # Region of the route. DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED
+        # routes only. If set for POLICY_BASED route, this is a region of VLAN
+        # attachments for Cloud Interconnect the route applies to.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
-        # Indicates where route is applicable.
+        # Indicates where route is applicable. Deprecated, routes with NCC_HUB scope are
+        # not included in the trace in new tests.
         # Corresponds to the JSON property `routeScope`
         # @return [String]
         attr_accessor :route_scope
@@ -2415,17 +2451,18 @@ module Google
         # @return [String]
         attr_accessor :route_type
       
-        # Source IP address range of the route. Policy based routes only.
+        # Source IP address range of the route. POLICY_BASED routes only.
         # Corresponds to the JSON property `srcIpRange`
         # @return [String]
         attr_accessor :src_ip_range
       
-        # Source port ranges of the route. Policy based routes only.
+        # Source port ranges of the route. POLICY_BASED routes only.
         # Corresponds to the JSON property `srcPortRanges`
         # @return [Array<String>]
         attr_accessor :src_port_ranges
       
-        # URI of a route (if applicable).
+        # URI of a route. SUBNET, STATIC, PEERING_SUBNET (only for peering network) and
+        # POLICY_BASED routes only.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2442,11 +2479,16 @@ module Google
           @dest_port_ranges = args[:dest_port_ranges] if args.key?(:dest_port_ranges)
           @display_name = args[:display_name] if args.key?(:display_name)
           @instance_tags = args[:instance_tags] if args.key?(:instance_tags)
+          @ncc_hub_route_uri = args[:ncc_hub_route_uri] if args.key?(:ncc_hub_route_uri)
           @ncc_hub_uri = args[:ncc_hub_uri] if args.key?(:ncc_hub_uri)
           @ncc_spoke_uri = args[:ncc_spoke_uri] if args.key?(:ncc_spoke_uri)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @next_hop = args[:next_hop] if args.key?(:next_hop)
+          @next_hop_network_uri = args[:next_hop_network_uri] if args.key?(:next_hop_network_uri)
           @next_hop_type = args[:next_hop_type] if args.key?(:next_hop_type)
+          @next_hop_uri = args[:next_hop_uri] if args.key?(:next_hop_uri)
+          @originating_route_display_name = args[:originating_route_display_name] if args.key?(:originating_route_display_name)
+          @originating_route_uri = args[:originating_route_uri] if args.key?(:originating_route_uri)
           @priority = args[:priority] if args.key?(:priority)
           @protocols = args[:protocols] if args.key?(:protocols)
           @region = args[:region] if args.key?(:region)
