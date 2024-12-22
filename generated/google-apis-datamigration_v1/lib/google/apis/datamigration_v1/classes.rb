@@ -4295,6 +4295,12 @@ module Google
         # @return [Google::Apis::DatamigrationV1::MigrationJobObjectsConfig]
         attr_accessor :objects_filter
       
+        # Optional. If true, only failed objects will be restarted.
+        # Corresponds to the JSON property `restartFailedObjects`
+        # @return [Boolean]
+        attr_accessor :restart_failed_objects
+        alias_method :restart_failed_objects?, :restart_failed_objects
+      
         # Optional. Restart the migration job without running prior configuration
         # verification. Defaults to `false`.
         # Corresponds to the JSON property `skipValidation`
@@ -4309,6 +4315,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @objects_filter = args[:objects_filter] if args.key?(:objects_filter)
+          @restart_failed_objects = args[:restart_failed_objects] if args.key?(:restart_failed_objects)
           @skip_validation = args[:skip_validation] if args.key?(:skip_validation)
         end
       end
