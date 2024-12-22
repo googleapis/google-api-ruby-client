@@ -1001,6 +1001,12 @@ module Google
       class Documentation
         include Google::Apis::Core::Hashable
       
+        # Optional information about the IAM configuration. This is typically used to
+        # link to documentation about a product's IAM roles and permissions.
+        # Corresponds to the JSON property `additionalIamInfo`
+        # @return [String]
+        attr_accessor :additional_iam_info
+      
         # The URL to the root of documentation.
         # Corresponds to the JSON property `documentationRootUrl`
         # @return [String]
@@ -1053,6 +1059,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_iam_info = args[:additional_iam_info] if args.key?(:additional_iam_info)
           @documentation_root_url = args[:documentation_root_url] if args.key?(:documentation_root_url)
           @overview = args[:overview] if args.key?(:overview)
           @pages = args[:pages] if args.key?(:pages)
