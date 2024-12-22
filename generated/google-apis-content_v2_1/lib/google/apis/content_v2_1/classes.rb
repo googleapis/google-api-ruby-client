@@ -9171,6 +9171,11 @@ module Google
         # @return [Google::Apis::ContentV2_1::ProductSubscriptionCost]
         attr_accessor :subscription_cost
       
+        # Optional. The list of sustainability incentive programs.
+        # Corresponds to the JSON property `sustainabilityIncentives`
+        # @return [Array<Google::Apis::ContentV2_1::ProductSustainabilityIncentive>]
+        attr_accessor :sustainability_incentives
+      
         # Required. The CLDR territory code for the item's country of sale.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
@@ -9313,6 +9318,7 @@ module Google
           @structured_description = args[:structured_description] if args.key?(:structured_description)
           @structured_title = args[:structured_title] if args.key?(:structured_title)
           @subscription_cost = args[:subscription_cost] if args.key?(:subscription_cost)
+          @sustainability_incentives = args[:sustainability_incentives] if args.key?(:sustainability_incentives)
           @target_country = args[:target_country] if args.key?(:target_country)
           @tax_category = args[:tax_category] if args.key?(:tax_category)
           @taxes = args[:taxes] if args.key?(:taxes)
@@ -10150,6 +10156,38 @@ module Google
           @amount = args[:amount] if args.key?(:amount)
           @period = args[:period] if args.key?(:period)
           @period_length = args[:period_length] if args.key?(:period_length)
+        end
+      end
+      
+      # Information regarding sustainability related incentive programs such as
+      # rebates or tax relief.
+      class ProductSustainabilityIncentive
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The fixed amount of the incentive.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :amount
+      
+        # Optional. The percentage of the sale price that the incentive is applied to.
+        # Corresponds to the JSON property `percentage`
+        # @return [Float]
+        attr_accessor :percentage
+      
+        # Required. Sustainability incentive program.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @percentage = args[:percentage] if args.key?(:percentage)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
