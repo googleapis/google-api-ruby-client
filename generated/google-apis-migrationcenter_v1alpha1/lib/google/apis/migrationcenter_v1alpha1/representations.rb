@@ -1378,6 +1378,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class XlsxOutputFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddAssetsToGroupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2927,6 +2933,8 @@ module Google
           property :csv_output_file, as: 'csvOutputFile', class: Google::Apis::MigrationcenterV1alpha1::CsvOutputFile, decorator: Google::Apis::MigrationcenterV1alpha1::CsvOutputFile::Representation
       
           property :file_size_bytes, as: 'fileSizeBytes'
+          property :xlsx_output_file, as: 'xlsxOutputFile', class: Google::Apis::MigrationcenterV1alpha1::XlsxOutputFile, decorator: Google::Apis::MigrationcenterV1alpha1::XlsxOutputFile::Representation
+      
         end
       end
       
@@ -3451,6 +3459,7 @@ module Google
       class SignedUriDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_format, as: 'fileFormat'
         end
       end
       
@@ -3756,6 +3765,14 @@ module Google
           property :esx_version, as: 'esxVersion'
           property :osid, as: 'osid'
           property :vcenter_version, as: 'vcenterVersion'
+        end
+      end
+      
+      class XlsxOutputFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signed_uri, as: 'signedUri', class: Google::Apis::MigrationcenterV1alpha1::SignedUri, decorator: Google::Apis::MigrationcenterV1alpha1::SignedUri::Representation
+      
         end
       end
     end
