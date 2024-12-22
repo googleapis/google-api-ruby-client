@@ -541,6 +541,13 @@ module Google
       class CheckResponse
         include Google::Apis::Core::Hashable
       
+        # Optional response metadata that will be emitted as dynamic metadata to be
+        # consumed by the caller of ServiceController. For compatibility with the
+        # ext_authz interface.
+        # Corresponds to the JSON property `dynamicMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :dynamic_metadata
+      
         # Returns a set of request contexts generated from the `CheckRequest`.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
@@ -562,6 +569,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dynamic_metadata = args[:dynamic_metadata] if args.key?(:dynamic_metadata)
           @headers = args[:headers] if args.key?(:headers)
           @status = args[:status] if args.key?(:status)
         end
