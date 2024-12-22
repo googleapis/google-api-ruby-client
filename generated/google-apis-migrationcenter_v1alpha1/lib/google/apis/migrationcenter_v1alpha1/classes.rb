@@ -5108,6 +5108,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :file_size_bytes
       
+        # Contains a single output file of type XLSX.
+        # Corresponds to the JSON property `xlsxOutputFile`
+        # @return [Google::Apis::MigrationcenterV1alpha1::XlsxOutputFile]
+        attr_accessor :xlsx_output_file
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5116,6 +5121,7 @@ module Google
         def update!(**args)
           @csv_output_file = args[:csv_output_file] if args.key?(:csv_output_file)
           @file_size_bytes = args[:file_size_bytes] if args.key?(:file_size_bytes)
+          @xlsx_output_file = args[:xlsx_output_file] if args.key?(:xlsx_output_file)
         end
       end
       
@@ -6848,12 +6854,18 @@ module Google
       class SignedUriDestination
         include Google::Apis::Core::Hashable
       
+        # Required. The file format to export.
+        # Corresponds to the JSON property `fileFormat`
+        # @return [String]
+        attr_accessor :file_format
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @file_format = args[:file_format] if args.key?(:file_format)
         end
       end
       
@@ -7963,6 +7975,25 @@ module Google
           @esx_version = args[:esx_version] if args.key?(:esx_version)
           @osid = args[:osid] if args.key?(:osid)
           @vcenter_version = args[:vcenter_version] if args.key?(:vcenter_version)
+        end
+      end
+      
+      # Contains a single output file of type XLSX.
+      class XlsxOutputFile
+        include Google::Apis::Core::Hashable
+      
+        # Contains a signed URI.
+        # Corresponds to the JSON property `signedUri`
+        # @return [Google::Apis::MigrationcenterV1alpha1::SignedUri]
+        attr_accessor :signed_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signed_uri = args[:signed_uri] if args.key?(:signed_uri)
         end
       end
     end
