@@ -1097,7 +1097,7 @@ module Google
         end
       end
       
-      # Metadata of GCP Access Binding Long Running Operations.
+      # Metadata of Google Cloud Access Binding Long Running Operations.
       class GcpUserAccessBindingOperationMetadata
         include Google::Apis::Core::Hashable
       
