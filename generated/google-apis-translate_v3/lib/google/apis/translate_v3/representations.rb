@@ -749,6 +749,7 @@ module Google
       class GlossaryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :contextual_translation_enabled, as: 'contextualTranslationEnabled'
           property :glossary, as: 'glossary'
           property :ignore_case, as: 'ignoreCase'
         end
@@ -1109,6 +1110,7 @@ module Google
       class TranslateTextGlossaryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :contextual_translation_enabled, as: 'contextualTranslationEnabled'
           property :glossary, as: 'glossary'
           property :ignore_case, as: 'ignoreCase'
         end
