@@ -217,6 +217,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # If specified, backup will be created from the given snapshot. If not specified,
         # there will be a new snapshot taken to initiate the backup creation. Format: `
         # projects/`project_id`/locations/`location`/volumes/`volume_id`/snapshots/`
@@ -255,6 +267,8 @@ module Google
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_volume = args[:source_volume] if args.key?(:source_volume)
           @state = args[:state] if args.key?(:state)
@@ -1956,6 +1970,18 @@ module Google
         # @return [String]
         attr_accessor :replica_zone
       
+        # Output only. Reserved for future use
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Required. Service level of the storage pool
         # Corresponds to the JSON property `serviceLevel`
         # @return [String]
@@ -2006,6 +2032,8 @@ module Google
           @network = args[:network] if args.key?(:network)
           @psa_range = args[:psa_range] if args.key?(:psa_range)
           @replica_zone = args[:replica_zone] if args.key?(:replica_zone)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_level = args[:service_level] if args.key?(:service_level)
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
