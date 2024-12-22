@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ColumnSortingOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Dashboard
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -537,6 +543,14 @@ module Google
         end
       end
       
+      class ColumnSortingOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :direction, as: 'direction'
+        end
+      end
+      
       class Dashboard
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -597,6 +611,8 @@ module Google
       
           property :min_alignment_period, as: 'minAlignmentPeriod'
           property :plot_type, as: 'plotType'
+          collection :sort, as: 'sort', class: Google::Apis::MonitoringV1::ColumnSortingOptions, decorator: Google::Apis::MonitoringV1::ColumnSortingOptions::Representation
+      
           property :target_axis, as: 'targetAxis'
           property :time_series_query, as: 'timeSeriesQuery', class: Google::Apis::MonitoringV1::TimeSeriesQuery, decorator: Google::Apis::MonitoringV1::TimeSeriesQuery::Representation
       
