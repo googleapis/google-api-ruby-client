@@ -822,6 +822,7 @@ module Google
           property :offset, as: 'offset'
           property :order_by, as: 'orderBy'
           property :page_token, as: 'pageToken'
+          property :relevance_threshold, as: 'relevanceThreshold'
           property :request_metadata, as: 'requestMetadata', class: Google::Apis::JobsV4::RequestMetadata, decorator: Google::Apis::JobsV4::RequestMetadata::Representation
       
           property :search_mode, as: 'searchMode'
