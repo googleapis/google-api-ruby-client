@@ -4623,7 +4623,7 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreInfoTypeSummary>]
         attr_accessor :file_store_info_type_summaries
       
-        # True if no files exist in this cluster. If the bucket had more files than
+        # True if no files exist in this cluster. If the file store had more files than
         # could be listed, this will be false even if no files for this cluster were
         # seen and file_extensions_seen is empty.
         # Corresponds to the JSON property `noFilesExist`
@@ -4838,8 +4838,8 @@ module Google
         # @return [String]
         attr_accessor :last_modified_time
       
-        # The location type of the bucket (region, dual-region, multi-region, etc). If
-        # dual-region, expect data_storage_locations to be populated.
+        # The location type of the file store (region, dual-region, multi-region, etc).
+        # If dual-region, expect data_storage_locations to be populated.
         # Corresponds to the JSON property `locationType`
         # @return [String]
         attr_accessor :location_type
