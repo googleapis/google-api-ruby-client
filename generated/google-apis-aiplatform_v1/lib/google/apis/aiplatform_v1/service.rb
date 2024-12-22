@@ -206,7 +206,8 @@ module Google
         
         # Updates a Dataset.
         # @param [String] name
-        #   Output only. Identifier. The resource name of the Dataset.
+        #   Output only. Identifier. The resource name of the Dataset. Format: `projects/`
+        #   project`/locations/`location`/datasets/`dataset``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset] google_cloud_aiplatform_v1_dataset_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
@@ -2252,7 +2253,8 @@ module Google
         
         # Updates a Dataset.
         # @param [String] name
-        #   Output only. Identifier. The resource name of the Dataset.
+        #   Output only. Identifier. The resource name of the Dataset. Format: `projects/`
+        #   project`/locations/`location`/datasets/`dataset``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Dataset] google_cloud_aiplatform_v1_dataset_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
@@ -18031,6 +18033,40 @@ module Google
           command.request_object = google_cloud_aiplatform_v1_query_reasoning_engine_request_object
           command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QueryReasoningEngineResponse::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1QueryReasoningEngineResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Streams queries using a reasoning engine.
+        # @param [String] name
+        #   Required. The name of the ReasoningEngine resource to use. Format: `projects/`
+        #   project`/locations/`location`/reasoningEngines/`reasoning_engine``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest] google_cloud_aiplatform_v1_stream_query_reasoning_engine_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_reasoning_engine_query(name, google_cloud_aiplatform_v1_stream_query_reasoning_engine_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:streamQuery', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_stream_query_reasoning_engine_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleApiHttpBody
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
