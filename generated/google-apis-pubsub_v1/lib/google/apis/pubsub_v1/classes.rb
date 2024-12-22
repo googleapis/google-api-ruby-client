@@ -42,7 +42,7 @@ module Google
         end
       end
       
-      # Information about an associated Analytics Hub subscription (https://cloud.
+      # Information about an associated [Analytics Hub subscription](https://cloud.
       # google.com/bigquery/docs/analytics-hub-manage-subscriptions).
       class AnalyticsHubSubscriptionInfo
         include Google::Apis::Core::Hashable
@@ -1784,7 +1784,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
-        # Information about an associated Analytics Hub subscription (https://cloud.
+        # Information about an associated [Analytics Hub subscription](https://cloud.
         # google.com/bigquery/docs/analytics-hub-manage-subscriptions).
         # Corresponds to the JSON property `analyticsHubSubscriptionInfo`
         # @return [Google::Apis::PubsubV1::AnalyticsHubSubscriptionInfo]
