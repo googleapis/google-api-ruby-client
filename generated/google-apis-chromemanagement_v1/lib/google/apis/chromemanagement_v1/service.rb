@@ -32,7 +32,7 @@ module Google
       #    Chromemanagement = Google::Apis::ChromemanagementV1 # Alias the module
       #    service = Chromemanagement::ChromeManagementService.new
       #
-      # @see http://developers.google.com/chrome/management/
+      # @see https://developers.google.com/chrome/management/
       class ChromeManagementService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://chromemanagement.$UNIVERSE_DOMAIN$/"
 
