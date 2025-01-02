@@ -112,7 +112,7 @@ module Google
           parts = method.id.split('.')
           parts.shift
           verb = ActiveSupport::Inflector.underscore(parts.pop)
-          match = method.request._ref.match(/(.*)(?i:request)/)
+          match = method.request._ref&.match(/(.*)(?i:request)/)
           return nil if match.nil?
           name = ActiveSupport::Inflector.underscore(match[1])
           return nil unless name == verb || name.start_with?(verb + '_')
