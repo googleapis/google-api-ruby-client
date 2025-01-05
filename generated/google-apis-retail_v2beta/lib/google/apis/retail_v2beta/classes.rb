@@ -3389,7 +3389,10 @@ module Google
         # be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
         # INVALID_ARGUMENT error is returned. Google Merchant Center property [color](
         # https://support.google.com/merchants/answer/6324487). Schema.org property [
-        # Product.color](https://schema.org/color).
+        # Product.color](https://schema.org/color). The colorFamilies field as a system
+        # attribute is not a required field but strongly recommended to be specified.
+        # Google Search models treat this field as more important than a custom product
+        # attribute when specified.
         # Corresponds to the JSON property `colorFamilies`
         # @return [Array<String>]
         attr_accessor :color_families
