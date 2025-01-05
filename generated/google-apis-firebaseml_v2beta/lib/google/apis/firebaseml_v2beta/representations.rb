@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1RetrievalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1RetrievalMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +371,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1VoiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LatLng
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -820,6 +832,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1RetrievalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :lat_lng, as: 'latLng', class: Google::Apis::FirebasemlV2beta::LatLng, decorator: Google::Apis::FirebasemlV2beta::LatLng::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1RetrievalMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -932,6 +953,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function_calling_config, as: 'functionCallingConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCallingConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCallingConfig::Representation
       
+          property :retrieval_config, as: 'retrievalConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RetrievalConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RetrievalConfig::Representation
+      
         end
       end
       
@@ -982,6 +1005,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :prebuilt_voice_config, as: 'prebuiltVoiceConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig::Representation
       
+        end
+      end
+      
+      class LatLng
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
         end
       end
       
