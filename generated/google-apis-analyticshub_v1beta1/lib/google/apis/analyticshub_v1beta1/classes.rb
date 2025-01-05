@@ -219,6 +219,25 @@ module Google
         end
       end
       
+      # Commercial info metadata for this subscription.
+      class CommercialInfo
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Marketplace commercial metadata for this subscription.
+        # Corresponds to the JSON property `cloudMarketplace`
+        # @return [Google::Apis::AnalyticshubV1beta1::GoogleCloudMarketplaceInfo]
+        attr_accessor :cloud_marketplace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_marketplace = args[:cloud_marketplace] if args.key?(:cloud_marketplace)
+        end
+      end
+      
       # A data exchange is a container that lets you share data. Along with the
       # descriptive information about the data exchange, it contains listings that
       # reference shared datasets.
@@ -502,6 +521,25 @@ module Google
         def update!(**args)
           @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
           @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Cloud Marketplace commercial metadata for this subscription.
+      class GoogleCloudMarketplaceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the Marketplace Order.
+        # Corresponds to the JSON property `order`
+        # @return [String]
+        attr_accessor :order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @order = args[:order] if args.key?(:order)
         end
       end
       
@@ -1075,6 +1113,11 @@ module Google
       class Subscription
         include Google::Apis::Core::Hashable
       
+        # Commercial info metadata for this subscription.
+        # Corresponds to the JSON property `commercialInfo`
+        # @return [Google::Apis::AnalyticshubV1beta1::CommercialInfo]
+        attr_accessor :commercial_info
+      
         # Output only. Timestamp when the subscription was created.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
@@ -1148,6 +1191,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @commercial_info = args[:commercial_info] if args.key?(:commercial_info)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @data_exchange = args[:data_exchange] if args.key?(:data_exchange)
           @last_modify_time = args[:last_modify_time] if args.key?(:last_modify_time)
