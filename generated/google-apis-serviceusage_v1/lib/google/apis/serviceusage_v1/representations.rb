@@ -1537,6 +1537,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :detail, as: 'detail'
           property :impact_type, as: 'impactType'
+          property :parent, as: 'parent'
         end
       end
       
