@@ -388,11 +388,11 @@ module Google
         # @param [String] job_id
         #   Required. Job ID of the job to cancel
         # @param [String] location
-        #   The geographic location of the job. You must specify the location to run the
-        #   job for the following scenarios: * If the location to run a job is not in the `
-        #   us` or the `eu` multi-regional location * If the job's location is in a single
-        #   region (for example, `us-central1`) For more information, see https://cloud.
-        #   google.com/bigquery/docs/locations#specifying_your_location.
+        #   The geographic location of the job. You must [specify the location](https://
+        #   cloud.google.com/bigquery/docs/locations#specify_locations) to run the job for
+        #   the following scenarios: * If the location to run a job is not in the `us` or
+        #   the `eu` multi-regional location * If the job's location is in a single region
+        #   (for example, `us-central1`)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -431,8 +431,9 @@ module Google
         #   parent job which has child jobs, the metadata from all child jobs will be
         #   deleted as well. Direct deletion of the metadata of child jobs is not allowed.
         # @param [String] location
-        #   The geographic location of the job. Required. See details at: https://cloud.
-        #   google.com/bigquery/docs/locations#specifying_your_location.
+        #   The geographic location of the job. Required. For more information, see how to
+        #   [specify locations](https://cloud.google.com/bigquery/docs/locations#
+        #   specify_locations).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -471,8 +472,8 @@ module Google
         #   The geographic location of the job. You must specify the location to run the
         #   job for the following scenarios: * If the location to run a job is not in the `
         #   us` or the `eu` multi-regional location * If the job's location is in a single
-        #   region (for example, `us-central1`) For more information, see https://cloud.
-        #   google.com/bigquery/docs/locations#specifying_your_location.
+        #   region (for example, `us-central1`) For more information, see how to [specify
+        #   locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -513,8 +514,8 @@ module Google
         #   The geographic location of the job. You must specify the location to run the
         #   job for the following scenarios: * If the location to run a job is not in the `
         #   us` or the `eu` multi-regional location * If the job's location is in a single
-        #   region (for example, `us-central1`) For more information, see https://cloud.
-        #   google.com/bigquery/docs/locations#specifying_your_location.
+        #   region (for example, `us-central1`) For more information, see how to [specify
+        #   locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
         # @param [Fixnum] max_results
         #   Maximum number of results to read.
         # @param [String] page_token
