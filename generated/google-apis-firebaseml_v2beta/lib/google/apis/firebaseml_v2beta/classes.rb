@@ -1521,6 +1521,34 @@ module Google
         end
       end
       
+      # Retrieval config.
+      class GoogleCloudAiplatformV1beta1RetrievalConfig
+        include Google::Apis::Core::Hashable
+      
+        # The language code of the user.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
+        # Corresponds to the JSON property `latLng`
+        # @return [Google::Apis::FirebasemlV2beta::LatLng]
+        attr_accessor :lat_lng
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @lat_lng = args[:lat_lng] if args.key?(:lat_lng)
+        end
+      end
+      
       # Metadata related to retrieval in the grounding flow.
       class GoogleCloudAiplatformV1beta1RetrievalMetadata
         include Google::Apis::Core::Hashable
@@ -1951,6 +1979,11 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionCallingConfig]
         attr_accessor :function_calling_config
       
+        # Retrieval config.
+        # Corresponds to the JSON property `retrievalConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1RetrievalConfig]
+        attr_accessor :retrieval_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1958,6 +1991,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @function_calling_config = args[:function_calling_config] if args.key?(:function_calling_config)
+          @retrieval_config = args[:retrieval_config] if args.key?(:retrieval_config)
         end
       end
       
@@ -2110,6 +2144,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @prebuilt_voice_config = args[:prebuilt_voice_config] if args.key?(:prebuilt_voice_config)
+        end
+      end
+      
+      # An object that represents a latitude/longitude pair. This is expressed as a
+      # pair of doubles to represent degrees latitude and degrees longitude. Unless
+      # specified otherwise, this object must conform to the WGS84 standard. Values
+      # must be within normalized ranges.
+      class LatLng
+        include Google::Apis::Core::Hashable
+      
+        # The latitude in degrees. It must be in the range [-90.0, +90.0].
+        # Corresponds to the JSON property `latitude`
+        # @return [Float]
+        attr_accessor :latitude
+      
+        # The longitude in degrees. It must be in the range [-180.0, +180.0].
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
         end
       end
       
