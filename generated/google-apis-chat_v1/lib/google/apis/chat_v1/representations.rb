@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCardV1Validation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCardV1Widget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1204,12 +1210,14 @@ module Google
       class GoogleAppsCardV1Action
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_widgets_are_required, as: 'allWidgetsAreRequired'
           property :function, as: 'function'
           property :interaction, as: 'interaction'
           property :load_indicator, as: 'loadIndicator'
           collection :parameters, as: 'parameters', class: Google::Apis::ChatV1::GoogleAppsCardV1ActionParameter, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ActionParameter::Representation
       
           property :persist_values, as: 'persistValues'
+          collection :required_widgets, as: 'requiredWidgets'
         end
       end
       
@@ -1644,6 +1652,8 @@ module Google
       
           property :placeholder_text, as: 'placeholderText'
           property :type, as: 'type'
+          property :validation, as: 'validation', class: Google::Apis::ChatV1::GoogleAppsCardV1Validation, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Validation::Representation
+      
           property :value, as: 'value'
         end
       end
@@ -1653,6 +1663,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_lines, as: 'maxLines'
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleAppsCardV1Validation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :character_limit, as: 'characterLimit'
+          property :input_type, as: 'inputType'
         end
       end
       

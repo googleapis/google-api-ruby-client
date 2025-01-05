@@ -1253,6 +1253,14 @@ module Google
       class GoogleAppsCardV1Action
         include Google::Apis::Core::Hashable
       
+        # Optional. If this is true, then all widgets are considered required by this
+        # action. [Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend):
+        # Corresponds to the JSON property `allWidgetsAreRequired`
+        # @return [Boolean]
+        attr_accessor :all_widgets_are_required
+        alias_method :all_widgets_are_required?, :all_widgets_are_required
+      
         # A custom function to invoke when the containing element is clicked or
         # otherwise activated. For example usage, see [Read form data](https://
         # developers.google.com/workspace/chat/read-form-data).
@@ -1305,17 +1313,27 @@ module Google
         attr_accessor :persist_values
         alias_method :persist_values?, :persist_values
       
+        # Optional. Fill this list with the names of widgets that this Action needs for
+        # a valid submission. If the widgets listed here don't have a value when this
+        # Action is invoked, the form submission is aborted. [Google Workspace Add-ons
+        # and Chat apps](https://developers.google.com/workspace/extend):
+        # Corresponds to the JSON property `requiredWidgets`
+        # @return [Array<String>]
+        attr_accessor :required_widgets
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @all_widgets_are_required = args[:all_widgets_are_required] if args.key?(:all_widgets_are_required)
           @function = args[:function] if args.key?(:function)
           @interaction = args[:interaction] if args.key?(:interaction)
           @load_indicator = args[:load_indicator] if args.key?(:load_indicator)
           @parameters = args[:parameters] if args.key?(:parameters)
           @persist_values = args[:persist_values] if args.key?(:persist_values)
+          @required_widgets = args[:required_widgets] if args.key?(:required_widgets)
         end
       end
       
@@ -2074,14 +2092,16 @@ module Google
         end
       end
       
-      # Lets users input a date, a time, or both a date and a time. For an example in
-      # Google Chat apps, see [Let a user pick a date and time](https://developers.
-      # google.com/workspace/chat/design-interactive-card-dialog#
-      # let_a_user_pick_a_date_and_time). Users can input text or use the picker to
-      # select dates and times. If users input an invalid date or time, the picker
-      # shows an error that prompts users to input the information correctly. [Google
-      # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
-      # extend):
+      # Lets users input a date, a time, or both a date and a time. Supports form
+      # submission validation. When `Action.all_widgets_are_required` is set to `true`
+      # or this widget is specified in `Action.required_widgets`, the submission
+      # action is blocked unless a value is selected. For an example in Google Chat
+      # apps, see [Let a user pick a date and time](https://developers.google.com/
+      # workspace/chat/design-interactive-card-dialog#let_a_user_pick_a_date_and_time).
+      # Users can input text or use the picker to select dates and times. If users
+      # input an invalid date or time, the picker shows an error that prompts users to
+      # input the information correctly. [Google Workspace Add-ons and Chat apps](
+      # https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1DateTimePicker
         include Google::Apis::Core::Hashable
       
@@ -2946,16 +2966,19 @@ module Google
         end
       end
       
-      # A widget that creates one or more UI items that users can select. For example,
-      # a dropdown menu or checkboxes. You can use this widget to collect data that
-      # can be predicted or enumerated. For an example in Google Chat apps, see [Add
-      # selectable UI elements](/workspace/chat/design-interactive-card-dialog#
-      # add_selectable_ui_elements). Chat apps can process the value of items that
-      # users select or input. For details about working with form inputs, see [
-      # Receive form data](https://developers.google.com/workspace/chat/read-form-data)
-      # . To collect undefined or abstract data from users, use the TextInput widget. [
-      # Google Workspace Add-ons and Chat apps](https://developers.google.com/
-      # workspace/extend):
+      # A widget that creates one or more UI items that users can select. Supports
+      # form submission validation for `dropdown` and `multiselect` menus only. When `
+      # Action.all_widgets_are_required` is set to `true` or this widget is specified
+      # in `Action.required_widgets`, the submission action is blocked unless a value
+      # is selected. For example, a dropdown menu or checkboxes. You can use this
+      # widget to collect data that can be predicted or enumerated. For an example in
+      # Google Chat apps, see [Add selectable UI elements](/workspace/chat/design-
+      # interactive-card-dialog#add_selectable_ui_elements). Chat apps can process the
+      # value of items that users select or input. For details about working with form
+      # inputs, see [Receive form data](https://developers.google.com/workspace/chat/
+      # read-form-data). To collect undefined or abstract data from users, use the
+      # TextInput widget. [Google Workspace Add-ons and Chat apps](https://developers.
+      # google.com/workspace/extend):
       class GoogleAppsCardV1SelectionInput
         include Google::Apis::Core::Hashable
       
@@ -3206,7 +3229,10 @@ module Google
       end
       
       # A field in which users can enter text. Supports suggestions and on-change
-      # actions. For an example in Google Chat apps, see [Add a field in which a user
+      # actions. Supports form submission validation. When `Action.
+      # all_widgets_are_required` is set to `true` or this widget is specified in `
+      # Action.required_widgets`, the submission action is blocked unless a value is
+      # entered. For an example in Google Chat apps, see [Add a field in which a user
       # can enter text](https://developers.google.com/workspace/chat/design-
       # interactive-card-dialog#add_a_field_in_which_a_user_can_enter_text). Chat apps
       # receive and can process the value of entered text during form input events.
@@ -3285,6 +3311,13 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Represents the necessary data for validating the widget it's attached to. [
+        # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend):
+        # Corresponds to the JSON property `validation`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Validation]
+        attr_accessor :validation
+      
         # The value entered by a user, returned as part of a form input event. For
         # details about working with form inputs, see [Receive form data](https://
         # developers.google.com/workspace/chat/read-form-data).
@@ -3306,6 +3339,7 @@ module Google
           @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
           @placeholder_text = args[:placeholder_text] if args.key?(:placeholder_text)
           @type = args[:type] if args.key?(:type)
+          @validation = args[:validation] if args.key?(:validation)
           @value = args[:value] if args.key?(:value)
         end
       end
@@ -3345,6 +3379,36 @@ module Google
         def update!(**args)
           @max_lines = args[:max_lines] if args.key?(:max_lines)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents the necessary data for validating the widget it's attached to. [
+      # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+      # workspace/extend):
+      class GoogleAppsCardV1Validation
+        include Google::Apis::Core::Hashable
+      
+        # Specify the character limit for text input widgets. Note that this is only
+        # used for text input and is ignored for other widgets. [Google Workspace Add-
+        # ons and Chat apps](https://developers.google.com/workspace/extend):
+        # Corresponds to the JSON property `characterLimit`
+        # @return [Fixnum]
+        attr_accessor :character_limit
+      
+        # Specify the type of the input widgets. [Google Workspace Add-ons and Chat apps]
+        # (https://developers.google.com/workspace/extend):
+        # Corresponds to the JSON property `inputType`
+        # @return [String]
+        attr_accessor :input_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @character_limit = args[:character_limit] if args.key?(:character_limit)
+          @input_type = args[:input_type] if args.key?(:input_type)
         end
       end
       
@@ -3406,14 +3470,16 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Columns]
         attr_accessor :columns
       
-        # Lets users input a date, a time, or both a date and a time. For an example in
-        # Google Chat apps, see [Let a user pick a date and time](https://developers.
-        # google.com/workspace/chat/design-interactive-card-dialog#
-        # let_a_user_pick_a_date_and_time). Users can input text or use the picker to
-        # select dates and times. If users input an invalid date or time, the picker
-        # shows an error that prompts users to input the information correctly. [Google
-        # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
-        # extend):
+        # Lets users input a date, a time, or both a date and a time. Supports form
+        # submission validation. When `Action.all_widgets_are_required` is set to `true`
+        # or this widget is specified in `Action.required_widgets`, the submission
+        # action is blocked unless a value is selected. For an example in Google Chat
+        # apps, see [Let a user pick a date and time](https://developers.google.com/
+        # workspace/chat/design-interactive-card-dialog#let_a_user_pick_a_date_and_time).
+        # Users can input text or use the picker to select dates and times. If users
+        # input an invalid date or time, the picker shows an error that prompts users to
+        # input the information correctly. [Google Workspace Add-ons and Chat apps](
+        # https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `dateTimePicker`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker]
         attr_accessor :date_time_picker
@@ -3470,22 +3536,28 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Image]
         attr_accessor :image
       
-        # A widget that creates one or more UI items that users can select. For example,
-        # a dropdown menu or checkboxes. You can use this widget to collect data that
-        # can be predicted or enumerated. For an example in Google Chat apps, see [Add
-        # selectable UI elements](/workspace/chat/design-interactive-card-dialog#
-        # add_selectable_ui_elements). Chat apps can process the value of items that
-        # users select or input. For details about working with form inputs, see [
-        # Receive form data](https://developers.google.com/workspace/chat/read-form-data)
-        # . To collect undefined or abstract data from users, use the TextInput widget. [
-        # Google Workspace Add-ons and Chat apps](https://developers.google.com/
-        # workspace/extend):
+        # A widget that creates one or more UI items that users can select. Supports
+        # form submission validation for `dropdown` and `multiselect` menus only. When `
+        # Action.all_widgets_are_required` is set to `true` or this widget is specified
+        # in `Action.required_widgets`, the submission action is blocked unless a value
+        # is selected. For example, a dropdown menu or checkboxes. You can use this
+        # widget to collect data that can be predicted or enumerated. For an example in
+        # Google Chat apps, see [Add selectable UI elements](/workspace/chat/design-
+        # interactive-card-dialog#add_selectable_ui_elements). Chat apps can process the
+        # value of items that users select or input. For details about working with form
+        # inputs, see [Receive form data](https://developers.google.com/workspace/chat/
+        # read-form-data). To collect undefined or abstract data from users, use the
+        # TextInput widget. [Google Workspace Add-ons and Chat apps](https://developers.
+        # google.com/workspace/extend):
         # Corresponds to the JSON property `selectionInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput]
         attr_accessor :selection_input
       
         # A field in which users can enter text. Supports suggestions and on-change
-        # actions. For an example in Google Chat apps, see [Add a field in which a user
+        # actions. Supports form submission validation. When `Action.
+        # all_widgets_are_required` is set to `true` or this widget is specified in `
+        # Action.required_widgets`, the submission action is blocked unless a value is
+        # entered. For an example in Google Chat apps, see [Add a field in which a user
         # can enter text](https://developers.google.com/workspace/chat/design-
         # interactive-card-dialog#add_a_field_in_which_a_user_can_enter_text). Chat apps
         # receive and can process the value of entered text during form input events.
@@ -3553,14 +3625,16 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ChipList]
         attr_accessor :chip_list
       
-        # Lets users input a date, a time, or both a date and a time. For an example in
-        # Google Chat apps, see [Let a user pick a date and time](https://developers.
-        # google.com/workspace/chat/design-interactive-card-dialog#
-        # let_a_user_pick_a_date_and_time). Users can input text or use the picker to
-        # select dates and times. If users input an invalid date or time, the picker
-        # shows an error that prompts users to input the information correctly. [Google
-        # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
-        # extend):
+        # Lets users input a date, a time, or both a date and a time. Supports form
+        # submission validation. When `Action.all_widgets_are_required` is set to `true`
+        # or this widget is specified in `Action.required_widgets`, the submission
+        # action is blocked unless a value is selected. For an example in Google Chat
+        # apps, see [Let a user pick a date and time](https://developers.google.com/
+        # workspace/chat/design-interactive-card-dialog#let_a_user_pick_a_date_and_time).
+        # Users can input text or use the picker to select dates and times. If users
+        # input an invalid date or time, the picker shows an error that prompts users to
+        # input the information correctly. [Google Workspace Add-ons and Chat apps](
+        # https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `dateTimePicker`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker]
         attr_accessor :date_time_picker
@@ -3583,22 +3657,28 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Image]
         attr_accessor :image
       
-        # A widget that creates one or more UI items that users can select. For example,
-        # a dropdown menu or checkboxes. You can use this widget to collect data that
-        # can be predicted or enumerated. For an example in Google Chat apps, see [Add
-        # selectable UI elements](/workspace/chat/design-interactive-card-dialog#
-        # add_selectable_ui_elements). Chat apps can process the value of items that
-        # users select or input. For details about working with form inputs, see [
-        # Receive form data](https://developers.google.com/workspace/chat/read-form-data)
-        # . To collect undefined or abstract data from users, use the TextInput widget. [
-        # Google Workspace Add-ons and Chat apps](https://developers.google.com/
-        # workspace/extend):
+        # A widget that creates one or more UI items that users can select. Supports
+        # form submission validation for `dropdown` and `multiselect` menus only. When `
+        # Action.all_widgets_are_required` is set to `true` or this widget is specified
+        # in `Action.required_widgets`, the submission action is blocked unless a value
+        # is selected. For example, a dropdown menu or checkboxes. You can use this
+        # widget to collect data that can be predicted or enumerated. For an example in
+        # Google Chat apps, see [Add selectable UI elements](/workspace/chat/design-
+        # interactive-card-dialog#add_selectable_ui_elements). Chat apps can process the
+        # value of items that users select or input. For details about working with form
+        # inputs, see [Receive form data](https://developers.google.com/workspace/chat/
+        # read-form-data). To collect undefined or abstract data from users, use the
+        # TextInput widget. [Google Workspace Add-ons and Chat apps](https://developers.
+        # google.com/workspace/extend):
         # Corresponds to the JSON property `selectionInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput]
         attr_accessor :selection_input
       
         # A field in which users can enter text. Supports suggestions and on-change
-        # actions. For an example in Google Chat apps, see [Add a field in which a user
+        # actions. Supports form submission validation. When `Action.
+        # all_widgets_are_required` is set to `true` or this widget is specified in `
+        # Action.required_widgets`, the submission action is blocked unless a value is
+        # entered. For an example in Google Chat apps, see [Add a field in which a user
         # can enter text](https://developers.google.com/workspace/chat/design-
         # interactive-card-dialog#add_a_field_in_which_a_user_can_enter_text). Chat apps
         # receive and can process the value of entered text during form input events.
@@ -5246,7 +5326,13 @@ module Google
         # Optional. Input only. Predefined space permission settings, input only when
         # creating a space. If the field is not set, a collaboration space is created.
         # After you create the space, settings are populated in the `PermissionSettings`
-        # field.
+        # field. Setting predefined permission settings supports: - In [Developer
+        # Preview](https://developers.google.com/workspace/preview), [App authentication]
+        # (https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+        # with [administrator approval](https://support.google.com/a?p=chat-app-auth)
+        # with the `chat.app.spaces` or `chat.app.spaces.create` scopes. - [User
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user)
         # Corresponds to the JSON property `predefinedPermissionSettings`
         # @return [String]
         attr_accessor :predefined_permission_settings
