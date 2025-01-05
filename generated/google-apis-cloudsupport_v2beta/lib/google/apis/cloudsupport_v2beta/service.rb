@@ -525,7 +525,10 @@ module Google
         #   Required. The name of the case for which attachments should be listed.
         # @param [Fixnum] page_size
         #   The maximum number of attachments fetched with each request. If not provided,
-        #   the default is 10. The maximum page size that will be returned is 100.
+        #   the default is 10. The maximum page size that will be returned is 100. The
+        #   size of each page can be smaller than the requested page size and can include
+        #   zero. For example, you could request 100 attachments on one page, receive 0,
+        #   and then on the next page, receive 90.
         # @param [String] page_token
         #   A token identifying the page of results to return. If unspecified, the first
         #   page is retrieved.
