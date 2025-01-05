@@ -9188,7 +9188,7 @@ module Google
         end
       end
       
-      # A single tag suggestion with it's relevance information.
+      # A single tag suggestion with its relevance information.
       class VideoSuggestionsTagSuggestion
         include Google::Apis::Core::Hashable
       
