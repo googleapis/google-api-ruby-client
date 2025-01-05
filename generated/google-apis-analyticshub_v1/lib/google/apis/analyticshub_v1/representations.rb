@@ -148,6 +148,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePubsubV1Subscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -562,6 +586,37 @@ module Google
         end
       end
       
+      class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_marketplace, as: 'cloudMarketplace', class: Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo, decorator: Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commercial_state, as: 'commercialState'
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_marketplace, as: 'cloudMarketplace', class: Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo, decorator: Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :order, as: 'order'
+        end
+      end
+      
       class GooglePubsubV1Subscription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -653,6 +708,8 @@ module Google
           property :bigquery_dataset, as: 'bigqueryDataset', class: Google::Apis::AnalyticshubV1::BigQueryDatasetSource, decorator: Google::Apis::AnalyticshubV1::BigQueryDatasetSource::Representation
       
           collection :categories, as: 'categories'
+          property :commercial_info, as: 'commercialInfo', class: Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo, decorator: Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo::Representation
+      
           property :data_provider, as: 'dataProvider', class: Google::Apis::AnalyticshubV1::DataProvider, decorator: Google::Apis::AnalyticshubV1::DataProvider::Representation
       
           property :description, as: 'description'
@@ -889,6 +946,8 @@ module Google
       class Subscription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :commercial_info, as: 'commercialInfo', class: Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo, decorator: Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo::Representation
+      
           property :creation_time, as: 'creationTime'
           property :data_exchange, as: 'dataExchange'
           property :last_modify_time, as: 'lastModifyTime'

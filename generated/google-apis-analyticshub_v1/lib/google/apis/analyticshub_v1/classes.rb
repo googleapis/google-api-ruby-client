@@ -22,7 +22,7 @@ module Google
   module Apis
     module AnalyticshubV1
       
-      # Information about an associated Analytics Hub subscription (https://cloud.
+      # Information about an associated [Analytics Hub subscription](https://cloud.
       # google.com/bigquery/docs/analytics-hub-manage-subscriptions).
       class AnalyticsHubSubscriptionInfo
         include Google::Apis::Core::Hashable
@@ -905,6 +905,92 @@ module Google
         end
       end
       
+      # Commercial info contains the information about the commercial data products
+      # associated with the listing.
+      class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the details of the Marketplace Data Product associated with the
+        # Listing.
+        # Corresponds to the JSON property `cloudMarketplace`
+        # @return [Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo]
+        attr_accessor :cloud_marketplace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_marketplace = args[:cloud_marketplace] if args.key?(:cloud_marketplace)
+        end
+      end
+      
+      # Specifies the details of the Marketplace Data Product associated with the
+      # Listing.
+      class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Commercial state of the Marketplace Data Product.
+        # Corresponds to the JSON property `commercialState`
+        # @return [String]
+        attr_accessor :commercial_state
+      
+        # Output only. Resource name of the commercial service associated with the
+        # Marketplace Data Product. e.g. example.com
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commercial_state = args[:commercial_state] if args.key?(:commercial_state)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Commercial info metadata for this subscription.
+      class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Marketplace commercial metadata for this subscription.
+        # Corresponds to the JSON property `cloudMarketplace`
+        # @return [Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo]
+        attr_accessor :cloud_marketplace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_marketplace = args[:cloud_marketplace] if args.key?(:cloud_marketplace)
+        end
+      end
+      
+      # Cloud Marketplace commercial metadata for this subscription.
+      class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the Marketplace Order.
+        # Corresponds to the JSON property `order`
+        # @return [String]
+        attr_accessor :order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @order = args[:order] if args.key?(:order)
+        end
+      end
+      
       # A subscription resource. If none of `push_config`, `bigquery_config`, or `
       # cloud_storage_config` is set, then the subscriber will pull and ack messages
       # using API methods. At most one of these fields may be set.
@@ -930,7 +1016,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
-        # Information about an associated Analytics Hub subscription (https://cloud.
+        # Information about an associated [Analytics Hub subscription](https://cloud.
         # google.com/bigquery/docs/analytics-hub-manage-subscriptions).
         # Corresponds to the JSON property `analyticsHubSubscriptionInfo`
         # @return [Google::Apis::AnalyticshubV1::AnalyticsHubSubscriptionInfo]
@@ -1270,6 +1356,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :categories
       
+        # Commercial info contains the information about the commercial data products
+        # associated with the listing.
+        # Corresponds to the JSON property `commercialInfo`
+        # @return [Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo]
+        attr_accessor :commercial_info
+      
         # Contains details of the data provider.
         # Corresponds to the JSON property `dataProvider`
         # @return [Google::Apis::AnalyticshubV1::DataProvider]
@@ -1363,6 +1455,7 @@ module Google
         def update!(**args)
           @bigquery_dataset = args[:bigquery_dataset] if args.key?(:bigquery_dataset)
           @categories = args[:categories] if args.key?(:categories)
+          @commercial_info = args[:commercial_info] if args.key?(:commercial_info)
           @data_provider = args[:data_provider] if args.key?(:data_provider)
           @description = args[:description] if args.key?(:description)
           @discovery_type = args[:discovery_type] if args.key?(:discovery_type)
@@ -2195,6 +2288,11 @@ module Google
       class Subscription
         include Google::Apis::Core::Hashable
       
+        # Commercial info metadata for this subscription.
+        # Corresponds to the JSON property `commercialInfo`
+        # @return [Google::Apis::AnalyticshubV1::GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo]
+        attr_accessor :commercial_info
+      
         # Output only. Timestamp when the subscription was created.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
@@ -2268,6 +2366,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @commercial_info = args[:commercial_info] if args.key?(:commercial_info)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @data_exchange = args[:data_exchange] if args.key?(:data_exchange)
           @last_modify_time = args[:last_modify_time] if args.key?(:last_modify_time)
