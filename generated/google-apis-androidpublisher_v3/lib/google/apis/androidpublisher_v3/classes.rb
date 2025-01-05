@@ -3946,7 +3946,7 @@ module Google
         end
       end
       
-      # Represents a custom tag specified for base plans and subscription offers.
+      # Represents a custom tag specified for a product offer.
       class OfferTag
         include Google::Apis::Core::Hashable
       
