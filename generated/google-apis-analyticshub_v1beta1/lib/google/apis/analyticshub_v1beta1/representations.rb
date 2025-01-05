@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommercialInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataExchange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,12 @@ module Google
       end
       
       class GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMarketplaceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -230,6 +242,14 @@ module Google
         end
       end
       
+      class CommercialInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_marketplace, as: 'cloudMarketplace', class: Google::Apis::AnalyticshubV1beta1::GoogleCloudMarketplaceInfo, decorator: Google::Apis::AnalyticshubV1beta1::GoogleCloudMarketplaceInfo::Representation
+      
+        end
+      end
+      
       class DataExchange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -299,6 +319,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_id, as: 'datasetId'
           property :project_id, as: 'projectId'
+        end
+      end
+      
+      class GoogleCloudMarketplaceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :order, as: 'order'
         end
       end
       
@@ -445,6 +472,8 @@ module Google
       class Subscription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :commercial_info, as: 'commercialInfo', class: Google::Apis::AnalyticshubV1beta1::CommercialInfo, decorator: Google::Apis::AnalyticshubV1beta1::CommercialInfo::Representation
+      
           property :creation_time, as: 'creationTime'
           property :data_exchange, as: 'dataExchange'
           property :last_modify_time, as: 'lastModifyTime'
