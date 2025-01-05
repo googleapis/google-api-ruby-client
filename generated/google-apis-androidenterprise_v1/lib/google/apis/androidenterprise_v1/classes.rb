@@ -663,31 +663,6 @@ module Google
         end
       end
       
-      # Response message for create enrollment token.
-      class CreateEnrollmentTokenResponse
-        include Google::Apis::Core::Hashable
-      
-        # Deprecated: Use token instead. This field will be removed in the future.
-        # Corresponds to the JSON property `enrollmentToken`
-        # @return [String]
-        attr_accessor :enrollment_token
-      
-        # A token used to enroll a device.
-        # Corresponds to the JSON property `token`
-        # @return [Google::Apis::AndroidenterpriseV1::EnrollmentToken]
-        attr_accessor :token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enrollment_token = args[:enrollment_token] if args.key?(:enrollment_token)
-          @token = args[:token] if args.key?(:token)
-        end
-      end
-      
       # A Devices resource represents a mobile device managed by the EMM and belonging
       # to a specific enterprise user.
       class Device
