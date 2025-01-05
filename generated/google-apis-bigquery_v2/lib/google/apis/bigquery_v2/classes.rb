@@ -1411,8 +1411,8 @@ module Google
         # One or more fields on which data should be clustered. Only top-level, non-
         # repeated, simple-type fields are supported. The ordering of the clustering
         # fields should be prioritized from most to least important for filtering
-        # purposes. Additional information on limitations can be found here: https://
-        # cloud.google.com/bigquery/docs/creating-clustered-tables#limitations
+        # purposes. For additional information, see [Introduction to clustered tables](
+        # https://cloud.google.com/bigquery/docs/clustered-tables#limitations).
         # Corresponds to the JSON property `fields`
         # @return [Array<String>]
         attr_accessor :fields
@@ -1819,7 +1819,7 @@ module Google
         attr_accessor :etag
       
         # Options defining open source compatible datasets living in the BigQuery
-        # catalog. Contains metadata of open source database, schema or namespace
+        # catalog. Contains metadata of open source database, schema, or namespace
         # represented by the current dataset.
         # Corresponds to the JSON property `externalCatalogDatasetOptions`
         # @return [Google::Apis::BigqueryV2::ExternalCatalogDatasetOptions]
@@ -3026,7 +3026,7 @@ module Google
       end
       
       # Options defining open source compatible datasets living in the BigQuery
-      # catalog. Contains metadata of open source database, schema or namespace
+      # catalog. Contains metadata of open source database, schema, or namespace
       # represented by the current dataset.
       class ExternalCatalogDatasetOptions
         include Google::Apis::Core::Hashable
@@ -3038,7 +3038,7 @@ module Google
         attr_accessor :default_storage_location_uri
       
         # Optional. A map of key value pairs defining the parameters and properties of
-        # the open source schema. Maximum size of 2Mib.
+        # the open source schema. Maximum size of 2MiB.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
@@ -3055,21 +3055,22 @@ module Google
       end
       
       # Metadata about open source compatible table. The fields contained in these
-      # options correspond to hive metastore's table level properties.
+      # options correspond to Hive metastore's table-level properties.
       class ExternalCatalogTableOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. The connection specifying the credentials to be used to read
-        # external storage, such as Azure Blob, Cloud Storage, or S3. The connection is
-        # needed to read the open source table from BigQuery Engine. The connection_id
-        # can have the form `..` or `projects//locations//connections/`.
+        # Optional. A connection ID that specifies the credentials to be used to read
+        # external storage, such as Azure Blob, Cloud Storage, or Amazon S3. This
+        # connection is needed to read the open source table from BigQuery. The
+        # connection_id format must be either `..` or `projects//locations//connections/`
+        # .
         # Corresponds to the JSON property `connectionId`
         # @return [String]
         attr_accessor :connection_id
       
-        # Optional. A map of key value pairs defining the parameters and properties of
-        # the open source table. Corresponds with hive meta store table parameters.
-        # Maximum size of 4Mib.
+        # Optional. A map of the key-value pairs defining the parameters and properties
+        # of the open source table. Corresponds with Hive metastore table parameters.
+        # Maximum size of 4MiB.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
@@ -5778,7 +5779,7 @@ module Google
         # google.com/bigquery/docs/reference/standard-sql/debugging-statements#assert)
         # statement. * `INSERT`: [`INSERT`](https://cloud.google.com/bigquery/docs/
         # reference/standard-sql/dml-syntax#insert_statement) statement. * `UPDATE`: [`
-        # UPDATE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-
+        # UPDATE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-
         # syntax#update_statement) statement. * `DELETE`: [`DELETE`](https://cloud.
         # google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
         # statement. * `MERGE`: [`MERGE`](https://cloud.google.com/bigquery/docs/
@@ -5787,8 +5788,8 @@ module Google
         # sql/data-definition-language#create_table_statement) statement, without `AS
         # SELECT`. * `CREATE_TABLE_AS_SELECT`: [`CREATE TABLE AS SELECT`](https://cloud.
         # google.com/bigquery/docs/reference/standard-sql/data-definition-language#
-        # query_statement) statement. * `CREATE_VIEW`: [`CREATE VIEW`](https://cloud.
-        # google.com/bigquery/docs/reference/standard-sql/data-definition-language#
+        # create_table_statement) statement. * `CREATE_VIEW`: [`CREATE VIEW`](https://
+        # cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#
         # create_view_statement) statement. * `CREATE_MODEL`: [`CREATE MODEL`](https://
         # cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-
         # create#create_model_statement) statement. * `CREATE_MATERIALIZED_VIEW`: [`
@@ -5846,7 +5847,7 @@ module Google
         # bigquery/docs/reference/standard-sql/data-definition-language#
         # alter_materialized_view_set_options_statement) statement. * `ALTER_SCHEMA`: [`
         # ALTER SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/
-        # data-definition-language#aalter_schema_set_options_statement) statement. * `
+        # data-definition-language#alter_schema_set_options_statement) statement. * `
         # SCRIPT`: [`SCRIPT`](https://cloud.google.com/bigquery/docs/reference/standard-
         # sql/procedural-language). * `TRUNCATE_TABLE`: [`TRUNCATE TABLE`](https://cloud.
         # google.com/bigquery/docs/reference/standard-sql/dml-syntax#
@@ -7552,8 +7553,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The geographic location where the job should run. See details at https://cloud.
-        # google.com/bigquery/docs/locations#specifying_your_location.
+        # The geographic location where the job should run. For more information, see
+        # how to [specify locations](https://cloud.google.com/bigquery/docs/locations#
+        # specify_locations).
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -9343,7 +9345,7 @@ module Google
         attr_accessor :expiration_time
       
         # Metadata about open source compatible table. The fields contained in these
-        # options correspond to hive metastore's table level properties.
+        # options correspond to Hive metastore's table-level properties.
         # Corresponds to the JSON property `externalCatalogTableOptions`
         # @return [Google::Apis::BigqueryV2::ExternalCatalogTableOptions]
         attr_accessor :external_catalog_table_options
@@ -10753,8 +10755,8 @@ module Google
         # When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION rows (from
         # smallest to largest) in the corresponding column are used as training data,
         # and the rest are eval data. It respects the order in Orderable data types:
-        # https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-
-        # type-properties
+        # https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#
+        # data_type_properties
         # Corresponds to the JSON property `dataSplitColumn`
         # @return [String]
         attr_accessor :data_split_column
