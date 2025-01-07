@@ -1116,7 +1116,7 @@ module Google
       class GoogleAnalyticsAdminV1betaDataRetentionSettings
         include Google::Apis::Core::Hashable
       
-        # The length of time that event-level data is retained.
+        # Required. The length of time that event-level data is retained.
         # Corresponds to the JSON property `eventDataRetention`
         # @return [String]
         attr_accessor :event_data_retention
@@ -2285,10 +2285,13 @@ module Google
         # @return [String]
         attr_accessor :latest_change_time
       
-        # Optional. The maximum number of ChangeHistoryEvent items to return. The
-        # service may return fewer than this value, even if there are additional pages.
-        # If unspecified, at most 50 items will be returned. The maximum value is 200 (
-        # higher values will be coerced to the maximum).
+        # Optional. The maximum number of ChangeHistoryEvent items to return. If
+        # unspecified, at most 50 items will be returned. The maximum value is 200 (
+        # higher values will be coerced to the maximum). Note that the service may
+        # return a page with fewer items than this value specifies (potentially even
+        # zero), and that there still may be additional pages. If you want a particular
+        # number of items, you'll need to continue requesting additional pages using `
+        # page_token` until you get the needed number.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
