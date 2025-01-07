@@ -160,7 +160,7 @@ module Google
         # The set of attributes. Each attribute's key can be up to 128 bytes long. The
         # value can be a string up to 256 bytes, a signed 64-bit integer, or the Boolean
         # values `true` and `false`. For example: "/instance_id": "my-instance" "/http/
-        # user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute": true
+        # user_agent": "" "/http/request_bytes": 300 "example.com/myattribute": true
         # Corresponds to the JSON property `attributeMap`
         # @return [Hash<String,Google::Apis::ServicecontrolV1::AttributeValue>]
         attr_accessor :attribute_map
@@ -355,13 +355,6 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :claims
       
-        # Identifies the client credential id used for authentication. credential_id is
-        # in the format of AUTH_METHOD:IDENTIFIER, e.g. "serviceaccount:XXXXX, apikey:
-        # XXXXX" where the format of the IDENTIFIER can vary for different AUTH_METHODs.
-        # Corresponds to the JSON property `credentialId`
-        # @return [String]
-        attr_accessor :credential_id
-      
         # The authorized presenter of the credential. Reflects the optional Authorized
         # Presenter (`azp`) claim within a JWT or the OAuth client id. For example, a
         # Google Cloud Platform client id looks as follows: "123456789012.apps.
@@ -387,7 +380,6 @@ module Google
           @access_levels = args[:access_levels] if args.key?(:access_levels)
           @audiences = args[:audiences] if args.key?(:audiences)
           @claims = args[:claims] if args.key?(:claims)
-          @credential_id = args[:credential_id] if args.key?(:credential_id)
           @presenter = args[:presenter] if args.key?(:presenter)
           @principal = args[:principal] if args.key?(:principal)
         end
@@ -987,7 +979,7 @@ module Google
         attr_accessor :protocol
       
         # The referer URL of the request, as defined in [HTTP/1.1 Header Field
-        # Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+        # Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
         # Corresponds to the JSON property `referer`
         # @return [String]
         attr_accessor :referer
@@ -2651,7 +2643,7 @@ module Google
         attr_accessor :protocol
       
         # The referer URL of the request, as defined in [HTTP/1.1 Header Field
-        # Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+        # Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
         # Corresponds to the JSON property `referer`
         # @return [String]
         attr_accessor :referer
