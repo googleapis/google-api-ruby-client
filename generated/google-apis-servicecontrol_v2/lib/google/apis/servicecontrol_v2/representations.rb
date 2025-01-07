@@ -278,7 +278,6 @@ module Google
           collection :access_levels, as: 'accessLevels'
           collection :audiences, as: 'audiences'
           hash :claims, as: 'claims'
-          property :credential_id, as: 'credentialId'
           property :presenter, as: 'presenter'
           property :principal, as: 'principal'
         end
