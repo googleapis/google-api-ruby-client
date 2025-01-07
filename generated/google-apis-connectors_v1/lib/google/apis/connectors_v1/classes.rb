@@ -2341,11 +2341,6 @@ module Google
         # @return [Google::Apis::ConnectorsV1::EndPoint]
         attr_accessor :endpoint
       
-        # GSUtil message includes details of the Destination Cloud Storage bucket.
-        # Corresponds to the JSON property `gsutil`
-        # @return [Google::Apis::ConnectorsV1::GsUtil]
-        attr_accessor :gsutil
-      
         # Service account needed for runtime plane to trigger IP workflow.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -2363,7 +2358,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
-          @gsutil = args[:gsutil] if args.key?(:gsutil)
           @service_account = args[:service_account] if args.key?(:service_account)
           @type = args[:type] if args.key?(:type)
         end
@@ -2995,25 +2989,6 @@ module Google
           @int_value = args[:int_value] if args.key?(:int_value)
           @key = args[:key] if args.key?(:key)
           @string_value = args[:string_value] if args.key?(:string_value)
-        end
-      end
-      
-      # GSUtil message includes details of the Destination Cloud Storage bucket.
-      class GsUtil
-        include Google::Apis::Core::Hashable
-      
-        # Required. The URI of the Cloud Storage bucket.
-        # Corresponds to the JSON property `gsutilUri`
-        # @return [String]
-        attr_accessor :gsutil_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @gsutil_uri = args[:gsutil_uri] if args.key?(:gsutil_uri)
         end
       end
       
