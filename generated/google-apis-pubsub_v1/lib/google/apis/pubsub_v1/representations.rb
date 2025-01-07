@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsMsk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AzureEventHubs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +89,12 @@ module Google
       end
       
       class CommitSchemaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfluentCloud
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -428,6 +446,31 @@ module Google
         end
       end
       
+      class AwsMsk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_role_arn, as: 'awsRoleArn'
+          property :cluster_arn, as: 'clusterArn'
+          property :gcp_service_account, as: 'gcpServiceAccount'
+          property :state, as: 'state'
+          property :topic, as: 'topic'
+        end
+      end
+      
+      class AzureEventHubs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :event_hub, as: 'eventHub'
+          property :gcp_service_account, as: 'gcpServiceAccount'
+          property :namespace, as: 'namespace'
+          property :resource_group, as: 'resourceGroup'
+          property :state, as: 'state'
+          property :subscription_id, as: 'subscriptionId'
+          property :tenant_id, as: 'tenantId'
+        end
+      end
+      
       class BigQueryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -494,6 +537,18 @@ module Google
         end
       end
       
+      class ConfluentCloud
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bootstrap_server, as: 'bootstrapServer'
+          property :cluster_id, as: 'clusterId'
+          property :gcp_service_account, as: 'gcpServiceAccount'
+          property :identity_pool_id, as: 'identityPoolId'
+          property :state, as: 'state'
+          property :topic, as: 'topic'
+        end
+      end
+      
       class CreateSnapshotRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -544,7 +599,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aws_kinesis, as: 'awsKinesis', class: Google::Apis::PubsubV1::AwsKinesis, decorator: Google::Apis::PubsubV1::AwsKinesis::Representation
       
+          property :aws_msk, as: 'awsMsk', class: Google::Apis::PubsubV1::AwsMsk, decorator: Google::Apis::PubsubV1::AwsMsk::Representation
+      
+          property :azure_event_hubs, as: 'azureEventHubs', class: Google::Apis::PubsubV1::AzureEventHubs, decorator: Google::Apis::PubsubV1::AzureEventHubs::Representation
+      
           property :cloud_storage, as: 'cloudStorage', class: Google::Apis::PubsubV1::CloudStorage, decorator: Google::Apis::PubsubV1::CloudStorage::Representation
+      
+          property :confluent_cloud, as: 'confluentCloud', class: Google::Apis::PubsubV1::ConfluentCloud, decorator: Google::Apis::PubsubV1::ConfluentCloud::Representation
       
           property :platform_logs_settings, as: 'platformLogsSettings', class: Google::Apis::PubsubV1::PlatformLogsSettings, decorator: Google::Apis::PubsubV1::PlatformLogsSettings::Representation
       
