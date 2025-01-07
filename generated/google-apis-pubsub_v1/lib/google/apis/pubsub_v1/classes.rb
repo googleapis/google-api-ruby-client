@@ -168,6 +168,121 @@ module Google
         end
       end
       
+      # Ingestion settings for Amazon MSK.
+      class AwsMsk
+        include Google::Apis::Core::Hashable
+      
+        # Required. AWS role ARN to be used for Federated Identity authentication with
+        # Amazon MSK. Check the Pub/Sub docs for how to set up this role and the
+        # required permissions that need to be attached to it.
+        # Corresponds to the JSON property `awsRoleArn`
+        # @return [String]
+        attr_accessor :aws_role_arn
+      
+        # Required. The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+        # Corresponds to the JSON property `clusterArn`
+        # @return [String]
+        attr_accessor :cluster_arn
+      
+        # Required. The GCP service account to be used for Federated Identity
+        # authentication with Amazon MSK (via a `AssumeRoleWithWebIdentity` call for the
+        # provided role). The `aws_role_arn` must be set up with `accounts.google.com:
+        # sub` equals to this service account number.
+        # Corresponds to the JSON property `gcpServiceAccount`
+        # @return [String]
+        attr_accessor :gcp_service_account
+      
+        # Output only. An output-only field that indicates the state of the Amazon MSK
+        # ingestion source.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. The name of the topic in the Amazon MSK cluster that Pub/Sub will
+        # import from.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_role_arn = args[:aws_role_arn] if args.key?(:aws_role_arn)
+          @cluster_arn = args[:cluster_arn] if args.key?(:cluster_arn)
+          @gcp_service_account = args[:gcp_service_account] if args.key?(:gcp_service_account)
+          @state = args[:state] if args.key?(:state)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # Ingestion settings for Azure Event Hubs.
+      class AzureEventHubs
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The client id of the Azure application that is being used to
+        # authenticate Pub/Sub.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Optional. The name of the Event Hub.
+        # Corresponds to the JSON property `eventHub`
+        # @return [String]
+        attr_accessor :event_hub
+      
+        # Optional. The GCP service account to be used for Federated Identity
+        # authentication.
+        # Corresponds to the JSON property `gcpServiceAccount`
+        # @return [String]
+        attr_accessor :gcp_service_account
+      
+        # Optional. The name of the Event Hubs namespace.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        # Optional. Name of the resource group within the azure subscription.
+        # Corresponds to the JSON property `resourceGroup`
+        # @return [String]
+        attr_accessor :resource_group
+      
+        # Output only. An output-only field that indicates the state of the Event Hubs
+        # ingestion source.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. The Azure subscription id.
+        # Corresponds to the JSON property `subscriptionId`
+        # @return [String]
+        attr_accessor :subscription_id
+      
+        # Optional. The tenant id of the Azure application that is being used to
+        # authenticate Pub/Sub.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @event_hub = args[:event_hub] if args.key?(:event_hub)
+          @gcp_service_account = args[:gcp_service_account] if args.key?(:gcp_service_account)
+          @namespace = args[:namespace] if args.key?(:namespace)
+          @resource_group = args[:resource_group] if args.key?(:resource_group)
+          @state = args[:state] if args.key?(:state)
+          @subscription_id = args[:subscription_id] if args.key?(:subscription_id)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+        end
+      end
+      
       # Configuration for a BigQuery subscription.
       class BigQueryConfig
         include Google::Apis::Core::Hashable
@@ -532,6 +647,61 @@ module Google
         end
       end
       
+      # Ingestion settings for Confluent Cloud.
+      class ConfluentCloud
+        include Google::Apis::Core::Hashable
+      
+        # Required. The address of the bootstrap server. The format is url:port.
+        # Corresponds to the JSON property `bootstrapServer`
+        # @return [String]
+        attr_accessor :bootstrap_server
+      
+        # Required. The id of the cluster.
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # Required. The GCP service account to be used for Federated Identity
+        # authentication with `identity_pool_id`.
+        # Corresponds to the JSON property `gcpServiceAccount`
+        # @return [String]
+        attr_accessor :gcp_service_account
+      
+        # Required. The id of the identity pool to be used for Federated Identity
+        # authentication with Confluent Cloud. See https://docs.confluent.io/cloud/
+        # current/security/authenticate/workload-identities/identity-providers/oauth/
+        # identity-pools.html#add-oauth-identity-pools.
+        # Corresponds to the JSON property `identityPoolId`
+        # @return [String]
+        attr_accessor :identity_pool_id
+      
+        # Output only. An output-only field that indicates the state of the Confluent
+        # Cloud ingestion source.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. The name of the topic in the Confluent Cloud cluster that Pub/Sub
+        # will import from.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bootstrap_server = args[:bootstrap_server] if args.key?(:bootstrap_server)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @gcp_service_account = args[:gcp_service_account] if args.key?(:gcp_service_account)
+          @identity_pool_id = args[:identity_pool_id] if args.key?(:identity_pool_id)
+          @state = args[:state] if args.key?(:state)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
       # Request for the `CreateSnapshot` method.
       class CreateSnapshotRequest
         include Google::Apis::Core::Hashable
@@ -720,10 +890,25 @@ module Google
         # @return [Google::Apis::PubsubV1::AwsKinesis]
         attr_accessor :aws_kinesis
       
+        # Ingestion settings for Amazon MSK.
+        # Corresponds to the JSON property `awsMsk`
+        # @return [Google::Apis::PubsubV1::AwsMsk]
+        attr_accessor :aws_msk
+      
+        # Ingestion settings for Azure Event Hubs.
+        # Corresponds to the JSON property `azureEventHubs`
+        # @return [Google::Apis::PubsubV1::AzureEventHubs]
+        attr_accessor :azure_event_hubs
+      
         # Ingestion settings for Cloud Storage.
         # Corresponds to the JSON property `cloudStorage`
         # @return [Google::Apis::PubsubV1::CloudStorage]
         attr_accessor :cloud_storage
+      
+        # Ingestion settings for Confluent Cloud.
+        # Corresponds to the JSON property `confluentCloud`
+        # @return [Google::Apis::PubsubV1::ConfluentCloud]
+        attr_accessor :confluent_cloud
       
         # Settings for Platform Logs produced by Pub/Sub.
         # Corresponds to the JSON property `platformLogsSettings`
@@ -737,7 +922,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aws_kinesis = args[:aws_kinesis] if args.key?(:aws_kinesis)
+          @aws_msk = args[:aws_msk] if args.key?(:aws_msk)
+          @azure_event_hubs = args[:azure_event_hubs] if args.key?(:azure_event_hubs)
           @cloud_storage = args[:cloud_storage] if args.key?(:cloud_storage)
+          @confluent_cloud = args[:confluent_cloud] if args.key?(:confluent_cloud)
           @platform_logs_settings = args[:platform_logs_settings] if args.key?(:platform_logs_settings)
         end
       end
