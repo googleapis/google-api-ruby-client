@@ -326,13 +326,6 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :claims
       
-        # Identifies the client credential id used for authentication. credential_id is
-        # in the format of AUTH_METHOD:IDENTIFIER, e.g. "serviceaccount:XXXXX, apikey:
-        # XXXXX" where the format of the IDENTIFIER can vary for different AUTH_METHODs.
-        # Corresponds to the JSON property `credentialId`
-        # @return [String]
-        attr_accessor :credential_id
-      
         # The authorized presenter of the credential. Reflects the optional Authorized
         # Presenter (`azp`) claim within a JWT or the OAuth client id. For example, a
         # Google Cloud Platform client id looks as follows: "123456789012.apps.
@@ -358,7 +351,6 @@ module Google
           @access_levels = args[:access_levels] if args.key?(:access_levels)
           @audiences = args[:audiences] if args.key?(:audiences)
           @claims = args[:claims] if args.key?(:claims)
-          @credential_id = args[:credential_id] if args.key?(:credential_id)
           @presenter = args[:presenter] if args.key?(:presenter)
           @principal = args[:principal] if args.key?(:principal)
         end
@@ -1403,7 +1395,7 @@ module Google
         attr_accessor :protocol
       
         # The referer URL of the request, as defined in [HTTP/1.1 Header Field
-        # Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+        # Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
         # Corresponds to the JSON property `referer`
         # @return [String]
         attr_accessor :referer
