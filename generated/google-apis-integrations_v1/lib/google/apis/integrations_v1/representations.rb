@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnterpriseCrmEventbusProtoCloudLoggingDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnterpriseCrmEventbusProtoCloudSchedulerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +125,12 @@ module Google
       end
       
       class EnterpriseCrmEventbusProtoConditionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnterpriseCrmEventbusProtoConditionalFailurePolicies
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -616,6 +628,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -718,6 +736,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -730,18 +754,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EnterpriseCrmLoggingGwsFieldLimits
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EnterpriseCrmLoggingGwsSanitizeOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudConnectorsV1AuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -749,6 +761,12 @@ module Google
       end
       
       class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -856,6 +874,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudConnectorsV1EventingStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -911,6 +935,24 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaAccessToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaApiTriggerResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaAssertion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaAssertionResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -988,6 +1030,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaConditionalFailurePolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1060,6 +1108,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaDownloadTemplateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1096,6 +1156,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaExecution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1103,6 +1175,12 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaExecutionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaExecutionReplayInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1132,6 +1210,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaGenerateTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1145,6 +1235,18 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaGetClientResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaImportTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaImportTemplateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1187,6 +1289,12 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaIntegrationVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1288,6 +1396,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaListTemplatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaListTestCasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaMockConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaNextTask
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1366,6 +1498,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaReplayExecutionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaReplayExecutionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaResolveSuspensionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1402,6 +1546,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaSearchTemplatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaSerializedFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1421,6 +1571,12 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaSfdcInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaShareTemplateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1486,6 +1642,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaTaskConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1493,6 +1655,30 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaTaskExecutionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaTemplateBundle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaTemplateComponent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaTestCase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1510,13 +1696,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaTestTaskConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaTriggerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaTriggerConfigVariables
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUnshareTemplateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1529,6 +1733,48 @@ module Google
       end
       
       class GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUploadTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUploadTemplateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUploadTestCaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUploadTestCaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUseTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUseTemplateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1680,6 +1926,14 @@ module Google
         end
       end
       
+      class EnterpriseCrmEventbusProtoCloudLoggingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_logging_severity, as: 'cloudLoggingSeverity'
+          property :enable_cloud_logging, as: 'enableCloudLogging'
+        end
+      end
+      
       class EnterpriseCrmEventbusProtoCloudSchedulerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1717,11 +1971,22 @@ module Google
         end
       end
       
+      class EnterpriseCrmEventbusProtoConditionalFailurePolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_failure_policy, as: 'defaultFailurePolicy', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoFailurePolicy, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoFailurePolicy::Representation
+      
+          collection :failure_policies, as: 'failurePolicies', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoFailurePolicy, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoFailurePolicy::Representation
+      
+        end
+      end
+      
       class EnterpriseCrmEventbusProtoConnectorsConnection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_name, as: 'connectionName'
           property :connector_version, as: 'connectorVersion'
+          property :host, as: 'host'
           property :service_name, as: 'serviceName'
         end
       end
@@ -1802,6 +2067,7 @@ module Google
       class EnterpriseCrmEventbusProtoEventExecutionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_reason, as: 'cancelReason'
           collection :event_attempt_stats, as: 'eventAttemptStats', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats::Representation
       
           collection :event_execution_snapshot, as: 'eventExecutionSnapshot', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoEventExecutionSnapshot, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoEventExecutionSnapshot::Representation
@@ -1828,6 +2094,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :checkpoint_task_number, as: 'checkpointTaskNumber'
+          property :client_id, as: 'clientId'
           collection :condition_results, as: 'conditionResults', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoConditionResult, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoConditionResult::Representation
       
           property :diff_params, as: 'diffParams', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoEventParameters, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoEventParameters::Representation
@@ -1843,6 +2110,7 @@ module Google
           collection :task_execution_details, as: 'taskExecutionDetails', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoTaskExecutionDetails, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoTaskExecutionDetails::Representation
       
           property :task_name, as: 'taskName'
+          property :workflow_name, as: 'workflowName'
         end
       end
       
@@ -1879,9 +2147,11 @@ module Google
       class EnterpriseCrmEventbusProtoExternalTraffic
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_internal_ip, as: 'enableInternalIp'
           property :gcp_project_id, as: 'gcpProjectId'
           property :gcp_project_number, as: 'gcpProjectNumber'
           property :location, as: 'location'
+          property :retry_request_for_quota, as: 'retryRequestForQuota'
           property :source, as: 'source'
         end
       end
@@ -1891,6 +2161,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :interval_in_seconds, :numeric_string => true, as: 'intervalInSeconds'
           property :max_num_retries, as: 'maxNumRetries'
+          property :retry_condition, as: 'retryCondition'
           property :retry_strategy, as: 'retryStrategy'
         end
       end
@@ -1996,12 +2267,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :log_field_name, as: 'logFieldName'
-          property :sanitize_options, as: 'sanitizeOptions', class: Google::Apis::IntegrationsV1::EnterpriseCrmLoggingGwsSanitizeOptions, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmLoggingGwsSanitizeOptions::Representation
-      
           property :seed_period, as: 'seedPeriod'
           property :seed_scope, as: 'seedScope'
-          property :shortening_limits, as: 'shorteningLimits', class: Google::Apis::IntegrationsV1::EnterpriseCrmLoggingGwsFieldLimits, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmLoggingGwsFieldLimits::Representation
-      
         end
       end
       
@@ -2576,6 +2843,7 @@ module Google
       class EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_reason, as: 'cancelReason'
           collection :event_attempt_stats, as: 'eventAttemptStats', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats::Representation
       
           collection :event_execution_snapshot, as: 'eventExecutionSnapshot', class: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot::Representation
@@ -2594,6 +2862,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_id, as: 'clientId'
+          property :cloud_logging_details, as: 'cloudLoggingDetails', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoCloudLoggingDetails, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoCloudLoggingDetails::Representation
+      
           property :create_time, :numeric_string => true, as: 'createTime'
           property :error_code, as: 'errorCode', class: Google::Apis::IntegrationsV1::CrmlogErrorCode, decorator: Google::Apis::IntegrationsV1::CrmlogErrorCode::Representation
       
@@ -2604,9 +2874,12 @@ module Google
           property :event_execution_info_id, as: 'eventExecutionInfoId'
           property :execution_trace_info, as: 'executionTraceInfo', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoExecutionTraceInfo, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoExecutionTraceInfo::Representation
       
+          property :integration_version_user_label, as: 'integrationVersionUserLabel'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
           property :post_method, as: 'postMethod'
           property :product, as: 'product'
+          property :replay_info, as: 'replayInfo', class: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo::Representation
+      
           property :request_id, as: 'requestId'
           property :request_params, as: 'requestParams', class: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoEventParameters, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoEventParameters::Representation
       
@@ -2618,6 +2891,16 @@ module Google
           property :workflow_id, as: 'workflowId'
           property :workflow_name, as: 'workflowName'
           property :workflow_retry_backoff_interval_seconds, :numeric_string => true, as: 'workflowRetryBackoffIntervalSeconds'
+        end
+      end
+      
+      class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :original_execution_info_id, as: 'originalExecutionInfoId'
+          property :replay_mode, as: 'replayMode'
+          property :replay_reason, as: 'replayReason'
+          collection :replayed_execution_info_ids, as: 'replayedExecutionInfoIds'
         end
       end
       
@@ -2787,6 +3070,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :alert_configs, as: 'alertConfigs', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoTaskAlertConfig, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoTaskAlertConfig::Representation
       
+          property :conditional_failure_policies, as: 'conditionalFailurePolicies', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoConditionalFailurePolicies, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoConditionalFailurePolicies::Representation
+      
           property :create_time, as: 'createTime'
           property :creator_email, as: 'creatorEmail'
           property :description, as: 'description'
@@ -2851,8 +3136,12 @@ module Google
           property :description, as: 'description'
           collection :enabled_clients, as: 'enabledClients'
           property :error_catcher_id, as: 'errorCatcherId'
+          property :input_variables, as: 'inputVariables', class: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables::Representation
+      
           property :label, as: 'label'
           property :next_tasks_execution_policy, as: 'nextTasksExecutionPolicy'
+          property :output_variables, as: 'outputVariables', class: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables::Representation
+      
           property :pause_workflow_executions, as: 'pauseWorkflowExecutions'
           property :position, as: 'position', class: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoCoordinate, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoCoordinate::Representation
       
@@ -2865,6 +3154,13 @@ module Google
           property :trigger_name, as: 'triggerName'
           property :trigger_number, as: 'triggerNumber'
           property :trigger_type, as: 'triggerType'
+        end
+      end
+      
+      class EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
         end
       end
       
@@ -2902,27 +3198,6 @@ module Google
         end
       end
       
-      class EnterpriseCrmLoggingGwsFieldLimits
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_action, as: 'logAction'
-          collection :log_type, as: 'logType'
-          property :max_array_size, as: 'maxArraySize'
-          property :max_string_length, as: 'maxStringLength'
-          property :shortener_type, as: 'shortenerType'
-        end
-      end
-      
-      class EnterpriseCrmLoggingGwsSanitizeOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_already_sanitized, as: 'isAlreadySanitized'
-          collection :log_type, as: 'logType'
-          property :privacy, as: 'privacy'
-          property :sanitize_type, as: 'sanitizeType'
-        end
-      end
-      
       class GoogleCloudConnectorsV1AuthConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2931,6 +3206,8 @@ module Google
           property :auth_key, as: 'authKey'
           property :auth_type, as: 'authType'
           property :oauth2_auth_code_flow, as: 'oauth2AuthCodeFlow', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow::Representation
+      
+          property :oauth2_auth_code_flow_google_managed, as: 'oauth2AuthCodeFlowGoogleManaged', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged::Representation
       
           property :oauth2_client_credentials, as: 'oauth2ClientCredentials', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials::Representation
       
@@ -2953,6 +3230,15 @@ module Google
       
           property :enable_pkce, as: 'enablePkce'
           property :pkce_verifier, as: 'pkceVerifier'
+          property :redirect_uri, as: 'redirectUri'
+          collection :scopes, as: 'scopes'
+        end
+      end
+      
+      class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_code, as: 'authCode'
           property :redirect_uri, as: 'redirectUri'
           collection :scopes, as: 'scopes'
         end
@@ -3031,8 +3317,10 @@ module Google
       class GoogleCloudConnectorsV1Connection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_operations_enabled, as: 'asyncOperationsEnabled'
           property :auth_config, as: 'authConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig::Representation
       
+          property :auth_override_enabled, as: 'authOverrideEnabled'
           property :billing_config, as: 'billingConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1BillingConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1BillingConfig::Representation
       
           collection :config_variables, as: 'configVariables', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ConfigVariable, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ConfigVariable::Representation
@@ -3052,6 +3340,7 @@ module Google
           property :eventing_enablement_type, as: 'eventingEnablementType'
           property :eventing_runtime_data, as: 'eventingRuntimeData', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeData, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeData::Representation
       
+          property :host, as: 'host'
           property :image_location, as: 'imageLocation'
           property :is_trusted_tester, as: 'isTrustedTester'
           hash :labels, as: 'labels'
@@ -3070,6 +3359,7 @@ module Google
       
           property :subscription_type, as: 'subscriptionType'
           property :suspended, as: 'suspended'
+          property :tls_service_directory, as: 'tlsServiceDirectory'
           property :update_time, as: 'updateTime'
         end
       end
@@ -3088,15 +3378,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_ratelimit_window_seconds, :numeric_string => true, as: 'connectionRatelimitWindowSeconds'
           property :deployment_model, as: 'deploymentModel'
+          property :deployment_model_migration_state, as: 'deploymentModelMigrationState'
           property :hpa_config, as: 'hpaConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1HpaConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1HpaConfig::Representation
       
           property :internalclient_ratelimit_threshold, :numeric_string => true, as: 'internalclientRatelimitThreshold'
+          property :max_instance_request_concurrency, as: 'maxInstanceRequestConcurrency'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
           property :resource_limits, as: 'resourceLimits', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ResourceLimits, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ResourceLimits::Representation
       
           property :resource_requests, as: 'resourceRequests', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ResourceRequests, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ResourceRequests::Representation
       
           property :shared_deployment, as: 'sharedDeployment'
+          property :tls_migration_state, as: 'tlsMigrationState'
         end
       end
       
@@ -3164,6 +3457,8 @@ module Google
       
           property :webhook_data, as: 'webhookData', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeDataWebhookData, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeDataWebhookData::Representation
       
+          property :webhook_subscriptions, as: 'webhookSubscriptions', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions::Representation
+      
         end
       end
       
@@ -3177,6 +3472,14 @@ module Google
           property :name, as: 'name'
           property :next_refresh_time, as: 'nextRefreshTime'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :webhook_data, as: 'webhookData', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeDataWebhookData, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeDataWebhookData::Representation
+      
         end
       end
       
@@ -3208,6 +3511,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :level, as: 'level'
         end
       end
       
@@ -3274,6 +3578,37 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaApiTriggerResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration_resource, as: 'integrationResource'
+          collection :trigger_id, as: 'triggerId'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaAssertion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assertion_strategy, as: 'assertionStrategy'
+          property :condition, as: 'condition'
+          property :parameter, as: 'parameter', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaEventParameter, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaEventParameter::Representation
+      
+          property :retry_count, as: 'retryCount'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaAssertionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assertion, as: 'assertion', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAssertion, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAssertion::Representation
+      
+          property :failure_message, as: 'failureMessage'
+          property :status, as: 'status'
+          property :task_name, as: 'taskName'
+          property :task_number, as: 'taskNumber'
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaAttemptStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3324,6 +3659,7 @@ module Google
       class GoogleCloudIntegrationsV1alphaCancelExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_reason, as: 'cancelReason'
         end
       end
       
@@ -3368,6 +3704,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :enable_internal_ip, as: 'enableInternalIp'
           property :enable_variable_masking, as: 'enableVariableMasking'
           property :id, as: 'id'
           property :is_gmek, as: 'isGmek'
@@ -3404,6 +3741,16 @@ module Google
           property :error_message, as: 'errorMessage'
           property :location, as: 'location'
           property :service_account_email, as: 'serviceAccountEmail'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaConditionalFailurePolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_failure_policy, as: 'defaultFailurePolicy', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaFailurePolicy, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaFailurePolicy::Representation
+      
+          collection :failure_policies, as: 'failurePolicies', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaFailurePolicy, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaFailurePolicy::Representation
+      
         end
       end
       
@@ -3514,6 +3861,20 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaDownloadTemplateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3581,6 +3942,25 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :input_parameters, as: 'inputParameters', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assertion_results, as: 'assertionResults', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAssertionResult, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAssertionResult::Representation
+      
+          property :execution_id, as: 'executionId'
+          hash :output_parameters, as: 'outputParameters'
+          property :test_execution_state, as: 'testExecutionState'
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaExecution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3596,6 +3976,8 @@ module Google
           property :execution_method, as: 'executionMethod'
           property :integration_version_state, as: 'integrationVersionState'
           property :name, as: 'name'
+          property :replay_info, as: 'replayInfo', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecutionReplayInfo, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecutionReplayInfo::Representation
+      
           hash :request_parameters, as: 'requestParameters', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType::Representation
       
           collection :request_params, as: 'requestParams', class: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoParameterEntry, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoParameterEntry::Representation
@@ -3619,6 +4001,16 @@ module Google
           collection :execution_snapshots, as: 'executionSnapshots', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecutionSnapshot, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecutionSnapshot::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaExecutionReplayInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :original_execution_info_id, as: 'originalExecutionInfoId'
+          property :replay_mode, as: 'replayMode'
+          property :replay_reason, as: 'replayReason'
+          collection :replayed_execution_info_ids, as: 'replayedExecutionInfoIds'
         end
       end
       
@@ -3652,6 +4044,7 @@ module Google
       class GoogleCloudIntegrationsV1alphaFailurePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition'
           property :interval_time, as: 'intervalTime'
           property :max_retries, as: 'maxRetries'
           property :retry_strategy, as: 'retryStrategy'
@@ -3665,6 +4058,22 @@ module Google
           property :integration_version, as: 'integrationVersion', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :api_trigger_resources, as: 'apiTriggerResources', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaApiTriggerResource, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaApiTriggerResource::Representation
+      
+          property :file_format, as: 'fileFormat'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :open_api_spec, as: 'openApiSpec'
         end
       end
       
@@ -3687,6 +4096,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client, as: 'client', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaClientConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaClientConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaImportTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration, as: 'integration'
+          property :integration_region, as: 'integrationRegion'
+          hash :sub_integrations, as: 'subIntegrations', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaImportTemplateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration_version, as: 'integrationVersion', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion::Representation
+      
+          collection :sub_integration_versions, as: 'subIntegrationVersions', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion::Representation
       
         end
       end
@@ -3752,6 +4181,7 @@ module Google
           property :data_type, as: 'dataType'
           property :default_value, as: 'defaultValue', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType::Representation
       
+          property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :input_output_type, as: 'inputOutputType'
           property :is_transient, as: 'isTransient'
@@ -3802,6 +4232,15 @@ module Google
       
           property :update_time, as: 'updateTime'
           property :user_label, as: 'userLabel'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration_version, as: 'integrationVersion', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion::Representation
+      
+          property :key, as: 'key'
         end
       end
       
@@ -3941,6 +4380,43 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :suspensions, as: 'suspensions', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSuspension, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSuspension::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaListTemplatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :templates, as: 'templates', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :executions, as: 'executions', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecution, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecution::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaListTestCasesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :test_cases, as: 'testCases', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaMockConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failed_executions, :numeric_string => true, as: 'failedExecutions'
+          property :mock_strategy, as: 'mockStrategy'
+          collection :parameters, as: 'parameters', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaEventParameter, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaEventParameter::Representation
       
         end
       end
@@ -4088,6 +4564,22 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaReplayExecutionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :replay_reason, as: 'replayReason'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaReplayExecutionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_id, as: 'executionId'
+          hash :output_parameters, as: 'outputParameters'
+          property :replayed_execution_id, as: 'replayedExecutionId'
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaResolveSuspensionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4143,6 +4635,15 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaSearchTemplatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :templates, as: 'templates', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate::Representation
+      
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaSerializedFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4186,6 +4687,13 @@ module Google
           property :service_authority, as: 'serviceAuthority'
           property :sfdc_org_id, as: 'sfdcOrgId'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaShareTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_names, as: 'resourceNames'
         end
       end
       
@@ -4278,9 +4786,17 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaTaskConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :conditional_failure_policies, as: 'conditionalFailurePolicies', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaConditionalFailurePolicies, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaConditionalFailurePolicies::Representation
+      
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :error_catcher_id, as: 'errorCatcherId'
@@ -4316,6 +4832,70 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author, as: 'author'
+          collection :categories, as: 'categories'
+          collection :components, as: 'components', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplateComponent, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplateComponent::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :doc_link, as: 'docLink'
+          property :last_used_time, as: 'lastUsedTime'
+          property :name, as: 'name'
+          collection :shared_with, as: 'sharedWith'
+          collection :tags, as: 'tags'
+          property :template_bundle, as: 'templateBundle', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplateBundle, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplateBundle::Representation
+      
+          property :update_time, as: 'updateTime'
+          property :usage_count, :numeric_string => true, as: 'usageCount'
+          property :usage_info, as: 'usageInfo'
+          property :visibility, as: 'visibility'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaTemplateBundle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration_version_template, as: 'integrationVersionTemplate', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate::Representation
+      
+          collection :sub_integration_version_templates, as: 'subIntegrationVersionTemplates', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaTemplateComponent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaTestCase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :creator_email, as: 'creatorEmail'
+          property :database_persistence_policy, as: 'databasePersistencePolicy'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :last_modifier_email, as: 'lastModifierEmail'
+          property :lock_holder_email, as: 'lockHolderEmail'
+          property :name, as: 'name'
+          collection :test_input_parameters, as: 'testInputParameters', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationParameter, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationParameter::Representation
+      
+          collection :test_task_configs, as: 'testTaskConfigs', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestTaskConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestTaskConfig::Representation
+      
+          property :trigger_config, as: 'triggerConfig', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTriggerConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTriggerConfig::Representation
+      
+          property :trigger_id, as: 'triggerId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaTestIntegrationsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4347,6 +4927,20 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaTestTaskConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assertions, as: 'assertions', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAssertion, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAssertion::Representation
+      
+          property :mock_config, as: 'mockConfig', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaMockConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaMockConfig::Representation
+      
+          property :task, as: 'task'
+          property :task_config, as: 'taskConfig', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTaskConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTaskConfig::Representation
+      
+          property :task_number, as: 'taskNumber'
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaTriggerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4356,8 +4950,12 @@ module Google
       
           property :description, as: 'description'
           property :error_catcher_id, as: 'errorCatcherId'
+          property :input_variables, as: 'inputVariables', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTriggerConfigVariables, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTriggerConfigVariables::Representation
+      
           property :label, as: 'label'
           property :next_tasks_execution_policy, as: 'nextTasksExecutionPolicy'
+          property :output_variables, as: 'outputVariables', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTriggerConfigVariables, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTriggerConfigVariables::Representation
+      
           property :position, as: 'position', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCoordinate, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCoordinate::Representation
       
           hash :properties, as: 'properties'
@@ -4370,9 +4968,23 @@ module Google
         end
       end
       
+      class GoogleCloudIntegrationsV1alphaTriggerConfigVariables
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+        end
+      end
+      
       class GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUnshareTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_names, as: 'resourceNames'
         end
       end
       
@@ -4388,6 +5000,67 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :integration_version, as: 'integrationVersion', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUploadTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :file_format, as: 'fileFormat'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUploadTemplateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :template, as: 'template', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUploadTestCaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :file_format, as: 'fileFormat'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUploadTestCaseResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :test_case, as: 'testCase', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUseTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration_details, as: 'integrationDetails', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails::Representation
+      
+          property :integration_region, as: 'integrationRegion'
+          hash :sub_integrations, as: 'subIntegrations', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails::Representation
+      
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration, as: 'integration'
+          property :integration_description, as: 'integrationDescription'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaUseTemplateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration_version, as: 'integrationVersion', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion::Representation
+      
+          collection :sub_integration_versions, as: 'subIntegrationVersions', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion::Representation
       
         end
       end

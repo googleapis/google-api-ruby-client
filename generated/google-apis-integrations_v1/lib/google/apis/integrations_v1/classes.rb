@@ -461,6 +461,37 @@ module Google
         end
       end
       
+      # Cloud Logging details, selected by the user for the integration version (
+      # workflow). This message field will be also used in ExecutionInfo, to indicate
+      # the CloudLoggingDetails config at the time of workflow (integration version)
+      # execution, since this field value can be changed for an unpublished workflow.
+      class EnterpriseCrmEventbusProtoCloudLoggingDetails
+        include Google::Apis::Core::Hashable
+      
+        # Severity selected by the customer for the logs to be sent to Cloud Logging,
+        # for the integration version getting executed.
+        # Corresponds to the JSON property `cloudLoggingSeverity`
+        # @return [String]
+        attr_accessor :cloud_logging_severity
+      
+        # Status of whether Cloud Logging is enabled or not for the integration version
+        # getting executed.
+        # Corresponds to the JSON property `enableCloudLogging`
+        # @return [Boolean]
+        attr_accessor :enable_cloud_logging
+        alias_method :enable_cloud_logging?, :enable_cloud_logging
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_logging_severity = args[:cloud_logging_severity] if args.key?(:cloud_logging_severity)
+          @enable_cloud_logging = args[:enable_cloud_logging] if args.key?(:enable_cloud_logging)
+        end
+      end
+      
       # Cloud Scheduler Trigger configuration
       class EnterpriseCrmEventbusProtoCloudSchedulerConfig
         include Google::Apis::Core::Hashable
@@ -589,6 +620,33 @@ module Google
       end
       
       # 
+      class EnterpriseCrmEventbusProtoConditionalFailurePolicies
+        include Google::Apis::Core::Hashable
+      
+        # Policy that defines the task retry logic and failure type. If no FailurePolicy
+        # is defined for a task, all its dependent tasks will not be executed (i.e, a `
+        # retry_strategy` of NONE will be applied).
+        # Corresponds to the JSON property `defaultFailurePolicy`
+        # @return [Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoFailurePolicy]
+        attr_accessor :default_failure_policy
+      
+        # The list of failure policies that will be applied to the task in order.
+        # Corresponds to the JSON property `failurePolicies`
+        # @return [Array<Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoFailurePolicy>]
+        attr_accessor :failure_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_failure_policy = args[:default_failure_policy] if args.key?(:default_failure_policy)
+          @failure_policies = args[:failure_policies] if args.key?(:failure_policies)
+        end
+      end
+      
+      # 
       class EnterpriseCrmEventbusProtoConnectorsConnection
         include Google::Apis::Core::Hashable
       
@@ -604,6 +662,11 @@ module Google
         # @return [String]
         attr_accessor :connector_version
       
+        # The name of the Hostname of the Service Directory service with TLS if used.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
         # Service name Format: projects/`project`/locations/`location`/namespaces/`
         # namespace`/services/`service`
         # Corresponds to the JSON property `serviceName`
@@ -618,6 +681,7 @@ module Google
         def update!(**args)
           @connection_name = args[:connection_name] if args.key?(:connection_name)
           @connector_version = args[:connector_version] if args.key?(:connector_version)
+          @host = args[:host] if args.key?(:host)
           @service_name = args[:service_name] if args.key?(:service_name)
         end
       end
@@ -836,9 +900,15 @@ module Google
       
       # Contains the details of the execution info of this event: this includes the
       # tasks execution details plus the event execution statistics. Next available id:
-      # 11
+      # 12
       class EnterpriseCrmEventbusProtoEventExecutionDetails
         include Google::Apis::Core::Hashable
+      
+        # If the execution is manually canceled, this field will contain the reason for
+        # cancellation.
+        # Corresponds to the JSON property `cancelReason`
+        # @return [String]
+        attr_accessor :cancel_reason
       
         # 
         # Corresponds to the JSON property `eventAttemptStats`
@@ -894,6 +964,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cancel_reason = args[:cancel_reason] if args.key?(:cancel_reason)
           @event_attempt_stats = args[:event_attempt_stats] if args.key?(:event_attempt_stats)
           @event_execution_snapshot = args[:event_execution_snapshot] if args.key?(:event_execution_snapshot)
           @event_execution_snapshots_size = args[:event_execution_snapshots_size] if args.key?(:event_execution_snapshots_size)
@@ -933,7 +1004,7 @@ module Google
       end
       
       # Contains the snapshot of the event execution for a given checkpoint. Next
-      # available id: 13
+      # available id: 15
       class EnterpriseCrmEventbusProtoEventExecutionSnapshot
         include Google::Apis::Core::Hashable
       
@@ -942,6 +1013,11 @@ module Google
         # Corresponds to the JSON property `checkpointTaskNumber`
         # @return [String]
         attr_accessor :checkpoint_task_number
+      
+        # Client that the execution snapshot is associated to.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
       
         # All of the computed conditions that been calculated.
         # Corresponds to the JSON property `conditionResults`
@@ -998,6 +1074,11 @@ module Google
         # @return [String]
         attr_accessor :task_name
       
+        # Name of the workflow this event execution snapshot belongs to.
+        # Corresponds to the JSON property `workflowName`
+        # @return [String]
+        attr_accessor :workflow_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1005,6 +1086,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @checkpoint_task_number = args[:checkpoint_task_number] if args.key?(:checkpoint_task_number)
+          @client_id = args[:client_id] if args.key?(:client_id)
           @condition_results = args[:condition_results] if args.key?(:condition_results)
           @diff_params = args[:diff_params] if args.key?(:diff_params)
           @event_execution_info_id = args[:event_execution_info_id] if args.key?(:event_execution_info_id)
@@ -1015,6 +1097,7 @@ module Google
           @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
           @task_execution_details = args[:task_execution_details] if args.key?(:task_execution_details)
           @task_name = args[:task_name] if args.key?(:task_name)
+          @workflow_name = args[:workflow_name] if args.key?(:workflow_name)
         end
       end
       
@@ -1134,6 +1217,13 @@ module Google
       class EnterpriseCrmEventbusProtoExternalTraffic
         include Google::Apis::Core::Hashable
       
+        # Indicates the client enables internal IP feature, this is applicable for
+        # internal clients only.
+        # Corresponds to the JSON property `enableInternalIp`
+        # @return [Boolean]
+        attr_accessor :enable_internal_ip
+        alias_method :enable_internal_ip?, :enable_internal_ip
+      
         # User’s GCP project id the traffic is referring to.
         # Corresponds to the JSON property `gcpProjectId`
         # @return [String]
@@ -1149,9 +1239,13 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # LINT.ThenChange(//depot/google3/enterprise/crm/eventbus/proto/product.proto:
-        # product, //depot/google3/java/com/google/enterprise/crm/integrationplatform/
-        # api/utils/ConverterUtils.java:source_to_product)
+        # Enqueue the execution request due to quota issue
+        # Corresponds to the JSON property `retryRequestForQuota`
+        # @return [Boolean]
+        attr_accessor :retry_request_for_quota
+        alias_method :retry_request_for_quota?, :retry_request_for_quota
+      
+        # 
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -1162,9 +1256,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_internal_ip = args[:enable_internal_ip] if args.key?(:enable_internal_ip)
           @gcp_project_id = args[:gcp_project_id] if args.key?(:gcp_project_id)
           @gcp_project_number = args[:gcp_project_number] if args.key?(:gcp_project_number)
           @location = args[:location] if args.key?(:location)
+          @retry_request_for_quota = args[:retry_request_for_quota] if args.key?(:retry_request_for_quota)
           @source = args[:source] if args.key?(:source)
         end
       end
@@ -1188,6 +1284,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_num_retries
       
+        # Optional. The retry condition that will be evaluated for this failure policy
+        # with the corresponding retry strategy.
+        # Corresponds to the JSON property `retryCondition`
+        # @return [String]
+        attr_accessor :retry_condition
+      
         # Defines what happens to the task upon failure.
         # Corresponds to the JSON property `retryStrategy`
         # @return [String]
@@ -1201,6 +1303,7 @@ module Google
         def update!(**args)
           @interval_in_seconds = args[:interval_in_seconds] if args.key?(:interval_in_seconds)
           @max_num_retries = args[:max_num_retries] if args.key?(:max_num_retries)
+          @retry_condition = args[:retry_condition] if args.key?(:retry_condition)
           @retry_strategy = args[:retry_strategy] if args.key?(:retry_strategy)
         end
       end
@@ -1354,8 +1457,7 @@ module Google
         # @return [Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoIntFunction]
         attr_accessor :int_function
       
-        # LINT.ThenChange(//depot/google3/alkali/apps/integrationplatform/client/
-        # workflow_editor/utils/transform_function.ts)
+        # 
         # Corresponds to the JSON property `jsonFunction`
         # @return [Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoJsonFunction]
         attr_accessor :json_function
@@ -1508,15 +1610,6 @@ module Google
         # @return [String]
         attr_accessor :log_field_name
       
-        # Identifies whether a field contains, or may contain, PII or sensitive data,
-        # and how to sanitize the field if it does. If a field's privacy type cannot be
-        # determined then it is sanitized (e.g., scrubbed). The specific sanitizer
-        # implementation is determined by run-time configuration and environment options
-        # (e.g., prod vs. qa). next_id: 5
-        # Corresponds to the JSON property `sanitizeOptions`
-        # @return [Google::Apis::IntegrationsV1::EnterpriseCrmLoggingGwsSanitizeOptions]
-        attr_accessor :sanitize_options
-      
         # 
         # Corresponds to the JSON property `seedPeriod`
         # @return [String]
@@ -1527,12 +1620,6 @@ module Google
         # @return [String]
         attr_accessor :seed_scope
       
-        # Describes string and array limits when writing to logs. When a limit is
-        # exceeded the *shortener_type* describes how to shorten the field. next_id: 6
-        # Corresponds to the JSON property `shorteningLimits`
-        # @return [Google::Apis::IntegrationsV1::EnterpriseCrmLoggingGwsFieldLimits]
-        attr_accessor :shortening_limits
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1540,10 +1627,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @log_field_name = args[:log_field_name] if args.key?(:log_field_name)
-          @sanitize_options = args[:sanitize_options] if args.key?(:sanitize_options)
           @seed_period = args[:seed_period] if args.key?(:seed_period)
           @seed_scope = args[:seed_scope] if args.key?(:seed_scope)
-          @shortening_limits = args[:shortening_limits] if args.key?(:shortening_limits)
         end
       end
       
@@ -3569,9 +3654,15 @@ module Google
       
       # Contains the details of the execution info of this event: this includes the
       # tasks execution details plus the event execution statistics. Next available id:
-      # 11
+      # 12
       class EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails
         include Google::Apis::Core::Hashable
+      
+        # If the execution is manually canceled, this field will contain the reason for
+        # cancellation.
+        # Corresponds to the JSON property `cancelReason`
+        # @return [String]
+        attr_accessor :cancel_reason
       
         # 
         # Corresponds to the JSON property `eventAttemptStats`
@@ -3628,6 +3719,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cancel_reason = args[:cancel_reason] if args.key?(:cancel_reason)
           @event_attempt_stats = args[:event_attempt_stats] if args.key?(:event_attempt_stats)
           @event_execution_snapshot = args[:event_execution_snapshot] if args.key?(:event_execution_snapshot)
           @event_execution_snapshots_size = args[:event_execution_snapshots_size] if args.key?(:event_execution_snapshots_size)
@@ -3641,7 +3733,7 @@ module Google
       end
       
       # Contains all the execution details for a workflow instance. Next available id:
-      # 24
+      # 27
       class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo
         include Google::Apis::Core::Hashable
       
@@ -3649,6 +3741,14 @@ module Google
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
+      
+        # Cloud Logging details, selected by the user for the integration version (
+        # workflow). This message field will be also used in ExecutionInfo, to indicate
+        # the CloudLoggingDetails config at the time of workflow (integration version)
+        # execution, since this field value can be changed for an unpublished workflow.
+        # Corresponds to the JSON property `cloudLoggingDetails`
+        # @return [Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoCloudLoggingDetails]
+        attr_accessor :cloud_logging_details
       
         # Auto-generated.
         # Corresponds to the JSON property `createTime`
@@ -3669,7 +3769,7 @@ module Google
       
         # Contains the details of the execution info of this event: this includes the
         # tasks execution details plus the event execution statistics. Next available id:
-        # 11
+        # 12
         # Corresponds to the JSON property `eventExecutionDetails`
         # @return [Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails]
         attr_accessor :event_execution_details
@@ -3684,6 +3784,11 @@ module Google
         # Corresponds to the JSON property `executionTraceInfo`
         # @return [Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoExecutionTraceInfo]
         attr_accessor :execution_trace_info
+      
+        # User-defined label that annotates the executed integration version.
+        # Corresponds to the JSON property `integrationVersionUserLabel`
+        # @return [String]
+        attr_accessor :integration_version_user_label
       
         # Auto-generated.
         # Corresponds to the JSON property `lastModifiedTime`
@@ -3700,6 +3805,12 @@ module Google
         # Corresponds to the JSON property `product`
         # @return [String]
         attr_accessor :product
+      
+        # Contains the details of the execution info: this includes the replay reason
+        # and replay tree connecting executions in a parent-child relationship
+        # Corresponds to the JSON property `replayInfo`
+        # @return [Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo]
+        attr_accessor :replay_info
       
         # Optional. This is used to de-dup incoming request.
         # Corresponds to the JSON property `requestId`
@@ -3761,15 +3872,18 @@ module Google
         # Update properties of this object
         def update!(**args)
           @client_id = args[:client_id] if args.key?(:client_id)
+          @cloud_logging_details = args[:cloud_logging_details] if args.key?(:cloud_logging_details)
           @create_time = args[:create_time] if args.key?(:create_time)
           @error_code = args[:error_code] if args.key?(:error_code)
           @errors = args[:errors] if args.key?(:errors)
           @event_execution_details = args[:event_execution_details] if args.key?(:event_execution_details)
           @event_execution_info_id = args[:event_execution_info_id] if args.key?(:event_execution_info_id)
           @execution_trace_info = args[:execution_trace_info] if args.key?(:execution_trace_info)
+          @integration_version_user_label = args[:integration_version_user_label] if args.key?(:integration_version_user_label)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @post_method = args[:post_method] if args.key?(:post_method)
           @product = args[:product] if args.key?(:product)
+          @replay_info = args[:replay_info] if args.key?(:replay_info)
           @request_id = args[:request_id] if args.key?(:request_id)
           @request_params = args[:request_params] if args.key?(:request_params)
           @response_params = args[:response_params] if args.key?(:response_params)
@@ -3779,6 +3893,46 @@ module Google
           @workflow_id = args[:workflow_id] if args.key?(:workflow_id)
           @workflow_name = args[:workflow_name] if args.key?(:workflow_name)
           @workflow_retry_backoff_interval_seconds = args[:workflow_retry_backoff_interval_seconds] if args.key?(:workflow_retry_backoff_interval_seconds)
+        end
+      end
+      
+      # Contains the details of the execution info: this includes the replay reason
+      # and replay tree connecting executions in a parent-child relationship
+      class EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo
+        include Google::Apis::Core::Hashable
+      
+        # If this execution is a replay of another execution, then this field contains
+        # the original execution id.
+        # Corresponds to the JSON property `originalExecutionInfoId`
+        # @return [String]
+        attr_accessor :original_execution_info_id
+      
+        # Replay mode for the execution
+        # Corresponds to the JSON property `replayMode`
+        # @return [String]
+        attr_accessor :replay_mode
+      
+        # reason for replay
+        # Corresponds to the JSON property `replayReason`
+        # @return [String]
+        attr_accessor :replay_reason
+      
+        # If this execution has been replayed, then this field contains the execution
+        # ids of the replayed executions.
+        # Corresponds to the JSON property `replayedExecutionInfoIds`
+        # @return [Array<String>]
+        attr_accessor :replayed_execution_info_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @original_execution_info_id = args[:original_execution_info_id] if args.key?(:original_execution_info_id)
+          @replay_mode = args[:replay_mode] if args.key?(:replay_mode)
+          @replay_reason = args[:replay_reason] if args.key?(:replay_reason)
+          @replayed_execution_info_ids = args[:replayed_execution_info_ids] if args.key?(:replayed_execution_info_ids)
         end
       end
       
@@ -4330,6 +4484,13 @@ module Google
         # @return [Array<Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoTaskAlertConfig>]
         attr_accessor :alert_configs
       
+        # Optional. Determines the number of times the task will be retried on failure
+        # and with what retry strategy. This is applicable for synchronous calls to
+        # Eventbus alone (Post).
+        # Corresponds to the JSON property `conditionalFailurePolicies`
+        # @return [Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoConditionalFailurePolicies]
+        attr_accessor :conditional_failure_policies
+      
         # Auto-generated.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -4495,6 +4656,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alert_configs = args[:alert_configs] if args.key?(:alert_configs)
+          @conditional_failure_policies = args[:conditional_failure_policies] if args.key?(:conditional_failure_policies)
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator_email = args[:creator_email] if args.key?(:creator_email)
           @description = args[:description] if args.key?(:description)
@@ -4578,7 +4740,7 @@ module Google
         end
       end
       
-      # Configuration detail of a trigger. Next available id: 20
+      # Configuration detail of a trigger. Next available id: 22
       class EnterpriseCrmFrontendsEventbusProtoTriggerConfig
         include Google::Apis::Core::Hashable
       
@@ -4616,6 +4778,11 @@ module Google
         # @return [String]
         attr_accessor :error_catcher_id
       
+        # Variables names mapped to api trigger.
+        # Corresponds to the JSON property `inputVariables`
+        # @return [Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables]
+        attr_accessor :input_variables
+      
         # The user created label for a particular trigger.
         # Corresponds to the JSON property `label`
         # @return [String]
@@ -4625,6 +4792,11 @@ module Google
         # Corresponds to the JSON property `nextTasksExecutionPolicy`
         # @return [String]
         attr_accessor :next_tasks_execution_policy
+      
+        # Variables names mapped to api trigger.
+        # Corresponds to the JSON property `outputVariables`
+        # @return [Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables]
+        attr_accessor :output_variables
       
         # Optional. If set to true, any upcoming requests for this trigger config will
         # be paused and the executions will be resumed later when the flag is reset. The
@@ -4696,8 +4868,10 @@ module Google
           @description = args[:description] if args.key?(:description)
           @enabled_clients = args[:enabled_clients] if args.key?(:enabled_clients)
           @error_catcher_id = args[:error_catcher_id] if args.key?(:error_catcher_id)
+          @input_variables = args[:input_variables] if args.key?(:input_variables)
           @label = args[:label] if args.key?(:label)
           @next_tasks_execution_policy = args[:next_tasks_execution_policy] if args.key?(:next_tasks_execution_policy)
+          @output_variables = args[:output_variables] if args.key?(:output_variables)
           @pause_workflow_executions = args[:pause_workflow_executions] if args.key?(:pause_workflow_executions)
           @position = args[:position] if args.key?(:position)
           @properties = args[:properties] if args.key?(:properties)
@@ -4707,6 +4881,25 @@ module Google
           @trigger_name = args[:trigger_name] if args.key?(:trigger_name)
           @trigger_number = args[:trigger_number] if args.key?(:trigger_number)
           @trigger_type = args[:trigger_type] if args.key?(:trigger_type)
+        end
+      end
+      
+      # Variables names mapped to api trigger.
+      class EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of variable names.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
         end
       end
       
@@ -4857,95 +5050,6 @@ module Google
         end
       end
       
-      # Describes string and array limits when writing to logs. When a limit is
-      # exceeded the *shortener_type* describes how to shorten the field. next_id: 6
-      class EnterpriseCrmLoggingGwsFieldLimits
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `logAction`
-        # @return [String]
-        attr_accessor :log_action
-      
-        # To which type(s) of logs the limits apply.
-        # Corresponds to the JSON property `logType`
-        # @return [Array<String>]
-        attr_accessor :log_type
-      
-        # maximum array size. If the array exceds this size, the field (list) is
-        # truncated.
-        # Corresponds to the JSON property `maxArraySize`
-        # @return [Fixnum]
-        attr_accessor :max_array_size
-      
-        # maximum string length. If the field exceeds this amount the field is shortened.
-        # Corresponds to the JSON property `maxStringLength`
-        # @return [Fixnum]
-        attr_accessor :max_string_length
-      
-        # 
-        # Corresponds to the JSON property `shortenerType`
-        # @return [String]
-        attr_accessor :shortener_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @log_action = args[:log_action] if args.key?(:log_action)
-          @log_type = args[:log_type] if args.key?(:log_type)
-          @max_array_size = args[:max_array_size] if args.key?(:max_array_size)
-          @max_string_length = args[:max_string_length] if args.key?(:max_string_length)
-          @shortener_type = args[:shortener_type] if args.key?(:shortener_type)
-        end
-      end
-      
-      # Identifies whether a field contains, or may contain, PII or sensitive data,
-      # and how to sanitize the field if it does. If a field's privacy type cannot be
-      # determined then it is sanitized (e.g., scrubbed). The specific sanitizer
-      # implementation is determined by run-time configuration and environment options
-      # (e.g., prod vs. qa). next_id: 5
-      class EnterpriseCrmLoggingGwsSanitizeOptions
-        include Google::Apis::Core::Hashable
-      
-        # If true, the value has already been sanitized and needs no further
-        # sanitization. For instance, a D3 customer id is already an obfuscated entity
-        # and *might not* need further sanitization.
-        # Corresponds to the JSON property `isAlreadySanitized`
-        # @return [Boolean]
-        attr_accessor :is_already_sanitized
-        alias_method :is_already_sanitized?, :is_already_sanitized
-      
-        # To which type(s) of logs the sanitize options apply.
-        # Corresponds to the JSON property `logType`
-        # @return [Array<String>]
-        attr_accessor :log_type
-      
-        # 
-        # Corresponds to the JSON property `privacy`
-        # @return [String]
-        attr_accessor :privacy
-      
-        # 
-        # Corresponds to the JSON property `sanitizeType`
-        # @return [String]
-        attr_accessor :sanitize_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @is_already_sanitized = args[:is_already_sanitized] if args.key?(:is_already_sanitized)
-          @log_type = args[:log_type] if args.key?(:log_type)
-          @privacy = args[:privacy] if args.key?(:privacy)
-          @sanitize_type = args[:sanitize_type] if args.key?(:sanitize_type)
-        end
-      end
-      
       # AuthConfig defines details of a authentication type.
       class GoogleCloudConnectorsV1AuthConfig
         include Google::Apis::Core::Hashable
@@ -4970,6 +5074,13 @@ module Google
         # Corresponds to the JSON property `oauth2AuthCodeFlow`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow]
         attr_accessor :oauth2_auth_code_flow
+      
+        # Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google
+        # Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1
+        # for more details.
+        # Corresponds to the JSON property `oauth2AuthCodeFlowGoogleManaged`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged]
+        attr_accessor :oauth2_auth_code_flow_google_managed
       
         # Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See
         # https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
@@ -5004,6 +5115,7 @@ module Google
           @auth_key = args[:auth_key] if args.key?(:auth_key)
           @auth_type = args[:auth_type] if args.key?(:auth_type)
           @oauth2_auth_code_flow = args[:oauth2_auth_code_flow] if args.key?(:oauth2_auth_code_flow)
+          @oauth2_auth_code_flow_google_managed = args[:oauth2_auth_code_flow_google_managed] if args.key?(:oauth2_auth_code_flow_google_managed)
           @oauth2_client_credentials = args[:oauth2_client_credentials] if args.key?(:oauth2_client_credentials)
           @oauth2_jwt_bearer = args[:oauth2_jwt_bearer] if args.key?(:oauth2_jwt_bearer)
           @ssh_public_key = args[:ssh_public_key] if args.key?(:ssh_public_key)
@@ -5069,6 +5181,40 @@ module Google
           @client_secret = args[:client_secret] if args.key?(:client_secret)
           @enable_pkce = args[:enable_pkce] if args.key?(:enable_pkce)
           @pkce_verifier = args[:pkce_verifier] if args.key?(:pkce_verifier)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
+      # Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google
+      # Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1
+      # for more details.
+      class GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Authorization code to be exchanged for access and refresh tokens.
+        # Corresponds to the JSON property `authCode`
+        # @return [String]
+        attr_accessor :auth_code
+      
+        # Optional. Redirect URI to be provided during the auth code exchange.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        # Required. Scopes the connection will request when the user performs the auth
+        # code flow.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_code = args[:auth_code] if args.key?(:auth_code)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
           @scopes = args[:scopes] if args.key?(:scopes)
         end
@@ -5294,10 +5440,26 @@ module Google
       class GoogleCloudConnectorsV1Connection
         include Google::Apis::Core::Hashable
       
+        # Optional. Async operations enabled for the connection. If Async Operations is
+        # enabled, Connection allows the customers to initiate async long running
+        # operations using the actions API.
+        # Corresponds to the JSON property `asyncOperationsEnabled`
+        # @return [Boolean]
+        attr_accessor :async_operations_enabled
+        alias_method :async_operations_enabled?, :async_operations_enabled
+      
         # AuthConfig defines details of a authentication type.
         # Corresponds to the JSON property `authConfig`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig]
         attr_accessor :auth_config
+      
+        # Optional. Auth override enabled for the connection. If Auth Override is
+        # enabled, Connection allows the backend service auth to be overridden in the
+        # entities/actions API.
+        # Corresponds to the JSON property `authOverrideEnabled`
+        # @return [Boolean]
+        attr_accessor :auth_override_enabled
+        alias_method :auth_override_enabled?, :auth_override_enabled
       
         # Billing config for the connection.
         # Corresponds to the JSON property `billingConfig`
@@ -5370,6 +5532,12 @@ module Google
         # Corresponds to the JSON property `eventingRuntimeData`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeData]
         attr_accessor :eventing_runtime_data
+      
+        # Output only. The name of the Hostname of the Service Directory service with
+        # TLS.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
       
         # Output only. GCR location where the runtime image is stored. formatted like:
         # gcr.io/`bucketName`/`imageName`
@@ -5448,6 +5616,11 @@ module Google
         attr_accessor :suspended
         alias_method :suspended?, :suspended
       
+        # Output only. The name of the Service Directory service with TLS.
+        # Corresponds to the JSON property `tlsServiceDirectory`
+        # @return [String]
+        attr_accessor :tls_service_directory
+      
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -5459,7 +5632,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @async_operations_enabled = args[:async_operations_enabled] if args.key?(:async_operations_enabled)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
+          @auth_override_enabled = args[:auth_override_enabled] if args.key?(:auth_override_enabled)
           @billing_config = args[:billing_config] if args.key?(:billing_config)
           @config_variables = args[:config_variables] if args.key?(:config_variables)
           @connection_revision = args[:connection_revision] if args.key?(:connection_revision)
@@ -5473,6 +5648,7 @@ module Google
           @eventing_config = args[:eventing_config] if args.key?(:eventing_config)
           @eventing_enablement_type = args[:eventing_enablement_type] if args.key?(:eventing_enablement_type)
           @eventing_runtime_data = args[:eventing_runtime_data] if args.key?(:eventing_runtime_data)
+          @host = args[:host] if args.key?(:host)
           @image_location = args[:image_location] if args.key?(:image_location)
           @is_trusted_tester = args[:is_trusted_tester] if args.key?(:is_trusted_tester)
           @labels = args[:labels] if args.key?(:labels)
@@ -5486,6 +5662,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
           @suspended = args[:suspended] if args.key?(:suspended)
+          @tls_service_directory = args[:tls_service_directory] if args.key?(:tls_service_directory)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -5531,10 +5708,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :connection_ratelimit_window_seconds
       
-        # Optional. Indicates whether connector is deployed on GKE/CloudRun
+        # Output only. Indicates whether connector is deployed on GKE/CloudRun
         # Corresponds to the JSON property `deploymentModel`
         # @return [String]
         attr_accessor :deployment_model
+      
+        # Output only. Status of the deployment model migration.
+        # Corresponds to the JSON property `deploymentModelMigrationState`
+        # @return [String]
+        attr_accessor :deployment_model_migration_state
       
         # Autoscaling config for connector deployment system metrics.
         # Corresponds to the JSON property `hpaConfig`
@@ -5545,6 +5727,11 @@ module Google
         # Corresponds to the JSON property `internalclientRatelimitThreshold`
         # @return [Fixnum]
         attr_accessor :internalclient_ratelimit_threshold
+      
+        # Output only. Max instance request concurrency.
+        # Corresponds to the JSON property `maxInstanceRequestConcurrency`
+        # @return [Fixnum]
+        attr_accessor :max_instance_request_concurrency
       
         # Output only. Max QPS supported by the connector version before throttling of
         # requests.
@@ -5567,6 +5754,11 @@ module Google
         # @return [String]
         attr_accessor :shared_deployment
       
+        # Output only. Status of the TLS migration.
+        # Corresponds to the JSON property `tlsMigrationState`
+        # @return [String]
+        attr_accessor :tls_migration_state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5575,12 +5767,15 @@ module Google
         def update!(**args)
           @connection_ratelimit_window_seconds = args[:connection_ratelimit_window_seconds] if args.key?(:connection_ratelimit_window_seconds)
           @deployment_model = args[:deployment_model] if args.key?(:deployment_model)
+          @deployment_model_migration_state = args[:deployment_model_migration_state] if args.key?(:deployment_model_migration_state)
           @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
           @internalclient_ratelimit_threshold = args[:internalclient_ratelimit_threshold] if args.key?(:internalclient_ratelimit_threshold)
+          @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
           @resource_requests = args[:resource_requests] if args.key?(:resource_requests)
           @shared_deployment = args[:shared_deployment] if args.key?(:shared_deployment)
+          @tls_migration_state = args[:tls_migration_state] if args.key?(:tls_migration_state)
         end
       end
       
@@ -5671,7 +5866,7 @@ module Google
       class GoogleCloudConnectorsV1EventingConfig
         include Google::Apis::Core::Hashable
       
-        # Additional eventing related field values
+        # Optional. Additional eventing related field values
         # Corresponds to the JSON property `additionalVariables`
         # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ConfigVariable>]
         attr_accessor :additional_variables
@@ -5686,7 +5881,7 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfigDeadLetterConfig]
         attr_accessor :dead_letter_config
       
-        # Enrichment Enabled.
+        # Optional. Enrichment Enabled.
         # Corresponds to the JSON property `enrichmentEnabled`
         # @return [Boolean]
         attr_accessor :enrichment_enabled
@@ -5790,6 +5985,11 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeDataWebhookData]
         attr_accessor :webhook_data
       
+        # WebhookSubscriptions has details of webhook subscriptions.
+        # Corresponds to the JSON property `webhookSubscriptions`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions]
+        attr_accessor :webhook_subscriptions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5800,6 +6000,7 @@ module Google
           @events_listener_psc_sa = args[:events_listener_psc_sa] if args.key?(:events_listener_psc_sa)
           @status = args[:status] if args.key?(:status)
           @webhook_data = args[:webhook_data] if args.key?(:webhook_data)
+          @webhook_subscriptions = args[:webhook_subscriptions] if args.key?(:webhook_subscriptions)
         end
       end
       
@@ -5850,6 +6051,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @next_refresh_time = args[:next_refresh_time] if args.key?(:next_refresh_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # WebhookSubscriptions has details of webhook subscriptions.
+      class GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Webhook data.
+        # Corresponds to the JSON property `webhookData`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingRuntimeDataWebhookData>]
+        attr_accessor :webhook_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @webhook_data = args[:webhook_data] if args.key?(:webhook_data)
         end
       end
       
@@ -5940,6 +6160,11 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # Optional. Log configuration level.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5947,6 +6172,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @level = args[:level] if args.key?(:level)
         end
       end
       
@@ -6049,12 +6275,12 @@ module Google
       class GoogleCloudConnectorsV1SslConfig
         include Google::Apis::Core::Hashable
       
-        # Additional SSL related field values
+        # Optional. Additional SSL related field values
         # Corresponds to the JSON property `additionalVariables`
         # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ConfigVariable>]
         attr_accessor :additional_variables
       
-        # Type of Client Cert (PEM/JKS/.. etc.)
+        # Optional. Type of Client Cert (PEM/JKS/.. etc.)
         # Corresponds to the JSON property `clientCertType`
         # @return [String]
         attr_accessor :client_cert_type
@@ -6079,22 +6305,22 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1Secret]
         attr_accessor :private_server_certificate
       
-        # Type of Server Cert (PEM/JKS/.. etc.)
+        # Optional. Type of Server Cert (PEM/JKS/.. etc.)
         # Corresponds to the JSON property `serverCertType`
         # @return [String]
         attr_accessor :server_cert_type
       
-        # Trust Model of the SSL connection
+        # Optional. Trust Model of the SSL connection
         # Corresponds to the JSON property `trustModel`
         # @return [String]
         attr_accessor :trust_model
       
-        # Controls the ssl type for the given connector version.
+        # Optional. Controls the ssl type for the given connector version.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Bool for enabling SSL
+        # Optional. Bool for enabling SSL
         # Corresponds to the JSON property `useSsl`
         # @return [Boolean]
         attr_accessor :use_ssl
@@ -6162,6 +6388,115 @@ module Google
           @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
           @refresh_token_expire_time = args[:refresh_token_expire_time] if args.key?(:refresh_token_expire_time)
           @token_type = args[:token_type] if args.key?(:token_type)
+        end
+      end
+      
+      # List of API triggerID and their workflow resource name.
+      class GoogleCloudIntegrationsV1alphaApiTriggerResource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Integration where the API is published
+        # Corresponds to the JSON property `integrationResource`
+        # @return [String]
+        attr_accessor :integration_resource
+      
+        # Required. Trigger Id of the API trigger(s) in the integration
+        # Corresponds to the JSON property `triggerId`
+        # @return [Array<String>]
+        attr_accessor :trigger_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integration_resource = args[:integration_resource] if args.key?(:integration_resource)
+          @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
+        end
+      end
+      
+      # An assertion which will check for a condition over task execution status or an
+      # expression for task output variables
+      class GoogleCloudIntegrationsV1alphaAssertion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The type of assertion to perform.
+        # Corresponds to the JSON property `assertionStrategy`
+        # @return [String]
+        attr_accessor :assertion_strategy
+      
+        # Optional. Standard filter expression for ASSERT_CONDITION to succeed
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # This message is used for processing and persisting (when applicable) key value
+        # pair parameters for each event in the event bus. Next available id: 4
+        # Corresponds to the JSON property `parameter`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaEventParameter]
+        attr_accessor :parameter
+      
+        # Number of times given task should be retried in case of
+        # ASSERT_FAILED_EXECUTION
+        # Corresponds to the JSON property `retryCount`
+        # @return [Fixnum]
+        attr_accessor :retry_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assertion_strategy = args[:assertion_strategy] if args.key?(:assertion_strategy)
+          @condition = args[:condition] if args.key?(:condition)
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @retry_count = args[:retry_count] if args.key?(:retry_count)
+        end
+      end
+      
+      # The result of an assertion.
+      class GoogleCloudIntegrationsV1alphaAssertionResult
+        include Google::Apis::Core::Hashable
+      
+        # An assertion which will check for a condition over task execution status or an
+        # expression for task output variables
+        # Corresponds to the JSON property `assertion`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAssertion]
+        attr_accessor :assertion
+      
+        # Details of the assertion failure
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
+        # Status of assertion to signify if the assertion succeeded or failed
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Task name of task where the assertion was run.
+        # Corresponds to the JSON property `taskName`
+        # @return [String]
+        attr_accessor :task_name
+      
+        # Task number of task where the assertion was run.
+        # Corresponds to the JSON property `taskNumber`
+        # @return [String]
+        attr_accessor :task_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assertion = args[:assertion] if args.key?(:assertion)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @status = args[:status] if args.key?(:status)
+          @task_name = args[:task_name] if args.key?(:task_name)
+          @task_number = args[:task_number] if args.key?(:task_number)
         end
       end
       
@@ -6365,12 +6700,19 @@ module Google
       class GoogleCloudIntegrationsV1alphaCancelExecutionRequest
         include Google::Apis::Core::Hashable
       
+        # Required. Reason for cancelling the execution. This is provided by the client
+        # requesting the cancellation, and is not used by the Platform.
+        # Corresponds to the JSON property `cancelReason`
+        # @return [String]
+        attr_accessor :cancel_reason
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @cancel_reason = args[:cancel_reason] if args.key?(:cancel_reason)
         end
       end
       
@@ -6378,7 +6720,7 @@ module Google
       class GoogleCloudIntegrationsV1alphaCancelExecutionResponse
         include Google::Apis::Core::Hashable
       
-        # True if cancellation performed successfully
+        # True if cancellation performed successfully.
         # Corresponds to the JSON property `isCanceled`
         # @return [Boolean]
         attr_accessor :is_canceled
@@ -6404,7 +6746,6 @@ module Google
         attr_accessor :certificate_status
       
         # Immutable. Credential id that will be used to register with trawler
-        # INTERNAL_ONLY
         # Corresponds to the JSON property `credentialId`
         # @return [String]
         attr_accessor :credential_id
@@ -6552,6 +6893,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Indicates the client enables internal IP feature, this is applicable
+        # for internal clients only.
+        # Corresponds to the JSON property `enableInternalIp`
+        # @return [Boolean]
+        attr_accessor :enable_internal_ip
+        alias_method :enable_internal_ip?, :enable_internal_ip
+      
         # Optional. True if variable masking feature should be turned on for this region
         # Corresponds to the JSON property `enableVariableMasking`
         # @return [Boolean]
@@ -6602,6 +6950,7 @@ module Google
           @cloud_kms_config = args[:cloud_kms_config] if args.key?(:cloud_kms_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @enable_internal_ip = args[:enable_internal_ip] if args.key?(:enable_internal_ip)
           @enable_variable_masking = args[:enable_variable_masking] if args.key?(:enable_variable_masking)
           @id = args[:id] if args.key?(:id)
           @is_gmek = args[:is_gmek] if args.key?(:is_gmek)
@@ -6730,6 +7079,33 @@ module Google
           @error_message = args[:error_message] if args.key?(:error_message)
           @location = args[:location] if args.key?(:location)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+        end
+      end
+      
+      # Conditional task failur retry strategies
+      class GoogleCloudIntegrationsV1alphaConditionalFailurePolicies
+        include Google::Apis::Core::Hashable
+      
+        # Policy that defines the task retry logic and failure type. If no FailurePolicy
+        # is defined for a task, all its dependent tasks will not be executed (i.e, a `
+        # retry_strategy` of NONE will be applied).
+        # Corresponds to the JSON property `defaultFailurePolicy`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaFailurePolicy]
+        attr_accessor :default_failure_policy
+      
+        # The list of failure policies that will be applied to the task in order.
+        # Corresponds to the JSON property `failurePolicies`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaFailurePolicy>]
+        attr_accessor :failure_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_failure_policy = args[:default_failure_policy] if args.key?(:default_failure_policy)
+          @failure_policies = args[:failure_policies] if args.key?(:failure_policies)
         end
       end
       
@@ -7053,6 +7429,44 @@ module Google
         end
       end
       
+      # Response for DownloadTemplate.
+      class GoogleCloudIntegrationsV1alphaDownloadTemplateResponse
+        include Google::Apis::Core::Hashable
+      
+        # String representation of the template.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+        end
+      end
+      
+      # Response for DownloadTestCase.
+      class GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse
+        include Google::Apis::Core::Hashable
+      
+        # String representation of the test case.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+        end
+      end
+      
       # Response containing all provisioned regions for Connector Platform.
       class GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse
         include Google::Apis::Core::Hashable
@@ -7295,6 +7709,64 @@ module Google
         end
       end
       
+      # The request for executing a functional test.
+      class GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input parameters used by test case execution.
+        # Corresponds to the JSON property `inputParameters`
+        # @return [Hash<String,Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType>]
+        attr_accessor :input_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+        end
+      end
+      
+      # The response for executing a functional test.
+      class GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse
+        include Google::Apis::Core::Hashable
+      
+        # Results of each assertions ran during execution of test case.
+        # Corresponds to the JSON property `assertionResults`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAssertionResult>]
+        attr_accessor :assertion_results
+      
+        # The id of the execution corresponding to this run of integration.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # OUTPUT parameters in format of Map. Where Key is the name of the parameter.
+        # Note: Name of the system generated parameters are wrapped by backtick(`) to
+        # distinguish them from the user defined parameters.
+        # Corresponds to the JSON property `outputParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :output_parameters
+      
+        # State of the test case execution
+        # Corresponds to the JSON property `testExecutionState`
+        # @return [String]
+        attr_accessor :test_execution_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assertion_results = args[:assertion_results] if args.key?(:assertion_results)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @output_parameters = args[:output_parameters] if args.key?(:output_parameters)
+          @test_execution_state = args[:test_execution_state] if args.key?(:test_execution_state)
+        end
+      end
+      
       # The Execution resource contains detailed information of an individual
       # integration execution.
       class GoogleCloudIntegrationsV1alphaExecution
@@ -7317,7 +7789,7 @@ module Google
       
         # Contains the details of the execution info of this event: this includes the
         # tasks execution details plus the event execution statistics. Next available id:
-        # 11
+        # 12
         # Corresponds to the JSON property `eventExecutionDetails`
         # @return [Google::Apis::IntegrationsV1::EnterpriseCrmEventbusProtoEventExecutionDetails]
         attr_accessor :event_execution_details
@@ -7343,6 +7815,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Contains the details of the execution info: this includes the replay reason
+        # and replay tree connecting executions in a parent-child relationship
+        # Corresponds to the JSON property `replayInfo`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecutionReplayInfo]
+        attr_accessor :replay_info
+      
         # Event parameters come in as part of the request.
         # Corresponds to the JSON property `requestParameters`
         # @return [Hash<String,Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType>]
@@ -7353,12 +7831,14 @@ module Google
         # @return [Array<Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoParameterEntry>]
         attr_accessor :request_params
       
-        # Event parameters returned as part of the response.
+        # Event parameters returned as part of the response. In the case of error, the `
+        # ErrorInfo` field is returned in the following format: ` "ErrorInfo": ` "
+        # message": String, "code": Number ` `
         # Corresponds to the JSON property `responseParameters`
         # @return [Hash<String,Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType>]
         attr_accessor :response_parameters
       
-        # Event parameters come out as part of the response.
+        # 
         # Corresponds to the JSON property `responseParams`
         # @return [Array<Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoParameterEntry>]
         attr_accessor :response_params
@@ -7395,6 +7875,7 @@ module Google
           @execution_method = args[:execution_method] if args.key?(:execution_method)
           @integration_version_state = args[:integration_version_state] if args.key?(:integration_version_state)
           @name = args[:name] if args.key?(:name)
+          @replay_info = args[:replay_info] if args.key?(:replay_info)
           @request_parameters = args[:request_parameters] if args.key?(:request_parameters)
           @request_params = args[:request_params] if args.key?(:request_params)
           @response_parameters = args[:response_parameters] if args.key?(:response_parameters)
@@ -7440,6 +7921,46 @@ module Google
           @event_execution_snapshots_size = args[:event_execution_snapshots_size] if args.key?(:event_execution_snapshots_size)
           @execution_snapshots = args[:execution_snapshots] if args.key?(:execution_snapshots)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Contains the details of the execution info: this includes the replay reason
+      # and replay tree connecting executions in a parent-child relationship
+      class GoogleCloudIntegrationsV1alphaExecutionReplayInfo
+        include Google::Apis::Core::Hashable
+      
+        # If this execution is a replay of another execution, then this field contains
+        # the original execution id.
+        # Corresponds to the JSON property `originalExecutionInfoId`
+        # @return [String]
+        attr_accessor :original_execution_info_id
+      
+        # Replay mode for the execution
+        # Corresponds to the JSON property `replayMode`
+        # @return [String]
+        attr_accessor :replay_mode
+      
+        # reason for replay
+        # Corresponds to the JSON property `replayReason`
+        # @return [String]
+        attr_accessor :replay_reason
+      
+        # If this execution has been replayed, then this field contains the execution
+        # ids of the replayed executions.
+        # Corresponds to the JSON property `replayedExecutionInfoIds`
+        # @return [Array<String>]
+        attr_accessor :replayed_execution_info_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @original_execution_info_id = args[:original_execution_info_id] if args.key?(:original_execution_info_id)
+          @replay_mode = args[:replay_mode] if args.key?(:replay_mode)
+          @replay_reason = args[:replay_reason] if args.key?(:replay_reason)
+          @replayed_execution_info_ids = args[:replayed_execution_info_ids] if args.key?(:replayed_execution_info_ids)
         end
       end
       
@@ -7549,6 +8070,12 @@ module Google
       class GoogleCloudIntegrationsV1alphaFailurePolicy
         include Google::Apis::Core::Hashable
       
+        # Optional. The string condition that will be evaluated to determine if the task
+        # should be retried with this failure policy.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
         # Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/
         # RESTART_INTEGRATION_WITH_BACKOFF. Defines the initial interval in seconds for
         # backoff.
@@ -7574,6 +8101,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
           @interval_time = args[:interval_time] if args.key?(:interval_time)
           @max_retries = args[:max_retries] if args.key?(:max_retries)
           @retry_strategy = args[:retry_strategy] if args.key?(:retry_strategy)
@@ -7609,6 +8137,50 @@ module Google
           @integration_config = args[:integration_config] if args.key?(:integration_config)
           @integration_version = args[:integration_version] if args.key?(:integration_version)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Request for GenerateOpenApiSpec.
+      class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of api triggers
+        # Corresponds to the JSON property `apiTriggerResources`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaApiTriggerResource>]
+        attr_accessor :api_trigger_resources
+      
+        # Required. File format for generated spec.
+        # Corresponds to the JSON property `fileFormat`
+        # @return [String]
+        attr_accessor :file_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_trigger_resources = args[:api_trigger_resources] if args.key?(:api_trigger_resources)
+          @file_format = args[:file_format] if args.key?(:file_format)
+        end
+      end
+      
+      # Response of the GenerateOpenApiSpec API.
+      class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse
+        include Google::Apis::Core::Hashable
+      
+        # Open API spec as per the required format
+        # Corresponds to the JSON property `openApiSpec`
+        # @return [String]
+        attr_accessor :open_api_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @open_api_spec = args[:open_api_spec] if args.key?(:open_api_spec)
         end
       end
       
@@ -7666,6 +8238,62 @@ module Google
         # Update properties of this object
         def update!(**args)
           @client = args[:client] if args.key?(:client)
+        end
+      end
+      
+      # Request to Import template
+      class GoogleCloudIntegrationsV1alphaImportTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the integration where template needs to be imported.
+        # Corresponds to the JSON property `integration`
+        # @return [String]
+        attr_accessor :integration
+      
+        # Required. The region of the Integration to be created.
+        # Corresponds to the JSON property `integrationRegion`
+        # @return [String]
+        attr_accessor :integration_region
+      
+        # Optional. Sub Integration which would be created via templates.
+        # Corresponds to the JSON property `subIntegrations`
+        # @return [Hash<String,Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails>]
+        attr_accessor :sub_integrations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integration = args[:integration] if args.key?(:integration)
+          @integration_region = args[:integration_region] if args.key?(:integration_region)
+          @sub_integrations = args[:sub_integrations] if args.key?(:sub_integrations)
+        end
+      end
+      
+      # Response for import template
+      class GoogleCloudIntegrationsV1alphaImportTemplateResponse
+        include Google::Apis::Core::Hashable
+      
+        # The integration version definition.
+        # Corresponds to the JSON property `integrationVersion`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion]
+        attr_accessor :integration_version
+      
+        # Sub integration versions which are imported.
+        # Corresponds to the JSON property `subIntegrationVersions`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion>]
+        attr_accessor :sub_integration_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integration_version = args[:integration_version] if args.key?(:integration_version)
+          @sub_integration_versions = args[:sub_integration_versions] if args.key?(:sub_integration_versions)
         end
       end
       
@@ -7922,6 +8550,11 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType]
         attr_accessor :default_value
       
+        # Optional. Description of the parameter.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # The name (without prefix) to be displayed in the UI for this parameter. E.g.
         # if the key is "foo.bar.myName", then the name would be "myName".
         # Corresponds to the JSON property `displayName`
@@ -7979,6 +8612,7 @@ module Google
           @contains_large_data = args[:contains_large_data] if args.key?(:contains_large_data)
           @data_type = args[:data_type] if args.key?(:data_type)
           @default_value = args[:default_value] if args.key?(:default_value)
+          @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @input_output_type = args[:input_output_type] if args.key?(:input_output_type)
           @is_transient = args[:is_transient] if args.key?(:is_transient)
@@ -8188,6 +8822,31 @@ module Google
           @trigger_configs_internal = args[:trigger_configs_internal] if args.key?(:trigger_configs_internal)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_label = args[:user_label] if args.key?(:user_label)
+        end
+      end
+      
+      # Define the template of IntegrationVersion.
+      class GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate
+        include Google::Apis::Core::Hashable
+      
+        # The integration version definition.
+        # Corresponds to the JSON property `integrationVersion`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion]
+        attr_accessor :integration_version
+      
+        # Required. Unique Key of the IntegrationVersion.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integration_version = args[:integration_version] if args.key?(:integration_version)
+          @key = args[:key] if args.key?(:key)
         end
       end
       
@@ -8600,6 +9259,115 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @suspensions = args[:suspensions] if args.key?(:suspensions)
+        end
+      end
+      
+      # Response for a request to list templates
+      class GoogleCloudIntegrationsV1alphaListTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token used to retrieve the next page results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of templates retrieved.
+        # Corresponds to the JSON property `templates`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate>]
+        attr_accessor :templates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @templates = args[:templates] if args.key?(:templates)
+        end
+      end
+      
+      # The response for listing the functional test execution data.
+      class GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The detailed information of requested executions
+        # Corresponds to the JSON property `executions`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecution>]
+        attr_accessor :executions
+      
+        # The token used to retrieve the next page results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @executions = args[:executions] if args.key?(:executions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for ListTestCases
+      class GoogleCloudIntegrationsV1alphaListTestCasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The test cases corresponding to the specified filter
+        # Corresponds to the JSON property `testCases`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase>]
+        attr_accessor :test_cases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @test_cases = args[:test_cases] if args.key?(:test_cases)
+        end
+      end
+      
+      # The configuration for mocking of a task during test execution Next available
+      # id: 4
+      class GoogleCloudIntegrationsV1alphaMockConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of times the given task should fail for failure mock strategy
+        # Corresponds to the JSON property `failedExecutions`
+        # @return [Fixnum]
+        attr_accessor :failed_executions
+      
+        # Mockstrategy defines how the particular task should be mocked during test
+        # execution
+        # Corresponds to the JSON property `mockStrategy`
+        # @return [String]
+        attr_accessor :mock_strategy
+      
+        # Optional. List of key-value pairs for specific mock strategy
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaEventParameter>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_executions = args[:failed_executions] if args.key?(:failed_executions)
+          @mock_strategy = args[:mock_strategy] if args.key?(:mock_strategy)
+          @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
       
@@ -9124,6 +9892,60 @@ module Google
         end
       end
       
+      # Request for replaying an execution.
+      class GoogleCloudIntegrationsV1alphaReplayExecutionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The user provided reason for replaying the execution.
+        # Corresponds to the JSON property `replayReason`
+        # @return [String]
+        attr_accessor :replay_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @replay_reason = args[:replay_reason] if args.key?(:replay_reason)
+        end
+      end
+      
+      # Response for replaying an execution.
+      class GoogleCloudIntegrationsV1alphaReplayExecutionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Next ID: 4 The id of the execution corresponding to this run of the
+        # integration.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # OUTPUT parameters in format of Map. Where Key is the name of the parameter.
+        # The parameters would only be present in case of synchrounous execution. Note:
+        # Name of the system generated parameters are wrapped by backtick(`) to
+        # distinguish them from the user defined parameters.
+        # Corresponds to the JSON property `outputParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :output_parameters
+      
+        # The execution id which is replayed.
+        # Corresponds to the JSON property `replayedExecutionId`
+        # @return [String]
+        attr_accessor :replayed_execution_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @output_parameters = args[:output_parameters] if args.key?(:output_parameters)
+          @replayed_execution_id = args[:replayed_execution_id] if args.key?(:replayed_execution_id)
+        end
+      end
+      
       # Request for [Suspensions.ResolveSuspensions].
       class GoogleCloudIntegrationsV1alphaResolveSuspensionRequest
         include Google::Apis::Core::Hashable
@@ -9218,7 +10040,7 @@ module Google
         end
       end
       
-      # The request for scheduling an integration. Next available id: 11
+      # The request for scheduling an integration.
       class GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest
         include Google::Apis::Core::Hashable
       
@@ -9298,6 +10120,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @execution_info_ids = args[:execution_info_ids] if args.key?(:execution_info_ids)
+        end
+      end
+      
+      # Response for a request to search templates
+      class GoogleCloudIntegrationsV1alphaSearchTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token used to retrieve the next page results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of templates retrieved.
+        # Corresponds to the JSON property `templates`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate>]
+        attr_accessor :templates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @templates = args[:templates] if args.key?(:templates)
         end
       end
       
@@ -9489,6 +10336,27 @@ module Google
           @service_authority = args[:service_authority] if args.key?(:service_authority)
           @sfdc_org_id = args[:sfdc_org_id] if args.key?(:sfdc_org_id)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request to Share template
+      class GoogleCloudIntegrationsV1alphaShareTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Project name resources to share the template. The project names is
+        # expected in resource format Ex: projects/`project-number` or organization/`org-
+        # id`
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
         end
       end
       
@@ -9767,10 +10635,28 @@ module Google
         end
       end
       
+      # Request for TakeoverTestCaseEditLock.
+      class GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The task configuration details. This is not the implementation of Task. There
       # might be multiple TaskConfigs for the same Task.
       class GoogleCloudIntegrationsV1alphaTaskConfig
         include Google::Apis::Core::Hashable
+      
+        # Conditional task failur retry strategies
+        # Corresponds to the JSON property `conditionalFailurePolicies`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaConditionalFailurePolicies]
+        attr_accessor :conditional_failure_policies
       
         # Optional. User-provided description intended to give additional business
         # context about the task.
@@ -9872,6 +10758,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @conditional_failure_policies = args[:conditional_failure_policies] if args.key?(:conditional_failure_policies)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @error_catcher_id = args[:error_catcher_id] if args.key?(:error_catcher_id)
@@ -9919,6 +10806,274 @@ module Google
           @task_attempt_stats = args[:task_attempt_stats] if args.key?(:task_attempt_stats)
           @task_execution_state = args[:task_execution_state] if args.key?(:task_execution_state)
           @task_number = args[:task_number] if args.key?(:task_number)
+        end
+      end
+      
+      # Defines the template for Application Integration
+      class GoogleCloudIntegrationsV1alphaTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Creator of the template.
+        # Corresponds to the JSON property `author`
+        # @return [String]
+        attr_accessor :author
+      
+        # Required. Categories associated with the Template. The categories listed below
+        # will be utilized for the Template listing.
+        # Corresponds to the JSON property `categories`
+        # @return [Array<String>]
+        attr_accessor :categories
+      
+        # Optional. Components being used in the template. This could be used to
+        # categorize and filter.
+        # Corresponds to the JSON property `components`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplateComponent>]
+        attr_accessor :components
+      
+        # Output only. Auto-generated.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the template. The length should not be more than 255
+        # characters
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The name of the template
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Link to template documentation.
+        # Corresponds to the JSON property `docLink`
+        # @return [String]
+        attr_accessor :doc_link
+      
+        # Optional. Time the template was last used.
+        # Corresponds to the JSON property `lastUsedTime`
+        # @return [String]
+        attr_accessor :last_used_time
+      
+        # Identifier. Resource name of the template.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Resource names with which the template is shared for example
+        # ProjectNumber/Ord id
+        # Corresponds to the JSON property `sharedWith`
+        # @return [Array<String>]
+        attr_accessor :shared_with
+      
+        # Required. Tags which are used to identify templates. These tags could be for
+        # business use case, connectors etc.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Define the bundle of the template.
+        # Corresponds to the JSON property `templateBundle`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplateBundle]
+        attr_accessor :template_bundle
+      
+        # Output only. Auto-generated
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. Number of template usages.
+        # Corresponds to the JSON property `usageCount`
+        # @return [Fixnum]
+        attr_accessor :usage_count
+      
+        # Optional. Information on how to use the template. This should contain detailed
+        # information about usage of the template.
+        # Corresponds to the JSON property `usageInfo`
+        # @return [String]
+        attr_accessor :usage_info
+      
+        # Required. Visibility of the template.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author = args[:author] if args.key?(:author)
+          @categories = args[:categories] if args.key?(:categories)
+          @components = args[:components] if args.key?(:components)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @doc_link = args[:doc_link] if args.key?(:doc_link)
+          @last_used_time = args[:last_used_time] if args.key?(:last_used_time)
+          @name = args[:name] if args.key?(:name)
+          @shared_with = args[:shared_with] if args.key?(:shared_with)
+          @tags = args[:tags] if args.key?(:tags)
+          @template_bundle = args[:template_bundle] if args.key?(:template_bundle)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @usage_count = args[:usage_count] if args.key?(:usage_count)
+          @usage_info = args[:usage_info] if args.key?(:usage_info)
+          @visibility = args[:visibility] if args.key?(:visibility)
+        end
+      end
+      
+      # Define the bundle of the template.
+      class GoogleCloudIntegrationsV1alphaTemplateBundle
+        include Google::Apis::Core::Hashable
+      
+        # Define the template of IntegrationVersion.
+        # Corresponds to the JSON property `integrationVersionTemplate`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate]
+        attr_accessor :integration_version_template
+      
+        # Optional. Sub integration templates which would be added along with main
+        # integration.
+        # Corresponds to the JSON property `subIntegrationVersionTemplates`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate>]
+        attr_accessor :sub_integration_version_templates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integration_version_template = args[:integration_version_template] if args.key?(:integration_version_template)
+          @sub_integration_version_templates = args[:sub_integration_version_templates] if args.key?(:sub_integration_version_templates)
+        end
+      end
+      
+      # Define the components that are present in a template.
+      class GoogleCloudIntegrationsV1alphaTemplateComponent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the component.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Type of the component.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Defines the functional test case for Application Integration. Next available
+      # id: 15
+      class GoogleCloudIntegrationsV1alphaTestCase
+        include Google::Apis::Core::Hashable
+      
+        # Auto-generated.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The creator's email address. Generated based on the End User
+        # Credentials/LOAS role of the user making the call.
+        # Corresponds to the JSON property `creatorEmail`
+        # @return [String]
+        attr_accessor :creator_email
+      
+        # Optional. Various policies for how to persist the test execution info
+        # including execution info, execution export info, execution metadata index and
+        # execution param index..
+        # Corresponds to the JSON property `databasePersistencePolicy`
+        # @return [String]
+        attr_accessor :database_persistence_policy
+      
+        # Optional. Description of the test case.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of test case.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The last modifier's email address. Generated based on the End User Credentials/
+        # LOAS role of the user making the call.
+        # Corresponds to the JSON property `lastModifierEmail`
+        # @return [String]
+        attr_accessor :last_modifier_email
+      
+        # Optional. The edit lock holder's email address. Generated based on the End
+        # User Credentials/LOAS role of the user making the call.
+        # Corresponds to the JSON property `lockHolderEmail`
+        # @return [String]
+        attr_accessor :lock_holder_email
+      
+        # Output only. Auto-generated primary key.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Parameters that are expected to be passed to the test case when the
+        # test case is triggered. This gives the user the ability to provide default
+        # values. This should include all the output variables of the trigger as input
+        # variables.
+        # Corresponds to the JSON property `testInputParameters`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationParameter>]
+        attr_accessor :test_input_parameters
+      
+        # Optional. However, the test case doesn't mock or assert anything without
+        # test_task_configs.
+        # Corresponds to the JSON property `testTaskConfigs`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestTaskConfig>]
+        attr_accessor :test_task_configs
+      
+        # Configuration detail of a trigger.
+        # Corresponds to the JSON property `triggerConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTriggerConfig]
+        attr_accessor :trigger_config
+      
+        # Required. This defines the trigger ID in workflow which is considered to be
+        # executed as starting point of the test case
+        # Corresponds to the JSON property `triggerId`
+        # @return [String]
+        attr_accessor :trigger_id
+      
+        # Auto-generated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator_email = args[:creator_email] if args.key?(:creator_email)
+          @database_persistence_policy = args[:database_persistence_policy] if args.key?(:database_persistence_policy)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @last_modifier_email = args[:last_modifier_email] if args.key?(:last_modifier_email)
+          @lock_holder_email = args[:lock_holder_email] if args.key?(:lock_holder_email)
+          @name = args[:name] if args.key?(:name)
+          @test_input_parameters = args[:test_input_parameters] if args.key?(:test_input_parameters)
+          @test_task_configs = args[:test_task_configs] if args.key?(:test_task_configs)
+          @trigger_config = args[:trigger_config] if args.key?(:trigger_config)
+          @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -10041,6 +11196,56 @@ module Google
         end
       end
       
+      # The task mock configuration details and assertions for functional tests. Next
+      # available id: 6
+      class GoogleCloudIntegrationsV1alphaTestTaskConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of conditions or expressions which should be evaluated to true
+        # unless there is a bug/problem in the integration. These are evaluated one the
+        # task execution is completed as per the mock strategy in test case
+        # Corresponds to the JSON property `assertions`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAssertion>]
+        attr_accessor :assertions
+      
+        # The configuration for mocking of a task during test execution Next available
+        # id: 4
+        # Corresponds to the JSON property `mockConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaMockConfig]
+        attr_accessor :mock_config
+      
+        # Required. This defines in the test case, the task name in integration which
+        # will be mocked by this test task config
+        # Corresponds to the JSON property `task`
+        # @return [String]
+        attr_accessor :task
+      
+        # The task configuration details. This is not the implementation of Task. There
+        # might be multiple TaskConfigs for the same Task.
+        # Corresponds to the JSON property `taskConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTaskConfig]
+        attr_accessor :task_config
+      
+        # Required. This defines in the test case, the task in integration which will be
+        # mocked by this test task config
+        # Corresponds to the JSON property `taskNumber`
+        # @return [String]
+        attr_accessor :task_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assertions = args[:assertions] if args.key?(:assertions)
+          @mock_config = args[:mock_config] if args.key?(:mock_config)
+          @task = args[:task] if args.key?(:task)
+          @task_config = args[:task_config] if args.key?(:task_config)
+          @task_number = args[:task_number] if args.key?(:task_number)
+        end
+      end
+      
       # Configuration detail of a trigger.
       class GoogleCloudIntegrationsV1alphaTriggerConfig
         include Google::Apis::Core::Hashable
@@ -10071,6 +11276,11 @@ module Google
         # @return [String]
         attr_accessor :error_catcher_id
       
+        # Variables names mapped to api trigger.
+        # Corresponds to the JSON property `inputVariables`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTriggerConfigVariables]
+        attr_accessor :input_variables
+      
         # Optional. The user created label for a particular trigger.
         # Corresponds to the JSON property `label`
         # @return [String]
@@ -10080,6 +11290,11 @@ module Google
         # Corresponds to the JSON property `nextTasksExecutionPolicy`
         # @return [String]
         attr_accessor :next_tasks_execution_policy
+      
+        # Variables names mapped to api trigger.
+        # Corresponds to the JSON property `outputVariables`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTriggerConfigVariables]
+        attr_accessor :output_variables
       
         # Configuration detail of coordinate, it used for UI
         # Corresponds to the JSON property `position`
@@ -10107,7 +11322,10 @@ module Google
         # @return [String]
         attr_accessor :trigger
       
-        # Optional. The backend trigger ID.
+        # Optional. Auto-generated trigger ID. The ID is based on the properties that
+        # you define in the trigger config. For example, for an API trigger, the trigger
+        # ID follows the format: api_trigger/TRIGGER_NAME Where trigger config has
+        # properties with value `"Trigger name": TRIGGER_NAME`
         # Corresponds to the JSON property `triggerId`
         # @return [String]
         attr_accessor :trigger_id
@@ -10133,8 +11351,10 @@ module Google
           @cloud_scheduler_config = args[:cloud_scheduler_config] if args.key?(:cloud_scheduler_config)
           @description = args[:description] if args.key?(:description)
           @error_catcher_id = args[:error_catcher_id] if args.key?(:error_catcher_id)
+          @input_variables = args[:input_variables] if args.key?(:input_variables)
           @label = args[:label] if args.key?(:label)
           @next_tasks_execution_policy = args[:next_tasks_execution_policy] if args.key?(:next_tasks_execution_policy)
+          @output_variables = args[:output_variables] if args.key?(:output_variables)
           @position = args[:position] if args.key?(:position)
           @properties = args[:properties] if args.key?(:properties)
           @start_tasks = args[:start_tasks] if args.key?(:start_tasks)
@@ -10142,6 +11362,25 @@ module Google
           @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
           @trigger_number = args[:trigger_number] if args.key?(:trigger_number)
           @trigger_type = args[:trigger_type] if args.key?(:trigger_type)
+        end
+      end
+      
+      # Variables names mapped to api trigger.
+      class GoogleCloudIntegrationsV1alphaTriggerConfigVariables
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of variable names.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
         end
       end
       
@@ -10158,11 +11397,31 @@ module Google
         end
       end
       
+      # Request to Unshare template
+      class GoogleCloudIntegrationsV1alphaUnshareTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Project name resources to unshare the template. The project names is
+        # expected in resource format Ex: projects/`project-number`
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
+        end
+      end
+      
       # Request for UploadIntegrationVersion.
       class GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest
         include Google::Apis::Core::Hashable
       
-        # The textproto of the integration_version.
+        # The textproto of the IntegrationVersion.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -10199,6 +11458,177 @@ module Google
         # Update properties of this object
         def update!(**args)
           @integration_version = args[:integration_version] if args.key?(:integration_version)
+        end
+      end
+      
+      # Request for UploadTemplate.
+      class GoogleCloudIntegrationsV1alphaUploadTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The textproto of the template.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Required. File format for upload request.
+        # Corresponds to the JSON property `fileFormat`
+        # @return [String]
+        attr_accessor :file_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @file_format = args[:file_format] if args.key?(:file_format)
+        end
+      end
+      
+      # Response for UploadTemplate.
+      class GoogleCloudIntegrationsV1alphaUploadTemplateResponse
+        include Google::Apis::Core::Hashable
+      
+        # Defines the template for Application Integration
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate]
+        attr_accessor :template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @template = args[:template] if args.key?(:template)
+        end
+      end
+      
+      # Request for UploadTestCase.
+      class GoogleCloudIntegrationsV1alphaUploadTestCaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # The textproto of the test case.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # File format for upload request.
+        # Corresponds to the JSON property `fileFormat`
+        # @return [String]
+        attr_accessor :file_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @file_format = args[:file_format] if args.key?(:file_format)
+        end
+      end
+      
+      # Response for UploadTestCase.
+      class GoogleCloudIntegrationsV1alphaUploadTestCaseResponse
+        include Google::Apis::Core::Hashable
+      
+        # Defines the functional test case for Application Integration. Next available
+        # id: 15
+        # Corresponds to the JSON property `testCase`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase]
+        attr_accessor :test_case
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_case = args[:test_case] if args.key?(:test_case)
+        end
+      end
+      
+      # Request to Use template
+      class GoogleCloudIntegrationsV1alphaUseTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Sub Integration which would be created via templates.
+        # Corresponds to the JSON property `integrationDetails`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails]
+        attr_accessor :integration_details
+      
+        # Required. The region of the Integration to be created.
+        # Corresponds to the JSON property `integrationRegion`
+        # @return [String]
+        attr_accessor :integration_region
+      
+        # Optional. Sub Integration which would be created via templates.
+        # Corresponds to the JSON property `subIntegrations`
+        # @return [Hash<String,Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails>]
+        attr_accessor :sub_integrations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integration_details = args[:integration_details] if args.key?(:integration_details)
+          @integration_region = args[:integration_region] if args.key?(:integration_region)
+          @sub_integrations = args[:sub_integrations] if args.key?(:sub_integrations)
+        end
+      end
+      
+      # Sub Integration which would be created via templates.
+      class GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the sub integration which would be created via templates.
+        # Corresponds to the JSON property `integration`
+        # @return [String]
+        attr_accessor :integration
+      
+        # Optional. Description of the sub integration which would be created via
+        # templates.
+        # Corresponds to the JSON property `integrationDescription`
+        # @return [String]
+        attr_accessor :integration_description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integration = args[:integration] if args.key?(:integration)
+          @integration_description = args[:integration_description] if args.key?(:integration_description)
+        end
+      end
+      
+      # Response for use template
+      class GoogleCloudIntegrationsV1alphaUseTemplateResponse
+        include Google::Apis::Core::Hashable
+      
+        # The integration version definition.
+        # Corresponds to the JSON property `integrationVersion`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion]
+        attr_accessor :integration_version
+      
+        # Sub integration versions which are created.
+        # Corresponds to the JSON property `subIntegrationVersions`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationVersion>]
+        attr_accessor :sub_integration_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integration_version = args[:integration_version] if args.key?(:integration_version)
+          @sub_integration_versions = args[:sub_integration_versions] if args.key?(:sub_integration_versions)
         end
       end
       

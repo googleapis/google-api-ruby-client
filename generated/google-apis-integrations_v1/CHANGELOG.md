@@ -1,5 +1,10 @@
 # Release history for google-apis-integrations_v1
 
+### v0.3.0 (2025-01-07)
+
+* Regenerated from discovery document revision 20241209
+* Regenerated using generator version 0.15.1
+
 ### v0.2.0 (2024-04-28)
 
 * Regenerated from discovery document revision 20240421
