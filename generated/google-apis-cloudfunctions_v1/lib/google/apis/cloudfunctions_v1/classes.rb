@@ -316,7 +316,10 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Docker Registry to use for this deployment. If unspecified, it defaults to `
+        # Docker Registry to use for this deployment. Deprecated: Container Registry
+        # option will no longer be available after March 2025: https://cloud.google.com/
+        # artifact-registry/docs/transition/transition-from-gcr Please use Artifact
+        # Registry instead, which is the default choice. If unspecified, it defaults to `
         # ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field
         # should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         # Corresponds to the JSON property `dockerRegistry`
