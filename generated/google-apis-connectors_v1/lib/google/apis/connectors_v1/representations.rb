@@ -346,12 +346,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GsUtil
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class HpaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1487,8 +1481,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint, as: 'endpoint', class: Google::Apis::ConnectorsV1::EndPoint, decorator: Google::Apis::ConnectorsV1::EndPoint::Representation
       
-          property :gsutil, as: 'gsutil', class: Google::Apis::ConnectorsV1::GsUtil, decorator: Google::Apis::ConnectorsV1::GsUtil::Representation
-      
           property :service_account, as: 'serviceAccount'
           property :type, as: 'type'
         end
@@ -1659,13 +1651,6 @@ module Google
           property :int_value, :numeric_string => true, as: 'intValue'
           property :key, as: 'key'
           property :string_value, as: 'stringValue'
-        end
-      end
-      
-      class GsUtil
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :gsutil_uri, as: 'gsutilUri'
         end
       end
       
