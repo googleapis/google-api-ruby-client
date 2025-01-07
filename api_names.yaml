@@ -709,6 +709,12 @@
 "/discovery:v1/RestDescription/methods": api_methods
 "/discovery:v1/RestResource/methods": api_methods
 "/discovery:v1/discovery.apis.getRest": get_rest_api
+"/discoveryengine:v1/discoveryengine.projects.locations.cmekConfigs.get": get_project_location_cmek_config
+"/discoveryengine:v1/discoveryengine.projects.locations.getCmekConfig": get_project_location_single_cmek_config
+"/discoveryengine:v1alpha/discoveryengine.projects.locations.cmekConfigs.get": get_project_location_cmek_config
+"/discoveryengine:v1alpha/discoveryengine.projects.locations.getCmekConfig": get_project_location_single_cmek_config
+"/discoveryengine:v1beta/discoveryengine.projects.locations.cmekConfigs.get": get_project_location_cmek_config
+"/discoveryengine:v1beta/discoveryengine.projects.locations.getCmekConfig": get_project_location_single_cmek_config
 "/dns:v1/ChangesListResponse": list_changes_response
 "/dns:v1/ManagedZonesListResponse": list_managed_zones_response
 "/dns:v1/ResourceRecordSetsListResponse": list_resource_record_sets_response
@@ -968,6 +974,10 @@
 "/sheets:v4/sheets.spreadsheets.values.get": get_spreadsheet_values
 "/spanner:v1/spanner.projects.instances.backupOperations.list": list_project_instance_backupoperations
 "/spanner:v1/spanner.projects.instances.databaseOperations.list": list_project_instance_databaseoperations
+"/spanner:v1/spanner.projects.instances.instancePartitionOperations.list": list_project_instance_single_instance_partition_operations
+"/spanner:v1/spanner.projects.instances.instancePartitions.operations.list": list_project_instance_instance_partition_operations
+"/spanner:v1/spanner.projects.instanceConfigOperations.list": list_project_single_instance_config_operations
+"/spanner:v1/spanner.projects.instanceConfigs.operations.list": list_project_instance_config_operations
 "/sqladmin:v1beta4/BackupRunsListResponse": list_backup_runs_response
 "/sqladmin:v1beta4/DatabasesListResponse": list_databases_response
 "/sqladmin:v1beta4/FlagsListResponse": list_flags_response
