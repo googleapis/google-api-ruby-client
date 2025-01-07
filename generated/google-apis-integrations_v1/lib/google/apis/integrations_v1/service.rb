@@ -152,6 +152,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generate OpenAPI spec for the requested integrations and api triggers
+        # @param [String] name
+        #   Required. Project and location from which the integrations should be fetched.
+        #   Format: projects/`project`/location/`location`
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest] google_cloud_integrations_v1alpha_generate_open_api_spec_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_open_api_spec(name, google_cloud_integrations_v1alpha_generate_open_api_spec_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:generateOpenApiSpec', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_generate_open_api_spec_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the client configuration for the given project and location resource name
         # @param [String] parent
         #   Required. Required: The ID of the GCP Project to be provisioned.
@@ -1122,7 +1156,6 @@ module Google
         # @param [String] name
         #   Required. The integration resource name. Format: projects/`gcp_project_id`/
         #   locations/`location`/integrations/`integration_id`
-        # @param [Hash<String,Object>] google_protobuf_struct_object
         # @param [String] trigger_id
         #   Required. Id of the integration trigger config. The trigger_id is in the
         #   format: `integration_connector_trigger/projects/`gcp_project_id`/location/`
@@ -1144,10 +1177,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def execute_project_location_integration_event(name, google_protobuf_struct_object = nil, trigger_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def execute_project_location_integration_event(name, trigger_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:executeEvent', options)
-          command.request_representation = Hash<String,Object>::Representation
-          command.request_object = google_protobuf_struct_object
           command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteEventResponse::Representation
           command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteEventResponse
           command.params['name'] = name unless name.nil?
@@ -1275,6 +1306,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Cancellation of an execution and associated sub-executions. This will not
+        # cancel an IN_PROCESS or completed(SUCCESSFUL, FAILED or CANCELLED) executions.
+        # @param [String] name
+        #   Required. The execution resource name. Format: projects/`gcp_project_id`/
+        #   locations/`location`/products/`product`/integrations/`integration_id`/
+        #   executions/`execution_id`
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionRequest] google_cloud_integrations_v1alpha_cancel_execution_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_project_location_integration_execution(name, google_cloud_integrations_v1alpha_cancel_execution_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_cancel_execution_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Download the execution.
         # @param [String] name
         #   Required. The execution resource name. Format: projects/`gcp_project_id`/
@@ -1380,15 +1447,19 @@ module Google
         #   Workflow name.
         # @param [String] order_by
         #   Optional. The results would be returned in order you specified here. Currently
-        #   supporting "last_modified_time" and "create_time".
+        #   supporting "create_time".
         # @param [Fixnum] page_size
         #   Optional. The size of entries in the response.
         # @param [String] page_token
         #   Optional. The token returned in the previous response.
         # @param [String] read_mask
         #   Optional. View mask for the response data. If set, only the field specified
-        #   will be returned as part of the result. If not set, all fields in event
-        #   execution info will be filled and returned.
+        #   will be returned as part of the result. If not set, all fields in Execution
+        #   will be filled and returned. Supported fields: trigger_id execution_method
+        #   create_time update_time execution_details execution_details.state
+        #   execution_details.execution_snapshots execution_details.attempt_stats
+        #   execution_details.event_execution_snapshots_size request_parameters
+        #   cloud_logging_details snapshot_number replay_info
         # @param [Boolean] refresh_acl
         #   Optional. If true, the service will use the most recent acl information to
         #   list event execution infos and renew the acl cache. Note that fetching the
@@ -1443,6 +1514,42 @@ module Google
           command.query['refreshAcl'] = refresh_acl unless refresh_acl.nil?
           command.query['snapshotMetadataWithoutParams'] = snapshot_metadata_without_params unless snapshot_metadata_without_params.nil?
           command.query['truncateParams'] = truncate_params unless truncate_params.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Re-execute an existing execution, with same request parameters and execution
+        # strategy.
+        # @param [String] name
+        #   Required. Next ID: 6 The execution resource name. Format: projects/`
+        #   gcp_project_id`/locations/`location`/integrations/`integration`/executions/`
+        #   execution_id`
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaReplayExecutionRequest] google_cloud_integrations_v1alpha_replay_execution_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaReplayExecutionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaReplayExecutionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def replay_project_location_integration_execution(name, google_cloud_integrations_v1alpha_replay_execution_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:replay', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaReplayExecutionRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_replay_execution_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaReplayExecutionResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaReplayExecutionResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1762,8 +1869,7 @@ module Google
         #   Specifically, when parent equals: 1. projects//locations//integrations/,
         #   Meaning: "List versions (with filter) for a particular integration". 2.
         #   projects//locations//integrations/- Meaning: "List versions (with filter) for
-        #   a client within a particular region". 3. projects//locations/-/integrations/-
-        #   Meaning: "List versions (with filter) for a client".
+        #   a client within a particular region".
         # @param [String] field_mask
         #   The field mask which specifies the particular data to be returned.
         # @param [String] filter
@@ -1776,8 +1882,8 @@ module Google
         #   fields like `task_config`.
         # @param [String] order_by
         #   The results would be returned in order you specified here. Currently supported
-        #   sort keys are: Descending sort order for "last_modified_time", "created_time",
-        #   "snapshot_number" Ascending sort order for "name".
+        #   sort keys are: Descending sort order for "last\_modified\_time", "created\
+        #   _time", and "snapshot\_number". Ascending sort order for `name`.
         # @param [Fixnum] page_size
         #   The maximum number of versions to return. The service may return fewer than
         #   this value. If unspecified, at most 50 versions will be returned. The maximum
@@ -1963,6 +2069,397 @@ module Google
           command.request_object = google_cloud_integrations_v1alpha_upload_integration_version_request_object
           command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse::Representation
           command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new test case
+        # @param [String] parent
+        #   Required. The parent resource where this test case will be created. Format:
+        #   projects/`project`/locations/`location`/integrations/`integration`/versions/`
+        #   integration_version`
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase] google_cloud_integrations_v1alpha_test_case_object
+        # @param [String] test_case_id
+        #   Required. Required
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_integration_version_test_case(parent, google_cloud_integrations_v1alpha_test_case_object = nil, test_case_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/testCases', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase::Representation
+          command.request_object = google_cloud_integrations_v1alpha_test_case_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase
+          command.params['parent'] = parent unless parent.nil?
+          command.query['testCaseId'] = test_case_id unless test_case_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a test case
+        # @param [String] name
+        #   Required. ID for the test case to be deleted
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_integration_version_test_case(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Downloads a test case. Retrieves the `TestCase` for a given `test_case_id` and
+        # returns the response as a string.
+        # @param [String] name
+        #   Required. The test case to download. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`integration_version`/testCases/`
+        #   test_case_id`
+        # @param [String] file_format
+        #   File format for download request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def download_project_location_integration_version_test_case(name, file_format: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:download', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fileFormat'] = file_format unless file_format.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes functional test
+        # @param [String] test_case_name
+        #   Required. Test case resource name
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest] google_cloud_integrations_v1alpha_execute_test_case_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_project_location_integration_version_test_case_test(test_case_name, google_cloud_integrations_v1alpha_execute_test_case_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+testCaseName}:executeTest', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_execute_test_case_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse
+          command.params['testCaseName'] = test_case_name unless test_case_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a test case
+        # @param [String] name
+        #   Required. The ID of the test case to retrieve
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_integration_version_test_case(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the test cases that satisfy the filters.
+        # @param [String] parent
+        #   Required. The parent resource where this TestCase was created.
+        # @param [String] filter
+        #   Optional. Standard filter field. Filtering as supported in https://developers.
+        #   google.com/authorized-buyers/apis/guides/list-filters.
+        # @param [String] order_by
+        #   Optional. The results would be returned in order specified here. Currently
+        #   supported sort keys are: Descending sort order for "last_modified_time", "
+        #   created_time". Ascending sort order for "name".
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of test cases to return. The service may return
+        #   fewer than this value. If unspecified, at most 100 test cases will be returned.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListTestCases` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListTestCases` must match the call that provided the page token.
+        # @param [String] read_mask
+        #   Optional. The mask which specifies fields that need to be returned in the
+        #   TestCases's response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTestCasesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTestCasesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_integration_version_test_cases(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/testCases', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTestCasesResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTestCasesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the results of all functional test executions. The response includes the
+        # same information as the [execution log](https://cloud.google.com/application-
+        # integration/docs/viewing-logs) in the Integration UI.
+        # @param [String] parent
+        #   Required. The parent resource name of the test case execution.
+        # @param [String] filter
+        #   Optional. Standard filter field, we support filtering on following fields:
+        #   test_case_id: the ID of the test case. CreateTimestamp: the execution created
+        #   time. event_execution_state: the state of the executions. execution_id: the id
+        #   of the execution. trigger_id: the id of the trigger. parameter_type: the type
+        #   of the parameters involved in the execution. All fields support for EQUALS, in
+        #   additional: CreateTimestamp support for LESS_THAN, GREATER_THAN ParameterType
+        #   support for HAS For example: "parameter_type" HAS \"string\" Also supports
+        #   operators like AND, OR, NOT For example, trigger_id=\"id1\" AND test_case_id=\"
+        #   testCaseId\"
+        # @param [String] order_by
+        #   Optional. The results would be returned in order you specified here. Currently
+        #   supporting "last_modified_time" and "create_time".
+        # @param [Fixnum] page_size
+        #   Optional. The size of entries in the response.
+        # @param [String] page_token
+        #   Optional. The token returned in the previous response.
+        # @param [String] read_mask
+        #   Optional. View mask for the response data. If set, only the field specified
+        #   will be returned as part of the result. If not set, all fields in event
+        #   execution info will be filled and returned.
+        # @param [Boolean] truncate_params
+        #   Optional. If true, the service will truncate the params to only keep the first
+        #   1000 characters of string params and empty the executions in order to make
+        #   response smaller. Only works for UI and when the params fields are not
+        #   filtered out.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_integration_version_test_case_executions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, truncate_params: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}:executions', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTestCaseExecutionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['truncateParams'] = truncate_params unless truncate_params.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a test case
+        # @param [String] name
+        #   Output only. Auto-generated primary key.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase] google_cloud_integrations_v1alpha_test_case_object
+        # @param [String] update_mask
+        #   Optional. Field mask specifying the fields in the above integration that have
+        #   been modified and need to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_integration_version_test_case(name, google_cloud_integrations_v1alpha_test_case_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase::Representation
+          command.request_object = google_cloud_integrations_v1alpha_test_case_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Clear the lock fields and assign them to current user
+        # @param [String] name
+        #   Required. The ID of test case to takeover edit lock. Format: projects/`project`
+        #   /locations/`location`/integrations/`integration`/versions/`integration_version`
+        #   /testCases/`test_case_id`
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest] google_cloud_integrations_v1alpha_takeover_test_case_edit_lock_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def takeover_project_location_integration_version_test_case_edit_lock(name, google_cloud_integrations_v1alpha_takeover_test_case_edit_lock_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:takeoverEditLock', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_takeover_test_case_edit_lock_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestCase
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Uploads a test case. The content can be a previously downloaded test case.
+        # Performs the same function as CreateTestCase, but accepts input in a string
+        # format, which holds the complete representation of the TestCase content.
+        # @param [String] parent
+        #   Required. The test case to upload. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`integration_version`
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTestCaseRequest] google_cloud_integrations_v1alpha_upload_test_case_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTestCaseResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTestCaseResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_project_location_integration_version_test_case(parent, google_cloud_integrations_v1alpha_upload_test_case_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/testCases:upload', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTestCaseRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_upload_test_case_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTestCaseResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTestCaseResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2601,41 +3098,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancellation of an execution
-        # @param [String] name
-        #   Required. The execution resource name. Format: projects/`gcp_project_id`/
-        #   locations/`location`/products/`product`/integrations/`integration_id`/
-        #   executions/`execution_id`
-        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionRequest] google_cloud_integrations_v1alpha_cancel_execution_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_project_location_product_integration_execution(name, google_cloud_integrations_v1alpha_cancel_execution_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
-          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionRequest::Representation
-          command.request_object = google_cloud_integrations_v1alpha_cancel_execution_request_object
-          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionResponse::Representation
-          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCancelExecutionResponse
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Download the execution.
         # @param [String] name
         #   Required. The execution resource name. Format: projects/`gcp_project_id`/
@@ -2741,15 +3203,19 @@ module Google
         #   Workflow name.
         # @param [String] order_by
         #   Optional. The results would be returned in order you specified here. Currently
-        #   supporting "last_modified_time" and "create_time".
+        #   supporting "create_time".
         # @param [Fixnum] page_size
         #   Optional. The size of entries in the response.
         # @param [String] page_token
         #   Optional. The token returned in the previous response.
         # @param [String] read_mask
         #   Optional. View mask for the response data. If set, only the field specified
-        #   will be returned as part of the result. If not set, all fields in event
-        #   execution info will be filled and returned.
+        #   will be returned as part of the result. If not set, all fields in Execution
+        #   will be filled and returned. Supported fields: trigger_id execution_method
+        #   create_time update_time execution_details execution_details.state
+        #   execution_details.execution_snapshots execution_details.attempt_stats
+        #   execution_details.event_execution_snapshots_size request_parameters
+        #   cloud_logging_details snapshot_number replay_info
         # @param [Boolean] refresh_acl
         #   Optional. If true, the service will use the most recent acl information to
         #   list event execution infos and renew the acl cache. Note that fetching the
@@ -3086,8 +3552,7 @@ module Google
         #   Specifically, when parent equals: 1. projects//locations//integrations/,
         #   Meaning: "List versions (with filter) for a particular integration". 2.
         #   projects//locations//integrations/- Meaning: "List versions (with filter) for
-        #   a client within a particular region". 3. projects//locations/-/integrations/-
-        #   Meaning: "List versions (with filter) for a client".
+        #   a client within a particular region".
         # @param [String] field_mask
         #   The field mask which specifies the particular data to be returned.
         # @param [String] filter
@@ -3100,8 +3565,8 @@ module Google
         #   fields like `task_config`.
         # @param [String] order_by
         #   The results would be returned in order you specified here. Currently supported
-        #   sort keys are: Descending sort order for "last_modified_time", "created_time",
-        #   "snapshot_number" Ascending sort order for "name".
+        #   sort keys are: Descending sort order for "last\_modified\_time", "created\
+        #   _time", and "snapshot\_number". Ascending sort order for `name`.
         # @param [Fixnum] page_size
         #   The maximum number of versions to return. The service may return fewer than
         #   this value. If unspecified, at most 50 versions will be returned. The maximum
@@ -4048,6 +4513,450 @@ module Google
           command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSfdcChannel
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new template
+        # @param [String] parent
+        #   Required. "projects/`project`/locations/`location`" format.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate] google_cloud_integrations_v1alpha_template_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_template(parent, google_cloud_integrations_v1alpha_template_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/templates', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate::Representation
+          command.request_object = google_cloud_integrations_v1alpha_template_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a template
+        # @param [String] name
+        #   Required. The name that is associated with the Template.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Downloads a template. Retrieves the `Template` and returns the response as a
+        # string.
+        # @param [String] name
+        #   Required. The template to download. Format: projects/`project`/locations/`
+        #   location`/template/`template_id`
+        # @param [String] file_format
+        #   Required. File format for download request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaDownloadTemplateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaDownloadTemplateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def download_project_location_template(name, file_format: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:download', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaDownloadTemplateResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaDownloadTemplateResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fileFormat'] = file_format unless file_format.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a template in the specified project.
+        # @param [String] name
+        #   Required. The template to retrieve. Format: projects/`project`/locations/`
+        #   location`/templates/`template`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Import the template to an existing integration. This api would keep track of
+        # usage_count and last_used_time. PERMISSION_DENIED would be thrown if template
+        # is not accessible by client.
+        # @param [String] name
+        #   Required. The name that is associated with the Template.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaImportTemplateRequest] google_cloud_integrations_v1alpha_import_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaImportTemplateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaImportTemplateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_project_location_template(name, google_cloud_integrations_v1alpha_import_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:import', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaImportTemplateRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_import_template_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaImportTemplateResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaImportTemplateResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all templates matching the filter.
+        # @param [String] parent
+        #   Required. The client, which owns this collection of Templates.
+        # @param [String] filter
+        #   Optional. Standard filter field to filter templates. client_id filter won't be
+        #   supported and will restrict to templates belonging to the current client only.
+        #   Return all templates of the current client if the filter is empty. Also
+        #   supports operators like AND, OR, NOT For example, "status=\"ACTIVE\"
+        # @param [String] order_by
+        #   Optional. The results would be returned in the order you specified here.
+        # @param [Fixnum] page_size
+        #   Optional. The size of the response entries. If unspecified, defaults to 100.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. The token returned in the previous response.
+        # @param [String] read_mask
+        #   Optional. The mask which specifies fields that need to be returned in the
+        #   template's response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_templates(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/templates', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTemplatesResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaListTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the template by given id.
+        # @param [String] name
+        #   Identifier. Resource name of the template.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate] google_cloud_integrations_v1alpha_template_object
+        # @param [String] update_mask
+        #   Required. Field mask specifying the fields in the above template that have
+        #   been modified and must be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_template(name, google_cloud_integrations_v1alpha_template_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate::Representation
+          command.request_object = google_cloud_integrations_v1alpha_template_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Search templates based on user query and filters. This api would query the
+        # templates and return a list of templates based on the user filter.
+        # @param [String] parent
+        #   Required. The client, which owns this collection of Templates.
+        # @param [String] filter
+        #   Optional. Standard filter field to filter templates. client_id filter won't be
+        #   supported and will restrict to templates belonging to the current client only.
+        #   Return all templates of the current client if the filter is empty. Also
+        #   supports operators like AND, OR, NOT For example, "status=\"ACTIVE\"
+        # @param [String] order_by
+        #   Optional. The results would be returned in the order you specified here.
+        # @param [Fixnum] page_size
+        #   Optional. The size of the response entries. If unspecified, defaults to 100.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. The token returned in the previous response.
+        # @param [String] read_mask
+        #   Optional. The mask which specifies fields that need to be returned in the
+        #   template's response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSearchTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSearchTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_templates(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/templates:search', options)
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSearchTemplatesResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSearchTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Share a template with other clients. Only the template owner can share the
+        # templates with other projects. PERMISSION_DENIED would be thrown if the
+        # request is not from the owner.
+        # @param [String] name
+        #   Required. The name that is associated with the Template.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaShareTemplateRequest] google_cloud_integrations_v1alpha_share_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def share_project_location_template(name, google_cloud_integrations_v1alpha_share_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:share', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaShareTemplateRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_share_template_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Unshare a template from given clients. Owner of the template can unshare
+        # template with clients. Shared client can only unshare the template from itself.
+        # PERMISSION_DENIED would be thrown if request is not from owner or for
+        # unsharing itself.
+        # @param [String] name
+        #   Required. The name that is associated with the Template.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUnshareTemplateRequest] google_cloud_integrations_v1alpha_unshare_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unshare_project_location_template(name, google_cloud_integrations_v1alpha_unshare_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:unshare', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUnshareTemplateRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_unshare_template_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Uploads a template. The content can be a previously downloaded template.
+        # Performs the same function as CreateTemplate, but accepts input in a string
+        # format, which holds the complete representation of the Template content.
+        # @param [String] parent
+        #   Required. The template to upload. Format: projects/`project`/locations/`
+        #   location`
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTemplateRequest] google_cloud_integrations_v1alpha_upload_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTemplateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTemplateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_project_location_template(parent, google_cloud_integrations_v1alpha_upload_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/templates:upload', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTemplateRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_upload_template_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTemplateResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUploadTemplateResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Use the template to create integration. This api would keep track of
+        # usage_count and last_used_time. PERMISSION_DENIED would be thrown if template
+        # is not accessible by client.
+        # @param [String] name
+        #   Required. The name that is associated with the Template.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequest] google_cloud_integrations_v1alpha_use_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def use_project_location_template(name, google_cloud_integrations_v1alpha_use_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:use', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_use_template_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaUseTemplateResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
