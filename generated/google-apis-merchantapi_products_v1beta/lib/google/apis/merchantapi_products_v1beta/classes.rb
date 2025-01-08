@@ -1371,8 +1371,8 @@ module Google
         # @return [Google::Apis::MerchantapiProductsV1beta::Attributes]
         attr_accessor :attributes
       
-        # Required. Immutable. The [channel](https://support.google.com/merchants/answer/
-        # 7361332) of the product.
+        # Immutable. The [channel](https://support.google.com/merchants/answer/7361332)
+        # of the product.
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel
