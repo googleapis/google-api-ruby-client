@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogLineageV1Run
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +292,15 @@ module Google
           collection :links, as: 'links', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1ProcessLinkInfo, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1ProcessLinkInfo::Representation
       
           property :process, as: 'process'
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :lineage_events, as: 'lineageEvents'
+          property :process, as: 'process'
+          property :run, as: 'run'
         end
       end
       

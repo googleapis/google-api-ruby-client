@@ -32,6 +32,8 @@ module Google
       #
       # @see https://cloud.google.com/data-catalog
       class DatalineageService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://datalineage.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://datalineage.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-datalineage_v1',
                 client_version: Google::Apis::DatalineageV1::GEM_VERSION)
           @batch_path = 'batch'
@@ -85,6 +87,45 @@ module Google
           command.response_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse::Representation
           command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates new lineage events together with their parents: process and run.
+        # Updates the process and run if they already exist. Mapped from Open Lineage
+        # specification: https://github.com/OpenLineage/OpenLineage/blob/main/spec/
+        # OpenLineage.json.
+        # @param [String] parent
+        #   Required. The name of the project and its location that should own the process,
+        #   run, and lineage event.
+        # @param [String] request_id
+        #   A unique identifier for this request. Restricted to 36 ASCII characters. A
+        #   random UUID is recommended. This request is idempotent only if a `request_id`
+        #   is provided.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def process_project_location_open_lineage_run_event(parent, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:processOpenLineageRunEvent', options)
+          command.response_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse::Representation
+          command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -134,8 +175,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::DatalineageV1::GoogleLongrunningCancelOperationRequest] google_longrunning_cancel_operation_request_object
