@@ -3235,7 +3235,7 @@ module Google
         # @return [Google::Apis::SqladminV1::SqlSubOperationType]
         attr_accessor :sub_operation_type
       
-        # Name of the database instance related to this operation.
+        # 
         # Corresponds to the JSON property `targetId`
         # @return [String]
         attr_accessor :target_id
