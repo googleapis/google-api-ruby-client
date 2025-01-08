@@ -1150,6 +1150,8 @@ module Google
       
           property :provider, as: 'provider'
           property :role, as: 'role'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :sqlserver, as: 'sqlserver', class: Google::Apis::DatamigrationV1::SqlServerConnectionProfile, decorator: Google::Apis::DatamigrationV1::SqlServerConnectionProfile::Representation
       
           property :state, as: 'state'
@@ -1734,6 +1736,8 @@ module Google
           property :phase, as: 'phase'
           property :reverse_ssh_connectivity, as: 'reverseSshConnectivity', class: Google::Apis::DatamigrationV1::ReverseSshConnectivity, decorator: Google::Apis::DatamigrationV1::ReverseSshConnectivity::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :source, as: 'source'
           property :source_database, as: 'sourceDatabase', class: Google::Apis::DatamigrationV1::DatabaseType, decorator: Google::Apis::DatamigrationV1::DatabaseType::Representation
       
@@ -1989,6 +1993,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
           property :vpc_peering_config, as: 'vpcPeeringConfig', class: Google::Apis::DatamigrationV1::VpcPeeringConfig, decorator: Google::Apis::DatamigrationV1::VpcPeeringConfig::Representation
