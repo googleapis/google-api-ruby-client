@@ -30,7 +30,7 @@ module Google
       #    Discoveryengine = Google::Apis::DiscoveryengineV1alpha # Alias the module
       #    service = Discoveryengine::DiscoveryEngineService.new
       #
-      # @see https://cloud.google.com/discovery-engine/docs
+      # @see https://cloud.google.com/generative-ai-app-builder/docs/
       class DiscoveryEngineService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://discoveryengine.$UNIVERSE_DOMAIN$/"
 
@@ -189,6 +189,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generates grounded content.
+        # @param [String] location
+        #   Required. Location resource. Format: `projects/`project`/locations/`location``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequest] google_cloud_discoveryengine_v1alpha_generate_grounded_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_grounded_content(location, google_cloud_discoveryengine_v1alpha_generate_grounded_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+location}:generateGroundedContent', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_generate_grounded_content_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponse
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the AclConfig.
         # @param [String] name
         #   Required. Resource name of AclConfig, such as `projects/*/locations/*/
@@ -221,7 +254,75 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Default Acl Configuration for use in a location of a customer's project.
+        # Gets the CmekConfig.
+        # @param [String] name
+        #   Required. Resource name of CmekConfig, such as `projects/*/locations/*/
+        #   cmekConfig` or `projects/*/locations/*/cmekConfigs/*`. If the caller does not
+        #   have permission to access the CmekConfig, regardless of whether or not it
+        #   exists, a PERMISSION_DENIED error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_single_cmek_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Collection and sets up the DataConnector for it. To stop a
+        # DataConnector after setup, use the CollectionService.DeleteCollection method.
+        # @param [String] parent
+        #   Required. The parent of Collection, in the format of `projects/`project`/
+        #   locations/`location``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorRequest] google_cloud_discoveryengine_v1alpha_set_up_data_connector_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_up_data_connector(parent, google_cloud_discoveryengine_v1alpha_set_up_data_connector_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}:setUpDataConnector', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_set_up_data_connector_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Default ACL configuration for use in a location of a customer's project.
         # Updates will only reflect to new data stores. Existing data stores will still
         # use the old value.
         # @param [String] name
@@ -253,6 +354,461 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAclConfig::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAclConfig
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Provisions a CMEK key for use in a location of a customer's project. This
+        # method will also conduct location validation on the provided cmekConfig to
+        # make sure the key is valid and can be used in the selected location.
+        # @param [String] name
+        #   Required. Name of the CmekConfig, of the form `projects/`project`/locations/`
+        #   location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/`
+        #   cmekConfig``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig] google_cloud_discoveryengine_v1alpha_cmek_config_object
+        # @param [Boolean] set_default
+        #   Set the following CmekConfig as the default to be used for child resources if
+        #   one is not specified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_cmek_config(name, google_cloud_discoveryengine_v1alpha_cmek_config_object = nil, set_default: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_cmek_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['setDefault'] = set_default unless set_default.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the CmekConfig.
+        # @param [String] name
+        #   Required. Resource name of CmekConfig, such as `projects/*/locations/*/
+        #   cmekConfig` or `projects/*/locations/*/cmekConfigs/*`. If the caller does not
+        #   have permission to access the CmekConfig, regardless of whether or not it
+        #   exists, a PERMISSION_DENIED error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cmek_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the CmekConfigs with the project.
+        # @param [String] parent
+        #   Required. The parent location resource name, such as `projects/`project`/
+        #   locations/`location``. If the caller does not have permission to list
+        #   CmekConfigs under this location, regardless of whether or not a CmekConfig
+        #   exists, a PERMISSION_DENIED error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_cmek_configs(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/cmekConfigs', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Provisions a CMEK key for use in a location of a customer's project. This
+        # method will also conduct location validation on the provided cmekConfig to
+        # make sure the key is valid and can be used in the selected location.
+        # @param [String] name
+        #   Required. Name of the CmekConfig, of the form `projects/`project`/locations/`
+        #   location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/`
+        #   cmekConfig``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig] google_cloud_discoveryengine_v1alpha_cmek_config_object
+        # @param [Boolean] set_default
+        #   Set the following CmekConfig as the default to be used for child resources if
+        #   one is not specified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_cmek_config(name, google_cloud_discoveryengine_v1alpha_cmek_config_object = nil, set_default: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_cmek_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['setDefault'] = set_default unless set_default.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Collection.
+        # @param [String] name
+        #   Required. The full resource name of the Collection, in the format of `projects/
+        #   `project`/locations/`location`/collections/`collection``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_collection(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Collection.
+        # @param [String] name
+        #   Required. The full resource name, in the format of `projects/`project`/
+        #   locations/`location`/collections/`collection``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCollection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCollection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCollection::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCollection
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the DataConnector. DataConnector is a singleton resource for each
+        # Collection.
+        # @param [String] name
+        #   Required. Full resource name of DataConnector, such as `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataConnector`. If the caller
+        #   does not have permission to access the DataConnector, regardless of whether or
+        #   not it exists, a PERMISSION_DENIED error is returned. If the requested
+        #   DataConnector does not exist, a NOT_FOUND error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_data_connector(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a list of Collections.
+        # @param [String] parent
+        #   Required. The parent data store resource name, in the format of `projects/`
+        #   project`/locations/`location``.
+        # @param [String] filter
+        #   Filter returned collections by associated data connector data sources. For
+        #   example: `filter = 'data_source:jira confluence'`. If the filter is empty, we
+        #   return all collections under a project and location.
+        # @param [Fixnum] page_size
+        #   The maximum number of Collections to return. The service may return fewer than
+        #   this value. If unspecified, at most 100 Collections will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous CollectionService.ListCollections call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to CollectionService.ListCollections must match the call
+        #   that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCollectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCollectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_collections(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/collections', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCollectionsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListCollectionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Collection.
+        # @param [String] name
+        #   Immutable. The full resource name of the Collection. Format: `projects/`
+        #   project`/locations/`location`/collections/`collection_id``. This field must be
+        #   a UTF-8 encoded string with a length limit of 1024 characters.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCollection] google_cloud_discoveryengine_v1alpha_collection_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_collection(name, google_cloud_discoveryengine_v1alpha_collection_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCollection::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_collection_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a DataConnector.
+        # @param [String] name
+        #   Output only. The full resource name of the Data Connector. Format: `projects/*/
+        #   locations/*/collections/*/dataConnector`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector] google_cloud_discoveryengine_v1alpha_data_connector_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided DataConnector to update. Supported
+        #   field paths include: - refresh_interval - params - auto_run_disabled -
+        #   action_config - destination_configs - blocking_reasons Note: Support for these
+        #   fields may vary depending on the connector type. For example, not all
+        #   connectors support `destination_configs`. If an unsupported or unknown field
+        #   path is provided, the request will return an INVALID_ARGUMENT error.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_collection_data_connector(name, google_cloud_discoveryengine_v1alpha_data_connector_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_data_connector_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnector
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts an immediate synchronization process for a DataConnector. Third Party
+        # Connector Users must specify which entities should be synced. FHIR Connectors
+        # must provide a timestamp to indicate the point in time from which data should
+        # be synced.
+        # @param [String] parent
+        #   Required. Connector name of the form projects/`project`/locations/`location`/
+        #   collections/ `collection_id`/dataConnector
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest] google_cloud_discoveryengine_v1alpha_start_connector_run_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConnectorRun] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConnectorRun]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_project_location_collection_data_connector_connector_run(parent, google_cloud_discoveryengine_v1alpha_start_connector_run_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}:startConnectorRun', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_start_connector_run_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConnectorRun::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConnectorRun
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the ConnectorRuns of a DataConnector.
+        # @param [String] parent
+        #   Required. The parent DataConnector resource name, such as `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataConnector`. If the caller
+        #   does not have permission to list ConnectorRuns under this DataConnector,
+        #   regardless of whether or not this DataConnector exists, a PERMISSION_DENIED
+        #   error is returned.
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer items than requested. If
+        #   unspecified, defaults to 10. The maximum value is 50; values above 50 will be
+        #   coerced to 50. If this field is negative, an INVALID_ARGUMENT error is
+        #   returned.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListConnectorRuns` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListConnectorRuns` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_collection_data_connector_connector_runs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/connectorRuns', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -399,6 +955,8 @@ module Google
         #   Required. The parent resource name, such as `projects/`project`/locations/`
         #   location`/collections/`collection``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataStore] google_cloud_discoveryengine_v1alpha_data_store_object
+        # @param [String] cmek_config_name
+        #   Resource name of the CmekConfig to use for protecting this DataStore.
         # @param [Boolean] create_advanced_site_search
         #   A boolean flag indicating whether user want to directly create an advanced
         #   data store for site search. If the data store is not configured as site search
@@ -409,6 +967,15 @@ module Google
         #   component of the DataStore's resource name. This field must conform to [RFC-
         #   1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
         #   characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # @param [Boolean] disable_cmek
+        #   DataStore without CMEK protections. If a default CmekConfig is set for the
+        #   project, setting this field will override the default CmekConfig as well.
+        # @param [Boolean] skip_default_schema_creation
+        #   A boolean flag indicating whether to skip the default schema creation for the
+        #   data store. Only enable this flag if you are certain that the default schema
+        #   is incompatible with your use case. If set to true, you must manually create a
+        #   schema for the data store before any documents can be ingested. This flag
+        #   cannot be specified if `data_store.starting_schema` is specified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -426,15 +993,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_collection_data_store(parent, google_cloud_discoveryengine_v1alpha_data_store_object = nil, create_advanced_site_search: nil, data_store_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_collection_data_store(parent, google_cloud_discoveryengine_v1alpha_data_store_object = nil, cmek_config_name: nil, create_advanced_site_search: nil, data_store_id: nil, disable_cmek: nil, skip_default_schema_creation: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1alpha/{+parent}/dataStores', options)
           command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataStore::Representation
           command.request_object = google_cloud_discoveryengine_v1alpha_data_store_object
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['cmekConfigName'] = cmek_config_name unless cmek_config_name.nil?
           command.query['createAdvancedSiteSearch'] = create_advanced_site_search unless create_advanced_site_search.nil?
           command.query['dataStoreId'] = data_store_id unless data_store_id.nil?
+          command.query['disableCmek'] = disable_cmek unless disable_cmek.nil?
+          command.query['skipDefaultSchemaCreation'] = skip_default_schema_creation unless skip_default_schema_creation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -511,8 +1081,8 @@ module Google
         # Gets a DocumentProcessingConfig.
         # @param [String] name
         #   Required. Full DocumentProcessingConfig resource name. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/documentProcessingConfig`
+        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
+        #   data_store_id`/documentProcessingConfig`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -734,6 +1304,46 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets index freshness metadata for Documents. Supported for website search only.
+        # @param [String] parent
+        #   Required. The parent branch resource name, such as `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
+        #   `branch``.
+        # @param [Array<String>, String] matcher_fhir_matcher_fhir_resources
+        #   Required. The FHIR resources to match by. Format: projects/`project`/locations/
+        #   `location`/datasets/`dataset`/fhirStores/`fhir_store`/fhir/`resource_type`/`
+        #   fhir_resource_id`
+        # @param [Array<String>, String] matcher_uris_matcher_uris
+        #   The exact URIs to match by.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_collection_data_store_branch_get_documents_metadata(parent, matcher_fhir_matcher_fhir_resources: nil, matcher_uris_matcher_uris: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/batchGetDocumentsMetadata', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['matcher.fhirMatcher.fhirResources'] = matcher_fhir_matcher_fhir_resources unless matcher_fhir_matcher_fhir_resources.nil?
+          command.query['matcher.urisMatcher.uris'] = matcher_uris_matcher_uris unless matcher_uris_matcher_uris.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1147,8 +1757,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningCancelOperationRequest] google_longrunning_cancel_operation_request_object
@@ -1252,6 +1862,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Completes the user input with advanced keyword suggestions.
+        # @param [String] completion_config
+        #   Required. The completion_config of the parent dataStore or engine resource
+        #   name for which the completion is performed, such as `projects/*/locations/
+        #   global/collections/default_collection/dataStores/*/completionConfig` `projects/
+        #   */locations/global/collections/default_collection/engines/*/completionConfig`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest] google_cloud_discoveryengine_v1alpha_advanced_complete_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_collection_data_store_completion_config_query(completion_config, google_cloud_discoveryengine_v1alpha_advanced_complete_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+completionConfig}:completeQuery', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_advanced_complete_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse
+          command.params['completionConfig'] = completion_config unless completion_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Imports CompletionSuggestions for a DataStore.
         # @param [String] parent
         #   Required. The parent data store resource name for which to import customer
@@ -1325,10 +1971,10 @@ module Google
         # request can be submitted to adjust this limit. If the Control to create
         # already exists, an ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`` or `projects/`project_number`/locations/`location_id`/
-        #   collections/`collection_id`/engines/`engine_id``.
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``
+        #   or `projects/`project`/locations/`location`/collections/`collection_id`/
+        #   engines/`engine_id``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaControl] google_cloud_discoveryengine_v1alpha_control_object
         # @param [String] control_id
         #   Required. The ID to use for the Control, which will become the final component
@@ -1368,8 +2014,8 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Control to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
+        #   data_store_id`/controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1399,9 +2045,9 @@ module Google
         
         # Gets a Control.
         # @param [String] name
-        #   Required. The resource name of the Control to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   Required. The resource name of the Control to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1431,10 +2077,10 @@ module Google
         
         # Lists all Controls by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection_id`/dataStores/`data_store_id``
-        #   or `projects/`project_number`/locations/`location_id`/collections/`
-        #   collection_id`/engines/`engine_id``.
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection_id`/dataStores/`data_store_id`` or `projects/
+        #   `project`/locations/`location`/collections/`collection_id`/engines/`engine_id``
+        #   .
         # @param [String] filter
         #   Optional. A filter to apply on the list results. Supported features: * List
         #   all the products under the parent branch if filter is unset. Currently this
@@ -1518,9 +2164,9 @@ module Google
         # Converses a conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project_number`
-        #   /locations/`location_id`/collections/`collection`/dataStores/`data_store_id`/
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
+        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
         #   conversations/-` to activate auto session mode, which automatically creates a
         #   new conversation inside a ConverseConversation session.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConverseConversationRequest] google_cloud_discoveryengine_v1alpha_converse_conversation_request_object
@@ -1556,9 +2202,8 @@ module Google
         # Creates a Conversation. If the Conversation to create already exists, an
         # ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation] google_cloud_discoveryengine_v1alpha_conversation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1593,7 +2238,7 @@ module Google
         # NOT_FOUND error is returned.
         # @param [String] name
         #   Required. The resource name of the Conversation to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1625,7 +2270,7 @@ module Google
         # Gets a Conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1656,8 +2301,8 @@ module Google
         
         # Lists all Conversations by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
@@ -2217,7 +2862,7 @@ module Google
         # exist.
         # @param [String] name
         #   Required. The resource name of the ServingConfig to get. Format: `projects/`
-        #   project_number`/locations/`location`/collections/`collection`/engines/`engine`/
+        #   project`/locations/`location`/collections/`collection`/engines/`engine`/
         #   servingConfigs/`serving_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2249,7 +2894,7 @@ module Google
         # Lists all ServingConfigs linked to this dataStore.
         # @param [String] parent
         #   Required. Full resource name of the parent resource. Format: `projects/`
-        #   project_number`/locations/`location`/collections/`collection`/engines/`engine``
+        #   project`/locations/`location`/collections/`collection`/engines/`engine``
         # @param [Fixnum] page_size
         #   Optional. Maximum number of results to return. If unspecified, defaults to 100.
         #   If a value greater than 100 is provided, at most 100 results are returned.
@@ -2404,12 +3049,95 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Performs a search. Similar to the SearchService.Search method, but a lite
+        # version that allows API key for authentication, where OAuth and IAM checks are
+        # not required. Only public website search is supported by this method. If data
+        # stores and engines not associated with public website search are specified, a `
+        # FAILED_PRECONDITION` error is returned. This method can be used for easy
+        # onboarding without having to implement an authentication backend. However, it
+        # is strongly recommended to use SearchService.Search instead with required
+        # OAuth and IAM checks to provide better data security.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/default_data_store/servingConfigs/
+        #   default_serving_config`. This field is used to identify the serving
+        #   configuration name, set of models used to make the search.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequest] google_cloud_discoveryengine_v1alpha_search_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_collection_data_store_serving_config_lite(serving_config, google_cloud_discoveryengine_v1alpha_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+servingConfig}:searchLite', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_search_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Answer query method (streaming). It takes one AnswerQueryRequest and returns
+        # multiple AnswerQueryResponse messages in a stream.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/*/servingConfigs/default_serving_config`. This
+        #   field is used to identify the serving configuration name, set of models used
+        #   to make the search.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest] google_cloud_discoveryengine_v1alpha_answer_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_collection_data_store_serving_config_answer(serving_config, google_cloud_discoveryengine_v1alpha_answer_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+servingConfig}:streamAnswer', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_answer_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Session. If the Session to create already exists, an ALREADY_EXISTS
         # error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession] google_cloud_discoveryengine_v1alpha_session_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2444,7 +3172,7 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Session to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/sessions/`session_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2475,9 +3203,12 @@ module Google
         
         # Gets a Session.
         # @param [String] name
-        #   Required. The resource name of the Session to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/sessions/`session_id``
+        #   Required. The resource name of the Session to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
+        #   sessions/`session_id``
+        # @param [Boolean] include_answer_details
+        #   Optional. If set to true, the full session including all answer details will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2495,11 +3226,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_data_store_session(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_collection_data_store_session(name, include_answer_details: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession
           command.params['name'] = name unless name.nil?
+          command.query['includeAnswerDetails'] = include_answer_details unless include_answer_details.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2507,15 +3239,17 @@ module Google
         
         # Lists all Sessions by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
-        #   create_time` * `session_name` Example: "update_time desc" "create_time"
+        #   create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "
+        #   create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned
+        #   first, then by update_time.
         # @param [Fixnum] page_size
         #   Maximum number of results to return. If unspecified, defaults to 50. Max
         #   allowed value is 1000.
@@ -2595,9 +3329,9 @@ module Google
         
         # Gets a Answer.
         # @param [String] name
-        #   Required. The resource name of the Answer to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/engines/`
-        #   engine_id`/sessions/`session_id`/answers/`answer_id``
+        #   Required. The resource name of the Answer to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine_id`/sessions/`
+        #   session_id`/answers/`answer_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2941,6 +3675,75 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Sitemap.
+        # @param [String] parent
+        #   Required. Parent resource name of the SiteSearchEngine, such as `projects/*/
+        #   locations/*/collections/*/dataStores/*/siteSearchEngine`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSitemap] google_cloud_discoveryengine_v1alpha_sitemap_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_collection_data_store_site_search_engine_sitemap(parent, google_cloud_discoveryengine_v1alpha_sitemap_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/sitemaps', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSitemap::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_sitemap_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Sitemap.
+        # @param [String] name
+        #   Required. Full resource name of Sitemap, such as `projects/`project`/locations/
+        #   `location`/collections/`collection`/dataStores/`data_store`/siteSearchEngine/
+        #   sitemaps/`sitemap``. If the caller does not have permission to access the
+        #   Sitemap, regardless of whether or not it exists, a PERMISSION_DENIED error is
+        #   returned. If the requested Sitemap does not exist, a NOT_FOUND error is
+        #   returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_collection_data_store_site_search_engine_sitemap(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3312,8 +4115,12 @@ module Google
         # only by the Discovery Engine API JavaScript pixel and Google Tag Manager.
         # Users should not call this method directly.
         # @param [String] parent
-        #   Required. The parent DataStore resource name, such as `projects/`project`/
-        #   locations/`location`/collections/`collection`/dataStores/`data_store``.
+        #   Required. The parent resource name. If the collect user event action is
+        #   applied in DataStore level, the format is: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store``. If the collect
+        #   user event action is applied in Location level, for example, the event with
+        #   Document across multiple DataStore, the format is: `projects/`project`/
+        #   locations/`location``.
         # @param [Fixnum] ets
         #   The event timestamp in milliseconds. This prevents browser caching of
         #   otherwise identical get requests. The name is abbreviated to reduce the
@@ -3399,8 +4206,8 @@ module Google
         # first.
         # @param [String] parent
         #   Required. The resource name of the catalog under which the events are created.
-        #   The format is `projects/$`projectId`/locations/global/collections/`$
-        #   collectionId`/dataStores/$`dataStoreId``
+        #   The format is `projects/`project`/locations/global/collections/`collection`/
+        #   dataStores/`dataStore``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest] google_cloud_discoveryengine_v1alpha_purge_user_events_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3623,9 +4430,9 @@ module Google
         # @param [String] name
         #   Immutable. The fully qualified resource name of the engine. This field must be
         #   a UTF-8 encoded string with a length limit of 1024 characters. Format: `
-        #   projects/`project_number`/locations/`location`/collections/`collection`/
-        #   engines/`engine`` engine should be 1-63 characters, and valid characters are /
-        #   a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        #   projects/`project`/locations/`location`/collections/`collection`/engines/`
+        #   engine`` engine should be 1-63 characters, and valid characters are /a-z0-9*/.
+        #   Otherwise, an INVALID_ARGUMENT error is returned.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngine] google_cloud_discoveryengine_v1alpha_engine_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Engine to update. If an unsupported or
@@ -3663,8 +4470,8 @@ module Google
         # Pauses the training of an existing engine. Only applicable if SolutionType is
         # SOLUTION_TYPE_RECOMMENDATION.
         # @param [String] name
-        #   Required. The name of the engine to pause. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection_id`/engines/`engine_id``
+        #   Required. The name of the engine to pause. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/engines/`engine_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPauseEngineRequest] google_cloud_discoveryengine_v1alpha_pause_engine_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3698,8 +4505,8 @@ module Google
         # Resumes the training of an existing engine. Only applicable if SolutionType is
         # SOLUTION_TYPE_RECOMMENDATION.
         # @param [String] name
-        #   Required. The name of the engine to resume. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection_id`/engines/`engine_id``
+        #   Required. The name of the engine to resume. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/engines/`engine_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaResumeEngineRequest] google_cloud_discoveryengine_v1alpha_resume_engine_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3733,9 +4540,8 @@ module Google
         # Tunes an existing engine. Only applicable if SolutionType is
         # SOLUTION_TYPE_RECOMMENDATION.
         # @param [String] name
-        #   Required. The resource name of the engine to tune. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/engines/`
-        #   engine_id``
+        #   Required. The resource name of the engine to tune. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/engines/`engine_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTuneEngineRequest] google_cloud_discoveryengine_v1alpha_tune_engine_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3766,14 +4572,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Completes the user input with advanced keyword suggestions.
+        # @param [String] completion_config
+        #   Required. The completion_config of the parent dataStore or engine resource
+        #   name for which the completion is performed, such as `projects/*/locations/
+        #   global/collections/default_collection/dataStores/*/completionConfig` `projects/
+        #   */locations/global/collections/default_collection/engines/*/completionConfig`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest] google_cloud_discoveryengine_v1alpha_advanced_complete_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_collection_engine_completion_config_query(completion_config, google_cloud_discoveryengine_v1alpha_advanced_complete_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+completionConfig}:completeQuery', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_advanced_complete_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse
+          command.params['completionConfig'] = completion_config unless completion_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Control. By default 1000 controls are allowed for a data store. A
         # request can be submitted to adjust this limit. If the Control to create
         # already exists, an ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`` or `projects/`project_number`/locations/`location_id`/
-        #   collections/`collection_id`/engines/`engine_id``.
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``
+        #   or `projects/`project`/locations/`location`/collections/`collection_id`/
+        #   engines/`engine_id``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaControl] google_cloud_discoveryengine_v1alpha_control_object
         # @param [String] control_id
         #   Required. The ID to use for the Control, which will become the final component
@@ -3813,8 +4655,8 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Control to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
+        #   data_store_id`/controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3844,9 +4686,9 @@ module Google
         
         # Gets a Control.
         # @param [String] name
-        #   Required. The resource name of the Control to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   Required. The resource name of the Control to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3876,10 +4718,10 @@ module Google
         
         # Lists all Controls by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection_id`/dataStores/`data_store_id``
-        #   or `projects/`project_number`/locations/`location_id`/collections/`
-        #   collection_id`/engines/`engine_id``.
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection_id`/dataStores/`data_store_id`` or `projects/
+        #   `project`/locations/`location`/collections/`collection_id`/engines/`engine_id``
+        #   .
         # @param [String] filter
         #   Optional. A filter to apply on the list results. Supported features: * List
         #   all the products under the parent branch if filter is unset. Currently this
@@ -3963,9 +4805,9 @@ module Google
         # Converses a conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project_number`
-        #   /locations/`location_id`/collections/`collection`/dataStores/`data_store_id`/
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
+        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
         #   conversations/-` to activate auto session mode, which automatically creates a
         #   new conversation inside a ConverseConversation session.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConverseConversationRequest] google_cloud_discoveryengine_v1alpha_converse_conversation_request_object
@@ -4001,9 +4843,8 @@ module Google
         # Creates a Conversation. If the Conversation to create already exists, an
         # ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation] google_cloud_discoveryengine_v1alpha_conversation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4038,7 +4879,7 @@ module Google
         # NOT_FOUND error is returned.
         # @param [String] name
         #   Required. The resource name of the Conversation to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4070,7 +4911,7 @@ module Google
         # Gets a Conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4101,8 +4942,8 @@ module Google
         
         # Lists all Conversations by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
@@ -4301,7 +5142,7 @@ module Google
         # exist.
         # @param [String] name
         #   Required. The resource name of the ServingConfig to get. Format: `projects/`
-        #   project_number`/locations/`location`/collections/`collection`/engines/`engine`/
+        #   project`/locations/`location`/collections/`collection`/engines/`engine`/
         #   servingConfigs/`serving_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4333,7 +5174,7 @@ module Google
         # Lists all ServingConfigs linked to this dataStore.
         # @param [String] parent
         #   Required. Full resource name of the parent resource. Format: `projects/`
-        #   project_number`/locations/`location`/collections/`collection`/engines/`engine``
+        #   project`/locations/`location`/collections/`collection`/engines/`engine``
         # @param [Fixnum] page_size
         #   Optional. Maximum number of results to return. If unspecified, defaults to 100.
         #   If a value greater than 100 is provided, at most 100 results are returned.
@@ -4488,12 +5329,95 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Performs a search. Similar to the SearchService.Search method, but a lite
+        # version that allows API key for authentication, where OAuth and IAM checks are
+        # not required. Only public website search is supported by this method. If data
+        # stores and engines not associated with public website search are specified, a `
+        # FAILED_PRECONDITION` error is returned. This method can be used for easy
+        # onboarding without having to implement an authentication backend. However, it
+        # is strongly recommended to use SearchService.Search instead with required
+        # OAuth and IAM checks to provide better data security.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/default_data_store/servingConfigs/
+        #   default_serving_config`. This field is used to identify the serving
+        #   configuration name, set of models used to make the search.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequest] google_cloud_discoveryengine_v1alpha_search_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_collection_engine_serving_config_lite(serving_config, google_cloud_discoveryengine_v1alpha_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+servingConfig}:searchLite', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_search_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Answer query method (streaming). It takes one AnswerQueryRequest and returns
+        # multiple AnswerQueryResponse messages in a stream.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/*/servingConfigs/default_serving_config`. This
+        #   field is used to identify the serving configuration name, set of models used
+        #   to make the search.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest] google_cloud_discoveryengine_v1alpha_answer_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_collection_engine_serving_config_answer(serving_config, google_cloud_discoveryengine_v1alpha_answer_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+servingConfig}:streamAnswer', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_answer_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Session. If the Session to create already exists, an ALREADY_EXISTS
         # error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession] google_cloud_discoveryengine_v1alpha_session_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4528,7 +5452,7 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Session to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/sessions/`session_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4559,9 +5483,12 @@ module Google
         
         # Gets a Session.
         # @param [String] name
-        #   Required. The resource name of the Session to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/sessions/`session_id``
+        #   Required. The resource name of the Session to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
+        #   sessions/`session_id``
+        # @param [Boolean] include_answer_details
+        #   Optional. If set to true, the full session including all answer details will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4579,11 +5506,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_engine_session(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_collection_engine_session(name, include_answer_details: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession
           command.params['name'] = name unless name.nil?
+          command.query['includeAnswerDetails'] = include_answer_details unless include_answer_details.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4591,15 +5519,17 @@ module Google
         
         # Lists all Sessions by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
-        #   create_time` * `session_name` Example: "update_time desc" "create_time"
+        #   create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "
+        #   create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned
+        #   first, then by update_time.
         # @param [Fixnum] page_size
         #   Maximum number of results to return. If unspecified, defaults to 50. Max
         #   allowed value is 1000.
@@ -4679,9 +5609,9 @@ module Google
         
         # Gets a Answer.
         # @param [String] name
-        #   Required. The resource name of the Answer to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/engines/`
-        #   engine_id`/sessions/`session_id`/answers/`answer_id``
+        #   Required. The resource name of the Answer to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine_id`/sessions/`
+        #   session_id`/answers/`answer_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4850,6 +5780,8 @@ module Google
         #   Required. The parent resource name, such as `projects/`project`/locations/`
         #   location`/collections/`collection``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataStore] google_cloud_discoveryengine_v1alpha_data_store_object
+        # @param [String] cmek_config_name
+        #   Resource name of the CmekConfig to use for protecting this DataStore.
         # @param [Boolean] create_advanced_site_search
         #   A boolean flag indicating whether user want to directly create an advanced
         #   data store for site search. If the data store is not configured as site search
@@ -4860,6 +5792,15 @@ module Google
         #   component of the DataStore's resource name. This field must conform to [RFC-
         #   1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
         #   characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # @param [Boolean] disable_cmek
+        #   DataStore without CMEK protections. If a default CmekConfig is set for the
+        #   project, setting this field will override the default CmekConfig as well.
+        # @param [Boolean] skip_default_schema_creation
+        #   A boolean flag indicating whether to skip the default schema creation for the
+        #   data store. Only enable this flag if you are certain that the default schema
+        #   is incompatible with your use case. If set to true, you must manually create a
+        #   schema for the data store before any documents can be ingested. This flag
+        #   cannot be specified if `data_store.starting_schema` is specified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4877,15 +5818,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_data_store(parent, google_cloud_discoveryengine_v1alpha_data_store_object = nil, create_advanced_site_search: nil, data_store_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_data_store(parent, google_cloud_discoveryengine_v1alpha_data_store_object = nil, cmek_config_name: nil, create_advanced_site_search: nil, data_store_id: nil, disable_cmek: nil, skip_default_schema_creation: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1alpha/{+parent}/dataStores', options)
           command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataStore::Representation
           command.request_object = google_cloud_discoveryengine_v1alpha_data_store_object
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['cmekConfigName'] = cmek_config_name unless cmek_config_name.nil?
           command.query['createAdvancedSiteSearch'] = create_advanced_site_search unless create_advanced_site_search.nil?
           command.query['dataStoreId'] = data_store_id unless data_store_id.nil?
+          command.query['disableCmek'] = disable_cmek unless disable_cmek.nil?
+          command.query['skipDefaultSchemaCreation'] = skip_default_schema_creation unless skip_default_schema_creation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4962,8 +5906,8 @@ module Google
         # Gets a DocumentProcessingConfig.
         # @param [String] name
         #   Required. Full DocumentProcessingConfig resource name. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/documentProcessingConfig`
+        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
+        #   data_store_id`/documentProcessingConfig`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5150,6 +6094,46 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets index freshness metadata for Documents. Supported for website search only.
+        # @param [String] parent
+        #   Required. The parent branch resource name, such as `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store`/branches/
+        #   `branch``.
+        # @param [Array<String>, String] matcher_fhir_matcher_fhir_resources
+        #   Required. The FHIR resources to match by. Format: projects/`project`/locations/
+        #   `location`/datasets/`dataset`/fhirStores/`fhir_store`/fhir/`resource_type`/`
+        #   fhir_resource_id`
+        # @param [Array<String>, String] matcher_uris_matcher_uris
+        #   The exact URIs to match by.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_data_store_branch_get_documents_metadata(parent, matcher_fhir_matcher_fhir_resources: nil, matcher_uris_matcher_uris: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/batchGetDocumentsMetadata', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['matcher.fhirMatcher.fhirResources'] = matcher_fhir_matcher_fhir_resources unless matcher_fhir_matcher_fhir_resources.nil?
+          command.query['matcher.urisMatcher.uris'] = matcher_uris_matcher_uris unless matcher_uris_matcher_uris.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5563,8 +6547,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningCancelOperationRequest] google_longrunning_cancel_operation_request_object
@@ -5668,6 +6652,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Completes the user input with advanced keyword suggestions.
+        # @param [String] completion_config
+        #   Required. The completion_config of the parent dataStore or engine resource
+        #   name for which the completion is performed, such as `projects/*/locations/
+        #   global/collections/default_collection/dataStores/*/completionConfig` `projects/
+        #   */locations/global/collections/default_collection/engines/*/completionConfig`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest] google_cloud_discoveryengine_v1alpha_advanced_complete_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_data_store_completion_config_query(completion_config, google_cloud_discoveryengine_v1alpha_advanced_complete_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+completionConfig}:completeQuery', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_advanced_complete_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse
+          command.params['completionConfig'] = completion_config unless completion_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Imports CompletionSuggestions for a DataStore.
         # @param [String] parent
         #   Required. The parent data store resource name for which to import customer
@@ -5741,10 +6761,10 @@ module Google
         # request can be submitted to adjust this limit. If the Control to create
         # already exists, an ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`` or `projects/`project_number`/locations/`location_id`/
-        #   collections/`collection_id`/engines/`engine_id``.
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``
+        #   or `projects/`project`/locations/`location`/collections/`collection_id`/
+        #   engines/`engine_id``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaControl] google_cloud_discoveryengine_v1alpha_control_object
         # @param [String] control_id
         #   Required. The ID to use for the Control, which will become the final component
@@ -5784,8 +6804,8 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Control to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
+        #   data_store_id`/controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5815,9 +6835,9 @@ module Google
         
         # Gets a Control.
         # @param [String] name
-        #   Required. The resource name of the Control to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection_id`/dataStores/
-        #   `data_store_id`/controls/`control_id``
+        #   Required. The resource name of the Control to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   controls/`control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5847,10 +6867,10 @@ module Google
         
         # Lists all Controls by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection_id`/dataStores/`data_store_id``
-        #   or `projects/`project_number`/locations/`location_id`/collections/`
-        #   collection_id`/engines/`engine_id``.
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection_id`/dataStores/`data_store_id`` or `projects/
+        #   `project`/locations/`location`/collections/`collection_id`/engines/`engine_id``
+        #   .
         # @param [String] filter
         #   Optional. A filter to apply on the list results. Supported features: * List
         #   all the products under the parent branch if filter is unset. Currently this
@@ -5934,9 +6954,9 @@ module Google
         # Converses a conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project_number`
-        #   /locations/`location_id`/collections/`collection`/dataStores/`data_store_id`/
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
+        #   data_store_id`/conversations/`conversation_id``. Use `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
         #   conversations/-` to activate auto session mode, which automatically creates a
         #   new conversation inside a ConverseConversation session.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConverseConversationRequest] google_cloud_discoveryengine_v1alpha_converse_conversation_request_object
@@ -5972,9 +6992,8 @@ module Google
         # Creates a Conversation. If the Conversation to create already exists, an
         # ALREADY_EXISTS error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConversation] google_cloud_discoveryengine_v1alpha_conversation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6009,7 +7028,7 @@ module Google
         # NOT_FOUND error is returned.
         # @param [String] name
         #   Required. The resource name of the Conversation to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6041,7 +7060,7 @@ module Google
         # Gets a Conversation.
         # @param [String] name
         #   Required. The resource name of the Conversation to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/conversations/`conversation_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6072,8 +7091,8 @@ module Google
         
         # Lists all Conversations by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
@@ -6530,7 +7549,7 @@ module Google
         # exist.
         # @param [String] name
         #   Required. The resource name of the ServingConfig to get. Format: `projects/`
-        #   project_number`/locations/`location`/collections/`collection`/engines/`engine`/
+        #   project`/locations/`location`/collections/`collection`/engines/`engine`/
         #   servingConfigs/`serving_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6562,7 +7581,7 @@ module Google
         # Lists all ServingConfigs linked to this dataStore.
         # @param [String] parent
         #   Required. Full resource name of the parent resource. Format: `projects/`
-        #   project_number`/locations/`location`/collections/`collection`/engines/`engine``
+        #   project`/locations/`location`/collections/`collection`/engines/`engine``
         # @param [Fixnum] page_size
         #   Optional. Maximum number of results to return. If unspecified, defaults to 100.
         #   If a value greater than 100 is provided, at most 100 results are returned.
@@ -6717,12 +7736,95 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Performs a search. Similar to the SearchService.Search method, but a lite
+        # version that allows API key for authentication, where OAuth and IAM checks are
+        # not required. Only public website search is supported by this method. If data
+        # stores and engines not associated with public website search are specified, a `
+        # FAILED_PRECONDITION` error is returned. This method can be used for easy
+        # onboarding without having to implement an authentication backend. However, it
+        # is strongly recommended to use SearchService.Search instead with required
+        # OAuth and IAM checks to provide better data security.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/default_data_store/servingConfigs/
+        #   default_serving_config`. This field is used to identify the serving
+        #   configuration name, set of models used to make the search.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequest] google_cloud_discoveryengine_v1alpha_search_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_data_store_serving_config_lite(serving_config, google_cloud_discoveryengine_v1alpha_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+servingConfig}:searchLite', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_search_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Answer query method (streaming). It takes one AnswerQueryRequest and returns
+        # multiple AnswerQueryResponse messages in a stream.
+        # @param [String] serving_config
+        #   Required. The resource name of the Search serving config, such as `projects/*/
+        #   locations/global/collections/default_collection/engines/*/servingConfigs/
+        #   default_serving_config`, or `projects/*/locations/global/collections/
+        #   default_collection/dataStores/*/servingConfigs/default_serving_config`. This
+        #   field is used to identify the serving configuration name, set of models used
+        #   to make the search.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest] google_cloud_discoveryengine_v1alpha_answer_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_data_store_serving_config_answer(serving_config, google_cloud_discoveryengine_v1alpha_answer_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+servingConfig}:streamAnswer', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_answer_query_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Session. If the Session to create already exists, an ALREADY_EXISTS
         # error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent data store. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id``
+        #   Required. Full resource name of parent data store. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id``
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession] google_cloud_discoveryengine_v1alpha_session_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6757,7 +7859,7 @@ module Google
         # is returned.
         # @param [String] name
         #   Required. The resource name of the Session to delete. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
+        #   project`/locations/`location`/collections/`collection`/dataStores/`
         #   data_store_id`/sessions/`session_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6788,9 +7890,12 @@ module Google
         
         # Gets a Session.
         # @param [String] name
-        #   Required. The resource name of the Session to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/dataStores/`
-        #   data_store_id`/sessions/`session_id``
+        #   Required. The resource name of the Session to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store_id`/
+        #   sessions/`session_id``
+        # @param [Boolean] include_answer_details
+        #   Optional. If set to true, the full session including all answer details will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6808,11 +7913,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_data_store_session(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_data_store_session(name, include_answer_details: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSession
           command.params['name'] = name unless name.nil?
+          command.query['includeAnswerDetails'] = include_answer_details unless include_answer_details.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6820,15 +7926,17 @@ module Google
         
         # Lists all Sessions by their parent DataStore.
         # @param [String] parent
-        #   Required. The data store resource name. Format: `projects/`project_number`/
-        #   locations/`location_id`/collections/`collection`/dataStores/`data_store_id``
+        #   Required. The data store resource name. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store_id``
         # @param [String] filter
         #   A filter to apply on the list results. The supported features are:
         #   user_pseudo_id, state. Example: "user_pseudo_id = some_id"
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
-        #   create_time` * `session_name` Example: "update_time desc" "create_time"
+        #   create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "
+        #   create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned
+        #   first, then by update_time.
         # @param [Fixnum] page_size
         #   Maximum number of results to return. If unspecified, defaults to 50. Max
         #   allowed value is 1000.
@@ -6908,9 +8016,9 @@ module Google
         
         # Gets a Answer.
         # @param [String] name
-        #   Required. The resource name of the Answer to get. Format: `projects/`
-        #   project_number`/locations/`location_id`/collections/`collection`/engines/`
-        #   engine_id`/sessions/`session_id`/answers/`answer_id``
+        #   Required. The resource name of the Answer to get. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection`/engines/`engine_id`/sessions/`
+        #   session_id`/answers/`answer_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7035,6 +8143,109 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
           command.params['siteSearchEngine'] = site_search_engine unless site_search_engine.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Sitemap.
+        # @param [String] parent
+        #   Required. Parent resource name of the SiteSearchEngine, such as `projects/*/
+        #   locations/*/collections/*/dataStores/*/siteSearchEngine`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSitemap] google_cloud_discoveryengine_v1alpha_sitemap_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_data_store_site_search_engine_sitemap(parent, google_cloud_discoveryengine_v1alpha_sitemap_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/sitemaps', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSitemap::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_sitemap_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Sitemap.
+        # @param [String] name
+        #   Required. Full resource name of Sitemap, such as `projects/`project`/locations/
+        #   `location`/collections/`collection`/dataStores/`data_store`/siteSearchEngine/
+        #   sitemaps/`sitemap``. If the caller does not have permission to access the
+        #   Sitemap, regardless of whether or not it exists, a PERMISSION_DENIED error is
+        #   returned. If the requested Sitemap does not exist, a NOT_FOUND error is
+        #   returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_data_store_site_search_engine_sitemap(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetch Sitemaps in a DataStore.
+        # @param [String] parent
+        #   Required. Parent resource name of the SiteSearchEngine, such as `projects/*/
+        #   locations/*/collections/*/dataStores/*/siteSearchEngine`.
+        # @param [Array<String>, String] matcher_uris_matcher_uris
+        #   The Sitemap uris.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_data_store_site_search_engine_sitemap(parent, matcher_uris_matcher_uris: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/sitemaps:fetch', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['matcher.urisMatcher.uris'] = matcher_uris_matcher_uris unless matcher_uris_matcher_uris.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -7335,8 +8546,12 @@ module Google
         # only by the Discovery Engine API JavaScript pixel and Google Tag Manager.
         # Users should not call this method directly.
         # @param [String] parent
-        #   Required. The parent DataStore resource name, such as `projects/`project`/
-        #   locations/`location`/collections/`collection`/dataStores/`data_store``.
+        #   Required. The parent resource name. If the collect user event action is
+        #   applied in DataStore level, the format is: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store``. If the collect
+        #   user event action is applied in Location level, for example, the event with
+        #   Document across multiple DataStore, the format is: `projects/`project`/
+        #   locations/`location``.
         # @param [Fixnum] ets
         #   The event timestamp in milliseconds. This prevents browser caching of
         #   otherwise identical get requests. The name is abbreviated to reduce the
@@ -7422,8 +8637,8 @@ module Google
         # first.
         # @param [String] parent
         #   Required. The resource name of the catalog under which the events are created.
-        #   The format is `projects/$`projectId`/locations/global/collections/`$
-        #   collectionId`/dataStores/$`dataStoreId``
+        #   The format is `projects/`project`/locations/global/collections/`collection`/
+        #   dataStores/`dataStore``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest] google_cloud_discoveryengine_v1alpha_purge_user_events_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7865,7 +9080,7 @@ module Google
         # Ranks a list of text records based on the given input query.
         # @param [String] ranking_config
         #   Required. The resource name of the rank service config, such as `projects/`
-        #   project_num`/locations/`location_id`/rankingConfigs/default_ranking_config`.
+        #   project_num`/locations/`location`/rankingConfigs/default_ranking_config`.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRankRequest] google_cloud_discoveryengine_v1alpha_rank_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7977,9 +9192,9 @@ module Google
         # Deletes a SampleQuerySet.
         # @param [String] name
         #   Required. Full resource name of SampleQuerySet, such as `projects/`project`/
-        #   locations/`location`/sampleQuerySets/`sampleQuerySet``. If the caller does not
-        #   have permission to delete the SampleQuerySet, regardless of whether or not it
-        #   exists, a `PERMISSION_DENIED` error is returned. If the SampleQuerySet to
+        #   locations/`location`/sampleQuerySets/`sample_query_set``. If the caller does
+        #   not have permission to delete the SampleQuerySet, regardless of whether or not
+        #   it exists, a `PERMISSION_DENIED` error is returned. If the SampleQuerySet to
         #   delete does not exist, a `NOT_FOUND` error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8011,10 +9226,10 @@ module Google
         # Gets a SampleQuerySet.
         # @param [String] name
         #   Required. Full resource name of SampleQuerySet, such as `projects/`project`/
-        #   locations/`location`/sampleQuerySets/`sampleQuerySet``. If the caller does not
-        #   have permission to access the SampleQuerySet, regardless of whether or not it
-        #   exists, a PERMISSION_DENIED error is returned. If the requested SampleQuerySet
-        #   does not exist, a NOT_FOUND error is returned.
+        #   locations/`location`/sampleQuerySets/`sample_query_set``. If the caller does
+        #   not have permission to access the SampleQuerySet, regardless of whether or not
+        #   it exists, a PERMISSION_DENIED error is returned. If the requested
+        #   SampleQuerySet does not exist, a NOT_FOUND error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8089,8 +9304,8 @@ module Google
         
         # Updates a SampleQuerySet.
         # @param [String] name
-        #   Immutable. The full resource name of the SampleQuerySet, in the format of `
-        #   projects/`project`/locations/`location`/sampleQuerySets/`sampleQuerySet``.
+        #   Identifier. The full resource name of the SampleQuerySet, in the format of `
+        #   projects/`project`/locations/`location`/sampleQuerySets/`sample_query_set``.
         #   This field must be a UTF-8 encoded string with a length limit of 1024
         #   characters.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSampleQuerySet] google_cloud_discoveryengine_v1alpha_sample_query_set_object
@@ -8205,8 +9420,8 @@ module Google
         # Deletes a SampleQuery.
         # @param [String] name
         #   Required. Full resource name of SampleQuery, such as `projects/`project`/
-        #   locations/`location`/sampleQuerySets/`sampleQuerySet`/sampleQueries/`
-        #   sampleQuery``. If the caller does not have permission to delete the
+        #   locations/`location`/sampleQuerySets/`sample_query_set`/sampleQueries/`
+        #   sample_query``. If the caller does not have permission to delete the
         #   SampleQuery, regardless of whether or not it exists, a `PERMISSION_DENIED`
         #   error is returned. If the SampleQuery to delete does not exist, a `NOT_FOUND`
         #   error is returned.
@@ -8240,8 +9455,8 @@ module Google
         # Gets a SampleQuery.
         # @param [String] name
         #   Required. Full resource name of SampleQuery, such as `projects/`project`/
-        #   locations/`location`/sampleQuerySets/`sampleQuerySet`/sampleQueries/`
-        #   sampleQuery``. If the caller does not have permission to access the
+        #   locations/`location`/sampleQuerySets/`sample_query_set`/sampleQueries/`
+        #   sample_query``. If the caller does not have permission to access the
         #   SampleQuery, regardless of whether or not it exists, a PERMISSION_DENIED error
         #   is returned. If the requested SampleQuery does not exist, a NOT_FOUND error is
         #   returned.
@@ -8359,10 +9574,10 @@ module Google
         
         # Updates a SampleQuery.
         # @param [String] name
-        #   Immutable. The full resource name of the sample query, in the format of `
-        #   projects/`project`/locations/`location`/sampleQuerySets/`sampleQuerySet`/
-        #   sampleQueries/`sampleQuery``. This field must be a UTF-8 encoded string with a
-        #   length limit of 1024 characters.
+        #   Identifier. The full resource name of the sample query, in the format of `
+        #   projects/`project`/locations/`location`/sampleQuerySets/`sample_query_set`/
+        #   sampleQueries/`sample_query``. This field must be a UTF-8 encoded string with
+        #   a length limit of 1024 characters.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSampleQuery] google_cloud_discoveryengine_v1alpha_sample_query_object
         # @param [String] update_mask
         #   Indicates which fields in the provided imported 'simple query' to update. If
@@ -8402,8 +9617,12 @@ module Google
         # only by the Discovery Engine API JavaScript pixel and Google Tag Manager.
         # Users should not call this method directly.
         # @param [String] parent
-        #   Required. The parent DataStore resource name, such as `projects/`project`/
-        #   locations/`location`/collections/`collection`/dataStores/`data_store``.
+        #   Required. The parent resource name. If the collect user event action is
+        #   applied in DataStore level, the format is: `projects/`project`/locations/`
+        #   location`/collections/`collection`/dataStores/`data_store``. If the collect
+        #   user event action is applied in Location level, for example, the event with
+        #   Document across multiple DataStore, the format is: `projects/`project`/
+        #   locations/`location``.
         # @param [Fixnum] ets
         #   The event timestamp in milliseconds. This prevents browser caching of
         #   otherwise identical get requests. The name is abbreviated to reduce the
@@ -8440,6 +9659,44 @@ module Google
           command.query['ets'] = ets unless ets.nil?
           command.query['uri'] = uri unless uri.nil?
           command.query['userEvent'] = user_event unless user_event.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Bulk import of user events. Request processing might be synchronous. Events
+        # that already exist are skipped. Use this method for backfilling historical
+        # user events. Operation.response is of type ImportResponse. Note that it is
+        # possible for a subset of the items to be successfully inserted. Operation.
+        # metadata is of type ImportMetadata.
+        # @param [String] parent
+        #   Required. Parent DataStore resource name, of the form `projects/`project`/
+        #   locations/`location`/collections/`collection`/dataStores/`data_store``
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportUserEventsRequest] google_cloud_discoveryengine_v1alpha_import_user_events_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_project_location_user_event(parent, google_cloud_discoveryengine_v1alpha_import_user_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/userEvents:import', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportUserEventsRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_import_user_events_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8482,6 +9739,77 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserEvent
           command.params['parent'] = parent unless parent.nil?
           command.query['writeAsync'] = write_async unless write_async.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_user_store_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation's parent resource.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_user_store_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}/operations', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningListOperationsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningListOperationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
