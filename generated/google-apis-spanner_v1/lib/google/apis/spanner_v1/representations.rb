@@ -22,6 +22,36 @@ module Google
   module Apis
     module SpannerV1
       
+      class AsymmetricAutoscalingOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoscalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoscalingConfigOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoscalingLimits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoscalingTargets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,6 +59,18 @@ module Google
       end
       
       class BackupInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupScheduleSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -46,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchWriteRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchWriteResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BeginTransactionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +107,18 @@ module Google
       end
       
       class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChangeQuorumMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChangeQuorumRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateBackupEncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateBackupMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,7 +196,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateInstanceConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateInstanceConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateInstanceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateInstancePartitionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateInstancePartitionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CrontabSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Database
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +251,12 @@ module Google
       end
       
       class DatabaseRole
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DdlStatementActionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectedReadOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DualRegionQuorum
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +305,12 @@ module Google
       end
       
       class EncryptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExcludeReplicas
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FullBackupSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetDatabaseDdlResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +371,24 @@ module Google
       end
       
       class GetPolicyOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IncludeReplicas
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IncrementalBackupSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IndexAdvice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -263,6 +413,24 @@ module Google
       end
       
       class InstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceOperationProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancePartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceReplicaSelection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBackupSchedulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBackupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,7 +496,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListInstanceConfigOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstanceConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInstancePartitionOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInstancePartitionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,7 +568,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MoveInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiplexedSessionPrecommitToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Mutation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MutationGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -460,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryAdvisorResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +683,18 @@ module Google
       end
       
       class QueryPlan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuorumInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuorumType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -490,7 +718,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReplicaComputeCapacity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicaInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplicaSelection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -580,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SingleRegionQuorum
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Statement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -646,7 +892,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateInstanceConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateInstanceConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateInstanceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateInstancePartitionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateInstancePartitionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -670,17 +952,73 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AsymmetricAutoscalingOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :overrides, as: 'overrides', class: Google::Apis::SpannerV1::AutoscalingConfigOverrides, decorator: Google::Apis::SpannerV1::AutoscalingConfigOverrides::Representation
+      
+          property :replica_selection, as: 'replicaSelection', class: Google::Apis::SpannerV1::InstanceReplicaSelection, decorator: Google::Apis::SpannerV1::InstanceReplicaSelection::Representation
+      
+        end
+      end
+      
+      class AutoscalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asymmetric_autoscaling_options, as: 'asymmetricAutoscalingOptions', class: Google::Apis::SpannerV1::AsymmetricAutoscalingOption, decorator: Google::Apis::SpannerV1::AsymmetricAutoscalingOption::Representation
+      
+          property :autoscaling_limits, as: 'autoscalingLimits', class: Google::Apis::SpannerV1::AutoscalingLimits, decorator: Google::Apis::SpannerV1::AutoscalingLimits::Representation
+      
+          property :autoscaling_targets, as: 'autoscalingTargets', class: Google::Apis::SpannerV1::AutoscalingTargets, decorator: Google::Apis::SpannerV1::AutoscalingTargets::Representation
+      
+        end
+      end
+      
+      class AutoscalingConfigOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_limits, as: 'autoscalingLimits', class: Google::Apis::SpannerV1::AutoscalingLimits, decorator: Google::Apis::SpannerV1::AutoscalingLimits::Representation
+      
+          property :autoscaling_target_high_priority_cpu_utilization_percent, as: 'autoscalingTargetHighPriorityCpuUtilizationPercent'
+        end
+      end
+      
+      class AutoscalingLimits
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_nodes, as: 'maxNodes'
+          property :max_processing_units, as: 'maxProcessingUnits'
+          property :min_nodes, as: 'minNodes'
+          property :min_processing_units, as: 'minProcessingUnits'
+        end
+      end
+      
+      class AutoscalingTargets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :high_priority_cpu_utilization_percent, as: 'highPriorityCpuUtilizationPercent'
+          property :storage_utilization_percent, as: 'storageUtilizationPercent'
+        end
+      end
+      
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_schedules, as: 'backupSchedules'
           property :create_time, as: 'createTime'
           property :database, as: 'database'
           property :database_dialect, as: 'databaseDialect'
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::SpannerV1::EncryptionInfo, decorator: Google::Apis::SpannerV1::EncryptionInfo::Representation
       
+          collection :encryption_information, as: 'encryptionInformation', class: Google::Apis::SpannerV1::EncryptionInfo, decorator: Google::Apis::SpannerV1::EncryptionInfo::Representation
+      
+          property :exclusive_size_bytes, :numeric_string => true, as: 'exclusiveSizeBytes'
           property :expire_time, as: 'expireTime'
+          property :freeable_size_bytes, :numeric_string => true, as: 'freeableSizeBytes'
+          property :incremental_backup_chain_id, as: 'incrementalBackupChainId'
           property :max_expire_time, as: 'maxExpireTime'
           property :name, as: 'name'
+          property :oldest_version_time, as: 'oldestVersionTime'
           collection :referencing_backups, as: 'referencingBackups'
           collection :referencing_databases, as: 'referencingDatabases'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
@@ -696,6 +1034,31 @@ module Google
           property :create_time, as: 'createTime'
           property :source_database, as: 'sourceDatabase'
           property :version_time, as: 'versionTime'
+        end
+      end
+      
+      class BackupSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::SpannerV1::CreateBackupEncryptionConfig, decorator: Google::Apis::SpannerV1::CreateBackupEncryptionConfig::Representation
+      
+          property :full_backup_spec, as: 'fullBackupSpec', class: Google::Apis::SpannerV1::FullBackupSpec, decorator: Google::Apis::SpannerV1::FullBackupSpec::Representation
+      
+          property :incremental_backup_spec, as: 'incrementalBackupSpec', class: Google::Apis::SpannerV1::IncrementalBackupSpec, decorator: Google::Apis::SpannerV1::IncrementalBackupSpec::Representation
+      
+          property :name, as: 'name'
+          property :retention_duration, as: 'retentionDuration'
+          property :spec, as: 'spec', class: Google::Apis::SpannerV1::BackupScheduleSpec, decorator: Google::Apis::SpannerV1::BackupScheduleSpec::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class BackupScheduleSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cron_spec, as: 'cronSpec', class: Google::Apis::SpannerV1::CrontabSpec, decorator: Google::Apis::SpannerV1::CrontabSpec::Representation
+      
         end
       end
       
@@ -716,9 +1079,32 @@ module Google
         end
       end
       
+      class BatchWriteRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_txn_from_change_streams, as: 'excludeTxnFromChangeStreams'
+          collection :mutation_groups, as: 'mutationGroups', class: Google::Apis::SpannerV1::MutationGroup, decorator: Google::Apis::SpannerV1::MutationGroup::Representation
+      
+          property :request_options, as: 'requestOptions', class: Google::Apis::SpannerV1::RequestOptions, decorator: Google::Apis::SpannerV1::RequestOptions::Representation
+      
+        end
+      end
+      
+      class BatchWriteResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_timestamp, as: 'commitTimestamp'
+          collection :indexes, as: 'indexes'
+          property :status, as: 'status', class: Google::Apis::SpannerV1::Status, decorator: Google::Apis::SpannerV1::Status::Representation
+      
+        end
+      end
+      
       class BeginTransactionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mutation_key, as: 'mutationKey', class: Google::Apis::SpannerV1::Mutation, decorator: Google::Apis::SpannerV1::Mutation::Representation
+      
           property :options, as: 'options', class: Google::Apis::SpannerV1::TransactionOptions, decorator: Google::Apis::SpannerV1::TransactionOptions::Representation
       
           property :request_options, as: 'requestOptions', class: Google::Apis::SpannerV1::RequestOptions, decorator: Google::Apis::SpannerV1::RequestOptions::Representation
@@ -736,6 +1122,26 @@ module Google
         end
       end
       
+      class ChangeQuorumMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::SpannerV1::ChangeQuorumRequest, decorator: Google::Apis::SpannerV1::ChangeQuorumRequest::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ChangeQuorumRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :quorum_type, as: 'quorumType', class: Google::Apis::SpannerV1::QuorumType, decorator: Google::Apis::SpannerV1::QuorumType::Representation
+      
+        end
+      end
+      
       class ChildLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -748,7 +1154,10 @@ module Google
       class CommitRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_commit_delay, as: 'maxCommitDelay'
           collection :mutations, as: 'mutations', class: Google::Apis::SpannerV1::Mutation, decorator: Google::Apis::SpannerV1::Mutation::Representation
+      
+          property :precommit_token, as: 'precommitToken', class: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken, decorator: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken::Representation
       
           property :request_options, as: 'requestOptions', class: Google::Apis::SpannerV1::RequestOptions, decorator: Google::Apis::SpannerV1::RequestOptions::Representation
       
@@ -765,6 +1174,8 @@ module Google
           property :commit_stats, as: 'commitStats', class: Google::Apis::SpannerV1::CommitStats, decorator: Google::Apis::SpannerV1::CommitStats::Representation
       
           property :commit_timestamp, as: 'commitTimestamp'
+          property :precommit_token, as: 'precommitToken', class: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken, decorator: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken::Representation
+      
         end
       end
       
@@ -791,6 +1202,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encryption_type, as: 'encryptionType'
           property :kms_key_name, as: 'kmsKeyName'
+          collection :kms_key_names, as: 'kmsKeyNames'
         end
       end
       
@@ -813,6 +1225,15 @@ module Google
       
           property :expire_time, as: 'expireTime'
           property :source_backup, as: 'sourceBackup'
+        end
+      end
+      
+      class CreateBackupEncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_type, as: 'encryptionType'
+          property :kms_key_name, as: 'kmsKeyName'
+          collection :kms_key_names, as: 'kmsKeyNames'
         end
       end
       
@@ -842,6 +1263,28 @@ module Google
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::SpannerV1::EncryptionConfig, decorator: Google::Apis::SpannerV1::EncryptionConfig::Representation
       
           collection :extra_statements, as: 'extraStatements'
+          property :proto_descriptors, :base64 => true, as: 'protoDescriptors'
+        end
+      end
+      
+      class CreateInstanceConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_time, as: 'cancelTime'
+          property :instance_config, as: 'instanceConfig', class: Google::Apis::SpannerV1::InstanceConfig, decorator: Google::Apis::SpannerV1::InstanceConfig::Representation
+      
+          property :progress, as: 'progress', class: Google::Apis::SpannerV1::InstanceOperationProgress, decorator: Google::Apis::SpannerV1::InstanceOperationProgress::Representation
+      
+        end
+      end
+      
+      class CreateInstanceConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_config, as: 'instanceConfig', class: Google::Apis::SpannerV1::InstanceConfig, decorator: Google::Apis::SpannerV1::InstanceConfig::Representation
+      
+          property :instance_config_id, as: 'instanceConfigId'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
@@ -850,9 +1293,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cancel_time, as: 'cancelTime'
           property :end_time, as: 'endTime'
+          property :expected_fulfillment_period, as: 'expectedFulfillmentPeriod'
           property :instance, as: 'instance', class: Google::Apis::SpannerV1::Instance, decorator: Google::Apis::SpannerV1::Instance::Representation
       
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class CreateInstancePartitionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_time, as: 'cancelTime'
+          property :end_time, as: 'endTime'
+          property :instance_partition, as: 'instancePartition', class: Google::Apis::SpannerV1::InstancePartition, decorator: Google::Apis::SpannerV1::InstancePartition::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class CreateInstancePartitionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_partition, as: 'instancePartition', class: Google::Apis::SpannerV1::InstancePartition, decorator: Google::Apis::SpannerV1::InstancePartition::Representation
+      
+          property :instance_partition_id, as: 'instancePartitionId'
         end
       end
       
@@ -873,6 +1337,15 @@ module Google
         end
       end
       
+      class CrontabSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_window, as: 'creationWindow'
+          property :text, as: 'text'
+          property :time_zone, as: 'timeZone'
+        end
+      end
+      
       class Database
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -880,11 +1353,15 @@ module Google
           property :database_dialect, as: 'databaseDialect'
           property :default_leader, as: 'defaultLeader'
           property :earliest_version_time, as: 'earliestVersionTime'
+          property :enable_drop_protection, as: 'enableDropProtection'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::SpannerV1::EncryptionConfig, decorator: Google::Apis::SpannerV1::EncryptionConfig::Representation
       
           collection :encryption_info, as: 'encryptionInfo', class: Google::Apis::SpannerV1::EncryptionInfo, decorator: Google::Apis::SpannerV1::EncryptionInfo::Representation
       
           property :name, as: 'name'
+          property :quorum_info, as: 'quorumInfo', class: Google::Apis::SpannerV1::QuorumInfo, decorator: Google::Apis::SpannerV1::QuorumInfo::Representation
+      
+          property :reconciling, as: 'reconciling'
           property :restore_info, as: 'restoreInfo', class: Google::Apis::SpannerV1::RestoreInfo, decorator: Google::Apis::SpannerV1::RestoreInfo::Representation
       
           property :state, as: 'state'
@@ -896,6 +1373,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class DdlStatementActionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          collection :entity_names, as: 'entityNames'
+          property :entity_type, as: 'entityType'
         end
       end
       
@@ -932,6 +1418,22 @@ module Google
         end
       end
       
+      class DirectedReadOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_replicas, as: 'excludeReplicas', class: Google::Apis::SpannerV1::ExcludeReplicas, decorator: Google::Apis::SpannerV1::ExcludeReplicas::Representation
+      
+          property :include_replicas, as: 'includeReplicas', class: Google::Apis::SpannerV1::IncludeReplicas, decorator: Google::Apis::SpannerV1::IncludeReplicas::Representation
+      
+        end
+      end
+      
+      class DualRegionQuorum
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -942,6 +1444,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_name, as: 'kmsKeyName'
+          collection :kms_key_names, as: 'kmsKeyNames'
         end
       end
       
@@ -952,6 +1455,14 @@ module Google
       
           property :encryption_type, as: 'encryptionType'
           property :kms_key_version, as: 'kmsKeyVersion'
+        end
+      end
+      
+      class ExcludeReplicas
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :replica_selections, as: 'replicaSelections', class: Google::Apis::SpannerV1::ReplicaSelection, decorator: Google::Apis::SpannerV1::ReplicaSelection::Representation
+      
         end
       end
       
@@ -971,6 +1482,8 @@ module Google
       class ExecuteBatchDmlResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :precommit_token, as: 'precommitToken', class: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken, decorator: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken::Representation
+      
           collection :result_sets, as: 'resultSets', class: Google::Apis::SpannerV1::ResultSet, decorator: Google::Apis::SpannerV1::ResultSet::Representation
       
           property :status, as: 'status', class: Google::Apis::SpannerV1::Status, decorator: Google::Apis::SpannerV1::Status::Representation
@@ -981,6 +1494,9 @@ module Google
       class ExecuteSqlRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_boost_enabled, as: 'dataBoostEnabled'
+          property :directed_read_options, as: 'directedReadOptions', class: Google::Apis::SpannerV1::DirectedReadOptions, decorator: Google::Apis::SpannerV1::DirectedReadOptions::Representation
+      
           hash :param_types, as: 'paramTypes', class: Google::Apis::SpannerV1::Type, decorator: Google::Apis::SpannerV1::Type::Representation
       
           hash :params, as: 'params'
@@ -1026,9 +1542,16 @@ module Google
         end
       end
       
+      class FullBackupSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GetDatabaseDdlResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :proto_descriptors, :base64 => true, as: 'protoDescriptors'
           collection :statements, as: 'statements'
         end
       end
@@ -1045,6 +1568,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :requested_policy_version, as: 'requestedPolicyVersion'
+        end
+      end
+      
+      class IncludeReplicas
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_failover_disabled, as: 'autoFailoverDisabled'
+          collection :replica_selections, as: 'replicaSelections', class: Google::Apis::SpannerV1::ReplicaSelection, decorator: Google::Apis::SpannerV1::ReplicaSelection::Representation
+      
+        end
+      end
+      
+      class IncrementalBackupSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class IndexAdvice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ddl, as: 'ddl'
+          property :improvement_factor, as: 'improvementFactor'
         end
       end
       
@@ -1066,9 +1612,13 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_config, as: 'autoscalingConfig', class: Google::Apis::SpannerV1::AutoscalingConfig, decorator: Google::Apis::SpannerV1::AutoscalingConfig::Representation
+      
           property :config, as: 'config'
           property :create_time, as: 'createTime'
+          property :default_backup_schedule_type, as: 'defaultBackupScheduleType'
           property :display_name, as: 'displayName'
+          property :edition, as: 'edition'
           collection :endpoint_uris, as: 'endpointUris'
           property :free_instance_metadata, as: 'freeInstanceMetadata', class: Google::Apis::SpannerV1::FreeInstanceMetadata, decorator: Google::Apis::SpannerV1::FreeInstanceMetadata::Representation
       
@@ -1077,6 +1627,8 @@ module Google
           property :name, as: 'name'
           property :node_count, as: 'nodeCount'
           property :processing_units, as: 'processingUnits'
+          collection :replica_compute_capacity, as: 'replicaComputeCapacity', class: Google::Apis::SpannerV1::ReplicaComputeCapacity, decorator: Google::Apis::SpannerV1::ReplicaComputeCapacity::Representation
+      
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -1085,12 +1637,55 @@ module Google
       class InstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_config, as: 'baseConfig'
+          property :config_type, as: 'configType'
           property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
           property :free_instance_availability, as: 'freeInstanceAvailability'
+          hash :labels, as: 'labels'
           collection :leader_options, as: 'leaderOptions'
           property :name, as: 'name'
+          collection :optional_replicas, as: 'optionalReplicas', class: Google::Apis::SpannerV1::ReplicaInfo, decorator: Google::Apis::SpannerV1::ReplicaInfo::Representation
+      
+          property :quorum_type, as: 'quorumType'
+          property :reconciling, as: 'reconciling'
           collection :replicas, as: 'replicas', class: Google::Apis::SpannerV1::ReplicaInfo, decorator: Google::Apis::SpannerV1::ReplicaInfo::Representation
       
+          property :state, as: 'state'
+          property :storage_limit_per_processing_unit, :numeric_string => true, as: 'storageLimitPerProcessingUnit'
+        end
+      end
+      
+      class InstanceOperationProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :progress_percent, as: 'progressPercent'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class InstancePartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :node_count, as: 'nodeCount'
+          property :processing_units, as: 'processingUnits'
+          collection :referencing_backups, as: 'referencingBackups'
+          collection :referencing_databases, as: 'referencingDatabases'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class InstanceReplicaSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
         end
       end
       
@@ -1155,6 +1750,15 @@ module Google
         end
       end
       
+      class ListBackupSchedulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_schedules, as: 'backupSchedules', class: Google::Apis::SpannerV1::BackupSchedule, decorator: Google::Apis::SpannerV1::BackupSchedule::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListBackupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1191,12 +1795,41 @@ module Google
         end
       end
       
+      class ListInstanceConfigOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::SpannerV1::Operation, decorator: Google::Apis::SpannerV1::Operation::Representation
+      
+        end
+      end
+      
       class ListInstanceConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instance_configs, as: 'instanceConfigs', class: Google::Apis::SpannerV1::InstanceConfig, decorator: Google::Apis::SpannerV1::InstanceConfig::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListInstancePartitionOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::SpannerV1::Operation, decorator: Google::Apis::SpannerV1::Operation::Representation
+      
+          collection :unreachable_instance_partitions, as: 'unreachableInstancePartitions'
+        end
+      end
+      
+      class ListInstancePartitionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instance_partitions, as: 'instancePartitions', class: Google::Apis::SpannerV1::InstancePartition, decorator: Google::Apis::SpannerV1::InstancePartition::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1287,6 +1920,21 @@ module Google
         end
       end
       
+      class MoveInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_config, as: 'targetConfig'
+        end
+      end
+      
+      class MultiplexedSessionPrecommitToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :precommit_token, :base64 => true, as: 'precommitToken'
+          property :seq_num, as: 'seqNum'
+        end
+      end
+      
       class Mutation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1299,6 +1947,14 @@ module Google
           property :replace, as: 'replace', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
       
           property :update, as: 'update', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
+      
+        end
+      end
+      
+      class MutationGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mutations, as: 'mutations', class: Google::Apis::SpannerV1::Mutation, decorator: Google::Apis::SpannerV1::Mutation::Representation
       
         end
       end
@@ -1338,6 +1994,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunked_value, as: 'chunkedValue'
           property :metadata, as: 'metadata', class: Google::Apis::SpannerV1::ResultSetMetadata, decorator: Google::Apis::SpannerV1::ResultSetMetadata::Representation
+      
+          property :precommit_token, as: 'precommitToken', class: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken, decorator: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken::Representation
       
           property :resume_token, :base64 => true, as: 'resumeToken'
           property :stats, as: 'stats', class: Google::Apis::SpannerV1::ResultSetStats, decorator: Google::Apis::SpannerV1::ResultSetStats::Representation
@@ -1442,6 +2100,14 @@ module Google
         end
       end
       
+      class QueryAdvisorResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :index_advice, as: 'indexAdvice', class: Google::Apis::SpannerV1::IndexAdvice, decorator: Google::Apis::SpannerV1::IndexAdvice::Representation
+      
+        end
+      end
+      
       class QueryOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1454,6 +2120,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :plan_nodes, as: 'planNodes', class: Google::Apis::SpannerV1::PlanNode, decorator: Google::Apis::SpannerV1::PlanNode::Representation
+      
+          property :query_advice, as: 'queryAdvice', class: Google::Apis::SpannerV1::QueryAdvisorResult, decorator: Google::Apis::SpannerV1::QueryAdvisorResult::Representation
+      
+        end
+      end
+      
+      class QuorumInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :initiator, as: 'initiator'
+          property :quorum_type, as: 'quorumType', class: Google::Apis::SpannerV1::QuorumType, decorator: Google::Apis::SpannerV1::QuorumType::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class QuorumType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dual_region, as: 'dualRegion', class: Google::Apis::SpannerV1::DualRegionQuorum, decorator: Google::Apis::SpannerV1::DualRegionQuorum::Representation
+      
+          property :single_region, as: 'singleRegion', class: Google::Apis::SpannerV1::SingleRegionQuorum, decorator: Google::Apis::SpannerV1::SingleRegionQuorum::Representation
       
         end
       end
@@ -1474,10 +2163,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :columns, as: 'columns'
+          property :data_boost_enabled, as: 'dataBoostEnabled'
+          property :directed_read_options, as: 'directedReadOptions', class: Google::Apis::SpannerV1::DirectedReadOptions, decorator: Google::Apis::SpannerV1::DirectedReadOptions::Representation
+      
           property :index, as: 'index'
           property :key_set, as: 'keySet', class: Google::Apis::SpannerV1::KeySet, decorator: Google::Apis::SpannerV1::KeySet::Representation
       
           property :limit, :numeric_string => true, as: 'limit'
+          property :lock_hint, as: 'lockHint'
+          property :order_by, as: 'orderBy'
           property :partition_token, :base64 => true, as: 'partitionToken'
           property :request_options, as: 'requestOptions', class: Google::Apis::SpannerV1::RequestOptions, decorator: Google::Apis::SpannerV1::RequestOptions::Representation
       
@@ -1491,6 +2185,18 @@ module Google
       class ReadWrite
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :multiplexed_session_previous_transaction_id, :base64 => true, as: 'multiplexedSessionPreviousTransactionId'
+          property :read_lock_mode, as: 'readLockMode'
+        end
+      end
+      
+      class ReplicaComputeCapacity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_count, as: 'nodeCount'
+          property :processing_units, as: 'processingUnits'
+          property :replica_selection, as: 'replicaSelection', class: Google::Apis::SpannerV1::InstanceReplicaSelection, decorator: Google::Apis::SpannerV1::InstanceReplicaSelection::Representation
+      
         end
       end
       
@@ -1498,6 +2204,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_leader_location, as: 'defaultLeaderLocation'
+          property :location, as: 'location'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ReplicaSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :location, as: 'location'
           property :type, as: 'type'
         end
@@ -1517,6 +2231,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encryption_type, as: 'encryptionType'
           property :kms_key_name, as: 'kmsKeyName'
+          collection :kms_key_names, as: 'kmsKeyNames'
         end
       end
       
@@ -1558,6 +2273,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metadata, as: 'metadata', class: Google::Apis::SpannerV1::ResultSetMetadata, decorator: Google::Apis::SpannerV1::ResultSetMetadata::Representation
       
+          property :precommit_token, as: 'precommitToken', class: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken, decorator: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken::Representation
+      
           collection :rows, as: 'rows', :class => Array do
         include Representable::JSON::Collection
         items
@@ -1574,6 +2291,8 @@ module Google
           property :row_type, as: 'rowType', class: Google::Apis::SpannerV1::StructType, decorator: Google::Apis::SpannerV1::StructType::Representation
       
           property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::Transaction, decorator: Google::Apis::SpannerV1::Transaction::Representation
+      
+          property :undeclared_parameters, as: 'undeclaredParameters', class: Google::Apis::SpannerV1::StructType, decorator: Google::Apis::SpannerV1::StructType::Representation
       
         end
       end
@@ -1625,6 +2344,7 @@ module Google
           property :create_time, as: 'createTime'
           property :creator_role, as: 'creatorRole'
           hash :labels, as: 'labels'
+          property :multiplexed, as: 'multiplexed'
           property :name, as: 'name'
         end
       end
@@ -1642,6 +2362,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           hash :subqueries, as: 'subqueries'
+        end
+      end
+      
+      class SingleRegionQuorum
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :serving_location, as: 'servingLocation'
         end
       end
       
@@ -1690,6 +2417,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, :base64 => true, as: 'id'
+          property :precommit_token, as: 'precommitToken', class: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken, decorator: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken::Representation
+      
           property :read_timestamp, as: 'readTimestamp'
         end
       end
@@ -1697,6 +2426,7 @@ module Google
       class TransactionOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_txn_from_change_streams, as: 'excludeTxnFromChangeStreams'
           property :partitioned_dml, as: 'partitionedDml', class: Google::Apis::SpannerV1::PartitionedDml, decorator: Google::Apis::SpannerV1::PartitionedDml::Representation
       
           property :read_only, as: 'readOnly', class: Google::Apis::SpannerV1::ReadOnly, decorator: Google::Apis::SpannerV1::ReadOnly::Representation
@@ -1723,6 +2453,7 @@ module Google
           property :array_element_type, as: 'arrayElementType', class: Google::Apis::SpannerV1::Type, decorator: Google::Apis::SpannerV1::Type::Representation
       
           property :code, as: 'code'
+          property :proto_type_fqn, as: 'protoTypeFqn'
           property :struct_type, as: 'structType', class: Google::Apis::SpannerV1::StructType, decorator: Google::Apis::SpannerV1::StructType::Representation
       
           property :type_annotation, as: 'typeAnnotation'
@@ -1732,6 +2463,8 @@ module Google
       class UpdateDatabaseDdlMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions', class: Google::Apis::SpannerV1::DdlStatementActionInfo, decorator: Google::Apis::SpannerV1::DdlStatementActionInfo::Representation
+      
           collection :commit_timestamps, as: 'commitTimestamps'
           property :database, as: 'database'
           collection :progress, as: 'progress', class: Google::Apis::SpannerV1::OperationProgress, decorator: Google::Apis::SpannerV1::OperationProgress::Representation
@@ -1745,7 +2478,49 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operation_id, as: 'operationId'
+          property :proto_descriptors, :base64 => true, as: 'protoDescriptors'
           collection :statements, as: 'statements'
+        end
+      end
+      
+      class UpdateDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_time, as: 'cancelTime'
+          property :progress, as: 'progress', class: Google::Apis::SpannerV1::OperationProgress, decorator: Google::Apis::SpannerV1::OperationProgress::Representation
+      
+          property :request, as: 'request', class: Google::Apis::SpannerV1::UpdateDatabaseRequest, decorator: Google::Apis::SpannerV1::UpdateDatabaseRequest::Representation
+      
+        end
+      end
+      
+      class UpdateDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database', class: Google::Apis::SpannerV1::Database, decorator: Google::Apis::SpannerV1::Database::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class UpdateInstanceConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_time, as: 'cancelTime'
+          property :instance_config, as: 'instanceConfig', class: Google::Apis::SpannerV1::InstanceConfig, decorator: Google::Apis::SpannerV1::InstanceConfig::Representation
+      
+          property :progress, as: 'progress', class: Google::Apis::SpannerV1::InstanceOperationProgress, decorator: Google::Apis::SpannerV1::InstanceOperationProgress::Representation
+      
+        end
+      end
+      
+      class UpdateInstanceConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_config, as: 'instanceConfig', class: Google::Apis::SpannerV1::InstanceConfig, decorator: Google::Apis::SpannerV1::InstanceConfig::Representation
+      
+          property :update_mask, as: 'updateMask'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
@@ -1754,9 +2529,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cancel_time, as: 'cancelTime'
           property :end_time, as: 'endTime'
+          property :expected_fulfillment_period, as: 'expectedFulfillmentPeriod'
           property :instance, as: 'instance', class: Google::Apis::SpannerV1::Instance, decorator: Google::Apis::SpannerV1::Instance::Representation
       
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class UpdateInstancePartitionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_time, as: 'cancelTime'
+          property :end_time, as: 'endTime'
+          property :instance_partition, as: 'instancePartition', class: Google::Apis::SpannerV1::InstancePartition, decorator: Google::Apis::SpannerV1::InstancePartition::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class UpdateInstancePartitionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_mask, as: 'fieldMask'
+          property :instance_partition, as: 'instancePartition', class: Google::Apis::SpannerV1::InstancePartition, decorator: Google::Apis::SpannerV1::InstancePartition::Representation
+      
         end
       end
       

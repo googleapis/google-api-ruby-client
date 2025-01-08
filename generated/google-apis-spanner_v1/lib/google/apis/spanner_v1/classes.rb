@@ -22,9 +22,200 @@ module Google
   module Apis
     module SpannerV1
       
+      # AsymmetricAutoscalingOption specifies the scaling of replicas identified by
+      # the given selection.
+      class AsymmetricAutoscalingOption
+        include Google::Apis::Core::Hashable
+      
+        # Overrides the top-level autoscaling configuration for the replicas identified
+        # by `replica_selection`. All fields in this message are optional. Any
+        # unspecified fields will use the corresponding values from the top-level
+        # autoscaling configuration.
+        # Corresponds to the JSON property `overrides`
+        # @return [Google::Apis::SpannerV1::AutoscalingConfigOverrides]
+        attr_accessor :overrides
+      
+        # ReplicaSelection identifies replicas with common properties.
+        # Corresponds to the JSON property `replicaSelection`
+        # @return [Google::Apis::SpannerV1::InstanceReplicaSelection]
+        attr_accessor :replica_selection
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @overrides = args[:overrides] if args.key?(:overrides)
+          @replica_selection = args[:replica_selection] if args.key?(:replica_selection)
+        end
+      end
+      
+      # Autoscaling configuration for an instance.
+      class AutoscalingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional asymmetric autoscaling options. Replicas matching the
+        # replica selection criteria will be autoscaled independently from other
+        # replicas. The autoscaler will scale the replicas based on the utilization of
+        # replicas identified by the replica selection. Replica selections should not
+        # overlap with each other. Other replicas (those do not match any replica
+        # selection) will be autoscaled together and will have the same compute capacity
+        # allocated to them.
+        # Corresponds to the JSON property `asymmetricAutoscalingOptions`
+        # @return [Array<Google::Apis::SpannerV1::AsymmetricAutoscalingOption>]
+        attr_accessor :asymmetric_autoscaling_options
+      
+        # The autoscaling limits for the instance. Users can define the minimum and
+        # maximum compute capacity allocated to the instance, and the autoscaler will
+        # only scale within that range. Users can either use nodes or processing units
+        # to specify the limits, but should use the same unit to set both the min_limit
+        # and max_limit.
+        # Corresponds to the JSON property `autoscalingLimits`
+        # @return [Google::Apis::SpannerV1::AutoscalingLimits]
+        attr_accessor :autoscaling_limits
+      
+        # The autoscaling targets for an instance.
+        # Corresponds to the JSON property `autoscalingTargets`
+        # @return [Google::Apis::SpannerV1::AutoscalingTargets]
+        attr_accessor :autoscaling_targets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asymmetric_autoscaling_options = args[:asymmetric_autoscaling_options] if args.key?(:asymmetric_autoscaling_options)
+          @autoscaling_limits = args[:autoscaling_limits] if args.key?(:autoscaling_limits)
+          @autoscaling_targets = args[:autoscaling_targets] if args.key?(:autoscaling_targets)
+        end
+      end
+      
+      # Overrides the top-level autoscaling configuration for the replicas identified
+      # by `replica_selection`. All fields in this message are optional. Any
+      # unspecified fields will use the corresponding values from the top-level
+      # autoscaling configuration.
+      class AutoscalingConfigOverrides
+        include Google::Apis::Core::Hashable
+      
+        # The autoscaling limits for the instance. Users can define the minimum and
+        # maximum compute capacity allocated to the instance, and the autoscaler will
+        # only scale within that range. Users can either use nodes or processing units
+        # to specify the limits, but should use the same unit to set both the min_limit
+        # and max_limit.
+        # Corresponds to the JSON property `autoscalingLimits`
+        # @return [Google::Apis::SpannerV1::AutoscalingLimits]
+        attr_accessor :autoscaling_limits
+      
+        # Optional. If specified, overrides the autoscaling target
+        # high_priority_cpu_utilization_percent in the top-level autoscaling
+        # configuration for the selected replicas.
+        # Corresponds to the JSON property `autoscalingTargetHighPriorityCpuUtilizationPercent`
+        # @return [Fixnum]
+        attr_accessor :autoscaling_target_high_priority_cpu_utilization_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autoscaling_limits = args[:autoscaling_limits] if args.key?(:autoscaling_limits)
+          @autoscaling_target_high_priority_cpu_utilization_percent = args[:autoscaling_target_high_priority_cpu_utilization_percent] if args.key?(:autoscaling_target_high_priority_cpu_utilization_percent)
+        end
+      end
+      
+      # The autoscaling limits for the instance. Users can define the minimum and
+      # maximum compute capacity allocated to the instance, and the autoscaler will
+      # only scale within that range. Users can either use nodes or processing units
+      # to specify the limits, but should use the same unit to set both the min_limit
+      # and max_limit.
+      class AutoscalingLimits
+        include Google::Apis::Core::Hashable
+      
+        # Maximum number of nodes allocated to the instance. If set, this number should
+        # be greater than or equal to min_nodes.
+        # Corresponds to the JSON property `maxNodes`
+        # @return [Fixnum]
+        attr_accessor :max_nodes
+      
+        # Maximum number of processing units allocated to the instance. If set, this
+        # number should be multiples of 1000 and be greater than or equal to
+        # min_processing_units.
+        # Corresponds to the JSON property `maxProcessingUnits`
+        # @return [Fixnum]
+        attr_accessor :max_processing_units
+      
+        # Minimum number of nodes allocated to the instance. If set, this number should
+        # be greater than or equal to 1.
+        # Corresponds to the JSON property `minNodes`
+        # @return [Fixnum]
+        attr_accessor :min_nodes
+      
+        # Minimum number of processing units allocated to the instance. If set, this
+        # number should be multiples of 1000.
+        # Corresponds to the JSON property `minProcessingUnits`
+        # @return [Fixnum]
+        attr_accessor :min_processing_units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_nodes = args[:max_nodes] if args.key?(:max_nodes)
+          @max_processing_units = args[:max_processing_units] if args.key?(:max_processing_units)
+          @min_nodes = args[:min_nodes] if args.key?(:min_nodes)
+          @min_processing_units = args[:min_processing_units] if args.key?(:min_processing_units)
+        end
+      end
+      
+      # The autoscaling targets for an instance.
+      class AutoscalingTargets
+        include Google::Apis::Core::Hashable
+      
+        # Required. The target high priority cpu utilization percentage that the
+        # autoscaler should be trying to achieve for the instance. This number is on a
+        # scale from 0 (no utilization) to 100 (full utilization). The valid range is [
+        # 10, 90] inclusive.
+        # Corresponds to the JSON property `highPriorityCpuUtilizationPercent`
+        # @return [Fixnum]
+        attr_accessor :high_priority_cpu_utilization_percent
+      
+        # Required. The target storage utilization percentage that the autoscaler should
+        # be trying to achieve for the instance. This number is on a scale from 0 (no
+        # utilization) to 100 (full utilization). The valid range is [10, 99] inclusive.
+        # Corresponds to the JSON property `storageUtilizationPercent`
+        # @return [Fixnum]
+        attr_accessor :storage_utilization_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @high_priority_cpu_utilization_percent = args[:high_priority_cpu_utilization_percent] if args.key?(:high_priority_cpu_utilization_percent)
+          @storage_utilization_percent = args[:storage_utilization_percent] if args.key?(:storage_utilization_percent)
+        end
+      end
+      
       # A backup of a Cloud Spanner database.
       class Backup
         include Google::Apis::Core::Hashable
+      
+        # Output only. List of backup schedule URIs that are associated with creating
+        # this backup. This is only applicable for scheduled backups, and is empty for
+        # on-demand backups. To optimize for storage, whenever possible, multiple
+        # schedules are collapsed together to create one backup. In such cases, this
+        # field captures the list of all backup schedule URIs that are associated with
+        # creating this backup. If collapsing is not done, then this field captures the
+        # single backup schedule URI associated with creating this backup.
+        # Corresponds to the JSON property `backupSchedules`
+        # @return [Array<String>]
+        attr_accessor :backup_schedules
       
         # Output only. The time the CreateBackup request is received. If the request
         # does not specify `version_time`, the `version_time` of the backup will be
@@ -50,6 +241,27 @@ module Google
         # @return [Google::Apis::SpannerV1::EncryptionInfo]
         attr_accessor :encryption_info
       
+        # Output only. The encryption information for the backup, whether it is
+        # protected by one or more KMS keys. The information includes all Cloud KMS key
+        # versions used to encrypt the backup. The `encryption_status` field inside of
+        # each `EncryptionInfo` is not populated. At least one of the key versions must
+        # be available for the backup to be restored. If a key version is revoked in the
+        # middle of a restore, the restore behavior is undefined.
+        # Corresponds to the JSON property `encryptionInformation`
+        # @return [Array<Google::Apis::SpannerV1::EncryptionInfo>]
+        attr_accessor :encryption_information
+      
+        # Output only. For a backup in an incremental backup chain, this is the storage
+        # space needed to keep the data that has changed since the previous backup. For
+        # all other backups, this is always the size of the backup. This value may
+        # change if backups on the same chain get deleted or expired. This field can be
+        # used to calculate the total storage space used by a set of backups. For
+        # example, the total space used by all backups of a database can be computed by
+        # summing up this field.
+        # Corresponds to the JSON property `exclusiveSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :exclusive_size_bytes
+      
         # Required for the CreateBackup operation. The expiration time of the backup,
         # with microseconds granularity that must be at least 6 hours and at most 366
         # days from the time the CreateBackup request is processed. Once the `
@@ -58,6 +270,25 @@ module Google
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
+      
+        # Output only. The number of bytes that will be freed by deleting this backup.
+        # This value will be zero if, for example, this backup is part of an incremental
+        # backup chain and younger backups in the chain require that we keep its data.
+        # For backups not in an incremental backup chain, this is always the size of the
+        # backup. This value may change if backups on the same chain get created,
+        # deleted or expired.
+        # Corresponds to the JSON property `freeableSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :freeable_size_bytes
+      
+        # Output only. Populated only for backups in an incremental backup chain.
+        # Backups share the same chain id if and only if they belong to the same
+        # incremental backup chain. Use this field to determine which backups are part
+        # of the same incremental backup chain. The ordering of backups in the chain can
+        # be determined by ordering the backup `version_time`.
+        # Corresponds to the JSON property `incrementalBackupChainId`
+        # @return [String]
+        attr_accessor :incremental_backup_chain_id
       
         # Output only. The max allowed expiration time of the backup, with microseconds
         # granularity. A backup's expiration time can be configured in multiple APIs:
@@ -79,6 +310,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Data deleted at a time older than this is guaranteed not to be
+        # retained in order to support this backup. For a backup in an incremental
+        # backup chain, this is the version time of the oldest backup that exists or
+        # ever existed in the chain. For all other backups, this is the version time of
+        # the backup. This field can be used to understand what data is being retained
+        # by the backup system.
+        # Corresponds to the JSON property `oldestVersionTime`
+        # @return [String]
+        attr_accessor :oldest_version_time
+      
         # Output only. The names of the destination backups being created by copying
         # this source backup. The backup names are of the form `projects//instances//
         # backups/`. Referencing backups may exist in different instances. The existence
@@ -99,7 +340,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :referencing_databases
       
-        # Output only. Size of the backup in bytes.
+        # Output only. Size of the backup in bytes. For a backup in an incremental
+        # backup chain, this is the sum of the `exclusive_size_bytes` of itself and all
+        # older backups in the chain.
         # Corresponds to the JSON property `sizeBytes`
         # @return [Fixnum]
         attr_accessor :size_bytes
@@ -122,13 +365,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_schedules = args[:backup_schedules] if args.key?(:backup_schedules)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database = args[:database] if args.key?(:database)
           @database_dialect = args[:database_dialect] if args.key?(:database_dialect)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
+          @encryption_information = args[:encryption_information] if args.key?(:encryption_information)
+          @exclusive_size_bytes = args[:exclusive_size_bytes] if args.key?(:exclusive_size_bytes)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @freeable_size_bytes = args[:freeable_size_bytes] if args.key?(:freeable_size_bytes)
+          @incremental_backup_chain_id = args[:incremental_backup_chain_id] if args.key?(:incremental_backup_chain_id)
           @max_expire_time = args[:max_expire_time] if args.key?(:max_expire_time)
           @name = args[:name] if args.key?(:name)
+          @oldest_version_time = args[:oldest_version_time] if args.key?(:oldest_version_time)
           @referencing_backups = args[:referencing_backups] if args.key?(:referencing_backups)
           @referencing_databases = args[:referencing_databases] if args.key?(:referencing_databases)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
@@ -174,6 +423,95 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @source_database = args[:source_database] if args.key?(:source_database)
           @version_time = args[:version_time] if args.key?(:version_time)
+        end
+      end
+      
+      # BackupSchedule expresses the automated backup creation specification for a
+      # Spanner database.
+      class BackupSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Encryption configuration for the backup to create.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::SpannerV1::CreateBackupEncryptionConfig]
+        attr_accessor :encryption_config
+      
+        # The specification for full backups. A full backup stores the entire contents
+        # of the database at a given version time.
+        # Corresponds to the JSON property `fullBackupSpec`
+        # @return [Google::Apis::SpannerV1::FullBackupSpec]
+        attr_accessor :full_backup_spec
+      
+        # The specification for incremental backup chains. An incremental backup stores
+        # the delta of changes between a previous backup and the database contents at a
+        # given version time. An incremental backup chain consists of a full backup and
+        # zero or more successive incremental backups. The first backup created for an
+        # incremental backup chain is always a full backup.
+        # Corresponds to the JSON property `incrementalBackupSpec`
+        # @return [Google::Apis::SpannerV1::IncrementalBackupSpec]
+        attr_accessor :incremental_backup_spec
+      
+        # Identifier. Output only for the CreateBackupSchedule operation. Required for
+        # the UpdateBackupSchedule operation. A globally unique identifier for the
+        # backup schedule which cannot be changed. Values are of the form `projects//
+        # instances//databases//backupSchedules/a-z*[a-z0-9]` The final segment of the
+        # name must be between 2 and 60 characters in length.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The retention duration of a backup that must be at least 6 hours and
+        # at most 366 days. The backup is eligible to be automatically deleted once the
+        # retention period has elapsed.
+        # Corresponds to the JSON property `retentionDuration`
+        # @return [String]
+        attr_accessor :retention_duration
+      
+        # Defines specifications of the backup schedule.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::SpannerV1::BackupScheduleSpec]
+        attr_accessor :spec
+      
+        # Output only. The timestamp at which the schedule was last updated. If the
+        # schedule has never been updated, this field contains the timestamp when the
+        # schedule was first created.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @full_backup_spec = args[:full_backup_spec] if args.key?(:full_backup_spec)
+          @incremental_backup_spec = args[:incremental_backup_spec] if args.key?(:incremental_backup_spec)
+          @name = args[:name] if args.key?(:name)
+          @retention_duration = args[:retention_duration] if args.key?(:retention_duration)
+          @spec = args[:spec] if args.key?(:spec)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Defines specifications of the backup schedule.
+      class BackupScheduleSpec
+        include Google::Apis::Core::Hashable
+      
+        # CrontabSpec can be used to specify the version time and frequency at which the
+        # backup should be created.
+        # Corresponds to the JSON property `cronSpec`
+        # @return [Google::Apis::SpannerV1::CrontabSpec]
+        attr_accessor :cron_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cron_spec = args[:cron_spec] if args.key?(:cron_spec)
         end
       end
       
@@ -224,9 +562,94 @@ module Google
         end
       end
       
+      # The request for BatchWrite.
+      class BatchWriteRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When `exclude_txn_from_change_streams` is set to `true`: *
+        # Modifications from all transactions in this batch write operation will not be
+        # recorded in change streams with DDL option `allow_txn_exclusion=true` that are
+        # tracking columns modified by these transactions. * Modifications from all
+        # transactions in this batch write operation will be recorded in change streams
+        # with DDL option `allow_txn_exclusion=false or not set` that are tracking
+        # columns modified by these transactions. When `exclude_txn_from_change_streams`
+        # is set to `false` or not set, Modifications from all transactions in this
+        # batch write operation will be recorded in all change streams that are tracking
+        # columns modified by these transactions.
+        # Corresponds to the JSON property `excludeTxnFromChangeStreams`
+        # @return [Boolean]
+        attr_accessor :exclude_txn_from_change_streams
+        alias_method :exclude_txn_from_change_streams?, :exclude_txn_from_change_streams
+      
+        # Required. The groups of mutations to be applied.
+        # Corresponds to the JSON property `mutationGroups`
+        # @return [Array<Google::Apis::SpannerV1::MutationGroup>]
+        attr_accessor :mutation_groups
+      
+        # Common request options for various APIs.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::SpannerV1::RequestOptions]
+        attr_accessor :request_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_txn_from_change_streams = args[:exclude_txn_from_change_streams] if args.key?(:exclude_txn_from_change_streams)
+          @mutation_groups = args[:mutation_groups] if args.key?(:mutation_groups)
+          @request_options = args[:request_options] if args.key?(:request_options)
+        end
+      end
+      
+      # The result of applying a batch of mutations.
+      class BatchWriteResponse
+        include Google::Apis::Core::Hashable
+      
+        # The commit timestamp of the transaction that applied this batch. Present if `
+        # status` is `OK`, absent otherwise.
+        # Corresponds to the JSON property `commitTimestamp`
+        # @return [String]
+        attr_accessor :commit_timestamp
+      
+        # The mutation groups applied in this batch. The values index into the `
+        # mutation_groups` field in the corresponding `BatchWriteRequest`.
+        # Corresponds to the JSON property `indexes`
+        # @return [Array<Fixnum>]
+        attr_accessor :indexes
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::SpannerV1::Status]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commit_timestamp = args[:commit_timestamp] if args.key?(:commit_timestamp)
+          @indexes = args[:indexes] if args.key?(:indexes)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # The request for BeginTransaction.
       class BeginTransactionRequest
         include Google::Apis::Core::Hashable
+      
+        # A modification to one or more Cloud Spanner rows. Mutations can be applied to
+        # a Cloud Spanner database by sending them in a Commit call.
+        # Corresponds to the JSON property `mutationKey`
+        # @return [Google::Apis::SpannerV1::Mutation]
+        attr_accessor :mutation_key
       
         # Transactions: Each session can have at most one active transaction at a time (
         # note that standalone reads and queries use a transaction internally and do
@@ -244,7 +667,7 @@ module Google
         # such that the read is guaranteed to see the effects of all transactions that
         # have committed before the start of the read). Snapshot read-only transactions
         # do not need to be committed. Queries on change streams must be performed with
-        # the snapshot read-only transaction mode, specifying a strong read. Please see
+        # the snapshot read-only transaction mode, specifying a strong read. See
         # TransactionOptions.ReadOnly.strong for more details. 3. Partitioned DML. This
         # type of transaction is used to execute a single Partitioned DML statement.
         # Partitioned DML partitions the key space and runs the DML statement over each
@@ -280,87 +703,92 @@ module Google
         # committing the retry, the client should execute the retry in the same session
         # as the original attempt. The original session's lock priority increases with
         # each consecutive abort, meaning that each attempt has a slightly better chance
-        # of success than the previous. Under some circumstances (for example, many
-        # transactions attempting to modify the same row(s)), a transaction can abort
-        # many times in a short period before successfully committing. Thus, it is not a
-        # good idea to cap the number of retries a transaction can attempt; instead, it
-        # is better to limit the total amount of time spent retrying. Idle transactions:
-        # A transaction is considered idle if it has no outstanding reads or SQL queries
-        # and has not started a read or SQL query within the last 10 seconds. Idle
-        # transactions can be aborted by Cloud Spanner so that they don't hold on to
-        # locks indefinitely. If an idle transaction is aborted, the commit will fail
-        # with error `ABORTED`. If this behavior is undesirable, periodically executing
-        # a simple SQL query in the transaction (for example, `SELECT 1`) prevents the
-        # transaction from becoming idle. Snapshot read-only transactions: Snapshot read-
-        # only transactions provides a simpler method than locking read-write
-        # transactions for doing several consistent reads. However, this type of
-        # transaction does not support writes. Snapshot transactions do not take locks.
-        # Instead, they work by choosing a Cloud Spanner timestamp, then executing all
-        # reads at that timestamp. Since they do not acquire locks, they do not block
-        # concurrent read-write transactions. Unlike locking read-write transactions,
-        # snapshot read-only transactions never abort. They can fail if the chosen read
-        # timestamp is garbage collected; however, the default garbage collection policy
-        # is generous enough that most applications do not need to worry about this in
-        # practice. Snapshot read-only transactions do not need to call Commit or
-        # Rollback (and in fact are not permitted to do so). To execute a snapshot
-        # transaction, the client specifies a timestamp bound, which tells Cloud Spanner
-        # how to choose a read timestamp. The types of timestamp bound are: - Strong (
-        # the default). - Bounded staleness. - Exact staleness. If the Cloud Spanner
-        # database to be read is geographically distributed, stale read-only
-        # transactions can execute more quickly than strong or read-write transactions,
-        # because they are able to execute far from the leader replica. Each type of
-        # timestamp bound is discussed in detail below. Strong: Strong reads are
-        # guaranteed to see the effects of all transactions that have committed before
-        # the start of the read. Furthermore, all rows yielded by a single read are
-        # consistent with each other -- if any part of the read observes a transaction,
-        # all parts of the read see the transaction. Strong reads are not repeatable:
-        # two consecutive strong read-only transactions might return inconsistent
-        # results if there are concurrent writes. If consistency across reads is
-        # required, the reads should be executed within a transaction or at an exact
-        # read timestamp. Queries on change streams (see below for more details) must
-        # also specify the strong read timestamp bound. See TransactionOptions.ReadOnly.
-        # strong. Exact staleness: These timestamp bounds execute reads at a user-
-        # specified timestamp. Reads at a timestamp are guaranteed to see a consistent
-        # prefix of the global transaction history: they observe modifications done by
-        # all transactions with a commit timestamp less than or equal to the read
-        # timestamp, and observe none of the modifications done by transactions with a
-        # larger commit timestamp. They will block until all conflicting transactions
-        # that may be assigned commit timestamps <= the read timestamp have finished.
-        # The timestamp can either be expressed as an absolute Cloud Spanner commit
-        # timestamp or a staleness relative to the current time. These modes do not
-        # require a "negotiation phase" to pick a timestamp. As a result, they execute
-        # slightly faster than the equivalent boundedly stale concurrency modes. On the
-        # other hand, boundedly stale reads usually return fresher results. See
-        # TransactionOptions.ReadOnly.read_timestamp and TransactionOptions.ReadOnly.
-        # exact_staleness. Bounded staleness: Bounded staleness modes allow Cloud
-        # Spanner to pick the read timestamp, subject to a user-provided staleness bound.
-        # Cloud Spanner chooses the newest timestamp within the staleness bound that
-        # allows execution of the reads at the closest available replica without
-        # blocking. All rows yielded are consistent with each other -- if any part of
-        # the read observes a transaction, all parts of the read see the transaction.
-        # Boundedly stale reads are not repeatable: two stale reads, even if they use
-        # the same staleness bound, can execute at different timestamps and thus return
-        # inconsistent results. Boundedly stale reads execute in two phases: the first
-        # phase negotiates a timestamp among all replicas needed to serve the read. In
-        # the second phase, reads are executed at the negotiated timestamp. As a result
-        # of the two phase execution, bounded staleness reads are usually a little
-        # slower than comparable exact staleness reads. However, they are typically able
-        # to return fresher results, and are more likely to execute at the closest
-        # replica. Because the timestamp negotiation requires up-front knowledge of
-        # which rows will be read, it can only be used with single-use read-only
-        # transactions. See TransactionOptions.ReadOnly.max_staleness and
-        # TransactionOptions.ReadOnly.min_read_timestamp. Old read timestamps and
-        # garbage collection: Cloud Spanner continuously garbage collects deleted and
-        # overwritten data in the background to reclaim storage space. This process is
-        # known as "version GC". By default, version GC reclaims versions after they are
-        # one hour old. Because of this, Cloud Spanner cannot perform reads at read
-        # timestamps more than one hour in the past. This restriction also applies to in-
-        # progress reads and/or SQL queries whose timestamp become too old while
-        # executing. Reads and SQL queries with too-old read timestamps fail with the
-        # error `FAILED_PRECONDITION`. You can configure and extend the `
-        # VERSION_RETENTION_PERIOD` of a database up to a period as long as one week,
-        # which allows Cloud Spanner to perform reads up to one week in the past.
-        # Querying change Streams: A Change Stream is a schema object that can be
+        # of success than the previous. Note that the lock priority is preserved per
+        # session (not per transaction). Lock priority is set by the first read or write
+        # in the first attempt of a read-write transaction. If the application starts a
+        # new session to retry the whole transaction, the transaction loses its original
+        # lock priority. Moreover, the lock priority is only preserved if the
+        # transaction fails with an `ABORTED` error. Under some circumstances (for
+        # example, many transactions attempting to modify the same row(s)), a
+        # transaction can abort many times in a short period before successfully
+        # committing. Thus, it is not a good idea to cap the number of retries a
+        # transaction can attempt; instead, it is better to limit the total amount of
+        # time spent retrying. Idle transactions: A transaction is considered idle if it
+        # has no outstanding reads or SQL queries and has not started a read or SQL
+        # query within the last 10 seconds. Idle transactions can be aborted by Cloud
+        # Spanner so that they don't hold on to locks indefinitely. If an idle
+        # transaction is aborted, the commit will fail with error `ABORTED`. If this
+        # behavior is undesirable, periodically executing a simple SQL query in the
+        # transaction (for example, `SELECT 1`) prevents the transaction from becoming
+        # idle. Snapshot read-only transactions: Snapshot read-only transactions
+        # provides a simpler method than locking read-write transactions for doing
+        # several consistent reads. However, this type of transaction does not support
+        # writes. Snapshot transactions do not take locks. Instead, they work by
+        # choosing a Cloud Spanner timestamp, then executing all reads at that timestamp.
+        # Since they do not acquire locks, they do not block concurrent read-write
+        # transactions. Unlike locking read-write transactions, snapshot read-only
+        # transactions never abort. They can fail if the chosen read timestamp is
+        # garbage collected; however, the default garbage collection policy is generous
+        # enough that most applications do not need to worry about this in practice.
+        # Snapshot read-only transactions do not need to call Commit or Rollback (and in
+        # fact are not permitted to do so). To execute a snapshot transaction, the
+        # client specifies a timestamp bound, which tells Cloud Spanner how to choose a
+        # read timestamp. The types of timestamp bound are: - Strong (the default). -
+        # Bounded staleness. - Exact staleness. If the Cloud Spanner database to be read
+        # is geographically distributed, stale read-only transactions can execute more
+        # quickly than strong or read-write transactions, because they are able to
+        # execute far from the leader replica. Each type of timestamp bound is discussed
+        # in detail below. Strong: Strong reads are guaranteed to see the effects of all
+        # transactions that have committed before the start of the read. Furthermore,
+        # all rows yielded by a single read are consistent with each other -- if any
+        # part of the read observes a transaction, all parts of the read see the
+        # transaction. Strong reads are not repeatable: two consecutive strong read-only
+        # transactions might return inconsistent results if there are concurrent writes.
+        # If consistency across reads is required, the reads should be executed within a
+        # transaction or at an exact read timestamp. Queries on change streams (see
+        # below for more details) must also specify the strong read timestamp bound. See
+        # TransactionOptions.ReadOnly.strong. Exact staleness: These timestamp bounds
+        # execute reads at a user-specified timestamp. Reads at a timestamp are
+        # guaranteed to see a consistent prefix of the global transaction history: they
+        # observe modifications done by all transactions with a commit timestamp less
+        # than or equal to the read timestamp, and observe none of the modifications
+        # done by transactions with a larger commit timestamp. They will block until all
+        # conflicting transactions that may be assigned commit timestamps <= the read
+        # timestamp have finished. The timestamp can either be expressed as an absolute
+        # Cloud Spanner commit timestamp or a staleness relative to the current time.
+        # These modes do not require a "negotiation phase" to pick a timestamp. As a
+        # result, they execute slightly faster than the equivalent boundedly stale
+        # concurrency modes. On the other hand, boundedly stale reads usually return
+        # fresher results. See TransactionOptions.ReadOnly.read_timestamp and
+        # TransactionOptions.ReadOnly.exact_staleness. Bounded staleness: Bounded
+        # staleness modes allow Cloud Spanner to pick the read timestamp, subject to a
+        # user-provided staleness bound. Cloud Spanner chooses the newest timestamp
+        # within the staleness bound that allows execution of the reads at the closest
+        # available replica without blocking. All rows yielded are consistent with each
+        # other -- if any part of the read observes a transaction, all parts of the read
+        # see the transaction. Boundedly stale reads are not repeatable: two stale reads,
+        # even if they use the same staleness bound, can execute at different
+        # timestamps and thus return inconsistent results. Boundedly stale reads execute
+        # in two phases: the first phase negotiates a timestamp among all replicas
+        # needed to serve the read. In the second phase, reads are executed at the
+        # negotiated timestamp. As a result of the two phase execution, bounded
+        # staleness reads are usually a little slower than comparable exact staleness
+        # reads. However, they are typically able to return fresher results, and are
+        # more likely to execute at the closest replica. Because the timestamp
+        # negotiation requires up-front knowledge of which rows will be read, it can
+        # only be used with single-use read-only transactions. See TransactionOptions.
+        # ReadOnly.max_staleness and TransactionOptions.ReadOnly.min_read_timestamp. Old
+        # read timestamps and garbage collection: Cloud Spanner continuously garbage
+        # collects deleted and overwritten data in the background to reclaim storage
+        # space. This process is known as "version GC". By default, version GC reclaims
+        # versions after they are one hour old. Because of this, Cloud Spanner cannot
+        # perform reads at read timestamps more than one hour in the past. This
+        # restriction also applies to in-progress reads and/or SQL queries whose
+        # timestamp become too old while executing. Reads and SQL queries with too-old
+        # read timestamps fail with the error `FAILED_PRECONDITION`. You can configure
+        # and extend the `VERSION_RETENTION_PERIOD` of a database up to a period as long
+        # as one week, which allows Cloud Spanner to perform reads up to one week in the
+        # past. Querying change Streams: A Change Stream is a schema object that can be
         # configured to watch data changes on the entire database, a set of tables, or a
         # set of columns in a database. When a change stream is created, Spanner
         # automatically defines a corresponding SQL Table-Valued Function (TVF) that can
@@ -396,12 +824,12 @@ module Google
         # of the table. Rather, the statement is applied atomically to partitions of the
         # table, in independent transactions. Secondary index rows are updated
         # atomically with the base table rows. - Partitioned DML does not guarantee
-        # exactly-once execution semantics against a partition. The statement will be
-        # applied at least once to each partition. It is strongly recommended that the
-        # DML statement should be idempotent to avoid unexpected results. For instance,
-        # it is potentially dangerous to run a statement such as `UPDATE table SET
-        # column = column + 1` as it could be run multiple times against some rows. -
-        # The partitions are committed automatically - there is no support for Commit or
+        # exactly-once execution semantics against a partition. The statement is applied
+        # at least once to each partition. It is strongly recommended that the DML
+        # statement should be idempotent to avoid unexpected results. For instance, it
+        # is potentially dangerous to run a statement such as `UPDATE table SET column =
+        # column + 1` as it could be run multiple times against some rows. - The
+        # partitions are committed automatically - there is no support for Commit or
         # Rollback. If the call returns an error, or if the client issuing the
         # ExecuteSql call dies, it is possible that some rows had the statement executed
         # on them successfully. It is also possible that statement was never executed
@@ -430,6 +858,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @mutation_key = args[:mutation_key] if args.key?(:mutation_key)
           @options = args[:options] if args.key?(:options)
           @request_options = args[:request_options] if args.key?(:request_options)
         end
@@ -462,37 +891,64 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
       
         # Role that is assigned to the list of `members`, or principals. For example, `
-        # roles/viewer`, `roles/editor`, or `roles/owner`.
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -506,6 +962,74 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Metadata type for the long-running operation returned by ChangeQuorum.
+      class ChangeQuorumMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation failed or was completed successfully.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The request for ChangeQuorum.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::SpannerV1::ChangeQuorumRequest]
+        attr_accessor :request
+      
+        # Time the request was received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request = args[:request] if args.key?(:request)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The request for ChangeQuorum.
+      class ChangeQuorumRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The etag is the hash of the `QuorumInfo`. The `ChangeQuorum`
+        # operation is only performed if the etag matches that of the `QuorumInfo` in
+        # the current database resource. Otherwise the API returns an `ABORTED` error.
+        # The etag is used for optimistic concurrency control as a way to help prevent
+        # simultaneous change quorum requests that could create a race condition.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. Name of the database in which to apply `ChangeQuorum`. Values are of
+        # the form `projects//instances//databases/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Information about the database quorum type. This only applies to dual-region
+        # instance configs.
+        # Corresponds to the JSON property `quorumType`
+        # @return [Google::Apis::SpannerV1::QuorumType]
+        attr_accessor :quorum_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @quorum_type = args[:quorum_type] if args.key?(:quorum_type)
         end
       end
       
@@ -552,11 +1076,27 @@ module Google
       class CommitRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The amount of latency this request is configured to incur in order
+        # to improve throughput. If this field is not set, Spanner assumes requests are
+        # relatively latency sensitive and automatically determines an appropriate delay
+        # time. You can specify a commit delay value between 0 and 500 ms.
+        # Corresponds to the JSON property `maxCommitDelay`
+        # @return [String]
+        attr_accessor :max_commit_delay
+      
         # The mutations to be executed when this transaction commits. All mutations are
         # applied atomically, in the order they appear in this list.
         # Corresponds to the JSON property `mutations`
         # @return [Array<Google::Apis::SpannerV1::Mutation>]
         attr_accessor :mutations
+      
+        # When a read-write transaction is executed on a multiplexed session, this
+        # precommit token is sent back to the client as a part of the [Transaction]
+        # message in the BeginTransaction response and also as a part of the [ResultSet]
+        # and [PartialResultSet] responses.
+        # Corresponds to the JSON property `precommitToken`
+        # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
+        attr_accessor :precommit_token
       
         # Common request options for various APIs.
         # Corresponds to the JSON property `requestOptions`
@@ -586,7 +1126,7 @@ module Google
         # such that the read is guaranteed to see the effects of all transactions that
         # have committed before the start of the read). Snapshot read-only transactions
         # do not need to be committed. Queries on change streams must be performed with
-        # the snapshot read-only transaction mode, specifying a strong read. Please see
+        # the snapshot read-only transaction mode, specifying a strong read. See
         # TransactionOptions.ReadOnly.strong for more details. 3. Partitioned DML. This
         # type of transaction is used to execute a single Partitioned DML statement.
         # Partitioned DML partitions the key space and runs the DML statement over each
@@ -622,87 +1162,92 @@ module Google
         # committing the retry, the client should execute the retry in the same session
         # as the original attempt. The original session's lock priority increases with
         # each consecutive abort, meaning that each attempt has a slightly better chance
-        # of success than the previous. Under some circumstances (for example, many
-        # transactions attempting to modify the same row(s)), a transaction can abort
-        # many times in a short period before successfully committing. Thus, it is not a
-        # good idea to cap the number of retries a transaction can attempt; instead, it
-        # is better to limit the total amount of time spent retrying. Idle transactions:
-        # A transaction is considered idle if it has no outstanding reads or SQL queries
-        # and has not started a read or SQL query within the last 10 seconds. Idle
-        # transactions can be aborted by Cloud Spanner so that they don't hold on to
-        # locks indefinitely. If an idle transaction is aborted, the commit will fail
-        # with error `ABORTED`. If this behavior is undesirable, periodically executing
-        # a simple SQL query in the transaction (for example, `SELECT 1`) prevents the
-        # transaction from becoming idle. Snapshot read-only transactions: Snapshot read-
-        # only transactions provides a simpler method than locking read-write
-        # transactions for doing several consistent reads. However, this type of
-        # transaction does not support writes. Snapshot transactions do not take locks.
-        # Instead, they work by choosing a Cloud Spanner timestamp, then executing all
-        # reads at that timestamp. Since they do not acquire locks, they do not block
-        # concurrent read-write transactions. Unlike locking read-write transactions,
-        # snapshot read-only transactions never abort. They can fail if the chosen read
-        # timestamp is garbage collected; however, the default garbage collection policy
-        # is generous enough that most applications do not need to worry about this in
-        # practice. Snapshot read-only transactions do not need to call Commit or
-        # Rollback (and in fact are not permitted to do so). To execute a snapshot
-        # transaction, the client specifies a timestamp bound, which tells Cloud Spanner
-        # how to choose a read timestamp. The types of timestamp bound are: - Strong (
-        # the default). - Bounded staleness. - Exact staleness. If the Cloud Spanner
-        # database to be read is geographically distributed, stale read-only
-        # transactions can execute more quickly than strong or read-write transactions,
-        # because they are able to execute far from the leader replica. Each type of
-        # timestamp bound is discussed in detail below. Strong: Strong reads are
-        # guaranteed to see the effects of all transactions that have committed before
-        # the start of the read. Furthermore, all rows yielded by a single read are
-        # consistent with each other -- if any part of the read observes a transaction,
-        # all parts of the read see the transaction. Strong reads are not repeatable:
-        # two consecutive strong read-only transactions might return inconsistent
-        # results if there are concurrent writes. If consistency across reads is
-        # required, the reads should be executed within a transaction or at an exact
-        # read timestamp. Queries on change streams (see below for more details) must
-        # also specify the strong read timestamp bound. See TransactionOptions.ReadOnly.
-        # strong. Exact staleness: These timestamp bounds execute reads at a user-
-        # specified timestamp. Reads at a timestamp are guaranteed to see a consistent
-        # prefix of the global transaction history: they observe modifications done by
-        # all transactions with a commit timestamp less than or equal to the read
-        # timestamp, and observe none of the modifications done by transactions with a
-        # larger commit timestamp. They will block until all conflicting transactions
-        # that may be assigned commit timestamps <= the read timestamp have finished.
-        # The timestamp can either be expressed as an absolute Cloud Spanner commit
-        # timestamp or a staleness relative to the current time. These modes do not
-        # require a "negotiation phase" to pick a timestamp. As a result, they execute
-        # slightly faster than the equivalent boundedly stale concurrency modes. On the
-        # other hand, boundedly stale reads usually return fresher results. See
-        # TransactionOptions.ReadOnly.read_timestamp and TransactionOptions.ReadOnly.
-        # exact_staleness. Bounded staleness: Bounded staleness modes allow Cloud
-        # Spanner to pick the read timestamp, subject to a user-provided staleness bound.
-        # Cloud Spanner chooses the newest timestamp within the staleness bound that
-        # allows execution of the reads at the closest available replica without
-        # blocking. All rows yielded are consistent with each other -- if any part of
-        # the read observes a transaction, all parts of the read see the transaction.
-        # Boundedly stale reads are not repeatable: two stale reads, even if they use
-        # the same staleness bound, can execute at different timestamps and thus return
-        # inconsistent results. Boundedly stale reads execute in two phases: the first
-        # phase negotiates a timestamp among all replicas needed to serve the read. In
-        # the second phase, reads are executed at the negotiated timestamp. As a result
-        # of the two phase execution, bounded staleness reads are usually a little
-        # slower than comparable exact staleness reads. However, they are typically able
-        # to return fresher results, and are more likely to execute at the closest
-        # replica. Because the timestamp negotiation requires up-front knowledge of
-        # which rows will be read, it can only be used with single-use read-only
-        # transactions. See TransactionOptions.ReadOnly.max_staleness and
-        # TransactionOptions.ReadOnly.min_read_timestamp. Old read timestamps and
-        # garbage collection: Cloud Spanner continuously garbage collects deleted and
-        # overwritten data in the background to reclaim storage space. This process is
-        # known as "version GC". By default, version GC reclaims versions after they are
-        # one hour old. Because of this, Cloud Spanner cannot perform reads at read
-        # timestamps more than one hour in the past. This restriction also applies to in-
-        # progress reads and/or SQL queries whose timestamp become too old while
-        # executing. Reads and SQL queries with too-old read timestamps fail with the
-        # error `FAILED_PRECONDITION`. You can configure and extend the `
-        # VERSION_RETENTION_PERIOD` of a database up to a period as long as one week,
-        # which allows Cloud Spanner to perform reads up to one week in the past.
-        # Querying change Streams: A Change Stream is a schema object that can be
+        # of success than the previous. Note that the lock priority is preserved per
+        # session (not per transaction). Lock priority is set by the first read or write
+        # in the first attempt of a read-write transaction. If the application starts a
+        # new session to retry the whole transaction, the transaction loses its original
+        # lock priority. Moreover, the lock priority is only preserved if the
+        # transaction fails with an `ABORTED` error. Under some circumstances (for
+        # example, many transactions attempting to modify the same row(s)), a
+        # transaction can abort many times in a short period before successfully
+        # committing. Thus, it is not a good idea to cap the number of retries a
+        # transaction can attempt; instead, it is better to limit the total amount of
+        # time spent retrying. Idle transactions: A transaction is considered idle if it
+        # has no outstanding reads or SQL queries and has not started a read or SQL
+        # query within the last 10 seconds. Idle transactions can be aborted by Cloud
+        # Spanner so that they don't hold on to locks indefinitely. If an idle
+        # transaction is aborted, the commit will fail with error `ABORTED`. If this
+        # behavior is undesirable, periodically executing a simple SQL query in the
+        # transaction (for example, `SELECT 1`) prevents the transaction from becoming
+        # idle. Snapshot read-only transactions: Snapshot read-only transactions
+        # provides a simpler method than locking read-write transactions for doing
+        # several consistent reads. However, this type of transaction does not support
+        # writes. Snapshot transactions do not take locks. Instead, they work by
+        # choosing a Cloud Spanner timestamp, then executing all reads at that timestamp.
+        # Since they do not acquire locks, they do not block concurrent read-write
+        # transactions. Unlike locking read-write transactions, snapshot read-only
+        # transactions never abort. They can fail if the chosen read timestamp is
+        # garbage collected; however, the default garbage collection policy is generous
+        # enough that most applications do not need to worry about this in practice.
+        # Snapshot read-only transactions do not need to call Commit or Rollback (and in
+        # fact are not permitted to do so). To execute a snapshot transaction, the
+        # client specifies a timestamp bound, which tells Cloud Spanner how to choose a
+        # read timestamp. The types of timestamp bound are: - Strong (the default). -
+        # Bounded staleness. - Exact staleness. If the Cloud Spanner database to be read
+        # is geographically distributed, stale read-only transactions can execute more
+        # quickly than strong or read-write transactions, because they are able to
+        # execute far from the leader replica. Each type of timestamp bound is discussed
+        # in detail below. Strong: Strong reads are guaranteed to see the effects of all
+        # transactions that have committed before the start of the read. Furthermore,
+        # all rows yielded by a single read are consistent with each other -- if any
+        # part of the read observes a transaction, all parts of the read see the
+        # transaction. Strong reads are not repeatable: two consecutive strong read-only
+        # transactions might return inconsistent results if there are concurrent writes.
+        # If consistency across reads is required, the reads should be executed within a
+        # transaction or at an exact read timestamp. Queries on change streams (see
+        # below for more details) must also specify the strong read timestamp bound. See
+        # TransactionOptions.ReadOnly.strong. Exact staleness: These timestamp bounds
+        # execute reads at a user-specified timestamp. Reads at a timestamp are
+        # guaranteed to see a consistent prefix of the global transaction history: they
+        # observe modifications done by all transactions with a commit timestamp less
+        # than or equal to the read timestamp, and observe none of the modifications
+        # done by transactions with a larger commit timestamp. They will block until all
+        # conflicting transactions that may be assigned commit timestamps <= the read
+        # timestamp have finished. The timestamp can either be expressed as an absolute
+        # Cloud Spanner commit timestamp or a staleness relative to the current time.
+        # These modes do not require a "negotiation phase" to pick a timestamp. As a
+        # result, they execute slightly faster than the equivalent boundedly stale
+        # concurrency modes. On the other hand, boundedly stale reads usually return
+        # fresher results. See TransactionOptions.ReadOnly.read_timestamp and
+        # TransactionOptions.ReadOnly.exact_staleness. Bounded staleness: Bounded
+        # staleness modes allow Cloud Spanner to pick the read timestamp, subject to a
+        # user-provided staleness bound. Cloud Spanner chooses the newest timestamp
+        # within the staleness bound that allows execution of the reads at the closest
+        # available replica without blocking. All rows yielded are consistent with each
+        # other -- if any part of the read observes a transaction, all parts of the read
+        # see the transaction. Boundedly stale reads are not repeatable: two stale reads,
+        # even if they use the same staleness bound, can execute at different
+        # timestamps and thus return inconsistent results. Boundedly stale reads execute
+        # in two phases: the first phase negotiates a timestamp among all replicas
+        # needed to serve the read. In the second phase, reads are executed at the
+        # negotiated timestamp. As a result of the two phase execution, bounded
+        # staleness reads are usually a little slower than comparable exact staleness
+        # reads. However, they are typically able to return fresher results, and are
+        # more likely to execute at the closest replica. Because the timestamp
+        # negotiation requires up-front knowledge of which rows will be read, it can
+        # only be used with single-use read-only transactions. See TransactionOptions.
+        # ReadOnly.max_staleness and TransactionOptions.ReadOnly.min_read_timestamp. Old
+        # read timestamps and garbage collection: Cloud Spanner continuously garbage
+        # collects deleted and overwritten data in the background to reclaim storage
+        # space. This process is known as "version GC". By default, version GC reclaims
+        # versions after they are one hour old. Because of this, Cloud Spanner cannot
+        # perform reads at read timestamps more than one hour in the past. This
+        # restriction also applies to in-progress reads and/or SQL queries whose
+        # timestamp become too old while executing. Reads and SQL queries with too-old
+        # read timestamps fail with the error `FAILED_PRECONDITION`. You can configure
+        # and extend the `VERSION_RETENTION_PERIOD` of a database up to a period as long
+        # as one week, which allows Cloud Spanner to perform reads up to one week in the
+        # past. Querying change Streams: A Change Stream is a schema object that can be
         # configured to watch data changes on the entire database, a set of tables, or a
         # set of columns in a database. When a change stream is created, Spanner
         # automatically defines a corresponding SQL Table-Valued Function (TVF) that can
@@ -738,12 +1283,12 @@ module Google
         # of the table. Rather, the statement is applied atomically to partitions of the
         # table, in independent transactions. Secondary index rows are updated
         # atomically with the base table rows. - Partitioned DML does not guarantee
-        # exactly-once execution semantics against a partition. The statement will be
-        # applied at least once to each partition. It is strongly recommended that the
-        # DML statement should be idempotent to avoid unexpected results. For instance,
-        # it is potentially dangerous to run a statement such as `UPDATE table SET
-        # column = column + 1` as it could be run multiple times against some rows. -
-        # The partitions are committed automatically - there is no support for Commit or
+        # exactly-once execution semantics against a partition. The statement is applied
+        # at least once to each partition. It is strongly recommended that the DML
+        # statement should be idempotent to avoid unexpected results. For instance, it
+        # is potentially dangerous to run a statement such as `UPDATE table SET column =
+        # column + 1` as it could be run multiple times against some rows. - The
+        # partitions are committed automatically - there is no support for Commit or
         # Rollback. If the call returns an error, or if the client issuing the
         # ExecuteSql call dies, it is possible that some rows had the statement executed
         # on them successfully. It is also possible that statement was never executed
@@ -773,7 +1318,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @max_commit_delay = args[:max_commit_delay] if args.key?(:max_commit_delay)
           @mutations = args[:mutations] if args.key?(:mutations)
+          @precommit_token = args[:precommit_token] if args.key?(:precommit_token)
           @request_options = args[:request_options] if args.key?(:request_options)
           @return_commit_stats = args[:return_commit_stats] if args.key?(:return_commit_stats)
           @single_use_transaction = args[:single_use_transaction] if args.key?(:single_use_transaction)
@@ -795,6 +1342,14 @@ module Google
         # @return [String]
         attr_accessor :commit_timestamp
       
+        # When a read-write transaction is executed on a multiplexed session, this
+        # precommit token is sent back to the client as a part of the [Transaction]
+        # message in the BeginTransaction response and also as a part of the [ResultSet]
+        # and [PartialResultSet] responses.
+        # Corresponds to the JSON property `precommitToken`
+        # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
+        attr_accessor :precommit_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -803,6 +1358,7 @@ module Google
         def update!(**args)
           @commit_stats = args[:commit_stats] if args.key?(:commit_stats)
           @commit_timestamp = args[:commit_timestamp] if args.key?(:commit_timestamp)
+          @precommit_token = args[:precommit_token] if args.key?(:precommit_token)
         end
       end
       
@@ -887,6 +1443,22 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
+        # Optional. Specifies the KMS configuration for the one or more keys used to
+        # protect the backup. Values are of the form `projects//locations//keyRings//
+        # cryptoKeys/`. KMS keys specified can be in any order. The keys referenced by `
+        # kms_key_names` must fully cover all regions of the backup's instance
+        # configuration. Some examples: * For regional (single-region) instance
+        # configurations, specify a regional location KMS key. * For multi-region
+        # instance configurations of type `GOOGLE_MANAGED`, either specify a multi-
+        # region location KMS key or multiple regional location KMS keys that cover all
+        # regions in the instance configuration. * For an instance configuration of type
+        # `USER_MANAGED`, specify only regional location KMS keys to cover each region
+        # in the instance configuration. Multi-region location KMS keys aren't supported
+        # for `USER_MANAGED` type instance configurations.
+        # Corresponds to the JSON property `kmsKeyNames`
+        # @return [Array<String>]
+        attr_accessor :kms_key_names
+      
         def initialize(**args)
            update!(**args)
         end
@@ -895,6 +1467,7 @@ module Google
         def update!(**args)
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_names = args[:kms_key_names] if args.key?(:kms_key_names)
         end
       end
       
@@ -987,6 +1560,49 @@ module Google
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
+        end
+      end
+      
+      # Encryption configuration for the backup to create.
+      class CreateBackupEncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The encryption type of the backup.
+        # Corresponds to the JSON property `encryptionType`
+        # @return [String]
+        attr_accessor :encryption_type
+      
+        # Optional. The Cloud KMS key that will be used to protect the backup. This
+        # field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`.
+        # Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Optional. Specifies the KMS configuration for the one or more keys used to
+        # protect the backup. Values are of the form `projects//locations//keyRings//
+        # cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all
+        # regions of the backup's instance configuration. Some examples: * For regional (
+        # single-region) instance configurations, specify a regional location KMS key. *
+        # For multi-region instance configurations of type `GOOGLE_MANAGED`, either
+        # specify a multi-region location KMS key or multiple regional location KMS keys
+        # that cover all regions in the instance configuration. * For an instance
+        # configuration of type `USER_MANAGED`, specify only regional location KMS keys
+        # to cover each region in the instance configuration. Multi-region location KMS
+        # keys aren't supported for `USER_MANAGED` type instance configurations.
+        # Corresponds to the JSON property `kmsKeyNames`
+        # @return [Array<String>]
+        attr_accessor :kms_key_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_names = args[:kms_key_names] if args.key?(:kms_key_names)
         end
       end
       
@@ -1085,6 +1701,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :extra_statements
       
+        # Optional. Proto descriptors used by `CREATE/ALTER PROTO BUNDLE` statements in '
+        # extra_statements'. Contains a protobuf-serialized [`google.protobuf.
+        # FileDescriptorSet`](https://github.com/protocolbuffers/protobuf/blob/main/src/
+        # google/protobuf/descriptor.proto) descriptor set. To generate it, [install](
+        # https://grpc.io/docs/protoc-installation/) and run `protoc` with --
+        # include_imports and --descriptor_set_out. For example, to generate for moon/
+        # shot/app.proto, run ``` $protoc --proto_path=/app_path --proto_path=/lib_path \
+        # --include_imports \ --descriptor_set_out=descriptors.data \ moon/shot/app.
+        # proto ``` For more details, see protobuffer [self description](https://
+        # developers.google.com/protocol-buffers/docs/techniques#self-description).
+        # Corresponds to the JSON property `protoDescriptors`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :proto_descriptors
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1095,6 +1726,77 @@ module Google
           @database_dialect = args[:database_dialect] if args.key?(:database_dialect)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @extra_statements = args[:extra_statements] if args.key?(:extra_statements)
+          @proto_descriptors = args[:proto_descriptors] if args.key?(:proto_descriptors)
+        end
+      end
+      
+      # Metadata type for the operation returned by CreateInstanceConfig.
+      class CreateInstanceConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which this operation was cancelled.
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        # A possible configuration for a Cloud Spanner instance. Configurations define
+        # the geographic placement of nodes and their replication.
+        # Corresponds to the JSON property `instanceConfig`
+        # @return [Google::Apis::SpannerV1::InstanceConfig]
+        attr_accessor :instance_config
+      
+        # Encapsulates progress related information for a Cloud Spanner long running
+        # instance operations.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::SpannerV1::InstanceOperationProgress]
+        attr_accessor :progress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
+          @instance_config = args[:instance_config] if args.key?(:instance_config)
+          @progress = args[:progress] if args.key?(:progress)
+        end
+      end
+      
+      # The request for CreateInstanceConfig.
+      class CreateInstanceConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # A possible configuration for a Cloud Spanner instance. Configurations define
+        # the geographic placement of nodes and their replication.
+        # Corresponds to the JSON property `instanceConfig`
+        # @return [Google::Apis::SpannerV1::InstanceConfig]
+        attr_accessor :instance_config
+      
+        # Required. The ID of the instance configuration to create. Valid identifiers
+        # are of the form `custom-[-a-z0-9]*[a-z0-9]` and must be between 2 and 64
+        # characters in length. The `custom-` prefix is required to avoid name conflicts
+        # with Google-managed configurations.
+        # Corresponds to the JSON property `instanceConfigId`
+        # @return [String]
+        attr_accessor :instance_config_id
+      
+        # An option to validate, but not actually execute, a request, and provide the
+        # same response.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_config = args[:instance_config] if args.key?(:instance_config)
+          @instance_config_id = args[:instance_config_id] if args.key?(:instance_config_id)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
       
@@ -1114,6 +1816,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # The expected fulfillment period of this create operation.
+        # Corresponds to the JSON property `expectedFulfillmentPeriod`
+        # @return [String]
+        attr_accessor :expected_fulfillment_period
+      
         # An isolated set of Cloud Spanner resources on which databases can be hosted.
         # Corresponds to the JSON property `instance`
         # @return [Google::Apis::SpannerV1::Instance]
@@ -1132,8 +1839,76 @@ module Google
         def update!(**args)
           @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @expected_fulfillment_period = args[:expected_fulfillment_period] if args.key?(:expected_fulfillment_period)
           @instance = args[:instance] if args.key?(:instance)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Metadata type for the operation returned by CreateInstancePartition.
+      class CreateInstancePartitionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which this operation was cancelled. If set, this operation is in
+        # the process of undoing itself (which is guaranteed to succeed) and cannot be
+        # cancelled again.
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        # The time at which this operation failed or was completed successfully.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # An isolated set of Cloud Spanner resources that databases can define
+        # placements on.
+        # Corresponds to the JSON property `instancePartition`
+        # @return [Google::Apis::SpannerV1::InstancePartition]
+        attr_accessor :instance_partition
+      
+        # The time at which the CreateInstancePartition request was received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @instance_partition = args[:instance_partition] if args.key?(:instance_partition)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The request for CreateInstancePartition.
+      class CreateInstancePartitionRequest
+        include Google::Apis::Core::Hashable
+      
+        # An isolated set of Cloud Spanner resources that databases can define
+        # placements on.
+        # Corresponds to the JSON property `instancePartition`
+        # @return [Google::Apis::SpannerV1::InstancePartition]
+        attr_accessor :instance_partition
+      
+        # Required. The ID of the instance partition to create. Valid identifiers are of
+        # the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length.
+        # Corresponds to the JSON property `instancePartitionId`
+        # @return [String]
+        attr_accessor :instance_partition_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_partition = args[:instance_partition] if args.key?(:instance_partition)
+          @instance_partition_id = args[:instance_partition_id] if args.key?(:instance_partition_id)
         end
       end
       
@@ -1182,6 +1957,53 @@ module Google
         end
       end
       
+      # CrontabSpec can be used to specify the version time and frequency at which the
+      # backup should be created.
+      class CrontabSpec
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Schedule backups will contain an externally consistent copy of
+        # the database at the version time specified in `schedule_spec.cron_spec`.
+        # However, Spanner may not initiate the creation of the scheduled backups at
+        # that version time. Spanner will initiate the creation of scheduled backups
+        # within the time window bounded by the version_time specified in `schedule_spec.
+        # cron_spec` and version_time + `creation_window`.
+        # Corresponds to the JSON property `creationWindow`
+        # @return [String]
+        attr_accessor :creation_window
+      
+        # Required. Textual representation of the crontab. User can customize the backup
+        # frequency and the backup version time using the cron expression. The version
+        # time must be in UTC timzeone. The backup will contain an externally consistent
+        # copy of the database at the version time. Allowed frequencies are 12 hour, 1
+        # day, 1 week and 1 month. Examples of valid cron specifications: * `0 2/12 * * *
+        # ` : every 12 hours at (2, 14) hours past midnight in UTC. * `0 2,14 * * * ` :
+        # every 12 hours at (2,14) hours past midnight in UTC. * `0 2 * * * ` : once a
+        # day at 2 past midnight in UTC. * `0 2 * * 0 ` : once a week every Sunday at 2
+        # past midnight in UTC. * `0 2 8 * * ` : once a month on 8th day at 2 past
+        # midnight in UTC.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Output only. The time zone of the times in `CrontabSpec.text`. Currently only
+        # UTC is supported.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_window = args[:creation_window] if args.key?(:creation_window)
+          @text = args[:text] if args.key?(:text)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
       # A Cloud Spanner database.
       class Database
         include Google::Apis::Core::Hashable
@@ -1213,6 +2035,15 @@ module Google
         # @return [String]
         attr_accessor :earliest_version_time
       
+        # Optional. Whether drop protection is enabled for this database. Defaults to
+        # false, if not set. For more details, please see how to [prevent accidental
+        # database deletion](https://cloud.google.com/spanner/docs/prevent-database-
+        # deletion).
+        # Corresponds to the JSON property `enableDropProtection`
+        # @return [Boolean]
+        attr_accessor :enable_drop_protection
+        alias_method :enable_drop_protection?, :enable_drop_protection
+      
         # Encryption configuration for a Cloud Spanner database.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::SpannerV1::EncryptionConfig]
@@ -1220,7 +2051,7 @@ module Google
       
         # Output only. For databases that are using customer managed encryption, this
         # field contains the encryption information for the database, such as all Cloud
-        # KMS key versions that are in use. The `encryption_status' field inside of each
+        # KMS key versions that are in use. The `encryption_status` field inside of each
         # `EncryptionInfo` is not populated. For databases that are using Google default
         # or other types of encryption, this field is empty. This field is propagated
         # lazily from the backend. There might be a delay from when a key version is
@@ -1236,6 +2067,18 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Information about the dual-region quorum.
+        # Corresponds to the JSON property `quorumInfo`
+        # @return [Google::Apis::SpannerV1::QuorumInfo]
+        attr_accessor :quorum_info
+      
+        # Output only. If true, the database is being updated. If false, there are no
+        # ongoing update operations for the database.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
       
         # Information about the database restore.
         # Corresponds to the JSON property `restoreInfo`
@@ -1264,9 +2107,12 @@ module Google
           @database_dialect = args[:database_dialect] if args.key?(:database_dialect)
           @default_leader = args[:default_leader] if args.key?(:default_leader)
           @earliest_version_time = args[:earliest_version_time] if args.key?(:earliest_version_time)
+          @enable_drop_protection = args[:enable_drop_protection] if args.key?(:enable_drop_protection)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @name = args[:name] if args.key?(:name)
+          @quorum_info = args[:quorum_info] if args.key?(:quorum_info)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
           @restore_info = args[:restore_info] if args.key?(:restore_info)
           @state = args[:state] if args.key?(:state)
           @version_retention_period = args[:version_retention_period] if args.key?(:version_retention_period)
@@ -1291,6 +2137,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Action information extracted from a DDL statement. This proto is used to
+      # display the brief info of the DDL statement for the operation
+      # UpdateDatabaseDdl.
+      class DdlStatementActionInfo
+        include Google::Apis::Core::Hashable
+      
+        # The action for the DDL statement, e.g. CREATE, ALTER, DROP, GRANT, etc. This
+        # field is a non-empty string.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # The entity name(s) being operated on the DDL statement. E.g. 1. For statement "
+        # CREATE TABLE t1(...)", `entity_names` = ["t1"]. 2. For statement "GRANT ROLE
+        # r1, r2 ...", `entity_names` = ["r1", "r2"]. 3. For statement "ANALYZE", `
+        # entity_names` = [].
+        # Corresponds to the JSON property `entityNames`
+        # @return [Array<String>]
+        attr_accessor :entity_names
+      
+        # The entity type for the DDL statement, e.g. TABLE, INDEX, VIEW, etc. This
+        # field can be empty string for some DDL statement, e.g. for statement "ANALYZE",
+        # `entity_type` = "".
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @entity_names = args[:entity_names] if args.key?(:entity_names)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
         end
       end
       
@@ -1402,6 +2287,49 @@ module Google
         end
       end
       
+      # The DirectedReadOptions can be used to indicate which replicas or regions
+      # should be used for non-transactional reads or queries. DirectedReadOptions may
+      # only be specified for a read-only transaction, otherwise the API will return
+      # an `INVALID_ARGUMENT` error.
+      class DirectedReadOptions
+        include Google::Apis::Core::Hashable
+      
+        # An ExcludeReplicas contains a repeated set of ReplicaSelection that should be
+        # excluded from serving requests.
+        # Corresponds to the JSON property `excludeReplicas`
+        # @return [Google::Apis::SpannerV1::ExcludeReplicas]
+        attr_accessor :exclude_replicas
+      
+        # An IncludeReplicas contains a repeated set of ReplicaSelection which indicates
+        # the order in which replicas should be considered.
+        # Corresponds to the JSON property `includeReplicas`
+        # @return [Google::Apis::SpannerV1::IncludeReplicas]
+        attr_accessor :include_replicas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_replicas = args[:exclude_replicas] if args.key?(:exclude_replicas)
+          @include_replicas = args[:include_replicas] if args.key?(:include_replicas)
+        end
+      end
+      
+      # Message type for a dual-region quorum. Currently this type has no options.
+      class DualRegionQuorum
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1428,6 +2356,21 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
+        # Specifies the KMS configuration for one or more keys used to encrypt the
+        # database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        # The keys referenced by `kms_key_names` must fully cover all regions of the
+        # database's instance configuration. Some examples: * For regional (single-
+        # region) instance configurations, specify a regional location KMS key. * For
+        # multi-region instance configurations of type `GOOGLE_MANAGED`, either specify
+        # a multi-region location KMS key or multiple regional location KMS keys that
+        # cover all regions in the instance configuration. * For an instance
+        # configuration of type `USER_MANAGED`, specify only regional location KMS keys
+        # to cover each region in the instance configuration. Multi-region location KMS
+        # keys aren't supported for `USER_MANAGED` type instance configurations.
+        # Corresponds to the JSON property `kmsKeyNames`
+        # @return [Array<String>]
+        attr_accessor :kms_key_names
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1435,6 +2378,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_names = args[:kms_key_names] if args.key?(:kms_key_names)
         end
       end
       
@@ -1472,6 +2416,26 @@ module Google
           @encryption_status = args[:encryption_status] if args.key?(:encryption_status)
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
+        end
+      end
+      
+      # An ExcludeReplicas contains a repeated set of ReplicaSelection that should be
+      # excluded from serving requests.
+      class ExcludeReplicas
+        include Google::Apis::Core::Hashable
+      
+        # The directed read replica selector.
+        # Corresponds to the JSON property `replicaSelections`
+        # @return [Array<Google::Apis::SpannerV1::ReplicaSelection>]
+        attr_accessor :replica_selections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @replica_selections = args[:replica_selections] if args.key?(:replica_selections)
         end
       end
       
@@ -1540,6 +2504,14 @@ module Google
       class ExecuteBatchDmlResponse
         include Google::Apis::Core::Hashable
       
+        # When a read-write transaction is executed on a multiplexed session, this
+        # precommit token is sent back to the client as a part of the [Transaction]
+        # message in the BeginTransaction response and also as a part of the [ResultSet]
+        # and [PartialResultSet] responses.
+        # Corresponds to the JSON property `precommitToken`
+        # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
+        attr_accessor :precommit_token
+      
         # One ResultSet for each statement in the request that ran successfully, in the
         # same order as the statements in the request. Each ResultSet does not contain
         # any rows. The ResultSetStats in each ResultSet contain the number of rows
@@ -1565,6 +2537,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @precommit_token = args[:precommit_token] if args.key?(:precommit_token)
           @result_sets = args[:result_sets] if args.key?(:result_sets)
           @status = args[:status] if args.key?(:status)
         end
@@ -1573,6 +2546,23 @@ module Google
       # The request for ExecuteSql and ExecuteStreamingSql.
       class ExecuteSqlRequest
         include Google::Apis::Core::Hashable
+      
+        # If this is for a partitioned query and this field is set to `true`, the
+        # request is executed with Spanner Data Boost independent compute resources. If
+        # the field is set to `true` but the request does not set `partition_token`, the
+        # API returns an `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `dataBoostEnabled`
+        # @return [Boolean]
+        attr_accessor :data_boost_enabled
+        alias_method :data_boost_enabled?, :data_boost_enabled
+      
+        # The DirectedReadOptions can be used to indicate which replicas or regions
+        # should be used for non-transactional reads or queries. DirectedReadOptions may
+        # only be specified for a read-only transaction, otherwise the API will return
+        # an `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `directedReadOptions`
+        # @return [Google::Apis::SpannerV1::DirectedReadOptions]
+        attr_accessor :directed_read_options
       
         # It is not always possible for Cloud Spanner to infer the right SQL type from a
         # JSON value. For example, values of type `BYTES` and values of type `STRING`
@@ -1658,6 +2648,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_boost_enabled = args[:data_boost_enabled] if args.key?(:data_boost_enabled)
+          @directed_read_options = args[:directed_read_options] if args.key?(:directed_read_options)
           @param_types = args[:param_types] if args.key?(:param_types)
           @params = args[:params] if args.key?(:params)
           @partition_token = args[:partition_token] if args.key?(:partition_token)
@@ -1793,9 +2785,33 @@ module Google
         end
       end
       
+      # The specification for full backups. A full backup stores the entire contents
+      # of the database at a given version time.
+      class FullBackupSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The response for GetDatabaseDdl.
       class GetDatabaseDdlResponse
         include Google::Apis::Core::Hashable
+      
+        # Proto descriptors stored in the database. Contains a protobuf-serialized [
+        # google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/
+        # blob/main/src/google/protobuf/descriptor.proto). For more details, see
+        # protobuffer [self description](https://developers.google.com/protocol-buffers/
+        # docs/techniques#self-description).
+        # Corresponds to the JSON property `protoDescriptors`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :proto_descriptors
       
         # A list of formatted DDL statements defining the schema of the database
         # specified in the request.
@@ -1809,6 +2825,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @proto_descriptors = args[:proto_descriptors] if args.key?(:proto_descriptors)
           @statements = args[:statements] if args.key?(:statements)
         end
       end
@@ -1860,6 +2877,79 @@ module Google
         end
       end
       
+      # An IncludeReplicas contains a repeated set of ReplicaSelection which indicates
+      # the order in which replicas should be considered.
+      class IncludeReplicas
+        include Google::Apis::Core::Hashable
+      
+        # If true, Spanner will not route requests to a replica outside the
+        # include_replicas list when all of the specified replicas are unavailable or
+        # unhealthy. Default value is `false`.
+        # Corresponds to the JSON property `autoFailoverDisabled`
+        # @return [Boolean]
+        attr_accessor :auto_failover_disabled
+        alias_method :auto_failover_disabled?, :auto_failover_disabled
+      
+        # The directed read replica selector.
+        # Corresponds to the JSON property `replicaSelections`
+        # @return [Array<Google::Apis::SpannerV1::ReplicaSelection>]
+        attr_accessor :replica_selections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_failover_disabled = args[:auto_failover_disabled] if args.key?(:auto_failover_disabled)
+          @replica_selections = args[:replica_selections] if args.key?(:replica_selections)
+        end
+      end
+      
+      # The specification for incremental backup chains. An incremental backup stores
+      # the delta of changes between a previous backup and the database contents at a
+      # given version time. An incremental backup chain consists of a full backup and
+      # zero or more successive incremental backups. The first backup created for an
+      # incremental backup chain is always a full backup.
+      class IncrementalBackupSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Recommendation to add new indexes to run queries more efficiently.
+      class IndexAdvice
+        include Google::Apis::Core::Hashable
+      
+        # Optional. DDL statements to add new indexes that will improve the query.
+        # Corresponds to the JSON property `ddl`
+        # @return [Array<String>]
+        attr_accessor :ddl
+      
+        # Optional. Estimated latency improvement factor. For example if the query
+        # currently takes 500 ms to run and the estimated latency with new indexes is
+        # 100 ms this field will be 5.
+        # Corresponds to the JSON property `improvementFactor`
+        # @return [Float]
+        attr_accessor :improvement_factor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ddl = args[:ddl] if args.key?(:ddl)
+          @improvement_factor = args[:improvement_factor] if args.key?(:improvement_factor)
+        end
+      end
+      
       # A message representing a (sparse) collection of hot keys for specific key
       # buckets.
       class IndexedHotKey
@@ -1907,6 +2997,11 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # Autoscaling configuration for an instance.
+        # Corresponds to the JSON property `autoscalingConfig`
+        # @return [Google::Apis::SpannerV1::AutoscalingConfig]
+        attr_accessor :autoscaling_config
+      
         # Required. The name of the instance's configuration. Values are of the form `
         # projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         # Corresponds to the JSON property `config`
@@ -1918,11 +3013,26 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Controls the default backup behavior for new databases within the
+        # instance. Note that `AUTOMATIC` is not permitted for free instances, as
+        # backups and backup schedules are not allowed for free instances. In the `
+        # GetInstance` or `ListInstances` response, if the value of
+        # default_backup_schedule_type is unset or NONE, no default backup schedule will
+        # be created for new databases within the instance.
+        # Corresponds to the JSON property `defaultBackupScheduleType`
+        # @return [String]
+        attr_accessor :default_backup_schedule_type
+      
         # Required. The descriptive name for this instance as it appears in UIs. Must be
         # unique per project and between 4 and 30 characters in length.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Optional. The `Edition` of the current instance.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # Deprecated. This field is not populated.
         # Corresponds to the JSON property `endpointUris`
@@ -1968,23 +3078,37 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The number of nodes allocated to this instance. At most one of either
-        # node_count or processing_units should be present in the message. This may be
-        # zero in API responses for instances that are not yet in state `READY`. See [
-        # the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for
-        # more information about nodes and processing units.
+        # The number of nodes allocated to this instance. At most, one of either `
+        # node_count` or `processing_units` should be present in the message. Users can
+        # set the `node_count` field to specify the target number of nodes allocated to
+        # the instance. If autoscaling is enabled, `node_count` is treated as an `
+        # OUTPUT_ONLY` field and reflects the current number of nodes allocated to the
+        # instance. This might be zero in API responses for instances that are not yet
+        # in the `READY` state. For more information, see [Compute capacity, nodes, and
+        # processing units](https://cloud.google.com/spanner/docs/compute-capacity).
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
       
-        # The number of processing units allocated to this instance. At most one of
-        # processing_units or node_count should be present in the message. This may be
-        # zero in API responses for instances that are not yet in state `READY`. See [
-        # the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for
-        # more information about nodes and processing units.
+        # The number of processing units allocated to this instance. At most, one of
+        # either `processing_units` or `node_count` should be present in the message.
+        # Users can set the `processing_units` field to specify the target number of
+        # processing units allocated to the instance. If autoscaling is enabled, `
+        # processing_units` is treated as an `OUTPUT_ONLY` field and reflects the
+        # current number of processing units allocated to the instance. This might be
+        # zero in API responses for instances that are not yet in the `READY` state. For
+        # more information, see [Compute capacity, nodes and processing units](https://
+        # cloud.google.com/spanner/docs/compute-capacity).
         # Corresponds to the JSON property `processingUnits`
         # @return [Fixnum]
         attr_accessor :processing_units
+      
+        # Output only. Lists the compute capacity per ReplicaSelection. A replica
+        # selection identifies a set of replicas with common properties. Replicas
+        # identified by a ReplicaSelection are scaled with the same compute capacity.
+        # Corresponds to the JSON property `replicaComputeCapacity`
+        # @return [Array<Google::Apis::SpannerV1::ReplicaComputeCapacity>]
+        attr_accessor :replica_compute_capacity
       
         # Output only. The current instance state. For CreateInstance, the state must be
         # either omitted or set to `CREATING`. For UpdateInstance, the state must be
@@ -2004,9 +3128,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
           @config = args[:config] if args.key?(:config)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @default_backup_schedule_type = args[:default_backup_schedule_type] if args.key?(:default_backup_schedule_type)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @edition = args[:edition] if args.key?(:edition)
           @endpoint_uris = args[:endpoint_uris] if args.key?(:endpoint_uris)
           @free_instance_metadata = args[:free_instance_metadata] if args.key?(:free_instance_metadata)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
@@ -2014,6 +3141,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @node_count = args[:node_count] if args.key?(:node_count)
           @processing_units = args[:processing_units] if args.key?(:processing_units)
+          @replica_compute_capacity = args[:replica_compute_capacity] if args.key?(:replica_compute_capacity)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2024,16 +3152,64 @@ module Google
       class InstanceConfig
         include Google::Apis::Core::Hashable
       
+        # Base configuration name, e.g. projects//instanceConfigs/nam3, based on which
+        # this configuration is created. Only set for user-managed configurations. `
+        # base_config` must refer to a configuration of type `GOOGLE_MANAGED` in the
+        # same project as this configuration.
+        # Corresponds to the JSON property `baseConfig`
+        # @return [String]
+        attr_accessor :base_config
+      
+        # Output only. Whether this instance configuration is a Google-managed or user-
+        # managed configuration.
+        # Corresponds to the JSON property `configType`
+        # @return [String]
+        attr_accessor :config_type
+      
         # The name of this instance configuration as it appears in UIs.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
+        # etag is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a instance configuration from overwriting each other.
+        # It is strongly suggested that systems make use of the etag in the read-modify-
+        # write cycle to perform instance configuration updates in order to avoid race
+        # conditions: An etag is returned in the response which contains instance
+        # configurations, and systems are expected to put that etag in the request to
+        # update instance configuration to ensure that their change is applied to the
+        # same version of the instance configuration. If no etag is provided in the call
+        # to update the instance configuration, then the existing instance configuration
+        # is overwritten blindly.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Output only. Describes whether free instances are available to be created in
-        # this instance config.
+        # this instance configuration.
         # Corresponds to the JSON property `freeInstanceAvailability`
         # @return [String]
         attr_accessor :free_instance_availability
+      
+        # Cloud Labels are a flexible and lightweight mechanism for organizing cloud
+        # resources into groups that reflect a customer's organizational needs and
+        # deployment strategies. Cloud Labels can be used to filter collections of
+        # resources. They can be used to control how resource metrics are aggregated.
+        # And they can be used as arguments to policy management rules (e.g. route,
+        # firewall, load balancing, etc.). * Label keys must be between 1 and 63
+        # characters long and must conform to the following regular expression: `a-z`0,
+        # 62``. * Label values must be between 0 and 63 characters long and must conform
+        # to the regular expression `[a-z0-9_-]`0,63``. * No more than 64 labels can be
+        # associated with a given resource. See https://goo.gl/xmQnxf for more
+        # information on and examples of labels. If you plan to use labels in your own
+        # code, please note that additional characters may be allowed in the future.
+        # Therefore, you are advised to use an internal label representation, such as
+        # JSON, which doesn't rely upon specific characters being disallowed. For
+        # example, representing labels as the string: name + "_" + value would prove
+        # problematic if we were to allow "_" in a future release.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Allowed values of the "default_leader" schema option for databases in
         # instances that use this instance configuration.
@@ -2042,16 +3218,48 @@ module Google
         attr_accessor :leader_options
       
         # A unique identifier for the instance configuration. Values are of the form `
-        # projects//instanceConfigs/a-z*`.
+        # projects//instanceConfigs/a-z*`. User instance configuration must start with `
+        # custom-`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
+        # Output only. The available optional replicas to choose from for user-managed
+        # configurations. Populated for Google-managed configurations.
+        # Corresponds to the JSON property `optionalReplicas`
+        # @return [Array<Google::Apis::SpannerV1::ReplicaInfo>]
+        attr_accessor :optional_replicas
+      
+        # Output only. The `QuorumType` of the instance configuration.
+        # Corresponds to the JSON property `quorumType`
+        # @return [String]
+        attr_accessor :quorum_type
+      
+        # Output only. If true, the instance configuration is being created or updated.
+        # If false, there are no ongoing operations for the instance configuration.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
         # The geographic placement of nodes in this instance configuration and their
-        # replication properties.
+        # replication properties. To create user-managed configurations, input `replicas`
+        # must include all replicas in `replicas` of the `base_config` and include one
+        # or more replicas in the `optional_replicas` of the `base_config`.
         # Corresponds to the JSON property `replicas`
         # @return [Array<Google::Apis::SpannerV1::ReplicaInfo>]
         attr_accessor :replicas
+      
+        # Output only. The current instance configuration state. Applicable only for `
+        # USER_MANAGED` configurations.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The storage limit in bytes per processing unit.
+        # Corresponds to the JSON property `storageLimitPerProcessingUnit`
+        # @return [Fixnum]
+        attr_accessor :storage_limit_per_processing_unit
       
         def initialize(**args)
            update!(**args)
@@ -2059,11 +3267,177 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @base_config = args[:base_config] if args.key?(:base_config)
+          @config_type = args[:config_type] if args.key?(:config_type)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
           @free_instance_availability = args[:free_instance_availability] if args.key?(:free_instance_availability)
+          @labels = args[:labels] if args.key?(:labels)
           @leader_options = args[:leader_options] if args.key?(:leader_options)
           @name = args[:name] if args.key?(:name)
+          @optional_replicas = args[:optional_replicas] if args.key?(:optional_replicas)
+          @quorum_type = args[:quorum_type] if args.key?(:quorum_type)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
           @replicas = args[:replicas] if args.key?(:replicas)
+          @state = args[:state] if args.key?(:state)
+          @storage_limit_per_processing_unit = args[:storage_limit_per_processing_unit] if args.key?(:storage_limit_per_processing_unit)
+        end
+      end
+      
+      # Encapsulates progress related information for a Cloud Spanner long running
+      # instance operations.
+      class InstanceOperationProgress
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation failed or was completed successfully.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Percent completion of the operation. Values are between 0 and 100 inclusive.
+        # Corresponds to the JSON property `progressPercent`
+        # @return [Fixnum]
+        attr_accessor :progress_percent
+      
+        # Time the request was received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # An isolated set of Cloud Spanner resources that databases can define
+      # placements on.
+      class InstancePartition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the instance partition's configuration. Values are of
+        # the form `projects//instanceConfigs/`. See also InstanceConfig and
+        # ListInstanceConfigs.
+        # Corresponds to the JSON property `config`
+        # @return [String]
+        attr_accessor :config
+      
+        # Output only. The time at which the instance partition was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The descriptive name for this instance partition as it appears in
+        # UIs. Must be unique per project and between 4 and 30 characters in length.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Used for optimistic concurrency control as a way to help prevent simultaneous
+        # updates of a instance partition from overwriting each other. It is strongly
+        # suggested that systems make use of the etag in the read-modify-write cycle to
+        # perform instance partition updates in order to avoid race conditions: An etag
+        # is returned in the response which contains instance partitions, and systems
+        # are expected to put that etag in the request to update instance partitions to
+        # ensure that their change will be applied to the same version of the instance
+        # partition. If no etag is provided in the call to update instance partition,
+        # then the existing instance partition is overwritten blindly.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. A unique identifier for the instance partition. Values are of the
+        # form `projects//instances//instancePartitions/a-z*[a-z0-9]`. The final segment
+        # of the name must be between 2 and 64 characters in length. An instance
+        # partition's name cannot be changed after the instance partition is created.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The number of nodes allocated to this instance partition. Users can set the `
+        # node_count` field to specify the target number of nodes allocated to the
+        # instance partition. This may be zero in API responses for instance partitions
+        # that are not yet in state `READY`.
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # The number of processing units allocated to this instance partition. Users can
+        # set the `processing_units` field to specify the target number of processing
+        # units allocated to the instance partition. This might be zero in API responses
+        # for instance partitions that are not yet in the `READY` state.
+        # Corresponds to the JSON property `processingUnits`
+        # @return [Fixnum]
+        attr_accessor :processing_units
+      
+        # Output only. Deprecated: This field is not populated. Output only. The names
+        # of the backups that reference this instance partition. Referencing backups
+        # should share the parent instance. The existence of any referencing backup
+        # prevents the instance partition from being deleted.
+        # Corresponds to the JSON property `referencingBackups`
+        # @return [Array<String>]
+        attr_accessor :referencing_backups
+      
+        # Output only. The names of the databases that reference this instance partition.
+        # Referencing databases should share the parent instance. The existence of any
+        # referencing database prevents the instance partition from being deleted.
+        # Corresponds to the JSON property `referencingDatabases`
+        # @return [Array<String>]
+        attr_accessor :referencing_databases
+      
+        # Output only. The current instance partition state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time at which the instance partition was most recently
+        # updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @processing_units = args[:processing_units] if args.key?(:processing_units)
+          @referencing_backups = args[:referencing_backups] if args.key?(:referencing_backups)
+          @referencing_databases = args[:referencing_databases] if args.key?(:referencing_databases)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # ReplicaSelection identifies replicas with common properties.
+      class InstanceReplicaSelection
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the location of the replicas (e.g., "us-central1").
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
         end
       end
       
@@ -2311,6 +3685,32 @@ module Google
         end
       end
       
+      # The response for ListBackupSchedules.
+      class ListBackupSchedulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of backup schedules for a database.
+        # Corresponds to the JSON property `backupSchedules`
+        # @return [Array<Google::Apis::SpannerV1::BackupSchedule>]
+        attr_accessor :backup_schedules
+      
+        # `next_page_token` can be sent in a subsequent ListBackupSchedules call to
+        # fetch more of the schedules.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_schedules = args[:backup_schedules] if args.key?(:backup_schedules)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response for ListBackups.
       class ListBackupsResponse
         include Google::Apis::Core::Hashable
@@ -2418,6 +3818,35 @@ module Google
         end
       end
       
+      # The response for ListInstanceConfigOperations.
+      class ListInstanceConfigOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # `next_page_token` can be sent in a subsequent ListInstanceConfigOperations
+        # call to fetch more of the matching metadata.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of matching instance configuration long-running operations. Each
+        # operation's name will be prefixed by the name of the instance configuration.
+        # The operation's metadata field type `metadata.type_url` describes the type of
+        # the metadata.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SpannerV1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
       # The response for ListInstanceConfigs.
       class ListInstanceConfigsResponse
         include Google::Apis::Core::Hashable
@@ -2441,6 +3870,77 @@ module Google
         def update!(**args)
           @instance_configs = args[:instance_configs] if args.key?(:instance_configs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response for ListInstancePartitionOperations.
+      class ListInstancePartitionOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # `next_page_token` can be sent in a subsequent ListInstancePartitionOperations
+        # call to fetch more of the matching metadata.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of matching instance partition long-running operations. Each
+        # operation's name will be prefixed by the instance partition's name. The
+        # operation's metadata field type `metadata.type_url` describes the type of the
+        # metadata.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SpannerV1::Operation>]
+        attr_accessor :operations
+      
+        # The list of unreachable instance partitions. It includes the names of instance
+        # partitions whose operation metadata could not be retrieved within
+        # instance_partition_deadline.
+        # Corresponds to the JSON property `unreachableInstancePartitions`
+        # @return [Array<String>]
+        attr_accessor :unreachable_instance_partitions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+          @unreachable_instance_partitions = args[:unreachable_instance_partitions] if args.key?(:unreachable_instance_partitions)
+        end
+      end
+      
+      # The response for ListInstancePartitions.
+      class ListInstancePartitionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of requested instancePartitions.
+        # Corresponds to the JSON property `instancePartitions`
+        # @return [Array<Google::Apis::SpannerV1::InstancePartition>]
+        attr_accessor :instance_partitions
+      
+        # `next_page_token` can be sent in a subsequent ListInstancePartitions call to
+        # fetch more of the matching instance partitions.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of unreachable instances or instance partitions. It includes the
+        # names of instances or instance partitions whose metadata could not be
+        # retrieved within instance_partition_deadline.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_partitions = args[:instance_partitions] if args.key?(:instance_partitions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2727,6 +4227,57 @@ module Google
         end
       end
       
+      # The request for MoveInstance.
+      class MoveInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The target instance configuration where to move the instance. Values
+        # are of the form `projects//instanceConfigs/`.
+        # Corresponds to the JSON property `targetConfig`
+        # @return [String]
+        attr_accessor :target_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_config = args[:target_config] if args.key?(:target_config)
+        end
+      end
+      
+      # When a read-write transaction is executed on a multiplexed session, this
+      # precommit token is sent back to the client as a part of the [Transaction]
+      # message in the BeginTransaction response and also as a part of the [ResultSet]
+      # and [PartialResultSet] responses.
+      class MultiplexedSessionPrecommitToken
+        include Google::Apis::Core::Hashable
+      
+        # Opaque precommit token.
+        # Corresponds to the JSON property `precommitToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :precommit_token
+      
+        # An incrementing seq number is generated on every precommit token that is
+        # returned. Clients should remember the precommit token with the highest
+        # sequence number from the current transaction attempt.
+        # Corresponds to the JSON property `seqNum`
+        # @return [Fixnum]
+        attr_accessor :seq_num
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @precommit_token = args[:precommit_token] if args.key?(:precommit_token)
+          @seq_num = args[:seq_num] if args.key?(:seq_num)
+        end
+      end
+      
       # A modification to one or more Cloud Spanner rows. Mutations can be applied to
       # a Cloud Spanner database by sending them in a Commit call.
       class Mutation
@@ -2771,6 +4322,27 @@ module Google
         end
       end
       
+      # A group of mutations to be committed together. Related mutations should be
+      # placed in a group. For example, two mutations inserting rows with the same
+      # primary key prefix in both parent and child tables are related.
+      class MutationGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. The mutations in this group.
+        # Corresponds to the JSON property `mutations`
+        # @return [Array<Google::Apis::SpannerV1::Mutation>]
+        attr_accessor :mutations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mutations = args[:mutations] if args.key?(:mutations)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -2808,13 +4380,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -2913,6 +4485,14 @@ module Google
         # @return [Google::Apis::SpannerV1::ResultSetMetadata]
         attr_accessor :metadata
       
+        # When a read-write transaction is executed on a multiplexed session, this
+        # precommit token is sent back to the client as a part of the [Transaction]
+        # message in the BeginTransaction response and also as a part of the [ResultSet]
+        # and [PartialResultSet] responses.
+        # Corresponds to the JSON property `precommitToken`
+        # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
+        attr_accessor :precommit_token
+      
         # Streaming calls might be interrupted for a variety of reasons, such as TCP
         # connection loss. If this occurs, the stream of results can be resumed by re-
         # sending the original request and including `resume_token`. Note that executing
@@ -2974,6 +4554,7 @@ module Google
         def update!(**args)
           @chunked_value = args[:chunked_value] if args.key?(:chunked_value)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @precommit_token = args[:precommit_token] if args.key?(:precommit_token)
           @resume_token = args[:resume_token] if args.key?(:resume_token)
           @stats = args[:stats] if args.key?(:stats)
           @values = args[:values] if args.key?(:values)
@@ -3064,14 +4645,15 @@ module Google
         # @return [Google::Apis::SpannerV1::PartitionOptions]
         attr_accessor :partition_options
       
-        # Required. The query request to generate partitions for. The request will fail
-        # if the query is not root partitionable. The query plan of a root partitionable
-        # query has a single distributed union operator. A distributed union operator
-        # conceptually divides one or more tables into multiple splits, remotely
-        # evaluates a subquery independently on each split, and then unions all results.
-        # This must not contain DML commands, such as INSERT, UPDATE, or DELETE. Use
-        # ExecuteStreamingSql with a PartitionedDml transaction for large, partition-
-        # friendly DML operations.
+        # Required. The query request to generate partitions for. The request fails if
+        # the query is not root partitionable. For a query to be root partitionable, it
+        # needs to satisfy a few conditions. For example, if the query execution plan
+        # contains a distributed union operator, then it must be the first operator in
+        # the plan. For more information about other conditions, see [Read data in
+        # parallel](https://cloud.google.com/spanner/docs/reads#read_data_in_parallel).
+        # The query request must not contain DML commands, such as `INSERT`, `UPDATE`,
+        # or `DELETE`. Use `ExecuteStreamingSql` with a PartitionedDml transaction for
+        # large, partition-friendly DML operations.
         # Corresponds to the JSON property `sql`
         # @return [String]
         attr_accessor :sql
@@ -3265,22 +4847,22 @@ module Google
       # evaluates to `true`. A condition can add constraints based on attributes of
       # the request, the resource, or both. To learn which resources support
       # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
       # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
       # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
       # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-      # a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -3392,6 +4974,27 @@ module Google
         end
       end
       
+      # Output of query advisor analysis.
+      class QueryAdvisorResult
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Index Recommendation for a query. This is an optional field and the
+        # recommendation will only be available when the recommendation guarantees
+        # significant improvement in query performance.
+        # Corresponds to the JSON property `indexAdvice`
+        # @return [Array<Google::Apis::SpannerV1::IndexAdvice>]
+        attr_accessor :index_advice
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index_advice = args[:index_advice] if args.key?(:index_advice)
+        end
+      end
+      
       # Query optimizer configuration.
       class QueryOptions
         include Google::Apis::Core::Hashable
@@ -3450,6 +5053,11 @@ module Google
         # @return [Array<Google::Apis::SpannerV1::PlanNode>]
         attr_accessor :plan_nodes
       
+        # Output of query advisor analysis.
+        # Corresponds to the JSON property `queryAdvice`
+        # @return [Google::Apis::SpannerV1::QueryAdvisorResult]
+        attr_accessor :query_advice
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3457,6 +5065,73 @@ module Google
         # Update properties of this object
         def update!(**args)
           @plan_nodes = args[:plan_nodes] if args.key?(:plan_nodes)
+          @query_advice = args[:query_advice] if args.key?(:query_advice)
+        end
+      end
+      
+      # Information about the dual-region quorum.
+      class QuorumInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The etag is used for optimistic concurrency control as a way to
+        # help prevent simultaneous `ChangeQuorum` requests that might create a race
+        # condition.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. Whether this `ChangeQuorum` is Google or User initiated.
+        # Corresponds to the JSON property `initiator`
+        # @return [String]
+        attr_accessor :initiator
+      
+        # Information about the database quorum type. This only applies to dual-region
+        # instance configs.
+        # Corresponds to the JSON property `quorumType`
+        # @return [Google::Apis::SpannerV1::QuorumType]
+        attr_accessor :quorum_type
+      
+        # Output only. The timestamp when the request was triggered.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @initiator = args[:initiator] if args.key?(:initiator)
+          @quorum_type = args[:quorum_type] if args.key?(:quorum_type)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Information about the database quorum type. This only applies to dual-region
+      # instance configs.
+      class QuorumType
+        include Google::Apis::Core::Hashable
+      
+        # Message type for a dual-region quorum. Currently this type has no options.
+        # Corresponds to the JSON property `dualRegion`
+        # @return [Google::Apis::SpannerV1::DualRegionQuorum]
+        attr_accessor :dual_region
+      
+        # Message type for a single-region quorum.
+        # Corresponds to the JSON property `singleRegion`
+        # @return [Google::Apis::SpannerV1::SingleRegionQuorum]
+        attr_accessor :single_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dual_region = args[:dual_region] if args.key?(:dual_region)
+          @single_region = args[:single_region] if args.key?(:single_region)
         end
       end
       
@@ -3545,6 +5220,23 @@ module Google
         # @return [Array<String>]
         attr_accessor :columns
       
+        # If this is for a partitioned read and this field is set to `true`, the request
+        # is executed with Spanner Data Boost independent compute resources. If the
+        # field is set to `true` but the request does not set `partition_token`, the API
+        # returns an `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `dataBoostEnabled`
+        # @return [Boolean]
+        attr_accessor :data_boost_enabled
+        alias_method :data_boost_enabled?, :data_boost_enabled
+      
+        # The DirectedReadOptions can be used to indicate which replicas or regions
+        # should be used for non-transactional reads or queries. DirectedReadOptions may
+        # only be specified for a read-only transaction, otherwise the API will return
+        # an `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `directedReadOptions`
+        # @return [Google::Apis::SpannerV1::DirectedReadOptions]
+        attr_accessor :directed_read_options
+      
         # If non-empty, the name of an index on table. This index is used instead of the
         # table primary key when interpreting key_set and sorting result rows. See
         # key_set for further information.
@@ -3567,6 +5259,22 @@ module Google
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
+      
+        # Optional. Lock Hint for the request, it can only be used with read-write
+        # transactions.
+        # Corresponds to the JSON property `lockHint`
+        # @return [String]
+        attr_accessor :lock_hint
+      
+        # Optional. Order for the returned rows. By default, Spanner will return result
+        # rows in primary key order except for PartitionRead requests. For applications
+        # that do not require rows to be returned in primary key (`ORDER_BY_PRIMARY_KEY`)
+        # order, setting `ORDER_BY_NO_ORDER` option allows Spanner to optimize row
+        # retrieval, resulting in lower latencies in certain cases (e.g. bulk point
+        # lookups).
+        # Corresponds to the JSON property `orderBy`
+        # @return [String]
+        attr_accessor :order_by
       
         # If present, results will be restricted to the specified partition previously
         # created using PartitionRead(). There must be an exact match for the values of
@@ -3610,9 +5318,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @columns = args[:columns] if args.key?(:columns)
+          @data_boost_enabled = args[:data_boost_enabled] if args.key?(:data_boost_enabled)
+          @directed_read_options = args[:directed_read_options] if args.key?(:directed_read_options)
           @index = args[:index] if args.key?(:index)
           @key_set = args[:key_set] if args.key?(:key_set)
           @limit = args[:limit] if args.key?(:limit)
+          @lock_hint = args[:lock_hint] if args.key?(:lock_hint)
+          @order_by = args[:order_by] if args.key?(:order_by)
           @partition_token = args[:partition_token] if args.key?(:partition_token)
           @request_options = args[:request_options] if args.key?(:request_options)
           @resume_token = args[:resume_token] if args.key?(:resume_token)
@@ -3626,12 +5338,61 @@ module Google
       class ReadWrite
         include Google::Apis::Core::Hashable
       
+        # Optional. Clients should pass the transaction ID of the previous transaction
+        # attempt that was aborted if this transaction is being executed on a
+        # multiplexed session.
+        # Corresponds to the JSON property `multiplexedSessionPreviousTransactionId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :multiplexed_session_previous_transaction_id
+      
+        # Read lock mode for the transaction.
+        # Corresponds to the JSON property `readLockMode`
+        # @return [String]
+        attr_accessor :read_lock_mode
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @multiplexed_session_previous_transaction_id = args[:multiplexed_session_previous_transaction_id] if args.key?(:multiplexed_session_previous_transaction_id)
+          @read_lock_mode = args[:read_lock_mode] if args.key?(:read_lock_mode)
+        end
+      end
+      
+      # ReplicaComputeCapacity describes the amount of server resources that are
+      # allocated to each replica identified by the replica selection.
+      class ReplicaComputeCapacity
+        include Google::Apis::Core::Hashable
+      
+        # The number of nodes allocated to each replica. This may be zero in API
+        # responses for instances that are not yet in state `READY`.
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # The number of processing units allocated to each replica. This may be zero in
+        # API responses for instances that are not yet in state `READY`.
+        # Corresponds to the JSON property `processingUnits`
+        # @return [Fixnum]
+        attr_accessor :processing_units
+      
+        # ReplicaSelection identifies replicas with common properties.
+        # Corresponds to the JSON property `replicaSelection`
+        # @return [Google::Apis::SpannerV1::InstanceReplicaSelection]
+        attr_accessor :replica_selection
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @processing_units = args[:processing_units] if args.key?(:processing_units)
+          @replica_selection = args[:replica_selection] if args.key?(:replica_selection)
         end
       end
       
@@ -3647,7 +5408,7 @@ module Google
         attr_accessor :default_leader_location
         alias_method :default_leader_location?, :default_leader_location
       
-        # The location of the serving resources, e.g. "us-central1".
+        # The location of the serving resources, e.g., "us-central1".
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -3664,6 +5425,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @default_leader_location = args[:default_leader_location] if args.key?(:default_leader_location)
+          @location = args[:location] if args.key?(:location)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The directed read replica selector. Callers must provide one or more of the
+      # following fields for replica selection: * `location` - The location must be
+      # one of the regions within the multi-region configuration of your database. * `
+      # type` - The type of the replica. Some examples of using replica_selectors are:
+      # * `location:us-east1` --> The "us-east1" replica(s) of any available type will
+      # be used to process the request. * `type:READ_ONLY` --> The "READ_ONLY" type
+      # replica(s) in nearest available location will be used to process the request. *
+      # `location:us-east1 type:READ_ONLY` --> The "READ_ONLY" type replica(s) in
+      # location "us-east1" will be used to process the request.
+      class ReplicaSelection
+        include Google::Apis::Core::Hashable
+      
+        # The location or region of the serving requests, e.g. "us-east1".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The type of replica.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @location = args[:location] if args.key?(:location)
           @type = args[:type] if args.key?(:type)
         end
@@ -3732,6 +5526,21 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
+        # Optional. Specifies the KMS configuration for one or more keys used to encrypt
+        # the database. Values have the form `projects//locations//keyRings//cryptoKeys/`
+        # . The keys referenced by `kms_key_names` must fully cover all regions of the
+        # database's instance configuration. Some examples: * For regional (single-
+        # region) instance configurations, specify a regional location KMS key. * For
+        # multi-region instance configurations of type `GOOGLE_MANAGED`, either specify
+        # a multi-region location KMS key or multiple regional location KMS keys that
+        # cover all regions in the instance configuration. * For an instance
+        # configuration of type `USER_MANAGED`, specify only regional location KMS keys
+        # to cover each region in the instance configuration. Multi-region location KMS
+        # keys aren't supported for `USER_MANAGED` type instance configurations.
+        # Corresponds to the JSON property `kmsKeyNames`
+        # @return [Array<String>]
+        attr_accessor :kms_key_names
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3740,6 +5549,7 @@ module Google
         def update!(**args)
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_names = args[:kms_key_names] if args.key?(:kms_key_names)
         end
       end
       
@@ -3876,6 +5686,14 @@ module Google
         # @return [Google::Apis::SpannerV1::ResultSetMetadata]
         attr_accessor :metadata
       
+        # When a read-write transaction is executed on a multiplexed session, this
+        # precommit token is sent back to the client as a part of the [Transaction]
+        # message in the BeginTransaction response and also as a part of the [ResultSet]
+        # and [PartialResultSet] responses.
+        # Corresponds to the JSON property `precommitToken`
+        # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
+        attr_accessor :precommit_token
+      
         # Each element in `rows` is a row whose format is defined by metadata.row_type.
         # The ith element in each row matches the ith field in metadata.row_type.
         # Elements are encoded based on type as described here.
@@ -3895,6 +5713,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @precommit_token = args[:precommit_token] if args.key?(:precommit_token)
           @rows = args[:rows] if args.key?(:rows)
           @stats = args[:stats] if args.key?(:stats)
         end
@@ -3914,6 +5733,11 @@ module Google
         # @return [Google::Apis::SpannerV1::Transaction]
         attr_accessor :transaction
       
+        # `StructType` defines the fields of a STRUCT type.
+        # Corresponds to the JSON property `undeclaredParameters`
+        # @return [Google::Apis::SpannerV1::StructType]
+        attr_accessor :undeclared_parameters
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3922,6 +5746,7 @@ module Google
         def update!(**args)
           @row_type = args[:row_type] if args.key?(:row_type)
           @transaction = args[:transaction] if args.key?(:transaction)
+          @undeclared_parameters = args[:undeclared_parameters] if args.key?(:undeclared_parameters)
         end
       end
       
@@ -4096,6 +5921,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Optional. If true, specifies a multiplexed session. Use a multiplexed session
+        # for multiple, concurrent read-only operations. Don't use them for read-write
+        # transactions, partitioned reads, or partitioned queries. Use CreateSession to
+        # create multiplexed sessions. Don't use BatchCreateSessions to create a
+        # multiplexed session. You can't delete or list multiplexed sessions.
+        # Corresponds to the JSON property `multiplexed`
+        # @return [Boolean]
+        attr_accessor :multiplexed
+        alias_method :multiplexed?, :multiplexed
+      
         # Output only. The name of the session. This is always system-assigned.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4111,6 +5946,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator_role = args[:creator_role] if args.key?(:creator_role)
           @labels = args[:labels] if args.key?(:labels)
+          @multiplexed = args[:multiplexed] if args.key?(:multiplexed)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -4130,22 +5966,22 @@ module Google
         # evaluates to `true`. A condition can add constraints based on attributes of
         # the request, the resource, or both. To learn which resources support
         # conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
         # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
         # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
         # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
-        # a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::SpannerV1::Policy]
         attr_accessor :policy
@@ -4186,6 +6022,29 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @subqueries = args[:subqueries] if args.key?(:subqueries)
+        end
+      end
+      
+      # Message type for a single-region quorum.
+      class SingleRegionQuorum
+        include Google::Apis::Core::Hashable
+      
+        # Required. The location of the serving region, e.g. "us-central1". The location
+        # must be one of the regions within the dual-region instance configuration of
+        # your database. The list of valid locations is available using the
+        # GetInstanceConfig API. This should only be used if you plan to change quorum
+        # to the single-region quorum type.
+        # Corresponds to the JSON property `servingLocation`
+        # @return [String]
+        attr_accessor :serving_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @serving_location = args[:serving_location] if args.key?(:serving_location)
         end
       end
       
@@ -4343,6 +6202,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # When a read-write transaction is executed on a multiplexed session, this
+        # precommit token is sent back to the client as a part of the [Transaction]
+        # message in the BeginTransaction response and also as a part of the [ResultSet]
+        # and [PartialResultSet] responses.
+        # Corresponds to the JSON property `precommitToken`
+        # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
+        attr_accessor :precommit_token
+      
         # For snapshot read-only transactions, the read timestamp chosen for the
         # transaction. Not returned by default: see TransactionOptions.ReadOnly.
         # return_read_timestamp. A timestamp in RFC3339 UTC \"Zulu\" format, accurate to
@@ -4358,6 +6225,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @precommit_token = args[:precommit_token] if args.key?(:precommit_token)
           @read_timestamp = args[:read_timestamp] if args.key?(:read_timestamp)
         end
       end
@@ -4378,7 +6246,7 @@ module Google
       # such that the read is guaranteed to see the effects of all transactions that
       # have committed before the start of the read). Snapshot read-only transactions
       # do not need to be committed. Queries on change streams must be performed with
-      # the snapshot read-only transaction mode, specifying a strong read. Please see
+      # the snapshot read-only transaction mode, specifying a strong read. See
       # TransactionOptions.ReadOnly.strong for more details. 3. Partitioned DML. This
       # type of transaction is used to execute a single Partitioned DML statement.
       # Partitioned DML partitions the key space and runs the DML statement over each
@@ -4414,87 +6282,92 @@ module Google
       # committing the retry, the client should execute the retry in the same session
       # as the original attempt. The original session's lock priority increases with
       # each consecutive abort, meaning that each attempt has a slightly better chance
-      # of success than the previous. Under some circumstances (for example, many
-      # transactions attempting to modify the same row(s)), a transaction can abort
-      # many times in a short period before successfully committing. Thus, it is not a
-      # good idea to cap the number of retries a transaction can attempt; instead, it
-      # is better to limit the total amount of time spent retrying. Idle transactions:
-      # A transaction is considered idle if it has no outstanding reads or SQL queries
-      # and has not started a read or SQL query within the last 10 seconds. Idle
-      # transactions can be aborted by Cloud Spanner so that they don't hold on to
-      # locks indefinitely. If an idle transaction is aborted, the commit will fail
-      # with error `ABORTED`. If this behavior is undesirable, periodically executing
-      # a simple SQL query in the transaction (for example, `SELECT 1`) prevents the
-      # transaction from becoming idle. Snapshot read-only transactions: Snapshot read-
-      # only transactions provides a simpler method than locking read-write
-      # transactions for doing several consistent reads. However, this type of
-      # transaction does not support writes. Snapshot transactions do not take locks.
-      # Instead, they work by choosing a Cloud Spanner timestamp, then executing all
-      # reads at that timestamp. Since they do not acquire locks, they do not block
-      # concurrent read-write transactions. Unlike locking read-write transactions,
-      # snapshot read-only transactions never abort. They can fail if the chosen read
-      # timestamp is garbage collected; however, the default garbage collection policy
-      # is generous enough that most applications do not need to worry about this in
-      # practice. Snapshot read-only transactions do not need to call Commit or
-      # Rollback (and in fact are not permitted to do so). To execute a snapshot
-      # transaction, the client specifies a timestamp bound, which tells Cloud Spanner
-      # how to choose a read timestamp. The types of timestamp bound are: - Strong (
-      # the default). - Bounded staleness. - Exact staleness. If the Cloud Spanner
-      # database to be read is geographically distributed, stale read-only
-      # transactions can execute more quickly than strong or read-write transactions,
-      # because they are able to execute far from the leader replica. Each type of
-      # timestamp bound is discussed in detail below. Strong: Strong reads are
-      # guaranteed to see the effects of all transactions that have committed before
-      # the start of the read. Furthermore, all rows yielded by a single read are
-      # consistent with each other -- if any part of the read observes a transaction,
-      # all parts of the read see the transaction. Strong reads are not repeatable:
-      # two consecutive strong read-only transactions might return inconsistent
-      # results if there are concurrent writes. If consistency across reads is
-      # required, the reads should be executed within a transaction or at an exact
-      # read timestamp. Queries on change streams (see below for more details) must
-      # also specify the strong read timestamp bound. See TransactionOptions.ReadOnly.
-      # strong. Exact staleness: These timestamp bounds execute reads at a user-
-      # specified timestamp. Reads at a timestamp are guaranteed to see a consistent
-      # prefix of the global transaction history: they observe modifications done by
-      # all transactions with a commit timestamp less than or equal to the read
-      # timestamp, and observe none of the modifications done by transactions with a
-      # larger commit timestamp. They will block until all conflicting transactions
-      # that may be assigned commit timestamps <= the read timestamp have finished.
-      # The timestamp can either be expressed as an absolute Cloud Spanner commit
-      # timestamp or a staleness relative to the current time. These modes do not
-      # require a "negotiation phase" to pick a timestamp. As a result, they execute
-      # slightly faster than the equivalent boundedly stale concurrency modes. On the
-      # other hand, boundedly stale reads usually return fresher results. See
-      # TransactionOptions.ReadOnly.read_timestamp and TransactionOptions.ReadOnly.
-      # exact_staleness. Bounded staleness: Bounded staleness modes allow Cloud
-      # Spanner to pick the read timestamp, subject to a user-provided staleness bound.
-      # Cloud Spanner chooses the newest timestamp within the staleness bound that
-      # allows execution of the reads at the closest available replica without
-      # blocking. All rows yielded are consistent with each other -- if any part of
-      # the read observes a transaction, all parts of the read see the transaction.
-      # Boundedly stale reads are not repeatable: two stale reads, even if they use
-      # the same staleness bound, can execute at different timestamps and thus return
-      # inconsistent results. Boundedly stale reads execute in two phases: the first
-      # phase negotiates a timestamp among all replicas needed to serve the read. In
-      # the second phase, reads are executed at the negotiated timestamp. As a result
-      # of the two phase execution, bounded staleness reads are usually a little
-      # slower than comparable exact staleness reads. However, they are typically able
-      # to return fresher results, and are more likely to execute at the closest
-      # replica. Because the timestamp negotiation requires up-front knowledge of
-      # which rows will be read, it can only be used with single-use read-only
-      # transactions. See TransactionOptions.ReadOnly.max_staleness and
-      # TransactionOptions.ReadOnly.min_read_timestamp. Old read timestamps and
-      # garbage collection: Cloud Spanner continuously garbage collects deleted and
-      # overwritten data in the background to reclaim storage space. This process is
-      # known as "version GC". By default, version GC reclaims versions after they are
-      # one hour old. Because of this, Cloud Spanner cannot perform reads at read
-      # timestamps more than one hour in the past. This restriction also applies to in-
-      # progress reads and/or SQL queries whose timestamp become too old while
-      # executing. Reads and SQL queries with too-old read timestamps fail with the
-      # error `FAILED_PRECONDITION`. You can configure and extend the `
-      # VERSION_RETENTION_PERIOD` of a database up to a period as long as one week,
-      # which allows Cloud Spanner to perform reads up to one week in the past.
-      # Querying change Streams: A Change Stream is a schema object that can be
+      # of success than the previous. Note that the lock priority is preserved per
+      # session (not per transaction). Lock priority is set by the first read or write
+      # in the first attempt of a read-write transaction. If the application starts a
+      # new session to retry the whole transaction, the transaction loses its original
+      # lock priority. Moreover, the lock priority is only preserved if the
+      # transaction fails with an `ABORTED` error. Under some circumstances (for
+      # example, many transactions attempting to modify the same row(s)), a
+      # transaction can abort many times in a short period before successfully
+      # committing. Thus, it is not a good idea to cap the number of retries a
+      # transaction can attempt; instead, it is better to limit the total amount of
+      # time spent retrying. Idle transactions: A transaction is considered idle if it
+      # has no outstanding reads or SQL queries and has not started a read or SQL
+      # query within the last 10 seconds. Idle transactions can be aborted by Cloud
+      # Spanner so that they don't hold on to locks indefinitely. If an idle
+      # transaction is aborted, the commit will fail with error `ABORTED`. If this
+      # behavior is undesirable, periodically executing a simple SQL query in the
+      # transaction (for example, `SELECT 1`) prevents the transaction from becoming
+      # idle. Snapshot read-only transactions: Snapshot read-only transactions
+      # provides a simpler method than locking read-write transactions for doing
+      # several consistent reads. However, this type of transaction does not support
+      # writes. Snapshot transactions do not take locks. Instead, they work by
+      # choosing a Cloud Spanner timestamp, then executing all reads at that timestamp.
+      # Since they do not acquire locks, they do not block concurrent read-write
+      # transactions. Unlike locking read-write transactions, snapshot read-only
+      # transactions never abort. They can fail if the chosen read timestamp is
+      # garbage collected; however, the default garbage collection policy is generous
+      # enough that most applications do not need to worry about this in practice.
+      # Snapshot read-only transactions do not need to call Commit or Rollback (and in
+      # fact are not permitted to do so). To execute a snapshot transaction, the
+      # client specifies a timestamp bound, which tells Cloud Spanner how to choose a
+      # read timestamp. The types of timestamp bound are: - Strong (the default). -
+      # Bounded staleness. - Exact staleness. If the Cloud Spanner database to be read
+      # is geographically distributed, stale read-only transactions can execute more
+      # quickly than strong or read-write transactions, because they are able to
+      # execute far from the leader replica. Each type of timestamp bound is discussed
+      # in detail below. Strong: Strong reads are guaranteed to see the effects of all
+      # transactions that have committed before the start of the read. Furthermore,
+      # all rows yielded by a single read are consistent with each other -- if any
+      # part of the read observes a transaction, all parts of the read see the
+      # transaction. Strong reads are not repeatable: two consecutive strong read-only
+      # transactions might return inconsistent results if there are concurrent writes.
+      # If consistency across reads is required, the reads should be executed within a
+      # transaction or at an exact read timestamp. Queries on change streams (see
+      # below for more details) must also specify the strong read timestamp bound. See
+      # TransactionOptions.ReadOnly.strong. Exact staleness: These timestamp bounds
+      # execute reads at a user-specified timestamp. Reads at a timestamp are
+      # guaranteed to see a consistent prefix of the global transaction history: they
+      # observe modifications done by all transactions with a commit timestamp less
+      # than or equal to the read timestamp, and observe none of the modifications
+      # done by transactions with a larger commit timestamp. They will block until all
+      # conflicting transactions that may be assigned commit timestamps <= the read
+      # timestamp have finished. The timestamp can either be expressed as an absolute
+      # Cloud Spanner commit timestamp or a staleness relative to the current time.
+      # These modes do not require a "negotiation phase" to pick a timestamp. As a
+      # result, they execute slightly faster than the equivalent boundedly stale
+      # concurrency modes. On the other hand, boundedly stale reads usually return
+      # fresher results. See TransactionOptions.ReadOnly.read_timestamp and
+      # TransactionOptions.ReadOnly.exact_staleness. Bounded staleness: Bounded
+      # staleness modes allow Cloud Spanner to pick the read timestamp, subject to a
+      # user-provided staleness bound. Cloud Spanner chooses the newest timestamp
+      # within the staleness bound that allows execution of the reads at the closest
+      # available replica without blocking. All rows yielded are consistent with each
+      # other -- if any part of the read observes a transaction, all parts of the read
+      # see the transaction. Boundedly stale reads are not repeatable: two stale reads,
+      # even if they use the same staleness bound, can execute at different
+      # timestamps and thus return inconsistent results. Boundedly stale reads execute
+      # in two phases: the first phase negotiates a timestamp among all replicas
+      # needed to serve the read. In the second phase, reads are executed at the
+      # negotiated timestamp. As a result of the two phase execution, bounded
+      # staleness reads are usually a little slower than comparable exact staleness
+      # reads. However, they are typically able to return fresher results, and are
+      # more likely to execute at the closest replica. Because the timestamp
+      # negotiation requires up-front knowledge of which rows will be read, it can
+      # only be used with single-use read-only transactions. See TransactionOptions.
+      # ReadOnly.max_staleness and TransactionOptions.ReadOnly.min_read_timestamp. Old
+      # read timestamps and garbage collection: Cloud Spanner continuously garbage
+      # collects deleted and overwritten data in the background to reclaim storage
+      # space. This process is known as "version GC". By default, version GC reclaims
+      # versions after they are one hour old. Because of this, Cloud Spanner cannot
+      # perform reads at read timestamps more than one hour in the past. This
+      # restriction also applies to in-progress reads and/or SQL queries whose
+      # timestamp become too old while executing. Reads and SQL queries with too-old
+      # read timestamps fail with the error `FAILED_PRECONDITION`. You can configure
+      # and extend the `VERSION_RETENTION_PERIOD` of a database up to a period as long
+      # as one week, which allows Cloud Spanner to perform reads up to one week in the
+      # past. Querying change Streams: A Change Stream is a schema object that can be
       # configured to watch data changes on the entire database, a set of tables, or a
       # set of columns in a database. When a change stream is created, Spanner
       # automatically defines a corresponding SQL Table-Valued Function (TVF) that can
@@ -4530,12 +6403,12 @@ module Google
       # of the table. Rather, the statement is applied atomically to partitions of the
       # table, in independent transactions. Secondary index rows are updated
       # atomically with the base table rows. - Partitioned DML does not guarantee
-      # exactly-once execution semantics against a partition. The statement will be
-      # applied at least once to each partition. It is strongly recommended that the
-      # DML statement should be idempotent to avoid unexpected results. For instance,
-      # it is potentially dangerous to run a statement such as `UPDATE table SET
-      # column = column + 1` as it could be run multiple times against some rows. -
-      # The partitions are committed automatically - there is no support for Commit or
+      # exactly-once execution semantics against a partition. The statement is applied
+      # at least once to each partition. It is strongly recommended that the DML
+      # statement should be idempotent to avoid unexpected results. For instance, it
+      # is potentially dangerous to run a statement such as `UPDATE table SET column =
+      # column + 1` as it could be run multiple times against some rows. - The
+      # partitions are committed automatically - there is no support for Commit or
       # Rollback. If the call returns an error, or if the client issuing the
       # ExecuteSql call dies, it is possible that some rows had the statement executed
       # on them successfully. It is also possible that statement was never executed
@@ -4551,6 +6424,22 @@ module Google
       # as deleting old rows from a very large table.
       class TransactionOptions
         include Google::Apis::Core::Hashable
+      
+        # When `exclude_txn_from_change_streams` is set to `true`: * Modifications from
+        # this transaction will not be recorded in change streams with DDL option `
+        # allow_txn_exclusion=true` that are tracking columns modified by these
+        # transactions. * Modifications from this transaction will be recorded in change
+        # streams with DDL option `allow_txn_exclusion=false or not set` that are
+        # tracking columns modified by these transactions. When `
+        # exclude_txn_from_change_streams` is set to `false` or not set, Modifications
+        # from this transaction will be recorded in all change streams that are tracking
+        # columns modified by these transactions. `exclude_txn_from_change_streams` may
+        # only be specified for read-write or partitioned-dml transactions, otherwise
+        # the API will return an `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `excludeTxnFromChangeStreams`
+        # @return [Boolean]
+        attr_accessor :exclude_txn_from_change_streams
+        alias_method :exclude_txn_from_change_streams?, :exclude_txn_from_change_streams
       
         # Message type to initiate a Partitioned DML transaction.
         # Corresponds to the JSON property `partitionedDml`
@@ -4574,6 +6463,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exclude_txn_from_change_streams = args[:exclude_txn_from_change_streams] if args.key?(:exclude_txn_from_change_streams)
           @partitioned_dml = args[:partitioned_dml] if args.key?(:partitioned_dml)
           @read_only = args[:read_only] if args.key?(:read_only)
           @read_write = args[:read_write] if args.key?(:read_write)
@@ -4601,7 +6491,7 @@ module Google
         # such that the read is guaranteed to see the effects of all transactions that
         # have committed before the start of the read). Snapshot read-only transactions
         # do not need to be committed. Queries on change streams must be performed with
-        # the snapshot read-only transaction mode, specifying a strong read. Please see
+        # the snapshot read-only transaction mode, specifying a strong read. See
         # TransactionOptions.ReadOnly.strong for more details. 3. Partitioned DML. This
         # type of transaction is used to execute a single Partitioned DML statement.
         # Partitioned DML partitions the key space and runs the DML statement over each
@@ -4637,87 +6527,92 @@ module Google
         # committing the retry, the client should execute the retry in the same session
         # as the original attempt. The original session's lock priority increases with
         # each consecutive abort, meaning that each attempt has a slightly better chance
-        # of success than the previous. Under some circumstances (for example, many
-        # transactions attempting to modify the same row(s)), a transaction can abort
-        # many times in a short period before successfully committing. Thus, it is not a
-        # good idea to cap the number of retries a transaction can attempt; instead, it
-        # is better to limit the total amount of time spent retrying. Idle transactions:
-        # A transaction is considered idle if it has no outstanding reads or SQL queries
-        # and has not started a read or SQL query within the last 10 seconds. Idle
-        # transactions can be aborted by Cloud Spanner so that they don't hold on to
-        # locks indefinitely. If an idle transaction is aborted, the commit will fail
-        # with error `ABORTED`. If this behavior is undesirable, periodically executing
-        # a simple SQL query in the transaction (for example, `SELECT 1`) prevents the
-        # transaction from becoming idle. Snapshot read-only transactions: Snapshot read-
-        # only transactions provides a simpler method than locking read-write
-        # transactions for doing several consistent reads. However, this type of
-        # transaction does not support writes. Snapshot transactions do not take locks.
-        # Instead, they work by choosing a Cloud Spanner timestamp, then executing all
-        # reads at that timestamp. Since they do not acquire locks, they do not block
-        # concurrent read-write transactions. Unlike locking read-write transactions,
-        # snapshot read-only transactions never abort. They can fail if the chosen read
-        # timestamp is garbage collected; however, the default garbage collection policy
-        # is generous enough that most applications do not need to worry about this in
-        # practice. Snapshot read-only transactions do not need to call Commit or
-        # Rollback (and in fact are not permitted to do so). To execute a snapshot
-        # transaction, the client specifies a timestamp bound, which tells Cloud Spanner
-        # how to choose a read timestamp. The types of timestamp bound are: - Strong (
-        # the default). - Bounded staleness. - Exact staleness. If the Cloud Spanner
-        # database to be read is geographically distributed, stale read-only
-        # transactions can execute more quickly than strong or read-write transactions,
-        # because they are able to execute far from the leader replica. Each type of
-        # timestamp bound is discussed in detail below. Strong: Strong reads are
-        # guaranteed to see the effects of all transactions that have committed before
-        # the start of the read. Furthermore, all rows yielded by a single read are
-        # consistent with each other -- if any part of the read observes a transaction,
-        # all parts of the read see the transaction. Strong reads are not repeatable:
-        # two consecutive strong read-only transactions might return inconsistent
-        # results if there are concurrent writes. If consistency across reads is
-        # required, the reads should be executed within a transaction or at an exact
-        # read timestamp. Queries on change streams (see below for more details) must
-        # also specify the strong read timestamp bound. See TransactionOptions.ReadOnly.
-        # strong. Exact staleness: These timestamp bounds execute reads at a user-
-        # specified timestamp. Reads at a timestamp are guaranteed to see a consistent
-        # prefix of the global transaction history: they observe modifications done by
-        # all transactions with a commit timestamp less than or equal to the read
-        # timestamp, and observe none of the modifications done by transactions with a
-        # larger commit timestamp. They will block until all conflicting transactions
-        # that may be assigned commit timestamps <= the read timestamp have finished.
-        # The timestamp can either be expressed as an absolute Cloud Spanner commit
-        # timestamp or a staleness relative to the current time. These modes do not
-        # require a "negotiation phase" to pick a timestamp. As a result, they execute
-        # slightly faster than the equivalent boundedly stale concurrency modes. On the
-        # other hand, boundedly stale reads usually return fresher results. See
-        # TransactionOptions.ReadOnly.read_timestamp and TransactionOptions.ReadOnly.
-        # exact_staleness. Bounded staleness: Bounded staleness modes allow Cloud
-        # Spanner to pick the read timestamp, subject to a user-provided staleness bound.
-        # Cloud Spanner chooses the newest timestamp within the staleness bound that
-        # allows execution of the reads at the closest available replica without
-        # blocking. All rows yielded are consistent with each other -- if any part of
-        # the read observes a transaction, all parts of the read see the transaction.
-        # Boundedly stale reads are not repeatable: two stale reads, even if they use
-        # the same staleness bound, can execute at different timestamps and thus return
-        # inconsistent results. Boundedly stale reads execute in two phases: the first
-        # phase negotiates a timestamp among all replicas needed to serve the read. In
-        # the second phase, reads are executed at the negotiated timestamp. As a result
-        # of the two phase execution, bounded staleness reads are usually a little
-        # slower than comparable exact staleness reads. However, they are typically able
-        # to return fresher results, and are more likely to execute at the closest
-        # replica. Because the timestamp negotiation requires up-front knowledge of
-        # which rows will be read, it can only be used with single-use read-only
-        # transactions. See TransactionOptions.ReadOnly.max_staleness and
-        # TransactionOptions.ReadOnly.min_read_timestamp. Old read timestamps and
-        # garbage collection: Cloud Spanner continuously garbage collects deleted and
-        # overwritten data in the background to reclaim storage space. This process is
-        # known as "version GC". By default, version GC reclaims versions after they are
-        # one hour old. Because of this, Cloud Spanner cannot perform reads at read
-        # timestamps more than one hour in the past. This restriction also applies to in-
-        # progress reads and/or SQL queries whose timestamp become too old while
-        # executing. Reads and SQL queries with too-old read timestamps fail with the
-        # error `FAILED_PRECONDITION`. You can configure and extend the `
-        # VERSION_RETENTION_PERIOD` of a database up to a period as long as one week,
-        # which allows Cloud Spanner to perform reads up to one week in the past.
-        # Querying change Streams: A Change Stream is a schema object that can be
+        # of success than the previous. Note that the lock priority is preserved per
+        # session (not per transaction). Lock priority is set by the first read or write
+        # in the first attempt of a read-write transaction. If the application starts a
+        # new session to retry the whole transaction, the transaction loses its original
+        # lock priority. Moreover, the lock priority is only preserved if the
+        # transaction fails with an `ABORTED` error. Under some circumstances (for
+        # example, many transactions attempting to modify the same row(s)), a
+        # transaction can abort many times in a short period before successfully
+        # committing. Thus, it is not a good idea to cap the number of retries a
+        # transaction can attempt; instead, it is better to limit the total amount of
+        # time spent retrying. Idle transactions: A transaction is considered idle if it
+        # has no outstanding reads or SQL queries and has not started a read or SQL
+        # query within the last 10 seconds. Idle transactions can be aborted by Cloud
+        # Spanner so that they don't hold on to locks indefinitely. If an idle
+        # transaction is aborted, the commit will fail with error `ABORTED`. If this
+        # behavior is undesirable, periodically executing a simple SQL query in the
+        # transaction (for example, `SELECT 1`) prevents the transaction from becoming
+        # idle. Snapshot read-only transactions: Snapshot read-only transactions
+        # provides a simpler method than locking read-write transactions for doing
+        # several consistent reads. However, this type of transaction does not support
+        # writes. Snapshot transactions do not take locks. Instead, they work by
+        # choosing a Cloud Spanner timestamp, then executing all reads at that timestamp.
+        # Since they do not acquire locks, they do not block concurrent read-write
+        # transactions. Unlike locking read-write transactions, snapshot read-only
+        # transactions never abort. They can fail if the chosen read timestamp is
+        # garbage collected; however, the default garbage collection policy is generous
+        # enough that most applications do not need to worry about this in practice.
+        # Snapshot read-only transactions do not need to call Commit or Rollback (and in
+        # fact are not permitted to do so). To execute a snapshot transaction, the
+        # client specifies a timestamp bound, which tells Cloud Spanner how to choose a
+        # read timestamp. The types of timestamp bound are: - Strong (the default). -
+        # Bounded staleness. - Exact staleness. If the Cloud Spanner database to be read
+        # is geographically distributed, stale read-only transactions can execute more
+        # quickly than strong or read-write transactions, because they are able to
+        # execute far from the leader replica. Each type of timestamp bound is discussed
+        # in detail below. Strong: Strong reads are guaranteed to see the effects of all
+        # transactions that have committed before the start of the read. Furthermore,
+        # all rows yielded by a single read are consistent with each other -- if any
+        # part of the read observes a transaction, all parts of the read see the
+        # transaction. Strong reads are not repeatable: two consecutive strong read-only
+        # transactions might return inconsistent results if there are concurrent writes.
+        # If consistency across reads is required, the reads should be executed within a
+        # transaction or at an exact read timestamp. Queries on change streams (see
+        # below for more details) must also specify the strong read timestamp bound. See
+        # TransactionOptions.ReadOnly.strong. Exact staleness: These timestamp bounds
+        # execute reads at a user-specified timestamp. Reads at a timestamp are
+        # guaranteed to see a consistent prefix of the global transaction history: they
+        # observe modifications done by all transactions with a commit timestamp less
+        # than or equal to the read timestamp, and observe none of the modifications
+        # done by transactions with a larger commit timestamp. They will block until all
+        # conflicting transactions that may be assigned commit timestamps <= the read
+        # timestamp have finished. The timestamp can either be expressed as an absolute
+        # Cloud Spanner commit timestamp or a staleness relative to the current time.
+        # These modes do not require a "negotiation phase" to pick a timestamp. As a
+        # result, they execute slightly faster than the equivalent boundedly stale
+        # concurrency modes. On the other hand, boundedly stale reads usually return
+        # fresher results. See TransactionOptions.ReadOnly.read_timestamp and
+        # TransactionOptions.ReadOnly.exact_staleness. Bounded staleness: Bounded
+        # staleness modes allow Cloud Spanner to pick the read timestamp, subject to a
+        # user-provided staleness bound. Cloud Spanner chooses the newest timestamp
+        # within the staleness bound that allows execution of the reads at the closest
+        # available replica without blocking. All rows yielded are consistent with each
+        # other -- if any part of the read observes a transaction, all parts of the read
+        # see the transaction. Boundedly stale reads are not repeatable: two stale reads,
+        # even if they use the same staleness bound, can execute at different
+        # timestamps and thus return inconsistent results. Boundedly stale reads execute
+        # in two phases: the first phase negotiates a timestamp among all replicas
+        # needed to serve the read. In the second phase, reads are executed at the
+        # negotiated timestamp. As a result of the two phase execution, bounded
+        # staleness reads are usually a little slower than comparable exact staleness
+        # reads. However, they are typically able to return fresher results, and are
+        # more likely to execute at the closest replica. Because the timestamp
+        # negotiation requires up-front knowledge of which rows will be read, it can
+        # only be used with single-use read-only transactions. See TransactionOptions.
+        # ReadOnly.max_staleness and TransactionOptions.ReadOnly.min_read_timestamp. Old
+        # read timestamps and garbage collection: Cloud Spanner continuously garbage
+        # collects deleted and overwritten data in the background to reclaim storage
+        # space. This process is known as "version GC". By default, version GC reclaims
+        # versions after they are one hour old. Because of this, Cloud Spanner cannot
+        # perform reads at read timestamps more than one hour in the past. This
+        # restriction also applies to in-progress reads and/or SQL queries whose
+        # timestamp become too old while executing. Reads and SQL queries with too-old
+        # read timestamps fail with the error `FAILED_PRECONDITION`. You can configure
+        # and extend the `VERSION_RETENTION_PERIOD` of a database up to a period as long
+        # as one week, which allows Cloud Spanner to perform reads up to one week in the
+        # past. Querying change Streams: A Change Stream is a schema object that can be
         # configured to watch data changes on the entire database, a set of tables, or a
         # set of columns in a database. When a change stream is created, Spanner
         # automatically defines a corresponding SQL Table-Valued Function (TVF) that can
@@ -4753,12 +6648,12 @@ module Google
         # of the table. Rather, the statement is applied atomically to partitions of the
         # table, in independent transactions. Secondary index rows are updated
         # atomically with the base table rows. - Partitioned DML does not guarantee
-        # exactly-once execution semantics against a partition. The statement will be
-        # applied at least once to each partition. It is strongly recommended that the
-        # DML statement should be idempotent to avoid unexpected results. For instance,
-        # it is potentially dangerous to run a statement such as `UPDATE table SET
-        # column = column + 1` as it could be run multiple times against some rows. -
-        # The partitions are committed automatically - there is no support for Commit or
+        # exactly-once execution semantics against a partition. The statement is applied
+        # at least once to each partition. It is strongly recommended that the DML
+        # statement should be idempotent to avoid unexpected results. For instance, it
+        # is potentially dangerous to run a statement such as `UPDATE table SET column =
+        # column + 1` as it could be run multiple times against some rows. - The
+        # partitions are committed automatically - there is no support for Commit or
         # Rollback. If the call returns an error, or if the client issuing the
         # ExecuteSql call dies, it is possible that some rows had the statement executed
         # on them successfully. It is also possible that statement was never executed
@@ -4798,7 +6693,7 @@ module Google
         # such that the read is guaranteed to see the effects of all transactions that
         # have committed before the start of the read). Snapshot read-only transactions
         # do not need to be committed. Queries on change streams must be performed with
-        # the snapshot read-only transaction mode, specifying a strong read. Please see
+        # the snapshot read-only transaction mode, specifying a strong read. See
         # TransactionOptions.ReadOnly.strong for more details. 3. Partitioned DML. This
         # type of transaction is used to execute a single Partitioned DML statement.
         # Partitioned DML partitions the key space and runs the DML statement over each
@@ -4834,87 +6729,92 @@ module Google
         # committing the retry, the client should execute the retry in the same session
         # as the original attempt. The original session's lock priority increases with
         # each consecutive abort, meaning that each attempt has a slightly better chance
-        # of success than the previous. Under some circumstances (for example, many
-        # transactions attempting to modify the same row(s)), a transaction can abort
-        # many times in a short period before successfully committing. Thus, it is not a
-        # good idea to cap the number of retries a transaction can attempt; instead, it
-        # is better to limit the total amount of time spent retrying. Idle transactions:
-        # A transaction is considered idle if it has no outstanding reads or SQL queries
-        # and has not started a read or SQL query within the last 10 seconds. Idle
-        # transactions can be aborted by Cloud Spanner so that they don't hold on to
-        # locks indefinitely. If an idle transaction is aborted, the commit will fail
-        # with error `ABORTED`. If this behavior is undesirable, periodically executing
-        # a simple SQL query in the transaction (for example, `SELECT 1`) prevents the
-        # transaction from becoming idle. Snapshot read-only transactions: Snapshot read-
-        # only transactions provides a simpler method than locking read-write
-        # transactions for doing several consistent reads. However, this type of
-        # transaction does not support writes. Snapshot transactions do not take locks.
-        # Instead, they work by choosing a Cloud Spanner timestamp, then executing all
-        # reads at that timestamp. Since they do not acquire locks, they do not block
-        # concurrent read-write transactions. Unlike locking read-write transactions,
-        # snapshot read-only transactions never abort. They can fail if the chosen read
-        # timestamp is garbage collected; however, the default garbage collection policy
-        # is generous enough that most applications do not need to worry about this in
-        # practice. Snapshot read-only transactions do not need to call Commit or
-        # Rollback (and in fact are not permitted to do so). To execute a snapshot
-        # transaction, the client specifies a timestamp bound, which tells Cloud Spanner
-        # how to choose a read timestamp. The types of timestamp bound are: - Strong (
-        # the default). - Bounded staleness. - Exact staleness. If the Cloud Spanner
-        # database to be read is geographically distributed, stale read-only
-        # transactions can execute more quickly than strong or read-write transactions,
-        # because they are able to execute far from the leader replica. Each type of
-        # timestamp bound is discussed in detail below. Strong: Strong reads are
-        # guaranteed to see the effects of all transactions that have committed before
-        # the start of the read. Furthermore, all rows yielded by a single read are
-        # consistent with each other -- if any part of the read observes a transaction,
-        # all parts of the read see the transaction. Strong reads are not repeatable:
-        # two consecutive strong read-only transactions might return inconsistent
-        # results if there are concurrent writes. If consistency across reads is
-        # required, the reads should be executed within a transaction or at an exact
-        # read timestamp. Queries on change streams (see below for more details) must
-        # also specify the strong read timestamp bound. See TransactionOptions.ReadOnly.
-        # strong. Exact staleness: These timestamp bounds execute reads at a user-
-        # specified timestamp. Reads at a timestamp are guaranteed to see a consistent
-        # prefix of the global transaction history: they observe modifications done by
-        # all transactions with a commit timestamp less than or equal to the read
-        # timestamp, and observe none of the modifications done by transactions with a
-        # larger commit timestamp. They will block until all conflicting transactions
-        # that may be assigned commit timestamps <= the read timestamp have finished.
-        # The timestamp can either be expressed as an absolute Cloud Spanner commit
-        # timestamp or a staleness relative to the current time. These modes do not
-        # require a "negotiation phase" to pick a timestamp. As a result, they execute
-        # slightly faster than the equivalent boundedly stale concurrency modes. On the
-        # other hand, boundedly stale reads usually return fresher results. See
-        # TransactionOptions.ReadOnly.read_timestamp and TransactionOptions.ReadOnly.
-        # exact_staleness. Bounded staleness: Bounded staleness modes allow Cloud
-        # Spanner to pick the read timestamp, subject to a user-provided staleness bound.
-        # Cloud Spanner chooses the newest timestamp within the staleness bound that
-        # allows execution of the reads at the closest available replica without
-        # blocking. All rows yielded are consistent with each other -- if any part of
-        # the read observes a transaction, all parts of the read see the transaction.
-        # Boundedly stale reads are not repeatable: two stale reads, even if they use
-        # the same staleness bound, can execute at different timestamps and thus return
-        # inconsistent results. Boundedly stale reads execute in two phases: the first
-        # phase negotiates a timestamp among all replicas needed to serve the read. In
-        # the second phase, reads are executed at the negotiated timestamp. As a result
-        # of the two phase execution, bounded staleness reads are usually a little
-        # slower than comparable exact staleness reads. However, they are typically able
-        # to return fresher results, and are more likely to execute at the closest
-        # replica. Because the timestamp negotiation requires up-front knowledge of
-        # which rows will be read, it can only be used with single-use read-only
-        # transactions. See TransactionOptions.ReadOnly.max_staleness and
-        # TransactionOptions.ReadOnly.min_read_timestamp. Old read timestamps and
-        # garbage collection: Cloud Spanner continuously garbage collects deleted and
-        # overwritten data in the background to reclaim storage space. This process is
-        # known as "version GC". By default, version GC reclaims versions after they are
-        # one hour old. Because of this, Cloud Spanner cannot perform reads at read
-        # timestamps more than one hour in the past. This restriction also applies to in-
-        # progress reads and/or SQL queries whose timestamp become too old while
-        # executing. Reads and SQL queries with too-old read timestamps fail with the
-        # error `FAILED_PRECONDITION`. You can configure and extend the `
-        # VERSION_RETENTION_PERIOD` of a database up to a period as long as one week,
-        # which allows Cloud Spanner to perform reads up to one week in the past.
-        # Querying change Streams: A Change Stream is a schema object that can be
+        # of success than the previous. Note that the lock priority is preserved per
+        # session (not per transaction). Lock priority is set by the first read or write
+        # in the first attempt of a read-write transaction. If the application starts a
+        # new session to retry the whole transaction, the transaction loses its original
+        # lock priority. Moreover, the lock priority is only preserved if the
+        # transaction fails with an `ABORTED` error. Under some circumstances (for
+        # example, many transactions attempting to modify the same row(s)), a
+        # transaction can abort many times in a short period before successfully
+        # committing. Thus, it is not a good idea to cap the number of retries a
+        # transaction can attempt; instead, it is better to limit the total amount of
+        # time spent retrying. Idle transactions: A transaction is considered idle if it
+        # has no outstanding reads or SQL queries and has not started a read or SQL
+        # query within the last 10 seconds. Idle transactions can be aborted by Cloud
+        # Spanner so that they don't hold on to locks indefinitely. If an idle
+        # transaction is aborted, the commit will fail with error `ABORTED`. If this
+        # behavior is undesirable, periodically executing a simple SQL query in the
+        # transaction (for example, `SELECT 1`) prevents the transaction from becoming
+        # idle. Snapshot read-only transactions: Snapshot read-only transactions
+        # provides a simpler method than locking read-write transactions for doing
+        # several consistent reads. However, this type of transaction does not support
+        # writes. Snapshot transactions do not take locks. Instead, they work by
+        # choosing a Cloud Spanner timestamp, then executing all reads at that timestamp.
+        # Since they do not acquire locks, they do not block concurrent read-write
+        # transactions. Unlike locking read-write transactions, snapshot read-only
+        # transactions never abort. They can fail if the chosen read timestamp is
+        # garbage collected; however, the default garbage collection policy is generous
+        # enough that most applications do not need to worry about this in practice.
+        # Snapshot read-only transactions do not need to call Commit or Rollback (and in
+        # fact are not permitted to do so). To execute a snapshot transaction, the
+        # client specifies a timestamp bound, which tells Cloud Spanner how to choose a
+        # read timestamp. The types of timestamp bound are: - Strong (the default). -
+        # Bounded staleness. - Exact staleness. If the Cloud Spanner database to be read
+        # is geographically distributed, stale read-only transactions can execute more
+        # quickly than strong or read-write transactions, because they are able to
+        # execute far from the leader replica. Each type of timestamp bound is discussed
+        # in detail below. Strong: Strong reads are guaranteed to see the effects of all
+        # transactions that have committed before the start of the read. Furthermore,
+        # all rows yielded by a single read are consistent with each other -- if any
+        # part of the read observes a transaction, all parts of the read see the
+        # transaction. Strong reads are not repeatable: two consecutive strong read-only
+        # transactions might return inconsistent results if there are concurrent writes.
+        # If consistency across reads is required, the reads should be executed within a
+        # transaction or at an exact read timestamp. Queries on change streams (see
+        # below for more details) must also specify the strong read timestamp bound. See
+        # TransactionOptions.ReadOnly.strong. Exact staleness: These timestamp bounds
+        # execute reads at a user-specified timestamp. Reads at a timestamp are
+        # guaranteed to see a consistent prefix of the global transaction history: they
+        # observe modifications done by all transactions with a commit timestamp less
+        # than or equal to the read timestamp, and observe none of the modifications
+        # done by transactions with a larger commit timestamp. They will block until all
+        # conflicting transactions that may be assigned commit timestamps <= the read
+        # timestamp have finished. The timestamp can either be expressed as an absolute
+        # Cloud Spanner commit timestamp or a staleness relative to the current time.
+        # These modes do not require a "negotiation phase" to pick a timestamp. As a
+        # result, they execute slightly faster than the equivalent boundedly stale
+        # concurrency modes. On the other hand, boundedly stale reads usually return
+        # fresher results. See TransactionOptions.ReadOnly.read_timestamp and
+        # TransactionOptions.ReadOnly.exact_staleness. Bounded staleness: Bounded
+        # staleness modes allow Cloud Spanner to pick the read timestamp, subject to a
+        # user-provided staleness bound. Cloud Spanner chooses the newest timestamp
+        # within the staleness bound that allows execution of the reads at the closest
+        # available replica without blocking. All rows yielded are consistent with each
+        # other -- if any part of the read observes a transaction, all parts of the read
+        # see the transaction. Boundedly stale reads are not repeatable: two stale reads,
+        # even if they use the same staleness bound, can execute at different
+        # timestamps and thus return inconsistent results. Boundedly stale reads execute
+        # in two phases: the first phase negotiates a timestamp among all replicas
+        # needed to serve the read. In the second phase, reads are executed at the
+        # negotiated timestamp. As a result of the two phase execution, bounded
+        # staleness reads are usually a little slower than comparable exact staleness
+        # reads. However, they are typically able to return fresher results, and are
+        # more likely to execute at the closest replica. Because the timestamp
+        # negotiation requires up-front knowledge of which rows will be read, it can
+        # only be used with single-use read-only transactions. See TransactionOptions.
+        # ReadOnly.max_staleness and TransactionOptions.ReadOnly.min_read_timestamp. Old
+        # read timestamps and garbage collection: Cloud Spanner continuously garbage
+        # collects deleted and overwritten data in the background to reclaim storage
+        # space. This process is known as "version GC". By default, version GC reclaims
+        # versions after they are one hour old. Because of this, Cloud Spanner cannot
+        # perform reads at read timestamps more than one hour in the past. This
+        # restriction also applies to in-progress reads and/or SQL queries whose
+        # timestamp become too old while executing. Reads and SQL queries with too-old
+        # read timestamps fail with the error `FAILED_PRECONDITION`. You can configure
+        # and extend the `VERSION_RETENTION_PERIOD` of a database up to a period as long
+        # as one week, which allows Cloud Spanner to perform reads up to one week in the
+        # past. Querying change Streams: A Change Stream is a schema object that can be
         # configured to watch data changes on the entire database, a set of tables, or a
         # set of columns in a database. When a change stream is created, Spanner
         # automatically defines a corresponding SQL Table-Valued Function (TVF) that can
@@ -4950,12 +6850,12 @@ module Google
         # of the table. Rather, the statement is applied atomically to partitions of the
         # table, in independent transactions. Secondary index rows are updated
         # atomically with the base table rows. - Partitioned DML does not guarantee
-        # exactly-once execution semantics against a partition. The statement will be
-        # applied at least once to each partition. It is strongly recommended that the
-        # DML statement should be idempotent to avoid unexpected results. For instance,
-        # it is potentially dangerous to run a statement such as `UPDATE table SET
-        # column = column + 1` as it could be run multiple times against some rows. -
-        # The partitions are committed automatically - there is no support for Commit or
+        # exactly-once execution semantics against a partition. The statement is applied
+        # at least once to each partition. It is strongly recommended that the DML
+        # statement should be idempotent to avoid unexpected results. For instance, it
+        # is potentially dangerous to run a statement such as `UPDATE table SET column =
+        # column + 1` as it could be run multiple times against some rows. - The
+        # partitions are committed automatically - there is no support for Commit or
         # Rollback. If the call returns an error, or if the client issuing the
         # ExecuteSql call dies, it is possible that some rows had the statement executed
         # on them successfully. It is also possible that statement was never executed
@@ -5001,6 +6901,12 @@ module Google
         # @return [String]
         attr_accessor :code
       
+        # If code == PROTO or code == ENUM, then `proto_type_fqn` is the fully qualified
+        # name of the proto type representing the proto/enum definition.
+        # Corresponds to the JSON property `protoTypeFqn`
+        # @return [String]
+        attr_accessor :proto_type_fqn
+      
         # `StructType` defines the fields of a STRUCT type.
         # Corresponds to the JSON property `structType`
         # @return [Google::Apis::SpannerV1::StructType]
@@ -5024,6 +6930,7 @@ module Google
         def update!(**args)
           @array_element_type = args[:array_element_type] if args.key?(:array_element_type)
           @code = args[:code] if args.key?(:code)
+          @proto_type_fqn = args[:proto_type_fqn] if args.key?(:proto_type_fqn)
           @struct_type = args[:struct_type] if args.key?(:struct_type)
           @type_annotation = args[:type_annotation] if args.key?(:type_annotation)
         end
@@ -5032,6 +6939,12 @@ module Google
       # Metadata type for the operation returned by UpdateDatabaseDdl.
       class UpdateDatabaseDdlMetadata
         include Google::Apis::Core::Hashable
+      
+        # The brief action info for the DDL statements. `actions[i]` is the brief info
+        # for `statements[i]`.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::SpannerV1::DdlStatementActionInfo>]
+        attr_accessor :actions
       
         # Reports the commit timestamps of all statements that have succeeded so far,
         # where `commit_timestamps[i]` is the commit timestamp for the statement `
@@ -5045,12 +6958,11 @@ module Google
         # @return [String]
         attr_accessor :database
       
-        # The progress of the UpdateDatabaseDdl operations. Currently, only index
-        # creation statements will have a continuously updating progress. For non-index
-        # creation statements, `progress[i]` will have start time and end time populated
-        # with commit timestamp of operation, as well as a progress of 100% once the
-        # operation has completed. `progress[i]` is the operation progress for `
-        # statements[i]`.
+        # The progress of the UpdateDatabaseDdl operations. All DDL statements will have
+        # continuously updating progress, and `progress[i]` is the operation progress
+        # for `statements[i]`. Also, `progress[i]` will have start time and end time
+        # populated with commit timestamp of operation, as well as a progress of 100%
+        # once the operation has completed.
         # Corresponds to the JSON property `progress`
         # @return [Array<Google::Apis::SpannerV1::OperationProgress>]
         attr_accessor :progress
@@ -5061,7 +6973,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :statements
       
-        # Output only. When true, indicates that the operation is throttled e.g due to
+        # Output only. When true, indicates that the operation is throttled e.g. due to
         # resource constraints. When resources become available the operation will
         # resume and this field will be false again.
         # Corresponds to the JSON property `throttled`
@@ -5075,6 +6987,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
           @commit_timestamps = args[:commit_timestamps] if args.key?(:commit_timestamps)
           @database = args[:database] if args.key?(:database)
           @progress = args[:progress] if args.key?(:progress)
@@ -5102,7 +7015,7 @@ module Google
         # resulting Operation. Specifying an explicit operation ID simplifies
         # determining whether the statements were executed in the event that the
         # UpdateDatabaseDdl call is replayed, or the return value is otherwise lost: the
-        # database and `operation_id` fields can be combined to form the name of the
+        # database and `operation_id` fields can be combined to form the `name` of the
         # resulting longrunning.Operation: `/operations/`. `operation_id` should be
         # unique within the database, and must be a valid identifier: `a-z*`. Note that
         # automatically-generated operation IDs always begin with an underscore. If the
@@ -5110,6 +7023,21 @@ module Google
         # Corresponds to the JSON property `operationId`
         # @return [String]
         attr_accessor :operation_id
+      
+        # Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements.
+        # Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://
+        # github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.
+        # proto). To generate it, [install](https://grpc.io/docs/protoc-installation/)
+        # and run `protoc` with --include_imports and --descriptor_set_out. For example,
+        # to generate for moon/shot/app.proto, run ``` $protoc --proto_path=/app_path --
+        # proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.
+        # data \ moon/shot/app.proto ``` For more details, see protobuffer [self
+        # description](https://developers.google.com/protocol-buffers/docs/techniques#
+        # self-description).
+        # Corresponds to the JSON property `protoDescriptors`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :proto_descriptors
       
         # Required. DDL statements to be applied to the database.
         # Corresponds to the JSON property `statements`
@@ -5123,7 +7051,137 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @proto_descriptors = args[:proto_descriptors] if args.key?(:proto_descriptors)
           @statements = args[:statements] if args.key?(:statements)
+        end
+      end
+      
+      # Metadata type for the operation returned by UpdateDatabase.
+      class UpdateDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which this operation was cancelled. If set, this operation is in
+        # the process of undoing itself (which is best-effort).
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        # Encapsulates progress related information for a Cloud Spanner long running
+        # operation.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::SpannerV1::OperationProgress]
+        attr_accessor :progress
+      
+        # The request for UpdateDatabase.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::SpannerV1::UpdateDatabaseRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
+          @progress = args[:progress] if args.key?(:progress)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request for UpdateDatabase.
+      class UpdateDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # A Cloud Spanner database.
+        # Corresponds to the JSON property `database`
+        # @return [Google::Apis::SpannerV1::Database]
+        attr_accessor :database
+      
+        # Required. The list of fields to update. Currently, only `
+        # enable_drop_protection` field can be updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Metadata type for the operation returned by UpdateInstanceConfig.
+      class UpdateInstanceConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which this operation was cancelled.
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        # A possible configuration for a Cloud Spanner instance. Configurations define
+        # the geographic placement of nodes and their replication.
+        # Corresponds to the JSON property `instanceConfig`
+        # @return [Google::Apis::SpannerV1::InstanceConfig]
+        attr_accessor :instance_config
+      
+        # Encapsulates progress related information for a Cloud Spanner long running
+        # instance operations.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::SpannerV1::InstanceOperationProgress]
+        attr_accessor :progress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
+          @instance_config = args[:instance_config] if args.key?(:instance_config)
+          @progress = args[:progress] if args.key?(:progress)
+        end
+      end
+      
+      # The request for UpdateInstanceConfig.
+      class UpdateInstanceConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # A possible configuration for a Cloud Spanner instance. Configurations define
+        # the geographic placement of nodes and their replication.
+        # Corresponds to the JSON property `instanceConfig`
+        # @return [Google::Apis::SpannerV1::InstanceConfig]
+        attr_accessor :instance_config
+      
+        # Required. A mask specifying which fields in InstanceConfig should be updated.
+        # The field mask must always be specified; this prevents any future fields in
+        # InstanceConfig from being erased accidentally by clients that do not know
+        # about them. Only display_name and labels can be updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        # An option to validate, but not actually execute, a request, and provide the
+        # same response.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_config = args[:instance_config] if args.key?(:instance_config)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
       
@@ -5143,6 +7201,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # The expected fulfillment period of this update operation.
+        # Corresponds to the JSON property `expectedFulfillmentPeriod`
+        # @return [String]
+        attr_accessor :expected_fulfillment_period
+      
         # An isolated set of Cloud Spanner resources on which databases can be hosted.
         # Corresponds to the JSON property `instance`
         # @return [Google::Apis::SpannerV1::Instance]
@@ -5161,8 +7224,78 @@ module Google
         def update!(**args)
           @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @expected_fulfillment_period = args[:expected_fulfillment_period] if args.key?(:expected_fulfillment_period)
           @instance = args[:instance] if args.key?(:instance)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Metadata type for the operation returned by UpdateInstancePartition.
+      class UpdateInstancePartitionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which this operation was cancelled. If set, this operation is in
+        # the process of undoing itself (which is guaranteed to succeed) and cannot be
+        # cancelled again.
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        # The time at which this operation failed or was completed successfully.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # An isolated set of Cloud Spanner resources that databases can define
+        # placements on.
+        # Corresponds to the JSON property `instancePartition`
+        # @return [Google::Apis::SpannerV1::InstancePartition]
+        attr_accessor :instance_partition
+      
+        # The time at which UpdateInstancePartition request was received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @instance_partition = args[:instance_partition] if args.key?(:instance_partition)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The request for UpdateInstancePartition.
+      class UpdateInstancePartitionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A mask specifying which fields in InstancePartition should be
+        # updated. The field mask must always be specified; this prevents any future
+        # fields in InstancePartition from being erased accidentally by clients that do
+        # not know about them.
+        # Corresponds to the JSON property `fieldMask`
+        # @return [String]
+        attr_accessor :field_mask
+      
+        # An isolated set of Cloud Spanner resources that databases can define
+        # placements on.
+        # Corresponds to the JSON property `instancePartition`
+        # @return [Google::Apis::SpannerV1::InstancePartition]
+        attr_accessor :instance_partition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_mask = args[:field_mask] if args.key?(:field_mask)
+          @instance_partition = args[:instance_partition] if args.key?(:instance_partition)
         end
       end
       
