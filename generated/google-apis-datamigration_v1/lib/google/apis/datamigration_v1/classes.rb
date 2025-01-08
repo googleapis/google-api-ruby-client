@@ -1008,6 +1008,18 @@ module Google
         # @return [String]
         attr_accessor :role
       
+        # Output only. Zone Isolation compliance state of the resource.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Zone Separation compliance state of the resource.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Specifies connection parameters required specifically for SQL Server databases.
         # Corresponds to the JSON property `sqlserver`
         # @return [Google::Apis::DatamigrationV1::SqlServerConnectionProfile]
@@ -1043,6 +1055,8 @@ module Google
           @postgresql = args[:postgresql] if args.key?(:postgresql)
           @provider = args[:provider] if args.key?(:provider)
           @role = args[:role] if args.key?(:role)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @sqlserver = args[:sqlserver] if args.key?(:sqlserver)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -3128,6 +3142,18 @@ module Google
         # @return [Google::Apis::DatamigrationV1::ReverseSshConnectivity]
         attr_accessor :reverse_ssh_connectivity
       
+        # Output only. Zone Isolation compliance state of the resource.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Zone Separation compliance state of the resource.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Required. The resource name (URI) of the source connection profile.
         # Corresponds to the JSON property `source`
         # @return [String]
@@ -3201,6 +3227,8 @@ module Google
           @performance_config = args[:performance_config] if args.key?(:performance_config)
           @phase = args[:phase] if args.key?(:phase)
           @reverse_ssh_connectivity = args[:reverse_ssh_connectivity] if args.key?(:reverse_ssh_connectivity)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @source = args[:source] if args.key?(:source)
           @source_database = args[:source_database] if args.key?(:source_database)
           @sqlserver_homogeneous_migration_job_config = args[:sqlserver_homogeneous_migration_job_config] if args.key?(:sqlserver_homogeneous_migration_job_config)
@@ -4193,6 +4221,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Zone Isolation compliance state of the resource.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Zone Separation compliance state of the resource.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The state of the private connection.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -4220,6 +4260,8 @@ module Google
           @error = args[:error] if args.key?(:error)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vpc_peering_config = args[:vpc_peering_config] if args.key?(:vpc_peering_config)
@@ -4916,8 +4958,8 @@ module Google
       class SourceObjectIdentifier
         include Google::Apis::Core::Hashable
       
-        # The database name. This will be required only if the object uses a database
-        # name as part of its unique identifier.
+        # Optional. The database name. This will be required only if the object uses a
+        # database name as part of its unique identifier.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -4942,7 +4984,7 @@ module Google
       class SourceObjectsConfig
         include Google::Apis::Core::Hashable
       
-        # The list of the objects to be migrated.
+        # Optional. The list of the objects to be migrated.
         # Corresponds to the JSON property `objectConfigs`
         # @return [Array<Google::Apis::DatamigrationV1::SourceObjectConfig>]
         attr_accessor :object_configs
