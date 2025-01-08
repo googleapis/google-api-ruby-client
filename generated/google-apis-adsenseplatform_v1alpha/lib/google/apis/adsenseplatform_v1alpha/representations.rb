@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Platform
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestSiteReviewResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -188,6 +194,15 @@ module Google
       class LookupAccountResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class Platform
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_platform_group, as: 'defaultPlatformGroup'
+          property :description, as: 'description'
           property :name, as: 'name'
         end
       end

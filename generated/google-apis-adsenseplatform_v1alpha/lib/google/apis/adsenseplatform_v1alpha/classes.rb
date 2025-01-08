@@ -334,6 +334,38 @@ module Google
         end
       end
       
+      # Representation of a Transparent Platform.
+      class Platform
+        include Google::Apis::Core::Hashable
+      
+        # Default platform group for the platform.
+        # Corresponds to the JSON property `defaultPlatformGroup`
+        # @return [String]
+        attr_accessor :default_platform_group
+      
+        # Output only. Description of the platform.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Identifier. Resource name of a platform. Format: accounts/`account`/platforms/`
+        # platform`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_platform_group = args[:default_platform_group] if args.key?(:default_platform_group)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Response definition for the site request review rpc.
       class RequestSiteReviewResponse
         include Google::Apis::Core::Hashable
