@@ -681,7 +681,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :domain, as: 'domain'
-          hash :metadata, as: 'metadata'
+          hash :metadatas, as: 'metadatas'
           property :reason, as: 'reason'
         end
       end
