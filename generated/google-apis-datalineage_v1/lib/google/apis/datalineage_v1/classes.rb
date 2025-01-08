@@ -368,8 +368,9 @@ module Google
         attr_accessor :name
       
         # Type of the source. Use of a source_type other than `CUSTOM` for process
-        # creation or updating is highly discouraged, and may be restricted in the
-        # future without notice.
+        # creation or updating is highly discouraged. It might be restricted in the
+        # future without notice. There will be increase in cost if you use any of the
+        # source types other than `CUSTOM`.
         # Corresponds to the JSON property `sourceType`
         # @return [String]
         attr_accessor :source_type
@@ -487,6 +488,40 @@ module Google
         def update!(**args)
           @links = args[:links] if args.key?(:links)
           @process = args[:process] if args.key?(:process)
+        end
+      end
+      
+      # Response message for ProcessOpenLineageRunEvent.
+      class GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse
+        include Google::Apis::Core::Hashable
+      
+        # Created lineage event names. Format: `projects/`project`/locations/`location`/
+        # processes/`process`/runs/`run`/lineageEvents/`lineage_event``.
+        # Corresponds to the JSON property `lineageEvents`
+        # @return [Array<String>]
+        attr_accessor :lineage_events
+      
+        # Created process name. Format: `projects/`project`/locations/`location`/
+        # processes/`process``.
+        # Corresponds to the JSON property `process`
+        # @return [String]
+        attr_accessor :process
+      
+        # Created run name. Format: `projects/`project`/locations/`location`/processes/`
+        # process`/runs/`run``.
+        # Corresponds to the JSON property `run`
+        # @return [String]
+        attr_accessor :run
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lineage_events = args[:lineage_events] if args.key?(:lineage_events)
+          @process = args[:process] if args.key?(:process)
+          @run = args[:run] if args.key?(:run)
         end
       end
       
@@ -691,13 +726,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response

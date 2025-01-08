@@ -16,13 +16,13 @@ module Google
   module Apis
     module DatalineageV1
       # Version of the google-apis-datalineage_v1 gem
-      GEM_VERSION = "0.4.0"
+      GEM_VERSION = "0.5.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.12.0"
+      GENERATOR_VERSION = "0.15.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20230623"
+      REVISION = "20241202"
     end
   end
 end
