@@ -766,6 +766,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CalendarModeAdviceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CalendarModeAdviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CalendarModeRecommendation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CallCredentials
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1312,6 +1330,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallPoliciesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FirewallPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1367,6 +1403,12 @@ module Google
       end
       
       class FixedOrPercent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FlexibleTimeRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1548,6 +1590,60 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesRecommendation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesRecommendationOtherLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecAggregateResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecLocalSsdPartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecLocationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecLocationPolicyLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecSpecificSkuResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecTargetResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3052,6 +3148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectAttachmentGroupsGetOperationalStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectAttachmentGroupsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3066,6 +3168,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentGroupsOperationalStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3220,6 +3328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectGroupsGetOperationalStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectGroupsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3234,6 +3348,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectGroupsOperationalStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectGroupsOperationalStatusInterconnectStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4056,6 +4182,24 @@ module Google
       
       class NetworkEndpointWithHealthStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkFirewallPolicyAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -9730,6 +9874,30 @@ module Google
         end
       end
       
+      class CalendarModeAdviceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :future_resources_specs, as: 'futureResourcesSpecs', class: Google::Apis::ComputeAlpha::FutureResourcesSpec, decorator: Google::Apis::ComputeAlpha::FutureResourcesSpec::Representation
+      
+        end
+      end
+      
+      class CalendarModeAdviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :recommendations, as: 'recommendations', class: Google::Apis::ComputeAlpha::CalendarModeRecommendation, decorator: Google::Apis::ComputeAlpha::CalendarModeRecommendation::Representation
+      
+        end
+      end
+      
+      class CalendarModeRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :recommendations_per_spec, as: 'recommendationsPerSpec', class: Google::Apis::ComputeAlpha::FutureResourcesRecommendation, decorator: Google::Apis::ComputeAlpha::FutureResourcesRecommendation::Representation
+      
+        end
+      end
+      
       class CallCredentials
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10738,6 +10906,34 @@ module Google
         end
       end
       
+      class FirewallPoliciesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_policies, as: 'firewallPolicies', class: Google::Apis::ComputeAlpha::FirewallPolicy, decorator: Google::Apis::ComputeAlpha::FirewallPolicy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::FirewallPoliciesScopedList::Warning, decorator: Google::Apis::ComputeAlpha::FirewallPoliciesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::FirewallPoliciesScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::FirewallPoliciesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class FirewallPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10875,6 +11071,18 @@ module Google
           property :calculated, as: 'calculated'
           property :fixed, as: 'fixed'
           property :percent, as: 'percent'
+        end
+      end
+      
+      class FlexibleTimeRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time_not_earlier_than, as: 'endTimeNotEarlierThan'
+          property :end_time_not_later_than, as: 'endTimeNotLaterThan'
+          property :max_duration, as: 'maxDuration'
+          property :min_duration, as: 'minDuration'
+          property :start_time_not_earlier_than, as: 'startTimeNotEarlierThan'
+          property :start_time_not_later_than, as: 'startTimeNotLaterThan'
         end
       end
       
@@ -11251,6 +11459,92 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class FutureResourcesRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :location, as: 'location'
+          hash :other_locations, as: 'otherLocations', class: Google::Apis::ComputeAlpha::FutureResourcesRecommendationOtherLocation, decorator: Google::Apis::ComputeAlpha::FutureResourcesRecommendationOtherLocation::Representation
+      
+          property :recommendation_id, as: 'recommendationId'
+          property :recommendation_type, as: 'recommendationType'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class FutureResourcesRecommendationOtherLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :status, as: 'status'
+        end
+      end
+      
+      class FutureResourcesSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_type, as: 'deploymentType'
+          property :location_policy, as: 'locationPolicy', class: Google::Apis::ComputeAlpha::FutureResourcesSpecLocationPolicy, decorator: Google::Apis::ComputeAlpha::FutureResourcesSpecLocationPolicy::Representation
+      
+          property :target_resources, as: 'targetResources', class: Google::Apis::ComputeAlpha::FutureResourcesSpecTargetResources, decorator: Google::Apis::ComputeAlpha::FutureResourcesSpecTargetResources::Representation
+      
+          property :time_range_spec, as: 'timeRangeSpec', class: Google::Apis::ComputeAlpha::FlexibleTimeRange, decorator: Google::Apis::ComputeAlpha::FlexibleTimeRange::Representation
+      
+        end
+      end
+      
+      class FutureResourcesSpecAggregateResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_count, :numeric_string => true, as: 'acceleratorCount'
+          property :vm_family, as: 'vmFamily'
+          property :workload_type, as: 'workloadType'
+        end
+      end
+      
+      class FutureResourcesSpecLocalSsdPartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_interface, as: 'diskInterface'
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+        end
+      end
+      
+      class FutureResourcesSpecLocationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :locations, as: 'locations', class: Google::Apis::ComputeAlpha::FutureResourcesSpecLocationPolicyLocation, decorator: Google::Apis::ComputeAlpha::FutureResourcesSpecLocationPolicyLocation::Representation
+      
+        end
+      end
+      
+      class FutureResourcesSpecLocationPolicyLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :preference, as: 'preference'
+        end
+      end
+      
+      class FutureResourcesSpecSpecificSkuResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_count, :numeric_string => true, as: 'instanceCount'
+          collection :local_ssd_partitions, as: 'localSsdPartitions', class: Google::Apis::ComputeAlpha::FutureResourcesSpecLocalSsdPartition, decorator: Google::Apis::ComputeAlpha::FutureResourcesSpecLocalSsdPartition::Representation
+      
+          property :machine_type, as: 'machineType'
+        end
+      end
+      
+      class FutureResourcesSpecTargetResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_resources, as: 'aggregateResources', class: Google::Apis::ComputeAlpha::FutureResourcesSpecAggregateResources, decorator: Google::Apis::ComputeAlpha::FutureResourcesSpecAggregateResources::Representation
+      
+          property :specific_sku_resources, as: 'specificSkuResources', class: Google::Apis::ComputeAlpha::FutureResourcesSpecSpecificSkuResources, decorator: Google::Apis::ComputeAlpha::FutureResourcesSpecSpecificSkuResources::Representation
+      
         end
       end
       
@@ -13936,6 +14230,10 @@ module Google
           property :admin_enabled, as: 'adminEnabled'
           property :attachment_group, as: 'attachmentGroup'
           property :bandwidth, as: 'bandwidth'
+          property :candidate_cloud_router_ip_address, as: 'candidateCloudRouterIpAddress'
+          property :candidate_cloud_router_ipv6_address, as: 'candidateCloudRouterIpv6Address'
+          property :candidate_customer_router_ip_address, as: 'candidateCustomerRouterIpAddress'
+          property :candidate_customer_router_ipv6_address, as: 'candidateCustomerRouterIpv6Address'
           collection :candidate_ipv6_subnets, as: 'candidateIpv6Subnets'
           collection :candidate_subnets, as: 'candidateSubnets'
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
@@ -14086,6 +14384,7 @@ module Google
           property :documentation_link, as: 'documentationLink'
           property :explanation, as: 'explanation'
           collection :metros, as: 'metros'
+          collection :regions, as: 'regions'
           collection :zones, as: 'zones'
         end
       end
@@ -14140,6 +14439,15 @@ module Google
         end
       end
       
+      class InterconnectAttachmentGroupsGetOperationalStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :result, as: 'result', class: Google::Apis::ComputeAlpha::InterconnectAttachmentGroupsOperationalStatus, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentGroupsOperationalStatus::Representation
+      
+        end
+      end
+      
       class InterconnectAttachmentGroupsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14171,6 +14479,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InterconnectAttachmentGroupsOperationalStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_status, as: 'groupStatus'
         end
       end
       
@@ -14423,6 +14738,15 @@ module Google
         end
       end
       
+      class InterconnectGroupsGetOperationalStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :result, as: 'result', class: Google::Apis::ComputeAlpha::InterconnectGroupsOperationalStatus, decorator: Google::Apis::ComputeAlpha::InterconnectGroupsOperationalStatus::Representation
+      
+        end
+      end
+      
       class InterconnectGroupsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14454,6 +14778,32 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InterconnectGroupsOperationalStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :configured, as: 'configured', class: Google::Apis::ComputeAlpha::InterconnectGroupConfigured, decorator: Google::Apis::ComputeAlpha::InterconnectGroupConfigured::Representation
+      
+          property :group_status, as: 'groupStatus'
+          property :intent, as: 'intent', class: Google::Apis::ComputeAlpha::InterconnectGroupIntent, decorator: Google::Apis::ComputeAlpha::InterconnectGroupIntent::Representation
+      
+          collection :interconnect_statuses, as: 'interconnectStatuses', class: Google::Apis::ComputeAlpha::InterconnectGroupsOperationalStatusInterconnectStatus, decorator: Google::Apis::ComputeAlpha::InterconnectGroupsOperationalStatusInterconnectStatus::Representation
+      
+          property :operational, as: 'operational', class: Google::Apis::ComputeAlpha::InterconnectGroupConfigured, decorator: Google::Apis::ComputeAlpha::InterconnectGroupConfigured::Representation
+      
+        end
+      end
+      
+      class InterconnectGroupsOperationalStatusInterconnectStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_enabled, as: 'adminEnabled'
+          property :diagnostics, as: 'diagnostics', class: Google::Apis::ComputeAlpha::InterconnectDiagnostics, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnostics::Representation
+      
+          property :interconnect, as: 'interconnect'
+          property :is_active, as: 'isActive'
         end
       end
       
@@ -15995,6 +16345,39 @@ module Google
       
           property :network_endpoint, as: 'networkEndpoint', class: Google::Apis::ComputeAlpha::NetworkEndpoint, decorator: Google::Apis::ComputeAlpha::NetworkEndpoint::Representation
       
+        end
+      end
+      
+      class NetworkFirewallPolicyAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::FirewallPoliciesScopedList, decorator: Google::Apis::ComputeAlpha::FirewallPoliciesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::NetworkFirewallPolicyAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::NetworkFirewallPolicyAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::NetworkFirewallPolicyAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::NetworkFirewallPolicyAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -18877,6 +19260,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain_count, as: 'availabilityDomainCount'
           property :collocation, as: 'collocation'
+          property :gpu_topology, as: 'gpuTopology'
           property :max_distance, as: 'maxDistance'
           property :scope, as: 'scope'
           property :slice_count, as: 'sliceCount'
@@ -23085,7 +23469,7 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
-          collection :scoped_warnings, as: 'scoped_warnings', class: Google::Apis::ComputeAlpha::SubnetworksScopedWarning, decorator: Google::Apis::ComputeAlpha::SubnetworksScopedWarning::Representation
+          collection :scoped_warnings, as: 'scopedWarnings', class: Google::Apis::ComputeAlpha::SubnetworksScopedWarning, decorator: Google::Apis::ComputeAlpha::SubnetworksScopedWarning::Representation
       
           property :self_link, as: 'selfLink'
           collection :unreachables, as: 'unreachables'
