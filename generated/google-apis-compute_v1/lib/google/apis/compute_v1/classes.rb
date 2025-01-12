@@ -567,8 +567,7 @@ module Google
         # @return [String]
         attr_accessor :public_ptr_domain_name
       
-        # [Output Only] The resource URL for the security policy associated with this
-        # access config.
+        # The resource URL for the security policy associated with this access config.
         # Corresponds to the JSON property `securityPolicy`
         # @return [String]
         attr_accessor :security_policy
@@ -1773,7 +1772,9 @@ module Google
         # disk, one of initializeParams.sourceSnapshot or initializeParams.sourceImage
         # or disks.source is required. To create a disk with a snapshot that you created,
         # specify the snapshot name in the following format: global/snapshots/my-backup
-        # If the source snapshot is deleted later, this field will not be set.
+        # If the source snapshot is deleted later, this field will not be set. Note: You
+        # cannot create VMs in bulk using a snapshot as the source. Use an image instead
+        # when you create VMs using the bulk insert method.
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -8090,12 +8091,12 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Additional structured details about this error. Keys must match /a-z+/ but
-        # should ideally be lowerCamelCase. Also they must be limited to 64 characters
-        # in length. When identifying the current value of an exceeded limit, the units
-        # should be contained in the key, not the value. For example, rather than `"
-        # instanceLimit": "100/request"`, should be returned as, `"
-        # instanceLimitPerRequest": "100"`, if the client exceeds the number of
+        # Additional structured details about this error. Keys must match a regular
+        # expression of `a-z+` but should ideally be lowerCamelCase. Also, they must be
+        # limited to 64 characters in length. When identifying the current value of an
+        # exceeded limit, the units should be contained in the key, not the value. For
+        # example, rather than ``"instanceLimit": "100/request"``, should be returned as,
+        # ``"instanceLimitPerRequest": "100"``, if the client exceeds the number of
         # instances that can be created in a single (batch) request.
         # Corresponds to the JSON property `metadatas`
         # @return [Hash<String,String>]
@@ -9052,6 +9053,97 @@ module Google
         def update!(**args)
           @associations = args[:associations] if args.key?(:associations)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class FirewallPoliciesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of firewall policies contained in this scope.
+        # Corresponds to the JSON property `firewallPolicies`
+        # @return [Array<Google::Apis::ComputeV1::FirewallPolicy>]
+        attr_accessor :firewall_policies
+      
+        # Informational warning which replaces the list of firewall policies when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::FirewallPoliciesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @firewall_policies = args[:firewall_policies] if args.key?(:firewall_policies)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of firewall policies when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::FirewallPoliciesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -19533,7 +19625,7 @@ module Google
         # BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M:
         # 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s -
         # BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/
-        # s
+        # s - BPS_100G: 100 Gbit/s
         # Corresponds to the JSON property `bandwidth`
         # @return [String]
         attr_accessor :bandwidth
@@ -19543,13 +19635,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :candidate_ipv6_subnets
       
-        # Up to 16 candidate prefixes that can be used to restrict the allocation of
-        # cloudRouterIpAddress and customerRouterIpAddress for this attachment. All
-        # prefixes must be within link-local address space (169.254.0.0/16) and must be /
-        # 29 or shorter (/28, /27, etc). Google will attempt to select an unused /29
-        # from the supplied candidate prefix(es). The request will fail if all possible /
-        # 29s are in use on Google's edge. If not supplied, Google will randomly select
-        # an unused /29 from all of link-local space.
+        # Input only. Up to 16 candidate prefixes that can be used to restrict the
+        # allocation of cloudRouterIpAddress and customerRouterIpAddress for this
+        # attachment. All prefixes must be within link-local address space (169.254.0.0/
+        # 16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select
+        # an unused /29 from the supplied candidate prefix(es). The request will fail if
+        # all possible /29s are in use on Google's edge. If not supplied, Google will
+        # randomly select an unused /29 from all of link-local space.
         # Corresponds to the JSON property `candidateSubnets`
         # @return [Array<String>]
         attr_accessor :candidate_subnets
@@ -19611,8 +19703,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Desired availability domain for the attachment. Only available for type
-        # PARTNER, at creation time, and can take one of the following values: -
+        # Input only. Desired availability domain for the attachment. Only available for
+        # type PARTNER, at creation time, and can take one of the following values: -
         # AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For
         # improved reliability, customers should configure a pair of attachments, one
         # per availability domain. The selected availability domain will be provided to
@@ -19812,13 +19904,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The
-        # default value is 29, except for Cross-Cloud Interconnect connections that use
-        # an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal
-        # to 30. For example, connections that use an Azure remote location fall into
-        # this category. In these cases, the default value is 30, and requesting 29
-        # returns an error. Where both 29 and 30 are allowed, 29 is preferred, because
-        # it gives Google Cloud Support more debugging visibility.
+        # Input only. Length of the IPv4 subnet mask. Allowed values: - 29 (default) -
+        # 30 The default value is 29, except for Cross-Cloud Interconnect connections
+        # that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.
+        # min equal to 30. For example, connections that use an Azure remote location
+        # fall into this category. In these cases, the default value is 30, and
+        # requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is
+        # preferred, because it gives Google Cloud Support more debugging visibility.
         # Corresponds to the JSON property `subnetLength`
         # @return [Fixnum]
         attr_accessor :subnet_length
@@ -25349,6 +25441,130 @@ module Google
         end
       end
       
+      # 
+      class NetworkFirewallPolicyAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of FirewallPoliciesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeV1::FirewallPoliciesScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#
+        # networkFirewallPoliciesAggregatedList for lists of network firewall policies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::NetworkFirewallPolicyAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::NetworkFirewallPolicyAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # A network interface resource attached to an instance.
       class NetworkInterface
         include Google::Apis::Core::Hashable
@@ -26159,6 +26375,17 @@ module Google
         # @return [String]
         attr_accessor :bgp_inter_region_cost
       
+        # [Output Only] Effective value of the bgp_always_compare_med field.
+        # Corresponds to the JSON property `effectiveBgpAlwaysCompareMed`
+        # @return [Boolean]
+        attr_accessor :effective_bgp_always_compare_med
+        alias_method :effective_bgp_always_compare_med?, :effective_bgp_always_compare_med
+      
+        # [Output Only] Effective value of the bgp_inter_region_cost field.
+        # Corresponds to the JSON property `effectiveBgpInterRegionCost`
+        # @return [String]
+        attr_accessor :effective_bgp_inter_region_cost
+      
         # The network-wide routing mode to use. If set to REGIONAL, this network's Cloud
         # Routers will only advertise routes with subnets of this network in the same
         # region as the router. If set to GLOBAL, this network's Cloud Routers will
@@ -26176,6 +26403,8 @@ module Google
           @bgp_always_compare_med = args[:bgp_always_compare_med] if args.key?(:bgp_always_compare_med)
           @bgp_best_path_selection_mode = args[:bgp_best_path_selection_mode] if args.key?(:bgp_best_path_selection_mode)
           @bgp_inter_region_cost = args[:bgp_inter_region_cost] if args.key?(:bgp_inter_region_cost)
+          @effective_bgp_always_compare_med = args[:effective_bgp_always_compare_med] if args.key?(:effective_bgp_always_compare_med)
+          @effective_bgp_inter_region_cost = args[:effective_bgp_inter_region_cost] if args.key?(:effective_bgp_inter_region_cost)
           @routing_mode = args[:routing_mode] if args.key?(:routing_mode)
         end
       end
@@ -44741,14 +44970,15 @@ module Google
         # to INTERNAL_SELF_MANAGED. The URLs should refer to a SSL Certificate resource
         # or Certificate Manager Certificate resource. Mixing Classic Certificates and
         # Certificate Manager Certificates is not allowed. Certificate Manager
-        # Certificates must include the certificatemanager API. Certificate Manager
-        # Certificates are not supported by Global external Application Load Balancer or
-        # Classic Application Load Balancer, use certificate_map instead. Currently, you
-        # may specify up to 15 Classic SSL Certificates. Certificate Manager
-        # Certificates accepted formats are: - //certificatemanager.googleapis.com/
-        # projects/`project`/locations/` location`/certificates/`resourceName`. - https:/
-        # /certificatemanager.googleapis.com/v1alpha1/projects/`project `/locations/`
-        # location`/certificates/`resourceName`.
+        # Certificates must include the certificatemanager API namespace. Using
+        # Certificate Manager Certificates in this field is not supported by Global
+        # external Application Load Balancer or Classic Application Load Balancer, use
+        # certificate_map instead. Currently, you may specify up to 15 Classic SSL
+        # Certificates or up to 100 Certificate Manager Certificates. Certificate
+        # Manager Certificates accepted formats are: - //certificatemanager.googleapis.
+        # com/projects/`project`/locations/` location`/certificates/`resourceName`. -
+        # https://certificatemanager.googleapis.com/v1alpha1/projects/`project `/
+        # locations/`location`/certificates/`resourceName`.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
