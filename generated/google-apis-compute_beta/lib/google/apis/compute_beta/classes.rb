@@ -567,8 +567,7 @@ module Google
         # @return [String]
         attr_accessor :public_ptr_domain_name
       
-        # [Output Only] The resource URL for the security policy associated with this
-        # access config.
+        # The resource URL for the security policy associated with this access config.
         # Corresponds to the JSON property `securityPolicy`
         # @return [String]
         attr_accessor :security_policy
@@ -1870,7 +1869,9 @@ module Google
         # disk, one of initializeParams.sourceSnapshot or initializeParams.sourceImage
         # or disks.source is required. To create a disk with a snapshot that you created,
         # specify the snapshot name in the following format: global/snapshots/my-backup
-        # If the source snapshot is deleted later, this field will not be set.
+        # If the source snapshot is deleted later, this field will not be set. Note: You
+        # cannot create VMs in bulk using a snapshot as the source. Use an image instead
+        # when you create VMs using the bulk insert method.
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -3919,6 +3920,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
+        # Configuration for Backend Authenticated TLS and mTLS. May only be specified
+        # when the backend protocol is SSL, HTTPS or HTTP2.
+        # Corresponds to the JSON property `tlsSettings`
+        # @return [Google::Apis::ComputeBeta::BackendServiceTlsSettings]
+        attr_accessor :tls_settings
+      
         # [Output Only] List of resources referencing given backend service.
         # Corresponds to the JSON property `usedBy`
         # @return [Array<Google::Apis::ComputeBeta::BackendServiceUsedBy>]
@@ -3976,6 +3983,7 @@ module Google
           @strong_session_affinity_cookie = args[:strong_session_affinity_cookie] if args.key?(:strong_session_affinity_cookie)
           @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
+          @tls_settings = args[:tls_settings] if args.key?(:tls_settings)
           @used_by = args[:used_by] if args.key?(:used_by)
         end
       end
@@ -4959,6 +4967,80 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
+        end
+      end
+      
+      # 
+      class BackendServiceTlsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Reference to the BackendAuthenticationConfig resource from the networksecurity.
+        # googleapis.com namespace. Can be used in authenticating TLS connections to the
+        # backend, as specified by the authenticationMode field. Can only be specified
+        # if authenticationMode is not NONE.
+        # Corresponds to the JSON property `authenticationConfig`
+        # @return [String]
+        attr_accessor :authentication_config
+      
+        # Server Name Indication - see RFC3546 section 3.1. If set, the load balancer
+        # sends this string as the SNI hostname in the TLS connection to the backend,
+        # and requires that this string match a Subject Alternative Name (SAN) in the
+        # backend's server certificate. With a Regional Internet NEG backend, if the SNI
+        # is specified here, the load balancer uses it regardless of whether the
+        # Regional Internet NEG is specified with FQDN or IP address and port. When both
+        # sni and subjectAltNames[] are specified, the load balancer matches the backend
+        # certificate's SAN only to subjectAltNames[].
+        # Corresponds to the JSON property `sni`
+        # @return [String]
+        attr_accessor :sni
+      
+        # A list of Subject Alternative Names (SANs) that the Load Balancer verifies
+        # during a TLS handshake with the backend. When the server presents its X.509
+        # certificate to the Load Balancer, the Load Balancer inspects the certificate's
+        # SAN field, and requires that at least one SAN match one of the subjectAltNames
+        # in the list. This field is limited to 5 entries. When both sni and
+        # subjectAltNames[] are specified, the load balancer matches the backend
+        # certificate's SAN only to subjectAltNames[].
+        # Corresponds to the JSON property `subjectAltNames`
+        # @return [Array<Google::Apis::ComputeBeta::BackendServiceTlsSettingsSubjectAltName>]
+        attr_accessor :subject_alt_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_config = args[:authentication_config] if args.key?(:authentication_config)
+          @sni = args[:sni] if args.key?(:sni)
+          @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
+        end
+      end
+      
+      # A Subject Alternative Name that the load balancer matches against the SAN
+      # field in the TLS certificate provided by the backend, specified as either a
+      # DNS name or a URI, in accordance with RFC 5280 4.2.1.6
+      class BackendServiceTlsSettingsSubjectAltName
+        include Google::Apis::Core::Hashable
+      
+        # The SAN specified as a DNS Name.
+        # Corresponds to the JSON property `dnsName`
+        # @return [String]
+        attr_accessor :dns_name
+      
+        # The SAN specified as a URI.
+        # Corresponds to the JSON property `uniformResourceIdentifier`
+        # @return [String]
+        attr_accessor :uniform_resource_identifier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_name = args[:dns_name] if args.key?(:dns_name)
+          @uniform_resource_identifier = args[:uniform_resource_identifier] if args.key?(:uniform_resource_identifier)
         end
       end
       
@@ -8560,12 +8642,12 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Additional structured details about this error. Keys must match /a-z+/ but
-        # should ideally be lowerCamelCase. Also they must be limited to 64 characters
-        # in length. When identifying the current value of an exceeded limit, the units
-        # should be contained in the key, not the value. For example, rather than `"
-        # instanceLimit": "100/request"`, should be returned as, `"
-        # instanceLimitPerRequest": "100"`, if the client exceeds the number of
+        # Additional structured details about this error. Keys must match a regular
+        # expression of `a-z+` but should ideally be lowerCamelCase. Also, they must be
+        # limited to 64 characters in length. When identifying the current value of an
+        # exceeded limit, the units should be contained in the key, not the value. For
+        # example, rather than ``"instanceLimit": "100/request"``, should be returned as,
+        # ``"instanceLimitPerRequest": "100"``, if the client exceeds the number of
         # instances that can be created in a single (batch) request.
         # Corresponds to the JSON property `metadatas`
         # @return [Hash<String,String>]
@@ -9531,6 +9613,97 @@ module Google
         def update!(**args)
           @associations = args[:associations] if args.key?(:associations)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class FirewallPoliciesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of firewall policies contained in this scope.
+        # Corresponds to the JSON property `firewallPolicies`
+        # @return [Array<Google::Apis::ComputeBeta::FirewallPolicy>]
+        attr_accessor :firewall_policies
+      
+        # Informational warning which replaces the list of firewall policies when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::FirewallPoliciesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @firewall_policies = args[:firewall_policies] if args.key?(:firewall_policies)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of firewall policies when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::FirewallPoliciesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -11048,6 +11221,12 @@ module Google
         attr_accessor :auto_delete_auto_created_reservations
         alias_method :auto_delete_auto_created_reservations?, :auto_delete_auto_created_reservations
       
+        # If not present, then FR will not deliver a new commitment or update an
+        # existing commitment.
+        # Corresponds to the JSON property `commitmentInfo`
+        # @return [Google::Apis::ComputeBeta::FutureReservationCommitmentInfo]
+        attr_accessor :commitment_info
+      
         # [Output Only] The creation timestamp for this future reservation in RFC3339
         # text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -11167,6 +11346,7 @@ module Google
           @auto_created_reservations_delete_time = args[:auto_created_reservations_delete_time] if args.key?(:auto_created_reservations_delete_time)
           @auto_created_reservations_duration = args[:auto_created_reservations_duration] if args.key?(:auto_created_reservations_duration)
           @auto_delete_auto_created_reservations = args[:auto_delete_auto_created_reservations] if args.key?(:auto_delete_auto_created_reservations)
+          @commitment_info = args[:commitment_info] if args.key?(:commitment_info)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
@@ -11185,6 +11365,40 @@ module Google
           @status = args[:status] if args.key?(:status)
           @time_window = args[:time_window] if args.key?(:time_window)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class FutureReservationCommitmentInfo
+        include Google::Apis::Core::Hashable
+      
+        # name of the commitment where capacity is being delivered to.
+        # Corresponds to the JSON property `commitmentName`
+        # @return [String]
+        attr_accessor :commitment_name
+      
+        # Indicates if a Commitment needs to be created as part of FR delivery. If this
+        # field is not present, then no commitment needs to be created.
+        # Corresponds to the JSON property `commitmentPlan`
+        # @return [String]
+        attr_accessor :commitment_plan
+      
+        # Only applicable if FR is delivering to the same reservation. If set, all
+        # parent commitments will be extended to match the end date of the plan for this
+        # commitment.
+        # Corresponds to the JSON property `previousCommitmentTerms`
+        # @return [String]
+        attr_accessor :previous_commitment_terms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commitment_name = args[:commitment_name] if args.key?(:commitment_name)
+          @commitment_plan = args[:commitment_plan] if args.key?(:commitment_plan)
+          @previous_commitment_terms = args[:previous_commitment_terms] if args.key?(:previous_commitment_terms)
         end
       end
       
@@ -21459,7 +21673,7 @@ module Google
         # BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M:
         # 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s -
         # BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/
-        # s
+        # s - BPS_100G: 100 Gbit/s
         # Corresponds to the JSON property `bandwidth`
         # @return [String]
         attr_accessor :bandwidth
@@ -21469,13 +21683,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :candidate_ipv6_subnets
       
-        # Up to 16 candidate prefixes that can be used to restrict the allocation of
-        # cloudRouterIpAddress and customerRouterIpAddress for this attachment. All
-        # prefixes must be within link-local address space (169.254.0.0/16) and must be /
-        # 29 or shorter (/28, /27, etc). Google will attempt to select an unused /29
-        # from the supplied candidate prefix(es). The request will fail if all possible /
-        # 29s are in use on Google's edge. If not supplied, Google will randomly select
-        # an unused /29 from all of link-local space.
+        # Input only. Up to 16 candidate prefixes that can be used to restrict the
+        # allocation of cloudRouterIpAddress and customerRouterIpAddress for this
+        # attachment. All prefixes must be within link-local address space (169.254.0.0/
+        # 16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select
+        # an unused /29 from the supplied candidate prefix(es). The request will fail if
+        # all possible /29s are in use on Google's edge. If not supplied, Google will
+        # randomly select an unused /29 from all of link-local space.
         # Corresponds to the JSON property `candidateSubnets`
         # @return [Array<String>]
         attr_accessor :candidate_subnets
@@ -21537,8 +21751,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Desired availability domain for the attachment. Only available for type
-        # PARTNER, at creation time, and can take one of the following values: -
+        # Input only. Desired availability domain for the attachment. Only available for
+        # type PARTNER, at creation time, and can take one of the following values: -
         # AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For
         # improved reliability, customers should configure a pair of attachments, one
         # per availability domain. The selected availability domain will be provided to
@@ -21738,13 +21952,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The
-        # default value is 29, except for Cross-Cloud Interconnect connections that use
-        # an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal
-        # to 30. For example, connections that use an Azure remote location fall into
-        # this category. In these cases, the default value is 30, and requesting 29
-        # returns an error. Where both 29 and 30 are allowed, 29 is preferred, because
-        # it gives Google Cloud Support more debugging visibility.
+        # Input only. Length of the IPv4 subnet mask. Allowed values: - 29 (default) -
+        # 30 The default value is 29, except for Cross-Cloud Interconnect connections
+        # that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.
+        # min equal to 30. For example, connections that use an Azure remote location
+        # fall into this category. In these cases, the default value is 30, and
+        # requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is
+        # preferred, because it gives Google Cloud Support more debugging visibility.
         # Corresponds to the JSON property `subnetLength`
         # @return [Fixnum]
         attr_accessor :subnet_length
@@ -27646,6 +27860,130 @@ module Google
         def update!(**args)
           @healths = args[:healths] if args.key?(:healths)
           @network_endpoint = args[:network_endpoint] if args.key?(:network_endpoint)
+        end
+      end
+      
+      # 
+      class NetworkFirewallPolicyAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of FirewallPoliciesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeBeta::FirewallPoliciesScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#
+        # networkFirewallPoliciesAggregatedList for lists of network firewall policies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::NetworkFirewallPolicyAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::NetworkFirewallPolicyAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -48973,14 +49311,15 @@ module Google
         # to INTERNAL_SELF_MANAGED. The URLs should refer to a SSL Certificate resource
         # or Certificate Manager Certificate resource. Mixing Classic Certificates and
         # Certificate Manager Certificates is not allowed. Certificate Manager
-        # Certificates must include the certificatemanager API. Certificate Manager
-        # Certificates are not supported by Global external Application Load Balancer or
-        # Classic Application Load Balancer, use certificate_map instead. Currently, you
-        # may specify up to 15 Classic SSL Certificates. Certificate Manager
-        # Certificates accepted formats are: - //certificatemanager.googleapis.com/
-        # projects/`project`/locations/` location`/certificates/`resourceName`. - https:/
-        # /certificatemanager.googleapis.com/v1alpha1/projects/`project `/locations/`
-        # location`/certificates/`resourceName`.
+        # Certificates must include the certificatemanager API namespace. Using
+        # Certificate Manager Certificates in this field is not supported by Global
+        # external Application Load Balancer or Classic Application Load Balancer, use
+        # certificate_map instead. Currently, you may specify up to 15 Classic SSL
+        # Certificates or up to 100 Certificate Manager Certificates. Certificate
+        # Manager Certificates accepted formats are: - //certificatemanager.googleapis.
+        # com/projects/`project`/locations/` location`/certificates/`resourceName`. -
+        # https://certificatemanager.googleapis.com/v1alpha1/projects/`project `/
+        # locations/`location`/certificates/`resourceName`.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
