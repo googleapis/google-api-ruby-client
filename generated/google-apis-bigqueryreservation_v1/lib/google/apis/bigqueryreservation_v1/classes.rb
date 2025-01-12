@@ -502,11 +502,7 @@ module Google
         # Baseline slots available to this reservation. A slot is a unit of
         # computational power in BigQuery, and serves as the unit of parallelism.
         # Queries using this reservation might use more slots during runtime if
-        # ignore_idle_slots is set to false, or autoscaling is enabled. If edition is
-        # EDITION_UNSPECIFIED and total slot_capacity of the reservation and its
-        # siblings exceeds the total slot_count of all capacity commitments, the request
-        # will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. If edition is any value
-        # but EDITION_UNSPECIFIED, then the above requirement is not needed. The total
+        # ignore_idle_slots is set to false, or autoscaling is enabled. The total
         # slot_capacity of the reservation and its siblings may exceed the total
         # slot_count of capacity commitments. In that case, the exceeding slots will be
         # charged with the autoscale SKU. You can increase the number of baseline slots
