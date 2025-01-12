@@ -7025,7 +7025,7 @@ module Google
         attr_accessor :operation_id
       
         # Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements.
-        # Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://
+        # Contains a protobuf-serialized [google.protobufFileDescriptorSet](https://
         # github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.
         # proto). To generate it, [install](https://grpc.io/docs/protoc-installation/)
         # and run `protoc` with --include_imports and --descriptor_set_out. For example,
