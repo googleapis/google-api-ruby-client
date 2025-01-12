@@ -5658,7 +5658,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # Detail message
+        # Detail message copybara:strip_begin(b/383363683) copybara:
+        # strip_end_and_replace optional string message = 3;
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
