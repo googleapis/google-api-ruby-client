@@ -300,6 +300,20 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentPersonalizationSettings]
         attr_accessor :personalization_settings
       
+        # Optional. Output only. A read only boolean field reflecting Zone Isolation
+        # status of the agent.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Optional. Output only. A read only boolean field reflecting Zone Separation
+        # status of the agent.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Name of the SecuritySettings reference for the agent. Format: `projects//
         # locations//securitySettings/`.
         # Corresponds to the JSON property `securitySettings`
@@ -356,6 +370,8 @@ module Google
           @locked = args[:locked] if args.key?(:locked)
           @name = args[:name] if args.key?(:name)
           @personalization_settings = args[:personalization_settings] if args.key?(:personalization_settings)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @security_settings = args[:security_settings] if args.key?(:security_settings)
           @speech_to_text_settings = args[:speech_to_text_settings] if args.key?(:speech_to_text_settings)
           @start_flow = args[:start_flow] if args.key?(:start_flow)
