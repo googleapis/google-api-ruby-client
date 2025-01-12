@@ -1194,10 +1194,15 @@ module Google
         # @return [String]
         attr_accessor :host_project
       
+        # Optional. The region this component's resources are primarily located in.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # Optional. A list of replication sites used in Disaster Recovery (DR)
         # configurations.
         # Corresponds to the JSON property `replicationSites`
-        # @return [Array<Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent>]
+        # @return [Array<Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentReplicationSite>]
         attr_accessor :replication_sites
       
         # Optional. The resources in a component.
@@ -1226,6 +1231,7 @@ module Google
           @database_properties = args[:database_properties] if args.key?(:database_properties)
           @ha_hosts = args[:ha_hosts] if args.key?(:ha_hosts)
           @host_project = args[:host_project] if args.key?(:host_project)
+          @region = args[:region] if args.key?(:region)
           @replication_sites = args[:replication_sites] if args.key?(:replication_sites)
           @resources = args[:resources] if args.key?(:resources)
           @sid = args[:sid] if args.key?(:sid)
@@ -1344,6 +1350,31 @@ module Google
           @instance_number = args[:instance_number] if args.key?(:instance_number)
           @primary_instance_uri = args[:primary_instance_uri] if args.key?(:primary_instance_uri)
           @shared_nfs_uri = args[:shared_nfs_uri] if args.key?(:shared_nfs_uri)
+        end
+      end
+      
+      # A replication site used in Disaster Recovery (DR) configurations.
+      class SapDiscoveryComponentReplicationSite
+        include Google::Apis::Core::Hashable
+      
+        # Message describing the system component.
+        # Corresponds to the JSON property `component`
+        # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent]
+        attr_accessor :component
+      
+        # Optional. The name of the source site from which this one replicates.
+        # Corresponds to the JSON property `sourceSite`
+        # @return [String]
+        attr_accessor :source_site
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component = args[:component] if args.key?(:component)
+          @source_site = args[:source_site] if args.key?(:source_site)
         end
       end
       
