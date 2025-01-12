@@ -1671,6 +1671,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
+          property :dns_endpoint, as: 'dnsEndpoint'
           property :internal_ip, as: 'internalIp'
           property :proxy_url, as: 'proxyUrl'
         end
