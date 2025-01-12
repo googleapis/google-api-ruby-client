@@ -1096,6 +1096,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallPoliciesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FirewallPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3180,6 +3198,24 @@ module Google
       
       class NetworkEndpointWithHealthStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkFirewallPolicyAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8668,6 +8704,34 @@ module Google
         end
       end
       
+      class FirewallPoliciesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_policies, as: 'firewallPolicies', class: Google::Apis::ComputeV1::FirewallPolicy, decorator: Google::Apis::ComputeV1::FirewallPolicy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::FirewallPoliciesScopedList::Warning, decorator: Google::Apis::ComputeV1::FirewallPoliciesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::FirewallPoliciesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::FirewallPoliciesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class FirewallPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12640,6 +12704,39 @@ module Google
         end
       end
       
+      class NetworkFirewallPolicyAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::FirewallPoliciesScopedList, decorator: Google::Apis::ComputeV1::FirewallPoliciesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NetworkFirewallPolicyAggregatedList::Warning, decorator: Google::Apis::ComputeV1::NetworkFirewallPolicyAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NetworkFirewallPolicyAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NetworkFirewallPolicyAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class NetworkInterface
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12816,6 +12913,8 @@ module Google
           property :bgp_always_compare_med, as: 'bgpAlwaysCompareMed'
           property :bgp_best_path_selection_mode, as: 'bgpBestPathSelectionMode'
           property :bgp_inter_region_cost, as: 'bgpInterRegionCost'
+          property :effective_bgp_always_compare_med, as: 'effectiveBgpAlwaysCompareMed'
+          property :effective_bgp_inter_region_cost, as: 'effectiveBgpInterRegionCost'
           property :routing_mode, as: 'routingMode'
         end
       end
