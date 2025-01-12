@@ -472,9 +472,9 @@ module Google
       end
       
       # The internal range resource for IPAM operations within a VPC network. Used to
-      # represent a private address range along with behavioral characterstics of that
-      # range (its usage and peering behavior). Networking resources can link to this
-      # range if they are created as belonging to it.
+      # represent a private address range along with behavioral characteristics of
+      # that range (its usage and peering behavior). Networking resources can link to
+      # this range if they are created as belonging to it.
       class InternalRange
         include Google::Apis::Core::Hashable
       
