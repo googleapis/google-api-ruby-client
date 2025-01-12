@@ -1548,7 +1548,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :classification, as: 'classification'
           property :volume_bps, as: 'volumeBps'
+          property :volume_bps_long, :numeric_string => true, as: 'volumeBpsLong'
           property :volume_pps, as: 'volumePps'
+          property :volume_pps_long, :numeric_string => true, as: 'volumePpsLong'
         end
       end
       
@@ -2457,7 +2459,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :classification, as: 'classification'
           property :volume_bps, as: 'volumeBps'
+          property :volume_bps_long, :numeric_string => true, as: 'volumeBpsLong'
           property :volume_pps, as: 'volumePps'
+          property :volume_pps_long, :numeric_string => true, as: 'volumePpsLong'
         end
       end
       
