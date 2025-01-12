@@ -262,6 +262,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyDns64Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyDns64ConfigScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PolicyNetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -796,6 +808,8 @@ module Google
           property :alternative_name_server_config, as: 'alternativeNameServerConfig', class: Google::Apis::DnsV1::PolicyAlternativeNameServerConfig, decorator: Google::Apis::DnsV1::PolicyAlternativeNameServerConfig::Representation
       
           property :description, as: 'description'
+          property :dns64_config, as: 'dns64Config', class: Google::Apis::DnsV1::PolicyDns64Config, decorator: Google::Apis::DnsV1::PolicyDns64Config::Representation
+      
           property :enable_inbound_forwarding, as: 'enableInboundForwarding'
           property :enable_logging, as: 'enableLogging'
           property :id, :numeric_string => true, as: 'id'
@@ -821,6 +835,23 @@ module Google
           property :forwarding_path, as: 'forwardingPath'
           property :ipv4_address, as: 'ipv4Address'
           property :ipv6_address, as: 'ipv6Address'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class PolicyDns64Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :scope, as: 'scope', class: Google::Apis::DnsV1::PolicyDns64ConfigScope, decorator: Google::Apis::DnsV1::PolicyDns64ConfigScope::Representation
+      
+        end
+      end
+      
+      class PolicyDns64ConfigScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_queries, as: 'allQueries'
           property :kind, as: 'kind'
         end
       end
