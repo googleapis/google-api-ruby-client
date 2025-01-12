@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GceInstanceHost
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcePersistentDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +233,12 @@ module Google
       end
       
       class ReadinessCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuntimeHost
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -415,6 +427,15 @@ module Google
       
           collection :tags, as: 'tags'
           hash :vm_tags, as: 'vmTags'
+        end
+      end
+      
+      class GceInstanceHost
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :zone, as: 'zone'
         end
       end
       
@@ -630,6 +651,14 @@ module Google
         end
       end
       
+      class RuntimeHost
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gce_instance_host, as: 'gceInstanceHost', class: Google::Apis::WorkstationsV1::GceInstanceHost, decorator: Google::Apis::WorkstationsV1::GceInstanceHost::Representation
+      
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -642,6 +671,7 @@ module Google
       class StartWorkstationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost_config, as: 'boostConfig'
           property :etag, as: 'etag'
           property :validate_only, as: 'validateOnly'
         end
@@ -692,6 +722,9 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :runtime_host, as: 'runtimeHost', class: Google::Apis::WorkstationsV1::RuntimeHost, decorator: Google::Apis::WorkstationsV1::RuntimeHost::Representation
+      
+          property :source_workstation, as: 'sourceWorkstation'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :uid, as: 'uid'
