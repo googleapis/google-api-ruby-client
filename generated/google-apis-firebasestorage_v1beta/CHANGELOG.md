@@ -1,5 +1,10 @@
 # Release history for google-apis-firebasestorage_v1beta
 
+### v0.24.0 (2025-01-12)
+
+* Regenerated from discovery document revision 20241218
+* Regenerated using generator version 0.16.0
+
 ### v0.23.0 (2024-11-17)
 
 * Regenerated from discovery document revision 20241111
