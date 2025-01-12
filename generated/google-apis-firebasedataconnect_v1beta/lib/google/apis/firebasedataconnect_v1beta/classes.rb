@@ -839,8 +839,12 @@ module Google
         # @return [String]
         attr_accessor :database
       
-        # Optional. Configure how much Postgresql schema validation to perform. Default
-        # to `STRICT` if not specified.
+        # Optional. Configure how to perform Postgresql schema migration.
+        # Corresponds to the JSON property `schemaMigration`
+        # @return [String]
+        attr_accessor :schema_migration
+      
+        # Optional. Configure how much Postgresql schema validation to perform.
         # Corresponds to the JSON property `schemaValidation`
         # @return [String]
         attr_accessor :schema_validation
@@ -860,6 +864,7 @@ module Google
         def update!(**args)
           @cloud_sql = args[:cloud_sql] if args.key?(:cloud_sql)
           @database = args[:database] if args.key?(:database)
+          @schema_migration = args[:schema_migration] if args.key?(:schema_migration)
           @schema_validation = args[:schema_validation] if args.key?(:schema_validation)
           @unlinked = args[:unlinked] if args.key?(:unlinked)
         end
