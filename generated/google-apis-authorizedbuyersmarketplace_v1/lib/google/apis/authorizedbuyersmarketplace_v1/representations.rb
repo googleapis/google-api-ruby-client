@@ -460,6 +460,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :creator, as: 'creator'
+          property :deal_owner_seat_id, as: 'dealOwnerSeatId'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           collection :eligible_seat_ids, as: 'eligibleSeatIds'
