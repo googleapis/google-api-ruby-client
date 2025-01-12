@@ -2255,7 +2255,8 @@ module Google
       # be skipped. See https://cloud.google.com/sensitive-data-protection/docs/
       # pseudonymization to learn more. Note: We recommend using
       # CryptoDeterministicConfig for all use cases which do not require preserving
-      # the input alphabet space and size, plus warrant referential integrity.
+      # the input alphabet space and size, plus warrant referential integrity. FPE
+      # incurs significant latency costs.
       class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig
         include Google::Apis::Core::Hashable
       
@@ -7711,7 +7712,8 @@ module Google
         # be skipped. See https://cloud.google.com/sensitive-data-protection/docs/
         # pseudonymization to learn more. Note: We recommend using
         # CryptoDeterministicConfig for all use cases which do not require preserving
-        # the input alphabet space and size, plus warrant referential integrity.
+        # the input alphabet space and size, plus warrant referential integrity. FPE
+        # incurs significant latency costs.
         # Corresponds to the JSON property `cryptoReplaceFfxFpeConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig]
         attr_accessor :crypto_replace_ffx_fpe_config
