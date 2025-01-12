@@ -1,5 +1,11 @@
 # Release History
 
+### 0.16.0 (2025-01-12)
+
+#### Features
+
+* Automated regeneration of ml v1 client ([#21158](https://github.com/googleapis/google-api-ruby-client/issues/21158)) 
+
 ### 0.15.1 (2024-07-29)
 
 #### Bug Fixes
