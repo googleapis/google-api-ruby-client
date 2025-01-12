@@ -287,6 +287,120 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Obtains the time series data of organic or dedicated crawl rate for monitoring.
+        # When dedicated crawl rate is not set, it will return vertex AI's organic
+        # crawl rate time series. Organic crawl means Google automatically crawl the
+        # internet at its own convenience. When dedicated crawl rate is set, it will
+        # return vertex AI's dedicated crawl rate time series.
+        # @param [String] location
+        #   Required. The location resource where crawl rate management will be performed.
+        #   Format: `projects/`project`/locations/`location``
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest] google_cloud_discoveryengine_v1alpha_obtain_crawl_rate_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def obtain_project_location_crawl_rate(location, google_cloud_discoveryengine_v1alpha_obtain_crawl_rate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+location}:obtainCrawlRate', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_obtain_crawl_rate_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes the dedicated crawl rate for a craw_rate_scope. If the dedicated crawl
+        # rate was set, this will disable vertex AI's crawl bot from using the dedicated
+        # crawl rate for crawling. If the dedicated crawl rate was not set, this is a no-
+        # op.
+        # @param [String] location
+        #   Required. The location resource where crawl rate management will be performed.
+        #   Format: `projects/`project`/locations/`location``
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateRequest] google_cloud_discoveryengine_v1alpha_remove_dedicated_crawl_rate_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_location_dedicated_crawl_rate(location, google_cloud_discoveryengine_v1alpha_remove_dedicated_crawl_rate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+location}:removeDedicatedCrawlRate', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_remove_dedicated_crawl_rate_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the dedicated crawl rate for a crawl_rate_scope. If the dedicated crawl
+        # rate was not set, this will enable vertex AI's crawl bot to use the new
+        # dedicated crawl rate for crawling. If the dedicated crawl rate was set, vertex
+        # AI's crawl bot will try to update the rate to the new value. If the new value
+        # is too high, the crawl bot may crawl at a lower rate to avoid overloading the
+        # user's website.
+        # @param [String] location
+        #   Required. The location resource where crawl rate management will be performed.
+        #   Format: `projects/`project`/locations/`location``
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateRequest] google_cloud_discoveryengine_v1alpha_set_dedicated_crawl_rate_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_dedicated_crawl_rate(location, google_cloud_discoveryengine_v1alpha_set_dedicated_crawl_rate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+location}:setDedicatedCrawlRate', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_set_dedicated_crawl_rate_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Collection and sets up the DataConnector for it. To stop a
         # DataConnector after setup, use the CollectionService.DeleteCollection method.
         # @param [String] parent
@@ -1361,7 +1475,7 @@ module Google
         #   is returned. This field must be unique among all Documents with the same
         #   parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must
         #   conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a
-        #   length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is
+        #   length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is
         #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6151,7 +6265,7 @@ module Google
         #   is returned. This field must be unique among all Documents with the same
         #   parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must
         #   conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a
-        #   length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is
+        #   length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is
         #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8829,12 +8943,14 @@ module Google
         # @param [String] evaluation
         #   Required. The evaluation resource name, such as `projects/`project`/locations/`
         #   location`/evaluations/`evaluation``. If the caller does not have permission to
-        #   list EvaluationResult under this evaluation, regardless of whether or not this
-        #   evaluation set exists, a `PERMISSION_DENIED` error is returned.
+        #   list ListEvaluationResultsResponse.EvaluationResult under this evaluation,
+        #   regardless of whether or not this evaluation set exists, a `PERMISSION_DENIED`
+        #   error is returned.
         # @param [Fixnum] page_size
-        #   Maximum number of EvaluationResult to return. If unspecified, defaults to 100.
-        #   The maximum allowed value is 1000. Values above 1000 will be coerced to 1000.
-        #   If this field is negative, an `INVALID_ARGUMENT` error is returned.
+        #   Maximum number of ListEvaluationResultsResponse.EvaluationResult to return. If
+        #   unspecified, defaults to 100. The maximum allowed value is 1000. Values above
+        #   1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT`
+        #   error is returned.
         # @param [String] page_token
         #   A page token ListEvaluationResultsResponse.next_page_token, received from a
         #   previous EvaluationService.ListEvaluationResults call. Provide this to
