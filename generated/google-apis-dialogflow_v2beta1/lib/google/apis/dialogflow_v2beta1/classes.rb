@@ -12513,6 +12513,12 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The information about phone calls connected via phone gateway to the
+        # conversation.
+        # Corresponds to the JSON property `telephonyConnectionInfo`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfo]
+        attr_accessor :telephony_connection_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -12526,6 +12532,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @telephony_connection_info = args[:telephony_connection_info] if args.key?(:telephony_connection_info)
         end
       end
       
@@ -12625,6 +12632,11 @@ module Google
       class GoogleCloudDialogflowV2beta1ConversationPhoneNumber
         include Google::Apis::Core::Hashable
       
+        # Output only. Desired country code for the phone number.
+        # Corresponds to the JSON property `countryCode`
+        # @return [Fixnum]
+        attr_accessor :country_code
+      
         # Output only. The phone number to connect to this conversation.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
@@ -12636,6 +12648,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @country_code = args[:country_code] if args.key?(:country_code)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
@@ -12755,6 +12768,96 @@ module Google
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @tts_config = args[:tts_config] if args.key?(:tts_config)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The information about phone calls connected via phone gateway to the
+      # conversation.
+      class GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number dialed to connect this call in E.164 format.
+        # Corresponds to the JSON property `dialedNumber`
+        # @return [String]
+        attr_accessor :dialed_number
+      
+        # Output only. The mime content from the initial SIP INVITE.
+        # Corresponds to the JSON property `extraMimeContents`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoMimeContent>]
+        attr_accessor :extra_mime_contents
+      
+        # Optional. SDP of the call. It's initially the SDP answer to the endpoint, but
+        # maybe later updated for the purpose of making the link active, etc.
+        # Corresponds to the JSON property `sdp`
+        # @return [String]
+        attr_accessor :sdp
+      
+        # Output only. The SIP headers from the initial SIP INVITE.
+        # Corresponds to the JSON property `sipHeaders`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoSipHeader>]
+        attr_accessor :sip_headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dialed_number = args[:dialed_number] if args.key?(:dialed_number)
+          @extra_mime_contents = args[:extra_mime_contents] if args.key?(:extra_mime_contents)
+          @sdp = args[:sdp] if args.key?(:sdp)
+          @sip_headers = args[:sip_headers] if args.key?(:sip_headers)
+        end
+      end
+      
+      # The mime content from the initial SIP INVITE.
+      class GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoMimeContent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The content payload.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        # Optional. The mime type of the content.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # The SIP headers from the initial SIP INVITE.
+      class GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoSipHeader
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the header.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The value of the header.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
