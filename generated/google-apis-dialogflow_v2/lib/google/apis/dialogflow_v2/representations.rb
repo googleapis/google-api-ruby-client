@@ -1468,6 +1468,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5727,6 +5745,8 @@ module Google
           property :phone_number, as: 'phoneNumber', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationPhoneNumber, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationPhoneNumber::Representation
       
           property :start_time, as: 'startTime'
+          property :telephony_connection_info, as: 'telephonyConnectionInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo::Representation
+      
         end
       end
       
@@ -5812,6 +5832,7 @@ module Google
       class GoogleCloudDialogflowV2ConversationPhoneNumber
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :country_code, as: 'countryCode'
           property :phone_number, as: 'phoneNumber'
         end
       end
@@ -5844,6 +5865,34 @@ module Google
           property :tts_config, as: 'ttsConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SynthesizeSpeechConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SynthesizeSpeechConfig::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dialed_number, as: 'dialedNumber'
+          collection :extra_mime_contents, as: 'extraMimeContents', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent::Representation
+      
+          property :sdp, as: 'sdp'
+          collection :sip_headers, as: 'sipHeaders', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
