@@ -4451,6 +4451,21 @@ module Google
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2RuleOnewaySynonymsAction]
         attr_accessor :oneway_synonyms_action
       
+        # Pins one or more specified products to a specific position in the results. *
+        # Rule Condition: Must specify non-empty Condition.query_terms (for search only)
+        # or Condition.page_categories (for browse only), but can't specify both. *
+        # Action Input: mapping of `[pin_position, product_id]` pairs (pin position uses
+        # 1-based indexing). * Action Result: Will pin products with matching ids to the
+        # position specified in the final result order. Example: Suppose the query is `
+        # shoes`, the Condition.query_terms is `shoes` and the pin_map has ``1, "pid1"``,
+        # then product with `pid1` will be pinned to the top position in the final
+        # results. If multiple PinActions are matched to a single request the actions
+        # will be processed from most to least recently updated. Pins to positions
+        # larger than the max allowed page size of 120 are not allowed.
+        # Corresponds to the JSON property `pinAction`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2RulePinAction]
+        attr_accessor :pin_action
+      
         # Redirects a shopper to a specific page. * Rule Condition: Must specify
         # Condition.query_terms. * Action Input: Request Query * Action Result:
         # Redirects shopper to provided uri.
@@ -4496,6 +4511,7 @@ module Google
           @force_return_facet_action = args[:force_return_facet_action] if args.key?(:force_return_facet_action)
           @ignore_action = args[:ignore_action] if args.key?(:ignore_action)
           @oneway_synonyms_action = args[:oneway_synonyms_action] if args.key?(:oneway_synonyms_action)
+          @pin_action = args[:pin_action] if args.key?(:pin_action)
           @redirect_action = args[:redirect_action] if args.key?(:redirect_action)
           @remove_facet_action = args[:remove_facet_action] if args.key?(:remove_facet_action)
           @replacement_action = args[:replacement_action] if args.key?(:replacement_action)
@@ -4718,6 +4734,43 @@ module Google
           @oneway_terms = args[:oneway_terms] if args.key?(:oneway_terms)
           @query_terms = args[:query_terms] if args.key?(:query_terms)
           @synonyms = args[:synonyms] if args.key?(:synonyms)
+        end
+      end
+      
+      # Pins one or more specified products to a specific position in the results. *
+      # Rule Condition: Must specify non-empty Condition.query_terms (for search only)
+      # or Condition.page_categories (for browse only), but can't specify both. *
+      # Action Input: mapping of `[pin_position, product_id]` pairs (pin position uses
+      # 1-based indexing). * Action Result: Will pin products with matching ids to the
+      # position specified in the final result order. Example: Suppose the query is `
+      # shoes`, the Condition.query_terms is `shoes` and the pin_map has ``1, "pid1"``,
+      # then product with `pid1` will be pinned to the top position in the final
+      # results. If multiple PinActions are matched to a single request the actions
+      # will be processed from most to least recently updated. Pins to positions
+      # larger than the max allowed page size of 120 are not allowed.
+      class GoogleCloudRetailV2RulePinAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. A map of positions to product_ids. Partial matches per action are
+        # allowed, if a certain position in the map is already filled that `[position,
+        # product_id]` pair will be ignored but the rest may still be applied. This case
+        # will only occur if multiple pin actions are matched to a single request, as
+        # the map guarantees that pin positions are unique within the same action.
+        # Duplicate product_ids are not permitted within a single pin map. The max size
+        # of this map is 120, equivalent to the max [request page size](https://cloud.
+        # google.com/retail/docs/reference/rest/v2/projects.locations.catalogs.
+        # placements/search#request-body).
+        # Corresponds to the JSON property `pinMap`
+        # @return [Hash<String,String>]
+        attr_accessor :pin_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pin_map = args[:pin_map] if args.key?(:pin_map)
         end
       end
       
