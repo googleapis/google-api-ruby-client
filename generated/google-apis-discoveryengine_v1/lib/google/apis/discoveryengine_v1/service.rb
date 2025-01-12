@@ -595,7 +595,7 @@ module Google
         #   is returned. This field must be unique among all Documents with the same
         #   parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must
         #   conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a
-        #   length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is
+        #   length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is
         #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4733,7 +4733,7 @@ module Google
         #   is returned. This field must be unique among all Documents with the same
         #   parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must
         #   conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a
-        #   length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is
+        #   length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is
         #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
