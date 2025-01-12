@@ -1579,6 +1579,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # DNS64 policies
+        # Corresponds to the JSON property `dns64Config`
+        # @return [Google::Apis::DnsV1beta2::PolicyDns64Config]
+        attr_accessor :dns64_config
+      
         # Allows networks bound to this policy to receive DNS queries sent by VMs or
         # applications over VPN connections. When enabled, a virtual IP address is
         # allocated from each of the subnetworks that are bound to this policy.
@@ -1622,6 +1627,7 @@ module Google
         def update!(**args)
           @alternative_name_server_config = args[:alternative_name_server_config] if args.key?(:alternative_name_server_config)
           @description = args[:description] if args.key?(:description)
+          @dns64_config = args[:dns64_config] if args.key?(:dns64_config)
           @enable_inbound_forwarding = args[:enable_inbound_forwarding] if args.key?(:enable_inbound_forwarding)
           @enable_logging = args[:enable_logging] if args.key?(:enable_logging)
           @id = args[:id] if args.key?(:id)
@@ -1696,6 +1702,57 @@ module Google
           @forwarding_path = args[:forwarding_path] if args.key?(:forwarding_path)
           @ipv4_address = args[:ipv4_address] if args.key?(:ipv4_address)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # DNS64 policies
+      class PolicyDns64Config
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The scope to which DNS64 config will be applied to.
+        # Corresponds to the JSON property `scope`
+        # @return [Google::Apis::DnsV1beta2::PolicyDns64ConfigScope]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # 
+      class PolicyDns64ConfigScope
+        include Google::Apis::Core::Hashable
+      
+        # Controls whether DNS64 is enabled globally at the network level.
+        # Corresponds to the JSON property `allQueries`
+        # @return [Boolean]
+        attr_accessor :all_queries
+        alias_method :all_queries?, :all_queries
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_queries = args[:all_queries] if args.key?(:all_queries)
           @kind = args[:kind] if args.key?(:kind)
         end
       end
