@@ -695,12 +695,26 @@ module Google
       class GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig
         include Google::Apis::Core::Hashable
       
+        # If set true, automatic refresh is disabled for the DataStore.
+        # Corresponds to the JSON property `disableAutomaticRefresh`
+        # @return [Boolean]
+        attr_accessor :disable_automatic_refresh
+        alias_method :disable_automatic_refresh?, :disable_automatic_refresh
+      
+        # If set true, initial indexing is disabled for the DataStore.
+        # Corresponds to the JSON property `disableInitialIndex`
+        # @return [Boolean]
+        attr_accessor :disable_initial_index
+        alias_method :disable_initial_index?, :disable_initial_index
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @disable_automatic_refresh = args[:disable_automatic_refresh] if args.key?(:disable_automatic_refresh)
+          @disable_initial_index = args[:disable_initial_index] if args.key?(:disable_initial_index)
         end
       end
       
@@ -997,8 +1011,8 @@ module Google
       class GoogleCloudDiscoveryengineV1ControlBoostAction
         include Google::Apis::Core::Hashable
       
-        # Required. Strength of the boost, which should be in [-1, 1]. Negative boost
-        # means demotion. Default is 0.0 (No-op).
+        # Strength of the boost, which should be in [-1, 1]. Negative boost means
+        # demotion. Default is 0.0 (No-op).
         # Corresponds to the JSON property `boost`
         # @return [Float]
         attr_accessor :boost
@@ -1018,6 +1032,12 @@ module Google
         # @return [String]
         attr_accessor :filter
       
+        # Optional. Strength of the boost, which should be in [-1, 1]. Negative boost
+        # means demotion. Default is 0.0 (No-op).
+        # Corresponds to the JSON property `fixedBoost`
+        # @return [Float]
+        attr_accessor :fixed_boost
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1027,6 +1047,7 @@ module Google
           @boost = args[:boost] if args.key?(:boost)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
+          @fixed_boost = args[:fixed_boost] if args.key?(:fixed_boost)
         end
       end
       
@@ -1463,6 +1484,34 @@ module Google
       # Metadata related to the progress of the EngineService.DeleteEngine operation.
       # This will be returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1DeleteEngineMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the IdentityMappingStoreService.
+      # DeleteIdentityMappingStore operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1DeleteIdentityMappingStoreMetadata
         include Google::Apis::Core::Hashable
       
         # Operation create time.
@@ -3158,7 +3207,7 @@ module Google
         # The ranking expression controls the customized ranking on retrieval documents.
         # To leverage this, document embedding is required. The ranking expression
         # setting in ServingConfig applies to all search requests served by the serving
-        # config. However, if SearchRequest.ranking_expression is specified, it
+        # config. However, if `SearchRequest.ranking_expression` is specified, it
         # overrides the ServingConfig ranking expression. The ranking expression is a
         # single function or multiple functions that are joined by "+". *
         # ranking_expression = function, ` " + ", function `; Supported functions: *
@@ -3364,7 +3413,7 @@ module Google
       class GoogleCloudDiscoveryengineV1TargetSite
         include Google::Apis::Core::Hashable
       
-        # Input only. If set to false, a uri_pattern is generated to include all pages
+        # Immutable. If set to false, a uri_pattern is generated to include all pages
         # whose address contains the provided_uri_pattern. If set to true, an
         # uri_pattern is generated to try to be an exact match of the
         # provided_uri_pattern or just the specific page if the provided_uri_pattern is
@@ -3830,6 +3879,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :related_questions
       
+        # Optional. Safety ratings.
+        # Corresponds to the JSON property `safetyRatings`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSafetyRating>]
+        attr_accessor :safety_ratings
+      
         # The state of the answer generation.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -3857,6 +3911,7 @@ module Google
           @query_understanding_info = args[:query_understanding_info] if args.key?(:query_understanding_info)
           @references = args[:references] if args.key?(:references)
           @related_questions = args[:related_questions] if args.key?(:related_questions)
+          @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
           @state = args[:state] if args.key?(:state)
           @steps = args[:steps] if args.key?(:steps)
         end
@@ -4555,8 +4610,9 @@ module Google
       
         # Manages the connection to external data sources for all data stores grouped
         # under a Collection. It's a singleton resource of Collection. The
-        # initialization is only supported through SetUpDataConnector method, which will
-        # create a new Collection and initialize its DataConnector. //
+        # initialization is only supported through DataConnectorService.
+        # SetUpDataConnector method, which will create a new Collection and initialize
+        # its DataConnector.
         # Corresponds to the JSON property `dataConnector`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnector]
         attr_accessor :data_connector
@@ -4926,8 +4982,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaControlBoostAction
         include Google::Apis::Core::Hashable
       
-        # Required. Strength of the boost, which should be in [-1, 1]. Negative boost
-        # means demotion. Default is 0.0 (No-op).
+        # Strength of the boost, which should be in [-1, 1]. Negative boost means
+        # demotion. Default is 0.0 (No-op).
         # Corresponds to the JSON property `boost`
         # @return [Float]
         attr_accessor :boost
@@ -4947,6 +5003,12 @@ module Google
         # @return [String]
         attr_accessor :filter
       
+        # Optional. Strength of the boost, which should be in [-1, 1]. Negative boost
+        # means demotion. Default is 0.0 (No-op).
+        # Corresponds to the JSON property `fixedBoost`
+        # @return [Float]
+        attr_accessor :fixed_boost
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4956,6 +5018,7 @@ module Google
           @boost = args[:boost] if args.key?(:boost)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
+          @fixed_boost = args[:fixed_boost] if args.key?(:fixed_boost)
         end
       end
       
@@ -5253,8 +5316,9 @@ module Google
       
       # Manages the connection to external data sources for all data stores grouped
       # under a Collection. It's a singleton resource of Collection. The
-      # initialization is only supported through SetUpDataConnector method, which will
-      # create a new Collection and initialize its DataConnector. //
+      # initialization is only supported through DataConnectorService.
+      # SetUpDataConnector method, which will create a new Collection and initialize
+      # its DataConnector.
       class GoogleCloudDiscoveryengineV1alphaDataConnector
         include Google::Apis::Core::Hashable
       
@@ -5819,6 +5883,34 @@ module Google
       # Metadata related to the progress of the EngineService.DeleteEngine operation.
       # This will be returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1alphaDeleteEngineMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata related to the progress of the IdentityMappingStoreService.
+      # DeleteIdentityMappingStore operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaDeleteIdentityMappingStoreMetadata
         include Google::Apis::Core::Hashable
       
         # Operation create time.
@@ -7068,6 +7160,24 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig
         include Google::Apis::Core::Hashable
       
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `nextSyncTime`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleTypeDateTime]
+        attr_accessor :next_sync_time
+      
         # Optional. The refresh interval to sync the Access Control List information for
         # the documents ingested by this connector. If not set, the access control list
         # will be refreshed at the default interval of 30 minutes. The identity refresh
@@ -7082,6 +7192,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @next_sync_time = args[:next_sync_time] if args.key?(:next_sync_time)
           @refresh_interval = args[:refresh_interval] if args.key?(:refresh_interval)
         end
       end
@@ -8350,6 +8461,117 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the CrawlRateManagementService.
+      # RemoveDedicatedCrawlRate operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for CrawlRateManagementService.RemoveDedicatedCrawlRate
+      # method. It simply returns the state of the response, and an error message if
+      # the state is FAILED.
+      class GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Output only. The state of the response.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Safety rating corresponding to the generated content.
+      class GoogleCloudDiscoveryengineV1alphaSafetyRating
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates whether the content was filtered out because of this
+        # rating.
+        # Corresponds to the JSON property `blocked`
+        # @return [Boolean]
+        attr_accessor :blocked
+        alias_method :blocked?, :blocked
+      
+        # Output only. Harm category.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Output only. Harm probability levels in the content.
+        # Corresponds to the JSON property `probability`
+        # @return [String]
+        attr_accessor :probability
+      
+        # Output only. Harm probability score.
+        # Corresponds to the JSON property `probabilityScore`
+        # @return [Float]
+        attr_accessor :probability_score
+      
+        # Output only. Harm severity levels in the content.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Output only. Harm severity score.
+        # Corresponds to the JSON property `severityScore`
+        # @return [Float]
+        attr_accessor :severity_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocked = args[:blocked] if args.key?(:blocked)
+          @category = args[:category] if args.key?(:category)
+          @probability = args[:probability] if args.key?(:probability)
+          @probability_score = args[:probability_score] if args.key?(:probability_score)
+          @severity = args[:severity] if args.key?(:severity)
+          @severity_score = args[:severity_score] if args.key?(:severity_score)
+        end
+      end
+      
       # Defines the structure and layout of a type of document data.
       class GoogleCloudDiscoveryengineV1alphaSchema
         include Google::Apis::Core::Hashable
@@ -9503,8 +9725,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec
         include Google::Apis::Core::Hashable
       
-        # The condition under which filter extraction should occur. Default to Condition.
-        # DISABLED.
+        # The condition under which filter extraction should occur. Server behavior
+        # defaults to `DISABLED`.
         # Corresponds to the JSON property `filterExtractionCondition`
         # @return [String]
         attr_accessor :filter_extraction_condition
@@ -9755,6 +9977,66 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the CrawlRateManagementService.
+      # SetDedicatedCrawlRate operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for CrawlRateManagementService.SetDedicatedCrawlRate method.
+      # It simply returns the state of the response, and an error message if the state
+      # is FAILED.
+      class GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Output only. The state of the response.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Metadata for DataConnectorService.SetUpDataConnector method.
       class GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorMetadata
         include Google::Apis::Core::Hashable
@@ -9892,7 +10174,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaTargetSite
         include Google::Apis::Core::Hashable
       
-        # Input only. If set to false, a uri_pattern is generated to include all pages
+        # Immutable. If set to false, a uri_pattern is generated to include all pages
         # whose address contains the provided_uri_pattern. If set to true, an
         # uri_pattern is generated to try to be an exact match of the
         # provided_uri_pattern or just the specific page if the provided_uri_pattern is
@@ -10656,12 +10938,26 @@ module Google
       class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig
         include Google::Apis::Core::Hashable
       
+        # If set true, automatic refresh is disabled for the DataStore.
+        # Corresponds to the JSON property `disableAutomaticRefresh`
+        # @return [Boolean]
+        attr_accessor :disable_automatic_refresh
+        alias_method :disable_automatic_refresh?, :disable_automatic_refresh
+      
+        # If set true, initial indexing is disabled for the DataStore.
+        # Corresponds to the JSON property `disableInitialIndex`
+        # @return [Boolean]
+        attr_accessor :disable_initial_index
+        alias_method :disable_initial_index?, :disable_initial_index
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @disable_automatic_refresh = args[:disable_automatic_refresh] if args.key?(:disable_automatic_refresh)
+          @disable_initial_index = args[:disable_initial_index] if args.key?(:disable_initial_index)
         end
       end
       
@@ -10785,6 +11081,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :related_questions
       
+        # Optional. Safety ratings.
+        # Corresponds to the JSON property `safetyRatings`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSafetyRating>]
+        attr_accessor :safety_ratings
+      
         # The state of the answer generation.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -10812,6 +11113,7 @@ module Google
           @query_understanding_info = args[:query_understanding_info] if args.key?(:query_understanding_info)
           @references = args[:references] if args.key?(:references)
           @related_questions = args[:related_questions] if args.key?(:related_questions)
+          @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
           @state = args[:state] if args.key?(:state)
           @steps = args[:steps] if args.key?(:steps)
         end
@@ -11311,6 +11613,12 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
+        # Optional. Safety settings. This settings are effective only when the
+        # safety_spec.enable is true.
+        # Corresponds to the JSON property `safetySettings`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySetting>]
+        attr_accessor :safety_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11318,6 +11626,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
+          @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
+        end
+      end
+      
+      # Safety settings.
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySetting
+        include Google::Apis::Core::Hashable
+      
+        # Required. Harm category.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Required. The harm block threshold.
+        # Corresponds to the JSON property `threshold`
+        # @return [String]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @threshold = args[:threshold] if args.key?(:threshold)
         end
       end
       
@@ -13340,8 +13674,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaControlBoostAction
         include Google::Apis::Core::Hashable
       
-        # Required. Strength of the boost, which should be in [-1, 1]. Negative boost
-        # means demotion. Default is 0.0 (No-op).
+        # Strength of the boost, which should be in [-1, 1]. Negative boost means
+        # demotion. Default is 0.0 (No-op).
         # Corresponds to the JSON property `boost`
         # @return [Float]
         attr_accessor :boost
@@ -13361,6 +13695,12 @@ module Google
         # @return [String]
         attr_accessor :filter
       
+        # Optional. Strength of the boost, which should be in [-1, 1]. Negative boost
+        # means demotion. Default is 0.0 (No-op).
+        # Corresponds to the JSON property `fixedBoost`
+        # @return [Float]
+        attr_accessor :fixed_boost
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13370,6 +13710,7 @@ module Google
           @boost = args[:boost] if args.key?(:boost)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
+          @fixed_boost = args[:fixed_boost] if args.key?(:fixed_boost)
         end
       end
       
@@ -14240,6 +14581,34 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the IdentityMappingStoreService.
+      # DeleteIdentityMappingStore operation. This will be returned by the google.
+      # longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1betaDeleteIdentityMappingStoreMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata for DeleteSchema LRO.
       class GoogleCloudDiscoveryengineV1betaDeleteSchemaMetadata
         include Google::Apis::Core::Hashable
@@ -14393,7 +14762,7 @@ module Google
         attr_accessor :derived_struct_data
       
         # Immutable. The identifier of the document. Id should conform to [RFC-1034](
-        # https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
+        # https://tools.ietf.org/html/rfc1034) standard with a length limit of 128
         # characters.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -17052,7 +17421,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse
         include Google::Apis::Core::Hashable
       
-        # The EvaluationResults.
+        # The evaluation results for the SampleQuerys.
         # Corresponds to the JSON property `evaluationResults`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResult>]
         attr_accessor :evaluation_results
@@ -18269,7 +18638,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaRecrawlUrisRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Full resource name of the SiteCredential, such as `projects/*/
+        # Optional. Full resource name of the `SiteCredential`, such as `projects/*/
         # locations/*/collections/*/dataStores/*/siteSearchEngine/siteCredentials/*`.
         # Only set to crawl private URIs.
         # Corresponds to the JSON property `siteCredential`
@@ -18372,6 +18741,57 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Safety rating corresponding to the generated content.
+      class GoogleCloudDiscoveryengineV1betaSafetyRating
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates whether the content was filtered out because of this
+        # rating.
+        # Corresponds to the JSON property `blocked`
+        # @return [Boolean]
+        attr_accessor :blocked
+        alias_method :blocked?, :blocked
+      
+        # Output only. Harm category.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Output only. Harm probability levels in the content.
+        # Corresponds to the JSON property `probability`
+        # @return [String]
+        attr_accessor :probability
+      
+        # Output only. Harm probability score.
+        # Corresponds to the JSON property `probabilityScore`
+        # @return [Float]
+        attr_accessor :probability_score
+      
+        # Output only. Harm severity levels in the content.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Output only. Harm severity score.
+        # Corresponds to the JSON property `severityScore`
+        # @return [Float]
+        attr_accessor :severity_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocked = args[:blocked] if args.key?(:blocked)
+          @category = args[:category] if args.key?(:category)
+          @probability = args[:probability] if args.key?(:probability)
+          @probability_score = args[:probability_score] if args.key?(:probability_score)
+          @severity = args[:severity] if args.key?(:severity)
+          @severity_score = args[:severity_score] if args.key?(:severity_score)
         end
       end
       
@@ -19695,8 +20115,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec
         include Google::Apis::Core::Hashable
       
-        # The condition under which filter extraction should occur. Default to Condition.
-        # DISABLED.
+        # The condition under which filter extraction should occur. Server behavior
+        # defaults to `DISABLED`.
         # Corresponds to the JSON property `filterExtractionCondition`
         # @return [String]
         attr_accessor :filter_extraction_condition
@@ -20835,7 +21255,7 @@ module Google
         # The ranking expression controls the customized ranking on retrieval documents.
         # To leverage this, document embedding is required. The ranking expression
         # setting in ServingConfig applies to all search requests served by the serving
-        # config. However, if SearchRequest.ranking_expression is specified, it
+        # config. However, if `SearchRequest.ranking_expression` is specified, it
         # overrides the ServingConfig ranking expression. The ranking expression is a
         # single function or multiple functions that are joined by "+". *
         # ranking_expression = function, ` " + ", function `; Supported functions: *
@@ -21270,7 +21690,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaTargetSite
         include Google::Apis::Core::Hashable
       
-        # Input only. If set to false, a uri_pattern is generated to include all pages
+        # Immutable. If set to false, a uri_pattern is generated to include all pages
         # whose address contains the provided_uri_pattern. If set to true, an
         # uri_pattern is generated to try to be an exact match of the
         # provided_uri_pattern or just the specific page if the provided_uri_pattern is
