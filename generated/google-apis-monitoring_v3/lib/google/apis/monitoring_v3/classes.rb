@@ -4696,7 +4696,7 @@ module Google
         # the input by time. A filter will automatically be applied to filter the input
         # so that the query receives all rows received since the last time the query was
         # run.For example, the following query extracts all log entries containing an
-        # HTTP request:SELECT timestamp, log_name, severity, http_request, resource,
+        # HTTP request: SELECT timestamp, log_name, severity, http_request, resource,
         # labels FROM my-project.global._Default._AllLogs WHERE http_request IS NOT NULL
         # Corresponds to the JSON property `query`
         # @return [String]
