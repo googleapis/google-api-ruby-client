@@ -247,15 +247,27 @@ module Google
         # @return [String]
         attr_accessor :classification
       
-        # Total BPS (bytes per second) volume of attack.
+        # Total BPS (bytes per second) volume of attack. Deprecated - refer to
+        # volume_bps_long instead.
         # Corresponds to the JSON property `volumeBps`
         # @return [Fixnum]
         attr_accessor :volume_bps
       
-        # Total PPS (packets per second) volume of attack.
+        # Total BPS (bytes per second) volume of attack.
+        # Corresponds to the JSON property `volumeBpsLong`
+        # @return [Fixnum]
+        attr_accessor :volume_bps_long
+      
+        # Total PPS (packets per second) volume of attack. Deprecated - refer to
+        # volume_pps_long instead.
         # Corresponds to the JSON property `volumePps`
         # @return [Fixnum]
         attr_accessor :volume_pps
+      
+        # Total PPS (packets per second) volume of attack.
+        # Corresponds to the JSON property `volumePpsLong`
+        # @return [Fixnum]
+        attr_accessor :volume_pps_long
       
         def initialize(**args)
            update!(**args)
@@ -265,7 +277,9 @@ module Google
         def update!(**args)
           @classification = args[:classification] if args.key?(:classification)
           @volume_bps = args[:volume_bps] if args.key?(:volume_bps)
+          @volume_bps_long = args[:volume_bps_long] if args.key?(:volume_bps_long)
           @volume_pps = args[:volume_pps] if args.key?(:volume_pps)
+          @volume_pps_long = args[:volume_pps_long] if args.key?(:volume_pps_long)
         end
       end
       
@@ -3852,15 +3866,27 @@ module Google
         # @return [String]
         attr_accessor :classification
       
-        # Total BPS (bytes per second) volume of attack.
+        # Total BPS (bytes per second) volume of attack. Deprecated - refer to
+        # volume_bps_long instead.
         # Corresponds to the JSON property `volumeBps`
         # @return [Fixnum]
         attr_accessor :volume_bps
       
-        # Total PPS (packets per second) volume of attack.
+        # Total BPS (bytes per second) volume of attack.
+        # Corresponds to the JSON property `volumeBpsLong`
+        # @return [Fixnum]
+        attr_accessor :volume_bps_long
+      
+        # Total PPS (packets per second) volume of attack. Deprecated - refer to
+        # volume_pps_long instead.
         # Corresponds to the JSON property `volumePps`
         # @return [Fixnum]
         attr_accessor :volume_pps
+      
+        # Total PPS (packets per second) volume of attack.
+        # Corresponds to the JSON property `volumePpsLong`
+        # @return [Fixnum]
+        attr_accessor :volume_pps_long
       
         def initialize(**args)
            update!(**args)
@@ -3870,7 +3896,9 @@ module Google
         def update!(**args)
           @classification = args[:classification] if args.key?(:classification)
           @volume_bps = args[:volume_bps] if args.key?(:volume_bps)
+          @volume_bps_long = args[:volume_bps_long] if args.key?(:volume_bps_long)
           @volume_pps = args[:volume_pps] if args.key?(:volume_pps)
+          @volume_pps_long = args[:volume_pps_long] if args.key?(:volume_pps_long)
         end
       end
       
