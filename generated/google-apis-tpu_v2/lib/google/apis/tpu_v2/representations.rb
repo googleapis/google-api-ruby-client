@@ -589,6 +589,8 @@ module Google
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::TpuV2::NetworkConfig, decorator: Google::Apis::TpuV2::NetworkConfig::Representation
       
+          collection :network_configs, as: 'networkConfigs', class: Google::Apis::TpuV2::NetworkConfig, decorator: Google::Apis::TpuV2::NetworkConfig::Representation
+      
           collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::TpuV2::NetworkEndpoint, decorator: Google::Apis::TpuV2::NetworkEndpoint::Representation
       
           property :queued_resource, as: 'queuedResource'

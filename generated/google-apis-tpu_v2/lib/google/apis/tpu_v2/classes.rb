@@ -842,6 +842,14 @@ module Google
         # @return [Google::Apis::TpuV2::NetworkConfig]
         attr_accessor :network_config
       
+        # Optional. Repeated network configurations for the TPU node. This field is used
+        # to specify multiple networks configs for the TPU node. network_config and
+        # network_configs are mutually exclusive, you can only specify one of them. If
+        # both are specified, an error will be returned.
+        # Corresponds to the JSON property `networkConfigs`
+        # @return [Array<Google::Apis::TpuV2::NetworkConfig>]
+        attr_accessor :network_configs
+      
         # Output only. The network endpoints where TPU workers can be accessed and sent
         # work. It is recommended that runtime clients of the node reach out to the 0th
         # entry in this map first.
@@ -911,6 +919,7 @@ module Google
           @multislice_node = args[:multislice_node] if args.key?(:multislice_node)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
+          @network_configs = args[:network_configs] if args.key?(:network_configs)
           @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
           @queued_resource = args[:queued_resource] if args.key?(:queued_resource)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
