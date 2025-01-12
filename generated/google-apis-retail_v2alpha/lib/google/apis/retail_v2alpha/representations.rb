@@ -1174,6 +1174,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaRulePinAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaRuleRedirectAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3391,6 +3397,8 @@ module Google
       
           property :oneway_synonyms_action, as: 'onewaySynonymsAction', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleOnewaySynonymsAction, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleOnewaySynonymsAction::Representation
       
+          property :pin_action, as: 'pinAction', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRulePinAction, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRulePinAction::Representation
+      
           property :redirect_action, as: 'redirectAction', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleRedirectAction, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleRedirectAction::Representation
       
           property :remove_facet_action, as: 'removeFacetAction', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleRemoveFacetAction, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleRemoveFacetAction::Representation
@@ -3455,6 +3463,13 @@ module Google
           collection :oneway_terms, as: 'onewayTerms'
           collection :query_terms, as: 'queryTerms'
           collection :synonyms, as: 'synonyms'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaRulePinAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :pin_map, as: 'pinMap'
         end
       end
       
