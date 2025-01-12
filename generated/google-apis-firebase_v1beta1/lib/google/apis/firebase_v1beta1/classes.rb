@@ -1443,13 +1443,16 @@ module Google
       
         # The canonical error code (see codes.proto) that most closely corresponds to
         # this status. This may be missing, and in the common case of the generic space,
-        # it definitely will be.
+        # it definitely will be. copybara:strip_begin(b/383363683) copybara:
+        # strip_end_and_replace optional int32 canonical_code = 6;
         # Corresponds to the JSON property `canonicalCode`
         # @return [Fixnum]
         attr_accessor :canonical_code
       
         # Numeric code drawn from the space specified below. Often, this is the
         # canonical error space, and code is drawn from google3/util/task/codes.proto
+        # copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional
+        # int32 code = 1;
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
