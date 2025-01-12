@@ -171,6 +171,13 @@ module Google
         # @return [String]
         attr_accessor :creator
       
+        # Output only. If set, this field contains the DSP specific seat id set by the
+        # media planner account that is considered the owner of this deal. The seat ID
+        # is in the calling DSP's namespace.
+        # Corresponds to the JSON property `dealOwnerSeatId`
+        # @return [String]
+        attr_accessor :deal_owner_seat_id
+      
         # Output only. A description of the auction package.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -181,9 +188,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. If set, this field contains the list of DSP specific seat ids set
-        # by media planners that are eligible to transact on this deal. The seat ID is
-        # in the calling DSP's namespace.
+        # Output only. If set, this field identifies a seat that the media planner
+        # selected as the owner of this auction package. This is a seat ID in the DSP's
+        # namespace that was provided to the media planner.
         # Corresponds to the JSON property `eligibleSeatIds`
         # @return [Array<String>]
         attr_accessor :eligible_seat_ids
@@ -232,6 +239,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
+          @deal_owner_seat_id = args[:deal_owner_seat_id] if args.key?(:deal_owner_seat_id)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @eligible_seat_ids = args[:eligible_seat_ids] if args.key?(:eligible_seat_ids)
