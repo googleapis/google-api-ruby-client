@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Entitlement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -575,6 +581,8 @@ module Google
           property :cluster, as: 'cluster'
           property :cluster_uid, as: 'clusterUid'
           property :create_time, as: 'createTime'
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::RedisV1beta1::EncryptionInfo, decorator: Google::Apis::RedisV1beta1::EncryptionInfo::Representation
+      
           property :engine_version, as: 'engineVersion'
           property :expire_time, as: 'expireTime'
           property :name, as: 'name'
@@ -600,6 +608,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
           property :cluster_uid, as: 'clusterUid'
+          property :kms_key, as: 'kmsKey'
           property :name, as: 'name'
           property :uid, as: 'uid'
         end
@@ -666,8 +675,11 @@ module Google
           property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           collection :discovery_endpoints, as: 'discoveryEndpoints', class: Google::Apis::RedisV1beta1::DiscoveryEndpoint, decorator: Google::Apis::RedisV1beta1::DiscoveryEndpoint::Representation
       
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::RedisV1beta1::EncryptionInfo, decorator: Google::Apis::RedisV1beta1::EncryptionInfo::Representation
+      
           property :gcs_source, as: 'gcsSource', class: Google::Apis::RedisV1beta1::GcsBackupSource, decorator: Google::Apis::RedisV1beta1::GcsBackupSource::Representation
       
+          property :kms_key, as: 'kmsKey'
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::RedisV1beta1::ClusterMaintenancePolicy, decorator: Google::Apis::RedisV1beta1::ClusterMaintenancePolicy::Representation
       
           property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::RedisV1beta1::ClusterMaintenanceSchedule, decorator: Google::Apis::RedisV1beta1::ClusterMaintenanceSchedule::Representation
@@ -899,6 +911,16 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_type, as: 'encryptionType'
+          property :kms_key_primary_state, as: 'kmsKeyPrimaryState'
+          collection :kms_key_versions, as: 'kmsKeyVersions'
+          property :last_update_time, as: 'lastUpdateTime'
         end
       end
       
