@@ -1164,18 +1164,18 @@ module Google
       class ConfigManagementConfigSync
         include Google::Apis::Core::Hashable
       
-        # Set to true to allow the vertical scaling. Defaults to false which disallows
-        # vertical scaling. This field is deprecated.
+        # Optional. Set to true to allow the vertical scaling. Defaults to false which
+        # disallows vertical scaling. This field is deprecated.
         # Corresponds to the JSON property `allowVerticalScale`
         # @return [Boolean]
         attr_accessor :allow_vertical_scale
         alias_method :allow_vertical_scale?, :allow_vertical_scale
       
-        # Enables the installation of ConfigSync. If set to true, ConfigSync resources
-        # will be created and the other ConfigSync fields will be applied if exist. If
-        # set to false, all other ConfigSync fields will be ignored, ConfigSync
-        # resources will be deleted. If omitted, ConfigSync resources will be managed
-        # depends on the presence of the git or oci field.
+        # Optional. Enables the installation of ConfigSync. If set to true, ConfigSync
+        # resources will be created and the other ConfigSync fields will be applied if
+        # exist. If set to false, all other ConfigSync fields will be ignored,
+        # ConfigSync resources will be deleted. If omitted, ConfigSync resources will be
+        # managed depends on the presence of the git or oci field.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -1186,15 +1186,15 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementGitConfig]
         attr_accessor :git
       
-        # The Email of the Google Cloud Service Account (GSA) used for exporting Config
-        # Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is
-        # enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.
-        # metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the
-        # namespace `config-management-monitoring` should be bound to the GSA.
-        # Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud
-        # Service Account is no longer needed for exporting Config Sync metrics: https://
-        # cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-
-        # config-sync-cloud-monitoring#custom-monitoring.
+        # Optional. The Email of the Google Cloud Service Account (GSA) used for
+        # exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when
+        # Workload Identity is enabled. The GSA should have the Monitoring Metric Writer
+        # (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `
+        # default` in the namespace `config-management-monitoring` should be bound to
+        # the GSA. Deprecated: If Workload Identity Federation for GKE is enabled,
+        # Google Cloud Service Account is no longer needed for exporting Config Sync
+        # metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/
+        # docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
         # Corresponds to the JSON property `metricsGcpServiceAccountEmail`
         # @return [String]
         attr_accessor :metrics_gcp_service_account_email
@@ -1204,21 +1204,22 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementOciConfig]
         attr_accessor :oci
       
-        # Set to true to enable the Config Sync admission webhook to prevent drifts. If
-        # set to `false`, disables the Config Sync admission webhook and does not
-        # prevent drifts.
+        # Optional. Set to true to enable the Config Sync admission webhook to prevent
+        # drifts. If set to `false`, disables the Config Sync admission webhook and does
+        # not prevent drifts.
         # Corresponds to the JSON property `preventDrift`
         # @return [Boolean]
         attr_accessor :prevent_drift
         alias_method :prevent_drift?, :prevent_drift
       
-        # Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured"
-        # mode.
+        # Optional. Specifies whether the Config Sync Repo is in "hierarchical" or "
+        # unstructured" mode.
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
         attr_accessor :source_format
       
-        # Set to true to stop syncing configs for a single cluster. Default to false.
+        # Optional. Set to true to stop syncing configs for a single cluster. Default to
+        # false.
         # Corresponds to the JSON property `stopSyncing`
         # @return [Boolean]
         attr_accessor :stop_syncing
@@ -1331,7 +1332,8 @@ module Google
       class ConfigManagementConfigSyncState
         include Google::Apis::Core::Hashable
       
-        # Whether syncing resources to the cluster is stopped at the cluster level.
+        # Output only. Whether syncing resources to the cluster is stopped at the
+        # cluster level.
         # Corresponds to the JSON property `clusterLevelStopSyncingState`
         # @return [String]
         attr_accessor :cluster_level_stop_syncing_state
@@ -1346,22 +1348,23 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementConfigSyncDeploymentState]
         attr_accessor :deployment_state
       
-        # Errors pertaining to the installation of Config Sync.
+        # Output only. Errors pertaining to the installation of Config Sync.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::GkehubV1alpha::ConfigManagementConfigSyncError>]
         attr_accessor :errors
       
-        # The state of the Reposync CRD
+        # Output only. The state of the Reposync CRD
         # Corresponds to the JSON property `reposyncCrd`
         # @return [String]
         attr_accessor :reposync_crd
       
-        # The state of the RootSync CRD
+        # Output only. The state of the RootSync CRD
         # Corresponds to the JSON property `rootsyncCrd`
         # @return [String]
         attr_accessor :rootsync_crd
       
-        # The state of CS This field summarizes the other fields in this message.
+        # Output only. The state of CS This field summarizes the other fields in this
+        # message.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -1533,46 +1536,47 @@ module Google
       class ConfigManagementGitConfig
         include Google::Apis::Core::Hashable
       
-        # The Google Cloud Service Account Email used for auth when secret_type is
-        # gcpServiceAccount.
+        # Optional. The Google Cloud Service Account Email used for auth when
+        # secret_type is gcpServiceAccount.
         # Corresponds to the JSON property `gcpServiceAccountEmail`
         # @return [String]
         attr_accessor :gcp_service_account_email
       
-        # URL for the HTTPS proxy to be used when communicating with the Git repo.
+        # Optional. URL for the HTTPS proxy to be used when communicating with the Git
+        # repo.
         # Corresponds to the JSON property `httpsProxy`
         # @return [String]
         attr_accessor :https_proxy
       
-        # The path within the Git repository that represents the top level of the repo
-        # to sync. Default: the root directory of the repository.
+        # Optional. The path within the Git repository that represents the top level of
+        # the repo to sync. Default: the root directory of the repository.
         # Corresponds to the JSON property `policyDir`
         # @return [String]
         attr_accessor :policy_dir
       
-        # Type of secret configured for access to the Git repo. Must be one of ssh,
-        # cookiefile, gcenode, token, gcpserviceaccount or none. The validation of this
-        # is case-sensitive. Required.
+        # Required. Type of secret configured for access to the Git repo. Must be one of
+        # ssh, cookiefile, gcenode, token, gcpserviceaccount or none. The validation of
+        # this is case-sensitive. Required.
         # Corresponds to the JSON property `secretType`
         # @return [String]
         attr_accessor :secret_type
       
-        # The branch of the repository to sync from. Default: master.
+        # Optional. The branch of the repository to sync from. Default: master.
         # Corresponds to the JSON property `syncBranch`
         # @return [String]
         attr_accessor :sync_branch
       
-        # The URL of the Git repository to use as the source of truth.
+        # Optional. The URL of the Git repository to use as the source of truth.
         # Corresponds to the JSON property `syncRepo`
         # @return [String]
         attr_accessor :sync_repo
       
-        # Git revision (tag or hash) to check out. Default HEAD.
+        # Optional. Git revision (tag or hash) to check out. Default HEAD.
         # Corresponds to the JSON property `syncRev`
         # @return [String]
         attr_accessor :sync_rev
       
-        # Period in seconds between consecutive syncs. Default: 15.
+        # Optional. Period in seconds between consecutive syncs. Default: 15.
         # Corresponds to the JSON property `syncWaitSecs`
         # @return [Fixnum]
         attr_accessor :sync_wait_secs
@@ -1763,9 +1767,9 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementBinauthzConfig]
         attr_accessor :binauthz
       
-        # The user-specified cluster name used by Config Sync cluster-name-selector
-        # annotation or ClusterSelector, for applying configs to only a subset of
-        # clusters. Omit this field if the cluster's fleet membership name is used by
+        # Optional. The user-specified cluster name used by Config Sync cluster-name-
+        # selector annotation or ClusterSelector, for applying configs to only a subset
+        # of clusters. Omit this field if the cluster's fleet membership name is used by
         # Config Sync cluster-name-selector annotation or ClusterSelector. Set this
         # field if a name different from the cluster's fleet membership name is used by
         # Config Sync cluster-name-selector annotation or ClusterSelector.
@@ -1783,7 +1787,7 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerConfig]
         attr_accessor :hierarchy_controller
       
-        # Enables automatic Feature management.
+        # Optional. Enables automatic Feature management.
         # Corresponds to the JSON property `management`
         # @return [String]
         attr_accessor :management
@@ -1793,7 +1797,7 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementPolicyController]
         attr_accessor :policy_controller
       
-        # Version of ACM installed.
+        # Optional. Version of ACM installed.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -1823,8 +1827,9 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementBinauthzState]
         attr_accessor :binauthz_state
       
-        # This field is set to the `cluster_name` field of the Membership Spec if it is
-        # not empty. Otherwise, it is set to the cluster's fleet membership name.
+        # Output only. This field is set to the `cluster_name` field of the Membership
+        # Spec if it is not empty. Otherwise, it is set to the cluster's fleet
+        # membership name.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
         attr_accessor :cluster_name
@@ -1875,30 +1880,30 @@ module Google
       class ConfigManagementOciConfig
         include Google::Apis::Core::Hashable
       
-        # The Google Cloud Service Account Email used for auth when secret_type is
-        # gcpServiceAccount.
+        # Optional. The Google Cloud Service Account Email used for auth when
+        # secret_type is gcpServiceAccount.
         # Corresponds to the JSON property `gcpServiceAccountEmail`
         # @return [String]
         attr_accessor :gcp_service_account_email
       
-        # The absolute path of the directory that contains the local resources. Default:
-        # the root directory of the image.
+        # Optional. The absolute path of the directory that contains the local resources.
+        # Default: the root directory of the image.
         # Corresponds to the JSON property `policyDir`
         # @return [String]
         attr_accessor :policy_dir
       
-        # Type of secret configured for access to the Git repo.
+        # Optional. Type of secret configured for access to the Git repo.
         # Corresponds to the JSON property `secretType`
         # @return [String]
         attr_accessor :secret_type
       
-        # The OCI image repository URL for the package to sync from. e.g. `LOCATION-
-        # docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
+        # Optional. The OCI image repository URL for the package to sync from. e.g. `
+        # LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
         # Corresponds to the JSON property `syncRepo`
         # @return [String]
         attr_accessor :sync_repo
       
-        # Period in seconds between consecutive syncs. Default: 15.
+        # Optional. Period in seconds between consecutive syncs. Default: 15.
         # Corresponds to the JSON property `syncWaitSecs`
         # @return [Fixnum]
         attr_accessor :sync_wait_secs
