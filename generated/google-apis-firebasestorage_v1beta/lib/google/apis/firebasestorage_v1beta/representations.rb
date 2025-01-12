@@ -46,18 +46,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListBucketsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -97,24 +85,6 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :last_update_time, as: 'lastUpdateTime'
-          property :state, as: 'state'
-        end
-      end
-      
-      class GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :last_update_time, as: 'lastUpdateTime'
-          property :state, as: 'state'
         end
       end
       

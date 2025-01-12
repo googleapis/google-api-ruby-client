@@ -16,13 +16,13 @@ module Google
   module Apis
     module FirebasestorageV1beta
       # Version of the google-apis-firebasestorage_v1beta gem
-      GEM_VERSION = "0.23.0"
+      GEM_VERSION = "0.24.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.15.1"
+      GENERATOR_VERSION = "0.16.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20241111"
+      REVISION = "20241218"
     end
   end
 end
