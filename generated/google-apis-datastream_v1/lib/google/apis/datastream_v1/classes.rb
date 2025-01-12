@@ -2151,6 +2151,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # PostgreSQL SSL configuration information.
+        # Corresponds to the JSON property `sslConfig`
+        # @return [Google::Apis::DatastreamV1::PostgresqlSslConfig]
+        attr_accessor :ssl_config
+      
         # Required. Username for the PostgreSQL connection.
         # Corresponds to the JSON property `username`
         # @return [String]
@@ -2166,6 +2171,7 @@ module Google
           @hostname = args[:hostname] if args.key?(:hostname)
           @password = args[:password] if args.key?(:password)
           @port = args[:port] if args.key?(:port)
+          @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @username = args[:username] if args.key?(:username)
         end
       end
@@ -2257,6 +2263,36 @@ module Google
           @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
           @publication = args[:publication] if args.key?(:publication)
           @replication_slot = args[:replication_slot] if args.key?(:replication_slot)
+        end
+      end
+      
+      # PostgreSQL SSL configuration information.
+      class PostgresqlSslConfig
+        include Google::Apis::Core::Hashable
+      
+        # Message represents the option where Datastream will enforce the encryption and
+        # authenticate the server identity as well as the client identity.
+        # ca_certificate, client_certificate and client_key must be set if user selects
+        # this option.
+        # Corresponds to the JSON property `serverAndClientVerification`
+        # @return [Google::Apis::DatastreamV1::ServerAndClientVerification]
+        attr_accessor :server_and_client_verification
+      
+        # Message represents the option where Datastream will enforce the encryption and
+        # authenticate the server identity. ca_certificate must be set if user selects
+        # this option.
+        # Corresponds to the JSON property `serverVerification`
+        # @return [Google::Apis::DatastreamV1::ServerVerification]
+        attr_accessor :server_verification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @server_and_client_verification = args[:server_and_client_verification] if args.key?(:server_and_client_verification)
+          @server_verification = args[:server_verification] if args.key?(:server_verification)
         end
       end
       
@@ -2448,6 +2484,68 @@ module Google
         def update!(**args)
           @cdc_strategy = args[:cdc_strategy] if args.key?(:cdc_strategy)
           @force = args[:force] if args.key?(:force)
+        end
+      end
+      
+      # Message represents the option where Datastream will enforce the encryption and
+      # authenticate the server identity as well as the client identity.
+      # ca_certificate, client_certificate and client_key must be set if user selects
+      # this option.
+      class ServerAndClientVerification
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. PEM-encoded server root CA certificate.
+        # Corresponds to the JSON property `caCertificate`
+        # @return [String]
+        attr_accessor :ca_certificate
+      
+        # Required. Input only. PEM-encoded certificate used by the source database to
+        # authenticate the client identity (i.e., the Datastream's identity). This
+        # certificate is signed by either a root certificate trusted by the server or
+        # one or more intermediate certificates (which is stored with the leaf
+        # certificate) to link the this certificate to the trusted root certificate.
+        # Corresponds to the JSON property `clientCertificate`
+        # @return [String]
+        attr_accessor :client_certificate
+      
+        # Required. Input only. PEM-encoded private key associated with the client
+        # certificate. This value will be used during the SSL/TLS handshake, allowing
+        # the PostgreSQL server to authenticate the client's identity, i.e. identity of
+        # the Datastream.
+        # Corresponds to the JSON property `clientKey`
+        # @return [String]
+        attr_accessor :client_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
+          @client_key = args[:client_key] if args.key?(:client_key)
+        end
+      end
+      
+      # Message represents the option where Datastream will enforce the encryption and
+      # authenticate the server identity. ca_certificate must be set if user selects
+      # this option.
+      class ServerVerification
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. PEM-encoded server root CA certificate.
+        # Corresponds to the JSON property `caCertificate`
+        # @return [String]
+        attr_accessor :ca_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
         end
       end
       
