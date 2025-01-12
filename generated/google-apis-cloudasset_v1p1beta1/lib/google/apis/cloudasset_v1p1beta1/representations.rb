@@ -554,6 +554,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_level, as: 'accessLevel'
+          property :resource, as: 'resource'
         end
       end
       
