@@ -568,6 +568,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceTlsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceTlsSettingsSubjectAltName
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceUsedBy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1150,6 +1162,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallPoliciesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FirewallPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1283,6 +1313,12 @@ module Google
       end
       
       class FutureReservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationCommitmentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3462,6 +3498,24 @@ module Google
       
       class NetworkEndpointWithHealthStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkFirewallPolicyAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8001,6 +8055,8 @@ module Google
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeBeta::Subsetting, decorator: Google::Apis::ComputeBeta::Subsetting::Representation
       
           property :timeout_sec, as: 'timeoutSec'
+          property :tls_settings, as: 'tlsSettings', class: Google::Apis::ComputeBeta::BackendServiceTlsSettings, decorator: Google::Apis::ComputeBeta::BackendServiceTlsSettings::Representation
+      
           collection :used_by, as: 'usedBy', class: Google::Apis::ComputeBeta::BackendServiceUsedBy, decorator: Google::Apis::ComputeBeta::BackendServiceUsedBy::Representation
       
         end
@@ -8235,6 +8291,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_service, as: 'backendService'
+        end
+      end
+      
+      class BackendServiceTlsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_config, as: 'authenticationConfig'
+          property :sni, as: 'sni'
+          collection :subject_alt_names, as: 'subjectAltNames', class: Google::Apis::ComputeBeta::BackendServiceTlsSettingsSubjectAltName, decorator: Google::Apis::ComputeBeta::BackendServiceTlsSettingsSubjectAltName::Representation
+      
+        end
+      end
+      
+      class BackendServiceTlsSettingsSubjectAltName
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_name, as: 'dnsName'
+          property :uniform_resource_identifier, as: 'uniformResourceIdentifier'
         end
       end
       
@@ -9312,6 +9386,34 @@ module Google
         end
       end
       
+      class FirewallPoliciesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_policies, as: 'firewallPolicies', class: Google::Apis::ComputeBeta::FirewallPolicy, decorator: Google::Apis::ComputeBeta::FirewallPolicy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::FirewallPoliciesScopedList::Warning, decorator: Google::Apis::ComputeBeta::FirewallPoliciesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::FirewallPoliciesScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::FirewallPoliciesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class FirewallPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9612,6 +9714,8 @@ module Google
           property :auto_created_reservations_duration, as: 'autoCreatedReservationsDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
       
           property :auto_delete_auto_created_reservations, as: 'autoDeleteAutoCreatedReservations'
+          property :commitment_info, as: 'commitmentInfo', class: Google::Apis::ComputeBeta::FutureReservationCommitmentInfo, decorator: Google::Apis::ComputeBeta::FutureReservationCommitmentInfo::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :deployment_type, as: 'deploymentType'
           property :description, as: 'description'
@@ -9634,6 +9738,15 @@ module Google
           property :time_window, as: 'timeWindow', class: Google::Apis::ComputeBeta::FutureReservationTimeWindow, decorator: Google::Apis::ComputeBeta::FutureReservationTimeWindow::Representation
       
           property :zone, as: 'zone'
+        end
+      end
+      
+      class FutureReservationCommitmentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commitment_name, as: 'commitmentName'
+          property :commitment_plan, as: 'commitmentPlan'
+          property :previous_commitment_terms, as: 'previousCommitmentTerms'
         end
       end
       
@@ -13744,6 +13857,39 @@ module Google
       
           property :network_endpoint, as: 'networkEndpoint', class: Google::Apis::ComputeBeta::NetworkEndpoint, decorator: Google::Apis::ComputeBeta::NetworkEndpoint::Representation
       
+        end
+      end
+      
+      class NetworkFirewallPolicyAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::FirewallPoliciesScopedList, decorator: Google::Apis::ComputeBeta::FirewallPoliciesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::NetworkFirewallPolicyAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::NetworkFirewallPolicyAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::NetworkFirewallPolicyAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::NetworkFirewallPolicyAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
