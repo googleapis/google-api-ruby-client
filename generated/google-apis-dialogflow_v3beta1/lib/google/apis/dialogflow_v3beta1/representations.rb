@@ -4673,6 +4673,8 @@ module Google
           property :name, as: 'name'
           property :personalization_settings, as: 'personalizationSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :security_settings, as: 'securitySettings'
           property :speech_to_text_settings, as: 'speechToTextSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SpeechToTextSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SpeechToTextSettings::Representation
       
@@ -6471,6 +6473,8 @@ module Google
           collection :referenced_flows, as: 'referencedFlows'
           collection :referenced_playbooks, as: 'referencedPlaybooks'
           collection :referenced_tools, as: 'referencedTools'
+          property :speech_settings, as: 'speechSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings::Representation
+      
           property :token_count, :numeric_string => true, as: 'tokenCount'
           property :update_time, as: 'updateTime'
         end
