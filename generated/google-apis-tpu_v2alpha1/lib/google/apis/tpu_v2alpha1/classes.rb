@@ -954,7 +954,10 @@ module Google
         # @return [Google::Apis::TpuV2alpha1::NetworkConfig]
         attr_accessor :network_config
       
-        # Optional. Repeated network configurations for the TPU node.
+        # Optional. Repeated network configurations for the TPU node. This field is used
+        # to specify multiple networks configs for the TPU node. network_config and
+        # network_configs are mutually exclusive, you can only specify one of them. If
+        # both are specified, an error will be returned.
         # Corresponds to the JSON property `networkConfigs`
         # @return [Array<Google::Apis::TpuV2alpha1::NetworkConfig>]
         attr_accessor :network_configs
