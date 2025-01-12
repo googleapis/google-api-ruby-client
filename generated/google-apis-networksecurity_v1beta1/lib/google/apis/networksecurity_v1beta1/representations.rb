@@ -1027,6 +1027,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           property :forwarding_rule, as: 'forwardingRule'
           property :intercept_deployment_group, as: 'interceptDeploymentGroup'
           hash :labels, as: 'labels'
@@ -1043,6 +1044,7 @@ module Google
           collection :connected_endpoint_groups, as: 'connectedEndpointGroups', class: Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroupConnectedEndpointGroup, decorator: Google::Apis::NetworksecurityV1beta1::InterceptDeploymentGroupConnectedEndpointGroup::Representation
       
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'

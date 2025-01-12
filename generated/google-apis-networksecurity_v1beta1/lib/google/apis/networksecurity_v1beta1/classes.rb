@@ -1749,7 +1749,7 @@ module Google
         end
       end
       
-      # Message describing InterceptDeployment object
+      # Message describing InterceptDeployment object NEXT ID: 10
       class InterceptDeployment
         include Google::Apis::Core::Hashable
       
@@ -1757,6 +1757,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. User-provided description of the deployment. Used as additional
+        # context for the deployment.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
       
         # Required. Immutable. The regional load balancer which the intercepted traffic
         # should be forwarded to. Format is: projects/`project`/regions/`region`/
@@ -1806,6 +1812,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @intercept_deployment_group = args[:intercept_deployment_group] if args.key?(:intercept_deployment_group)
           @labels = args[:labels] if args.key?(:labels)
@@ -1816,7 +1823,7 @@ module Google
         end
       end
       
-      # Message describing InterceptDeploymentGroup object
+      # Message describing InterceptDeploymentGroup object NEXT ID: 10
       class InterceptDeploymentGroup
         include Google::Apis::Core::Hashable
       
@@ -1830,6 +1837,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. User-provided description of the deployment group. Used as
+        # additional context for the deployment group.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
       
         # Optional. Labels as key value pairs
         # Corresponds to the JSON property `labels`
@@ -1872,6 +1885,7 @@ module Google
         def update!(**args)
           @connected_endpoint_groups = args[:connected_endpoint_groups] if args.key?(:connected_endpoint_groups)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
