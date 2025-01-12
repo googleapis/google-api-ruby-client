@@ -1565,6 +1565,7 @@ module Google
           property :desired_default_enable_private_nodes, as: 'desiredDefaultEnablePrivateNodes'
           property :desired_default_snat_status, as: 'desiredDefaultSnatStatus', class: Google::Apis::ContainerV1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1::DefaultSnatStatus::Representation
       
+          property :desired_disable_l4_lb_firewall_reconciliation, as: 'desiredDisableL4LbFirewallReconciliation'
           property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1::DnsConfig, decorator: Google::Apis::ContainerV1::DnsConfig::Representation
       
           property :desired_enable_cilium_clusterwide_network_policy, as: 'desiredEnableCiliumClusterwideNetworkPolicy'
@@ -2261,6 +2262,7 @@ module Google
           property :default_enable_private_nodes, as: 'defaultEnablePrivateNodes'
           property :default_snat_status, as: 'defaultSnatStatus', class: Google::Apis::ContainerV1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1::DefaultSnatStatus::Representation
       
+          property :disable_l4_lb_firewall_reconciliation, as: 'disableL4LbFirewallReconciliation'
           property :dns_config, as: 'dnsConfig', class: Google::Apis::ContainerV1::DnsConfig, decorator: Google::Apis::ContainerV1::DnsConfig::Representation
       
           property :enable_cilium_clusterwide_network_policy, as: 'enableCiliumClusterwideNetworkPolicy'
@@ -3215,9 +3217,12 @@ module Google
           property :current_version, as: 'currentVersion'
           property :description, as: 'description'
           property :end_time, as: 'endTime'
+          property :event_type, as: 'eventType'
+          property :extended_support_end_time, as: 'extendedSupportEndTime'
           property :operation, as: 'operation'
           property :resource, as: 'resource'
           property :resource_type, as: 'resourceType'
+          property :standard_support_end_time, as: 'standardSupportEndTime'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :target_version, as: 'targetVersion'

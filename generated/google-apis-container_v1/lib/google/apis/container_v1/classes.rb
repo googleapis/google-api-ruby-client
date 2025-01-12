@@ -1621,6 +1621,12 @@ module Google
         # @return [Google::Apis::ContainerV1::DefaultSnatStatus]
         attr_accessor :desired_default_snat_status
       
+        # Enable/Disable L4 LB VPC firewall reconciliation for the cluster.
+        # Corresponds to the JSON property `desiredDisableL4LbFirewallReconciliation`
+        # @return [Boolean]
+        attr_accessor :desired_disable_l4_lb_firewall_reconciliation
+        alias_method :desired_disable_l4_lb_firewall_reconciliation?, :desired_disable_l4_lb_firewall_reconciliation
+      
         # DNSConfig contains the desired set of options for configuring clusterDNS.
         # Corresponds to the JSON property `desiredDnsConfig`
         # @return [Google::Apis::ContainerV1::DnsConfig]
@@ -1963,6 +1969,7 @@ module Google
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
           @desired_default_enable_private_nodes = args[:desired_default_enable_private_nodes] if args.key?(:desired_default_enable_private_nodes)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
+          @desired_disable_l4_lb_firewall_reconciliation = args[:desired_disable_l4_lb_firewall_reconciliation] if args.key?(:desired_disable_l4_lb_firewall_reconciliation)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
           @desired_enable_cilium_clusterwide_network_policy = args[:desired_enable_cilium_clusterwide_network_policy] if args.key?(:desired_enable_cilium_clusterwide_network_policy)
           @desired_enable_fqdn_network_policy = args[:desired_enable_fqdn_network_policy] if args.key?(:desired_enable_fqdn_network_policy)
@@ -4100,6 +4107,12 @@ module Google
         # @return [Google::Apis::ContainerV1::DefaultSnatStatus]
         attr_accessor :default_snat_status
       
+        # Disable L4 load balancer VPC firewalls to enable firewall policies.
+        # Corresponds to the JSON property `disableL4LbFirewallReconciliation`
+        # @return [Boolean]
+        attr_accessor :disable_l4_lb_firewall_reconciliation
+        alias_method :disable_l4_lb_firewall_reconciliation?, :disable_l4_lb_firewall_reconciliation
+      
         # DNSConfig contains the desired set of options for configuring clusterDNS.
         # Corresponds to the JSON property `dnsConfig`
         # @return [Google::Apis::ContainerV1::DnsConfig]
@@ -4186,6 +4199,7 @@ module Google
           @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
           @default_enable_private_nodes = args[:default_enable_private_nodes] if args.key?(:default_enable_private_nodes)
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
+          @disable_l4_lb_firewall_reconciliation = args[:disable_l4_lb_firewall_reconciliation] if args.key?(:disable_l4_lb_firewall_reconciliation)
           @dns_config = args[:dns_config] if args.key?(:dns_config)
           @enable_cilium_clusterwide_network_policy = args[:enable_cilium_clusterwide_network_policy] if args.key?(:enable_cilium_clusterwide_network_policy)
           @enable_fqdn_network_policy = args[:enable_fqdn_network_policy] if args.key?(:enable_fqdn_network_policy)
@@ -7969,6 +7983,16 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # The type of the event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # The end of extended support timestamp.
+        # Corresponds to the JSON property `extendedSupportEndTime`
+        # @return [String]
+        attr_accessor :extended_support_end_time
+      
         # The operation associated with this upgrade.
         # Corresponds to the JSON property `operation`
         # @return [String]
@@ -7984,6 +8008,11 @@ module Google
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
+      
+        # The end of standard support timestamp.
+        # Corresponds to the JSON property `standardSupportEndTime`
+        # @return [String]
+        attr_accessor :standard_support_end_time
       
         # The time when the operation was started.
         # Corresponds to the JSON property `startTime`
@@ -8009,9 +8038,12 @@ module Google
           @current_version = args[:current_version] if args.key?(:current_version)
           @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @extended_support_end_time = args[:extended_support_end_time] if args.key?(:extended_support_end_time)
           @operation = args[:operation] if args.key?(:operation)
           @resource = args[:resource] if args.key?(:resource)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @standard_support_end_time = args[:standard_support_end_time] if args.key?(:standard_support_end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @target_version = args[:target_version] if args.key?(:target_version)
