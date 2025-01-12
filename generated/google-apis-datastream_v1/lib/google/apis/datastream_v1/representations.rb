@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PostgresqlSslConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PostgresqlTable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,6 +455,18 @@ module Google
       end
       
       class RunStreamRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServerAndClientVerification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServerVerification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1272,6 +1290,8 @@ module Google
           property :hostname, as: 'hostname'
           property :password, as: 'password'
           property :port, as: 'port'
+          property :ssl_config, as: 'sslConfig', class: Google::Apis::DatastreamV1::PostgresqlSslConfig, decorator: Google::Apis::DatastreamV1::PostgresqlSslConfig::Representation
+      
           property :username, as: 'username'
         end
       end
@@ -1303,6 +1323,16 @@ module Google
           property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
           property :publication, as: 'publication'
           property :replication_slot, as: 'replicationSlot'
+        end
+      end
+      
+      class PostgresqlSslConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :server_and_client_verification, as: 'serverAndClientVerification', class: Google::Apis::DatastreamV1::ServerAndClientVerification, decorator: Google::Apis::DatastreamV1::ServerAndClientVerification::Representation
+      
+          property :server_verification, as: 'serverVerification', class: Google::Apis::DatastreamV1::ServerVerification, decorator: Google::Apis::DatastreamV1::ServerVerification::Representation
+      
         end
       end
       
@@ -1357,6 +1387,22 @@ module Google
           property :cdc_strategy, as: 'cdcStrategy', class: Google::Apis::DatastreamV1::CdcStrategy, decorator: Google::Apis::DatastreamV1::CdcStrategy::Representation
       
           property :force, as: 'force'
+        end
+      end
+      
+      class ServerAndClientVerification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_certificate, as: 'caCertificate'
+          property :client_certificate, as: 'clientCertificate'
+          property :client_key, as: 'clientKey'
+        end
+      end
+      
+      class ServerVerification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_certificate, as: 'caCertificate'
         end
       end
       
