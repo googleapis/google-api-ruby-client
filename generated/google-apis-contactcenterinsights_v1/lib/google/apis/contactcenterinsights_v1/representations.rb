@@ -3061,6 +3061,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1QueryMetricsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :result_is_truncated, as: 'resultIsTruncated'
         end
       end
       
@@ -4351,6 +4352,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :result_is_truncated, as: 'resultIsTruncated'
         end
       end
       

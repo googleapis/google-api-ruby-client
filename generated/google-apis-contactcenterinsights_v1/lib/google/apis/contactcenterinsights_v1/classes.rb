@@ -182,7 +182,8 @@ module Google
         attr_accessor :annotator_selector
       
         # Filter for the conversations that should apply this analysis rule. An empty
-        # filter means this analysis rule applies to all conversations.
+        # filter means this analysis rule applies to all conversations. Refer to https://
+        # cloud.google.com/contact-center/insights/docs/filtering for details.
         # Corresponds to the JSON property `conversationFilter`
         # @return [String]
         attr_accessor :conversation_filter
@@ -3517,7 +3518,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A filter to reduce the conversations used for training the model to a specific
-        # subset.
+        # subset. Refer to https://cloud.google.com/contact-center/insights/docs/
+        # filtering for details.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -4731,12 +4733,20 @@ module Google
       class GoogleCloudContactcenterinsightsV1QueryMetricsMetadata
         include Google::Apis::Core::Hashable
       
+        # Whether the result rows were truncated because the result row size is too
+        # large to materialize.
+        # Corresponds to the JSON property `resultIsTruncated`
+        # @return [Boolean]
+        attr_accessor :result_is_truncated
+        alias_method :result_is_truncated?, :result_is_truncated
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @result_is_truncated = args[:result_is_truncated] if args.key?(:result_is_truncated)
         end
       end
       
@@ -5681,7 +5691,8 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # String with specific view properties, must be non-empty.
+        # A filter to reduce conversation results to a specific subset. Refer to https://
+        # cloud.google.com/contact-center/insights/docs/filtering for details.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -8685,7 +8696,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A filter to reduce the conversations used for training the model to a specific
-        # subset.
+        # subset. Refer to https://cloud.google.com/contact-center/insights/docs/
+        # filtering for details.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -9198,12 +9210,20 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata
         include Google::Apis::Core::Hashable
       
+        # Whether the result rows were truncated because the result row size is too
+        # large to materialize.
+        # Corresponds to the JSON property `resultIsTruncated`
+        # @return [Boolean]
+        attr_accessor :result_is_truncated
+        alias_method :result_is_truncated?, :result_is_truncated
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @result_is_truncated = args[:result_is_truncated] if args.key?(:result_is_truncated)
         end
       end
       
