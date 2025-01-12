@@ -221,11 +221,11 @@ module Google
       end
       
       # A boost configuration is a set of resources that a workstation can use to
-      # increase its performance. If a boost configuration is specified, when starting
-      # a workstation, users can choose to use a VM provisioned under the boost config
-      # by passing the boost config id in the start request. If no boost config id is
-      # provided in the start request, the system will choose a VM from the pool
-      # provisioned under the default config.
+      # increase its performance. If you specify a boost configuration, upon startup,
+      # workstation users can choose to use a VM provisioned under the boost config by
+      # passing the boost config ID in the start request. If the workstation user does
+      # not provide a boost config ID in the start request, the system will choose a
+      # VM from the pool provisioned under the default config.
       class BoostConfig
         include Google::Apis::Core::Hashable
       
@@ -264,7 +264,7 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
-        # Required. The id to be used for the boost configuration.
+        # Required. The ID to be used for the boost configuration.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -684,6 +684,37 @@ module Google
         end
       end
       
+      # The Compute Engine instance host.
+      class GceInstanceHost
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. The ID of the Compute Engine instance.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. Output only. The name of the Compute Engine instance.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Output only. The zone of the Compute Engine instance.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # An EphemeralDirectory is backed by a Compute Engine persistent disk.
       class GcePersistentDisk
         include Google::Apis::Core::Hashable
@@ -937,6 +968,16 @@ module Google
         attr_accessor :allowed_unauthenticated_cors_preflight_requests
         alias_method :allowed_unauthenticated_cors_preflight_requests?, :allowed_unauthenticated_cors_preflight_requests
       
+        # Optional. By default, the workstations service replaces references to
+        # localhost, 127.0.0.1, and 0.0.0.0 with the workstation's hostname in http
+        # responses from the workstation so that applications under development run
+        # properly on the workstation. This may intefere with some applications, and so
+        # this option allows that behavior to be disabled.
+        # Corresponds to the JSON property `disableLocalhostReplacement`
+        # @return [Boolean]
+        attr_accessor :disable_localhost_replacement
+        alias_method :disable_localhost_replacement?, :disable_localhost_replacement
+      
         def initialize(**args)
            update!(**args)
         end
@@ -944,6 +985,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_unauthenticated_cors_preflight_requests = args[:allowed_unauthenticated_cors_preflight_requests] if args.key?(:allowed_unauthenticated_cors_preflight_requests)
+          @disable_localhost_replacement = args[:disable_localhost_replacement] if args.key?(:disable_localhost_replacement)
         end
       end
       
@@ -1251,7 +1293,8 @@ module Google
         end
       end
       
-      # A directory to persist across workstation sessions.
+      # A directory to persist across workstation sessions. Updates to this field will
+      # not update existing workstations and will only take effect on new workstations.
       class PersistentDirectory
         include Google::Apis::Core::Hashable
       
@@ -1475,6 +1518,25 @@ module Google
         def update!(**args)
           @path = args[:path] if args.key?(:path)
           @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # Runtime host for the workstation.
+      class RuntimeHost
+        include Google::Apis::Core::Hashable
+      
+        # The Compute Engine instance host.
+        # Corresponds to the JSON property `gceInstanceHost`
+        # @return [Google::Apis::WorkstationsV1beta::GceInstanceHost]
+        attr_accessor :gce_instance_host
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gce_instance_host = args[:gce_instance_host] if args.key?(:gce_instance_host)
         end
       end
       
@@ -1750,6 +1812,11 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Runtime host for the workstation.
+        # Corresponds to the JSON property `runtimeHost`
+        # @return [Google::Apis::WorkstationsV1beta::RuntimeHost]
+        attr_accessor :runtime_host
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -1807,6 +1874,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @runtime_host = args[:runtime_host] if args.key?(:runtime_host)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @source_workstation = args[:source_workstation] if args.key?(:source_workstation)
