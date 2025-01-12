@@ -2856,7 +2856,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Output only. The resource name of the pool. Format: `locations/`location`/
+        # Identifier. The resource name of the pool. Format: `locations/`location`/
         # workforcePools/`workforce_pool_id``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3002,7 +3002,7 @@ module Google
         # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client]
         attr_accessor :extra_attributes_oauth2_client
       
-        # Output only. The resource name of the provider. Format: `locations/`location`/
+        # Identifier. The resource name of the provider. Format: `locations/`location`/
         # workforcePools/`workforce_pool_id`/providers/`provider_id``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3061,7 +3061,8 @@ module Google
         # @return [Google::Apis::IamV1::KeyData]
         attr_accessor :key_data
       
-        # Output only. The resource name of the key.
+        # Identifier. The resource name of the key. Format: `locations/`location`/
+        # workforcePools/`workforce_pool_id`/providers/`provider_id`/keys/`key_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

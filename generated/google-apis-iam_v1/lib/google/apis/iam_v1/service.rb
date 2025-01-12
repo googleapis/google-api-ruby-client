@@ -313,7 +313,7 @@ module Google
         
         # Updates an existing WorkforcePool.
         # @param [String] name
-        #   Output only. The resource name of the pool. Format: `locations/`location`/
+        #   Identifier. The resource name of the pool. Format: `locations/`location`/
         #   workforcePools/`workforce_pool_id``
         # @param [Google::Apis::IamV1::WorkforcePool] workforce_pool_object
         # @param [String] update_mask
@@ -637,7 +637,7 @@ module Google
         
         # Updates an existing WorkforcePoolProvider.
         # @param [String] name
-        #   Output only. The resource name of the provider. Format: `locations/`location`/
+        #   Identifier. The resource name of the provider. Format: `locations/`location`/
         #   workforcePools/`workforce_pool_id`/providers/`provider_id``
         # @param [Google::Apis::IamV1::WorkforcePoolProvider] workforce_pool_provider_object
         # @param [String] update_mask
