@@ -252,7 +252,8 @@ module Google
         attr_accessor :state
       
         # Output only. Human-readable description of why the backup is in the current `
-        # state`.
+        # state`. This field is only meant for human readability and should not be used
+        # programmatically as this field is not guaranteed to be consistent.
         # Corresponds to the JSON property `stateReason`
         # @return [String]
         attr_accessor :state_reason
@@ -470,7 +471,8 @@ module Google
         attr_accessor :state
       
         # Output only. Human-readable description of why BackupPlan is in the current `
-        # state`
+        # state`. This field is only meant for human readability and should not be used
+        # programmatically as this field is not guaranteed to be consistent.
         # Corresponds to the JSON property `stateReason`
         # @return [String]
         attr_accessor :state_reason
@@ -1834,7 +1836,8 @@ module Google
         attr_accessor :state
       
         # Output only. Human-readable description of why the Restore is in its current
-        # state.
+        # state. This field is only meant for human readability and should not be used
+        # programmatically as this field is not guaranteed to be consistent.
         # Corresponds to the JSON property `stateReason`
         # @return [String]
         attr_accessor :state_reason
@@ -2098,7 +2101,8 @@ module Google
         attr_accessor :state
       
         # Output only. Human-readable description of why RestorePlan is in the current `
-        # state`
+        # state`. This field is only meant for human readability and should not be used
+        # programmatically as this field is not guaranteed to be consistent.
         # Corresponds to the JSON property `stateReason`
         # @return [String]
         attr_accessor :state_reason
@@ -2604,7 +2608,8 @@ module Google
         attr_accessor :state
       
         # Output only. A human readable message explaining why the VolumeBackup is in
-        # its current state.
+        # its current state. This field is only meant for human consumption and should
+        # not be used programmatically as this field is not guaranteed to be consistent.
         # Corresponds to the JSON property `stateMessage`
         # @return [String]
         attr_accessor :state_message
