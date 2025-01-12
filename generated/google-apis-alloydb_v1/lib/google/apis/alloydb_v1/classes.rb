@@ -1859,25 +1859,25 @@ module Google
       class Node
         include Google::Apis::Core::Hashable
       
-        # The identifier of the VM e.g. "test-read-0601-407e52be-ms3l".
+        # Output only. The identifier of the VM e.g. "test-read-0601-407e52be-ms3l".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # The private IP address of the VM e.g. "10.57.0.34".
+        # Output only. The private IP address of the VM e.g. "10.57.0.34".
         # Corresponds to the JSON property `ip`
         # @return [String]
         attr_accessor :ip
       
-        # Determined by state of the compute VM and postgres-service health. Compute VM
-        # state can have values listed in https://cloud.google.com/compute/docs/
-        # instances/instance-life-cycle and postgres-service health can have values:
+        # Output only. Determined by state of the compute VM and postgres-service health.
+        # Compute VM state can have values listed in https://cloud.google.com/compute/
+        # docs/instances/instance-life-cycle and postgres-service health can have values:
         # HEALTHY and UNHEALTHY.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # The Compute Engine zone of the VM e.g. "us-central1-b".
+        # Output only. The Compute Engine zone of the VM e.g. "us-central1-b".
         # Corresponds to the JSON property `zoneId`
         # @return [String]
         attr_accessor :zone_id
@@ -3214,8 +3214,8 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         include Google::Apis::Core::Hashable
       
-        # The number of CPUs. TODO(b/342344482, b/342346271) add proto validations again
-        # after bug fix.
+        # The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482, b/
+        # 342346271) add proto validations again after bug fix.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
