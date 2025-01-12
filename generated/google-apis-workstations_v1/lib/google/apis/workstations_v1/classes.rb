@@ -221,11 +221,11 @@ module Google
       end
       
       # A boost configuration is a set of resources that a workstation can use to
-      # increase its performance. If a boost configuration is specified, when starting
-      # a workstation, users can choose to use a VM provisioned under the boost config
-      # by passing the boost config id in the start request. If no boost config id is
-      # provided in the start request, the system will choose a VM from the pool
-      # provisioned under the default config.
+      # increase its performance. If you specify a boost configuration, upon startup,
+      # workstation users can choose to use a VM provisioned under the boost config by
+      # passing the boost config ID in the start request. If the workstation user does
+      # not provide a boost config ID in the start request, the system will choose a
+      # VM from the pool provisioned under the default config.
       class BoostConfig
         include Google::Apis::Core::Hashable
       
@@ -264,7 +264,7 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
-        # Required. The id to be used for the boost configuration.
+        # Required. The ID to be used for the boost configuration.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -681,6 +681,37 @@ module Google
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
           @vm_tags = args[:vm_tags] if args.key?(:vm_tags)
+        end
+      end
+      
+      # The Compute Engine instance host.
+      class GceInstanceHost
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. The ID of the Compute Engine instance.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. Output only. The name of the Compute Engine instance.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Output only. The zone of the Compute Engine instance.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -1297,7 +1328,8 @@ module Google
         end
       end
       
-      # A directory to persist across workstation sessions.
+      # A directory to persist across workstation sessions. Updates to this field will
+      # not update existing workstations and will only take effect on new workstations.
       class PersistentDirectory
         include Google::Apis::Core::Hashable
       
@@ -1524,6 +1556,25 @@ module Google
         end
       end
       
+      # Runtime host for the workstation.
+      class RuntimeHost
+        include Google::Apis::Core::Hashable
+      
+        # The Compute Engine instance host.
+        # Corresponds to the JSON property `gceInstanceHost`
+        # @return [Google::Apis::WorkstationsV1::GceInstanceHost]
+        attr_accessor :gce_instance_host
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gce_instance_host = args[:gce_instance_host] if args.key?(:gce_instance_host)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -1581,6 +1632,12 @@ module Google
       class StartWorkstationRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If set, the workstation starts using the boost configuration with
+        # the specified ID.
+        # Corresponds to the JSON property `boostConfig`
+        # @return [String]
+        attr_accessor :boost_config
+      
         # Optional. If set, the request will be rejected if the latest version of the
         # workstation on the server does not have this ETag.
         # Corresponds to the JSON property `etag`
@@ -1600,6 +1657,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boost_config = args[:boost_config] if args.key?(:boost_config)
           @etag = args[:etag] if args.key?(:etag)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
@@ -1783,6 +1841,17 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Runtime host for the workstation.
+        # Corresponds to the JSON property `runtimeHost`
+        # @return [Google::Apis::WorkstationsV1::RuntimeHost]
+        attr_accessor :runtime_host
+      
+        # Optional. The source workstation from which this workstation's persistent
+        # directories were cloned on creation.
+        # Corresponds to the JSON property `sourceWorkstation`
+        # @return [String]
+        attr_accessor :source_workstation
+      
         # Output only. Time when this workstation was most recently successfully started,
         # regardless of the workstation's initial state.
         # Corresponds to the JSON property `startTime`
@@ -1821,6 +1890,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @runtime_host = args[:runtime_host] if args.key?(:runtime_host)
+          @source_workstation = args[:source_workstation] if args.key?(:source_workstation)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
