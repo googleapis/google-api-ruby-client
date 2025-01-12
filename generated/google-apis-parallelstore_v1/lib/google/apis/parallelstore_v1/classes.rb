@@ -214,10 +214,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. The version of DAOS software running in the instance.
-        # Corresponds to the JSON property `daosVersion`
+        # Optional. The deployment type of the instance. Allowed values are: * `SCRATCH`:
+        # the instance is a scratch instance. * `PERSISTENT`: the instance is a
+        # persistent instance.
+        # Corresponds to the JSON property `deploymentType`
         # @return [String]
-        attr_accessor :daos_version
+        attr_accessor :deployment_type
       
         # Optional. The description of the instance. 2048 characters or less.
         # Corresponds to the JSON property `description`
@@ -297,7 +299,7 @@ module Google
           @access_points = args[:access_points] if args.key?(:access_points)
           @capacity_gib = args[:capacity_gib] if args.key?(:capacity_gib)
           @create_time = args[:create_time] if args.key?(:create_time)
-          @daos_version = args[:daos_version] if args.key?(:daos_version)
+          @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
           @directory_stripe_level = args[:directory_stripe_level] if args.key?(:directory_stripe_level)
           @effective_reserved_ip_range = args[:effective_reserved_ip_range] if args.key?(:effective_reserved_ip_range)
