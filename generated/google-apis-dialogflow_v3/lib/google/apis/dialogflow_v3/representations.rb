@@ -3342,6 +3342,8 @@ module Google
           property :name, as: 'name'
           property :personalization_settings, as: 'personalizationSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentPersonalizationSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AgentPersonalizationSettings::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :security_settings, as: 'securitySettings'
           property :speech_to_text_settings, as: 'speechToTextSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SpeechToTextSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SpeechToTextSettings::Representation
       
