@@ -1567,6 +1567,16 @@ module Google
         # @return [String]
         attr_accessor :access_level
       
+        # A Google Cloud resource that you want to allow to egress the perimeter. These
+        # resources can access data outside the perimeter. This field only supports
+        # projects. The project format is `projects/`project_number``. The resource can
+        # be in any Google Cloud organization, not just the organization where the
+        # perimeter is defined. You can't use `*` in this field to allow all Google
+        # Cloud resources.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1574,6 +1584,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_level = args[:access_level] if args.key?(:access_level)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       
