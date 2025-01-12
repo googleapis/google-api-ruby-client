@@ -1209,7 +1209,8 @@ module Google
         # Creates an enterprise signup URL.
         # @param [String] admin_email
         #   Optional. Email address used to prefill the admin field of the enterprise
-        #   signup form. This value is a hint only and can be altered by the user.
+        #   signup form. This value is a hint only and can be altered by the user. If
+        #   allowedDomains is non-empty then this must belong to one of the allowedDomains.
         # @param [Array<String>, String] allowed_domains
         #   Optional. A list of domains that are permitted for the admin email. The IT
         #   admin cannot enter an email address with a domain name that is not in this
