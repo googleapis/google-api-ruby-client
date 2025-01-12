@@ -307,6 +307,64 @@ module Google
         end
       end
       
+      # The message type used for encoding metrics of type bounded trie.
+      class BoundedTrie
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of elements to store before truncation.
+        # Corresponds to the JSON property `bound`
+        # @return [Fixnum]
+        attr_accessor :bound
+      
+        # A single node in a BoundedTrie.
+        # Corresponds to the JSON property `root`
+        # @return [Google::Apis::DataflowV1b3::BoundedTrieNode]
+        attr_accessor :root
+      
+        # A more efficient representation for metrics consisting of a single value.
+        # Corresponds to the JSON property `singleton`
+        # @return [Array<String>]
+        attr_accessor :singleton
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bound = args[:bound] if args.key?(:bound)
+          @root = args[:root] if args.key?(:root)
+          @singleton = args[:singleton] if args.key?(:singleton)
+        end
+      end
+      
+      # A single node in a BoundedTrie.
+      class BoundedTrieNode
+        include Google::Apis::Core::Hashable
+      
+        # Children of this node. Must be empty if truncated is true.
+        # Corresponds to the JSON property `children`
+        # @return [Hash<String,Google::Apis::DataflowV1b3::BoundedTrieNode>]
+        attr_accessor :children
+      
+        # Whether this node has been truncated. A truncated leaf represents possibly
+        # many children with the same prefix.
+        # Corresponds to the JSON property `truncated`
+        # @return [Boolean]
+        attr_accessor :truncated
+        alias_method :truncated?, :truncated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @children = args[:children] if args.key?(:children)
+          @truncated = args[:truncated] if args.key?(:truncated)
+        end
+      end
+      
       # `BucketOptions` describes the bucket boundaries used in the histogram.
       class BucketOptions
         include Google::Apis::Core::Hashable
@@ -710,7 +768,7 @@ module Google
         end
       end
       
-      # An update to a Counter sent from a worker.
+      # An update to a Counter sent from a worker. Next ID: 17
       class CounterUpdate
         include Google::Apis::Core::Hashable
       
@@ -719,6 +777,11 @@ module Google
         # @return [Boolean]
         attr_accessor :boolean
         alias_method :boolean?, :boolean
+      
+        # The message type used for encoding metrics of type bounded trie.
+        # Corresponds to the JSON property `boundedTrie`
+        # @return [Google::Apis::DataflowV1b3::BoundedTrie]
+        attr_accessor :bounded_trie
       
         # True if this counter is reported as the total cumulative aggregate value
         # accumulated since the worker started working on this WorkItem. By default this
@@ -803,6 +866,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boolean = args[:boolean] if args.key?(:boolean)
+          @bounded_trie = args[:bounded_trie] if args.key?(:bounded_trie)
           @cumulative = args[:cumulative] if args.key?(:cumulative)
           @distribution = args[:distribution] if args.key?(:distribution)
           @floating_point = args[:floating_point] if args.key?(:floating_point)
@@ -3406,7 +3470,7 @@ module Google
         end
       end
       
-      # Describes the state of a metric.
+      # Describes the state of a metric. Next ID: 14
       class MetricUpdate
         include Google::Apis::Core::Hashable
       
@@ -3471,12 +3535,18 @@ module Google
         attr_accessor :scalar
       
         # Worker-computed aggregate value for the "Set" aggregation kind. The only
-        # possible value type is a list of Values whose type can be Long, Double, or
-        # String, according to the metric's type. All Values in the list must be of the
-        # same type.
+        # possible value type is a list of Values whose type can be Long, Double, String,
+        # or BoundedTrie according to the metric's type. All Values in the list must be
+        # of the same type.
         # Corresponds to the JSON property `set`
         # @return [Object]
         attr_accessor :set
+      
+        # Worker-computed aggregate value for the "Trie" aggregation kind. The only
+        # possible value type is a BoundedTrieNode.
+        # Corresponds to the JSON property `trie`
+        # @return [Object]
+        attr_accessor :trie
       
         # Timestamp associated with the metric value. Optional when workers are
         # reporting work progress; it will be filled in responses from the metrics API.
@@ -3500,6 +3570,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @scalar = args[:scalar] if args.key?(:scalar)
           @set = args[:set] if args.key?(:set)
+          @trie = args[:trie] if args.key?(:trie)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

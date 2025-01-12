@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BoundedTrie
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BoundedTrieNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BucketOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1231,6 +1243,25 @@ module Google
         end
       end
       
+      class BoundedTrie
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bound, as: 'bound'
+          property :root, as: 'root', class: Google::Apis::DataflowV1b3::BoundedTrieNode, decorator: Google::Apis::DataflowV1b3::BoundedTrieNode::Representation
+      
+          collection :singleton, as: 'singleton'
+        end
+      end
+      
+      class BoundedTrieNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :children, as: 'children', class: Google::Apis::DataflowV1b3::BoundedTrieNode, decorator: Google::Apis::DataflowV1b3::BoundedTrieNode::Representation
+      
+          property :truncated, as: 'truncated'
+        end
+      end
+      
       class BucketOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1349,6 +1380,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boolean, as: 'boolean'
+          property :bounded_trie, as: 'boundedTrie', class: Google::Apis::DataflowV1b3::BoundedTrie, decorator: Google::Apis::DataflowV1b3::BoundedTrie::Representation
+      
           property :cumulative, as: 'cumulative'
           property :distribution, as: 'distribution', class: Google::Apis::DataflowV1b3::DistributionUpdate, decorator: Google::Apis::DataflowV1b3::DistributionUpdate::Representation
       
@@ -2072,6 +2105,7 @@ module Google
       
           property :scalar, as: 'scalar'
           property :set, as: 'set'
+          property :trie, as: 'trie'
           property :update_time, as: 'updateTime'
         end
       end
