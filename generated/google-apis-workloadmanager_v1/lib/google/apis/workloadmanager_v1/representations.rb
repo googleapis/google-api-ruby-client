@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SapDiscoveryComponentReplicationSite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SapDiscoveryMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -666,7 +672,8 @@ module Google
       
           collection :ha_hosts, as: 'haHosts'
           property :host_project, as: 'hostProject'
-          collection :replication_sites, as: 'replicationSites', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent::Representation
+          property :region, as: 'region'
+          collection :replication_sites, as: 'replicationSites', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentReplicationSite, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponentReplicationSite::Representation
       
           collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResource, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResource::Representation
       
@@ -698,6 +705,15 @@ module Google
           property :instance_number, as: 'instanceNumber'
           property :primary_instance_uri, as: 'primaryInstanceUri'
           property :shared_nfs_uri, as: 'sharedNfsUri'
+        end
+      end
+      
+      class SapDiscoveryComponentReplicationSite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component, as: 'component', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent::Representation
+      
+          property :source_site, as: 'sourceSite'
         end
       end
       
