@@ -289,6 +289,32 @@ module Google
         end
       end
       
+      # Response definition for the platform list rpc.
+      class ListPlatformsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token used to page through platforms. To retrieve the next page
+        # of the results, set the next request's "page_token" value to this.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The platforms returned in this list response.
+        # Corresponds to the JSON property `platforms`
+        # @return [Array<Google::Apis::AdsenseplatformV1alpha::Platform>]
+        attr_accessor :platforms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @platforms = args[:platforms] if args.key?(:platforms)
+        end
+      end
+      
       # Response definition for the site list rpc.
       class ListSitesResponse
         include Google::Apis::Core::Hashable

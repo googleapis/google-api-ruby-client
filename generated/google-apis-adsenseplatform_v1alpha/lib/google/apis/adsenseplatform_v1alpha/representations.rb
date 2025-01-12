@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPlatformsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSitesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,15 @@ module Google
           collection :accounts, as: 'accounts', class: Google::Apis::AdsenseplatformV1alpha::Account, decorator: Google::Apis::AdsenseplatformV1alpha::Account::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListPlatformsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :platforms, as: 'platforms', class: Google::Apis::AdsenseplatformV1alpha::Platform, decorator: Google::Apis::AdsenseplatformV1alpha::Platform::Representation
+      
         end
       end
       
