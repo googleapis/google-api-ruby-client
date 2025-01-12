@@ -476,30 +476,31 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Query PSC propagation status the status of a Network Connectivity Center hub.
+        # Query the Private Service Connect propagation status of a Network Connectivity
+        # Center hub.
         # @param [String] name
         #   Required. The name of the hub.
         # @param [String] filter
         #   Optional. An expression that filters the list of results. The filter can be
-        #   used to filter the results by the following fields: * psc_propagation_status.
-        #   source_spoke * psc_propagation_status.source_group * psc_propagation_status.
-        #   source_forwarding_rule * psc_propagation_status.target_spoke *
-        #   psc_propagation_status.target_group * psc_propagation_status.code *
-        #   psc_propagation_status.message
+        #   used to filter the results by the following fields: * `psc_propagation_status.
+        #   source_spoke` * `psc_propagation_status.source_group` * `
+        #   psc_propagation_status.source_forwarding_rule` * `psc_propagation_status.
+        #   target_spoke` * `psc_propagation_status.target_group` * `
+        #   psc_propagation_status.code` * `psc_propagation_status.message`
         # @param [String] group_by
-        #   Optional. A field that counts are grouped by. A comma-separated list of any of
-        #   these fields: * psc_propagation_status.source_spoke * psc_propagation_status.
-        #   source_group * psc_propagation_status.source_forwarding_rule *
-        #   psc_propagation_status.target_spoke * psc_propagation_status.target_group *
-        #   psc_propagation_status.code
+        #   Optional. Aggregate the results by the specified fields. A comma-separated
+        #   list of any of these fields: * `psc_propagation_status.source_spoke` * `
+        #   psc_propagation_status.source_group` * `psc_propagation_status.
+        #   source_forwarding_rule` * `psc_propagation_status.target_spoke` * `
+        #   psc_propagation_status.target_group` * `psc_propagation_status.code`
         # @param [String] order_by
-        #   Optional. Sort the results in the ascending order by specific fields returned
-        #   in the response. A comma-separated list of any of these fields: *
-        #   psc_propagation_status.source_spoke * psc_propagation_status.source_group *
-        #   psc_propagation_status.source_forwarding_rule * psc_propagation_status.
-        #   target_spoke * psc_propagation_status.target_group * psc_propagation_status.
-        #   code If `group_by` is set, the value of the `order_by` field must be the same
-        #   as or a subset of the `group_by` field.
+        #   Optional. Sort the results in ascending order by the specified fields. A comma-
+        #   separated list of any of these fields: * `psc_propagation_status.source_spoke`
+        #   * `psc_propagation_status.source_group` * `psc_propagation_status.
+        #   source_forwarding_rule` * `psc_propagation_status.target_spoke` * `
+        #   psc_propagation_status.target_group` * `psc_propagation_status.code` If `
+        #   group_by` is set, the value of the `order_by` field must be the same as or a
+        #   subset of the `group_by` field.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return per page.
         # @param [String] page_token
@@ -1547,8 +1548,8 @@ module Google
         # Clients can use Operations.GetOperation or other methods to check whether the
         # cancellation succeeded or whether the operation completed despite cancellation.
         # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::NetworkconnectivityV1::GoogleLongrunningCancelOperationRequest] google_longrunning_cancel_operation_request_object

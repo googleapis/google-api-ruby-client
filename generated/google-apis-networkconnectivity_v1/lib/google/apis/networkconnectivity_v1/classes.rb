@@ -160,9 +160,9 @@ module Google
       class AutoAccept
         include Google::Apis::Core::Hashable
       
-        # A list of project ids or project numbers for which you want to enable auto-
-        # accept. The auto-accept setting is applied to spokes being created or updated
-        # in these projects.
+        # Optional. A list of project ids or project numbers for which you want to
+        # enable auto-accept. The auto-accept setting is applied to spokes being created
+        # or updated in these projects.
         # Corresponds to the JSON property `autoAcceptProjects`
         # @return [Array<String>]
         attr_accessor :auto_accept_projects
@@ -715,12 +715,12 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Additional structured details about this error. Keys must match /a-z+/ but
-        # should ideally be lowerCamelCase. Also they must be limited to 64 characters
-        # in length. When identifying the current value of an exceeded limit, the units
-        # should be contained in the key, not the value. For example, rather than `"
-        # instanceLimit": "100/request"`, should be returned as, `"
-        # instanceLimitPerRequest": "100"`, if the client exceeds the number of
+        # Additional structured details about this error. Keys must match a regular
+        # expression of `a-z+` but should ideally be lowerCamelCase. Also, they must be
+        # limited to 64 characters in length. When identifying the current value of an
+        # exceeded limit, the units should be contained in the key, not the value. For
+        # example, rather than ``"instanceLimit": "100/request"``, should be returned as,
+        # ``"instanceLimitPerRequest": "100"``, if the client exceeds the number of
         # instances that can be created in a single (batch) request.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
@@ -879,7 +879,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # An optional description of the hub.
+        # Optional. An optional description of the hub.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -983,21 +983,26 @@ module Google
         end
       end
       
-      # The hub status entry.
+      # A hub status entry represents the status of a set of propagated Private
+      # Service Connect connections grouped by certain fields.
       class HubStatusEntry
         include Google::Apis::Core::Hashable
       
-        # The number of status. If group_by is not set in the request, the default is 1.
+        # The number of propagated Private Service Connect connections with this status.
+        # If the `group_by` field was not set in the request message, the value of this
+        # field is 1.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
       
-        # The same group_by field from the request.
+        # The fields that this entry is grouped by. This has the same value as the `
+        # group_by` field in the request message.
         # Corresponds to the JSON property `groupBy`
         # @return [String]
         attr_accessor :group_by
       
-        # The PSC propagation status in a hub.
+        # The status of one or more propagated Private Service Connect connections in a
+        # hub.
         # Corresponds to the JSON property `pscPropagationStatus`
         # @return [Google::Apis::NetworkconnectivityV1::PscPropagationStatus]
         attr_accessor :psc_propagation_status
@@ -1035,9 +1040,9 @@ module Google
       end
       
       # The internal range resource for IPAM operations within a VPC network. Used to
-      # represent a private address range along with behavioral characterstics of that
-      # range (its usage and peering behavior). Networking resources can link to this
-      # range if they are created as belonging to it.
+      # represent a private address range along with behavioral characteristics of
+      # that range (its usage and peering behavior). Networking resources can link to
+      # this range if they are created as belonging to it.
       class InternalRange
         include Google::Apis::Core::Hashable
       
@@ -2513,7 +2518,8 @@ module Google
         end
       end
       
-      # The PSC propagation status in a hub.
+      # The status of one or more propagated Private Service Connect connections in a
+      # hub.
       class PscPropagationStatus
         include Google::Apis::Core::Hashable
       
@@ -2522,7 +2528,8 @@ module Google
         # @return [String]
         attr_accessor :code
       
-        # The human-readable summary of the PSC connection propagation status.
+        # The human-readable summary of the Private Service Connect connection
+        # propagation status.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -3125,7 +3132,7 @@ module Google
         attr_accessor :service_class_uri
       
         # The token provided by the consumer. This token authenticates that the consumer
-        # can create a connecton within the specified project and network.
+        # can create a connection within the specified project and network.
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
@@ -3383,7 +3390,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # An optional description of the spoke.
+        # Optional. An optional description of the spoke.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
