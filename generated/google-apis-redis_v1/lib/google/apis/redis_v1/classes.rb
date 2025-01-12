@@ -158,6 +158,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # EncryptionInfo describes the encryption information of a cluster or a backup.
+        # Corresponds to the JSON property `encryptionInfo`
+        # @return [Google::Apis::RedisV1::EncryptionInfo]
+        attr_accessor :encryption_info
+      
         # Output only. redis-7.2, valkey-7.5
         # Corresponds to the JSON property `engineVersion`
         # @return [String]
@@ -216,6 +221,7 @@ module Google
           @cluster = args[:cluster] if args.key?(:cluster)
           @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @engine_version = args[:engine_version] if args.key?(:engine_version)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
@@ -270,6 +276,12 @@ module Google
         # @return [String]
         attr_accessor :cluster_uid
       
+        # Output only. The KMS key used to encrypt the backups under this backup
+        # collection.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
         # Identifier. Full resource path of the backup collection.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -288,6 +300,7 @@ module Google
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
           @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
           @name = args[:name] if args.key?(:name)
           @uid = args[:uid] if args.key?(:uid)
         end
@@ -490,11 +503,21 @@ module Google
         # @return [Array<Google::Apis::RedisV1::DiscoveryEndpoint>]
         attr_accessor :discovery_endpoints
       
+        # EncryptionInfo describes the encryption information of a cluster or a backup.
+        # Corresponds to the JSON property `encryptionInfo`
+        # @return [Google::Apis::RedisV1::EncryptionInfo]
+        attr_accessor :encryption_info
+      
         # Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be
         # the same region as the clusters.
         # Corresponds to the JSON property `gcsSource`
         # @return [Google::Apis::RedisV1::GcsBackupSource]
         attr_accessor :gcs_source
+      
+        # Optional. The KMS key used to encrypt the at-rest data of the cluster.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
       
         # Maintenance policy per cluster.
         # Corresponds to the JSON property `maintenancePolicy`
@@ -614,7 +637,9 @@ module Google
           @cross_cluster_replication_config = args[:cross_cluster_replication_config] if args.key?(:cross_cluster_replication_config)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @discovery_endpoints = args[:discovery_endpoints] if args.key?(:discovery_endpoints)
+          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @managed_backup_source = args[:managed_backup_source] if args.key?(:managed_backup_source)
@@ -1386,6 +1411,44 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # EncryptionInfo describes the encryption information of a cluster or a backup.
+      class EncryptionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Type of encryption.
+        # Corresponds to the JSON property `encryptionType`
+        # @return [String]
+        attr_accessor :encryption_type
+      
+        # Output only. The state of the primary version of the KMS key perceived by the
+        # system. This field is not populated in backups.
+        # Corresponds to the JSON property `kmsKeyPrimaryState`
+        # @return [String]
+        attr_accessor :kms_key_primary_state
+      
+        # Output only. KMS key versions that are being used to protect the data at-rest.
+        # Corresponds to the JSON property `kmsKeyVersions`
+        # @return [Array<String>]
+        attr_accessor :kms_key_versions
+      
+        # Output only. The most recent time when the encryption info was updated.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
+          @kms_key_primary_state = args[:kms_key_primary_state] if args.key?(:kms_key_primary_state)
+          @kms_key_versions = args[:kms_key_versions] if args.key?(:kms_key_versions)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
         end
       end
       
@@ -2299,8 +2362,8 @@ module Google
       class MachineConfiguration
         include Google::Apis::Core::Hashable
       
-        # The number of CPUs. TODO(b/342344482, b/342346271) add proto validations again
-        # after bug fix.
+        # The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482, b/
+        # 342346271) add proto validations again after bug fix.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
