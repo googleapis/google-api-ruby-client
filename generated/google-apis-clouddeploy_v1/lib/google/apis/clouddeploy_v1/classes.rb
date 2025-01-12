@@ -523,7 +523,7 @@ module Google
       class AutomationResourceSelector
         include Google::Apis::Core::Hashable
       
-        # Contains attributes about a target.
+        # Optional. Contains attributes about a target.
         # Corresponds to the JSON property `targets`
         # @return [Array<Google::Apis::ClouddeployV1::TargetAttribute>]
         attr_accessor :targets
@@ -940,13 +940,14 @@ module Google
       class BuildArtifact
         include Google::Apis::Core::Hashable
       
-        # Image name in Skaffold configuration.
+        # Optional. Image name in Skaffold configuration.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
       
-        # Image tag to use. This will generally be the full path to an image, such as "
-        # gcr.io/my-project/busybox:1.2.3" or "gcr.io/my-project/busybox@sha256:abc123".
+        # Optional. Image tag to use. This will generally be the full path to an image,
+        # such as "gcr.io/my-project/busybox:1.2.3" or "gcr.io/my-project/busybox@sha256:
+        # abc123".
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -1016,7 +1017,7 @@ module Google
         # @return [Google::Apis::ClouddeployV1::Predeploy]
         attr_accessor :predeploy
       
-        # Whether to run verify tests after each percentage deployment.
+        # Optional. Whether to run verify tests after each percentage deployment.
         # Corresponds to the JSON property `verify`
         # @return [Boolean]
         attr_accessor :verify
@@ -1136,9 +1137,9 @@ module Google
       class CloudRunConfig
         include Google::Apis::Core::Hashable
       
-        # Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service
-        # on the user's behalf to facilitate traffic splitting. This is required to be
-        # true for CanaryDeployments, but optional for CustomCanaryDeployments.
+        # Optional. Whether Cloud Deploy should update the traffic stanza in a Cloud Run
+        # Service on the user's behalf to facilitate traffic splitting. This is required
+        # to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
         # Corresponds to the JSON property `automaticTrafficControl`
         # @return [Boolean]
         attr_accessor :automatic_traffic_control
@@ -1495,7 +1496,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. Name of the `CustomTargetType`. Format is `projects/`project`/
+        # Identifier. Name of the `CustomTargetType`. Format is `projects/`project`/
         # locations/`location`/customTargetTypes/`customTargetType``. The `
         # customTargetType` component must match `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`
         # Corresponds to the JSON property `name`
@@ -1646,8 +1647,8 @@ module Google
       class DeliveryPipeline
         include Google::Apis::Core::Hashable
       
-        # User annotations. These attributes can only be set and used by the user, and
-        # not by Cloud Deploy.
+        # Optional. User annotations. These attributes can only be set and used by the
+        # user, and not by Cloud Deploy.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -1662,7 +1663,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Description of the `DeliveryPipeline`. Max length is 255 characters.
+        # Optional. Description of the `DeliveryPipeline`. Max length is 255 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1685,7 +1686,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. Name of the `DeliveryPipeline`. Format is `projects/`project`/
+        # Identifier. Name of the `DeliveryPipeline`. Format is `projects/`project`/
         # locations/`location`/deliveryPipelines/`deliveryPipeline``. The `
         # deliveryPipeline` component must match `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`
         # Corresponds to the JSON property `name`
@@ -1697,8 +1698,8 @@ module Google
         # @return [Google::Apis::ClouddeployV1::SerialPipeline]
         attr_accessor :serial_pipeline
       
-        # When suspended, no new releases or rollouts can be created, but in-progress
-        # ones will complete.
+        # Optional. When suspended, no new releases or rollouts can be created, but in-
+        # progress ones will complete.
         # Corresponds to the JSON property `suspended`
         # @return [Boolean]
         attr_accessor :suspended
@@ -1738,9 +1739,9 @@ module Google
       class DeliveryPipelineAttribute
         include Google::Apis::Core::Hashable
       
-        # ID of the `DeliveryPipeline`. The value of this field could be one of the
-        # following: * The last segment of a pipeline name * "*", all delivery pipelines
-        # in a location
+        # Optional. ID of the `DeliveryPipeline`. The value of this field could be one
+        # of the following: * The last segment of a pipeline name * "*", all delivery
+        # pipelines in a location
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1951,10 +1952,10 @@ module Google
       class DeployPolicy
         include Google::Apis::Core::Hashable
       
-        # User annotations. These attributes can only be set and used by the user, and
-        # not by Cloud Deploy. Annotations must meet the following constraints: *
-        # Annotations are key/value pairs. * Valid annotation keys have two segments: an
-        # optional prefix and name, separated by a slash (`/`). * The name segment is
+        # Optional. User annotations. These attributes can only be set and used by the
+        # user, and not by Cloud Deploy. Annotations must meet the following constraints:
+        # * Annotations are key/value pairs. * Valid annotation keys have two segments:
+        # an optional prefix and name, separated by a slash (`/`). * The name segment is
         # required and must be 63 characters or less, beginning and ending with an
         # alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`),
         # dots (`.`), and alphanumerics between. * The prefix is optional. If specified,
@@ -1971,7 +1972,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Description of the `DeployPolicy`. Max length is 255 characters.
+        # Optional. Description of the `DeployPolicy`. Max length is 255 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2014,8 +2015,8 @@ module Google
         # @return [Array<Google::Apis::ClouddeployV1::DeployPolicyResourceSelector>]
         attr_accessor :selectors
       
-        # When suspended, the policy will not prevent actions from occurring, even if
-        # the action violates the policy.
+        # Optional. When suspended, the policy will not prevent actions from occurring,
+        # even if the action violates the policy.
         # Corresponds to the JSON property `suspended`
         # @return [Boolean]
         attr_accessor :suspended
@@ -2468,13 +2469,21 @@ module Google
         # @return [String]
         attr_accessor :cluster
       
+        # Optional. If set, the cluster will be accessed using the DNS endpoint. Note
+        # that both `dns_endpoint` and `internal_ip` cannot be set to true.
+        # Corresponds to the JSON property `dnsEndpoint`
+        # @return [Boolean]
+        attr_accessor :dns_endpoint
+        alias_method :dns_endpoint?, :dns_endpoint
+      
         # Optional. If true, `cluster` is accessed using the private IP address of the
         # control plane endpoint. Otherwise, the default IP address of the control plane
         # endpoint is used. The default IP address is the private IP address for
         # clusters with private control-plane endpoints and the public IP address
         # otherwise. Only specify this option when `cluster` is a [private GKE cluster](
         # https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-
-        # concept).
+        # concept). Note that `internal_ip` and `dns_endpoint` cannot both be set to
+        # true.
         # Corresponds to the JSON property `internalIp`
         # @return [Boolean]
         attr_accessor :internal_ip
@@ -2494,6 +2503,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
+          @dns_endpoint = args[:dns_endpoint] if args.key?(:dns_endpoint)
           @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
           @proxy_url = args[:proxy_url] if args.key?(:proxy_url)
         end
@@ -2662,7 +2672,7 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
-        # Optional. Name of the `JobRun`. Format is `projects/`project`/locations/`
+        # Identifier. Name of the `JobRun`. Format is `projects/`project`/locations/`
         # location`/deliveryPipelines/`deliveryPipeline`/releases/`releases`/rollouts/`
         # rollouts`/jobRuns/`uuid``.
         # Corresponds to the JSON property `name`
@@ -3540,13 +3550,14 @@ module Google
         # @return [Google::Apis::ClouddeployV1::Predeploy]
         attr_accessor :predeploy
       
-        # Skaffold profiles to use when rendering the manifest for this phase. These are
-        # in addition to the profiles list specified in the `DeliveryPipeline` stage.
+        # Optional. Skaffold profiles to use when rendering the manifest for this phase.
+        # These are in addition to the profiles list specified in the `DeliveryPipeline`
+        # stage.
         # Corresponds to the JSON property `profiles`
         # @return [Array<String>]
         attr_accessor :profiles
       
-        # Whether to run verify tests after the deployment.
+        # Optional. Whether to run verify tests after the deployment.
         # Corresponds to the JSON property `verify`
         # @return [Boolean]
         attr_accessor :verify
@@ -4080,14 +4091,14 @@ module Google
         attr_accessor :abandoned
         alias_method :abandoned?, :abandoned
       
-        # User annotations. These attributes can only be set and used by the user, and
-        # not by Cloud Deploy. See https://google.aip.dev/128#annotations for more
-        # details such as format and size limitations.
+        # Optional. User annotations. These attributes can only be set and used by the
+        # user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for
+        # more details such as format and size limitations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # List of artifacts to pass through to Skaffold command.
+        # Optional. List of artifacts to pass through to Skaffold command.
         # Corresponds to the JSON property `buildArtifacts`
         # @return [Array<Google::Apis::ClouddeployV1::BuildArtifact>]
         attr_accessor :build_artifacts
@@ -4119,7 +4130,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :deploy_parameters
       
-        # Description of the `Release`. Max length is 255 characters.
+        # Optional. Description of the `Release`. Max length is 255 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -4142,7 +4153,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. Name of the `Release`. Format is `projects/`project`/locations/`
+        # Identifier. Name of the `Release`. Format is `projects/`project`/locations/`
         # location`/deliveryPipelines/`deliveryPipeline`/releases/`release``. The `
         # release` component must match `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`
         # Corresponds to the JSON property `name`
@@ -4164,12 +4175,13 @@ module Google
         # @return [String]
         attr_accessor :render_state
       
-        # Filepath of the Skaffold config inside of the config URI.
+        # Optional. Filepath of the Skaffold config inside of the config URI.
         # Corresponds to the JSON property `skaffoldConfigPath`
         # @return [String]
         attr_accessor :skaffold_config_path
       
-        # Cloud Storage URI of tar.gz archive containing Skaffold configuration.
+        # Optional. Cloud Storage URI of tar.gz archive containing Skaffold
+        # configuration.
         # Corresponds to the JSON property `skaffoldConfigUri`
         # @return [String]
         attr_accessor :skaffold_config_uri
@@ -4892,9 +4904,9 @@ module Google
         # @return [String]
         attr_accessor :active_repair_automation_run
       
-        # User annotations. These attributes can only be set and used by the user, and
-        # not by Cloud Deploy. See https://google.aip.dev/128#annotations for more
-        # details such as format and size limitations.
+        # Optional. User annotations. These attributes can only be set and used by the
+        # user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for
+        # more details such as format and size limitations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -4944,7 +4956,8 @@ module Google
         # @return [String]
         attr_accessor :deploying_build
       
-        # Description of the `Rollout` for user purposes. Max length is 255 characters.
+        # Optional. Description of the `Rollout` for user purposes. Max length is 255
+        # characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -4982,7 +4995,7 @@ module Google
         # @return [Google::Apis::ClouddeployV1::Metadata]
         attr_accessor :metadata
       
-        # Optional. Name of the `Rollout`. Format is `projects/`project`/locations/`
+        # Identifier. Name of the `Rollout`. Format is `projects/`project`/locations/`
         # location`/deliveryPipelines/`deliveryPipeline`/releases/`release`/rollouts/`
         # rollout``. The `rollout` component must match `[a-z]([a-z0-9-]`0,61`[a-z0-9])?`
         # Corresponds to the JSON property `name`
@@ -5283,8 +5296,8 @@ module Google
       class SerialPipeline
         include Google::Apis::Core::Hashable
       
-        # Each stage specifies configuration for a `Target`. The ordering of this list
-        # defines the promotion flow.
+        # Optional. Each stage specifies configuration for a `Target`. The ordering of
+        # this list defines the promotion flow.
         # Corresponds to the JSON property `stages`
         # @return [Array<Google::Apis::ClouddeployV1::Stage>]
         attr_accessor :stages
@@ -5615,7 +5628,8 @@ module Google
         # @return [Array<Google::Apis::ClouddeployV1::DeployParameters>]
         attr_accessor :deploy_parameters
       
-        # Skaffold profiles to use when rendering the manifest for this stage's `Target`.
+        # Optional. Skaffold profiles to use when rendering the manifest for this stage'
+        # s `Target`.
         # Corresponds to the JSON property `profiles`
         # @return [Array<String>]
         attr_accessor :profiles
@@ -5625,11 +5639,11 @@ module Google
         # @return [Google::Apis::ClouddeployV1::Strategy]
         attr_accessor :strategy
       
-        # The target_id to which this stage points. This field refers exclusively to the
-        # last segment of a target name. For example, this field would just be `my-
-        # target` (rather than `projects/project/locations/location/targets/my-target`).
-        # The location of the `Target` is inferred to be the same as the location of the
-        # `DeliveryPipeline` that contains this `Stage`.
+        # Optional. The target_id to which this stage points. This field refers
+        # exclusively to the last segment of a target name. For example, this field
+        # would just be `my-target` (rather than `projects/project/locations/location/
+        # targets/my-target`). The location of the `Target` is inferred to be the same
+        # as the location of the `DeliveryPipeline` that contains this `Stage`.
         # Corresponds to the JSON property `targetId`
         # @return [String]
         attr_accessor :target_id
@@ -5661,7 +5675,7 @@ module Google
         # @return [Google::Apis::ClouddeployV1::Predeploy]
         attr_accessor :predeploy
       
-        # Whether to verify a deployment.
+        # Optional. Whether to verify a deployment.
         # Corresponds to the JSON property `verify`
         # @return [Boolean]
         attr_accessor :verify
@@ -5799,8 +5813,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Configurations for all execution that relates to this `Target`. Each `
-        # ExecutionEnvironmentUsage` value may only be used in a single configuration;
+        # Optional. Configurations for all execution that relates to this `Target`. Each
+        # `ExecutionEnvironmentUsage` value may only be used in a single configuration;
         # using the same value multiple times is an error. When one or more
         # configurations are specified, they must include the `RENDER` and `DEPLOY` `
         # ExecutionEnvironmentUsage` values. When no configurations are specified,
@@ -5830,7 +5844,7 @@ module Google
         # @return [Google::Apis::ClouddeployV1::MultiTarget]
         attr_accessor :multi_target
       
-        # Optional. Name of the `Target`. Format is `projects/`project`/locations/`
+        # Identifier. Name of the `Target`. Format is `projects/`project`/locations/`
         # location`/targets/`target``. The `target` component must match `[a-z]([a-z0-9-]
         # `0,61`[a-z0-9])?`
         # Corresponds to the JSON property `name`
@@ -5935,8 +5949,9 @@ module Google
       class TargetAttribute
         include Google::Apis::Core::Hashable
       
-        # ID of the `Target`. The value of this field could be one of the following: *
-        # The last segment of a target name * "*", all targets in a location
+        # Optional. ID of the `Target`. The value of this field could be one of the
+        # following: * The last segment of a target name * "*", all targets in a
+        # location
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
