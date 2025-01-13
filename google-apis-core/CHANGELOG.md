@@ -4,7 +4,7 @@
 
 #### Features
 
-* Automated regeneration of ml v1 client ([#21158](https://github.com/googleapis/google-api-ruby-client/issues/21158)) 
+* add ECONNRESET error as retriable error ([#20354](https://github.com/googleapis/google-api-ruby-client/issues/20354)) 
 
 ### 0.15.1 (2024-07-29)
 
