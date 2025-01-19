@@ -10643,6 +10643,8 @@ module Google
         attr_accessor :display_name
       
         # Required. High level description of the goal the playbook intend to accomplish.
+        # A goal should be concise since it's visible to other playbooks that may
+        # reference this playbook.
         # Corresponds to the JSON property `goal`
         # @return [String]
         attr_accessor :goal
@@ -10798,6 +10800,13 @@ module Google
       class GoogleCloudDialogflowCxV3beta1PlaybookInstruction
         include Google::Apis::Core::Hashable
       
+        # General guidelines for the playbook. These are unstructured instructions that
+        # are not directly part of the goal, e.g. "Always be polite". It's valid for
+        # this text to be long and used instead of steps altogether.
+        # Corresponds to the JSON property `guidelines`
+        # @return [String]
+        attr_accessor :guidelines
+      
         # Ordered list of step by step execution instructions to accomplish target goal.
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookStep>]
@@ -10809,6 +10818,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @guidelines = args[:guidelines] if args.key?(:guidelines)
           @steps = args[:steps] if args.key?(:steps)
         end
       end

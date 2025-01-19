@@ -6500,6 +6500,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1PlaybookInstruction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :guidelines, as: 'guidelines'
           collection :steps, as: 'steps', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookStep, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookStep::Representation
       
         end
