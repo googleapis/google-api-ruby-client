@@ -3178,6 +3178,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectAttachmentL2Forwarding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentL2ForwardingApplianceMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentL2ForwardingGeneveHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectAttachmentList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -14254,6 +14278,8 @@ module Google
           property :interconnect, as: 'interconnect'
           collection :ipsec_internal_addresses, as: 'ipsecInternalAddresses'
           property :kind, as: 'kind'
+          property :l2_forwarding, as: 'l2Forwarding', class: Google::Apis::ComputeAlpha::InterconnectAttachmentL2Forwarding, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentL2Forwarding::Representation
+      
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :mtu, as: 'mtu'
@@ -14486,6 +14512,44 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :group_status, as: 'groupStatus'
+        end
+      end
+      
+      class InterconnectAttachmentL2Forwarding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :appliance_mappings, as: 'applianceMappings', class: Google::Apis::ComputeAlpha::InterconnectAttachmentL2ForwardingApplianceMapping, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentL2ForwardingApplianceMapping::Representation
+      
+          property :default_appliance_ip_address, as: 'defaultApplianceIpAddress'
+          property :geneve_header, as: 'geneveHeader', class: Google::Apis::ComputeAlpha::InterconnectAttachmentL2ForwardingGeneveHeader, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentL2ForwardingGeneveHeader::Representation
+      
+          property :network, as: 'network'
+          property :tunnel_endpoint_ip_address, as: 'tunnelEndpointIpAddress'
+        end
+      end
+      
+      class InterconnectAttachmentL2ForwardingApplianceMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :appliance_ip_address, as: 'applianceIpAddress'
+          collection :inner_vlan_to_appliance_mappings, as: 'innerVlanToApplianceMappings', class: Google::Apis::ComputeAlpha::InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inner_appliance_ip_address, as: 'innerApplianceIpAddress'
+          collection :inner_vlan_tags, as: 'innerVlanTags'
+        end
+      end
+      
+      class InterconnectAttachmentL2ForwardingGeneveHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vni, as: 'vni'
         end
       end
       
