@@ -5810,7 +5810,7 @@ module Google
         #   provided content.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] profile
-        #   Required. The canonical URL of a profile that this resource should be
+        #   Optional. The canonical URL of a profile that this resource should be
         #   validated against. For example, to validate a Patient resource against the US
         #   Core Patient profile this parameter would be `http://hl7.org/fhir/us/core/
         #   StructureDefinition/us-core-patient`. A StructureDefinition with this
@@ -6556,7 +6556,7 @@ module Google
         # @param [String] parent
         #   Required. Name of the FHIR store to retrieve resources from.
         # @param [String] resource_type
-        #   Required. The FHIR resource type to search, such as Patient or Observation.
+        #   Optional. The FHIR resource type to search, such as Patient or Observation.
         #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/
         #   implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/
         #   implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/
