@@ -703,6 +703,11 @@ module Google
       class Endpoint
         include Google::Apis::Core::Hashable
       
+        # An [AlloyDB Instance](https://cloud.google.com/alloydb) URI.
+        # Corresponds to the JSON property `alloyDbInstance`
+        # @return [String]
+        attr_accessor :alloy_db_instance
+      
         # Wrapper for the App Engine service version attributes.
         # Corresponds to the JSON property `appEngineVersion`
         # @return [Google::Apis::NetworkmanagementV1beta1::AppEngineVersionEndpoint]
@@ -817,6 +822,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alloy_db_instance = args[:alloy_db_instance] if args.key?(:alloy_db_instance)
           @app_engine_version = args[:app_engine_version] if args.key?(:app_engine_version)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run_revision = args[:cloud_run_revision] if args.key?(:cloud_run_revision)

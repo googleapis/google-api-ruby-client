@@ -552,6 +552,7 @@ module Google
       class Endpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alloy_db_instance, as: 'alloyDbInstance'
           property :app_engine_version, as: 'appEngineVersion', class: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionEndpoint, decorator: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionEndpoint::Representation
       
           property :cloud_function, as: 'cloudFunction', class: Google::Apis::NetworkmanagementV1beta1::CloudFunctionEndpoint, decorator: Google::Apis::NetworkmanagementV1beta1::CloudFunctionEndpoint::Representation
