@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HashProp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -646,6 +652,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadedGoModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UploadedMavenArtifact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -742,6 +754,8 @@ module Google
       class Artifacts
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :go_modules, as: 'goModules', class: Google::Apis::CloudbuildV1::GoModule, decorator: Google::Apis::CloudbuildV1::GoModule::Representation
+      
           collection :images, as: 'images'
           collection :maven_artifacts, as: 'mavenArtifacts', class: Google::Apis::CloudbuildV1::MavenArtifact, decorator: Google::Apis::CloudbuildV1::MavenArtifact::Representation
       
@@ -954,6 +968,7 @@ module Google
           property :default_logs_bucket_behavior, as: 'defaultLogsBucketBehavior'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :dynamic_substitutions, as: 'dynamicSubstitutions'
+          property :enable_structured_logging, as: 'enableStructuredLogging'
           collection :env, as: 'env'
           property :log_streaming_option, as: 'logStreamingOption'
           property :logging, as: 'logging'
@@ -1371,6 +1386,18 @@ module Google
         end
       end
       
+      class GoModule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :module_path, as: 'modulePath'
+          property :module_version, as: 'moduleVersion'
+          property :repository_location, as: 'repositoryLocation'
+          property :repository_name, as: 'repositoryName'
+          property :repository_project_id, as: 'repositoryProjectId'
+          property :source_path, as: 'sourcePath'
+        end
+      end
+      
       class HashProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1656,6 +1683,8 @@ module Google
       
           collection :build_step_images, as: 'buildStepImages'
           collection :build_step_outputs, as: 'buildStepOutputs'
+          collection :go_modules, as: 'goModules', class: Google::Apis::CloudbuildV1::UploadedGoModule, decorator: Google::Apis::CloudbuildV1::UploadedGoModule::Representation
+      
           collection :images, as: 'images', class: Google::Apis::CloudbuildV1::BuiltImage, decorator: Google::Apis::CloudbuildV1::BuiltImage::Representation
       
           collection :maven_artifacts, as: 'mavenArtifacts', class: Google::Apis::CloudbuildV1::UploadedMavenArtifact, decorator: Google::Apis::CloudbuildV1::UploadedMavenArtifact::Representation
@@ -1825,6 +1854,17 @@ module Google
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class UploadedGoModule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
+      
+          property :uri, as: 'uri'
         end
       end
       
