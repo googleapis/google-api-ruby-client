@@ -290,6 +290,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a token for device enrollment. The DPC can encode this token within
+        # the QR/NFC/zero-touch enrollment payload or fetch it before calling the on-
+        # device API to authenticate the user. The token can be generated for each
+        # device or reused across multiple devices.
+        # @param [String] enterprise_id
+        #   Required. The ID of the enterprise.
+        # @param [Google::Apis::AndroidenterpriseV1::EnrollmentToken] enrollment_token_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::EnrollmentToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::EnrollmentToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_enrollment_token(enterprise_id, enrollment_token_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidenterprise/v1/enterprises/{enterpriseId}/enrollmentTokens', options)
+          command.request_representation = Google::Apis::AndroidenterpriseV1::EnrollmentToken::Representation
+          command.request_object = enrollment_token_object
+          command.response_representation = Google::Apis::AndroidenterpriseV1::EnrollmentToken::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::EnrollmentToken
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Acknowledges notifications that were received from Enterprises.
         # PullNotificationSet to prevent subsequent calls from returning the same
         # notifications.
@@ -351,42 +387,6 @@ module Google
           command.response_class = Google::Apis::AndroidenterpriseV1::Enterprise
           command.query['completionToken'] = completion_token unless completion_token.nil?
           command.query['enterpriseToken'] = enterprise_token unless enterprise_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns a token for device enrollment. The DPC can encode this token within
-        # the QR/NFC/zero-touch enrollment payload or fetch it before calling the on-
-        # device API to authenticate the user. The token can be generated for each
-        # device or reused across multiple devices.
-        # @param [String] enterprise_id
-        #   Required. The ID of the enterprise.
-        # @param [Google::Apis::AndroidenterpriseV1::EnrollmentToken] enrollment_token_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::EnrollmentToken] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::EnrollmentToken]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_enterprise_enrollment_token(enterprise_id, enrollment_token_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'androidenterprise/v1/enterprises/{enterpriseId}/createEnrollmentToken', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::EnrollmentToken::Representation
-          command.request_object = enrollment_token_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::EnrollmentToken::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::EnrollmentToken
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -464,7 +464,18 @@ module Google
         # Generates a sign-up URL.
         # @param [String] admin_email
         #   Optional. Email address used to prefill the admin field of the enterprise
-        #   signup form. This value is a hint only and can be altered by the user.
+        #   signup form. This value is a hint only and can be altered by the user. If `
+        #   allowedDomains` is non-empty then this must belong to one of the `
+        #   allowedDomains`.
+        # @param [Array<String>, String] allowed_domains
+        #   Optional. A list of domains that are permitted for the admin email. The IT
+        #   admin cannot enter an email address with a domain name that is not in this
+        #   list. Subdomains of domains in this list are not allowed but can be allowed by
+        #   adding a second entry which has `*.` prefixed to the domain name (e.g. *.
+        #   example.com). If the field is not present or is an empty list then the IT
+        #   admin is free to use any valid domain name. Personal email domains are always
+        #   allowed, but will result in the creation of a managed Google Play Accounts
+        #   enterprise.
         # @param [String] callback_url
         #   The callback URL to which the Admin will be redirected after successfully
         #   creating an enterprise. Before redirecting there the system will add a single
@@ -490,11 +501,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_enterprise_signup_url(admin_email: nil, callback_url: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def generate_enterprise_signup_url(admin_email: nil, allowed_domains: nil, callback_url: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'androidenterprise/v1/enterprises/signupUrl', options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::SignupInfo::Representation
           command.response_class = Google::Apis::AndroidenterpriseV1::SignupInfo
           command.query['adminEmail'] = admin_email unless admin_email.nil?
+          command.query['allowedDomains'] = allowed_domains unless allowed_domains.nil?
           command.query['callbackUrl'] = callback_url unless callback_url.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
