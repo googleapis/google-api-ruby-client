@@ -1974,14 +1974,16 @@ module Google
       
         # Required. Textual representation of the crontab. User can customize the backup
         # frequency and the backup version time using the cron expression. The version
-        # time must be in UTC timzeone. The backup will contain an externally consistent
-        # copy of the database at the version time. Allowed frequencies are 12 hour, 1
-        # day, 1 week and 1 month. Examples of valid cron specifications: * `0 2/12 * * *
-        # ` : every 12 hours at (2, 14) hours past midnight in UTC. * `0 2,14 * * * ` :
-        # every 12 hours at (2,14) hours past midnight in UTC. * `0 2 * * * ` : once a
-        # day at 2 past midnight in UTC. * `0 2 * * 0 ` : once a week every Sunday at 2
-        # past midnight in UTC. * `0 2 8 * * ` : once a month on 8th day at 2 past
-        # midnight in UTC.
+        # time must be in UTC timezone. The backup will contain an externally consistent
+        # copy of the database at the version time. Full backups must be scheduled a
+        # minimum of 12 hours apart and incremental backups must be scheduled a minimum
+        # of 4 hours apart. Examples of valid cron specifications: * `0 2/12 * * *` :
+        # every 12 hours at (2, 14) hours past midnight in UTC. * `0 2,14 * * *` : every
+        # 12 hours at (2,14) hours past midnight in UTC. * `0 */4 * * *` : (incremental
+        # backups only) every 4 hours at (0, 4, 8, 12, 16, 20) hours past midnight in
+        # UTC. * `0 2 * * *` : once a day at 2 past midnight in UTC. * `0 2 * * 0` :
+        # once a week every Sunday at 2 past midnight in UTC. * `0 2 8 * *` : once a
+        # month on 8th day at 2 past midnight in UTC.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -2443,6 +2445,18 @@ module Google
       class ExecuteBatchDmlRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If set to true, this request marks the end of the transaction. The
+        # transaction should be committed or aborted after these statements execute, and
+        # attempts to execute any other requests against this transaction (including
+        # reads and queries) will be rejected. Setting this option may cause some error
+        # reporting to be deferred until commit time (e.g. validation of unique
+        # constraints). Given this, successful execution of statements should not be
+        # assumed until a subsequent Commit call completes successfully.
+        # Corresponds to the JSON property `lastStatements`
+        # @return [Boolean]
+        attr_accessor :last_statements
+        alias_method :last_statements?, :last_statements
+      
         # Common request options for various APIs.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::SpannerV1::RequestOptions]
@@ -2480,6 +2494,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @last_statements = args[:last_statements] if args.key?(:last_statements)
           @request_options = args[:request_options] if args.key?(:request_options)
           @seqno = args[:seqno] if args.key?(:seqno)
           @statements = args[:statements] if args.key?(:statements)
@@ -2563,6 +2578,19 @@ module Google
         # Corresponds to the JSON property `directedReadOptions`
         # @return [Google::Apis::SpannerV1::DirectedReadOptions]
         attr_accessor :directed_read_options
+      
+        # Optional. If set to true, this statement marks the end of the transaction. The
+        # transaction should be committed or aborted after this statement executes, and
+        # attempts to execute any other requests against this transaction (including
+        # reads and queries) will be rejected. For DML statements, setting this option
+        # may cause some error reporting to be deferred until commit time (e.g.
+        # validation of unique constraints). Given this, successful execution of a DML
+        # statement should not be assumed until a subsequent Commit call completes
+        # successfully.
+        # Corresponds to the JSON property `lastStatement`
+        # @return [Boolean]
+        attr_accessor :last_statement
+        alias_method :last_statement?, :last_statement
       
         # It is not always possible for Cloud Spanner to infer the right SQL type from a
         # JSON value. For example, values of type `BYTES` and values of type `STRING`
@@ -2650,6 +2678,7 @@ module Google
         def update!(**args)
           @data_boost_enabled = args[:data_boost_enabled] if args.key?(:data_boost_enabled)
           @directed_read_options = args[:directed_read_options] if args.key?(:directed_read_options)
+          @last_statement = args[:last_statement] if args.key?(:last_statement)
           @param_types = args[:param_types] if args.key?(:param_types)
           @params = args[:params] if args.key?(:params)
           @partition_token = args[:partition_token] if args.key?(:partition_token)
@@ -3013,12 +3042,14 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Controls the default backup behavior for new databases within the
-        # instance. Note that `AUTOMATIC` is not permitted for free instances, as
-        # backups and backup schedules are not allowed for free instances. In the `
-        # GetInstance` or `ListInstances` response, if the value of
-        # default_backup_schedule_type is unset or NONE, no default backup schedule will
-        # be created for new databases within the instance.
+        # Optional. Controls the default backup schedule behavior for new databases
+        # within the instance. By default, a backup schedule is created automatically
+        # when a new database is created in a new instance. Note that the `AUTOMATIC`
+        # value isn't permitted for free instances, as backups and backup schedules aren'
+        # t supported for free instances. In the `GetInstance` or `ListInstances`
+        # response, if the value of `default_backup_schedule_type` isn't set, or set to `
+        # NONE`, Spanner doesn't create a default backup schedule for new databases in
+        # the instance.
         # Corresponds to the JSON property `defaultBackupScheduleType`
         # @return [String]
         attr_accessor :default_backup_schedule_type
@@ -7025,7 +7056,7 @@ module Google
         attr_accessor :operation_id
       
         # Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements.
-        # Contains a protobuf-serialized [google.protobufFileDescriptorSet](https://
+        # Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://
         # github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.
         # proto). To generate it, [install](https://grpc.io/docs/protoc-installation/)
         # and run `protoc` with --include_imports and --descriptor_set_out. For example,
