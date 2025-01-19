@@ -2650,6 +2650,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6850,6 +6856,7 @@ module Google
       
           property :firestore_source, as: 'firestoreSource', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFirestoreSource, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFirestoreSource::Representation
       
+          property :force_refresh_content, as: 'forceRefreshContent'
           property :gcs_source, as: 'gcsSource', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGcsSource, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGcsSource::Representation
       
           property :id_field, as: 'idField'
@@ -8095,6 +8102,7 @@ module Google
       
           property :session_info, as: 'sessionInfo', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSessionInfo, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSessionInfo::Representation
       
+          property :suggested_query, as: 'suggestedQuery'
           property :summary, as: 'summary', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummary, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSummary::Representation
       
           property :total_size, as: 'totalSize'
@@ -8151,8 +8159,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :extracted_filters, as: 'extractedFilters'
           property :rewritten_query, as: 'rewrittenQuery'
+          property :sql_request, as: 'sqlRequest', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest::Representation
+      
           property :structured_extracted_filter, as: 'structuredExtractedFilter', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_query, as: 'sqlQuery'
         end
       end
       
@@ -8531,6 +8548,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :entities, as: 'entities'
+          property :force_refresh_content, as: 'forceRefreshContent'
           collection :healthcare_fhir_resource_types, as: 'healthcareFhirResourceTypes'
           property :sync_identity, as: 'syncIdentity'
           property :sync_since_timestamp, as: 'syncSinceTimestamp'
