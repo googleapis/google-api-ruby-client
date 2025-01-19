@@ -2235,64 +2235,6 @@ module Google
         end
       end
       
-      # 
-      class BulkListCampaignAssignedTargetingOptionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of assigned targeting options. This list will be absent if empty.
-        # Corresponds to the JSON property `assignedTargetingOptions`
-        # @return [Array<Google::Apis::DisplayvideoV2::AssignedTargetingOption>]
-        attr_accessor :assigned_targeting_options
-      
-        # A token identifying the next page of results. This value should be specified
-        # as the pageToken in a subsequent
-        # BulkListCampaignAssignedTargetingOptionsRequest to fetch the next page of
-        # results. This token will be absent if there are no more
-        # assigned_targeting_options to return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # 
-      class BulkListInsertionOrderAssignedTargetingOptionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of assigned targeting options. This list will be absent if empty.
-        # Corresponds to the JSON property `assignedTargetingOptions`
-        # @return [Array<Google::Apis::DisplayvideoV2::AssignedTargetingOption>]
-        attr_accessor :assigned_targeting_options
-      
-        # A token identifying the next page of results. This value should be specified
-        # as the pageToken in a subsequent
-        # BulkListInsertionOrderAssignedTargetingOptionsRequest to fetch the next page
-        # of results. This token will be absent if there are no more
-        # assigned_targeting_options to return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # Request message for LineItemService.BulkUpdateLineItems.
       class BulkUpdateLineItemsRequest
         include Google::Apis::Core::Hashable
@@ -3133,117 +3075,6 @@ module Google
           @final_url = args[:final_url] if args.key?(:final_url)
           @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
           @video = args[:video] if args.key?(:video)
-        end
-      end
-      
-      # User consent status.
-      class Consent
-        include Google::Apis::Core::Hashable
-      
-        # Represents consent for ad personalization.
-        # Corresponds to the JSON property `adPersonalization`
-        # @return [String]
-        attr_accessor :ad_personalization
-      
-        # Represents consent for ad user data.
-        # Corresponds to the JSON property `adUserData`
-        # @return [String]
-        attr_accessor :ad_user_data
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ad_personalization = args[:ad_personalization] if args.key?(:ad_personalization)
-          @ad_user_data = args[:ad_user_data] if args.key?(:ad_user_data)
-        end
-      end
-      
-      # Contact information defining a Customer Match audience member.
-      class ContactInfo
-        include Google::Apis::Core::Hashable
-      
-        # Country code of the member. Must also be set with the following fields: *
-        # hashed_first_name * hashed_last_name * zip_codes
-        # Corresponds to the JSON property `countryCode`
-        # @return [String]
-        attr_accessor :country_code
-      
-        # A list of SHA256 hashed email of the member. Before hashing, remove all
-        # whitespace and make sure the string is all lowercase.
-        # Corresponds to the JSON property `hashedEmails`
-        # @return [Array<String>]
-        attr_accessor :hashed_emails
-      
-        # SHA256 hashed first name of the member. Before hashing, remove all whitespace
-        # and make sure the string is all lowercase. Must also be set with the following
-        # fields: * country_code * hashed_last_name * zip_codes
-        # Corresponds to the JSON property `hashedFirstName`
-        # @return [String]
-        attr_accessor :hashed_first_name
-      
-        # SHA256 hashed last name of the member. Before hashing, remove all whitespace
-        # and make sure the string is all lowercase. Must also be set with the following
-        # fields: * country_code * hashed_first_name * zip_codes
-        # Corresponds to the JSON property `hashedLastName`
-        # @return [String]
-        attr_accessor :hashed_last_name
-      
-        # A list of SHA256 hashed phone numbers of the member. Before hashing, all phone
-        # numbers must be formatted using the [E.164 format](//en.wikipedia.org/wiki/E.
-        # 164) and include the country calling code.
-        # Corresponds to the JSON property `hashedPhoneNumbers`
-        # @return [Array<String>]
-        attr_accessor :hashed_phone_numbers
-      
-        # A list of zip codes of the member. Must also be set with the following fields:
-        # * country_code * hashed_first_name * hashed_last_name
-        # Corresponds to the JSON property `zipCodes`
-        # @return [Array<String>]
-        attr_accessor :zip_codes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @country_code = args[:country_code] if args.key?(:country_code)
-          @hashed_emails = args[:hashed_emails] if args.key?(:hashed_emails)
-          @hashed_first_name = args[:hashed_first_name] if args.key?(:hashed_first_name)
-          @hashed_last_name = args[:hashed_last_name] if args.key?(:hashed_last_name)
-          @hashed_phone_numbers = args[:hashed_phone_numbers] if args.key?(:hashed_phone_numbers)
-          @zip_codes = args[:zip_codes] if args.key?(:zip_codes)
-        end
-      end
-      
-      # Wrapper message for a list of contact information defining Customer Match
-      # audience members.
-      class ContactInfoList
-        include Google::Apis::Core::Hashable
-      
-        # User consent status.
-        # Corresponds to the JSON property `consent`
-        # @return [Google::Apis::DisplayvideoV2::Consent]
-        attr_accessor :consent
-      
-        # A list of ContactInfo objects defining Customer Match audience members. The
-        # size of members after splitting the contact_infos mustn't be greater than 500,
-        # 000.
-        # Corresponds to the JSON property `contactInfos`
-        # @return [Array<Google::Apis::DisplayvideoV2::ContactInfo>]
-        attr_accessor :contact_infos
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @consent = args[:consent] if args.key?(:consent)
-          @contact_infos = args[:contact_infos] if args.key?(:contact_infos)
         end
       end
       
@@ -5029,73 +4860,6 @@ module Google
         end
       end
       
-      # Request message for FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
-      class EditCustomerMatchMembersRequest
-        include Google::Apis::Core::Hashable
-      
-        # Wrapper message for a list of contact information defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `addedContactInfoList`
-        # @return [Google::Apis::DisplayvideoV2::ContactInfoList]
-        attr_accessor :added_contact_info_list
-      
-        # Wrapper message for a list of mobile device IDs defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `addedMobileDeviceIdList`
-        # @return [Google::Apis::DisplayvideoV2::MobileDeviceIdList]
-        attr_accessor :added_mobile_device_id_list
-      
-        # Required. The ID of the owner advertiser of the updated Customer Match
-        # FirstAndThirdPartyAudience.
-        # Corresponds to the JSON property `advertiserId`
-        # @return [Fixnum]
-        attr_accessor :advertiser_id
-      
-        # Wrapper message for a list of contact information defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `removedContactInfoList`
-        # @return [Google::Apis::DisplayvideoV2::ContactInfoList]
-        attr_accessor :removed_contact_info_list
-      
-        # Wrapper message for a list of mobile device IDs defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `removedMobileDeviceIdList`
-        # @return [Google::Apis::DisplayvideoV2::MobileDeviceIdList]
-        attr_accessor :removed_mobile_device_id_list
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @added_contact_info_list = args[:added_contact_info_list] if args.key?(:added_contact_info_list)
-          @added_mobile_device_id_list = args[:added_mobile_device_id_list] if args.key?(:added_mobile_device_id_list)
-          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
-          @removed_contact_info_list = args[:removed_contact_info_list] if args.key?(:removed_contact_info_list)
-          @removed_mobile_device_id_list = args[:removed_mobile_device_id_list] if args.key?(:removed_mobile_device_id_list)
-        end
-      end
-      
-      # The response of FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
-      class EditCustomerMatchMembersResponse
-        include Google::Apis::Core::Hashable
-      
-        # Required. The ID of the updated Customer Match FirstAndThirdPartyAudience.
-        # Corresponds to the JSON property `firstAndThirdPartyAudienceId`
-        # @return [Fixnum]
-        attr_accessor :first_and_third_party_audience_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @first_and_third_party_audience_id = args[:first_and_third_party_audience_id] if args.key?(:first_and_third_party_audience_id)
-        end
-      end
-      
       # Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors.
       class EditGuaranteedOrderReadAccessorsRequest
         include Google::Apis::Core::Hashable
@@ -5446,163 +5210,6 @@ module Google
           @reporting_name = args[:reporting_name] if args.key?(:reporting_name)
           @type = args[:type] if args.key?(:type)
           @url = args[:url] if args.key?(:url)
-        end
-      end
-      
-      # Describes a first or third party audience list used for targeting. First party
-      # audiences are created via usage of client data. Third party audiences are
-      # provided by Third Party data providers and can only be licensed to customers.
-      class FirstAndThirdPartyAudience
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The estimated audience size for the Display network in the past
-        # month. If the size is less than 1000, the number will be hidden and 0 will be
-        # returned due to privacy reasons. Otherwise, the number will be rounded off to
-        # two significant digits. Only returned in GET request.
-        # Corresponds to the JSON property `activeDisplayAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :active_display_audience_size
-      
-        # The app_id matches with the type of the mobile_device_ids being uploaded. Only
-        # applicable to audience_type `CUSTOMER_MATCH_DEVICE_ID`
-        # Corresponds to the JSON property `appId`
-        # @return [String]
-        attr_accessor :app_id
-      
-        # Output only. The source of the audience.
-        # Corresponds to the JSON property `audienceSource`
-        # @return [String]
-        attr_accessor :audience_source
-      
-        # The type of the audience.
-        # Corresponds to the JSON property `audienceType`
-        # @return [String]
-        attr_accessor :audience_type
-      
-        # Wrapper message for a list of contact information defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `contactInfoList`
-        # @return [Google::Apis::DisplayvideoV2::ContactInfoList]
-        attr_accessor :contact_info_list
-      
-        # The user-provided description of the audience. Only applicable to first party
-        # audiences.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Output only. The estimated audience size for the Display network. If the size
-        # is less than 1000, the number will be hidden and 0 will be returned due to
-        # privacy reasons. Otherwise, the number will be rounded off to two significant
-        # digits. Only returned in GET request.
-        # Corresponds to the JSON property `displayAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :display_audience_size
-      
-        # Output only. The estimated desktop audience size in Display network. If the
-        # size is less than 1000, the number will be hidden and 0 will be returned due
-        # to privacy reasons. Otherwise, the number will be rounded off to two
-        # significant digits. Only applicable to first party audiences. Only returned in
-        # GET request.
-        # Corresponds to the JSON property `displayDesktopAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :display_desktop_audience_size
-      
-        # Output only. The estimated mobile app audience size in Display network. If the
-        # size is less than 1000, the number will be hidden and 0 will be returned due
-        # to privacy reasons. Otherwise, the number will be rounded off to two
-        # significant digits. Only applicable to first party audiences. Only returned in
-        # GET request.
-        # Corresponds to the JSON property `displayMobileAppAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :display_mobile_app_audience_size
-      
-        # Output only. The estimated mobile web audience size in Display network. If the
-        # size is less than 1000, the number will be hidden and 0 will be returned due
-        # to privacy reasons. Otherwise, the number will be rounded off to two
-        # significant digits. Only applicable to first party audiences. Only returned in
-        # GET request.
-        # Corresponds to the JSON property `displayMobileWebAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :display_mobile_web_audience_size
-      
-        # The display name of the first and third party audience.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. The unique ID of the first and third party audience. Assigned by
-        # the system.
-        # Corresponds to the JSON property `firstAndThirdPartyAudienceId`
-        # @return [Fixnum]
-        attr_accessor :first_and_third_party_audience_id
-      
-        # Whether the audience is a first or third party audience.
-        # Corresponds to the JSON property `firstAndThirdPartyAudienceType`
-        # @return [String]
-        attr_accessor :first_and_third_party_audience_type
-      
-        # Output only. The estimated audience size for Gmail network. If the size is
-        # less than 1000, the number will be hidden and 0 will be returned due to
-        # privacy reasons. Otherwise, the number will be rounded off to two significant
-        # digits. Only applicable to first party audiences. Only returned in GET request.
-        # Corresponds to the JSON property `gmailAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :gmail_audience_size
-      
-        # The duration in days that an entry remains in the audience after the
-        # qualifying event. If the audience has no expiration, set the value of this
-        # field to 10000. Otherwise, the set value must be greater than 0 and less than
-        # or equal to 540. Only applicable to first party audiences. This field is
-        # required if one of the following audience_type is used: * `
-        # CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
-        # Corresponds to the JSON property `membershipDurationDays`
-        # @return [Fixnum]
-        attr_accessor :membership_duration_days
-      
-        # Wrapper message for a list of mobile device IDs defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `mobileDeviceIdList`
-        # @return [Google::Apis::DisplayvideoV2::MobileDeviceIdList]
-        attr_accessor :mobile_device_id_list
-      
-        # Output only. The resource name of the first and third party audience.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. The estimated audience size for YouTube network. If the size is
-        # less than 1000, the number will be hidden and 0 will be returned due to
-        # privacy reasons. Otherwise, the number will be rounded off to two significant
-        # digits. Only applicable to first party audiences. Only returned in GET request.
-        # Corresponds to the JSON property `youtubeAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :youtube_audience_size
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @active_display_audience_size = args[:active_display_audience_size] if args.key?(:active_display_audience_size)
-          @app_id = args[:app_id] if args.key?(:app_id)
-          @audience_source = args[:audience_source] if args.key?(:audience_source)
-          @audience_type = args[:audience_type] if args.key?(:audience_type)
-          @contact_info_list = args[:contact_info_list] if args.key?(:contact_info_list)
-          @description = args[:description] if args.key?(:description)
-          @display_audience_size = args[:display_audience_size] if args.key?(:display_audience_size)
-          @display_desktop_audience_size = args[:display_desktop_audience_size] if args.key?(:display_desktop_audience_size)
-          @display_mobile_app_audience_size = args[:display_mobile_app_audience_size] if args.key?(:display_mobile_app_audience_size)
-          @display_mobile_web_audience_size = args[:display_mobile_web_audience_size] if args.key?(:display_mobile_web_audience_size)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @first_and_third_party_audience_id = args[:first_and_third_party_audience_id] if args.key?(:first_and_third_party_audience_id)
-          @first_and_third_party_audience_type = args[:first_and_third_party_audience_type] if args.key?(:first_and_third_party_audience_type)
-          @gmail_audience_size = args[:gmail_audience_size] if args.key?(:gmail_audience_size)
-          @membership_duration_days = args[:membership_duration_days] if args.key?(:membership_duration_days)
-          @mobile_device_id_list = args[:mobile_device_id_list] if args.key?(:mobile_device_id_list)
-          @name = args[:name] if args.key?(:name)
-          @youtube_audience_size = args[:youtube_audience_size] if args.key?(:youtube_audience_size)
         end
       end
       
@@ -6656,7 +6263,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The custom segment ID provided by Integral Ad Science. The ID must be between `
-        # 1000001` and `1999999`, inclusive.
+        # 1000001` and `1999999` or `3000001` and `3999999`, inclusive.
         # Corresponds to the JSON property `customSegmentId`
         # @return [Array<Fixnum>]
         attr_accessor :custom_segment_id
@@ -7819,34 +7426,6 @@ module Google
         end
       end
       
-      # Response message for ListCampaignAssignedTargetingOptions.
-      class ListCampaignAssignedTargetingOptionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of assigned targeting options. This list will be absent if empty.
-        # Corresponds to the JSON property `assignedTargetingOptions`
-        # @return [Array<Google::Apis::DisplayvideoV2::AssignedTargetingOption>]
-        attr_accessor :assigned_targeting_options
-      
-        # A token identifying the next page of results. This value should be specified
-        # as the pageToken in a subsequent ListCampaignAssignedTargetingOptionsRequest
-        # to fetch the next page of results. This token will be absent if there are no
-        # more assigned_targeting_options to return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # 
       class ListCampaignsResponse
         include Google::Apis::Core::Hashable
@@ -8040,34 +7619,6 @@ module Google
       end
       
       # 
-      class ListFirstAndThirdPartyAudiencesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of first and third party audiences. Audience size properties will not
-        # be included. This list will be absent if empty.
-        # Corresponds to the JSON property `firstAndThirdPartyAudiences`
-        # @return [Array<Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudience>]
-        attr_accessor :first_and_third_party_audiences
-      
-        # A token to retrieve the next page of results. Pass this value in the
-        # page_token field in the subsequent call to `ListFirstAndThirdPartyAudiences`
-        # method to retrieve the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @first_and_third_party_audiences = args[:first_and_third_party_audiences] if args.key?(:first_and_third_party_audiences)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # 
       class ListFloodlightActivitiesResponse
         include Google::Apis::Core::Hashable
       
@@ -8144,35 +7695,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @guaranteed_orders = args[:guaranteed_orders] if args.key?(:guaranteed_orders)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # 
-      class ListInsertionOrderAssignedTargetingOptionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of assigned targeting options. This list will be absent if empty.
-        # Corresponds to the JSON property `assignedTargetingOptions`
-        # @return [Array<Google::Apis::DisplayvideoV2::AssignedTargetingOption>]
-        attr_accessor :assigned_targeting_options
-      
-        # A token identifying the next page of results. This value should be specified
-        # as the pageToken in a subsequent
-        # ListInsertionOrderAssignedTargetingOptionsRequest to fetch the next page of
-        # results. This token will be absent if there are no more
-        # assigned_targeting_options to return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -9017,33 +8539,6 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @platform = args[:platform] if args.key?(:platform)
           @publisher = args[:publisher] if args.key?(:publisher)
-        end
-      end
-      
-      # Wrapper message for a list of mobile device IDs defining Customer Match
-      # audience members.
-      class MobileDeviceIdList
-        include Google::Apis::Core::Hashable
-      
-        # User consent status.
-        # Corresponds to the JSON property `consent`
-        # @return [Google::Apis::DisplayvideoV2::Consent]
-        attr_accessor :consent
-      
-        # A list of mobile device IDs defining Customer Match audience members. The size
-        # of mobile_device_ids mustn't be greater than 500,000.
-        # Corresponds to the JSON property `mobileDeviceIds`
-        # @return [Array<String>]
-        attr_accessor :mobile_device_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @consent = args[:consent] if args.key?(:consent)
-          @mobile_device_ids = args[:mobile_device_ids] if args.key?(:mobile_device_ids)
         end
       end
       
