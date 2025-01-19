@@ -3376,6 +3376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8282,6 +8288,7 @@ module Google
       
           property :firestore_source, as: 'firestoreSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFirestoreSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFirestoreSource::Representation
       
+          property :force_refresh_content, as: 'forceRefreshContent'
           property :gcs_source, as: 'gcsSource', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource::Representation
       
           property :id_field, as: 'idField'
@@ -9266,6 +9273,7 @@ module Google
       
           property :session_info, as: 'sessionInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo::Representation
       
+          property :suggested_query, as: 'suggestedQuery'
           property :summary, as: 'summary', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummary, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSummary::Representation
       
           property :total_size, as: 'totalSize'
@@ -9322,8 +9330,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :extracted_filters, as: 'extractedFilters'
           property :rewritten_query, as: 'rewrittenQuery'
+          property :sql_request, as: 'sqlRequest', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest::Representation
+      
           property :structured_extracted_filter, as: 'structuredExtractedFilter', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoSqlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_query, as: 'sqlQuery'
         end
       end
       
