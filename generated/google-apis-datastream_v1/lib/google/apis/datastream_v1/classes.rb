@@ -2508,10 +2508,11 @@ module Google
         # @return [String]
         attr_accessor :client_certificate
       
-        # Required. Input only. PEM-encoded private key associated with the client
+        # Optional. Input only. PEM-encoded private key associated with the client
         # certificate. This value will be used during the SSL/TLS handshake, allowing
         # the PostgreSQL server to authenticate the client's identity, i.e. identity of
-        # the Datastream.
+        # the Datastream. Mutually exclusive with the `secret_manager_stored_client_key`
+        # field.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
         attr_accessor :client_key
