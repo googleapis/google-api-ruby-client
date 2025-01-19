@@ -1164,13 +1164,6 @@ module Google
       class ConfigManagementConfigSync
         include Google::Apis::Core::Hashable
       
-        # Optional. Set to true to allow the vertical scaling. Defaults to false which
-        # disallows vertical scaling. This field is deprecated.
-        # Corresponds to the JSON property `allowVerticalScale`
-        # @return [Boolean]
-        attr_accessor :allow_vertical_scale
-        alias_method :allow_vertical_scale?, :allow_vertical_scale
-      
         # Optional. Enables the installation of ConfigSync. If set to true, ConfigSync
         # resources will be created and the other ConfigSync fields will be applied if
         # exist. If set to false, all other ConfigSync fields will be ignored,
@@ -1231,7 +1224,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allow_vertical_scale = args[:allow_vertical_scale] if args.key?(:allow_vertical_scale)
           @enabled = args[:enabled] if args.key?(:enabled)
           @git = args[:git] if args.key?(:git)
           @metrics_gcp_service_account_email = args[:metrics_gcp_service_account_email] if args.key?(:metrics_gcp_service_account_email)
@@ -1555,8 +1547,8 @@ module Google
         attr_accessor :policy_dir
       
         # Required. Type of secret configured for access to the Git repo. Must be one of
-        # ssh, cookiefile, gcenode, token, gcpserviceaccount or none. The validation of
-        # this is case-sensitive. Required.
+        # ssh, cookiefile, gcenode, token, gcpserviceaccount, githubapp or none. The
+        # validation of this is case-sensitive.
         # Corresponds to the JSON property `secretType`
         # @return [String]
         attr_accessor :secret_type
@@ -1566,7 +1558,7 @@ module Google
         # @return [String]
         attr_accessor :sync_branch
       
-        # Optional. The URL of the Git repository to use as the source of truth.
+        # Required. The URL of the Git repository to use as the source of truth.
         # Corresponds to the JSON property `syncRepo`
         # @return [String]
         attr_accessor :sync_repo
@@ -1892,12 +1884,14 @@ module Google
         # @return [String]
         attr_accessor :policy_dir
       
-        # Optional. Type of secret configured for access to the Git repo.
+        # Required. Type of secret configured for access to the OCI repo. Must be one of
+        # gcenode, gcpserviceaccount, k8sserviceaccount or none. The validation of this
+        # is case-sensitive.
         # Corresponds to the JSON property `secretType`
         # @return [String]
         attr_accessor :secret_type
       
-        # Optional. The OCI image repository URL for the package to sync from. e.g. `
+        # Required. The OCI image repository URL for the package to sync from. e.g. `
         # LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
         # Corresponds to the JSON property `syncRepo`
         # @return [String]

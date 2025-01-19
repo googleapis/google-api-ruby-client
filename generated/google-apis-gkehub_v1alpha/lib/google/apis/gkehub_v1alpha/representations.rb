@@ -1469,7 +1469,6 @@ module Google
       class ConfigManagementConfigSync
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :allow_vertical_scale, as: 'allowVerticalScale'
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig::Representation
       
