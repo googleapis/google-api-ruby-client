@@ -1498,7 +1498,8 @@ module Google
         # the UpdateProposalRequest.update_mask will be updated; Fields noted as '
         # Immutable' or 'Output only' yet specified in the UpdateProposalRequest.
         # update_mask will be ignored and left unchanged. Updating a private auction
-        # proposal is not allowed and will result in an error.
+        # proposal is only allowed for buyer private data, all other fields are
+        # immutable.
         # @param [String] name
         #   Immutable. The name of the proposal serving as a unique identifier. Format:
         #   buyers/`accountId`/proposals/`proposalId`
