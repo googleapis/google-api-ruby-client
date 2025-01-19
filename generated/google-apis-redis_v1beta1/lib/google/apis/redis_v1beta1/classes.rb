@@ -459,6 +459,15 @@ module Google
       class Cluster
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, cluster endpoints that are created and registered by
+        # customers can be deleted asynchronously. That is, such a cluster endpoint can
+        # be de-registered before the forwarding rules in the cluster endpoint are
+        # deleted.
+        # Corresponds to the JSON property `asyncClusterEndpointsDeletionEnabled`
+        # @return [Boolean]
+        attr_accessor :async_cluster_endpoints_deletion_enabled
+        alias_method :async_cluster_endpoints_deletion_enabled?, :async_cluster_endpoints_deletion_enabled
+      
         # Optional. The authorization mode of the Redis cluster. If not provided, auth
         # feature is disabled for the cluster.
         # Corresponds to the JSON property `authorizationMode`
@@ -629,6 +638,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @async_cluster_endpoints_deletion_enabled = args[:async_cluster_endpoints_deletion_enabled] if args.key?(:async_cluster_endpoints_deletion_enabled)
           @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
           @automated_backup_config = args[:automated_backup_config] if args.key?(:automated_backup_config)
           @backup_collection = args[:backup_collection] if args.key?(:backup_collection)
