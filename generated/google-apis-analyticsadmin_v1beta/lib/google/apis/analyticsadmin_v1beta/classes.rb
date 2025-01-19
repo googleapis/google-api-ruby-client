@@ -1134,6 +1134,11 @@ module Google
         attr_accessor :reset_user_data_on_new_activity
         alias_method :reset_user_data_on_new_activity?, :reset_user_data_on_new_activity
       
+        # Required. The length of time that user-level data is retained.
+        # Corresponds to the JSON property `userDataRetention`
+        # @return [String]
+        attr_accessor :user_data_retention
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1143,6 +1148,7 @@ module Google
           @event_data_retention = args[:event_data_retention] if args.key?(:event_data_retention)
           @name = args[:name] if args.key?(:name)
           @reset_user_data_on_new_activity = args[:reset_user_data_on_new_activity] if args.key?(:reset_user_data_on_new_activity)
+          @user_data_retention = args[:user_data_retention] if args.key?(:user_data_retention)
         end
       end
       
