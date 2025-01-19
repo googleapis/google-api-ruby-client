@@ -14510,11 +14510,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Assigns a name to a port number. For example: `name: "http", port: 80` This
-        # allows the system to reference ports by the assigned name instead of a port
-        # number. Named ports can also contain multiple ports. For example: [`name: "
-        # app1", port: 8080`, `name: "app1", port: 8081`, `name: "app2", port: 8082`]
-        # Named ports apply to all instances in this instance group.
+        # Optional. Assigns a name to a port number. For example: `name: "http", port:
+        # 80` This allows the system to reference ports by the assigned name instead of
+        # a port number. Named ports can also contain multiple ports. For example: [`
+        # name: "app1", port: 8080`, `name: "app1", port: 8081`, `name: "app2", port:
+        # 8082`] Named ports apply to all instances in this instance group.
         # Corresponds to the JSON property `namedPorts`
         # @return [Array<Google::Apis::ComputeV1::NamedPort>]
         attr_accessor :named_ports
@@ -24521,13 +24521,13 @@ module Google
       class NetworkEndpoint
         include Google::Apis::Core::Hashable
       
-        # Metadata defined as annotations on the network endpoint.
+        # Optional metadata defined as annotations on the network endpoint.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Represents the port number to which PSC consumer sends packets. Only valid for
-        # network endpoint groups created with GCE_VM_IP_PORTMAP endpoint type.
+        # Represents the port number to which PSC consumer sends packets. Optional. Only
+        # valid for network endpoint groups created with GCE_VM_IP_PORTMAP endpoint type.
         # Corresponds to the JSON property `clientDestinationPort`
         # @return [Fixnum]
         attr_accessor :client_destination_port
@@ -24538,12 +24538,13 @@ module Google
         # @return [String]
         attr_accessor :fqdn
       
-        # The name or a URL of VM instance of this network endpoint. This field is
-        # required for network endpoints of type GCE_VM_IP and GCE_VM_IP_PORT. The
-        # instance must be in the same zone of network endpoint group (for zonal NEGs)
-        # or in the zone within the region of the NEG (for regional NEGs). If the
-        # ipAddress is specified, it must belongs to the VM instance. The name must be 1-
-        # 63 characters long, and comply with RFC1035 or be a valid URL pointing to an
+        # The name or a URL of VM instance of this network endpoint. Optional, the field
+        # presence depends on the network endpoint type. The field is required for
+        # network endpoints of type GCE_VM_IP and GCE_VM_IP_PORT. The instance must be
+        # in the same zone of network endpoint group (for zonal NEGs) or in the zone
+        # within the region of the NEG (for regional NEGs). If the ipAddress is
+        # specified, it must belongs to the VM instance. The name must be 1-63
+        # characters long, and comply with RFC1035 or be a valid URL pointing to an
         # existing instance.
         # Corresponds to the JSON property `instance`
         # @return [String]
@@ -24597,7 +24598,7 @@ module Google
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
-        # Metadata defined as annotations on the network endpoint group.
+        # Optional. Metadata defined as annotations on the network endpoint group.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -24632,8 +24633,8 @@ module Google
         attr_accessor :creation_timestamp
       
         # The default port used if the port number is not specified in the network
-        # endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or
-        # PRIVATE_SERVICE_CONNECT, this field must not be specified.
+        # endpoint. Optional. If the network endpoint type is either GCE_VM_IP,
+        # SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
         # Corresponds to the JSON property `defaultPort`
         # @return [Fixnum]
         attr_accessor :default_port
@@ -24687,7 +24688,8 @@ module Google
       
         # The target service url used to set up private service connection to a Google
         # API or a PSC Producer Service Attachment. An example value is: asia-northeast3-
-        # cloudkms.googleapis.com
+        # cloudkms.googleapis.com. Optional. Only valid when networkEndpointType is
+        # PRIVATE_SERVICE_CONNECT.
         # Corresponds to the JSON property `pscTargetService`
         # @return [String]
         attr_accessor :psc_target_service
@@ -25420,7 +25422,8 @@ module Google
       class NetworkEndpointWithHealthStatus
         include Google::Apis::Core::Hashable
       
-        # [Output only] The health status of network endpoint;
+        # [Output only] The health status of network endpoint. Optional. Displayed only
+        # if the network endpoint has centralized health checking configured.
         # Corresponds to the JSON property `healths`
         # @return [Array<Google::Apis::ComputeV1::HealthStatusForNetworkEndpoint>]
         attr_accessor :healths
