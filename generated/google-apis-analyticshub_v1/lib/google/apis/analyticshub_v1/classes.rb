@@ -2042,6 +2042,13 @@ module Google
       class SelectedResource
         include Google::Apis::Core::Hashable
       
+        # Optional. Format: For routine: `projects/`projectId`/datasets/`datasetId`/
+        # routines/`routineId`` Example:"projects/test_project/datasets/test_dataset/
+        # routines/test_routine"
+        # Corresponds to the JSON property `routine`
+        # @return [String]
+        attr_accessor :routine
+      
         # Optional. Format: For table: `projects/`projectId`/datasets/`datasetId`/tables/
         # `tableId`` Example:"projects/test_project/datasets/test_dataset/tables/
         # test_table"
@@ -2055,6 +2062,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @routine = args[:routine] if args.key?(:routine)
           @table = args[:table] if args.key?(:table)
         end
       end
