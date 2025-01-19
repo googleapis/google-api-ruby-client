@@ -265,8 +265,8 @@ module Google
       end
       
       # Configuration for resources used by Airflow DAG processors. This field is
-      # supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.
-      # *.* and newer.
+      # supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-
+      # build.* and newer.
       class DagProcessorResource
         include Google::Apis::Core::Hashable
       
@@ -1322,7 +1322,8 @@ module Google
         # Cloud Composer environments. In case of overlap, IPs from this range will not
         # be accessible in the user's VPC network. Cannot be updated. If not specified,
         # the default value of '100.64.128.0/20' is used. This field is supported for
-        # Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and
+        # newer.
         # Corresponds to the JSON property `composerInternalIpv4CidrBlock`
         # @return [String]
         attr_accessor :composer_internal_ipv4_cidr_block
@@ -1334,8 +1335,8 @@ module Google
         # network and subnetwork are also empty, then connectivity to user's VPC network
         # is disabled. Network attachment must be provided in format projects/`project`/
         # regions/`region`/networkAttachments/`networkAttachment`. This field is
-        # supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.
-        # *.* and newer.
+        # supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-
+        # build.* and newer.
         # Corresponds to the JSON property `composerNetworkAttachment`
         # @return [String]
         attr_accessor :composer_network_attachment
@@ -1739,8 +1740,8 @@ module Google
         # Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.
         # subnetwork` fields or `NodeConfig.composer_network_attachment` field are
         # specified). If `false`, the builds also have access to the internet. This
-        # field is supported for Cloud Composer environments in versions composer-3.*.*-
-        # airflow-*.*.* and newer.
+        # field is supported for Cloud Composer environments in versions composer-3-
+        # airflow-*.*.*-build.* and newer.
         # Corresponds to the JSON property `enablePrivateBuildsOnly`
         # @return [Boolean]
         attr_accessor :enable_private_builds_only
@@ -2046,7 +2047,7 @@ module Google
       
         # Optional. Whether or not the web server uses custom plugins. If unspecified,
         # the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud
-        # Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.
         # Corresponds to the JSON property `webServerPluginsMode`
         # @return [String]
         attr_accessor :web_server_plugins_mode
@@ -2430,8 +2431,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Configuration for resources used by Airflow DAG processors. This field is
-        # supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.
-        # *.* and newer.
+        # supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-
+        # build.* and newer.
         # Corresponds to the JSON property `dagProcessor`
         # @return [Google::Apis::ComposerV1beta1::DagProcessorResource]
         attr_accessor :dag_processor
