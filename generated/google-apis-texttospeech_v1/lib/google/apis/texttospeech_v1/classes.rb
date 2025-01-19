@@ -26,8 +26,8 @@ module Google
       class AdvancedVoiceOptions
         include Google::Apis::Core::Hashable
       
-        # Only for Journey voices. If false, the synthesis will be context aware and
-        # have higher latency.
+        # Only for Journey voices. If false, the synthesis is context aware and has a
+        # higher latency.
         # Corresponds to the JSON property `lowLatencyJourneySynthesis`
         # @return [Boolean]
         attr_accessor :low_latency_journey_synthesis
@@ -136,9 +136,8 @@ module Google
         # @return [String]
         attr_accessor :phonetic_encoding
       
-        # The phrase to which the customization will be applied. The phrase can be
-        # multiple words (in the case of proper nouns etc), but should not span to a
-        # whole sentence.
+        # The phrase to which the customization is applied. The phrase can be multiple
+        # words, such as proper nouns, but shouldn't span the length of the sentence.
         # Corresponds to the JSON property `phrase`
         # @return [String]
         attr_accessor :phrase
@@ -165,7 +164,7 @@ module Google
       class CustomPronunciations
         include Google::Apis::Core::Hashable
       
-        # The pronunciation customizations to be applied.
+        # The pronunciation customizations are applied.
         # Corresponds to the JSON property `pronunciations`
         # @return [Array<Google::Apis::TexttospeechV1::CustomPronunciationParams>]
         attr_accessor :pronunciations
@@ -593,7 +592,7 @@ module Google
         end
       end
       
-      # A Multi-speaker turn.
+      # A multi-speaker turn.
       class Turn
         include Google::Apis::Core::Hashable
       
