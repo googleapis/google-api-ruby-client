@@ -122,6 +122,90 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists Platform Child Sites for a specified Platform Child Account.
+        # @param [String] parent
+        #   Required. The name of the platform to retrieve. Format: accounts/`account`/
+        #   platforms/`platform`/childAccounts/`child_publisher_code`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of children to include in the response, used for
+        #   paging. If unspecified, at most 10000 platforms will be returned. The maximum
+        #   value is 10000; values above 10000 will be coerced to 10000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListPlatformChildren` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListPlatformChildren` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdsenseplatformV1alpha::ListPlatformChildSitesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdsenseplatformV1alpha::ListPlatformChildSitesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_platform_child_account_sites(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/sites', options)
+          command.response_representation = Google::Apis::AdsenseplatformV1alpha::ListPlatformChildSitesResponse::Representation
+          command.response_class = Google::Apis::AdsenseplatformV1alpha::ListPlatformChildSitesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Platform Groups for a specified Platform.
+        # @param [String] parent
+        #   Required. The name of the platform to retrieve. Format: accounts/`account`/
+        #   platforms/`platform`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of groups to include in the response, used for
+        #   paging. If unspecified, at most 10000 groups will be returned. The maximum
+        #   value is 10000; values above 10000 will be coerced to 10000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListPlatformGroups` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListPlatformGroups` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdsenseplatformV1alpha::ListPlatformGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdsenseplatformV1alpha::ListPlatformGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_platform_groups(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/groups', options)
+          command.response_representation = Google::Apis::AdsenseplatformV1alpha::ListPlatformGroupsResponse::Representation
+          command.response_class = Google::Apis::AdsenseplatformV1alpha::ListPlatformGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Closes a sub-account.
         # @param [String] name
         #   Required. Account to close. Format: platforms/`platform`/accounts/`account_id`
