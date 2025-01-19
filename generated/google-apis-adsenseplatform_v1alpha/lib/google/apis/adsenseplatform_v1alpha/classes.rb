@@ -189,6 +189,62 @@ module Google
         end
       end
       
+      # A representation of a decimal value, such as 2.5. Clients may convert values
+      # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+      # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+      # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
+      class Decimal
+        include Google::Apis::Core::Hashable
+      
+        # The decimal value, as a string. The string representation consists of an
+        # optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of
+        # zero or more decimal digits ("the integer"), optionally followed by a fraction,
+        # optionally followed by an exponent. An empty string **should** be interpreted
+        # as `0`. The fraction consists of a decimal point followed by zero or more
+        # decimal digits. The string must contain at least one digit in either the
+        # integer or the fraction. The number formed by the sign, the integer and the
+        # fraction is referred to as the significand. The exponent consists of the
+        # character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal
+        # digits. Services **should** normalize decimal values before storing them by: -
+        # Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-
+        # length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent
+        # character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing
+        # an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may**
+        # perform additional normalization based on its own needs and the internal
+        # decimal implementation selected, such as shifting the decimal point and
+        # exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services
+        # **may** preserve trailing zeroes in the fraction to indicate increased
+        # precision, but are not required to do so. Note that only the `.` character is
+        # supported to divide the integer and the fraction; `,` **should not** be
+        # supported regardless of locale. Additionally, thousand separators **should not*
+        # * be supported. If a service does support them, values **must** be normalized.
+        # The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign =
+        # '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | '
+        # E') [Sign] Digits; Digits = ` '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '
+        # 8' | '9' `; Services **should** clearly document the range of supported values,
+        # the maximum supported precision (total number of digits), and, if applicable,
+        # the scale (number of digits after the decimal point), as well as how it
+        # behaves when receiving out-of-bounds values. Services **may** choose to accept
+        # values passed as input even when the value has a higher precision or scale
+        # than the service supports, and **should** round the value to fit the supported
+        # scale. Alternatively, the service **may** error with `400 Bad Request` (`
+        # INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should**
+        # error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service
+        # receives a value outside of the supported range.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -286,6 +342,58 @@ module Google
         def update!(**args)
           @accounts = args[:accounts] if args.key?(:accounts)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response definition for the list platform child sites rpc.
+      class ListPlatformChildSitesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token used to page through platforms. To retrieve the next page
+        # of the results, set the next request's "page_token" value to this.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The platform child sites returned in this list response.
+        # Corresponds to the JSON property `platformChildSites`
+        # @return [Array<Google::Apis::AdsenseplatformV1alpha::PlatformChildSite>]
+        attr_accessor :platform_child_sites
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @platform_child_sites = args[:platform_child_sites] if args.key?(:platform_child_sites)
+        end
+      end
+      
+      # Response definition for the platform groups list rpc.
+      class ListPlatformGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token used to page through platforms. To retrieve the next page
+        # of the results, set the next request's "page_token" value to this.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The platform groups returned in this list response.
+        # Corresponds to the JSON property `platformGroups`
+        # @return [Array<Google::Apis::AdsenseplatformV1alpha::PlatformGroup>]
+        attr_accessor :platform_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @platform_groups = args[:platform_groups] if args.key?(:platform_groups)
         end
       end
       
@@ -389,6 +497,74 @@ module Google
           @default_platform_group = args[:default_platform_group] if args.key?(:default_platform_group)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Representation of a Transparent Platform Child Site.
+      class PlatformChildSite
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Domain URL of the Platform Child Site. Part of the
+        # PlatformChildSite name.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Identifier. Format: accounts/`account`/platforms/`platform`/childAccounts/`
+        # child`/sites/`platformChildSite`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Resource name of the Platform Group of the Platform Child Site.
+        # Corresponds to the JSON property `platformGroup`
+        # @return [String]
+        attr_accessor :platform_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @name = args[:name] if args.key?(:name)
+          @platform_group = args[:platform_group] if args.key?(:platform_group)
+        end
+      end
+      
+      # Representation of a Transparent Platform Group.
+      class PlatformGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Description of the PlatformGroup.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Identifier. Format: accounts/`account`/platforms/`platform`/groups/`
+        # platform_group`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A representation of a decimal value, such as 2.5. Clients may convert values
+        # into language-native decimal formats, such as Java's [BigDecimal](https://docs.
+        # oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or
+        # Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
+        # Corresponds to the JSON property `revshareMillipercent`
+        # @return [Google::Apis::AdsenseplatformV1alpha::Decimal]
+        attr_accessor :revshare_millipercent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @revshare_millipercent = args[:revshare_millipercent] if args.key?(:revshare_millipercent)
         end
       end
       

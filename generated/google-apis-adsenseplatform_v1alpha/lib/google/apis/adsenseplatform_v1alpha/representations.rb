@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Decimal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPlatformChildSitesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListPlatformGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListPlatformsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +107,18 @@ module Google
       end
       
       class Platform
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlatformChildSite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlatformGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,6 +184,13 @@ module Google
         end
       end
       
+      class Decimal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -188,6 +225,24 @@ module Google
         end
       end
       
+      class ListPlatformChildSitesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :platform_child_sites, as: 'platformChildSites', class: Google::Apis::AdsenseplatformV1alpha::PlatformChildSite, decorator: Google::Apis::AdsenseplatformV1alpha::PlatformChildSite::Representation
+      
+        end
+      end
+      
+      class ListPlatformGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :platform_groups, as: 'platformGroups', class: Google::Apis::AdsenseplatformV1alpha::PlatformGroup, decorator: Google::Apis::AdsenseplatformV1alpha::PlatformGroup::Representation
+      
+        end
+      end
+      
       class ListPlatformsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -219,6 +274,25 @@ module Google
           property :default_platform_group, as: 'defaultPlatformGroup'
           property :description, as: 'description'
           property :name, as: 'name'
+        end
+      end
+      
+      class PlatformChildSite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :name, as: 'name'
+          property :platform_group, as: 'platformGroup'
+        end
+      end
+      
+      class PlatformGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :revshare_millipercent, as: 'revshareMillipercent', class: Google::Apis::AdsenseplatformV1alpha::Decimal, decorator: Google::Apis::AdsenseplatformV1alpha::Decimal::Representation
+      
         end
       end
       
