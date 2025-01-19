@@ -474,7 +474,7 @@ module Google
         end
       end
       
-      # Create API error message for Vertex Pipeline. Next Id: 3.
+      # Create API error message for Vertex Pipeline.
       class CloudAiPlatformCommonCreatePipelineJobApiErrorDetail
         include Google::Apis::Core::Hashable
       
@@ -840,7 +840,8 @@ module Google
         end
       end
       
-      # The generic reusable api auth config.
+      # The generic reusable api auth config. Deprecated. Please use AuthConfig (
+      # google/cloud/aiplatform/master/auth.proto) instead.
       class GoogleCloudAiplatformV1ApiAuth
         include Google::Apis::Core::Hashable
       
@@ -5172,7 +5173,9 @@ module Google
         # @return [String]
         attr_accessor :model_reference
       
-        # Output only. Identifier. The resource name of the DatasetVersion.
+        # Output only. Identifier. The resource name of the DatasetVersion. Format: `
+        # projects/`project`/locations/`location`/datasets/`dataset`/datasetVersions/`
+        # dataset_version``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -18693,8 +18696,8 @@ module Google
         # @return [String]
         attr_accessor :notebook_runtime_template_resource_name
       
-        # Output only. The Schedule resource name if this job is triggered by one.
-        # Format: `projects/`project_id`/locations/`location`/schedules/`schedule_id``
+        # The Schedule resource name if this job is triggered by one. Format: `projects/`
+        # project_id`/locations/`location`/schedules/`schedule_id``
         # Corresponds to the JSON property `scheduleResourceName`
         # @return [String]
         attr_accessor :schedule_resource_name
@@ -22909,7 +22912,8 @@ module Google
       class GoogleCloudAiplatformV1RagVectorDbConfig
         include Google::Apis::Core::Hashable
       
-        # The generic reusable api auth config.
+        # The generic reusable api auth config. Deprecated. Please use AuthConfig (
+        # google/cloud/aiplatform/master/auth.proto) instead.
         # Corresponds to the JSON property `apiAuth`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ApiAuth]
         attr_accessor :api_auth
@@ -23995,6 +23999,34 @@ module Google
           @disable_attribution = args[:disable_attribution] if args.key?(:disable_attribution)
           @vertex_ai_search = args[:vertex_ai_search] if args.key?(:vertex_ai_search)
           @vertex_rag_store = args[:vertex_rag_store] if args.key?(:vertex_rag_store)
+        end
+      end
+      
+      # Retrieval config.
+      class GoogleCloudAiplatformV1RetrievalConfig
+        include Google::Apis::Core::Hashable
+      
+        # The language code of the user.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
+        # Corresponds to the JSON property `latLng`
+        # @return [Google::Apis::AiplatformV1::GoogleTypeLatLng]
+        attr_accessor :lat_lng
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @lat_lng = args[:lat_lng] if args.key?(:lat_lng)
         end
       end
       
@@ -35030,6 +35062,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionCallingConfig]
         attr_accessor :function_calling_config
       
+        # Retrieval config.
+        # Corresponds to the JSON property `retrievalConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalConfig]
+        attr_accessor :retrieval_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -35037,6 +35074,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @function_calling_config = args[:function_calling_config] if args.key?(:function_calling_config)
+          @retrieval_config = args[:retrieval_config] if args.key?(:retrieval_config)
         end
       end
       
@@ -38358,6 +38396,34 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # An object that represents a latitude/longitude pair. This is expressed as a
+      # pair of doubles to represent degrees latitude and degrees longitude. Unless
+      # specified otherwise, this object must conform to the WGS84 standard. Values
+      # must be within normalized ranges.
+      class GoogleTypeLatLng
+        include Google::Apis::Core::Hashable
+      
+        # The latitude in degrees. It must be in the range [-90.0, +90.0].
+        # Corresponds to the JSON property `latitude`
+        # @return [Float]
+        attr_accessor :latitude
+      
+        # The longitude in degrees. It must be in the range [-180.0, +180.0].
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
         end
       end
       
