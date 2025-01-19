@@ -1534,6 +1534,12 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::ReturnShippingFee]
         attr_accessor :return_shipping_fee
       
+        # Optional. Overrides to the general policy for orders placed during a specific
+        # set of time intervals.
+        # Corresponds to the JSON property `seasonalOverrides`
+        # @return [Array<Google::Apis::MerchantapiAccountsV1beta::SeasonalOverride>]
+        attr_accessor :seasonal_overrides
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1553,6 +1559,7 @@ module Google
           @return_policy_id = args[:return_policy_id] if args.key?(:return_policy_id)
           @return_policy_uri = args[:return_policy_uri] if args.key?(:return_policy_uri)
           @return_shipping_fee = args[:return_shipping_fee] if args.key?(:return_shipping_fee)
+          @seasonal_overrides = args[:seasonal_overrides] if args.key?(:seasonal_overrides)
         end
       end
       
@@ -2280,6 +2287,57 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cells = args[:cells] if args.key?(:cells)
+        end
+      end
+      
+      # Next: 5
+      class SeasonalOverride
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `begin`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Date]
+        attr_accessor :begin
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `end`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Date]
+        attr_accessor :end
+      
+        # Required. Display name of this seasonal override in Merchant Center.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The available policies.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @begin = args[:begin] if args.key?(:begin)
+          @end = args[:end] if args.key?(:end)
+          @label = args[:label] if args.key?(:label)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
