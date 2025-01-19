@@ -378,6 +378,8 @@ module Google
           property :display_name, as: 'displayName'
           property :export_to_security_command_center, as: 'exportToSecurityCommandCenter'
           property :ignore_http_status_errors, as: 'ignoreHttpStatusErrors'
+          property :latest_run, as: 'latestRun', class: Google::Apis::WebsecurityscannerV1::ScanRun, decorator: Google::Apis::WebsecurityscannerV1::ScanRun::Representation
+      
           property :managed_scan, as: 'managedScan'
           property :max_qps, as: 'maxQps'
           property :name, as: 'name'
@@ -386,6 +388,7 @@ module Google
       
           collection :starting_urls, as: 'startingUrls'
           property :static_ip_scan, as: 'staticIpScan'
+          collection :target_platforms, as: 'targetPlatforms'
           property :user_agent, as: 'userAgent'
         end
       end
