@@ -5287,6 +5287,7 @@ module Google
       
           property :firestore_source, as: 'firestoreSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FirestoreSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1FirestoreSource::Representation
       
+          property :force_refresh_content, as: 'forceRefreshContent'
           property :gcs_source, as: 'gcsSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1GcsSource::Representation
       
           property :id_field, as: 'idField'
