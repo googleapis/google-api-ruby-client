@@ -346,18 +346,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BulkListCampaignAssignedTargetingOptionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BulkListInsertionOrderAssignedTargetingOptionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BulkUpdateLineItemsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -485,24 +473,6 @@ module Google
       end
       
       class CommonInStreamAttribute
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Consent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ContactInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ContactInfoList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -790,18 +760,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EditCustomerMatchMembersRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EditCustomerMatchMembersResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EditGuaranteedOrderReadAccessorsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -875,12 +833,6 @@ module Google
       end
       
       class ExitEvent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FirstAndThirdPartyAudience
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1192,12 +1144,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListCampaignAssignedTargetingOptionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListCampaignsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1240,12 +1186,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListFirstAndThirdPartyAudiencesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListFloodlightActivitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1259,12 +1199,6 @@ module Google
       end
       
       class ListGuaranteedOrdersResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListInsertionOrderAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1421,12 +1355,6 @@ module Google
       end
       
       class MobileApp
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MobileDeviceIdList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2582,24 +2510,6 @@ module Google
         end
       end
       
-      class BulkListCampaignAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV2::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class BulkListInsertionOrderAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV2::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class BulkUpdateLineItemsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2822,36 +2732,6 @@ module Google
           property :final_url, as: 'finalUrl'
           property :tracking_url, as: 'trackingUrl'
           property :video, as: 'video', class: Google::Apis::DisplayvideoV2::YoutubeVideoDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeVideoDetails::Representation
-      
-        end
-      end
-      
-      class Consent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ad_personalization, as: 'adPersonalization'
-          property :ad_user_data, as: 'adUserData'
-        end
-      end
-      
-      class ContactInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :country_code, as: 'countryCode'
-          collection :hashed_emails, as: 'hashedEmails'
-          property :hashed_first_name, as: 'hashedFirstName'
-          property :hashed_last_name, as: 'hashedLastName'
-          collection :hashed_phone_numbers, as: 'hashedPhoneNumbers'
-          collection :zip_codes, as: 'zipCodes'
-        end
-      end
-      
-      class ContactInfoList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :consent, as: 'consent', class: Google::Apis::DisplayvideoV2::Consent, decorator: Google::Apis::DisplayvideoV2::Consent::Representation
-      
-          collection :contact_infos, as: 'contactInfos', class: Google::Apis::DisplayvideoV2::ContactInfo, decorator: Google::Apis::DisplayvideoV2::ContactInfo::Representation
       
         end
       end
@@ -3323,28 +3203,6 @@ module Google
         end
       end
       
-      class EditCustomerMatchMembersRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :added_contact_info_list, as: 'addedContactInfoList', class: Google::Apis::DisplayvideoV2::ContactInfoList, decorator: Google::Apis::DisplayvideoV2::ContactInfoList::Representation
-      
-          property :added_mobile_device_id_list, as: 'addedMobileDeviceIdList', class: Google::Apis::DisplayvideoV2::MobileDeviceIdList, decorator: Google::Apis::DisplayvideoV2::MobileDeviceIdList::Representation
-      
-          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
-          property :removed_contact_info_list, as: 'removedContactInfoList', class: Google::Apis::DisplayvideoV2::ContactInfoList, decorator: Google::Apis::DisplayvideoV2::ContactInfoList::Representation
-      
-          property :removed_mobile_device_id_list, as: 'removedMobileDeviceIdList', class: Google::Apis::DisplayvideoV2::MobileDeviceIdList, decorator: Google::Apis::DisplayvideoV2::MobileDeviceIdList::Representation
-      
-        end
-      end
-      
-      class EditCustomerMatchMembersResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :first_and_third_party_audience_id, :numeric_string => true, as: 'firstAndThirdPartyAudienceId'
-        end
-      end
-      
       class EditGuaranteedOrderReadAccessorsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3448,32 +3306,6 @@ module Google
           property :reporting_name, as: 'reportingName'
           property :type, as: 'type'
           property :url, as: 'url'
-        end
-      end
-      
-      class FirstAndThirdPartyAudience
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :active_display_audience_size, :numeric_string => true, as: 'activeDisplayAudienceSize'
-          property :app_id, as: 'appId'
-          property :audience_source, as: 'audienceSource'
-          property :audience_type, as: 'audienceType'
-          property :contact_info_list, as: 'contactInfoList', class: Google::Apis::DisplayvideoV2::ContactInfoList, decorator: Google::Apis::DisplayvideoV2::ContactInfoList::Representation
-      
-          property :description, as: 'description'
-          property :display_audience_size, :numeric_string => true, as: 'displayAudienceSize'
-          property :display_desktop_audience_size, :numeric_string => true, as: 'displayDesktopAudienceSize'
-          property :display_mobile_app_audience_size, :numeric_string => true, as: 'displayMobileAppAudienceSize'
-          property :display_mobile_web_audience_size, :numeric_string => true, as: 'displayMobileWebAudienceSize'
-          property :display_name, as: 'displayName'
-          property :first_and_third_party_audience_id, :numeric_string => true, as: 'firstAndThirdPartyAudienceId'
-          property :first_and_third_party_audience_type, as: 'firstAndThirdPartyAudienceType'
-          property :gmail_audience_size, :numeric_string => true, as: 'gmailAudienceSize'
-          property :membership_duration_days, :numeric_string => true, as: 'membershipDurationDays'
-          property :mobile_device_id_list, as: 'mobileDeviceIdList', class: Google::Apis::DisplayvideoV2::MobileDeviceIdList, decorator: Google::Apis::DisplayvideoV2::MobileDeviceIdList::Representation
-      
-          property :name, as: 'name'
-          property :youtube_audience_size, :numeric_string => true, as: 'youtubeAudienceSize'
         end
       end
       
@@ -4047,15 +3879,6 @@ module Google
         end
       end
       
-      class ListCampaignAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV2::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class ListCampaignsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4119,15 +3942,6 @@ module Google
         end
       end
       
-      class ListFirstAndThirdPartyAudiencesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :first_and_third_party_audiences, as: 'firstAndThirdPartyAudiences', class: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudience, decorator: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudience::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class ListFloodlightActivitiesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4150,15 +3964,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :guaranteed_orders, as: 'guaranteedOrders', class: Google::Apis::DisplayvideoV2::GuaranteedOrder, decorator: Google::Apis::DisplayvideoV2::GuaranteedOrder::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListInsertionOrderAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV2::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -4409,15 +4214,6 @@ module Google
           property :display_name, as: 'displayName'
           property :platform, as: 'platform'
           property :publisher, as: 'publisher'
-        end
-      end
-      
-      class MobileDeviceIdList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :consent, as: 'consent', class: Google::Apis::DisplayvideoV2::Consent, decorator: Google::Apis::DisplayvideoV2::Consent::Representation
-      
-          collection :mobile_device_ids, as: 'mobileDeviceIds'
         end
       end
       
