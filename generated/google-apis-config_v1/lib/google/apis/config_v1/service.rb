@@ -1299,13 +1299,13 @@ module Google
         # @param [String] order_by
         #   Optional. Field to use to sort the list.
         # @param [Fixnum] page_size
-        #   Optional. When requesting a page of resources, 'page_size' specifies number of
-        #   resources to return. If unspecified, at most 500 will be returned. The maximum
-        #   value is 1000.
+        #   Optional. When requesting a page of terraform versions, 'page_size' specifies
+        #   number of terraform versions to return. If unspecified, at most 500 will be
+        #   returned. The maximum value is 1000.
         # @param [String] page_token
         #   Optional. Token returned by previous call to 'ListTerraformVersions' which
         #   specifies the position in the list from where to continue listing the
-        #   resources.
+        #   terraform versions.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
