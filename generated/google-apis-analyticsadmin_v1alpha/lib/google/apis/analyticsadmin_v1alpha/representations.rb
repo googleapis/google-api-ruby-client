@@ -1804,6 +1804,7 @@ module Google
           property :event_data_retention, as: 'eventDataRetention'
           property :name, as: 'name'
           property :reset_user_data_on_new_activity, as: 'resetUserDataOnNewActivity'
+          property :user_data_retention, as: 'userDataRetention'
         end
       end
       
