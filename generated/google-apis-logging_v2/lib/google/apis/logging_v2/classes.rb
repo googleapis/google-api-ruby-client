@@ -516,7 +516,8 @@ module Google
       class CopyLogEntriesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Destination to which to copy log entries.
+        # Required. Destination to which to copy log entries. For example: "storage.
+        # googleapis.com/GCS_BUCKET"
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
