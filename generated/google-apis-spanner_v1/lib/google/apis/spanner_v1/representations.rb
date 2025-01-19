@@ -1469,6 +1469,7 @@ module Google
       class ExecuteBatchDmlRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_statements, as: 'lastStatements'
           property :request_options, as: 'requestOptions', class: Google::Apis::SpannerV1::RequestOptions, decorator: Google::Apis::SpannerV1::RequestOptions::Representation
       
           property :seqno, :numeric_string => true, as: 'seqno'
@@ -1497,6 +1498,7 @@ module Google
           property :data_boost_enabled, as: 'dataBoostEnabled'
           property :directed_read_options, as: 'directedReadOptions', class: Google::Apis::SpannerV1::DirectedReadOptions, decorator: Google::Apis::SpannerV1::DirectedReadOptions::Representation
       
+          property :last_statement, as: 'lastStatement'
           hash :param_types, as: 'paramTypes', class: Google::Apis::SpannerV1::Type, decorator: Google::Apis::SpannerV1::Type::Representation
       
           hash :params, as: 'params'

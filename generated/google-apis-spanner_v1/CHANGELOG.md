@@ -1,5 +1,9 @@
 # Release history for google-apis-spanner_v1
 
+### v0.39.0 (2025-01-19)
+
+* Regenerated from discovery document revision 20241220
+
 ### v0.38.0 (2025-01-12)
 
 * Regenerated from discovery document revision 20241218
