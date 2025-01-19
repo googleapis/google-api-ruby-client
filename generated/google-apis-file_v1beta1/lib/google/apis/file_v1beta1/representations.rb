@@ -513,8 +513,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
           property :capacity_step_size_gb, :numeric_string => true, as: 'capacityStepSizeGb'
-          property :configurable_performance_enabled, as: 'configurablePerformanceEnabled'
           property :create_time, as: 'createTime'
+          property :custom_performance_supported, as: 'customPerformanceSupported'
           property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           property :deletion_protection_reason, as: 'deletionProtectionReason'
           property :description, as: 'description'
@@ -710,6 +710,7 @@ module Google
       class PerformanceLimits
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_iops, :numeric_string => true, as: 'maxIops'
           property :max_read_iops, :numeric_string => true, as: 'maxReadIops'
           property :max_read_throughput_bps, :numeric_string => true, as: 'maxReadThroughputBps'
           property :max_write_iops, :numeric_string => true, as: 'maxWriteIops'
