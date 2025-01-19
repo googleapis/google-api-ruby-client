@@ -812,17 +812,18 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
-        # Output only. Indicates whether this instance's performance is configurable. If
-        # enabled, adjust it using the 'performance_config' field.
-        # Corresponds to the JSON property `configurablePerformanceEnabled`
-        # @return [Boolean]
-        attr_accessor :configurable_performance_enabled
-        alias_method :configurable_performance_enabled?, :configurable_performance_enabled
-      
         # Output only. The time when the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Output only. Indicates whether this instance supports configuring its
+        # performance. If true, the user can configure the instance's performance by
+        # using the 'performance_config' field.
+        # Corresponds to the JSON property `customPerformanceSupported`
+        # @return [Boolean]
+        attr_accessor :custom_performance_supported
+        alias_method :custom_performance_supported?, :custom_performance_supported
       
         # Optional. Indicates whether the instance is protected against deletion.
         # Corresponds to the JSON property `deletionProtectionEnabled`
@@ -952,8 +953,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @configurable_performance_enabled = args[:configurable_performance_enabled] if args.key?(:configurable_performance_enabled)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_performance_supported = args[:custom_performance_supported] if args.key?(:custom_performance_supported)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @deletion_protection_reason = args[:deletion_protection_reason] if args.key?(:deletion_protection_reason)
           @description = args[:description] if args.key?(:description)
@@ -1537,6 +1538,11 @@ module Google
       class PerformanceLimits
         include Google::Apis::Core::Hashable
       
+        # Output only. The max IOPS.
+        # Corresponds to the JSON property `maxIops`
+        # @return [Fixnum]
+        attr_accessor :max_iops
+      
         # Output only. The max read IOPS.
         # Corresponds to the JSON property `maxReadIops`
         # @return [Fixnum]
@@ -1563,6 +1569,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @max_iops = args[:max_iops] if args.key?(:max_iops)
           @max_read_iops = args[:max_read_iops] if args.key?(:max_read_iops)
           @max_read_throughput_bps = args[:max_read_throughput_bps] if args.key?(:max_read_throughput_bps)
           @max_write_iops = args[:max_write_iops] if args.key?(:max_write_iops)
