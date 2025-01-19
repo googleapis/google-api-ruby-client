@@ -6904,7 +6904,7 @@ module Google
       class SearchResourcesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The FHIR resource type to search, such as Patient or Observation.
+        # Optional. The FHIR resource type to search, such as Patient or Observation.
         # For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/
         # implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/
         # implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/
