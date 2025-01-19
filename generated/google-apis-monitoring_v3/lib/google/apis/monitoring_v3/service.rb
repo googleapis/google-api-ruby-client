@@ -998,6 +998,16 @@ module Google
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   on which to execute the request. The format is: projects/[
         #   PROJECT_ID_OR_NUMBER]
+        # @param [Boolean] active_only
+        #   Optional. If true, only metrics and monitored resource types that have recent
+        #   data (within roughly 25 hours) will be included in the response. - If a metric
+        #   descriptor enumerates monitored resource types, only the monitored resource
+        #   types for which the metric type has recent data will be included in the
+        #   returned metric descriptor, and if none of them have recent data, the metric
+        #   descriptor will not be returned. - If a metric descriptor does not enumerate
+        #   the compatible monitored resource types, it will be returned only if the
+        #   metric type has recent data for some monitored resource type. The returned
+        #   descriptor will not enumerate any monitored resource types.
         # @param [String] filter
         #   Optional. If this field is empty, all custom and system-defined metric
         #   descriptors are returned. Otherwise, the filter (https://cloud.google.com/
@@ -1030,11 +1040,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_metric_descriptors(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_metric_descriptors(name, active_only: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v3/{+name}/metricDescriptors', options)
           command.response_representation = Google::Apis::MonitoringV3::ListMetricDescriptorsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListMetricDescriptorsResponse
           command.params['name'] = name unless name.nil?
+          command.query['activeOnly'] = active_only unless active_only.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
