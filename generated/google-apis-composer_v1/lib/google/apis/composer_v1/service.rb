@@ -564,7 +564,7 @@ module Google
         end
         
         # Creates a user workloads ConfigMap. This method is supported for Cloud
-        # Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.
         # @param [String] parent
         #   Required. The environment name to create a ConfigMap for, in the form: "
         #   projects/`projectId`/locations/`locationId`/environments/`environmentId`"
@@ -599,7 +599,7 @@ module Google
         end
         
         # Deletes a user workloads ConfigMap. This method is supported for Cloud
-        # Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.
         # @param [String] name
         #   Required. The ConfigMap to delete, in the form: "projects/`projectId`/
         #   locations/`locationId`/environments/`environmentId`/userWorkloadsConfigMaps/`
@@ -632,7 +632,7 @@ module Google
         end
         
         # Gets an existing user workloads ConfigMap. This method is supported for Cloud
-        # Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.
         # @param [String] name
         #   Required. The resource name of the ConfigMap to get, in the form: "projects/`
         #   projectId`/locations/`locationId`/environments/`environmentId`/
@@ -665,7 +665,7 @@ module Google
         end
         
         # Lists user workloads ConfigMaps. This method is supported for Cloud Composer
-        # environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # environments in versions composer-3-airflow-*.*.*-build.* and newer.
         # @param [String] parent
         #   Required. List ConfigMaps in the given environment, in the form: "projects/`
         #   projectId`/locations/`locationId`/environments/`environmentId`"
@@ -704,7 +704,7 @@ module Google
         end
         
         # Updates a user workloads ConfigMap. This method is supported for Cloud
-        # Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.
         # @param [String] name
         #   Identifier. The resource name of the ConfigMap, in the form: "projects/`
         #   projectId`/locations/`locationId`/environments/`environmentId`/
@@ -740,7 +740,7 @@ module Google
         end
         
         # Creates a user workloads Secret. This method is supported for Cloud Composer
-        # environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # environments in versions composer-3-airflow-*.*.*-build.* and newer.
         # @param [String] parent
         #   Required. The environment name to create a Secret for, in the form: "projects/`
         #   projectId`/locations/`locationId`/environments/`environmentId`"
@@ -775,7 +775,7 @@ module Google
         end
         
         # Deletes a user workloads Secret. This method is supported for Cloud Composer
-        # environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # environments in versions composer-3-airflow-*.*.*-build.* and newer.
         # @param [String] name
         #   Required. The Secret to delete, in the form: "projects/`projectId`/locations/`
         #   locationId`/environments/`environmentId`/userWorkloadsSecrets/`
@@ -809,7 +809,7 @@ module Google
         
         # Gets an existing user workloads Secret. Values of the "data" field in the
         # response are cleared. This method is supported for Cloud Composer environments
-        # in versions composer-3.*.*-airflow-*.*.* and newer.
+        # in versions composer-3-airflow-*.*.*-build.* and newer.
         # @param [String] name
         #   Required. The resource name of the Secret to get, in the form: "projects/`
         #   projectId`/locations/`locationId`/environments/`environmentId`/
@@ -842,7 +842,7 @@ module Google
         end
         
         # Lists user workloads Secrets. This method is supported for Cloud Composer
-        # environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # environments in versions composer-3-airflow-*.*.*-build.* and newer.
         # @param [String] parent
         #   Required. List Secrets in the given environment, in the form: "projects/`
         #   projectId`/locations/`locationId`/environments/`environmentId`"
@@ -881,7 +881,7 @@ module Google
         end
         
         # Updates a user workloads Secret. This method is supported for Cloud Composer
-        # environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        # environments in versions composer-3-airflow-*.*.*-build.* and newer.
         # @param [String] name
         #   Identifier. The resource name of the Secret, in the form: "projects/`projectId`
         #   /locations/`locationId`/environments/`environmentId`/userWorkloadsSecrets/`
