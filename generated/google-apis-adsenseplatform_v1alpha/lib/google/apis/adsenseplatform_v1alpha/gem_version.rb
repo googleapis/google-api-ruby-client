@@ -16,13 +16,13 @@ module Google
   module Apis
     module AdsenseplatformV1alpha
       # Version of the google-apis-adsenseplatform_v1alpha gem
-      GEM_VERSION = "0.3.0"
+      GEM_VERSION = "0.4.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.16.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250108"
+      REVISION = "20250115"
     end
   end
 end
