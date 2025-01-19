@@ -443,8 +443,8 @@ module Google
         #   Required. The project to which the request should be attributed in the
         #   following form: projects/`project`/locations/`location`.
         # @param [String] order_by
-        #   Optional. Specifies the ordering of results. Supported values are: * relevance
-        #   (default) * last_modified_timestamp * last_modified_timestamp asc
+        #   Optional. Specifies the ordering of results. Supported values are: relevance (
+        #   default) last_modified_timestamp last_modified_timestamp asc
         # @param [Fixnum] page_size
         #   Optional. Number of results in the search page. If <=0, then defaults to 10.
         #   Max limit for page_size is 1000. Throws an invalid argument for page_size >

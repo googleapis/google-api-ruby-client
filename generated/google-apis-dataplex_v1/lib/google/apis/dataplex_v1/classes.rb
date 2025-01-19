@@ -2674,6 +2674,7 @@ module Google
         # row-level type rules.Evaluated count can be configured to either include all
         # rows (default) - with null rows automatically failing rule evaluation, or
         # exclude null rows from the evaluated_count, by setting ignore_nulls = true.
+        # This field is not set for rule SqlAssertion.
         # Corresponds to the JSON property `evaluatedCount`
         # @return [Fixnum]
         attr_accessor :evaluated_count
@@ -2701,8 +2702,7 @@ module Google
         attr_accessor :passed
         alias_method :passed?, :passed
       
-        # The number of rows which passed a rule evaluation.This field is only valid for
-        # row-level type rules.
+        # This field is not set for rule SqlAssertion.
         # Corresponds to the JSON property `passedCount`
         # @return [Fixnum]
         attr_accessor :passed_count
@@ -3177,11 +3177,16 @@ module Google
       end
       
       # Represents a user-visible job which provides the insights for the related data
-      # source.For example: Data Quality: generates queries based on the rules and
-      # runs against the data to get data quality check results. Data Profile:
-      # analyzes the data in table(s) and generates insights about the structure,
-      # content and relationships (such as null percent, cardinality, min/max/mean,
-      # etc).
+      # source.For example: Data quality: generates queries based on the rules and
+      # runs against the data to get data quality check results. For more information,
+      # see Auto data quality overview (https://cloud.google.com/dataplex/docs/auto-
+      # data-quality-overview). Data profile: analyzes the data in tables and
+      # generates insights about the structure, content and relationships (such as
+      # null percent, cardinality, min/max/mean, etc). For more information, see About
+      # data profiling (https://cloud.google.com/dataplex/docs/data-profiling-overview)
+      # . Data discovery: scans data in Cloud Storage buckets to extract and then
+      # catalog metadata. For more information, see Discover and catalog Cloud Storage
+      # data (https://cloud.google.com/bigquery/docs/automatic-discovery).
       class GoogleCloudDataplexV1DataScan
         include Google::Apis::Core::Hashable
       
@@ -4327,7 +4332,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Immutable. The resource name of the parent entry.
+        # Optional. Immutable. The resource name of the parent entry, in the format
+        # projects/`project_id_or_number`/locations/`location_id`/entryGroups/`
+        # entry_group_id`/entries/`entry_id`.
         # Corresponds to the JSON property `parentEntry`
         # @return [String]
         attr_accessor :parent_entry
