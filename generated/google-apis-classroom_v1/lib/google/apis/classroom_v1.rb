@@ -29,6 +29,12 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # See and update its own attachments to posts in Google Classroom
+      AUTH_CLASSROOM_ADDONS_STUDENT = 'https://www.googleapis.com/auth/classroom.addons.student'
+
+      # See, create, and update its own attachments to posts in classes you teach in Google Classroom
+      AUTH_CLASSROOM_ADDONS_TEACHER = 'https://www.googleapis.com/auth/classroom.addons.teacher'
+
       # View and manage announcements in Google Classroom
       AUTH_CLASSROOM_ANNOUNCEMENTS = 'https://www.googleapis.com/auth/classroom.announcements'
 
