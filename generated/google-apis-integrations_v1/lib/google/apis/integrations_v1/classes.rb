@@ -7767,6 +7767,38 @@ module Google
         end
       end
       
+      # Request for ExecuteTestCases.
+      class GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for ExecuteTestCases.
+      class GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Results of each execution of test cases in an integration version.
+        # Corresponds to the JSON property `executeTestCaseResponses`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>]
+        attr_accessor :execute_test_case_responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execute_test_case_responses = args[:execute_test_case_responses] if args.key?(:execute_test_case_responses)
+        end
+      end
+      
       # The Execution resource contains detailed information of an individual
       # integration execution.
       class GoogleCloudIntegrationsV1alphaExecution

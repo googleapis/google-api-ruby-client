@@ -1168,6 +1168,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaExecution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3958,6 +3970,20 @@ module Google
           property :execution_id, as: 'executionId'
           hash :output_parameters, as: 'outputParameters'
           property :test_execution_state, as: 'testExecutionState'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :execute_test_case_responses, as: 'executeTestCaseResponses', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse::Representation
+      
         end
       end
       
