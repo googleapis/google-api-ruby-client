@@ -7353,7 +7353,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The custom segment ID provided by Integral Ad Science. The ID must be between `
-        # 1000001` and `1999999`, inclusive.
+        # 1000001` and `1999999` or `3000001` and `3999999`, inclusive.
         # Corresponds to the JSON property `customSegmentId`
         # @return [Array<Fixnum>]
         attr_accessor :custom_segment_id
