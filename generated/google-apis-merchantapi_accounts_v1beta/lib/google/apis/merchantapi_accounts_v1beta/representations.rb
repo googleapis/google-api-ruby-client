@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SeasonalOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Service
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -911,6 +917,8 @@ module Google
           property :return_policy_uri, as: 'returnPolicyUri'
           property :return_shipping_fee, as: 'returnShippingFee', class: Google::Apis::MerchantapiAccountsV1beta::ReturnShippingFee, decorator: Google::Apis::MerchantapiAccountsV1beta::ReturnShippingFee::Representation
       
+          collection :seasonal_overrides, as: 'seasonalOverrides', class: Google::Apis::MerchantapiAccountsV1beta::SeasonalOverride, decorator: Google::Apis::MerchantapiAccountsV1beta::SeasonalOverride::Representation
+      
         end
       end
       
@@ -1080,6 +1088,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cells, as: 'cells', class: Google::Apis::MerchantapiAccountsV1beta::Value, decorator: Google::Apis::MerchantapiAccountsV1beta::Value::Representation
+      
+        end
+      end
+      
+      class SeasonalOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :begin, as: 'begin', class: Google::Apis::MerchantapiAccountsV1beta::Date, decorator: Google::Apis::MerchantapiAccountsV1beta::Date::Representation
+      
+          property :end, as: 'end', class: Google::Apis::MerchantapiAccountsV1beta::Date, decorator: Google::Apis::MerchantapiAccountsV1beta::Date::Representation
+      
+          property :label, as: 'label'
+          property :policy, as: 'policy', class: Google::Apis::MerchantapiAccountsV1beta::Policy, decorator: Google::Apis::MerchantapiAccountsV1beta::Policy::Representation
       
         end
       end
