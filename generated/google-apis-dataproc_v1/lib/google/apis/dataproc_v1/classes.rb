@@ -1938,16 +1938,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Indicates how many IOPS to provision for the disk. This sets the
-        # number of I/O operations per second that the disk can handle. Note: This field
-        # is only supported if boot_disk_type is hyperdisk-balanced.
+        # number of I/O operations per second that the disk can handle. This field is
+        # supported only if boot_disk_type is hyperdisk-balanced.
         # Corresponds to the JSON property `bootDiskProvisionedIops`
         # @return [Fixnum]
         attr_accessor :boot_disk_provisioned_iops
       
         # Optional. Indicates how much throughput to provision for the disk. This sets
         # the number of throughput mb per second that the disk can handle. Values must
-        # be greater than or equal to 1. Note: This field is only supported if
-        # boot_disk_type is hyperdisk-balanced.
+        # be greater than or equal to 1. This field is supported only if boot_disk_type
+        # is hyperdisk-balanced.
         # Corresponds to the JSON property `bootDiskProvisionedThroughput`
         # @return [Fixnum]
         attr_accessor :boot_disk_provisioned_throughput
