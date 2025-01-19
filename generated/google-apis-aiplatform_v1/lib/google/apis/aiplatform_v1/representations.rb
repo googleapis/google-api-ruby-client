@@ -3982,6 +3982,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1RetrievalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1RetrievalMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6491,6 +6497,12 @@ module Google
       end
       
       class GoogleTypeInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeLatLng
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -13328,6 +13340,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1RetrievalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :lat_lng, as: 'latLng', class: Google::Apis::AiplatformV1::GoogleTypeLatLng, decorator: Google::Apis::AiplatformV1::GoogleTypeLatLng::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1RetrievalMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16333,6 +16354,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function_calling_config, as: 'functionCallingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionCallingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionCallingConfig::Representation
       
+          property :retrieval_config, as: 'retrievalConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalConfig::Representation
+      
         end
       end
       
@@ -17365,6 +17388,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleTypeLatLng
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
         end
       end
       

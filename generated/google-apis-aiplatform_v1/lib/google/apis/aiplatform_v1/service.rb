@@ -393,7 +393,9 @@ module Google
         
         # Updates a DatasetVersion.
         # @param [String] name
-        #   Output only. Identifier. The resource name of the DatasetVersion.
+        #   Output only. Identifier. The resource name of the DatasetVersion. Format: `
+        #   projects/`project`/locations/`location`/datasets/`dataset`/datasetVersions/`
+        #   dataset_version``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion] google_cloud_aiplatform_v1_dataset_version_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
@@ -3212,7 +3214,9 @@ module Google
         
         # Updates a DatasetVersion.
         # @param [String] name
-        #   Output only. Identifier. The resource name of the DatasetVersion.
+        #   Output only. Identifier. The resource name of the DatasetVersion. Format: `
+        #   projects/`project`/locations/`location`/datasets/`dataset`/datasetVersions/`
+        #   dataset_version``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetVersion] google_cloud_aiplatform_v1_dataset_version_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
