@@ -874,6 +874,7 @@ module Google
       class SelectedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :routine, as: 'routine'
           property :table, as: 'table'
         end
       end
