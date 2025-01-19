@@ -1540,8 +1540,7 @@ module Google
         end
       end
       
-      # Buyers are allowed to store certain types of private data in a proposal or
-      # deal.
+      # Buyers are allowed to store certain types of private data in a proposal.
       class PrivateData
         include Google::Apis::Core::Hashable
       
@@ -1641,8 +1640,7 @@ module Google
         # @return [Array<Google::Apis::AuthorizedbuyersmarketplaceV1::Contact>]
         attr_accessor :buyer_contacts
       
-        # Buyers are allowed to store certain types of private data in a proposal or
-        # deal.
+        # Buyers are allowed to store certain types of private data in a proposal.
         # Corresponds to the JSON property `buyerPrivateData`
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::PrivateData]
         attr_accessor :buyer_private_data
