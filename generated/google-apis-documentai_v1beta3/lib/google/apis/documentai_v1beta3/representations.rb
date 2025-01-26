@@ -3725,6 +3725,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunking_config, as: 'chunkingConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig::Representation
       
+          property :return_bounding_boxes, as: 'returnBoundingBoxes'
+          property :return_images, as: 'returnImages'
         end
       end
       
