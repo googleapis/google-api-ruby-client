@@ -663,6 +663,7 @@ module Google
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_cluster_endpoints_deletion_enabled, as: 'asyncClusterEndpointsDeletionEnabled'
           property :authorization_mode, as: 'authorizationMode'
           property :automated_backup_config, as: 'automatedBackupConfig', class: Google::Apis::RedisV1::AutomatedBackupConfig, decorator: Google::Apis::RedisV1::AutomatedBackupConfig::Representation
       

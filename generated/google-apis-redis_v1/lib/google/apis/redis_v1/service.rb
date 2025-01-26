@@ -600,7 +600,7 @@ module Google
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
         #   field. The elements of the repeated paths field may only include these fields
-        #   from Cluster: * `size_gb` * `replica_count`
+        #   from Cluster: * `size_gb` * `replica_count` * `cluster_endpoints`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
