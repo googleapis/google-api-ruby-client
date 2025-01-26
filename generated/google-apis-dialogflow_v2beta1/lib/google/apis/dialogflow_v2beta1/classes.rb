@@ -547,6 +547,13 @@ module Google
         # @return [String]
         attr_accessor :data_store_type
       
+        # The document processing mode for the data store connection. Should only be set
+        # for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as
+        # DOCUMENTS, as this is the legacy mode.
+        # Corresponds to the JSON property `documentProcessingMode`
+        # @return [String]
+        attr_accessor :document_processing_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -555,6 +562,7 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
+          @document_processing_mode = args[:document_processing_mode] if args.key?(:document_processing_mode)
         end
       end
       
@@ -4277,6 +4285,13 @@ module Google
         # @return [String]
         attr_accessor :data_store_type
       
+        # The document processing mode for the data store connection. Should only be set
+        # for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as
+        # DOCUMENTS, as this is the legacy mode.
+        # Corresponds to the JSON property `documentProcessingMode`
+        # @return [String]
+        attr_accessor :document_processing_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4285,6 +4300,7 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
+          @document_processing_mode = args[:document_processing_mode] if args.key?(:document_processing_mode)
         end
       end
       
