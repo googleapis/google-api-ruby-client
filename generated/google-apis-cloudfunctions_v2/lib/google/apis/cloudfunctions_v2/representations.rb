@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DetachFunctionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -372,6 +378,12 @@ module Google
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
+        end
+      end
+      
+      class DetachFunctionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
