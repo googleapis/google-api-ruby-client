@@ -22,6 +22,47 @@ module Google
   module Apis
     module SpannerV1
       
+      # The request for AddSplitPoints.
+      class AddSplitPointsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A user-supplied tag associated with the split points. For example, "
+        # intital_data_load", "special_event_1". Defaults to "CloudAddSplitPointsAPI" if
+        # not specified. The length of the tag must not exceed 50 characters,else will
+        # be trimmed. Only valid UTF8 characters are allowed.
+        # Corresponds to the JSON property `initiator`
+        # @return [String]
+        attr_accessor :initiator
+      
+        # Required. The split points to add.
+        # Corresponds to the JSON property `splitPoints`
+        # @return [Array<Google::Apis::SpannerV1::SplitPoints>]
+        attr_accessor :split_points
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @initiator = args[:initiator] if args.key?(:initiator)
+          @split_points = args[:split_points] if args.key?(:split_points)
+        end
+      end
+      
+      # The response for AddSplitPoints.
+      class AddSplitPointsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # AsymmetricAutoscalingOption specifies the scaling of replicas identified by
       # the given selection.
       class AsymmetricAutoscalingOption
@@ -3472,6 +3513,25 @@ module Google
         end
       end
       
+      # A split key.
+      class Key
+        include Google::Apis::Core::Hashable
+      
+        # Required. The column values making up the split key.
+        # Corresponds to the JSON property `keyParts`
+        # @return [Array<Object>]
+        attr_accessor :key_parts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_parts = args[:key_parts] if args.key?(:key_parts)
+        end
+      end
+      
       # KeyRange represents a range of rows in a table or index. A range has a start
       # key and an end key. These keys can be open or closed, indicating if the range
       # includes rows with that key. Keys are represented by lists, where the ith
@@ -6076,6 +6136,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @serving_location = args[:serving_location] if args.key?(:serving_location)
+        end
+      end
+      
+      # The split points of a table/index.
+      class SplitPoints
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The expiration timestamp of the split points. A timestamp in the
+        # past means immediate expiration. The maximum value can be 30 days in the
+        # future. Defaults to 10 days in the future if not specified.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The index to split. If specified, the `table` field must refer to the index's
+        # base table.
+        # Corresponds to the JSON property `index`
+        # @return [String]
+        attr_accessor :index
+      
+        # Required. The list of split keys, i.e., the split boundaries.
+        # Corresponds to the JSON property `keys`
+        # @return [Array<Google::Apis::SpannerV1::Key>]
+        attr_accessor :keys
+      
+        # The table to split.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @index = args[:index] if args.key?(:index)
+          @keys = args[:keys] if args.key?(:keys)
+          @table = args[:table] if args.key?(:table)
         end
       end
       
