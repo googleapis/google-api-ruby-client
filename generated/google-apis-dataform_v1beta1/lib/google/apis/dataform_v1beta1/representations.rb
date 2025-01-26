@@ -711,6 +711,7 @@ module Google
       
           property :dataform_core_version, as: 'dataformCoreVersion'
           property :git_commitish, as: 'gitCommitish'
+          property :internal_metadata, as: 'internalMetadata'
           property :name, as: 'name'
           property :release_config, as: 'releaseConfig'
           property :resolved_git_commit_sha, as: 'resolvedGitCommitSha'
@@ -728,6 +729,7 @@ module Google
           property :declaration, as: 'declaration', class: Google::Apis::DataformV1beta1::Declaration, decorator: Google::Apis::DataformV1beta1::Declaration::Representation
       
           property :file_path, as: 'filePath'
+          property :internal_metadata, as: 'internalMetadata'
           property :notebook, as: 'notebook', class: Google::Apis::DataformV1beta1::Notebook, decorator: Google::Apis::DataformV1beta1::Notebook::Representation
       
           property :operations, as: 'operations', class: Google::Apis::DataformV1beta1::Operations, decorator: Google::Apis::DataformV1beta1::Operations::Representation
@@ -1210,6 +1212,7 @@ module Google
           property :cron_schedule, as: 'cronSchedule'
           property :disabled, as: 'disabled'
           property :git_commitish, as: 'gitCommitish'
+          property :internal_metadata, as: 'internalMetadata'
           property :name, as: 'name'
           collection :recent_scheduled_release_records, as: 'recentScheduledReleaseRecords', class: Google::Apis::DataformV1beta1::ScheduledReleaseRecord, decorator: Google::Apis::DataformV1beta1::ScheduledReleaseRecord::Representation
       
@@ -1241,6 +1244,7 @@ module Google
           property :display_name, as: 'displayName'
           property :git_remote_settings, as: 'gitRemoteSettings', class: Google::Apis::DataformV1beta1::GitRemoteSettings, decorator: Google::Apis::DataformV1beta1::GitRemoteSettings::Representation
       
+          property :internal_metadata, as: 'internalMetadata'
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -1360,6 +1364,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :cron_schedule, as: 'cronSchedule'
+          property :internal_metadata, as: 'internalMetadata'
           property :invocation_config, as: 'invocationConfig', class: Google::Apis::DataformV1beta1::InvocationConfig, decorator: Google::Apis::DataformV1beta1::InvocationConfig::Representation
       
           property :name, as: 'name'
@@ -1377,6 +1382,7 @@ module Google
           property :compilation_result, as: 'compilationResult'
           property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
       
+          property :internal_metadata, as: 'internalMetadata'
           property :invocation_config, as: 'invocationConfig', class: Google::Apis::DataformV1beta1::InvocationConfig, decorator: Google::Apis::DataformV1beta1::InvocationConfig::Representation
       
           property :invocation_timing, as: 'invocationTiming', class: Google::Apis::DataformV1beta1::Interval, decorator: Google::Apis::DataformV1beta1::Interval::Representation
@@ -1396,6 +1402,7 @@ module Google
           property :canonical_target, as: 'canonicalTarget', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
           property :failure_reason, as: 'failureReason'
+          property :internal_metadata, as: 'internalMetadata'
           property :invocation_timing, as: 'invocationTiming', class: Google::Apis::DataformV1beta1::Interval, decorator: Google::Apis::DataformV1beta1::Interval::Representation
       
           property :notebook_action, as: 'notebookAction', class: Google::Apis::DataformV1beta1::NotebookAction, decorator: Google::Apis::DataformV1beta1::NotebookAction::Representation
@@ -1412,6 +1419,7 @@ module Google
           property :create_time, as: 'createTime'
           property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
       
+          property :internal_metadata, as: 'internalMetadata'
           property :name, as: 'name'
         end
       end
