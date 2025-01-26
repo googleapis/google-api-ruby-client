@@ -124,8 +124,9 @@ module Google
         
         # Lists Platform Child Sites for a specified Platform Child Account.
         # @param [String] parent
-        #   Required. The name of the platform to retrieve. Format: accounts/`account`/
-        #   platforms/`platform`/childAccounts/`child_publisher_code`
+        #   Required. The name of the child account under the given platform which owns
+        #   the platform child sites. Format: accounts/`account`/platforms/`platform`/
+        #   childAccounts/`child_account`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of children to include in the response, used for
         #   paging. If unspecified, at most 10000 platforms will be returned. The maximum
@@ -159,6 +160,44 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a Platform Child Site.
+        # @param [String] name
+        #   Identifier. Format: accounts/`account`/platforms/`platform`/childAccounts/`
+        #   child_account`/sites/`platform_child_site`
+        # @param [Google::Apis::AdsenseplatformV1alpha::PlatformChildSite] platform_child_site_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update - currently only supports updating the `
+        #   platform_group` field.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdsenseplatformV1alpha::PlatformChildSite] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdsenseplatformV1alpha::PlatformChildSite]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_platform_child_account_site(name, platform_child_site_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AdsenseplatformV1alpha::PlatformChildSite::Representation
+          command.request_object = platform_child_site_object
+          command.response_representation = Google::Apis::AdsenseplatformV1alpha::PlatformChildSite::Representation
+          command.response_class = Google::Apis::AdsenseplatformV1alpha::PlatformChildSite
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

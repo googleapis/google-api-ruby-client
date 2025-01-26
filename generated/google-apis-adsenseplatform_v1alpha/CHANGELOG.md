@@ -1,8 +1,8 @@
 # Release history for google-apis-adsenseplatform_v1alpha
 
-### v0.4.0 (2025-01-19)
+### v0.4.0 (2025-01-26)
 
-* Regenerated from discovery document revision 20250115
+* Regenerated from discovery document revision 20250123
 
 ### v0.3.0 (2025-01-12)
 
