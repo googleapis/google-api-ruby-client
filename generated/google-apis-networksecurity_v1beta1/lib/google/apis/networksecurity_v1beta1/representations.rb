@@ -508,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MirroringEndpointGroupAssociationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MirroringEndpointGroupAssociationLocationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1404,6 +1410,8 @@ module Google
       class MirroringEndpointGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationDetails, decorator: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationDetails::Representation
+      
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
           property :mirroring_deployment_group, as: 'mirroringDeploymentGroup'
@@ -1427,6 +1435,15 @@ module Google
           property :reconciling, as: 'reconciling'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MirroringEndpointGroupAssociationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :state, as: 'state'
         end
       end
       
