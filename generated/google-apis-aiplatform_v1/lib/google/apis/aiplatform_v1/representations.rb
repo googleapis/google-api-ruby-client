@@ -16045,6 +16045,7 @@ module Google
       class GoogleCloudAiplatformV1SupervisedTuningDataStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dropped_example_reasons, as: 'droppedExampleReasons'
           property :total_billable_character_count, :numeric_string => true, as: 'totalBillableCharacterCount'
           property :total_billable_token_count, :numeric_string => true, as: 'totalBillableTokenCount'
           property :total_truncated_example_count, :numeric_string => true, as: 'totalTruncatedExampleCount'

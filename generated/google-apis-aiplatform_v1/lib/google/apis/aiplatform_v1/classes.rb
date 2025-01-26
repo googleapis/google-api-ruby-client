@@ -33904,6 +33904,12 @@ module Google
       class GoogleCloudAiplatformV1SupervisedTuningDataStats
         include Google::Apis::Core::Hashable
       
+        # Output only. For each index in `truncated_example_indices`, the user-facing
+        # reason why the example was dropped. Must not include example itself.
+        # Corresponds to the JSON property `droppedExampleReasons`
+        # @return [Array<String>]
+        attr_accessor :dropped_example_reasons
+      
         # Output only. Number of billable characters in the tuning dataset.
         # Corresponds to the JSON property `totalBillableCharacterCount`
         # @return [Fixnum]
@@ -33914,7 +33920,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_billable_token_count
       
-        # The number of examples in the dataset that have been truncated by any amount.
+        # Output only. The number of examples in the dataset that have been dropped. An
+        # example can be dropped for reasons including: too many tokens, contains an
+        # invalid image, contains too many images, etc.
         # Corresponds to the JSON property `totalTruncatedExampleCount`
         # @return [Fixnum]
         attr_accessor :total_truncated_example_count
@@ -33924,7 +33932,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_tuning_character_count
       
-        # A partial sample of the indices (starting from 1) of the truncated examples.
+        # Output only. A partial sample of the indices (starting from 1) of the dropped
+        # examples.
         # Corresponds to the JSON property `truncatedExampleIndices`
         # @return [Array<Fixnum>]
         attr_accessor :truncated_example_indices
@@ -33965,6 +33974,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dropped_example_reasons = args[:dropped_example_reasons] if args.key?(:dropped_example_reasons)
           @total_billable_character_count = args[:total_billable_character_count] if args.key?(:total_billable_character_count)
           @total_billable_token_count = args[:total_billable_token_count] if args.key?(:total_billable_token_count)
           @total_truncated_example_count = args[:total_truncated_example_count] if args.key?(:total_truncated_example_count)
