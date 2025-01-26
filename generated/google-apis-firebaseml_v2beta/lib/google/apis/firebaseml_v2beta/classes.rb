@@ -73,6 +73,13 @@ module Google
         # @return [String]
         attr_accessor :data
       
+        # Optional. Display name of the blob. Used to provide a label or filename to
+        # distinguish blobs. This field is only returned in PromptMessage for prompt
+        # management. It is not currently used in the Gemini GenerateContent calls.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Required. The IANA standard MIME type of the source data.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
@@ -85,6 +92,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data = args[:data] if args.key?(:data)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
@@ -356,6 +364,11 @@ module Google
       class GoogleCloudAiplatformV1beta1CountTokensResponse
         include Google::Apis::Core::Hashable
       
+        # Output only. List of modalities that were processed in the request input.
+        # Corresponds to the JSON property `promptTokensDetails`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
+        attr_accessor :prompt_tokens_details
+      
         # The total number of billable characters counted across all instances from the
         # request.
         # Corresponds to the JSON property `totalBillableCharacters`
@@ -373,6 +386,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @prompt_tokens_details = args[:prompt_tokens_details] if args.key?(:prompt_tokens_details)
           @total_billable_characters = args[:total_billable_characters] if args.key?(:total_billable_characters)
           @total_tokens = args[:total_tokens] if args.key?(:total_tokens)
         end
@@ -435,6 +449,14 @@ module Google
       class GoogleCloudAiplatformV1beta1FileData
         include Google::Apis::Core::Hashable
       
+        # Optional. Display name of the file data. Used to provide a label or filename
+        # to distinguish file datas. This field is only returned in PromptMessage for
+        # prompt management. It is not currently used in the Gemini GenerateContent
+        # calls.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Required. URI.
         # Corresponds to the JSON property `fileUri`
         # @return [String]
@@ -451,6 +473,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @file_uri = args[:file_uri] if args.key?(:file_uri)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
@@ -678,6 +701,11 @@ module Google
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Candidate>]
         attr_accessor :candidates
       
+        # Output only. Timestamp when the request is made to the server.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Output only. The model version used to generate the response.
         # Corresponds to the JSON property `modelVersion`
         # @return [String]
@@ -687,6 +715,12 @@ module Google
         # Corresponds to the JSON property `promptFeedback`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback]
         attr_accessor :prompt_feedback
+      
+        # Output only. response_id is used to identify each response. It is the encoding
+        # of the event_id.
+        # Corresponds to the JSON property `responseId`
+        # @return [String]
+        attr_accessor :response_id
       
         # Usage metadata about response(s).
         # Corresponds to the JSON property `usageMetadata`
@@ -700,8 +734,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @candidates = args[:candidates] if args.key?(:candidates)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @model_version = args[:model_version] if args.key?(:model_version)
           @prompt_feedback = args[:prompt_feedback] if args.key?(:prompt_feedback)
+          @response_id = args[:response_id] if args.key?(:response_id)
           @usage_metadata = args[:usage_metadata] if args.key?(:usage_metadata)
         end
       end
@@ -741,6 +777,11 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. List of modalities of the cached content in the request input.
+        # Corresponds to the JSON property `cacheTokensDetails`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
+        attr_accessor :cache_tokens_details
+      
         # Output only. Number of tokens in the cached part in the input (the cached
         # content).
         # Corresponds to the JSON property `cachedContentTokenCount`
@@ -752,12 +793,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :candidates_token_count
       
+        # Output only. List of modalities that were returned in the response.
+        # Corresponds to the JSON property `candidatesTokensDetails`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
+        attr_accessor :candidates_tokens_details
+      
         # Number of tokens in the request. When `cached_content` is set, this is still
         # the total effective prompt size meaning this includes the number of tokens in
         # the cached content.
         # Corresponds to the JSON property `promptTokenCount`
         # @return [Fixnum]
         attr_accessor :prompt_token_count
+      
+        # Output only. List of modalities that were processed in the request input.
+        # Corresponds to the JSON property `promptTokensDetails`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
+        attr_accessor :prompt_tokens_details
       
         # Total token count for prompt and response candidates.
         # Corresponds to the JSON property `totalTokenCount`
@@ -770,9 +821,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cache_tokens_details = args[:cache_tokens_details] if args.key?(:cache_tokens_details)
           @cached_content_token_count = args[:cached_content_token_count] if args.key?(:cached_content_token_count)
           @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
+          @candidates_tokens_details = args[:candidates_tokens_details] if args.key?(:candidates_tokens_details)
           @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @prompt_tokens_details = args[:prompt_tokens_details] if args.key?(:prompt_tokens_details)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
         end
       end
@@ -870,6 +924,11 @@ module Google
         # @return [Float]
         attr_accessor :temperature
       
+        # Config for thinking features.
+        # Corresponds to the JSON property `thinkingConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig]
+        attr_accessor :thinking_config
+      
         # Optional. If specified, top-k sampling will be used.
         # Corresponds to the JSON property `topK`
         # @return [Float]
@@ -902,6 +961,7 @@ module Google
           @speech_config = args[:speech_config] if args.key?(:speech_config)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
+          @thinking_config = args[:thinking_config] if args.key?(:thinking_config)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
         end
@@ -970,6 +1030,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_name = args[:model_name] if args.key?(:model_name)
+        end
+      end
+      
+      # Config for thinking features.
+      class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether to include thoughts in the response. If true,
+        # thoughts are returned only when available.
+        # Corresponds to the JSON property `includeThoughts`
+        # @return [Boolean]
+        attr_accessor :include_thoughts
+        alias_method :include_thoughts?, :include_thoughts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_thoughts = args[:include_thoughts] if args.key?(:include_thoughts)
         end
       end
       
@@ -1230,6 +1311,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @candidates = args[:candidates] if args.key?(:candidates)
+        end
+      end
+      
+      # Represents token counting info for a single modality.
+      class GoogleCloudAiplatformV1beta1ModalityTokenCount
+        include Google::Apis::Core::Hashable
+      
+        # The modality associated with this token count.
+        # Corresponds to the JSON property `modality`
+        # @return [String]
+        attr_accessor :modality
+      
+        # Number of tokens.
+        # Corresponds to the JSON property `tokenCount`
+        # @return [Fixnum]
+        attr_accessor :token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @modality = args[:modality] if args.key?(:modality)
+          @token_count = args[:token_count] if args.key?(:token_count)
         end
       end
       

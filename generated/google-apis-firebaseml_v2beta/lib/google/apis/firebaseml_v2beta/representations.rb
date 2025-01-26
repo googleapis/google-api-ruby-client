@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +221,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1LogprobsResultTopCandidates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ModalityTokenCount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -401,6 +413,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, :base64 => true, as: 'data'
+          property :display_name, as: 'displayName'
           property :mime_type, as: 'mimeType'
         end
       end
@@ -482,6 +495,8 @@ module Google
       class GoogleCloudAiplatformV1beta1CountTokensResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :prompt_tokens_details, as: 'promptTokensDetails', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount::Representation
+      
           property :total_billable_characters, as: 'totalBillableCharacters'
           property :total_tokens, as: 'totalTokens'
         end
@@ -506,6 +521,7 @@ module Google
       class GoogleCloudAiplatformV1beta1FileData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :file_uri, as: 'fileUri'
           property :mime_type, as: 'mimeType'
         end
@@ -572,9 +588,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :candidates, as: 'candidates', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Candidate, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Candidate::Representation
       
+          property :create_time, as: 'createTime'
           property :model_version, as: 'modelVersion'
           property :prompt_feedback, as: 'promptFeedback', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback::Representation
       
+          property :response_id, as: 'responseId'
           property :usage_metadata, as: 'usageMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata::Representation
       
         end
@@ -593,9 +611,15 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cache_tokens_details, as: 'cacheTokensDetails', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount::Representation
+      
           property :cached_content_token_count, as: 'cachedContentTokenCount'
           property :candidates_token_count, as: 'candidatesTokenCount'
+          collection :candidates_tokens_details, as: 'candidatesTokensDetails', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount::Representation
+      
           property :prompt_token_count, as: 'promptTokenCount'
+          collection :prompt_tokens_details, as: 'promptTokensDetails', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount::Representation
+      
           property :total_token_count, as: 'totalTokenCount'
         end
       end
@@ -622,6 +646,8 @@ module Google
       
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
+          property :thinking_config, as: 'thinkingConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig::Representation
+      
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
         end
@@ -648,6 +674,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_name, as: 'modelName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_thoughts, as: 'includeThoughts'
         end
       end
       
@@ -736,6 +769,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :candidates, as: 'candidates', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResultCandidate, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1LogprobsResultCandidate::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ModalityTokenCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :modality, as: 'modality'
+          property :token_count, as: 'tokenCount'
         end
       end
       
