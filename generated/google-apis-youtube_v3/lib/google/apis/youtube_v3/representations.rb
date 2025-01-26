@@ -1204,6 +1204,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VideoTrainability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WatchSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3650,6 +3656,16 @@ module Google
           collection :relevant_topic_ids, as: 'relevantTopicIds'
           collection :topic_categories, as: 'topicCategories'
           collection :topic_ids, as: 'topicIds'
+        end
+      end
+      
+      class VideoTrainability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :kind, as: 'kind'
+          collection :permitted, as: 'permitted'
+          property :video_id, as: 'videoId'
         end
       end
       
