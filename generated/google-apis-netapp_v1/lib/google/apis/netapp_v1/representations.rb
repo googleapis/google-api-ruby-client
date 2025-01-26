@@ -669,6 +669,7 @@ module Google
           property :export, as: 'export'
           property :export_full, as: 'exportFull'
           property :instructions, as: 'instructions'
+          property :ip_address, as: 'ipAddress'
           property :protocol, as: 'protocol'
         end
       end

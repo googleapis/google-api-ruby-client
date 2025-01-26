@@ -1280,6 +1280,11 @@ module Google
         # @return [String]
         attr_accessor :instructions
       
+        # Output only. IP Address.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
         # Protocol to mount with.
         # Corresponds to the JSON property `protocol`
         # @return [String]
@@ -1294,6 +1299,7 @@ module Google
           @export = args[:export] if args.key?(:export)
           @export_full = args[:export_full] if args.key?(:export_full)
           @instructions = args[:instructions] if args.key?(:instructions)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
           @protocol = args[:protocol] if args.key?(:protocol)
         end
       end
