@@ -240,7 +240,10 @@ module Google
       
         # Docker Registry to use for this deployment. This configuration is only
         # applicable to 1st Gen functions, 2nd Gen functions can only use Artifact
-        # Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `
+        # Registry. Deprecated: Container Registry option will no longer be available
+        # after March 2025: https://cloud.google.com/artifact-registry/docs/transition/
+        # transition-from-gcr Please use Artifact Registry instead, which is the default
+        # choice. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `
         # docker_repository` field is specified, this field should either be left
         # unspecified or set to `ARTIFACT_REGISTRY`.
         # Corresponds to the JSON property `dockerRegistry`
@@ -392,6 +395,19 @@ module Google
           @day = args[:day] if args.key?(:day)
           @month = args[:month] if args.key?(:month)
           @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # Request for the `DetachFunction` method.
+      class DetachFunctionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
