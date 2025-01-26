@@ -23,7 +23,7 @@ module Google
     module OrgpolicyV2
       
       # Similar to PolicySpec but with an extra 'launch' field for launch reference.
-      # The PolicySpec here is specific for dry-run/darklaunch.
+      # The PolicySpec here is specific for dry-run.
       class GoogleCloudOrgpolicyV2AlternatePolicySpec
         include Google::Apis::Core::Hashable
       
@@ -58,16 +58,16 @@ module Google
       # setting a policy that includes constraints at different locations in the
       # organization's resource hierarchy. Policies are inherited down the resource
       # hierarchy from higher levels, but can also be overridden. For details about
-      # the inheritance rules please read about `policies`. Constraints have a default
-      # behavior determined by the `constraint_default` field, which is the
-      # enforcement behavior that is used in the absence of a policy being defined or
-      # inherited for the resource in question.
+      # the inheritance rules, see `Policy`. Constraints have a default behavior
+      # determined by the `constraint_default` field, which is the enforcement
+      # behavior that is used in the absence of a policy being defined or inherited
+      # for the resource in question.
       class GoogleCloudOrgpolicyV2Constraint
         include Google::Apis::Core::Hashable
       
-        # A constraint that is either enforced or not. For example, a constraint `
-        # constraints/compute.disableSerialPortAccess`. If it is enforced on a VM
-        # instance, serial port connections will not be opened to that instance.
+        # A constraint type is enforced or not enforced, which is configured in the `
+        # PolicyRule`. If `customConstraintDefinition` is defined, this constraint is a
+        # managed constraint.
         # Corresponds to the JSON property `booleanConstraint`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintBooleanConstraint]
         attr_accessor :boolean_constraint
@@ -88,8 +88,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A constraint that allows or disallows a list of string values, which are
-        # configured by an Organization Policy administrator with a policy.
+        # A constraint type that allows or disallows a list of string values, which are
+        # configured in the `PolicyRule`.
         # Corresponds to the JSON property `listConstraint`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintListConstraint]
         attr_accessor :list_constraint
@@ -132,14 +132,13 @@ module Google
         end
       end
       
-      # A constraint that is either enforced or not. For example, a constraint `
-      # constraints/compute.disableSerialPortAccess`. If it is enforced on a VM
-      # instance, serial port connections will not be opened to that instance.
+      # A constraint type is enforced or not enforced, which is configured in the `
+      # PolicyRule`. If `customConstraintDefinition` is defined, this constraint is a
+      # managed constraint.
       class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
         include Google::Apis::Core::Hashable
       
-        # Currently used for Managed Constraints. This represents a subset of fields
-        # missing from Constraint proto that are required to describe CustomConstraint
+        # Custom constraint definition. Defines this as a managed constraint.
         # Corresponds to the JSON property `customConstraintDefinition`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition]
         attr_accessor :custom_constraint_definition
@@ -154,8 +153,7 @@ module Google
         end
       end
       
-      # Currently used for Managed Constraints. This represents a subset of fields
-      # missing from Constraint proto that are required to describe CustomConstraint
+      # Custom constraint definition. Defines this as a managed constraint.
       class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition
         include Google::Apis::Core::Hashable
       
@@ -176,8 +174,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :method_types
       
-        # Stores Structure of parameters used by Constraint condition. Key of map
-        # represents name of the parameter.
+        # Stores the structure of `Parameters` used by the constraint condition. The key
+        # of `map` represents the name of the parameter.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter>]
         attr_accessor :parameters
@@ -211,13 +209,13 @@ module Google
         # @return [Object]
         attr_accessor :default_value
       
-        # Determines the parameter’s value structure. For example, LIST can be specified
-        # by defining type : LIST, and item type as : STRING.
+        # Determines the parameter's value structure. For example, `LIST` can be
+        # specified by defining `type: LIST`, and `item: STRING`.
         # Corresponds to the JSON property `item`
         # @return [String]
         attr_accessor :item
       
-        # Defines Medata structure.
+        # Defines Metadata structure.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata]
         attr_accessor :metadata
@@ -248,7 +246,7 @@ module Google
         end
       end
       
-      # Defines Medata structure.
+      # Defines Metadata structure.
       class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
         include Google::Apis::Core::Hashable
       
@@ -267,8 +265,8 @@ module Google
         end
       end
       
-      # A constraint that allows or disallows a list of string values, which are
-      # configured by an Organization Policy administrator with a policy.
+      # A constraint type that allows or disallows a list of string values, which are
+      # configured in the `PolicyRule`.
       class GoogleCloudOrgpolicyV2ConstraintListConstraint
         include Google::Apis::Core::Hashable
       
@@ -311,9 +309,10 @@ module Google
         # @return [String]
         attr_accessor :action_type
       
-        # Org policy condition/expression. For example: `resource.instanceName.matches("[
-        # production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true`
-        # The max length of the condition is 1000 characters.
+        # A Common Expression Language (CEL) condition which is used in the evaluation
+        # of the constraint. For example: `resource.instanceName.matches("[production|
+        # test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max
+        # length of the condition is 1000 characters.
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
@@ -353,7 +352,7 @@ module Google
       
         # Output only. The last time this custom constraint was updated. This represents
         # the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint`
-        # RPC was called
+        # methods were called.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -401,12 +400,12 @@ module Google
       end
       
       # The response returned from the ListCustomConstraints method. It will be empty
-      # if no custom constraints are set on the organization resource.
+      # if no custom or managed constraints are set on the organization resource.
       class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse
         include Google::Apis::Core::Hashable
       
-        # All custom constraints that exist on the organization resource. It will be
-        # empty if no custom constraints are set.
+        # All custom and managed constraints that exist on the organization resource. It
+        # will be empty if no custom constraints are set.
         # Corresponds to the JSON property `customConstraints`
         # @return [Array<Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint>]
         attr_accessor :custom_constraints
@@ -462,7 +461,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Similar to PolicySpec but with an extra 'launch' field for launch reference.
-        # The PolicySpec here is specific for dry-run/darklaunch.
+        # The PolicySpec here is specific for dry-run.
         # Corresponds to the JSON property `alternate`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2AlternatePolicySpec]
         attr_accessor :alternate
@@ -620,7 +619,7 @@ module Google
         attr_accessor :enforce
         alias_method :enforce?, :enforce
       
-        # Optional. Required for GMCs if parameters defined in constraints. Pass
+        # Optional. Required for managed constraints if parameters are defined. Passes
         # parameter values when policy enforcement is enabled. Ensure that parameter
         # value types match those defined in the constraint definition. For example: ` "
         # allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true `

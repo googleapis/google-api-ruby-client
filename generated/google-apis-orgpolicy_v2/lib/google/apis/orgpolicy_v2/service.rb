@@ -430,11 +430,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.
-        # NOT_FOUND` if the custom constraint does not exist.
+        # Gets a custom or managed constraint. Returns a `google.rpc.Status` with `
+        # google.rpc.Code.NOT_FOUND` if the custom or managed constraint does not exist.
         # @param [String] name
-        #   Required. Resource name of the custom constraint. See the custom constraint
-        #   entry for naming requirements.
+        #   Required. Resource name of the custom or managed constraint. See the custom
+        #   constraint entry for naming requirements.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
