@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2BuildConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2BuildInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2BuildpacksBuild
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1GoModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1Hash
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -569,6 +587,12 @@ module Google
       end
       
       class GoogleDevtoolsCloudbuildV1TimeSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1UploadedGoModule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -703,6 +727,29 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2BuildConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_image, as: 'baseImage'
+          property :enable_automatic_updates, as: 'enableAutomaticUpdates'
+          hash :environment_variables, as: 'environmentVariables'
+          property :function_target, as: 'functionTarget'
+          property :image_uri, as: 'imageUri'
+          property :name, as: 'name'
+          property :service_account, as: 'serviceAccount'
+          property :source_location, as: 'sourceLocation'
+          property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class GoogleCloudRunV2BuildInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :function_target, as: 'functionTarget'
+          property :source_location, as: 'sourceLocation'
+        end
+      end
+      
       class GoogleCloudRunV2BuildpacksBuild
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -749,6 +796,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :args, as: 'args'
+          property :base_image_uri, as: 'baseImageUri'
+          property :build_info, as: 'buildInfo', class: Google::Apis::RunV2::GoogleCloudRunV2BuildInfo, decorator: Google::Apis::RunV2::GoogleCloudRunV2BuildInfo::Representation
+      
           collection :command, as: 'command'
           collection :depends_on, as: 'dependsOn'
           collection :env, as: 'env', class: Google::Apis::RunV2::GoogleCloudRunV2EnvVar, decorator: Google::Apis::RunV2::GoogleCloudRunV2EnvVar::Representation
@@ -829,6 +879,7 @@ module Google
           collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
           property :create_time, as: 'createTime'
+          property :creator, as: 'creator'
           property :delete_time, as: 'deleteTime'
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
@@ -1222,6 +1273,8 @@ module Google
           hash :annotations, as: 'annotations'
           property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization, decorator: Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization::Representation
       
+          property :build_config, as: 'buildConfig', class: Google::Apis::RunV2::GoogleCloudRunV2BuildConfig, decorator: Google::Apis::RunV2::GoogleCloudRunV2BuildConfig::Representation
+      
           property :client, as: 'client'
           property :client_version, as: 'clientVersion'
           collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
@@ -1486,6 +1539,8 @@ module Google
       class GoogleDevtoolsCloudbuildV1Artifacts
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :go_modules, as: 'goModules', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GoModule, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GoModule::Representation
+      
           collection :images, as: 'images'
           collection :maven_artifacts, as: 'mavenArtifacts', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1MavenArtifact, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1MavenArtifact::Representation
       
@@ -1573,6 +1628,7 @@ module Google
           property :default_logs_bucket_behavior, as: 'defaultLogsBucketBehavior'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :dynamic_substitutions, as: 'dynamicSubstitutions'
+          property :enable_structured_logging, as: 'enableStructuredLogging'
           collection :env, as: 'env'
           property :log_streaming_option, as: 'logStreamingOption'
           property :logging, as: 'logging'
@@ -1677,6 +1733,18 @@ module Google
         end
       end
       
+      class GoogleDevtoolsCloudbuildV1GoModule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :module_path, as: 'modulePath'
+          property :module_version, as: 'moduleVersion'
+          property :repository_location, as: 'repositoryLocation'
+          property :repository_name, as: 'repositoryName'
+          property :repository_project_id, as: 'repositoryProjectId'
+          property :source_path, as: 'sourcePath'
+        end
+      end
+      
       class GoogleDevtoolsCloudbuildV1Hash
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1756,6 +1824,8 @@ module Google
       
           collection :build_step_images, as: 'buildStepImages'
           collection :build_step_outputs, as: 'buildStepOutputs'
+          collection :go_modules, as: 'goModules', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGoModule, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGoModule::Representation
+      
           collection :images, as: 'images', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuiltImage, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuiltImage::Representation
       
           collection :maven_artifacts, as: 'mavenArtifacts', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedMavenArtifact, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedMavenArtifact::Representation
@@ -1854,6 +1924,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1UploadedGoModule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          property :uri, as: 'uri'
         end
       end
       
