@@ -23,7 +23,7 @@ module Google
     module PolicysimulatorV1
       
       # Similar to PolicySpec but with an extra 'launch' field for launch reference.
-      # The PolicySpec here is specific for dry-run/darklaunch.
+      # The PolicySpec here is specific for dry-run.
       class GoogleCloudOrgpolicyV2AlternatePolicySpec
         include Google::Apis::Core::Hashable
       
@@ -62,9 +62,10 @@ module Google
         # @return [String]
         attr_accessor :action_type
       
-        # Org policy condition/expression. For example: `resource.instanceName.matches("[
-        # production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true`
-        # The max length of the condition is 1000 characters.
+        # A Common Expression Language (CEL) condition which is used in the evaluation
+        # of the constraint. For example: `resource.instanceName.matches("[production|
+        # test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max
+        # length of the condition is 1000 characters.
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
@@ -104,7 +105,7 @@ module Google
       
         # Output only. The last time this custom constraint was updated. This represents
         # the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint`
-        # RPC was called
+        # methods were called.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -132,7 +133,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Similar to PolicySpec but with an extra 'launch' field for launch reference.
-        # The PolicySpec here is specific for dry-run/darklaunch.
+        # The PolicySpec here is specific for dry-run.
         # Corresponds to the JSON property `alternate`
         # @return [Google::Apis::PolicysimulatorV1::GoogleCloudOrgpolicyV2AlternatePolicySpec]
         attr_accessor :alternate
@@ -290,7 +291,7 @@ module Google
         attr_accessor :enforce
         alias_method :enforce?, :enforce
       
-        # Optional. Required for GMCs if parameters defined in constraints. Pass
+        # Optional. Required for managed constraints if parameters are defined. Passes
         # parameter values when policy enforcement is enabled. Ensure that parameter
         # value types match those defined in the constraint definition. For example: ` "
         # allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true `
