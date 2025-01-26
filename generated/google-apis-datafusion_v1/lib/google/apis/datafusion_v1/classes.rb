@@ -519,8 +519,8 @@ module Google
         # @return [Google::Apis::DatafusionV1::NetworkConfig]
         attr_accessor :network_config
       
-        # Map of additional options used to configure the behavior of Data Fusion
-        # instance.
+        # Optional. Map of additional options used to configure the behavior of Data
+        # Fusion instance.
         # Corresponds to the JSON property `options`
         # @return [Hash<String,String>]
         attr_accessor :options
@@ -1021,8 +1021,9 @@ module Google
         attr_accessor :end_time
       
         # Identifies whether the user has requested cancellation of the operation.
-        # Operations that have successfully been cancelled have Operation.error value
-        # with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Operations that have successfully been cancelled have google.longrunning.
+        # Operation.error value with a google.rpc.Status.code of 1, corresponding to `
+        # Code.CANCELLED`.
         # Corresponds to the JSON property `requestedCancellation`
         # @return [Boolean]
         attr_accessor :requested_cancellation
