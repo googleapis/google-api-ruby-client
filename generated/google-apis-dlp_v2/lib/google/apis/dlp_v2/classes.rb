@@ -5652,7 +5652,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A sample true positive for this infoType.
+        # A sample that is a true positive for this infoType.
         # Corresponds to the JSON property `example`
         # @return [String]
         attr_accessor :example
