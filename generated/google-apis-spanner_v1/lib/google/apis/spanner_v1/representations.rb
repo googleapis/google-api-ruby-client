@@ -22,6 +22,18 @@ module Google
   module Apis
     module SpannerV1
       
+      class AddSplitPointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddSplitPointsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AsymmetricAutoscalingOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -436,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Key
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KeyRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -826,6 +844,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SplitPoints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Statement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -950,6 +974,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddSplitPointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :initiator, as: 'initiator'
+          collection :split_points, as: 'splitPoints', class: Google::Apis::SpannerV1::SplitPoints, decorator: Google::Apis::SpannerV1::SplitPoints::Representation
+      
+        end
+      end
+      
+      class AddSplitPointsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class AsymmetricAutoscalingOption
@@ -1691,6 +1730,13 @@ module Google
         end
       end
       
+      class Key
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :key_parts, as: 'keyParts'
+        end
+      end
+      
       class KeyRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2371,6 +2417,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :serving_location, as: 'servingLocation'
+        end
+      end
+      
+      class SplitPoints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :index, as: 'index'
+          collection :keys, as: 'keys', class: Google::Apis::SpannerV1::Key, decorator: Google::Apis::SpannerV1::Key::Representation
+      
+          property :table, as: 'table'
         end
       end
       
