@@ -3540,6 +3540,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
           property :data_store_type, as: 'dataStoreType'
+          property :document_processing_mode, as: 'documentProcessingMode'
         end
       end
       
@@ -4541,6 +4542,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
           property :data_store_type, as: 'dataStoreType'
+          property :document_processing_mode, as: 'documentProcessingMode'
         end
       end
       
