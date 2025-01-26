@@ -3067,6 +3067,12 @@ module Google
       class MirroringEndpointGroup
         include Google::Apis::Core::Hashable
       
+        # Output only. List of Mirroring Endpoint Group Associations that are associated
+        # to this endpoint group.
+        # Corresponds to the JSON property `associations`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationDetails>]
+        attr_accessor :associations
+      
         # Output only. [Output only] Create time stamp
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -3112,6 +3118,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @associations = args[:associations] if args.key?(:associations)
           @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
           @mirroring_deployment_group = args[:mirroring_deployment_group] if args.key?(:mirroring_deployment_group)
@@ -3191,6 +3198,41 @@ module Google
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # This is a subset of the MirroringEndpointGroupAssociation message, containing
+      # fields to be used by the consumer.
+      class MirroringEndpointGroupAssociationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the MirroringEndpointGroupAssociation.
+        # Format: projects/`project`/locations/`location`/
+        # mirroringEndpointGroupAssociations/`mirroringEndpointGroupAssociation`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The VPC network associated. Format: projects/`project`/global/
+        # networks/`name`.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. Current state of the association.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
