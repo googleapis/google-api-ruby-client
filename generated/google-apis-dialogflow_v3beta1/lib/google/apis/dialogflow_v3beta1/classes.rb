@@ -547,6 +547,13 @@ module Google
         # @return [String]
         attr_accessor :data_store_type
       
+        # The document processing mode for the data store connection. Should only be set
+        # for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as
+        # DOCUMENTS, as this is the legacy mode.
+        # Corresponds to the JSON property `documentProcessingMode`
+        # @return [String]
+        attr_accessor :document_processing_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -555,6 +562,7 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
+          @document_processing_mode = args[:document_processing_mode] if args.key?(:document_processing_mode)
         end
       end
       
@@ -5604,6 +5612,13 @@ module Google
         # @return [String]
         attr_accessor :data_store_type
       
+        # The document processing mode for the data store connection. Should only be set
+        # for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as
+        # DOCUMENTS, as this is the legacy mode.
+        # Corresponds to the JSON property `documentProcessingMode`
+        # @return [String]
+        attr_accessor :document_processing_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5612,6 +5627,7 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
+          @document_processing_mode = args[:document_processing_mode] if args.key?(:document_processing_mode)
         end
       end
       
@@ -7264,38 +7280,6 @@ module Google
         end
       end
       
-      # The request message for Playbooks.ExportPlaybook.
-      class GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The data format of the exported agent. If not specified, `BLOB` is
-        # assumed.
-        # Corresponds to the JSON property `dataFormat`
-        # @return [String]
-        attr_accessor :data_format
-      
-        # Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)
-        # URI to export the playbook to. The format of this URI must be `gs:///`. If
-        # left unspecified, the serialized playbook is returned inline. Dialogflow
-        # performs a write operation for the Cloud Storage object on the caller's behalf,
-        # so your request authentication must have write permissions for the object.
-        # For more information, see [Dialogflow access control](https://cloud.google.com/
-        # dialogflow/cx/docs/concept/access-control#storage).
-        # Corresponds to the JSON property `playbookUri`
-        # @return [String]
-        attr_accessor :playbook_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_format = args[:data_format] if args.key?(:data_format)
-          @playbook_uri = args[:playbook_uri] if args.key?(:playbook_uri)
-        end
-      end
-      
       # Metadata returned for the TestCases.ExportTestCases long running operation.
       # This message currently has no fields.
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
@@ -8758,40 +8742,6 @@ module Google
         def update!(**args)
           @entity_display_names = args[:entity_display_names] if args.key?(:entity_display_names)
           @intent_display_names = args[:intent_display_names] if args.key?(:intent_display_names)
-        end
-      end
-      
-      # The request message for Playbooks.ImportPlaybook.
-      class GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest
-        include Google::Apis::Core::Hashable
-      
-        # The playbook import strategy used for resource conflict resolution associated
-        # with an ImportPlaybookRequest.
-        # Corresponds to the JSON property `importStrategy`
-        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy]
-        attr_accessor :import_strategy
-      
-        # Uncompressed raw byte content for playbook.
-        # Corresponds to the JSON property `playbookContent`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :playbook_content
-      
-        # [Dialogflow access control] (https://cloud.google.com/dialogflow/cx/docs/
-        # concept/access-control#storage).
-        # Corresponds to the JSON property `playbookUri`
-        # @return [String]
-        attr_accessor :playbook_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @import_strategy = args[:import_strategy] if args.key?(:import_strategy)
-          @playbook_content = args[:playbook_content] if args.key?(:playbook_content)
-          @playbook_uri = args[:playbook_uri] if args.key?(:playbook_uri)
         end
       end
       
@@ -10733,43 +10683,6 @@ module Google
         end
       end
       
-      # The playbook import strategy used for resource conflict resolution associated
-      # with an ImportPlaybookRequest.
-      class GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Specifies the import strategy used when resolving conflicts with the
-        # main playbook. If not specified, 'CREATE_NEW' is assumed.
-        # Corresponds to the JSON property `mainPlaybookImportStrategy`
-        # @return [String]
-        attr_accessor :main_playbook_import_strategy
-      
-        # Optional. Specifies the import strategy used when resolving referenced
-        # playbook/flow conflicts. If not specified, 'CREATE_NEW' is assumed.
-        # Corresponds to the JSON property `nestedResourceImportStrategy`
-        # @return [String]
-        attr_accessor :nested_resource_import_strategy
-      
-        # Optional. Specifies the import strategy used when resolving tool conflicts. If
-        # not specified, 'CREATE_NEW' is assumed. This will be applied after the main
-        # playbook and nested resource import strategies, meaning if the playbook that
-        # references the tool is skipped, the tool will also be skipped.
-        # Corresponds to the JSON property `toolImportStrategy`
-        # @return [String]
-        attr_accessor :tool_import_strategy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @main_playbook_import_strategy = args[:main_playbook_import_strategy] if args.key?(:main_playbook_import_strategy)
-          @nested_resource_import_strategy = args[:nested_resource_import_strategy] if args.key?(:nested_resource_import_strategy)
-          @tool_import_strategy = args[:tool_import_strategy] if args.key?(:tool_import_strategy)
-        end
-      end
-      
       # Input of the playbook.
       class GoogleCloudDialogflowCxV3beta1PlaybookInput
         include Google::Apis::Core::Hashable
@@ -11898,43 +11811,6 @@ module Google
         end
       end
       
-      # The request message for Playbooks.RestorePlaybookVersion.
-      class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # The response message for Playbooks.RestorePlaybookVersion.
-      class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse
-        include Google::Apis::Core::Hashable
-      
-        # Playbook is the basic building block to instruct the LLM how to execute a
-        # certain task. A playbook consists of a goal to accomplish, an optional list of
-        # step by step instructions (the step instruction may refers to name of the
-        # custom or default plugin tools to use) to perform the task, a list of
-        # contextual input data to be passed in at the beginning of the invoked, and a
-        # list of output parameters to store the playbook result.
-        # Corresponds to the JSON property `playbook`
-        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Playbook]
-        attr_accessor :playbook
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @playbook = args[:playbook] if args.key?(:playbook)
-        end
-      end
-      
       # The configuration for auto rollout.
       class GoogleCloudDialogflowCxV3beta1RolloutConfig
         include Google::Apis::Core::Hashable
@@ -13035,7 +12911,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ToolAuthenticationApiKeyConfig
         include Google::Apis::Core::Hashable
       
-        # Required. The API key.
+        # Optional. The API key. If the `secret_version_for_api_key` field is set, this
+        # field will be ignored.
         # Corresponds to the JSON property `apiKey`
         # @return [String]
         attr_accessor :api_key
@@ -13068,7 +12945,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ToolAuthenticationBearerTokenConfig
         include Google::Apis::Core::Hashable
       
-        # Required. The text token appended to the text `Bearer` to the request
+        # Optional. The text token appended to the text `Bearer` to the request
         # Authorization header. [Session parameters reference](https://cloud.google.com/
         # dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the
         # token dynamically, e.g. `$session.params.parameter-id`.
@@ -13095,7 +12972,8 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # Required. The client secret from the OAuth provider.
+        # Optional. The client secret from the OAuth provider. If the `
+        # secret_version_for_client_secret` field is set, this field will be ignored.
         # Corresponds to the JSON property `clientSecret`
         # @return [String]
         attr_accessor :client_secret
