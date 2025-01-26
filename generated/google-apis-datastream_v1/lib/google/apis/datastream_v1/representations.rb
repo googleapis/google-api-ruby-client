@@ -760,6 +760,8 @@ module Google
       
           property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatastreamV1::PrivateConnectivity, decorator: Google::Apis::DatastreamV1::PrivateConnectivity::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :sql_server_profile, as: 'sqlServerProfile', class: Google::Apis::DatastreamV1::SqlServerProfile, decorator: Google::Apis::DatastreamV1::SqlServerProfile::Representation
       
           property :static_service_ip_connectivity, as: 'staticServiceIpConnectivity', class: Google::Apis::DatastreamV1::StaticServiceIpConnectivity, decorator: Google::Apis::DatastreamV1::StaticServiceIpConnectivity::Representation
@@ -1354,6 +1356,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
           property :vpc_peering_config, as: 'vpcPeeringConfig', class: Google::Apis::DatastreamV1::VpcPeeringConfig, decorator: Google::Apis::DatastreamV1::VpcPeeringConfig::Representation
@@ -1616,6 +1620,8 @@ module Google
           hash :labels, as: 'labels'
           property :last_recovery_time, as: 'lastRecoveryTime'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :source_config, as: 'sourceConfig', class: Google::Apis::DatastreamV1::SourceConfig, decorator: Google::Apis::DatastreamV1::SourceConfig::Representation
       
           property :state, as: 'state'
