@@ -73,7 +73,7 @@ module Google
       
         # A list of buttons layed out horizontally. For an example in Google Chat apps,
         # see [Add a button](https://developers.google.com/workspace/chat/design-
-        # interactive-card-dialog#add_a_button). [Google Workspace Add-ons and Chat apps]
+        # interactive-card-dialog#add_a_button). [Google Workspace add-ons and Chat apps]
         # (https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `buttonList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
@@ -491,18 +491,18 @@ module Google
       class CardWithId
         include Google::Apis::Core::Hashable
       
-        # A card interface displayed in a Google Chat message or Google Workspace Add-on.
+        # A card interface displayed in a Google Chat message or Google Workspace add-on.
         # Cards support a defined layout, interactive UI elements like buttons, and
         # rich media like images. Use cards to present detailed information, gather
         # information from users, and guide users to take a next step. [Card builder](
         # https://addons.gsuite.google.com/uikit/builder) To learn how to build cards,
         # see the following documentation: * For Google Chat apps, see [Design the
         # components of a card or dialog](https://developers.google.com/workspace/chat/
-        # design-components-card-dialog). * For Google Workspace Add-ons, see [Card-
+        # design-components-card-dialog). * For Google Workspace add-ons, see [Card-
         # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
         # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
         # limit are ignored. This limit applies to both card messages and dialogs in
-        # Google Chat apps, and to cards in Google Workspace Add-ons. **Example: Card
+        # Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card
         # message for a Google Chat app** ![Example contact card](https://developers.
         # google.com/workspace/chat/images/card_api_reference.png) To create the sample
         # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
@@ -1039,18 +1039,18 @@ module Google
       class Dialog
         include Google::Apis::Core::Hashable
       
-        # A card interface displayed in a Google Chat message or Google Workspace Add-on.
+        # A card interface displayed in a Google Chat message or Google Workspace add-on.
         # Cards support a defined layout, interactive UI elements like buttons, and
         # rich media like images. Use cards to present detailed information, gather
         # information from users, and guide users to take a next step. [Card builder](
         # https://addons.gsuite.google.com/uikit/builder) To learn how to build cards,
         # see the following documentation: * For Google Chat apps, see [Design the
         # components of a card or dialog](https://developers.google.com/workspace/chat/
-        # design-components-card-dialog). * For Google Workspace Add-ons, see [Card-
+        # design-components-card-dialog). * For Google Workspace add-ons, see [Card-
         # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
         # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
         # limit are ignored. This limit applies to both card messages and dialogs in
-        # Google Chat apps, and to cards in Google Workspace Add-ons. **Example: Card
+        # Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card
         # message for a Google Chat app** ![Example contact card](https://developers.
         # google.com/workspace/chat/images/card_api_reference.png) To create the sample
         # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
@@ -1248,13 +1248,13 @@ module Google
       
       # An action that describes the behavior when the form is submitted. For example,
       # you can invoke an Apps Script script to handle the form. If the action is
-      # triggered, the form values are sent to the server. [Google Workspace Add-ons
+      # triggered, the form values are sent to the server. [Google Workspace add-ons
       # and Chat apps](https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1Action
         include Google::Apis::Core::Hashable
       
         # Optional. If this is true, then all widgets are considered required by this
-        # action. [Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # action. [Google Workspace add-ons and Chat apps](https://developers.google.com/
         # workspace/extend):
         # Corresponds to the JSON property `allWidgetsAreRequired`
         # @return [Boolean]
@@ -1315,7 +1315,7 @@ module Google
       
         # Optional. Fill this list with the names of widgets that this Action needs for
         # a valid submission. If the widgets listed here don't have a value when this
-        # Action is invoked, the form submission is aborted. [Google Workspace Add-ons
+        # Action is invoked, the form submission is aborted. [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `requiredWidgets`
         # @return [Array<String>]
@@ -1342,7 +1342,7 @@ module Google
       # next week. You might use `action method = snooze()`, passing the snooze type
       # and snooze time in the list of string parameters. To learn more, see [`
       # CommonEventObject`](https://developers.google.com/workspace/chat/api/reference/
-      # rest/v1/Event#commoneventobject). [Google Workspace Add-ons and Chat apps](
+      # rest/v1/Event#commoneventobject). [Google Workspace add-ons and Chat apps](
       # https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1ActionParameter
         include Google::Apis::Core::Hashable
@@ -1369,7 +1369,7 @@ module Google
       end
       
       # The style options for the border of a card or widget, including the border
-      # type and color. [Google Workspace Add-ons and Chat apps](https://developers.
+      # type and color. [Google Workspace add-ons and Chat apps](https://developers.
       # google.com/workspace/extend):
       class GoogleAppsCardV1BorderStyle
         include Google::Apis::Core::Hashable
@@ -1449,7 +1449,7 @@ module Google
       # Google Chat apps, see [Add a button](https://developers.google.com/workspace/
       # chat/design-interactive-card-dialog#add_a_button). To make an image a
       # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
-      # onClick` action. [Google Workspace Add-ons and Chat apps](https://developers.
+      # onClick` action. [Google Workspace add-ons and Chat apps](https://developers.
       # google.com/workspace/extend):
       class GoogleAppsCardV1Button
         include Google::Apis::Core::Hashable
@@ -1524,14 +1524,14 @@ module Google
         # card-dialog#add_an_icon). Supports [built-in](https://developers.google.com/
         # workspace/chat/format-messages#builtinicons) and [custom](https://developers.
         # google.com/workspace/chat/format-messages#customicons) icons. [Google
-        # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
+        # Workspace add-ons and Chat apps](https://developers.google.com/workspace/
         # extend):
         # Corresponds to the JSON property `icon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :icon
       
         # Represents how to respond when users click an interactive element on a card,
-        # such as a button. [Google Workspace Add-ons and Chat apps](https://developers.
+        # such as a button. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
@@ -1567,7 +1567,7 @@ module Google
       
       # A list of buttons layed out horizontally. For an example in Google Chat apps,
       # see [Add a button](https://developers.google.com/workspace/chat/design-
-      # interactive-card-dialog#add_a_button). [Google Workspace Add-ons and Chat apps]
+      # interactive-card-dialog#add_a_button). [Google Workspace add-ons and Chat apps]
       # (https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1ButtonList
         include Google::Apis::Core::Hashable
@@ -1587,18 +1587,18 @@ module Google
         end
       end
       
-      # A card interface displayed in a Google Chat message or Google Workspace Add-on.
+      # A card interface displayed in a Google Chat message or Google Workspace add-on.
       # Cards support a defined layout, interactive UI elements like buttons, and
       # rich media like images. Use cards to present detailed information, gather
       # information from users, and guide users to take a next step. [Card builder](
       # https://addons.gsuite.google.com/uikit/builder) To learn how to build cards,
       # see the following documentation: * For Google Chat apps, see [Design the
       # components of a card or dialog](https://developers.google.com/workspace/chat/
-      # design-components-card-dialog). * For Google Workspace Add-ons, see [Card-
+      # design-components-card-dialog). * For Google Workspace add-ons, see [Card-
       # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
       # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
       # limit are ignored. This limit applies to both card messages and dialogs in
-      # Google Chat apps, and to cards in Google Workspace Add-ons. **Example: Card
+      # Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card
       # message for a Google Chat app** ![Example contact card](https://developers.
       # google.com/workspace/chat/images/card_api_reference.png) To create the sample
       # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
@@ -1618,7 +1618,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The card's actions. Actions are added to the card's toolbar menu. [Google
-        # Workspace Add-ons](https://developers.google.com/workspace/add-ons): For
+        # Workspace add-ons](https://developers.google.com/workspace/add-ons): For
         # example, the following JSON constructs a card action menu with `Settings` and `
         # Send Feedback` options: ``` "card_actions": [ ` "actionLabel": "Settings", "
         # onClick": ` "action": ` "functionName": "goToView", "parameters": [ ` "key": "
@@ -1629,8 +1629,8 @@ module Google
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1CardAction>]
         attr_accessor :card_actions
       
-        # In Google Workspace Add-ons, sets the display properties of the `
-        # peekCardHeader`. [Google Workspace Add-ons](https://developers.google.com/
+        # In Google Workspace add-ons, sets the display properties of the `
+        # peekCardHeader`. [Google Workspace add-ons](https://developers.google.com/
         # workspace/add-ons):
         # Corresponds to the JSON property `displayStyle`
         # @return [String]
@@ -1643,7 +1643,7 @@ module Google
         # messages](https://developers.google.com/workspace/chat/create-messages#create).
         # For an example in Google Chat apps, see [Add a persistent footer](https://
         # developers.google.com/workspace/chat/design-components-card-dialog#
-        # add_a_persistent_footer). [Google Workspace Add-ons and Chat apps](https://
+        # add_a_persistent_footer). [Google Workspace add-ons and Chat apps](https://
         # developers.google.com/workspace/extend):
         # Corresponds to the JSON property `fixedFooter`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardFixedFooter]
@@ -1651,21 +1651,21 @@ module Google
       
         # Represents a card header. For an example in Google Chat apps, see [Add a
         # header](https://developers.google.com/workspace/chat/design-components-card-
-        # dialog#add_a_header). [Google Workspace Add-ons and Chat apps](https://
+        # dialog#add_a_header). [Google Workspace add-ons and Chat apps](https://
         # developers.google.com/workspace/extend):
         # Corresponds to the JSON property `header`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardHeader]
         attr_accessor :header
       
         # Name of the card. Used as a card identifier in card navigation. [Google
-        # Workspace Add-ons](https://developers.google.com/workspace/add-ons):
+        # Workspace add-ons](https://developers.google.com/workspace/add-ons):
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Represents a card header. For an example in Google Chat apps, see [Add a
         # header](https://developers.google.com/workspace/chat/design-components-card-
-        # dialog#add_a_header). [Google Workspace Add-ons and Chat apps](https://
+        # dialog#add_a_header). [Google Workspace add-ons and Chat apps](https://
         # developers.google.com/workspace/extend):
         # Corresponds to the JSON property `peekCardHeader`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardHeader]
@@ -1703,7 +1703,7 @@ module Google
       
       # A card action is the action associated with the card. For example, an invoice
       # card might include actions such as delete invoice, email invoice, or open the
-      # invoice in a browser. [Google Workspace Add-ons](https://developers.google.com/
+      # invoice in a browser. [Google Workspace add-ons](https://developers.google.com/
       # workspace/add-ons):
       class GoogleAppsCardV1CardAction
         include Google::Apis::Core::Hashable
@@ -1714,7 +1714,7 @@ module Google
         attr_accessor :action_label
       
         # Represents how to respond when users click an interactive element on a card,
-        # such as a button. [Google Workspace Add-ons and Chat apps](https://developers.
+        # such as a button. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
@@ -1738,7 +1738,7 @@ module Google
       # messages](https://developers.google.com/workspace/chat/create-messages#create).
       # For an example in Google Chat apps, see [Add a persistent footer](https://
       # developers.google.com/workspace/chat/design-components-card-dialog#
-      # add_a_persistent_footer). [Google Workspace Add-ons and Chat apps](https://
+      # add_a_persistent_footer). [Google Workspace add-ons and Chat apps](https://
       # developers.google.com/workspace/extend):
       class GoogleAppsCardV1CardFixedFooter
         include Google::Apis::Core::Hashable
@@ -1747,7 +1747,7 @@ module Google
         # Google Chat apps, see [Add a button](https://developers.google.com/workspace/
         # chat/design-interactive-card-dialog#add_a_button). To make an image a
         # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
-        # onClick` action. [Google Workspace Add-ons and Chat apps](https://developers.
+        # onClick` action. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `primaryButton`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
@@ -1757,7 +1757,7 @@ module Google
         # Google Chat apps, see [Add a button](https://developers.google.com/workspace/
         # chat/design-interactive-card-dialog#add_a_button). To make an image a
         # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
-        # onClick` action. [Google Workspace Add-ons and Chat apps](https://developers.
+        # onClick` action. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `secondaryButton`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
@@ -1776,7 +1776,7 @@ module Google
       
       # Represents a card header. For an example in Google Chat apps, see [Add a
       # header](https://developers.google.com/workspace/chat/design-components-card-
-      # dialog#add_a_header). [Google Workspace Add-ons and Chat apps](https://
+      # dialog#add_a_header). [Google Workspace add-ons and Chat apps](https://
       # developers.google.com/workspace/extend):
       class GoogleAppsCardV1CardHeader
         include Google::Apis::Core::Hashable
@@ -1786,7 +1786,7 @@ module Google
         # @return [String]
         attr_accessor :image_alt_text
       
-        # The shape used to crop the image. [Google Workspace Add-ons and Chat apps](
+        # The shape used to crop the image. [Google Workspace add-ons and Chat apps](
         # https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `imageType`
         # @return [String]
@@ -1881,7 +1881,7 @@ module Google
       end
       
       # A text, icon, or text and icon chip that users can click. [Google Workspace
-      # Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+      # add-ons and Chat apps](https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1Chip
         include Google::Apis::Core::Hashable
       
@@ -1912,7 +1912,7 @@ module Google
         # card-dialog#add_an_icon). Supports [built-in](https://developers.google.com/
         # workspace/chat/format-messages#builtinicons) and [custom](https://developers.
         # google.com/workspace/chat/format-messages#customicons) icons. [Google
-        # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
+        # Workspace add-ons and Chat apps](https://developers.google.com/workspace/
         # extend):
         # Corresponds to the JSON property `icon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
@@ -1924,7 +1924,7 @@ module Google
         attr_accessor :label
       
         # Represents how to respond when users click an interactive element on a card,
-        # such as a button. [Google Workspace Add-ons and Chat apps](https://developers.
+        # such as a button. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
@@ -1946,7 +1946,7 @@ module Google
       end
       
       # A list of chips layed out horizontally, which can either scroll horizontally
-      # or wrap to the next line. [Google Workspace Add-ons and Chat apps](https://
+      # or wrap to the next line. [Google Workspace add-ons and Chat apps](https://
       # developers.google.com/workspace/extend):
       class GoogleAppsCardV1ChipList
         include Google::Apis::Core::Hashable
@@ -1972,7 +1972,7 @@ module Google
         end
       end
       
-      # Represent an expand and collapse control. [Google Workspace Add-ons and Chat
+      # Represent an expand and collapse control. [Google Workspace add-ons and Chat
       # apps](https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1CollapseControl
         include Google::Apis::Core::Hashable
@@ -1981,7 +1981,7 @@ module Google
         # Google Chat apps, see [Add a button](https://developers.google.com/workspace/
         # chat/design-interactive-card-dialog#add_a_button). To make an image a
         # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
-        # onClick` action. [Google Workspace Add-ons and Chat apps](https://developers.
+        # onClick` action. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `collapseButton`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
@@ -1991,7 +1991,7 @@ module Google
         # Google Chat apps, see [Add a button](https://developers.google.com/workspace/
         # chat/design-interactive-card-dialog#add_a_button). To make an image a
         # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
-        # onClick` action. [Google Workspace Add-ons and Chat apps](https://developers.
+        # onClick` action. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `expandButton`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
@@ -2014,7 +2014,7 @@ module Google
         end
       end
       
-      # A column. [Google Workspace Add-ons and Chat apps](https://developers.google.
+      # A column. [Google Workspace add-ons and Chat apps](https://developers.google.
       # com/workspace/extend)
       class GoogleAppsCardV1Column
         include Google::Apis::Core::Hashable
@@ -2069,7 +2069,7 @@ module Google
       # column wraps if the screen width is less than or equal to 300 pt. * On Android
       # devices, the second column wraps if the screen width is less than or equal to
       # 320 dp. To include more than two columns, or to use rows, use the `Grid`
-      # widget. [Google Workspace Add-ons and Chat apps](https://developers.google.com/
+      # widget. [Google Workspace add-ons and Chat apps](https://developers.google.com/
       # workspace/extend): The add-on UIs that support columns include: * The dialog
       # displayed when users open the add-on from an email draft. * The dialog
       # displayed when users open the add-on from the **Add attachment** menu in a
@@ -2100,7 +2100,7 @@ module Google
       # workspace/chat/design-interactive-card-dialog#let_a_user_pick_a_date_and_time).
       # Users can input text or use the picker to select dates and times. If users
       # input an invalid date or time, the picker shows an error that prompts users to
-      # input the information correctly. [Google Workspace Add-ons and Chat apps](
+      # input the information correctly. [Google Workspace add-ons and Chat apps](
       # https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1DateTimePicker
         include Google::Apis::Core::Hashable
@@ -2121,7 +2121,7 @@ module Google
       
         # An action that describes the behavior when the form is submitted. For example,
         # you can invoke an Apps Script script to handle the form. If the action is
-        # triggered, the form values are sent to the server. [Google Workspace Add-ons
+        # triggered, the form values are sent to the server. [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `onChangeAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
@@ -2170,7 +2170,7 @@ module Google
       # below the text, an icon in front of the text, a selection widget, or a button
       # after the text. For an example in Google Chat apps, see [Display text with
       # decorative text](https://developers.google.com/workspace/chat/add-text-image-
-      # card-dialog#display_text_with_decorative_elements). [Google Workspace Add-ons
+      # card-dialog#display_text_with_decorative_elements). [Google Workspace add-ons
       # and Chat apps](https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1DecoratedText
         include Google::Apis::Core::Hashable
@@ -2184,7 +2184,7 @@ module Google
         # Google Chat apps, see [Add a button](https://developers.google.com/workspace/
         # chat/design-interactive-card-dialog#add_a_button). To make an image a
         # clickable button, specify an `Image` (not an `ImageComponent`) and set an `
-        # onClick` action. [Google Workspace Add-ons and Chat apps](https://developers.
+        # onClick` action. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `button`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
@@ -2195,7 +2195,7 @@ module Google
         # card-dialog#add_an_icon). Supports [built-in](https://developers.google.com/
         # workspace/chat/format-messages#builtinicons) and [custom](https://developers.
         # google.com/workspace/chat/format-messages#customicons) icons. [Google
-        # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
+        # Workspace add-ons and Chat apps](https://developers.google.com/workspace/
         # extend):
         # Corresponds to the JSON property `endIcon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
@@ -2206,14 +2206,14 @@ module Google
         # card-dialog#add_an_icon). Supports [built-in](https://developers.google.com/
         # workspace/chat/format-messages#builtinicons) and [custom](https://developers.
         # google.com/workspace/chat/format-messages#customicons) icons. [Google
-        # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
+        # Workspace add-ons and Chat apps](https://developers.google.com/workspace/
         # extend):
         # Corresponds to the JSON property `icon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :icon
       
         # Represents how to respond when users click an interactive element on a card,
-        # such as a button. [Google Workspace Add-ons and Chat apps](https://developers.
+        # such as a button. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
@@ -2224,14 +2224,14 @@ module Google
         # card-dialog#add_an_icon). Supports [built-in](https://developers.google.com/
         # workspace/chat/format-messages#builtinicons) and [custom](https://developers.
         # google.com/workspace/chat/format-messages#customicons) icons. [Google
-        # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
+        # Workspace add-ons and Chat apps](https://developers.google.com/workspace/
         # extend):
         # Corresponds to the JSON property `startIcon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :start_icon
       
         # Either a toggle-style switch or a checkbox inside a `decoratedText` widget. [
-        # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # Google Workspace add-ons and Chat apps](https://developers.google.com/
         # workspace/extend): Only supported in the `decoratedText` widget.
         # Corresponds to the JSON property `switchControl`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SwitchControl]
@@ -2240,7 +2240,7 @@ module Google
         # Required. The primary text. Supports simple formatting. For more information
         # about formatting text, see [Formatting text in Google Chat apps](https://
         # developers.google.com/workspace/chat/format-messages#card-formatting) and [
-        # Formatting text in Google Workspace Add-ons](https://developers.google.com/
+        # Formatting text in Google Workspace add-ons](https://developers.google.com/
         # apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -2281,7 +2281,7 @@ module Google
       # Displays a divider between widgets as a horizontal line. For an example in
       # Google Chat apps, see [Add a horizontal divider between widgets](https://
       # developers.google.com/workspace/chat/format-structure-card-dialog#
-      # add_a_horizontal_divider_between_widgets). [Google Workspace Add-ons and Chat
+      # add_a_horizontal_divider_between_widgets). [Google Workspace add-ons and Chat
       # apps](https://developers.google.com/workspace/extend): For example, the
       # following JSON creates a divider: ``` "divider": `` ```
       class GoogleAppsCardV1Divider
@@ -2303,7 +2303,7 @@ module Google
       # structure-card-dialog#display_a_grid_with_a_collection_of_items). A grid
       # supports any number of columns and items. The number of rows is determined by
       # items divided by columns. A grid with 10 items and 2 columns has 5 rows. A
-      # grid with 11 items and 2 columns has 6 rows. [Google Workspace Add-ons and
+      # grid with 11 items and 2 columns has 6 rows. [Google Workspace add-ons and
       # Chat apps](https://developers.google.com/workspace/extend): For example, the
       # following JSON creates a 2 column grid with a single item: ``` "grid": ` "
       # title": "A fine collection of items", "columnCount": 2, "borderStyle": ` "type"
@@ -2315,7 +2315,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The style options for the border of a card or widget, including the border
-        # type and color. [Google Workspace Add-ons and Chat apps](https://developers.
+        # type and color. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `borderStyle`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1BorderStyle]
@@ -2334,7 +2334,7 @@ module Google
         attr_accessor :items
       
         # Represents how to respond when users click an interactive element on a card,
-        # such as a button. [Google Workspace Add-ons and Chat apps](https://developers.
+        # such as a button. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
@@ -2360,7 +2360,7 @@ module Google
       end
       
       # Represents an item in a grid layout. Items can contain text, an image, or both
-      # text and an image. [Google Workspace Add-ons and Chat apps](https://developers.
+      # text and an image. [Google Workspace add-ons and Chat apps](https://developers.
       # google.com/workspace/extend):
       class GoogleAppsCardV1GridItem
         include Google::Apis::Core::Hashable
@@ -2371,7 +2371,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Represents an image. [Google Workspace Add-ons and Chat apps](https://
+        # Represents an image. [Google Workspace add-ons and Chat apps](https://
         # developers.google.com/workspace/extend):
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ImageComponent]
@@ -2411,7 +2411,7 @@ module Google
       # card-dialog#add_an_icon). Supports [built-in](https://developers.google.com/
       # workspace/chat/format-messages#builtinicons) and [custom](https://developers.
       # google.com/workspace/chat/format-messages#customicons) icons. [Google
-      # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
+      # Workspace add-ons and Chat apps](https://developers.google.com/workspace/
       # extend):
       class GoogleAppsCardV1Icon
         include Google::Apis::Core::Hashable
@@ -2475,7 +2475,7 @@ module Google
       
       # An image that is specified by a URL and can have an `onClick` action. For an
       # example, see [Add an image](https://developers.google.com/workspace/chat/add-
-      # text-image-card-dialog#add_an_image). [Google Workspace Add-ons and Chat apps](
+      # text-image-card-dialog#add_an_image). [Google Workspace add-ons and Chat apps](
       # https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1Image
         include Google::Apis::Core::Hashable
@@ -2492,7 +2492,7 @@ module Google
         attr_accessor :image_url
       
         # Represents how to respond when users click an interactive element on a card,
-        # such as a button. [Google Workspace Add-ons and Chat apps](https://developers.
+        # such as a button. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
@@ -2510,7 +2510,7 @@ module Google
         end
       end
       
-      # Represents an image. [Google Workspace Add-ons and Chat apps](https://
+      # Represents an image. [Google Workspace add-ons and Chat apps](https://
       # developers.google.com/workspace/extend):
       class GoogleAppsCardV1ImageComponent
         include Google::Apis::Core::Hashable
@@ -2521,13 +2521,13 @@ module Google
         attr_accessor :alt_text
       
         # The style options for the border of a card or widget, including the border
-        # type and color. [Google Workspace Add-ons and Chat apps](https://developers.
+        # type and color. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `borderStyle`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1BorderStyle]
         attr_accessor :border_style
       
-        # Represents the crop style applied to an image. [Google Workspace Add-ons and
+        # Represents the crop style applied to an image. [Google Workspace add-ons and
         # Chat apps](https://developers.google.com/workspace/extend): For example, here'
         # s how to apply a 16:9 aspect ratio: ``` cropStyle ` "type": "RECTANGLE_CUSTOM",
         # "aspectRatio": 16/9 ` ```
@@ -2553,7 +2553,7 @@ module Google
         end
       end
       
-      # Represents the crop style applied to an image. [Google Workspace Add-ons and
+      # Represents the crop style applied to an image. [Google Workspace add-ons and
       # Chat apps](https://developers.google.com/workspace/extend): For example, here'
       # s how to apply a 16:9 aspect ratio: ``` cropStyle ` "type": "RECTANGLE_CUSTOM",
       # "aspectRatio": 16/9 ` ```
@@ -2647,7 +2647,7 @@ module Google
       
         # A list of buttons layed out horizontally. For an example in Google Chat apps,
         # see [Add a button](https://developers.google.com/workspace/chat/design-
-        # interactive-card-dialog#add_a_button). [Google Workspace Add-ons and Chat apps]
+        # interactive-card-dialog#add_a_button). [Google Workspace add-ons and Chat apps]
         # (https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `buttonList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
@@ -2655,7 +2655,7 @@ module Google
       
         # An image that is specified by a URL and can have an `onClick` action. For an
         # example, see [Add an image](https://developers.google.com/workspace/chat/add-
-        # text-image-card-dialog#add_an_image). [Google Workspace Add-ons and Chat apps](
+        # text-image-card-dialog#add_an_image). [Google Workspace add-ons and Chat apps](
         # https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Image]
@@ -2666,9 +2666,9 @@ module Google
         # workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
         # For more information about formatting text, see [Formatting text in Google
         # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
-        # formatting) and [Formatting text in Google Workspace Add-ons](https://
+        # formatting) and [Formatting text in Google Workspace add-ons](https://
         # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [
-        # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # Google Workspace add-ons and Chat apps](https://developers.google.com/
         # workspace/extend):
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
@@ -2687,31 +2687,31 @@ module Google
       end
       
       # Represents how to respond when users click an interactive element on a card,
-      # such as a button. [Google Workspace Add-ons and Chat apps](https://developers.
+      # such as a button. [Google Workspace add-ons and Chat apps](https://developers.
       # google.com/workspace/extend):
       class GoogleAppsCardV1OnClick
         include Google::Apis::Core::Hashable
       
         # An action that describes the behavior when the form is submitted. For example,
         # you can invoke an Apps Script script to handle the form. If the action is
-        # triggered, the form values are sent to the server. [Google Workspace Add-ons
+        # triggered, the form values are sent to the server. [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `action`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :action
       
-        # A card interface displayed in a Google Chat message or Google Workspace Add-on.
+        # A card interface displayed in a Google Chat message or Google Workspace add-on.
         # Cards support a defined layout, interactive UI elements like buttons, and
         # rich media like images. Use cards to present detailed information, gather
         # information from users, and guide users to take a next step. [Card builder](
         # https://addons.gsuite.google.com/uikit/builder) To learn how to build cards,
         # see the following documentation: * For Google Chat apps, see [Design the
         # components of a card or dialog](https://developers.google.com/workspace/chat/
-        # design-components-card-dialog). * For Google Workspace Add-ons, see [Card-
+        # design-components-card-dialog). * For Google Workspace add-ons, see [Card-
         # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
         # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
         # limit are ignored. This limit applies to both card messages and dialogs in
-        # Google Chat apps, and to cards in Google Workspace Add-ons. **Example: Card
+        # Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card
         # message for a Google Chat app** ![Example contact card](https://developers.
         # google.com/workspace/chat/images/card_api_reference.png) To create the sample
         # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
@@ -2733,13 +2733,13 @@ module Google
       
         # An action that describes the behavior when the form is submitted. For example,
         # you can invoke an Apps Script script to handle the form. If the action is
-        # triggered, the form values are sent to the server. [Google Workspace Add-ons
+        # triggered, the form values are sent to the server. [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `openDynamicLinkAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :open_dynamic_link_action
       
-        # Represents an `onClick` event that opens a hyperlink. [Google Workspace Add-
+        # Represents an `onClick` event that opens a hyperlink. [Google Workspace add-
         # ons and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `openLink`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OpenLink]
@@ -2749,7 +2749,7 @@ module Google
         # invoke. For example, showing non-primary actions in a card. You can use this
         # widget when actions don't fit in the available space. To use, specify this
         # widget in the `OnClick` action of widgets that support it. For example, in a `
-        # Button`. [Google Workspace Add-ons and Chat apps](https://developers.google.
+        # Button`. [Google Workspace add-ons and Chat apps](https://developers.google.
         # com/workspace/extend):
         # Corresponds to the JSON property `overflowMenu`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OverflowMenu]
@@ -2769,19 +2769,19 @@ module Google
         end
       end
       
-      # Represents an `onClick` event that opens a hyperlink. [Google Workspace Add-
+      # Represents an `onClick` event that opens a hyperlink. [Google Workspace add-
       # ons and Chat apps](https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1OpenLink
         include Google::Apis::Core::Hashable
       
         # Whether the client forgets about a link after opening it, or observes it until
-        # the window closes. [Google Workspace Add-ons](https://developers.google.com/
+        # the window closes. [Google Workspace add-ons](https://developers.google.com/
         # workspace/add-ons):
         # Corresponds to the JSON property `onClose`
         # @return [String]
         attr_accessor :on_close
       
-        # How to open a link. [Google Workspace Add-ons](https://developers.google.com/
+        # How to open a link. [Google Workspace add-ons](https://developers.google.com/
         # workspace/add-ons):
         # Corresponds to the JSON property `openAs`
         # @return [String]
@@ -2808,7 +2808,7 @@ module Google
       # invoke. For example, showing non-primary actions in a card. You can use this
       # widget when actions don't fit in the available space. To use, specify this
       # widget in the `OnClick` action of widgets that support it. For example, in a `
-      # Button`. [Google Workspace Add-ons and Chat apps](https://developers.google.
+      # Button`. [Google Workspace add-ons and Chat apps](https://developers.google.
       # com/workspace/extend):
       class GoogleAppsCardV1OverflowMenu
         include Google::Apis::Core::Hashable
@@ -2828,7 +2828,7 @@ module Google
         end
       end
       
-      # An option that users can invoke in an overflow menu. [Google Workspace Add-ons
+      # An option that users can invoke in an overflow menu. [Google Workspace add-ons
       # and Chat apps](https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1OverflowMenuItem
         include Google::Apis::Core::Hashable
@@ -2840,7 +2840,7 @@ module Google
         alias_method :disabled?, :disabled
       
         # Represents how to respond when users click an interactive element on a card,
-        # such as a button. [Google Workspace Add-ons and Chat apps](https://developers.
+        # such as a button. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
@@ -2851,7 +2851,7 @@ module Google
         # card-dialog#add_an_icon). Supports [built-in](https://developers.google.com/
         # workspace/chat/format-messages#builtinicons) and [custom](https://developers.
         # google.com/workspace/chat/format-messages#customicons) icons. [Google
-        # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
+        # Workspace add-ons and Chat apps](https://developers.google.com/workspace/
         # extend):
         # Corresponds to the JSON property `startIcon`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
@@ -2907,12 +2907,12 @@ module Google
       end
       
       # A section contains a collection of widgets that are rendered vertically in the
-      # order that they're specified. [Google Workspace Add-ons and Chat apps](https://
+      # order that they're specified. [Google Workspace add-ons and Chat apps](https://
       # developers.google.com/workspace/extend):
       class GoogleAppsCardV1Section
         include Google::Apis::Core::Hashable
       
-        # Represent an expand and collapse control. [Google Workspace Add-ons and Chat
+        # Represent an expand and collapse control. [Google Workspace add-ons and Chat
         # apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `collapseControl`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CollapseControl]
@@ -2931,7 +2931,7 @@ module Google
         # Text that appears at the top of a section. Supports simple HTML formatted text.
         # For more information about formatting text, see [Formatting text in Google
         # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
-        # formatting) and [Formatting text in Google Workspace Add-ons](https://
+        # formatting) and [Formatting text in Google Workspace add-ons](https://
         # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         # Corresponds to the JSON property `header`
         # @return [String]
@@ -2977,14 +2977,14 @@ module Google
       # value of items that users select or input. For details about working with form
       # inputs, see [Receive form data](https://developers.google.com/workspace/chat/
       # read-form-data). To collect undefined or abstract data from users, use the
-      # TextInput widget. [Google Workspace Add-ons and Chat apps](https://developers.
+      # TextInput widget. [Google Workspace add-ons and Chat apps](https://developers.
       # google.com/workspace/extend):
       class GoogleAppsCardV1SelectionInput
         include Google::Apis::Core::Hashable
       
         # An action that describes the behavior when the form is submitted. For example,
         # you can invoke an Apps Script script to handle the form. If the action is
-        # triggered, the form values are sent to the server. [Google Workspace Add-ons
+        # triggered, the form values are sent to the server. [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `externalDataSource`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
@@ -3030,7 +3030,7 @@ module Google
       
         # An action that describes the behavior when the form is submitted. For example,
         # you can invoke an Apps Script script to handle the form. If the action is
-        # triggered, the form values are sent to the server. [Google Workspace Add-ons
+        # triggered, the form values are sent to the server. [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `onChangeAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
@@ -3070,7 +3070,7 @@ module Google
       end
       
       # An item that users can select in a selection input, such as a checkbox or
-      # switch. Supports up to 100 items. [Google Workspace Add-ons and Chat apps](
+      # switch. Supports up to 100 items. [Google Workspace add-ons and Chat apps](
       # https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1SelectionItem
         include Google::Apis::Core::Hashable
@@ -3123,7 +3123,7 @@ module Google
       end
       
       # One suggested value that users can enter in a text input field. [Google
-      # Workspace Add-ons and Chat apps](https://developers.google.com/workspace/
+      # Workspace add-ons and Chat apps](https://developers.google.com/workspace/
       # extend):
       class GoogleAppsCardV1SuggestionItem
         include Google::Apis::Core::Hashable
@@ -3153,7 +3153,7 @@ module Google
       # can make sense of. When referring to JavaScript, some users might enter `
       # javascript` and others `java script`. Suggesting `JavaScript` can standardize
       # how users interact with your app. When specified, `TextInput.type` is always `
-      # SINGLE_LINE`, even if it's set to `MULTIPLE_LINE`. [Google Workspace Add-ons
+      # SINGLE_LINE`, even if it's set to `MULTIPLE_LINE`. [Google Workspace add-ons
       # and Chat apps](https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1Suggestions
         include Google::Apis::Core::Hashable
@@ -3175,12 +3175,12 @@ module Google
       end
       
       # Either a toggle-style switch or a checkbox inside a `decoratedText` widget. [
-      # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+      # Google Workspace add-ons and Chat apps](https://developers.google.com/
       # workspace/extend): Only supported in the `decoratedText` widget.
       class GoogleAppsCardV1SwitchControl
         include Google::Apis::Core::Hashable
       
-        # How the switch appears in the user interface. [Google Workspace Add-ons and
+        # How the switch appears in the user interface. [Google Workspace add-ons and
         # Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `controlType`
         # @return [String]
@@ -3195,7 +3195,7 @@ module Google
       
         # An action that describes the behavior when the form is submitted. For example,
         # you can invoke an Apps Script script to handle the form. If the action is
-        # triggered, the form values are sent to the server. [Google Workspace Add-ons
+        # triggered, the form values are sent to the server. [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `onChangeAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
@@ -3240,13 +3240,13 @@ module Google
       # developers.google.com/workspace/chat/read-form-data). When you need to collect
       # undefined or abstract data from users, use a text input. To collect defined or
       # enumerated data from users, use the SelectionInput widget. [Google Workspace
-      # Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+      # add-ons and Chat apps](https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1TextInput
         include Google::Apis::Core::Hashable
       
         # An action that describes the behavior when the form is submitted. For example,
         # you can invoke an Apps Script script to handle the form. If the action is
-        # triggered, the form values are sent to the server. [Google Workspace Add-ons
+        # triggered, the form values are sent to the server. [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `autoCompleteAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
@@ -3268,7 +3268,7 @@ module Google
         # can make sense of. When referring to JavaScript, some users might enter `
         # javascript` and others `java script`. Suggesting `JavaScript` can standardize
         # how users interact with your app. When specified, `TextInput.type` is always `
-        # SINGLE_LINE`, even if it's set to `MULTIPLE_LINE`. [Google Workspace Add-ons
+        # SINGLE_LINE`, even if it's set to `MULTIPLE_LINE`. [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `initialSuggestions`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Suggestions]
@@ -3292,7 +3292,7 @@ module Google
       
         # An action that describes the behavior when the form is submitted. For example,
         # you can invoke an Apps Script script to handle the form. If the action is
-        # triggered, the form values are sent to the server. [Google Workspace Add-ons
+        # triggered, the form values are sent to the server. [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `onChangeAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
@@ -3312,7 +3312,7 @@ module Google
         attr_accessor :type
       
         # Represents the necessary data for validating the widget it's attached to. [
-        # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # Google Workspace add-ons and Chat apps](https://developers.google.com/
         # workspace/extend):
         # Corresponds to the JSON property `validation`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Validation]
@@ -3349,9 +3349,9 @@ module Google
       # workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
       # For more information about formatting text, see [Formatting text in Google
       # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
-      # formatting) and [Formatting text in Google Workspace Add-ons](https://
+      # formatting) and [Formatting text in Google Workspace add-ons](https://
       # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [
-      # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+      # Google Workspace add-ons and Chat apps](https://developers.google.com/
       # workspace/extend):
       class GoogleAppsCardV1TextParagraph
         include Google::Apis::Core::Hashable
@@ -3383,19 +3383,19 @@ module Google
       end
       
       # Represents the necessary data for validating the widget it's attached to. [
-      # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+      # Google Workspace add-ons and Chat apps](https://developers.google.com/
       # workspace/extend):
       class GoogleAppsCardV1Validation
         include Google::Apis::Core::Hashable
       
         # Specify the character limit for text input widgets. Note that this is only
-        # used for text input and is ignored for other widgets. [Google Workspace Add-
+        # used for text input and is ignored for other widgets. [Google Workspace add-
         # ons and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `characterLimit`
         # @return [Fixnum]
         attr_accessor :character_limit
       
-        # Specify the type of the input widgets. [Google Workspace Add-ons and Chat apps]
+        # Specify the type of the input widgets. [Google Workspace add-ons and Chat apps]
         # (https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `inputType`
         # @return [String]
@@ -3419,7 +3419,7 @@ module Google
       
         # A list of buttons layed out horizontally. For an example in Google Chat apps,
         # see [Add a button](https://developers.google.com/workspace/chat/design-
-        # interactive-card-dialog#add_a_button). [Google Workspace Add-ons and Chat apps]
+        # interactive-card-dialog#add_a_button). [Google Workspace add-ons and Chat apps]
         # (https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `buttonList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
@@ -3439,7 +3439,7 @@ module Google
         attr_accessor :carousel
       
         # A list of chips layed out horizontally, which can either scroll horizontally
-        # or wrap to the next line. [Google Workspace Add-ons and Chat apps](https://
+        # or wrap to the next line. [Google Workspace add-ons and Chat apps](https://
         # developers.google.com/workspace/extend):
         # Corresponds to the JSON property `chipList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ChipList]
@@ -3461,7 +3461,7 @@ module Google
         # column wraps if the screen width is less than or equal to 300 pt. * On Android
         # devices, the second column wraps if the screen width is less than or equal to
         # 320 dp. To include more than two columns, or to use rows, use the `Grid`
-        # widget. [Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # widget. [Google Workspace add-ons and Chat apps](https://developers.google.com/
         # workspace/extend): The add-on UIs that support columns include: * The dialog
         # displayed when users open the add-on from an email draft. * The dialog
         # displayed when users open the add-on from the **Add attachment** menu in a
@@ -3478,7 +3478,7 @@ module Google
         # workspace/chat/design-interactive-card-dialog#let_a_user_pick_a_date_and_time).
         # Users can input text or use the picker to select dates and times. If users
         # input an invalid date or time, the picker shows an error that prompts users to
-        # input the information correctly. [Google Workspace Add-ons and Chat apps](
+        # input the information correctly. [Google Workspace add-ons and Chat apps](
         # https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `dateTimePicker`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker]
@@ -3488,7 +3488,7 @@ module Google
         # below the text, an icon in front of the text, a selection widget, or a button
         # after the text. For an example in Google Chat apps, see [Display text with
         # decorative text](https://developers.google.com/workspace/chat/add-text-image-
-        # card-dialog#display_text_with_decorative_elements). [Google Workspace Add-ons
+        # card-dialog#display_text_with_decorative_elements). [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `decoratedText`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText]
@@ -3497,7 +3497,7 @@ module Google
         # Displays a divider between widgets as a horizontal line. For an example in
         # Google Chat apps, see [Add a horizontal divider between widgets](https://
         # developers.google.com/workspace/chat/format-structure-card-dialog#
-        # add_a_horizontal_divider_between_widgets). [Google Workspace Add-ons and Chat
+        # add_a_horizontal_divider_between_widgets). [Google Workspace add-ons and Chat
         # apps](https://developers.google.com/workspace/extend): For example, the
         # following JSON creates a divider: ``` "divider": `` ```
         # Corresponds to the JSON property `divider`
@@ -3511,7 +3511,7 @@ module Google
         # structure-card-dialog#display_a_grid_with_a_collection_of_items). A grid
         # supports any number of columns and items. The number of rows is determined by
         # items divided by columns. A grid with 10 items and 2 columns has 5 rows. A
-        # grid with 11 items and 2 columns has 6 rows. [Google Workspace Add-ons and
+        # grid with 11 items and 2 columns has 6 rows. [Google Workspace add-ons and
         # Chat apps](https://developers.google.com/workspace/extend): For example, the
         # following JSON creates a 2 column grid with a single item: ``` "grid": ` "
         # title": "A fine collection of items", "columnCount": 2, "borderStyle": ` "type"
@@ -3530,7 +3530,7 @@ module Google
       
         # An image that is specified by a URL and can have an `onClick` action. For an
         # example, see [Add an image](https://developers.google.com/workspace/chat/add-
-        # text-image-card-dialog#add_an_image). [Google Workspace Add-ons and Chat apps](
+        # text-image-card-dialog#add_an_image). [Google Workspace add-ons and Chat apps](
         # https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Image]
@@ -3547,7 +3547,7 @@ module Google
         # value of items that users select or input. For details about working with form
         # inputs, see [Receive form data](https://developers.google.com/workspace/chat/
         # read-form-data). To collect undefined or abstract data from users, use the
-        # TextInput widget. [Google Workspace Add-ons and Chat apps](https://developers.
+        # TextInput widget. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `selectionInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput]
@@ -3565,7 +3565,7 @@ module Google
         # developers.google.com/workspace/chat/read-form-data). When you need to collect
         # undefined or abstract data from users, use a text input. To collect defined or
         # enumerated data from users, use the SelectionInput widget. [Google Workspace
-        # Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+        # add-ons and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `textInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextInput]
         attr_accessor :text_input
@@ -3575,9 +3575,9 @@ module Google
         # workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
         # For more information about formatting text, see [Formatting text in Google
         # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
-        # formatting) and [Formatting text in Google Workspace Add-ons](https://
+        # formatting) and [Formatting text in Google Workspace add-ons](https://
         # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [
-        # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # Google Workspace add-ons and Chat apps](https://developers.google.com/
         # workspace/extend):
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
@@ -3605,21 +3605,21 @@ module Google
         end
       end
       
-      # The supported widgets that you can include in a column. [Google Workspace Add-
+      # The supported widgets that you can include in a column. [Google Workspace add-
       # ons and Chat apps](https://developers.google.com/workspace/extend)
       class GoogleAppsCardV1Widgets
         include Google::Apis::Core::Hashable
       
         # A list of buttons layed out horizontally. For an example in Google Chat apps,
         # see [Add a button](https://developers.google.com/workspace/chat/design-
-        # interactive-card-dialog#add_a_button). [Google Workspace Add-ons and Chat apps]
+        # interactive-card-dialog#add_a_button). [Google Workspace add-ons and Chat apps]
         # (https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `buttonList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
         attr_accessor :button_list
       
         # A list of chips layed out horizontally, which can either scroll horizontally
-        # or wrap to the next line. [Google Workspace Add-ons and Chat apps](https://
+        # or wrap to the next line. [Google Workspace add-ons and Chat apps](https://
         # developers.google.com/workspace/extend):
         # Corresponds to the JSON property `chipList`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ChipList]
@@ -3633,7 +3633,7 @@ module Google
         # workspace/chat/design-interactive-card-dialog#let_a_user_pick_a_date_and_time).
         # Users can input text or use the picker to select dates and times. If users
         # input an invalid date or time, the picker shows an error that prompts users to
-        # input the information correctly. [Google Workspace Add-ons and Chat apps](
+        # input the information correctly. [Google Workspace add-ons and Chat apps](
         # https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `dateTimePicker`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker]
@@ -3643,7 +3643,7 @@ module Google
         # below the text, an icon in front of the text, a selection widget, or a button
         # after the text. For an example in Google Chat apps, see [Display text with
         # decorative text](https://developers.google.com/workspace/chat/add-text-image-
-        # card-dialog#display_text_with_decorative_elements). [Google Workspace Add-ons
+        # card-dialog#display_text_with_decorative_elements). [Google Workspace add-ons
         # and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `decoratedText`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText]
@@ -3651,7 +3651,7 @@ module Google
       
         # An image that is specified by a URL and can have an `onClick` action. For an
         # example, see [Add an image](https://developers.google.com/workspace/chat/add-
-        # text-image-card-dialog#add_an_image). [Google Workspace Add-ons and Chat apps](
+        # text-image-card-dialog#add_an_image). [Google Workspace add-ons and Chat apps](
         # https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Image]
@@ -3668,7 +3668,7 @@ module Google
         # value of items that users select or input. For details about working with form
         # inputs, see [Receive form data](https://developers.google.com/workspace/chat/
         # read-form-data). To collect undefined or abstract data from users, use the
-        # TextInput widget. [Google Workspace Add-ons and Chat apps](https://developers.
+        # TextInput widget. [Google Workspace add-ons and Chat apps](https://developers.
         # google.com/workspace/extend):
         # Corresponds to the JSON property `selectionInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput]
@@ -3686,7 +3686,7 @@ module Google
         # developers.google.com/workspace/chat/read-form-data). When you need to collect
         # undefined or abstract data from users, use a text input. To collect defined or
         # enumerated data from users, use the SelectionInput widget. [Google Workspace
-        # Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+        # add-ons and Chat apps](https://developers.google.com/workspace/extend):
         # Corresponds to the JSON property `textInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextInput]
         attr_accessor :text_input
@@ -3696,9 +3696,9 @@ module Google
         # workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
         # For more information about formatting text, see [Formatting text in Google
         # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
-        # formatting) and [Formatting text in Google Workspace Add-ons](https://
+        # formatting) and [Formatting text in Google Workspace add-ons](https://
         # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [
-        # Google Workspace Add-ons and Chat apps](https://developers.google.com/
+        # Google Workspace add-ons and Chat apps](https://developers.google.com/
         # workspace/extend):
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
