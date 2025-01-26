@@ -556,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRelationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListReportConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -803,6 +809,12 @@ module Google
       end
       
       class RegionPreferences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Relation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2008,6 +2020,15 @@ module Google
         end
       end
       
+      class ListRelationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :relations, as: 'relations', class: Google::Apis::MigrationcenterV1::Relation, decorator: Google::Apis::MigrationcenterV1::Relation::Representation
+      
+        end
+      end
+      
       class ListReportConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2437,6 +2458,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :preferred_regions, as: 'preferredRegions'
+        end
+      end
+      
+      class Relation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :dst_asset, as: 'dstAsset'
+          property :name, as: 'name'
+          property :src_asset, as: 'srcAsset'
+          property :type, as: 'type'
         end
       end
       

@@ -3027,6 +3027,31 @@ module Google
         end
       end
       
+      # Response message for listing relations.
+      class ListRelationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of relations.
+        # Corresponds to the JSON property `relations`
+        # @return [Array<Google::Apis::MigrationcenterV1::Relation>]
+        attr_accessor :relations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @relations = args[:relations] if args.key?(:relations)
+        end
+      end
+      
       # Response message for listing report configs.
       class ListReportConfigsResponse
         include Google::Apis::Core::Hashable
@@ -4478,6 +4503,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @preferred_regions = args[:preferred_regions] if args.key?(:preferred_regions)
+        end
+      end
+      
+      # Message representing a relation between 2 resource.
+      class Relation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the relation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The destination asset name in the relation.
+        # Corresponds to the JSON property `dstAsset`
+        # @return [String]
+        attr_accessor :dst_asset
+      
+        # Output only. Identifier. The identifier of the relation.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The source asset name in the relation.
+        # Corresponds to the JSON property `srcAsset`
+        # @return [String]
+        attr_accessor :src_asset
+      
+        # Optional. The type of the relation.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @dst_asset = args[:dst_asset] if args.key?(:dst_asset)
+          @name = args[:name] if args.key?(:name)
+          @src_asset = args[:src_asset] if args.key?(:src_asset)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
