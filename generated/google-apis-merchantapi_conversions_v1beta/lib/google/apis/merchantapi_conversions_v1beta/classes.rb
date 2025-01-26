@@ -33,7 +33,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :attribution_lookback_window_days
       
-        # Required. Attribution model.
+        # 
         # Corresponds to the JSON property `attributionModel`
         # @return [String]
         attr_accessor :attribution_model
