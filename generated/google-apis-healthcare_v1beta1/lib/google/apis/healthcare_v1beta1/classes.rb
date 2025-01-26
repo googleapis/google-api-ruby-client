@@ -1397,11 +1397,11 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::ConsentHeaderHandling]
         attr_accessor :consent_header_handling
       
-        # The versioned names of the enforced admin Consent resource(s), in the format `
+        # Output only. The versioned names of the enforced admin Consent resource(s), in
+        # the format `projects/`project_id`/locations/`location`/datasets/`dataset_id`/
+        # fhirStores/`fhir_store_id`/fhir/Consent/`resource_id`/_history/`version_id``.
+        # For FHIR stores with `disable_resource_versioning=true`, the format is `
         # projects/`project_id`/locations/`location`/datasets/`dataset_id`/fhirStores/`
-        # fhir_store_id`/fhir/Consent/`resource_id`/_history/`version_id``. For FHIR
-        # stores with `disable_resource_versioning=true`, the format is `projects/`
-        # project_id`/locations/`location`/datasets/`dataset_id`/fhirStores/`
         # fhir_store_id`/fhir/Consent/`resource_id``. This field can only be updated
         # using ApplyAdminConsents.
         # Corresponds to the JSON property `enforcedAdminConsents`
