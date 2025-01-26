@@ -9255,6 +9255,45 @@ module Google
         end
       end
       
+      # Specifies who is allowed to train on the video.
+      class VideoTrainability
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # videoTrainability".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Specifies who is allowed to train on the video. Valid values are: - a single
+        # string "all" - a single string "none" - a list of allowed parties
+        # Corresponds to the JSON property `permitted`
+        # @return [Array<String>]
+        attr_accessor :permitted
+      
+        # The ID of the video.
+        # Corresponds to the JSON property `videoId`
+        # @return [String]
+        attr_accessor :video_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @permitted = args[:permitted] if args.key?(:permitted)
+          @video_id = args[:video_id] if args.key?(:video_id)
+        end
+      end
+      
       # Branding properties for the watch. All deprecated.
       class WatchSettings
         include Google::Apis::Core::Hashable
