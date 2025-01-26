@@ -511,7 +511,7 @@ module Google
         attr_accessor :domain
       
         # Identifier. Format: accounts/`account`/platforms/`platform`/childAccounts/`
-        # child`/sites/`platformChildSite`
+        # child_account`/sites/`platform_child_site`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
