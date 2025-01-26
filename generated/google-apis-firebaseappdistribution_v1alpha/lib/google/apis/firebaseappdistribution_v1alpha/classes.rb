@@ -802,6 +802,11 @@ module Google
       class GoogleFirebaseAppdistroV1alphaGoalAction
         include Google::Apis::Core::Hashable
       
+        # Information to help the customer understand why the agent took this action
+        # Corresponds to the JSON property `debugInfo`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo]
+        attr_accessor :debug_info
+      
         # A high level action taken by the AI on the device, potentially involving
         # multiple taps, text entries, waits, etc.
         # Corresponds to the JSON property `deviceAction`
@@ -824,9 +829,36 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @debug_info = args[:debug_info] if args.key?(:debug_info)
           @device_action = args[:device_action] if args.key?(:device_action)
           @explanation = args[:explanation] if args.key?(:explanation)
           @terminal_action = args[:terminal_action] if args.key?(:terminal_action)
+        end
+      end
+      
+      # Information to help the customer understand why the agent took this action
+      class GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. URI of the screenshot with elements labeled which was used by the
+        # agent
+        # Corresponds to the JSON property `annotatedScreenshotUri`
+        # @return [String]
+        attr_accessor :annotated_screenshot_uri
+      
+        # Output only. Structured data explaining the agent's choice
+        # Corresponds to the JSON property `jsonUri`
+        # @return [String]
+        attr_accessor :json_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotated_screenshot_uri = args[:annotated_screenshot_uri] if args.key?(:annotated_screenshot_uri)
+          @json_uri = args[:json_uri] if args.key?(:json_uri)
         end
       end
       
@@ -1294,6 +1326,11 @@ module Google
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions]
         attr_accessor :ai_instructions
       
+        # Output only. Timestamp when the test case was created
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Required. Display name of the test case.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1312,6 +1349,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ai_instructions = args[:ai_instructions] if args.key?(:ai_instructions)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
         end
