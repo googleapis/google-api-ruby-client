@@ -22,60 +22,6 @@ module Google
   module Apis
     module GkehubV1beta
       
-      # **Anthos Observability**: Spec
-      class AnthosObservabilityFeatureSpec
-        include Google::Apis::Core::Hashable
-      
-        # **Anthosobservability**: Per-Membership Feature spec.
-        # Corresponds to the JSON property `defaultMembershipSpec`
-        # @return [Google::Apis::GkehubV1beta::AnthosObservabilityMembershipSpec]
-        attr_accessor :default_membership_spec
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @default_membership_spec = args[:default_membership_spec] if args.key?(:default_membership_spec)
-        end
-      end
-      
-      # **Anthosobservability**: Per-Membership Feature spec.
-      class AnthosObservabilityMembershipSpec
-        include Google::Apis::Core::Hashable
-      
-        # Use full of metrics rather than optimized metrics. See https://cloud.google.
-        # com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#
-        # optimized_metrics_default_metrics
-        # Corresponds to the JSON property `doNotOptimizeMetrics`
-        # @return [Boolean]
-        attr_accessor :do_not_optimize_metrics
-        alias_method :do_not_optimize_metrics?, :do_not_optimize_metrics
-      
-        # Enable collecting and reporting metrics and logs from user apps.
-        # Corresponds to the JSON property `enableStackdriverOnApplications`
-        # @return [Boolean]
-        attr_accessor :enable_stackdriver_on_applications
-        alias_method :enable_stackdriver_on_applications?, :enable_stackdriver_on_applications
-      
-        # the version of stackdriver operator used by this feature
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @do_not_optimize_metrics = args[:do_not_optimize_metrics] if args.key?(:do_not_optimize_metrics)
-          @enable_stackdriver_on_applications = args[:enable_stackdriver_on_applications] if args.key?(:enable_stackdriver_on_applications)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
       # Spec for App Dev Experience Feature.
       class AppDevExperienceFeatureSpec
         include Google::Apis::Core::Hashable
@@ -762,11 +708,6 @@ module Google
       class CommonFeatureSpec
         include Google::Apis::Core::Hashable
       
-        # **Anthos Observability**: Spec
-        # Corresponds to the JSON property `anthosobservability`
-        # @return [Google::Apis::GkehubV1beta::AnthosObservabilityFeatureSpec]
-        attr_accessor :anthosobservability
-      
         # Spec for App Dev Experience Feature.
         # Corresponds to the JSON property `appdevexperience`
         # @return [Google::Apis::GkehubV1beta::AppDevExperienceFeatureSpec]
@@ -800,7 +741,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @anthosobservability = args[:anthosobservability] if args.key?(:anthosobservability)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
           @dataplanev2 = args[:dataplanev2] if args.key?(:dataplanev2)
@@ -4236,11 +4176,6 @@ module Google
       class MembershipFeatureSpec
         include Google::Apis::Core::Hashable
       
-        # **Anthosobservability**: Per-Membership Feature spec.
-        # Corresponds to the JSON property `anthosobservability`
-        # @return [Google::Apis::GkehubV1beta::AnthosObservabilityMembershipSpec]
-        attr_accessor :anthosobservability
-      
         # **Cloud Build**: Configurations for each Cloud Build enabled cluster.
         # Corresponds to the JSON property `cloudbuild`
         # @return [Google::Apis::GkehubV1beta::MembershipSpec]
@@ -4285,7 +4220,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @anthosobservability = args[:anthosobservability] if args.key?(:anthosobservability)
           @cloudbuild = args[:cloudbuild] if args.key?(:cloudbuild)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)

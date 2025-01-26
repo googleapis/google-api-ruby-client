@@ -22,18 +22,6 @@ module Google
   module Apis
     module GkehubV1beta
       
-      class AnthosObservabilityFeatureSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AnthosObservabilityMembershipSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppDevExperienceFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1012,23 +1000,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AnthosObservabilityFeatureSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :default_membership_spec, as: 'defaultMembershipSpec', class: Google::Apis::GkehubV1beta::AnthosObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1beta::AnthosObservabilityMembershipSpec::Representation
-      
-        end
-      end
-      
-      class AnthosObservabilityMembershipSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :do_not_optimize_metrics, as: 'doNotOptimizeMetrics'
-          property :enable_stackdriver_on_applications, as: 'enableStackdriverOnApplications'
-          property :version, as: 'version'
-        end
-      end
-      
       class AppDevExperienceFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1222,8 +1193,6 @@ module Google
       class CommonFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :anthosobservability, as: 'anthosobservability', class: Google::Apis::GkehubV1beta::AnthosObservabilityFeatureSpec, decorator: Google::Apis::GkehubV1beta::AnthosObservabilityFeatureSpec::Representation
-      
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1beta::AppDevExperienceFeatureSpec, decorator: Google::Apis::GkehubV1beta::AppDevExperienceFeatureSpec::Representation
       
           property :clusterupgrade, as: 'clusterupgrade', class: Google::Apis::GkehubV1beta::ClusterUpgradeFleetSpec, decorator: Google::Apis::GkehubV1beta::ClusterUpgradeFleetSpec::Representation
@@ -2211,8 +2180,6 @@ module Google
       class MembershipFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :anthosobservability, as: 'anthosobservability', class: Google::Apis::GkehubV1beta::AnthosObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1beta::AnthosObservabilityMembershipSpec::Representation
-      
           property :cloudbuild, as: 'cloudbuild', class: Google::Apis::GkehubV1beta::MembershipSpec, decorator: Google::Apis::GkehubV1beta::MembershipSpec::Representation
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec::Representation
