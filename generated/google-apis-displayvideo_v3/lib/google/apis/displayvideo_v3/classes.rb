@@ -1338,7 +1338,7 @@ module Google
         # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
         # except for excluded_first_and_third_party_audience_group and
         # excluded_google_audience_group, of which COMPLEMENT is used as an INTERSECTION
-        # with other groups.
+        # with other groups. NEXT_ID: 9
         # Corresponds to the JSON property `audienceGroupDetails`
         # @return [Google::Apis::DisplayvideoV3::AudienceGroupAssignedTargetingOptionDetails]
         attr_accessor :audience_group_details
@@ -1783,7 +1783,7 @@ module Google
       # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
       # except for excluded_first_and_third_party_audience_group and
       # excluded_google_audience_group, of which COMPLEMENT is used as an INTERSECTION
-      # with other groups.
+      # with other groups. NEXT_ID: 9
       class AudienceGroupAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
