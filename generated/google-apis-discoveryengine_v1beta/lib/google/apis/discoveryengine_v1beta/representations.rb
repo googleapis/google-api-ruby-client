@@ -1744,6 +1744,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1829,6 +1835,30 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecPromptSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6566,6 +6596,8 @@ module Google
           property :include_tail_suggestions, as: 'includeTailSuggestions'
           property :query, as: 'query'
           property :query_model, as: 'queryModel'
+          collection :suggestion_type_specs, as: 'suggestionTypeSpecs', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec::Representation
+      
           collection :suggestion_types, as: 'suggestionTypes'
           property :user_info, as: 'userInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaUserInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaUserInfo::Representation
       
@@ -6586,6 +6618,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boost, as: 'boost'
           property :condition, as: 'condition'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_suggestions, as: 'maxSuggestions'
+          property :suggestion_type, as: 'suggestionType'
         end
       end
       
@@ -6724,6 +6764,8 @@ module Google
           property :answer_generation_spec, as: 'answerGenerationSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpec::Representation
       
           property :asynchronous_mode, as: 'asynchronousMode'
+          property :end_user_spec, as: 'endUserSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec::Representation
+      
           property :grounding_spec, as: 'groundingSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec::Representation
       
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery::Representation
@@ -6769,6 +6811,38 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preamble, as: 'preamble'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :end_user_metadata, as: 'endUserMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk_info, as: 'chunkInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :document_metadata, as: 'documentMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
         end
       end
       
