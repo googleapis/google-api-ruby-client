@@ -782,6 +782,12 @@ module Google
         # @return [String]
         attr_accessor :comment
       
+        # Is the column a computed column.
+        # Corresponds to the JSON property `computed`
+        # @return [Boolean]
+        attr_accessor :computed
+        alias_method :computed?, :computed
+      
         # Custom engine specific features.
         # Corresponds to the JSON property `customFeatures`
         # @return [Hash<String,Object>]
@@ -857,6 +863,7 @@ module Google
           @charset = args[:charset] if args.key?(:charset)
           @collation = args[:collation] if args.key?(:collation)
           @comment = args[:comment] if args.key?(:comment)
+          @computed = args[:computed] if args.key?(:computed)
           @custom_features = args[:custom_features] if args.key?(:custom_features)
           @data_type = args[:data_type] if args.key?(:data_type)
           @default_value = args[:default_value] if args.key?(:default_value)
