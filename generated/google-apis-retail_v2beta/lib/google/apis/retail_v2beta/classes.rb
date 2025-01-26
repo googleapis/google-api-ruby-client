@@ -3469,12 +3469,11 @@ module Google
         end
       end
       
-      # Resource that represents attribute results. The list of suggestions for the
-      # attribute.
+      # Resource that represents attribute results.
       class GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult
         include Google::Apis::Core::Hashable
       
-        # 
+        # The list of suggestions for the attribute.
         # Corresponds to the JSON property `suggestions`
         # @return [Array<String>]
         attr_accessor :suggestions
