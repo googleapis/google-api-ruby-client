@@ -1,5 +1,9 @@
 # Release history for google-apis-androidmanagement_v1
 
+### v0.87.0 (2025-01-26)
+
+* Regenerated from discovery document revision 20250123
+
 ### v0.86.0 (2025-01-12)
 
 * Regenerated from discovery document revision 20250109
