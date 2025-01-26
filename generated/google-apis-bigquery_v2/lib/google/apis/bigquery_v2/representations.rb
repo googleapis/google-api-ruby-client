@@ -3196,8 +3196,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_hit, as: 'cacheHit'
+          property :creation_time, :numeric_string => true, as: 'creationTime'
           property :dml_stats, as: 'dmlStats', class: Google::Apis::BigqueryV2::DmlStatistics, decorator: Google::Apis::BigqueryV2::DmlStatistics::Representation
       
+          property :end_time, :numeric_string => true, as: 'endTime'
           collection :errors, as: 'errors', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProto::Representation
       
           property :job_complete, as: 'jobComplete'
@@ -3206,6 +3208,7 @@ module Google
           property :job_reference, as: 'jobReference', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReference::Representation
       
           property :kind, as: 'kind'
+          property :location, as: 'location'
           property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
           property :page_token, as: 'pageToken'
           property :query_id, as: 'queryId'
@@ -3215,8 +3218,11 @@ module Google
       
           property :session_info, as: 'sessionInfo', class: Google::Apis::BigqueryV2::SessionInfo, decorator: Google::Apis::BigqueryV2::SessionInfo::Representation
       
+          property :start_time, :numeric_string => true, as: 'startTime'
+          property :total_bytes_billed, :numeric_string => true, as: 'totalBytesBilled'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_rows, :numeric_string => true, as: 'totalRows'
+          property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
         end
       end
       
