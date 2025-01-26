@@ -565,6 +565,13 @@ module Google
         # @return [String]
         attr_accessor :git_commitish
       
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
+      
         # Output only. The compilation result's name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -600,6 +607,7 @@ module Google
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @dataform_core_version = args[:dataform_core_version] if args.key?(:dataform_core_version)
           @git_commitish = args[:git_commitish] if args.key?(:git_commitish)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
           @release_config = args[:release_config] if args.key?(:release_config)
           @resolved_git_commit_sha = args[:resolved_git_commit_sha] if args.key?(:resolved_git_commit_sha)
@@ -634,6 +642,13 @@ module Google
         # @return [String]
         attr_accessor :file_path
       
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
+      
         # The notebook executed by this action.
         # Corresponds to the JSON property `notebook`
         # @return [Google::Apis::DataformV1beta1::Notebook]
@@ -665,6 +680,7 @@ module Google
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
           @declaration = args[:declaration] if args.key?(:declaration)
           @file_path = args[:file_path] if args.key?(:file_path)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @notebook = args[:notebook] if args.key?(:notebook)
           @operations = args[:operations] if args.key?(:operations)
           @relation = args[:relation] if args.key?(:relation)
@@ -1674,8 +1690,8 @@ module Google
         attr_accessor :contents
       
         # Output only. The ID of the Vertex job that executed the notebook in contents
-        # and also the ID used for the outputs created in GCS buckets. Only set once the
-        # job has started to run.
+        # and also the ID used for the outputs created in Google Cloud Storage buckets.
+        # Only set once the job has started to run.
         # Corresponds to the JSON property `jobId`
         # @return [String]
         attr_accessor :job_id
@@ -1695,7 +1711,8 @@ module Google
       class NotebookRuntimeOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. The GCS location to upload the result to. Format: `gs://bucket-name`.
+        # Optional. The Google Cloud Storage location to upload the result to. Format: `
+        # gs://bucket-name`.
         # Corresponds to the JSON property `gcsOutputBucket`
         # @return [String]
         attr_accessor :gcs_output_bucket
@@ -2261,6 +2278,13 @@ module Google
         # @return [String]
         attr_accessor :git_commitish
       
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
+      
         # Identifier. The release config's name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2301,6 +2325,7 @@ module Google
           @cron_schedule = args[:cron_schedule] if args.key?(:cron_schedule)
           @disabled = args[:disabled] if args.key?(:disabled)
           @git_commitish = args[:git_commitish] if args.key?(:git_commitish)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
           @recent_scheduled_release_records = args[:recent_scheduled_release_records] if args.key?(:recent_scheduled_release_records)
           @release_compilation_result = args[:release_compilation_result] if args.key?(:release_compilation_result)
@@ -2372,6 +2397,13 @@ module Google
         # @return [Google::Apis::DataformV1beta1::GitRemoteSettings]
         attr_accessor :git_remote_settings
       
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
+      
         # Optional. The reference to a KMS encryption key. If provided, it will be used
         # to encrypt user data in the repository and all child resources. It is not
         # possible to add or update the encryption key after the repository is created.
@@ -2435,6 +2467,7 @@ module Google
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @display_name = args[:display_name] if args.key?(:display_name)
           @git_remote_settings = args[:git_remote_settings] if args.key?(:git_remote_settings)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -2824,6 +2857,13 @@ module Google
         # @return [String]
         attr_accessor :cron_schedule
       
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
+      
         # Includes various configuration options for a workflow invocation. If both `
         # included_targets` and `included_tags` are unset, all actions will be included.
         # Corresponds to the JSON property `invocationConfig`
@@ -2869,6 +2909,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @cron_schedule = args[:cron_schedule] if args.key?(:cron_schedule)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @invocation_config = args[:invocation_config] if args.key?(:invocation_config)
           @name = args[:name] if args.key?(:name)
           @recent_scheduled_execution_records = args[:recent_scheduled_execution_records] if args.key?(:recent_scheduled_execution_records)
@@ -2892,6 +2933,13 @@ module Google
         # Corresponds to the JSON property `dataEncryptionState`
         # @return [Google::Apis::DataformV1beta1::DataEncryptionState]
         attr_accessor :data_encryption_state
+      
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
       
         # Includes various configuration options for a workflow invocation. If both `
         # included_targets` and `included_tags` are unset, all actions will be included.
@@ -2938,6 +2986,7 @@ module Google
         def update!(**args)
           @compilation_result = args[:compilation_result] if args.key?(:compilation_result)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @invocation_config = args[:invocation_config] if args.key?(:invocation_config)
           @invocation_timing = args[:invocation_timing] if args.key?(:invocation_timing)
           @name = args[:name] if args.key?(:name)
@@ -2966,6 +3015,13 @@ module Google
         # Corresponds to the JSON property `failureReason`
         # @return [String]
         attr_accessor :failure_reason
+      
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
       
         # Represents a time interval, encoded as a Timestamp start (inclusive) and a
         # Timestamp end (exclusive). The start must be less than or equal to the end.
@@ -3000,6 +3056,7 @@ module Google
           @bigquery_action = args[:bigquery_action] if args.key?(:bigquery_action)
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
           @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @invocation_timing = args[:invocation_timing] if args.key?(:invocation_timing)
           @notebook_action = args[:notebook_action] if args.key?(:notebook_action)
           @state = args[:state] if args.key?(:state)
@@ -3021,6 +3078,13 @@ module Google
         # @return [Google::Apis::DataformV1beta1::DataEncryptionState]
         attr_accessor :data_encryption_state
       
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
+      
         # Identifier. The workspace's name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3034,6 +3098,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
         end
       end
