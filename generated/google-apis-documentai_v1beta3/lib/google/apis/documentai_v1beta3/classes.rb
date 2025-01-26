@@ -6703,6 +6703,19 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig]
         attr_accessor :chunking_config
       
+        # Optional. Whether to include bounding boxes in layout parser processor
+        # response.
+        # Corresponds to the JSON property `returnBoundingBoxes`
+        # @return [Boolean]
+        attr_accessor :return_bounding_boxes
+        alias_method :return_bounding_boxes?, :return_bounding_boxes
+      
+        # Optional. Whether to include images in layout parser processor response.
+        # Corresponds to the JSON property `returnImages`
+        # @return [Boolean]
+        attr_accessor :return_images
+        alias_method :return_images?, :return_images
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6710,6 +6723,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunking_config = args[:chunking_config] if args.key?(:chunking_config)
+          @return_bounding_boxes = args[:return_bounding_boxes] if args.key?(:return_bounding_boxes)
+          @return_images = args[:return_images] if args.key?(:return_images)
         end
       end
       
