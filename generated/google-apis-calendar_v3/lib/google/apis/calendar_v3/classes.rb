@@ -94,9 +94,9 @@ module Google
         # to users with reader access, but event details will be hidden.
         # - "writer" - Provides read and write access to the calendar. Private events
         # will appear to users with writer access, and event details will be visible.
+        # Provides read access to the calendar's ACLs.
         # - "owner" - Provides ownership of the calendar. This role has all of the
-        # permissions of the writer role with the additional ability to see and
-        # manipulate ACLs.
+        # permissions of the writer role with the additional ability to manipulate ACLs.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
