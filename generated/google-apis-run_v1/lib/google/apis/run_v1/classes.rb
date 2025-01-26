@@ -1553,6 +1553,13 @@ module Google
       class GoogleDevtoolsCloudbuildV1Artifacts
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of Go modules to be uploaded to Artifact Registry upon
+        # successful completion of all build steps. If any objects fail to be pushed,
+        # the build is marked FAILURE.
+        # Corresponds to the JSON property `goModules`
+        # @return [Array<Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GoModule>]
+        attr_accessor :go_modules
+      
         # A list of images to be pushed upon the successful completion of all build
         # steps. The images will be pushed using the builder service account's
         # credentials. The digests of the pushed images will be stored in the Build
@@ -1600,6 +1607,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
@@ -1935,6 +1943,13 @@ module Google
         attr_accessor :dynamic_substitutions
         alias_method :dynamic_substitutions?, :dynamic_substitutions
       
+        # Optional. Option to specify whether structured logging is enabled. If true,
+        # JSON-formatted logs are parsed as structured logs.
+        # Corresponds to the JSON property `enableStructuredLogging`
+        # @return [Boolean]
+        attr_accessor :enable_structured_logging
+        alias_method :enable_structured_logging?, :enable_structured_logging
+      
         # A list of global environment variable definitions that will exist for all
         # build steps in this build. If a variable is defined in both globally and in a
         # build step, the variable will use the build step value. The elements are of
@@ -2016,6 +2031,7 @@ module Google
           @default_logs_bucket_behavior = args[:default_logs_bucket_behavior] if args.key?(:default_logs_bucket_behavior)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @dynamic_substitutions = args[:dynamic_substitutions] if args.key?(:dynamic_substitutions)
+          @enable_structured_logging = args[:enable_structured_logging] if args.key?(:enable_structured_logging)
           @env = args[:env] if args.key?(:env)
           @log_streaming_option = args[:log_streaming_option] if args.key?(:log_streaming_option)
           @logging = args[:logging] if args.key?(:logging)
@@ -2399,6 +2415,64 @@ module Google
         end
       end
       
+      # Go module to upload to Artifact Registry upon successful completion of all
+      # build steps. A module refers to all dependencies in a go.mod file.
+      class GoogleDevtoolsCloudbuildV1GoModule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Go module's "module path". e.g. example.com/foo/v2
+        # Corresponds to the JSON property `modulePath`
+        # @return [String]
+        attr_accessor :module_path
+      
+        # Optional. The Go module's semantic version in the form vX.Y.Z. e.g. v0.1.1 Pre-
+        # release identifiers can also be added by appending a dash and dot separated
+        # ASCII alphanumeric characters and hyphens. e.g. v0.2.3-alpha.x.12m.5
+        # Corresponds to the JSON property `moduleVersion`
+        # @return [String]
+        attr_accessor :module_version
+      
+        # Optional. Location of the Artifact Registry repository. i.e. us-east1 Defaults
+        # to the build’s location.
+        # Corresponds to the JSON property `repositoryLocation`
+        # @return [String]
+        attr_accessor :repository_location
+      
+        # Optional. Artifact Registry repository name. Specified Go modules will be
+        # zipped and uploaded to Artifact Registry with this location as a prefix. e.g.
+        # my-go-repo
+        # Corresponds to the JSON property `repositoryName`
+        # @return [String]
+        attr_accessor :repository_name
+      
+        # Optional. Project ID of the Artifact Registry repository. Defaults to the
+        # build project.
+        # Corresponds to the JSON property `repositoryProjectId`
+        # @return [String]
+        attr_accessor :repository_project_id
+      
+        # Optional. Source path of the go.mod file in the build's workspace. If not
+        # specified, this will default to the current directory. e.g. ~/code/go/
+        # mypackage
+        # Corresponds to the JSON property `sourcePath`
+        # @return [String]
+        attr_accessor :source_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @module_path = args[:module_path] if args.key?(:module_path)
+          @module_version = args[:module_version] if args.key?(:module_version)
+          @repository_location = args[:repository_location] if args.key?(:repository_location)
+          @repository_name = args[:repository_name] if args.key?(:repository_name)
+          @repository_project_id = args[:repository_project_id] if args.key?(:repository_project_id)
+          @source_path = args[:source_path] if args.key?(:source_path)
+        end
+      end
+      
       # Container message for hash values.
       class GoogleDevtoolsCloudbuildV1Hash
         include Google::Apis::Core::Hashable
@@ -2707,6 +2781,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :build_step_outputs
       
+        # Optional. Go module artifacts uploaded to Artifact Registry at the end of the
+        # build.
+        # Corresponds to the JSON property `goModules`
+        # @return [Array<Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1UploadedGoModule>]
+        attr_accessor :go_modules
+      
         # Container images that were built as a part of the build.
         # Corresponds to the JSON property `images`
         # @return [Array<Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1BuiltImage>]
@@ -2743,6 +2823,7 @@ module Google
           @artifact_timing = args[:artifact_timing] if args.key?(:artifact_timing)
           @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
           @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
+          @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
@@ -3043,6 +3124,39 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # A Go module artifact uploaded to Artifact Registry using the GoModule
+      # directive.
+      class GoogleDevtoolsCloudbuildV1UploadedGoModule
+        include Google::Apis::Core::Hashable
+      
+        # Container message for hashes of byte content of files, used in
+        # SourceProvenance messages to verify integrity of source input to the build.
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes]
+        attr_accessor :file_hashes
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan]
+        attr_accessor :push_timing
+      
+        # URI of the uploaded artifact.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
