@@ -927,7 +927,8 @@ module Google
         # @param [String] parent
         #   Required. The parent for reservations.
         # @param [Fixnum] page_size
-        #   The maximum number of items to return.
+        #   The maximum number of items to return. Defaults to 0 if not specified, which
+        #   means no limit.
         # @param [String] page_token
         #   The next_page_token value returned from a previous List request, if any.
         # @param [String] fields

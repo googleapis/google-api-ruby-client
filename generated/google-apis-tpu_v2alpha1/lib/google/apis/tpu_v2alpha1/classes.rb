@@ -1463,7 +1463,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # 
+        # Details of a standard reservation.
         # Corresponds to the JSON property `standard`
         # @return [Google::Apis::TpuV2alpha1::Standard]
         attr_accessor :standard
@@ -1658,11 +1658,11 @@ module Google
         end
       end
       
-      # 
+      # Details of a standard reservation.
       class Standard
         include Google::Apis::Core::Hashable
       
-        # 
+        # Capacity units this reservation is measured in.
         # Corresponds to the JSON property `capacityUnits`
         # @return [String]
         attr_accessor :capacity_units
@@ -1686,7 +1686,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
-        # 
+        # Usage details of a reservation.
         # Corresponds to the JSON property `usage`
         # @return [Google::Apis::TpuV2alpha1::Usage]
         attr_accessor :usage
@@ -1905,7 +1905,7 @@ module Google
         end
       end
       
-      # 
+      # Usage details of a reservation.
       class Usage
         include Google::Apis::Core::Hashable
       
