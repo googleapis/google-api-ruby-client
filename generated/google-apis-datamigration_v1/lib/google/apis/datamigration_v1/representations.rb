@@ -1094,6 +1094,7 @@ module Google
           property :charset, as: 'charset'
           property :collation, as: 'collation'
           property :comment, as: 'comment'
+          property :computed, as: 'computed'
           hash :custom_features, as: 'customFeatures'
           property :data_type, as: 'dataType'
           property :default_value, as: 'defaultValue'
