@@ -58,12 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AdvertiserBillingConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AdvertiserCreativeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -833,18 +827,6 @@ module Google
       end
       
       class ExitEvent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FirstAndThirdPartyAudienceGroup
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FirstAndThirdPartyAudienceTargetingSetting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1944,8 +1926,6 @@ module Google
           property :ad_server_config, as: 'adServerConfig', class: Google::Apis::DisplayvideoV2::AdvertiserAdServerConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserAdServerConfig::Representation
       
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
-          property :billing_config, as: 'billingConfig', class: Google::Apis::DisplayvideoV2::AdvertiserBillingConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserBillingConfig::Representation
-      
           property :creative_config, as: 'creativeConfig', class: Google::Apis::DisplayvideoV2::AdvertiserCreativeConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserCreativeConfig::Representation
       
           property :data_access_config, as: 'dataAccessConfig', class: Google::Apis::DisplayvideoV2::AdvertiserDataAccessConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserDataAccessConfig::Representation
@@ -1972,13 +1952,6 @@ module Google
       
           property :third_party_only_config, as: 'thirdPartyOnlyConfig', class: Google::Apis::DisplayvideoV2::ThirdPartyOnlyConfig, decorator: Google::Apis::DisplayvideoV2::ThirdPartyOnlyConfig::Representation
       
-        end
-      end
-      
-      class AdvertiserBillingConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :billing_profile_id, :numeric_string => true, as: 'billingProfileId'
         end
       end
       
@@ -2220,15 +2193,11 @@ module Google
       class AudienceGroupAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :excluded_first_and_third_party_audience_group, as: 'excludedFirstAndThirdPartyAudienceGroup', class: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudienceGroup, decorator: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudienceGroup::Representation
-      
           property :excluded_google_audience_group, as: 'excludedGoogleAudienceGroup', class: Google::Apis::DisplayvideoV2::GoogleAudienceGroup, decorator: Google::Apis::DisplayvideoV2::GoogleAudienceGroup::Representation
       
           property :included_combined_audience_group, as: 'includedCombinedAudienceGroup', class: Google::Apis::DisplayvideoV2::CombinedAudienceGroup, decorator: Google::Apis::DisplayvideoV2::CombinedAudienceGroup::Representation
       
           property :included_custom_list_group, as: 'includedCustomListGroup', class: Google::Apis::DisplayvideoV2::CustomListGroup, decorator: Google::Apis::DisplayvideoV2::CustomListGroup::Representation
-      
-          collection :included_first_and_third_party_audience_groups, as: 'includedFirstAndThirdPartyAudienceGroups', class: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudienceGroup, decorator: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudienceGroup::Representation
       
           property :included_google_audience_group, as: 'includedGoogleAudienceGroup', class: Google::Apis::DisplayvideoV2::GoogleAudienceGroup, decorator: Google::Apis::DisplayvideoV2::GoogleAudienceGroup::Representation
       
@@ -3306,22 +3275,6 @@ module Google
           property :reporting_name, as: 'reportingName'
           property :type, as: 'type'
           property :url, as: 'url'
-        end
-      end
-      
-      class FirstAndThirdPartyAudienceGroup
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :settings, as: 'settings', class: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudienceTargetingSetting, decorator: Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudienceTargetingSetting::Representation
-      
-        end
-      end
-      
-      class FirstAndThirdPartyAudienceTargetingSetting
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :first_and_third_party_audience_id, :numeric_string => true, as: 'firstAndThirdPartyAudienceId'
-          property :recency, as: 'recency'
         end
       end
       
