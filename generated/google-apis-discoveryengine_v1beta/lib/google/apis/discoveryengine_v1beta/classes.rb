@@ -10656,6 +10656,11 @@ module Google
         # @return [String]
         attr_accessor :query_model
       
+        # Optional. Specification of each suggestion type.
+        # Corresponds to the JSON property `suggestionTypeSpecs`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec>]
+        attr_accessor :suggestion_type_specs
+      
         # Optional. Suggestion types to return. If empty or unspecified, query
         # suggestions are returned. Only one suggestion type is supported at the moment.
         # Corresponds to the JSON property `suggestionTypes`
@@ -10688,6 +10693,7 @@ module Google
           @include_tail_suggestions = args[:include_tail_suggestions] if args.key?(:include_tail_suggestions)
           @query = args[:query] if args.key?(:query)
           @query_model = args[:query_model] if args.key?(:query_model)
+          @suggestion_type_specs = args[:suggestion_type_specs] if args.key?(:suggestion_type_specs)
           @suggestion_types = args[:suggestion_types] if args.key?(:suggestion_types)
           @user_info = args[:user_info] if args.key?(:user_info)
           @user_pseudo_id = args[:user_pseudo_id] if args.key?(:user_pseudo_id)
@@ -10747,6 +10753,31 @@ module Google
         def update!(**args)
           @boost = args[:boost] if args.key?(:boost)
           @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # Specification of each suggestion type.
+      class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Maximum number of suggestions to return for each suggestion type.
+        # Corresponds to the JSON property `maxSuggestions`
+        # @return [Fixnum]
+        attr_accessor :max_suggestions
+      
+        # Optional. Suggestion type.
+        # Corresponds to the JSON property `suggestionType`
+        # @return [String]
+        attr_accessor :suggestion_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_suggestions = args[:max_suggestions] if args.key?(:max_suggestions)
+          @suggestion_type = args[:suggestion_type] if args.key?(:suggestion_type)
         end
       end
       
@@ -11239,6 +11270,11 @@ module Google
         attr_accessor :asynchronous_mode
         alias_method :asynchronous_mode?, :asynchronous_mode
       
+        # End user specification.
+        # Corresponds to the JSON property `endUserSpec`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec]
+        attr_accessor :end_user_spec
+      
         # Grounding specification.
         # Corresponds to the JSON property `groundingSpec`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec]
@@ -11314,6 +11350,7 @@ module Google
         def update!(**args)
           @answer_generation_spec = args[:answer_generation_spec] if args.key?(:answer_generation_spec)
           @asynchronous_mode = args[:asynchronous_mode] if args.key?(:asynchronous_mode)
+          @end_user_spec = args[:end_user_spec] if args.key?(:end_user_spec)
           @grounding_spec = args[:grounding_spec] if args.key?(:grounding_spec)
           @query = args[:query] if args.key?(:query)
           @query_understanding_spec = args[:query_understanding_spec] if args.key?(:query_understanding_spec)
@@ -11451,6 +11488,90 @@ module Google
         # Update properties of this object
         def update!(**args)
           @preamble = args[:preamble] if args.key?(:preamble)
+        end
+      end
+      
+      # End user specification.
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. End user metadata.
+        # Corresponds to the JSON property `endUserMetadata`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData>]
+        attr_accessor :end_user_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_user_metadata = args[:end_user_metadata] if args.key?(:end_user_metadata)
+        end
+      end
+      
+      # End user metadata.
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData
+        include Google::Apis::Core::Hashable
+      
+        # Chunk information.
+        # Corresponds to the JSON property `chunkInfo`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo]
+        attr_accessor :chunk_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk_info = args[:chunk_info] if args.key?(:chunk_info)
+        end
+      end
+      
+      # Chunk information.
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo
+        include Google::Apis::Core::Hashable
+      
+        # Chunk textual content. It is limited to 8000 characters.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Document metadata contains the information of the document of the current
+        # chunk.
+        # Corresponds to the JSON property `documentMetadata`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata]
+        attr_accessor :document_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
+        end
+      end
+      
+      # Document metadata contains the information of the document of the current
+      # chunk.
+      class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Title of the document.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
