@@ -155,6 +155,9 @@ module Google
       # Move a copy of your saved links, images, places, and collections from your use of Google services
       AUTH_DATAPORTABILITY_SAVED_COLLECTIONS = 'https://www.googleapis.com/auth/dataportability.saved.collections'
 
+      # Move a copy of your comments on Google Search
+      AUTH_DATAPORTABILITY_SEARCH_UGC_COMMENTS = 'https://www.googleapis.com/auth/dataportability.search_ugc.comments'
+
       # Move a copy of your media reviews on Google Search
       AUTH_DATAPORTABILITY_SEARCH_UGC_MEDIA_REVIEWS_AND_STARS = 'https://www.googleapis.com/auth/dataportability.search_ugc.media.reviews_and_stars'
 
