@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppdistroV1alphaGoalDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -539,11 +545,21 @@ module Google
       class GoogleFirebaseAppdistroV1alphaGoalAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :debug_info, as: 'debugInfo', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo::Representation
+      
           property :device_action, as: 'deviceAction', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceAction, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceAction::Representation
       
           property :explanation, as: 'explanation'
           property :terminal_action, as: 'terminalAction', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTerminalAction, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTerminalAction::Representation
       
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotated_screenshot_uri, as: 'annotatedScreenshotUri'
+          property :json_uri, as: 'jsonUri'
         end
       end
       
@@ -689,6 +705,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ai_instructions, as: 'aiInstructions', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions::Representation
       
+          property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
         end
