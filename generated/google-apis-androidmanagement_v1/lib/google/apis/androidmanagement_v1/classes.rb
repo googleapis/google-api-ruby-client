@@ -4282,7 +4282,8 @@ module Google
         attr_accessor :add_user_disabled
         alias_method :add_user_disabled?, :add_user_disabled
       
-        # Whether adjusting the master volume is disabled. Also mutes the device.
+        # Whether adjusting the master volume is disabled. Also mutes the device. The
+        # setting has effect only on fully managed devices.
         # Corresponds to the JSON property `adjustVolumeDisabled`
         # @return [Boolean]
         attr_accessor :adjust_volume_disabled
@@ -4743,7 +4744,8 @@ module Google
         attr_accessor :screen_capture_disabled
         alias_method :screen_capture_disabled?, :screen_capture_disabled
       
-        # Whether changing the user icon is disabled.
+        # Whether changing the user icon is disabled. The setting has effect only on
+        # fully managed devices.
         # Corresponds to the JSON property `setUserIconDisabled`
         # @return [Boolean]
         attr_accessor :set_user_icon_disabled
