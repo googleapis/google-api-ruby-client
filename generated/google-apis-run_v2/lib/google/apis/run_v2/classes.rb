@@ -59,11 +59,115 @@ module Google
         end
       end
       
+      # Describes the Build step of the function that builds a container from the
+      # given source.
+      class GoogleCloudRunV2BuildConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The base image used to build the function.
+        # Corresponds to the JSON property `baseImage`
+        # @return [String]
+        attr_accessor :base_image
+      
+        # Optional. Sets whether the function will receive automatic base image updates.
+        # Corresponds to the JSON property `enableAutomaticUpdates`
+        # @return [Boolean]
+        attr_accessor :enable_automatic_updates
+        alias_method :enable_automatic_updates?, :enable_automatic_updates
+      
+        # Optional. User-provided build-time environment variables for the function
+        # Corresponds to the JSON property `environmentVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :environment_variables
+      
+        # Optional. The name of the function (as defined in source code) that will be
+        # executed. Defaults to the resource name suffix, if not specified. For backward
+        # compatibility, if function with given name is not found, then the system will
+        # try to use function named "function".
+        # Corresponds to the JSON property `functionTarget`
+        # @return [String]
+        attr_accessor :function_target
+      
+        # Optional. Artifact Registry URI to store the built image.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # Output only. The Cloud Build name of the latest successful deployment of the
+        # function.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Service account to be used for building the container. The format of
+        # this field is `projects/`projectId`/serviceAccounts/`serviceAccountEmail``.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # The Cloud Storage bucket URI where the function source code is located.
+        # Corresponds to the JSON property `sourceLocation`
+        # @return [String]
+        attr_accessor :source_location
+      
+        # Optional. Name of the Cloud Build Custom Worker Pool that should be used to
+        # build the Cloud Run function. The format of this field is `projects/`project`/
+        # locations/`region`/workerPools/`workerPool`` where `project` and `region` are
+        # the project id and region respectively where the worker pool is defined and `
+        # workerPool` is the short name of the worker pool.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_image = args[:base_image] if args.key?(:base_image)
+          @enable_automatic_updates = args[:enable_automatic_updates] if args.key?(:enable_automatic_updates)
+          @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
+          @function_target = args[:function_target] if args.key?(:function_target)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @name = args[:name] if args.key?(:name)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @source_location = args[:source_location] if args.key?(:source_location)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
+      # Build information of the image.
+      class GoogleCloudRunV2BuildInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Entry point of the function when the image is a Cloud Run
+        # function.
+        # Corresponds to the JSON property `functionTarget`
+        # @return [String]
+        attr_accessor :function_target
+      
+        # Output only. Source code location of the image.
+        # Corresponds to the JSON property `sourceLocation`
+        # @return [String]
+        attr_accessor :source_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function_target = args[:function_target] if args.key?(:function_target)
+          @source_location = args[:source_location] if args.key?(:source_location)
+        end
+      end
+      
       # Build the source using Buildpacks.
       class GoogleCloudRunV2BuildpacksBuild
         include Google::Apis::Core::Hashable
       
-        # Optional. The base image used to opt into automatic base image updates.
+        # Optional. The base image to use for the build.
         # Corresponds to the JSON property `baseImage`
         # @return [String]
         attr_accessor :base_image
@@ -251,6 +355,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :args
       
+        # Base image for this container. Only supported for services. If set. it
+        # indicates that the service is enrolled into automatic base image update.
+        # Corresponds to the JSON property `baseImageUri`
+        # @return [String]
+        attr_accessor :base_image_uri
+      
+        # Build information of the image.
+        # Corresponds to the JSON property `buildInfo`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2BuildInfo]
+        attr_accessor :build_info
+      
         # Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT
         # is used if this is not provided.
         # Corresponds to the JSON property `command`
@@ -323,6 +438,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @args = args[:args] if args.key?(:args)
+          @base_image_uri = args[:base_image_uri] if args.key?(:base_image_uri)
+          @build_info = args[:build_info] if args.key?(:build_info)
           @command = args[:command] if args.key?(:command)
           @depends_on = args[:depends_on] if args.key?(:depends_on)
           @env = args[:env] if args.key?(:env)
@@ -539,6 +656,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Email address of the authenticated creator.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
         # Output only. For a deleted resource, the deletion time. It is only populated
         # as a response to a Delete request.
         # Corresponds to the JSON property `deleteTime`
@@ -689,6 +811,7 @@ module Google
           @completion_time = args[:completion_time] if args.key?(:completion_time)
           @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
@@ -2232,6 +2355,12 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization]
         attr_accessor :binary_authorization
       
+        # Describes the Build step of the function that builds a container from the
+        # given source.
+        # Corresponds to the JSON property `buildConfig`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2BuildConfig]
+        attr_accessor :build_config
+      
         # Arbitrary identifier for the API client.
         # Corresponds to the JSON property `client`
         # @return [String]
@@ -2469,6 +2598,7 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
+          @build_config = args[:build_config] if args.key?(:build_config)
           @client = args[:client] if args.key?(:client)
           @client_version = args[:client_version] if args.key?(:client_version)
           @conditions = args[:conditions] if args.key?(:conditions)
@@ -3407,6 +3537,13 @@ module Google
       class GoogleDevtoolsCloudbuildV1Artifacts
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of Go modules to be uploaded to Artifact Registry upon
+        # successful completion of all build steps. If any objects fail to be pushed,
+        # the build is marked FAILURE.
+        # Corresponds to the JSON property `goModules`
+        # @return [Array<Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GoModule>]
+        attr_accessor :go_modules
+      
         # A list of images to be pushed upon the successful completion of all build
         # steps. The images will be pushed using the builder service account's
         # credentials. The digests of the pushed images will be stored in the Build
@@ -3454,6 +3591,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
@@ -3789,6 +3927,13 @@ module Google
         attr_accessor :dynamic_substitutions
         alias_method :dynamic_substitutions?, :dynamic_substitutions
       
+        # Optional. Option to specify whether structured logging is enabled. If true,
+        # JSON-formatted logs are parsed as structured logs.
+        # Corresponds to the JSON property `enableStructuredLogging`
+        # @return [Boolean]
+        attr_accessor :enable_structured_logging
+        alias_method :enable_structured_logging?, :enable_structured_logging
+      
         # A list of global environment variable definitions that will exist for all
         # build steps in this build. If a variable is defined in both globally and in a
         # build step, the variable will use the build step value. The elements are of
@@ -3870,6 +4015,7 @@ module Google
           @default_logs_bucket_behavior = args[:default_logs_bucket_behavior] if args.key?(:default_logs_bucket_behavior)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @dynamic_substitutions = args[:dynamic_substitutions] if args.key?(:dynamic_substitutions)
+          @enable_structured_logging = args[:enable_structured_logging] if args.key?(:enable_structured_logging)
           @env = args[:env] if args.key?(:env)
           @log_streaming_option = args[:log_streaming_option] if args.key?(:log_streaming_option)
           @logging = args[:logging] if args.key?(:logging)
@@ -4253,6 +4399,64 @@ module Google
         end
       end
       
+      # Go module to upload to Artifact Registry upon successful completion of all
+      # build steps. A module refers to all dependencies in a go.mod file.
+      class GoogleDevtoolsCloudbuildV1GoModule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Go module's "module path". e.g. example.com/foo/v2
+        # Corresponds to the JSON property `modulePath`
+        # @return [String]
+        attr_accessor :module_path
+      
+        # Optional. The Go module's semantic version in the form vX.Y.Z. e.g. v0.1.1 Pre-
+        # release identifiers can also be added by appending a dash and dot separated
+        # ASCII alphanumeric characters and hyphens. e.g. v0.2.3-alpha.x.12m.5
+        # Corresponds to the JSON property `moduleVersion`
+        # @return [String]
+        attr_accessor :module_version
+      
+        # Optional. Location of the Artifact Registry repository. i.e. us-east1 Defaults
+        # to the build’s location.
+        # Corresponds to the JSON property `repositoryLocation`
+        # @return [String]
+        attr_accessor :repository_location
+      
+        # Optional. Artifact Registry repository name. Specified Go modules will be
+        # zipped and uploaded to Artifact Registry with this location as a prefix. e.g.
+        # my-go-repo
+        # Corresponds to the JSON property `repositoryName`
+        # @return [String]
+        attr_accessor :repository_name
+      
+        # Optional. Project ID of the Artifact Registry repository. Defaults to the
+        # build project.
+        # Corresponds to the JSON property `repositoryProjectId`
+        # @return [String]
+        attr_accessor :repository_project_id
+      
+        # Optional. Source path of the go.mod file in the build's workspace. If not
+        # specified, this will default to the current directory. e.g. ~/code/go/
+        # mypackage
+        # Corresponds to the JSON property `sourcePath`
+        # @return [String]
+        attr_accessor :source_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @module_path = args[:module_path] if args.key?(:module_path)
+          @module_version = args[:module_version] if args.key?(:module_version)
+          @repository_location = args[:repository_location] if args.key?(:repository_location)
+          @repository_name = args[:repository_name] if args.key?(:repository_name)
+          @repository_project_id = args[:repository_project_id] if args.key?(:repository_project_id)
+          @source_path = args[:source_path] if args.key?(:source_path)
+        end
+      end
+      
       # Container message for hash values.
       class GoogleDevtoolsCloudbuildV1Hash
         include Google::Apis::Core::Hashable
@@ -4561,6 +4765,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :build_step_outputs
       
+        # Optional. Go module artifacts uploaded to Artifact Registry at the end of the
+        # build.
+        # Corresponds to the JSON property `goModules`
+        # @return [Array<Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGoModule>]
+        attr_accessor :go_modules
+      
         # Container images that were built as a part of the build.
         # Corresponds to the JSON property `images`
         # @return [Array<Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuiltImage>]
@@ -4597,6 +4807,7 @@ module Google
           @artifact_timing = args[:artifact_timing] if args.key?(:artifact_timing)
           @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
           @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
+          @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
@@ -4897,6 +5108,39 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # A Go module artifact uploaded to Artifact Registry using the GoModule
+      # directive.
+      class GoogleDevtoolsCloudbuildV1UploadedGoModule
+        include Google::Apis::Core::Hashable
+      
+        # Container message for hashes of byte content of files, used in
+        # SourceProvenance messages to verify integrity of source input to the build.
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes]
+        attr_accessor :file_hashes
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan]
+        attr_accessor :push_timing
+      
+        # URI of the uploaded artifact.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -5647,13 +5891,16 @@ module Google
       
         # The canonical error code (see codes.proto) that most closely corresponds to
         # this status. This may be missing, and in the common case of the generic space,
-        # it definitely will be.
+        # it definitely will be. copybara:strip_begin(b/383363683) copybara:
+        # strip_end_and_replace optional int32 canonical_code = 6;
         # Corresponds to the JSON property `canonicalCode`
         # @return [Fixnum]
         attr_accessor :canonical_code
       
         # Numeric code drawn from the space specified below. Often, this is the
         # canonical error space, and code is drawn from google3/util/task/codes.proto
+        # copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional
+        # int32 code = 1;
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
@@ -5670,7 +5917,8 @@ module Google
         attr_accessor :message_set
       
         # The following are usually only present when code != 0 Space to which this
-        # status belongs
+        # status belongs copybara:strip_begin(b/383363683) copybara:
+        # strip_end_and_replace optional string space = 2;
         # Corresponds to the JSON property `space`
         # @return [String]
         attr_accessor :space
