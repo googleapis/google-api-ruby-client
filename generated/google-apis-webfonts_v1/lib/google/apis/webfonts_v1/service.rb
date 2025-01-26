@@ -56,6 +56,9 @@ module Google
         # @param [Array<String>, String] capability
         #   Controls the font urls in `Webfont.files`, by default, static ttf fonts are
         #   sent.
+        # @param [String] category
+        #   Filters by Webfont.category, if category is found in Webfont.categories. If
+        #   not set, returns all families.
         # @param [Array<String>, String] family
         #   Filters by Webfont.family, using literal match. If not set, returns all
         #   families
@@ -81,11 +84,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_webfonts(capability: nil, family: nil, sort: nil, subset: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_webfonts(capability: nil, category: nil, family: nil, sort: nil, subset: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/webfonts', options)
           command.response_representation = Google::Apis::WebfontsV1::WebfontList::Representation
           command.response_class = Google::Apis::WebfontsV1::WebfontList
           command.query['capability'] = capability unless capability.nil?
+          command.query['category'] = category unless category.nil?
           command.query['family'] = family unless family.nil?
           command.query['sort'] = sort unless sort.nil?
           command.query['subset'] = subset unless subset.nil?
