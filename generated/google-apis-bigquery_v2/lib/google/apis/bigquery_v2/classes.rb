@@ -6444,7 +6444,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. This option declares the intention to construct a materialized view
-        # that isn't refreshed incrementally.
+        # that isn't refreshed incrementally. Non-incremental materialized views support
+        # an expanded range of SQL queries. The `allow_non_incremental_definition`
+        # option can't be changed after the materialized view is created.
         # Corresponds to the JSON property `allowNonIncrementalDefinition`
         # @return [Boolean]
         attr_accessor :allow_non_incremental_definition
@@ -7693,10 +7695,22 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
+        # Output only. Creation time of this query, in milliseconds since the epoch.
+        # This field will be present on all queries.
+        # Corresponds to the JSON property `creationTime`
+        # @return [Fixnum]
+        attr_accessor :creation_time
+      
         # Detailed statistics for DML statements
         # Corresponds to the JSON property `dmlStats`
         # @return [Google::Apis::BigqueryV2::DmlStatistics]
         attr_accessor :dml_stats
+      
+        # Output only. End time of this query, in milliseconds since the epoch. This
+        # field will be present whenever a query job is in the DONE state.
+        # Corresponds to the JSON property `endTime`
+        # @return [Fixnum]
+        attr_accessor :end_time
       
         # Output only. The first errors or warnings encountered during the running of
         # the job. The final message includes the number of errors that caused the
@@ -7733,6 +7747,12 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # Output only. The geographic location of the query. For more information about
+        # BigQuery locations, see: https://cloud.google.com/bigquery/docs/locations
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
       
         # Output only. The number of rows affected by a DML statement. Present only for
         # DML statements INSERT, UPDATE or DELETE.
@@ -7772,6 +7792,21 @@ module Google
         # @return [Google::Apis::BigqueryV2::SessionInfo]
         attr_accessor :session_info
       
+        # Output only. Start time of this query, in milliseconds since the epoch. This
+        # field will be present when the query job transitions from the PENDING state to
+        # either RUNNING or DONE.
+        # Corresponds to the JSON property `startTime`
+        # @return [Fixnum]
+        attr_accessor :start_time
+      
+        # Output only. If the project is configured to use on-demand pricing, then this
+        # field contains the total bytes billed for the job. If the project is
+        # configured to use flat-rate pricing, then you are not billed for bytes and
+        # this field is informational only.
+        # Corresponds to the JSON property `totalBytesBilled`
+        # @return [Fixnum]
+        attr_accessor :total_bytes_billed
+      
         # The total number of bytes processed for this query. If this query was a dry
         # run, this is the number of bytes that would be processed if the query were run.
         # Corresponds to the JSON property `totalBytesProcessed`
@@ -7784,6 +7819,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_rows
       
+        # Output only. Number of slot ms the user is actually billed for.
+        # Corresponds to the JSON property `totalSlotMs`
+        # @return [Fixnum]
+        attr_accessor :total_slot_ms
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7791,20 +7831,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
           @dml_stats = args[:dml_stats] if args.key?(:dml_stats)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @errors = args[:errors] if args.key?(:errors)
           @job_complete = args[:job_complete] if args.key?(:job_complete)
           @job_creation_reason = args[:job_creation_reason] if args.key?(:job_creation_reason)
           @job_reference = args[:job_reference] if args.key?(:job_reference)
           @kind = args[:kind] if args.key?(:kind)
+          @location = args[:location] if args.key?(:location)
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
           @page_token = args[:page_token] if args.key?(:page_token)
           @query_id = args[:query_id] if args.key?(:query_id)
           @rows = args[:rows] if args.key?(:rows)
           @schema = args[:schema] if args.key?(:schema)
           @session_info = args[:session_info] if args.key?(:session_info)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_rows = args[:total_rows] if args.key?(:total_rows)
+          @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
         end
       end
       
