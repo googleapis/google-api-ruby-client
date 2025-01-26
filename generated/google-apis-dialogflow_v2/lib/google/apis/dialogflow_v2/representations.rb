@@ -1324,6 +1324,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2AudioInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2AutomatedAgentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3546,6 +3552,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
           property :data_store_type, as: 'dataStoreType'
+          property :document_processing_mode, as: 'documentProcessingMode'
         end
       end
       
@@ -4547,6 +4554,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_store, as: 'dataStore'
           property :data_store_type, as: 'dataStoreType'
+          property :document_processing_mode, as: 'documentProcessingMode'
         end
       end
       
@@ -5508,6 +5516,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters::Representation
       
+          property :audio_input, as: 'audioInput', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AudioInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AudioInput::Representation
+      
           hash :cx_parameters, as: 'cxParameters'
           property :event_input, as: 'eventInput', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EventInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EventInput::Representation
       
@@ -5598,6 +5608,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :documents_metadata_filters, as: 'documentsMetadataFilters'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2AudioInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio, :base64 => true, as: 'audio'
+          property :config, as: 'config', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputAudioConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputAudioConfig::Representation
+      
         end
       end
       

@@ -547,6 +547,13 @@ module Google
         # @return [String]
         attr_accessor :data_store_type
       
+        # The document processing mode for the data store connection. Should only be set
+        # for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as
+        # DOCUMENTS, as this is the legacy mode.
+        # Corresponds to the JSON property `documentProcessingMode`
+        # @return [String]
+        attr_accessor :document_processing_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -555,6 +562,7 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
+          @document_processing_mode = args[:document_processing_mode] if args.key?(:document_processing_mode)
         end
       end
       
@@ -4277,6 +4285,13 @@ module Google
         # @return [String]
         attr_accessor :data_store_type
       
+        # The document processing mode for the data store connection. Should only be set
+        # for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as
+        # DOCUMENTS, as this is the legacy mode.
+        # Corresponds to the JSON property `documentProcessingMode`
+        # @return [String]
+        attr_accessor :document_processing_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4285,6 +4300,7 @@ module Google
         def update!(**args)
           @data_store = args[:data_store] if args.key?(:data_store)
           @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
+          @document_processing_mode = args[:document_processing_mode] if args.key?(:document_processing_mode)
         end
       end
       
@@ -7879,6 +7895,11 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters]
         attr_accessor :assist_query_params
       
+        # Represents the natural language speech audio to be processed.
+        # Corresponds to the JSON property `audioInput`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AudioInput]
+        attr_accessor :audio_input
+      
         # Additional parameters to be put into Dialogflow CX session parameters. To
         # remove a parameter from the session, clients should explicitly set the
         # parameter value to null. Note: this field should only be used if you are
@@ -7931,6 +7952,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assist_query_params = args[:assist_query_params] if args.key?(:assist_query_params)
+          @audio_input = args[:audio_input] if args.key?(:audio_input)
           @cx_parameters = args[:cx_parameters] if args.key?(:cx_parameters)
           @event_input = args[:event_input] if args.key?(:event_input)
           @query_params = args[:query_params] if args.key?(:query_params)
@@ -8241,6 +8263,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @documents_metadata_filters = args[:documents_metadata_filters] if args.key?(:documents_metadata_filters)
+        end
+      end
+      
+      # Represents the natural language speech audio to be processed.
+      class GoogleCloudDialogflowV2AudioInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. The natural language speech audio to be processed. A single request
+        # can contain up to 2 minutes of speech audio data. The transcribed text cannot
+        # contain more than 256 bytes for virtual agent interactions.
+        # Corresponds to the JSON property `audio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :audio
+      
+        # Instructs the speech recognizer how to process the audio content.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputAudioConfig]
+        attr_accessor :config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio = args[:audio] if args.key?(:audio)
+          @config = args[:config] if args.key?(:config)
         end
       end
       
