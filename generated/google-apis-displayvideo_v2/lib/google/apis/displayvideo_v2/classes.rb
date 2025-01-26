@@ -144,11 +144,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
-        # Billing related settings of an advertiser.
-        # Corresponds to the JSON property `billingConfig`
-        # @return [Google::Apis::DisplayvideoV2::AdvertiserBillingConfig]
-        attr_accessor :billing_config
-      
         # Creatives related settings of an advertiser.
         # Corresponds to the JSON property `creativeConfig`
         # @return [Google::Apis::DisplayvideoV2::AdvertiserCreativeConfig]
@@ -225,7 +220,6 @@ module Google
         def update!(**args)
           @ad_server_config = args[:ad_server_config] if args.key?(:ad_server_config)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
-          @billing_config = args[:billing_config] if args.key?(:billing_config)
           @creative_config = args[:creative_config] if args.key?(:creative_config)
           @data_access_config = args[:data_access_config] if args.key?(:data_access_config)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -263,25 +257,6 @@ module Google
         def update!(**args)
           @cm_hybrid_config = args[:cm_hybrid_config] if args.key?(:cm_hybrid_config)
           @third_party_only_config = args[:third_party_only_config] if args.key?(:third_party_only_config)
-        end
-      end
-      
-      # Billing related settings of an advertiser.
-      class AdvertiserBillingConfig
-        include Google::Apis::Core::Hashable
-      
-        # Required. The ID of a billing profile assigned to the advertiser.
-        # Corresponds to the JSON property `billingProfileId`
-        # @return [Fixnum]
-        attr_accessor :billing_profile_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @billing_profile_id = args[:billing_profile_id] if args.key?(:billing_profile_id)
         end
       end
       
@@ -788,7 +763,7 @@ module Google
         # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
         # except for excluded_first_and_third_party_audience_group and
         # excluded_google_audience_group, of which COMPLEMENT is used as an INTERSECTION
-        # with other groups.
+        # with other groups. NEXT_ID: 9
         # Corresponds to the JSON property `audienceGroupDetails`
         # @return [Google::Apis::DisplayvideoV2::AudienceGroupAssignedTargetingOptionDetails]
         attr_accessor :audience_group_details
@@ -1233,15 +1208,9 @@ module Google
       # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
       # except for excluded_first_and_third_party_audience_group and
       # excluded_google_audience_group, of which COMPLEMENT is used as an INTERSECTION
-      # with other groups.
+      # with other groups. NEXT_ID: 9
       class AudienceGroupAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
-      
-        # Details of first and third party audience group. All first and third party
-        # audience targeting settings are logically ‘OR’ of each other.
-        # Corresponds to the JSON property `excludedFirstAndThirdPartyAudienceGroup`
-        # @return [Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudienceGroup]
-        attr_accessor :excluded_first_and_third_party_audience_group
       
         # Details of Google audience group. All Google audience targeting settings are
         # logically ‘OR’ of each other.
@@ -1261,16 +1230,6 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::CustomListGroup]
         attr_accessor :included_custom_list_group
       
-        # The first and third party audience ids and recencies of included first and
-        # third party audience groups. Each first and third party audience group
-        # contains first and third party audience ids only. The relation between each
-        # first and third party audience group is INTERSECTION, and the result is UNION'
-        # ed with other audience groups. Repeated groups with same settings will be
-        # ignored.
-        # Corresponds to the JSON property `includedFirstAndThirdPartyAudienceGroups`
-        # @return [Array<Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudienceGroup>]
-        attr_accessor :included_first_and_third_party_audience_groups
-      
         # Details of Google audience group. All Google audience targeting settings are
         # logically ‘OR’ of each other.
         # Corresponds to the JSON property `includedGoogleAudienceGroup`
@@ -1283,11 +1242,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @excluded_first_and_third_party_audience_group = args[:excluded_first_and_third_party_audience_group] if args.key?(:excluded_first_and_third_party_audience_group)
           @excluded_google_audience_group = args[:excluded_google_audience_group] if args.key?(:excluded_google_audience_group)
           @included_combined_audience_group = args[:included_combined_audience_group] if args.key?(:included_combined_audience_group)
           @included_custom_list_group = args[:included_custom_list_group] if args.key?(:included_custom_list_group)
-          @included_first_and_third_party_audience_groups = args[:included_first_and_third_party_audience_groups] if args.key?(:included_first_and_third_party_audience_groups)
           @included_google_audience_group = args[:included_google_audience_group] if args.key?(:included_google_audience_group)
         end
       end
@@ -5210,56 +5167,6 @@ module Google
           @reporting_name = args[:reporting_name] if args.key?(:reporting_name)
           @type = args[:type] if args.key?(:type)
           @url = args[:url] if args.key?(:url)
-        end
-      end
-      
-      # Details of first and third party audience group. All first and third party
-      # audience targeting settings are logically ‘OR’ of each other.
-      class FirstAndThirdPartyAudienceGroup
-        include Google::Apis::Core::Hashable
-      
-        # Required. All first and third party audience targeting settings in first and
-        # third party audience group. Repeated settings with same id are not allowed.
-        # Corresponds to the JSON property `settings`
-        # @return [Array<Google::Apis::DisplayvideoV2::FirstAndThirdPartyAudienceTargetingSetting>]
-        attr_accessor :settings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @settings = args[:settings] if args.key?(:settings)
-        end
-      end
-      
-      # Details of first and third party audience targeting setting.
-      class FirstAndThirdPartyAudienceTargetingSetting
-        include Google::Apis::Core::Hashable
-      
-        # Required. First and third party audience id of the first and third party
-        # audience targeting setting. This id is first_and_third_party_audience_id.
-        # Corresponds to the JSON property `firstAndThirdPartyAudienceId`
-        # @return [Fixnum]
-        attr_accessor :first_and_third_party_audience_id
-      
-        # The recency of the first and third party audience targeting setting. Only
-        # applicable to first party audiences, otherwise will be ignored. For more info,
-        # refer to https://support.google.com/displayvideo/answer/2949947#recency When
-        # unspecified, no recency limit will be used.
-        # Corresponds to the JSON property `recency`
-        # @return [String]
-        attr_accessor :recency
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @first_and_third_party_audience_id = args[:first_and_third_party_audience_id] if args.key?(:first_and_third_party_audience_id)
-          @recency = args[:recency] if args.key?(:recency)
         end
       end
       
