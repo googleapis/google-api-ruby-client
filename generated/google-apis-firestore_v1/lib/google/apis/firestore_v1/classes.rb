@@ -2079,6 +2079,11 @@ module Google
         # @return [String]
         attr_accessor :api_scope
       
+        # Immutable. The density configuration of the index.
+        # Corresponds to the JSON property `density`
+        # @return [String]
+        attr_accessor :density
+      
         # The fields supported by this index. For composite indexes, this requires a
         # minimum of 2 and a maximum of 100 fields. The last field entry is always for
         # the field path `__name__`. If, on creation, `__name__` was not specified as
@@ -2090,6 +2095,17 @@ module Google
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexField>]
         attr_accessor :fields
+      
+        # Optional. Whether the index is multikey. By default, the index is not multikey.
+        # For non-multikey indexes, none of the paths in the index definition reach or
+        # traverse an array, except via an explicit array index. For multikey indexes,
+        # at most one of the paths in the index definition reach or traverse an array,
+        # except via an explicit array index. Violations will result in errors. Note
+        # this field only applies to index with IGNITE_API ApiScope.
+        # Corresponds to the JSON property `multikey`
+        # @return [Boolean]
+        attr_accessor :multikey
+        alias_method :multikey?, :multikey
       
         # Output only. A server defined name for this index. The form of this name for
         # composite indexes will be: `projects/`project_id`/databases/`database_id`/
@@ -2121,7 +2137,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_scope = args[:api_scope] if args.key?(:api_scope)
+          @density = args[:density] if args.key?(:density)
           @fields = args[:fields] if args.key?(:fields)
+          @multikey = args[:multikey] if args.key?(:multikey)
           @name = args[:name] if args.key?(:name)
           @query_scope = args[:query_scope] if args.key?(:query_scope)
           @state = args[:state] if args.key?(:state)
