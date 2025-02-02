@@ -3533,9 +3533,14 @@ module Google
       
         # The Linux kernel parameters to be applied to the nodes and all pods running on
         # the nodes. The following parameters are supported. net.core.busy_poll net.core.
-        # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default
-        # net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.
-        # ipv4.tcp_wmem net.ipv4.tcp_tw_reuse kernel.shmmni kernel.shmmax kernel.shmall
+        # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.rmem_default
+        # net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn
+        # net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.netfilter.
+        # nf_conntrack_max net.netfilter.nf_conntrack_buckets net.netfilter.
+        # nf_conntrack_tcp_timeout_close_wait net.netfilter.
+        # nf_conntrack_tcp_timeout_time_wait net.netfilter.
+        # nf_conntrack_tcp_timeout_established net.netfilter.nf_conntrack_acct kernel.
+        # shmmni kernel.shmmax kernel.shmall vm.max_map_count
         # Corresponds to the JSON property `sysctls`
         # @return [Hash<String,String>]
         attr_accessor :sysctls
@@ -4734,6 +4739,37 @@ module Google
       class NodeKubeletConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Defines a comma-separated allowlist of unsafe sysctls or sysctl
+        # patterns (ending in `*`). The unsafe namespaced sysctl groups are `kernel.shm*`
+        # , `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`. Leaving this
+        # allowlist empty means they cannot be set on Pods. To allow certain sysctls or
+        # sysctl patterns to be set on Pods, list them separated by commas. For example:
+        # `kernel.msg*,net.ipv4.route.min_pmtu`. See https://kubernetes.io/docs/tasks/
+        # administer-cluster/sysctl-cluster/ for more details.
+        # Corresponds to the JSON property `allowedUnsafeSysctls`
+        # @return [Array<String>]
+        attr_accessor :allowed_unsafe_sysctls
+      
+        # Optional. Defines the maximum number of container log files that can be
+        # present for a container. See https://kubernetes.io/docs/concepts/cluster-
+        # administration/logging/#log-rotation The value must be an integer between 2
+        # and 10, inclusive. The default value is 5 if unspecified.
+        # Corresponds to the JSON property `containerLogMaxFiles`
+        # @return [Fixnum]
+        attr_accessor :container_log_max_files
+      
+        # Optional. Defines the maximum size of the container log file before it is
+        # rotated. See https://kubernetes.io/docs/concepts/cluster-administration/
+        # logging/#log-rotation Valid format is positive number + unit, e.g. 100Ki, 10Mi.
+        # Valid units are Ki, Mi, Gi. The value must be between 10Mi and 500Mi,
+        # inclusive. Note that the total container log size (container_log_max_size *
+        # container_log_max_files) cannot exceed 1% of the total storage of the node, to
+        # avoid disk pressure caused by log files. The default value is 10Mi if
+        # unspecified.
+        # Corresponds to the JSON property `containerLogMaxSize`
+        # @return [String]
+        attr_accessor :container_log_max_size
+      
         # Enable CPU CFS quota enforcement for containers that specify CPU limits. This
         # option is enabled by default which makes kubelet use CFS quota (https://www.
         # kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU
@@ -4764,6 +4800,44 @@ module Google
         # @return [String]
         attr_accessor :cpu_manager_policy
       
+        # Optional. Defines the percent of disk usage after which image garbage
+        # collection is always run. The percent is calculated as this field value out of
+        # 100. The value must be between 10 and 85, inclusive and greater than
+        # image_gc_low_threshold_percent. The default value is 85 if unspecified.
+        # Corresponds to the JSON property `imageGcHighThresholdPercent`
+        # @return [Fixnum]
+        attr_accessor :image_gc_high_threshold_percent
+      
+        # Optional. Defines the percent of disk usage before which image garbage
+        # collection is never run. Lowest disk usage to garbage collect to. The percent
+        # is calculated as this field value out of 100. The value must be between 10 and
+        # 85, inclusive and smaller than image_gc_high_threshold_percent. The default
+        # value is 80 if unspecified.
+        # Corresponds to the JSON property `imageGcLowThresholdPercent`
+        # @return [Fixnum]
+        attr_accessor :image_gc_low_threshold_percent
+      
+        # Optional. Defines the maximum age an image can be unused before it is garbage
+        # collected. The string must be a sequence of decimal numbers, each with
+        # optional fraction and a unit suffix, such as "300s", "1.5h", and "2h45m".
+        # Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must
+        # be a positive duration greater than image_minimum_gc_age or "0s". The default
+        # value is "0s" if unspecified, which disables this field, meaning images won't
+        # be garbage collected based on being unused for too long.
+        # Corresponds to the JSON property `imageMaximumGcAge`
+        # @return [String]
+        attr_accessor :image_maximum_gc_age
+      
+        # Optional. Defines the minimum age for an unused image before it is garbage
+        # collected. The string must be a sequence of decimal numbers, each with
+        # optional fraction and a unit suffix, such as "300s", "1.5h", and "2h45m".
+        # Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must
+        # be a positive duration less than or equal to 2 minutes. The default value is "
+        # 2m0s" if unspecified.
+        # Corresponds to the JSON property `imageMinimumGcAge`
+        # @return [String]
+        attr_accessor :image_minimum_gc_age
+      
         # Enable or disable Kubelet read only port.
         # Corresponds to the JSON property `insecureKubeletReadonlyPortEnabled`
         # @return [Boolean]
@@ -4784,9 +4858,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_unsafe_sysctls = args[:allowed_unsafe_sysctls] if args.key?(:allowed_unsafe_sysctls)
+          @container_log_max_files = args[:container_log_max_files] if args.key?(:container_log_max_files)
+          @container_log_max_size = args[:container_log_max_size] if args.key?(:container_log_max_size)
           @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
           @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
           @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
+          @image_gc_high_threshold_percent = args[:image_gc_high_threshold_percent] if args.key?(:image_gc_high_threshold_percent)
+          @image_gc_low_threshold_percent = args[:image_gc_low_threshold_percent] if args.key?(:image_gc_low_threshold_percent)
+          @image_maximum_gc_age = args[:image_maximum_gc_age] if args.key?(:image_maximum_gc_age)
+          @image_minimum_gc_age = args[:image_minimum_gc_age] if args.key?(:image_minimum_gc_age)
           @insecure_kubelet_readonly_port_enabled = args[:insecure_kubelet_readonly_port_enabled] if args.key?(:insecure_kubelet_readonly_port_enabled)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
         end
