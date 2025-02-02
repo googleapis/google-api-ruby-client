@@ -2422,7 +2422,7 @@ module Google
         attr_accessor :etag
       
         # Output only. For a deleted resource, the time after which it will be
-        # permamently deleted.
+        # permanently deleted.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
@@ -2515,7 +2515,7 @@ module Google
         # an existing one is updated, Cloud Run will asynchronously perform all
         # necessary steps to bring the Service to the desired serving state. This
         # process is called reconciliation. While reconciliation is in process, `
-        # observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri`
+        # observed_generation`, `latest_ready_revision`, `traffic_statuses`, and `uri`
         # will have transient values that might mismatch the intended state: Once
         # reconciliation is over (and this field is false), there are two possible
         # outcomes: reconciliation succeeded and the serving state matches the Service,
