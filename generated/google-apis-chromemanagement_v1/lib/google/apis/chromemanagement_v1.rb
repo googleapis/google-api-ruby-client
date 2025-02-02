@@ -34,6 +34,12 @@ module Google
       # See detailed information about apps installed on Chrome browsers and devices managed by your organization
       AUTH_CHROME_MANAGEMENT_APPDETAILS_READONLY = 'https://www.googleapis.com/auth/chrome.management.appdetails.readonly'
 
+      # See, edit, delete, and take other necessary actions on Chrome browser profiles managed by your organization
+      AUTH_CHROME_MANAGEMENT_PROFILES = 'https://www.googleapis.com/auth/chrome.management.profiles'
+
+      # See Chrome browser profiles managed by your organization
+      AUTH_CHROME_MANAGEMENT_PROFILES_READONLY = 'https://www.googleapis.com/auth/chrome.management.profiles.readonly'
+
       # See reports about devices and Chrome browsers managed within your organization
       AUTH_CHROME_MANAGEMENT_REPORTS_READONLY = 'https://www.googleapis.com/auth/chrome.management.reports.readonly'
 
