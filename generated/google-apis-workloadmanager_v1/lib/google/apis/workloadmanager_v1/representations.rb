@@ -658,6 +658,7 @@ module Google
           property :project_number, as: 'projectNumber'
           property :system_id, as: 'systemId'
           property :update_time, as: 'updateTime'
+          property :use_dr_reconciliation, as: 'useDrReconciliation'
           property :workload_properties, as: 'workloadProperties', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryWorkloadProperties, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryWorkloadProperties::Representation
       
         end
@@ -703,6 +704,7 @@ module Google
           property :database_type, as: 'databaseType'
           property :database_version, as: 'databaseVersion'
           property :instance_number, as: 'instanceNumber'
+          property :landscape_id, as: 'landscapeId'
           property :primary_instance_uri, as: 'primaryInstanceUri'
           property :shared_nfs_uri, as: 'sharedNfsUri'
         end
