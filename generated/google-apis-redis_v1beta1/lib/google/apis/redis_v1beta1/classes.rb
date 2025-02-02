@@ -276,6 +276,11 @@ module Google
         # @return [String]
         attr_accessor :cluster_uid
       
+        # Output only. The time when the backup collection was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Output only. The KMS key used to encrypt the backups under this backup
         # collection.
         # Corresponds to the JSON property `kmsKey`
@@ -300,6 +305,7 @@ module Google
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
           @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @name = args[:name] if args.key?(:name)
           @uid = args[:uid] if args.key?(:uid)
