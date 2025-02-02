@@ -22,18 +22,6 @@ module Google
   module Apis
     module GkehubV1alpha
       
-      class AnthosObservabilityFeatureSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AnthosObservabilityMembershipSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppDevExperienceFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1126,23 +1114,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AnthosObservabilityFeatureSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :default_membership_spec, as: 'defaultMembershipSpec', class: Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec::Representation
-      
-        end
-      end
-      
-      class AnthosObservabilityMembershipSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :do_not_optimize_metrics, as: 'doNotOptimizeMetrics'
-          property :enable_stackdriver_on_applications, as: 'enableStackdriverOnApplications'
-          property :version, as: 'version'
-        end
-      end
-      
       class AppDevExperienceFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1374,8 +1345,6 @@ module Google
       class CommonFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :anthosobservability, as: 'anthosobservability', class: Google::Apis::GkehubV1alpha::AnthosObservabilityFeatureSpec, decorator: Google::Apis::GkehubV1alpha::AnthosObservabilityFeatureSpec::Representation
-      
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1alpha::AppDevExperienceFeatureSpec, decorator: Google::Apis::GkehubV1alpha::AppDevExperienceFeatureSpec::Representation
       
           property :cloudauditlogging, as: 'cloudauditlogging', class: Google::Apis::GkehubV1alpha::CloudAuditLoggingFeatureSpec, decorator: Google::Apis::GkehubV1alpha::CloudAuditLoggingFeatureSpec::Representation
@@ -2400,8 +2369,6 @@ module Google
       class MembershipFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :anthosobservability, as: 'anthosobservability', class: Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec::Representation
-      
           property :cloudbuild, as: 'cloudbuild', class: Google::Apis::GkehubV1alpha::CloudBuildMembershipSpec, decorator: Google::Apis::GkehubV1alpha::CloudBuildMembershipSpec::Representation
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec::Representation
