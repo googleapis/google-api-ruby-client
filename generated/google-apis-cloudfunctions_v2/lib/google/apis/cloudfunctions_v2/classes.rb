@@ -636,6 +636,12 @@ module Google
         attr_accessor :name
       
         # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -663,8 +669,7 @@ module Google
         attr_accessor :update_time
       
         # Information related to: * A function's eligibility for 1st Gen to 2nd Gen
-        # migration and 2nd Gen to CRf detach. * Current state of migration for function
-        # undergoing migration/detach.
+        # migration. * Current state of migration for function undergoing migration.
         # Corresponds to the JSON property `upgradeInfo`
         # @return [Google::Apis::CloudfunctionsV2::UpgradeInfo]
         attr_accessor :upgrade_info
@@ -688,6 +693,7 @@ module Google
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_config = args[:service_config] if args.key?(:service_config)
           @state = args[:state] if args.key?(:state)
@@ -2061,8 +2067,7 @@ module Google
       end
       
       # Information related to: * A function's eligibility for 1st Gen to 2nd Gen
-      # migration and 2nd Gen to CRf detach. * Current state of migration for function
-      # undergoing migration/detach.
+      # migration. * Current state of migration for function undergoing migration.
       class UpgradeInfo
         include Google::Apis::Core::Hashable
       
