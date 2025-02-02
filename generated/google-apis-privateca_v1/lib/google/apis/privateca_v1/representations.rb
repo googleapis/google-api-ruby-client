@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserDefinedAccessUrls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class X509Extension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -569,6 +575,8 @@ module Google
           property :tier, as: 'tier'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+          property :user_defined_access_urls, as: 'userDefinedAccessUrls', class: Google::Apis::PrivatecaV1::UserDefinedAccessUrls, decorator: Google::Apis::PrivatecaV1::UserDefinedAccessUrls::Representation
+      
         end
       end
       
@@ -1112,6 +1120,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
+        end
+      end
+      
+      class UserDefinedAccessUrls
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aia_issuing_certificate_urls, as: 'aiaIssuingCertificateUrls'
+          collection :crl_access_urls, as: 'crlAccessUrls'
         end
       end
       
