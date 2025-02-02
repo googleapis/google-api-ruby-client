@@ -3150,7 +3150,7 @@ module Google
       class Page
         include Google::Apis::Core::Hashable
       
-        # The Markdown content of the page. You can use (== include `path` ==) to
+        # The Markdown content of the page. You can use ```(== include `path` ==)``` to
         # include content from a Markdown file. The content can be used to produce the
         # documentation page such as HTML format page.
         # Corresponds to the JSON property `content`
