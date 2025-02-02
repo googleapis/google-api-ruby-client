@@ -195,6 +195,11 @@ module Google
       class Annotation
         include Google::Apis::Core::Hashable
       
+        # Annotation metadata for custom emoji.
+        # Corresponds to the JSON property `customEmojiMetadata`
+        # @return [Google::Apis::ChatV1::CustomEmojiMetadata]
+        attr_accessor :custom_emoji_metadata
+      
         # Length of the substring in the plain-text message body this annotation
         # corresponds to.
         # Corresponds to the JSON property `length`
@@ -233,6 +238,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_emoji_metadata = args[:custom_emoji_metadata] if args.key?(:custom_emoji_metadata)
           @length = args[:length] if args.key?(:length)
           @rich_link_metadata = args[:rich_link_metadata] if args.key?(:rich_link_metadata)
           @slash_command = args[:slash_command] if args.key?(:slash_command)
@@ -843,6 +849,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Annotation metadata for custom emoji.
+      class CustomEmojiMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Represents a custom emoji.
+        # Corresponds to the JSON property `customEmoji`
+        # @return [Google::Apis::ChatV1::CustomEmoji]
+        attr_accessor :custom_emoji
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_emoji = args[:custom_emoji] if args.key?(:custom_emoji)
         end
       end
       

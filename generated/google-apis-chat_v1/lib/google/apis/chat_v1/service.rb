@@ -1442,10 +1442,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a reaction and adds it to a message. Only unicode emojis are supported.
-        # For an example, see [Add a reaction to a message](https://developers.google.
-        # com/workspace/chat/create-reactions). Requires [user authentication](https://
-        # developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        # Creates a reaction and adds it to a message. For an example, see [Add a
+        # reaction to a message](https://developers.google.com/workspace/chat/create-
+        # reactions). Requires [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user).
         # @param [String] parent
         #   Required. The message where the reaction is created. Format: `spaces/`space`/
         #   messages/`message``
@@ -1479,10 +1479,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a reaction to a message. Only unicode emojis are supported. For an
-        # example, see [Delete a reaction](https://developers.google.com/workspace/chat/
-        # delete-reactions). Requires [user authentication](https://developers.google.
-        # com/workspace/chat/authenticate-authorize-chat-user).
+        # Deletes a reaction to a message. For an example, see [Delete a reaction](https:
+        # //developers.google.com/workspace/chat/delete-reactions). Requires [user
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user).
         # @param [String] name
         #   Required. Name of the reaction to delete. Format: `spaces/`space`/messages/`
         #   message`/reactions/`reaction``
