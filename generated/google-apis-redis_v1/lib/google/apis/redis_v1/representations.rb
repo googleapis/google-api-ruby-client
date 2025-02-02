@@ -608,6 +608,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
           property :cluster_uid, as: 'clusterUid'
+          property :create_time, as: 'createTime'
           property :kms_key, as: 'kmsKey'
           property :name, as: 'name'
           property :uid, as: 'uid'
