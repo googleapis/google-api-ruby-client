@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListQuotaRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListReplicationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +221,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotaRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -494,6 +506,9 @@ module Google
           property :command, as: 'command'
           property :command_expiry_time, as: 'commandExpiryTime'
           property :passphrase, as: 'passphrase'
+          property :peer_cluster_name, as: 'peerClusterName'
+          property :peer_svm_name, as: 'peerSvmName'
+          property :peer_volume_name, as: 'peerVolumeName'
           property :subnet_ip, as: 'subnetIp'
         end
       end
@@ -592,6 +607,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetappV1::Operation, decorator: Google::Apis::NetappV1::Operation::Representation
       
+        end
+      end
+      
+      class ListQuotaRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :quota_rules, as: 'quotaRules', class: Google::Apis::NetappV1::QuotaRule, decorator: Google::Apis::NetappV1::QuotaRule::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -696,6 +721,21 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class QuotaRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :disk_limit_mib, as: 'diskLimitMib'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :state_details, as: 'stateDetails'
+          property :target, as: 'target'
+          property :type, as: 'type'
         end
       end
       
