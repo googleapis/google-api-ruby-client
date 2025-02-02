@@ -223,6 +223,34 @@ module Google
         end
       end
       
+      # Instruction for adding a user to the account during creation.
+      class AddUser
+        include Google::Apis::Core::Hashable
+      
+        # The `User` message represents a user associated with a Merchant Center account.
+        # It is used to manage user permissions and access rights within the account.
+        # For more information, see [Frequently asked questions about people and access
+        # levels](//support.google.com/merchants/answer/12160472).
+        # Corresponds to the JSON property `user`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::User]
+        attr_accessor :user
+      
+        # Required. The email address of the user (for example, `john.doe@gmail.com`).
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user = args[:user] if args.key?(:user)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
       # Shipping address of the warehouse.
       class Address
         include Google::Apis::Core::Hashable
@@ -567,6 +595,12 @@ module Google
         attr_accessor :service
       
         # Optional. Users to be added to the account.
+        # Corresponds to the JSON property `user`
+        # @return [Array<Google::Apis::MerchantapiAccountsV1beta::AddUser>]
+        attr_accessor :user
+      
+        # Optional. Users to be added to the account. This field is deprecated and will
+        # not exist after the API evolves out of beta. Use the `user` field instead.
         # Corresponds to the JSON property `users`
         # @return [Array<Google::Apis::MerchantapiAccountsV1beta::CreateUserRequest>]
         attr_accessor :users
@@ -579,6 +613,7 @@ module Google
         def update!(**args)
           @account = args[:account] if args.key?(:account)
           @service = args[:service] if args.key?(:service)
+          @user = args[:user] if args.key?(:user)
           @users = args[:users] if args.key?(:users)
         end
       end
