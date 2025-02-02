@@ -1038,6 +1038,13 @@ module Google
         # @return [Float]
         attr_accessor :fixed_boost
       
+        # Specification for custom ranking based on customer specified attribute value.
+        # It provides more controls for customized ranking than the simple (condition,
+        # boost) combination above.
+        # Corresponds to the JSON property `interpolationBoostSpec`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec]
+        attr_accessor :interpolation_boost_spec
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1048,6 +1055,85 @@ module Google
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
           @fixed_boost = args[:fixed_boost] if args.key?(:fixed_boost)
+          @interpolation_boost_spec = args[:interpolation_boost_spec] if args.key?(:interpolation_boost_spec)
+        end
+      end
+      
+      # Specification for custom ranking based on customer specified attribute value.
+      # It provides more controls for customized ranking than the simple (condition,
+      # boost) combination above.
+      class GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The attribute type to be used to determine the boost amount. The
+        # attribute value can be derived from the field value of the specified
+        # field_name. In the case of numerical it is straightforward i.e.
+        # attribute_value = numerical_field_value. In the case of freshness however,
+        # attribute_value = (time.now() - datetime_field_value).
+        # Corresponds to the JSON property `attributeType`
+        # @return [String]
+        attr_accessor :attribute_type
+      
+        # Optional. The control points used to define the curve. The monotonic function (
+        # defined through the interpolation_type above) passes through the control
+        # points listed here.
+        # Corresponds to the JSON property `controlPoints`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint>]
+        attr_accessor :control_points
+      
+        # Optional. The name of the field whose value will be used to determine the
+        # boost amount.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Optional. The interpolation type to be applied to connect the control points
+        # listed below.
+        # Corresponds to the JSON property `interpolationType`
+        # @return [String]
+        attr_accessor :interpolation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_type = args[:attribute_type] if args.key?(:attribute_type)
+          @control_points = args[:control_points] if args.key?(:control_points)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @interpolation_type = args[:interpolation_type] if args.key?(:interpolation_type)
+        end
+      end
+      
+      # The control points used to define the curve. The curve defined through these
+      # control points can only be monotonically increasing or decreasing(constant
+      # values are acceptable).
+      class GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Can be one of: 1. The numerical field value. 2. The duration spec
+        # for freshness: The value must be formatted as an XSD `dayTimeDuration` value (
+        # a restricted subset of an ISO 8601 duration value). The pattern for this is: `
+        # nDnM]`.
+        # Corresponds to the JSON property `attributeValue`
+        # @return [String]
+        attr_accessor :attribute_value
+      
+        # Optional. The value between -1 to 1 by which to boost the score if the
+        # attribute_value evaluates to the value specified above.
+        # Corresponds to the JSON property `boostAmount`
+        # @return [Float]
+        attr_accessor :boost_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_value = args[:attribute_value] if args.key?(:attribute_value)
+          @boost_amount = args[:boost_amount] if args.key?(:boost_amount)
         end
       end
       
@@ -1309,6 +1395,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfig]
         attr_accessor :document_processing_config
       
+        # Config to data store for `HEALTHCARE_FHIR` vertical.
+        # Corresponds to the JSON property `healthcareFhirConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1HealthcareFhirConfig]
+        attr_accessor :healthcare_fhir_config
+      
         # Immutable. The industry vertical that the data store registers.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
@@ -1373,6 +1464,7 @@ module Google
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
+          @healthcare_fhir_config = args[:healthcare_fhir_config] if args.key?(:healthcare_fhir_config)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @is_infobot_faq_data_store = args[:is_infobot_faq_data_store] if args.key?(:is_infobot_faq_data_store)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
@@ -1450,6 +1542,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled_for_serving = args[:disabled_for_serving] if args.key?(:disabled_for_serving)
+        end
+      end
+      
+      # Metadata related to the progress of the CmekConfigService.DeleteCmekConfig
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1DeleteCmekConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2101,6 +2221,70 @@ module Google
         end
       end
       
+      # Config to data store for `HEALTHCARE_FHIR` vertical.
+      class GoogleCloudDiscoveryengineV1HealthcareFhirConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable configurable schema for `HEALTHCARE_FHIR` vertical. If set
+        # to `true`, the predefined healthcare fhir schema can be extended for more
+        # customized searching and filtering.
+        # Corresponds to the JSON property `enableConfigurableSchema`
+        # @return [Boolean]
+        attr_accessor :enable_configurable_schema
+        alias_method :enable_configurable_schema?, :enable_configurable_schema
+      
+        # Whether to enable static indexing for `HEALTHCARE_FHIR` batch ingestion. If
+        # set to `true`, the batch ingestion will be processed in a static indexing mode
+        # which is slower but more capable of handling larger volume.
+        # Corresponds to the JSON property `enableStaticIndexingForBatchIngestion`
+        # @return [Boolean]
+        attr_accessor :enable_static_indexing_for_batch_ingestion
+        alias_method :enable_static_indexing_for_batch_ingestion?, :enable_static_indexing_for_batch_ingestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_configurable_schema = args[:enable_configurable_schema] if args.key?(:enable_configurable_schema)
+          @enable_static_indexing_for_batch_ingestion = args[:enable_static_indexing_for_batch_ingestion] if args.key?(:enable_static_indexing_for_batch_ingestion)
+        end
+      end
+      
+      # IdentityMappingEntry LongRunningOperation metadata for [
+      # IdentityMappingStoreService.ImportIdentityMappings] and [
+      # IdentityMappingStoreService.PurgeIdentityMappings]
+      class GoogleCloudDiscoveryengineV1IdentityMappingEntryOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The number of IdentityMappingEntries that failed to be processed.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # The number of IdentityMappingEntries that were successfully processed.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # The total number of IdentityMappingEntries that were processed.
+        # Corresponds to the JSON property `totalCount`
+        # @return [Fixnum]
+        attr_accessor :total_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @total_count = args[:total_count] if args.key?(:total_count)
+        end
+      end
+      
       # Metadata related to the progress of the ImportCompletionSuggestions operation.
       # This will be returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata
@@ -2257,6 +2441,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+        end
+      end
+      
+      # Response message for IdentityMappingStoreService.ImportIdentityMappings
+      class GoogleCloudDiscoveryengineV1ImportIdentityMappingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
         end
       end
       
@@ -5009,6 +5212,13 @@ module Google
         # @return [Float]
         attr_accessor :fixed_boost
       
+        # Specification for custom ranking based on customer specified attribute value.
+        # It provides more controls for customized ranking than the simple (condition,
+        # boost) combination above.
+        # Corresponds to the JSON property `interpolationBoostSpec`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec]
+        attr_accessor :interpolation_boost_spec
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5019,6 +5229,85 @@ module Google
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
           @fixed_boost = args[:fixed_boost] if args.key?(:fixed_boost)
+          @interpolation_boost_spec = args[:interpolation_boost_spec] if args.key?(:interpolation_boost_spec)
+        end
+      end
+      
+      # Specification for custom ranking based on customer specified attribute value.
+      # It provides more controls for customized ranking than the simple (condition,
+      # boost) combination above.
+      class GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The attribute type to be used to determine the boost amount. The
+        # attribute value can be derived from the field value of the specified
+        # field_name. In the case of numerical it is straightforward i.e.
+        # attribute_value = numerical_field_value. In the case of freshness however,
+        # attribute_value = (time.now() - datetime_field_value).
+        # Corresponds to the JSON property `attributeType`
+        # @return [String]
+        attr_accessor :attribute_type
+      
+        # Optional. The control points used to define the curve. The monotonic function (
+        # defined through the interpolation_type above) passes through the control
+        # points listed here.
+        # Corresponds to the JSON property `controlPoints`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint>]
+        attr_accessor :control_points
+      
+        # Optional. The name of the field whose value will be used to determine the
+        # boost amount.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Optional. The interpolation type to be applied to connect the control points
+        # listed below.
+        # Corresponds to the JSON property `interpolationType`
+        # @return [String]
+        attr_accessor :interpolation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_type = args[:attribute_type] if args.key?(:attribute_type)
+          @control_points = args[:control_points] if args.key?(:control_points)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @interpolation_type = args[:interpolation_type] if args.key?(:interpolation_type)
+        end
+      end
+      
+      # The control points used to define the curve. The curve defined through these
+      # control points can only be monotonically increasing or decreasing(constant
+      # values are acceptable).
+      class GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Can be one of: 1. The numerical field value. 2. The duration spec
+        # for freshness: The value must be formatted as an XSD `dayTimeDuration` value (
+        # a restricted subset of an ISO 8601 duration value). The pattern for this is: `
+        # nDnM]`.
+        # Corresponds to the JSON property `attributeValue`
+        # @return [String]
+        attr_accessor :attribute_value
+      
+        # Optional. The value between -1 to 1 by which to boost the score if the
+        # attribute_value evaluates to the value specified above.
+        # Corresponds to the JSON property `boostAmount`
+        # @return [Float]
+        attr_accessor :boost_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_value = args[:attribute_value] if args.key?(:attribute_value)
+          @boost_amount = args[:boost_amount] if args.key?(:boost_amount)
         end
       end
       
@@ -5634,6 +5923,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig]
         attr_accessor :document_processing_config
       
+        # Config to data store for `HEALTHCARE_FHIR` vertical.
+        # Corresponds to the JSON property `healthcareFhirConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig]
+        attr_accessor :healthcare_fhir_config
+      
         # Identity Provider Config.
         # Corresponds to the JSON property `idpConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfig]
@@ -5714,6 +6008,7 @@ module Google
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
+          @healthcare_fhir_config = args[:healthcare_fhir_config] if args.key?(:healthcare_fhir_config)
           @idp_config = args[:idp_config] if args.key?(:idp_config)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @is_infobot_faq_data_store = args[:is_infobot_faq_data_store] if args.key?(:is_infobot_faq_data_store)
@@ -5821,6 +6116,34 @@ module Google
         def update!(**args)
           @auto_refresh_crawl_rate = args[:auto_refresh_crawl_rate] if args.key?(:auto_refresh_crawl_rate)
           @user_triggered_crawl_rate = args[:user_triggered_crawl_rate] if args.key?(:user_triggered_crawl_rate)
+        end
+      end
+      
+      # Metadata related to the progress of the CmekConfigService.DeleteCmekConfig
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field.
+      class GoogleCloudDiscoveryengineV1alphaDeleteCmekConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -7156,6 +7479,70 @@ module Google
         end
       end
       
+      # Config to data store for `HEALTHCARE_FHIR` vertical.
+      class GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable configurable schema for `HEALTHCARE_FHIR` vertical. If set
+        # to `true`, the predefined healthcare fhir schema can be extended for more
+        # customized searching and filtering.
+        # Corresponds to the JSON property `enableConfigurableSchema`
+        # @return [Boolean]
+        attr_accessor :enable_configurable_schema
+        alias_method :enable_configurable_schema?, :enable_configurable_schema
+      
+        # Whether to enable static indexing for `HEALTHCARE_FHIR` batch ingestion. If
+        # set to `true`, the batch ingestion will be processed in a static indexing mode
+        # which is slower but more capable of handling larger volume.
+        # Corresponds to the JSON property `enableStaticIndexingForBatchIngestion`
+        # @return [Boolean]
+        attr_accessor :enable_static_indexing_for_batch_ingestion
+        alias_method :enable_static_indexing_for_batch_ingestion?, :enable_static_indexing_for_batch_ingestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_configurable_schema = args[:enable_configurable_schema] if args.key?(:enable_configurable_schema)
+          @enable_static_indexing_for_batch_ingestion = args[:enable_static_indexing_for_batch_ingestion] if args.key?(:enable_static_indexing_for_batch_ingestion)
+        end
+      end
+      
+      # IdentityMappingEntry LongRunningOperation metadata for [
+      # IdentityMappingStoreService.ImportIdentityMappings] and [
+      # IdentityMappingStoreService.PurgeIdentityMappings]
+      class GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The number of IdentityMappingEntries that failed to be processed.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # The number of IdentityMappingEntries that were successfully processed.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # The total number of IdentityMappingEntries that were processed.
+        # Corresponds to the JSON property `totalCount`
+        # @return [Fixnum]
+        attr_accessor :total_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @total_count = args[:total_count] if args.key?(:total_count)
+        end
+      end
+      
       # The configuration for the identity data synchronization runs.
       class GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig
         include Google::Apis::Core::Hashable
@@ -7397,6 +7784,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+        end
+      end
+      
+      # Response message for IdentityMappingStoreService.ImportIdentityMappings
+      class GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
         end
       end
       
@@ -8327,6 +8733,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :invalid_uris_count
       
+        # URIs that have no index meta tag. Sample limited to 1000.
+        # Corresponds to the JSON property `noindexUris`
+        # @return [Array<String>]
+        attr_accessor :noindex_uris
+      
+        # Total number of URIs that have no index meta tag.
+        # Corresponds to the JSON property `noindexUrisCount`
+        # @return [Fixnum]
+        attr_accessor :noindex_uris_count
+      
         # Total number of URIs that have yet to be crawled.
         # Corresponds to the JSON property `pendingCount`
         # @return [Fixnum]
@@ -8374,6 +8790,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @invalid_uris = args[:invalid_uris] if args.key?(:invalid_uris)
           @invalid_uris_count = args[:invalid_uris_count] if args.key?(:invalid_uris_count)
+          @noindex_uris = args[:noindex_uris] if args.key?(:noindex_uris)
+          @noindex_uris_count = args[:noindex_uris_count] if args.key?(:noindex_uris_count)
           @pending_count = args[:pending_count] if args.key?(:pending_count)
           @quota_exceeded_count = args[:quota_exceeded_count] if args.key?(:quota_exceeded_count)
           @success_count = args[:success_count] if args.key?(:success_count)
@@ -13133,7 +13551,12 @@ module Google
         # @return [String]
         attr_accessor :claim_text
       
-        # Position indicating the end of the claim in the answer candidate, exclusive.
+        # Position indicating the end of the claim in the answer candidate, exclusive,
+        # in bytes. Note that this is not measured in characters and, therefore, must be
+        # rendered as such. For example, if the claim text contains non-ASCII characters,
+        # the start and end positions vary when measured in characters (programming-
+        # language-dependent) and when measured in bytes (programming-language-
+        # independent).
         # Corresponds to the JSON property `endPos`
         # @return [Fixnum]
         attr_accessor :end_pos
@@ -13148,7 +13571,12 @@ module Google
         alias_method :grounding_check_required?, :grounding_check_required
       
         # Position indicating the start of the claim in the answer candidate, measured
-        # in bytes.
+        # in bytes. Note that this is not measured in characters and, therefore, must be
+        # rendered in the user interface keeping in mind that some characters may take
+        # more than one byte. For example, if the claim text contains non-ASCII
+        # characters, the start and end positions vary when measured in characters (
+        # programming-language-dependent) and when measured in bytes (programming-
+        # language-independent).
         # Corresponds to the JSON property `startPos`
         # @return [Fixnum]
         attr_accessor :start_pos
@@ -13822,6 +14250,13 @@ module Google
         # @return [Float]
         attr_accessor :fixed_boost
       
+        # Specification for custom ranking based on customer specified attribute value.
+        # It provides more controls for customized ranking than the simple (condition,
+        # boost) combination above.
+        # Corresponds to the JSON property `interpolationBoostSpec`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec]
+        attr_accessor :interpolation_boost_spec
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13832,6 +14267,85 @@ module Google
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
           @fixed_boost = args[:fixed_boost] if args.key?(:fixed_boost)
+          @interpolation_boost_spec = args[:interpolation_boost_spec] if args.key?(:interpolation_boost_spec)
+        end
+      end
+      
+      # Specification for custom ranking based on customer specified attribute value.
+      # It provides more controls for customized ranking than the simple (condition,
+      # boost) combination above.
+      class GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The attribute type to be used to determine the boost amount. The
+        # attribute value can be derived from the field value of the specified
+        # field_name. In the case of numerical it is straightforward i.e.
+        # attribute_value = numerical_field_value. In the case of freshness however,
+        # attribute_value = (time.now() - datetime_field_value).
+        # Corresponds to the JSON property `attributeType`
+        # @return [String]
+        attr_accessor :attribute_type
+      
+        # Optional. The control points used to define the curve. The monotonic function (
+        # defined through the interpolation_type above) passes through the control
+        # points listed here.
+        # Corresponds to the JSON property `controlPoints`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint>]
+        attr_accessor :control_points
+      
+        # Optional. The name of the field whose value will be used to determine the
+        # boost amount.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Optional. The interpolation type to be applied to connect the control points
+        # listed below.
+        # Corresponds to the JSON property `interpolationType`
+        # @return [String]
+        attr_accessor :interpolation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_type = args[:attribute_type] if args.key?(:attribute_type)
+          @control_points = args[:control_points] if args.key?(:control_points)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @interpolation_type = args[:interpolation_type] if args.key?(:interpolation_type)
+        end
+      end
+      
+      # The control points used to define the curve. The curve defined through these
+      # control points can only be monotonically increasing or decreasing(constant
+      # values are acceptable).
+      class GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Can be one of: 1. The numerical field value. 2. The duration spec
+        # for freshness: The value must be formatted as an XSD `dayTimeDuration` value (
+        # a restricted subset of an ISO 8601 duration value). The pattern for this is: `
+        # nDnM]`.
+        # Corresponds to the JSON property `attributeValue`
+        # @return [String]
+        attr_accessor :attribute_value
+      
+        # Optional. The value between -1 to 1 by which to boost the score if the
+        # attribute_value evaluates to the value specified above.
+        # Corresponds to the JSON property `boostAmount`
+        # @return [Float]
+        attr_accessor :boost_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_value = args[:attribute_value] if args.key?(:attribute_value)
+          @boost_amount = args[:boost_amount] if args.key?(:boost_amount)
         end
       end
       
@@ -14491,6 +15005,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig]
         attr_accessor :document_processing_config
       
+        # Config to data store for `HEALTHCARE_FHIR` vertical.
+        # Corresponds to the JSON property `healthcareFhirConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig]
+        attr_accessor :healthcare_fhir_config
+      
         # Immutable. The industry vertical that the data store registers.
         # Corresponds to the JSON property `industryVertical`
         # @return [String]
@@ -14565,6 +15084,7 @@ module Google
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
+          @healthcare_fhir_config = args[:healthcare_fhir_config] if args.key?(:healthcare_fhir_config)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @is_infobot_faq_data_store = args[:is_infobot_faq_data_store] if args.key?(:is_infobot_faq_data_store)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
@@ -16591,6 +17111,144 @@ module Google
         end
       end
       
+      # Config to data store for `HEALTHCARE_FHIR` vertical.
+      class GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable configurable schema for `HEALTHCARE_FHIR` vertical. If set
+        # to `true`, the predefined healthcare fhir schema can be extended for more
+        # customized searching and filtering.
+        # Corresponds to the JSON property `enableConfigurableSchema`
+        # @return [Boolean]
+        attr_accessor :enable_configurable_schema
+        alias_method :enable_configurable_schema?, :enable_configurable_schema
+      
+        # Whether to enable static indexing for `HEALTHCARE_FHIR` batch ingestion. If
+        # set to `true`, the batch ingestion will be processed in a static indexing mode
+        # which is slower but more capable of handling larger volume.
+        # Corresponds to the JSON property `enableStaticIndexingForBatchIngestion`
+        # @return [Boolean]
+        attr_accessor :enable_static_indexing_for_batch_ingestion
+        alias_method :enable_static_indexing_for_batch_ingestion?, :enable_static_indexing_for_batch_ingestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_configurable_schema = args[:enable_configurable_schema] if args.key?(:enable_configurable_schema)
+          @enable_static_indexing_for_batch_ingestion = args[:enable_static_indexing_for_batch_ingestion] if args.key?(:enable_static_indexing_for_batch_ingestion)
+        end
+      end
+      
+      # Identity Mapping Entry that maps an external identity to an internal identity.
+      class GoogleCloudDiscoveryengineV1betaIdentityMappingEntry
+        include Google::Apis::Core::Hashable
+      
+        # Required. Identity outside the customer identity provider. The length limit of
+        # external identity will be of 100 characters.
+        # Corresponds to the JSON property `externalIdentity`
+        # @return [String]
+        attr_accessor :external_identity
+      
+        # Group identifier. For Google Workspace user account, group_id should be the
+        # google workspace group email. For non-google identity provider, group_id is
+        # the mapped group identifier configured during the workforcepool config.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # User identifier. For Google Workspace user account, user_id should be the
+        # google workspace user email. For non-google identity provider, user_id is the
+        # mapped user identifier configured during the workforcepool config.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_identity = args[:external_identity] if args.key?(:external_identity)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # IdentityMappingEntry LongRunningOperation metadata for [
+      # IdentityMappingStoreService.ImportIdentityMappings] and [
+      # IdentityMappingStoreService.PurgeIdentityMappings]
+      class GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The number of IdentityMappingEntries that failed to be processed.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # The number of IdentityMappingEntries that were successfully processed.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # The total number of IdentityMappingEntries that were processed.
+        # Corresponds to the JSON property `totalCount`
+        # @return [Fixnum]
+        attr_accessor :total_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @total_count = args[:total_count] if args.key?(:total_count)
+        end
+      end
+      
+      # Identity Mapping Store which contains Identity Mapping Entries.
+      class GoogleCloudDiscoveryengineV1betaIdentityMappingStore
+        include Google::Apis::Core::Hashable
+      
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCmekConfig]
+        attr_accessor :cmek_config
+      
+        # Input only. The KMS key to be used to protect this Identity Mapping Store at
+        # creation time. Must be set for requests that need to comply with CMEK Org
+        # Policy protections. If this field is set and processed successfully, the
+        # Identity Mapping Store will be protected by the KMS key, as indicated in the
+        # cmek_config field.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Immutable. The full resource name of the identity mapping store. Format: `
+        # projects/`project`/locations/`location`/identityMappingStores/`
+        # identity_mapping_store``. This field must be a UTF-8 encoded string with a
+        # length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Metadata related to the progress of the ImportCompletionSuggestions operation.
       # This will be returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMetadata
@@ -16955,6 +17613,63 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+        end
+      end
+      
+      # Request message for IdentityMappingStoreService.ImportIdentityMappings
+      class GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The inline source to import identity mapping entries from.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequestInlineSource]
+        attr_accessor :inline_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+        end
+      end
+      
+      # The inline source to import identity mapping entries from.
+      class GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequestInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # A maximum of 10000 entries can be imported at one time
+        # Corresponds to the JSON property `identityMappingEntries`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaIdentityMappingEntry>]
+        attr_accessor :identity_mapping_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity_mapping_entries = args[:identity_mapping_entries] if args.key?(:identity_mapping_entries)
+        end
+      end
+      
+      # Response message for IdentityMappingStoreService.ImportIdentityMappings
+      class GoogleCloudDiscoveryengineV1betaImportIdentityMappingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
         end
       end
       
@@ -17625,6 +18340,58 @@ module Google
         end
       end
       
+      # Response message for IdentityMappingStoreService.ListIdentityMappingStores
+      class GoogleCloudDiscoveryengineV1betaListIdentityMappingStoresResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Identity Mapping Stores.
+        # Corresponds to the JSON property `identityMappingStores`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaIdentityMappingStore>]
+        attr_accessor :identity_mapping_stores
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity_mapping_stores = args[:identity_mapping_stores] if args.key?(:identity_mapping_stores)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for IdentityMappingStoreService.ListIdentityMappings
+      class GoogleCloudDiscoveryengineV1betaListIdentityMappingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Identity Mapping Entries.
+        # Corresponds to the JSON property `identityMappingEntries`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaIdentityMappingEntry>]
+        attr_accessor :identity_mapping_entries
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity_mapping_entries = args[:identity_mapping_entries] if args.key?(:identity_mapping_entries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for SampleQueryService.ListSampleQueries method.
       class GoogleCloudDiscoveryengineV1betaListSampleQueriesResponse
         include Google::Apis::Core::Hashable
@@ -18255,6 +19022,67 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+        end
+      end
+      
+      # Request message for IdentityMappingStoreService.PurgeIdentityMappings
+      class GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Filter matching identity mappings to purge. The eligible field for filtering
+        # is: * `update_time`: in ISO 8601 "zulu" format. * `external_id` Examples: *
+        # Deleting all identity mappings updated in a time range: `update_time > "2012-
+        # 04-23T18:25:43.511Z" AND update_time < "2012-04-23T18:30:43.511Z"` * Deleting
+        # all identity mappings for a given external_id: `external_id = "id1"` *
+        # Deleting all identity mappings inside an identity mapping store: `*` The
+        # filtering fields are assumed to have an implicit AND. Should not be used with
+        # source. An error will be thrown, if both are provided.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Actually performs the purge. If `force` is set to false, return the expected
+        # purge count without deleting any identity mappings. This field is only
+        # supported for purge with filter. For input source this field is ignored and
+        # data will be purged regardless of the value of this field.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # The inline source to purge identity mapping entries from.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource]
+        attr_accessor :inline_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @force = args[:force] if args.key?(:force)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+        end
+      end
+      
+      # The inline source to purge identity mapping entries from.
+      class GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # A maximum of 10000 entries can be purged at one time
+        # Corresponds to the JSON property `identityMappingEntries`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaIdentityMappingEntry>]
+        attr_accessor :identity_mapping_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity_mapping_entries = args[:identity_mapping_entries] if args.key?(:identity_mapping_entries)
         end
       end
       
