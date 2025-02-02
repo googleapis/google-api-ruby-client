@@ -2672,7 +2672,7 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
-        # Identifier. Name of the `JobRun`. Format is `projects/`project`/locations/`
+        # Output only. Name of the `JobRun`. Format is `projects/`project`/locations/`
         # location`/deliveryPipelines/`deliveryPipeline`/releases/`releases`/rollouts/`
         # rollouts`/jobRuns/`uuid``.
         # Corresponds to the JSON property `name`
