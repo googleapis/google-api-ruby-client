@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomEmojiMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DateInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -927,6 +933,8 @@ module Google
       class Annotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_emoji_metadata, as: 'customEmojiMetadata', class: Google::Apis::ChatV1::CustomEmojiMetadata, decorator: Google::Apis::ChatV1::CustomEmojiMetadata::Representation
+      
           property :length, as: 'length'
           property :rich_link_metadata, as: 'richLinkMetadata', class: Google::Apis::ChatV1::RichLinkMetadata, decorator: Google::Apis::ChatV1::RichLinkMetadata::Representation
       
@@ -1091,6 +1099,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uid, as: 'uid'
+        end
+      end
+      
+      class CustomEmojiMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_emoji, as: 'customEmoji', class: Google::Apis::ChatV1::CustomEmoji, decorator: Google::Apis::ChatV1::CustomEmoji::Representation
+      
         end
       end
       
