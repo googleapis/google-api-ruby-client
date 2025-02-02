@@ -760,6 +760,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MachineArchitectureDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MachineDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MachineDiskDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MachineNetworkDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MachinePreferences
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1521,6 +1545,8 @@ module Google
           property :insight_list, as: 'insightList', class: Google::Apis::MigrationcenterV1alpha1::InsightList, decorator: Google::Apis::MigrationcenterV1alpha1::InsightList::Representation
       
           hash :labels, as: 'labels'
+          property :machine_details, as: 'machineDetails', class: Google::Apis::MigrationcenterV1alpha1::MachineDetails, decorator: Google::Apis::MigrationcenterV1alpha1::MachineDetails::Representation
+      
           property :name, as: 'name'
           property :performance_data, as: 'performanceData', class: Google::Apis::MigrationcenterV1alpha1::AssetPerformanceData, decorator: Google::Apis::MigrationcenterV1alpha1::AssetPerformanceData::Representation
       
@@ -1542,6 +1568,8 @@ module Google
           property :database_details, as: 'databaseDetails', class: Google::Apis::MigrationcenterV1alpha1::DatabaseDetails, decorator: Google::Apis::MigrationcenterV1alpha1::DatabaseDetails::Representation
       
           hash :labels, as: 'labels'
+          property :machine_details, as: 'machineDetails', class: Google::Apis::MigrationcenterV1alpha1::MachineDetails, decorator: Google::Apis::MigrationcenterV1alpha1::MachineDetails::Representation
+      
           collection :performance_samples, as: 'performanceSamples', class: Google::Apis::MigrationcenterV1alpha1::PerformanceSample, decorator: Google::Apis::MigrationcenterV1alpha1::PerformanceSample::Representation
       
           property :report_time, as: 'reportTime'
@@ -2668,6 +2696,65 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class MachineArchitectureDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bios, as: 'bios', class: Google::Apis::MigrationcenterV1alpha1::BiosDetails, decorator: Google::Apis::MigrationcenterV1alpha1::BiosDetails::Representation
+      
+          property :cpu_architecture, as: 'cpuArchitecture'
+          property :cpu_name, as: 'cpuName'
+          property :cpu_socket_count, as: 'cpuSocketCount'
+          property :firmware_type, as: 'firmwareType'
+          property :hyperthreading, as: 'hyperthreading'
+          property :vendor, as: 'vendor'
+        end
+      end
+      
+      class MachineDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture', class: Google::Apis::MigrationcenterV1alpha1::MachineArchitectureDetails, decorator: Google::Apis::MigrationcenterV1alpha1::MachineArchitectureDetails::Representation
+      
+          property :core_count, as: 'coreCount'
+          property :create_time, as: 'createTime'
+          property :disks, as: 'disks', class: Google::Apis::MigrationcenterV1alpha1::MachineDiskDetails, decorator: Google::Apis::MigrationcenterV1alpha1::MachineDiskDetails::Representation
+      
+          property :guest_os, as: 'guestOs', class: Google::Apis::MigrationcenterV1alpha1::GuestOsDetails, decorator: Google::Apis::MigrationcenterV1alpha1::GuestOsDetails::Representation
+      
+          property :machine_name, as: 'machineName'
+          property :memory_mb, as: 'memoryMb'
+          property :network, as: 'network', class: Google::Apis::MigrationcenterV1alpha1::MachineNetworkDetails, decorator: Google::Apis::MigrationcenterV1alpha1::MachineNetworkDetails::Representation
+      
+          property :platform, as: 'platform', class: Google::Apis::MigrationcenterV1alpha1::PlatformDetails, decorator: Google::Apis::MigrationcenterV1alpha1::PlatformDetails::Representation
+      
+          property :power_state, as: 'powerState'
+          property :uuid, as: 'uuid'
+        end
+      end
+      
+      class MachineDiskDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disks, as: 'disks', class: Google::Apis::MigrationcenterV1alpha1::DiskEntryList, decorator: Google::Apis::MigrationcenterV1alpha1::DiskEntryList::Representation
+      
+          property :raw_scan_result, as: 'rawScanResult'
+          property :total_capacity_bytes, :numeric_string => true, as: 'totalCapacityBytes'
+          property :total_free_bytes, :numeric_string => true, as: 'totalFreeBytes'
+        end
+      end
+      
+      class MachineNetworkDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_gateway, as: 'defaultGateway'
+          property :network_adapters, as: 'networkAdapters', class: Google::Apis::MigrationcenterV1alpha1::NetworkAdapterList, decorator: Google::Apis::MigrationcenterV1alpha1::NetworkAdapterList::Representation
+      
+          property :primary_ip_address, as: 'primaryIpAddress'
+          property :primary_mac_address, as: 'primaryMacAddress'
+          property :public_ip_address, as: 'publicIpAddress'
         end
       end
       
