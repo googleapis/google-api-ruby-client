@@ -756,6 +756,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # ProcessBitbucketCloudWebhook is called by the external Bitbucket Cloud
+        # instances for notifying events.
+        # @param [String] name
+        #   Required. The GitRepositoryLink where the webhook will be received. Format: `
+        #   projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+        # @param [Google::Apis::DeveloperconnectV1::ProcessBitbucketCloudWebhookRequest] process_bitbucket_cloud_webhook_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def process_git_repository_link_bitbucket_cloud_webhook(name, process_bitbucket_cloud_webhook_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:processBitbucketCloudWebhook', options)
+          command.request_representation = Google::Apis::DeveloperconnectV1::ProcessBitbucketCloudWebhookRequest::Representation
+          command.request_object = process_bitbucket_cloud_webhook_request_object
+          command.response_representation = Google::Apis::DeveloperconnectV1::Empty::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ProcessBitbucketDataCenterWebhook is called by the external Bitbucket Data
+        # Center instances for notifying events.
+        # @param [String] name
+        #   Required. The GitRepositoryLink where the webhook will be received. Format: `
+        #   projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+        # @param [Google::Apis::DeveloperconnectV1::ProcessBitbucketDataCenterWebhookRequest] process_bitbucket_data_center_webhook_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def process_git_repository_link_bitbucket_data_center_webhook(name, process_bitbucket_data_center_webhook_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:processBitbucketDataCenterWebhook', options)
+          command.request_representation = Google::Apis::DeveloperconnectV1::ProcessBitbucketDataCenterWebhookRequest::Representation
+          command.request_object = process_bitbucket_data_center_webhook_request_object
+          command.response_representation = Google::Apis::DeveloperconnectV1::Empty::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # ProcessGitLabEnterpriseWebhook is called by the external GitLab Enterprise
         # instances for notifying events.
         # @param [String] name
