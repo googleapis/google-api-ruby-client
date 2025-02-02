@@ -1095,10 +1095,25 @@ module Google
       class Criteria
         include Google::Apis::Core::Hashable
       
+        # Optional. The filter string to match on Alert fields when silencing the alerts.
+        # It follows the standard https://google.aip.dev/160 syntax. A filter string
+        # used to apply the snooze to specific incidents that have matching filter
+        # values. Filters can be defined for snoozes that apply to one alerting policy.
+        # Filters must be a string formatted as one or more resource labels with
+        # specific label values. If multiple resource labels are used, then they must be
+        # connected with an AND operator. For example, the following filter applies the
+        # snooze to incidents that have an instance ID of 1234567890 and a zone of us-
+        # central1-a: resource.labels.instance_id="1234567890" AND resource.labels.zone="
+        # us-central1-a"
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         # The specific AlertPolicy names for the alert that should be snoozed. The
         # format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is
         # a limit of 16 policies per snooze. This limit is checked during snooze
-        # creation.
+        # creation. Exactly 1 alert policy is required if filter is specified at the
+        # same time.
         # Corresponds to the JSON property `policies`
         # @return [Array<String>]
         attr_accessor :policies
@@ -1109,6 +1124,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
           @policies = args[:policies] if args.key?(:policies)
         end
       end
