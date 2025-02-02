@@ -658,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PubSub
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PublishCustomConnectorVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1481,6 +1487,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint, as: 'endpoint', class: Google::Apis::ConnectorsV1::EndPoint, decorator: Google::Apis::ConnectorsV1::EndPoint::Representation
       
+          property :pubsub, as: 'pubsub', class: Google::Apis::ConnectorsV1::PubSub, decorator: Google::Apis::ConnectorsV1::PubSub::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :type, as: 'type'
         end
@@ -2146,7 +2154,9 @@ module Google
           property :additional_comments, as: 'additionalComments'
           property :confirm_partner_requirements, as: 'confirmPartnerRequirements'
           property :demo_uri, as: 'demoUri'
+          property :has_dynamic_spec_uri, as: 'hasDynamicSpecUri'
           property :integration_templates, as: 'integrationTemplates'
+          property :local_spec_path, as: 'localSpecPath'
           property :marketplace_product, as: 'marketplaceProduct'
           property :marketplace_product_id, as: 'marketplaceProductId'
           property :marketplace_product_project_id, as: 'marketplaceProductProjectId'
@@ -2201,6 +2211,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_type, as: 'resourceType'
           property :resource_url, as: 'resourceUrl'
+        end
+      end
+      
+      class PubSub
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attributes, as: 'attributes'
+          collection :config_variables, as: 'configVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
+      
+          property :project_id, as: 'projectId'
+          property :topic_id, as: 'topicId'
         end
       end
       
