@@ -1044,6 +1044,7 @@ module Google
       class Criteria
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
           collection :policies, as: 'policies'
         end
       end
