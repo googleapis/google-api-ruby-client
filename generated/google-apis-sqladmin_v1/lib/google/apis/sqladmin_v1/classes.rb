@@ -1320,7 +1320,7 @@ module Google
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the replica's private key. The corresponsing public key
+        # PEM representation of the replica's private key. The corresponding public key
         # is encoded in the client's certificate. The format of the replica's private
         # key can be either PKCS #1 or PKCS #8.
         # Corresponds to the JSON property `clientKey`
@@ -2975,7 +2975,7 @@ module Google
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the replica's private key. The corresponsing public key
+        # PEM representation of the replica's private key. The corresponding public key
         # is encoded in the client's certificate.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
@@ -3080,7 +3080,7 @@ module Google
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the replica's private key. The corresponsing public key
+        # PEM representation of the replica's private key. The corresponding public key
         # is encoded in the client's certificate.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
