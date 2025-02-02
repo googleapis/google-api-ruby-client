@@ -673,7 +673,7 @@ module Google
       class DestinationDataset
         include Google::Apis::Core::Hashable
       
-        # Contains the reference that identifies a destination bigquery dataset.
+        # Required. A reference that identifies the destination dataset.
         # Corresponds to the JSON property `datasetReference`
         # @return [Google::Apis::AnalyticshubV1::DestinationDatasetReference]
         attr_accessor :dataset_reference
@@ -716,7 +716,7 @@ module Google
         end
       end
       
-      # Contains the reference that identifies a destination bigquery dataset.
+      # 
       class DestinationDatasetReference
         include Google::Apis::Core::Hashable
       
