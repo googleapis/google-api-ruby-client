@@ -7420,7 +7420,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The resource name of the session.
+        # Identifier. The resource name of the session.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
