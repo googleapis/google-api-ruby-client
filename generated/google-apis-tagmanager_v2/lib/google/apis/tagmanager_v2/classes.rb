@@ -1342,6 +1342,12 @@ module Google
       class GalleryReference
         include Google::Apis::Core::Hashable
       
+        # ID for the gallery template that is generated once during first sync and
+        # travels with the template redirects.
+        # Corresponds to the JSON property `galleryTemplateId`
+        # @return [String]
+        attr_accessor :gallery_template_id
+      
         # The name of the host for the community gallery template.
         # Corresponds to the JSON property `host`
         # @return [String]
@@ -1386,6 +1392,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @gallery_template_id = args[:gallery_template_id] if args.key?(:gallery_template_id)
           @host = args[:host] if args.key?(:host)
           @is_modified = args[:is_modified] if args.key?(:is_modified)
           @owner = args[:owner] if args.key?(:owner)
