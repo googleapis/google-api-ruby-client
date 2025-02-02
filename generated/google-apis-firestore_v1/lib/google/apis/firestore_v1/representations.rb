@@ -1288,8 +1288,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_scope, as: 'apiScope'
+          property :density, as: 'density'
           collection :fields, as: 'fields', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexField, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexField::Representation
       
+          property :multikey, as: 'multikey'
           property :name, as: 'name'
           property :query_scope, as: 'queryScope'
           property :state, as: 'state'
