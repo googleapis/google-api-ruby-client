@@ -100,7 +100,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupConfigDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupConfigInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDrPlanConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDrPlanRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDrTemplateConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -358,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListResourceBackupConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PitrSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +467,12 @@ module Google
       end
       
       class RemoveDataSourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceBackupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -714,6 +762,27 @@ module Google
         end
       end
       
+      class BackupConfigDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :applicable_resource, as: 'applicableResource'
+          property :backup_config_source, as: 'backupConfigSource'
+          property :backup_config_source_display_name, as: 'backupConfigSourceDisplayName'
+          property :backup_dr_plan_config, as: 'backupDrPlanConfig', class: Google::Apis::BackupdrV1::BackupDrPlanConfig, decorator: Google::Apis::BackupdrV1::BackupDrPlanConfig::Representation
+      
+          property :backup_dr_template_config, as: 'backupDrTemplateConfig', class: Google::Apis::BackupdrV1::BackupDrTemplateConfig, decorator: Google::Apis::BackupdrV1::BackupDrTemplateConfig::Representation
+      
+          collection :backup_locations, as: 'backupLocations', class: Google::Apis::BackupdrV1::BackupLocation, decorator: Google::Apis::BackupdrV1::BackupLocation::Representation
+      
+          property :backup_vault, as: 'backupVault'
+          property :latest_successful_backup_time, as: 'latestSuccessfulBackupTime'
+          property :pitr_settings, as: 'pitrSettings', class: Google::Apis::BackupdrV1::PitrSettings, decorator: Google::Apis::BackupdrV1::PitrSettings::Representation
+      
+          property :state, as: 'state'
+          property :type, as: 'type'
+        end
+      end
+      
       class BackupConfigInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -725,6 +794,38 @@ module Google
       
           property :last_backup_state, as: 'lastBackupState'
           property :last_successful_backup_consistency_time, as: 'lastSuccessfulBackupConsistencyTime'
+        end
+      end
+      
+      class BackupDrPlanConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_dr_plan_rules, as: 'backupDrPlanRules', class: Google::Apis::BackupdrV1::BackupDrPlanRule, decorator: Google::Apis::BackupdrV1::BackupDrPlanRule::Representation
+      
+        end
+      end
+      
+      class BackupDrPlanRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_successful_backup_time, as: 'lastSuccessfulBackupTime'
+          property :rule_id, as: 'ruleId'
+        end
+      end
+      
+      class BackupDrTemplateConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_party_management_uri, as: 'firstPartyManagementUri'
+          property :third_party_management_uri, as: 'thirdPartyManagementUri'
+        end
+      end
+      
+      class BackupLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location_id, as: 'locationId'
+          property :type, as: 'type'
         end
       end
       
@@ -1205,6 +1306,15 @@ module Google
         end
       end
       
+      class ListResourceBackupConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resource_backup_configs, as: 'resourceBackupConfigs', class: Google::Apis::BackupdrV1::ResourceBackupConfig, decorator: Google::Apis::BackupdrV1::ResourceBackupConfig::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1331,6 +1441,13 @@ module Google
         end
       end
       
+      class PitrSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_days, as: 'retentionDays'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1347,6 +1464,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
+        end
+      end
+      
+      class ResourceBackupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_configs_details, as: 'backupConfigsDetails', class: Google::Apis::BackupdrV1::BackupConfigDetails, decorator: Google::Apis::BackupdrV1::BackupConfigDetails::Representation
+      
+          property :backup_configured, as: 'backupConfigured'
+          property :name, as: 'name'
+          property :target_resource, as: 'targetResource'
+          property :target_resource_display_name, as: 'targetResourceDisplayName'
+          hash :target_resource_labels, as: 'targetResourceLabels'
+          property :target_resource_type, as: 'targetResourceType'
+          property :uid, as: 'uid'
+          property :vaulted, as: 'vaulted'
         end
       end
       
