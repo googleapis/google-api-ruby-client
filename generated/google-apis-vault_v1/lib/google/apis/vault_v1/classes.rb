@@ -558,7 +558,7 @@ module Google
         end
       end
       
-      # Additional options for Drive search
+      # Additional options for Drive search.
       class DriveOptions
         include Google::Apis::Core::Hashable
       
@@ -1645,7 +1645,7 @@ module Google
         # @return [String]
         attr_accessor :data_scope
       
-        # Additional options for Drive search
+        # Additional options for Drive search.
         # Corresponds to the JSON property `driveOptions`
         # @return [Google::Apis::VaultV1::DriveOptions]
         attr_accessor :drive_options
