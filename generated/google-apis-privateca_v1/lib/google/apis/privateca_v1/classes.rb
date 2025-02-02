@@ -636,6 +636,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # User-defined URLs for accessing content published by this CertificateAuthority.
+        # Corresponds to the JSON property `userDefinedAccessUrls`
+        # @return [Google::Apis::PrivatecaV1::UserDefinedAccessUrls]
+        attr_accessor :user_defined_access_urls
+      
         def initialize(**args)
            update!(**args)
         end
@@ -661,6 +666,7 @@ module Google
           @tier = args[:tier] if args.key?(:tier)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @user_defined_access_urls = args[:user_defined_access_urls] if args.key?(:user_defined_access_urls)
         end
       end
       
@@ -2795,6 +2801,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # User-defined URLs for accessing content published by this CertificateAuthority.
+      class UserDefinedAccessUrls
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of URLs where the issuer CA certificate may be downloaded,
+        # which appears in the "Authority Information Access" extension in the
+        # certificate.
+        # Corresponds to the JSON property `aiaIssuingCertificateUrls`
+        # @return [Array<String>]
+        attr_accessor :aia_issuing_certificate_urls
+      
+        # Optional. A list of URLs where to obtain CRL information, i.e. the
+        # DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#
+        # section-4.2.1.13
+        # Corresponds to the JSON property `crlAccessUrls`
+        # @return [Array<String>]
+        attr_accessor :crl_access_urls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aia_issuing_certificate_urls = args[:aia_issuing_certificate_urls] if args.key?(:aia_issuing_certificate_urls)
+          @crl_access_urls = args[:crl_access_urls] if args.key?(:crl_access_urls)
         end
       end
       
