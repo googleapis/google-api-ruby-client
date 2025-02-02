@@ -952,6 +952,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blank_view, as: 'blankView', class: Google::Apis::MonitoringV1::Empty, decorator: Google::Apis::MonitoringV1::Empty::Representation
       
+          collection :breakdowns, as: 'breakdowns', class: Google::Apis::MonitoringV1::Breakdown, decorator: Google::Apis::MonitoringV1::Breakdown::Representation
+      
           collection :dimensions, as: 'dimensions', class: Google::Apis::MonitoringV1::Dimension, decorator: Google::Apis::MonitoringV1::Dimension::Representation
       
           property :gauge_view, as: 'gaugeView', class: Google::Apis::MonitoringV1::GaugeView, decorator: Google::Apis::MonitoringV1::GaugeView::Representation

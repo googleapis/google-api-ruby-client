@@ -1963,6 +1963,13 @@ module Google
         # @return [Google::Apis::MonitoringV1::Empty]
         attr_accessor :blank_view
       
+        # Optional. The collection of breakdowns to be applied to the dataset. A
+        # breakdown is a way to slice the data. For example, you can break down the data
+        # by region.
+        # Corresponds to the JSON property `breakdowns`
+        # @return [Array<Google::Apis::MonitoringV1::Breakdown>]
+        attr_accessor :breakdowns
+      
         # Optional. A dimension is a structured label, class, or category for a set of
         # measurements in your data.
         # Corresponds to the JSON property `dimensions`
@@ -2021,6 +2028,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @blank_view = args[:blank_view] if args.key?(:blank_view)
+          @breakdowns = args[:breakdowns] if args.key?(:breakdowns)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @gauge_view = args[:gauge_view] if args.key?(:gauge_view)
           @measures = args[:measures] if args.key?(:measures)
