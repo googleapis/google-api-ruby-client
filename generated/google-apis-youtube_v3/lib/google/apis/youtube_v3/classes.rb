@@ -1862,6 +1862,13 @@ module Google
       class ChannelStatus
         include Google::Apis::Core::Hashable
       
+        # Whether the channel is considered ypp monetization enabled. See go/yppornot
+        # for more details.
+        # Corresponds to the JSON property `isChannelMonetizationEnabled`
+        # @return [Boolean]
+        attr_accessor :is_channel_monetization_enabled
+        alias_method :is_channel_monetization_enabled?, :is_channel_monetization_enabled
+      
         # If true, then the user is linked to either a YouTube username or G+ account.
         # Otherwise, the user doesn't have a public YouTube identity.
         # Corresponds to the JSON property `isLinked`
@@ -1898,6 +1905,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @is_channel_monetization_enabled = args[:is_channel_monetization_enabled] if args.key?(:is_channel_monetization_enabled)
           @is_linked = args[:is_linked] if args.key?(:is_linked)
           @long_uploads_status = args[:long_uploads_status] if args.key?(:long_uploads_status)
           @made_for_kids = args[:made_for_kids] if args.key?(:made_for_kids)
