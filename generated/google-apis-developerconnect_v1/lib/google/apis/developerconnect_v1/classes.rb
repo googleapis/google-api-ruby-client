@@ -22,6 +22,110 @@ module Google
   module Apis
     module DeveloperconnectV1
       
+      # Configuration for connections to an instance of Bitbucket Cloud.
+      class BitbucketCloudConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `authorizerCredential`
+        # @return [Google::Apis::DeveloperconnectV1::UserCredential]
+        attr_accessor :authorizer_credential
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `readAuthorizerCredential`
+        # @return [Google::Apis::DeveloperconnectV1::UserCredential]
+        attr_accessor :read_authorizer_credential
+      
+        # Required. Immutable. SecretManager resource containing the webhook secret used
+        # to verify webhook events, formatted as `projects/*/secrets/*/versions/*`. This
+        # is used to validate and create webhooks.
+        # Corresponds to the JSON property `webhookSecretSecretVersion`
+        # @return [String]
+        attr_accessor :webhook_secret_secret_version
+      
+        # Required. The Bitbucket Cloud Workspace ID to be connected to Google Cloud
+        # Platform.
+        # Corresponds to the JSON property `workspace`
+        # @return [String]
+        attr_accessor :workspace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorizer_credential = args[:authorizer_credential] if args.key?(:authorizer_credential)
+          @read_authorizer_credential = args[:read_authorizer_credential] if args.key?(:read_authorizer_credential)
+          @webhook_secret_secret_version = args[:webhook_secret_secret_version] if args.key?(:webhook_secret_secret_version)
+          @workspace = args[:workspace] if args.key?(:workspace)
+        end
+      end
+      
+      # Configuration for connections to an instance of Bitbucket Data Center.
+      class BitbucketDataCenterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `authorizerCredential`
+        # @return [Google::Apis::DeveloperconnectV1::UserCredential]
+        attr_accessor :authorizer_credential
+      
+        # Required. The URI of the Bitbucket Data Center host this connection is for.
+        # Corresponds to the JSON property `hostUri`
+        # @return [String]
+        attr_accessor :host_uri
+      
+        # Represents a personal access token that authorized the Connection, and
+        # associated metadata.
+        # Corresponds to the JSON property `readAuthorizerCredential`
+        # @return [Google::Apis::DeveloperconnectV1::UserCredential]
+        attr_accessor :read_authorizer_credential
+      
+        # Output only. Version of the Bitbucket Data Center server running on the `
+        # host_uri`.
+        # Corresponds to the JSON property `serverVersion`
+        # @return [String]
+        attr_accessor :server_version
+      
+        # ServiceDirectoryConfig represents Service Directory configuration for a
+        # connection.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
+        # Optional. SSL certificate authority to trust when making requests to Bitbucket
+        # Data Center.
+        # Corresponds to the JSON property `sslCaCertificate`
+        # @return [String]
+        attr_accessor :ssl_ca_certificate
+      
+        # Required. Immutable. SecretManager resource containing the webhook secret used
+        # to verify webhook events, formatted as `projects/*/secrets/*/versions/*`. This
+        # is used to validate webhooks.
+        # Corresponds to the JSON property `webhookSecretSecretVersion`
+        # @return [String]
+        attr_accessor :webhook_secret_secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorizer_credential = args[:authorizer_credential] if args.key?(:authorizer_credential)
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
+          @read_authorizer_credential = args[:read_authorizer_credential] if args.key?(:read_authorizer_credential)
+          @server_version = args[:server_version] if args.key?(:server_version)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
+          @ssl_ca_certificate = args[:ssl_ca_certificate] if args.key?(:ssl_ca_certificate)
+          @webhook_secret_secret_version = args[:webhook_secret_secret_version] if args.key?(:webhook_secret_secret_version)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -43,6 +147,16 @@ module Google
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
+      
+        # Configuration for connections to an instance of Bitbucket Cloud.
+        # Corresponds to the JSON property `bitbucketCloudConfig`
+        # @return [Google::Apis::DeveloperconnectV1::BitbucketCloudConfig]
+        attr_accessor :bitbucket_cloud_config
+      
+        # Configuration for connections to an instance of Bitbucket Data Center.
+        # Corresponds to the JSON property `bitbucketDataCenterConfig`
+        # @return [Google::Apis::DeveloperconnectV1::BitbucketDataCenterConfig]
+        attr_accessor :bitbucket_data_center_config
       
         # Output only. [Output only] Create timestamp
         # Corresponds to the JSON property `createTime`
@@ -74,6 +188,11 @@ module Google
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
+      
+        # The git proxy configuration.
+        # Corresponds to the JSON property `gitProxyConfig`
+        # @return [Google::Apis::DeveloperconnectV1::GitProxyConfig]
+        attr_accessor :git_proxy_config
       
         # Configuration for connections to github.com.
         # Corresponds to the JSON property `githubConfig`
@@ -136,11 +255,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @bitbucket_cloud_config = args[:bitbucket_cloud_config] if args.key?(:bitbucket_cloud_config)
+          @bitbucket_data_center_config = args[:bitbucket_data_center_config] if args.key?(:bitbucket_data_center_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @crypto_key_config = args[:crypto_key_config] if args.key?(:crypto_key_config)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @disabled = args[:disabled] if args.key?(:disabled)
           @etag = args[:etag] if args.key?(:etag)
+          @git_proxy_config = args[:git_proxy_config] if args.key?(:git_proxy_config)
           @github_config = args[:github_config] if args.key?(:github_config)
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
           @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
@@ -565,6 +687,27 @@ module Google
         end
       end
       
+      # The git proxy configuration.
+      class GitProxyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Setting this to true allows the git proxy to be used for performing
+        # git operations on the repositories linked in the connection.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Message describing the GitRepositoryLink object
       class GitRepositoryLink
         include Google::Apis::Core::Hashable
@@ -595,6 +738,12 @@ module Google
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
+      
+        # Output only. URI to access the linked repository through the Git Proxy. This
+        # field is only populated if the git proxy is enabled for the connection.
+        # Corresponds to the JSON property `gitProxyUri`
+        # @return [String]
+        attr_accessor :git_proxy_uri
       
         # Optional. Labels as key value pairs
         # Corresponds to the JSON property `labels`
@@ -640,6 +789,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @etag = args[:etag] if args.key?(:etag)
+          @git_proxy_uri = args[:git_proxy_uri] if args.key?(:git_proxy_uri)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -1086,6 +1236,75 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # RPC request object accepted by the ProcessBitbucketCloudWebhook RPC method.
+      class ProcessBitbucketCloudWebhookRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message that represents an arbitrary HTTP body. It should only be used for
+        # payload formats that can't be represented as JSON, such as raw binary or an
+        # HTML page. This message can be used both in streaming and non-streaming API
+        # methods in the request as well as the response. It can be used as a top-level
+        # request field, which is convenient if one wants to extract parameters from
+        # either the URL or HTTP template into the request fields and also want access
+        # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+        # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+        # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+        # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+        # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+        # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+        # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+        # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+        # only changes how the request and response bodies are handled, all other
+        # features will continue to work unchanged.
+        # Corresponds to the JSON property `body`
+        # @return [Google::Apis::DeveloperconnectV1::HttpBody]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # RPC request object accepted by the ProcessBitbucketDataCenterWebhook RPC
+      # method.
+      class ProcessBitbucketDataCenterWebhookRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message that represents an arbitrary HTTP body. It should only be used for
+        # payload formats that can't be represented as JSON, such as raw binary or an
+        # HTML page. This message can be used both in streaming and non-streaming API
+        # methods in the request as well as the response. It can be used as a top-level
+        # request field, which is convenient if one wants to extract parameters from
+        # either the URL or HTTP template into the request fields and also want access
+        # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+        # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+        # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+        # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+        # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+        # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+        # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+        # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+        # only changes how the request and response bodies are handled, all other
+        # features will continue to work unchanged.
+        # Corresponds to the JSON property `body`
+        # @return [Google::Apis::DeveloperconnectV1::HttpBody]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
         end
       end
       
