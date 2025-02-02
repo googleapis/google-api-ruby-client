@@ -37425,6 +37425,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :availability_domain
       
+        # Specify the time in seconds for host error detection, the value must be within
+        # the range of [90, 330] with the increment of 30, if unset, the default
+        # behavior of host error recovery will be used.
+        # Corresponds to the JSON property `hostErrorTimeoutSeconds`
+        # @return [Fixnum]
+        attr_accessor :host_error_timeout_seconds
+      
         # Specifies the termination action for the instance.
         # Corresponds to the JSON property `instanceTerminationAction`
         # @return [String]
@@ -37506,6 +37513,7 @@ module Google
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
+          @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @local_ssd_recovery_timeout = args[:local_ssd_recovery_timeout] if args.key?(:local_ssd_recovery_timeout)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
