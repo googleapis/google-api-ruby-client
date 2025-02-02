@@ -800,6 +800,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :etag, as: 'etag'
           collection :gateways, as: 'gateways'
           collection :hostnames, as: 'hostnames'
           hash :labels, as: 'labels'
@@ -921,6 +922,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :etag, as: 'etag'
           collection :gateways, as: 'gateways'
           collection :hostnames, as: 'hostnames'
           hash :labels, as: 'labels'
@@ -1487,6 +1489,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :etag, as: 'etag'
           collection :gateways, as: 'gateways'
           hash :labels, as: 'labels'
           collection :meshes, as: 'meshes'
@@ -1553,6 +1556,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :etag, as: 'etag'
           collection :gateways, as: 'gateways'
           hash :labels, as: 'labels'
           collection :meshes, as: 'meshes'

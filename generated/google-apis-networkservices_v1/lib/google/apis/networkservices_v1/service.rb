@@ -1181,6 +1181,10 @@ module Google
         # @param [String] name
         #   Required. A name of the GrpcRoute to delete. Must be in the format `projects/*/
         #   locations/global/grpcRoutes/*`.
+        # @param [String] etag
+        #   Optional. Etag of the resource. If this is provided, it must match the server'
+        #   s etag. If the provided etag does not match the server's etag, the request
+        #   will fail with a 409 ABORTED error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1198,11 +1202,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_grpc_route(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_grpc_route(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
           command.response_class = Google::Apis::NetworkservicesV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1360,6 +1365,10 @@ module Google
         # @param [String] name
         #   Required. A name of the HttpRoute to delete. Must be in the format `projects/*/
         #   locations/global/httpRoutes/*`.
+        # @param [String] etag
+        #   Optional. Etag of the resource. If this is provided, it must match the server'
+        #   s etag. If the provided etag does not match the server's etag, the request
+        #   will fail with a 409 ABORTED error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1377,11 +1386,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_http_route(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_http_route(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
           command.response_class = Google::Apis::NetworkservicesV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2699,6 +2709,10 @@ module Google
         # @param [String] name
         #   Required. A name of the TcpRoute to delete. Must be in the format `projects/*/
         #   locations/global/tcpRoutes/*`.
+        # @param [String] etag
+        #   Optional. Etag of the resource. If this is provided, it must match the server'
+        #   s etag. If the provided etag does not match the server's etag, the request
+        #   will fail with a 409 ABORTED error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2716,11 +2730,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_tcp_route(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_tcp_route(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
           command.response_class = Google::Apis::NetworkservicesV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2878,6 +2893,10 @@ module Google
         # @param [String] name
         #   Required. A name of the TlsRoute to delete. Must be in the format `projects/*/
         #   locations/global/tlsRoutes/*`.
+        # @param [String] etag
+        #   Optional. Etag of the resource. If this is provided, it must match the server'
+        #   s etag. If the provided etag does not match the server's etag, the request
+        #   will fail with a 409 ABORTED error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2895,11 +2914,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_tls_route(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_tls_route(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
           command.response_class = Google::Apis::NetworkservicesV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
