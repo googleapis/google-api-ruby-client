@@ -578,6 +578,7 @@ module Google
       class FormSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_collection_type, as: 'emailCollectionType'
           property :quiz_settings, as: 'quizSettings', class: Google::Apis::FormsV1::QuizSettings, decorator: Google::Apis::FormsV1::QuizSettings::Representation
       
         end
