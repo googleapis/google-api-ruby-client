@@ -2341,6 +2341,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::EndPoint]
         attr_accessor :endpoint
       
+        # Pub/Sub message includes details of the Destination Pub/Sub topic.
+        # Corresponds to the JSON property `pubsub`
+        # @return [Google::Apis::ConnectorsV1::PubSub]
+        attr_accessor :pubsub
+      
         # Service account needed for runtime plane to trigger IP workflow.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -2358,6 +2363,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @pubsub = args[:pubsub] if args.key?(:pubsub)
           @service_account = args[:service_account] if args.key?(:service_account)
           @type = args[:type] if args.key?(:type)
         end
@@ -4752,10 +4758,21 @@ module Google
         # @return [String]
         attr_accessor :demo_uri
       
+        # Output only. Has dynamic open api spec uri.
+        # Corresponds to the JSON property `hasDynamicSpecUri`
+        # @return [Boolean]
+        attr_accessor :has_dynamic_spec_uri
+        alias_method :has_dynamic_spec_uri?, :has_dynamic_spec_uri
+      
         # Required. Integration example templates for the custom connector.
         # Corresponds to the JSON property `integrationTemplates`
         # @return [String]
         attr_accessor :integration_templates
+      
+        # Output only. Local spec path. Required if has_dynamic_spec_uri is true.
+        # Corresponds to the JSON property `localSpecPath`
+        # @return [String]
+        attr_accessor :local_spec_path
       
         # Optional. Marketplace product name.
         # Corresponds to the JSON property `marketplaceProduct`
@@ -4817,7 +4834,9 @@ module Google
           @additional_comments = args[:additional_comments] if args.key?(:additional_comments)
           @confirm_partner_requirements = args[:confirm_partner_requirements] if args.key?(:confirm_partner_requirements)
           @demo_uri = args[:demo_uri] if args.key?(:demo_uri)
+          @has_dynamic_spec_uri = args[:has_dynamic_spec_uri] if args.key?(:has_dynamic_spec_uri)
           @integration_templates = args[:integration_templates] if args.key?(:integration_templates)
+          @local_spec_path = args[:local_spec_path] if args.key?(:local_spec_path)
           @marketplace_product = args[:marketplace_product] if args.key?(:marketplace_product)
           @marketplace_product_id = args[:marketplace_product_id] if args.key?(:marketplace_product_id)
           @marketplace_product_project_id = args[:marketplace_product_project_id] if args.key?(:marketplace_product_project_id)
@@ -5059,6 +5078,43 @@ module Google
         def update!(**args)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @resource_url = args[:resource_url] if args.key?(:resource_url)
+        end
+      end
+      
+      # Pub/Sub message includes details of the Destination Pub/Sub topic.
+      class PubSub
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Pub/Sub message attributes to be added to the Pub/Sub message.
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,String>]
+        attr_accessor :attributes
+      
+        # Optional. Configuration for configuring the trigger
+        # Corresponds to the JSON property `configVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
+        attr_accessor :config_variables
+      
+        # Required. The project id which has the Pub/Sub topic.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The topic id of the Pub/Sub topic.
+        # Corresponds to the JSON property `topicId`
+        # @return [String]
+        attr_accessor :topic_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @config_variables = args[:config_variables] if args.key?(:config_variables)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @topic_id = args[:topic_id] if args.key?(:topic_id)
         end
       end
       
