@@ -808,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListApiDebugSessionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListApiDocsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3320,6 +3326,15 @@ module Google
           property :message, as: 'message'
           property :request_id, as: 'requestId'
           property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListApiDebugSessionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sessions, as: 'sessions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Session, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Session::Representation
+      
         end
       end
       

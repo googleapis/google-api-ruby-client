@@ -1615,6 +1615,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists debug sessions that are currently active in the given API Proxy.
+        # @param [String] parent
+        #   Required. The name of the API Proxy for which to list debug sessions. Must be
+        #   of the form: `organizations/`organization`/apis/`api``.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of debug sessions to return. The page size defaults
+        #   to 25.
+        # @param [String] page_token
+        #   Optional. Page token, returned from a previous ListApiDebugSessions call, that
+        #   you can use to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiDebugSessionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiDebugSessionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_api_debugsessions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/debugsessions', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiDebugSessionsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiDebugSessionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all deployments of an API proxy.
         # @param [String] parent
         #   Required. Name of the API proxy for which to return deployment information in
