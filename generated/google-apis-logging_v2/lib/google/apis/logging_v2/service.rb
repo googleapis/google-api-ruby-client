@@ -900,7 +900,7 @@ module Google
         # @param [String] view_id
         #   Required. A client-assigned identifier such as "my-view". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   and hyphens.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3158,7 +3158,7 @@ module Google
         # @param [String] view_id
         #   Required. A client-assigned identifier such as "my-view". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   and hyphens.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5072,7 +5072,7 @@ module Google
         # @param [String] view_id
         #   Required. A client-assigned identifier such as "my-view". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   and hyphens.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6562,7 +6562,7 @@ module Google
         # @param [String] view_id
         #   Required. A client-assigned identifier such as "my-view". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   and hyphens.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8748,7 +8748,7 @@ module Google
         # @param [String] view_id
         #   Required. A client-assigned identifier such as "my-view". Identifiers are
         #   limited to 100 characters and can include only letters, digits, underscores,
-        #   hyphens, and periods.
+        #   and hyphens.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
