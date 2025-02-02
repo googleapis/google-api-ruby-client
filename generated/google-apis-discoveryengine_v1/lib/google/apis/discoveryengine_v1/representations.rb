@@ -604,6 +604,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1ControlFilterAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -713,6 +725,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1DeleteCmekConfigMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1036,6 +1054,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1HealthcareFhirConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdentityMappingEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdentityMappingEntryOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdentityMappingStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1085,6 +1127,24 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1ImportErrorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequestInlineSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportIdentityMappingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1175,6 +1235,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1ListEnginesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ListIdentityMappingStoresResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1283,6 +1355,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1PurgeErrorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1942,6 +2026,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaControlFilterAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2045,6 +2141,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDeleteCmekConfigMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2296,6 +2398,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2339,6 +2453,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaImportErrorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2902,6 +3022,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaControlFilterAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3148,6 +3280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3173,6 +3317,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaImportErrorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaImportIdentityMappingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4571,6 +4721,27 @@ module Google
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
           property :fixed_boost, as: 'fixedBoost'
+          property :interpolation_boost_spec, as: 'interpolationBoostSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_type, as: 'attributeType'
+          collection :control_points, as: 'controlPoints', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint::Representation
+      
+          property :field_name, as: 'fieldName'
+          property :interpolation_type, as: 'interpolationType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_value, as: 'attributeValue'
+          property :boost_amount, as: 'boostAmount'
         end
       end
       
@@ -4745,6 +4916,8 @@ module Google
           property :display_name, as: 'displayName'
           property :document_processing_config, as: 'documentProcessingConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentProcessingConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DocumentProcessingConfig::Representation
       
+          property :healthcare_fhir_config, as: 'healthcareFhirConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1HealthcareFhirConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1HealthcareFhirConfig::Representation
+      
           property :industry_vertical, as: 'industryVertical'
           property :is_infobot_faq_data_store, as: 'isInfobotFaqDataStore'
           property :kms_key_name, as: 'kmsKeyName'
@@ -4775,6 +4948,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled_for_serving, as: 'disabledForServing'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DeleteCmekConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -5274,6 +5455,42 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1HealthcareFhirConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_configurable_schema, as: 'enableConfigurableSchema'
+          property :enable_static_indexing_for_batch_ingestion, as: 'enableStaticIndexingForBatchIngestion'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdentityMappingEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_identity, as: 'externalIdentity'
+          property :group_id, as: 'groupId'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdentityMappingEntryOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :total_count, :numeric_string => true, as: 'totalCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdentityMappingStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CmekConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CmekConfig::Representation
+      
+          property :kms_key_name, as: 'kmsKeyName'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5380,6 +5597,30 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_prefix, as: 'gcsPrefix'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inline_source, as: 'inlineSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequestInlineSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequestInlineSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequestInlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :identity_mapping_entries, as: 'identityMappingEntries', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdentityMappingEntry, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdentityMappingEntry::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ImportIdentityMappingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
         end
       end
       
@@ -5521,6 +5762,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :engines, as: 'engines', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Engine, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Engine::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ListIdentityMappingStoresResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :identity_mapping_stores, as: 'identityMappingStores', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdentityMappingStore, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdentityMappingStore::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :identity_mapping_entries, as: 'identityMappingEntries', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdentityMappingEntry, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdentityMappingEntry::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -5687,6 +5946,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_prefix, as: 'gcsPrefix'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :force, as: 'force'
+          property :inline_source, as: 'inlineSource', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :identity_mapping_entries, as: 'identityMappingEntries', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdentityMappingEntry, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdentityMappingEntry::Representation
+      
         end
       end
       
@@ -6869,6 +7146,27 @@ module Google
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
           property :fixed_boost, as: 'fixedBoost'
+          property :interpolation_boost_spec, as: 'interpolationBoostSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_type, as: 'attributeType'
+          collection :control_points, as: 'controlPoints', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint::Representation
+      
+          property :field_name, as: 'fieldName'
+          property :interpolation_type, as: 'interpolationType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_value, as: 'attributeValue'
+          property :boost_amount, as: 'boostAmount'
         end
       end
       
@@ -7025,6 +7323,8 @@ module Google
           property :display_name, as: 'displayName'
           property :document_processing_config, as: 'documentProcessingConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig::Representation
       
+          property :healthcare_fhir_config, as: 'healthcareFhirConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig::Representation
+      
           property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaIdpConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaIdpConfig::Representation
       
           property :industry_vertical, as: 'industryVertical'
@@ -7071,6 +7371,14 @@ module Google
       
           property :user_triggered_crawl_rate, as: 'userTriggeredCrawlRate', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDeleteCmekConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -7447,6 +7755,23 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_configurable_schema, as: 'enableConfigurableSchema'
+          property :enable_static_indexing_for_batch_ingestion, as: 'enableStaticIndexingForBatchIngestion'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :total_count, :numeric_string => true, as: 'totalCount'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7517,6 +7842,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_prefix, as: 'gcsPrefix'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
         end
       end
       
@@ -7789,6 +8122,8 @@ module Google
           property :create_time, as: 'createTime'
           collection :invalid_uris, as: 'invalidUris'
           property :invalid_uris_count, as: 'invalidUrisCount'
+          collection :noindex_uris, as: 'noindexUris'
+          property :noindex_uris_count, as: 'noindexUrisCount'
           property :pending_count, as: 'pendingCount'
           property :quota_exceeded_count, as: 'quotaExceededCount'
           property :success_count, as: 'successCount'
@@ -8452,6 +8787,27 @@ module Google
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
           property :fixed_boost, as: 'fixedBoost'
+          property :interpolation_boost_spec, as: 'interpolationBoostSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_type, as: 'attributeType'
+          collection :control_points, as: 'controlPoints', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint::Representation
+      
+          property :field_name, as: 'fieldName'
+          property :interpolation_type, as: 'interpolationType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_value, as: 'attributeValue'
+          property :boost_amount, as: 'boostAmount'
         end
       end
       
@@ -8546,6 +8902,8 @@ module Google
           property :default_schema_id, as: 'defaultSchemaId'
           property :display_name, as: 'displayName'
           property :document_processing_config, as: 'documentProcessingConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig::Representation
+      
+          property :healthcare_fhir_config, as: 'healthcareFhirConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig::Representation
       
           property :industry_vertical, as: 'industryVertical'
           property :is_infobot_faq_data_store, as: 'isInfobotFaqDataStore'
@@ -8835,6 +9193,23 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_configurable_schema, as: 'enableConfigurableSchema'
+          property :enable_static_indexing_for_batch_ingestion, as: 'enableStaticIndexingForBatchIngestion'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :total_count, :numeric_string => true, as: 'totalCount'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8880,6 +9255,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_prefix, as: 'gcsPrefix'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaImportIdentityMappingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_samples, as: 'errorSamples', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
+      
         end
       end
       
