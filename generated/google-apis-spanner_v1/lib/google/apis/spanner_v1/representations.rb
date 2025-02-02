@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupInstancePartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupSchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1055,6 +1061,8 @@ module Google
           property :expire_time, as: 'expireTime'
           property :freeable_size_bytes, :numeric_string => true, as: 'freeableSizeBytes'
           property :incremental_backup_chain_id, as: 'incrementalBackupChainId'
+          collection :instance_partitions, as: 'instancePartitions', class: Google::Apis::SpannerV1::BackupInstancePartition, decorator: Google::Apis::SpannerV1::BackupInstancePartition::Representation
+      
           property :max_expire_time, as: 'maxExpireTime'
           property :name, as: 'name'
           property :oldest_version_time, as: 'oldestVersionTime'
@@ -1073,6 +1081,13 @@ module Google
           property :create_time, as: 'createTime'
           property :source_database, as: 'sourceDatabase'
           property :version_time, as: 'versionTime'
+        end
+      end
+      
+      class BackupInstancePartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_partition, as: 'instancePartition'
         end
       end
       

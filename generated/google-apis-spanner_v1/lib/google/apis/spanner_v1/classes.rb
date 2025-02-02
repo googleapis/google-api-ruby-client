@@ -331,6 +331,13 @@ module Google
         # @return [String]
         attr_accessor :incremental_backup_chain_id
       
+        # Output only. The instance partition(s) storing the backup. This is the same as
+        # the list of the instance partition(s) that the database had footprint in at
+        # the backup's `version_time`.
+        # Corresponds to the JSON property `instancePartitions`
+        # @return [Array<Google::Apis::SpannerV1::BackupInstancePartition>]
+        attr_accessor :instance_partitions
+      
         # Output only. The max allowed expiration time of the backup, with microseconds
         # granularity. A backup's expiration time can be configured in multiple APIs:
         # CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing
@@ -416,6 +423,7 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @freeable_size_bytes = args[:freeable_size_bytes] if args.key?(:freeable_size_bytes)
           @incremental_backup_chain_id = args[:incremental_backup_chain_id] if args.key?(:incremental_backup_chain_id)
+          @instance_partitions = args[:instance_partitions] if args.key?(:instance_partitions)
           @max_expire_time = args[:max_expire_time] if args.key?(:max_expire_time)
           @name = args[:name] if args.key?(:name)
           @oldest_version_time = args[:oldest_version_time] if args.key?(:oldest_version_time)
@@ -464,6 +472,26 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @source_database = args[:source_database] if args.key?(:source_database)
           @version_time = args[:version_time] if args.key?(:version_time)
+        end
+      end
+      
+      # Instance partition information for the backup.
+      class BackupInstancePartition
+        include Google::Apis::Core::Hashable
+      
+        # A unique identifier for the instance partition. Values are of the form `
+        # projects//instances//instancePartitions/`
+        # Corresponds to the JSON property `instancePartition`
+        # @return [String]
+        attr_accessor :instance_partition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_partition = args[:instance_partition] if args.key?(:instance_partition)
         end
       end
       
@@ -541,7 +569,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # CrontabSpec can be used to specify the version time and frequency at which the
-        # backup should be created.
+        # backup is created.
         # Corresponds to the JSON property `cronSpec`
         # @return [Google::Apis::SpannerV1::CrontabSpec]
         attr_accessor :cron_spec
@@ -1999,16 +2027,16 @@ module Google
       end
       
       # CrontabSpec can be used to specify the version time and frequency at which the
-      # backup should be created.
+      # backup is created.
       class CrontabSpec
         include Google::Apis::Core::Hashable
       
-        # Output only. Schedule backups will contain an externally consistent copy of
-        # the database at the version time specified in `schedule_spec.cron_spec`.
-        # However, Spanner may not initiate the creation of the scheduled backups at
-        # that version time. Spanner will initiate the creation of scheduled backups
-        # within the time window bounded by the version_time specified in `schedule_spec.
-        # cron_spec` and version_time + `creation_window`.
+        # Output only. Scheduled backups contain an externally consistent copy of the
+        # database at the version time specified in `schedule_spec.cron_spec`. However,
+        # Spanner might not initiate the creation of the scheduled backups at that
+        # version time. Spanner initiates the creation of scheduled backups within the
+        # time window bounded by the version_time specified in `schedule_spec.cron_spec`
+        # and version_time + `creation_window`.
         # Corresponds to the JSON property `creationWindow`
         # @return [String]
         attr_accessor :creation_window
@@ -2020,7 +2048,7 @@ module Google
         # minimum of 12 hours apart and incremental backups must be scheduled a minimum
         # of 4 hours apart. Examples of valid cron specifications: * `0 2/12 * * *` :
         # every 12 hours at (2, 14) hours past midnight in UTC. * `0 2,14 * * *` : every
-        # 12 hours at (2,14) hours past midnight in UTC. * `0 */4 * * *` : (incremental
+        # 12 hours at (2, 14) hours past midnight in UTC. * `0 */4 * * *` : (incremental
         # backups only) every 4 hours at (0, 4, 8, 12, 16, 20) hours past midnight in
         # UTC. * `0 2 * * *` : once a day at 2 past midnight in UTC. * `0 2 * * 0` :
         # once a week every Sunday at 2 past midnight in UTC. * `0 2 8 * *` : once a
@@ -2029,7 +2057,7 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # Output only. The time zone of the times in `CrontabSpec.text`. Currently only
+        # Output only. The time zone of the times in `CrontabSpec.text`. Currently, only
         # UTC is supported.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
