@@ -460,7 +460,7 @@ module Google
       # Gateway represents the configuration for a proxy, typically a load balancer.
       # It captures the ip:port over which the services are exposed by the proxy,
       # along with any policy configurations. Routes have reference to to Gateways to
-      # dictate how requests should be routed by this Gateway. Next id: 33
+      # dictate how requests should be routed by this Gateway.
       class Gateway
         include Google::Apis::Core::Hashable
       
@@ -545,7 +545,7 @@ module Google
       
         # Optional. Scope determines how configuration across multiple Gateway instances
         # are merged. The configuration for multiple Gateway instances with the same
-        # scope will be merged as presented as a single coniguration to the proxy/load
+        # scope will be merged as presented as a single configuration to the proxy/load
         # balancer. Max length 64 characters. Scope should start with a letter and can
         # only have letters, numbers, hyphens.
         # Corresponds to the JSON property `scope`
@@ -669,6 +669,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Output only. Etag of the resource. If this is provided, it must
+        # match the server's etag. If the provided etag does not match the server's etag,
+        # the request will fail with a 409 ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Optional. Gateways defines a list of gateways this GrpcRoute is attached to,
         # as one of the routing rules to route the requests served by the gateway. Each
         # gateway reference should match the pattern: `projects/*/locations/global/
@@ -743,6 +750,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @gateways = args[:gateways] if args.key?(:gateways)
           @hostnames = args[:hostnames] if args.key?(:hostnames)
           @labels = args[:labels] if args.key?(:labels)
@@ -1149,6 +1157,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Output only. Etag of the resource. If this is provided, it must
+        # match the server's etag. If the provided etag does not match the server's etag,
+        # the request will fail with a 409 ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Optional. Gateways defines a list of gateways this HttpRoute is attached to,
         # as one of the routing rules to route the requests served by the gateway. Each
         # gateway reference should match the pattern: `projects/*/locations/global/
@@ -1221,6 +1236,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @gateways = args[:gateways] if args.key?(:gateways)
           @hostnames = args[:hostnames] if args.key?(:hostnames)
           @labels = args[:labels] if args.key?(:labels)
@@ -3330,6 +3346,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Output only. Etag of the resource. If this is provided, it must
+        # match the server's etag. If the provided etag does not match the server's etag,
+        # the request will fail with a 409 ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Optional. Gateways defines a list of gateways this TcpRoute is attached to, as
         # one of the routing rules to route the requests served by the gateway. Each
         # gateway reference should match the pattern: `projects/*/locations/global/
@@ -3382,6 +3405,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @gateways = args[:gateways] if args.key?(:gateways)
           @labels = args[:labels] if args.key?(:labels)
           @meshes = args[:meshes] if args.key?(:meshes)
@@ -3539,6 +3563,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Output only. Etag of the resource. If this is provided, it must
+        # match the server's etag. If the provided etag does not match the server's etag,
+        # the request will fail with a 409 ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Optional. Gateways defines a list of gateways this TlsRoute is attached to, as
         # one of the routing rules to route the requests served by the gateway. Each
         # gateway reference should match the pattern: `projects/*/locations/global/
@@ -3591,6 +3622,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @gateways = args[:gateways] if args.key?(:gateways)
           @labels = args[:labels] if args.key?(:labels)
           @meshes = args[:meshes] if args.key?(:meshes)
