@@ -1750,10 +1750,23 @@ module Google
         # @return [Array<Google::Apis::WorkstationsV1beta::WorkstationBoostConfig>]
         attr_accessor :boost_configs
       
+        # Output only. Status conditions describing the workstation's current state.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::WorkstationsV1beta::Status>]
+        attr_accessor :conditions
+      
         # Output only. Time when this workstation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Output only. Whether this workstation is in degraded mode, in which case it
+        # may require user action to restore full functionality. Details can be found in
+        # conditions.
+        # Corresponds to the JSON property `degraded`
+        # @return [Boolean]
+        attr_accessor :degraded
+        alias_method :degraded?, :degraded
       
         # Output only. Time when this workstation was soft-deleted.
         # Corresponds to the JSON property `deleteTime`
@@ -1864,7 +1877,9 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @boost_configs = args[:boost_configs] if args.key?(:boost_configs)
+          @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @degraded = args[:degraded] if args.key?(:degraded)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @env = args[:env] if args.key?(:env)
