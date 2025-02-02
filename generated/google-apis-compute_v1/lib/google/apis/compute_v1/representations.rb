@@ -15732,6 +15732,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
           property :availability_domain, as: 'availabilityDomain'
+          property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :instance_termination_action, as: 'instanceTerminationAction'
           property :local_ssd_recovery_timeout, as: 'localSsdRecoveryTimeout', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
       
