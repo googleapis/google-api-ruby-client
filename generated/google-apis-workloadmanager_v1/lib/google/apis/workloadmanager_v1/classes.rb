@@ -1148,6 +1148,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Optional. Whether to use DR reconciliation or not.
+        # Corresponds to the JSON property `useDrReconciliation`
+        # @return [Boolean]
+        attr_accessor :use_dr_reconciliation
+        alias_method :use_dr_reconciliation?, :use_dr_reconciliation
+      
         # A set of properties describing an SAP workload.
         # Corresponds to the JSON property `workloadProperties`
         # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryWorkloadProperties]
@@ -1165,6 +1171,7 @@ module Google
           @project_number = args[:project_number] if args.key?(:project_number)
           @system_id = args[:system_id] if args.key?(:system_id)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @use_dr_reconciliation = args[:use_dr_reconciliation] if args.key?(:use_dr_reconciliation)
           @workload_properties = args[:workload_properties] if args.key?(:workload_properties)
         end
       end
@@ -1327,6 +1334,11 @@ module Google
         # @return [String]
         attr_accessor :instance_number
       
+        # Optional. Landscape ID from the HANA nameserver.
+        # Corresponds to the JSON property `landscapeId`
+        # @return [String]
+        attr_accessor :landscape_id
+      
         # Required. URI of the recognized primary instance of the database.
         # Corresponds to the JSON property `primaryInstanceUri`
         # @return [String]
@@ -1348,6 +1360,7 @@ module Google
           @database_type = args[:database_type] if args.key?(:database_type)
           @database_version = args[:database_version] if args.key?(:database_version)
           @instance_number = args[:instance_number] if args.key?(:instance_number)
+          @landscape_id = args[:landscape_id] if args.key?(:landscape_id)
           @primary_instance_uri = args[:primary_instance_uri] if args.key?(:primary_instance_uri)
           @shared_nfs_uri = args[:shared_nfs_uri] if args.key?(:shared_nfs_uri)
         end
