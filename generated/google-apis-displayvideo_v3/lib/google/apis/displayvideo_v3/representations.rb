@@ -1804,6 +1804,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SdfUploadTask
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SdfUploadTaskMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchTargetingOptionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5109,6 +5121,22 @@ module Google
       end
       
       class SdfDownloadTaskMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :version, as: 'version'
+        end
+      end
+      
+      class SdfUploadTask
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class SdfUploadTaskMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'

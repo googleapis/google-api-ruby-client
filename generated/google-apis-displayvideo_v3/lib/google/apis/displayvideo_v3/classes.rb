@@ -11367,6 +11367,58 @@ module Google
         end
       end
       
+      # Type for the response returned by [SdfUploadTaskService.CreateSdfUploadTask].
+      class SdfUploadTask
+        include Google::Apis::Core::Hashable
+      
+        # A resource name to be used in media.download to Download the script files. Or
+        # media.upload to Upload the script files. Resource names have the format `
+        # download/sdfuploadtasks/media/`media_id``.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Type for the metadata returned by [SdfUploadTaskService.CreateSdfUploadTask].
+      class SdfUploadTaskMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time when the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time when execution was completed.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The SDF version used to execute this upload task.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Request message for SearchTargetingOptions.
       class SearchTargetingOptionsRequest
         include Google::Apis::Core::Hashable
