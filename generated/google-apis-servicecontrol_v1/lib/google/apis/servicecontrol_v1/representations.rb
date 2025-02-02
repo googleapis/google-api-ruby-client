@@ -824,6 +824,7 @@ module Google
           property :host, as: 'host'
           property :id, as: 'id'
           property :method_prop, as: 'method'
+          property :origin, as: 'origin'
           property :path, as: 'path'
           property :protocol, as: 'protocol'
           property :query, as: 'query'
