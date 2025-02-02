@@ -1318,7 +1318,7 @@ module Google
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the replica's private key. The corresponsing public key
+        # PEM representation of the replica's private key. The corresponding public key
         # is encoded in the client's certificate. The format of the replica's private
         # key can be either PKCS #1 or PKCS #8.
         # Corresponds to the JSON property `clientKey`
@@ -2974,7 +2974,7 @@ module Google
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the replica's private key. The corresponsing public key
+        # PEM representation of the replica's private key. The corresponding public key
         # is encoded in the client's certificate.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
@@ -3079,7 +3079,7 @@ module Google
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the replica's private key. The corresponsing public key
+        # PEM representation of the replica's private key. The corresponding public key
         # is encoded in the client's certificate.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
@@ -4014,6 +4014,12 @@ module Google
         # @return [String]
         attr_accessor :pricing_plan
       
+        # Optional. Configuration value for recreation of replica after certain
+        # replication lag
+        # Corresponds to the JSON property `replicationLagMaxSeconds`
+        # @return [Fixnum]
+        attr_accessor :replication_lag_max_seconds
+      
         # The type of replication this instance uses. This can be either `ASYNCHRONOUS`
         # or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First
         # Generation instances.
@@ -4096,6 +4102,7 @@ module Google
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @password_validation_policy = args[:password_validation_policy] if args.key?(:password_validation_policy)
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)
+          @replication_lag_max_seconds = args[:replication_lag_max_seconds] if args.key?(:replication_lag_max_seconds)
           @replication_type = args[:replication_type] if args.key?(:replication_type)
           @settings_version = args[:settings_version] if args.key?(:settings_version)
           @sql_server_audit_config = args[:sql_server_audit_config] if args.key?(:sql_server_audit_config)

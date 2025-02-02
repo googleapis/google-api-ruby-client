@@ -1763,6 +1763,7 @@ module Google
           property :password_validation_policy, as: 'passwordValidationPolicy', class: Google::Apis::SqladminV1beta4::PasswordValidationPolicy, decorator: Google::Apis::SqladminV1beta4::PasswordValidationPolicy::Representation
       
           property :pricing_plan, as: 'pricingPlan'
+          property :replication_lag_max_seconds, as: 'replicationLagMaxSeconds'
           property :replication_type, as: 'replicationType'
           property :settings_version, :numeric_string => true, as: 'settingsVersion'
           property :sql_server_audit_config, as: 'sqlServerAuditConfig', class: Google::Apis::SqladminV1beta4::SqlServerAuditConfig, decorator: Google::Apis::SqladminV1beta4::SqlServerAuditConfig::Representation
