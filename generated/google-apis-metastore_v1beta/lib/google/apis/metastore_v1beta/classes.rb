@@ -209,11 +209,11 @@ module Google
       class AuxiliaryVersionConfig
         include Google::Apis::Core::Hashable
       
-        # A mapping of Hive metastore configuration key-value pairs to apply to the
-        # auxiliary Hive metastore (configured in hive-site.xml) in addition to the
-        # primary version's overrides. If keys are present in both the auxiliary version'
-        # s overrides and the primary version's overrides, the value from the auxiliary
-        # version's overrides takes precedence.
+        # Optional. A mapping of Hive metastore configuration key-value pairs to apply
+        # to the auxiliary Hive metastore (configured in hive-site.xml) in addition to
+        # the primary version's overrides. If keys are present in both the auxiliary
+        # version's overrides and the primary version's overrides, the value from the
+        # auxiliary version's overrides takes precedence.
         # Corresponds to the JSON property `configOverrides`
         # @return [Hash<String,String>]
         attr_accessor :config_overrides
@@ -223,8 +223,8 @@ module Google
         # @return [Google::Apis::MetastoreV1beta::NetworkConfig]
         attr_accessor :network_config
       
-        # The Hive metastore version of the auxiliary service. It must be less than the
-        # primary Hive metastore service's version.
+        # Optional. The Hive metastore version of the auxiliary service. It must be less
+        # than the primary Hive metastore service's version.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -278,7 +278,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The description of the backup.
+        # Optional. The description of the backup.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -288,9 +288,9 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Immutable. The relative resource name of the backup, in the following form:
-        # projects/`project_number`/locations/`location_id`/services/`service_id`/
-        # backups/`backup_id`
+        # Immutable. Identifier. The relative resource name of the backup, in the
+        # following form:projects/`project_number`/locations/`location_id`/services/`
+        # service_id`/backups/`backup_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -810,13 +810,13 @@ module Google
         # @return [String]
         attr_accessor :database_type
       
-        # A Cloud Storage object or folder URI that specifies the source from which to
-        # import metadata. It must begin with gs://.
+        # Optional. A Cloud Storage object or folder URI that specifies the source from
+        # which to import metadata. It must begin with gs://.
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
         attr_accessor :gcs_uri
       
-        # The name of the source database.
+        # Optional. The name of the source database.
         # Corresponds to the JSON property `sourceDatabase`
         # @return [String]
         attr_accessor :source_database
@@ -844,9 +844,9 @@ module Google
       class DataplexConfig
         include Google::Apis::Core::Hashable
       
-        # A reference to the Lake resources that this metastore service is attached to.
-        # The key is the lake resource name. Example: projects/`project_number`/
-        # locations/`location_id`/lakes/`lake_id`.
+        # Optional. A reference to the Lake resources that this metastore service is
+        # attached to. The key is the lake resource name. Example: projects/`
+        # project_number`/locations/`location_id`/lakes/`lake_id`.
         # Corresponds to the JSON property `lakeResources`
         # @return [Hash<String,Google::Apis::MetastoreV1beta::Lake>]
         attr_accessor :lake_resources
@@ -881,9 +881,9 @@ module Google
       class EncryptionConfig
         include Google::Apis::Core::Hashable
       
-        # The fully qualified customer provided Cloud KMS key name to use for customer
-        # data encryption, in the following format:projects/`project_number`/locations/`
-        # location_id`/keyRings/`key_ring_id`/cryptoKeys/`crypto_key_id`.
+        # Optional. The fully qualified customer provided Cloud KMS key name to use for
+        # customer data encryption, in the following format:projects/`project_number`/
+        # locations/`location_id`/keyRings/`key_ring_id`/cryptoKeys/`crypto_key_id`.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
@@ -1098,28 +1098,29 @@ module Google
       class HiveMetastoreConfig
         include Google::Apis::Core::Hashable
       
-        # A mapping of Hive metastore version to the auxiliary version configuration.
-        # When specified, a secondary Hive metastore service is created along with the
-        # primary service. All auxiliary versions must be less than the service's
-        # primary version. The key is the auxiliary service name and it must match the
-        # regular expression a-z?. This means that the first character must be a
-        # lowercase letter, and all the following characters must be hyphens, lowercase
-        # letters, or digits, except the last character, which cannot be a hyphen.
+        # Optional. A mapping of Hive metastore version to the auxiliary version
+        # configuration. When specified, a secondary Hive metastore service is created
+        # along with the primary service. All auxiliary versions must be less than the
+        # service's primary version. The key is the auxiliary service name and it must
+        # match the regular expression a-z?. This means that the first character must be
+        # a lowercase letter, and all the following characters must be hyphens,
+        # lowercase letters, or digits, except the last character, which cannot be a
+        # hyphen.
         # Corresponds to the JSON property `auxiliaryVersions`
         # @return [Hash<String,Google::Apis::MetastoreV1beta::AuxiliaryVersionConfig>]
         attr_accessor :auxiliary_versions
       
-        # A mapping of Hive metastore configuration key-value pairs to apply to the Hive
-        # metastore (configured in hive-site.xml). The mappings override system defaults
-        # (some keys cannot be overridden). These overrides are also applied to
-        # auxiliary versions and can be further customized in the auxiliary version's
-        # AuxiliaryVersionConfig.
+        # Optional. A mapping of Hive metastore configuration key-value pairs to apply
+        # to the Hive metastore (configured in hive-site.xml). The mappings override
+        # system defaults (some keys cannot be overridden). These overrides are also
+        # applied to auxiliary versions and can be further customized in the auxiliary
+        # version's AuxiliaryVersionConfig.
         # Corresponds to the JSON property `configOverrides`
         # @return [Hash<String,String>]
         attr_accessor :config_overrides
       
-        # The protocol to use for the metastore service endpoint. If unspecified,
-        # defaults to THRIFT.
+        # Optional. The protocol to use for the metastore service endpoint. If
+        # unspecified, defaults to THRIFT.
         # Corresponds to the JSON property `endpointProtocol`
         # @return [String]
         attr_accessor :endpoint_protocol
@@ -1184,14 +1185,14 @@ module Google
         # @return [Google::Apis::MetastoreV1beta::Secret]
         attr_accessor :keytab
       
-        # A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the
-        # form gs://`bucket_name`/path/to/krb5.conf, although the file does not need to
-        # be named krb5.conf explicitly.
+        # Optional. A Cloud Storage URI that specifies the path to a krb5.conf file. It
+        # is of the form gs://`bucket_name`/path/to/krb5.conf, although the file does
+        # not need to be named krb5.conf explicitly.
         # Corresponds to the JSON property `krb5ConfigGcsUri`
         # @return [String]
         attr_accessor :krb5_config_gcs_uri
       
-        # A Kerberos principal that exists in the both the keytab the KDC to
+        # Optional. A Kerberos principal that exists in the both the keytab the KDC to
         # authenticate as. A typical principal is of the form primary/instance@REALM,
         # but there is no exact format.
         # Corresponds to the JSON property `principal`
@@ -1590,12 +1591,12 @@ module Google
       class MaintenanceWindow
         include Google::Apis::Core::Hashable
       
-        # The day of week, when the window starts.
+        # Optional. The day of week, when the window starts.
         # Corresponds to the JSON property `dayOfWeek`
         # @return [String]
         attr_accessor :day_of_week
       
-        # The hour of day (0-23) when the window starts.
+        # Optional. The hour of day (0-23) when the window starts.
         # Corresponds to the JSON property `hourOfDay`
         # @return [Fixnum]
         attr_accessor :hour_of_day
@@ -1670,7 +1671,7 @@ module Google
         # @return [Google::Apis::MetastoreV1beta::DatabaseDump]
         attr_accessor :database_dump
       
-        # The description of the metadata import.
+        # Optional. The description of the metadata import.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1680,9 +1681,9 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Immutable. The relative resource name of the metadata import, of the form:
-        # projects/`project_number`/locations/`location_id`/services/`service_id`/
-        # metadataImports/`metadata_import_id`.
+        # Immutable. Identifier. The relative resource name of the metadata import, of
+        # the form:projects/`project_number`/locations/`location_id`/services/`
+        # service_id`/metadataImports/`metadata_import_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1926,8 +1927,8 @@ module Google
         # @return [Array<Google::Apis::MetastoreV1beta::Consumer>]
         attr_accessor :consumers
       
-        # Enables custom routes to be imported and exported for the Dataproc Metastore
-        # service's peered VPC network.
+        # Optional. Enables custom routes to be imported and exported for the Dataproc
+        # Metastore service's peered VPC network.
         # Corresponds to the JSON property `customRoutesEnabled`
         # @return [Boolean]
         attr_accessor :custom_routes_enabled
@@ -2470,8 +2471,8 @@ module Google
       class Secret
         include Google::Apis::Core::Hashable
       
-        # The relative resource name of a Secret Manager secret version, in the
-        # following form:projects/`project_number`/secrets/`secret_id`/versions/`
+        # Optional. The relative resource name of a Secret Manager secret version, in
+        # the following form:projects/`project_number`/secrets/`secret_id`/versions/`
         # version_id`.
         # Corresponds to the JSON property `cloudSecret`
         # @return [String]
@@ -2556,9 +2557,9 @@ module Google
         # @return [Google::Apis::MetastoreV1beta::MultiRegionConfig]
         attr_accessor :multi_region_config
       
-        # Immutable. The relative resource name of the metastore service, in the
-        # following format:projects/`project_number`/locations/`location_id`/services/`
-        # service_id`.
+        # Immutable. Identifier. The relative resource name of the metastore service, in
+        # the following format:projects/`project_number`/locations/`location_id`/
+        # services/`service_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2575,7 +2576,8 @@ module Google
         # @return [Google::Apis::MetastoreV1beta::NetworkConfig]
         attr_accessor :network_config
       
-        # The TCP port at which the metastore service is reached. Default: 9083.
+        # Optional. The TCP port at which the metastore service is reached. Default:
+        # 9083.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -2612,7 +2614,7 @@ module Google
         # @return [Google::Apis::MetastoreV1beta::TelemetryConfig]
         attr_accessor :telemetry_config
       
-        # The tier of the service.
+        # Optional. The tier of the service.
         # Corresponds to the JSON property `tier`
         # @return [String]
         attr_accessor :tier
@@ -2789,7 +2791,7 @@ module Google
       class TelemetryConfig
         include Google::Apis::Core::Hashable
       
-        # The output format of the Dataproc Metastore service's logs.
+        # Optional. The output format of the Dataproc Metastore service's logs.
         # Corresponds to the JSON property `logFormat`
         # @return [String]
         attr_accessor :log_format
