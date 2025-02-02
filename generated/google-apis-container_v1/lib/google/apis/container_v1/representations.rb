@@ -2409,9 +2409,16 @@ module Google
       class NodeKubeletConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_unsafe_sysctls, as: 'allowedUnsafeSysctls'
+          property :container_log_max_files, as: 'containerLogMaxFiles'
+          property :container_log_max_size, as: 'containerLogMaxSize'
           property :cpu_cfs_quota, as: 'cpuCfsQuota'
           property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
           property :cpu_manager_policy, as: 'cpuManagerPolicy'
+          property :image_gc_high_threshold_percent, as: 'imageGcHighThresholdPercent'
+          property :image_gc_low_threshold_percent, as: 'imageGcLowThresholdPercent'
+          property :image_maximum_gc_age, as: 'imageMaximumGcAge'
+          property :image_minimum_gc_age, as: 'imageMinimumGcAge'
           property :insecure_kubelet_readonly_port_enabled, as: 'insecureKubeletReadonlyPortEnabled'
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
         end
