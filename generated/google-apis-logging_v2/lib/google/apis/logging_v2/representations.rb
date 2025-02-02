@@ -22,18 +22,6 @@ module Google
   module Apis
     module LoggingV2
       
-      class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BigQueryDataset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -524,23 +512,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::LoggingV2::AuditLogConfig, decorator: Google::Apis::LoggingV2::AuditLogConfig::Representation
-      
-          property :service, as: 'service'
-        end
-      end
-      
-      class AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
-        end
       end
       
       class BigQueryDataset
@@ -1221,8 +1192,6 @@ module Google
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::LoggingV2::AuditConfig, decorator: Google::Apis::LoggingV2::AuditConfig::Representation
-      
           collection :bindings, as: 'bindings', class: Google::Apis::LoggingV2::Binding, decorator: Google::Apis::LoggingV2::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
