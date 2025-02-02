@@ -407,8 +407,8 @@ module Google
         #   projects/*/locations/*`.
         # @param [Google::Apis::CloudbuildV2::HttpBody] http_body_object
         # @param [String] webhook_key
-        #   Arbitrary additional key to find the maching repository for a webhook event if
-        #   needed.
+        #   Arbitrary additional key to find the matching repository for a webhook event
+        #   if needed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
