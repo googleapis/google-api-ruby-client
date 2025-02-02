@@ -560,6 +560,7 @@ module Google
           property :name, as: 'name'
           property :service_account, as: 'serviceAccount'
           property :serving_status, as: 'servingStatus'
+          property :ssl_policy, as: 'sslPolicy'
         end
       end
       

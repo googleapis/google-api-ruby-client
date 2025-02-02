@@ -191,6 +191,12 @@ module Google
         # @return [String]
         attr_accessor :serving_status
       
+        # The SSL policy that will be applied to the application. If set to Modern it
+        # will restrict traffic with TLS < 1.2 and allow only Modern Ciphers suite
+        # Corresponds to the JSON property `sslPolicy`
+        # @return [String]
+        attr_accessor :ssl_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -213,6 +219,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @service_account = args[:service_account] if args.key?(:service_account)
           @serving_status = args[:serving_status] if args.key?(:serving_status)
+          @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
         end
       end
       
