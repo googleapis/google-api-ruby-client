@@ -714,10 +714,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :email
       
-        # The federated user identifier of one or more accounts to fetch. Should only be
-        # specified by authenticated requests bearing a Google OAuth 2.0 credential with
-        # proper [permissions](https://cloud.google.com/identity-platform/docs/access-
-        # control).
+        # 
         # Corresponds to the JSON property `federatedUserId`
         # @return [Array<Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1FederatedUserIdentifier>]
         attr_accessor :federated_user_id
@@ -906,6 +903,14 @@ module Google
         # @return [String]
         attr_accessor :id_token
       
+        # Optional. In order to ensure that the url used can be easily opened in iOS or
+        # Android, we create a Hosting link '/__/auth/links'. This optional field
+        # contains the domain to use when constructing a Hosting link. If not set, '.
+        # firebaseapp.com' domain will be used.
+        # Corresponds to the JSON property `linkDomain`
+        # @return [String]
+        attr_accessor :link_domain
+      
         # The email address the account is being updated to. Required only for
         # VERIFY_AND_CHANGE_EMAIL requests.
         # Corresponds to the JSON property `newEmail`
@@ -972,6 +977,7 @@ module Google
           @i_os_app_store_id = args[:i_os_app_store_id] if args.key?(:i_os_app_store_id)
           @i_os_bundle_id = args[:i_os_bundle_id] if args.key?(:i_os_bundle_id)
           @id_token = args[:id_token] if args.key?(:id_token)
+          @link_domain = args[:link_domain] if args.key?(:link_domain)
           @new_email = args[:new_email] if args.key?(:new_email)
           @recaptcha_version = args[:recaptcha_version] if args.key?(:recaptcha_version)
           @request_type = args[:request_type] if args.key?(:request_type)
@@ -1199,7 +1205,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :experiment_percent
       
-        # Name of the identity provider.
+        # 
         # Corresponds to the JSON property `provider`
         # @return [String]
         attr_accessor :provider
@@ -1540,8 +1546,7 @@ module Google
       class GoogleCloudIdentitytoolkitV1QueryUserInfoRequest
         include Google::Apis::Core::Hashable
       
-        # Query conditions used to filter results. If more than one is passed, only the
-        # first SqlExpression is evaluated.
+        # 
         # Corresponds to the JSON property `expression`
         # @return [Array<Google::Apis::IdentitytoolkitV1::GoogleCloudIdentitytoolkitV1SqlExpression>]
         attr_accessor :expression
@@ -1558,8 +1563,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :offset
       
-        # The order for sorting query result. Defaults to __ascending__ order. Only
-        # valid when `return_user_info` is set to `true`.
+        # 
         # Corresponds to the JSON property `order`
         # @return [String]
         attr_accessor :order
@@ -1572,9 +1576,7 @@ module Google
         attr_accessor :return_user_info
         alias_method :return_user_info?, :return_user_info
       
-        # The field to use for sorting user accounts. Defaults to `USER_ID`. Note: when `
-        # phone_number` is specified in `expression`, the result ignores the sorting.
-        # Only valid when `return_user_info` is set to `true`.
+        # 
         # Corresponds to the JSON property `sortBy`
         # @return [String]
         attr_accessor :sort_by
@@ -1890,7 +1892,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :delegated_project_number
       
-        # The account's attributes to be deleted.
+        # 
         # Corresponds to the JSON property `deleteAttribute`
         # @return [Array<String>]
         attr_accessor :delete_attribute
@@ -3583,7 +3585,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :parallelization
       
-        # Password and salt order when verify password.
+        # 
         # Corresponds to the JSON property `passwordHashOrder`
         # @return [String]
         attr_accessor :password_hash_order

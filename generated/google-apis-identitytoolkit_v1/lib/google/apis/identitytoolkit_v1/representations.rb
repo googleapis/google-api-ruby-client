@@ -593,6 +593,7 @@ module Google
           property :i_os_app_store_id, as: 'iOSAppStoreId'
           property :i_os_bundle_id, as: 'iOSBundleId'
           property :id_token, as: 'idToken'
+          property :link_domain, as: 'linkDomain'
           property :new_email, as: 'newEmail'
           property :recaptcha_version, as: 'recaptchaVersion'
           property :request_type, as: 'requestType'
