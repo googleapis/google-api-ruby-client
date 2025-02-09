@@ -1580,6 +1580,15 @@ module Google
         attr_accessor :rest_async_io_enabled
         alias_method :rest_async_io_enabled?, :rest_async_io_enabled
       
+        # Disables generation of an unversioned Python package for this client library.
+        # This means that the module names will need to be versioned in import
+        # statements. For example `import google.cloud.library_v2` instead of `import
+        # google.cloud.library`.
+        # Corresponds to the JSON property `unversionedPackageDisabled`
+        # @return [Boolean]
+        attr_accessor :unversioned_package_disabled
+        alias_method :unversioned_package_disabled?, :unversioned_package_disabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1588,6 +1597,7 @@ module Google
         def update!(**args)
           @protobuf_pythonic_types_enabled = args[:protobuf_pythonic_types_enabled] if args.key?(:protobuf_pythonic_types_enabled)
           @rest_async_io_enabled = args[:rest_async_io_enabled] if args.key?(:rest_async_io_enabled)
+          @unversioned_package_disabled = args[:unversioned_package_disabled] if args.key?(:unversioned_package_disabled)
         end
       end
       
@@ -3347,7 +3357,7 @@ module Google
       class Page
         include Google::Apis::Core::Hashable
       
-        # The Markdown content of the page. You can use (== include `path` ==) to
+        # The Markdown content of the page. You can use ```(== include `path` ==)``` to
         # include content from a Markdown file. The content can be used to produce the
         # documentation page such as HTML format page.
         # Corresponds to the JSON property `content`
@@ -3898,6 +3908,17 @@ module Google
       class SelectiveGapicGeneration
         include Google::Apis::Core::Hashable
       
+        # Setting this to true indicates to the client generators that methods that
+        # would be excluded from the generation should instead be generated in a way
+        # that indicates these methods should not be consumed by end users. How this is
+        # expressed is up to individual language implementations to decide. Some
+        # examples may be: added annotations, obfuscated identifiers, or other language
+        # idiomatic patterns.
+        # Corresponds to the JSON property `generateOmittedAsInternal`
+        # @return [Boolean]
+        attr_accessor :generate_omitted_as_internal
+        alias_method :generate_omitted_as_internal?, :generate_omitted_as_internal
+      
         # An allowlist of the fully qualified names of RPCs that should be included on
         # public client surfaces.
         # Corresponds to the JSON property `methods`
@@ -3910,6 +3931,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @generate_omitted_as_internal = args[:generate_omitted_as_internal] if args.key?(:generate_omitted_as_internal)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
         end
       end

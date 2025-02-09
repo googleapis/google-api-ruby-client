@@ -1029,6 +1029,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :protobuf_pythonic_types_enabled, as: 'protobufPythonicTypesEnabled'
           property :rest_async_io_enabled, as: 'restAsyncIoEnabled'
+          property :unversioned_package_disabled, as: 'unversionedPackageDisabled'
         end
       end
       
@@ -1541,6 +1542,7 @@ module Google
       class SelectiveGapicGeneration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :generate_omitted_as_internal, as: 'generateOmittedAsInternal'
           collection :methods_prop, as: 'methods'
         end
       end
