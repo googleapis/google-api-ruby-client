@@ -4593,7 +4593,11 @@ module Google
       class GoogleCloudIntegrationsV1alphaReplayExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :modified_parameters, as: 'modifiedParameters', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType::Representation
+      
+          property :replay_mode, as: 'replayMode'
           property :replay_reason, as: 'replayReason'
+          property :update_mask, as: 'updateMask'
         end
       end
       
