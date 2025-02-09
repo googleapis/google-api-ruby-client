@@ -924,11 +924,6 @@ module Google
         # @return [Float]
         attr_accessor :temperature
       
-        # Config for thinking features.
-        # Corresponds to the JSON property `thinkingConfig`
-        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig]
-        attr_accessor :thinking_config
-      
         # Optional. If specified, top-k sampling will be used.
         # Corresponds to the JSON property `topK`
         # @return [Float]
@@ -961,7 +956,6 @@ module Google
           @speech_config = args[:speech_config] if args.key?(:speech_config)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
           @temperature = args[:temperature] if args.key?(:temperature)
-          @thinking_config = args[:thinking_config] if args.key?(:thinking_config)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
         end
@@ -1030,27 +1024,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_name = args[:model_name] if args.key?(:model_name)
-        end
-      end
-      
-      # Config for thinking features.
-      class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Indicates whether to include thoughts in the response. If true,
-        # thoughts are returned only when available.
-        # Corresponds to the JSON property `includeThoughts`
-        # @return [Boolean]
-        attr_accessor :include_thoughts
-        alias_method :include_thoughts?, :include_thoughts
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @include_thoughts = args[:include_thoughts] if args.key?(:include_thoughts)
         end
       end
       

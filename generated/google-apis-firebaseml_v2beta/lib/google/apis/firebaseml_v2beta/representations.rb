@@ -166,12 +166,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -646,8 +640,6 @@ module Google
       
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
-          property :thinking_config, as: 'thinkingConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig::Representation
-      
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
         end
@@ -674,13 +666,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_name, as: 'modelName'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :include_thoughts, as: 'includeThoughts'
         end
       end
       
