@@ -487,10 +487,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :headers
       
-        # Optional. JA3 fingerprint for SSL clients.
+        # Optional. JA3 fingerprint for SSL clients. To learn how to compute this
+        # fingerprint, please refer to https://github.com/salesforce/ja3.
         # Corresponds to the JSON property `ja3`
         # @return [String]
         attr_accessor :ja3
+      
+        # Optional. JA4 fingerprint for SSL clients. To learn how to compute this
+        # fingerprint, please refer to https://github.com/FoxIO-LLC/ja4.
+        # Corresponds to the JSON property `ja4`
+        # @return [String]
+        attr_accessor :ja4
       
         # Optional. The URI resource the user requested that triggered an assessment.
         # Corresponds to the JSON property `requestedUri`
@@ -551,6 +558,7 @@ module Google
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @headers = args[:headers] if args.key?(:headers)
           @ja3 = args[:ja3] if args.key?(:ja3)
+          @ja4 = args[:ja4] if args.key?(:ja4)
           @requested_uri = args[:requested_uri] if args.key?(:requested_uri)
           @site_key = args[:site_key] if args.key?(:site_key)
           @token = args[:token] if args.key?(:token)
