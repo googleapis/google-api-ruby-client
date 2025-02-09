@@ -347,8 +347,8 @@ module Google
         # preferred deals. When true, bid requests from these nonguaranteed deals will
         # always be sent. When false, bid requests will be subject to regular
         # pretargeting configurations. Programmatic Guaranteed deals will always be sent
-        # to the bidder, regardless of the value for this flag. Auction packages are not
-        # impacted by this value and are subject to the regular pretargeting
+        # to the bidder, regardless of the value for this option. Auction packages are
+        # not impacted by this value and are subject to the regular pretargeting
         # configurations.
         # Corresponds to the JSON property `bypassNonguaranteedDealsPretargeting`
         # @return [Boolean]

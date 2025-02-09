@@ -24,7 +24,7 @@ module Google
       #
       # Allows external bidders to manage their RTB integration with Google. This
       #  includes managing bidder endpoints, QPS quotas, configuring what ad inventory
-      #  to receive via pretargeting, submitting creatives for verification, and
+      #  to receive with pretargeting, submitting creatives for verification, and
       #  accessing creative metadata such as approval status.
       #
       # @example
