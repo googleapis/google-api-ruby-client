@@ -601,6 +601,34 @@ module Google
         end
       end
       
+      # Request message for the BatchDeleteRowAccessPoliciesRequest method.
+      class BatchDeleteRowAccessPoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, it deletes the row access policy even if it's the last row
+        # access policy on the table and the deletion will widen the access rather
+        # narrowing it.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Required. Policy IDs of the row access policies.
+        # Corresponds to the JSON property `policyIds`
+        # @return [Array<String>]
+        attr_accessor :policy_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+          @policy_ids = args[:policy_ids] if args.key?(:policy_ids)
+        end
+      end
+      
       # Reason why BI Engine didn't accelerate the query (or sub-query).
       class BiEngineReason
         include Google::Apis::Core::Hashable
@@ -5109,6 +5137,15 @@ module Google
         # @return [String]
         attr_accessor :write_disposition
       
+        # Optional. This is only supported for a SELECT query using a temporary table.
+        # If set, the query is allowed to write results incrementally to the temporary
+        # result table. This may incur a performance penalty. This option cannot be used
+        # with Legacy SQL. This feature is not yet available.
+        # Corresponds to the JSON property `writeIncrementalResults`
+        # @return [Boolean]
+        attr_accessor :write_incremental_results
+        alias_method :write_incremental_results?, :write_incremental_results
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5142,6 +5179,7 @@ module Google
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
           @user_defined_function_resources = args[:user_defined_function_resources] if args.key?(:user_defined_function_resources)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
+          @write_incremental_results = args[:write_incremental_results] if args.key?(:write_incremental_results)
         end
       end
       
@@ -7656,6 +7694,15 @@ module Google
         attr_accessor :use_query_cache
         alias_method :use_query_cache?, :use_query_cache
       
+        # Optional. This is only supported for SELECT query. If set, the query is
+        # allowed to write results incrementally to the temporary result table. This may
+        # incur a performance penalty. This option cannot be used with Legacy SQL. This
+        # feature is not yet available.
+        # Corresponds to the JSON property `writeIncrementalResults`
+        # @return [Boolean]
+        attr_accessor :write_incremental_results
+        alias_method :write_incremental_results?, :write_incremental_results
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7682,6 +7729,7 @@ module Google
           @timeout_ms = args[:timeout_ms] if args.key?(:timeout_ms)
           @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
+          @write_incremental_results = args[:write_incremental_results] if args.key?(:write_incremental_results)
         end
       end
       
@@ -8433,6 +8481,27 @@ module Google
         # @return [String]
         attr_accessor :filter_predicate
       
+        # Optional. Input only. The optional list of iam_member users or groups that
+        # specifies the initial members that the row-level access policy should be
+        # created with. grantees types: - "user:alice@example.com": An email address
+        # that represents a specific Google account. - "serviceAccount:my-other-app@
+        # appspot.gserviceaccount.com": An email address that represents a service
+        # account. - "group:admins@example.com": An email address that represents a
+        # Google group. - "domain:example.com":The Google Workspace domain (primary)
+        # that represents all the users of that domain. - "allAuthenticatedUsers": A
+        # special identifier that represents all service accounts and all users on the
+        # internet who have authenticated with a Google Account. This identifier
+        # includes accounts that aren't connected to a Google Workspace or Cloud
+        # Identity domain, such as personal Gmail accounts. Users who aren't
+        # authenticated, such as anonymous visitors, aren't included. - "allUsers":A
+        # special identifier that represents anyone who is on the internet, including
+        # authenticated and unauthenticated users. Because BigQuery requires
+        # authentication before a user can access the service, allUsers includes only
+        # authenticated users.
+        # Corresponds to the JSON property `grantees`
+        # @return [Array<String>]
+        attr_accessor :grantees
+      
         # Output only. The time when this row access policy was last modified, in
         # milliseconds since the epoch.
         # Corresponds to the JSON property `lastModifiedTime`
@@ -8453,6 +8522,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @etag = args[:etag] if args.key?(:etag)
           @filter_predicate = args[:filter_predicate] if args.key?(:filter_predicate)
+          @grantees = args[:grantees] if args.key?(:grantees)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @row_access_policy_reference = args[:row_access_policy_reference] if args.key?(:row_access_policy_reference)
         end
@@ -9240,6 +9310,72 @@ module Google
           @location_uri = args[:location_uri] if args.key?(:location_uri)
           @output_format = args[:output_format] if args.key?(:output_format)
           @serde_info = args[:serde_info] if args.key?(:serde_info)
+        end
+      end
+      
+      # If the stored column was not used, explain why.
+      class StoredColumnsUnusedReason
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the high-level reason for the unused scenario, each reason must have
+        # a code associated.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Specifies the detailed description for the scenario.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Specifies which columns were not covered by the stored columns for the
+        # specified code up to 20 columns. This is populated when the code is
+        # STORED_COLUMNS_COVER_INSUFFICIENT and BASE_TABLE_HAS_CLS.
+        # Corresponds to the JSON property `uncoveredColumns`
+        # @return [Array<String>]
+        attr_accessor :uncovered_columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @uncovered_columns = args[:uncovered_columns] if args.key?(:uncovered_columns)
+        end
+      end
+      
+      # Indicates the stored columns usage in the query.
+      class StoredColumnsUsage
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the base table.
+        # Corresponds to the JSON property `baseTable`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :base_table
+      
+        # Specifies whether the query was accelerated with stored columns.
+        # Corresponds to the JSON property `isQueryAccelerated`
+        # @return [Boolean]
+        attr_accessor :is_query_accelerated
+        alias_method :is_query_accelerated?, :is_query_accelerated
+      
+        # If stored columns were not used, explain why.
+        # Corresponds to the JSON property `storedColumnsUnusedReasons`
+        # @return [Array<Google::Apis::BigqueryV2::StoredColumnsUnusedReason>]
+        attr_accessor :stored_columns_unused_reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_table = args[:base_table] if args.key?(:base_table)
+          @is_query_accelerated = args[:is_query_accelerated] if args.key?(:is_query_accelerated)
+          @stored_columns_unused_reasons = args[:stored_columns_unused_reasons] if args.key?(:stored_columns_unused_reasons)
         end
       end
       
@@ -10866,6 +11002,19 @@ module Google
         attr_accessor :fit_intercept
         alias_method :fit_intercept?, :fit_intercept
       
+        # The forecast limit lower bound that was used during ARIMA model training with
+        # limits. To see more details of the algorithm: https://otexts.com/fpp2/limits.
+        # html
+        # Corresponds to the JSON property `forecastLimitLowerBound`
+        # @return [Float]
+        attr_accessor :forecast_limit_lower_bound
+      
+        # The forecast limit upper bound that was used during ARIMA model training with
+        # limits.
+        # Corresponds to the JSON property `forecastLimitUpperBound`
+        # @return [Float]
+        attr_accessor :forecast_limit_upper_bound
+      
         # Hidden units for dnn models.
         # Corresponds to the JSON property `hiddenUnits`
         # @return [Array<Fixnum>]
@@ -11236,6 +11385,8 @@ module Google
           @enable_global_explain = args[:enable_global_explain] if args.key?(:enable_global_explain)
           @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
           @fit_intercept = args[:fit_intercept] if args.key?(:fit_intercept)
+          @forecast_limit_lower_bound = args[:forecast_limit_lower_bound] if args.key?(:forecast_limit_lower_bound)
+          @forecast_limit_upper_bound = args[:forecast_limit_upper_bound] if args.key?(:forecast_limit_upper_bound)
           @hidden_units = args[:hidden_units] if args.key?(:hidden_units)
           @holiday_region = args[:holiday_region] if args.key?(:holiday_region)
           @holiday_regions = args[:holiday_regions] if args.key?(:holiday_regions)
@@ -11503,6 +11654,12 @@ module Google
         # @return [String]
         attr_accessor :index_usage_mode
       
+        # Specifies the usage of stored columns in the query when stored columns are
+        # used in the query.
+        # Corresponds to the JSON property `storedColumnsUsages`
+        # @return [Array<Google::Apis::BigqueryV2::StoredColumnsUsage>]
+        attr_accessor :stored_columns_usages
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11511,6 +11668,7 @@ module Google
         def update!(**args)
           @index_unused_reasons = args[:index_unused_reasons] if args.key?(:index_unused_reasons)
           @index_usage_mode = args[:index_usage_mode] if args.key?(:index_usage_mode)
+          @stored_columns_usages = args[:stored_columns_usages] if args.key?(:stored_columns_usages)
         end
       end
       
