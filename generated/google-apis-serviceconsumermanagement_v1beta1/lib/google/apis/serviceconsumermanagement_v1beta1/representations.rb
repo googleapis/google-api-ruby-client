@@ -1266,6 +1266,7 @@ module Google
       class SelectiveGapicGeneration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :generate_omitted_as_internal, as: 'generateOmittedAsInternal'
           collection :methods_prop, as: 'methods'
         end
       end
