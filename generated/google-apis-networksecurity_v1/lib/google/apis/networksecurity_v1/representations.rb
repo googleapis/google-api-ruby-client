@@ -1146,6 +1146,7 @@ module Google
           property :create_time, as: 'createTime'
           property :custom_intercept_profile, as: 'customInterceptProfile'
           property :custom_mirroring_profile, as: 'customMirroringProfile'
+          property :data_path_id, :numeric_string => true, as: 'dataPathId'
           property :description, as: 'description'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'

@@ -2620,6 +2620,12 @@ module Google
         # @return [String]
         attr_accessor :custom_mirroring_profile
       
+        # Output only. Identifier used by the data-path. Unique within `container,
+        # location`.
+        # Corresponds to the JSON property `dataPathId`
+        # @return [Fixnum]
+        attr_accessor :data_path_id
+      
         # Optional. An optional description of the profile group. Max length 2048
         # characters.
         # Corresponds to the JSON property `description`
@@ -2665,6 +2671,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_intercept_profile = args[:custom_intercept_profile] if args.key?(:custom_intercept_profile)
           @custom_mirroring_profile = args[:custom_mirroring_profile] if args.key?(:custom_mirroring_profile)
+          @data_path_id = args[:data_path_id] if args.key?(:data_path_id)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
