@@ -4263,7 +4263,7 @@ module Google
       class Page
         include Google::Apis::Core::Hashable
       
-        # The Markdown content of the page. You can use (== include `path` ==) to
+        # The Markdown content of the page. You can use ```(== include `path` ==)``` to
         # include content from a Markdown file. The content can be used to produce the
         # documentation page such as HTML format page.
         # Corresponds to the JSON property `content`
@@ -4726,6 +4726,17 @@ module Google
       class SelectiveGapicGeneration
         include Google::Apis::Core::Hashable
       
+        # Setting this to true indicates to the client generators that methods that
+        # would be excluded from the generation should instead be generated in a way
+        # that indicates these methods should not be consumed by end users. How this is
+        # expressed is up to individual language implementations to decide. Some
+        # examples may be: added annotations, obfuscated identifiers, or other language
+        # idiomatic patterns.
+        # Corresponds to the JSON property `generateOmittedAsInternal`
+        # @return [Boolean]
+        attr_accessor :generate_omitted_as_internal
+        alias_method :generate_omitted_as_internal?, :generate_omitted_as_internal
+      
         # An allowlist of the fully qualified names of RPCs that should be included on
         # public client surfaces.
         # Corresponds to the JSON property `methods`
@@ -4738,6 +4749,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @generate_omitted_as_internal = args[:generate_omitted_as_internal] if args.key?(:generate_omitted_as_internal)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
         end
       end
