@@ -514,6 +514,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceDynamicForwarding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceDynamicForwardingIpPortSelection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceFailoverPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3178,6 +3190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectAttachmentGroupsOperationalStatusAttachmentStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectAttachmentL2Forwarding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3347,6 +3365,30 @@ module Google
       end
       
       class InterconnectGroupPhysicalStructureMetrosFacilitiesZones
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectGroupsCreateMembers
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectGroupsCreateMembersInterconnectInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectGroupsCreateMembersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectGroupsCreateMembersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3702,6 +3744,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MachineImageParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8242,6 +8290,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnTunnelCipherSuite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnTunnelList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -8256,6 +8310,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnTunnelPhase1Algorithms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnTunnelPhase2Algorithms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -9328,6 +9394,8 @@ module Google
           collection :custom_request_headers, as: 'customRequestHeaders'
           collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
+          property :dynamic_forwarding, as: 'dynamicForwarding', class: Google::Apis::ComputeAlpha::BackendServiceDynamicForwarding, decorator: Google::Apis::ComputeAlpha::BackendServiceDynamicForwarding::Representation
+      
           property :edge_security_policy, as: 'edgeSecurityPolicy'
           property :enable_cdn, as: 'enableCDN'
           property :external_managed_migration_state, as: 'externalManagedMigrationState'
@@ -9467,6 +9535,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dry_run, as: 'dryRun'
           property :name, as: 'name'
+        end
+      end
+      
+      class BackendServiceDynamicForwarding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_port_selection, as: 'ipPortSelection', class: Google::Apis::ComputeAlpha::BackendServiceDynamicForwardingIpPortSelection, decorator: Google::Apis::ComputeAlpha::BackendServiceDynamicForwardingIpPortSelection::Representation
+      
+        end
+      end
+      
+      class BackendServiceDynamicForwardingIpPortSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -14511,7 +14594,25 @@ module Google
       class InterconnectAttachmentGroupsOperationalStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attachment_statuses, as: 'attachmentStatuses', class: Google::Apis::ComputeAlpha::InterconnectAttachmentGroupsOperationalStatusAttachmentStatus, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentGroupsOperationalStatusAttachmentStatus::Representation
+      
+          property :configured, as: 'configured', class: Google::Apis::ComputeAlpha::InterconnectAttachmentGroupConfigured, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentGroupConfigured::Representation
+      
           property :group_status, as: 'groupStatus'
+          property :intent, as: 'intent', class: Google::Apis::ComputeAlpha::InterconnectAttachmentGroupIntent, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentGroupIntent::Representation
+      
+          property :operational, as: 'operational', class: Google::Apis::ComputeAlpha::InterconnectAttachmentGroupConfigured, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentGroupConfigured::Representation
+      
+        end
+      end
+      
+      class InterconnectAttachmentGroupsOperationalStatusAttachmentStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_enabled, as: 'adminEnabled'
+          property :attachment, as: 'attachment'
+          property :is_active, as: 'isActive'
+          property :status, as: 'status'
         end
       end
       
@@ -14799,6 +14900,51 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :interconnects, as: 'interconnects'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class InterconnectGroupsCreateMembers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intent_mismatch_behavior, as: 'intentMismatchBehavior'
+          collection :interconnects, as: 'interconnects', class: Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersInterconnectInput, decorator: Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersInterconnectInput::Representation
+      
+          property :template_interconnect, as: 'templateInterconnect', class: Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersInterconnectInput, decorator: Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersInterconnectInput::Representation
+      
+        end
+      end
+      
+      class InterconnectGroupsCreateMembersInterconnectInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_enabled, as: 'adminEnabled'
+          property :customer_name, as: 'customerName'
+          property :description, as: 'description'
+          property :facility, as: 'facility'
+          property :interconnect_type, as: 'interconnectType'
+          property :link_type, as: 'linkType'
+          property :name, as: 'name'
+          property :noc_contact_email, as: 'nocContactEmail'
+          property :remote_location, as: 'remoteLocation'
+          collection :requested_features, as: 'requestedFeatures'
+          property :requested_link_count, as: 'requestedLinkCount'
+        end
+      end
+      
+      class InterconnectGroupsCreateMembersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request, as: 'request', class: Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembers, decorator: Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembers::Representation
+      
+        end
+      end
+      
+      class InterconnectGroupsCreateMembersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :result, as: 'result', class: Google::Apis::ComputeAlpha::InterconnectGroup, decorator: Google::Apis::ComputeAlpha::InterconnectGroup::Representation
+      
         end
       end
       
@@ -15439,6 +15585,8 @@ module Google
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::MachineImageParams, decorator: Google::Apis::ComputeAlpha::MachineImageParams::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           collection :saved_disks, as: 'savedDisks', class: Google::Apis::ComputeAlpha::SavedDisk, decorator: Google::Apis::ComputeAlpha::SavedDisk::Representation
@@ -15485,6 +15633,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class MachineImageParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_disks, as: 'excludedDisks'
+          collection :included_disks, as: 'includedDisks'
         end
       end
       
@@ -16558,7 +16714,6 @@ module Google
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
-          property :zone, as: 'zone'
         end
       end
       
@@ -19450,6 +19605,7 @@ module Google
           property :chain_name, as: 'chainName'
           property :guest_flush, as: 'guestFlush'
           hash :labels, as: 'labels'
+          property :region, as: 'region'
           collection :storage_locations, as: 'storageLocations'
         end
       end
@@ -19499,6 +19655,8 @@ module Google
       class ResourcePolicyWorkloadPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topology, as: 'acceleratorTopology'
+          property :max_topology_distance, as: 'maxTopologyDistance'
           property :type, as: 'type'
         end
       end
@@ -21340,6 +21498,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :locations, as: 'locations', class: Google::Apis::ComputeAlpha::SnapshotSettingsAccessLocationAccessLocationPreference, decorator: Google::Apis::ComputeAlpha::SnapshotSettingsAccessLocationAccessLocationPreference::Representation
       
+          property :policy, as: 'policy'
         end
       end
       
@@ -23805,6 +23964,8 @@ module Google
       class VpnTunnel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cipher_suite, as: 'cipherSuite', class: Google::Apis::ComputeAlpha::VpnTunnelCipherSuite, decorator: Google::Apis::ComputeAlpha::VpnTunnelCipherSuite::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :detailed_status, as: 'detailedStatus'
@@ -23865,6 +24026,16 @@ module Google
         end
       end
       
+      class VpnTunnelCipherSuite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phase1, as: 'phase1', class: Google::Apis::ComputeAlpha::VpnTunnelPhase1Algorithms, decorator: Google::Apis::ComputeAlpha::VpnTunnelPhase1Algorithms::Representation
+      
+          property :phase2, as: 'phase2', class: Google::Apis::ComputeAlpha::VpnTunnelPhase2Algorithms, decorator: Google::Apis::ComputeAlpha::VpnTunnelPhase2Algorithms::Representation
+      
+        end
+      end
+      
       class VpnTunnelList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -23894,6 +24065,25 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class VpnTunnelPhase1Algorithms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dh, as: 'dh'
+          collection :encryption, as: 'encryption'
+          collection :integrity, as: 'integrity'
+          collection :prf, as: 'prf'
+        end
+      end
+      
+      class VpnTunnelPhase2Algorithms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :encryption, as: 'encryption'
+          collection :integrity, as: 'integrity'
+          collection :pfs, as: 'pfs'
         end
       end
       

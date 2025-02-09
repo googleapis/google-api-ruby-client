@@ -19379,6 +19379,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create Interconnects with redundancy by creating them in a specified
+        # interconnect group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect_group
+        #   Name of the group resource to create members for.
+        # @param [Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersRequest] interconnect_groups_create_members_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_interconnect_group_members(project, interconnect_group, interconnect_groups_create_members_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/interconnectGroups/{interconnectGroup}/createMembers', options)
+          command.request_representation = Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersRequest::Representation
+          command.request_object = interconnect_groups_create_members_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersResponse::Representation
+          command.response_class = Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersResponse
+          command.params['project'] = project unless project.nil?
+          command.params['interconnectGroup'] = interconnect_group unless interconnect_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified InterconnectGroup in the given scope
         # @param [String] project
         #   Project ID for this request.
@@ -31392,13 +31432,13 @@ module Google
         
         # Updates the specified commitment with the data included in the request. Update
         # is performed only on selected fields included as part of update-mask. Only the
-        # following fields can be modified: auto_renew.
+        # following fields can be updated: auto_renew and plan.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] commitment
-        #   Name of the commitment for which auto renew is being updated.
+        #   Name of the commitment that you want to update.
         # @param [Google::Apis::ComputeAlpha::Commitment] commitment_object
         # @param [Array<String>, String] paths
         # @param [String] request_id
@@ -31450,13 +31490,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Transfers GPUs or local SSDs between reservations within commitments.
+        # Transfers GPUs or Local SSD disks between reservations that are attached to
+        # the same commitment.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] commitment
-        #   Name of the commitment for which the reservation is being updated.
+        #   Name of the commitment for which the reservations are being updated.
         # @param [Google::Apis::ComputeAlpha::RegionCommitmentsUpdateReservationsRequest] region_commitments_update_reservations_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so

@@ -3898,6 +3898,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Defines a dynamic forwarding configuration for the backend service.
+        # Corresponds to the JSON property `dynamicForwarding`
+        # @return [Google::Apis::ComputeAlpha::BackendServiceDynamicForwarding]
+        attr_accessor :dynamic_forwarding
+      
         # [Output Only] The resource URL for the edge security policy associated with
         # this backend service.
         # Corresponds to the JSON property `edgeSecurityPolicy`
@@ -4257,6 +4262,7 @@ module Google
           @custom_request_headers = args[:custom_request_headers] if args.key?(:custom_request_headers)
           @custom_response_headers = args[:custom_response_headers] if args.key?(:custom_response_headers)
           @description = args[:description] if args.key?(:description)
+          @dynamic_forwarding = args[:dynamic_forwarding] if args.key?(:dynamic_forwarding)
           @edge_security_policy = args[:edge_security_policy] if args.key?(:edge_security_policy)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
           @external_managed_migration_state = args[:external_managed_migration_state] if args.key?(:external_managed_migration_state)
@@ -4727,6 +4733,47 @@ module Google
         def update!(**args)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Defines a dynamic forwarding configuration for the backend service.
+      class BackendServiceDynamicForwarding
+        include Google::Apis::Core::Hashable
+      
+        # Defines a IP:PORT based dynamic forwarding configuration for the backend
+        # service. Some ranges are restricted: Restricted ranges.
+        # Corresponds to the JSON property `ipPortSelection`
+        # @return [Google::Apis::ComputeAlpha::BackendServiceDynamicForwardingIpPortSelection]
+        attr_accessor :ip_port_selection
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_port_selection = args[:ip_port_selection] if args.key?(:ip_port_selection)
+        end
+      end
+      
+      # Defines a IP:PORT based dynamic forwarding configuration for the backend
+      # service. Some ranges are restricted: Restricted ranges.
+      class BackendServiceDynamicForwardingIpPortSelection
+        include Google::Apis::Core::Hashable
+      
+        # A boolean flag enabling IP:PORT based dynamic forwarding.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -6679,29 +6726,33 @@ module Google
         end
       end
       
-      # Represents a regional Commitment resource. Creating a commitment resource
-      # means that you are purchasing a committed use contract with an explicit start
-      # and end time. You can create commitments based on vCPUs and memory usage and
-      # receive discounted rates. For full details, read Signing Up for Committed Use
-      # Discounts.
+      # Represents a regional resource-based commitment resource. Creating this
+      # commitment resource means that you are purchasing a resource-based committed
+      # use contract, with an explicit start and end time. You can purchase resource-
+      # based commitments for both hardware and software resources. For more
+      # information, read Resource-based committed use discounts
       class Commitment
         include Google::Apis::Core::Hashable
       
-        # Specifies whether to enable automatic renewal for the commitment. The default
-        # value is false if not specified. The field can be updated until the day of the
-        # commitment expiration at 12:00am PST. If the field is set to true, the
-        # commitment will be automatically renewed for either one or three years
-        # according to the terms of the existing commitment.
+        # Specifies whether to automatically renew the commitment at the end of its
+        # current term. The default value is false. If you set the field to true, each
+        # time your commitment reaches the end of its term, Compute Engine automatically
+        # renews it for another term. You can update this field anytime before the
+        # commitment expires. For example, if the commitment is set to expire at 12 AM
+        # UTC-8 on January 3, 2027, you can update this field until 11:59 PM UTC-8 on
+        # January 2, 2027.
         # Corresponds to the JSON property `autoRenew`
         # @return [Boolean]
         attr_accessor :auto_renew
         alias_method :auto_renew?, :auto_renew
       
-        # The category of the commitment. Category MACHINE specifies commitments
-        # composed of machine resources such as VCPU or MEMORY, listed in resources.
-        # Category LICENSE specifies commitments composed of software licenses, listed
-        # in licenseResources. Note that only MACHINE commitments should have a Type
-        # specified.
+        # The category of the commitment; specifies whether the commitment is for
+        # hardware or software resources. Category MACHINE specifies that you are
+        # committing to hardware machine resources such as VCPU or MEMORY, listed in
+        # resources. Category LICENSE specifies that you are committing to software
+        # licenses, listed in licenseResources. Note that if you specify MACHINE
+        # commitments, then you must also specify a type to indicate the machine series
+        # of the hardware resource that you are committing to.
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
@@ -6711,15 +6762,15 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # [Input Only] Optional, specifies the CUD end time requested by the customer in
-        # RFC3339 text format. Needed when the customer wants CUD's end date is later
+        # [Input Only] Optional, specifies the requested commitment end time in RFC3339
+        # text format. Use this option when the desired commitment's end date is later
         # than the start date + term duration.
         # Corresponds to the JSON property `customEndTimestamp`
         # @return [String]
         attr_accessor :custom_end_timestamp
       
-        # An optional description of this resource. Provide this property when you
-        # create the resource.
+        # An optional description of the commitment. You can provide this property when
+        # you create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -6729,11 +6780,7 @@ module Google
         # @return [String]
         attr_accessor :end_timestamp
       
-        # Specifies the already existing reservations to attach to the Commitment. This
-        # field is optional, and it can be a full or partial URL. For example, the
-        # following are valid URLs to an reservation: - https://www.googleapis.com/
-        # compute/v1/projects/project/zones/zone /reservations/reservation - projects/
-        # project/zones/zone/reservations/reservation
+        # 
         # Corresponds to the JSON property `existingReservations`
         # @return [Array<String>]
         attr_accessor :existing_reservations
@@ -6754,34 +6801,44 @@ module Google
         # @return [Google::Apis::ComputeAlpha::LicenseResourceCommitment]
         attr_accessor :license_resource
       
-        # List of source commitments to be merged into a new commitment.
+        # The list of source commitments that you are merging to create the new merged
+        # commitment. For more information, see Merging commitments.
         # Corresponds to the JSON property `mergeSourceCommitments`
         # @return [Array<String>]
         attr_accessor :merge_source_commitments
       
-        # Name of the resource. Provided by the client when the resource is created. The
-        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
-        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash.
+        # Name of the commitment. You must specify a name when you purchase the
+        # commitment. The name must be 1-63 characters long, and comply with RFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The plan for this commitment, which determines duration and discount rate. The
-        # currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3
-        # years).
+        # The minimum time duration that you commit to purchasing resources. The plan
+        # that you choose determines the preset term length of the commitment (which is
+        # 1 year or 3 years) and affects the discount rate that you receive for your
+        # resources. Committing to a longer time duration typically gives you a higher
+        # discount rate. The supported values for this field are TWELVE_MONTH (1 year),
+        # and THIRTY_SIX_MONTH (3 years).
         # Corresponds to the JSON property `plan`
         # @return [String]
         attr_accessor :plan
       
-        # [Output Only] URL of the region where this commitment may be used.
+        # [Output Only] URL of the region where the commitment and committed resources
+        # are located.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
-        # List of create-on-create reservations for this commitment.
+        # The list of new reservations that you want to create and attach to this
+        # commitment. You must attach reservations to your commitment if your commitment
+        # specifies any GPUs or Local SSD disks. For more information, see Attach
+        # reservations to resource-based commitments. Specify this property only if you
+        # want to create new reservations to attach. To attach existing reservations,
+        # specify the existingReservations property instead.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeAlpha::Reservation>]
         attr_accessor :reservations
@@ -6791,8 +6848,9 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CommitmentResourceStatus]
         attr_accessor :resource_status
       
-        # A list of commitment amounts for particular resources. Note that VCPU and
-        # MEMORY resource commitments must occur together.
+        # The list of all the hardware resources, with their types and amounts, that you
+        # want to commit to. Specify as a separate entry in the list for each individual
+        # resource type.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ComputeAlpha::ResourceCommitment>]
         attr_accessor :resources
@@ -6807,7 +6865,8 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # Source commitment to be split into a new commitment.
+        # The source commitment from which you are transferring resources to create the
+        # new split commitment. For more information, see Split commitments.
         # Corresponds to the JSON property `splitSourceCommitment`
         # @return [String]
         attr_accessor :split_source_commitment
@@ -6818,8 +6877,8 @@ module Google
         attr_accessor :start_timestamp
       
         # [Output Only] Status of the commitment with regards to eventual expiration (
-        # each commitment has an end date defined). One of the following values:
-        # NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+        # each commitment has an end date defined). Status can be one of the following
+        # values: NOT_YET_ACTIVE, ACTIVE, or EXPIRED.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -6829,10 +6888,19 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # The type of commitment, which affects the discount rate and the eligible
-        # resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply
-        # to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a
-        # commitment that will only apply to accelerator optimized machines.
+        # The type of commitment; specifies the machine series for which you want to
+        # commit to purchasing resources. The choice of machine series affects the
+        # discount rate and the eligible resource types. The type must be one of the
+        # following: ACCELERATOR_OPTIMIZED, ACCELERATOR_OPTIMIZED_A3,
+        # ACCELERATOR_OPTIMIZED_A3_MEGA, COMPUTE_OPTIMIZED, COMPUTE_OPTIMIZED_C2D,
+        # COMPUTE_OPTIMIZED_C3, COMPUTE_OPTIMIZED_C3D, COMPUTE_OPTIMIZED_H3,
+        # GENERAL_PURPOSE, GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2, GENERAL_PURPOSE_N2,
+        # GENERAL_PURPOSE_N2D, GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,
+        # GRAPHICS_OPTIMIZED, MEMORY_OPTIMIZED, MEMORY_OPTIMIZED_M3, MEMORY_OPTIMIZED_X4,
+        # STORAGE_OPTIMIZED_Z3. For example, type MEMORY_OPTIMIZED specifies a
+        # commitment that applies only to eligible resources of memory optimized M1 and
+        # M2 machine series. Type GENERAL_PURPOSE specifies a commitment that applies
+        # only to eligible resources of general purpose N1 machine series.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -7188,7 +7256,7 @@ module Google
       class CommitmentsScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A list of commitments contained in this scope.
+        # [Output Only] The list of commitments contained in this scope.
         # Corresponds to the JSON property `commitments`
         # @return [Array<Google::Apis::ComputeAlpha::Commitment>]
         attr_accessor :commitments
@@ -19175,7 +19243,7 @@ module Google
         # - DEFAULT_ACTION (default): MIG uses the same action configured for
         # instanceLifecyclePolicy.defaultActionOnFailure field. - REPAIR: MIG
         # automatically repairs an unhealthy VM by recreating it. - DO_NOTHING: MIG
-        # doesn't repair an unhealthy VM. For more information, see about repairing VMs
+        # doesn't repair an unhealthy VM. For more information, see About repairing VMs
         # in a MIG.
         # Corresponds to the JSON property `onFailedHealthCheck`
         # @return [String]
@@ -25386,10 +25454,35 @@ module Google
       class InterconnectAttachmentGroupsOperationalStatus
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `attachmentStatuses`
+        # @return [Array<Google::Apis::ComputeAlpha::InterconnectAttachmentGroupsOperationalStatusAttachmentStatus>]
+        attr_accessor :attachment_statuses
+      
+        # [Output Only] The redundancy this group is configured to support. The way a
+        # user queries what SLA their Attachment gets is by looking at this field of the
+        # Attachment's AttachmentGroup.
+        # Corresponds to the JSON property `configured`
+        # @return [Google::Apis::ComputeAlpha::InterconnectAttachmentGroupConfigured]
+        attr_accessor :configured
+      
         # Summarizes the status of the group.
         # Corresponds to the JSON property `groupStatus`
         # @return [String]
         attr_accessor :group_status
+      
+        # The user's intent for this AttachmentGroup. This is the only required field
+        # besides the name that must be specified on group creation.
+        # Corresponds to the JSON property `intent`
+        # @return [Google::Apis::ComputeAlpha::InterconnectAttachmentGroupIntent]
+        attr_accessor :intent
+      
+        # [Output Only] The redundancy this group is configured to support. The way a
+        # user queries what SLA their Attachment gets is by looking at this field of the
+        # Attachment's AttachmentGroup.
+        # Corresponds to the JSON property `operational`
+        # @return [Google::Apis::ComputeAlpha::InterconnectAttachmentGroupConfigured]
+        attr_accessor :operational
       
         def initialize(**args)
            update!(**args)
@@ -25397,7 +25490,55 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attachment_statuses = args[:attachment_statuses] if args.key?(:attachment_statuses)
+          @configured = args[:configured] if args.key?(:configured)
           @group_status = args[:group_status] if args.key?(:group_status)
+          @intent = args[:intent] if args.key?(:intent)
+          @operational = args[:operational] if args.key?(:operational)
+        end
+      end
+      
+      # The status of one Attachment in the group. List order is arbitrary.
+      class InterconnectAttachmentGroupsOperationalStatusAttachmentStatus
+        include Google::Apis::Core::Hashable
+      
+        # Whether this Attachment is enabled. This becomes false when the customer
+        # drains their Attachment.
+        # Corresponds to the JSON property `adminEnabled`
+        # @return [Boolean]
+        attr_accessor :admin_enabled
+        alias_method :admin_enabled?, :admin_enabled
+      
+        # The URL of the Attachment being described.
+        # Corresponds to the JSON property `attachment`
+        # @return [String]
+        attr_accessor :attachment
+      
+        # Whether this Attachment is participating in the redundant configuration. This
+        # will be ACTIVE if and only if the status below is CONNECTION_UP. Any INACTIVE
+        # Attachments are excluded from the analysis that generates operational.
+        # availabilitySLA.
+        # Corresponds to the JSON property `isActive`
+        # @return [String]
+        attr_accessor :is_active
+      
+        # Whether this Attachment is active, and if so, whether BGP is up. This is based
+        # on the statuses available in the Pantheon UI here: http://google3/java/com/
+        # google/cloud/boq/clientapi/gce/hybrid/api/interconnect_models.proto
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
+          @attachment = args[:attachment] if args.key?(:attachment)
+          @is_active = args[:is_active] if args.key?(:is_active)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -26422,6 +26563,192 @@ module Google
         def update!(**args)
           @interconnects = args[:interconnects] if args.key?(:interconnects)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class InterconnectGroupsCreateMembers
+        include Google::Apis::Core::Hashable
+      
+        # How to behave when configured.topologyCapability.supportedSLA would not equal
+        # intent.topologyCapability after this call.
+        # Corresponds to the JSON property `intentMismatchBehavior`
+        # @return [String]
+        attr_accessor :intent_mismatch_behavior
+      
+        # 
+        # Corresponds to the JSON property `interconnects`
+        # @return [Array<Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersInterconnectInput>]
+        attr_accessor :interconnects
+      
+        # LINT.IfChange
+        # Corresponds to the JSON property `templateInterconnect`
+        # @return [Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembersInterconnectInput]
+        attr_accessor :template_interconnect
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_mismatch_behavior = args[:intent_mismatch_behavior] if args.key?(:intent_mismatch_behavior)
+          @interconnects = args[:interconnects] if args.key?(:interconnects)
+          @template_interconnect = args[:template_interconnect] if args.key?(:template_interconnect)
+        end
+      end
+      
+      # LINT.IfChange
+      class InterconnectGroupsCreateMembersInterconnectInput
+        include Google::Apis::Core::Hashable
+      
+        # Administrative status of the interconnect. When this is set to true, the
+        # Interconnect is functional and can carry traffic. When set to false, no
+        # packets can be carried over the interconnect and no BGP routes are exchanged
+        # over it. By default, the status is set to true.
+        # Corresponds to the JSON property `adminEnabled`
+        # @return [Boolean]
+        attr_accessor :admin_enabled
+        alias_method :admin_enabled?, :admin_enabled
+      
+        # Customer name, to put in the Letter of Authorization as the party authorized
+        # to request a crossconnect.
+        # Corresponds to the JSON property `customerName`
+        # @return [String]
+        attr_accessor :customer_name
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A zone-free location to use for all Interconnects created in this call, like "
+        # iad-1234".
+        # Corresponds to the JSON property `facility`
+        # @return [String]
+        attr_accessor :facility
+      
+        # Type of interconnect, which can take one of the following values: - PARTNER: A
+        # partner-managed interconnection shared between customers though a partner. -
+        # DEDICATED: A dedicated physical interconnection with the customer. Note that a
+        # value IT_PRIVATE has been deprecated in favor of DEDICATED.
+        # Corresponds to the JSON property `interconnectType`
+        # @return [String]
+        attr_accessor :interconnect_type
+      
+        # Type of link requested, which can take one of the following values: -
+        # LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics -
+        # LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this
+        # field indicates the speed of each of the links in the bundle, not the speed of
+        # the entire bundle.
+        # Corresponds to the JSON property `linkType`
+        # @return [String]
+        attr_accessor :link_type
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Email address to contact the customer NOC for operations and maintenance
+        # notifications regarding this Interconnect. If specified, this will be used for
+        # notifications in addition to all other forms described, such as Cloud
+        # Monitoring logs alerting and Cloud Notifications. This field is required for
+        # users who sign up for Cloud Interconnect using workforce identity federation.
+        # Corresponds to the JSON property `nocContactEmail`
+        # @return [String]
+        attr_accessor :noc_contact_email
+      
+        # Indicates that this is a Cross-Cloud Interconnect. This field specifies the
+        # location outside of Google's network that the interconnect is connected to.
+        # Corresponds to the JSON property `remoteLocation`
+        # @return [String]
+        attr_accessor :remote_location
+      
+        # Optional. List of features requested for this Interconnect connection, which
+        # can take one of the following values: - IF_MACSEC If specified then the
+        # connection is created on MACsec capable hardware ports. If not specified, the
+        # default value is false, which allocates non-MACsec capable ports first if
+        # available. This parameter can be provided only with Interconnect INSERT. It
+        # isn't valid for Interconnect PATCH.
+        # Corresponds to the JSON property `requestedFeatures`
+        # @return [Array<String>]
+        attr_accessor :requested_features
+      
+        # Target number of physical links in the link bundle, as requested by the
+        # customer.
+        # Corresponds to the JSON property `requestedLinkCount`
+        # @return [Fixnum]
+        attr_accessor :requested_link_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
+          @customer_name = args[:customer_name] if args.key?(:customer_name)
+          @description = args[:description] if args.key?(:description)
+          @facility = args[:facility] if args.key?(:facility)
+          @interconnect_type = args[:interconnect_type] if args.key?(:interconnect_type)
+          @link_type = args[:link_type] if args.key?(:link_type)
+          @name = args[:name] if args.key?(:name)
+          @noc_contact_email = args[:noc_contact_email] if args.key?(:noc_contact_email)
+          @remote_location = args[:remote_location] if args.key?(:remote_location)
+          @requested_features = args[:requested_features] if args.key?(:requested_features)
+          @requested_link_count = args[:requested_link_count] if args.key?(:requested_link_count)
+        end
+      end
+      
+      # 
+      class InterconnectGroupsCreateMembersRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ComputeAlpha::InterconnectGroupsCreateMembers]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # Response for the InterconnectGroupsCreateMembersRequest.
+      class InterconnectGroupsCreateMembersResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # An interconnect group resource allows customers to create, analyze, and expand
+        # their redundant connections.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::ComputeAlpha::InterconnectGroup]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @result = args[:result] if args.key?(:result)
         end
       end
       
@@ -28485,17 +28812,17 @@ module Google
       class LicenseResourceCommitment
         include Google::Apis::Core::Hashable
       
-        # The number of licenses purchased.
+        # The number of licenses you plan to purchase.
         # Corresponds to the JSON property `amount`
         # @return [Fixnum]
         attr_accessor :amount
       
-        # Specifies the core range of the instance for which this license applies.
+        # The number of cores per license.
         # Corresponds to the JSON property `coresPerLicense`
         # @return [String]
         attr_accessor :cores_per_license
       
-        # Any applicable license URI.
+        # The applicable license URI.
         # Corresponds to the JSON property `license`
         # @return [String]
         attr_accessor :license
@@ -28986,6 +29313,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Machine Image parameters
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeAlpha::MachineImageParams]
+        attr_accessor :params
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -29066,6 +29398,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @machine_image_encryption_key = args[:machine_image_encryption_key] if args.key?(:machine_image_encryption_key)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @saved_disks = args[:saved_disks] if args.key?(:saved_disks)
@@ -29195,6 +29528,33 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Machine Image parameters
+      class MachineImageParams
+        include Google::Apis::Core::Hashable
+      
+        # Input only. [Input Only] Specifies the list of disk device names that must be
+        # excluded from the new machine image.
+        # Corresponds to the JSON property `excludedDisks`
+        # @return [Array<String>]
+        attr_accessor :excluded_disks
+      
+        # Input only. [Input Only] Specifies the list of disk device names that must be
+        # included with the new machine image.
+        # Corresponds to the JSON property `includedDisks`
+        # @return [Array<String>]
+        attr_accessor :included_disks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @excluded_disks = args[:excluded_disks] if args.key?(:excluded_disks)
+          @included_disks = args[:included_disks] if args.key?(:included_disks)
         end
       end
       
@@ -33497,11 +33857,6 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # [Output Only] Zone to which the network is restricted.
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
         def initialize(**args)
            update!(**args)
         end
@@ -33517,7 +33872,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
-          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -40842,7 +41196,7 @@ module Google
       class RegionCommitmentsUpdateReservationsRequest
         include Google::Apis::Core::Hashable
       
-        # A list of two reservations to transfer GPUs and local SSD between.
+        # A list of two reservations to transfer GPUs and Local SSD disks between.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeAlpha::Reservation>]
         attr_accessor :reservations
@@ -43517,27 +43871,30 @@ module Google
         end
       end
       
-      # Commitment for a particular resource (a Commitment is composed of one or more
-      # of these).
+      # Commitment for a particular hardware resource (a commitment is composed of one
+      # or more of these).
       class ResourceCommitment
         include Google::Apis::Core::Hashable
       
-        # Name of the accelerator type resource. Applicable only when the type is
-        # ACCELERATOR.
+        # Name of the accelerator type or GPU resource. Specify this field only when the
+        # type of hardware resource is ACCELERATOR.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
       
-        # The amount of the resource purchased (in a type-dependent unit, such as bytes).
-        # For vCPUs, this can just be an integer. For memory, this must be provided in
-        # MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every
-        # vCPU.
+        # The quantity of the hardware resource that you want to commit to purchasing (
+        # in a type-dependent unit). - For vCPUs, you must specify an integer value. -
+        # For memory, you specify the amount of MB that you want. The value you specify
+        # must be a multiple of 256 MB, with up to 6.5 GB of memory per every vCPU. -
+        # For GPUs, you must specify an integer value. - For Local SSD disks, you must
+        # specify the amount in GB. The size of a single Local SSD disk is 375 GB.
         # Corresponds to the JSON property `amount`
         # @return [Fixnum]
         attr_accessor :amount
       
-        # Type of resource for which this commitment applies. Possible values are VCPU,
-        # MEMORY, LOCAL_SSD, and ACCELERATOR.
+        # The type of hardware resource that you want to specify. You can specify any of
+        # the following values: - VCPU - MEMORY - LOCAL_SSD - ACCELERATOR Specify as a
+        # separate entry in the list for each individual resource type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -44424,6 +44781,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Region where the snapshot is scoped to.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # Cloud Storage bucket storage location of the auto snapshot (regional or multi-
         # regional).
         # Corresponds to the JSON property `storageLocations`
@@ -44439,6 +44801,7 @@ module Google
           @chain_name = args[:chain_name] if args.key?(:chain_name)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @labels = args[:labels] if args.key?(:labels)
+          @region = args[:region] if args.key?(:region)
           @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
         end
       end
@@ -44575,6 +44938,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `acceleratorTopology`
+        # @return [String]
+        attr_accessor :accelerator_topology
+      
+        # 
+        # Corresponds to the JSON property `maxTopologyDistance`
+        # @return [String]
+        attr_accessor :max_topology_distance
+      
+        # 
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -44585,6 +44958,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_topology = args[:accelerator_topology] if args.key?(:accelerator_topology)
+          @max_topology_distance = args[:max_topology_distance] if args.key?(:max_topology_distance)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -46186,9 +46561,9 @@ module Google
         # truncate the IP address, as it represents the IP address of the interface. -
         # For Internet Protocol version 6 (IPv6), the value must be a unique local
         # address (ULA) range from fdff:1::/64 with a mask length of 126 or less. This
-        # value should be a CIDR-formatted string, for example, fc00:0:1:1::1/112.
-        # Within the router's VPC, this IPv6 prefix will be reserved exclusively for
-        # this connection and cannot be used for any other purpose.
+        # value should be a CIDR-formatted string, for example, fdff:1::1/112. Within
+        # the router's VPC, this IPv6 prefix will be reserved exclusively for this
+        # connection and cannot be used for any other purpose.
         # Corresponds to the JSON property `ipRange`
         # @return [String]
         attr_accessor :ip_range
@@ -52145,6 +52520,11 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::SnapshotSettingsAccessLocationAccessLocationPreference>]
         attr_accessor :locations
       
+        # Policy of which location is allowed to access snapshot.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -52152,6 +52532,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -62036,6 +62417,12 @@ module Google
       class VpnTunnel
         include Google::Apis::Core::Hashable
       
+        # User specified list of ciphers to use for the phase 1 and phase 2 of the IKE
+        # protocol.
+        # Corresponds to the JSON property `cipherSuite`
+        # @return [Google::Apis::ComputeAlpha::VpnTunnelCipherSuite]
+        attr_accessor :cipher_suite
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -62221,6 +62608,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cipher_suite = args[:cipher_suite] if args.key?(:cipher_suite)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @detailed_status = args[:detailed_status] if args.key?(:detailed_status)
@@ -62371,6 +62759,31 @@ module Google
         end
       end
       
+      # 
+      class VpnTunnelCipherSuite
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `phase1`
+        # @return [Google::Apis::ComputeAlpha::VpnTunnelPhase1Algorithms]
+        attr_accessor :phase1
+      
+        # 
+        # Corresponds to the JSON property `phase2`
+        # @return [Google::Apis::ComputeAlpha::VpnTunnelPhase2Algorithms]
+        attr_accessor :phase2
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phase1 = args[:phase1] if args.key?(:phase1)
+          @phase2 = args[:phase2] if args.key?(:phase2)
+        end
+      end
+      
       # Contains a list of VpnTunnel resources.
       class VpnTunnelList
         include Google::Apis::Core::Hashable
@@ -62485,6 +62898,74 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class VpnTunnelPhase1Algorithms
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dh`
+        # @return [Array<String>]
+        attr_accessor :dh
+      
+        # 
+        # Corresponds to the JSON property `encryption`
+        # @return [Array<String>]
+        attr_accessor :encryption
+      
+        # 
+        # Corresponds to the JSON property `integrity`
+        # @return [Array<String>]
+        attr_accessor :integrity
+      
+        # 
+        # Corresponds to the JSON property `prf`
+        # @return [Array<String>]
+        attr_accessor :prf
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dh = args[:dh] if args.key?(:dh)
+          @encryption = args[:encryption] if args.key?(:encryption)
+          @integrity = args[:integrity] if args.key?(:integrity)
+          @prf = args[:prf] if args.key?(:prf)
+        end
+      end
+      
+      # 
+      class VpnTunnelPhase2Algorithms
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `encryption`
+        # @return [Array<String>]
+        attr_accessor :encryption
+      
+        # 
+        # Corresponds to the JSON property `integrity`
+        # @return [Array<String>]
+        attr_accessor :integrity
+      
+        # 
+        # Corresponds to the JSON property `pfs`
+        # @return [Array<String>]
+        attr_accessor :pfs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption = args[:encryption] if args.key?(:encryption)
+          @integrity = args[:integrity] if args.key?(:integrity)
+          @pfs = args[:pfs] if args.key?(:pfs)
         end
       end
       
