@@ -208,11 +208,6 @@ module Google
       class GoogleFirebaseAppdistroV1alphaAiInstructions
         include Google::Apis::Core::Hashable
       
-        # Optional. Describes the app to give the AI some context
-        # Corresponds to the JSON property `appDescription`
-        # @return [String]
-        attr_accessor :app_description
-      
         # Required. Steps to be accomplished by the AI
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep>]
@@ -224,7 +219,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @app_description = args[:app_description] if args.key?(:app_description)
           @steps = args[:steps] if args.key?(:steps)
         end
       end

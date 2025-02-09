@@ -355,7 +355,6 @@ module Google
       class GoogleFirebaseAppdistroV1alphaAiInstructions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :app_description, as: 'appDescription'
           collection :steps, as: 'steps', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep::Representation
       
         end
