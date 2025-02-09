@@ -1542,15 +1542,8 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
         attr_accessor :timeline_spec
       
-        # User view to select. The output data will correspond to the selected view. **
-        # Supported values:** * `OS_PUBLIC` To select data from all publicly released
-        # Android versions. This is the default. Supports all the above dimensions. * `
-        # APP_TESTERS` To select data from users who have opted in to be testers.
-        # Supports all the above dimensions. * `OS_BETA` To select data from beta
-        # android versions only, excluding data from released android versions. Only the
-        # following dimensions are supported: * `versionCode` (int64): version of the
-        # app that was running on the user's device. * `osBuild` (string): OS build of
-        # the user's device, e.g., "T1B2.220916.004".
+        # User view to select. The output data will correspond to the selected view. The
+        # only supported value is `OS_PUBLIC`.
         # Corresponds to the JSON property `userCohort`
         # @return [String]
         attr_accessor :user_cohort
@@ -1695,15 +1688,8 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
         attr_accessor :timeline_spec
       
-        # User view to select. The output data will correspond to the selected view. **
-        # Supported values:** * `OS_PUBLIC` To select data from all publicly released
-        # Android versions. This is the default. Supports all the above dimensions. * `
-        # APP_TESTERS` To select data from users who have opted in to be testers.
-        # Supports all the above dimensions. * `OS_BETA` To select data from beta
-        # Android versions only, excluding data from released Android versions. Only the
-        # following dimensions are supported: * `versionCode` (int64): version of the
-        # app that was running on the user's device. * `osBuild` (string): OS build of
-        # the user's device, e.g., "T1B2.220916.004".
+        # User view to select. The output data will correspond to the selected view. The
+        # only supported value is `OS_PUBLIC`.
         # Corresponds to the JSON property `userCohort`
         # @return [String]
         attr_accessor :user_cohort
@@ -1839,15 +1825,8 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
         attr_accessor :timeline_spec
       
-        # User view to select. The output data will correspond to the selected view. **
-        # Supported values:** * `OS_PUBLIC` To select data from all publicly released
-        # Android versions. This is the default. Supports all the above dimensions. * `
-        # APP_TESTERS` To select data from users who have opted in to be testers.
-        # Supports all the above dimensions. * `OS_BETA` To select data from beta
-        # Android versions only, excluding data from released Android versions. Only the
-        # following dimensions are supported: * `versionCode` (int64): version of the
-        # app that was running on the user's device. * `osBuild` (string): OS build of
-        # the user's device, e.g., "T1B2.220916.004".
+        # User view to select. The output data will correspond to the selected view. The
+        # only supported value is `OS_PUBLIC`.
         # Corresponds to the JSON property `userCohort`
         # @return [String]
         attr_accessor :user_cohort
@@ -1985,15 +1964,8 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
         attr_accessor :timeline_spec
       
-        # User view to select. The output data will correspond to the selected view. **
-        # Supported values:** * `OS_PUBLIC` To select data from all publicly released
-        # Android versions. This is the default. Supports all the above dimensions. * `
-        # APP_TESTERS` To select data from users who have opted in to be testers.
-        # Supports all the above dimensions. * `OS_BETA` To select data from beta
-        # android versions only, excluding data from released android versions. Only the
-        # following dimensions are supported: * `versionCode` (int64): version of the
-        # app that was running on the user's device. * `osBuild` (string): OS build of
-        # the user's device, e.g., "T1B2.220916.004".
+        # User view to select. The output data will correspond to the selected view. The
+        # only supported value is `OS_PUBLIC`.
         # Corresponds to the JSON property `userCohort`
         # @return [String]
         attr_accessor :user_cohort
