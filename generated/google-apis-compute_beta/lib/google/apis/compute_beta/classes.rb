@@ -5914,6 +5914,74 @@ module Google
         end
       end
       
+      # A request to recommend the best way to consume the specified resources in the
+      # future.
+      class CalendarModeAdviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specification of resources to create in the future. The key of the map is an
+        # arbitrary string specified by the caller. Value of the map is a specification
+        # of required resources and their constraints. Currently only one value is
+        # allowed in this map.
+        # Corresponds to the JSON property `futureResourcesSpecs`
+        # @return [Hash<String,Google::Apis::ComputeBeta::FutureResourcesSpec>]
+        attr_accessor :future_resources_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @future_resources_specs = args[:future_resources_specs] if args.key?(:future_resources_specs)
+        end
+      end
+      
+      # A response containing the recommended way of creating the specified resources
+      # in the future. It contains (will contain) multiple recommendations that can be
+      # analyzed by the customer and the best one can be picked.
+      class CalendarModeAdviceResponse
+        include Google::Apis::Core::Hashable
+      
+        # Recommendations where, how and when to create the requested resources in order
+        # to maximize their obtainability and minimize cost.
+        # Corresponds to the JSON property `recommendations`
+        # @return [Array<Google::Apis::ComputeBeta::CalendarModeRecommendation>]
+        attr_accessor :recommendations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recommendations = args[:recommendations] if args.key?(:recommendations)
+        end
+      end
+      
+      # A single recommendation to create requested resources. Contains detailed
+      # recommendations for every future resources specification specified in
+      # CalendarModeAdviceRequest.
+      class CalendarModeRecommendation
+        include Google::Apis::Core::Hashable
+      
+        # Recommendations for every future resource specification passed in
+        # CalendarModeAdviceRequest. Keys of the map correspond to keys specified in the
+        # request.
+        # Corresponds to the JSON property `recommendationsPerSpec`
+        # @return [Hash<String,Google::Apis::ComputeBeta::FutureResourcesRecommendation>]
+        attr_accessor :recommendations_per_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recommendations_per_spec = args[:recommendations_per_spec] if args.key?(:recommendations_per_spec)
+        end
+      end
+      
       # Settings controlling the volume of requests, connections and retries to this
       # backend service.
       class CircuitBreakers
@@ -5982,29 +6050,33 @@ module Google
         end
       end
       
-      # Represents a regional Commitment resource. Creating a commitment resource
-      # means that you are purchasing a committed use contract with an explicit start
-      # and end time. You can create commitments based on vCPUs and memory usage and
-      # receive discounted rates. For full details, read Signing Up for Committed Use
-      # Discounts.
+      # Represents a regional resource-based commitment resource. Creating this
+      # commitment resource means that you are purchasing a resource-based committed
+      # use contract, with an explicit start and end time. You can purchase resource-
+      # based commitments for both hardware and software resources. For more
+      # information, read Resource-based committed use discounts
       class Commitment
         include Google::Apis::Core::Hashable
       
-        # Specifies whether to enable automatic renewal for the commitment. The default
-        # value is false if not specified. The field can be updated until the day of the
-        # commitment expiration at 12:00am PST. If the field is set to true, the
-        # commitment will be automatically renewed for either one or three years
-        # according to the terms of the existing commitment.
+        # Specifies whether to automatically renew the commitment at the end of its
+        # current term. The default value is false. If you set the field to true, each
+        # time your commitment reaches the end of its term, Compute Engine automatically
+        # renews it for another term. You can update this field anytime before the
+        # commitment expires. For example, if the commitment is set to expire at 12 AM
+        # UTC-8 on January 3, 2027, you can update this field until 11:59 PM UTC-8 on
+        # January 2, 2027.
         # Corresponds to the JSON property `autoRenew`
         # @return [Boolean]
         attr_accessor :auto_renew
         alias_method :auto_renew?, :auto_renew
       
-        # The category of the commitment. Category MACHINE specifies commitments
-        # composed of machine resources such as VCPU or MEMORY, listed in resources.
-        # Category LICENSE specifies commitments composed of software licenses, listed
-        # in licenseResources. Note that only MACHINE commitments should have a Type
-        # specified.
+        # The category of the commitment; specifies whether the commitment is for
+        # hardware or software resources. Category MACHINE specifies that you are
+        # committing to hardware machine resources such as VCPU or MEMORY, listed in
+        # resources. Category LICENSE specifies that you are committing to software
+        # licenses, listed in licenseResources. Note that if you specify MACHINE
+        # commitments, then you must also specify a type to indicate the machine series
+        # of the hardware resource that you are committing to.
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
@@ -6014,15 +6086,15 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # [Input Only] Optional, specifies the CUD end time requested by the customer in
-        # RFC3339 text format. Needed when the customer wants CUD's end date is later
+        # [Input Only] Optional, specifies the requested commitment end time in RFC3339
+        # text format. Use this option when the desired commitment's end date is later
         # than the start date + term duration.
         # Corresponds to the JSON property `customEndTimestamp`
         # @return [String]
         attr_accessor :custom_end_timestamp
       
-        # An optional description of this resource. Provide this property when you
-        # create the resource.
+        # An optional description of the commitment. You can provide this property when
+        # you create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -6032,11 +6104,7 @@ module Google
         # @return [String]
         attr_accessor :end_timestamp
       
-        # Specifies the already existing reservations to attach to the Commitment. This
-        # field is optional, and it can be a full or partial URL. For example, the
-        # following are valid URLs to an reservation: - https://www.googleapis.com/
-        # compute/v1/projects/project/zones/zone /reservations/reservation - projects/
-        # project/zones/zone/reservations/reservation
+        # 
         # Corresponds to the JSON property `existingReservations`
         # @return [Array<String>]
         attr_accessor :existing_reservations
@@ -6057,34 +6125,44 @@ module Google
         # @return [Google::Apis::ComputeBeta::LicenseResourceCommitment]
         attr_accessor :license_resource
       
-        # List of source commitments to be merged into a new commitment.
+        # The list of source commitments that you are merging to create the new merged
+        # commitment. For more information, see Merging commitments.
         # Corresponds to the JSON property `mergeSourceCommitments`
         # @return [Array<String>]
         attr_accessor :merge_source_commitments
       
-        # Name of the resource. Provided by the client when the resource is created. The
-        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
-        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash.
+        # Name of the commitment. You must specify a name when you purchase the
+        # commitment. The name must be 1-63 characters long, and comply with RFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The plan for this commitment, which determines duration and discount rate. The
-        # currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3
-        # years).
+        # The minimum time duration that you commit to purchasing resources. The plan
+        # that you choose determines the preset term length of the commitment (which is
+        # 1 year or 3 years) and affects the discount rate that you receive for your
+        # resources. Committing to a longer time duration typically gives you a higher
+        # discount rate. The supported values for this field are TWELVE_MONTH (1 year),
+        # and THIRTY_SIX_MONTH (3 years).
         # Corresponds to the JSON property `plan`
         # @return [String]
         attr_accessor :plan
       
-        # [Output Only] URL of the region where this commitment may be used.
+        # [Output Only] URL of the region where the commitment and committed resources
+        # are located.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
-        # List of create-on-create reservations for this commitment.
+        # The list of new reservations that you want to create and attach to this
+        # commitment. You must attach reservations to your commitment if your commitment
+        # specifies any GPUs or Local SSD disks. For more information, see Attach
+        # reservations to resource-based commitments. Specify this property only if you
+        # want to create new reservations to attach. To attach existing reservations,
+        # specify the existingReservations property instead.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeBeta::Reservation>]
         attr_accessor :reservations
@@ -6094,8 +6172,9 @@ module Google
         # @return [Google::Apis::ComputeBeta::CommitmentResourceStatus]
         attr_accessor :resource_status
       
-        # A list of commitment amounts for particular resources. Note that VCPU and
-        # MEMORY resource commitments must occur together.
+        # The list of all the hardware resources, with their types and amounts, that you
+        # want to commit to. Specify as a separate entry in the list for each individual
+        # resource type.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ComputeBeta::ResourceCommitment>]
         attr_accessor :resources
@@ -6105,7 +6184,8 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Source commitment to be split into a new commitment.
+        # The source commitment from which you are transferring resources to create the
+        # new split commitment. For more information, see Split commitments.
         # Corresponds to the JSON property `splitSourceCommitment`
         # @return [String]
         attr_accessor :split_source_commitment
@@ -6116,8 +6196,8 @@ module Google
         attr_accessor :start_timestamp
       
         # [Output Only] Status of the commitment with regards to eventual expiration (
-        # each commitment has an end date defined). One of the following values:
-        # NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+        # each commitment has an end date defined). Status can be one of the following
+        # values: NOT_YET_ACTIVE, ACTIVE, or EXPIRED.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -6127,10 +6207,19 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # The type of commitment, which affects the discount rate and the eligible
-        # resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply
-        # to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a
-        # commitment that will only apply to accelerator optimized machines.
+        # The type of commitment; specifies the machine series for which you want to
+        # commit to purchasing resources. The choice of machine series affects the
+        # discount rate and the eligible resource types. The type must be one of the
+        # following: ACCELERATOR_OPTIMIZED, ACCELERATOR_OPTIMIZED_A3,
+        # ACCELERATOR_OPTIMIZED_A3_MEGA, COMPUTE_OPTIMIZED, COMPUTE_OPTIMIZED_C2D,
+        # COMPUTE_OPTIMIZED_C3, COMPUTE_OPTIMIZED_C3D, COMPUTE_OPTIMIZED_H3,
+        # GENERAL_PURPOSE, GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2, GENERAL_PURPOSE_N2,
+        # GENERAL_PURPOSE_N2D, GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,
+        # GRAPHICS_OPTIMIZED, MEMORY_OPTIMIZED, MEMORY_OPTIMIZED_M3, MEMORY_OPTIMIZED_X4,
+        # STORAGE_OPTIMIZED_Z3. For example, type MEMORY_OPTIMIZED specifies a
+        # commitment that applies only to eligible resources of memory optimized M1 and
+        # M2 machine series. Type GENERAL_PURPOSE specifies a commitment that applies
+        # only to eligible resources of general purpose N1 machine series.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -6434,7 +6523,7 @@ module Google
       class CommitmentsScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A list of commitments contained in this scope.
+        # [Output Only] The list of commitments contained in this scope.
         # Corresponds to the JSON property `commitments`
         # @return [Array<Google::Apis::ComputeBeta::Commitment>]
         attr_accessor :commitments
@@ -10358,6 +10447,58 @@ module Google
         end
       end
       
+      # A flexible specification of a time range that has 3 points of flexibility: (1)
+      # a flexible start time, (2) a flexible end time, (3) a flexible duration. It is
+      # possible to specify a contradictory time range that cannot be matched by any
+      # Interval. This causes a validation error.
+      class FlexibleTimeRange
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `endTimeNotEarlierThan`
+        # @return [String]
+        attr_accessor :end_time_not_earlier_than
+      
+        # 
+        # Corresponds to the JSON property `endTimeNotLaterThan`
+        # @return [String]
+        attr_accessor :end_time_not_later_than
+      
+        # 
+        # Corresponds to the JSON property `maxDuration`
+        # @return [String]
+        attr_accessor :max_duration
+      
+        # 
+        # Corresponds to the JSON property `minDuration`
+        # @return [String]
+        attr_accessor :min_duration
+      
+        # 
+        # Corresponds to the JSON property `startTimeNotEarlierThan`
+        # @return [String]
+        attr_accessor :start_time_not_earlier_than
+      
+        # 
+        # Corresponds to the JSON property `startTimeNotLaterThan`
+        # @return [String]
+        attr_accessor :start_time_not_later_than
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time_not_earlier_than = args[:end_time_not_earlier_than] if args.key?(:end_time_not_earlier_than)
+          @end_time_not_later_than = args[:end_time_not_later_than] if args.key?(:end_time_not_later_than)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @min_duration = args[:min_duration] if args.key?(:min_duration)
+          @start_time_not_earlier_than = args[:start_time_not_earlier_than] if args.key?(:start_time_not_earlier_than)
+          @start_time_not_later_than = args[:start_time_not_later_than] if args.key?(:start_time_not_later_than)
+        end
+      end
+      
       # Represents a Forwarding Rule resource. Forwarding rule resources in Google
       # Cloud can be either regional or global in scope: * [Global](https://cloud.
       # google.com/compute/docs/reference/rest/beta/globalForwardingRules) * [Regional]
@@ -12020,6 +12161,286 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Recommendation for single resources specification, to be created in the future.
+      class FutureResourcesRecommendation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The advised location for resource usage. When a zone, in format 'zones/'. If
+        # not set, it means that no location is recommended - see other_locations for
+        # details.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # List of locations in the request scope that were not recommended. Keys of the
+        # map are zones, in format 'zones/'. The values are status information
+        # indicating the recommendation status.
+        # Corresponds to the JSON property `otherLocations`
+        # @return [Hash<String,Google::Apis::ComputeBeta::FutureResourcesRecommendationOtherLocation>]
+        attr_accessor :other_locations
+      
+        # Unique id of the recommendation, a UUID string generated by the API.
+        # Corresponds to the JSON property `recommendationId`
+        # @return [String]
+        attr_accessor :recommendation_id
+      
+        # Type of recommendation. Currently only FUTURE_RESERVATION is supported.
+        # Corresponds to the JSON property `recommendationType`
+        # @return [String]
+        attr_accessor :recommendation_type
+      
+        # 
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @location = args[:location] if args.key?(:location)
+          @other_locations = args[:other_locations] if args.key?(:other_locations)
+          @recommendation_id = args[:recommendation_id] if args.key?(:recommendation_id)
+          @recommendation_type = args[:recommendation_type] if args.key?(:recommendation_type)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Information about recommendation status for locations that were allowed but
+      # not used by the response.
+      class FutureResourcesRecommendationOtherLocation
+        include Google::Apis::Core::Hashable
+      
+        # Details (human readable) describing the situation. For example, if status is
+        # CONDITION_NOT_MET, then details contain information about the parameters of
+        # the time window that did not meet the required conditions.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Status of recommendation in this location.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Specification of resources to be created at some time in the future within an
+      # optionally specified set of locations, and within the specified time range.
+      class FutureResourcesSpec
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if the reservation allocation strategy is static (DENSE) or dynamic (
+        # STANDARD). Defaults to DENSE.
+        # Corresponds to the JSON property `deploymentType`
+        # @return [String]
+        attr_accessor :deployment_type
+      
+        # Specification of locations to create resources in.
+        # Corresponds to the JSON property `locationPolicy`
+        # @return [Google::Apis::ComputeBeta::FutureResourcesSpecLocationPolicy]
+        attr_accessor :location_policy
+      
+        # Specification of reserved resources.
+        # Corresponds to the JSON property `targetResources`
+        # @return [Google::Apis::ComputeBeta::FutureResourcesSpecTargetResources]
+        attr_accessor :target_resources
+      
+        # A flexible specification of a time range that has 3 points of flexibility: (1)
+        # a flexible start time, (2) a flexible end time, (3) a flexible duration. It is
+        # possible to specify a contradictory time range that cannot be matched by any
+        # Interval. This causes a validation error.
+        # Corresponds to the JSON property `timeRangeSpec`
+        # @return [Google::Apis::ComputeBeta::FlexibleTimeRange]
+        attr_accessor :time_range_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
+          @location_policy = args[:location_policy] if args.key?(:location_policy)
+          @target_resources = args[:target_resources] if args.key?(:target_resources)
+          @time_range_spec = args[:time_range_spec] if args.key?(:time_range_spec)
+        end
+      end
+      
+      # 
+      class FutureResourcesSpecAggregateResources
+        include Google::Apis::Core::Hashable
+      
+        # Size of the request, in accelerator (chip) count.
+        # Corresponds to the JSON property `acceleratorCount`
+        # @return [Fixnum]
+        attr_accessor :accelerator_count
+      
+        # The VM family that all instances scheduled against this reservation must
+        # belong to. Use for TPU reservations.
+        # Corresponds to the JSON property `vmFamily`
+        # @return [String]
+        attr_accessor :vm_family
+      
+        # Workload type. Use for TPU reservations.
+        # Corresponds to the JSON property `workloadType`
+        # @return [String]
+        attr_accessor :workload_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
+          @vm_family = args[:vm_family] if args.key?(:vm_family)
+          @workload_type = args[:workload_type] if args.key?(:workload_type)
+        end
+      end
+      
+      # 
+      class FutureResourcesSpecLocalSsdPartition
+        include Google::Apis::Core::Hashable
+      
+        # Disk interface. Defaults to SCSI.
+        # Corresponds to the JSON property `diskInterface`
+        # @return [String]
+        attr_accessor :disk_interface
+      
+        # The size of the disk in GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_interface = args[:disk_interface] if args.key?(:disk_interface)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+        end
+      end
+      
+      # Specification of locations to create resources in.
+      class FutureResourcesSpecLocationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Preferences for specified locations. Keys of the map are locations - zones, in
+        # format of 'zones/'. Values are preferences for the zones. If a zone is not
+        # specified in this map, it is ALLOWed.
+        # Corresponds to the JSON property `locations`
+        # @return [Hash<String,Google::Apis::ComputeBeta::FutureResourcesSpecLocationPolicyLocation>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+        end
+      end
+      
+      # Preference for a single specified location.
+      class FutureResourcesSpecLocationPolicyLocation
+        include Google::Apis::Core::Hashable
+      
+        # Preference for this location.
+        # Corresponds to the JSON property `preference`
+        # @return [String]
+        attr_accessor :preference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preference = args[:preference] if args.key?(:preference)
+        end
+      end
+      
+      # 
+      class FutureResourcesSpecSpecificSkuResources
+        include Google::Apis::Core::Hashable
+      
+        # Size of the request, in instance count.
+        # Corresponds to the JSON property `instanceCount`
+        # @return [Fixnum]
+        attr_accessor :instance_count
+      
+        # Local SSD partitions. You do not have to include SSD partitions that are built
+        # in the machine type.
+        # Corresponds to the JSON property `localSsdPartitions`
+        # @return [Array<Google::Apis::ComputeBeta::FutureResourcesSpecLocalSsdPartition>]
+        attr_accessor :local_ssd_partitions
+      
+        # The machine type to use for instances that will use the reservation. This
+        # field only accepts machine type names. e.g. n2-standard-4 and does not accept
+        # machine type full or partial url. e.g. projects/my-l7ilb-project/zones/us-
+        # central1-a/machineTypes/n2-standard-4. Use for GPU reservations.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_count = args[:instance_count] if args.key?(:instance_count)
+          @local_ssd_partitions = args[:local_ssd_partitions] if args.key?(:local_ssd_partitions)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+        end
+      end
+      
+      # Specification of reserved resources.
+      class FutureResourcesSpecTargetResources
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `aggregateResources`
+        # @return [Google::Apis::ComputeBeta::FutureResourcesSpecAggregateResources]
+        attr_accessor :aggregate_resources
+      
+        # 
+        # Corresponds to the JSON property `specificSkuResources`
+        # @return [Google::Apis::ComputeBeta::FutureResourcesSpecSpecificSkuResources]
+        attr_accessor :specific_sku_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_resources = args[:aggregate_resources] if args.key?(:aggregate_resources)
+          @specific_sku_resources = args[:specific_sku_resources] if args.key?(:specific_sku_resources)
         end
       end
       
@@ -17138,6 +17559,17 @@ module Google
         # @return [String]
         attr_accessor :force_update_on_repair
       
+        # The action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy
+        # when the application running on that VM fails a health check. Valid values are:
+        # - DEFAULT_ACTION (default): MIG uses the same action configured for
+        # instanceLifecyclePolicy.defaultActionOnFailure field. - REPAIR: MIG
+        # automatically repairs an unhealthy VM by recreating it. - DO_NOTHING: MIG
+        # doesn't repair an unhealthy VM. For more information, see About repairing VMs
+        # in a MIG.
+        # Corresponds to the JSON property `onFailedHealthCheck`
+        # @return [String]
+        attr_accessor :on_failed_health_check
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17146,6 +17578,7 @@ module Google
         def update!(**args)
           @default_action_on_failure = args[:default_action_on_failure] if args.key?(:default_action_on_failure)
           @force_update_on_repair = args[:force_update_on_repair] if args.key?(:force_update_on_repair)
+          @on_failed_health_check = args[:on_failed_health_check] if args.key?(:on_failed_health_check)
         end
       end
       
@@ -21512,6 +21945,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # [Output Only] A list of the URLs of all CrossSiteNetwork WireGroups configured
+        # to use this Interconnect. The Interconnect cannot be deleted if this list is
+        # non-empty.
+        # Corresponds to the JSON property `wireGroups`
+        # @return [Array<String>]
+        attr_accessor :wire_groups
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21550,6 +21990,7 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @state = args[:state] if args.key?(:state)
+          @wire_groups = args[:wire_groups] if args.key?(:wire_groups)
         end
       end
       
@@ -23965,17 +24406,17 @@ module Google
       class LicenseResourceCommitment
         include Google::Apis::Core::Hashable
       
-        # The number of licenses purchased.
+        # The number of licenses you plan to purchase.
         # Corresponds to the JSON property `amount`
         # @return [Fixnum]
         attr_accessor :amount
       
-        # Specifies the core range of the instance for which this license applies.
+        # The number of cores per license.
         # Corresponds to the JSON property `coresPerLicense`
         # @return [String]
         attr_accessor :cores_per_license
       
-        # Any applicable license URI.
+        # The applicable license URI.
         # Corresponds to the JSON property `license`
         # @return [String]
         attr_accessor :license
@@ -28445,11 +28886,6 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # [Output Only] Zone to which the network is restricted.
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
         def initialize(**args)
            update!(**args)
         end
@@ -28465,7 +28901,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
-          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -30428,6 +30863,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :local_ssd_gb
       
+        # [Output Only] Maximum number of VMs that can be created for this node type.
+        # Corresponds to the JSON property `maxVms`
+        # @return [Fixnum]
+        attr_accessor :max_vms
+      
         # [Output Only] The amount of physical memory available to the node type,
         # defined in MB.
         # Corresponds to the JSON property `memoryMb`
@@ -30464,6 +30904,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @local_ssd_gb = args[:local_ssd_gb] if args.key?(:local_ssd_gb)
+          @max_vms = args[:max_vms] if args.key?(:max_vms)
           @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -34603,7 +35044,7 @@ module Google
       class RegionCommitmentsUpdateReservationsRequest
         include Google::Apis::Core::Hashable
       
-        # A list of two reservations to transfer GPUs and local SSD between.
+        # A list of two reservations to transfer GPUs and Local SSD disks between.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeBeta::Reservation>]
         attr_accessor :reservations
@@ -37036,6 +37477,44 @@ module Google
       end
       
       # 
+      class ReservationsBlocksPerformMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifies if all, running or unused hosts are in scope for this request.
+        # Corresponds to the JSON property `maintenanceScope`
+        # @return [String]
+        attr_accessor :maintenance_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_scope = args[:maintenance_scope] if args.key?(:maintenance_scope)
+        end
+      end
+      
+      # 
+      class ReservationsPerformMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifies if all, running or unused hosts are in scope for this request.
+        # Corresponds to the JSON property `maintenanceScope`
+        # @return [String]
+        attr_accessor :maintenance_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_scope = args[:maintenance_scope] if args.key?(:maintenance_scope)
+        end
+      end
+      
+      # 
       class ReservationsResizeRequest
         include Google::Apis::Core::Hashable
       
@@ -37146,27 +37625,30 @@ module Google
         end
       end
       
-      # Commitment for a particular resource (a Commitment is composed of one or more
-      # of these).
+      # Commitment for a particular hardware resource (a commitment is composed of one
+      # or more of these).
       class ResourceCommitment
         include Google::Apis::Core::Hashable
       
-        # Name of the accelerator type resource. Applicable only when the type is
-        # ACCELERATOR.
+        # Name of the accelerator type or GPU resource. Specify this field only when the
+        # type of hardware resource is ACCELERATOR.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
       
-        # The amount of the resource purchased (in a type-dependent unit, such as bytes).
-        # For vCPUs, this can just be an integer. For memory, this must be provided in
-        # MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every
-        # vCPU.
+        # The quantity of the hardware resource that you want to commit to purchasing (
+        # in a type-dependent unit). - For vCPUs, you must specify an integer value. -
+        # For memory, you specify the amount of MB that you want. The value you specify
+        # must be a multiple of 256 MB, with up to 6.5 GB of memory per every vCPU. -
+        # For GPUs, you must specify an integer value. - For Local SSD disks, you must
+        # specify the amount in GB. The size of a single Local SSD disk is 375 GB.
         # Corresponds to the JSON property `amount`
         # @return [Fixnum]
         attr_accessor :amount
       
-        # Type of resource for which this commitment applies. Possible values are VCPU,
-        # MEMORY, LOCAL_SSD, and ACCELERATOR.
+        # The type of hardware resource that you want to specify. You can specify any of
+        # the following values: - VCPU - MEMORY - LOCAL_SSD - ACCELERATOR Specify as a
+        # separate entry in the list for each individual resource type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -39440,9 +39922,9 @@ module Google
         # truncate the IP address, as it represents the IP address of the interface. -
         # For Internet Protocol version 6 (IPv6), the value must be a unique local
         # address (ULA) range from fdff:1::/64 with a mask length of 126 or less. This
-        # value should be a CIDR-formatted string, for example, fc00:0:1:1::1/112.
-        # Within the router's VPC, this IPv6 prefix will be reserved exclusively for
-        # this connection and cannot be used for any other purpose.
+        # value should be a CIDR-formatted string, for example, fdff:1::1/112. Within
+        # the router's VPC, this IPv6 prefix will be reserved exclusively for this
+        # connection and cannot be used for any other purpose.
         # Corresponds to the JSON property `ipRange`
         # @return [String]
         attr_accessor :ip_range

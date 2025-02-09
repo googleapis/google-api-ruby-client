@@ -780,6 +780,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Advise how, where and when to create the requested amount of instances with
+        # specified accelerators, within the specified time and location limits. The
+        # method recommends creating future reservations for the requested resources.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [Google::Apis::ComputeBeta::CalendarModeAdviceRequest] calendar_mode_advice_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::CalendarModeAdviceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::CalendarModeAdviceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def calendar_mode_advice(project, region, calendar_mode_advice_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/advice/calendarMode', options)
+          command.request_representation = Google::Apis::ComputeBeta::CalendarModeAdviceRequest::Representation
+          command.request_object = calendar_mode_advice_request_object
+          command.response_representation = Google::Apis::ComputeBeta::CalendarModeAdviceResponse::Representation
+          command.response_class = Google::Apis::ComputeBeta::CalendarModeAdviceResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of autoscalers. To prevent failure, Google
         # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
@@ -28557,13 +28598,13 @@ module Google
         
         # Updates the specified commitment with the data included in the request. Update
         # is performed only on selected fields included as part of update-mask. Only the
-        # following fields can be modified: auto_renew.
+        # following fields can be updated: auto_renew and plan.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] commitment
-        #   Name of the commitment for which auto renew is being updated.
+        #   Name of the commitment that you want to update.
         # @param [Google::Apis::ComputeBeta::Commitment] commitment_object
         # @param [Array<String>, String] paths
         # @param [String] request_id
@@ -28615,13 +28656,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Transfers GPUs or local SSDs between reservations within commitments.
+        # Transfers GPUs or Local SSD disks between reservations that are attached to
+        # the same commitment.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] commitment
-        #   Name of the commitment for which the reservation is being updated.
+        #   Name of the commitment for which the reservations are being updated.
         # @param [Google::Apis::ComputeBeta::RegionCommitmentsUpdateReservationsRequest] region_commitments_update_reservations_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -38650,6 +38692,64 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Allows customers to perform maintenance on a reservation block
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   Name of the zone for this request. Zone name should conform to RFC1035.
+        # @param [String] reservation
+        #   The name of the reservation. Name should conform to RFC1035 or be a resource
+        #   ID.
+        # @param [String] reservation_block
+        #   The name of the reservation block. Name should conform to RFC1035 or be a
+        #   resource ID.
+        # @param [Google::Apis::ComputeBeta::ReservationsBlocksPerformMaintenanceRequest] reservations_blocks_perform_maintenance_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def perform_reservation_block_maintenance(project, zone, reservation, reservation_block, reservations_blocks_perform_maintenance_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/reservations/{reservation}/reservationBlocks/{reservationBlock}/performMaintenance', options)
+          command.request_representation = Google::Apis::ComputeBeta::ReservationsBlocksPerformMaintenanceRequest::Representation
+          command.request_object = reservations_blocks_perform_maintenance_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['reservation'] = reservation unless reservation.nil?
+          command.params['reservationBlock'] = reservation_block unless reservation_block.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of reservations. To prevent failure, Google
         # recommends that you set the `returnPartialSuccess` parameter to `true`.
         # @param [String] project
@@ -39026,6 +39126,60 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Perform maintenance on an extended reservation
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   Name of the zone for this request. Zone name should conform to RFC1035.
+        # @param [String] reservation
+        #   The name of the reservation. Name should conform to RFC1035 or be a resource
+        #   ID.
+        # @param [Google::Apis::ComputeBeta::ReservationsPerformMaintenanceRequest] reservations_perform_maintenance_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def perform_reservation_maintenance(project, zone, reservation, reservations_perform_maintenance_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/reservations/{reservation}/performMaintenance', options)
+          command.request_representation = Google::Apis::ComputeBeta::ReservationsPerformMaintenanceRequest::Representation
+          command.request_object = reservations_perform_maintenance_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['reservation'] = reservation unless reservation.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
