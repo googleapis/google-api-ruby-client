@@ -1982,6 +1982,11 @@ module Google
         # @return [Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1PoolOption]
         attr_accessor :pool
       
+        # Optional. Option to specify the Pub/Sub topic to receive build status updates.
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
         # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
         # @return [String]
@@ -2037,6 +2042,7 @@ module Google
           @logging = args[:logging] if args.key?(:logging)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool = args[:pool] if args.key?(:pool)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)

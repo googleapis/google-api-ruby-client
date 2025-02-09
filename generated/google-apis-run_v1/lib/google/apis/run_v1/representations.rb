@@ -1307,6 +1307,7 @@ module Google
           property :machine_type, as: 'machineType'
           property :pool, as: 'pool', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1PoolOption, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1PoolOption::Representation
       
+          property :pubsub_topic, as: 'pubsubTopic'
           property :requested_verify_option, as: 'requestedVerifyOption'
           collection :secret_env, as: 'secretEnv'
           collection :source_provenance_hash, as: 'sourceProvenanceHash'
