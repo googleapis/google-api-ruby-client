@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2MonitoringConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -682,9 +688,12 @@ module Google
       
           property :client, as: 'client', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2ClientConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2ClientConfig::Representation
       
+          property :default_hosting_site, as: 'defaultHostingSite'
           property :email_privacy_config, as: 'emailPrivacyConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig::Representation
       
           property :mfa, as: 'mfa', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig::Representation
+      
+          property :mobile_links_config, as: 'mobileLinksConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig::Representation
       
           property :monitoring, as: 'monitoring', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig::Representation
       
@@ -890,6 +899,13 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :tenants, as: 'tenants', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2Tenant, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2Tenant::Representation
       
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
         end
       end
       
@@ -1174,6 +1190,8 @@ module Google
           property :inheritance, as: 'inheritance', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2Inheritance, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2Inheritance::Representation
       
           property :mfa_config, as: 'mfaConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig::Representation
+      
+          property :mobile_links_config, as: 'mobileLinksConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig::Representation
       
           property :monitoring, as: 'monitoring', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig::Representation
       
