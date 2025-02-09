@@ -5557,9 +5557,12 @@ module Google
       class GoogleCloudRetailV2SearchRequestTileNavigationSpec
         include Google::Apis::Core::Hashable
       
-        # This field specifies the tiles which are already clicked in client side. NOTE:
-        # This field is not being used for filtering search products. Client side should
-        # also put all the applied tiles in SearchRequest.filter.
+        # This optional field specifies the tiles which are already clicked in client
+        # side. While the feature works without this field set, particularly for an
+        # initial query, it is highly recommended to set this field because it can
+        # improve the quality of the search response and removes possible duplicate
+        # tiles. NOTE: This field is not being used for filtering search products.
+        # Client side should also put all the applied tiles in SearchRequest.filter.
         # Corresponds to the JSON property `appliedTiles`
         # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2Tile>]
         attr_accessor :applied_tiles
