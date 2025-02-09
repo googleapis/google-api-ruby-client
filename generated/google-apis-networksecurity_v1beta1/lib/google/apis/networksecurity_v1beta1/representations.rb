@@ -1375,6 +1375,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           property :forwarding_rule, as: 'forwardingRule'
           hash :labels, as: 'labels'
           property :mirroring_deployment_group, as: 'mirroringDeploymentGroup'
@@ -1391,6 +1392,7 @@ module Google
           collection :connected_endpoint_groups, as: 'connectedEndpointGroups', class: Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroupConnectedEndpointGroup, decorator: Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroupConnectedEndpointGroup::Representation
       
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -1413,6 +1415,7 @@ module Google
           collection :associations, as: 'associations', class: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationDetails, decorator: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationDetails::Representation
       
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           hash :labels, as: 'labels'
           property :mirroring_deployment_group, as: 'mirroringDeploymentGroup'
           property :name, as: 'name'
@@ -1523,6 +1526,7 @@ module Google
           property :create_time, as: 'createTime'
           property :custom_intercept_profile, as: 'customInterceptProfile'
           property :custom_mirroring_profile, as: 'customMirroringProfile'
+          property :data_path_id, :numeric_string => true, as: 'dataPathId'
           property :description, as: 'description'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'

@@ -2921,6 +2921,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. User-provided description of the deployment. Used as additional
+        # context for the deployment.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Required. Immutable. The regional load balancer which the mirrored traffic
         # should be forwarded to. Format is: projects/`project`/regions/`region`/
         # forwardingRules/`forwardingRule`
@@ -2969,6 +2975,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @labels = args[:labels] if args.key?(:labels)
           @mirroring_deployment_group = args[:mirroring_deployment_group] if args.key?(:mirroring_deployment_group)
@@ -2993,6 +3000,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. User-provided description of the deployment group. Used as
+        # additional context for the deployment group.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
       
         # Optional. Labels as key value pairs
         # Corresponds to the JSON property `labels`
@@ -3035,6 +3048,7 @@ module Google
         def update!(**args)
           @connected_endpoint_groups = args[:connected_endpoint_groups] if args.key?(:connected_endpoint_groups)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -3078,6 +3092,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. User-provided description of the endpoint group. Used as additional
+        # context for the endpoint group.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Optional. Labels as key value pairs
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -3120,6 +3140,7 @@ module Google
         def update!(**args)
           @associations = args[:associations] if args.key?(:associations)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @mirroring_deployment_group = args[:mirroring_deployment_group] if args.key?(:mirroring_deployment_group)
           @name = args[:name] if args.key?(:name)
@@ -3551,6 +3572,12 @@ module Google
         # @return [String]
         attr_accessor :custom_mirroring_profile
       
+        # Output only. Identifier used by the data-path. Unique within `container,
+        # location`.
+        # Corresponds to the JSON property `dataPathId`
+        # @return [Fixnum]
+        attr_accessor :data_path_id
+      
         # Optional. An optional description of the profile group. Max length 2048
         # characters.
         # Corresponds to the JSON property `description`
@@ -3596,6 +3623,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_intercept_profile = args[:custom_intercept_profile] if args.key?(:custom_intercept_profile)
           @custom_mirroring_profile = args[:custom_mirroring_profile] if args.key?(:custom_mirroring_profile)
+          @data_path_id = args[:data_path_id] if args.key?(:data_path_id)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
