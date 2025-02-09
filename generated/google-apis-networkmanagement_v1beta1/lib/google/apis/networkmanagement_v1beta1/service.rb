@@ -641,11 +641,11 @@ module Google
         
         # Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same
         # settings already exists (even if the ID is different), the creation fails.
-        # Notes: 1. Creating a configuration with state=DISABLED will fail. 2. The
+        # Notes: 1. Creating a configuration with state=DISABLED will fail 2. The
         # following fields are not considered as `settings` for the purpose of the check
         # mentioned above, therefore - creating another configuration with the same
-        # fields but different values for the following fields will fail as well: - name
-        # - create_time - update_time - labels - description
+        # fields but different values for the following fields will fail as well: * name
+        # * create_time * update_time * labels * description
         # @param [String] parent
         #   Required. The parent resource of the VPC Flow Logs configuration to create: `
         #   projects/`project_id`/locations/global`
@@ -789,13 +789,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact
-        # same settings already exists (even if the ID is different), the creation fails.
-        # Notes: 1. Updating a configuration with state=DISABLED will fail. 2. The
+        # Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same
+        # settings already exists (even if the ID is different), the creation fails.
+        # Notes: 1. Creating a configuration with state=DISABLED will fail 2. The
         # following fields are not considered as `settings` for the purpose of the check
-        # mentioned above, therefore - updating another configuration with the same
-        # fields but different values for the following fields will fail as well: - name
-        # - create_time - update_time - labels - description
+        # mentioned above, therefore - creating another configuration with the same
+        # fields but different values for the following fields will fail as well: * name
+        # * create_time * update_time * labels * description
         # @param [String] name
         #   Identifier. Unique name of the configuration using the form: `projects/`
         #   project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
