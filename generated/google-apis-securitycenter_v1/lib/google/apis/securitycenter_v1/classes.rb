@@ -7763,8 +7763,8 @@ module Google
       class GoogleCloudSecuritycenterV2OrgPolicy
         include Google::Apis::Core::Hashable
       
-        # The resource name of the org policy. Example: "organizations/`organization_id`/
-        # policies/`constraint_name`"
+        # Identifier. The resource name of the org policy. Example: "organizations/`
+        # organization_id`/policies/`constraint_name`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
