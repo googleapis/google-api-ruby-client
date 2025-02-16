@@ -277,6 +277,37 @@ module Google
         end
       end
       
+      # BaseImage describes a base image of a container image.
+      class BaseImage
+        include Google::Apis::Core::Hashable
+      
+        # The name of the base image.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The number of layers that the base image is composed of.
+        # Corresponds to the JSON property `numLayers`
+        # @return [String]
+        attr_accessor :num_layers
+      
+        # The repository name in which the base image is from.
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @num_layers = args[:num_layers] if args.key?(:num_layers)
+          @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
       # 
       class BinarySourceInfo
         include Google::Apis::Core::Hashable
@@ -1756,6 +1787,46 @@ module Google
         end
       end
       
+      # Details about the layer a package was found in. This should be the same as the
+      # LayerDetails message in google3/third_party/scalibr/binary/proto/scan_result.
+      # proto.
+      class LayerDetails
+        include Google::Apis::Core::Hashable
+      
+        # The base images the layer is found within.
+        # Corresponds to the JSON property `baseImages`
+        # @return [Array<Google::Apis::OndemandscanningV1::BaseImage>]
+        attr_accessor :base_images
+      
+        # The layer build command that was used to build the layer. This may not be
+        # found in all layers depending on how the container image is built.
+        # Corresponds to the JSON property `command`
+        # @return [String]
+        attr_accessor :command
+      
+        # The diff ID (sha256 hash) of the layer in the container image.
+        # Corresponds to the JSON property `diffId`
+        # @return [String]
+        attr_accessor :diff_id
+      
+        # The index of the layer in the container image.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_images = args[:base_images] if args.key?(:base_images)
+          @command = args[:command] if args.key?(:command)
+          @diff_id = args[:diff_id] if args.key?(:diff_id)
+          @index = args[:index] if args.key?(:index)
+        end
+      end
+      
       # License information.
       class License
         include Google::Apis::Core::Hashable
@@ -2267,6 +2338,13 @@ module Google
         # @return [String]
         attr_accessor :hash_digest
       
+        # Details about the layer a package was found in. This should be the same as the
+        # LayerDetails message in google3/third_party/scalibr/binary/proto/scan_result.
+        # proto.
+        # Corresponds to the JSON property `layerDetails`
+        # @return [Google::Apis::OndemandscanningV1::LayerDetails]
+        attr_accessor :layer_details
+      
         # The list of licenses found that are related to a given package. Note that
         # licenses may also be stored on the BinarySourceInfo. If there is no
         # BinarySourceInfo (because there's no concept of source vs binary), then it
@@ -2336,6 +2414,7 @@ module Google
           @dependency_chain = args[:dependency_chain] if args.key?(:dependency_chain)
           @file_location = args[:file_location] if args.key?(:file_location)
           @hash_digest = args[:hash_digest] if args.key?(:hash_digest)
+          @layer_details = args[:layer_details] if args.key?(:layer_details)
           @licenses = args[:licenses] if args.key?(:licenses)
           @maintainer = args[:maintainer] if args.key?(:maintainer)
           @os = args[:os] if args.key?(:os)
