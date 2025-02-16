@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsRds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AzureVmPlatformDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +323,12 @@ module Google
       end
       
       class DiskPartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskPartitionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1283,6 +1295,12 @@ module Google
         end
       end
       
+      class AwsRds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AzureVmPlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1451,6 +1469,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregated_stats, as: 'aggregatedStats', class: Google::Apis::MigrationcenterV1::DatabaseDeploymentDetailsAggregatedStats, decorator: Google::Apis::MigrationcenterV1::DatabaseDeploymentDetailsAggregatedStats::Representation
       
+          property :aws_rds, as: 'awsRds', class: Google::Apis::MigrationcenterV1::AwsRds, decorator: Google::Apis::MigrationcenterV1::AwsRds::Representation
+      
           property :edition, as: 'edition'
           property :generated_id, as: 'generatedId'
           property :manual_unique_id, as: 'manualUniqueId'
@@ -1618,6 +1638,16 @@ module Google
       
           property :type, as: 'type'
           property :uuid, as: 'uuid'
+        end
+      end
+      
+      class DiskPartitionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :free_space_bytes, :numeric_string => true, as: 'freeSpaceBytes'
+          property :partitions, as: 'partitions', class: Google::Apis::MigrationcenterV1::DiskPartitionList, decorator: Google::Apis::MigrationcenterV1::DiskPartitionList::Representation
+      
+          property :total_capacity_bytes, :numeric_string => true, as: 'totalCapacityBytes'
         end
       end
       
@@ -2093,6 +2123,8 @@ module Google
       
           property :core_count, as: 'coreCount'
           property :create_time, as: 'createTime'
+          property :disk_partitions, as: 'diskPartitions', class: Google::Apis::MigrationcenterV1::DiskPartitionDetails, decorator: Google::Apis::MigrationcenterV1::DiskPartitionDetails::Representation
+      
           property :disks, as: 'disks', class: Google::Apis::MigrationcenterV1::MachineDiskDetails, decorator: Google::Apis::MigrationcenterV1::MachineDiskDetails::Representation
       
           property :guest_os, as: 'guestOs', class: Google::Apis::MigrationcenterV1::GuestOsDetails, decorator: Google::Apis::MigrationcenterV1::GuestOsDetails::Representation
