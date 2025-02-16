@@ -1163,7 +1163,7 @@ module Google
         # @return [String]
         attr_accessor :message_binding_template
       
-        # Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string.
+        # Required. The URI of the HTTP endpoint. The value must be a RFC2396 URI string.
         # Examples: `https://svc.us-central1.p.local:8080/route`. Only the HTTPS
         # protocol is supported.
         # Corresponds to the JSON property `uri`
@@ -1541,7 +1541,7 @@ module Google
       class HttpEndpoint
         include Google::Apis::Core::Hashable
       
-        # Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string.
+        # Required. The URI of the HTTP endpoint. The value must be a RFC2396 URI string.
         # Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`
         # . Only HTTP and HTTPS protocols are supported. The host can be either a static
         # IP addressable from the VPC specified by the network config, or an internal
