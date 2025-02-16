@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UsedBy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllowlistedCertificate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -259,6 +265,8 @@ module Google
           property :self_managed, as: 'selfManaged', class: Google::Apis::CertificatemanagerV1::SelfManagedCertificate, decorator: Google::Apis::CertificatemanagerV1::SelfManagedCertificate::Representation
       
           property :update_time, as: 'updateTime'
+          collection :used_by, as: 'usedBy', class: Google::Apis::CertificatemanagerV1::UsedBy, decorator: Google::Apis::CertificatemanagerV1::UsedBy::Representation
+      
         end
       end
       
@@ -559,6 +567,13 @@ module Google
       
           collection :trust_anchors, as: 'trustAnchors', class: Google::Apis::CertificatemanagerV1::TrustAnchor, decorator: Google::Apis::CertificatemanagerV1::TrustAnchor::Representation
       
+        end
+      end
+      
+      class UsedBy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
     end
