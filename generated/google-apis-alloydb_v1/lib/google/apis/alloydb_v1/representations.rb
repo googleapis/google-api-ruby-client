@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudSqlBackupRunSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +107,12 @@ module Google
       end
       
       class CsvExportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CsvImportOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,6 +173,18 @@ module Google
       end
       
       class GoogleTypeTimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportClusterResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscInterfaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QuantityBasedExpiry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +383,12 @@ module Google
       end
       
       class SqlExportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlImportOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -644,6 +680,15 @@ module Google
         end
       end
       
+      class CloudSqlBackupRunSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_run_id, :numeric_string => true, as: 'backupRunId'
+          property :instance_id, as: 'instanceId'
+          property :project, as: 'project'
+        end
+      end
+      
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -651,6 +696,8 @@ module Google
           property :automated_backup_policy, as: 'automatedBackupPolicy', class: Google::Apis::AlloydbV1::AutomatedBackupPolicy, decorator: Google::Apis::AlloydbV1::AutomatedBackupPolicy::Representation
       
           property :backup_source, as: 'backupSource', class: Google::Apis::AlloydbV1::BackupSource, decorator: Google::Apis::AlloydbV1::BackupSource::Representation
+      
+          property :cloudsql_backup_run_source, as: 'cloudsqlBackupRunSource', class: Google::Apis::AlloydbV1::CloudSqlBackupRunSource, decorator: Google::Apis::AlloydbV1::CloudSqlBackupRunSource::Representation
       
           property :cluster_type, as: 'clusterType'
           property :continuous_backup_config, as: 'continuousBackupConfig', class: Google::Apis::AlloydbV1::ContinuousBackupConfig, decorator: Google::Apis::AlloydbV1::ContinuousBackupConfig::Representation
@@ -762,6 +809,17 @@ module Google
         end
       end
       
+      class CsvImportOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns'
+          property :escape_character, as: 'escapeCharacter'
+          property :field_delimiter, as: 'fieldDelimiter'
+          property :quote_character, as: 'quoteCharacter'
+          property :table, as: 'table'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -846,6 +904,26 @@ module Google
           property :minutes, as: 'minutes'
           property :nanos, as: 'nanos'
           property :seconds, as: 'seconds'
+        end
+      end
+      
+      class ImportClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv_import_options, as: 'csvImportOptions', class: Google::Apis::AlloydbV1::CsvImportOptions, decorator: Google::Apis::AlloydbV1::CsvImportOptions::Representation
+      
+          property :database, as: 'database'
+          property :gcs_uri, as: 'gcsUri'
+          property :sql_import_options, as: 'sqlImportOptions', class: Google::Apis::AlloydbV1::SqlImportOptions, decorator: Google::Apis::AlloydbV1::SqlImportOptions::Representation
+      
+          property :user, as: 'user'
+        end
+      end
+      
+      class ImportClusterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_downloaded, :numeric_string => true, as: 'bytesDownloaded'
         end
       end
       
@@ -1087,6 +1165,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :psc_enabled, as: 'pscEnabled'
+          property :service_owned_project_number, :numeric_string => true, as: 'serviceOwnedProjectNumber'
         end
       end
       
@@ -1095,7 +1174,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
           property :psc_dns_name, as: 'pscDnsName'
+          collection :psc_interface_configs, as: 'pscInterfaceConfigs', class: Google::Apis::AlloydbV1::PscInterfaceConfig, decorator: Google::Apis::AlloydbV1::PscInterfaceConfig::Representation
+      
           property :service_attachment_link, as: 'serviceAttachmentLink'
+        end
+      end
+      
+      class PscInterfaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_attachment_resource, as: 'networkAttachmentResource'
         end
       end
       
@@ -1169,6 +1257,12 @@ module Google
           property :if_exist_target_objects, as: 'ifExistTargetObjects'
           property :schema_only, as: 'schemaOnly'
           collection :tables, as: 'tables'
+        end
+      end
+      
+      class SqlImportOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1325,6 +1419,7 @@ module Google
       
           property :resource_container, as: 'resourceContainer'
           property :resource_name, as: 'resourceName'
+          property :suspension_reason, as: 'suspensionReason'
           property :tags_set, as: 'tagsSet', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainTags, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainTags::Representation
       
           property :updation_time, as: 'updationTime'
@@ -1362,6 +1457,7 @@ module Google
       
           property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
       
+          property :is_deletion_protection_enabled, as: 'isDeletionProtectionEnabled'
           property :product, as: 'product', class: Google::Apis::AlloydbV1::StorageDatabasecenterProtoCommonProduct, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterProtoCommonProduct::Representation
       
           property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
