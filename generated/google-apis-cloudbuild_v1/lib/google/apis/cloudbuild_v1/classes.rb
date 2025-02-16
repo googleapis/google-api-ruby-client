@@ -732,6 +732,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Dependencies that the Cloud Build worker will fetch before executing
+        # user steps.
+        # Corresponds to the JSON property `dependencies`
+        # @return [Array<Google::Apis::CloudbuildV1::Dependency>]
+        attr_accessor :dependencies
+      
         # A fatal problem encountered during the execution of the build.
         # Corresponds to the JSON property `failureInfo`
         # @return [Google::Apis::CloudbuildV1::FailureInfo]
@@ -893,6 +899,7 @@ module Google
           @available_secrets = args[:available_secrets] if args.key?(:available_secrets)
           @build_trigger_id = args[:build_trigger_id] if args.key?(:build_trigger_id)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dependencies = args[:dependencies] if args.key?(:dependencies)
           @failure_info = args[:failure_info] if args.key?(:failure_info)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
           @git_config = args[:git_config] if args.key?(:git_config)
@@ -1056,6 +1063,11 @@ module Google
         # @return [Google::Apis::CloudbuildV1::PoolOption]
         attr_accessor :pool
       
+        # Optional. Option to specify the Pub/Sub topic to receive build status updates.
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
         # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
         # @return [String]
@@ -1111,6 +1123,7 @@ module Google
           @logging = args[:logging] if args.key?(:logging)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool = args[:pool] if args.key?(:pool)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
@@ -1963,6 +1976,34 @@ module Google
         end
       end
       
+      # A dependency that the Cloud Build worker will fetch before executing user
+      # steps.
+      class Dependency
+        include Google::Apis::Core::Hashable
+      
+        # If set to true disable all dependency fetching (ignoring the default source as
+        # well).
+        # Corresponds to the JSON property `empty`
+        # @return [Boolean]
+        attr_accessor :empty
+        alias_method :empty?, :empty
+      
+        # Represents a git repository as a build dependency.
+        # Corresponds to the JSON property `gitSource`
+        # @return [Google::Apis::CloudbuildV1::GitSourceDependency]
+        attr_accessor :git_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @empty = args[:empty] if args.key?(:empty)
+          @git_source = args[:git_source] if args.key?(:git_source)
+        end
+      end
+      
       # This config defines the location of a source through Developer Connect.
       class DeveloperConnectConfig
         include Google::Apis::Core::Hashable
@@ -2716,6 +2757,78 @@ module Google
         def update!(**args)
           @dir = args[:dir] if args.key?(:dir)
           @revision = args[:revision] if args.key?(:revision)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Represents a git repository as a build dependency.
+      class GitSourceDependency
+        include Google::Apis::Core::Hashable
+      
+        # Optional. How much history should be fetched for the build (default 1, -1 for
+        # all history).
+        # Corresponds to the JSON property `depth`
+        # @return [Fixnum]
+        attr_accessor :depth
+      
+        # Required. Where should the files be placed on the worker.
+        # Corresponds to the JSON property `destPath`
+        # @return [String]
+        attr_accessor :dest_path
+      
+        # Optional. True if submodules should be fetched too (default false).
+        # Corresponds to the JSON property `recurseSubmodules`
+        # @return [Boolean]
+        attr_accessor :recurse_submodules
+        alias_method :recurse_submodules?, :recurse_submodules
+      
+        # A repository for a git source.
+        # Corresponds to the JSON property `repository`
+        # @return [Google::Apis::CloudbuildV1::GitSourceRepository]
+        attr_accessor :repository
+      
+        # Required. The revision that we will fetch the repo at.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @depth = args[:depth] if args.key?(:depth)
+          @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @recurse_submodules = args[:recurse_submodules] if args.key?(:recurse_submodules)
+          @repository = args[:repository] if args.key?(:repository)
+          @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
+      # A repository for a git source.
+      class GitSourceRepository
+        include Google::Apis::Core::Hashable
+      
+        # The Developer Connect Git repository link or the url that matches a repository
+        # link in the current project, formatted as `projects/*/locations/*/connections/*
+        # /gitRepositoryLink/*`
+        # Corresponds to the JSON property `developerConnect`
+        # @return [String]
+        attr_accessor :developer_connect
+      
+        # Location of the Git repository.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_connect = args[:developer_connect] if args.key?(:developer_connect)
           @url = args[:url] if args.key?(:url)
         end
       end
