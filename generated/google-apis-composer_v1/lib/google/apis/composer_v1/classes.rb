@@ -1283,7 +1283,7 @@ module Google
       class NetworkingConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Indicates the user requested specifc connection type between Tenant
+        # Optional. Indicates the user requested specific connection type between Tenant
         # and Customer projects. You cannot set networking connection type in public IP
         # environment.
         # Corresponds to the JSON property `connectionType`
