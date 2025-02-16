@@ -622,6 +622,7 @@ module Google
           collection :backups, as: 'backups', class: Google::Apis::GkebackupV1::Backup, decorator: Google::Apis::GkebackupV1::Backup::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
