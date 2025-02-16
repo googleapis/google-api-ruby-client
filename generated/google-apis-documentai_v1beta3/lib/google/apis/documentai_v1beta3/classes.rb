@@ -6734,7 +6734,7 @@ module Google
       
         # Optional. The percentile of cosine dissimilarity that must be exceeded between
         # a group of tokens and the next. The smaller this number is, the more chunks
-        # will be generated.
+        # will be generated. THIS FIELD IS NOT YET USED.
         # Corresponds to the JSON property `breakpointPercentileThreshold`
         # @return [Fixnum]
         attr_accessor :breakpoint_percentile_threshold
@@ -6751,7 +6751,7 @@ module Google
         alias_method :include_ancestor_headings?, :include_ancestor_headings
       
         # Optional. The number of tokens to group together when evaluating semantic
-        # similarity.
+        # similarity. THIS FIELD IS NOT YET USED.
         # Corresponds to the JSON property `semanticChunkingGroupSize`
         # @return [Boolean]
         attr_accessor :semantic_chunking_group_size
