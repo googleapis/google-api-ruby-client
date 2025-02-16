@@ -3431,6 +3431,9 @@ module Google
         #   Required. The path of the RetrieveRenderedInstance DICOMweb request. For
         #   example, `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/
         #   rendered`.
+        # @param [String] viewport
+        #   Optional. The viewport setting to use as specified in https://dicom.nema.org/
+        #   medical/dicom/current/output/chtml/part18/sect_8.3.5.html#sect_8.3.5.1.3
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3448,12 +3451,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def retrieve_project_location_dataset_dicom_store_study_series_instance_rendered(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
+        def retrieve_project_location_dataset_dicom_store_study_series_instance_rendered(parent, dicom_web_path, viewport: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1::HttpBody
           command.params['parent'] = parent unless parent.nil?
           command.params['dicomWebPath'] = dicom_web_path unless dicom_web_path.nil?
+          command.query['viewport'] = viewport unless viewport.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3520,6 +3524,9 @@ module Google
         #   Required. The path of the RetrieveRenderedFrames DICOMweb request. For example,
         #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/frames/`
         #   frame_list`/rendered`.
+        # @param [String] viewport
+        #   Optional. The viewport setting to use as specified in https://dicom.nema.org/
+        #   medical/dicom/current/output/chtml/part18/sect_8.3.5.html#sect_8.3.5.1.3
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3537,12 +3544,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def retrieve_project_location_dataset_dicom_store_study_series_instance_frame_rendered(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
+        def retrieve_project_location_dataset_dicom_store_study_series_instance_frame_rendered(parent, dicom_web_path, viewport: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1::HttpBody
           command.params['parent'] = parent unless parent.nil?
           command.params['dicomWebPath'] = dicom_web_path unless dicom_web_path.nil?
+          command.query['viewport'] = viewport unless viewport.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
