@@ -28,24 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Binding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,12 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Expr
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ImportInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +95,18 @@ module Google
       end
       
       class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceBackup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInstanceBackupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,12 +166,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PscConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,31 +178,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SetIamPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestIamPermissionsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -242,33 +212,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_email_domains, as: 'allowedEmailDomains'
-        end
-      end
-      
-      class AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::LookerV1::AuditLogConfig, decorator: Google::Apis::LookerV1::AuditLogConfig::Representation
-      
-          property :service, as: 'service'
-        end
-      end
-      
-      class AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
-        end
-      end
-      
-      class Binding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :condition, as: 'condition', class: Google::Apis::LookerV1::Expr, decorator: Google::Apis::LookerV1::Expr::Representation
-      
-          collection :members, as: 'members'
-          property :role, as: 'role'
         end
       end
       
@@ -360,16 +303,6 @@ module Google
         end
       end
       
-      class Expr
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :expression, as: 'expression'
-          property :location, as: 'location'
-          property :title, as: 'title'
-        end
-      end
-      
       class ImportInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -414,10 +347,34 @@ module Google
           property :psc_enabled, as: 'pscEnabled'
           property :public_ip_enabled, as: 'publicIpEnabled'
           property :reserved_range, as: 'reservedRange'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
           property :user_metadata, as: 'userMetadata', class: Google::Apis::LookerV1::UserMetadata, decorator: Google::Apis::LookerV1::UserMetadata::Representation
       
+        end
+      end
+      
+      class InstanceBackup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::LookerV1::EncryptionConfig, decorator: Google::Apis::LookerV1::EncryptionConfig::Representation
+      
+          property :expire_time, as: 'expireTime'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
+      class ListInstanceBackupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instance_backups, as: 'instanceBackups', class: Google::Apis::LookerV1::InstanceBackup, decorator: Google::Apis::LookerV1::InstanceBackup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -510,18 +467,6 @@ module Google
         end
       end
       
-      class Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::LookerV1::AuditConfig, decorator: Google::Apis::LookerV1::AuditConfig::Representation
-      
-          collection :bindings, as: 'bindings', class: Google::Apis::LookerV1::Binding, decorator: Google::Apis::LookerV1::Binding::Representation
-      
-          property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
-        end
-      end
-      
       class PscConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -538,6 +483,13 @@ module Google
         end
       end
       
+      class RestoreInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+        end
+      end
+      
       class ServiceAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -547,35 +499,12 @@ module Google
         end
       end
       
-      class SetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy, as: 'policy', class: Google::Apis::LookerV1::Policy, decorator: Google::Apis::LookerV1::Policy::Representation
-      
-          property :update_mask, as: 'updateMask'
-        end
-      end
-      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
-        end
-      end
-      
-      class TestIamPermissionsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class TestIamPermissionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
         end
       end
       
