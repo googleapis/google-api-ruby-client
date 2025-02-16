@@ -925,6 +925,56 @@ module Google
         end
       end
       
+      # Options for importing data in CSV format.
+      class CsvImportOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The columns to which CSV data is imported. If not specified, all
+        # columns of the database table are loaded with CSV data.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<String>]
+        attr_accessor :columns
+      
+        # Optional. Specifies the character that should appear before a data character
+        # that needs to be escaped. The default is same as quote character. The value of
+        # this argument has to be a character in Hex ASCII Code.
+        # Corresponds to the JSON property `escapeCharacter`
+        # @return [String]
+        attr_accessor :escape_character
+      
+        # Optional. Specifies the character that separates columns within each row (line)
+        # of the file. The default is comma. The value of this argument has to be a
+        # character in Hex ASCII Code.
+        # Corresponds to the JSON property `fieldDelimiter`
+        # @return [String]
+        attr_accessor :field_delimiter
+      
+        # Optional. Specifies the quoting character to be used when a data value is
+        # quoted. The default is double-quote. The value of this argument has to be a
+        # character in Hex ASCII Code.
+        # Corresponds to the JSON property `quoteCharacter`
+        # @return [String]
+        attr_accessor :quote_character
+      
+        # Required. The database table to import CSV file into.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @escape_character = args[:escape_character] if args.key?(:escape_character)
+          @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
+          @quote_character = args[:quote_character] if args.key?(:quote_character)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1247,6 +1297,55 @@ module Google
           @minutes = args[:minutes] if args.key?(:minutes)
           @nanos = args[:nanos] if args.key?(:nanos)
           @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # Import cluster request.
+      class ImportClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Options for importing data in CSV format.
+        # Corresponds to the JSON property `csvImportOptions`
+        # @return [Google::Apis::AlloydbV1beta::CsvImportOptions]
+        attr_accessor :csv_import_options
+      
+        # Optional. Name of the database to which the import will be done. For import
+        # from SQL file, this is required only if the file does not specify a database.
+        # Note - Value provided should be the same as expected from `SELECT
+        # current_database();` and NOT as a resource reference.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Required. The path to the file in Google Cloud Storage where the source file
+        # for import will be stored. The URI is in the form `gs://bucketName/fileName`.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # Options for importing data in SQL format.
+        # Corresponds to the JSON property `sqlImportOptions`
+        # @return [Google::Apis::AlloydbV1beta::SqlImportOptions]
+        attr_accessor :sql_import_options
+      
+        # Optional. Database user to be used for importing the data. Note - Value
+        # provided should be the same as expected from `SELECT current_user;` and NOT as
+        # a resource reference.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csv_import_options = args[:csv_import_options] if args.key?(:csv_import_options)
+          @database = args[:database] if args.key?(:database)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @sql_import_options = args[:sql_import_options] if args.key?(:sql_import_options)
+          @user = args[:user] if args.key?(:user)
         end
       end
       
@@ -2270,6 +2369,12 @@ module Google
         attr_accessor :psc_enabled
         alias_method :psc_enabled?, :psc_enabled
       
+        # Output only. The project number that needs to be allowlisted on the network
+        # attachment to enable outbound connectivity.
+        # Corresponds to the JSON property `serviceOwnedProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :service_owned_project_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2277,6 +2382,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
+          @service_owned_project_number = args[:service_owned_project_number] if args.key?(:service_owned_project_number)
         end
       end
       
@@ -2296,6 +2402,13 @@ module Google
         # @return [String]
         attr_accessor :psc_dns_name
       
+        # Optional. Configurations for setting up PSC interfaces attached to the
+        # instance which are used for outbound connectivity. Only primary instances can
+        # have PSC interface attached. Currently we only support 0 or 1 PSC interface.
+        # Corresponds to the JSON property `pscInterfaceConfigs`
+        # @return [Array<Google::Apis::AlloydbV1beta::PscInterfaceConfig>]
+        attr_accessor :psc_interface_configs
+      
         # Output only. The service attachment created when Private Service Connect (PSC)
         # is enabled for the instance. The name of the resource will be in the format of
         # `projects//regions//serviceAttachments/`
@@ -2311,7 +2424,31 @@ module Google
         def update!(**args)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
           @psc_dns_name = args[:psc_dns_name] if args.key?(:psc_dns_name)
+          @psc_interface_configs = args[:psc_interface_configs] if args.key?(:psc_interface_configs)
           @service_attachment_link = args[:service_attachment_link] if args.key?(:service_attachment_link)
+        end
+      end
+      
+      # Configuration for setting up a PSC interface to enable outbound connectivity.
+      class PscInterfaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # The network attachment resource created in the consumer network to which the
+        # PSC interface will be linked. This is of the format: "projects/$`
+        # CONSUMER_PROJECT`/regions/$`REGION`/networkAttachments/$`
+        # NETWORK_ATTACHMENT_NAME`". The network attachment must be in the same region
+        # as the instance.
+        # Corresponds to the JSON property `networkAttachmentResource`
+        # @return [String]
+        attr_accessor :network_attachment_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachment_resource = args[:network_attachment_resource] if args.key?(:network_attachment_resource)
         end
       end
       
@@ -2635,6 +2772,19 @@ module Google
         end
       end
       
+      # Options for importing data in SQL format.
+      class SqlImportOptions
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # SSL configuration.
       class SslConfig
         include Google::Apis::Core::Hashable
@@ -2941,7 +3091,7 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 23
+        # Common model for database resource instance metadata. Next ID: 24
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -3116,7 +3266,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 23
+      # Common model for database resource instance metadata. Next ID: 24
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -3225,6 +3375,11 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
+        # Suspension reason for the resource.
+        # Corresponds to the JSON property `suspensionReason`
+        # @return [String]
+        attr_accessor :suspension_reason
+      
         # Message type for storing tags. Tags provide a way to create annotations for
         # resources, and in some cases conditionally allow or deny policies based on
         # whether a resource has a specific tag.
@@ -3268,6 +3423,7 @@ module Google
           @product = args[:product] if args.key?(:product)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
           @tags_set = args[:tags_set] if args.key?(:tags_set)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
           @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
@@ -3389,6 +3545,12 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
         attr_accessor :backup_run
       
+        # Whether deletion protection is enabled for this internal resource.
+        # Corresponds to the JSON property `isDeletionProtectionEnabled`
+        # @return [Boolean]
+        attr_accessor :is_deletion_protection_enabled
+        alias_method :is_deletion_protection_enabled?, :is_deletion_protection_enabled
+      
         # Product specification for Condor resources.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct]
@@ -3413,6 +3575,7 @@ module Google
         def update!(**args)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
           @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @is_deletion_protection_enabled = args[:is_deletion_protection_enabled] if args.key?(:is_deletion_protection_enabled)
           @product = args[:product] if args.key?(:product)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
