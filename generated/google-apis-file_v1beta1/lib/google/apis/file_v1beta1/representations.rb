@@ -721,6 +721,7 @@ module Google
       class PromoteReplicaRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :peer_instance, as: 'peerInstance'
         end
       end
       
