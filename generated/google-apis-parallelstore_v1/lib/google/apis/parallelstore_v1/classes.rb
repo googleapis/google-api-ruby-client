@@ -214,9 +214,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The deployment type of the instance. Allowed values are: * `SCRATCH`:
-        # the instance is a scratch instance. * `PERSISTENT`: the instance is a
-        # persistent instance.
+        # Optional. Immutable. The deployment type of the instance. Allowed values are: *
+        # `SCRATCH`: the instance is a scratch instance. * `PERSISTENT`: the instance
+        # is a persistent instance.
         # Corresponds to the JSON property `deploymentType`
         # @return [String]
         attr_accessor :deployment_type
@@ -226,7 +226,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Stripe level for directories. Allowed values are: * `
+        # Optional. Immutable. Stripe level for directories. Allowed values are: * `
         # DIRECTORY_STRIPE_LEVEL_MIN`: recommended when directories contain a small
         # number of files. * `DIRECTORY_STRIPE_LEVEL_BALANCED`: balances performance for
         # workloads involving a mix of small and large directories. * `
@@ -243,8 +243,8 @@ module Google
         # @return [String]
         attr_accessor :effective_reserved_ip_range
       
-        # Optional. Stripe level for files. Allowed values are: * `FILE_STRIPE_LEVEL_MIN`
-        # : offers the best performance for small size files. * `
+        # Optional. Immutable. Stripe level for files. Allowed values are: * `
+        # FILE_STRIPE_LEVEL_MIN`: offers the best performance for small size files. * `
         # FILE_STRIPE_LEVEL_BALANCED`: balances performance for workloads involving a
         # mix of small and large files. * `FILE_STRIPE_LEVEL_MAX`: higher throughput
         # performance for larger files.
