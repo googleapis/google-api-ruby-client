@@ -413,6 +413,54 @@ module Google
         end
       end
       
+      # Disaster Recovery(DR) replication status of the reservation.
+      class ReplicationStatus
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::BigqueryreservationV1::Status]
+        attr_accessor :error
+      
+        # Output only. The time at which the last error was encountered while trying to
+        # replicate changes from the primary to the secondary. This field is only
+        # available if the replication has not succeeded since.
+        # Corresponds to the JSON property `lastErrorTime`
+        # @return [String]
+        attr_accessor :last_error_time
+      
+        # Output only. A timestamp corresponding to the last change on the primary that
+        # was successfully replicated to the secondary.
+        # Corresponds to the JSON property `lastReplicationTime`
+        # @return [String]
+        attr_accessor :last_replication_time
+      
+        # Output only. The time at which a soft failover for the reservation and its
+        # associated datasets was initiated. After this field is set, all subsequent
+        # changes to the reservation will be rejected unless a hard failover overrides
+        # this operation. This field will be cleared once the failover is complete.
+        # Corresponds to the JSON property `softFailoverStartTime`
+        # @return [String]
+        attr_accessor :soft_failover_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @last_error_time = args[:last_error_time] if args.key?(:last_error_time)
+          @last_replication_time = args[:last_replication_time] if args.key?(:last_replication_time)
+          @soft_failover_start_time = args[:soft_failover_start_time] if args.key?(:soft_failover_start_time)
+        end
+      end
+      
       # A reservation is a mechanism used to guarantee slots to users.
       class Reservation
         include Google::Apis::Core::Hashable
@@ -490,6 +538,11 @@ module Google
         # @return [String]
         attr_accessor :primary_location
       
+        # Disaster Recovery(DR) replication status of the reservation.
+        # Corresponds to the JSON property `replicationStatus`
+        # @return [Google::Apis::BigqueryreservationV1::ReplicationStatus]
+        attr_accessor :replication_status
+      
         # Optional. The current location of the reservation's secondary replica. This
         # field is only set for reservations using the managed disaster recovery feature.
         # Users can set this in create reservation calls to create a failover
@@ -535,6 +588,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @original_primary_location = args[:original_primary_location] if args.key?(:original_primary_location)
           @primary_location = args[:primary_location] if args.key?(:primary_location)
+          @replication_status = args[:replication_status] if args.key?(:replication_status)
           @secondary_location = args[:secondary_location] if args.key?(:secondary_location)
           @slot_capacity = args[:slot_capacity] if args.key?(:slot_capacity)
           @update_time = args[:update_time] if args.key?(:update_time)
