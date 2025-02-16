@@ -1748,7 +1748,7 @@ module Google
         attr_accessor :metadata_options
       
         # When to overwrite objects that already exist in the sink. The default is that
-        # only objects that are different from the source are ovewritten. If true, all
+        # only objects that are different from the source are overwritten. If true, all
         # objects in the sink whose name matches an object in the source are overwritten
         # with the source object.
         # Corresponds to the JSON property `overwriteObjectsAlreadyExistingInSink`

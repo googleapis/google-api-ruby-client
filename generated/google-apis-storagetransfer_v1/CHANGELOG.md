@@ -1,5 +1,10 @@
 # Release history for google-apis-storagetransfer_v1
 
+### v0.55.0 (2025-02-16)
+
+* Regenerated from discovery document revision 20250208
+* Regenerated using generator version 0.16.0
+
 ### v0.54.0 (2024-10-13)
 
 * Regenerated from discovery document revision 20241005
