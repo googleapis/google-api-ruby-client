@@ -1,8 +1,8 @@
 # Release history for google-apis-dataportability_v1beta
 
-### v0.11.0 (2025-01-26)
+### v0.11.0 (2025-02-16)
 
-* Regenerated from discovery document revision 20250120
+* Regenerated from discovery document revision 20250212
 * Regenerated using generator version 0.16.0
 
 ### v0.10.0 (2024-12-02)
