@@ -2180,6 +2180,7 @@ module Google
           property :impact, as: 'impact', class: Google::Apis::ContentV2_1::AccountIssueImpact, decorator: Google::Apis::ContentV2_1::AccountIssueImpact::Representation
       
           property :prerendered_content, as: 'prerenderedContent'
+          property :prerendered_out_of_court_dispute_settlement, as: 'prerenderedOutOfCourtDisputeSettlement'
           property :title, as: 'title'
         end
       end
@@ -4468,6 +4469,7 @@ module Google
           property :impact, as: 'impact', class: Google::Apis::ContentV2_1::ProductIssueImpact, decorator: Google::Apis::ContentV2_1::ProductIssueImpact::Representation
       
           property :prerendered_content, as: 'prerenderedContent'
+          property :prerendered_out_of_court_dispute_settlement, as: 'prerenderedOutOfCourtDisputeSettlement'
           property :title, as: 'title'
         end
       end
