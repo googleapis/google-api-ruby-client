@@ -2520,6 +2520,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination]
         attr_accessor :big_query_destination
       
+        # Optional. Version of the export schema.
+        # Corresponds to the JSON property `exportSchemaVersion`
+        # @return [String]
+        attr_accessor :export_schema_version
+      
         # A filter to reduce results to a specific subset. Useful for exporting
         # conversations with specific properties.
         # Corresponds to the JSON property `filter`
@@ -2550,6 +2555,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @big_query_destination = args[:big_query_destination] if args.key?(:big_query_destination)
+          @export_schema_version = args[:export_schema_version] if args.key?(:export_schema_version)
           @filter = args[:filter] if args.key?(:filter)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @parent = args[:parent] if args.key?(:parent)
@@ -3832,6 +3838,32 @@ module Google
         end
       end
       
+      # The response from a ListQaQuestionTags request.
+      class GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The parent resource of the questions.
+        # Corresponds to the JSON property `qaQuestionTags`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag>]
+        attr_accessor :qa_question_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @qa_question_tags = args[:qa_question_tags] if args.key?(:qa_question_tags)
+        end
+      end
+      
       # The response from a ListQaQuestions request.
       class GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse
         include Google::Apis::Core::Hashable
@@ -4430,6 +4462,54 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accuracy = args[:accuracy] if args.key?(:accuracy)
+        end
+      end
+      
+      # A tag is a resource which aims to categorize a set of questions across
+      # multiple scorecards, e.g., "Customer Satisfaction","Billing", etc.
+      class GoogleCloudContactcenterinsightsV1QaQuestionTag
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the question tag was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. A user-specified display name for the tag.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Resource name for the QaQuestionTag Format projects/`project`/
+        # locations/`location`/qaQuestionTags/`qa_question_tag` In the above format, the
+        # last segment, i.e., qa_question_tag, is a server-generated ID corresponding to
+        # the tag resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The list of QA question IDs that the tag applies to. Optional, a tag
+        # may not necessarily be referenced by any questions.
+        # Corresponds to the JSON property `qaQuestionIds`
+        # @return [Array<String>]
+        attr_accessor :qa_question_ids
+      
+        # Output only. The most recent time at which the question tag was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @qa_question_ids = args[:qa_question_ids] if args.key?(:qa_question_ids)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -7698,6 +7778,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination]
         attr_accessor :big_query_destination
       
+        # Optional. Version of the export schema.
+        # Corresponds to the JSON property `exportSchemaVersion`
+        # @return [String]
+        attr_accessor :export_schema_version
+      
         # A filter to reduce results to a specific subset. Useful for exporting
         # conversations with specific properties.
         # Corresponds to the JSON property `filter`
@@ -7728,6 +7813,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @big_query_destination = args[:big_query_destination] if args.key?(:big_query_destination)
+          @export_schema_version = args[:export_schema_version] if args.key?(:export_schema_version)
           @filter = args[:filter] if args.key?(:filter)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @parent = args[:parent] if args.key?(:parent)

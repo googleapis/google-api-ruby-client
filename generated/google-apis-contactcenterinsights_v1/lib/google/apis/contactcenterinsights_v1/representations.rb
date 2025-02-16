@@ -682,6 +682,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -767,6 +773,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1QaQuestionMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QaQuestionTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2416,6 +2428,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :big_query_destination, as: 'bigQueryDestination', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination::Representation
       
+          property :export_schema_version, as: 'exportSchemaVersion'
           property :filter, as: 'filter'
           property :kms_key, as: 'kmsKey'
           property :parent, as: 'parent'
@@ -2819,6 +2832,15 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :qa_question_tags, as: 'qaQuestionTags', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTag::Representation
+      
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2981,6 +3003,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accuracy, as: 'accuracy'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QaQuestionTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :qa_question_ids, as: 'qaQuestionIds'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -3911,6 +3944,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :big_query_destination, as: 'bigQueryDestination', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination::Representation
       
+          property :export_schema_version, as: 'exportSchemaVersion'
           property :filter, as: 'filter'
           property :kms_key, as: 'kmsKey'
           property :parent, as: 'parent'
