@@ -20,6 +20,7 @@ group :development do
   gem 'opencensus', '~> 0.4'
   gem 'httparty'
   gem 'webrick'
+  gem 'ostruct'
 end
 
 platforms :jruby do
