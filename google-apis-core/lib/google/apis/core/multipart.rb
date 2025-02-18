@@ -31,7 +31,7 @@ module Google
         end
 
         def to_io(boundary)
-          part = ''
+          part = ''.dup
           part << "--#{boundary}\r\n"
           part << "Content-Type: application/json\r\n"
           @header.each do |(k, v)|
@@ -59,7 +59,7 @@ module Google
         end
 
         def to_io(boundary)
-          head = ''
+          head = ''.dup
           head << "--#{boundary}\r\n"
           @header.each do |(k, v)|
             head << "#{k}: #{v}\r\n"

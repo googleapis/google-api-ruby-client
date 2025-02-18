@@ -43,7 +43,7 @@ module Google
       end
 
       def inspect
-        extra = ""
+        extra = "".dup
         extra << " status_code: #{status_code.inspect}" unless status_code.nil?
         extra << " header: #{header.inspect}"           unless header.nil?
         extra << " body: #{body.inspect}"               unless body.nil?
