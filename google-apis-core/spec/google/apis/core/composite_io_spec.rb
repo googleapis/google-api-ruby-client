@@ -52,9 +52,9 @@ RSpec.describe Google::Apis::Core::CompositeIO do
   context 'with StringIOs' do
     let(:io) do
       Google::Apis::Core::CompositeIO.new(
-          StringIO.new("Hello "),
-          StringIO.new("Cruel "),
-          StringIO.new("World"))
+          StringIO.new(+"Hello "),
+          StringIO.new(+"Cruel "),
+          StringIO.new(+"World"))
     end
     include_examples 'should act like IO'
   end
