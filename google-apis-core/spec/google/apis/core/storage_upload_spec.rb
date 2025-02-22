@@ -71,13 +71,13 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
   end
 
   context('with StringIO input') do
-    let(:file) { StringIO.new("Hello world") }
+    let(:file) { StringIO.new(+"Hello world") }
     include_examples 'should upload'
     include_examples 'should upload content'
   end
 
   context('with empty StringIO input') do
-    let(:file) { StringIO.new("") }
+    let(:file) { StringIO.new(+"") }
     include_examples 'should upload'
   end
 
@@ -103,7 +103,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
   end
 
   context('with files larger than 100 MB') do
-    let(:file) { StringIO.new("Hello world" * 2 )}
+    let(:file) { StringIO.new(+"Hello world" * 2 )}
     before(:example) do
       stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
         .to_return(headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK))
@@ -130,7 +130,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
   end
 
   context('with chunking disabled') do
-    let!(:file) { StringIO.new("Hello world")}
+    let!(:file) { StringIO.new(+"Hello world")}
     include_examples 'should upload'
 
     it 'should upload content in one request' do
