@@ -31,6 +31,10 @@ jobs:
           - os: windows-latest
             ruby: "3.3"
             task: "--include-spec"
+          - os: ubuntu-latest
+            ruby: "3.4"
+            task: "--include-spec --include-yardoc --include-build"
+            rubyopt: "--enable-frozen-string-literal --debug-frozen-string-literal"
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
@@ -52,6 +56,8 @@ jobs:
         if [ -d /opt/hostedtoolcache/Ruby ]; then
           chmod -R o-w /opt/hostedtoolcache/Ruby
         fi
-    - name: Test ${{ matrix.task }}
+    - name: Test ${{ matrix.task }} ${{ matrix.rubyopt }}
       run: |
         toys ci -v --only ${{ matrix.task }} --github-event-name=${{ github.event_name }} --github-event-payload=${{ github.event_path }}
+      env:
+        RUBYOPT: "${{ matrix.rubyopt }}"
