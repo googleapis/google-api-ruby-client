@@ -610,6 +610,11 @@ module Google
         # @return [Array<Google::Apis::MerchantapiPromotionsV1beta::ProductChange>]
         attr_accessor :changes
       
+        # The time at which the event was generated.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
         # The product expiration time. This field will not bet set if the notification
         # is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
@@ -647,6 +652,7 @@ module Google
           @account = args[:account] if args.key?(:account)
           @attribute = args[:attribute] if args.key?(:attribute)
           @changes = args[:changes] if args.key?(:changes)
+          @event_time = args[:event_time] if args.key?(:event_time)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @managing_account = args[:managing_account] if args.key?(:managing_account)
           @resource = args[:resource] if args.key?(:resource)
