@@ -232,7 +232,7 @@ module Google
         end
         
         # Deletes a single Collector - changes state of collector to "Deleting".
-        # Background jobs does final deletion thorugh producer api.
+        # Background jobs does final deletion through producer API.
         # @param [String] name
         #   Required. Name of the resource.
         # @param [String] request_id
