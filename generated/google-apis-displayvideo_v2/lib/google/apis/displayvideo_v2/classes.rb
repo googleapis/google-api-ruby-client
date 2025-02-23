@@ -625,7 +625,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::Asset]
         attr_accessor :asset
       
-        # The role of this asset for the creative.
+        # Optional. The role of this asset for the creative.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -763,7 +763,7 @@ module Google
         # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
         # except for excluded_first_and_third_party_audience_group and
         # excluded_google_audience_group, of which COMPLEMENT is used as an INTERSECTION
-        # with other groups. NEXT_ID: 9
+        # with other groups.
         # Corresponds to the JSON property `audienceGroupDetails`
         # @return [Google::Apis::DisplayvideoV2::AudienceGroupAssignedTargetingOptionDetails]
         attr_accessor :audience_group_details
@@ -1208,7 +1208,7 @@ module Google
       # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
       # except for excluded_first_and_third_party_audience_group and
       # excluded_google_audience_group, of which COMPLEMENT is used as an INTERSECTION
-      # with other groups. NEXT_ID: 9
+      # with other groups.
       class AudienceGroupAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -1334,12 +1334,12 @@ module Google
       class AudioVideoOffset
         include Google::Apis::Core::Hashable
       
-        # The offset in percentage of the audio or video duration.
+        # Optional. The offset in percentage of the audio or video duration.
         # Corresponds to the JSON property `percentage`
         # @return [Fixnum]
         attr_accessor :percentage
       
-        # The offset in seconds from the start of the audio or video.
+        # Optional. The offset in seconds from the start of the audio or video.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
@@ -2880,17 +2880,17 @@ module Google
       class CmTrackingAd
         include Google::Apis::Core::Hashable
       
-        # The ad ID of the campaign manager 360 tracking Ad.
+        # Optional. The ad ID of the campaign manager 360 tracking Ad.
         # Corresponds to the JSON property `cmAdId`
         # @return [Fixnum]
         attr_accessor :cm_ad_id
       
-        # The creative ID of the campaign manager 360 tracking Ad.
+        # Optional. The creative ID of the campaign manager 360 tracking Ad.
         # Corresponds to the JSON property `cmCreativeId`
         # @return [Fixnum]
         attr_accessor :cm_creative_id
       
-        # The placement ID of the campaign manager 360 tracking Ad.
+        # Optional. The placement ID of the campaign manager 360 tracking Ad.
         # Corresponds to the JSON property `cmPlacementId`
         # @return [Fixnum]
         attr_accessor :cm_placement_id
@@ -2944,7 +2944,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. All combined audience targeting settings in combined audience group.
-        # Repeated settings with same id will be ignored. The number of combined
+        # Repeated settings with the same id will be ignored. The number of combined
         # audience settings should be no more than five, error will be thrown otherwise.
         # Corresponds to the JSON property `settings`
         # @return [Array<Google::Apis::DisplayvideoV2::CombinedAudienceTargetingSetting>]
@@ -3312,7 +3312,13 @@ module Google
       
         # The Floodlight activity configs used to track conversions. The number of
         # conversions counted is the sum of all of the conversions counted by all of the
-        # Floodlight activity IDs specified in this field.
+        # Floodlight activity IDs specified in this field. *Warning*: Starting **April 1,
+        # 2025**, this field will no longer be writable while a custom bidding
+        # algorithm is assigned to the line item. If you set this field and assign a
+        # custom bidding algorithm in the same request, the floodlight activities must
+        # match the ones used by the custom bidding algorithm. [Read more about this
+        # announced change](/display-video/api/deprecations#features.
+        # custom_bidding_floodlight).
         # Corresponds to the JSON property `floodlightActivityConfigs`
         # @return [Array<Google::Apis::DisplayvideoV2::TrackingFloodlightActivityConfig>]
         attr_accessor :floodlight_activity_configs
@@ -3482,7 +3488,7 @@ module Google
       class Creative
         include Google::Apis::Core::Hashable
       
-        # Additional dimensions. Applicable when creative_type is one of: * `
+        # Optional. Additional dimensions. Applicable when creative_type is one of: * `
         # CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_NATIVE` *
         # `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_LIGHTBOX` * `
         # CREATIVE_TYPE_PUBLISHER_HOSTED` If this field is specified, width_pixels and
@@ -3496,7 +3502,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
-        # Third-party HTML tracking tag to be appended to the creative tag.
+        # Optional. Third-party HTML tracking tag to be appended to the creative tag.
         # Corresponds to the JSON property `appendedTag`
         # @return [String]
         attr_accessor :appended_tag
@@ -3518,22 +3524,23 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::CmTrackingAd]
         attr_accessor :cm_tracking_ad
       
-        # The IDs of companion creatives for a video creative. You can assign existing
-        # display creatives (with image or HTML5 assets) to serve surrounding the
-        # publisher's video player. Companions display around the video player while the
-        # video is playing and remain after the video has completed. Creatives contain
-        # additional dimensions can not be companion creatives. This field is only
-        # supported for following creative_type: * `CREATIVE_TYPE_AUDIO` * `
+        # Optional. The IDs of companion creatives for a video creative. You can assign
+        # existing display creatives (with image or HTML5 assets) to serve surrounding
+        # the publisher's video player. Companions display around the video player while
+        # the video is playing and remain after the video has completed. Creatives
+        # contain additional dimensions can not be companion creatives. This field is
+        # only supported for the following creative_type: * `CREATIVE_TYPE_AUDIO` * `
         # CREATIVE_TYPE_VIDEO`
         # Corresponds to the JSON property `companionCreativeIds`
         # @return [Array<Fixnum>]
         attr_accessor :companion_creative_ids
       
-        # Counter events for a rich media creative. Counters track the number of times
-        # that a user interacts with any part of a rich media creative in a specified
-        # way (mouse-overs, mouse-outs, clicks, taps, data loading, keyboard entries,
-        # etc.). Any event that can be captured in the creative can be recorded as a
-        # counter. Leave it empty or unset for creatives containing image assets only.
+        # Optional. Counter events for a rich media creative. Counters track the number
+        # of times that a user interacts with any part of a rich media creative in a
+        # specified way (mouse-overs, mouse-outs, clicks, taps, data loading, keyboard
+        # entries, etc.). Any event that can be captured in the creative can be recorded
+        # as a counter. Leave it empty or unset for creatives containing image assets
+        # only.
         # Corresponds to the JSON property `counterEvents`
         # @return [Array<Google::Apis::DisplayvideoV2::CounterEvent>]
         attr_accessor :counter_events
@@ -3626,24 +3633,25 @@ module Google
         attr_accessor :html5_video
         alias_method :html5_video?, :html5_video
       
-        # Indicates whether Integral Ad Science (IAS) campaign monitoring is enabled. To
-        # enable this for the creative, make sure the Advertiser.creative_config.
-        # ias_client_id has been set to your IAS client ID.
+        # Optional. Indicates whether Integral Ad Science (IAS) campaign monitoring is
+        # enabled. To enable this for the creative, make sure the Advertiser.
+        # creative_config.ias_client_id has been set to your IAS client ID.
         # Corresponds to the JSON property `iasCampaignMonitoring`
         # @return [Boolean]
         attr_accessor :ias_campaign_monitoring
         alias_method :ias_campaign_monitoring?, :ias_campaign_monitoring
       
-        # ID information used to link this creative to an external system. Must be UTF-8
-        # encoded with a length of no more than 10,000 characters.
+        # Optional. ID information used to link this creative to an external system.
+        # Must be UTF-8 encoded with a length of no more than 10,000 characters.
         # Corresponds to the JSON property `integrationCode`
         # @return [String]
         attr_accessor :integration_code
       
-        # JavaScript measurement URL from supported third-party verification providers (
-        # ComScore, DoubleVerify, IAS, Moat). HTML script tags are not supported. This
-        # field is only writeable in following creative_type: * `CREATIVE_TYPE_NATIVE` *
-        # `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+        # Optional. JavaScript measurement URL from supported third-party verification
+        # providers (ComScore, DoubleVerify, IAS, Moat). HTML script tags are not
+        # supported. This field is only writeable in the following creative_type: * `
+        # CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `
+        # CREATIVE_TYPE_NATIVE_VIDEO`
         # Corresponds to the JSON property `jsTrackerUrl`
         # @return [String]
         attr_accessor :js_tracker_url
@@ -3676,8 +3684,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # User notes for this creative. Must be UTF-8 encoded with a length of no more
-        # than 20,000 characters.
+        # Optional. User notes for this creative. Must be UTF-8 encoded with a length of
+        # no more than 20,000 characters.
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
@@ -3749,8 +3757,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::AudioVideoOffset]
         attr_accessor :skip_offset
       
-        # Whether the user can choose to skip a video creative. This field is only
-        # supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`
+        # Optional. Whether the user can choose to skip a video creative. This field is
+        # only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`
         # Corresponds to the JSON property `skippable`
         # @return [Boolean]
         attr_accessor :skippable
@@ -3765,27 +3773,28 @@ module Google
         # @return [String]
         attr_accessor :third_party_tag
       
-        # Tracking URLs from third parties to track interactions with a video creative.
-        # This field is only supported for the following creative_type: * `
+        # Optional. Tracking URLs from third parties to track interactions with a video
+        # creative. This field is only supported for the following creative_type: * `
         # CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO`
         # Corresponds to the JSON property `thirdPartyUrls`
         # @return [Array<Google::Apis::DisplayvideoV2::ThirdPartyUrl>]
         attr_accessor :third_party_urls
       
-        # Timer custom events for a rich media creative. Timers track the time during
-        # which a user views and interacts with a specified part of a rich media
+        # Optional. Timer custom events for a rich media creative. Timers track the time
+        # during which a user views and interacts with a specified part of a rich media
         # creative. A creative can have multiple timer events, each timed independently.
         # Leave it empty or unset for creatives containing image assets only.
         # Corresponds to the JSON property `timerEvents`
         # @return [Array<Google::Apis::DisplayvideoV2::TimerEvent>]
         attr_accessor :timer_events
       
-        # Tracking URLs for analytics providers or third-party ad technology vendors.
-        # The URLs must start with https (except on inventory that doesn't require SSL
-        # compliance). If using macros in your URL, use only macros supported by Display
-        # & Video 360. Standard URLs only, no IMG or SCRIPT tags. This field is only
-        # writeable in following creative_type: * `CREATIVE_TYPE_NATIVE` * `
-        # CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+        # Optional. Tracking URLs for analytics providers or third-party ad technology
+        # vendors. The URLs must start with `https:` (except on inventory that doesn't
+        # require SSL compliance). If using macros in your URL, use only macros
+        # supported by Display & Video 360. Standard URLs only, no IMG or SCRIPT tags.
+        # This field is only writeable in the following creative_type: * `
+        # CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `
+        # CREATIVE_TYPE_NATIVE_VIDEO`
         # Corresponds to the JSON property `trackerUrls`
         # @return [Array<String>]
         attr_accessor :tracker_urls
@@ -3796,7 +3805,7 @@ module Google
         # each designed for specific video players or bandwidths. These transcodes give
         # a publisher's system more options to choose from for each impression on your
         # video and ensures that the appropriate file serves based on the viewer’s
-        # connection and screen size. This field is only supported in following
+        # connection and screen size. This field is only supported in the following
         # creative_type: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` * `
         # CREATIVE_TYPE_AUDIO`
         # Corresponds to the JSON property `transcodes`
@@ -4187,7 +4196,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. All custom list targeting settings in custom list group. Repeated
-        # settings with same id will be ignored.
+        # settings with the same id will be ignored.
         # Corresponds to the JSON property `settings`
         # @return [Array<Google::Apis::DisplayvideoV2::CustomListTargetingSetting>]
         attr_accessor :settings
@@ -5133,15 +5142,15 @@ module Google
       class ExitEvent
         include Google::Apis::Core::Hashable
       
-        # The name of the click tag of the exit event. The name must be unique within
-        # one creative. Leave it empty or unset for creatives containing image assets
-        # only.
+        # Optional. The name of the click tag of the exit event. The name must be unique
+        # within one creative. Leave it empty or unset for creatives containing image
+        # assets only.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The name used to identify this event in reports. Leave it empty or unset for
-        # creatives containing image assets only.
+        # Optional. The name used to identify this event in reports. Leave it empty or
+        # unset for creatives containing image assets only.
         # Corresponds to the JSON property `reportingName`
         # @return [String]
         attr_accessor :reporting_name
@@ -5349,7 +5358,10 @@ module Google
         attr_accessor :max_views
       
         # The time unit in which the frequency cap will be applied. Required when
-        # unlimited is `false`.
+        # unlimited is `false`. *Warning*: On **February 28, 2025**, frequency cap time
+        # periods greater than 30 days will no longer be accepted. This field will no
+        # longer accept the value `TIME_UNIT_LIFETIME`. [Read more about this announced
+        # change](/display-video/api/deprecations#features.lifetime_frequency_cap).
         # Corresponds to the JSON property `timeUnit`
         # @return [String]
         attr_accessor :time_unit
@@ -5360,7 +5372,11 @@ module Google
         # TIME_UNIT_MONTHS` - must be between 1 and 2 * `TIME_UNIT_WEEKS` - must be
         # between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `
         # TIME_UNIT_HOURS` - must be between 1 and 23 * `TIME_UNIT_MINUTES` - must be
-        # between 1 and 59
+        # between 1 and 59 *Warning*: On **February 28, 2025**, frequency cap time
+        # periods greater than 30 days will no longer be accepted. This field will no
+        # longer accept the value 2 if the value of time_unit is `TIME_UNIT_MONTHS`. [
+        # Read more about this announced change](/display-video/api/deprecations#
+        # features.lifetime_frequency_cap).
         # Corresponds to the JSON property `timeUnitCount`
         # @return [Fixnum]
         attr_accessor :time_unit_count
@@ -5597,7 +5613,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. All Google audience targeting settings in Google audience group.
-        # Repeated settings with same id will be ignored.
+        # Repeated settings with the same id will be ignored.
         # Corresponds to the JSON property `settings`
         # @return [Array<Google::Apis::DisplayvideoV2::GoogleAudienceTargetingSetting>]
         attr_accessor :settings
@@ -6018,8 +6034,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :insertion_order_id
       
-        # The type of insertion order. If this field is unspecified in creation, the
-        # value defaults to `RTB`.
+        # Optional. The type of insertion order. If this field is unspecified in
+        # creation, the value defaults to `RTB`.
         # Corresponds to the JSON property `insertionOrderType`
         # @return [String]
         attr_accessor :insertion_order_type
@@ -6039,9 +6055,9 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::Pacing]
         attr_accessor :pacing
       
-        # The partner costs associated with the insertion order. If absent or empty in
-        # CreateInsertionOrder method, the newly created insertion order will inherit
-        # partner costs from the partner settings.
+        # Optional. The partner costs associated with the insertion order. If absent or
+        # empty in CreateInsertionOrder method, the newly created insertion order will
+        # inherit partner costs from the partner settings.
         # Corresponds to the JSON property `partnerCosts`
         # @return [Array<Google::Apis::DisplayvideoV2::PartnerCost>]
         attr_accessor :partner_costs
@@ -6092,9 +6108,9 @@ module Google
       class InsertionOrderBudget
         include Google::Apis::Core::Hashable
       
-        # The type of automation used to manage bid and budget for the insertion order.
-        # If this field is unspecified in creation, the value defaults to `
-        # INSERTION_ORDER_AUTOMATION_TYPE_NONE`.
+        # Optional. The type of automation used to manage bid and budget for the
+        # insertion order. If this field is unspecified in creation, the value defaults
+        # to `INSERTION_ORDER_AUTOMATION_TYPE_NONE`.
         # Corresponds to the JSON property `automationType`
         # @return [String]
         attr_accessor :automation_type
@@ -6134,8 +6150,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :budget_amount_micros
       
-        # The budget_id of the campaign budget that this insertion order budget segment
-        # is a part of.
+        # Optional. The budget_id of the campaign budget that this insertion order
+        # budget segment is a part of.
         # Corresponds to the JSON property `campaignBudgetId`
         # @return [Fixnum]
         attr_accessor :campaign_budget_id
@@ -6145,9 +6161,9 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::DateRange]
         attr_accessor :date_range
       
-        # The budget segment description. It can be used to enter Purchase Order
-        # information for each budget segment and have that information printed on the
-        # invoices. Must be UTF-8 encoded.
+        # Optional. The budget segment description. It can be used to enter Purchase
+        # Order information for each budget segment and have that information printed on
+        # the invoices. Must be UTF-8 encoded.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -8343,7 +8359,11 @@ module Google
       
         # The ID of the Custom Bidding Algorithm used by this strategy. Only applicable
         # when performance_goal_type is set to `
-        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **
+        # April 1, 2025**, assigning a custom bidding algorithm that uses floodlight
+        # activities not identified in floodlightActivityConfigs will return an error. [
+        # Read more about this announced change](/display-video/api/deprecations#
+        # features.custom_bidding_floodlight).
         # Corresponds to the JSON property `customBiddingAlgorithmId`
         # @return [Fixnum]
         attr_accessor :custom_bidding_algorithm_id
@@ -8658,7 +8678,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The click tracking URL of the OBA icon. Only URLs of the following
-        # domains are allowed: * https://info.evidon.com * https://l.betrad.com
+        # domains are allowed: * `https://info.evidon.com` * `https://l.betrad.com`
         # Corresponds to the JSON property `clickTrackingUrl`
         # @return [String]
         attr_accessor :click_tracking_url
@@ -8669,33 +8689,33 @@ module Google
         attr_accessor :dimensions
       
         # Required. The landing page URL of the OBA icon. Only URLs of the following
-        # domains are allowed: * https://info.evidon.com * https://l.betrad.com
+        # domains are allowed: * `https://info.evidon.com` * `https://l.betrad.com`
         # Corresponds to the JSON property `landingPageUrl`
         # @return [String]
         attr_accessor :landing_page_url
       
-        # The position of the OBA icon on the creative.
+        # Optional. The position of the OBA icon on the creative.
         # Corresponds to the JSON property `position`
         # @return [String]
         attr_accessor :position
       
-        # The program of the OBA icon. For example: “AdChoices”.
+        # Optional. The program of the OBA icon. For example: “AdChoices”.
         # Corresponds to the JSON property `program`
         # @return [String]
         attr_accessor :program
       
-        # The MIME type of the OBA icon resource.
+        # Optional. The MIME type of the OBA icon resource.
         # Corresponds to the JSON property `resourceMimeType`
         # @return [String]
         attr_accessor :resource_mime_type
       
-        # The URL of the OBA icon resource.
+        # Optional. The URL of the OBA icon resource.
         # Corresponds to the JSON property `resourceUrl`
         # @return [String]
         attr_accessor :resource_url
       
         # Required. The view tracking URL of the OBA icon. Only URLs of the following
-        # domains are allowed: * https://info.evidon.com * https://l.betrad.com
+        # domains are allowed: * `https://info.evidon.com` * `https://l.betrad.com`
         # Corresponds to the JSON property `viewTrackingUrl`
         # @return [String]
         attr_accessor :view_tracking_url
@@ -9344,7 +9364,11 @@ module Google
       
         # The ID of the Custom Bidding Algorithm used by this strategy. Only applicable
         # when performance_goal_type is set to `
-        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **
+        # April 1, 2025**, assigning a custom bidding algorithm that uses floodlight
+        # activities not identified in floodlightActivityConfigs will return an error. [
+        # Read more about this announced change](/display-video/api/deprecations#
+        # features.custom_bidding_floodlight).
         # Corresponds to the JSON property `customBiddingAlgorithmId`
         # @return [Fixnum]
         attr_accessor :custom_bidding_algorithm_id
@@ -10704,14 +10728,14 @@ module Google
       class ThirdPartyUrl
         include Google::Apis::Core::Hashable
       
-        # The type of interaction needs to be tracked by the tracking URL
+        # Optional. The type of interaction needs to be tracked by the tracking URL
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Tracking URL used to track the interaction. Provide a URL with optional path
-        # or query string, beginning with `https:`. For example, https://www.example.com/
-        # path
+        # Optional. Tracking URL used to track the interaction. Provide a URL with
+        # optional path or query string, beginning with `https:`. For example, `https://
+        # www.example.com/path`
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -10873,19 +10897,20 @@ module Google
       class Transcode
         include Google::Apis::Core::Hashable
       
-        # The bit rate for the audio stream of the transcoded video, or the bit rate for
-        # the transcoded audio, in kilobits per second.
+        # Optional. The bit rate for the audio stream of the transcoded video, or the
+        # bit rate for the transcoded audio, in kilobits per second.
         # Corresponds to the JSON property `audioBitRateKbps`
         # @return [Fixnum]
         attr_accessor :audio_bit_rate_kbps
       
-        # The sample rate for the audio stream of the transcoded video, or the sample
-        # rate for the transcoded audio, in hertz.
+        # Optional. The sample rate for the audio stream of the transcoded video, or the
+        # sample rate for the transcoded audio, in hertz.
         # Corresponds to the JSON property `audioSampleRateHz`
         # @return [Fixnum]
         attr_accessor :audio_sample_rate_hz
       
-        # The transcoding bit rate of the transcoded video, in kilobits per second.
+        # Optional. The transcoding bit rate of the transcoded video, in kilobits per
+        # second.
         # Corresponds to the JSON property `bitRateKbps`
         # @return [Fixnum]
         attr_accessor :bit_rate_kbps
@@ -10895,27 +10920,27 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::Dimensions]
         attr_accessor :dimensions
       
-        # The size of the transcoded file, in bytes.
+        # Optional. The size of the transcoded file, in bytes.
         # Corresponds to the JSON property `fileSizeBytes`
         # @return [Fixnum]
         attr_accessor :file_size_bytes
       
-        # The frame rate of the transcoded video, in frames per second.
+        # Optional. The frame rate of the transcoded video, in frames per second.
         # Corresponds to the JSON property `frameRate`
         # @return [Float]
         attr_accessor :frame_rate
       
-        # The MIME type of the transcoded file.
+        # Optional. The MIME type of the transcoded file.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
       
-        # The name of the transcoded file.
+        # Optional. The name of the transcoded file.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Indicates if the transcoding was successful.
+        # Optional. Indicates if the transcoding was successful.
         # Corresponds to the JSON property `transcoded`
         # @return [Boolean]
         attr_accessor :transcoded
@@ -10944,12 +10969,12 @@ module Google
       class UniversalAdId
         include Google::Apis::Core::Hashable
       
-        # The unique creative identifier.
+        # Optional. The unique creative identifier.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # The registry provides unique creative identifiers.
+        # Optional. The registry provides unique creative identifiers.
         # Corresponds to the JSON property `registry`
         # @return [String]
         attr_accessor :registry
