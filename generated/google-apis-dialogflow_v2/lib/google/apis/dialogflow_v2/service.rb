@@ -3004,9 +3004,13 @@ module Google
         #   Required. The project to list all answer records for in reverse chronological
         #   order. Format: `projects//locations/`.
         # @param [String] filter
-        #   Optional. Filters to restrict results to specific answer records. Marked
-        #   deprecated as it hasn't been, and isn't currently, supported. For more
-        #   information about filtering, see [API Filtering](https://aip.dev/160).
+        #   Optional. Filters to restrict results to specific answer records. The
+        #   expression has the following syntax: [AND ] ... The following fields and
+        #   operators are supported: * conversation_id with equals(=) operator Examples: *
+        #   "conversation_id=bar" matches answer records in the projects/foo/locations/
+        #   global/conversations/bar conversation (assuming the parent is projects/foo/
+        #   locations/global). For more information about filtering, see [API Filtering](
+        #   https://aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of records to return in a single page. The server
         #   may return fewer records than this. If unspecified, we use 10. The maximum is
@@ -7549,9 +7553,13 @@ module Google
         #   Required. The project to list all answer records for in reverse chronological
         #   order. Format: `projects//locations/`.
         # @param [String] filter
-        #   Optional. Filters to restrict results to specific answer records. Marked
-        #   deprecated as it hasn't been, and isn't currently, supported. For more
-        #   information about filtering, see [API Filtering](https://aip.dev/160).
+        #   Optional. Filters to restrict results to specific answer records. The
+        #   expression has the following syntax: [AND ] ... The following fields and
+        #   operators are supported: * conversation_id with equals(=) operator Examples: *
+        #   "conversation_id=bar" matches answer records in the projects/foo/locations/
+        #   global/conversations/bar conversation (assuming the parent is projects/foo/
+        #   locations/global). For more information about filtering, see [API Filtering](
+        #   https://aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of records to return in a single page. The server
         #   may return fewer records than this. If unspecified, we use 10. The maximum is
