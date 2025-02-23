@@ -1,5 +1,10 @@
 # Release history for google-apis-iam_v2
 
+### v0.12.0 (2025-02-23)
+
+* Regenerated from discovery document revision 20250213
+* Regenerated using generator version 0.16.0
+
 ### v0.11.0 (2024-11-24)
 
 * Regenerated from discovery document revision 20241114
