@@ -34,8 +34,9 @@ module Google
         # @return [Google::Apis::AreainsightsV1::LatLng]
         attr_accessor :lat_lng
       
-        # The Place resource name of the center of the circle. Only point places are
-        # supported.
+        # **Format:** Must be in the format `places/PLACE_ID`, where `PLACE_ID` is the
+        # unique identifier of a place. For example: `places/ChIJgUbEo8cfqokR5lP9_Wh_DaM`
+        # .
         # Corresponds to the JSON property `place`
         # @return [String]
         attr_accessor :place
