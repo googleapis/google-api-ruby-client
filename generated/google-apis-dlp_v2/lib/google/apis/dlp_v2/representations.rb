@@ -712,6 +712,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2DiscoveryVertexDatasetConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryVertexDatasetFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2DlpJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -856,6 +874,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2GlobalProcessing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2HotwordRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -899,6 +923,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2HybridOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ImageFallbackLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1252,6 +1282,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2MultiRegionProcessing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2NumericalStatsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1343,6 +1379,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2PrivacyMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ProcessingLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1517,6 +1559,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2ReidentifyContentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2RelatedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1883,6 +1931,36 @@ module Google
       end
       
       class GooglePrivacyDlpV2VersionDescription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2VertexDatasetCollection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2VertexDatasetDiscoveryTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2VertexDatasetRegex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2VertexDatasetRegexes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2VertexDatasetResourceReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3020,6 +3098,8 @@ module Google
       
           property :other_cloud_starting_location, as: 'otherCloudStartingLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation::Representation
       
+          property :processing_location, as: 'processingLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ProcessingLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ProcessingLocation::Representation
+      
           property :status, as: 'status'
           collection :targets, as: 'targets', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryTarget::Representation
       
@@ -3124,6 +3204,37 @@ module Google
       
           property :secrets_target, as: 'secretsTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SecretsDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SecretsDiscoveryTarget::Representation
       
+          property :vertex_dataset_target, as: 'vertexDatasetTarget', class: Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetDiscoveryTarget, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetDiscoveryTarget::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryVertexDatasetConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_after, as: 'createdAfter'
+          property :min_age, as: 'minAge'
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryVertexDatasetFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection, as: 'collection', class: Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetCollection, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetCollection::Representation
+      
+          property :others, as: 'others', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherResources, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherResources::Representation
+      
+          property :vertex_dataset_resource_reference, as: 'vertexDatasetResourceReference', class: Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetResourceReference, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetResourceReference::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inspect_template_modified_cadence, as: 'inspectTemplateModifiedCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence::Representation
+      
+          property :refresh_frequency, as: 'refreshFrequency'
         end
       end
       
@@ -3324,6 +3435,8 @@ module Google
       
           property :project_data_profile, as: 'projectDataProfile'
           property :project_id, as: 'projectId'
+          collection :related_resources, as: 'relatedResources', class: Google::Apis::DlpV2::GooglePrivacyDlpV2RelatedResource, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2RelatedResource::Representation
+      
           hash :resource_attributes, as: 'resourceAttributes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Value, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Value::Representation
       
           hash :resource_labels, as: 'resourceLabels'
@@ -3407,6 +3520,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2GlobalProcessing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2HotwordRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3480,6 +3599,16 @@ module Google
           hash :labels, as: 'labels'
           collection :required_finding_label_keys, as: 'requiredFindingLabelKeys'
           property :table_options, as: 'tableOptions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2ImageFallbackLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :global_processing, as: 'globalProcessing', class: Google::Apis::DlpV2::GooglePrivacyDlpV2GlobalProcessing, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2GlobalProcessing::Representation
+      
+          property :multi_region_processing, as: 'multiRegionProcessing', class: Google::Apis::DlpV2::GooglePrivacyDlpV2MultiRegionProcessing, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2MultiRegionProcessing::Representation
       
         end
       end
@@ -4060,6 +4189,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2MultiRegionProcessing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2NumericalStatsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4233,6 +4368,14 @@ module Google
           property :l_diversity_config, as: 'lDiversityConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LDiversityConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LDiversityConfig::Representation
       
           property :numerical_stats_config, as: 'numericalStatsConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2NumericalStatsConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2NumericalStatsConfig::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2ProcessingLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_fallback_location, as: 'imageFallbackLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageFallbackLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageFallbackLocation::Representation
       
         end
       end
@@ -4502,6 +4645,13 @@ module Google
       
           property :overview, as: 'overview', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationOverview, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationOverview::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2RelatedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource, as: 'fullResource'
         end
       end
       
@@ -4793,6 +4943,8 @@ module Google
           property :profile_status, as: 'profileStatus', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus::Representation
       
           property :project_data_profile, as: 'projectDataProfile'
+          collection :related_resources, as: 'relatedResources', class: Google::Apis::DlpV2::GooglePrivacyDlpV2RelatedResource, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2RelatedResource::Representation
+      
           hash :resource_labels, as: 'resourceLabels'
           property :resource_visibility, as: 'resourceVisibility'
           property :row_count, :numeric_string => true, as: 'rowCount'
@@ -5107,6 +5259,50 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :version, as: 'version'
+        end
+      end
+      
+      class GooglePrivacyDlpV2VertexDatasetCollection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vertex_dataset_regexes, as: 'vertexDatasetRegexes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetRegexes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetRegexes::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2VertexDatasetDiscoveryTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conditions, as: 'conditions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryVertexDatasetConditions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryVertexDatasetConditions::Representation
+      
+          property :disabled, as: 'disabled', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled::Representation
+      
+          property :filter, as: 'filter', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryVertexDatasetFilter, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryVertexDatasetFilter::Representation
+      
+          property :generation_cadence, as: 'generationCadence', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2VertexDatasetRegex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id_regex, as: 'projectIdRegex'
+        end
+      end
+      
+      class GooglePrivacyDlpV2VertexDatasetRegexes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :patterns, as: 'patterns', class: Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetRegex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetRegex::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2VertexDatasetResourceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_resource_name, as: 'datasetResourceName'
         end
       end
       
