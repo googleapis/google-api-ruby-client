@@ -3398,7 +3398,7 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # Required. The client secret provided by the 3rd party platform.
+        # Optional. The client secret provided by the 3rd party platform.
         # Corresponds to the JSON property `clientSecret`
         # @return [String]
         attr_accessor :client_secret
@@ -7231,7 +7231,7 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # Required. The client secret provided by the 3rd party platform.
+        # Optional. The client secret provided by the 3rd party platform.
         # Corresponds to the JSON property `clientSecret`
         # @return [String]
         attr_accessor :client_secret
@@ -11159,8 +11159,8 @@ module Google
         # Optional. Whether or not the information in the document is correct. For
         # example: * Query: "Can I return the package in 2 days once received?" *
         # Suggested document says: "Items must be returned/exchanged within 60 days of
-        # the purchase date." * Ground truth: "No return or exchange is allowed." * [
-        # document_correctness]: INCORRECT
+        # the purchase date." * Ground truth: "No return or exchange is allowed." *
+        # document_correctness: INCORRECT
         # Corresponds to the JSON property `documentCorrectness`
         # @return [String]
         attr_accessor :document_correctness
@@ -11342,8 +11342,8 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AudioInput]
         attr_accessor :audio_input
       
-        # The unique identifier of the CX page to override the `current_page` in the
-        # session. Format: `projects//locations//agents//flows//pages/`. If `
+        # The unique identifier of the Dialogflow CX page to override the `current_page`
+        # in the session. Format: `projects//locations//agents//flows//pages/`. If `
         # cx_current_page` is specified, the previous state of the session will be
         # ignored by Dialogflow CX, including the previous page and the previous session
         # parameters. In most cases, `cx_current_page` and `cx_parameters` should be
@@ -17622,6 +17622,33 @@ module Google
         end
       end
       
+      # The response message for PhoneNumbers.ListPhoneNumbers.
+      class GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of `PhoneNumber` resources. There is a maximum number of items
+        # returned based on the page_size field in the request.
+        # Corresponds to the JSON property `phoneNumbers`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber>]
+        attr_accessor :phone_numbers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @phone_numbers = args[:phone_numbers] if args.key?(:phone_numbers)
+        end
+      end
+      
       # The response message for SessionEntityTypes.ListSessionEntityTypes.
       class GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse
         include Google::Apis::Core::Hashable
@@ -18096,6 +18123,52 @@ module Google
         end
       end
       
+      # Represents a phone number. `PhoneNumber` resources enable phone calls to be
+      # answered by Dialogflow services and are added to a project through a
+      # PhoneNumberOrder.
+      class GoogleCloudDialogflowV2beta1PhoneNumber
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The conversation profile calls to this `PhoneNumber` should use. The
+        # project ID here should be the same as the one in name. Format: `projects//
+        # conversationProfiles/`. Format: `projects//locations//conversationProfiles/`.
+        # Corresponds to the JSON property `conversationProfile`
+        # @return [String]
+        attr_accessor :conversation_profile
+      
+        # Output only. The state of the `PhoneNumber`. Defaults to `ACTIVE`. `
+        # PhoneNumber` objects set to `DELETE_REQUESTED` always decline incoming calls
+        # and can be removed completely within 30 days.
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # Optional. The unique identifier of this phone number. Required for
+        # PhoneNumbers.UpdatePhoneNumber method. Format: `projects//phoneNumbers/`.
+        # Format: `projects//locations//phoneNumbers/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Phone number in [E.164](https://en.wikipedia.org/wiki/E.164)
+        # format. An example of a correctly formatted phone number: +15556767888.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_profile = args[:conversation_profile] if args.key?(:conversation_profile)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @name = args[:name] if args.key?(:name)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+        end
+      end
+      
       # Represents the query input. It can contain either: 1. An audio config which
       # instructs the speech recognizer how to process the speech audio. 2. A
       # conversational query in the form of text. 3. An event that specifies which
@@ -18454,9 +18527,9 @@ module Google
         # Dialogflow only uses this to determine which conversations were handed off to
         # a human agent for measurement purposes. What else to do with this signal is up
         # to you and your handoff procedures. You may set this, for example: * In the
-        # entry fulfillment of a CX Page if entering the page indicates something went
-        # extremely wrong in the conversation. * In a webhook response when you
-        # determine that the customer issue can only be handled by a human.
+        # entry fulfillment of a Dialogflow CX Page if entering the page indicates
+        # something went extremely wrong in the conversation. * In a webhook response
+        # when you determine that the customer issue can only be handled by a human.
         # Corresponds to the JSON property `liveAgentHandoff`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff]
         attr_accessor :live_agent_handoff
@@ -18515,9 +18588,9 @@ module Google
       # Dialogflow only uses this to determine which conversations were handed off to
       # a human agent for measurement purposes. What else to do with this signal is up
       # to you and your handoff procedures. You may set this, for example: * In the
-      # entry fulfillment of a CX Page if entering the page indicates something went
-      # extremely wrong in the conversation. * In a webhook response when you
-      # determine that the customer issue can only be handled by a human.
+      # entry fulfillment of a Dialogflow CX Page if entering the page indicates
+      # something went extremely wrong in the conversation. * In a webhook response
+      # when you determine that the customer issue can only be handled by a human.
       class GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff
         include Google::Apis::Core::Hashable
       
@@ -19984,7 +20057,7 @@ module Google
         attr_accessor :latest_message
       
         # Optional. The previously suggested query for the given conversation. This
-        # helps identify whether the next suggestion we generate is resonably different
+        # helps identify whether the next suggestion we generate is reasonably different
         # from the previous one. This is useful to avoid similar suggestions within the
         # conversation.
         # Corresponds to the JSON property `previousSuggestedQuery`
@@ -20674,6 +20747,19 @@ module Google
       
       # The request message for Agents.TrainAgent.
       class GoogleCloudDialogflowV2beta1TrainAgentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request message for PhoneNumbers.UndeletePhoneNumber.
+      class GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
