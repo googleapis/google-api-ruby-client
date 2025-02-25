@@ -18,7 +18,6 @@ require 'google/apis/errors'
 require 'stringio'
 require 'tempfile'
 require 'mini_mime'
-
 module Google
   module Apis
     module Core
@@ -96,20 +95,13 @@ module Google
           prepare!
           opencensus_begin_span
           @upload_chunk_size = options.upload_chunk_size
-
           if options.upload_url.nil?
             do_retry :initiate_resumable_upload, client
-            puts 'Initiating resumable upload'
-
-          elsif options.delete_upload && options.upload_url
-            @close_io_on_finish = true
-            @upload_incomplete = false
+          elsif options.delete_upload && !options.upload_url.nil?
             @upload_url = options.upload_url
             cancel_resumable_upload(client)
-            puts 'Deleting resumable upload'
           else
             do_retry :reinitiate_resumable_upload, client
-            puts 'Restarting resumable upload'
           end
 
           while @upload_incomplete
@@ -147,18 +139,12 @@ module Google
         end
 
         #  Initiating resumable upload
-        # storage = Google::Cloud::Storage.new(upload_chunk_size: chunk_size)
-        #  Re-initiating resumable upload
-        # storage = Google::Cloud::Storage.new(upload_chunk_size: chunk_size, upload_url: upload_url )
 
         def reinitiate_resumable_upload(client)
           logger.debug { sprintf('Restarting resumable upload command to %s', url) }
           @upload_url = options.upload_url unless options.upload_url.nil?
           check_resumable_upload_status client
-
-          # moves the file pointer to the position specified by uploaded_bytes/ offset.
-          # This is useful for resuming an upload from where it left off.
-          upload_io.seek(@offset)
+          upload_io.pos = @offset
           rescue => e
             error(e, rethrow: true)
         end
@@ -184,7 +170,6 @@ module Google
             else
               StringIO.new(upload_io.read(current_chunk_size))
             end
-
           response = client.put(@upload_url, body: chunk_body, header: request_header, follow_redirect: true)
 
           result = process_response(response.status_code, response.header, response.body)
@@ -231,8 +216,11 @@ module Google
               puts 'No bytes uploaded yet.'
             end
             @upload_incomplete = true
+          when 499
+            # Upload in canceled
+            @upload_incomplete = false
           when 200, 201
-            puts 'Upload is complete.'
+            # Upload is complete.
             @upload_incomplete = false
           else
             puts "Unexpected response: #{response.code} - #{response.body}"
@@ -240,10 +228,7 @@ module Google
           end
         end
 
-        # Cancel and resumable upload
-        # storage = Google::Cloud::Storage.new(upload_chunk_size: chunk_size, upload_url: upload_url, delete_upload: true)
-
-
+        # Cancel resumable upload
         def cancel_resumable_upload(client)
           # Setting up request header
           request_header = header.dup
@@ -252,9 +237,8 @@ module Google
           response = client.delete(@upload_url, header: request_header, follow_redirect: true)
           case response.code.to_i
           when 499
-            puts 'Resumable upload session canceled successfully.'
-          when 404
-            puts 'Resumable upload session not found.'
+            @close_io_on_finish = true
+            @upload_incomplete = false
           else
             puts "Failed to cancel upload session. Response: #{response.code} - #{response.body}"
           end
