@@ -43,6 +43,15 @@ jobs:
     - name: Install tools
       run: |
         gem install --no-document toys
+    - name: Hack perms
+      # Hack permissions to avoid a bundler issue.
+      # See https://github.com/actions/runner-images/issues/10215
+      # and https://github.com/rubygems/rubygems/issues/7983.
+      shell: bash
+      run: |
+        if [ -d /opt/hostedtoolcache/Ruby ]; then
+          chmod -R o-w /opt/hostedtoolcache/Ruby
+        fi
     - name: Test ${{ matrix.task }}
       run: |
         toys ci -v --only ${{ matrix.task }} --github-event-name=${{ github.event_name }} --github-event-payload=${{ github.event_path }}
