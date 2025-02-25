@@ -143,7 +143,8 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
         )
         .to_return(
           status: [308, 'Resume Incomplete'],
-          headers: { 'Range' => 'bytes=0-21' })
+          headers: { 'Range' => 'bytes=0-21' }
+        )
     end
 
     before(:example) do
@@ -220,7 +221,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
       expect(a_request(:delete, upload_url)).to have_been_made
     end
 
-    it 'should not call resumable upload when delete upload is called' do
+    it 'should not call resumable upload when upload is cancelled' do
       command.options.upload_chunk_size = 11
       command.options.upload_url = upload_url
       command.execute(client)
