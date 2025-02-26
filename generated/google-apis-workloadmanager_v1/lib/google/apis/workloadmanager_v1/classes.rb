@@ -22,6 +22,37 @@ module Google
   module Apis
     module WorkloadmanagerV1
       
+      # The API layer server
+      class ApiLayerServer
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The api layer name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. OS information
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        # Output only. resources in the component
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::CloudResource>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @os_version = args[:os_version] if args.key?(:os_version)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
       # * An AgentCommand specifies a one-time executable program for the agent to run.
       class AgentCommand
         include Google::Apis::Core::Hashable
@@ -45,6 +76,111 @@ module Google
         def update!(**args)
           @command = args[:command] if args.key?(:command)
           @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # The availability groups for sqlserver
+      class AvailabilityGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The databases
+        # Corresponds to the JSON property `databases`
+        # @return [Array<String>]
+        attr_accessor :databases
+      
+        # Output only. The availability group name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The primary server
+        # Corresponds to the JSON property `primaryServer`
+        # @return [String]
+        attr_accessor :primary_server
+      
+        # Output only. The secondary servers
+        # Corresponds to the JSON property `secondaryServers`
+        # @return [Array<String>]
+        attr_accessor :secondary_servers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @databases = args[:databases] if args.key?(:databases)
+          @name = args[:name] if args.key?(:name)
+          @primary_server = args[:primary_server] if args.key?(:primary_server)
+          @secondary_servers = args[:secondary_servers] if args.key?(:secondary_servers)
+        end
+      end
+      
+      # The backend server
+      class BackendServer
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The backup file
+        # Corresponds to the JSON property `backupFile`
+        # @return [String]
+        attr_accessor :backup_file
+      
+        # Output only. The backup schedule
+        # Corresponds to the JSON property `backupSchedule`
+        # @return [String]
+        attr_accessor :backup_schedule
+      
+        # Output only. The backend name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. OS information
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        # Output only. resources in the component
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::CloudResource>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_file = args[:backup_file] if args.key?(:backup_file)
+          @backup_schedule = args[:backup_schedule] if args.key?(:backup_schedule)
+          @name = args[:name] if args.key?(:name)
+          @os_version = args[:os_version] if args.key?(:os_version)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Backup properties.
+      class BackupProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the latest backup.
+        # Corresponds to the JSON property `latestBackupStatus`
+        # @return [String]
+        attr_accessor :latest_backup_status
+      
+        # The time when the latest backup was performed.
+        # Corresponds to the JSON property `latestBackupTime`
+        # @return [String]
+        attr_accessor :latest_backup_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latest_backup_status = args[:latest_backup_status] if args.key?(:latest_backup_status)
+          @latest_backup_time = args[:latest_backup_time] if args.key?(:latest_backup_time)
         end
       end
       
@@ -87,6 +223,62 @@ module Google
         end
       end
       
+      # The resource on GCP
+      class CloudResource
+        include Google::Apis::Core::Hashable
+      
+        # Instance Properties.
+        # Corresponds to the JSON property `instanceProperties`
+        # @return [Google::Apis::WorkloadmanagerV1::InstanceProperties]
+        attr_accessor :instance_properties
+      
+        # Output only. ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Output only. resource name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The cluster for sqlserver
+      class Cluster
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The nodes
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<String>]
+        attr_accessor :nodes
+      
+        # Output only. The witness server
+        # Corresponds to the JSON property `witnessServer`
+        # @return [String]
+        attr_accessor :witness_server
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nodes = args[:nodes] if args.key?(:nodes)
+          @witness_server = args[:witness_server] if args.key?(:witness_server)
+        end
+      end
+      
       # * Command specifies the type of command to execute.
       class Command
         include Google::Apis::Core::Hashable
@@ -109,6 +301,118 @@ module Google
         def update!(**args)
           @agent_command = args[:agent_command] if args.key?(:agent_command)
           @shell_command = args[:shell_command] if args.key?(:shell_command)
+        end
+      end
+      
+      # HealthCondition contains the detailed health check of each component.
+      class ComponentHealth
+        include Google::Apis::Core::Hashable
+      
+        # The component of a workload.
+        # Corresponds to the JSON property `component`
+        # @return [String]
+        attr_accessor :component
+      
+        # The detailed health checks of the component.
+        # Corresponds to the JSON property `componentHealthChecks`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::HealthCheck>]
+        attr_accessor :component_health_checks
+      
+        # Output only. The type of the component health.
+        # Corresponds to the JSON property `componentHealthType`
+        # @return [String]
+        attr_accessor :component_health_type
+      
+        # Output only. The requirement of the component.
+        # Corresponds to the JSON property `isRequired`
+        # @return [Boolean]
+        attr_accessor :is_required
+        alias_method :is_required?, :is_required
+      
+        # Output only. The health state of the component.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Sub component health.
+        # Corresponds to the JSON property `subComponentHealthes`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::ComponentHealth>]
+        attr_accessor :sub_component_healthes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component = args[:component] if args.key?(:component)
+          @component_health_checks = args[:component_health_checks] if args.key?(:component_health_checks)
+          @component_health_type = args[:component_health_type] if args.key?(:component_health_type)
+          @is_required = args[:is_required] if args.key?(:is_required)
+          @state = args[:state] if args.key?(:state)
+          @sub_component_healthes = args[:sub_component_healthes] if args.key?(:sub_component_healthes)
+        end
+      end
+      
+      # The database for sqlserver
+      class Database
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The backup file
+        # Corresponds to the JSON property `backupFile`
+        # @return [String]
+        attr_accessor :backup_file
+      
+        # Output only. The backup schedule
+        # Corresponds to the JSON property `backupSchedule`
+        # @return [String]
+        attr_accessor :backup_schedule
+      
+        # Output only. The host VM
+        # Corresponds to the JSON property `hostVm`
+        # @return [String]
+        attr_accessor :host_vm
+      
+        # Output only. The database name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_file = args[:backup_file] if args.key?(:backup_file)
+          @backup_schedule = args[:backup_schedule] if args.key?(:backup_schedule)
+          @host_vm = args[:host_vm] if args.key?(:host_vm)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Database Properties.
+      class DatabaseProperties
+        include Google::Apis::Core::Hashable
+      
+        # Backup properties.
+        # Corresponds to the JSON property `backupProperties`
+        # @return [Google::Apis::WorkloadmanagerV1::BackupProperties]
+        attr_accessor :backup_properties
+      
+        # Output only. Type of the database. HANA, DB2, etc.
+        # Corresponds to the JSON property `databaseType`
+        # @return [String]
+        attr_accessor :database_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_properties = args[:backup_properties] if args.key?(:backup_properties)
+          @database_type = args[:database_type] if args.key?(:database_type)
         end
       end
       
@@ -411,6 +715,37 @@ module Google
         end
       end
       
+      # The front end server
+      class FrontEndServer
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The frontend name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. OS information
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        # Output only. resources in the component
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::CloudResource>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @os_version = args[:os_version] if args.key?(:os_version)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
       # Message describing compute engine instance filter
       class GceInstanceFilter
         include Google::Apis::Core::Hashable
@@ -427,6 +762,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+        end
+      end
+      
+      # HealthCheck contains the detailed health check of a component based on asource.
+      class HealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The message of the health check.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. The health check source metric name.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # The resource on GCP
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::WorkloadmanagerV1::CloudResource]
+        attr_accessor :resource
+      
+        # Output only. The source of the health check.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. The state of the health check.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @metric = args[:metric] if args.key?(:metric)
+          @resource = args[:resource] if args.key?(:resource)
+          @source = args[:source] if args.key?(:source)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -478,6 +856,160 @@ module Google
           @sent_time = args[:sent_time] if args.key?(:sent_time)
           @sqlserver_validation = args[:sqlserver_validation] if args.key?(:sqlserver_validation)
           @torso_validation = args[:torso_validation] if args.key?(:torso_validation)
+        end
+      end
+      
+      # a vm instance
+      class Instance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. name of the VM
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The location of the VM
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Output only. The state of the VM
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Instance Properties.
+      class InstanceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Instance number.
+        # Corresponds to the JSON property `instanceNumber`
+        # @return [String]
+        attr_accessor :instance_number
+      
+        # Optional. Instance machine type.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Optional. Instance role.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        # Optional. Instance roles.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<String>]
+        attr_accessor :roles
+      
+        # SAP instance properties.
+        # Corresponds to the JSON property `sapInstanceProperties`
+        # @return [Google::Apis::WorkloadmanagerV1::SapInstanceProperties]
+        attr_accessor :sap_instance_properties
+      
+        # Optional. Instance status.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Maintenance Event
+        # Corresponds to the JSON property `upcomingMaintenanceEvent`
+        # @return [Google::Apis::WorkloadmanagerV1::UpcomingMaintenanceEvent]
+        attr_accessor :upcoming_maintenance_event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_number = args[:instance_number] if args.key?(:instance_number)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @role = args[:role] if args.key?(:role)
+          @roles = args[:roles] if args.key?(:roles)
+          @sap_instance_properties = args[:sap_instance_properties] if args.key?(:sap_instance_properties)
+          @status = args[:status] if args.key?(:status)
+          @upcoming_maintenance_event = args[:upcoming_maintenance_event] if args.key?(:upcoming_maintenance_event)
+        end
+      end
+      
+      # The database layer
+      class Layer
+        include Google::Apis::Core::Hashable
+      
+        # the application layer
+        # Corresponds to the JSON property `applicationType`
+        # @return [String]
+        attr_accessor :application_type
+      
+        # Optional. the database layer
+        # Corresponds to the JSON property `databaseType`
+        # @return [String]
+        attr_accessor :database_type
+      
+        # Optional. instances in a layer
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::Instance>]
+        attr_accessor :instances
+      
+        # Output only. system identification of a layer
+        # Corresponds to the JSON property `sid`
+        # @return [String]
+        attr_accessor :sid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_type = args[:application_type] if args.key?(:application_type)
+          @database_type = args[:database_type] if args.key?(:database_type)
+          @instances = args[:instances] if args.key?(:instances)
+          @sid = args[:sid] if args.key?(:sid)
+        end
+      end
+      
+      # List discovered profile Response returns discovered profiles from agents
+      class ListDiscoveredProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A token identifying a page of results the server should return
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # Output only. The list of workload profiles
+        # Corresponds to the JSON property `workloadProfiles`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::WorkloadProfile>]
+        attr_accessor :workload_profiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @workload_profiles = args[:workload_profiles] if args.key?(:workload_profiles)
         end
       end
       
@@ -670,6 +1202,31 @@ module Google
         end
       end
       
+      # The load balancer for sqlserver
+      class LoadBalancerServer
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The IP address
+        # Corresponds to the JSON property `ip`
+        # @return [String]
+        attr_accessor :ip
+      
+        # Output only. The VM name
+        # Corresponds to the JSON property `vm`
+        # @return [String]
+        attr_accessor :vm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip = args[:ip] if args.key?(:ip)
+          @vm = args[:vm] if args.key?(:vm)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -854,6 +1411,31 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Product contains the details of a product.
+      class Product
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the product.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Version of the product.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1113,6 +1695,50 @@ module Google
         end
       end
       
+      # The component of sap workload
+      class SapComponent
+        include Google::Apis::Core::Hashable
+      
+        # Database Properties.
+        # Corresponds to the JSON property `databaseProperties`
+        # @return [Google::Apis::WorkloadmanagerV1::DatabaseProperties]
+        attr_accessor :database_properties
+      
+        # A list of host URIs that are part of the HA configuration if present. An empty
+        # list indicates the component is not configured for HA.
+        # Corresponds to the JSON property `haHosts`
+        # @return [Array<String>]
+        attr_accessor :ha_hosts
+      
+        # Output only. resources in the component
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::CloudResource>]
+        attr_accessor :resources
+      
+        # Output only. sid is the sap component identificator
+        # Corresponds to the JSON property `sid`
+        # @return [String]
+        attr_accessor :sid
+      
+        # The detected topology of the component.
+        # Corresponds to the JSON property `topologyType`
+        # @return [String]
+        attr_accessor :topology_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_properties = args[:database_properties] if args.key?(:database_properties)
+          @ha_hosts = args[:ha_hosts] if args.key?(:ha_hosts)
+          @resources = args[:resources] if args.key?(:resources)
+          @sid = args[:sid] if args.key?(:sid)
+          @topology_type = args[:topology_type] if args.key?(:topology_type)
+        end
+      end
+      
       # The schema of SAP system discovery data.
       class SapDiscovery
         include Google::Apis::Core::Hashable
@@ -1148,6 +1774,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Optional. Whether to use DR reconciliation or not.
+        # Corresponds to the JSON property `useDrReconciliation`
+        # @return [Boolean]
+        attr_accessor :use_dr_reconciliation
+        alias_method :use_dr_reconciliation?, :use_dr_reconciliation
+      
         # A set of properties describing an SAP workload.
         # Corresponds to the JSON property `workloadProperties`
         # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryWorkloadProperties]
@@ -1165,6 +1797,7 @@ module Google
           @project_number = args[:project_number] if args.key?(:project_number)
           @system_id = args[:system_id] if args.key?(:system_id)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @use_dr_reconciliation = args[:use_dr_reconciliation] if args.key?(:use_dr_reconciliation)
           @workload_properties = args[:workload_properties] if args.key?(:workload_properties)
         end
       end
@@ -1327,6 +1960,11 @@ module Google
         # @return [String]
         attr_accessor :instance_number
       
+        # Optional. Landscape ID from the HANA nameserver.
+        # Corresponds to the JSON property `landscapeId`
+        # @return [String]
+        attr_accessor :landscape_id
+      
         # Required. URI of the recognized primary instance of the database.
         # Corresponds to the JSON property `primaryInstanceUri`
         # @return [String]
@@ -1348,6 +1986,7 @@ module Google
           @database_type = args[:database_type] if args.key?(:database_type)
           @database_version = args[:database_version] if args.key?(:database_version)
           @instance_number = args[:instance_number] if args.key?(:instance_number)
+          @landscape_id = args[:landscape_id] if args.key?(:landscape_id)
           @primary_instance_uri = args[:primary_instance_uri] if args.key?(:primary_instance_uri)
           @shared_nfs_uri = args[:shared_nfs_uri] if args.key?(:shared_nfs_uri)
         end
@@ -1480,6 +2119,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :cluster_instances
       
+        # Optional. Disk mounts on the instance.
+        # Corresponds to the JSON property `diskMounts`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesDiskMount>]
+        attr_accessor :disk_mounts
+      
         # Optional. The VM's instance number.
         # Corresponds to the JSON property `instanceNumber`
         # @return [Fixnum]
@@ -1509,6 +2153,7 @@ module Google
         def update!(**args)
           @app_instances = args[:app_instances] if args.key?(:app_instances)
           @cluster_instances = args[:cluster_instances] if args.key?(:cluster_instances)
+          @disk_mounts = args[:disk_mounts] if args.key?(:disk_mounts)
           @instance_number = args[:instance_number] if args.key?(:instance_number)
           @instance_role = args[:instance_role] if args.key?(:instance_role)
           @is_dr_site = args[:is_dr_site] if args.key?(:is_dr_site)
@@ -1538,6 +2183,31 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @number = args[:number] if args.key?(:number)
+        end
+      end
+      
+      # Disk mount on the instance.
+      class SapDiscoveryResourceInstancePropertiesDiskMount
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Filesystem mount point.
+        # Corresponds to the JSON property `mountPoint`
+        # @return [String]
+        attr_accessor :mount_point
+      
+        # Optional. Name of the disk.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mount_point = args[:mount_point] if args.key?(:mount_point)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1629,6 +2299,25 @@ module Google
         end
       end
       
+      # SAP instance properties.
+      class SapInstanceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. SAP Instance numbers. They are from '00' to '99'.
+        # Corresponds to the JSON property `numbers`
+        # @return [Array<String>]
+        attr_accessor :numbers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @numbers = args[:numbers] if args.key?(:numbers)
+        end
+      end
+      
       # A presentation of SAP workload insight. The schema of SAP workloads validation
       # related data.
       class SapValidation
@@ -1690,6 +2379,49 @@ module Google
           @details = args[:details] if args.key?(:details)
           @is_present = args[:is_present] if args.key?(:is_present)
           @sap_validation_type = args[:sap_validation_type] if args.key?(:sap_validation_type)
+        end
+      end
+      
+      # The body of sap workload
+      class SapWorkload
+        include Google::Apis::Core::Hashable
+      
+        # The component of sap workload
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::WorkloadmanagerV1::SapComponent]
+        attr_accessor :application
+      
+        # Output only. the architecture
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # The component of sap workload
+        # Corresponds to the JSON property `database`
+        # @return [Google::Apis::WorkloadmanagerV1::SapComponent]
+        attr_accessor :database
+      
+        # Output only. The metadata for SAP workload.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Output only. the products on this workload.
+        # Corresponds to the JSON property `products`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::Product>]
+        attr_accessor :products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application = args[:application] if args.key?(:application)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @database = args[:database] if args.key?(:database)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @products = args[:products] if args.key?(:products)
         end
       end
       
@@ -1833,6 +2565,43 @@ module Google
         end
       end
       
+      # The body of sqlserver workload
+      class SqlserverWorkload
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The availability groups for sqlserver
+        # Corresponds to the JSON property `ags`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::AvailabilityGroup>]
+        attr_accessor :ags
+      
+        # The cluster for sqlserver
+        # Corresponds to the JSON property `cluster`
+        # @return [Google::Apis::WorkloadmanagerV1::Cluster]
+        attr_accessor :cluster
+      
+        # Output only. The databases for sqlserver
+        # Corresponds to the JSON property `databases`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::Database>]
+        attr_accessor :databases
+      
+        # The load balancer for sqlserver
+        # Corresponds to the JSON property `loadBalancerServer`
+        # @return [Google::Apis::WorkloadmanagerV1::LoadBalancerServer]
+        attr_accessor :load_balancer_server
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ags = args[:ags] if args.key?(:ags)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @databases = args[:databases] if args.key?(:databases)
+          @load_balancer_server = args[:load_balancer_server] if args.key?(:load_balancer_server)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -1903,6 +2672,43 @@ module Google
         end
       end
       
+      # The body of three tier workload
+      class ThreeTierWorkload
+        include Google::Apis::Core::Hashable
+      
+        # The API layer server
+        # Corresponds to the JSON property `apiLayer`
+        # @return [Google::Apis::WorkloadmanagerV1::ApiLayerServer]
+        attr_accessor :api_layer
+      
+        # The backend server
+        # Corresponds to the JSON property `backend`
+        # @return [Google::Apis::WorkloadmanagerV1::BackendServer]
+        attr_accessor :backend
+      
+        # Output only. the workload endpoint
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # The front end server
+        # Corresponds to the JSON property `frontend`
+        # @return [Google::Apis::WorkloadmanagerV1::FrontEndServer]
+        attr_accessor :frontend
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_layer = args[:api_layer] if args.key?(:api_layer)
+          @backend = args[:backend] if args.key?(:backend)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @frontend = args[:frontend] if args.key?(:frontend)
+        end
+      end
+      
       # The schema of torso workload validation data.
       class TorsoValidation
         include Google::Apis::Core::Hashable
@@ -1950,6 +2756,43 @@ module Google
         end
       end
       
+      # Maintenance Event
+      class UpcomingMaintenanceEvent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. End time
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Maintenance status
+        # Corresponds to the JSON property `maintenanceStatus`
+        # @return [String]
+        attr_accessor :maintenance_status
+      
+        # Optional. Start time
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Optional. Type
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @maintenance_status = args[:maintenance_status] if args.key?(:maintenance_status)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Message describing the violation in an evaluation result.
       class ViolationDetails
         include Google::Apis::Core::Hashable
@@ -1978,6 +2821,118 @@ module Google
           @asset = args[:asset] if args.key?(:asset)
           @observed = args[:observed] if args.key?(:observed)
           @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # workload resource
+      class WorkloadProfile
+        include Google::Apis::Core::Hashable
+      
+        # The database layer
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::WorkloadmanagerV1::Layer]
+        attr_accessor :application
+      
+        # The database layer
+        # Corresponds to the JSON property `ascs`
+        # @return [Google::Apis::WorkloadmanagerV1::Layer]
+        attr_accessor :ascs
+      
+        # The database layer
+        # Corresponds to the JSON property `database`
+        # @return [Google::Apis::WorkloadmanagerV1::Layer]
+        attr_accessor :database
+      
+        # Optional. such as name, description, version. More example can be found in
+        # deployment
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. name of resource names have the form 'projects/`project_id`/
+        # workloads/`workload_id`'
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. time when the workload data was refreshed
+        # Corresponds to the JSON property `refreshedTime`
+        # @return [String]
+        attr_accessor :refreshed_time
+      
+        # The body of sap workload
+        # Corresponds to the JSON property `sapWorkload`
+        # @return [Google::Apis::WorkloadmanagerV1::SapWorkload]
+        attr_accessor :sap_workload
+      
+        # The body of sqlserver workload
+        # Corresponds to the JSON property `sqlserverWorkload`
+        # @return [Google::Apis::WorkloadmanagerV1::SqlserverWorkload]
+        attr_accessor :sqlserver_workload
+      
+        # Output only. [output only] the current state if a a workload
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The body of three tier workload
+        # Corresponds to the JSON property `threeTierWorkload`
+        # @return [Google::Apis::WorkloadmanagerV1::ThreeTierWorkload]
+        attr_accessor :three_tier_workload
+      
+        # Required. The type of the workload
+        # Corresponds to the JSON property `workloadType`
+        # @return [String]
+        attr_accessor :workload_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application = args[:application] if args.key?(:application)
+          @ascs = args[:ascs] if args.key?(:ascs)
+          @database = args[:database] if args.key?(:database)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @refreshed_time = args[:refreshed_time] if args.key?(:refreshed_time)
+          @sap_workload = args[:sap_workload] if args.key?(:sap_workload)
+          @sqlserver_workload = args[:sqlserver_workload] if args.key?(:sqlserver_workload)
+          @state = args[:state] if args.key?(:state)
+          @three_tier_workload = args[:three_tier_workload] if args.key?(:three_tier_workload)
+          @workload_type = args[:workload_type] if args.key?(:workload_type)
+        end
+      end
+      
+      # WorkloadProfileHealth contains the detailed health check of workload.
+      class WorkloadProfileHealth
+        include Google::Apis::Core::Hashable
+      
+        # The time when the health check was performed.
+        # Corresponds to the JSON property `checkTime`
+        # @return [String]
+        attr_accessor :check_time
+      
+        # The detailed condition reports of each component.
+        # Corresponds to the JSON property `componentHealthes`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::ComponentHealth>]
+        attr_accessor :component_healthes
+      
+        # Output only. The health state of the workload.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @check_time = args[:check_time] if args.key?(:check_time)
+          @component_healthes = args[:component_healthes] if args.key?(:component_healthes)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
