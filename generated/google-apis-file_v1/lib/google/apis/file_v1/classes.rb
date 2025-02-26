@@ -1581,12 +1581,20 @@ module Google
       class PromoteReplicaRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The resource name of the peer instance to promote, in the format `
+        # projects/`project_id`/locations/`location_id`/instances/`instance_id``. The
+        # peer instance is required if the operation is called on an active instance.
+        # Corresponds to the JSON property `peerInstance`
+        # @return [String]
+        attr_accessor :peer_instance
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @peer_instance = args[:peer_instance] if args.key?(:peer_instance)
         end
       end
       
