@@ -2803,6 +2803,7 @@ module Google
       
           property :filter, as: 'filter'
           hash :labels, as: 'labels'
+          property :language_code, as: 'languageCode'
           property :offset, as: 'offset'
           property :order_by, as: 'orderBy'
           collection :page_categories, as: 'pageCategories'
@@ -2813,6 +2814,7 @@ module Google
           property :query, as: 'query'
           property :query_expansion_spec, as: 'queryExpansionSpec', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestQueryExpansionSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestQueryExpansionSpec::Representation
       
+          property :region_code, as: 'regionCode'
           property :search_mode, as: 'searchMode'
           property :spell_correction_spec, as: 'spellCorrectionSpec', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestSpellCorrectionSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestSpellCorrectionSpec::Representation
       
