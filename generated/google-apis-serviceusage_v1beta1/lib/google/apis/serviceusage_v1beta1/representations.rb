@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Aspect
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -922,6 +928,14 @@ module Google
         end
       end
       
+      class Aspect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          hash :spec, as: 'spec'
+        end
+      end
+      
       class AuthProvider
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -980,6 +994,7 @@ module Google
           property :deadline, as: 'deadline'
           property :disable_auth, as: 'disableAuth'
           property :jwt_audience, as: 'jwtAudience'
+          property :load_balancing_policy, as: 'loadBalancingPolicy'
           property :min_deadline, as: 'minDeadline'
           property :operation_deadline, as: 'operationDeadline'
           hash :overrides_by_request_protocol, as: 'overridesByRequestProtocol', class: Google::Apis::ServiceusageV1beta1::BackendRule, decorator: Google::Apis::ServiceusageV1beta1::BackendRule::Representation
@@ -1319,6 +1334,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :protobuf_pythonic_types_enabled, as: 'protobufPythonicTypesEnabled'
           property :rest_async_io_enabled, as: 'restAsyncIoEnabled'
+          property :unversioned_package_disabled, as: 'unversionedPackageDisabled'
         end
       end
       
@@ -1376,6 +1392,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :apis, as: 'apis', class: Google::Apis::ServiceusageV1beta1::Api, decorator: Google::Apis::ServiceusageV1beta1::Api::Representation
+      
+          collection :aspects, as: 'aspects', class: Google::Apis::ServiceusageV1beta1::Aspect, decorator: Google::Apis::ServiceusageV1beta1::Aspect::Representation
       
           property :authentication, as: 'authentication', class: Google::Apis::ServiceusageV1beta1::Authentication, decorator: Google::Apis::ServiceusageV1beta1::Authentication::Representation
       
@@ -1517,7 +1535,7 @@ module Google
       class GoogleApiServiceusageV2betaAnalysis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :analysis, as: 'analysis', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaAnalysisResult, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaAnalysisResult::Representation
+          property :analysis_result, as: 'analysisResult', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaAnalysisResult, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaAnalysisResult::Representation
       
           property :analysis_type, as: 'analysisType'
           property :display_name, as: 'displayName'
@@ -2101,6 +2119,7 @@ module Google
       class SelectiveGapicGeneration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :generate_omitted_as_internal, as: 'generateOmittedAsInternal'
           collection :methods_prop, as: 'methods'
         end
       end
