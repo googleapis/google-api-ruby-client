@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ApiDebugSession
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ApiDoc
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -803,6 +809,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1ListApiCategoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListApiDebugSessionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1999,6 +2011,16 @@ module Google
           property :message, as: 'message'
           property :request_id, as: 'requestId'
           property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApiDebugSession
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_proxy_revision_id, as: 'apiProxyRevisionId'
+          property :create_time, as: 'createTime'
+          property :environment_id, as: 'environmentId'
+          property :id, as: 'id'
         end
       end
       
@@ -3320,6 +3342,15 @@ module Google
           property :message, as: 'message'
           property :request_id, as: 'requestId'
           property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListApiDebugSessionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sessions, as: 'sessions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDebugSession, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDebugSession::Representation
+      
         end
       end
       

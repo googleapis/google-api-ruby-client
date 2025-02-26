@@ -587,6 +587,43 @@ module Google
         end
       end
       
+      # Session carries the debug session id and its creation time.
+      class GoogleCloudApigeeV1ApiDebugSession
+        include Google::Apis::Core::Hashable
+      
+        # The revision ID of the deployed API proxy.
+        # Corresponds to the JSON property `apiProxyRevisionId`
+        # @return [String]
+        attr_accessor :api_proxy_revision_id
+      
+        # The first transaction creation timestamp in millisecond, recorded by UAP.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The environment ID of the deployed API proxy.
+        # Corresponds to the JSON property `environmentId`
+        # @return [String]
+        attr_accessor :environment_id
+      
+        # The debug session ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_proxy_revision_id = args[:api_proxy_revision_id] if args.key?(:api_proxy_revision_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @environment_id = args[:environment_id] if args.key?(:environment_id)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # `ApiDoc` represents an API catalog item. Catalog items are used in two ways in
       # a portal: - Users can browse and interact with a visual representation of the
       # API documentation - The `api_product_name` field provides a link to a backing [
@@ -2012,12 +2049,12 @@ module Google
       class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
         include Google::Apis::Core::Hashable
       
-        # An array of resource messages.
+        # Message for the array of resources. For Apigee, the proxies are resources.
         # Corresponds to the JSON property `include`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray]
         attr_accessor :include
       
-        # Message for include_all option.
+        # Message for include_all_resources option.
         # Corresponds to the JSON property `includeAllResources`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll]
         attr_accessor :include_all_resources
@@ -2061,7 +2098,7 @@ module Google
         end
       end
       
-      # Message for include_all option.
+      # Message for include_all_resources option.
       class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll
         include Google::Apis::Core::Hashable
       
@@ -2074,7 +2111,7 @@ module Google
         end
       end
       
-      # An array of resource messages.
+      # Message for the array of resources. For Apigee, the proxies are resources.
       class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray
         include Google::Apis::Core::Hashable
       
@@ -5849,6 +5886,33 @@ module Google
           @message = args[:message] if args.key?(:message)
           @request_id = args[:request_id] if args.key?(:request_id)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Response for ListApiDebugSessions.
+      class GoogleCloudApigeeV1ListApiDebugSessionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page token that you can include in a ListApiDebugSessionsRequest to retrieve
+        # the next page. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Session info that includes debug session ID, environment ID, api proxy
+        # revision ID and the first transaction creation timestamp.
+        # Corresponds to the JSON property `sessions`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiDebugSession>]
+        attr_accessor :sessions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sessions = args[:sessions] if args.key?(:sessions)
         end
       end
       
@@ -9938,7 +10002,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :score
       
-        # The severity of the assessment.
+        # 
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
