@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1EnterpriseWebSearch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1ExecutableCode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,12 +167,6 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -510,6 +510,12 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1EnterpriseWebSearch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1ExecutableCode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -620,6 +626,9 @@ module Google
           property :prompt_token_count, as: 'promptTokenCount'
           collection :prompt_tokens_details, as: 'promptTokensDetails', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount::Representation
       
+          property :tool_use_prompt_token_count, as: 'toolUsePromptTokenCount'
+          collection :tool_use_prompt_tokens_details, as: 'toolUsePromptTokensDetails', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount::Representation
+      
           property :total_token_count, as: 'totalTokenCount'
         end
       end
@@ -646,8 +655,6 @@ module Google
       
           collection :stop_sequences, as: 'stopSequences'
           property :temperature, as: 'temperature'
-          property :thinking_config, as: 'thinkingConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig::Representation
-      
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
         end
@@ -674,13 +681,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_name, as: 'modelName'
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :include_thoughts, as: 'includeThoughts'
         end
       end
       
@@ -971,6 +971,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_execution, as: 'codeExecution', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution::Representation
+      
+          property :enterprise_web_search, as: 'enterpriseWebSearch', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1EnterpriseWebSearch, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1EnterpriseWebSearch::Representation
       
           collection :function_declarations, as: 'functionDeclarations', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionDeclaration::Representation
       
