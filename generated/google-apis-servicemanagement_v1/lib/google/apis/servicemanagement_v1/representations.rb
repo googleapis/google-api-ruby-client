@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Aspect
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -676,6 +682,14 @@ module Google
         end
       end
       
+      class Aspect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          hash :spec, as: 'spec'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -751,6 +765,7 @@ module Google
           property :deadline, as: 'deadline'
           property :disable_auth, as: 'disableAuth'
           property :jwt_audience, as: 'jwtAudience'
+          property :load_balancing_policy, as: 'loadBalancingPolicy'
           property :min_deadline, as: 'minDeadline'
           property :operation_deadline, as: 'operationDeadline'
           hash :overrides_by_request_protocol, as: 'overridesByRequestProtocol', class: Google::Apis::ServicemanagementV1::BackendRule, decorator: Google::Apis::ServicemanagementV1::BackendRule::Representation
@@ -1029,6 +1044,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :protobuf_pythonic_types_enabled, as: 'protobufPythonicTypesEnabled'
           property :rest_async_io_enabled, as: 'restAsyncIoEnabled'
+          property :unversioned_package_disabled, as: 'unversionedPackageDisabled'
         end
       end
       
@@ -1541,6 +1557,7 @@ module Google
       class SelectiveGapicGeneration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :generate_omitted_as_internal, as: 'generateOmittedAsInternal'
           collection :methods_prop, as: 'methods'
         end
       end
@@ -1549,6 +1566,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :apis, as: 'apis', class: Google::Apis::ServicemanagementV1::Api, decorator: Google::Apis::ServicemanagementV1::Api::Representation
+      
+          collection :aspects, as: 'aspects', class: Google::Apis::ServicemanagementV1::Aspect, decorator: Google::Apis::ServicemanagementV1::Aspect::Representation
       
           property :authentication, as: 'authentication', class: Google::Apis::ServicemanagementV1::Authentication, decorator: Google::Apis::ServicemanagementV1::Authentication::Representation
       
