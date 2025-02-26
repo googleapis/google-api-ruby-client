@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AntivirusOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthorizationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -340,6 +346,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMirroringDeploymentGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMirroringDeploymentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMirroringEndpointGroupAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMirroringEndpointGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -383,6 +413,48 @@ module Google
       end
       
       class MtlsPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringDeploymentGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringDeploymentGroupConnectedEndpointGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringEndpointGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringEndpointGroupAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringEndpointGroupAssociationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MirroringEndpointGroupAssociationLocationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -499,6 +571,14 @@ module Google
           property :self_link, as: 'selfLink'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AntivirusOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :protocol, as: 'protocol'
         end
       end
       
@@ -754,6 +834,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -1001,6 +1083,43 @@ module Google
         end
       end
       
+      class ListMirroringDeploymentGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mirroring_deployment_groups, as: 'mirroringDeploymentGroups', class: Google::Apis::NetworksecurityV1::MirroringDeploymentGroup, decorator: Google::Apis::NetworksecurityV1::MirroringDeploymentGroup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMirroringDeploymentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mirroring_deployments, as: 'mirroringDeployments', class: Google::Apis::NetworksecurityV1::MirroringDeployment, decorator: Google::Apis::NetworksecurityV1::MirroringDeployment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListMirroringEndpointGroupAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mirroring_endpoint_group_associations, as: 'mirroringEndpointGroupAssociations', class: Google::Apis::NetworksecurityV1::MirroringEndpointGroupAssociation, decorator: Google::Apis::NetworksecurityV1::MirroringEndpointGroupAssociation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMirroringEndpointGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mirroring_endpoint_groups, as: 'mirroringEndpointGroups', class: Google::Apis::NetworksecurityV1::MirroringEndpointGroup, decorator: Google::Apis::NetworksecurityV1::MirroringEndpointGroup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1078,6 +1197,93 @@ module Google
         end
       end
       
+      class MirroringDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :forwarding_rule, as: 'forwardingRule'
+          hash :labels, as: 'labels'
+          property :mirroring_deployment_group, as: 'mirroringDeploymentGroup'
+          property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MirroringDeploymentGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connected_endpoint_groups, as: 'connectedEndpointGroups', class: Google::Apis::NetworksecurityV1::MirroringDeploymentGroupConnectedEndpointGroup, decorator: Google::Apis::NetworksecurityV1::MirroringDeploymentGroupConnectedEndpointGroup::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MirroringDeploymentGroupConnectedEndpointGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class MirroringEndpointGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::NetworksecurityV1::MirroringEndpointGroupAssociationDetails, decorator: Google::Apis::NetworksecurityV1::MirroringEndpointGroupAssociationDetails::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :mirroring_deployment_group, as: 'mirroringDeploymentGroup'
+          property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MirroringEndpointGroupAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          collection :locations_details, as: 'locationsDetails', class: Google::Apis::NetworksecurityV1::MirroringEndpointGroupAssociationLocationDetails, decorator: Google::Apis::NetworksecurityV1::MirroringEndpointGroupAssociationLocationDetails::Representation
+      
+          property :mirroring_endpoint_group, as: 'mirroringEndpointGroup'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MirroringEndpointGroupAssociationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :state, as: 'state'
+        end
+      end
+      
+      class MirroringEndpointGroupAssociationLocationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :state, as: 'state'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1146,6 +1352,7 @@ module Google
           property :create_time, as: 'createTime'
           property :custom_intercept_profile, as: 'customInterceptProfile'
           property :custom_mirroring_profile, as: 'customMirroringProfile'
+          property :data_path_id, :numeric_string => true, as: 'dataPathId'
           property :description, as: 'description'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
@@ -1208,6 +1415,8 @@ module Google
       class ThreatPreventionProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :antivirus_overrides, as: 'antivirusOverrides', class: Google::Apis::NetworksecurityV1::AntivirusOverride, decorator: Google::Apis::NetworksecurityV1::AntivirusOverride::Representation
+      
           collection :severity_overrides, as: 'severityOverrides', class: Google::Apis::NetworksecurityV1::SeverityOverride, decorator: Google::Apis::NetworksecurityV1::SeverityOverride::Representation
       
           collection :threat_overrides, as: 'threatOverrides', class: Google::Apis::NetworksecurityV1::ThreatOverride, decorator: Google::Apis::NetworksecurityV1::ThreatOverride::Representation
