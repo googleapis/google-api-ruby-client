@@ -161,6 +161,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. The list of resources that use this Certificate.
+        # Corresponds to the JSON property `usedBy`
+        # @return [Array<Google::Apis::CertificatemanagerV1::UsedBy>]
+        attr_accessor :used_by
+      
         def initialize(**args)
            update!(**args)
         end
@@ -178,6 +183,7 @@ module Google
           @scope = args[:scope] if args.key?(:scope)
           @self_managed = args[:self_managed] if args.key?(:self_managed)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @used_by = args[:used_by] if args.key?(:used_by)
         end
       end
       
@@ -1302,6 +1308,28 @@ module Google
         def update!(**args)
           @intermediate_cas = args[:intermediate_cas] if args.key?(:intermediate_cas)
           @trust_anchors = args[:trust_anchors] if args.key?(:trust_anchors)
+        end
+      end
+      
+      # Defines a resource that uses the certificate.
+      class UsedBy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Full name of the resource https://google.aip.dev/122#full-
+        # resource-names, e.g. `//certificatemanager.googleapis.com/projects/*/locations/
+        # */certificateMaps/*/certificateMapEntries/*` or `//compute.googleapis.com/
+        # projects/*/locations/*/targetHttpsProxies/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
     end
