@@ -131,6 +131,32 @@ module Google
         end
       end
       
+      # Defines what action to take for antivirus threats per protocol.
+      class AntivirusOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. Threat action override. For some threat types, only a subset of
+        # actions applies.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. Protocol to match.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @protocol = args[:protocol] if args.key?(:protocol)
+        end
+      end
+      
       # AuthorizationPolicy is a resource that specifies how a server should authorize
       # incoming connections. This resource in itself does not change the
       # configuration unless it's attached to a target https proxy or endpoint config
@@ -703,6 +729,93 @@ module Google
         end
       end
       
+      # BackendAuthenticationConfig message groups the TrustConfig together with other
+      # settings that control how the load balancer authenticates, and expresses its
+      # identity to, the backend: * `trustConfig` is the attached TrustConfig. * `
+      # wellKnownRoots` indicates whether the load balance should trust backend server
+      # certificates that are issued by public certificate authorities, in addition to
+      # certificates trusted by the TrustConfig. * `clientCertificate` is a client
+      # certificate that the load balancer uses to express its identity to the backend,
+      # if the connection to the backend uses mTLS. You can attach the
+      # BackendAuthenticationConfig to the load balancer’s BackendService directly
+      # determining how that BackendService negotiates TLS.
+      class BackendAuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A reference to a certificatemanager.googleapis.com.Certificate
+        # resource. This is a relative resource path following the form "projects/`
+        # project`/locations/`location`/certificates/`certificate`". Used by a
+        # BackendService to negotiate mTLS when the backend connection uses TLS and the
+        # backend requests a client certificate. Must have a CLIENT_AUTH scope.
+        # Corresponds to the JSON property `clientCertificate`
+        # @return [String]
+        attr_accessor :client_certificate
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Free-text description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Etag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Set of label tags associated with the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Name of the BackendAuthenticationConfig resource. It matches the
+        # pattern `projects/*/locations/`location`/backendAuthenticationConfigs/`
+        # backend_authentication_config``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A reference to a TrustConfig resource from the certificatemanager.
+        # googleapis.com namespace. This is a relative resource path following the form "
+        # projects/`project`/locations/`location`/trustConfigs/`trust_config`". A
+        # BackendService uses the chain of trust represented by this TrustConfig, if
+        # specified, to validate the server certificates presented by the backend.
+        # Required unless wellKnownRoots is set to PUBLIC_ROOTS.
+        # Corresponds to the JSON property `trustConfig`
+        # @return [String]
+        attr_accessor :trust_config
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Well known roots to use for server certificate validation.
+        # Corresponds to the JSON property `wellKnownRoots`
+        # @return [String]
+        attr_accessor :well_known_roots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @well_known_roots = args[:well_known_roots] if args.key?(:well_known_roots)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -842,13 +955,14 @@ module Google
         end
       end
       
-      # CustomInterceptProfile defines the Packet Intercept Endpoint Group used to
-      # intercept traffic to a third-party firewall in a Firewall rule.
+      # CustomInterceptProfile defines in-band integration behavior (intercept). It is
+      # used by firewall rules with an APPLY_SECURITY_PROFILE_GROUP action.
       class CustomInterceptProfile
         include Google::Apis::Core::Hashable
       
-        # Required. The InterceptEndpointGroup to which traffic associated with the SP
-        # should be mirrored.
+        # Required. The target InterceptEndpointGroup. When a firewall rule with this
+        # security profile attached matches a packet, the packet will be intercepted to
+        # the location-local target in this group.
         # Corresponds to the JSON property `interceptEndpointGroup`
         # @return [String]
         attr_accessor :intercept_endpoint_group
@@ -863,13 +977,14 @@ module Google
         end
       end
       
-      # CustomMirroringProfile defines an action for mirroring traffic to a collector'
-      # s EndpointGroup
+      # CustomMirroringProfile defines out-of-band integration behavior (mirroring).
+      # It is used by mirroring rules with a MIRROR action.
       class CustomMirroringProfile
         include Google::Apis::Core::Hashable
       
-        # Required. The MirroringEndpointGroup to which traffic associated with the SP
-        # should be mirrored.
+        # Required. The target MirroringEndpointGroup. When a mirroring rule with this
+        # security profile attached matches a packet, a replica will be mirrored to the
+        # location-local target in this group.
         # Corresponds to the JSON property `mirroringEndpointGroup`
         # @return [String]
         attr_accessor :mirroring_endpoint_group
@@ -1046,6 +1161,18 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Output only. [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Current state of the endpoint.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1070,6 +1197,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1823,7 +1952,7 @@ module Google
         end
       end
       
-      # Message describing InterceptDeploymentGroup object NEXT ID: 10
+      # Message describing InterceptDeploymentGroup object
       class InterceptDeploymentGroup
         include Google::Apis::Core::Hashable
       
@@ -2262,6 +2391,39 @@ module Google
         end
       end
       
+      # Response returned by the ListBackendAuthenticationConfigs method.
+      class ListBackendAuthenticationConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of BackendAuthenticationConfig resources.
+        # Corresponds to the JSON property `backendAuthenticationConfigs`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::BackendAuthenticationConfig>]
+        attr_accessor :backend_authentication_configs
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_authentication_configs = args[:backend_authentication_configs] if args.key?(:backend_authentication_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response returned by the ListClientTlsPolicies method.
       class ListClientTlsPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -2604,16 +2766,17 @@ module Google
         end
       end
       
-      # Message for response to listing MirroringEndpointGroupAssociations
+      # Response message for listing associations.
       class ListMirroringEndpointGroupAssociationsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of MirroringEndpointGroupAssociation
+        # The list of associations returned.
         # Corresponds to the JSON property `mirroringEndpointGroupAssociations`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociation>]
         attr_accessor :mirroring_endpoint_group_associations
       
-        # A token identifying a page of results the server should return.
+        # A token identifying a page of results the server should return. See https://
+        # google.aip.dev/158.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2912,52 +3075,69 @@ module Google
         end
       end
       
-      # Message describing MirroringDeployment object NEXT ID: 10
+      # A deployment represents a zonal mirroring backend ready to accept GENEVE-
+      # encapsulated replica traffic, e.g. a zonal instance group fronted by an
+      # internal passthrough load balancer. Deployments are always part of a global
+      # deployment group which represents a global mirroring service.
       class MirroringDeployment
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The timestamp when the resource was created. See https://google.
+        # aip.dev/148#timestamps.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Required. Immutable. The regional load balancer which the mirrored traffic
-        # should be forwarded to. Format is: projects/`project`/regions/`region`/
-        # forwardingRules/`forwardingRule`
+        # Optional. User-provided description of the deployment. Used as additional
+        # context for the deployment.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Immutable. The regional forwarding rule that fronts the mirroring
+        # collectors, for example: `projects/123456789/regions/us-central1/
+        # forwardingRules/my-rule`. See https://google.aip.dev/124.
         # Corresponds to the JSON property `forwardingRule`
         # @return [String]
         attr_accessor :forwarding_rule
       
-        # Optional. Labels as key value pairs
+        # Optional. Labels are key/value pairs that help to organize and filter
+        # resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Immutable. The Mirroring Deployment Group that this resource is part
-        # of. Format is: `projects/`project`/locations/global/mirroringDeploymentGroups/`
-        # mirroringDeploymentGroup``
+        # Required. Immutable. The deployment group that this deployment is a part of,
+        # for example: `projects/123456789/locations/global/mirroringDeploymentGroups/my-
+        # dg`. See https://google.aip.dev/124.
         # Corresponds to the JSON property `mirroringDeploymentGroup`
         # @return [String]
         attr_accessor :mirroring_deployment_group
       
-        # Immutable. Identifier. The name of the MirroringDeployment.
+        # Immutable. Identifier. The resource name of this deployment, for example: `
+        # projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See
+        # https://google.aip.dev/122 for more details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. Whether reconciling is in progress, recommended per https://
-        # google.aip.dev/128.
+        # Output only. The current state of the resource does not match the user's
+        # intended state, and the system is working to reconcile them. This part of the
+        # normal operation (e.g. linking a new association to the parent group). See
+        # https://google.aip.dev/128.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Output only. Current state of the deployment.
+        # Output only. The current state of the deployment. See https://google.aip.dev/
+        # 216.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The timestamp when the resource was most recently updated. See
+        # https://google.aip.dev/148#timestamps.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -2969,6 +3149,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @labels = args[:labels] if args.key?(:labels)
           @mirroring_deployment_group = args[:mirroring_deployment_group] if args.key?(:mirroring_deployment_group)
@@ -2979,50 +3160,66 @@ module Google
         end
       end
       
-      # Message describing MirroringDeploymentGroup object NEXT ID: 10
+      # A deployment group aggregates many zonal mirroring backends (deployments) into
+      # a single global mirroring service. Consumers can connect this service using an
+      # endpoint group.
       class MirroringDeploymentGroup
         include Google::Apis::Core::Hashable
       
-        # Output only. The list of Mirroring Endpoint Groups that are connected to this
-        # resource.
+        # Output only. The list of endpoint groups that are connected to this resource.
         # Corresponds to the JSON property `connectedEndpointGroups`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroupConnectedEndpointGroup>]
         attr_accessor :connected_endpoint_groups
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The timestamp when the resource was created. See https://google.
+        # aip.dev/148#timestamps.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Labels as key value pairs
+        # Optional. User-provided description of the deployment group. Used as
+        # additional context for the deployment group.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Labels are key/value pairs that help to organize and filter
+        # resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. Identifier. Then name of the MirroringDeploymentGroup.
+        # Immutable. Identifier. The resource name of this deployment group, for example:
+        # `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See
+        # https://google.aip.dev/122 for more details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. Immutable. The network that is being used for the deployment. Format
-        # is: projects/`project`/global/networks/`network`.
+        # Required. Immutable. The network that will be used for all child deployments,
+        # for example: `projects/`project`/global/networks/`network``. See https://
+        # google.aip.dev/124.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Output only. Whether reconciling is in progress, recommended per https://
+        # Output only. The current state of the resource does not match the user's
+        # intended state, and the system is working to reconcile them. This is part of
+        # the normal operation (e.g. adding a new deployment to the group) See https://
         # google.aip.dev/128.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Output only. Current state of the deployment group.
+        # Output only. The current state of the deployment group. See https://google.aip.
+        # dev/216.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The timestamp when the resource was most recently updated. See
+        # https://google.aip.dev/148#timestamps.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -3035,6 +3232,7 @@ module Google
         def update!(**args)
           @connected_endpoint_groups = args[:connected_endpoint_groups] if args.key?(:connected_endpoint_groups)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -3048,7 +3246,9 @@ module Google
       class MirroringDeploymentGroupConnectedEndpointGroup
         include Google::Apis::Core::Hashable
       
-        # Output only. A connected mirroring endpoint group.
+        # Output only. The connected endpoint group's resource name, for example: `
+        # projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https:/
+        # /google.aip.dev/124.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3063,51 +3263,68 @@ module Google
         end
       end
       
-      # Message describing MirroringEndpointGroup object.
+      # An endpoint group is a consumer frontend for a deployment group (backend). In
+      # order to configure mirroring for a network, consumers must create: - An
+      # association between their network and the endpoint group. - A security profile
+      # that points to the endpoint group. - A mirroring rule that references the
+      # security profile (group).
       class MirroringEndpointGroup
         include Google::Apis::Core::Hashable
       
-        # Output only. List of Mirroring Endpoint Group Associations that are associated
-        # to this endpoint group.
+        # Output only. List of associations to this endpoint group.
         # Corresponds to the JSON property `associations`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationDetails>]
         attr_accessor :associations
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The timestamp when the resource was created. See https://google.
+        # aip.dev/148#timestamps.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Labels as key value pairs
+        # Optional. User-provided description of the endpoint group. Used as additional
+        # context for the endpoint group.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Labels are key/value pairs that help to organize and filter
+        # resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Immutable. The Mirroring Deployment Group that this resource is
-        # connected to. Format is: `projects/`project`/locations/global/
-        # mirroringDeploymentGroups/`mirroringDeploymentGroup``
+        # Immutable. The deployment group that this DIRECT endpoint group is connected
+        # to, for example: `projects/123456789/locations/global/
+        # mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/124.
         # Corresponds to the JSON property `mirroringDeploymentGroup`
         # @return [String]
         attr_accessor :mirroring_deployment_group
       
-        # Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.
+        # Immutable. Identifier. The resource name of this endpoint group, for example: `
+        # projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https:/
+        # /google.aip.dev/122 for more details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. Whether reconciling is in progress, recommended per https://
+        # Output only. The current state of the resource does not match the user's
+        # intended state, and the system is working to reconcile them. This is part of
+        # the normal operation (e.g. adding a new association to the group). See https://
         # google.aip.dev/128.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Output only. Current state of the endpoint group.
+        # Output only. The current state of the endpoint group. See https://google.aip.
+        # dev/216.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The timestamp when the resource was most recently updated. See
+        # https://google.aip.dev/148#timestamps.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -3120,6 +3337,7 @@ module Google
         def update!(**args)
           @associations = args[:associations] if args.key?(:associations)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @mirroring_deployment_group = args[:mirroring_deployment_group] if args.key?(:mirroring_deployment_group)
           @name = args[:name] if args.key?(:name)
@@ -3129,45 +3347,59 @@ module Google
         end
       end
       
-      # Message describing MirroringEndpointGroupAssociation object
+      # An endpoint group association represents a link between a network and an
+      # endpoint group in the organization. Creating an association creates the
+      # networking infrastructure linking the network to the endpoint group, but does
+      # not enable mirroring by itself. To enable mirroring, the user must also create
+      # a network firewall policy containing mirroring rules and associate it with the
+      # network.
       class MirroringEndpointGroupAssociation
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The timestamp when the resource was created. See https://google.
+        # aip.dev/148#timestamps.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Labels as key value pairs
+        # Optional. Labels are key/value pairs that help to organize and filter
+        # resources.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The list of locations that this association is in and its details.
+        # Output only. The list of locations where the association is present. This
+        # information is retrieved from the linked endpoint group, and not configured as
+        # part of the association itself.
         # Corresponds to the JSON property `locationsDetails`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationLocationDetails>]
         attr_accessor :locations_details
       
-        # Required. Immutable. The Mirroring Endpoint Group that this resource is
-        # connected to. Format is: `projects/`project`/locations/global/
-        # mirroringEndpointGroups/`mirroringEndpointGroup``
+        # Immutable. The endpoint group that this association is connected to, for
+        # example: `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
+        # See https://google.aip.dev/124.
         # Corresponds to the JSON property `mirroringEndpointGroup`
         # @return [String]
         attr_accessor :mirroring_endpoint_group
       
-        # Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.
+        # Immutable. Identifier. The resource name of this endpoint group association,
+        # for example: `projects/123456789/locations/global/
+        # mirroringEndpointGroupAssociations/my-eg-association`. See https://google.aip.
+        # dev/122 for more details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. Immutable. The VPC network associated. Format: projects/`project`/
-        # global/networks/`network`.
+        # Immutable. The VPC network that is associated. for example: `projects/
+        # 123456789/global/networks/my-network`. See https://google.aip.dev/124.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Output only. Whether reconciling is in progress, recommended per https://
-        # google.aip.dev/128.
+        # Output only. The current state of the resource does not match the user's
+        # intended state, and the system is working to reconcile them. This part of the
+        # normal operation (e.g. adding a new location to the target deployment group).
+        # See https://google.aip.dev/128.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
         attr_accessor :reconciling
@@ -3178,7 +3410,8 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The timestamp when the resource was most recently updated. See
+        # https://google.aip.dev/148#timestamps.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -3201,25 +3434,24 @@ module Google
         end
       end
       
-      # This is a subset of the MirroringEndpointGroupAssociation message, containing
-      # fields to be used by the consumer.
+      # The endpoint group's view of a connected association.
       class MirroringEndpointGroupAssociationDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The resource name of the MirroringEndpointGroupAssociation.
-        # Format: projects/`project`/locations/`location`/
-        # mirroringEndpointGroupAssociations/`mirroringEndpointGroupAssociation`
+        # Output only. The connected association's resource name, for example: `projects/
+        # 123456789/locations/global/mirroringEndpointGroupAssociations/my-ega`. See
+        # https://google.aip.dev/124.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The VPC network associated. Format: projects/`project`/global/
-        # networks/`name`.
+        # Output only. The associated network, for example: projects/123456789/global/
+        # networks/my-network. See https://google.aip.dev/124.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Output only. Current state of the association.
+        # Output only. Most recent known state of the association.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -3236,16 +3468,17 @@ module Google
         end
       end
       
-      # Details about the association status in a specific cloud location.
+      # Contains details about the state of an association in a specific cloud
+      # location.
       class MirroringEndpointGroupAssociationLocationDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The cloud location.
+        # Output only. The cloud location, e.g. "us-central1-a" or "asia-south1".
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Output only. The association state in this location.
+        # Output only. The current state of the association in this location.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -3458,14 +3691,14 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # CustomInterceptProfile defines the Packet Intercept Endpoint Group used to
-        # intercept traffic to a third-party firewall in a Firewall rule.
+        # CustomInterceptProfile defines in-band integration behavior (intercept). It is
+        # used by firewall rules with an APPLY_SECURITY_PROFILE_GROUP action.
         # Corresponds to the JSON property `customInterceptProfile`
         # @return [Google::Apis::NetworksecurityV1beta1::CustomInterceptProfile]
         attr_accessor :custom_intercept_profile
       
-        # CustomMirroringProfile defines an action for mirroring traffic to a collector'
-        # s EndpointGroup
+        # CustomMirroringProfile defines out-of-band integration behavior (mirroring).
+        # It is used by mirroring rules with a MIRROR action.
         # Corresponds to the JSON property `customMirroringProfile`
         # @return [Google::Apis::NetworksecurityV1beta1::CustomMirroringProfile]
         attr_accessor :custom_mirroring_profile
@@ -3551,6 +3784,12 @@ module Google
         # @return [String]
         attr_accessor :custom_mirroring_profile
       
+        # Output only. Identifier used by the data-path. Unique within `container,
+        # location`.
+        # Corresponds to the JSON property `dataPathId`
+        # @return [Fixnum]
+        attr_accessor :data_path_id
+      
         # Optional. An optional description of the profile group. Max length 2048
         # characters.
         # Corresponds to the JSON property `description`
@@ -3596,6 +3835,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_intercept_profile = args[:custom_intercept_profile] if args.key?(:custom_intercept_profile)
           @custom_mirroring_profile = args[:custom_mirroring_profile] if args.key?(:custom_mirroring_profile)
+          @data_path_id = args[:data_path_id] if args.key?(:data_path_id)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
@@ -3819,6 +4059,11 @@ module Google
       class ThreatPreventionProfile
         include Google::Apis::Core::Hashable
       
+        # Optional. Configuration for overriding antivirus actions per protocol.
+        # Corresponds to the JSON property `antivirusOverrides`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::AntivirusOverride>]
+        attr_accessor :antivirus_overrides
+      
         # Optional. Configuration for overriding threats actions by severity match.
         # Corresponds to the JSON property `severityOverrides`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::SeverityOverride>]
@@ -3837,6 +4082,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @antivirus_overrides = args[:antivirus_overrides] if args.key?(:antivirus_overrides)
           @severity_overrides = args[:severity_overrides] if args.key?(:severity_overrides)
           @threat_overrides = args[:threat_overrides] if args.key?(:threat_overrides)
         end
