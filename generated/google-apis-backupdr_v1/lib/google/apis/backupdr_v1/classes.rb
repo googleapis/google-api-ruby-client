@@ -727,6 +727,98 @@ module Google
         end
       end
       
+      # BackupConfigDetails has information about how the resource is configured for
+      # backups and about the most recent backup taken for this configuration.
+      class BackupConfigDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The [full resource name](https://cloud.google.com/asset-inventory/
+        # docs/resource-name-format) of the resource that is applicable for the backup
+        # configuration. Example: "//compute.googleapis.com/projects/`project`/zones/`
+        # zone`/instances/`instance`"
+        # Corresponds to the JSON property `applicableResource`
+        # @return [String]
+        attr_accessor :applicable_resource
+      
+        # Output only. The full resource name of the backup config source resource. For
+        # example, "//backupdr.googleapis.com/v1/projects/`project`/locations/`region`/
+        # backupPlans/`backupplanId`" or "//compute.googleapis.com/projects/`project`/
+        # locations/`region`/resourcePolicies/`resourcePolicyId`".
+        # Corresponds to the JSON property `backupConfigSource`
+        # @return [String]
+        attr_accessor :backup_config_source
+      
+        # Output only. The display name of the backup config source resource.
+        # Corresponds to the JSON property `backupConfigSourceDisplayName`
+        # @return [String]
+        attr_accessor :backup_config_source_display_name
+      
+        # BackupDrPlanConfig has additional information about Backup and DR's Plan
+        # backup configuration.
+        # Corresponds to the JSON property `backupDrPlanConfig`
+        # @return [Google::Apis::BackupdrV1::BackupDrPlanConfig]
+        attr_accessor :backup_dr_plan_config
+      
+        # BackupDrTemplateConfig has additional information about Backup and DR's
+        # Template backup configuration.
+        # Corresponds to the JSON property `backupDrTemplateConfig`
+        # @return [Google::Apis::BackupdrV1::BackupDrTemplateConfig]
+        attr_accessor :backup_dr_template_config
+      
+        # The locations where the backups are to be stored.
+        # Corresponds to the JSON property `backupLocations`
+        # @return [Array<Google::Apis::BackupdrV1::BackupLocation>]
+        attr_accessor :backup_locations
+      
+        # Output only. The [full resource name](https://cloud.google.com/asset-inventory/
+        # docs/resource-name-format) of the backup vault that will store the backups
+        # generated through this backup configuration. Example: "//backupdr.googleapis.
+        # com/v1/projects/`project`/locations/`region`/backupVaults/`backupvaultId`"
+        # Corresponds to the JSON property `backupVault`
+        # @return [String]
+        attr_accessor :backup_vault
+      
+        # Output only. Timestamp of the latest successful backup created via this backup
+        # configuration.
+        # Corresponds to the JSON property `latestSuccessfulBackupTime`
+        # @return [String]
+        attr_accessor :latest_successful_backup_time
+      
+        # Point in time recovery settings of the backup configuration resource.
+        # Corresponds to the JSON property `pitrSettings`
+        # @return [Google::Apis::BackupdrV1::PitrSettings]
+        attr_accessor :pitr_settings
+      
+        # Output only. The state of the backup config resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The type of the backup config resource.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applicable_resource = args[:applicable_resource] if args.key?(:applicable_resource)
+          @backup_config_source = args[:backup_config_source] if args.key?(:backup_config_source)
+          @backup_config_source_display_name = args[:backup_config_source_display_name] if args.key?(:backup_config_source_display_name)
+          @backup_dr_plan_config = args[:backup_dr_plan_config] if args.key?(:backup_dr_plan_config)
+          @backup_dr_template_config = args[:backup_dr_template_config] if args.key?(:backup_dr_template_config)
+          @backup_locations = args[:backup_locations] if args.key?(:backup_locations)
+          @backup_vault = args[:backup_vault] if args.key?(:backup_vault)
+          @latest_successful_backup_time = args[:latest_successful_backup_time] if args.key?(:latest_successful_backup_time)
+          @pitr_settings = args[:pitr_settings] if args.key?(:pitr_settings)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # BackupConfigInfo has information about how the resource is configured for
       # Backup and about the most recent backup to this vault.
       class BackupConfigInfo
@@ -777,6 +869,105 @@ module Google
           @last_backup_error = args[:last_backup_error] if args.key?(:last_backup_error)
           @last_backup_state = args[:last_backup_state] if args.key?(:last_backup_state)
           @last_successful_backup_consistency_time = args[:last_successful_backup_consistency_time] if args.key?(:last_successful_backup_consistency_time)
+        end
+      end
+      
+      # BackupDrPlanConfig has additional information about Backup and DR's Plan
+      # backup configuration.
+      class BackupDrPlanConfig
+        include Google::Apis::Core::Hashable
+      
+        # Backup rules of the backup plan resource.
+        # Corresponds to the JSON property `backupDrPlanRules`
+        # @return [Array<Google::Apis::BackupdrV1::BackupDrPlanRule>]
+        attr_accessor :backup_dr_plan_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_dr_plan_rules = args[:backup_dr_plan_rules] if args.key?(:backup_dr_plan_rules)
+        end
+      end
+      
+      # BackupDrPlanRule has rule specific information of the backup plan resource.
+      class BackupDrPlanRule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp of the latest successful backup created via this backup
+        # rule.
+        # Corresponds to the JSON property `lastSuccessfulBackupTime`
+        # @return [String]
+        attr_accessor :last_successful_backup_time
+      
+        # Output only. Unique Id of the backup rule.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_successful_backup_time = args[:last_successful_backup_time] if args.key?(:last_successful_backup_time)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+        end
+      end
+      
+      # BackupDrTemplateConfig has additional information about Backup and DR's
+      # Template backup configuration.
+      class BackupDrTemplateConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The URI of the BackupDr template resource for the first party
+        # identity users.
+        # Corresponds to the JSON property `firstPartyManagementUri`
+        # @return [String]
+        attr_accessor :first_party_management_uri
+      
+        # Output only. The URI of the BackupDr template resource for the third party
+        # identity users.
+        # Corresponds to the JSON property `thirdPartyManagementUri`
+        # @return [String]
+        attr_accessor :third_party_management_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_party_management_uri = args[:first_party_management_uri] if args.key?(:first_party_management_uri)
+          @third_party_management_uri = args[:third_party_management_uri] if args.key?(:third_party_management_uri)
+        end
+      end
+      
+      # BackupLocation represents a cloud location where a backup can be stored.
+      class BackupLocation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The id of the cloud location. Example: "us-central1"
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        # Output only. The type of the location.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location_id = args[:location_id] if args.key?(:location_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -874,9 +1065,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The resource type to which the `BackupPlan` will be applied.
-        # Examples include, "compute.googleapis.com/Instance", "sqladmin.googleapis.com/
-        # Instance", or "alloydb.googleapis.com/Cluster".
+        # Required.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -946,7 +1135,7 @@ module Google
         # @return [String]
         attr_accessor :resource
       
-        # Required. Immutable. Resource type of workload on which backupplan is applied
+        # Required. Immutable.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -2720,6 +2909,31 @@ module Google
         end
       end
       
+      # Response for ListResourceBackupConfigs.
+      class ListResourceBackupConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of ResourceBackupConfigs for the specified scope.
+        # Corresponds to the JSON property `resourceBackupConfigs`
+        # @return [Array<Google::Apis::BackupdrV1::ResourceBackupConfig>]
+        attr_accessor :resource_backup_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resource_backup_configs = args[:resource_backup_configs] if args.key?(:resource_backup_configs)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -3255,6 +3469,25 @@ module Google
         end
       end
       
+      # Point in time recovery settings of the backup configuration resource.
+      class PitrSettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Number of days to retain the backup.
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -3375,6 +3608,86 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # ResourceBackupConfig represents a resource along with its backup
+      # configurations.
+      class ResourceBackupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Backup configurations applying to the target resource, including those
+        # targeting its related/child resources. For example, backup configuration
+        # applicable to Compute Engine disks will be populated in this field for a
+        # Compute Engine VM which has the disk associated.
+        # Corresponds to the JSON property `backupConfigsDetails`
+        # @return [Array<Google::Apis::BackupdrV1::BackupConfigDetails>]
+        attr_accessor :backup_configs_details
+      
+        # Output only. Whether the target resource is configured for backup. This is
+        # true if the backup_configs_details is not empty.
+        # Corresponds to the JSON property `backupConfigured`
+        # @return [Boolean]
+        attr_accessor :backup_configured
+        alias_method :backup_configured?, :backup_configured
+      
+        # Identifier. The resource name of the ResourceBackupConfig. Format: projects/`
+        # project`/locations/`location`/resourceBackupConfigs/`uid`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The [full resource name](https://cloud.google.com/asset-inventory/
+        # docs/resource-name-format) of the cloud resource that this configuration
+        # applies to. Supported resource types are ResourceBackupConfig.ResourceType.
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        # Output only. The human friendly name of the target resource.
+        # Corresponds to the JSON property `targetResourceDisplayName`
+        # @return [String]
+        attr_accessor :target_resource_display_name
+      
+        # Labels associated with the target resource.
+        # Corresponds to the JSON property `targetResourceLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :target_resource_labels
+      
+        # Output only. The type of the target resource.
+        # Corresponds to the JSON property `targetResourceType`
+        # @return [String]
+        attr_accessor :target_resource_type
+      
+        # Output only. The unique identifier of the resource backup config.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Whether the target resource is protected by a backup vault. This
+        # is true if the backup_configs_details is not empty and any of the
+        # ResourceBackupConfig.backup_configs_details has a backup configuration with
+        # BackupConfigDetails.backup_vault set. set.
+        # Corresponds to the JSON property `vaulted`
+        # @return [Boolean]
+        attr_accessor :vaulted
+        alias_method :vaulted?, :vaulted
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_configs_details = args[:backup_configs_details] if args.key?(:backup_configs_details)
+          @backup_configured = args[:backup_configured] if args.key?(:backup_configured)
+          @name = args[:name] if args.key?(:name)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+          @target_resource_display_name = args[:target_resource_display_name] if args.key?(:target_resource_display_name)
+          @target_resource_labels = args[:target_resource_labels] if args.key?(:target_resource_labels)
+          @target_resource_type = args[:target_resource_type] if args.key?(:target_resource_type)
+          @uid = args[:uid] if args.key?(:uid)
+          @vaulted = args[:vaulted] if args.key?(:vaulted)
         end
       end
       
@@ -3762,7 +4075,7 @@ module Google
         # means jobs will run every 2 hours from start time till end time defined. This
         # is required for `recurrence_type`, `HOURLY` and is not applicable otherwise. A
         # validation error will occur if a value is supplied and `recurrence_type` is
-        # not `HOURLY`. Value of hourly frequency should be between 6 and 23. Reason for
+        # not `HOURLY`. Value of hourly frequency should be between 4 and 23. Reason for
         # limit : We found that there is bandwidth limitation of 3GB/S for GMI while
         # taking a backup and 5GB/S while doing a restore. Given the amount of parallel
         # backups and restore we are targeting, this will potentially take the backup
