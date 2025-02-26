@@ -23,7 +23,7 @@ module Google
     #
     # Reads and writes Google Forms and responses.
     #
-    # @see https://developers.google.com/forms/api
+    # @see https://developers.google.com/workspace/forms/api
     module FormsV1
       # Version of the Google Forms API this client connects to.
       # This is NOT the gem version.

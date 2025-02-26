@@ -30,7 +30,7 @@ module Google
       #    Forms = Google::Apis::FormsV1 # Alias the module
       #    service = Forms::FormsService.new
       #
-      # @see https://developers.google.com/forms/api
+      # @see https://developers.google.com/workspace/forms/api
       class FormsService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://forms.$UNIVERSE_DOMAIN$/"
 

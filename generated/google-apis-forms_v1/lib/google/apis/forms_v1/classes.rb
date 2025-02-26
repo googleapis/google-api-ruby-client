@@ -645,6 +645,12 @@ module Google
       class FormSettings
         include Google::Apis::Core::Hashable
       
+        # Optional. The setting that determines whether the form collects email
+        # addresses from respondents.
+        # Corresponds to the JSON property `emailCollectionType`
+        # @return [String]
+        attr_accessor :email_collection_type
+      
         # Settings related to quiz forms and grading. These must be updated with the
         # UpdateSettingsRequest.
         # Corresponds to the JSON property `quizSettings`
@@ -657,6 +663,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @email_collection_type = args[:email_collection_type] if args.key?(:email_collection_type)
           @quiz_settings = args[:quiz_settings] if args.key?(:quiz_settings)
         end
       end
