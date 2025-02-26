@@ -822,6 +822,7 @@ module Google
           collection :connections, as: 'connections', class: Google::Apis::CloudbuildV2::Connection, decorator: Google::Apis::CloudbuildV2::Connection::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -840,6 +841,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :repositories, as: 'repositories', class: Google::Apis::CloudbuildV2::Repository, decorator: Google::Apis::CloudbuildV2::Repository::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

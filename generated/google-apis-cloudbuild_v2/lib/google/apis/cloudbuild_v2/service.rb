@@ -324,6 +324,10 @@ module Google
         #   Number of results to return in the list.
         # @param [String] page_token
         #   Page start.
+        # @param [Boolean] return_partial_success
+        #   Optional. If set to true, the response will return partial results when some
+        #   regions are unreachable. If set to false, the response will fail if any region
+        #   is unreachable.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -341,13 +345,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_connections(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_connections(parent, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/connections', options)
           command.response_representation = Google::Apis::CloudbuildV2::ListConnectionsResponse::Representation
           command.response_class = Google::Apis::CloudbuildV2::ListConnectionsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -407,8 +412,8 @@ module Google
         #   projects/*/locations/*`.
         # @param [Google::Apis::CloudbuildV2::HttpBody] http_body_object
         # @param [String] webhook_key
-        #   Arbitrary additional key to find the maching repository for a webhook event if
-        #   needed.
+        #   Arbitrary additional key to find the matching repository for a webhook event
+        #   if needed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -780,6 +785,10 @@ module Google
         #   Number of results to return in the list.
         # @param [String] page_token
         #   Page start.
+        # @param [Boolean] return_partial_success
+        #   Optional. If set to true, the response will return partial results when some
+        #   regions are unreachable. If set to false, the response will fail if any region
+        #   is unreachable.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -797,7 +806,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_connection_repositories(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_connection_repositories(parent, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/repositories', options)
           command.response_representation = Google::Apis::CloudbuildV2::ListRepositoriesResponse::Representation
           command.response_class = Google::Apis::CloudbuildV2::ListRepositoriesResponse
@@ -805,6 +814,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
