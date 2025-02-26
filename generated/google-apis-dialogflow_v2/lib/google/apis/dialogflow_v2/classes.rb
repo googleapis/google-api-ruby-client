@@ -3398,7 +3398,7 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # Required. The client secret provided by the 3rd party platform.
+        # Optional. The client secret provided by the 3rd party platform.
         # Corresponds to the JSON property `clientSecret`
         # @return [String]
         attr_accessor :client_secret
@@ -7231,7 +7231,7 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # Required. The client secret provided by the 3rd party platform.
+        # Optional. The client secret provided by the 3rd party platform.
         # Corresponds to the JSON property `clientSecret`
         # @return [String]
         attr_accessor :client_secret
@@ -7717,8 +7717,8 @@ module Google
         # Optional. Whether or not the information in the document is correct. For
         # example: * Query: "Can I return the package in 2 days once received?" *
         # Suggested document says: "Items must be returned/exchanged within 60 days of
-        # the purchase date." * Ground truth: "No return or exchange is allowed." * [
-        # document_correctness]: INCORRECT
+        # the purchase date." * Ground truth: "No return or exchange is allowed." *
+        # document_correctness: INCORRECT
         # Corresponds to the JSON property `documentCorrectness`
         # @return [String]
         attr_accessor :document_correctness
@@ -9140,7 +9140,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Human eval template in csv format. It tooks real-world
+        # Output only. Human eval template in csv format. It takes real-world
         # conversations provided through input dataset, generates example suggestions
         # for customer to verify quality of the model. For Smart Reply, the generated
         # csv file contains columns of Context, (Suggestions,Q1,Q2)*3, Actual reply.
@@ -16033,7 +16033,7 @@ module Google
         attr_accessor :latest_message
       
         # Optional. The previously suggested query for the given conversation. This
-        # helps identify whether the next suggestion we generate is resonably different
+        # helps identify whether the next suggestion we generate is reasonably different
         # from the previous one. This is useful to avoid similar suggestions within the
         # conversation.
         # Corresponds to the JSON property `previousSuggestedQuery`
@@ -19904,9 +19904,9 @@ module Google
         # Dialogflow only uses this to determine which conversations were handed off to
         # a human agent for measurement purposes. What else to do with this signal is up
         # to you and your handoff procedures. You may set this, for example: * In the
-        # entry fulfillment of a CX Page if entering the page indicates something went
-        # extremely wrong in the conversation. * In a webhook response when you
-        # determine that the customer issue can only be handled by a human.
+        # entry fulfillment of a Dialogflow CX Page if entering the page indicates
+        # something went extremely wrong in the conversation. * In a webhook response
+        # when you determine that the customer issue can only be handled by a human.
         # Corresponds to the JSON property `liveAgentHandoff`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff]
         attr_accessor :live_agent_handoff
@@ -19965,9 +19965,9 @@ module Google
       # Dialogflow only uses this to determine which conversations were handed off to
       # a human agent for measurement purposes. What else to do with this signal is up
       # to you and your handoff procedures. You may set this, for example: * In the
-      # entry fulfillment of a CX Page if entering the page indicates something went
-      # extremely wrong in the conversation. * In a webhook response when you
-      # determine that the customer issue can only be handled by a human.
+      # entry fulfillment of a Dialogflow CX Page if entering the page indicates
+      # something went extremely wrong in the conversation. * In a webhook response
+      # when you determine that the customer issue can only be handled by a human.
       class GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff
         include Google::Apis::Core::Hashable
       
