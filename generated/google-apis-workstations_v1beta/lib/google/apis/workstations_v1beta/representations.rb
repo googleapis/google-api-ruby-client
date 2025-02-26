@@ -702,7 +702,10 @@ module Google
           hash :annotations, as: 'annotations'
           collection :boost_configs, as: 'boostConfigs', class: Google::Apis::WorkstationsV1beta::WorkstationBoostConfig, decorator: Google::Apis::WorkstationsV1beta::WorkstationBoostConfig::Representation
       
+          collection :conditions, as: 'conditions', class: Google::Apis::WorkstationsV1beta::Status, decorator: Google::Apis::WorkstationsV1beta::Status::Representation
+      
           property :create_time, as: 'createTime'
+          property :degraded, as: 'degraded'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           hash :env, as: 'env'
