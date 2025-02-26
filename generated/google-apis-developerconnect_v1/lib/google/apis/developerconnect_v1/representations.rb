@@ -22,6 +22,18 @@ module Google
   module Apis
     module DeveloperconnectV1
       
+      class BitbucketCloudConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BitbucketDataCenterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GitProxyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GitRepositoryLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,6 +208,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProcessBitbucketCloudWebhookRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProcessBitbucketDataCenterWebhookRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProcessGitHubEnterpriseWebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,6 +256,34 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BitbucketCloudConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorizer_credential, as: 'authorizerCredential', class: Google::Apis::DeveloperconnectV1::UserCredential, decorator: Google::Apis::DeveloperconnectV1::UserCredential::Representation
+      
+          property :read_authorizer_credential, as: 'readAuthorizerCredential', class: Google::Apis::DeveloperconnectV1::UserCredential, decorator: Google::Apis::DeveloperconnectV1::UserCredential::Representation
+      
+          property :webhook_secret_secret_version, as: 'webhookSecretSecretVersion'
+          property :workspace, as: 'workspace'
+        end
+      end
+      
+      class BitbucketDataCenterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorizer_credential, as: 'authorizerCredential', class: Google::Apis::DeveloperconnectV1::UserCredential, decorator: Google::Apis::DeveloperconnectV1::UserCredential::Representation
+      
+          property :host_uri, as: 'hostUri'
+          property :read_authorizer_credential, as: 'readAuthorizerCredential', class: Google::Apis::DeveloperconnectV1::UserCredential, decorator: Google::Apis::DeveloperconnectV1::UserCredential::Representation
+      
+          property :server_version, as: 'serverVersion'
+          property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig, decorator: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig::Representation
+      
+          property :ssl_ca_certificate, as: 'sslCaCertificate'
+          property :webhook_secret_secret_version, as: 'webhookSecretSecretVersion'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -236,12 +294,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :bitbucket_cloud_config, as: 'bitbucketCloudConfig', class: Google::Apis::DeveloperconnectV1::BitbucketCloudConfig, decorator: Google::Apis::DeveloperconnectV1::BitbucketCloudConfig::Representation
+      
+          property :bitbucket_data_center_config, as: 'bitbucketDataCenterConfig', class: Google::Apis::DeveloperconnectV1::BitbucketDataCenterConfig, decorator: Google::Apis::DeveloperconnectV1::BitbucketDataCenterConfig::Representation
+      
           property :create_time, as: 'createTime'
           property :crypto_key_config, as: 'cryptoKeyConfig', class: Google::Apis::DeveloperconnectV1::CryptoKeyConfig, decorator: Google::Apis::DeveloperconnectV1::CryptoKeyConfig::Representation
       
           property :delete_time, as: 'deleteTime'
           property :disabled, as: 'disabled'
           property :etag, as: 'etag'
+          property :git_proxy_config, as: 'gitProxyConfig', class: Google::Apis::DeveloperconnectV1::GitProxyConfig, decorator: Google::Apis::DeveloperconnectV1::GitProxyConfig::Representation
+      
           property :github_config, as: 'githubConfig', class: Google::Apis::DeveloperconnectV1::GitHubConfig, decorator: Google::Apis::DeveloperconnectV1::GitHubConfig::Representation
       
           property :github_enterprise_config, as: 'githubEnterpriseConfig', class: Google::Apis::DeveloperconnectV1::GitHubEnterpriseConfig, decorator: Google::Apis::DeveloperconnectV1::GitHubEnterpriseConfig::Representation
@@ -383,6 +447,13 @@ module Google
         end
       end
       
+      class GitProxyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class GitRepositoryLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -391,6 +462,7 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :etag, as: 'etag'
+          property :git_proxy_uri, as: 'gitProxyUri'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
@@ -513,6 +585,22 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class ProcessBitbucketCloudWebhookRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, as: 'body', class: Google::Apis::DeveloperconnectV1::HttpBody, decorator: Google::Apis::DeveloperconnectV1::HttpBody::Representation
+      
+        end
+      end
+      
+      class ProcessBitbucketDataCenterWebhookRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, as: 'body', class: Google::Apis::DeveloperconnectV1::HttpBody, decorator: Google::Apis::DeveloperconnectV1::HttpBody::Representation
+      
         end
       end
       
