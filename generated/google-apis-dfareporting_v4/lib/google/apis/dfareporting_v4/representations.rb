@@ -4535,6 +4535,7 @@ module Google
           property :additional_key_values, as: 'additionalKeyValues'
           property :include_click_through_urls, as: 'includeClickThroughUrls'
           property :include_click_tracking, as: 'includeClickTracking'
+          property :include_unescapedlpurl_macro, as: 'includeUnescapedlpurlMacro'
           property :keyword_option, as: 'keywordOption'
         end
       end

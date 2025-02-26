@@ -2097,19 +2097,21 @@ module Google
       
         # The feed labels associated with the feed where your items are uploaded. For
         # more information, please refer to ​​ https://support.google.com/merchants/
-        # answer/12453549. This is a required field.
+        # answer/12453549. Providing the feed label reduces ambiguity in identifying the
+        # right offer details.
         # Corresponds to the JSON property `merchantFeedLabel`
         # @return [String]
         attr_accessor :merchant_feed_label
       
         # The language associated with the feed where your items are uploaded. Use ISO
-        # 639-1 language codes. This field is needed only when item IDs are not unique
-        # across multiple Merchant Center feeds.
+        # 639-1 language codes. Providing the feed language reduces ambiguity in
+        # identifying the right offer details.
         # Corresponds to the JSON property `merchantFeedLanguage`
         # @return [String]
         attr_accessor :merchant_feed_language
       
-        # The Merchant Center ID where the items are uploaded. This is a required field.
+        # The Merchant Center ID where the items are uploaded. Providing Merchant Center
+        # ID reduces ambiguity in identifying the right offer details.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
         attr_accessor :merchant_id
@@ -2904,7 +2906,8 @@ module Google
         # @return [Array<Google::Apis::DfareportingV4::UserIdentifier>]
         attr_accessor :user_identifiers
       
-        # The value of the conversion. This is a required field.
+        # The value of the conversion. Interpreted in CM360 Floodlight config parent
+        # advertiser's currency code. This is a required field.
         # Corresponds to the JSON property `value`
         # @return [Float]
         attr_accessor :value
@@ -12110,6 +12113,14 @@ module Google
         attr_accessor :include_click_tracking
         alias_method :include_click_tracking?, :include_click_tracking
       
+        # Optional. Indicates that the unescapedlpurl macro should be included in the
+        # tag for the static landing page. New placements will default to the value set
+        # on their site.
+        # Corresponds to the JSON property `includeUnescapedlpurlMacro`
+        # @return [Boolean]
+        attr_accessor :include_unescapedlpurl_macro
+        alias_method :include_unescapedlpurl_macro?, :include_unescapedlpurl_macro
+      
         # Option specifying how keywords are embedded in ad tags. This setting can be
         # used to specify whether keyword placeholders are inserted in placement tags
         # for this site. Publishers can then add keywords to those placeholders.
@@ -12126,6 +12137,7 @@ module Google
           @additional_key_values = args[:additional_key_values] if args.key?(:additional_key_values)
           @include_click_through_urls = args[:include_click_through_urls] if args.key?(:include_click_through_urls)
           @include_click_tracking = args[:include_click_tracking] if args.key?(:include_click_tracking)
+          @include_unescapedlpurl_macro = args[:include_unescapedlpurl_macro] if args.key?(:include_unescapedlpurl_macro)
           @keyword_option = args[:keyword_option] if args.key?(:keyword_option)
         end
       end
