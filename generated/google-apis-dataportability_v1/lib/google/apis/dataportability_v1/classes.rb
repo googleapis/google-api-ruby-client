@@ -22,6 +22,32 @@ module Google
   module Apis
     module DataportabilityV1
       
+      # Request to cancel a Portability Archive job.
+      class CancelPortabilityArchiveRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response to canceling a Data Portability Archive job.
+      class CancelPortabilityArchiveResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -42,11 +68,27 @@ module Google
       class InitiatePortabilityArchiveRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The timestamp that represents the end point for the data you are
+        # exporting. If the end_time is not specified in the
+        # InitiatePortabilityArchiveRequest, this field is set to the latest available
+        # data.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # The resources from which you're exporting data. These values have a 1:1
         # correspondence with the OAuth scopes.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
+      
+        # Optional. The timestamp that represents the starting point for the data you
+        # are exporting. If the start_time is not specified in the
+        # InitiatePortabilityArchiveRequest, the field is set to the earliest available
+        # data.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
       
         def initialize(**args)
            update!(**args)
@@ -54,13 +96,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @resources = args[:resources] if args.key?(:resources)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
       # Response from initiating an Archive job.
       class InitiatePortabilityArchiveResponse
         include Google::Apis::Core::Hashable
+      
+        # The access type of the Archive job initiated by the API.
+        # Corresponds to the JSON property `accessType`
+        # @return [String]
+        attr_accessor :access_type
       
         # The archive job ID that is initiated in the API. This can be used to get the
         # state of the job.
@@ -74,6 +123,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_type = args[:access_type] if args.key?(:access_type)
           @archive_job_id = args[:archive_job_id] if args.key?(:archive_job_id)
         end
       end
@@ -82,12 +132,27 @@ module Google
       class PortabilityArchiveState
         include Google::Apis::Core::Hashable
       
+        # The timestamp that represents the end point for the data you are exporting. If
+        # the end_time value is set in the InitiatePortabilityArchiveRequest, this field
+        # is set to that value. If end_time is not set, this value is set to the time
+        # the export was requested.
+        # Corresponds to the JSON property `exportTime`
+        # @return [String]
+        attr_accessor :export_time
+      
         # The resource name of ArchiveJob's PortabilityArchiveState singleton. The
         # format is: archiveJobs/`archive_job`/portabilityArchiveState. archive_job is
         # the job ID provided in the request.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # The timestamp that represents the starting point for the data you are
+        # exporting. This field is set only if the start_time field is specified in the
+        # InitiatePortabilityArchiveRequest.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
       
         # Resource that represents the state of the Archive job.
         # Corresponds to the JSON property `state`
@@ -106,7 +171,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_time = args[:export_time] if args.key?(:export_time)
           @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @urls = args[:urls] if args.key?(:urls)
         end

@@ -54,6 +54,41 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Cancels a Portability Archive job.
+        # @param [String] name
+        #   Required. The Archive job ID you're canceling. This is returned by the
+        #   InitiatePortabilityArchive response. The format is: archiveJobs/`archive_job`.
+        #   Canceling is only executed if the job is in progress.
+        # @param [Google::Apis::DataportabilityV1::CancelPortabilityArchiveRequest] cancel_portability_archive_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataportabilityV1::CancelPortabilityArchiveResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataportabilityV1::CancelPortabilityArchiveResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_archive_job_portability_archive(name, cancel_portability_archive_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::DataportabilityV1::CancelPortabilityArchiveRequest::Representation
+          command.request_object = cancel_portability_archive_request_object
+          command.response_representation = Google::Apis::DataportabilityV1::CancelPortabilityArchiveResponse::Representation
+          command.response_class = Google::Apis::DataportabilityV1::CancelPortabilityArchiveResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the state of an Archive job for the Portability API.
         # @param [String] name
         #   Required. The archive job ID that is returned when you request the state of
