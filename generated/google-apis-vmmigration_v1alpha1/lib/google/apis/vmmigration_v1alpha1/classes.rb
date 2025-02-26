@@ -149,7 +149,7 @@ module Google
         end
       end
       
-      # Holds informatiom about the available versions for upgrade.
+      # Holds information about the available versions for upgrade.
       class AvailableUpdates
         include Google::Apis::Core::Hashable
       
@@ -1486,7 +1486,7 @@ module Google
       end
       
       # CutoverJob message describes a cutover of a migrating VM. The CutoverJob is
-      # the operation of shutting down the VM, creating a snapshot and clonning the VM
+      # the operation of shutting down the VM, creating a snapshot and cloning the VM
       # using the replicated snapshot.
       class CutoverJob
         include Google::Apis::Core::Hashable
@@ -1728,7 +1728,7 @@ module Google
         # @return [String]
         attr_accessor :appliance_software_version
       
-        # Holds informatiom about the available versions for upgrade.
+        # Holds information about the available versions for upgrade.
         # Corresponds to the JSON property `availableVersions`
         # @return [Google::Apis::VmmigrationV1alpha1::AvailableUpdates]
         attr_accessor :available_versions
