@@ -2672,7 +2672,7 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
-        # Identifier. Name of the `JobRun`. Format is `projects/`project`/locations/`
+        # Output only. Name of the `JobRun`. Format is `projects/`project`/locations/`
         # location`/deliveryPipelines/`deliveryPipeline`/releases/`releases`/rollouts/`
         # rollouts`/jobRuns/`uuid``.
         # Corresponds to the JSON property `name`
@@ -3106,7 +3106,7 @@ module Google
         end
       end
       
-      # ListRolloutsResponse is the response object reutrned by `ListRollouts`.
+      # ListRolloutsResponse is the response object returned by `ListRollouts`.
       class ListRolloutsResponse
         include Google::Apis::Core::Hashable
       
@@ -5247,7 +5247,7 @@ module Google
       
         # Optional. Whether to propagate the Kubernetes Service to the route destination
         # clusters. The Service will always be deployed to the Target cluster even if
-        # the HTTPRoute is not. This option may be used to facilitiate successful DNS
+        # the HTTPRoute is not. This option may be used to facilitate successful DNS
         # lookup in the route destination clusters. Can only be set to true if
         # destinations are specified.
         # Corresponds to the JSON property `propagateService`
