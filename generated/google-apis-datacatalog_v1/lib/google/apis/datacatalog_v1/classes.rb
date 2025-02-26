@@ -1350,7 +1350,7 @@ module Google
       class GoogleCloudDatacatalogV1FeatureOnlineStoreSpec
         include Google::Apis::Core::Hashable
       
-        # Output only. Type of underelaying storage for the FeatureOnlineStore.
+        # Output only. Type of underlying storage for the FeatureOnlineStore.
         # Corresponds to the JSON property `storageType`
         # @return [String]
         attr_accessor :storage_type
