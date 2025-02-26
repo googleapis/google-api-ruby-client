@@ -884,10 +884,10 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Whether Private Service Connect transitivity is enabled for the hub.
-        # If true, Private Service Connect endpoints in VPC spokes attached to the hub
-        # are made accessible to other VPC spokes attached to the hub. The default value
-        # is false.
+        # Optional. Whether Private Service Connect connection propagation is enabled
+        # for the hub. If true, Private Service Connect endpoints in VPC spokes attached
+        # to the hub are made accessible to other VPC spokes attached to the hub. The
+        # default value is false.
         # Corresponds to the JSON property `exportPsc`
         # @return [Boolean]
         attr_accessor :export_psc
@@ -1923,8 +1923,8 @@ module Google
         attr_accessor :source
       
         # Immutable. Resource path of the target resource. The target project can be
-        # different, as in the cases when migrating to peer networks. The resource For
-        # example: /projects/`project`/regions/`region`/subnetworks/`subnet`
+        # different, as in the cases when migrating to peer networks. For example: /
+        # projects/`project`/regions/`region`/subnetworks/`subnet`
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
