@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppCommandMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AttachedGif
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +155,12 @@ module Google
       end
       
       class CustomEmoji
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomEmojiMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -927,6 +939,8 @@ module Google
       class Annotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_emoji_metadata, as: 'customEmojiMetadata', class: Google::Apis::ChatV1::CustomEmojiMetadata, decorator: Google::Apis::ChatV1::CustomEmojiMetadata::Representation
+      
           property :length, as: 'length'
           property :rich_link_metadata, as: 'richLinkMetadata', class: Google::Apis::ChatV1::RichLinkMetadata, decorator: Google::Apis::ChatV1::RichLinkMetadata::Representation
       
@@ -936,6 +950,14 @@ module Google
           property :type, as: 'type'
           property :user_mention, as: 'userMention', class: Google::Apis::ChatV1::UserMentionMetadata, decorator: Google::Apis::ChatV1::UserMentionMetadata::Representation
       
+        end
+      end
+      
+      class AppCommandMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_command_id, as: 'appCommandId'
+          property :app_command_type, as: 'appCommandType'
         end
       end
       
@@ -1094,6 +1116,14 @@ module Google
         end
       end
       
+      class CustomEmojiMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_emoji, as: 'customEmoji', class: Google::Apis::ChatV1::CustomEmoji, decorator: Google::Apis::ChatV1::CustomEmoji::Representation
+      
+        end
+      end
+      
       class DateInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1122,6 +1152,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action', class: Google::Apis::ChatV1::FormAction, decorator: Google::Apis::ChatV1::FormAction::Representation
       
+          property :app_command_metadata, as: 'appCommandMetadata', class: Google::Apis::ChatV1::AppCommandMetadata, decorator: Google::Apis::ChatV1::AppCommandMetadata::Representation
+      
           property :common, as: 'common', class: Google::Apis::ChatV1::CommonEventObject, decorator: Google::Apis::ChatV1::CommonEventObject::Representation
       
           property :config_complete_redirect_url, as: 'configCompleteRedirectUrl'
@@ -1131,6 +1163,8 @@ module Google
           property :message, as: 'message', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
       
           property :space, as: 'space', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
+      
+          property :thread, as: 'thread', class: Google::Apis::ChatV1::Thread, decorator: Google::Apis::ChatV1::Thread::Representation
       
           property :thread_key, as: 'threadKey'
           property :token, as: 'token'
