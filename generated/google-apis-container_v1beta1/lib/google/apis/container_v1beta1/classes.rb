@@ -469,7 +469,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # A URL to a public documnetation, which addresses resolving this issue.
+        # A URL to a public documentation, which addresses resolving this issue.
         # Corresponds to the JSON property `documentationUrl`
         # @return [String]
         attr_accessor :documentation_url
@@ -501,6 +501,26 @@ module Google
           @incompatibility_type = args[:incompatibility_type] if args.key?(:incompatibility_type)
           @last_observation = args[:last_observation] if args.key?(:last_observation)
           @subjects = args[:subjects] if args.key?(:subjects)
+        end
+      end
+      
+      # AutopilotConfig contains configuration of autopilot feature for this nodepool.
+      class AutopilotConfig
+        include Google::Apis::Core::Hashable
+      
+        # Denotes that nodes belonging to this node pool are Autopilot nodes.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -911,7 +931,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # List of fully qualified domain names (FQDN). Specifying port is supported.
-        # Wilcards are NOT supported. Examples: - my.customdomain.com - 10.0.1.2:5000
+        # Wildcards are NOT supported. Examples: - my.customdomain.com - 10.0.1.2:5000
         # Corresponds to the JSON property `fqdns`
         # @return [Array<String>]
         attr_accessor :fqdns
@@ -3272,7 +3292,7 @@ module Google
         end
       end
       
-      # GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517
+      # GetJSONWebKeysResponse is a valid JSON Web Key Set as specified in rfc 7517
       class GetJsonWebKeysResponse
         include Google::Apis::Core::Hashable
       
@@ -4026,9 +4046,14 @@ module Google
       
         # The Linux kernel parameters to be applied to the nodes and all pods running on
         # the nodes. The following parameters are supported. net.core.busy_poll net.core.
-        # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default
-        # net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.
-        # ipv4.tcp_wmem net.ipv4.tcp_tw_reuse kernel.shmmni kernel.shmmax kernel.shmall
+        # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.rmem_default
+        # net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn
+        # net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.netfilter.
+        # nf_conntrack_max net.netfilter.nf_conntrack_buckets net.netfilter.
+        # nf_conntrack_tcp_timeout_close_wait net.netfilter.
+        # nf_conntrack_tcp_timeout_time_wait net.netfilter.
+        # nf_conntrack_tcp_timeout_established net.netfilter.nf_conntrack_acct kernel.
+        # shmmni kernel.shmmax kernel.shmall vm.max_map_count
         # Corresponds to the JSON property `sysctls`
         # @return [Hash<String,String>]
         attr_accessor :sysctls
@@ -4500,7 +4525,7 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # Whether master is accessbile via Google Compute Engine Public IP addresses.
+        # Whether master is accessible via Google Compute Engine Public IP addresses.
         # Corresponds to the JSON property `gcpPublicCidrsAccessEnabled`
         # @return [Boolean]
         attr_accessor :gcp_public_cidrs_access_enabled
@@ -4735,7 +4760,7 @@ module Google
         # @return [String]
         attr_accessor :in_transit_encryption_config
       
-        # Output only. The relative name of the Google Compute Engine network(https://
+        # Output only. The relative name of the Google Compute Engine [network](https://
         # cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the
         # cluster is connected. Example: projects/my-project/global/networks/my-network
         # Corresponds to the JSON property `network`
@@ -5058,7 +5083,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :local_ssd_count
       
-        # Specifies which method should be used for encrypting the Local SSDs attahced
+        # Specifies which method should be used for encrypting the Local SSDs attached
         # to the node.
         # Corresponds to the JSON property `localSsdEncryptionMode`
         # @return [String]
@@ -5336,6 +5361,37 @@ module Google
       class NodeKubeletConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Defines a comma-separated allowlist of unsafe sysctls or sysctl
+        # patterns (ending in `*`). The unsafe namespaced sysctl groups are `kernel.shm*`
+        # , `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`. Leaving this
+        # allowlist empty means they cannot be set on Pods. To allow certain sysctls or
+        # sysctl patterns to be set on Pods, list them separated by commas. For example:
+        # `kernel.msg*,net.ipv4.route.min_pmtu`. See https://kubernetes.io/docs/tasks/
+        # administer-cluster/sysctl-cluster/ for more details.
+        # Corresponds to the JSON property `allowedUnsafeSysctls`
+        # @return [Array<String>]
+        attr_accessor :allowed_unsafe_sysctls
+      
+        # Optional. Defines the maximum number of container log files that can be
+        # present for a container. See https://kubernetes.io/docs/concepts/cluster-
+        # administration/logging/#log-rotation The value must be an integer between 2
+        # and 10, inclusive. The default value is 5 if unspecified.
+        # Corresponds to the JSON property `containerLogMaxFiles`
+        # @return [Fixnum]
+        attr_accessor :container_log_max_files
+      
+        # Optional. Defines the maximum size of the container log file before it is
+        # rotated. See https://kubernetes.io/docs/concepts/cluster-administration/
+        # logging/#log-rotation Valid format is positive number + unit, e.g. 100Ki, 10Mi.
+        # Valid units are Ki, Mi, Gi. The value must be between 10Mi and 500Mi,
+        # inclusive. Note that the total container log size (container_log_max_size *
+        # container_log_max_files) cannot exceed 1% of the total storage of the node, to
+        # avoid disk pressure caused by log files. The default value is 10Mi if
+        # unspecified.
+        # Corresponds to the JSON property `containerLogMaxSize`
+        # @return [String]
+        attr_accessor :container_log_max_size
+      
         # Enable CPU CFS quota enforcement for containers that specify CPU limits. This
         # option is enabled by default which makes kubelet use CFS quota (https://www.
         # kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU
@@ -5366,6 +5422,44 @@ module Google
         # @return [String]
         attr_accessor :cpu_manager_policy
       
+        # Optional. Defines the percent of disk usage after which image garbage
+        # collection is always run. The percent is calculated as this field value out of
+        # 100. The value must be between 10 and 85, inclusive and greater than
+        # image_gc_low_threshold_percent. The default value is 85 if unspecified.
+        # Corresponds to the JSON property `imageGcHighThresholdPercent`
+        # @return [Fixnum]
+        attr_accessor :image_gc_high_threshold_percent
+      
+        # Optional. Defines the percent of disk usage before which image garbage
+        # collection is never run. Lowest disk usage to garbage collect to. The percent
+        # is calculated as this field value out of 100. The value must be between 10 and
+        # 85, inclusive and smaller than image_gc_high_threshold_percent. The default
+        # value is 80 if unspecified.
+        # Corresponds to the JSON property `imageGcLowThresholdPercent`
+        # @return [Fixnum]
+        attr_accessor :image_gc_low_threshold_percent
+      
+        # Optional. Defines the maximum age an image can be unused before it is garbage
+        # collected. The string must be a sequence of decimal numbers, each with
+        # optional fraction and a unit suffix, such as "300s", "1.5h", and "2h45m".
+        # Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must
+        # be a positive duration greater than image_minimum_gc_age or "0s". The default
+        # value is "0s" if unspecified, which disables this field, meaning images won't
+        # be garbage collected based on being unused for too long.
+        # Corresponds to the JSON property `imageMaximumGcAge`
+        # @return [String]
+        attr_accessor :image_maximum_gc_age
+      
+        # Optional. Defines the minimum age for an unused image before it is garbage
+        # collected. The string must be a sequence of decimal numbers, each with
+        # optional fraction and a unit suffix, such as "300s", "1.5h", and "2h45m".
+        # Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must
+        # be a positive duration less than or equal to 2 minutes. The default value is "
+        # 2m0s" if unspecified.
+        # Corresponds to the JSON property `imageMinimumGcAge`
+        # @return [String]
+        attr_accessor :image_minimum_gc_age
+      
         # Enable or disable Kubelet read only port.
         # Corresponds to the JSON property `insecureKubeletReadonlyPortEnabled`
         # @return [Boolean]
@@ -5386,9 +5480,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_unsafe_sysctls = args[:allowed_unsafe_sysctls] if args.key?(:allowed_unsafe_sysctls)
+          @container_log_max_files = args[:container_log_max_files] if args.key?(:container_log_max_files)
+          @container_log_max_size = args[:container_log_max_size] if args.key?(:container_log_max_size)
           @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
           @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
           @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
+          @image_gc_high_threshold_percent = args[:image_gc_high_threshold_percent] if args.key?(:image_gc_high_threshold_percent)
+          @image_gc_low_threshold_percent = args[:image_gc_low_threshold_percent] if args.key?(:image_gc_low_threshold_percent)
+          @image_maximum_gc_age = args[:image_maximum_gc_age] if args.key?(:image_maximum_gc_age)
+          @image_minimum_gc_age = args[:image_minimum_gc_age] if args.key?(:image_minimum_gc_age)
           @insecure_kubelet_readonly_port_enabled = args[:insecure_kubelet_readonly_port_enabled] if args.key?(:insecure_kubelet_readonly_port_enabled)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
         end
@@ -5547,6 +5648,11 @@ module Google
       # workload.
       class NodePool
         include Google::Apis::Core::Hashable
+      
+        # AutopilotConfig contains configuration of autopilot feature for this nodepool.
+        # Corresponds to the JSON property `autopilotConfig`
+        # @return [Google::Apis::ContainerV1beta1::AutopilotConfig]
+        attr_accessor :autopilot_config
       
         # NodePoolAutoscaling contains information required by cluster autoscaler to
         # adjust the size of the node pool to the current cluster usage.
@@ -5710,6 +5816,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autopilot_config = args[:autopilot_config] if args.key?(:autopilot_config)
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @best_effort_provisioning = args[:best_effort_provisioning] if args.key?(:best_effort_provisioning)
           @conditions = args[:conditions] if args.key?(:conditions)
@@ -9404,6 +9511,12 @@ module Google
         attr_accessor :allow_net_admin
         alias_method :allow_net_admin?, :allow_net_admin
       
+        # If true, enables the GCW Auditor that audits workloads on standard clusters.
+        # Corresponds to the JSON property `autopilotCompatibilityAuditingEnabled`
+        # @return [Boolean]
+        attr_accessor :autopilot_compatibility_auditing_enabled
+        alias_method :autopilot_compatibility_auditing_enabled?, :autopilot_compatibility_auditing_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9411,6 +9524,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_net_admin = args[:allow_net_admin] if args.key?(:allow_net_admin)
+          @autopilot_compatibility_auditing_enabled = args[:autopilot_compatibility_auditing_enabled] if args.key?(:autopilot_compatibility_auditing_enabled)
         end
       end
     end
