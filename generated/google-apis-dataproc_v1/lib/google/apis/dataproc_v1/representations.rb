@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -383,6 +389,12 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FallbackReason
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -701,6 +713,18 @@ module Google
       end
       
       class NamespacedGkeDeploymentTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NativeBuildInfoUiData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NativeSqlExecutionUiData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1881,6 +1905,14 @@ module Google
         end
       end
       
+      class BuildInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_key, as: 'buildKey'
+          property :build_value, as: 'buildValue'
+        end
+      end
+      
       class CancelJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2263,6 +2295,14 @@ module Google
         end
       end
       
+      class FallbackReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fallback_node, as: 'fallbackNode'
+          property :fallback_reason, as: 'fallbackReason'
+        end
+      end
+      
       class FlinkJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2290,6 +2330,7 @@ module Google
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::DataprocV1::ReservationAffinity, decorator: Google::Apis::DataprocV1::ReservationAffinity::Representation
       
+          hash :resource_manager_tags, as: 'resourceManagerTags'
           property :service_account, as: 'serviceAccount'
           collection :service_account_scopes, as: 'serviceAccountScopes'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::DataprocV1::ShieldedInstanceConfig, decorator: Google::Apis::DataprocV1::ShieldedInstanceConfig::Representation
@@ -2857,6 +2898,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_namespace, as: 'clusterNamespace'
           property :target_gke_cluster, as: 'targetGkeCluster'
+        end
+      end
+      
+      class NativeBuildInfoUiData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_class, as: 'buildClass'
+          collection :build_info, as: 'buildInfo', class: Google::Apis::DataprocV1::BuildInfo, decorator: Google::Apis::DataprocV1::BuildInfo::Representation
+      
+        end
+      end
+      
+      class NativeSqlExecutionUiData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :execution_id, :numeric_string => true, as: 'executionId'
+          property :fallback_description, as: 'fallbackDescription'
+          collection :fallback_node_to_reason, as: 'fallbackNodeToReason', class: Google::Apis::DataprocV1::FallbackReason, decorator: Google::Apis::DataprocV1::FallbackReason::Representation
+      
+          property :num_fallback_nodes, as: 'numFallbackNodes'
+          property :num_native_nodes, as: 'numNativeNodes'
         end
       end
       
@@ -3868,6 +3931,10 @@ module Google
           property :executor_summary, as: 'executorSummary', class: Google::Apis::DataprocV1::ExecutorSummary, decorator: Google::Apis::DataprocV1::ExecutorSummary::Representation
       
           property :job_data, as: 'jobData', class: Google::Apis::DataprocV1::JobData, decorator: Google::Apis::DataprocV1::JobData::Representation
+      
+          property :native_build_info_ui_data, as: 'nativeBuildInfoUiData', class: Google::Apis::DataprocV1::NativeBuildInfoUiData, decorator: Google::Apis::DataprocV1::NativeBuildInfoUiData::Representation
+      
+          property :native_sql_execution_ui_data, as: 'nativeSqlExecutionUiData', class: Google::Apis::DataprocV1::NativeSqlExecutionUiData, decorator: Google::Apis::DataprocV1::NativeSqlExecutionUiData::Representation
       
           property :pool_data, as: 'poolData', class: Google::Apis::DataprocV1::PoolData, decorator: Google::Apis::DataprocV1::PoolData::Representation
       
