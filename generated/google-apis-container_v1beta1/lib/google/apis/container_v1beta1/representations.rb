@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutopilotConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutopilotConversionStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1455,6 +1461,13 @@ module Google
         end
       end
       
+      class AutopilotConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class AutopilotConversionStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2743,9 +2756,16 @@ module Google
       class NodeKubeletConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_unsafe_sysctls, as: 'allowedUnsafeSysctls'
+          property :container_log_max_files, as: 'containerLogMaxFiles'
+          property :container_log_max_size, as: 'containerLogMaxSize'
           property :cpu_cfs_quota, as: 'cpuCfsQuota'
           property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
           property :cpu_manager_policy, as: 'cpuManagerPolicy'
+          property :image_gc_high_threshold_percent, as: 'imageGcHighThresholdPercent'
+          property :image_gc_low_threshold_percent, as: 'imageGcLowThresholdPercent'
+          property :image_maximum_gc_age, as: 'imageMaximumGcAge'
+          property :image_minimum_gc_age, as: 'imageMinimumGcAge'
           property :insecure_kubelet_readonly_port_enabled, as: 'insecureKubeletReadonlyPortEnabled'
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
         end
@@ -2790,6 +2810,8 @@ module Google
       class NodePool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autopilot_config, as: 'autopilotConfig', class: Google::Apis::ContainerV1beta1::AutopilotConfig, decorator: Google::Apis::ContainerV1beta1::AutopilotConfig::Representation
+      
           property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1beta1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1beta1::NodePoolAutoscaling::Representation
       
           property :best_effort_provisioning, as: 'bestEffortProvisioning', class: Google::Apis::ContainerV1beta1::BestEffortProvisioning, decorator: Google::Apis::ContainerV1beta1::BestEffortProvisioning::Representation
@@ -3770,6 +3792,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_net_admin, as: 'allowNetAdmin'
+          property :autopilot_compatibility_auditing_enabled, as: 'autopilotCompatibilityAuditingEnabled'
         end
       end
     end
