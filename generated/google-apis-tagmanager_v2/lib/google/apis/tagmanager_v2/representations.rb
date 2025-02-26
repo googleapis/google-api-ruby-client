@@ -757,6 +757,7 @@ module Google
       class GalleryReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gallery_template_id, as: 'galleryTemplateId'
           property :host, as: 'host'
           property :is_modified, as: 'isModified'
           property :owner, as: 'owner'
@@ -770,6 +771,7 @@ module Google
       class GetContainerSnippetResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_config, as: 'containerConfig'
           property :snippet, as: 'snippet'
         end
       end
