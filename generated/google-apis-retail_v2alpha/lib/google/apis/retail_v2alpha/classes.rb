@@ -6967,6 +6967,15 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Optional. The BCP-47 language code, such as "en-US" or "sr-Latn" [list](https:/
+        # /www.unicode.org/cldr/charts/46/summary/root.html). For more information, see [
+        # Standardized codes](https://google.aip.dev/143). This field helps to better
+        # interpret the query. If a value isn't specified, the query language code is
+        # automatically detected, which may not be accurate.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # A 0-indexed integer that specifies the current offset (that is, starting
         # result location, amongst the Products deemed by the API as relevant) in search
         # results. This field is only considered if page_token is unset. If this field
@@ -7026,6 +7035,15 @@ module Google
         # Corresponds to the JSON property `queryExpansionSpec`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestQueryExpansionSpec]
         attr_accessor :query_expansion_spec
+      
+        # Optional. The Unicode country/region code (CLDR) of a location, such as "US"
+        # and "419" [list](https://www.unicode.org/cldr/charts/46/supplemental/
+        # territory_information.html). For more information, see [Standardized codes](
+        # https://google.aip.dev/143). If set, then results will be boosted based on the
+        # region_code provided.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
       
         # The relevance threshold of the search results. Defaults to RelevanceThreshold.
         # HIGH, which means only the most relevant results are shown, and the least
@@ -7111,6 +7129,7 @@ module Google
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @offset = args[:offset] if args.key?(:offset)
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_categories = args[:page_categories] if args.key?(:page_categories)
@@ -7119,6 +7138,7 @@ module Google
           @personalization_spec = args[:personalization_spec] if args.key?(:personalization_spec)
           @query = args[:query] if args.key?(:query)
           @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
+          @region_code = args[:region_code] if args.key?(:region_code)
           @relevance_threshold = args[:relevance_threshold] if args.key?(:relevance_threshold)
           @search_mode = args[:search_mode] if args.key?(:search_mode)
           @spell_correction_spec = args[:spell_correction_spec] if args.key?(:spell_correction_spec)
@@ -7576,9 +7596,12 @@ module Google
       class GoogleCloudRetailV2alphaSearchRequestTileNavigationSpec
         include Google::Apis::Core::Hashable
       
-        # This field specifies the tiles which are already clicked in client side. NOTE:
-        # This field is not being used for filtering search products. Client side should
-        # also put all the applied tiles in SearchRequest.filter.
+        # This optional field specifies the tiles which are already clicked in client
+        # side. While the feature works without this field set, particularly for an
+        # initial query, it is highly recommended to set this field because it can
+        # improve the quality of the search response and removes possible duplicate
+        # tiles. NOTE: This field is not being used for filtering search products.
+        # Client side should also put all the applied tiles in SearchRequest.filter.
         # Corresponds to the JSON property `appliedTiles`
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaTile>]
         attr_accessor :applied_tiles
@@ -8528,10 +8551,8 @@ module Google
         # added to cart. * `remove-from-cart`: Products being removed from cart. * `
         # category-page-view`: Special pages such as sale or promotion pages viewed. * `
         # detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage
-        # viewed. * `promotion-offered`: Promotion is offered to a user. * `promotion-
-        # not-offered`: Promotion is not offered to a user. * `purchase-complete`: User
-        # finishing a purchase. * `search`: Product search. * `shopping-cart-page-view`:
-        # User viewing a shopping cart.
+        # viewed. * `purchase-complete`: User finishing a purchase. * `search`: Product
+        # search. * `shopping-cart-page-view`: User viewing a shopping cart.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
