@@ -416,8 +416,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Describes the level of the execution history feature to apply to
-        # this workflow.
+        # Optional. Describes the execution history level to apply to this workflow.
         # Corresponds to the JSON property `executionHistoryLevel`
         # @return [String]
         attr_accessor :execution_history_level
