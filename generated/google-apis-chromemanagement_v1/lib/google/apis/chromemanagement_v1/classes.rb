@@ -4156,6 +4156,16 @@ module Google
         # @return [String]
         attr_accessor :failure_message
       
+        # Describes a generic Certificate Authority Connection.
+        # Corresponds to the JSON property `genericCaConnection`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1GenericCaConnection]
+        attr_accessor :generic_ca_connection
+      
+        # Describes a generic certificate provisioning profile.
+        # Corresponds to the JSON property `genericProfile`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1GenericProfile]
+        attr_accessor :generic_profile
+      
         # Output only. The issued certificate for this `CertificateProvisioningProcess`
         # in PEM format.
         # Corresponds to the JSON property `issuedCertificate`
@@ -4228,6 +4238,8 @@ module Google
           @chrome_os_device = args[:chrome_os_device] if args.key?(:chrome_os_device)
           @chrome_os_user_session = args[:chrome_os_user_session] if args.key?(:chrome_os_user_session)
           @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @generic_ca_connection = args[:generic_ca_connection] if args.key?(:generic_ca_connection)
+          @generic_profile = args[:generic_profile] if args.key?(:generic_profile)
           @issued_certificate = args[:issued_certificate] if args.key?(:issued_certificate)
           @name = args[:name] if args.key?(:name)
           @profile_adapter_config_reference = args[:profile_adapter_config_reference] if args.key?(:profile_adapter_config_reference)
@@ -4514,6 +4526,48 @@ module Google
           @device_type = args[:device_type] if args.key?(:device_type)
           @hostname = args[:hostname] if args.key?(:hostname)
           @machine = args[:machine] if args.key?(:machine)
+        end
+      end
+      
+      # Describes a generic Certificate Authority Connection.
+      class GoogleChromeManagementVersionsV1GenericCaConnection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A string that references the administrator-provided configuration
+        # for the certification authority service. This field can be missing if no
+        # configuration was given.
+        # Corresponds to the JSON property `caConnectionAdapterConfigReference`
+        # @return [String]
+        attr_accessor :ca_connection_adapter_config_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_connection_adapter_config_reference = args[:ca_connection_adapter_config_reference] if args.key?(:ca_connection_adapter_config_reference)
+        end
+      end
+      
+      # Describes a generic certificate provisioning profile.
+      class GoogleChromeManagementVersionsV1GenericProfile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A string that references the administrator-provided configuration
+        # for the certificate provisioning profile. This field can be missing if no
+        # configuration was given.
+        # Corresponds to the JSON property `profileAdapterConfigReference`
+        # @return [String]
+        attr_accessor :profile_adapter_config_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @profile_adapter_config_reference = args[:profile_adapter_config_reference] if args.key?(:profile_adapter_config_reference)
         end
       end
       
@@ -4844,6 +4898,16 @@ module Google
         # @return [String]
         attr_accessor :failure_message
       
+        # Describes a generic Certificate Authority Connection.
+        # Corresponds to the JSON property `genericCaConnection`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1GenericCaConnection]
+        attr_accessor :generic_ca_connection
+      
+        # Describes a generic certificate provisioning profile.
+        # Corresponds to the JSON property `genericProfile`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1GenericProfile]
+        attr_accessor :generic_profile
+      
         # Output only. The issued certificate for this `CertificateProvisioningProcess`
         # in PEM format.
         # Corresponds to the JSON property `issuedCertificate`
@@ -4916,6 +4980,8 @@ module Google
           @chrome_os_device = args[:chrome_os_device] if args.key?(:chrome_os_device)
           @chrome_os_user_session = args[:chrome_os_user_session] if args.key?(:chrome_os_user_session)
           @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @generic_ca_connection = args[:generic_ca_connection] if args.key?(:generic_ca_connection)
+          @generic_profile = args[:generic_profile] if args.key?(:generic_profile)
           @issued_certificate = args[:issued_certificate] if args.key?(:issued_certificate)
           @name = args[:name] if args.key?(:name)
           @profile_adapter_config_reference = args[:profile_adapter_config_reference] if args.key?(:profile_adapter_config_reference)
@@ -4986,6 +5052,48 @@ module Google
           @chrome_os_device = args[:chrome_os_device] if args.key?(:chrome_os_device)
           @user_directory_api_id = args[:user_directory_api_id] if args.key?(:user_directory_api_id)
           @user_primary_email = args[:user_primary_email] if args.key?(:user_primary_email)
+        end
+      end
+      
+      # Describes a generic Certificate Authority Connection.
+      class GoogleChromeManagementVersionsV1alpha1GenericCaConnection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A string that references the administrator-provided configuration
+        # for the certification authority service. This field can be missing if no
+        # configuration was given.
+        # Corresponds to the JSON property `caConnectionAdapterConfigReference`
+        # @return [String]
+        attr_accessor :ca_connection_adapter_config_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_connection_adapter_config_reference = args[:ca_connection_adapter_config_reference] if args.key?(:ca_connection_adapter_config_reference)
+        end
+      end
+      
+      # Describes a generic certificate provisioning profile.
+      class GoogleChromeManagementVersionsV1alpha1GenericProfile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A string that references the administrator-provided configuration
+        # for the certificate provisioning profile. This field can be missing if no
+        # configuration was given.
+        # Corresponds to the JSON property `profileAdapterConfigReference`
+        # @return [String]
+        attr_accessor :profile_adapter_config_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @profile_adapter_config_reference = args[:profile_adapter_config_reference] if args.key?(:profile_adapter_config_reference)
         end
       end
       
