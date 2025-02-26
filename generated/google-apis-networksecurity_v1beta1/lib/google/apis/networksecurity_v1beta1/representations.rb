@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AntivirusOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthorizationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +131,12 @@ module Google
       end
       
       class AuthzPolicyTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendAuthenticationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +353,12 @@ module Google
       end
       
       class ListAuthzPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBackendAuthenticationConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -634,6 +652,14 @@ module Google
         end
       end
       
+      class AntivirusOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :protocol, as: 'protocol'
+        end
+      end
+      
       class AuthorizationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -796,6 +822,21 @@ module Google
         end
       end
       
+      class BackendAuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_certificate, as: 'clientCertificate'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :trust_config, as: 'trustConfig'
+          property :update_time, as: 'updateTime'
+          property :well_known_roots, as: 'wellKnownRoots'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -886,6 +927,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -1162,6 +1205,16 @@ module Google
         end
       end
       
+      class ListBackendAuthenticationConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backend_authentication_configs, as: 'backendAuthenticationConfigs', class: Google::Apis::NetworksecurityV1beta1::BackendAuthenticationConfig, decorator: Google::Apis::NetworksecurityV1beta1::BackendAuthenticationConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListClientTlsPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1375,6 +1428,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           property :forwarding_rule, as: 'forwardingRule'
           hash :labels, as: 'labels'
           property :mirroring_deployment_group, as: 'mirroringDeploymentGroup'
@@ -1391,6 +1445,7 @@ module Google
           collection :connected_endpoint_groups, as: 'connectedEndpointGroups', class: Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroupConnectedEndpointGroup, decorator: Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroupConnectedEndpointGroup::Representation
       
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -1413,6 +1468,7 @@ module Google
           collection :associations, as: 'associations', class: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationDetails, decorator: Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociationDetails::Representation
       
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           hash :labels, as: 'labels'
           property :mirroring_deployment_group, as: 'mirroringDeploymentGroup'
           property :name, as: 'name'
@@ -1523,6 +1579,7 @@ module Google
           property :create_time, as: 'createTime'
           property :custom_intercept_profile, as: 'customInterceptProfile'
           property :custom_mirroring_profile, as: 'customMirroringProfile'
+          property :data_path_id, :numeric_string => true, as: 'dataPathId'
           property :description, as: 'description'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
@@ -1585,6 +1642,8 @@ module Google
       class ThreatPreventionProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :antivirus_overrides, as: 'antivirusOverrides', class: Google::Apis::NetworksecurityV1beta1::AntivirusOverride, decorator: Google::Apis::NetworksecurityV1beta1::AntivirusOverride::Representation
+      
           collection :severity_overrides, as: 'severityOverrides', class: Google::Apis::NetworksecurityV1beta1::SeverityOverride, decorator: Google::Apis::NetworksecurityV1beta1::SeverityOverride::Representation
       
           collection :threat_overrides, as: 'threatOverrides', class: Google::Apis::NetworksecurityV1beta1::ThreatOverride, decorator: Google::Apis::NetworksecurityV1beta1::ThreatOverride::Representation

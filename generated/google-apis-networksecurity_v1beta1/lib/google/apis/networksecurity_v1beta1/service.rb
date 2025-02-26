@@ -2345,6 +2345,196 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new BackendAuthenticationConfig in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource of the BackendAuthenticationConfig. Must be in
+        #   the format `projects/*/locations/`location``.
+        # @param [Google::Apis::NetworksecurityV1beta1::BackendAuthenticationConfig] backend_authentication_config_object
+        # @param [String] backend_authentication_config_id
+        #   Required. Short name of the BackendAuthenticationConfig resource to be created.
+        #   This value should be 1-63 characters long, containing only letters, numbers,
+        #   hyphens, and underscores, and should not start with a number. E.g. "backend-
+        #   auth-config".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_backend_authentication_config(parent, backend_authentication_config_object = nil, backend_authentication_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/backendAuthenticationConfigs', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::BackendAuthenticationConfig::Representation
+          command.request_object = backend_authentication_config_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['backendAuthenticationConfigId'] = backend_authentication_config_id unless backend_authentication_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single BackendAuthenticationConfig to BackendAuthenticationConfig.
+        # @param [String] name
+        #   Required. A name of the BackendAuthenticationConfig to delete. Must be in the
+        #   format `projects/*/locations/`location`/backendAuthenticationConfigs/*`.
+        # @param [String] etag
+        #   Optional. Etag of the resource. If this is provided, it must match the server'
+        #   s etag.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_backend_authentication_config(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single BackendAuthenticationConfig to
+        # BackendAuthenticationConfig.
+        # @param [String] name
+        #   Required. A name of the BackendAuthenticationConfig to get. Must be in the
+        #   format `projects/*/locations/`location`/backendAuthenticationConfigs/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::BackendAuthenticationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::BackendAuthenticationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_backend_authentication_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::BackendAuthenticationConfig::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::BackendAuthenticationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists BackendAuthenticationConfigs in a given project and location.
+        # @param [String] parent
+        #   Required. The project and location from which the BackendAuthenticationConfigs
+        #   should be listed, specified in the format `projects/*/locations/`location``.
+        # @param [Fixnum] page_size
+        #   Maximum number of BackendAuthenticationConfigs to return per call.
+        # @param [String] page_token
+        #   The value returned by the last `ListBackendAuthenticationConfigsResponse`
+        #   Indicates that this is a continuation of a prior `
+        #   ListBackendAuthenticationConfigs` call, and that the system should return the
+        #   next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::ListBackendAuthenticationConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::ListBackendAuthenticationConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_backend_authentication_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/backendAuthenticationConfigs', options)
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::ListBackendAuthenticationConfigsResponse::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::ListBackendAuthenticationConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single BackendAuthenticationConfig to
+        # BackendAuthenticationConfig.
+        # @param [String] name
+        #   Required. Name of the BackendAuthenticationConfig resource. It matches the
+        #   pattern `projects/*/locations/`location`/backendAuthenticationConfigs/`
+        #   backend_authentication_config``
+        # @param [Google::Apis::NetworksecurityV1beta1::BackendAuthenticationConfig] backend_authentication_config_object
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   BackendAuthenticationConfig resource by the update. The fields specified in
+        #   the update_mask are relative to the resource, not the full request. A field
+        #   will be overwritten if it is in the mask. If the user does not provide a mask
+        #   then all fields will be overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworksecurityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworksecurityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_backend_authentication_config(name, backend_authentication_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::NetworksecurityV1beta1::BackendAuthenticationConfig::Representation
+          command.request_object = backend_authentication_config_object
+          command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new ClientTlsPolicy in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the ClientTlsPolicy. Must be in the format `
@@ -4272,7 +4462,9 @@ module Google
         
         # Updates a single MirroringDeploymentGroup.
         # @param [String] name
-        #   Immutable. Identifier. Then name of the MirroringDeploymentGroup.
+        #   Immutable. Identifier. The resource name of this deployment group, for example:
+        #   `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See
+        #   https://google.aip.dev/122 for more details.
         # @param [Google::Apis::NetworksecurityV1beta1::MirroringDeploymentGroup] mirroring_deployment_group_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -4322,7 +4514,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new MirroringDeployment in a given project and location.
+        # Creates a deployment in a given project and location. See https://google.aip.
+        # dev/133.
         # @param [String] parent
         #   Required. Value for parent.
         # @param [Google::Apis::NetworksecurityV1beta1::MirroringDeployment] mirroring_deployment_object
@@ -4372,7 +4565,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single MirroringDeployment.
+        # Deletes a deployment. See https://google.aip.dev/135.
         # @param [String] name
         #   Required. Name of the resource
         # @param [String] request_id
@@ -4414,7 +4607,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single MirroringDeployment.
+        # Gets a specific deployment. See https://google.aip.dev/131.
         # @param [String] name
         #   Required. Name of the resource
         # @param [String] fields
@@ -4444,7 +4637,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists MirroringDeployments in a given project and location.
+        # Lists deployments in a given project and location. See https://google.aip.dev/
+        # 132.
         # @param [String] parent
         #   Required. Parent value for ListMirroringDeploymentsRequest
         # @param [String] filter
@@ -4487,9 +4681,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a single MirroringDeployment.
+        # Updates a deployment. See https://google.aip.dev/134.
         # @param [String] name
-        #   Immutable. Identifier. The name of the MirroringDeployment.
+        #   Immutable. Identifier. The resource name of this deployment, for example: `
+        #   projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See
+        #   https://google.aip.dev/122 for more details.
         # @param [Google::Apis::NetworksecurityV1beta1::MirroringDeployment] mirroring_deployment_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -4539,15 +4735,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new MirroringEndpointGroupAssociation in a given project and
-        # location.
+        # Creates an association in a given project and location. See https://google.aip.
+        # dev/133.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. Container (project and location) where the association will be
+        #   created, e.g. `projects/123456789/locations/global`.
         # @param [Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociation] mirroring_endpoint_group_association_object
         # @param [String] mirroring_endpoint_group_association_id
-        #   Optional. Id of the requesting object If auto-generating Id server-side,
-        #   remove this field and mirroring_endpoint_group_association_id from the
-        #   method_signature of Create RPC
+        #   Optional. ID for the new association. If not provided, the server will
+        #   generate a unique ID. The ID must be a valid RFC 1035 resource name. The ID
+        #   must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*
+        #   [a-z0-9])?`. The first character must be a lowercase letter, and all following
+        #   characters (except for the last character) must be a dash, lowercase letter,
+        #   or digit. The last character must be a
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -4590,9 +4790,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single MirroringEndpointGroupAssociation.
+        # Deletes a single association. See https://google.aip.dev/135.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Full resource name of the association to delete, e.g. projects/
+        #   123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-
+        #   association.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -4632,9 +4834,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single MirroringEndpointGroupAssociation.
+        # Gets a specific association. See https://google.aip.dev/131.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Full resource name of the association to get, e.g. projects/
+        #   123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-
+        #   association.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4662,18 +4866,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists MirroringEndpointGroupAssociations in a given project and location.
+        # Lists associations in a given project and location. See https://google.aip.dev/
+        # 132.
         # @param [String] parent
-        #   Required. Parent value for ListMirroringEndpointGroupAssociationsRequest
+        #   Required. Parent container (project and location) of the associations to list,
+        #   e.g. `projects/123456789/locations/global`.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. A filter expression that filters the results listed in the response.
+        #   See https://google.aip.dev/160.
         # @param [String] order_by
         #   Optional. Hint for how to order the results
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   If unspecified, server will pick an appropriate default. See https://google.
+        #   aip.dev/158.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results the server should return.
+        #   Optional. A token identifying a page of results the server should return. See
+        #   https://google.aip.dev/158.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4705,9 +4914,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a single MirroringEndpointGroupAssociation.
+        # Updates an association. See https://google.aip.dev/134.
         # @param [String] name
-        #   Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.
+        #   Immutable. Identifier. The resource name of this endpoint group association,
+        #   for example: `projects/123456789/locations/global/
+        #   mirroringEndpointGroupAssociations/my-eg-association`. See https://google.aip.
+        #   dev/122 for more details.
         # @param [Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroupAssociation] mirroring_endpoint_group_association_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -4721,11 +4933,8 @@ module Google
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the
-        #   MirroringEndpointGroupAssociation resource by the update. The fields specified
-        #   in the update_mask are relative to the resource, not the full request. A field
-        #   will be overwritten if it is in the mask. If the user does not provide a mask
-        #   then all fields will be overwritten.
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   association by the update. See https://google.aip.dev/161.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4757,7 +4966,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new MirroringEndpointGroup in a given project and location.
+        # Creates an endpoint group in a given project and location. See https://google.
+        # aip.dev/133.
         # @param [String] parent
         #   Required. Value for parent.
         # @param [Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroup] mirroring_endpoint_group_object
@@ -4807,7 +5017,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single MirroringEndpointGroup.
+        # Deletes an endpoint group. See https://google.aip.dev/135.
         # @param [String] name
         #   Required. Name of the resource
         # @param [String] request_id
@@ -4849,7 +5059,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single MirroringEndpointGroup.
+        # Gets a specific endpoint group. See https://google.aip.dev/131.
         # @param [String] name
         #   Required. Name of the resource
         # @param [String] fields
@@ -4879,7 +5089,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists MirroringEndpointGroups in a given project and location.
+        # Lists endpoint groups in a given project and location. See https://google.aip.
+        # dev/132.
         # @param [String] parent
         #   Required. Parent value for ListMirroringEndpointGroupsRequest
         # @param [String] filter
@@ -4922,9 +5133,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a single MirroringEndpointGroup.
+        # Updates an endpoint group. See https://google.aip.dev/134.
         # @param [String] name
-        #   Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.
+        #   Immutable. Identifier. The resource name of this endpoint group, for example: `
+        #   projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https:/
+        #   /google.aip.dev/122 for more details.
         # @param [Google::Apis::NetworksecurityV1beta1::MirroringEndpointGroup] mirroring_endpoint_group_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
