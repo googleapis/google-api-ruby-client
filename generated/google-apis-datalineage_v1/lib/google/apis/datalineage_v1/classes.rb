@@ -90,8 +90,8 @@ module Google
       class GoogleCloudDatacatalogLineageV1EntityReference
         include Google::Apis::Core::Hashable
       
-        # Required. [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/
-        # docs/fully-qualified-names) of the entity.
+        # Required. [Fully Qualified Name (FQN)](https://cloud.google.com/dataplex/docs/
+        # fully-qualified-names) of the entity.
         # Corresponds to the JSON property `fullyQualifiedName`
         # @return [String]
         attr_accessor :fully_qualified_name
@@ -356,12 +356,12 @@ module Google
       class GoogleCloudDatacatalogLineageV1Origin
         include Google::Apis::Core::Hashable
       
-        # If the source_type isn't CUSTOM, the value of this field should be a GCP
-        # resource name of the system, which reports lineage. The project and location
-        # parts of the resource name must match the project and location of the lineage
-        # resource being created. Examples: - ``source_type: COMPOSER, name: "projects/
-        # foo/locations/us/environments/bar"`` - ``source_type: BIGQUERY, name: "
-        # projects/foo/locations/eu"`` - ``source_type: CUSTOM, name: "
+        # If the source_type isn't CUSTOM, the value of this field should be a Google
+        # Cloud resource name of the system, which reports lineage. The project and
+        # location parts of the resource name must match the project and location of the
+        # lineage resource being created. Examples: - ``source_type: COMPOSER, name: "
+        # projects/foo/locations/us/environments/bar"`` - ``source_type: BIGQUERY, name:
+        # "projects/foo/locations/eu"`` - ``source_type: CUSTOM, name: "
         # myCustomIntegration"``
         # Corresponds to the JSON property `name`
         # @return [String]
