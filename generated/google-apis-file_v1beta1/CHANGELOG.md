@@ -1,8 +1,8 @@
 # Release history for google-apis-file_v1beta1
 
-### v0.53.0 (2025-01-19)
+### v0.53.0 (2025-02-26)
 
-* Regenerated from discovery document revision 20250106
+* Regenerated from discovery document revision 20250205
 * Regenerated using generator version 0.16.0
 
 ### v0.52.0 (2024-12-15)
