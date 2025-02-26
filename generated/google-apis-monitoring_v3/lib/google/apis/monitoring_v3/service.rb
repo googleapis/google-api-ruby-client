@@ -1623,8 +1623,8 @@ module Google
         # @param [String] filter
         #   Optional. Optional filter to restrict results to the given criteria. The
         #   following fields are supported. interval.start_time interval.end_timeFor
-        #   example: ``` interval.start_time > "2022-03-11T00:00:00-08:00" AND interval.
-        #   end_time < "2022-03-12T00:00:00-08:00" ```
+        #   example: interval.start_time > "2022-03-11T00:00:00-08:00" AND interval.
+        #   end_time < "2022-03-12T00:00:00-08:00"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return for a single query. The
         #   server may further constrain the maximum number of results returned in a
