@@ -112,9 +112,9 @@ module Google
       
         # Optional. Name of the Cloud Build Custom Worker Pool that should be used to
         # build the Cloud Run function. The format of this field is `projects/`project`/
-        # locations/`region`/workerPools/`workerPool`` where `project` and `region` are
-        # the project id and region respectively where the worker pool is defined and `
-        # workerPool` is the short name of the worker pool.
+        # locations/`region`/workerPools/`workerPool`` where ``project`` and ``region``
+        # are the project id and region respectively where the worker pool is defined
+        # and ``workerPool`` is the short name of the worker pool.
         # Corresponds to the JSON property `workerPool`
         # @return [String]
         attr_accessor :worker_pool
@@ -355,7 +355,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :args
       
-        # Base image for this container. Only supported for services. If set. it
+        # Base image for this container. Only supported for services. If set, it
         # indicates that the service is enrolled into automatic base image update.
         # Corresponds to the JSON property `baseImageUri`
         # @return [String]
@@ -911,12 +911,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Specifies the maximum desired number of tasks the execution should run at
-        # given time. Must be <= task_count. When the job is run, if this field is 0 or
-        # unset, the maximum possible value will be used for that execution. The actual
-        # number of tasks running in steady state will be less than this number when
-        # there are fewer tasks waiting to be completed remaining, i.e. when the work
-        # left to do is less than max parallelism.
+        # Optional. Specifies the maximum desired number of tasks the execution should
+        # run at given time. When the job is run, if this field is 0 or unset, the
+        # maximum possible value will be used for that execution. The actual number of
+        # tasks running in steady state will be less than this number when there are
+        # fewer tasks waiting to be completed remaining, i.e. when the work left to do
+        # is less than max parallelism.
         # Corresponds to the JSON property `parallelism`
         # @return [Fixnum]
         attr_accessor :parallelism
@@ -1176,6 +1176,71 @@ module Google
           @exported_image_digest = args[:exported_image_digest] if args.key?(:exported_image_digest)
           @status = args[:status] if args.key?(:status)
           @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # Holds a single instance split entry for the Worker. Allocations can be done to
+      # a specific Revision name, or pointing to the latest Ready Revision.
+      class GoogleCloudRunV2InstanceSplit
+        include Google::Apis::Core::Hashable
+      
+        # Specifies percent of the instance split to this Revision. This defaults to
+        # zero if unspecified.
+        # Corresponds to the JSON property `percent`
+        # @return [Fixnum]
+        attr_accessor :percent
+      
+        # Revision to which to assign this portion of instances, if split allocation is
+        # by revision.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        # The allocation type for this instance split.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percent = args[:percent] if args.key?(:percent)
+          @revision = args[:revision] if args.key?(:revision)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents the observed state of a single `InstanceSplit` entry.
+      class GoogleCloudRunV2InstanceSplitStatus
+        include Google::Apis::Core::Hashable
+      
+        # Specifies percent of the instance split to this Revision.
+        # Corresponds to the JSON property `percent`
+        # @return [Fixnum]
+        attr_accessor :percent
+      
+        # Revision to which this instance split is assigned.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        # The allocation type for this instance split.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percent = args[:percent] if args.key?(:percent)
+          @revision = args[:revision] if args.key?(:revision)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1533,6 +1598,32 @@ module Google
         end
       end
       
+      # Response message containing a list of WorkerPools.
+      class GoogleCloudRunV2ListWorkerPoolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token indicating there are more items than page_size. Use it in the next
+        # ListWorkerPools request to continue.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The resulting list of WorkerPools.
+        # Corresponds to the JSON property `workerPools`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2WorkerPool>]
+        attr_accessor :worker_pools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @worker_pools = args[:worker_pools] if args.key?(:worker_pools)
+        end
+      end
+      
       # Metadata represents the JSON encoded generated customer metadata.
       class GoogleCloudRunV2Metadata
         include Google::Apis::Core::Hashable
@@ -1810,6 +1901,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Email address of the authenticated creator.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
         # Output only. For a deleted resource, the deletion time. It is only populated
         # as a response to a Delete request.
         # Corresponds to the JSON property `deleteTime`
@@ -1990,6 +2086,7 @@ module Google
           @conditions = args[:conditions] if args.key?(:conditions)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
@@ -2422,7 +2519,7 @@ module Google
         attr_accessor :etag
       
         # Output only. For a deleted resource, the time after which it will be
-        # permamently deleted.
+        # permanently deleted.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
@@ -2515,7 +2612,7 @@ module Google
         # an existing one is updated, Cloud Run will asynchronously perform all
         # necessary steps to bring the Service to the desired serving state. This
         # process is called reconciliation. While reconciliation is in process, `
-        # observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri`
+        # observed_generation`, `latest_ready_revision`, `traffic_statuses`, and `uri`
         # will have transient values that might mismatch the intended state: Once
         # reconciliation is over (and this field is false), there are two possible
         # outcomes: reconciliation succeeded and the serving state matches the Service,
@@ -3428,6 +3525,448 @@ module Google
         end
       end
       
+      # WorkerPool acts as a top-level container that manages a set of configurations
+      # and revision templates which implement a pull-based workload. WorkerPool
+      # exists to provide a singular abstraction which can be access controlled,
+      # reasoned about, and which encapsulates software lifecycle decisions such as
+      # rollout policy and team resource ownership.
+      class GoogleCloudRunV2WorkerPool
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Unstructured key value map that may be set by external tools to
+        # store and arbitrary metadata. They are not queryable and should be preserved
+        # when modifying objects. Cloud Run API v2 does not support annotations with `
+        # run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `
+        # autoscaling.knative.dev` namespaces, and they will be rejected in new
+        # resources. All system annotations in v1 now have a corresponding field in v2
+        # WorkerPool. This field follows Kubernetes annotations' namespacing, limits,
+        # and rules.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Settings for Binary Authorization feature.
+        # Corresponds to the JSON property `binaryAuthorization`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization]
+        attr_accessor :binary_authorization
+      
+        # Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
+        # Output only. The Conditions of all other associated sub-resources. They
+        # contain additional diagnostics information in case the WorkerPool does not
+        # reach its Serving state. See comments in `reconciling` for additional
+        # information on reconciliation process in Cloud Run.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
+        attr_accessor :conditions
+      
+        # Output only. The creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Email address of the authenticated creator.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
+        # One or more custom audiences that you want this worker pool to support.
+        # Specify each custom audience as the full URL in a string. The custom audiences
+        # are encoded in the token and used to authenticate requests. For more
+        # information, see https://cloud.google.com/run/docs/configuring/custom-
+        # audiences.
+        # Corresponds to the JSON property `customAudiences`
+        # @return [Array<String>]
+        attr_accessor :custom_audiences
+      
+        # Output only. The deletion time. It is only populated as a response to a Delete
+        # request.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # User-provided description of the WorkerPool. This field currently has a 512-
+        # character limit.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. A system-generated fingerprint for this version of the resource.
+        # May be used to detect modification conflict during updates.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. For a deleted resource, the time after which it will be
+        # permamently deleted.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. A number that monotonically increases every time the user
+        # modifies the desired state. Please note that unlike v1, this is an int64 value.
+        # As with most Google APIs, its JSON representation will be a `string` instead
+        # of an `integer`.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Output only. Detailed status information for corresponding instance splits.
+        # See comments in `reconciling` for additional information on reconciliation
+        # process in Cloud Run.
+        # Corresponds to the JSON property `instanceSplitStatuses`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2InstanceSplitStatus>]
+        attr_accessor :instance_split_statuses
+      
+        # Optional. Specifies how to distribute instances over a collection of Revisions
+        # belonging to the WorkerPool. If instance split is empty or not provided,
+        # defaults to 100% instances assigned to the latest `Ready` Revision.
+        # Corresponds to the JSON property `instanceSplits`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2InstanceSplit>]
+        attr_accessor :instance_splits
+      
+        # Optional. Unstructured key value map that can be used to organize and
+        # categorize objects. User-provided labels are shared with Google's billing
+        # system, so they can be used to filter, or break down billing charges by team,
+        # component, environment, state, etc. For more information, visit https://cloud.
+        # google.com/resource-manager/docs/creating-managing-labels or https://cloud.
+        # google.com/run/docs/configuring/labels. Cloud Run API v2 does not support
+        # labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`
+        # , or `autoscaling.knative.dev` namespaces, and they will be rejected. All
+        # system labels in v1 now have a corresponding field in v2 WorkerPool.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Email address of the last authenticated modifier.
+        # Corresponds to the JSON property `lastModifier`
+        # @return [String]
+        attr_accessor :last_modifier
+      
+        # Output only. Name of the last created revision. See comments in `reconciling`
+        # for additional information on reconciliation process in Cloud Run.
+        # Corresponds to the JSON property `latestCreatedRevision`
+        # @return [String]
+        attr_accessor :latest_created_revision
+      
+        # Output only. Name of the latest revision that is serving traffic. See comments
+        # in `reconciling` for additional information on reconciliation process in Cloud
+        # Run.
+        # Corresponds to the JSON property `latestReadyRevision`
+        # @return [String]
+        attr_accessor :latest_ready_revision
+      
+        # Optional. The launch stage as defined by [Google Cloud Platform Launch Stages](
+        # https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `
+        # BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage
+        # to a preview stage on input to allow use of preview features in that stage. On
+        # read (or output), describes whether the resource uses preview features. For
+        # example, if ALPHA is provided as input, but only BETA and GA-level features
+        # are used, this field will be BETA on output.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
+        # The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this
+        # field is ignored, and instead composed from CreateWorkerPoolRequest.parent and
+        # CreateWorkerPoolRequest.worker_id. Format: projects/`project`/locations/`
+        # location`/workerPools/`worker_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The generation of this WorkerPool currently serving traffic. See
+        # comments in `reconciling` for additional information on reconciliation process
+        # in Cloud Run. Please note that unlike v1, this is an int64 value. As with most
+        # Google APIs, its JSON representation will be a `string` instead of an `integer`
+        # .
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # Output only. Returns true if the WorkerPool is currently being acted upon by
+        # the system to bring it into the desired state. When a new WorkerPool is
+        # created, or an existing one is updated, Cloud Run will asynchronously perform
+        # all necessary steps to bring the WorkerPool to the desired serving state. This
+        # process is called reconciliation. While reconciliation is in process, `
+        # observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri`
+        # will have transient values that might mismatch the intended state: Once
+        # reconciliation is over (and this field is false), there are two possible
+        # outcomes: reconciliation succeeded and the serving state matches the
+        # WorkerPool, or there was an error, and reconciliation failed. This state can
+        # be found in `terminal_condition.state`. If reconciliation succeeded, the
+        # following fields will match: `traffic` and `traffic_statuses`, `
+        # observed_generation` and `generation`, `latest_ready_revision` and `
+        # latest_created_revision`. If reconciliation failed, `traffic_statuses`, `
+        # observed_generation`, and `latest_ready_revision` will have the state of the
+        # last serving revision, or empty for newly created WorkerPools. Additional
+        # information on the failure can be found in `terminal_condition` and `
+        # conditions`.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # Worker pool scaling settings.
+        # Corresponds to the JSON property `scaling`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2WorkerPoolScaling]
+        attr_accessor :scaling
+      
+        # WorkerPoolRevisionTemplate describes the data a worker pool revision should
+        # have when created from a template.
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2WorkerPoolRevisionTemplate]
+        attr_accessor :template
+      
+        # Defines a status condition for a resource.
+        # Corresponds to the JSON property `terminalCondition`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
+        attr_accessor :terminal_condition
+      
+        # Output only. Server assigned unique identifier for the trigger. The value is a
+        # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
+          @custom_audiences = args[:custom_audiences] if args.key?(:custom_audiences)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @generation = args[:generation] if args.key?(:generation)
+          @instance_split_statuses = args[:instance_split_statuses] if args.key?(:instance_split_statuses)
+          @instance_splits = args[:instance_splits] if args.key?(:instance_splits)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_modifier = args[:last_modifier] if args.key?(:last_modifier)
+          @latest_created_revision = args[:latest_created_revision] if args.key?(:latest_created_revision)
+          @latest_ready_revision = args[:latest_ready_revision] if args.key?(:latest_ready_revision)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @name = args[:name] if args.key?(:name)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @scaling = args[:scaling] if args.key?(:scaling)
+          @template = args[:template] if args.key?(:template)
+          @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # WorkerPoolRevisionTemplate describes the data a worker pool revision should
+      # have when created from a template.
+      class GoogleCloudRunV2WorkerPoolRevisionTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Unstructured key value map that may be set by external tools to
+        # store and arbitrary metadata. They are not queryable and should be preserved
+        # when modifying objects. Cloud Run API v2 does not support annotations with `
+        # run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `
+        # autoscaling.knative.dev` namespaces, and they will be rejected. All system
+        # annotations in v1 now have a corresponding field in v2
+        # WorkerPoolRevisionTemplate. This field follows Kubernetes annotations'
+        # namespacing, limits, and rules.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Holds list of the containers that defines the unit of execution for this
+        # Revision.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
+        attr_accessor :containers
+      
+        # A reference to a customer managed encryption key (CMEK) to use to encrypt this
+        # container image. For more information, go to https://cloud.google.com/run/docs/
+        # securing/using-cmek
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [String]
+        attr_accessor :encryption_key
+      
+        # Optional. The action to take if the encryption key is revoked.
+        # Corresponds to the JSON property `encryptionKeyRevocationAction`
+        # @return [String]
+        attr_accessor :encryption_key_revocation_action
+      
+        # Optional. If encryption_key_revocation_action is SHUTDOWN, the duration before
+        # shutting down all instances. The minimum increment is 1 hour.
+        # Corresponds to the JSON property `encryptionKeyShutdownDuration`
+        # @return [String]
+        attr_accessor :encryption_key_shutdown_duration
+      
+        # Optional. Unstructured key value map that can be used to organize and
+        # categorize objects. User-provided labels are shared with Google's billing
+        # system, so they can be used to filter, or break down billing charges by team,
+        # component, environment, state, etc. For more information, visit https://cloud.
+        # google.com/resource-manager/docs/creating-managing-labels or https://cloud.
+        # google.com/run/docs/configuring/labels. Cloud Run API v2 does not support
+        # labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`
+        # , or `autoscaling.knative.dev` namespaces, and they will be rejected. All
+        # system labels in v1 now have a corresponding field in v2
+        # WorkerPoolRevisionTemplate.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Hardware constraints configuration.
+        # Corresponds to the JSON property `nodeSelector`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2NodeSelector]
+        attr_accessor :node_selector
+      
+        # Optional. The unique name for the revision. If this field is omitted, it will
+        # be automatically generated based on the WorkerPool name.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        # Optional. Email address of the IAM service account associated with the
+        # revision of the service. The service account represents the identity of the
+        # running revision, and determines what permissions the revision has. If not
+        # provided, the revision will use the project's default service account.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Settings for Cloud Service Mesh. For more information see https://cloud.google.
+        # com/service-mesh/docs/overview.
+        # Corresponds to the JSON property `serviceMesh`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh]
+        attr_accessor :service_mesh
+      
+        # Optional. Enable session affinity.
+        # Corresponds to the JSON property `sessionAffinity`
+        # @return [Boolean]
+        attr_accessor :session_affinity
+        alias_method :session_affinity?, :session_affinity
+      
+        # Optional. A list of Volumes to make available to containers.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
+        attr_accessor :volumes
+      
+        # VPC Access settings. For more information on sending traffic to a VPC network,
+        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        # Corresponds to the JSON property `vpcAccess`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
+        attr_accessor :vpc_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @containers = args[:containers] if args.key?(:containers)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
+          @encryption_key_shutdown_duration = args[:encryption_key_shutdown_duration] if args.key?(:encryption_key_shutdown_duration)
+          @labels = args[:labels] if args.key?(:labels)
+          @node_selector = args[:node_selector] if args.key?(:node_selector)
+          @revision = args[:revision] if args.key?(:revision)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @service_mesh = args[:service_mesh] if args.key?(:service_mesh)
+          @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
+          @volumes = args[:volumes] if args.key?(:volumes)
+          @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+        end
+      end
+      
+      # Worker pool scaling settings.
+      class GoogleCloudRunV2WorkerPoolScaling
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The total number of instances in manual scaling mode.
+        # Corresponds to the JSON property `manualInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :manual_instance_count
+      
+        # Optional. The maximum count of instances distributed among revisions based on
+        # the specified instance split percentages.
+        # Corresponds to the JSON property `maxInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :max_instance_count
+      
+        # Optional. A maximum percentage of instances that will be moved in each step of
+        # traffic split changes. When set to a positive value, the server will bring up,
+        # at most, that percentage of new instances at a time before moving traffic to
+        # them. After moving traffic, the server will bring down instances of the old
+        # revision. This can reduce a spike of total active instances during changes
+        # from one revision to another but specifying how many extra instances can be
+        # brought up at a time.
+        # Corresponds to the JSON property `maxSurge`
+        # @return [Fixnum]
+        attr_accessor :max_surge
+      
+        # Optional. A maximum percentage of instances that may be unavailable during
+        # changes from one revision to another. When set to a positive value, the server
+        # may bring down instances before bringing up new instances. This can prevent a
+        # spike of total active instances during changes from one revision by reducing
+        # the pool of instances before bringing up new ones. Some requests may be slow
+        # or fail to serve during the transition.
+        # Corresponds to the JSON property `maxUnavailable`
+        # @return [Fixnum]
+        attr_accessor :max_unavailable
+      
+        # Optional. The minimum count of instances distributed among revisions based on
+        # the specified instance split percentages.
+        # Corresponds to the JSON property `minInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :min_instance_count
+      
+        # Optional. The scaling mode for the worker pool.
+        # Corresponds to the JSON property `scalingMode`
+        # @return [String]
+        attr_accessor :scaling_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @manual_instance_count = args[:manual_instance_count] if args.key?(:manual_instance_count)
+          @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
+          @max_surge = args[:max_surge] if args.key?(:max_surge)
+          @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
+          @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
+          @scaling_mode = args[:scaling_mode] if args.key?(:scaling_mode)
+        end
+      end
+      
       # ApprovalConfig describes configuration for manual approval of a build.
       class GoogleDevtoolsCloudbuildV1ApprovalConfig
         include Google::Apis::Core::Hashable
@@ -3642,6 +4181,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Dependencies that the Cloud Build worker will fetch before executing
+        # user steps.
+        # Corresponds to the JSON property `dependencies`
+        # @return [Array<Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1Dependency>]
+        attr_accessor :dependencies
+      
         # A fatal problem encountered during the execution of the build.
         # Corresponds to the JSON property `failureInfo`
         # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FailureInfo]
@@ -3803,6 +4348,7 @@ module Google
           @available_secrets = args[:available_secrets] if args.key?(:available_secrets)
           @build_trigger_id = args[:build_trigger_id] if args.key?(:build_trigger_id)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dependencies = args[:dependencies] if args.key?(:dependencies)
           @failure_info = args[:failure_info] if args.key?(:failure_info)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
           @git_config = args[:git_config] if args.key?(:git_config)
@@ -3966,6 +4512,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1PoolOption]
         attr_accessor :pool
       
+        # Optional. Option to specify the Pub/Sub topic to receive build status updates.
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
         # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
         # @return [String]
@@ -4021,6 +4572,7 @@ module Google
           @logging = args[:logging] if args.key?(:logging)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool = args[:pool] if args.key?(:pool)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
@@ -4262,6 +4814,34 @@ module Google
         end
       end
       
+      # A dependency that the Cloud Build worker will fetch before executing user
+      # steps.
+      class GoogleDevtoolsCloudbuildV1Dependency
+        include Google::Apis::Core::Hashable
+      
+        # If set to true disable all dependency fetching (ignoring the default source as
+        # well).
+        # Corresponds to the JSON property `empty`
+        # @return [Boolean]
+        attr_accessor :empty
+        alias_method :empty?, :empty
+      
+        # Represents a git repository as a build dependency.
+        # Corresponds to the JSON property `gitSource`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GitSourceDependency]
+        attr_accessor :git_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @empty = args[:empty] if args.key?(:empty)
+          @git_source = args[:git_source] if args.key?(:git_source)
+        end
+      end
+      
       # This config defines the location of a source through Developer Connect.
       class GoogleDevtoolsCloudbuildV1DeveloperConnectConfig
         include Google::Apis::Core::Hashable
@@ -4395,6 +4975,78 @@ module Google
         def update!(**args)
           @dir = args[:dir] if args.key?(:dir)
           @revision = args[:revision] if args.key?(:revision)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Represents a git repository as a build dependency.
+      class GoogleDevtoolsCloudbuildV1GitSourceDependency
+        include Google::Apis::Core::Hashable
+      
+        # Optional. How much history should be fetched for the build (default 1, -1 for
+        # all history).
+        # Corresponds to the JSON property `depth`
+        # @return [Fixnum]
+        attr_accessor :depth
+      
+        # Required. Where should the files be placed on the worker.
+        # Corresponds to the JSON property `destPath`
+        # @return [String]
+        attr_accessor :dest_path
+      
+        # Optional. True if submodules should be fetched too (default false).
+        # Corresponds to the JSON property `recurseSubmodules`
+        # @return [Boolean]
+        attr_accessor :recurse_submodules
+        alias_method :recurse_submodules?, :recurse_submodules
+      
+        # A repository for a git source.
+        # Corresponds to the JSON property `repository`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GitSourceRepository]
+        attr_accessor :repository
+      
+        # Required. The revision that we will fetch the repo at.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @depth = args[:depth] if args.key?(:depth)
+          @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @recurse_submodules = args[:recurse_submodules] if args.key?(:recurse_submodules)
+          @repository = args[:repository] if args.key?(:repository)
+          @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
+      # A repository for a git source.
+      class GoogleDevtoolsCloudbuildV1GitSourceRepository
+        include Google::Apis::Core::Hashable
+      
+        # The Developer Connect Git repository link or the url that matches a repository
+        # link in the current project, formatted as `projects/*/locations/*/connections/*
+        # /gitRepositoryLink/*`
+        # Corresponds to the JSON property `developerConnect`
+        # @return [String]
+        attr_accessor :developer_connect
+      
+        # Location of the Git repository.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_connect = args[:developer_connect] if args.key?(:developer_connect)
           @url = args[:url] if args.key?(:url)
         end
       end

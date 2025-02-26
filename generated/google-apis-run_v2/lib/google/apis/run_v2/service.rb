@@ -1456,6 +1456,337 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new WorkerPool in a given project and location.
+        # @param [String] parent
+        #   Required. The location and project in which this worker pool should be created.
+        #   Format: projects/`project`/locations/`location`, where `project` can be
+        #   project id or number. Only lowercase characters, digits, and hyphens.
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2WorkerPool] google_cloud_run_v2_worker_pool_object
+        # @param [Boolean] validate_only
+        #   Optional. Indicates that the request should be validated and default values
+        #   populated, without persisting the request or creating any resources.
+        # @param [String] worker_pool_id
+        #   Required. The unique identifier for the WorkerPool. It must begin with letter,
+        #   and cannot end with hyphen; must contain fewer than 50 characters. The name of
+        #   the worker pool becomes `parent`/workerPools/`worker_pool_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_worker_pool(parent, google_cloud_run_v2_worker_pool_object = nil, validate_only: nil, worker_pool_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/workerPools', options)
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2WorkerPool::Representation
+          command.request_object = google_cloud_run_v2_worker_pool_object
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['workerPoolId'] = worker_pool_id unless worker_pool_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a WorkerPool.
+        # @param [String] name
+        #   Required. The full name of the WorkerPool. Format: projects/`project`/
+        #   locations/`location`/workerPools/`worker_pool`, where `project` can be project
+        #   id or number.
+        # @param [String] etag
+        #   A system-generated fingerprint for this version of the resource. May be used
+        #   to detect modification conflict during updates.
+        # @param [Boolean] validate_only
+        #   Optional. Indicates that the request should be validated without actually
+        #   deleting any resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_worker_pool(name, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about a WorkerPool.
+        # @param [String] name
+        #   Required. The full name of the WorkerPool. Format: projects/`project`/
+        #   locations/`location`/workerPools/`worker_pool`, where `project` can be project
+        #   id or number.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunV2WorkerPool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2WorkerPool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_worker_pool(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::RunV2::GoogleCloudRunV2WorkerPool::Representation
+          command.response_class = Google::Apis::RunV2::GoogleCloudRunV2WorkerPool
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the IAM Access Control policy currently in effect for the given Cloud Run
+        # WorkerPool. This result does not include any inherited policies.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_worker_pool_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::RunV2::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::RunV2::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists WorkerPools. Results are sorted by creation time, descending.
+        # @param [String] parent
+        #   Required. The location and project to list resources on. Location must be a
+        #   valid Google Cloud region, and cannot be the "-" wildcard. Format: projects/`
+        #   project`/locations/`location`, where `project` can be project id or number.
+        # @param [Fixnum] page_size
+        #   Maximum number of WorkerPools to return in this call.
+        # @param [String] page_token
+        #   A page token received from a previous call to ListWorkerPools. All other
+        #   parameters must match.
+        # @param [Boolean] show_deleted
+        #   If true, returns deleted (but unexpired) resources along with active ones.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunV2ListWorkerPoolsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ListWorkerPoolsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_worker_pools(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/workerPools', options)
+          command.response_representation = Google::Apis::RunV2::GoogleCloudRunV2ListWorkerPoolsResponse::Representation
+          command.response_class = Google::Apis::RunV2::GoogleCloudRunV2ListWorkerPoolsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a WorkerPool.
+        # @param [String] name
+        #   The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this
+        #   field is ignored, and instead composed from CreateWorkerPoolRequest.parent and
+        #   CreateWorkerPoolRequest.worker_id. Format: projects/`project`/locations/`
+        #   location`/workerPools/`worker_id`
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2WorkerPool] google_cloud_run_v2_worker_pool_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and if the WorkerPool does not exist, it will create
+        #   a new one. The caller must have 'run.workerpools.create' permissions if this
+        #   is set to true and the WorkerPool does not exist.
+        # @param [Boolean] force_new_revision
+        #   Optional. If set to true, a new revision will be created from the template
+        #   even if the system doesn't detect any changes from the previously deployed
+        #   revision. This may be useful for cases where the underlying resources need to
+        #   be recreated or reinitialized. For example if the image is specified by label,
+        #   but the underlying image digest has changed) or if the container performs
+        #   deployment initialization work that needs to be performed again.
+        # @param [String] update_mask
+        #   Optional. The list of fields to be updated.
+        # @param [Boolean] validate_only
+        #   Optional. Indicates that the request should be validated and default values
+        #   populated, without persisting the request or updating any resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_worker_pool(name, google_cloud_run_v2_worker_pool_object = nil, allow_missing: nil, force_new_revision: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2WorkerPool::Representation
+          command.request_object = google_cloud_run_v2_worker_pool_object
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['forceNewRevision'] = force_new_revision unless force_new_revision.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the IAM Access control policy for the specified WorkerPool. Overwrites
+        # any existing policy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::RunV2::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_worker_pool_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::RunV2::GoogleIamV1SetIamPolicyRequest::Representation
+          command.request_object = google_iam_v1_set_iam_policy_request_object
+          command.response_representation = Google::Apis::RunV2::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::RunV2::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified Project. There are no
+        # permissions required for making this API call.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::RunV2::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleIamV1TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleIamV1TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_project_location_worker_pool_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::RunV2::GoogleIamV1TestIamPermissionsRequest::Representation
+          command.request_object = google_iam_v1_test_iam_permissions_request_object
+          command.response_representation = Google::Apis::RunV2::GoogleIamV1TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::RunV2::GoogleIamV1TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a Revision.
         # @param [String] name
         #   Required. The name of the Revision to delete. Format: projects/`project`/
