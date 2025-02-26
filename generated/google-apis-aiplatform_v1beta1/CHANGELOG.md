@@ -1,8 +1,8 @@
 # Release history for google-apis-aiplatform_v1beta1
 
-### v0.37.0 (2025-01-26)
+### v0.37.0 (2025-02-26)
 
-* Regenerated from discovery document revision 20250114
+* Regenerated from discovery document revision 20250212
 * Regenerated using generator version 0.16.0
 
 ### v0.36.0 (2024-12-22)
