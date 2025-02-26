@@ -409,7 +409,7 @@ module Google
         #   Must end with a number or a letter. * Must be unique within the customer
         #   project / location
         # @param [String] request_id
-        #   Idempotent request UUID.
+        #   Optional. Idempotent request UUID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -447,7 +447,7 @@ module Google
         #   locations/`location_id`/clusters/`cluster_id`` where `location_id` refers to a
         #   GCP region.
         # @param [String] request_id
-        #   Idempotent request UUID.
+        #   Optional. Idempotent request UUID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -596,7 +596,7 @@ module Google
         #   location_id`/clusters/`cluster_id``
         # @param [Google::Apis::RedisV1beta1::Cluster] cluster_object
         # @param [String] request_id
-        #   Idempotent request UUID.
+        #   Optional. Idempotent request UUID.
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
         #   field. The elements of the repeated paths field may only include these fields
