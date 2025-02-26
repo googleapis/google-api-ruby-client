@@ -347,8 +347,8 @@ module Google
         # preferred deals. When true, bid requests from these nonguaranteed deals will
         # always be sent. When false, bid requests will be subject to regular
         # pretargeting configurations. Programmatic Guaranteed deals will always be sent
-        # to the bidder, regardless of the value for this flag. Auction packages are not
-        # impacted by this value and are subject to the regular pretargeting
+        # to the bidder, regardless of the value for this option. Auction packages are
+        # not impacted by this value and are subject to the regular pretargeting
         # configurations.
         # Corresponds to the JSON property `bypassNonguaranteedDealsPretargeting`
         # @return [Boolean]
@@ -715,9 +715,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :detected_attributes
       
-        # Output only. IDs of the detected categories, if any. The taxonomy in which the
+        # Output only. IDs of the detected categories. The taxonomy in which the
         # categories are expressed is specified by the detected_categories_taxonomy
-        # field. Can be used to filter the response of the creatives.list method.
+        # field. Use this in conjunction with BidRequest.bcat to avoid bidding on
+        # impressions where a given ad category is blocked, or to troubleshoot filtered
+        # bids. Can be used to filter the response of the creatives.list method.
         # Corresponds to the JSON property `detectedCategories`
         # @return [Array<String>]
         attr_accessor :detected_categories
