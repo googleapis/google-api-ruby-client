@@ -502,6 +502,27 @@ module Google
         end
       end
       
+      # Payload specific for Google Home products.
+      class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload
+        include Google::Apis::Core::Hashable
+      
+        # Optional. This identifies the structure ID on partner side that the
+        # subscription should be applied to. Only required when the partner requires
+        # structure mapping.
+        # Corresponds to the JSON property `partnerStructureId`
+        # @return [String]
+        attr_accessor :partner_structure_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partner_structure_id = args[:partner_structure_id] if args.key?(:partner_structure_id)
+        end
+      end
+      
       # Payload specific to Google One products.
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
         include Google::Apis::Core::Hashable
@@ -729,6 +750,11 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload
         include Google::Apis::Core::Hashable
       
+        # Payload specific for Google Home products.
+        # Corresponds to the JSON property `googleHomePayload`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload]
+        attr_accessor :google_home_payload
+      
         # Payload specific to Google One products.
         # Corresponds to the JSON property `googleOnePayload`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload]
@@ -745,6 +771,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @google_home_payload = args[:google_home_payload] if args.key?(:google_home_payload)
           @google_one_payload = args[:google_one_payload] if args.key?(:google_one_payload)
           @youtube_payload = args[:youtube_payload] if args.key?(:youtube_payload)
         end

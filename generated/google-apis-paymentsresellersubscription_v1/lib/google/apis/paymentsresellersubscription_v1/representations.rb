@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -433,6 +439,13 @@ module Google
         end
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partner_structure_id, as: 'partnerStructureId'
+        end
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -508,6 +521,8 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_home_payload, as: 'googleHomePayload', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload::Representation
+      
           property :google_one_payload, as: 'googleOnePayload', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload::Representation
       
           property :youtube_payload, as: 'youtubePayload', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload::Representation
