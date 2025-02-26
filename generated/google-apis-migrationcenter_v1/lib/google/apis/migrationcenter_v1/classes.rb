@@ -607,6 +607,19 @@ module Google
         end
       end
       
+      # Specific details for an AWS RDS database deployment.
+      class AwsRds
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Azure VM specific details.
       class AzureVmPlatformDetails
         include Google::Apis::Core::Hashable
@@ -1122,6 +1135,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1::DatabaseDeploymentDetailsAggregatedStats]
         attr_accessor :aggregated_stats
       
+        # Specific details for an AWS RDS database deployment.
+        # Corresponds to the JSON property `awsRds`
+        # @return [Google::Apis::MigrationcenterV1::AwsRds]
+        attr_accessor :aws_rds
+      
         # Optional. The database deployment edition.
         # Corresponds to the JSON property `edition`
         # @return [String]
@@ -1169,6 +1187,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aggregated_stats = args[:aggregated_stats] if args.key?(:aggregated_stats)
+          @aws_rds = args[:aws_rds] if args.key?(:aws_rds)
           @edition = args[:edition] if args.key?(:edition)
           @generated_id = args[:generated_id] if args.key?(:generated_id)
           @manual_unique_id = args[:manual_unique_id] if args.key?(:manual_unique_id)
@@ -1715,7 +1734,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :free_bytes
       
-        # Mount pount (Linux/Windows) or drive letter (Windows).
+        # Mount point (Linux/Windows) or drive letter (Windows).
         # Corresponds to the JSON property `mountPoint`
         # @return [String]
         attr_accessor :mount_point
@@ -1751,6 +1770,37 @@ module Google
         end
       end
       
+      # Disk partition details.
+      class DiskPartitionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Total free space of all partitions.
+        # Corresponds to the JSON property `freeSpaceBytes`
+        # @return [Fixnum]
+        attr_accessor :free_space_bytes
+      
+        # Disk partition list.
+        # Corresponds to the JSON property `partitions`
+        # @return [Google::Apis::MigrationcenterV1::DiskPartitionList]
+        attr_accessor :partitions
+      
+        # Output only. Total capacity of all partitions.
+        # Corresponds to the JSON property `totalCapacityBytes`
+        # @return [Fixnum]
+        attr_accessor :total_capacity_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @free_space_bytes = args[:free_space_bytes] if args.key?(:free_space_bytes)
+          @partitions = args[:partitions] if args.key?(:partitions)
+          @total_capacity_bytes = args[:total_capacity_bytes] if args.key?(:total_capacity_bytes)
+        end
+      end
+      
       # Disk partition list.
       class DiskPartitionList
         include Google::Apis::Core::Hashable
@@ -1774,19 +1824,21 @@ module Google
       class DiskUsageSample
         include Google::Apis::Core::Hashable
       
-        # Optional. Average IOPS sampled over a short window. Must be non-negative. Must
-        # be equal to the sum of read and write if one of them is positive. if both read
-        # and write are zero they are ignored.
+        # Optional. Average IOPS sampled over a short window. Must be non-negative. If
+        # read or write are set, the sum of read and write will override the value of
+        # the average_iops.
         # Corresponds to the JSON property `averageIops`
         # @return [Float]
         attr_accessor :average_iops
       
         # Optional. Average read IOPS sampled over a short window. Must be non-negative.
+        # If both read and write are zero they are ignored.
         # Corresponds to the JSON property `averageReadIops`
         # @return [Float]
         attr_accessor :average_read_iops
       
         # Optional. Average write IOPS sampled over a short window. Must be non-negative.
+        # If both read and write are zero they are ignored.
         # Corresponds to the JSON property `averageWriteIops`
         # @return [Float]
         attr_accessor :average_write_iops
@@ -3279,6 +3331,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Disk partition details.
+        # Corresponds to the JSON property `diskPartitions`
+        # @return [Google::Apis::MigrationcenterV1::DiskPartitionDetails]
+        attr_accessor :disk_partitions
+      
         # Details of machine disks.
         # Corresponds to the JSON property `disks`
         # @return [Google::Apis::MigrationcenterV1::MachineDiskDetails]
@@ -3328,6 +3385,7 @@ module Google
           @architecture = args[:architecture] if args.key?(:architecture)
           @core_count = args[:core_count] if args.key?(:core_count)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @disk_partitions = args[:disk_partitions] if args.key?(:disk_partitions)
           @disks = args[:disks] if args.key?(:disks)
           @guest_os = args[:guest_os] if args.key?(:guest_os)
           @machine_name = args[:machine_name] if args.key?(:machine_name)
