@@ -3020,8 +3020,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :metadata_fields
       
-        # Identifier. Unique name of the configuration using the form: `projects/`
-        # project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
+        # Identifier. Unique name of the configuration using one of the forms: `projects/
+        # `project_id`/locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` `
+        # organizations/`organization_id`/locations/global/vpcFlowLogsConfigs/`
+        # vpc_flow_logs_config_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
