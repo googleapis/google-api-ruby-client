@@ -174,6 +174,7 @@ module Google
           collection :access_points, as: 'accessPoints'
           property :capacity_gib, :numeric_string => true, as: 'capacityGib'
           property :create_time, as: 'createTime'
+          property :daos_version, as: 'daosVersion'
           property :deployment_type, as: 'deploymentType'
           property :description, as: 'description'
           property :directory_stripe_level, as: 'directoryStripeLevel'
