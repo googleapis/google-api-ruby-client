@@ -4099,7 +4099,10 @@ module Google
         end
         
         # Updates an existing custom bidding algorithm. Returns the updated custom
-        # bidding algorithm if successful.
+        # bidding algorithm if successful. *Warning*: Starting **April 1, 2025**,
+        # requests updating custom bidding algorithms that are assigned to line items
+        # will return an error. [Read more about this announced change](/display-video/
+        # api/deprecations#features.custom_bidding_floodlight).
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Output only. The unique ID of the custom bidding algorithm. Assigned by the
         #   system.
@@ -4177,7 +4180,10 @@ module Google
         end
         
         # Creates a new custom bidding script. Returns the newly created script if
-        # successful.
+        # successful. *Warning*: Starting **April 1, 2025**, requests updating custom
+        # bidding algorithms that are assigned to line items will return an error. [Read
+        # more about this announced change](/display-video/api/deprecations#features.
+        # custom_bidding_floodlight).
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Required. The ID of the custom bidding algorithm that owns the script.
         # @param [Google::Apis::DisplayvideoV2::CustomBiddingScript] custom_bidding_script_object
