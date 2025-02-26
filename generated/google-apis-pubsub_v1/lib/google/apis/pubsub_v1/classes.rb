@@ -930,6 +930,43 @@ module Google
         end
       end
       
+      # User-defined JavaScript function that can transform or filter a Pub/Sub
+      # message.
+      class JavaScriptUdf
+        include Google::Apis::Core::Hashable
+      
+        # Required. JavaScript code that contains a function `function_name` with the
+        # below signature: ``` /** * Transforms a Pub/Sub message. * @return `(Object)>|
+        # null)` - To * filter a message, return `null`. To transform a message return a
+        # map * with the following keys: * - (required) 'data' : `string` * - (optional)
+        # 'attributes' : `Object` * Returning empty `attributes` will remove all
+        # attributes from the * message. * * @param `(Object)>` Pub/Sub * message. Keys:
+        # * - (required) 'data' : `string` * - (required) 'attributes' : `Object` * * @
+        # param `Object` metadata - Pub/Sub message metadata. * Keys: * - (required) '
+        # message_id' : `string` * - (optional) 'publish_time': `string` YYYY-MM-DDTHH:
+        # MM:SSZ format * - (optional) 'ordering_key': `string` */ function (message,
+        # metadata) ` ` ```
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Required. Name of the JavasScript function that should applied to Pub/Sub
+        # messages.
+        # Corresponds to the JSON property `functionName`
+        # @return [String]
+        attr_accessor :function_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @function_name = args[:function_name] if args.key?(:function_name)
+        end
+      end
+      
       # Response for the `ListSchemaRevisions` method.
       class ListSchemaRevisionsResponse
         include Google::Apis::Core::Hashable
@@ -1147,6 +1184,34 @@ module Google
         def update!(**args)
           @allowed_persistence_regions = args[:allowed_persistence_regions] if args.key?(:allowed_persistence_regions)
           @enforce_in_transit = args[:enforce_in_transit] if args.key?(:enforce_in_transit)
+        end
+      end
+      
+      # All supported message transforms types.
+      class MessageTransform
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, the transform is enabled. If false, the transform is
+        # disabled and will not be applied to messages. Defaults to `true`.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # User-defined JavaScript function that can transform or filter a Pub/Sub
+        # message.
+        # Corresponds to the JSON property `javascriptUdf`
+        # @return [Google::Apis::PubsubV1::JavaScriptUdf]
+        attr_accessor :javascript_udf
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @javascript_udf = args[:javascript_udf] if args.key?(:javascript_udf)
         end
       end
       
@@ -2057,6 +2122,12 @@ module Google
         # @return [String]
         attr_accessor :message_retention_duration
       
+        # Optional. Transforms to be applied to messages before they are delivered to
+        # subscribers. Transforms are applied in the order specified.
+        # Corresponds to the JSON property `messageTransforms`
+        # @return [Array<Google::Apis::PubsubV1::MessageTransform>]
+        attr_accessor :message_transforms
+      
         # Required. The name of the subscription. It must have the format `"projects/`
         # project`/subscriptions/`subscription`"`. ``subscription`` must start with a
         # letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
@@ -2135,6 +2206,7 @@ module Google
           @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
           @message_retention_duration = args[:message_retention_duration] if args.key?(:message_retention_duration)
+          @message_transforms = args[:message_transforms] if args.key?(:message_transforms)
           @name = args[:name] if args.key?(:name)
           @push_config = args[:push_config] if args.key?(:push_config)
           @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
@@ -2259,6 +2331,12 @@ module Google
         # @return [Google::Apis::PubsubV1::MessageStoragePolicy]
         attr_accessor :message_storage_policy
       
+        # Optional. Transforms to be applied to messages published to the topic.
+        # Transforms are applied in the order specified.
+        # Corresponds to the JSON property `messageTransforms`
+        # @return [Array<Google::Apis::PubsubV1::MessageTransform>]
+        attr_accessor :message_transforms
+      
         # Required. The name of the topic. It must have the format `"projects/`project`/
         # topics/`topic`"`. ``topic`` must start with a letter, and contain only letters
         # (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`)
@@ -2296,6 +2374,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @message_retention_duration = args[:message_retention_duration] if args.key?(:message_retention_duration)
           @message_storage_policy = args[:message_storage_policy] if args.key?(:message_storage_policy)
+          @message_transforms = args[:message_transforms] if args.key?(:message_transforms)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @schema_settings = args[:schema_settings] if args.key?(:schema_settings)
