@@ -51,6 +51,50 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Uploads a file for Notebook LM to use. Creates a Source.
+        # @param [String] parent
+        #   Required. The parent resource where the sources will be created. Format:
+        #   projects/`project`/locations/`location`/notebooks/`notebook`
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileRequest] google_cloud_notebooklm_v1alpha_upload_source_file_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_medium(parent, google_cloud_notebooklm_v1alpha_upload_source_file_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'v1alpha/{+parent}/sources:uploadFile', options)
+          else
+            command = make_upload_command(:post, 'v1alpha/{+parent}/sources:uploadFile', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileRequest::Representation
+          command.request_object = google_cloud_notebooklm_v1alpha_upload_source_file_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUploadSourceFileResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a Project. Returns NOT_FOUND when the project is not yet created.
         # @param [String] name
         #   Required. Full resource name of a Project, such as `projects/`
@@ -477,9 +521,9 @@ module Google
         # method will also conduct location validation on the provided cmekConfig to
         # make sure the key is valid and can be used in the selected location.
         # @param [String] name
-        #   Required. Name of the CmekConfig, of the form `projects/`project`/locations/`
-        #   location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/`
-        #   cmekConfig``.
+        #   Required. The name of the CmekConfig of the form `projects/`project`/locations/
+        #   `location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/
+        #   `cmekConfig``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig] google_cloud_discoveryengine_v1alpha_cmek_config_object
         # @param [Boolean] set_default
         #   Set the following CmekConfig as the default to be used for child resources if
@@ -509,6 +553,37 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['setDefault'] = set_default unless set_default.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # De-provisions a CmekConfig.
+        # @param [String] name
+        #   Required. The resource name of the CmekConfig to delete, such as `projects/`
+        #   project`/locations/`location`/cmekConfigs/`cmek_config``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_cmek_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -584,9 +659,9 @@ module Google
         # method will also conduct location validation on the provided cmekConfig to
         # make sure the key is valid and can be used in the selected location.
         # @param [String] name
-        #   Required. Name of the CmekConfig, of the form `projects/`project`/locations/`
-        #   location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/`
-        #   cmekConfig``.
+        #   Required. The name of the CmekConfig of the form `projects/`project`/locations/
+        #   `location`/cmekConfig` or `projects/`project`/locations/`location`/cmekConfigs/
+        #   `cmekConfig``.
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig] google_cloud_discoveryengine_v1alpha_cmek_config_object
         # @param [Boolean] set_default
         #   Set the following CmekConfig as the default to be used for child resources if
@@ -3863,6 +3938,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetch Sitemaps in a DataStore.
+        # @param [String] parent
+        #   Required. Parent resource name of the SiteSearchEngine, such as `projects/*/
+        #   locations/*/collections/*/dataStores/*/siteSearchEngine`.
+        # @param [Array<String>, String] matcher_uris_matcher_uris
+        #   The Sitemap uris.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_collection_data_store_site_search_engine_sitemap(parent, matcher_uris_matcher_uris: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/sitemaps:fetch', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['matcher.urisMatcher.uris'] = matcher_uris_matcher_uris unless matcher_uris_matcher_uris.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates TargetSite in a batch.
         # @param [String] parent
         #   Required. The parent resource shared by all TargetSites being created. `
@@ -4394,6 +4503,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a WidgetConfig.
+        # @param [String] name
+        #   Required. Full WidgetConfig resource name. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   widgetConfigs/`widget_config_id``
+        # @param [Boolean] accept_cache
+        #   Optional. Whether it's acceptable to load the widget config from cache. If set
+        #   to true, recent changes on widget configs may take a few minutes to reflect on
+        #   the end user's view. It's recommended to set to true for maturely developed
+        #   widgets, as it improves widget performance. Set to false to see changes
+        #   reflected in prod right away, if your widget is under development.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_data_store_widget_config(name, accept_cache: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig
+          command.params['name'] = name unless name.nil?
+          command.query['acceptCache'] = accept_cache unless accept_cache.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Engine.
         # @param [String] parent
         #   Required. The parent resource name, such as `projects/`project`/locations/`
@@ -4716,6 +4864,45 @@ module Google
           command.request_object = google_cloud_discoveryengine_v1alpha_advanced_complete_query_request_object
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse
+          command.params['completionConfig'] = completion_config unless completion_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes the search history suggestion in an engine for a user. This will
+        # remove the suggestion from being returned in the AdvancedCompleteQueryResponse.
+        # recent_search_suggestions for this user. If the user searches the same
+        # suggestion again, the new history will override and suggest this suggestion
+        # again.
+        # @param [String] completion_config
+        #   Required. The completion_config of the parent engine resource name for which
+        #   the search history suggestion is to be removed, such as `projects/*/locations/
+        #   global/collections/default_collection/engines/*/completionConfig`.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemoveSuggestionRequest] google_cloud_discoveryengine_v1alpha_remove_suggestion_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_location_collection_engine_completion_config_suggestion(completion_config, google_cloud_discoveryengine_v1alpha_remove_suggestion_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+completionConfig}:removeSuggestion', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemoveSuggestionRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_remove_suggestion_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemoveSuggestionResponse
           command.params['completionConfig'] = completion_config unless completion_config.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -5748,6 +5935,45 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswer::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswer
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a WidgetConfig.
+        # @param [String] name
+        #   Required. Full WidgetConfig resource name. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   widgetConfigs/`widget_config_id``
+        # @param [Boolean] accept_cache
+        #   Optional. Whether it's acceptable to load the widget config from cache. If set
+        #   to true, recent changes on widget configs may take a few minutes to reflect on
+        #   the end user's view. It's recommended to set to true for maturely developed
+        #   widgets, as it improves widget performance. Set to false to see changes
+        #   reflected in prod right away, if your widget is under development.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_engine_widget_config(name, accept_cache: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig
+          command.params['name'] = name unless name.nil?
+          command.query['acceptCache'] = accept_cache unless accept_cache.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8825,6 +9051,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a WidgetConfig.
+        # @param [String] name
+        #   Required. Full WidgetConfig resource name. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   widgetConfigs/`widget_config_id``
+        # @param [Boolean] accept_cache
+        #   Optional. Whether it's acceptable to load the widget config from cache. If set
+        #   to true, recent changes on widget configs may take a few minutes to reflect on
+        #   the end user's view. It's recommended to set to true for maturely developed
+        #   widgets, as it improves widget performance. Set to false to see changes
+        #   reflected in prod right away, if your widget is under development.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_data_store_widget_config(name, accept_cache: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfig
+          command.params['name'] = name unless name.nil?
+          command.query['acceptCache'] = accept_cache unless accept_cache.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Evaluation. Upon creation, the evaluation will be automatically
         # triggered and begin execution.
         # @param [String] parent
@@ -9046,6 +9311,272 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCheckGroundingResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCheckGroundingResponse
           command.params['groundingConfig'] = grounding_config unless grounding_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Identity Mapping Store.
+        # @param [String] parent
+        #   Required. The parent collection resource name, such as `projects/`project`/
+        #   locations/`location``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityMappingStore] google_cloud_discoveryengine_v1alpha_identity_mapping_store_object
+        # @param [String] cmek_config_name
+        #   Resource name of the CmekConfig to use for protecting this Identity Mapping
+        #   Store.
+        # @param [Boolean] disable_cmek
+        #   Identity Mapping Store without CMEK protections. If a default CmekConfig is
+        #   set for the project, setting this field will override the default CmekConfig
+        #   as well.
+        # @param [String] identity_mapping_store_id
+        #   Required. The ID of the Identity Mapping Store to create. The ID must contain
+        #   only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 63 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityMappingStore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityMappingStore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_identity_mapping_store(parent, google_cloud_discoveryengine_v1alpha_identity_mapping_store_object = nil, cmek_config_name: nil, disable_cmek: nil, identity_mapping_store_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/identityMappingStores', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityMappingStore::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_identity_mapping_store_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityMappingStore::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityMappingStore
+          command.params['parent'] = parent unless parent.nil?
+          command.query['cmekConfigName'] = cmek_config_name unless cmek_config_name.nil?
+          command.query['disableCmek'] = disable_cmek unless disable_cmek.nil?
+          command.query['identityMappingStoreId'] = identity_mapping_store_id unless identity_mapping_store_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the Identity Mapping Store.
+        # @param [String] name
+        #   Required. The name of the Identity Mapping Store to delete. Format: `projects/`
+        #   project`/locations/`location`/identityMappingStores/`identityMappingStore``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_identity_mapping_store(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the Identity Mapping Store.
+        # @param [String] name
+        #   Required. The name of the Identity Mapping Store to get. Format: `projects/`
+        #   project`/locations/`location`/identityMappingStores/`identityMappingStore``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityMappingStore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityMappingStore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_identity_mapping_store(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityMappingStore::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityMappingStore
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports a list of Identity Mapping Entries to an Identity Mapping Store.
+        # @param [String] identity_mapping_store
+        #   Required. The name of the Identity Mapping Store to import Identity Mapping
+        #   Entries to. Format: `projects/`project`/locations/`location`/
+        #   identityMappingStores/`identityMappingStore``
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequest] google_cloud_discoveryengine_v1alpha_import_identity_mappings_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_project_location_identity_mapping_store_identity_mappings(identity_mapping_store, google_cloud_discoveryengine_v1alpha_import_identity_mappings_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+identityMappingStore}:importIdentityMappings', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_import_identity_mappings_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['identityMappingStore'] = identity_mapping_store unless identity_mapping_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all Identity Mapping Stores.
+        # @param [String] parent
+        #   Required. The parent of the Identity Mapping Stores to list. Format: `projects/
+        #   `project`/locations/`location``.
+        # @param [Fixnum] page_size
+        #   Maximum number of IdentityMappingStores to return. If unspecified, defaults to
+        #   100. The maximum allowed value is 1000. Values above 1000 will be coerced to
+        #   1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListIdentityMappingStores` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListIdentityMappingStores` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_identity_mapping_stores(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/identityMappingStores', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListIdentityMappingStoresResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Identity Mappings in an Identity Mapping Store.
+        # @param [String] identity_mapping_store
+        #   Required. The name of the Identity Mapping Store to list Identity Mapping
+        #   Entries in. Format: `projects/`project`/locations/`location`/
+        #   identityMappingStores/`identityMappingStore``
+        # @param [Fixnum] page_size
+        #   Maximum number of IdentityMappings to return. If unspecified, defaults to 2000.
+        #   The maximum allowed value is 10000. Values above 10000 will be coerced to
+        #   10000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListIdentityMappings` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListIdentityMappings` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListIdentityMappingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListIdentityMappingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_identity_mapping_store_identity_mappings(identity_mapping_store, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+identityMappingStore}:listIdentityMappings', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListIdentityMappingsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListIdentityMappingsResponse
+          command.params['identityMappingStore'] = identity_mapping_store unless identity_mapping_store.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Purges specified or all Identity Mapping Entries from an Identity Mapping
+        # Store.
+        # @param [String] identity_mapping_store
+        #   Required. The name of the Identity Mapping Store to purge Identity Mapping
+        #   Entries from. Format: `projects/`project`/locations/`location`/
+        #   identityMappingStores/`identityMappingStore``
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequest] google_cloud_discoveryengine_v1alpha_purge_identity_mappings_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_identity_mapping_store_identity_mappings(identity_mapping_store, google_cloud_discoveryengine_v1alpha_purge_identity_mappings_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+identityMappingStore}:purgeIdentityMappings', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_purge_identity_mappings_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['identityMappingStore'] = identity_mapping_store unless identity_mapping_store.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
