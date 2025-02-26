@@ -448,7 +448,7 @@ module Google
         #   syntax outlined in https://google.aip.dev/160.
         # @param [String] order_by
         #   The sorting order of the resources returned. Value should be a comma separated
-        #   list of fields. The default sorting oder is ascending. See https://google.aip.
+        #   list of fields. The default sorting order is ascending. See https://google.aip.
         #   dev/132#ordering.
         # @param [Fixnum] page_size
         #   Maximum number of functions to return per call. The largest allowed page_size
