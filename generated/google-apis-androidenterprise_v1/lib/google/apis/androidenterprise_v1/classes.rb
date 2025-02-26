@@ -911,6 +911,11 @@ module Google
         # @return [Array<Google::Apis::AndroidenterpriseV1::Administrator>]
         attr_accessor :administrator
       
+        # The type of the enterprise.
+        # Corresponds to the JSON property `enterpriseType`
+        # @return [String]
+        attr_accessor :enterprise_type
+      
         # Contains settings for Google-provided user authentication.
         # Corresponds to the JSON property `googleAuthenticationSettings`
         # @return [Google::Apis::AndroidenterpriseV1::GoogleAuthenticationSettings]
@@ -920,6 +925,11 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # The type of managed Google domain
+        # Corresponds to the JSON property `managedGoogleDomainType`
+        # @return [String]
+        attr_accessor :managed_google_domain_type
       
         # The name of the enterprise, for example, "Example, Inc".
         # Corresponds to the JSON property `name`
@@ -938,8 +948,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @administrator = args[:administrator] if args.key?(:administrator)
+          @enterprise_type = args[:enterprise_type] if args.key?(:enterprise_type)
           @google_authentication_settings = args[:google_authentication_settings] if args.key?(:google_authentication_settings)
           @id = args[:id] if args.key?(:id)
+          @managed_google_domain_type = args[:managed_google_domain_type] if args.key?(:managed_google_domain_type)
           @name = args[:name] if args.key?(:name)
           @primary_domain = args[:primary_domain] if args.key?(:primary_domain)
         end
