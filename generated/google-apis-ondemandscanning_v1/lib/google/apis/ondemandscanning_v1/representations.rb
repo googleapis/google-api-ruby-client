@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BaseImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BinarySourceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,7 +226,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GrafeasV1BaseImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GrafeasV1FileLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrafeasV1LayerDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -317,6 +335,12 @@ module Google
       end
       
       class Layer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LayerDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -661,6 +685,15 @@ module Google
         end
       end
       
+      class BaseImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :layer_count, as: 'layerCount'
+          property :name, as: 'name'
+          property :repository, as: 'repository'
+        end
+      end
+      
       class BinarySourceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -891,6 +924,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_path, as: 'filePath'
+          property :layer_details, as: 'layerDetails', class: Google::Apis::OndemandscanningV1::LayerDetails, decorator: Google::Apis::OndemandscanningV1::LayerDetails::Representation
+      
         end
       end
       
@@ -922,10 +957,32 @@ module Google
         end
       end
       
+      class GrafeasV1BaseImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :layer_count, as: 'layerCount'
+          property :name, as: 'name'
+          property :repository, as: 'repository'
+        end
+      end
+      
       class GrafeasV1FileLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_path, as: 'filePath'
+          property :layer_details, as: 'layerDetails', class: Google::Apis::OndemandscanningV1::GrafeasV1LayerDetails, decorator: Google::Apis::OndemandscanningV1::GrafeasV1LayerDetails::Representation
+      
+        end
+      end
+      
+      class GrafeasV1LayerDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :base_images, as: 'baseImages', class: Google::Apis::OndemandscanningV1::GrafeasV1BaseImage, decorator: Google::Apis::OndemandscanningV1::GrafeasV1BaseImage::Representation
+      
+          property :command, as: 'command'
+          property :diff_id, as: 'diffId'
+          property :index, as: 'index'
         end
       end
       
@@ -1084,6 +1141,17 @@ module Google
         end
       end
       
+      class LayerDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :base_images, as: 'baseImages', class: Google::Apis::OndemandscanningV1::BaseImage, decorator: Google::Apis::OndemandscanningV1::BaseImage::Representation
+      
+          property :command, as: 'command'
+          property :diff_id, as: 'diffId'
+          property :index, as: 'index'
+        end
+      end
+      
       class License
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1222,6 +1290,8 @@ module Google
           collection :file_location, as: 'fileLocation', class: Google::Apis::OndemandscanningV1::FileLocation, decorator: Google::Apis::OndemandscanningV1::FileLocation::Representation
       
           property :hash_digest, as: 'hashDigest'
+          property :layer_details, as: 'layerDetails', class: Google::Apis::OndemandscanningV1::LayerDetails, decorator: Google::Apis::OndemandscanningV1::LayerDetails::Representation
+      
           collection :licenses, as: 'licenses'
           property :maintainer, as: 'maintainer', class: Google::Apis::OndemandscanningV1::Maintainer, decorator: Google::Apis::OndemandscanningV1::Maintainer::Representation
       
