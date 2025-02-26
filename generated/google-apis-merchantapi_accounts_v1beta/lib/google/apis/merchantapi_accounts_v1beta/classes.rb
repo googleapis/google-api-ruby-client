@@ -86,7 +86,7 @@ module Google
         # @return [String]
         attr_accessor :account_name
       
-        # Whether this account contains adult content.
+        # Optional. Whether this account contains adult content.
         # Corresponds to the JSON property `adultContent`
         # @return [Boolean]
         attr_accessor :adult_content
@@ -220,6 +220,34 @@ module Google
         def update!(**args)
           @account_aggregation = args[:account_aggregation] if args.key?(:account_aggregation)
           @provider = args[:provider] if args.key?(:provider)
+        end
+      end
+      
+      # Instruction for adding a user to the account during creation.
+      class AddUser
+        include Google::Apis::Core::Hashable
+      
+        # The `User` message represents a user associated with a Merchant Center account.
+        # It is used to manage user permissions and access rights within the account.
+        # For more information, see [Frequently asked questions about people and access
+        # levels](//support.google.com/merchants/answer/12160472).
+        # Corresponds to the JSON property `user`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::User]
+        attr_accessor :user
+      
+        # Required. The email address of the user (for example, `john.doe@gmail.com`).
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user = args[:user] if args.key?(:user)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -567,6 +595,12 @@ module Google
         attr_accessor :service
       
         # Optional. Users to be added to the account.
+        # Corresponds to the JSON property `user`
+        # @return [Array<Google::Apis::MerchantapiAccountsV1beta::AddUser>]
+        attr_accessor :user
+      
+        # Optional. Users to be added to the account. This field is deprecated and will
+        # not exist after the API evolves out of beta. Use the `user` field instead.
         # Corresponds to the JSON property `users`
         # @return [Array<Google::Apis::MerchantapiAccountsV1beta::CreateUserRequest>]
         attr_accessor :users
@@ -579,6 +613,7 @@ module Google
         def update!(**args)
           @account = args[:account] if args.key?(:account)
           @service = args[:service] if args.key?(:service)
+          @user = args[:user] if args.key?(:user)
           @users = args[:users] if args.key?(:users)
         end
       end
@@ -1936,6 +1971,11 @@ module Google
         # @return [Array<Google::Apis::MerchantapiAccountsV1beta::ProductChange>]
         attr_accessor :changes
       
+        # The time at which the event was generated.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
         # The product expiration time. This field will not bet set if the notification
         # is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
@@ -1973,6 +2013,7 @@ module Google
           @account = args[:account] if args.key?(:account)
           @attribute = args[:attribute] if args.key?(:attribute)
           @changes = args[:changes] if args.key?(:changes)
+          @event_time = args[:event_time] if args.key?(:event_time)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @managing_account = args[:managing_account] if args.key?(:managing_account)
           @resource = args[:resource] if args.key?(:resource)
@@ -1986,7 +2027,9 @@ module Google
       # example of this is the [Free product listings](https://support.google.com/
       # merchants/topic/9240261?ref_topic=7257954,7259405,&sjid=796648681813264022-EU)
       # program, which enables products from a merchant's store to be shown across
-      # Google for free.
+      # Google for free. The following list is the available set of program resource
+      # IDs accessible through the API: * `free-listings` * `shopping-ads` * `youtube-
+      # shopping-checkout`
       class Program
         include Google::Apis::Core::Hashable
       
@@ -2290,7 +2333,7 @@ module Google
         end
       end
       
-      # Next: 5
+      # 
       class SeasonalOverride
         include Google::Apis::Core::Hashable
       
@@ -2328,6 +2371,23 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::Policy]
         attr_accessor :policy
       
+        # Number of days (from the delivery date) that the product can be returned.
+        # Corresponds to the JSON property `returnDays`
+        # @return [Fixnum]
+        attr_accessor :return_days
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `returnUntilDate`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Date]
+        attr_accessor :return_until_date
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2338,6 +2398,8 @@ module Google
           @end = args[:end] if args.key?(:end)
           @label = args[:label] if args.key?(:label)
           @policy = args[:policy] if args.key?(:policy)
+          @return_days = args[:return_days] if args.key?(:return_days)
+          @return_until_date = args[:return_until_date] if args.key?(:return_until_date)
         end
       end
       
@@ -2873,7 +2935,7 @@ module Google
       class User
         include Google::Apis::Core::Hashable
       
-        # Optional. The [access rights](https://support.google.com/merchants/answer/
+        # Required. The [access rights](https://support.google.com/merchants/answer/
         # 12160472?sjid=6789834943175119429-EU#accesstypes) the user has.
         # Corresponds to the JSON property `accessRights`
         # @return [Array<String>]

@@ -156,11 +156,18 @@ module Google
         # the request such as page size or filters. This is not just listing the sub-
         # accounts of an MCA, but all accounts the calling user has access to including
         # other MCAs, linked accounts, standalone accounts and so on. If no filter is
-        # provided, then it returns accounts the user is directly added to.
+        # provided, then it returns all the accounts the user has access to. This method
+        # is eventually consistent, meaning changes such as creating, updating an
+        # account or a change of relationships between accounts may not show up in the
+        # results immediately. Instead, these changes propagate over a short period,
+        # after which the updated information can match the associated predicates. That
+        # means, that searching by account name might not return a recently changed
+        # account even though it satisfies the predicate.
         # @param [String] filter
-        #   Optional. Returns only accounts that match the [filter](/merchant/api/guides/
-        #   accounts/filter). For more details, see the [filter syntax reference](/
-        #   merchant/api/guides/accounts/filter-syntax).
+        #   Optional. Returns only accounts that match the [filter](https://developers.
+        #   google.com/merchant/api/guides/accounts/filter). For more details, see the [
+        #   filter syntax reference](https://developers.google.com/merchant/api/guides/
+        #   accounts/filter-syntax).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of accounts to return. The service may return
         #   fewer than this value. If unspecified, at most 250 accounts are returned. The
