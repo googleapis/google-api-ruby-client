@@ -636,6 +636,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # User-defined URLs for accessing content published by this CertificateAuthority.
+        # Corresponds to the JSON property `userDefinedAccessUrls`
+        # @return [Google::Apis::PrivatecaV1::UserDefinedAccessUrls]
+        attr_accessor :user_defined_access_urls
+      
         def initialize(**args)
            update!(**args)
         end
@@ -661,6 +666,7 @@ module Google
           @tier = args[:tier] if args.key?(:tier)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @user_defined_access_urls = args[:user_defined_access_urls] if args.key?(:user_defined_access_urls)
         end
       end
       
@@ -1387,6 +1393,16 @@ module Google
         # @return [Array<Google::Apis::PrivatecaV1::AllowedKeyType>]
         attr_accessor :allowed_key_types
       
+        # Optional. The duration to backdate all certificates issued from this CaPool.
+        # If not set, the certificates will be issued with a not_before_time of the
+        # issuance time (i.e. the current time). If set, the certificates will be issued
+        # with a not_before_time of the issuance time minus the backdate_duration. The
+        # not_after_time will be adjusted to preserve the requested lifetime. The
+        # backdate_duration must be less than or equal to 48 hours.
+        # Corresponds to the JSON property `backdateDuration`
+        # @return [String]
+        attr_accessor :backdate_duration
+      
         # An X509Parameters is used to describe certain fields of an X.509 certificate,
         # such as the key usage fields, fields specific to CA certificates, certificate
         # policy extensions and custom extensions.
@@ -1421,6 +1437,7 @@ module Google
         def update!(**args)
           @allowed_issuance_modes = args[:allowed_issuance_modes] if args.key?(:allowed_issuance_modes)
           @allowed_key_types = args[:allowed_key_types] if args.key?(:allowed_key_types)
+          @backdate_duration = args[:backdate_duration] if args.key?(:backdate_duration)
           @baseline_values = args[:baseline_values] if args.key?(:baseline_values)
           @identity_constraints = args[:identity_constraints] if args.key?(:identity_constraints)
           @maximum_lifetime = args[:maximum_lifetime] if args.key?(:maximum_lifetime)
@@ -2795,6 +2812,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # User-defined URLs for accessing content published by this CertificateAuthority.
+      class UserDefinedAccessUrls
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of URLs where the issuer CA certificate may be downloaded,
+        # which appears in the "Authority Information Access" extension in the
+        # certificate. If specified, the default GCS URLs will be omitted.
+        # Corresponds to the JSON property `aiaIssuingCertificateUrls`
+        # @return [Array<String>]
+        attr_accessor :aia_issuing_certificate_urls
+      
+        # Optional. A list of URLs where to obtain CRL information, i.e. the
+        # DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#
+        # section-4.2.1.13. If specified, the default GCS URLs will be omitted.
+        # Corresponds to the JSON property `crlAccessUrls`
+        # @return [Array<String>]
+        attr_accessor :crl_access_urls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aia_issuing_certificate_urls = args[:aia_issuing_certificate_urls] if args.key?(:aia_issuing_certificate_urls)
+          @crl_access_urls = args[:crl_access_urls] if args.key?(:crl_access_urls)
         end
       end
       
