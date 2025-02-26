@@ -590,7 +590,7 @@ module Google
       # inside of the image's original bounding rectangle. - If the offset is negative
       # or greater than 1, the corresponding edge of crop rectangle is positioned
       # outside of the image's original bounding rectangle. - If all offsets and
-      # rotation angle are 0, the image is not cropped.
+      # rotation angles are 0, the image is not cropped.
       class CropProperties
         include Google::Apis::Core::Hashable
       
@@ -1195,7 +1195,7 @@ module Google
       
         # Indicates whether DocumentStyle margin_header, SectionStyle margin_header and
         # DocumentStyle margin_footer, SectionStyle margin_footer are respected. When
-        # false, the default values in the Docs editor for header and footer margin are
+        # false, the default values in the Docs editor for header and footer margin is
         # used. This property is read-only.
         # Corresponds to the JSON property `useCustomHeaderFooterMargins`
         # @return [Boolean]
@@ -2078,7 +2078,7 @@ module Google
         # inside of the image's original bounding rectangle. - If the offset is negative
         # or greater than 1, the corresponding edge of crop rectangle is positioned
         # outside of the image's original bounding rectangle. - If all offsets and
-        # rotation angle are 0, the image is not cropped.
+        # rotation angles are 0, the image is not cropped.
         # Corresponds to the JSON property `cropProperties`
         # @return [Google::Apis::DocsV1::CropProperties]
         attr_accessor :crop_properties
@@ -3073,7 +3073,7 @@ module Google
         attr_accessor :glyph_format
       
         # A custom glyph symbol used by bullets when paragraphs at this level of nesting
-        # are unordered. The glyph symbol replaces placeholders within the glyph_format.
+        # is unordered. The glyph symbol replaces placeholders within the glyph_format.
         # For example, if the glyph_symbol is the solid circle corresponding to Unicode
         # U+25cf code point and the glyph_format is `%0`, the rendered glyph would be
         # the solid circle.
@@ -3081,13 +3081,13 @@ module Google
         # @return [String]
         attr_accessor :glyph_symbol
       
-        # The type of glyph used by bullets when paragraphs at this level of nesting are
+        # The type of glyph used by bullets when paragraphs at this level of nesting is
         # ordered. The glyph type determines the type of glyph used to replace
         # placeholders within the glyph_format when paragraphs at this level of nesting
         # are ordered. For example, if the nesting level is 0, the glyph_format is `%0.`
         # and the glyph type is DECIMAL, then the rendered glyph would replace the
-        # placeholder `%0` in the glyph format with a number corresponding to list item'
-        # s order within the list.
+        # placeholder `%0` in the glyph format with a number corresponding to the list
+        # item's order within the list.
         # Corresponds to the JSON property `glyphType`
         # @return [String]
         attr_accessor :glyph_type
