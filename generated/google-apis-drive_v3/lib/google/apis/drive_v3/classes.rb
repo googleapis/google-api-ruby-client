@@ -1540,6 +1540,13 @@ module Google
         # @return [Google::Apis::DriveV3::File::ImageMediaMetadata]
         attr_accessor :image_media_metadata
       
+        # Whether this file has inherited permissions disabled. Inherited permissions
+        # are enabled by default.
+        # Corresponds to the JSON property `inheritedPermissionsDisabled`
+        # @return [Boolean]
+        attr_accessor :inherited_permissions_disabled
+        alias_method :inherited_permissions_disabled?, :inherited_permissions_disabled
+      
         # Output only. Whether the file was created or opened by the requesting app.
         # Corresponds to the JSON property `isAppAuthorized`
         # @return [Boolean]
@@ -1837,6 +1844,7 @@ module Google
           @icon_link = args[:icon_link] if args.key?(:icon_link)
           @id = args[:id] if args.key?(:id)
           @image_media_metadata = args[:image_media_metadata] if args.key?(:image_media_metadata)
+          @inherited_permissions_disabled = args[:inherited_permissions_disabled] if args.key?(:inherited_permissions_disabled)
           @is_app_authorized = args[:is_app_authorized] if args.key?(:is_app_authorized)
           @kind = args[:kind] if args.key?(:kind)
           @label_info = args[:label_info] if args.key?(:label_info)
@@ -1965,6 +1973,12 @@ module Google
           attr_accessor :can_delete_children
           alias_method :can_delete_children?, :can_delete_children
         
+          # Whether a user can disable inherited permissions.
+          # Corresponds to the JSON property `canDisableInheritedPermissions`
+          # @return [Boolean]
+          attr_accessor :can_disable_inherited_permissions
+          alias_method :can_disable_inherited_permissions?, :can_disable_inherited_permissions
+        
           # Output only. Whether the current user can download this file.
           # Corresponds to the JSON property `canDownload`
           # @return [Boolean]
@@ -1978,6 +1992,12 @@ module Google
           # @return [Boolean]
           attr_accessor :can_edit
           alias_method :can_edit?, :can_edit
+        
+          # Whether a user can re-enable inherited permissions.
+          # Corresponds to the JSON property `canEnableInheritedPermissions`
+          # @return [Boolean]
+          attr_accessor :can_enable_inherited_permissions
+          alias_method :can_enable_inherited_permissions?, :can_enable_inherited_permissions
         
           # Output only. Whether the current user can list the children of this folder.
           # This is always false when the item is not a folder.
@@ -2189,8 +2209,10 @@ module Google
             @can_copy = args[:can_copy] if args.key?(:can_copy)
             @can_delete = args[:can_delete] if args.key?(:can_delete)
             @can_delete_children = args[:can_delete_children] if args.key?(:can_delete_children)
+            @can_disable_inherited_permissions = args[:can_disable_inherited_permissions] if args.key?(:can_disable_inherited_permissions)
             @can_download = args[:can_download] if args.key?(:can_download)
             @can_edit = args[:can_edit] if args.key?(:can_edit)
+            @can_enable_inherited_permissions = args[:can_enable_inherited_permissions] if args.key?(:can_enable_inherited_permissions)
             @can_list_children = args[:can_list_children] if args.key?(:can_list_children)
             @can_modify_content = args[:can_modify_content] if args.key?(:can_modify_content)
             @can_modify_content_restriction = args[:can_modify_content_restriction] if args.key?(:can_modify_content_restriction)
@@ -3112,6 +3134,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # When true, only organizers, owners, and users with permissions added directly
+        # on the item can access it.
+        # Corresponds to the JSON property `inheritedPermissionsDisabled`
+        # @return [Boolean]
+        attr_accessor :inherited_permissions_disabled
+        alias_method :inherited_permissions_disabled?, :inherited_permissions_disabled
+      
         # Output only. Identifies what kind of resource this is. Value: the fixed string
         # `"drive#permission"`.
         # Corresponds to the JSON property `kind`
@@ -3125,9 +3154,8 @@ module Google
         attr_accessor :pending_owner
         alias_method :pending_owner?, :pending_owner
       
-        # Output only. Details of whether the permissions on this shared drive item are
-        # inherited or directly on this item. This is an output-only field which is
-        # present only for shared drive items.
+        # Output only. Details of whether the permissions on this item are inherited or
+        # directly on this item.
         # Corresponds to the JSON property `permissionDetails`
         # @return [Array<Google::Apis::DriveV3::Permission::PermissionDetail>]
         attr_accessor :permission_details
@@ -3159,7 +3187,11 @@ module Google
         attr_accessor :type
       
         # Indicates the view for this permission. Only populated for permissions that
-        # belong to a view. 'published' is the only supported value.
+        # belong to a view. published and metadata are the only supported values. -
+        # published: The permission's role is published_reader. - metadata: The item is
+        # only visible to the metadata view because the item has limited access and the
+        # scope has at least read access to the parent. Note: The metadata view is
+        # currently only supported on folders.
         # Corresponds to the JSON property `view`
         # @return [String]
         attr_accessor :view
@@ -3177,6 +3209,7 @@ module Google
           @email_address = args[:email_address] if args.key?(:email_address)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @id = args[:id] if args.key?(:id)
+          @inherited_permissions_disabled = args[:inherited_permissions_disabled] if args.key?(:inherited_permissions_disabled)
           @kind = args[:kind] if args.key?(:kind)
           @pending_owner = args[:pending_owner] if args.key?(:pending_owner)
           @permission_details = args[:permission_details] if args.key?(:permission_details)
@@ -3199,7 +3232,7 @@ module Google
           alias_method :inherited?, :inherited
         
           # Output only. The ID of the item from which this permission is inherited. This
-          # is an output-only field.
+          # is only populated for items in shared drives.
           # Corresponds to the JSON property `inheritedFrom`
           # @return [String]
           attr_accessor :inherited_from
