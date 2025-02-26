@@ -8563,7 +8563,7 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # Required. The client secret provided by the 3rd party platform.
+        # Optional. The client secret provided by the 3rd party platform.
         # Corresponds to the JSON property `clientSecret`
         # @return [String]
         attr_accessor :client_secret
@@ -12396,7 +12396,7 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # Required. The client secret provided by the 3rd party platform.
+        # Optional. The client secret provided by the 3rd party platform.
         # Corresponds to the JSON property `clientSecret`
         # @return [String]
         attr_accessor :client_secret
@@ -19267,9 +19267,9 @@ module Google
         # Dialogflow only uses this to determine which conversations were handed off to
         # a human agent for measurement purposes. What else to do with this signal is up
         # to you and your handoff procedures. You may set this, for example: * In the
-        # entry fulfillment of a CX Page if entering the page indicates something went
-        # extremely wrong in the conversation. * In a webhook response when you
-        # determine that the customer issue can only be handled by a human.
+        # entry fulfillment of a Dialogflow CX Page if entering the page indicates
+        # something went extremely wrong in the conversation. * In a webhook response
+        # when you determine that the customer issue can only be handled by a human.
         # Corresponds to the JSON property `liveAgentHandoff`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff]
         attr_accessor :live_agent_handoff
@@ -19328,9 +19328,9 @@ module Google
       # Dialogflow only uses this to determine which conversations were handed off to
       # a human agent for measurement purposes. What else to do with this signal is up
       # to you and your handoff procedures. You may set this, for example: * In the
-      # entry fulfillment of a CX Page if entering the page indicates something went
-      # extremely wrong in the conversation. * In a webhook response when you
-      # determine that the customer issue can only be handled by a human.
+      # entry fulfillment of a Dialogflow CX Page if entering the page indicates
+      # something went extremely wrong in the conversation. * In a webhook response
+      # when you determine that the customer issue can only be handled by a human.
       class GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff
         include Google::Apis::Core::Hashable
       
