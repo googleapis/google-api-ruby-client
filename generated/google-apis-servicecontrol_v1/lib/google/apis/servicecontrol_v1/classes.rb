@@ -1961,6 +1961,13 @@ module Google
         # @return [String]
         attr_accessor :method_prop
       
+        # The values from Origin header from the HTTP request, such as "https://console.
+        # cloud.google.com". Modern browsers can only have one origin. Special browsers
+        # and/or HTTP clients may require multiple origins.
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
         # The HTTP URL path, excluding the query parameters.
         # Corresponds to the JSON property `path`
         # @return [String]
@@ -2013,6 +2020,7 @@ module Google
           @host = args[:host] if args.key?(:host)
           @id = args[:id] if args.key?(:id)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @origin = args[:origin] if args.key?(:origin)
           @path = args[:path] if args.key?(:path)
           @protocol = args[:protocol] if args.key?(:protocol)
           @query = args[:query] if args.key?(:query)
