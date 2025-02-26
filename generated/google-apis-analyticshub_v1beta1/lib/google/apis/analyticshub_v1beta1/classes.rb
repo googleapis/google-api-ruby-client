@@ -454,7 +454,7 @@ module Google
       class GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset
         include Google::Apis::Core::Hashable
       
-        # Contains the reference that identifies a destination bigquery dataset.
+        # Required. A reference that identifies the destination dataset.
         # Corresponds to the JSON property `datasetReference`
         # @return [Google::Apis::AnalyticshubV1beta1::GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference]
         attr_accessor :dataset_reference
@@ -497,7 +497,7 @@ module Google
         end
       end
       
-      # Contains the reference that identifies a destination bigquery dataset.
+      # 
       class GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference
         include Google::Apis::Core::Hashable
       
@@ -1154,6 +1154,13 @@ module Google
         # @return [String]
         attr_accessor :listing
       
+        # Output only. By default, false. If true, the Subscriber agreed to the email
+        # sharing mandate that is enabled for DataExchange/Listing.
+        # Corresponds to the JSON property `logLinkedDatasetQueryUserEmail`
+        # @return [Boolean]
+        attr_accessor :log_linked_dataset_query_user_email
+        alias_method :log_linked_dataset_query_user_email?, :log_linked_dataset_query_user_email
+      
         # Output only. The resource name of the subscription. e.g. `projects/myproject/
         # locations/US/subscriptions/123`.
         # Corresponds to the JSON property `name`
@@ -1198,6 +1205,7 @@ module Google
           @linked_dataset_map = args[:linked_dataset_map] if args.key?(:linked_dataset_map)
           @linked_resources = args[:linked_resources] if args.key?(:linked_resources)
           @listing = args[:listing] if args.key?(:listing)
+          @log_linked_dataset_query_user_email = args[:log_linked_dataset_query_user_email] if args.key?(:log_linked_dataset_query_user_email)
           @name = args[:name] if args.key?(:name)
           @organization_display_name = args[:organization_display_name] if args.key?(:organization_display_name)
           @organization_id = args[:organization_id] if args.key?(:organization_id)
