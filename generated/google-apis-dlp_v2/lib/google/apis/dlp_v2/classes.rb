@@ -3840,6 +3840,13 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation]
         attr_accessor :other_cloud_starting_location
       
+        # Configure processing location for discovery and inspection. For example, image
+        # OCR is only provided in limited regions but configuring ProcessingLocation
+        # will redirect OCR to a location where OCR is provided.
+        # Corresponds to the JSON property `processingLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ProcessingLocation]
+        attr_accessor :processing_location
+      
         # Required. A status for this configuration.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -3870,6 +3877,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @org_config = args[:org_config] if args.key?(:org_config)
           @other_cloud_starting_location = args[:other_cloud_starting_location] if args.key?(:other_cloud_starting_location)
+          @processing_location = args[:processing_location] if args.key?(:processing_location)
           @status = args[:status] if args.key?(:status)
           @targets = args[:targets] if args.key?(:targets)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -4180,6 +4188,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SecretsDiscoveryTarget]
         attr_accessor :secrets_target
       
+        # Target used to match against for discovery with Vertex AI datasets.
+        # Corresponds to the JSON property `vertexDatasetTarget`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetDiscoveryTarget]
+        attr_accessor :vertex_dataset_target
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4191,6 +4204,95 @@ module Google
           @cloud_storage_target = args[:cloud_storage_target] if args.key?(:cloud_storage_target)
           @other_cloud_target = args[:other_cloud_target] if args.key?(:other_cloud_target)
           @secrets_target = args[:secrets_target] if args.key?(:secrets_target)
+          @vertex_dataset_target = args[:vertex_dataset_target] if args.key?(:vertex_dataset_target)
+        end
+      end
+      
+      # Requirements that must be true before a dataset is profiled for the first time.
+      class GooglePrivacyDlpV2DiscoveryVertexDatasetConditions
+        include Google::Apis::Core::Hashable
+      
+        # Vertex AI dataset must have been created after this date. Used to avoid
+        # backfilling.
+        # Corresponds to the JSON property `createdAfter`
+        # @return [String]
+        attr_accessor :created_after
+      
+        # Minimum age a Vertex AI dataset must have. If set, the value must be 1 hour or
+        # greater.
+        # Corresponds to the JSON property `minAge`
+        # @return [String]
+        attr_accessor :min_age
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_after = args[:created_after] if args.key?(:created_after)
+          @min_age = args[:min_age] if args.key?(:min_age)
+        end
+      end
+      
+      # Determines what datasets will have profiles generated within an organization
+      # or project. Includes the ability to filter by regular expression patterns on
+      # project ID or dataset regex.
+      class GooglePrivacyDlpV2DiscoveryVertexDatasetFilter
+        include Google::Apis::Core::Hashable
+      
+        # Match dataset resources using regex filters.
+        # Corresponds to the JSON property `collection`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetCollection]
+        attr_accessor :collection
+      
+        # Match discovery resources not covered by any other filter.
+        # Corresponds to the JSON property `others`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherResources]
+        attr_accessor :others
+      
+        # Identifies a single Vertex AI dataset.
+        # Corresponds to the JSON property `vertexDatasetResourceReference`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetResourceReference]
+        attr_accessor :vertex_dataset_resource_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection = args[:collection] if args.key?(:collection)
+          @others = args[:others] if args.key?(:others)
+          @vertex_dataset_resource_reference = args[:vertex_dataset_resource_reference] if args.key?(:vertex_dataset_resource_reference)
+        end
+      end
+      
+      # How often existing datasets should have their profiles refreshed. New datasets
+      # are scanned as quickly as possible depending on system capacity.
+      class GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence
+        include Google::Apis::Core::Hashable
+      
+        # The cadence at which to update data profiles when the inspection rules defined
+        # by the `InspectTemplate` change.
+        # Corresponds to the JSON property `inspectTemplateModifiedCadence`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence]
+        attr_accessor :inspect_template_modified_cadence
+      
+        # If you set this field, profiles are refreshed at this frequency regardless of
+        # whether the underlying datasets have changed. Defaults to never.
+        # Corresponds to the JSON property `refreshFrequency`
+        # @return [String]
+        attr_accessor :refresh_frequency
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inspect_template_modified_cadence = args[:inspect_template_modified_cadence] if args.key?(:inspect_template_modified_cadence)
+          @refresh_frequency = args[:refresh_frequency] if args.key?(:refresh_frequency)
         end
       end
       
@@ -4821,7 +4923,8 @@ module Google
         attr_accessor :file_store_location
       
         # The file store path. * Cloud Storage: `gs://`bucket`` * Amazon S3: `s3://`
-        # bucket``
+        # bucket`` * Vertex AI dataset: `projects/`project_number`/locations/`location`/
+        # datasets/`dataset_id``
         # Corresponds to the JSON property `fileStorePath`
         # @return [String]
         attr_accessor :file_store_path
@@ -4870,6 +4973,11 @@ module Google
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
+      
+        # Resources related to this profile.
+        # Corresponds to the JSON property `relatedResources`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2RelatedResource>]
+        attr_accessor :related_resources
       
         # Attributes of the resource being profiled. Currently used attributes: *
         # customer_managed_encryption: boolean - true: the resource is encrypted with a
@@ -4924,6 +5032,7 @@ module Google
           @profile_status = args[:profile_status] if args.key?(:profile_status)
           @project_data_profile = args[:project_data_profile] if args.key?(:project_data_profile)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @related_resources = args[:related_resources] if args.key?(:related_resources)
           @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_visibility = args[:resource_visibility] if args.key?(:resource_visibility)
@@ -5205,6 +5314,19 @@ module Google
         end
       end
       
+      # Processing will happen in the global region.
+      class GooglePrivacyDlpV2GlobalProcessing
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The rule that adjusts the likelihood of findings within a certain proximity of
       # hotwords.
       class GooglePrivacyDlpV2HotwordRule
@@ -5452,6 +5574,33 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @required_finding_label_keys = args[:required_finding_label_keys] if args.key?(:required_finding_label_keys)
           @table_options = args[:table_options] if args.key?(:table_options)
+        end
+      end
+      
+      # Configure image processing to fall back to the configured processing option
+      # below if unavailable in the request location.
+      class GooglePrivacyDlpV2ImageFallbackLocation
+        include Google::Apis::Core::Hashable
+      
+        # Processing will happen in the global region.
+        # Corresponds to the JSON property `globalProcessing`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2GlobalProcessing]
+        attr_accessor :global_processing
+      
+        # Processing will happen in a multi-region that contains the current region if
+        # available.
+        # Corresponds to the JSON property `multiRegionProcessing`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2MultiRegionProcessing]
+        attr_accessor :multi_region_processing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @global_processing = args[:global_processing] if args.key?(:global_processing)
+          @multi_region_processing = args[:multi_region_processing] if args.key?(:multi_region_processing)
         end
       end
       
@@ -7263,6 +7412,20 @@ module Google
         end
       end
       
+      # Processing will happen in a multi-region that contains the current region if
+      # available.
+      class GooglePrivacyDlpV2MultiRegionProcessing
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Compute numerical stats over an individual column, including min, max, and
       # quantiles.
       class GooglePrivacyDlpV2NumericalStatsConfig
@@ -7845,6 +8008,28 @@ module Google
           @k_map_estimation_config = args[:k_map_estimation_config] if args.key?(:k_map_estimation_config)
           @l_diversity_config = args[:l_diversity_config] if args.key?(:l_diversity_config)
           @numerical_stats_config = args[:numerical_stats_config] if args.key?(:numerical_stats_config)
+        end
+      end
+      
+      # Configure processing location for discovery and inspection. For example, image
+      # OCR is only provided in limited regions but configuring ProcessingLocation
+      # will redirect OCR to a location where OCR is provided.
+      class GooglePrivacyDlpV2ProcessingLocation
+        include Google::Apis::Core::Hashable
+      
+        # Configure image processing to fall back to the configured processing option
+        # below if unavailable in the request location.
+        # Corresponds to the JSON property `imageFallbackLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ImageFallbackLocation]
+        attr_accessor :image_fallback_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_fallback_location = args[:image_fallback_location] if args.key?(:image_fallback_location)
         end
       end
       
@@ -8679,6 +8864,26 @@ module Google
         def update!(**args)
           @item = args[:item] if args.key?(:item)
           @overview = args[:overview] if args.key?(:overview)
+        end
+      end
+      
+      # A related resource. Examples: * The source BigQuery table for a Vertex AI
+      # dataset. * The source Cloud Storage bucket for a Vertex AI dataset.
+      class GooglePrivacyDlpV2RelatedResource
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name of the related resource.
+        # Corresponds to the JSON property `fullResource`
+        # @return [String]
+        attr_accessor :full_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource = args[:full_resource] if args.key?(:full_resource)
         end
       end
       
@@ -9591,6 +9796,11 @@ module Google
         # @return [String]
         attr_accessor :project_data_profile
       
+        # Resources related to this profile.
+        # Corresponds to the JSON property `relatedResources`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2RelatedResource>]
+        attr_accessor :related_resources
+      
         # The labels applied to the resource at the time the profile was generated.
         # Corresponds to the JSON property `resourceLabels`
         # @return [Hash<String,String>]
@@ -9657,6 +9867,7 @@ module Google
           @profile_last_generated = args[:profile_last_generated] if args.key?(:profile_last_generated)
           @profile_status = args[:profile_status] if args.key?(:profile_status)
           @project_data_profile = args[:project_data_profile] if args.key?(:project_data_profile)
+          @related_resources = args[:related_resources] if args.key?(:related_resources)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_visibility = args[:resource_visibility] if args.key?(:resource_visibility)
           @row_count = args[:row_count] if args.key?(:row_count)
@@ -10691,6 +10902,128 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Match dataset resources using regex filters.
+      class GooglePrivacyDlpV2VertexDatasetCollection
+        include Google::Apis::Core::Hashable
+      
+        # A collection of regular expressions to determine what datasets to match
+        # against.
+        # Corresponds to the JSON property `vertexDatasetRegexes`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetRegexes]
+        attr_accessor :vertex_dataset_regexes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vertex_dataset_regexes = args[:vertex_dataset_regexes] if args.key?(:vertex_dataset_regexes)
+        end
+      end
+      
+      # Target used to match against for discovery with Vertex AI datasets.
+      class GooglePrivacyDlpV2VertexDatasetDiscoveryTarget
+        include Google::Apis::Core::Hashable
+      
+        # Requirements that must be true before a dataset is profiled for the first time.
+        # Corresponds to the JSON property `conditions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryVertexDatasetConditions]
+        attr_accessor :conditions
+      
+        # Do not profile the tables.
+        # Corresponds to the JSON property `disabled`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Disabled]
+        attr_accessor :disabled
+      
+        # Determines what datasets will have profiles generated within an organization
+        # or project. Includes the ability to filter by regular expression patterns on
+        # project ID or dataset regex.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryVertexDatasetFilter]
+        attr_accessor :filter
+      
+        # How often existing datasets should have their profiles refreshed. New datasets
+        # are scanned as quickly as possible depending on system capacity.
+        # Corresponds to the JSON property `generationCadence`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence]
+        attr_accessor :generation_cadence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @filter = args[:filter] if args.key?(:filter)
+          @generation_cadence = args[:generation_cadence] if args.key?(:generation_cadence)
+        end
+      end
+      
+      # A pattern to match against one or more dataset resources.
+      class GooglePrivacyDlpV2VertexDatasetRegex
+        include Google::Apis::Core::Hashable
+      
+        # For organizations, if unset, will match all projects. Has no effect for
+        # configurations created within a project.
+        # Corresponds to the JSON property `projectIdRegex`
+        # @return [String]
+        attr_accessor :project_id_regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id_regex = args[:project_id_regex] if args.key?(:project_id_regex)
+        end
+      end
+      
+      # A collection of regular expressions to determine what datasets to match
+      # against.
+      class GooglePrivacyDlpV2VertexDatasetRegexes
+        include Google::Apis::Core::Hashable
+      
+        # Required. The group of regular expression patterns to match against one or
+        # more datasets. Maximum of 100 entries. The sum of the lengths of all regular
+        # expressions can't exceed 10 KiB.
+        # Corresponds to the JSON property `patterns`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetRegex>]
+        attr_accessor :patterns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @patterns = args[:patterns] if args.key?(:patterns)
+        end
+      end
+      
+      # Identifies a single Vertex AI dataset.
+      class GooglePrivacyDlpV2VertexDatasetResourceReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the dataset resource. If set within a project-level
+        # configuration, the specified resource must be within the project.
+        # Corresponds to the JSON property `datasetResourceName`
+        # @return [String]
+        attr_accessor :dataset_resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_resource_name = args[:dataset_resource_name] if args.key?(:dataset_resource_name)
         end
       end
       
