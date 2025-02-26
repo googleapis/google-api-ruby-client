@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcbdrConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcsBackupSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -608,6 +614,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
           property :cluster_uid, as: 'clusterUid'
+          property :create_time, as: 'createTime'
           property :kms_key, as: 'kmsKey'
           property :name, as: 'name'
           property :uid, as: 'uid'
@@ -864,6 +871,8 @@ module Google
           collection :entitlements, as: 'entitlements', class: Google::Apis::RedisV1::Entitlement, decorator: Google::Apis::RedisV1::Entitlement::Representation
       
           property :expected_state, as: 'expectedState'
+          property :gcbdr_configuration, as: 'gcbdrConfiguration', class: Google::Apis::RedisV1::GcbdrConfiguration, decorator: Google::Apis::RedisV1::GcbdrConfiguration::Representation
+      
           property :id, as: 'id', class: Google::Apis::RedisV1::DatabaseResourceId, decorator: Google::Apis::RedisV1::DatabaseResourceId::Representation
       
           property :instance_type, as: 'instanceType'
@@ -877,6 +886,7 @@ module Google
       
           property :resource_container, as: 'resourceContainer'
           property :resource_name, as: 'resourceName'
+          property :suspension_reason, as: 'suspensionReason'
           property :tags_set, as: 'tagsSet', class: Google::Apis::RedisV1::Tags, decorator: Google::Apis::RedisV1::Tags::Representation
       
           property :updation_time, as: 'updationTime'
@@ -960,6 +970,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :start_time, as: 'startTime', class: Google::Apis::RedisV1::TimeOfDay, decorator: Google::Apis::RedisV1::TimeOfDay::Representation
       
+        end
+      end
+      
+      class GcbdrConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcbdr_managed, as: 'gcbdrManaged'
         end
       end
       
@@ -1089,6 +1106,7 @@ module Google
       
           property :backup_run, as: 'backupRun', class: Google::Apis::RedisV1::BackupRun, decorator: Google::Apis::RedisV1::BackupRun::Representation
       
+          property :is_deletion_protection_enabled, as: 'isDeletionProtectionEnabled'
           property :product, as: 'product', class: Google::Apis::RedisV1::Product, decorator: Google::Apis::RedisV1::Product::Representation
       
           property :resource_id, as: 'resourceId', class: Google::Apis::RedisV1::DatabaseResourceId, decorator: Google::Apis::RedisV1::DatabaseResourceId::Representation
@@ -1331,6 +1349,7 @@ module Google
           property :connection_type, as: 'connectionType'
           property :forwarding_rule, as: 'forwardingRule'
           property :network, as: 'network'
+          property :port, as: 'port'
           property :project_id, as: 'projectId'
           property :psc_connection_id, as: 'pscConnectionId'
           property :psc_connection_status, as: 'pscConnectionStatus'
@@ -1455,6 +1474,7 @@ module Google
       class UpdateInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_node_type, as: 'targetNodeType'
           property :target_replica_count, as: 'targetReplicaCount'
           property :target_shard_count, as: 'targetShardCount'
         end
