@@ -1045,7 +1045,7 @@ module Google
       class GoogleDatastoreAdminV1RedirectWritesStepDetails
         include Google::Apis::Core::Hashable
       
-        # Ths concurrency mode for this database.
+        # The concurrency mode for this database.
         # Corresponds to the JSON property `concurrencyMode`
         # @return [String]
         attr_accessor :concurrency_mode
