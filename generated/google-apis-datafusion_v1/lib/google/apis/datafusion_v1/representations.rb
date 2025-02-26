@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaintenanceEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaintenancePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -321,6 +327,8 @@ module Google
       
           property :gcs_bucket, as: 'gcsBucket'
           hash :labels, as: 'labels'
+          collection :maintenance_events, as: 'maintenanceEvents', class: Google::Apis::DatafusionV1::MaintenanceEvent, decorator: Google::Apis::DatafusionV1::MaintenanceEvent::Representation
+      
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::DatafusionV1::MaintenancePolicy, decorator: Google::Apis::DatafusionV1::MaintenancePolicy::Representation
       
           property :name, as: 'name'
@@ -400,6 +408,15 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class MaintenanceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
         end
       end
       
