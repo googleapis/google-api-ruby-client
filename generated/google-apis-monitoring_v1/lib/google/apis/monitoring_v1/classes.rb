@@ -1963,6 +1963,13 @@ module Google
         # @return [Google::Apis::MonitoringV1::Empty]
         attr_accessor :blank_view
       
+        # Optional. The collection of breakdowns to be applied to the dataset. A
+        # breakdown is a way to slice the data. For example, you can break down the data
+        # by region.
+        # Corresponds to the JSON property `breakdowns`
+        # @return [Array<Google::Apis::MonitoringV1::Breakdown>]
+        attr_accessor :breakdowns
+      
         # Optional. A dimension is a structured label, class, or category for a set of
         # measurements in your data.
         # Corresponds to the JSON property `dimensions`
@@ -2021,6 +2028,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @blank_view = args[:blank_view] if args.key?(:blank_view)
+          @breakdowns = args[:breakdowns] if args.key?(:breakdowns)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @gauge_view = args[:gauge_view] if args.key?(:gauge_view)
           @measures = args[:measures] if args.key?(:measures)
@@ -2298,6 +2306,41 @@ module Google
         # Update properties of this object
         def update!(**args)
           @shown_columns = args[:shown_columns] if args.key?(:shown_columns)
+        end
+      end
+      
+      # A condition whose evaluation is based on the value of a template variable.
+      class TemplateVariableCondition
+        include Google::Apis::Core::Hashable
+      
+        # Comparator to use to evaluate whether the value of the template variable
+        # matches the template_variable_value. For example, if the comparator is
+        # REGEX_FULL_MATCH, template_variable_value would contain a regex that is
+        # matched against the value of the template variable.
+        # Corresponds to the JSON property `comparator`
+        # @return [String]
+        attr_accessor :comparator
+      
+        # The template variable whose value is evaluated.
+        # Corresponds to the JSON property `templateVariable`
+        # @return [String]
+        attr_accessor :template_variable
+      
+        # The value to compare the template variable to. For example, if the comparator
+        # is REGEX_FULL_MATCH, this field should contain a regex.
+        # Corresponds to the JSON property `templateVariableValue`
+        # @return [String]
+        attr_accessor :template_variable_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comparator = args[:comparator] if args.key?(:comparator)
+          @template_variable = args[:template_variable] if args.key?(:template_variable)
+          @template_variable_value = args[:template_variable_value] if args.key?(:template_variable_value)
         end
       end
       
@@ -2805,6 +2848,25 @@ module Google
         end
       end
       
+      # Condition that determines whether the widget should be displayed.
+      class VisibilityCondition
+        include Google::Apis::Core::Hashable
+      
+        # A condition whose evaluation is based on the value of a template variable.
+        # Corresponds to the JSON property `templateVariableCondition`
+        # @return [Google::Apis::MonitoringV1::TemplateVariableCondition]
+        attr_accessor :template_variable_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @template_variable_condition = args[:template_variable_condition] if args.key?(:template_variable_condition)
+        end
+      end
+      
       # Widget contains a single dashboard component and configuration of how to
       # present the component in the dashboard.
       class Widget
@@ -2889,6 +2951,11 @@ module Google
         # @return [String]
         attr_accessor :title
       
+        # Condition that determines whether the widget should be displayed.
+        # Corresponds to the JSON property `visibilityCondition`
+        # @return [Google::Apis::MonitoringV1::VisibilityCondition]
+        attr_accessor :visibility_condition
+      
         # A chart that displays data on a 2D (X and Y axes) plane.
         # Corresponds to the JSON property `xyChart`
         # @return [Google::Apis::MonitoringV1::XyChart]
@@ -2914,6 +2981,7 @@ module Google
           @text = args[:text] if args.key?(:text)
           @time_series_table = args[:time_series_table] if args.key?(:time_series_table)
           @title = args[:title] if args.key?(:title)
+          @visibility_condition = args[:visibility_condition] if args.key?(:visibility_condition)
           @xy_chart = args[:xy_chart] if args.key?(:xy_chart)
         end
       end
