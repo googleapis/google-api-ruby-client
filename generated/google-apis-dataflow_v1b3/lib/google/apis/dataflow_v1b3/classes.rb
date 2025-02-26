@@ -6881,6 +6881,11 @@ module Google
         attr_accessor :supports_exactly_once
         alias_method :supports_exactly_once?, :supports_exactly_once
       
+        # Optional. For future use.
+        # Corresponds to the JSON property `yamlDefinition`
+        # @return [String]
+        attr_accessor :yaml_definition
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6894,6 +6899,7 @@ module Google
           @streaming = args[:streaming] if args.key?(:streaming)
           @supports_at_least_once = args[:supports_at_least_once] if args.key?(:supports_at_least_once)
           @supports_exactly_once = args[:supports_exactly_once] if args.key?(:supports_exactly_once)
+          @yaml_definition = args[:yaml_definition] if args.key?(:yaml_definition)
         end
       end
       

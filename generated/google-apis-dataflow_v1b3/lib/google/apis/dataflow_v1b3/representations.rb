@@ -3026,6 +3026,7 @@ module Google
           property :streaming, as: 'streaming'
           property :supports_at_least_once, as: 'supportsAtLeastOnce'
           property :supports_exactly_once, as: 'supportsExactlyOnce'
+          property :yaml_definition, as: 'yamlDefinition'
         end
       end
       
