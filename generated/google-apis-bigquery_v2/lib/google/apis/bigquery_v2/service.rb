@@ -195,7 +195,7 @@ module Google
         #   Whether to list all datasets, including hidden ones
         # @param [String] filter
         #   An expression for filtering the results of the request by label. The syntax is
-        #   `labels.[:]`. Multiple filters can be ANDed together by connecting with a
+        #   `labels.[:]`. Multiple filters can be AND-ed together by connecting with a
         #   space. Example: `labels.department:receiving labels.active`. See [Filtering
         #   datasets using labels](https://cloud.google.com/bigquery/docs/filtering-labels#
         #   filtering_datasets_using_labels) for details.
@@ -1205,6 +1205,124 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes provided row access policies.
+        # @param [String] project_id
+        #   Required. Project ID of the table to delete the row access policies.
+        # @param [String] dataset_id
+        #   Required. Dataset ID of the table to delete the row access policies.
+        # @param [String] table_id
+        #   Required. Table ID of the table to delete the row access policies.
+        # @param [Google::Apis::BigqueryV2::BatchDeleteRowAccessPoliciesRequest] batch_delete_row_access_policies_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_row_access_policy_delete_row_access_policies(project_id, dataset_id, table_id, batch_delete_row_access_policies_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies:batchDelete', options)
+          command.request_representation = Google::Apis::BigqueryV2::BatchDeleteRowAccessPoliciesRequest::Representation
+          command.request_object = batch_delete_row_access_policies_request_object
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['tableId'] = table_id unless table_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a row access policy.
+        # @param [String] project_id
+        #   Required. Project ID of the table to delete the row access policy.
+        # @param [String] dataset_id
+        #   Required. Dataset ID of the table to delete the row access policy.
+        # @param [String] table_id
+        #   Required. Table ID of the table to delete the row access policy.
+        # @param [String] policy_id
+        #   Required. Policy ID of the row access policy.
+        # @param [Boolean] force
+        #   If set to true, it deletes the row access policy even if it's the last row
+        #   access policy on the table and the deletion will widen the access rather
+        #   narrowing it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_row_access_policy(project_id, dataset_id, table_id, policy_id, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', options)
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['tableId'] = table_id unless table_id.nil?
+          command.params['policyId'] = policy_id unless policy_id.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified row access policy by policy ID.
+        # @param [String] project_id
+        #   Required. Project ID of the table to get the row access policy.
+        # @param [String] dataset_id
+        #   Required. Dataset ID of the table to get the row access policy.
+        # @param [String] table_id
+        #   Required. Table ID of the table to get the row access policy.
+        # @param [String] policy_id
+        #   Required. Policy ID of the row access policy.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::RowAccessPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::RowAccessPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_row_access_policy(project_id, dataset_id, table_id, policy_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', options)
+          command.response_representation = Google::Apis::BigqueryV2::RowAccessPolicy::Representation
+          command.response_class = Google::Apis::BigqueryV2::RowAccessPolicy
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['tableId'] = table_id unless table_id.nil?
+          command.params['policyId'] = policy_id unless policy_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -1236,6 +1354,45 @@ module Google
           command.response_representation = Google::Apis::BigqueryV2::Policy::Representation
           command.response_class = Google::Apis::BigqueryV2::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a row access policy.
+        # @param [String] project_id
+        #   Required. Project ID of the table to get the row access policy.
+        # @param [String] dataset_id
+        #   Required. Dataset ID of the table to get the row access policy.
+        # @param [String] table_id
+        #   Required. Table ID of the table to get the row access policy.
+        # @param [Google::Apis::BigqueryV2::RowAccessPolicy] row_access_policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::RowAccessPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::RowAccessPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_row_access_policy(project_id, dataset_id, table_id, row_access_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies', options)
+          command.request_representation = Google::Apis::BigqueryV2::RowAccessPolicy::Representation
+          command.request_object = row_access_policy_object
+          command.response_representation = Google::Apis::BigqueryV2::RowAccessPolicy::Representation
+          command.response_class = Google::Apis::BigqueryV2::RowAccessPolicy
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['tableId'] = table_id unless table_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1318,6 +1475,48 @@ module Google
           command.response_representation = Google::Apis::BigqueryV2::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a row access policy.
+        # @param [String] project_id
+        #   Required. Project ID of the table to get the row access policy.
+        # @param [String] dataset_id
+        #   Required. Dataset ID of the table to get the row access policy.
+        # @param [String] table_id
+        #   Required. Table ID of the table to get the row access policy.
+        # @param [String] policy_id
+        #   Required. Policy ID of the row access policy.
+        # @param [Google::Apis::BigqueryV2::RowAccessPolicy] row_access_policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::RowAccessPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::RowAccessPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_row_access_policy(project_id, dataset_id, table_id, policy_id, row_access_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', options)
+          command.request_representation = Google::Apis::BigqueryV2::RowAccessPolicy::Representation
+          command.request_object = row_access_policy_object
+          command.response_representation = Google::Apis::BigqueryV2::RowAccessPolicy::Representation
+          command.response_class = Google::Apis::BigqueryV2::RowAccessPolicy
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['tableId'] = table_id unless table_id.nil?
+          command.params['policyId'] = policy_id unless policy_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

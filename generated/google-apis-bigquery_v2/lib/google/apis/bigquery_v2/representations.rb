@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchDeleteRowAccessPoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BiEngineReason
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1108,6 +1114,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StoredColumnsUnusedReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoredColumnsUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Streamingbuffer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1477,6 +1495,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :use_avro_logical_types, as: 'useAvroLogicalTypes'
+        end
+      end
+      
+      class BatchDeleteRowAccessPoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
+          collection :policy_ids, as: 'policyIds'
         end
       end
       
@@ -2081,6 +2107,8 @@ module Google
           property :connection_id, as: 'connectionId'
           property :csv_options, as: 'csvOptions', class: Google::Apis::BigqueryV2::CsvOptions, decorator: Google::Apis::BigqueryV2::CsvOptions::Representation
       
+          property :date_format, as: 'dateFormat'
+          property :datetime_format, as: 'datetimeFormat'
           collection :decimal_target_types, as: 'decimalTargetTypes'
           property :file_set_spec_type, as: 'fileSetSpecType'
           property :google_sheets_options, as: 'googleSheetsOptions', class: Google::Apis::BigqueryV2::GoogleSheetsOptions, decorator: Google::Apis::BigqueryV2::GoogleSheetsOptions::Representation
@@ -2101,6 +2129,9 @@ module Google
       
           property :source_format, as: 'sourceFormat'
           collection :source_uris, as: 'sourceUris'
+          property :time_format, as: 'timeFormat'
+          property :time_zone, as: 'timeZone'
+          property :timestamp_format, as: 'timestampFormat'
         end
       end
       
@@ -2456,6 +2487,8 @@ module Google
           property :copy_files_only, as: 'copyFilesOnly'
           property :create_disposition, as: 'createDisposition'
           property :create_session, as: 'createSession'
+          property :date_format, as: 'dateFormat'
+          property :datetime_format, as: 'datetimeFormat'
           collection :decimal_target_types, as: 'decimalTargetTypes'
           property :destination_encryption_configuration, as: 'destinationEncryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
       
@@ -2488,8 +2521,11 @@ module Google
           property :skip_leading_rows, as: 'skipLeadingRows'
           property :source_format, as: 'sourceFormat'
           collection :source_uris, as: 'sourceUris'
+          property :time_format, as: 'timeFormat'
           property :time_partitioning, as: 'timePartitioning', class: Google::Apis::BigqueryV2::TimePartitioning, decorator: Google::Apis::BigqueryV2::TimePartitioning::Representation
       
+          property :time_zone, as: 'timeZone'
+          property :timestamp_format, as: 'timestampFormat'
           property :use_avro_logical_types, as: 'useAvroLogicalTypes'
           property :write_disposition, as: 'writeDisposition'
         end
@@ -2537,6 +2573,7 @@ module Google
           collection :user_defined_function_resources, as: 'userDefinedFunctionResources', class: Google::Apis::BigqueryV2::UserDefinedFunctionResource, decorator: Google::Apis::BigqueryV2::UserDefinedFunctionResource::Representation
       
           property :write_disposition, as: 'writeDisposition'
+          property :write_incremental_results, as: 'writeIncrementalResults'
         end
       end
       
@@ -3171,10 +3208,13 @@ module Google
           property :create_session, as: 'createSession'
           property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
+          property :destination_encryption_configuration, as: 'destinationEncryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
+      
           property :dry_run, as: 'dryRun'
           property :format_options, as: 'formatOptions', class: Google::Apis::BigqueryV2::DataFormatOptions, decorator: Google::Apis::BigqueryV2::DataFormatOptions::Representation
       
           property :job_creation_mode, as: 'jobCreationMode'
+          property :job_timeout_ms, :numeric_string => true, as: 'jobTimeoutMs'
           property :kind, as: 'kind'
           hash :labels, as: 'labels'
           property :location, as: 'location'
@@ -3189,6 +3229,7 @@ module Google
           property :timeout_ms, as: 'timeoutMs'
           property :use_legacy_sql, as: 'useLegacySql'
           property :use_query_cache, as: 'useQueryCache'
+          property :write_incremental_results, as: 'writeIncrementalResults'
         end
       end
       
@@ -3370,6 +3411,7 @@ module Google
           property :creation_time, as: 'creationTime'
           property :etag, as: 'etag'
           property :filter_predicate, as: 'filterPredicate'
+          collection :grantees, as: 'grantees'
           property :last_modified_time, as: 'lastModifiedTime'
           property :row_access_policy_reference, as: 'rowAccessPolicyReference', class: Google::Apis::BigqueryV2::RowAccessPolicyReference, decorator: Google::Apis::BigqueryV2::RowAccessPolicyReference::Representation
       
@@ -3580,6 +3622,26 @@ module Google
           property :location_uri, as: 'locationUri'
           property :output_format, as: 'outputFormat'
           property :serde_info, as: 'serdeInfo', class: Google::Apis::BigqueryV2::SerDeInfo, decorator: Google::Apis::BigqueryV2::SerDeInfo::Representation
+      
+        end
+      end
+      
+      class StoredColumnsUnusedReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
+          collection :uncovered_columns, as: 'uncoveredColumns'
+        end
+      end
+      
+      class StoredColumnsUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_table, as: 'baseTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
+      
+          property :is_query_accelerated, as: 'isQueryAccelerated'
+          collection :stored_columns_unused_reasons, as: 'storedColumnsUnusedReasons', class: Google::Apis::BigqueryV2::StoredColumnsUnusedReason, decorator: Google::Apis::BigqueryV2::StoredColumnsUnusedReason::Representation
       
         end
       end
@@ -3994,6 +4056,8 @@ module Google
           property :enable_global_explain, as: 'enableGlobalExplain'
           property :feedback_type, as: 'feedbackType'
           property :fit_intercept, as: 'fitIntercept'
+          property :forecast_limit_lower_bound, as: 'forecastLimitLowerBound'
+          property :forecast_limit_upper_bound, as: 'forecastLimitUpperBound'
           collection :hidden_units, as: 'hiddenUnits'
           property :holiday_region, as: 'holidayRegion'
           collection :holiday_regions, as: 'holidayRegions'
@@ -4117,6 +4181,8 @@ module Google
           collection :index_unused_reasons, as: 'indexUnusedReasons', class: Google::Apis::BigqueryV2::IndexUnusedReason, decorator: Google::Apis::BigqueryV2::IndexUnusedReason::Representation
       
           property :index_usage_mode, as: 'indexUsageMode'
+          collection :stored_columns_usages, as: 'storedColumnsUsages', class: Google::Apis::BigqueryV2::StoredColumnsUsage, decorator: Google::Apis::BigqueryV2::StoredColumnsUsage::Representation
+      
         end
       end
       

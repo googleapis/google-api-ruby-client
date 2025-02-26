@@ -66,7 +66,7 @@ module Google
         attr_accessor :roc_auc
       
         # Threshold at which the metrics are computed. For binary classification models
-        # this is the positive class threshold. For multi-class classfication models
+        # this is the positive class threshold. For multi-class classification models
         # this is the confidence threshold.
         # Corresponds to the JSON property `threshold`
         # @return [Float]
@@ -598,6 +598,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @use_avro_logical_types = args[:use_avro_logical_types] if args.key?(:use_avro_logical_types)
+        end
+      end
+      
+      # Request message for the BatchDeleteRowAccessPoliciesRequest method.
+      class BatchDeleteRowAccessPoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, it deletes the row access policy even if it's the last row
+        # access policy on the table and the deletion will widen the access rather
+        # narrowing it.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Required. Policy IDs of the row access policies.
+        # Corresponds to the JSON property `policyIds`
+        # @return [Array<String>]
+        attr_accessor :policy_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+          @policy_ids = args[:policy_ids] if args.key?(:policy_ids)
         end
       end
       
@@ -3135,6 +3163,18 @@ module Google
         # @return [Google::Apis::BigqueryV2::CsvOptions]
         attr_accessor :csv_options
       
+        # Optional. Format used to parse DATE values. Supports C-style and SQL-style
+        # values.
+        # Corresponds to the JSON property `dateFormat`
+        # @return [String]
+        attr_accessor :date_format
+      
+        # Optional. Format used to parse DATETIME values. Supports C-style and SQL-style
+        # values.
+        # Corresponds to the JSON property `datetimeFormat`
+        # @return [String]
+        attr_accessor :datetime_format
+      
         # Defines the list of possible SQL data types to which the source decimal values
         # are converted. This list and the precision and the scale parameters of the
         # decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC,
@@ -3147,7 +3187,7 @@ module Google
         # precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC
         # cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold
         # 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error
-        # if value exeeds supported range). This field cannot contain duplicate types.
+        # if value exceeds supported range). This field cannot contain duplicate types.
         # The order of the types in this field is ignored. For example, ["BIGNUMERIC", "
         # NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes
         # precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["
@@ -3262,6 +3302,25 @@ module Google
         # @return [Array<String>]
         attr_accessor :source_uris
       
+        # Optional. Format used to parse TIME values. Supports C-style and SQL-style
+        # values.
+        # Corresponds to the JSON property `timeFormat`
+        # @return [String]
+        attr_accessor :time_format
+      
+        # Optional. Time zone used when parsing timestamp values that do not have
+        # specific time zone information (e.g. 2024-04-20 12:34:56). The expected format
+        # is a IANA timezone string (e.g. America/Los_Angeles).
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        # Optional. Format used to parse TIMESTAMP values. Supports C-style and SQL-
+        # style values.
+        # Corresponds to the JSON property `timestampFormat`
+        # @return [String]
+        attr_accessor :timestamp_format
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3274,6 +3333,8 @@ module Google
           @compression = args[:compression] if args.key?(:compression)
           @connection_id = args[:connection_id] if args.key?(:connection_id)
           @csv_options = args[:csv_options] if args.key?(:csv_options)
+          @date_format = args[:date_format] if args.key?(:date_format)
+          @datetime_format = args[:datetime_format] if args.key?(:datetime_format)
           @decimal_target_types = args[:decimal_target_types] if args.key?(:decimal_target_types)
           @file_set_spec_type = args[:file_set_spec_type] if args.key?(:file_set_spec_type)
           @google_sheets_options = args[:google_sheets_options] if args.key?(:google_sheets_options)
@@ -3289,6 +3350,9 @@ module Google
           @schema = args[:schema] if args.key?(:schema)
           @source_format = args[:source_format] if args.key?(:source_format)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
+          @time_format = args[:time_format] if args.key?(:time_format)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @timestamp_format = args[:timestamp_format] if args.key?(:timestamp_format)
         end
       end
       
@@ -4600,6 +4664,16 @@ module Google
         attr_accessor :create_session
         alias_method :create_session?, :create_session
       
+        # Optional. Date format used for parsing DATE values.
+        # Corresponds to the JSON property `dateFormat`
+        # @return [String]
+        attr_accessor :date_format
+      
+        # Optional. Date format used for parsing DATETIME values.
+        # Corresponds to the JSON property `datetimeFormat`
+        # @return [String]
+        attr_accessor :datetime_format
+      
         # Defines the list of possible SQL data types to which the source decimal values
         # are converted. This list and the precision and the scale parameters of the
         # decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC,
@@ -4612,7 +4686,7 @@ module Google
         # precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC
         # cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold
         # 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error
-        # if value exeeds supported range). This field cannot contain duplicate types.
+        # if value exceeds supported range). This field cannot contain duplicate types.
         # The order of the types in this field is ignored. For example, ["BIGNUMERIC", "
         # NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes
         # precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["
@@ -4828,11 +4902,27 @@ module Google
         # @return [Array<String>]
         attr_accessor :source_uris
       
+        # Optional. Date format used for parsing TIME values.
+        # Corresponds to the JSON property `timeFormat`
+        # @return [String]
+        attr_accessor :time_format
+      
         # Time-based partitioning specification for the destination table. Only one of
         # timePartitioning and rangePartitioning should be specified.
         # Corresponds to the JSON property `timePartitioning`
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
+      
+        # Optional. [Experimental] Default time zone that will apply when parsing
+        # timestamp values that have no specific time zone.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        # Optional. Date format used for parsing TIMESTAMP values.
+        # Corresponds to the JSON property `timestampFormat`
+        # @return [String]
+        attr_accessor :timestamp_format
       
         # Optional. If sourceFormat is set to "AVRO", indicates whether to interpret
         # logical types as the corresponding BigQuery data type (for example, TIMESTAMP),
@@ -4870,6 +4960,8 @@ module Google
           @copy_files_only = args[:copy_files_only] if args.key?(:copy_files_only)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
           @create_session = args[:create_session] if args.key?(:create_session)
+          @date_format = args[:date_format] if args.key?(:date_format)
+          @datetime_format = args[:datetime_format] if args.key?(:datetime_format)
           @decimal_target_types = args[:decimal_target_types] if args.key?(:decimal_target_types)
           @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
           @destination_table = args[:destination_table] if args.key?(:destination_table)
@@ -4895,7 +4987,10 @@ module Google
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
           @source_format = args[:source_format] if args.key?(:source_format)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
+          @time_format = args[:time_format] if args.key?(:time_format)
           @time_partitioning = args[:time_partitioning] if args.key?(:time_partitioning)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @timestamp_format = args[:timestamp_format] if args.key?(:timestamp_format)
           @use_avro_logical_types = args[:use_avro_logical_types] if args.key?(:use_avro_logical_types)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
         end
@@ -5109,6 +5204,15 @@ module Google
         # @return [String]
         attr_accessor :write_disposition
       
+        # Optional. This is only supported for a SELECT query using a temporary table.
+        # If set, the query is allowed to write results incrementally to the temporary
+        # result table. This may incur a performance penalty. This option cannot be used
+        # with Legacy SQL. This feature is not yet available.
+        # Corresponds to the JSON property `writeIncrementalResults`
+        # @return [Boolean]
+        attr_accessor :write_incremental_results
+        alias_method :write_incremental_results?, :write_incremental_results
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5142,6 +5246,7 @@ module Google
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
           @user_defined_function_resources = args[:user_defined_function_resources] if args.key?(:user_defined_function_resources)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
+          @write_incremental_results = args[:write_incremental_results] if args.key?(:write_incremental_results)
         end
       end
       
@@ -5695,7 +5800,7 @@ module Google
         # @return [Google::Apis::BigqueryV2::MaterializedViewStatistics]
         attr_accessor :materialized_view_statistics
       
-        # Statistics for metadata caching in BigLake tables.
+        # Statistics for metadata caching in queried tables.
         # Corresponds to the JSON property `metadataCacheStatistics`
         # @return [Google::Apis::BigqueryV2::MetadataCacheStatistics]
         attr_accessor :metadata_cache_statistics
@@ -6546,7 +6651,7 @@ module Google
         end
       end
       
-      # Statistics for metadata caching in BigLake tables.
+      # Statistics for metadata caching in queried tables.
       class MetadataCacheStatistics
         include Google::Apis::Core::Hashable
       
@@ -7520,6 +7625,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :default_dataset
       
+        # Configuration for Cloud KMS encryption settings.
+        # Corresponds to the JSON property `destinationEncryptionConfiguration`
+        # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
+        attr_accessor :destination_encryption_configuration
+      
         # Optional. If set to true, BigQuery doesn't run the job. Instead, if the query
         # is valid, BigQuery returns statistics about the job such as how many bytes
         # would be processed. If the query is invalid, an error returns. The default
@@ -7540,6 +7650,16 @@ module Google
         # Corresponds to the JSON property `jobCreationMode`
         # @return [String]
         attr_accessor :job_creation_mode
+      
+        # Optional. Job timeout in milliseconds. If this time limit is exceeded,
+        # BigQuery will attempt to stop a longer job, but may not always succeed in
+        # canceling it before the job completes. For example, a job that takes more than
+        # 60 seconds to complete has a better chance of being stopped than a job that
+        # takes 10 seconds to complete. This timeout applies to the query even if a job
+        # does not need to be created.
+        # Corresponds to the JSON property `jobTimeoutMs`
+        # @return [Fixnum]
+        attr_accessor :job_timeout_ms
       
         # The resource type of the request.
         # Corresponds to the JSON property `kind`
@@ -7656,6 +7776,15 @@ module Google
         attr_accessor :use_query_cache
         alias_method :use_query_cache?, :use_query_cache
       
+        # Optional. This is only supported for SELECT query. If set, the query is
+        # allowed to write results incrementally to the temporary result table. This may
+        # incur a performance penalty. This option cannot be used with Legacy SQL. This
+        # feature is not yet available.
+        # Corresponds to the JSON property `writeIncrementalResults`
+        # @return [Boolean]
+        attr_accessor :write_incremental_results
+        alias_method :write_incremental_results?, :write_incremental_results
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7666,9 +7795,11 @@ module Google
           @continuous = args[:continuous] if args.key?(:continuous)
           @create_session = args[:create_session] if args.key?(:create_session)
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
+          @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @format_options = args[:format_options] if args.key?(:format_options)
           @job_creation_mode = args[:job_creation_mode] if args.key?(:job_creation_mode)
+          @job_timeout_ms = args[:job_timeout_ms] if args.key?(:job_timeout_ms)
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
@@ -7682,6 +7813,7 @@ module Google
           @timeout_ms = args[:timeout_ms] if args.key?(:timeout_ms)
           @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
+          @write_incremental_results = args[:write_incremental_results] if args.key?(:write_incremental_results)
         end
       end
       
@@ -8433,6 +8565,27 @@ module Google
         # @return [String]
         attr_accessor :filter_predicate
       
+        # Optional. Input only. The optional list of iam_member users or groups that
+        # specifies the initial members that the row-level access policy should be
+        # created with. grantees types: - "user:alice@example.com": An email address
+        # that represents a specific Google account. - "serviceAccount:my-other-app@
+        # appspot.gserviceaccount.com": An email address that represents a service
+        # account. - "group:admins@example.com": An email address that represents a
+        # Google group. - "domain:example.com":The Google Workspace domain (primary)
+        # that represents all the users of that domain. - "allAuthenticatedUsers": A
+        # special identifier that represents all service accounts and all users on the
+        # internet who have authenticated with a Google Account. This identifier
+        # includes accounts that aren't connected to a Google Workspace or Cloud
+        # Identity domain, such as personal Gmail accounts. Users who aren't
+        # authenticated, such as anonymous visitors, aren't included. - "allUsers":A
+        # special identifier that represents anyone who is on the internet, including
+        # authenticated and unauthenticated users. Because BigQuery requires
+        # authentication before a user can access the service, allUsers includes only
+        # authenticated users.
+        # Corresponds to the JSON property `grantees`
+        # @return [Array<String>]
+        attr_accessor :grantees
+      
         # Output only. The time when this row access policy was last modified, in
         # milliseconds since the epoch.
         # Corresponds to the JSON property `lastModifiedTime`
@@ -8453,6 +8606,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @etag = args[:etag] if args.key?(:etag)
           @filter_predicate = args[:filter_predicate] if args.key?(:filter_predicate)
+          @grantees = args[:grantees] if args.key?(:grantees)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @row_access_policy_reference = args[:row_access_policy_reference] if args.key?(:row_access_policy_reference)
         end
@@ -9240,6 +9394,72 @@ module Google
           @location_uri = args[:location_uri] if args.key?(:location_uri)
           @output_format = args[:output_format] if args.key?(:output_format)
           @serde_info = args[:serde_info] if args.key?(:serde_info)
+        end
+      end
+      
+      # If the stored column was not used, explain why.
+      class StoredColumnsUnusedReason
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the high-level reason for the unused scenario, each reason must have
+        # a code associated.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Specifies the detailed description for the scenario.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Specifies which columns were not covered by the stored columns for the
+        # specified code up to 20 columns. This is populated when the code is
+        # STORED_COLUMNS_COVER_INSUFFICIENT and BASE_TABLE_HAS_CLS.
+        # Corresponds to the JSON property `uncoveredColumns`
+        # @return [Array<String>]
+        attr_accessor :uncovered_columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @uncovered_columns = args[:uncovered_columns] if args.key?(:uncovered_columns)
+        end
+      end
+      
+      # Indicates the stored columns usage in the query.
+      class StoredColumnsUsage
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the base table.
+        # Corresponds to the JSON property `baseTable`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :base_table
+      
+        # Specifies whether the query was accelerated with stored columns.
+        # Corresponds to the JSON property `isQueryAccelerated`
+        # @return [Boolean]
+        attr_accessor :is_query_accelerated
+        alias_method :is_query_accelerated?, :is_query_accelerated
+      
+        # If stored columns were not used, explain why.
+        # Corresponds to the JSON property `storedColumnsUnusedReasons`
+        # @return [Array<Google::Apis::BigqueryV2::StoredColumnsUnusedReason>]
+        attr_accessor :stored_columns_unused_reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_table = args[:base_table] if args.key?(:base_table)
+          @is_query_accelerated = args[:is_query_accelerated] if args.key?(:is_query_accelerated)
+          @stored_columns_unused_reasons = args[:stored_columns_unused_reasons] if args.key?(:stored_columns_unused_reasons)
         end
       end
       
@@ -10866,6 +11086,19 @@ module Google
         attr_accessor :fit_intercept
         alias_method :fit_intercept?, :fit_intercept
       
+        # The forecast limit lower bound that was used during ARIMA model training with
+        # limits. To see more details of the algorithm: https://otexts.com/fpp2/limits.
+        # html
+        # Corresponds to the JSON property `forecastLimitLowerBound`
+        # @return [Float]
+        attr_accessor :forecast_limit_lower_bound
+      
+        # The forecast limit upper bound that was used during ARIMA model training with
+        # limits.
+        # Corresponds to the JSON property `forecastLimitUpperBound`
+        # @return [Float]
+        attr_accessor :forecast_limit_upper_bound
+      
         # Hidden units for dnn models.
         # Corresponds to the JSON property `hiddenUnits`
         # @return [Array<Fixnum>]
@@ -11236,6 +11469,8 @@ module Google
           @enable_global_explain = args[:enable_global_explain] if args.key?(:enable_global_explain)
           @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
           @fit_intercept = args[:fit_intercept] if args.key?(:fit_intercept)
+          @forecast_limit_lower_bound = args[:forecast_limit_lower_bound] if args.key?(:forecast_limit_lower_bound)
+          @forecast_limit_upper_bound = args[:forecast_limit_upper_bound] if args.key?(:forecast_limit_upper_bound)
           @hidden_units = args[:hidden_units] if args.key?(:hidden_units)
           @holiday_region = args[:holiday_region] if args.key?(:holiday_region)
           @holiday_regions = args[:holiday_regions] if args.key?(:holiday_regions)
@@ -11503,6 +11738,12 @@ module Google
         # @return [String]
         attr_accessor :index_usage_mode
       
+        # Specifies the usage of stored columns in the query when stored columns are
+        # used in the query.
+        # Corresponds to the JSON property `storedColumnsUsages`
+        # @return [Array<Google::Apis::BigqueryV2::StoredColumnsUsage>]
+        attr_accessor :stored_columns_usages
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11511,6 +11752,7 @@ module Google
         def update!(**args)
           @index_unused_reasons = args[:index_unused_reasons] if args.key?(:index_unused_reasons)
           @index_usage_mode = args[:index_usage_mode] if args.key?(:index_usage_mode)
+          @stored_columns_usages = args[:stored_columns_usages] if args.key?(:stored_columns_usages)
         end
       end
       
