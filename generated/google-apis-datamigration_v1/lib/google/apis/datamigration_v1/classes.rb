@@ -1720,10 +1720,21 @@ module Google
         # @return [String]
         attr_accessor :ddl
       
+        # The DDL Kind selected for apply, or SOURCE if getting the source tree.
+        # Corresponds to the JSON property `ddlKind`
+        # @return [String]
+        attr_accessor :ddl_kind
+      
         # Type of DDL (Create, Alter).
         # Corresponds to the JSON property `ddlType`
         # @return [String]
         attr_accessor :ddl_type
+      
+        # If ddl_kind is USER_EDIT, this holds the DDL kind of the original content -
+        # DETERMINISTIC or AI. Otherwise, this is DDL_KIND_UNSPECIFIED.
+        # Corresponds to the JSON property `editedDdlKind`
+        # @return [String]
+        attr_accessor :edited_ddl_kind
       
         # The name of the database entity the ddl refers to.
         # Corresponds to the JSON property `entity`
@@ -1747,7 +1758,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ddl = args[:ddl] if args.key?(:ddl)
+          @ddl_kind = args[:ddl_kind] if args.key?(:ddl_kind)
           @ddl_type = args[:ddl_type] if args.key?(:ddl_type)
+          @edited_ddl_kind = args[:edited_ddl_kind] if args.key?(:edited_ddl_kind)
           @entity = args[:entity] if args.key?(:entity)
           @entity_type = args[:entity_type] if args.key?(:entity_type)
           @issue_id = args[:issue_id] if args.key?(:issue_id)

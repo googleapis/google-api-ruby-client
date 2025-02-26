@@ -1354,7 +1354,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ddl, as: 'ddl'
+          property :ddl_kind, as: 'ddlKind'
           property :ddl_type, as: 'ddlType'
+          property :edited_ddl_kind, as: 'editedDdlKind'
           property :entity, as: 'entity'
           property :entity_type, as: 'entityType'
           collection :issue_id, as: 'issueId'
