@@ -4095,6 +4095,9 @@ module Google
         #   Required. The path of the RetrieveRenderedInstance DICOMweb request. For
         #   example, `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/
         #   rendered`.
+        # @param [String] viewport
+        #   Optional. The viewport setting to use as specified in https://dicom.nema.org/
+        #   medical/dicom/current/output/chtml/part18/sect_8.3.5.html#sect_8.3.5.1.3
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4112,12 +4115,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def retrieve_project_location_dataset_dicom_store_study_series_instance_rendered(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
+        def retrieve_project_location_dataset_dicom_store_study_series_instance_rendered(parent, dicom_web_path, viewport: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
           command.params['dicomWebPath'] = dicom_web_path unless dicom_web_path.nil?
+          command.query['viewport'] = viewport unless viewport.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4228,6 +4232,9 @@ module Google
         #   Required. The path of the RetrieveRenderedFrames DICOMweb request. For example,
         #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/frames/`
         #   frame_list`/rendered`.
+        # @param [String] viewport
+        #   Optional. The viewport setting to use as specified in https://dicom.nema.org/
+        #   medical/dicom/current/output/chtml/part18/sect_8.3.5.html#sect_8.3.5.1.3
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4245,12 +4252,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def retrieve_project_location_dataset_dicom_store_study_series_instance_frame_rendered(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
+        def retrieve_project_location_dataset_dicom_store_study_series_instance_frame_rendered(parent, dicom_web_path, viewport: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
           command.params['dicomWebPath'] = dicom_web_path unless dicom_web_path.nil?
+          command.query['viewport'] = viewport unless viewport.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4346,6 +4354,94 @@ module Google
           command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Bulk exports a Group resource and resources in the member field, including
+        # related resources for each Patient member. The export for each Patient is
+        # identical to a GetPatientEverything request. Implements the FHIR
+        # implementation guide [$export group of patients](https://build.fhir.org/ig/HL7/
+        # bulk-data/export.html#endpoint---group-of-patients). The following headers
+        # must be set in the request: * `Accept`: specifies the format of the `
+        # OperationOutcome` response. Only `application/fhir+json` is supported. * `
+        # Prefer`: specifies whether the response is immediate or asynchronous. Must be
+        # to `respond-async` because only asynchronous responses are supported. Specify
+        # the destination for the server to write result files by setting the Cloud
+        # Storage location bulk_export_gcs_destination on the FHIR store. URI of an
+        # existing Cloud Storage directory where the server writes result files, in the
+        # format gs://`bucket-id`/`path/to/destination/dir`. If there is no trailing
+        # slash, the service appends one when composing the object path. The user is
+        # responsible for creating the Cloud Storage bucket referenced. Supports the
+        # following query parameters: * `_type`: string of comma-delimited FHIR resource
+        # types. If provided, only resources of the specified type(s) are exported. * `
+        # _since`: if provided, only resources updated after the specified time are
+        # exported. * `_outputFormat`: optional, specify ndjson to export data in NDJSON
+        # format. Exported file names use the format: `export_id`_`resource_type`.ndjson.
+        # * `organizeOutputBy`: resource type to organize the output by. Required and
+        # must be set to `Patient`. When specified, output files are organized by
+        # instances of the specified resource type, including the resource, referenced
+        # resources, and resources that contain references to that resource. On success,
+        # the `Content-Location` header of response is set to a URL that you can use to
+        # query the status of the export. The URL is in the format `projects/`project_id`
+        # /locations/`location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id`/
+        # operations/`export_id``. See get-fhir-operation-status for more information.
+        # Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome`
+        # resource describing the reason for the error.
+        # @param [String] name
+        #   Required. Name of the `Group` resource that is exported, in format `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
+        #   fhir_store_id`/fhir/Group/`group_id``.
+        # @param [String] _since
+        #   Optional. If provided, only resources updated after this time are exported.
+        #   The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-
+        #   07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified
+        #   to the second and include a time zone.
+        # @param [String] _type
+        #   Optional. String of comma-delimited FHIR resource types. If provided, only
+        #   resources of the specified resource type(s) are exported.
+        # @param [String] organize_output_by
+        #   Optional. Required. The FHIR resource type used to organize exported resources.
+        #   Only supports "Patient". When organized by Patient resource, output files are
+        #   grouped as follows: * Patient file(s) containing the Patient resources. Each
+        #   Patient is sequentially followed by all resources the Patient references, and
+        #   all resources that reference the Patient (equivalent to a GetPatientEverything
+        #   request). * Individual files grouped by resource type for resources in the
+        #   Group's member field and the Group resource itself. Resources may be
+        #   duplicated across multiple Patients. For example, if two Patient resources
+        #   reference the same Organization resource, it will appear twice, once after
+        #   each Patient. The Group resource from the request does not appear in the
+        #   Patient files.
+        # @param [String] output_format
+        #   Optional. Output format of the export. This field is optional and only `
+        #   application/fhir+ndjson` is supported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_project_location_dataset_fhir_store_export_group(name, _since: nil, _type: nil, organize_output_by: nil, output_format: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/$export', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['_since'] = _since unless _since.nil?
+          command.query['_type'] = _type unless _type.nil?
+          command.query['organizeOutputBy'] = organize_output_by unless organize_output_by.nil?
+          command.query['outputFormat'] = output_format unless output_format.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5846,6 +5942,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Bulk exports all resources from the FHIR store to the specified destination.
+        # Implements the FHIR implementation guide [system level $export](https://build.
+        # fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export. The
+        # following headers must be set in the request: * `Accept`: specifies the format
+        # of the `OperationOutcome` response. Only `application/fhir+json` is supported.
+        # * `Prefer`: specifies whether the response is immediate or asynchronous. Must
+        # be to `respond-async` because only asynchronous responses are supported.
+        # Specify the destination for the server to write result files by setting the
+        # Cloud Storage location bulk_export_gcs_destination on the FHIR store. URI of
+        # an existing Cloud Storage directory where the server writes result files, in
+        # the format gs://`bucket-id`/`path/to/destination/dir`. If there is no trailing
+        # slash, the service appends one when composing the object path. The user is
+        # responsible for creating the Cloud Storage bucket referenced. Supports the
+        # following query parameters: * `_type`: string of comma-delimited FHIR resource
+        # types. If provided, only the resources of the specified type(s) are exported. *
+        # `_since`: if provided, only the resources that are updated after the
+        # specified time are exported. * `_outputFormat`: optional, specify ndjson to
+        # export data in NDJSON format. Exported file names use the format: `export_id`_`
+        # resource_type`.ndjson. On success, the `Content-Location` header of the
+        # response is set to a URL that the user can use to query the status of the
+        # export. The URL is in the format: `projects/`project_id`/locations/`
+        # location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id`/operations/`
+        # export_id``. See get-fhir-operation-status for more information. Errors
+        # generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource
+        # describing the reason for the error.
+        # @param [String] name
+        #   Required. The name of the FHIR store to export resources from, in the format `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/
+        #   `fhir_store_id``.
+        # @param [String] _since
+        #   Optional. If provided, only resources updated after this time are exported.
+        #   The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-
+        #   07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified
+        #   to the second and include a time zone.
+        # @param [String] _type
+        #   Optional. String of comma-delimited FHIR resource types. If provided, only
+        #   resources of the specified resource type(s) are exported.
+        # @param [String] output_format
+        #   Optional. Output format of the export. This field is optional and only `
+        #   application/fhir+ndjson` is supported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_project_location_dataset_fhir_store_fhir_export(name, _since: nil, _type: nil, output_format: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/fhir/$export', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['_since'] = _since unless _since.nil?
+          command.query['_type'] = _type unless _type.nil?
+          command.query['outputFormat'] = output_format unless output_format.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the FHIR capability statement ([STU3](https://hl7.org/implement/standards/
         # fhir/STU3/capabilitystatement.html), [R4](https://hl7.org/implement/standards/
         # fhir/R4/capabilitystatement.html)), or the [conformance statement](https://hl7.
@@ -6677,6 +6843,83 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def vread_project_location_dataset_fhir_store_fhir(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes operations as defined in the FHIR specification. Implements the FHIR
+        # implementation guide [bulk data delete request](https://build.fhir.org/ig/HL7/
+        # bulk-data/export.html#bulk-data-delete-request). Returns success if the
+        # operation was successfully cancelled. If the operation is complete, or has
+        # already been cancelled, returns an error response.
+        # @param [String] name
+        #   Required. Name of the operation to be deleted, in the format `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
+        #   fhir_store_id`/operations/`operation_id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset_fhir_store_operation_fhir_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the status of operations as defined in the FHIR specification. Implements
+        # the FHIR implementation guide [bulk data status request](https://build.fhir.
+        # org/ig/HL7/bulk-data/export.html#bulk-data-status-request). Operations can
+        # have one of these states: * in-progress: response status code is `202` and `X-
+        # Progress` header is set to `in progress`. * complete: response status code is `
+        # 200` and the body is a JSON-encoded operation response as defined by the spec.
+        # For a bulk export, this response is defined in https://build.fhir.org/ig/HL7/
+        # bulk-data/export.html#response---complete-status. * error: response status
+        # code is `5XX`, and the body is a JSON-encoded `OperationOutcome` resource
+        # describing the reason for the error.
+        # @param [String] name
+        #   Required. Name of the operation to query, in the format `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id`/
+        #   operations/`operation_id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_fhir_store_operation_fhir_operation_status(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
