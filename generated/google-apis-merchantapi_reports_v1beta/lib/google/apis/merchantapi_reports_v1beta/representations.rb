@@ -413,6 +413,7 @@ module Google
           property :attribute, as: 'attribute'
           collection :changes, as: 'changes', class: Google::Apis::MerchantapiReportsV1beta::ProductChange, decorator: Google::Apis::MerchantapiReportsV1beta::ProductChange::Representation
       
+          property :event_time, as: 'eventTime'
           property :expiration_time, as: 'expirationTime'
           property :managing_account, as: 'managingAccount'
           property :resource, as: 'resource'
