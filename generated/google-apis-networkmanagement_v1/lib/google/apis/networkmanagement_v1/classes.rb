@@ -620,6 +620,50 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a serverless direct VPC egress
+      # connection.
+      class DirectVpcEgressConnectionInfo
+        include Google::Apis::Core::Hashable
+      
+        # URI of direct access network.
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Region in which the Direct VPC egress is deployed.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Selected starting IP address, from the selected IP range.
+        # Corresponds to the JSON property `selectedIpAddress`
+        # @return [String]
+        attr_accessor :selected_ip_address
+      
+        # Selected IP range.
+        # Corresponds to the JSON property `selectedIpRange`
+        # @return [String]
+        attr_accessor :selected_ip_range
+      
+        # URI of direct access subnetwork.
+        # Corresponds to the JSON property `subnetworkUri`
+        # @return [String]
+        attr_accessor :subnetwork_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @region = args[:region] if args.key?(:region)
+          @selected_ip_address = args[:selected_ip_address] if args.key?(:selected_ip_address)
+          @selected_ip_range = args[:selected_ip_range] if args.key?(:selected_ip_range)
+          @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
+        end
+      end
+      
       # Details of the final state "drop" and associated resource.
       class DropInfo
         include Google::Apis::Core::Hashable
@@ -2500,6 +2544,25 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a serverless public connection.
+      class ServerlessExternalConnectionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Selected starting IP address, from the Google dynamic address pool.
+        # Corresponds to the JSON property `selectedIpAddress`
+        # @return [String]
+        attr_accessor :selected_ip_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @selected_ip_address = args[:selected_ip_address] if args.key?(:selected_ip_address)
+        end
+      end
+      
       # For display only. Metadata associated with the serverless network endpoint
       # group backend.
       class ServerlessNegInfo
@@ -2658,6 +2721,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # For display only. Metadata associated with a serverless direct VPC egress
+        # connection.
+        # Corresponds to the JSON property `directVpcEgressConnection`
+        # @return [Google::Apis::NetworkmanagementV1::DirectVpcEgressConnectionInfo]
+        attr_accessor :direct_vpc_egress_connection
+      
         # Details of the final state "drop" and associated resource.
         # Corresponds to the JSON property `drop`
         # @return [Google::Apis::NetworkmanagementV1::DropInfo]
@@ -2752,6 +2821,11 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::RouteInfo]
         attr_accessor :route
       
+        # For display only. Metadata associated with a serverless public connection.
+        # Corresponds to the JSON property `serverlessExternalConnection`
+        # @return [Google::Apis::NetworkmanagementV1::ServerlessExternalConnectionInfo]
+        attr_accessor :serverless_external_connection
+      
         # For display only. Metadata associated with the serverless network endpoint
         # group backend.
         # Corresponds to the JSON property `serverlessNeg`
@@ -2797,6 +2871,7 @@ module Google
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @deliver = args[:deliver] if args.key?(:deliver)
           @description = args[:description] if args.key?(:description)
+          @direct_vpc_egress_connection = args[:direct_vpc_egress_connection] if args.key?(:direct_vpc_egress_connection)
           @drop = args[:drop] if args.key?(:drop)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @firewall = args[:firewall] if args.key?(:firewall)
@@ -2814,6 +2889,7 @@ module Google
           @redis_cluster = args[:redis_cluster] if args.key?(:redis_cluster)
           @redis_instance = args[:redis_instance] if args.key?(:redis_instance)
           @route = args[:route] if args.key?(:route)
+          @serverless_external_connection = args[:serverless_external_connection] if args.key?(:serverless_external_connection)
           @serverless_neg = args[:serverless_neg] if args.key?(:serverless_neg)
           @state = args[:state] if args.key?(:state)
           @storage_bucket = args[:storage_bucket] if args.key?(:storage_bucket)
