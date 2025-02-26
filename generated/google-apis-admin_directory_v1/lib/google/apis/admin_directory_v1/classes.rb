@@ -5774,7 +5774,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Token used to access next page of this result.
+        # Token used to access next page of this result. The page token is only valid
+        # for three days.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
