@@ -22,12 +22,89 @@ module Google
   module Apis
     module SpannerV1
       
+      # Message sent by the client to the adapter.
+      class AdaptMessageRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Opaque request state passed by the client to the server.
+        # Corresponds to the JSON property `attachments`
+        # @return [Hash<String,String>]
+        attr_accessor :attachments
+      
+        # Optional. Uninterpreted bytes from the underlying wire protocol.
+        # Corresponds to the JSON property `payload`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :payload
+      
+        # Required. Identifier for the underlying wire protocol.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @payload = args[:payload] if args.key?(:payload)
+          @protocol = args[:protocol] if args.key?(:protocol)
+        end
+      end
+      
+      # Message sent by the adapter to the client.
+      class AdaptMessageResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Uninterpreted bytes from the underlying wire protocol.
+        # Corresponds to the JSON property `payload`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :payload
+      
+        # Optional. Opaque state updates to be applied by the client.
+        # Corresponds to the JSON property `stateUpdates`
+        # @return [Hash<String,String>]
+        attr_accessor :state_updates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+          @state_updates = args[:state_updates] if args.key?(:state_updates)
+        end
+      end
+      
+      # A session in the Cloud Spanner Adapter API.
+      class AdapterSession
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the session. This is always system-assigned.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # The request for AddSplitPoints.
       class AddSplitPointsRequest
         include Google::Apis::Core::Hashable
       
         # Optional. A user-supplied tag associated with the split points. For example, "
-        # intital_data_load", "special_event_1". Defaults to "CloudAddSplitPointsAPI" if
+        # initial_data_load", "special_event_1". Defaults to "CloudAddSplitPointsAPI" if
         # not specified. The length of the tag must not exceed 50 characters,else will
         # be trimmed. Only valid UTF8 characters are allowed.
         # Corresponds to the JSON property `initiator`
@@ -331,6 +408,13 @@ module Google
         # @return [String]
         attr_accessor :incremental_backup_chain_id
       
+        # Output only. The instance partition(s) storing the backup. This is the same as
+        # the list of the instance partition(s) that the database had footprint in at
+        # the backup's `version_time`.
+        # Corresponds to the JSON property `instancePartitions`
+        # @return [Array<Google::Apis::SpannerV1::BackupInstancePartition>]
+        attr_accessor :instance_partitions
+      
         # Output only. The max allowed expiration time of the backup, with microseconds
         # granularity. A backup's expiration time can be configured in multiple APIs:
         # CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing
@@ -416,6 +500,7 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @freeable_size_bytes = args[:freeable_size_bytes] if args.key?(:freeable_size_bytes)
           @incremental_backup_chain_id = args[:incremental_backup_chain_id] if args.key?(:incremental_backup_chain_id)
+          @instance_partitions = args[:instance_partitions] if args.key?(:instance_partitions)
           @max_expire_time = args[:max_expire_time] if args.key?(:max_expire_time)
           @name = args[:name] if args.key?(:name)
           @oldest_version_time = args[:oldest_version_time] if args.key?(:oldest_version_time)
@@ -464,6 +549,26 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @source_database = args[:source_database] if args.key?(:source_database)
           @version_time = args[:version_time] if args.key?(:version_time)
+        end
+      end
+      
+      # Instance partition information for the backup.
+      class BackupInstancePartition
+        include Google::Apis::Core::Hashable
+      
+        # A unique identifier for the instance partition. Values are of the form `
+        # projects//instances//instancePartitions/`
+        # Corresponds to the JSON property `instancePartition`
+        # @return [String]
+        attr_accessor :instance_partition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_partition = args[:instance_partition] if args.key?(:instance_partition)
         end
       end
       
@@ -541,7 +646,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # CrontabSpec can be used to specify the version time and frequency at which the
-        # backup should be created.
+        # backup is created.
         # Corresponds to the JSON property `cronSpec`
         # @return [Google::Apis::SpannerV1::CrontabSpec]
         attr_accessor :cron_spec
@@ -1999,16 +2104,16 @@ module Google
       end
       
       # CrontabSpec can be used to specify the version time and frequency at which the
-      # backup should be created.
+      # backup is created.
       class CrontabSpec
         include Google::Apis::Core::Hashable
       
-        # Output only. Schedule backups will contain an externally consistent copy of
-        # the database at the version time specified in `schedule_spec.cron_spec`.
-        # However, Spanner may not initiate the creation of the scheduled backups at
-        # that version time. Spanner will initiate the creation of scheduled backups
-        # within the time window bounded by the version_time specified in `schedule_spec.
-        # cron_spec` and version_time + `creation_window`.
+        # Output only. Scheduled backups contain an externally consistent copy of the
+        # database at the version time specified in `schedule_spec.cron_spec`. However,
+        # Spanner might not initiate the creation of the scheduled backups at that
+        # version time. Spanner initiates the creation of scheduled backups within the
+        # time window bounded by the version_time specified in `schedule_spec.cron_spec`
+        # and version_time + `creation_window`.
         # Corresponds to the JSON property `creationWindow`
         # @return [String]
         attr_accessor :creation_window
@@ -2020,7 +2125,7 @@ module Google
         # minimum of 12 hours apart and incremental backups must be scheduled a minimum
         # of 4 hours apart. Examples of valid cron specifications: * `0 2/12 * * *` :
         # every 12 hours at (2, 14) hours past midnight in UTC. * `0 2,14 * * *` : every
-        # 12 hours at (2,14) hours past midnight in UTC. * `0 */4 * * *` : (incremental
+        # 12 hours at (2, 14) hours past midnight in UTC. * `0 */4 * * *` : (incremental
         # backups only) every 4 hours at (0, 4, 8, 12, 16, 20) hours past midnight in
         # UTC. * `0 2 * * *` : once a day at 2 past midnight in UTC. * `0 2 * * 0` :
         # once a week every Sunday at 2 past midnight in UTC. * `0 2 8 * *` : once a
@@ -2029,7 +2134,7 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # Output only. The time zone of the times in `CrontabSpec.text`. Currently only
+        # Output only. The time zone of the times in `CrontabSpec.text`. Currently, only
         # UTC is supported.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
@@ -3156,8 +3261,11 @@ module Google
         # the instance. If autoscaling is enabled, `node_count` is treated as an `
         # OUTPUT_ONLY` field and reflects the current number of nodes allocated to the
         # instance. This might be zero in API responses for instances that are not yet
-        # in the `READY` state. For more information, see [Compute capacity, nodes, and
-        # processing units](https://cloud.google.com/spanner/docs/compute-capacity).
+        # in the `READY` state. If the instance has varying node count across replicas (
+        # achieved by setting `asymmetric_autoscaling_options` in the autoscaling
+        # configuration), the `node_count` set here is the maximum node count across all
+        # replicas. For more information, see [Compute capacity, nodes, and processing
+        # units](https://cloud.google.com/spanner/docs/compute-capacity).
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
@@ -3168,9 +3276,12 @@ module Google
         # processing units allocated to the instance. If autoscaling is enabled, `
         # processing_units` is treated as an `OUTPUT_ONLY` field and reflects the
         # current number of processing units allocated to the instance. This might be
-        # zero in API responses for instances that are not yet in the `READY` state. For
-        # more information, see [Compute capacity, nodes and processing units](https://
-        # cloud.google.com/spanner/docs/compute-capacity).
+        # zero in API responses for instances that are not yet in the `READY` state. If
+        # the instance has varying processing units per replica (achieved by setting `
+        # asymmetric_autoscaling_options` in the autoscaling configuration), the `
+        # processing_units` set here is the maximum processing units across all replicas.
+        # For more information, see [Compute capacity, nodes and processing units](
+        # https://cloud.google.com/spanner/docs/compute-capacity).
         # Corresponds to the JSON property `processingUnits`
         # @return [Fixnum]
         attr_accessor :processing_units
@@ -6014,8 +6125,8 @@ module Google
       
         # Optional. If true, specifies a multiplexed session. Use a multiplexed session
         # for multiple, concurrent read-only operations. Don't use them for read-write
-        # transactions, partitioned reads, or partitioned queries. Use CreateSession to
-        # create multiplexed sessions. Don't use BatchCreateSessions to create a
+        # transactions, partitioned reads, or partitioned queries. Use `sessions.create`
+        # to create multiplexed sessions. Don't use BatchCreateSessions to create a
         # multiplexed session. You can't delete or list multiplexed sessions.
         # Corresponds to the JSON property `multiplexed`
         # @return [Boolean]

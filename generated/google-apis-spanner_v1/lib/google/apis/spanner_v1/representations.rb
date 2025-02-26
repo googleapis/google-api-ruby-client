@@ -22,6 +22,24 @@ module Google
   module Apis
     module SpannerV1
       
+      class AdaptMessageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdaptMessageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdapterSession
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddSplitPointsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +89,12 @@ module Google
       end
       
       class BackupInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupInstancePartition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -976,6 +1000,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdaptMessageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attachments, as: 'attachments'
+          property :payload, :base64 => true, as: 'payload'
+          property :protocol, as: 'protocol'
+        end
+      end
+      
+      class AdaptMessageResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload, :base64 => true, as: 'payload'
+          hash :state_updates, as: 'stateUpdates'
+        end
+      end
+      
+      class AdapterSession
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class AddSplitPointsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1055,6 +1103,8 @@ module Google
           property :expire_time, as: 'expireTime'
           property :freeable_size_bytes, :numeric_string => true, as: 'freeableSizeBytes'
           property :incremental_backup_chain_id, as: 'incrementalBackupChainId'
+          collection :instance_partitions, as: 'instancePartitions', class: Google::Apis::SpannerV1::BackupInstancePartition, decorator: Google::Apis::SpannerV1::BackupInstancePartition::Representation
+      
           property :max_expire_time, as: 'maxExpireTime'
           property :name, as: 'name'
           property :oldest_version_time, as: 'oldestVersionTime'
@@ -1073,6 +1123,13 @@ module Google
           property :create_time, as: 'createTime'
           property :source_database, as: 'sourceDatabase'
           property :version_time, as: 'versionTime'
+        end
+      end
+      
+      class BackupInstancePartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_partition, as: 'instancePartition'
         end
       end
       
