@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Dependency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeveloperConnectConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +365,18 @@ module Google
       end
       
       class GitSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GitSourceDependency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GitSourceRepository
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -904,6 +922,8 @@ module Google
       
           property :build_trigger_id, as: 'buildTriggerId'
           property :create_time, as: 'createTime'
+          collection :dependencies, as: 'dependencies', class: Google::Apis::CloudbuildV1::Dependency, decorator: Google::Apis::CloudbuildV1::Dependency::Representation
+      
           property :failure_info, as: 'failureInfo', class: Google::Apis::CloudbuildV1::FailureInfo, decorator: Google::Apis::CloudbuildV1::FailureInfo::Representation
       
           property :finish_time, as: 'finishTime'
@@ -975,6 +995,7 @@ module Google
           property :machine_type, as: 'machineType'
           property :pool, as: 'pool', class: Google::Apis::CloudbuildV1::PoolOption, decorator: Google::Apis::CloudbuildV1::PoolOption::Representation
       
+          property :pubsub_topic, as: 'pubsubTopic'
           property :requested_verify_option, as: 'requestedVerifyOption'
           collection :secret_env, as: 'secretEnv'
           collection :source_provenance_hash, as: 'sourceProvenanceHash'
@@ -1188,6 +1209,15 @@ module Google
         end
       end
       
+      class Dependency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :empty, as: 'empty'
+          property :git_source, as: 'gitSource', class: Google::Apis::CloudbuildV1::GitSourceDependency, decorator: Google::Apis::CloudbuildV1::GitSourceDependency::Representation
+      
+        end
+      end
+      
       class DeveloperConnectConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1382,6 +1412,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dir, as: 'dir'
           property :revision, as: 'revision'
+          property :url, as: 'url'
+        end
+      end
+      
+      class GitSourceDependency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :depth, :numeric_string => true, as: 'depth'
+          property :dest_path, as: 'destPath'
+          property :recurse_submodules, as: 'recurseSubmodules'
+          property :repository, as: 'repository', class: Google::Apis::CloudbuildV1::GitSourceRepository, decorator: Google::Apis::CloudbuildV1::GitSourceRepository::Representation
+      
+          property :revision, as: 'revision'
+        end
+      end
+      
+      class GitSourceRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_connect, as: 'developerConnect'
           property :url, as: 'url'
         end
       end
