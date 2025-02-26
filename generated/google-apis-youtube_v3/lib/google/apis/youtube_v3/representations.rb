@@ -1737,6 +1737,7 @@ module Google
       class ChannelStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_channel_monetization_enabled, as: 'isChannelMonetizationEnabled'
           property :is_linked, as: 'isLinked'
           property :long_uploads_status, as: 'longUploadsStatus'
           property :made_for_kids, as: 'madeForKids'
