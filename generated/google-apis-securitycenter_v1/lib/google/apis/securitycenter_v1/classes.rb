@@ -211,6 +211,25 @@ module Google
         end
       end
       
+      # Allowed IP rule.
+      class Allowed
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional list of allowed IP rules.
+        # Corresponds to the JSON property `ipRules`
+        # @return [Array<Google::Apis::SecuritycenterV1::IpRule>]
+        attr_accessor :ip_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_rules = args[:ip_rules] if args.key?(:ip_rules)
+        end
+      end
+      
       # Represents an application associated with a finding.
       class Application
         include Google::Apis::Core::Hashable
@@ -2043,6 +2062,25 @@ module Google
         end
       end
       
+      # Denied IP rule.
+      class Denied
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional list of denied IP rules.
+        # Corresponds to the JSON property `ipRules`
+        # @return [Array<Google::Apis::SecuritycenterV1::IpRule>]
+        attr_accessor :ip_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_rules = args[:ip_rules] if args.key?(:ip_rules)
+        end
+      end
+      
       # Memory hash detection contributing to the binary family match.
       class Detection
         include Google::Apis::Core::Hashable
@@ -2707,6 +2745,16 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::Indicator]
         attr_accessor :indicator
       
+        # IP rules associated with the finding.
+        # Corresponds to the JSON property `ipRules`
+        # @return [Google::Apis::SecuritycenterV1::IpRules]
+        attr_accessor :ip_rules
+      
+        # Describes a job
+        # Corresponds to the JSON property `job`
+        # @return [Google::Apis::SecuritycenterV1::Job]
+        attr_accessor :job
+      
         # Kernel mode rootkit signatures.
         # Corresponds to the JSON property `kernelRootkit`
         # @return [Google::Apis::SecuritycenterV1::KernelRootkit]
@@ -2772,6 +2820,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Represents the VPC networks that the resource is attached to.
+        # Corresponds to the JSON property `networks`
+        # @return [Array<Google::Apis::SecuritycenterV1::Network>]
+        attr_accessor :networks
       
         # Steps to address the finding.
         # Corresponds to the JSON property `nextSteps`
@@ -2900,6 +2953,8 @@ module Google
           @group_memberships = args[:group_memberships] if args.key?(:group_memberships)
           @iam_bindings = args[:iam_bindings] if args.key?(:iam_bindings)
           @indicator = args[:indicator] if args.key?(:indicator)
+          @ip_rules = args[:ip_rules] if args.key?(:ip_rules)
+          @job = args[:job] if args.key?(:job)
           @kernel_rootkit = args[:kernel_rootkit] if args.key?(:kernel_rootkit)
           @kubernetes = args[:kubernetes] if args.key?(:kubernetes)
           @load_balancers = args[:load_balancers] if args.key?(:load_balancers)
@@ -2911,6 +2966,7 @@ module Google
           @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
+          @networks = args[:networks] if args.key?(:networks)
           @next_steps = args[:next_steps] if args.key?(:next_steps)
           @notebook = args[:notebook] if args.key?(:notebook)
           @org_policies = args[:org_policies] if args.key?(:org_policies)
@@ -4496,6 +4552,25 @@ module Google
         end
       end
       
+      # Allowed IP rule.
+      class GoogleCloudSecuritycenterV2Allowed
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional list of allowed IP rules.
+        # Corresponds to the JSON property `ipRules`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IpRule>]
+        attr_accessor :ip_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_rules = args[:ip_rules] if args.key?(:ip_rules)
+        end
+      end
+      
       # Represents an application associated with a finding.
       class GoogleCloudSecuritycenterV2Application
         include Google::Apis::Core::Hashable
@@ -5801,6 +5876,25 @@ module Google
         end
       end
       
+      # Denied IP rule.
+      class GoogleCloudSecuritycenterV2Denied
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional list of denied IP rules.
+        # Corresponds to the JSON property `ipRules`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IpRule>]
+        attr_accessor :ip_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_rules = args[:ip_rules] if args.key?(:ip_rules)
+        end
+      end
+      
       # Memory hash detection contributing to the binary family match.
       class GoogleCloudSecuritycenterV2Detection
         include Google::Apis::Core::Hashable
@@ -6336,6 +6430,16 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Indicator]
         attr_accessor :indicator
       
+        # IP rules associated with the finding.
+        # Corresponds to the JSON property `ipRules`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IpRules]
+        attr_accessor :ip_rules
+      
+        # Describes a job
+        # Corresponds to the JSON property `job`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Job]
+        attr_accessor :job
+      
         # Kernel mode rootkit signatures.
         # Corresponds to the JSON property `kernelRootkit`
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2KernelRootkit]
@@ -6405,6 +6509,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Represents the VPC networks that the resource is attached to.
+        # Corresponds to the JSON property `networks`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Network>]
+        attr_accessor :networks
       
         # Steps to address the finding.
         # Corresponds to the JSON property `nextSteps`
@@ -6538,6 +6647,8 @@ module Google
           @group_memberships = args[:group_memberships] if args.key?(:group_memberships)
           @iam_bindings = args[:iam_bindings] if args.key?(:iam_bindings)
           @indicator = args[:indicator] if args.key?(:indicator)
+          @ip_rules = args[:ip_rules] if args.key?(:ip_rules)
+          @job = args[:job] if args.key?(:job)
           @kernel_rootkit = args[:kernel_rootkit] if args.key?(:kernel_rootkit)
           @kubernetes = args[:kubernetes] if args.key?(:kubernetes)
           @load_balancers = args[:load_balancers] if args.key?(:load_balancers)
@@ -6549,6 +6660,7 @@ module Google
           @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
+          @networks = args[:networks] if args.key?(:networks)
           @next_steps = args[:next_steps] if args.key?(:next_steps)
           @notebook = args[:notebook] if args.key?(:notebook)
           @org_policies = args[:org_policies] if args.key?(:org_policies)
@@ -6710,6 +6822,90 @@ module Google
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @signatures = args[:signatures] if args.key?(:signatures)
           @uris = args[:uris] if args.key?(:uris)
+        end
+      end
+      
+      # IP rule information.
+      class GoogleCloudSecuritycenterV2IpRule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional list of ports to which this rule applies. This field is
+        # only applicable for the UDP or (S)TCP protocols. Each entry must be either an
+        # integer or a range including a min and max port number.
+        # Corresponds to the JSON property `portRanges`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2PortRange>]
+        attr_accessor :port_ranges
+      
+        # The IP protocol this rule applies to. This value can either be one of the
+        # following well known protocol strings (TCP, UDP, ICMP, ESP, AH, IPIP, SCTP) or
+        # a string representation of the integer value.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port_ranges = args[:port_ranges] if args.key?(:port_ranges)
+          @protocol = args[:protocol] if args.key?(:protocol)
+        end
+      end
+      
+      # IP rules associated with the finding.
+      class GoogleCloudSecuritycenterV2IpRules
+        include Google::Apis::Core::Hashable
+      
+        # Allowed IP rule.
+        # Corresponds to the JSON property `allowed`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Allowed]
+        attr_accessor :allowed
+      
+        # Denied IP rule.
+        # Corresponds to the JSON property `denied`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Denied]
+        attr_accessor :denied
+      
+        # If destination IP ranges are specified, the firewall rule applies only to
+        # traffic that has a destination IP address in these ranges. These ranges must
+        # be expressed in CIDR format. Only supports IPv4.
+        # Corresponds to the JSON property `destinationIpRanges`
+        # @return [Array<String>]
+        attr_accessor :destination_ip_ranges
+      
+        # The direction that the rule is applicable to, one of ingress or egress.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
+        # Name of the network protocol service, such as FTP, that is exposed by the open
+        # port. Follows the naming convention available at: https://www.iana.org/
+        # assignments/service-names-port-numbers/service-names-port-numbers.xhtml.
+        # Corresponds to the JSON property `exposedServices`
+        # @return [Array<String>]
+        attr_accessor :exposed_services
+      
+        # If source IP ranges are specified, the firewall rule applies only to traffic
+        # that has a source IP address in these ranges. These ranges must be expressed
+        # in CIDR format. Only supports IPv4.
+        # Corresponds to the JSON property `sourceIpRanges`
+        # @return [Array<String>]
+        attr_accessor :source_ip_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @denied = args[:denied] if args.key?(:denied)
+          @destination_ip_ranges = args[:destination_ip_ranges] if args.key?(:destination_ip_ranges)
+          @direction = args[:direction] if args.key?(:direction)
+          @exposed_services = args[:exposed_services] if args.key?(:exposed_services)
+          @source_ip_ranges = args[:source_ip_ranges] if args.key?(:source_ip_ranges)
         end
       end
       
@@ -7192,6 +7388,43 @@ module Google
         end
       end
       
+      # Describes a job
+      class GoogleCloudSecuritycenterV2Job
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If the job did not complete successfully, this field describes why.
+        # Corresponds to the JSON property `errorCode`
+        # @return [Fixnum]
+        attr_accessor :error_code
+      
+        # Optional. Gives the location where the job ran, such as `US` or `europe-west1`
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The fully-qualified name for a job. e.g. `projects//jobs/`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the job, such as `RUNNING` or `PENDING`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Kernel mode rootkit signatures.
       class GoogleCloudSecuritycenterV2KernelRootkit
         include Google::Apis::Core::Hashable
@@ -7593,6 +7826,26 @@ module Google
         end
       end
       
+      # Contains information about a VPC network associated with the finding.
+      class GoogleCloudSecuritycenterV2Network
+        include Google::Apis::Core::Hashable
+      
+        # The name of the VPC network resource, for example, `//compute.googleapis.com/
+        # projects/my-project/global/networks/my-network`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Kubernetes nodes associated with the finding.
       class GoogleCloudSecuritycenterV2Node
         include Google::Apis::Core::Hashable
@@ -7763,8 +8016,8 @@ module Google
       class GoogleCloudSecuritycenterV2OrgPolicy
         include Google::Apis::Core::Hashable
       
-        # The resource name of the org policy. Example: "organizations/`organization_id`/
-        # policies/`constraint_name`"
+        # Identifier. The resource name of the org policy. Example: "organizations/`
+        # organization_id`/policies/`constraint_name`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7885,6 +8138,33 @@ module Google
           @detected_value = args[:detected_value] if args.key?(:detected_value)
           @expected_value = args[:expected_value] if args.key?(:expected_value)
           @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # A port range which is inclusive of the min and max values. Values are between
+      # 0 and 2^16-1. The max can be equal / must be not smaller than the min value.
+      # If min and max are equal this indicates that it is a single port.
+      class GoogleCloudSecuritycenterV2PortRange
+        include Google::Apis::Core::Hashable
+      
+        # Maximum port value.
+        # Corresponds to the JSON property `max`
+        # @return [Fixnum]
+        attr_accessor :max
+      
+        # Minimum port value.
+        # Corresponds to the JSON property `min`
+        # @return [Fixnum]
+        attr_accessor :min
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
         end
       end
       
@@ -9218,6 +9498,127 @@ module Google
         end
       end
       
+      # IP rule information.
+      class IpRule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional list of ports to which this rule applies. This field is
+        # only applicable for the UDP or (S)TCP protocols. Each entry must be either an
+        # integer or a range including a min and max port number.
+        # Corresponds to the JSON property `portRanges`
+        # @return [Array<Google::Apis::SecuritycenterV1::PortRange>]
+        attr_accessor :port_ranges
+      
+        # The IP protocol this rule applies to. This value can either be one of the
+        # following well known protocol strings (TCP, UDP, ICMP, ESP, AH, IPIP, SCTP) or
+        # a string representation of the integer value.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port_ranges = args[:port_ranges] if args.key?(:port_ranges)
+          @protocol = args[:protocol] if args.key?(:protocol)
+        end
+      end
+      
+      # IP rules associated with the finding.
+      class IpRules
+        include Google::Apis::Core::Hashable
+      
+        # Allowed IP rule.
+        # Corresponds to the JSON property `allowed`
+        # @return [Google::Apis::SecuritycenterV1::Allowed]
+        attr_accessor :allowed
+      
+        # Denied IP rule.
+        # Corresponds to the JSON property `denied`
+        # @return [Google::Apis::SecuritycenterV1::Denied]
+        attr_accessor :denied
+      
+        # If destination IP ranges are specified, the firewall rule applies only to
+        # traffic that has a destination IP address in these ranges. These ranges must
+        # be expressed in CIDR format. Only supports IPv4.
+        # Corresponds to the JSON property `destinationIpRanges`
+        # @return [Array<String>]
+        attr_accessor :destination_ip_ranges
+      
+        # The direction that the rule is applicable to, one of ingress or egress.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
+        # Name of the network protocol service, such as FTP, that is exposed by the open
+        # port. Follows the naming convention available at: https://www.iana.org/
+        # assignments/service-names-port-numbers/service-names-port-numbers.xhtml.
+        # Corresponds to the JSON property `exposedServices`
+        # @return [Array<String>]
+        attr_accessor :exposed_services
+      
+        # If source IP ranges are specified, the firewall rule applies only to traffic
+        # that has a source IP address in these ranges. These ranges must be expressed
+        # in CIDR format. Only supports IPv4.
+        # Corresponds to the JSON property `sourceIpRanges`
+        # @return [Array<String>]
+        attr_accessor :source_ip_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed = args[:allowed] if args.key?(:allowed)
+          @denied = args[:denied] if args.key?(:denied)
+          @destination_ip_ranges = args[:destination_ip_ranges] if args.key?(:destination_ip_ranges)
+          @direction = args[:direction] if args.key?(:direction)
+          @exposed_services = args[:exposed_services] if args.key?(:exposed_services)
+          @source_ip_ranges = args[:source_ip_ranges] if args.key?(:source_ip_ranges)
+        end
+      end
+      
+      # Describes a job
+      class Job
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If the job did not complete successfully, this field describes why.
+        # Corresponds to the JSON property `errorCode`
+        # @return [Fixnum]
+        attr_accessor :error_code
+      
+        # Optional. Gives the location where the job ran, such as `US` or `europe-west1`
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The fully-qualified name for a job. e.g. `projects//jobs/`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the job, such as `RUNNING` or `PENDING`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Kernel mode rootkit signatures.
       class KernelRootkit
         include Google::Apis::Core::Hashable
@@ -10047,6 +10448,26 @@ module Google
         end
       end
       
+      # Contains information about a VPC network associated with the finding.
+      class Network
+        include Google::Apis::Core::Hashable
+      
+        # The name of the VPC network resource, for example, `//compute.googleapis.com/
+        # projects/my-project/global/networks/my-network`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Kubernetes nodes associated with the finding.
       class Node
         include Google::Apis::Core::Hashable
@@ -10582,6 +11003,33 @@ module Google
           @detected_value = args[:detected_value] if args.key?(:detected_value)
           @expected_value = args[:expected_value] if args.key?(:expected_value)
           @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # A port range which is inclusive of the min and max values. Values are between
+      # 0 and 2^16-1. The max can be equal / must be not smaller than the min value.
+      # If min and max are equal this indicates that it is a single port.
+      class PortRange
+        include Google::Apis::Core::Hashable
+      
+        # Maximum port value.
+        # Corresponds to the JSON property `max`
+        # @return [Fixnum]
+        attr_accessor :max
+      
+        # Minimum port value.
+        # Corresponds to the JSON property `min`
+        # @return [Fixnum]
+        attr_accessor :min
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
         end
       end
       
