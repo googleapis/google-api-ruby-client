@@ -646,8 +646,8 @@ module Google
       class MultisliceParams
         include Google::Apis::Core::Hashable
       
-        # Required. Number of nodes with this spec. The system will attempt to provison "
-        # node_count" nodes as part of the request. This needs to be > 1.
+        # Required. Number of nodes with this spec. The system will attempt to provision
+        # "node_count" nodes as part of the request. This needs to be > 1.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
