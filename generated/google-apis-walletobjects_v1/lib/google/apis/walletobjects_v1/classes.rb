@@ -7472,6 +7472,58 @@ module Google
         end
       end
       
+      # Request to send a private pass update notice information to Google, so that
+      # devices can then fetch the notice prompting the user to update a pass.
+      class SetPassUpdateNoticeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A fully qualified identifier of the pass that the issuer wants to
+        # notify the pass holder(s) about. Formatted as .
+        # Corresponds to the JSON property `externalPassId`
+        # @return [String]
+        attr_accessor :external_pass_id
+      
+        # Required. The issuer endpoint URI the pass holder needs to follow in order to
+        # receive an updated pass JWT. It can not contain any sensitive information. The
+        # endpoint needs to authenticate the user before giving the user the updated JWT.
+        # Example update URI https://someissuer.com/update/passId=someExternalPassId
+        # Corresponds to the JSON property `updateUri`
+        # @return [String]
+        attr_accessor :update_uri
+      
+        # Required. The JWT signature of the updated pass that the issuer wants to
+        # notify Google about. Only devices that report a different JWT signature than
+        # this JWT signature will receive the update notification.
+        # Corresponds to the JSON property `updatedPassJwtSignature`
+        # @return [String]
+        attr_accessor :updated_pass_jwt_signature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_pass_id = args[:external_pass_id] if args.key?(:external_pass_id)
+          @update_uri = args[:update_uri] if args.key?(:update_uri)
+          @updated_pass_jwt_signature = args[:updated_pass_jwt_signature] if args.key?(:updated_pass_jwt_signature)
+        end
+      end
+      
+      # A response to a request to notify Google of an awaiting update to a private
+      # pass.
+      class SetPassUpdateNoticeResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # 
       class SignUpInfo
         include Google::Apis::Core::Hashable
