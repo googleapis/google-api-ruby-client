@@ -3278,12 +3278,10 @@ module Google
         # @return [String]
         attr_accessor :access_level
       
-        # A Google Cloud resource that you want to allow to egress the perimeter. These
-        # resources can access data outside the perimeter. This field only supports
-        # projects. The project format is `projects/`project_number``. The resource can
-        # be in any Google Cloud organization, not just the organization where the
-        # perimeter is defined. You can't use `*` in this field to allow all Google
-        # Cloud resources.
+        # A Google Cloud resource from the service perimeter that you want to allow to
+        # access data outside the perimeter. This field supports only projects. The
+        # project format is `projects/`project_number``. You can't use `*` in this field
+        # to allow all Google Cloud resources.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -4085,9 +4083,9 @@ module Google
         # The project that the associated Google Cloud resource belongs to, in the form
         # of projects/`PROJECT_NUMBER`. If an IAM policy is set on a resource (like VM
         # instance, Cloud Storage bucket), the project field will indicate the project
-        # that contains the resource. If an IAM policy is set on a folder or orgnization,
-        # this field will be empty. To search against the `project`: * specify the `
-        # scope` field as this project in your search request.
+        # that contains the resource. If an IAM policy is set on a folder or
+        # organization, this field will be empty. To search against the `project`: *
+        # specify the `scope` field as this project in your search request.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
