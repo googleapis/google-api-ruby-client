@@ -5485,7 +5485,8 @@ module Google
         end
       end
       
-      # Condition being reported.
+      # Condition being reported. TODO b/395151419: Remove this message once the
+      # membership-level conditions field uses the common Condition message.
       class ServiceMeshCondition
         include Google::Apis::Core::Hashable
       
@@ -5617,7 +5618,8 @@ module Google
       class ServiceMeshMembershipState
         include Google::Apis::Core::Hashable
       
-        # Output only. List of conditions reported for this membership.
+        # Output only. List of conditions reported for this membership. TODO b/395151419:
+        # Use the common Condition message.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::GkehubV1::ServiceMeshCondition>]
         attr_accessor :conditions
