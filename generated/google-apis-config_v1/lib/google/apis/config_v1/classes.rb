@@ -1219,8 +1219,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Arbitrary key-value metadata storage e.g. to help client tools
-        # identifiy preview during automation. See https://google.aip.dev/148#
-        # annotations for details on format and size limitations.
+        # identify preview during automation. See https://google.aip.dev/148#annotations
+        # for details on format and size limitations.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
