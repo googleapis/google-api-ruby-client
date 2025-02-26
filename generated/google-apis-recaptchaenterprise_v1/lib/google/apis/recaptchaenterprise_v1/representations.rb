@@ -571,6 +571,7 @@ module Google
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           collection :headers, as: 'headers'
           property :ja3, as: 'ja3'
+          property :ja4, as: 'ja4'
           property :requested_uri, as: 'requestedUri'
           property :site_key, as: 'siteKey'
           property :token, as: 'token'
