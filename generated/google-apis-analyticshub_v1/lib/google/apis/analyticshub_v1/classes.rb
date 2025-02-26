@@ -241,8 +241,8 @@ module Google
       class BigQueryDatasetSource
         include Google::Apis::Core::Hashable
       
-        # Resource name of the dataset source for this listing. e.g. `projects/myproject/
-        # datasets/123`
+        # Optional. Resource name of the dataset source for this listing. e.g. `projects/
+        # myproject/datasets/123`
         # Corresponds to the JSON property `dataset`
         # @return [String]
         attr_accessor :dataset
@@ -418,7 +418,7 @@ module Google
       
         # Optional. The maximum duration that can elapse before a new Cloud Storage file
         # is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed
-        # the subscription's acknowledgement deadline.
+        # the subscription's acknowledgment deadline.
         # Corresponds to the JSON property `maxDuration`
         # @return [String]
         attr_accessor :max_duration
@@ -519,6 +519,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :listing_count
       
+        # Optional. By default, false. If true, the DataExchange has an email sharing
+        # mandate enabled.
+        # Corresponds to the JSON property `logLinkedDatasetQueryUserEmail`
+        # @return [Boolean]
+        attr_accessor :log_linked_dataset_query_user_email
+        alias_method :log_linked_dataset_query_user_email?, :log_linked_dataset_query_user_email
+      
         # Output only. The resource name of the data exchange. e.g. `projects/myproject/
         # locations/US/dataExchanges/123`.
         # Corresponds to the JSON property `name`
@@ -549,6 +556,7 @@ module Google
           @documentation = args[:documentation] if args.key?(:documentation)
           @icon = args[:icon] if args.key?(:icon)
           @listing_count = args[:listing_count] if args.key?(:listing_count)
+          @log_linked_dataset_query_user_email = args[:log_linked_dataset_query_user_email] if args.key?(:log_linked_dataset_query_user_email)
           @name = args[:name] if args.key?(:name)
           @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
           @sharing_environment_config = args[:sharing_environment_config] if args.key?(:sharing_environment_config)
@@ -636,11 +644,11 @@ module Google
       
         # Optional. The maximum number of delivery attempts for any message. The value
         # must be between 5 and 100. The number of delivery attempts is defined as 1 + (
-        # the sum of number of NACKs and number of times the acknowledgement deadline
-        # has been exceeded for the message). A NACK is any call to ModifyAckDeadline
-        # with a 0 deadline. Note that client libraries may automatically extend
-        # ack_deadlines. This field will be honored on a best effort basis. If this
-        # parameter is 0, a default value of 5 is used.
+        # the sum of number of NACKs and number of times the acknowledgment deadline has
+        # been exceeded for the message). A NACK is any call to ModifyAckDeadline with a
+        # 0 deadline. Note that client libraries may automatically extend ack_deadlines.
+        # This field will be honored on a best effort basis. If this parameter is 0, a
+        # default value of 5 is used.
         # Corresponds to the JSON property `maxDeliveryAttempts`
         # @return [Fixnum]
         attr_accessor :max_delivery_attempts
@@ -673,7 +681,7 @@ module Google
       class DestinationDataset
         include Google::Apis::Core::Hashable
       
-        # Contains the reference that identifies a destination bigquery dataset.
+        # Required. A reference that identifies the destination dataset.
         # Corresponds to the JSON property `datasetReference`
         # @return [Google::Apis::AnalyticshubV1::DestinationDatasetReference]
         attr_accessor :dataset_reference
@@ -716,7 +724,7 @@ module Google
         end
       end
       
-      # Contains the reference that identifies a destination bigquery dataset.
+      # 
       class DestinationDatasetReference
         include Google::Apis::Core::Hashable
       
@@ -1053,7 +1061,7 @@ module Google
         # Optional. If true, Pub/Sub provides the following guarantees for the delivery
         # of a message with a given value of `message_id` on this subscription: * The
         # message sent to a subscriber is guaranteed not to be resent before the message'
-        # s acknowledgement deadline expires. * An acknowledged message will not be
+        # s acknowledgment deadline expires. * An acknowledged message will not be
         # resent to a subscriber. Note that subscribers may still receive multiple
         # copies of a message when `enable_exactly_once_delivery` is true if the message
         # was published multiple times by a publisher client. These copies are
@@ -1101,6 +1109,12 @@ module Google
         # @return [String]
         attr_accessor :message_retention_duration
       
+        # Optional. Transforms to be applied to messages before they are delivered to
+        # subscribers. Transforms are applied in the order specified.
+        # Corresponds to the JSON property `messageTransforms`
+        # @return [Array<Google::Apis::AnalyticshubV1::MessageTransform>]
+        attr_accessor :message_transforms
+      
         # Required. Name of the subscription. Format is `projects/`project`/
         # subscriptions/`sub``.
         # Corresponds to the JSON property `name`
@@ -1126,7 +1140,7 @@ module Google
         # A policy that specifies how Pub/Sub retries message delivery. Retry delay will
         # be exponential based on provided minimum and maximum backoffs. https://en.
         # wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs
-        # or acknowledgement deadline exceeded events for a given message. Retry Policy
+        # or acknowledgment deadline exceeded events for a given message. Retry Policy
         # is implemented on a best effort basis. At times, the delay between consecutive
         # deliveries may not match the configuration. That is, delay can be more or less
         # than configured backoff.
@@ -1168,12 +1182,50 @@ module Google
           @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
           @message_retention_duration = args[:message_retention_duration] if args.key?(:message_retention_duration)
+          @message_transforms = args[:message_transforms] if args.key?(:message_transforms)
           @name = args[:name] if args.key?(:name)
           @push_config = args[:push_config] if args.key?(:push_config)
           @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
           @state = args[:state] if args.key?(:state)
           @topic_message_retention_duration = args[:topic_message_retention_duration] if args.key?(:topic_message_retention_duration)
+        end
+      end
+      
+      # User-defined JavaScript function that can transform or filter a Pub/Sub
+      # message.
+      class JavaScriptUdf
+        include Google::Apis::Core::Hashable
+      
+        # Required. JavaScript code that contains a function `function_name` with the
+        # below signature: ``` /** * Transforms a Pub/Sub message. * @return `(Object)>|
+        # null)` - To * filter a message, return `null`. To transform a message return a
+        # map * with the following keys: * - (required) 'data' : `string` * - (optional)
+        # 'attributes' : `Object` * Returning empty `attributes` will remove all
+        # attributes from the * message. * * @param `(Object)>` Pub/Sub * message. Keys:
+        # * - (required) 'data' : `string` * - (required) 'attributes' : `Object` * * @
+        # param `Object` metadata - Pub/Sub message metadata. * Keys: * - (required) '
+        # message_id' : `string` * - (optional) 'publish_time': `string` YYYY-MM-DDTHH:
+        # MM:SSZ format * - (optional) 'ordering_key': `string` */ function (message,
+        # metadata) ` ` ```
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Required. Name of the JavasScript function that should applied to Pub/Sub
+        # messages.
+        # Corresponds to the JSON property `functionName`
+        # @return [String]
+        attr_accessor :function_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @function_name = args[:function_name] if args.key?(:function_name)
         end
       end
       
@@ -1403,6 +1455,13 @@ module Google
         # @return [String]
         attr_accessor :icon
       
+        # Optional. By default, false. If true, the Listing has an email sharing mandate
+        # enabled.
+        # Corresponds to the JSON property `logLinkedDatasetQueryUserEmail`
+        # @return [Boolean]
+        attr_accessor :log_linked_dataset_query_user_email
+        alias_method :log_linked_dataset_query_user_email?, :log_linked_dataset_query_user_email
+      
         # Output only. The resource name of the listing. e.g. `projects/myproject/
         # locations/US/dataExchanges/123/listings/456`
         # Corresponds to the JSON property `name`
@@ -1462,6 +1521,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @documentation = args[:documentation] if args.key?(:documentation)
           @icon = args[:icon] if args.key?(:icon)
+          @log_linked_dataset_query_user_email = args[:log_linked_dataset_query_user_email] if args.key?(:log_linked_dataset_query_user_email)
           @name = args[:name] if args.key?(:name)
           @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
           @publisher = args[:publisher] if args.key?(:publisher)
@@ -1470,6 +1530,34 @@ module Google
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @restricted_export_config = args[:restricted_export_config] if args.key?(:restricted_export_config)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # All supported message transforms types.
+      class MessageTransform
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, the transform is enabled. If false, the transform is
+        # disabled and will not be applied to messages. Defaults to `true`.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # User-defined JavaScript function that can transform or filter a Pub/Sub
+        # message.
+        # Corresponds to the JSON property `javascriptUdf`
+        # @return [Google::Apis::AnalyticshubV1::JavaScriptUdf]
+        attr_accessor :javascript_udf
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @javascript_udf = args[:javascript_udf] if args.key?(:javascript_udf)
         end
       end
       
@@ -1982,7 +2070,7 @@ module Google
       # A policy that specifies how Pub/Sub retries message delivery. Retry delay will
       # be exponential based on provided minimum and maximum backoffs. https://en.
       # wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs
-      # or acknowledgement deadline exceeded events for a given message. Retry Policy
+      # or acknowledgment deadline exceeded events for a given message. Retry Policy
       # is implemented on a best effort basis. At times, the delay between consecutive
       # deliveries may not match the configuration. That is, delay can be more or less
       # than configured backoff.
@@ -2337,6 +2425,13 @@ module Google
         # @return [String]
         attr_accessor :listing
       
+        # Output only. By default, false. If true, the Subscriber agreed to the email
+        # sharing mandate that is enabled for DataExchange/Listing.
+        # Corresponds to the JSON property `logLinkedDatasetQueryUserEmail`
+        # @return [Boolean]
+        attr_accessor :log_linked_dataset_query_user_email
+        alias_method :log_linked_dataset_query_user_email?, :log_linked_dataset_query_user_email
+      
         # Output only. The resource name of the subscription. e.g. `projects/myproject/
         # locations/US/subscriptions/123`.
         # Corresponds to the JSON property `name`
@@ -2381,6 +2476,7 @@ module Google
           @linked_dataset_map = args[:linked_dataset_map] if args.key?(:linked_dataset_map)
           @linked_resources = args[:linked_resources] if args.key?(:linked_resources)
           @listing = args[:listing] if args.key?(:listing)
+          @log_linked_dataset_query_user_email = args[:log_linked_dataset_query_user_email] if args.key?(:log_linked_dataset_query_user_email)
           @name = args[:name] if args.key?(:name)
           @organization_display_name = args[:organization_display_name] if args.key?(:organization_display_name)
           @organization_id = args[:organization_id] if args.key?(:organization_id)

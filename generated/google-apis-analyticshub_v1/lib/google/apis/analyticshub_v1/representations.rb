@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JavaScriptUdf
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LinkedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +221,12 @@ module Google
       end
       
       class Listing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageTransform
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -483,6 +495,7 @@ module Google
           property :documentation, as: 'documentation'
           property :icon, :base64 => true, as: 'icon'
           property :listing_count, as: 'listingCount'
+          property :log_linked_dataset_query_user_email, as: 'logLinkedDatasetQueryUserEmail'
           property :name, as: 'name'
           property :primary_contact, as: 'primaryContact'
           property :sharing_environment_config, as: 'sharingEnvironmentConfig', class: Google::Apis::AnalyticshubV1::SharingEnvironmentConfig, decorator: Google::Apis::AnalyticshubV1::SharingEnvironmentConfig::Representation
@@ -637,6 +650,8 @@ module Google
           property :filter, as: 'filter'
           hash :labels, as: 'labels'
           property :message_retention_duration, as: 'messageRetentionDuration'
+          collection :message_transforms, as: 'messageTransforms', class: Google::Apis::AnalyticshubV1::MessageTransform, decorator: Google::Apis::AnalyticshubV1::MessageTransform::Representation
+      
           property :name, as: 'name'
           property :push_config, as: 'pushConfig', class: Google::Apis::AnalyticshubV1::PushConfig, decorator: Google::Apis::AnalyticshubV1::PushConfig::Representation
       
@@ -645,6 +660,14 @@ module Google
       
           property :state, as: 'state'
           property :topic_message_retention_duration, as: 'topicMessageRetentionDuration'
+        end
+      end
+      
+      class JavaScriptUdf
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :function_name, as: 'functionName'
         end
       end
       
@@ -717,6 +740,7 @@ module Google
           property :display_name, as: 'displayName'
           property :documentation, as: 'documentation'
           property :icon, :base64 => true, as: 'icon'
+          property :log_linked_dataset_query_user_email, as: 'logLinkedDatasetQueryUserEmail'
           property :name, as: 'name'
           property :primary_contact, as: 'primaryContact'
           property :publisher, as: 'publisher', class: Google::Apis::AnalyticshubV1::Publisher, decorator: Google::Apis::AnalyticshubV1::Publisher::Representation
@@ -728,6 +752,15 @@ module Google
           property :restricted_export_config, as: 'restrictedExportConfig', class: Google::Apis::AnalyticshubV1::RestrictedExportConfig, decorator: Google::Apis::AnalyticshubV1::RestrictedExportConfig::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class MessageTransform
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :javascript_udf, as: 'javascriptUdf', class: Google::Apis::AnalyticshubV1::JavaScriptUdf, decorator: Google::Apis::AnalyticshubV1::JavaScriptUdf::Representation
+      
         end
       end
       
@@ -957,6 +990,7 @@ module Google
           collection :linked_resources, as: 'linkedResources', class: Google::Apis::AnalyticshubV1::LinkedResource, decorator: Google::Apis::AnalyticshubV1::LinkedResource::Representation
       
           property :listing, as: 'listing'
+          property :log_linked_dataset_query_user_email, as: 'logLinkedDatasetQueryUserEmail'
           property :name, as: 'name'
           property :organization_display_name, as: 'organizationDisplayName'
           property :organization_id, as: 'organizationId'
