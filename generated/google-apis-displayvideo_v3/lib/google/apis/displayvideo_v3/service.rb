@@ -4372,7 +4372,10 @@ module Google
         end
         
         # Updates an existing custom bidding algorithm. Returns the updated custom
-        # bidding algorithm if successful.
+        # bidding algorithm if successful. *Warning*: Starting **April 1, 2025**,
+        # requests updating custom bidding algorithms that are assigned to line items
+        # will return an error. [Read more about this announced change](/display-video/
+        # api/deprecations#features.custom_bidding_floodlight).
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Output only. The unique ID of the custom bidding algorithm. Assigned by the
         #   system.
@@ -4489,7 +4492,10 @@ module Google
         end
         
         # Creates a new rules resource. Returns the newly created rules resource if
-        # successful.
+        # successful. *Warning*: Starting **April 1, 2025**, requests updating custom
+        # bidding algorithms that are assigned to line items will return an error. [Read
+        # more about this announced change](/display-video/api/deprecations#features.
+        # custom_bidding_floodlight).
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Required. The ID of the custom bidding algorithm that owns the rules resource.
         # @param [Google::Apis::DisplayvideoV3::CustomBiddingAlgorithmRules] custom_bidding_algorithm_rules_object
@@ -4622,7 +4628,10 @@ module Google
         end
         
         # Creates a new custom bidding script. Returns the newly created script if
-        # successful.
+        # successful. *Warning*: Starting **April 1, 2025**, requests updating custom
+        # bidding algorithms that are assigned to line items will return an error. [Read
+        # more about this announced change](/display-video/api/deprecations#features.
+        # custom_bidding_floodlight).
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Required. The ID of the custom bidding algorithm that owns the script.
         # @param [Google::Apis::DisplayvideoV3::CustomBiddingScript] custom_bidding_script_object
@@ -4978,7 +4987,8 @@ module Google
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `5000`. If unspecified, this
         #   value defaults to `100`. Returns error code `INVALID_ARGUMENT` if an invalid
-        #   value is specified.
+        #   value is specified. *Warning*: Starting **March 6, 2025**, this value will
+        #   default to `5000` if not set.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
         #   this is the value of next_page_token returned from the previous call to `
@@ -7009,6 +7019,37 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_sdfdownloadtask_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::DisplayvideoV3::Operation::Representation
+          command.response_class = Google::Apis::DisplayvideoV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of an asynchronous SDF download task operation. Clients
+        # should poll this method at intervals of 30 seconds.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_sdfuploadtask_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::DisplayvideoV3::Operation::Representation
           command.response_class = Google::Apis::DisplayvideoV3::Operation
