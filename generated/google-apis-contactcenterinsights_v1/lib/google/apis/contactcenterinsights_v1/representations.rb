@@ -1803,6 +1803,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conversation_profile, as: 'conversationProfile'
+          property :generator, as: 'generator'
           property :summarization_model, as: 'summarizationModel'
         end
       end
@@ -2402,8 +2403,10 @@ module Google
       class GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_export_count, as: 'completedExportCount'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          property :failed_export_count, as: 'failedExportCount'
           collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
       
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest::Representation
@@ -2416,6 +2419,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :big_query_destination, as: 'bigQueryDestination', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination::Representation
       
+          property :export_schema_version, as: 'exportSchemaVersion'
           property :filter, as: 'filter'
           property :kms_key, as: 'kmsKey'
           property :parent, as: 'parent'
@@ -3424,6 +3428,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conversation_profile, as: 'conversationProfile'
+          property :generator, as: 'generator'
           property :summarization_model, as: 'summarizationModel'
         end
       end
@@ -3897,8 +3902,10 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_export_count, as: 'completedExportCount'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          property :failed_export_count, as: 'failedExportCount'
           collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
       
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest::Representation
@@ -3911,6 +3918,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :big_query_destination, as: 'bigQueryDestination', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination::Representation
       
+          property :export_schema_version, as: 'exportSchemaVersion'
           property :filter, as: 'filter'
           property :kms_key, as: 'kmsKey'
           property :parent, as: 'parent'

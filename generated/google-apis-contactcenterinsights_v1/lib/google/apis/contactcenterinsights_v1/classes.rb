@@ -410,6 +410,12 @@ module Google
         # @return [String]
         attr_accessor :conversation_profile
       
+        # The resource name of the existing created generator. Format: projects//
+        # locations//generators/
+        # Corresponds to the JSON property `generator`
+        # @return [String]
+        attr_accessor :generator
+      
         # Default summarization model to be used.
         # Corresponds to the JSON property `summarizationModel`
         # @return [String]
@@ -422,6 +428,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conversation_profile = args[:conversation_profile] if args.key?(:conversation_profile)
+          @generator = args[:generator] if args.key?(:generator)
           @summarization_model = args[:summarization_model] if args.key?(:summarization_model)
         end
       end
@@ -1283,7 +1290,7 @@ module Google
         attr_accessor :medium
       
         # Input only. JSON metadata encoded as a string. This field is primarily used by
-        # Insights integrations with various telphony systems and must be in one of
+        # Insights integrations with various telephony systems and must be in one of
         # Insight's supported formats.
         # Corresponds to the JSON property `metadataJson`
         # @return [String]
@@ -2477,6 +2484,11 @@ module Google
       class GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata
         include Google::Apis::Core::Hashable
       
+        # The number of conversations that were exported successfully.
+        # Corresponds to the JSON property `completedExportCount`
+        # @return [Fixnum]
+        attr_accessor :completed_export_count
+      
         # Output only. The time the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2486,6 +2498,11 @@ module Google
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The number of conversations that failed to be exported.
+        # Corresponds to the JSON property `failedExportCount`
+        # @return [Fixnum]
+        attr_accessor :failed_export_count
       
         # Partial errors during export operation that might cause the operation output
         # to be incomplete.
@@ -2504,8 +2521,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @completed_export_count = args[:completed_export_count] if args.key?(:completed_export_count)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @failed_export_count = args[:failed_export_count] if args.key?(:failed_export_count)
           @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
           @request = args[:request] if args.key?(:request)
         end
@@ -2519,6 +2538,11 @@ module Google
         # Corresponds to the JSON property `bigQueryDestination`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination]
         attr_accessor :big_query_destination
+      
+        # Optional. Version of the export schema.
+        # Corresponds to the JSON property `exportSchemaVersion`
+        # @return [String]
+        attr_accessor :export_schema_version
       
         # A filter to reduce results to a specific subset. Useful for exporting
         # conversations with specific properties.
@@ -2550,6 +2574,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @big_query_destination = args[:big_query_destination] if args.key?(:big_query_destination)
+          @export_schema_version = args[:export_schema_version] if args.key?(:export_schema_version)
           @filter = args[:filter] if args.key?(:filter)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @parent = args[:parent] if args.key?(:parent)
@@ -2748,7 +2773,9 @@ module Google
         end
       end
       
-      # Represents a conversation, resource, and label provided by the user.
+      # Represents a conversation, resource, and label provided by the user. Can take
+      # the form of a string label or a QaAnswer label. QaAnswer labels are used for
+      # Quality AI example conversations. String labels are used for Topic Modeling.
       class GoogleCloudContactcenterinsightsV1FeedbackLabel
         include Google::Apis::Core::Hashable
       
@@ -2757,12 +2784,14 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # String label.
+        # String label used for Topic Modeling.
         # Corresponds to the JSON property `label`
         # @return [String]
         attr_accessor :label
       
-        # Resource name of the resource to be labeled.
+        # Resource name of the resource to be labeled. Supported resources: -
+        # qaScorecards/`scorecard`/revisions/`revision`/qaQuestions/`question` -
+        # issueModels/`issue_model`
         # Corresponds to the JSON property `labeledResource`
         # @return [String]
         attr_accessor :labeled_resource
@@ -3392,7 +3421,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Immutable. Display name of the assigned issue. This field is set at time of
-        # analyis and immutable since then.
+        # analysis and immutable since then.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -5184,7 +5213,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1SentimentData
         include Google::Apis::Core::Hashable
       
-        # A non-negative number from 0 to infinity which represents the abolute
+        # A non-negative number from 0 to infinity which represents the absolute
         # magnitude of sentiment regardless of score.
         # Corresponds to the JSON property `magnitude`
         # @return [Float]
@@ -6026,6 +6055,12 @@ module Google
         # @return [String]
         attr_accessor :conversation_profile
       
+        # The resource name of the existing created generator. Format: projects//
+        # locations//generators/
+        # Corresponds to the JSON property `generator`
+        # @return [String]
+        attr_accessor :generator
+      
         # Default summarization model to be used.
         # Corresponds to the JSON property `summarizationModel`
         # @return [String]
@@ -6038,6 +6073,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conversation_profile = args[:conversation_profile] if args.key?(:conversation_profile)
+          @generator = args[:generator] if args.key?(:generator)
           @summarization_model = args[:summarization_model] if args.key?(:summarization_model)
         end
       end
@@ -6494,7 +6530,7 @@ module Google
         attr_accessor :medium
       
         # Input only. JSON metadata encoded as a string. This field is primarily used by
-        # Insights integrations with various telphony systems and must be in one of
+        # Insights integrations with various telephony systems and must be in one of
         # Insight's supported formats.
         # Corresponds to the JSON property `metadataJson`
         # @return [String]
@@ -7655,6 +7691,11 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata
         include Google::Apis::Core::Hashable
       
+        # The number of conversations that were exported successfully.
+        # Corresponds to the JSON property `completedExportCount`
+        # @return [Fixnum]
+        attr_accessor :completed_export_count
+      
         # Output only. The time the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -7664,6 +7705,11 @@ module Google
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The number of conversations that failed to be exported.
+        # Corresponds to the JSON property `failedExportCount`
+        # @return [Fixnum]
+        attr_accessor :failed_export_count
       
         # Partial errors during export operation that might cause the operation output
         # to be incomplete.
@@ -7682,8 +7728,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @completed_export_count = args[:completed_export_count] if args.key?(:completed_export_count)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @failed_export_count = args[:failed_export_count] if args.key?(:failed_export_count)
           @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
           @request = args[:request] if args.key?(:request)
         end
@@ -7697,6 +7745,11 @@ module Google
         # Corresponds to the JSON property `bigQueryDestination`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination]
         attr_accessor :big_query_destination
+      
+        # Optional. Version of the export schema.
+        # Corresponds to the JSON property `exportSchemaVersion`
+        # @return [String]
+        attr_accessor :export_schema_version
       
         # A filter to reduce results to a specific subset. Useful for exporting
         # conversations with specific properties.
@@ -7728,6 +7781,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @big_query_destination = args[:big_query_destination] if args.key?(:big_query_destination)
+          @export_schema_version = args[:export_schema_version] if args.key?(:export_schema_version)
           @filter = args[:filter] if args.key?(:filter)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @parent = args[:parent] if args.key?(:parent)
@@ -7926,7 +7980,9 @@ module Google
         end
       end
       
-      # Represents a conversation, resource, and label provided by the user.
+      # Represents a conversation, resource, and label provided by the user. Can take
+      # the form of a string label or a QaAnswer label. QaAnswer labels are used for
+      # Quality AI example conversations. String labels are used for Topic Modeling.
       class GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel
         include Google::Apis::Core::Hashable
       
@@ -7935,12 +7991,14 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # String label.
+        # String label used for Topic Modeling.
         # Corresponds to the JSON property `label`
         # @return [String]
         attr_accessor :label
       
-        # Resource name of the resource to be labeled.
+        # Resource name of the resource to be labeled. Supported resources: -
+        # qaScorecards/`scorecard`/revisions/`revision`/qaQuestions/`question` -
+        # issueModels/`issue_model`
         # Corresponds to the JSON property `labeledResource`
         # @return [String]
         attr_accessor :labeled_resource
@@ -8570,7 +8628,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Immutable. Display name of the assigned issue. This field is set at time of
-        # analyis and immutable since then.
+        # analysis and immutable since then.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -9613,7 +9671,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1SentimentData
         include Google::Apis::Core::Hashable
       
-        # A non-negative number from 0 to infinity which represents the abolute
+        # A non-negative number from 0 to infinity which represents the absolute
         # magnitude of sentiment regardless of score.
         # Corresponds to the JSON property `magnitude`
         # @return [Float]

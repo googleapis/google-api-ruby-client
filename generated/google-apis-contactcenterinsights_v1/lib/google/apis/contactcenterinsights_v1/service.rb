@@ -51,7 +51,9 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Download feedback labels in bulk.
+        # Download feedback labels in bulk from an external source. Currently supports
+        # exporting Quality AI example conversations with transcripts and question
+        # bodies.
         # @param [String] parent
         #   Required. The parent resource for new feedback labels.
         # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest] google_cloud_contactcenterinsights_v1_bulk_download_feedback_labels_request_object
@@ -84,7 +86,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Upload feedback labels in bulk.
+        # Upload feedback labels from an external source in bulk. Currently supports
+        # labeling Quality AI example conversations.
         # @param [String] parent
         #   Required. The parent resource for new feedback labels.
         # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest] google_cloud_contactcenterinsights_v1_bulk_upload_feedback_labels_request_object
