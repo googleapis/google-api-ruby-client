@@ -555,6 +555,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Output only. The maintenance events for this instance.
+        # Corresponds to the JSON property `maintenanceEvents`
+        # @return [Array<Google::Apis::DatafusionV1beta1::MaintenanceEvent>]
+        attr_accessor :maintenance_events
+      
         # Maintenance policy of the instance.
         # Corresponds to the JSON property `maintenancePolicy`
         # @return [Google::Apis::DatafusionV1beta1::MaintenancePolicy]
@@ -683,6 +688,7 @@ module Google
           @event_publish_config = args[:event_publish_config] if args.key?(:event_publish_config)
           @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
           @labels = args[:labels] if args.key?(:labels)
+          @maintenance_events = args[:maintenance_events] if args.key?(:maintenance_events)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
@@ -915,6 +921,41 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents a maintenance event.
+      class MaintenanceEvent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The end time of the maintenance event provided in [RFC 3339](
+        # https://www.ietf.org/rfc/rfc3339.txt) format. Example: "2024-01-02T12:04:06-06:
+        # 00" This field will be empty if the maintenance event is not yet complete.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. The start time of the maintenance event provided in [RFC 3339](
+        # https://www.ietf.org/rfc/rfc3339.txt) format. Example: "2024-01-01T12:04:06-04:
+        # 00"
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The state of the maintenance event.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
