@@ -694,6 +694,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CalendarModeAdviceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CalendarModeAdviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CalendarModeRecommendation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CircuitBreakers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1240,6 +1258,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FlexibleTimeRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ForwardingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1416,6 +1440,60 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesRecommendation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesRecommendationOtherLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecAggregateResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecLocalSsdPartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecLocationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecLocationPolicyLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecSpecificSkuResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureResourcesSpecTargetResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4794,6 +4872,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationsBlocksPerformMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationsPerformMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8499,6 +8589,7 @@ module Google
       class CacheInvalidationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cache_tags, as: 'cacheTags'
           property :host, as: 'host'
           property :path, as: 'path'
         end
@@ -8514,6 +8605,30 @@ module Google
           property :include_query_string, as: 'includeQueryString'
           collection :query_string_blacklist, as: 'queryStringBlacklist'
           collection :query_string_whitelist, as: 'queryStringWhitelist'
+        end
+      end
+      
+      class CalendarModeAdviceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :future_resources_specs, as: 'futureResourcesSpecs', class: Google::Apis::ComputeBeta::FutureResourcesSpec, decorator: Google::Apis::ComputeBeta::FutureResourcesSpec::Representation
+      
+        end
+      end
+      
+      class CalendarModeAdviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :recommendations, as: 'recommendations', class: Google::Apis::ComputeBeta::CalendarModeRecommendation, decorator: Google::Apis::ComputeBeta::CalendarModeRecommendation::Representation
+      
+        end
+      end
+      
+      class CalendarModeRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :recommendations_per_spec, as: 'recommendationsPerSpec', class: Google::Apis::ComputeBeta::FutureResourcesRecommendation, decorator: Google::Apis::ComputeBeta::FutureResourcesRecommendation::Representation
+      
         end
       end
       
@@ -9552,6 +9667,18 @@ module Google
         end
       end
       
+      class FlexibleTimeRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time_not_earlier_than, as: 'endTimeNotEarlierThan'
+          property :end_time_not_later_than, as: 'endTimeNotLaterThan'
+          property :max_duration, as: 'maxDuration'
+          property :min_duration, as: 'minDuration'
+          property :start_time_not_earlier_than, as: 'startTimeNotEarlierThan'
+          property :start_time_not_later_than, as: 'startTimeNotLaterThan'
+        end
+      end
+      
       class ForwardingRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9921,6 +10048,92 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class FutureResourcesRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :location, as: 'location'
+          hash :other_locations, as: 'otherLocations', class: Google::Apis::ComputeBeta::FutureResourcesRecommendationOtherLocation, decorator: Google::Apis::ComputeBeta::FutureResourcesRecommendationOtherLocation::Representation
+      
+          property :recommendation_id, as: 'recommendationId'
+          property :recommendation_type, as: 'recommendationType'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class FutureResourcesRecommendationOtherLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :status, as: 'status'
+        end
+      end
+      
+      class FutureResourcesSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_type, as: 'deploymentType'
+          property :location_policy, as: 'locationPolicy', class: Google::Apis::ComputeBeta::FutureResourcesSpecLocationPolicy, decorator: Google::Apis::ComputeBeta::FutureResourcesSpecLocationPolicy::Representation
+      
+          property :target_resources, as: 'targetResources', class: Google::Apis::ComputeBeta::FutureResourcesSpecTargetResources, decorator: Google::Apis::ComputeBeta::FutureResourcesSpecTargetResources::Representation
+      
+          property :time_range_spec, as: 'timeRangeSpec', class: Google::Apis::ComputeBeta::FlexibleTimeRange, decorator: Google::Apis::ComputeBeta::FlexibleTimeRange::Representation
+      
+        end
+      end
+      
+      class FutureResourcesSpecAggregateResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_count, :numeric_string => true, as: 'acceleratorCount'
+          property :vm_family, as: 'vmFamily'
+          property :workload_type, as: 'workloadType'
+        end
+      end
+      
+      class FutureResourcesSpecLocalSsdPartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_interface, as: 'diskInterface'
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+        end
+      end
+      
+      class FutureResourcesSpecLocationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :locations, as: 'locations', class: Google::Apis::ComputeBeta::FutureResourcesSpecLocationPolicyLocation, decorator: Google::Apis::ComputeBeta::FutureResourcesSpecLocationPolicyLocation::Representation
+      
+        end
+      end
+      
+      class FutureResourcesSpecLocationPolicyLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :preference, as: 'preference'
+        end
+      end
+      
+      class FutureResourcesSpecSpecificSkuResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_count, :numeric_string => true, as: 'instanceCount'
+          collection :local_ssd_partitions, as: 'localSsdPartitions', class: Google::Apis::ComputeBeta::FutureResourcesSpecLocalSsdPartition, decorator: Google::Apis::ComputeBeta::FutureResourcesSpecLocalSsdPartition::Representation
+      
+          property :machine_type, as: 'machineType'
+        end
+      end
+      
+      class FutureResourcesSpecTargetResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_resources, as: 'aggregateResources', class: Google::Apis::ComputeBeta::FutureResourcesSpecAggregateResources, decorator: Google::Apis::ComputeBeta::FutureResourcesSpecAggregateResources::Representation
+      
+          property :specific_sku_resources, as: 'specificSkuResources', class: Google::Apis::ComputeBeta::FutureResourcesSpecSpecificSkuResources, decorator: Google::Apis::ComputeBeta::FutureResourcesSpecSpecificSkuResources::Representation
+      
         end
       end
       
@@ -11084,6 +11297,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_action_on_failure, as: 'defaultActionOnFailure'
           property :force_update_on_repair, as: 'forceUpdateOnRepair'
+          property :on_failed_health_check, as: 'onFailedHealthCheck'
         end
       end
       
@@ -12281,6 +12495,7 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :state, as: 'state'
+          collection :wire_groups, as: 'wireGroups'
         end
       end
       
@@ -13989,7 +14204,6 @@ module Google
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
-          property :zone, as: 'zone'
         end
       end
       
@@ -14509,6 +14723,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :local_ssd_gb, as: 'localSsdGb'
+          property :max_vms, as: 'maxVms'
           property :memory_mb, as: 'memoryMb'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -16226,6 +16441,20 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ReservationsBlocksPerformMaintenanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_scope, as: 'maintenanceScope'
+        end
+      end
+      
+      class ReservationsPerformMaintenanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_scope, as: 'maintenanceScope'
         end
       end
       
