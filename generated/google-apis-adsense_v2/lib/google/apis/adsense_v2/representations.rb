@@ -518,6 +518,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :must_fix, as: 'mustFix'
           property :topic, as: 'topic'
+          property :type, as: 'type'
         end
       end
       

@@ -1022,11 +1022,7 @@ module Google
       class PolicyTopic
         include Google::Apis::Core::Hashable
       
-        # Required. Indicates if this is a policy violation or not. When the value is
-        # true, issues that are instances of this topic must be addressed to remain in
-        # compliance with the partner's agreements with Google. A false value indicates
-        # that it's not mandatory to fix the issues but advertising demand might be
-        # restricted.
+        # Required. Deprecated. Policy topics no longer have a "must-fix" classification.
         # Corresponds to the JSON property `mustFix`
         # @return [Boolean]
         attr_accessor :must_fix
@@ -1038,6 +1034,13 @@ module Google
         # @return [String]
         attr_accessor :topic
       
+        # Optional. The type of policy topic. For example, "POLICY" represents all the
+        # policy topics that are related to the Google Publisher Policy (GPP). See https:
+        # //support.google.com/adsense/answer/15689616.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1046,6 +1049,7 @@ module Google
         def update!(**args)
           @must_fix = args[:must_fix] if args.key?(:must_fix)
           @topic = args[:topic] if args.key?(:topic)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
