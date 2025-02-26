@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChecksummedData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CryptoKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -489,6 +495,14 @@ module Google
         end
       end
       
+      class ChecksummedData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crc32c_checksum, :numeric_string => true, as: 'crc32cChecksum'
+          property :data, :base64 => true, as: 'data'
+        end
+      end
+      
       class CryptoKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -877,6 +891,9 @@ module Google
           property :pem, as: 'pem'
           property :pem_crc32c, :numeric_string => true, as: 'pemCrc32c'
           property :protection_level, as: 'protectionLevel'
+          property :public_key, as: 'publicKey', class: Google::Apis::CloudkmsV1::ChecksummedData, decorator: Google::Apis::CloudkmsV1::ChecksummedData::Representation
+      
+          property :public_key_format, as: 'publicKeyFormat'
         end
       end
       

@@ -568,6 +568,41 @@ module Google
         end
       end
       
+      # Data with integrity verification field.
+      class ChecksummedData
+        include Google::Apis::Core::Hashable
+      
+        # Integrity verification field. A CRC32C checksum of the returned
+        # ChecksummedData.data. An integrity check of ChecksummedData.data can be
+        # performed by computing the CRC32C checksum of ChecksummedData.data and
+        # comparing your results to this field. Discard the response in case of non-
+        # matching checksum values, and perform a limited number of retries. A
+        # persistent mismatch may indicate an issue in your computation of the CRC32C
+        # checksum. Note: This field is defined as int64 for reasons of compatibility
+        # across different languages. However, it is a non-negative integer, which will
+        # never exceed `2^32-1`, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # Corresponds to the JSON property `crc32cChecksum`
+        # @return [Fixnum]
+        attr_accessor :crc32c_checksum
+      
+        # Raw Data.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crc32c_checksum = args[:crc32c_checksum] if args.key?(:crc32c_checksum)
+          @data = args[:data] if args.key?(:data)
+        end
+      end
+      
       # A CryptoKey represents a logical key that can be used for cryptographic
       # operations. A CryptoKey is made up of zero or more versions, which represent
       # the actual key material used in cryptographic operations.
@@ -2365,7 +2400,7 @@ module Google
         # number of retries. A persistent mismatch may indicate an issue in your
         # computation of the CRC32C checksum. Note: This field is defined as int64 for
         # reasons of compatibility across different languages. However, it is a non-
-        # negative integer, which will never exceed 2^32-1, and can be safely
+        # negative integer, which will never exceed `2^32-1`, and can be safely
         # downconverted to uint32 in languages that support this type. NOTE: This field
         # is in Beta.
         # Corresponds to the JSON property `pemCrc32c`
@@ -2376,6 +2411,17 @@ module Google
         # Corresponds to the JSON property `protectionLevel`
         # @return [String]
         attr_accessor :protection_level
+      
+        # Data with integrity verification field.
+        # Corresponds to the JSON property `publicKey`
+        # @return [Google::Apis::CloudkmsV1::ChecksummedData]
+        attr_accessor :public_key
+      
+        # The PublicKey format specified by the customer through the public_key_format
+        # field.
+        # Corresponds to the JSON property `publicKeyFormat`
+        # @return [String]
+        attr_accessor :public_key_format
       
         def initialize(**args)
            update!(**args)
@@ -2388,6 +2434,8 @@ module Google
           @pem = args[:pem] if args.key?(:pem)
           @pem_crc32c = args[:pem_crc32c] if args.key?(:pem_crc32c)
           @protection_level = args[:protection_level] if args.key?(:protection_level)
+          @public_key = args[:public_key] if args.key?(:public_key)
+          @public_key_format = args[:public_key_format] if args.key?(:public_key_format)
         end
       end
       
