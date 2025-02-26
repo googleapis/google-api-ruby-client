@@ -751,7 +751,7 @@ module Google
       # Gateway represents the configuration for a proxy, typically a load balancer.
       # It captures the ip:port over which the services are exposed by the proxy,
       # along with any policy configurations. Routes have reference to to Gateways to
-      # dictate how requests should be routed by this Gateway. Next id: 33
+      # dictate how requests should be routed by this Gateway.
       class Gateway
         include Google::Apis::Core::Hashable
       
@@ -836,7 +836,7 @@ module Google
       
         # Optional. Scope determines how configuration across multiple Gateway instances
         # are merged. The configuration for multiple Gateway instances with the same
-        # scope will be merged as presented as a single coniguration to the proxy/load
+        # scope will be merged as presented as a single configuration to the proxy/load
         # balancer. Max length 64 characters. Scope should start with a letter and can
         # only have letters, numbers, hyphens.
         # Corresponds to the JSON property `scope`
@@ -4073,8 +4073,7 @@ module Google
       end
       
       # RouteMatch defines the predicate used to match requests to a given action.
-      # Multiple match types are "AND"ed for evaluation. If no routeMatch field is
-      # specified, this rule will unconditionally match traffic.
+      # Multiple match types are "AND"ed for evaluation.
       class TlsRouteRouteMatch
         include Google::Apis::Core::Hashable
       
@@ -4117,7 +4116,8 @@ module Google
         attr_accessor :action
       
         # Required. RouteMatch defines the predicate used to match requests to a given
-        # action. Multiple match types are "OR"ed for evaluation.
+        # action. Multiple match types are "OR"ed for evaluation. Atleast one RouteMatch
+        # must be supplied.
         # Corresponds to the JSON property `matches`
         # @return [Array<Google::Apis::NetworkservicesV1::TlsRouteRouteMatch>]
         attr_accessor :matches
