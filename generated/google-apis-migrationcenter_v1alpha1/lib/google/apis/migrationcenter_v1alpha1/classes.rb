@@ -438,6 +438,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Details of a machine.
+        # Corresponds to the JSON property `machineDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::MachineDetails]
+        attr_accessor :machine_details
+      
         # Output only. The full name of the asset.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -484,6 +489,7 @@ module Google
           @hide_time = args[:hide_time] if args.key?(:hide_time)
           @insight_list = args[:insight_list] if args.key?(:insight_list)
           @labels = args[:labels] if args.key?(:labels)
+          @machine_details = args[:machine_details] if args.key?(:machine_details)
           @name = args[:name] if args.key?(:name)
           @performance_data = args[:performance_data] if args.key?(:performance_data)
           @sources = args[:sources] if args.key?(:sources)
@@ -523,6 +529,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Details of a machine.
+        # Corresponds to the JSON property `machineDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::MachineDetails]
+        attr_accessor :machine_details
+      
         # Asset performance data samples. Samples that are from more than 40 days ago or
         # after tomorrow are ignored.
         # Corresponds to the JSON property `performanceSamples`
@@ -556,6 +567,7 @@ module Google
           @database_deployment_details = args[:database_deployment_details] if args.key?(:database_deployment_details)
           @database_details = args[:database_details] if args.key?(:database_details)
           @labels = args[:labels] if args.key?(:labels)
+          @machine_details = args[:machine_details] if args.key?(:machine_details)
           @performance_samples = args[:performance_samples] if args.key?(:performance_samples)
           @report_time = args[:report_time] if args.key?(:report_time)
           @trace_token = args[:trace_token] if args.key?(:trace_token)
@@ -880,6 +892,19 @@ module Google
           @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
           @location = args[:location] if args.key?(:location)
           @machine_type_label = args[:machine_type_label] if args.key?(:machine_type_label)
+        end
+      end
+      
+      # Specific details for an AWS RDS database deployment.
+      class AwsRds
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1711,6 +1736,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::DatabaseDeploymentDetailsAggregatedStats]
         attr_accessor :aggregated_stats
       
+        # Specific details for an AWS RDS database deployment.
+        # Corresponds to the JSON property `awsRds`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsRds]
+        attr_accessor :aws_rds
+      
         # The database deployment edition.
         # Corresponds to the JSON property `edition`
         # @return [String]
@@ -1758,6 +1788,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aggregated_stats = args[:aggregated_stats] if args.key?(:aggregated_stats)
+          @aws_rds = args[:aws_rds] if args.key?(:aws_rds)
           @edition = args[:edition] if args.key?(:edition)
           @generated_id = args[:generated_id] if args.key?(:generated_id)
           @manual_unique_id = args[:manual_unique_id] if args.key?(:manual_unique_id)
@@ -2601,7 +2632,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :free_bytes
       
-        # Mount pount (Linux/Windows) or drive letter (Windows).
+        # Mount point (Linux/Windows) or drive letter (Windows).
         # Corresponds to the JSON property `mountPoint`
         # @return [String]
         attr_accessor :mount_point
@@ -2637,6 +2668,37 @@ module Google
         end
       end
       
+      # Disk partition details.
+      class DiskPartitionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Total free space of all partitions.
+        # Corresponds to the JSON property `freeSpaceBytes`
+        # @return [Fixnum]
+        attr_accessor :free_space_bytes
+      
+        # Disk partition list.
+        # Corresponds to the JSON property `partitions`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DiskPartitionList]
+        attr_accessor :partitions
+      
+        # Output only. Total capacity of all partitions.
+        # Corresponds to the JSON property `totalCapacityBytes`
+        # @return [Fixnum]
+        attr_accessor :total_capacity_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @free_space_bytes = args[:free_space_bytes] if args.key?(:free_space_bytes)
+          @partitions = args[:partitions] if args.key?(:partitions)
+          @total_capacity_bytes = args[:total_capacity_bytes] if args.key?(:total_capacity_bytes)
+        end
+      end
+      
       # Disk partition list.
       class DiskPartitionList
         include Google::Apis::Core::Hashable
@@ -2660,19 +2722,21 @@ module Google
       class DiskUsageSample
         include Google::Apis::Core::Hashable
       
-        # Average IOPS sampled over a short window. Must be non-negative. Must be equal
-        # to the sum of read and write if one of them is positive. if both read and
-        # write are zero they are ignored.
+        # Average IOPS sampled over a short window. Must be non-negative. If read or
+        # write are set, the sum of read and write will override the value of the
+        # average_iops.
         # Corresponds to the JSON property `averageIops`
         # @return [Float]
         attr_accessor :average_iops
       
-        # Average read IOPS sampled over a short window. Must be non-negative.
+        # Average read IOPS sampled over a short window. Must be non-negative. If both
+        # read and write are zero they are ignored.
         # Corresponds to the JSON property `averageReadIops`
         # @return [Float]
         attr_accessor :average_read_iops
       
-        # Average write IOPS sampled over a short window. Must be non-negative.
+        # Average write IOPS sampled over a short window. Must be non-negative. If both
+        # read and write are zero they are ignored.
         # Corresponds to the JSON property `averageWriteIops`
         # @return [Float]
         attr_accessor :average_write_iops
@@ -4250,6 +4314,229 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Details of the machine architecture.
+      class MachineArchitectureDetails
+        include Google::Apis::Core::Hashable
+      
+        # Details about the BIOS.
+        # Corresponds to the JSON property `bios`
+        # @return [Google::Apis::MigrationcenterV1alpha1::BiosDetails]
+        attr_accessor :bios
+      
+        # CPU architecture, e.g., "x64-based PC", "x86_64", "i686" etc.
+        # Corresponds to the JSON property `cpuArchitecture`
+        # @return [String]
+        attr_accessor :cpu_architecture
+      
+        # CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc.
+        # Corresponds to the JSON property `cpuName`
+        # @return [String]
+        attr_accessor :cpu_name
+      
+        # Number of processor sockets allocated to the machine.
+        # Corresponds to the JSON property `cpuSocketCount`
+        # @return [Fixnum]
+        attr_accessor :cpu_socket_count
+      
+        # Firmware type.
+        # Corresponds to the JSON property `firmwareType`
+        # @return [String]
+        attr_accessor :firmware_type
+      
+        # CPU hyper-threading support.
+        # Corresponds to the JSON property `hyperthreading`
+        # @return [String]
+        attr_accessor :hyperthreading
+      
+        # Hardware vendor.
+        # Corresponds to the JSON property `vendor`
+        # @return [String]
+        attr_accessor :vendor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bios = args[:bios] if args.key?(:bios)
+          @cpu_architecture = args[:cpu_architecture] if args.key?(:cpu_architecture)
+          @cpu_name = args[:cpu_name] if args.key?(:cpu_name)
+          @cpu_socket_count = args[:cpu_socket_count] if args.key?(:cpu_socket_count)
+          @firmware_type = args[:firmware_type] if args.key?(:firmware_type)
+          @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
+          @vendor = args[:vendor] if args.key?(:vendor)
+        end
+      end
+      
+      # Details of a machine.
+      class MachineDetails
+        include Google::Apis::Core::Hashable
+      
+        # Details of the machine architecture.
+        # Corresponds to the JSON property `architecture`
+        # @return [Google::Apis::MigrationcenterV1alpha1::MachineArchitectureDetails]
+        attr_accessor :architecture
+      
+        # Number of logical CPU cores in the machine. Must be non-negative.
+        # Corresponds to the JSON property `coreCount`
+        # @return [Fixnum]
+        attr_accessor :core_count
+      
+        # Machine creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Disk partition details.
+        # Corresponds to the JSON property `diskPartitions`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DiskPartitionDetails]
+        attr_accessor :disk_partitions
+      
+        # Details of machine disks.
+        # Corresponds to the JSON property `disks`
+        # @return [Google::Apis::MigrationcenterV1alpha1::MachineDiskDetails]
+        attr_accessor :disks
+      
+        # Information from Guest-level collections.
+        # Corresponds to the JSON property `guestOs`
+        # @return [Google::Apis::MigrationcenterV1alpha1::GuestOsDetails]
+        attr_accessor :guest_os
+      
+        # Machine name.
+        # Corresponds to the JSON property `machineName`
+        # @return [String]
+        attr_accessor :machine_name
+      
+        # The amount of memory in the machine. Must be non-negative.
+        # Corresponds to the JSON property `memoryMb`
+        # @return [Fixnum]
+        attr_accessor :memory_mb
+      
+        # Details of network adapters and settings.
+        # Corresponds to the JSON property `network`
+        # @return [Google::Apis::MigrationcenterV1alpha1::MachineNetworkDetails]
+        attr_accessor :network
+      
+        # Information about the platform.
+        # Corresponds to the JSON property `platform`
+        # @return [Google::Apis::MigrationcenterV1alpha1::PlatformDetails]
+        attr_accessor :platform
+      
+        # Power state of the machine.
+        # Corresponds to the JSON property `powerState`
+        # @return [String]
+        attr_accessor :power_state
+      
+        # Machine unique identifier.
+        # Corresponds to the JSON property `uuid`
+        # @return [String]
+        attr_accessor :uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @core_count = args[:core_count] if args.key?(:core_count)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @disk_partitions = args[:disk_partitions] if args.key?(:disk_partitions)
+          @disks = args[:disks] if args.key?(:disks)
+          @guest_os = args[:guest_os] if args.key?(:guest_os)
+          @machine_name = args[:machine_name] if args.key?(:machine_name)
+          @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
+          @network = args[:network] if args.key?(:network)
+          @platform = args[:platform] if args.key?(:platform)
+          @power_state = args[:power_state] if args.key?(:power_state)
+          @uuid = args[:uuid] if args.key?(:uuid)
+        end
+      end
+      
+      # Details of machine disks.
+      class MachineDiskDetails
+        include Google::Apis::Core::Hashable
+      
+        # VM disks.
+        # Corresponds to the JSON property `disks`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DiskEntryList]
+        attr_accessor :disks
+      
+        # Raw disk scan result. This field is intended for human inspection. The format
+        # of this field may be lsblk output or any another raw output. The exact format
+        # may change without notice and should not be relied upon.
+        # Corresponds to the JSON property `rawScanResult`
+        # @return [String]
+        attr_accessor :raw_scan_result
+      
+        # Disk total Capacity.
+        # Corresponds to the JSON property `totalCapacityBytes`
+        # @return [Fixnum]
+        attr_accessor :total_capacity_bytes
+      
+        # Total disk free space.
+        # Corresponds to the JSON property `totalFreeBytes`
+        # @return [Fixnum]
+        attr_accessor :total_free_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
+          @raw_scan_result = args[:raw_scan_result] if args.key?(:raw_scan_result)
+          @total_capacity_bytes = args[:total_capacity_bytes] if args.key?(:total_capacity_bytes)
+          @total_free_bytes = args[:total_free_bytes] if args.key?(:total_free_bytes)
+        end
+      end
+      
+      # Details of network adapters and settings.
+      class MachineNetworkDetails
+        include Google::Apis::Core::Hashable
+      
+        # Default gateway address.
+        # Corresponds to the JSON property `defaultGateway`
+        # @return [String]
+        attr_accessor :default_gateway
+      
+        # List of network adapters.
+        # Corresponds to the JSON property `networkAdapters`
+        # @return [Google::Apis::MigrationcenterV1alpha1::NetworkAdapterList]
+        attr_accessor :network_adapters
+      
+        # The primary IP address of the machine.
+        # Corresponds to the JSON property `primaryIpAddress`
+        # @return [String]
+        attr_accessor :primary_ip_address
+      
+        # MAC address of the machine. This property is used to uniqly identify the
+        # machine.
+        # Corresponds to the JSON property `primaryMacAddress`
+        # @return [String]
+        attr_accessor :primary_mac_address
+      
+        # The public IP address of the machine.
+        # Corresponds to the JSON property `publicIpAddress`
+        # @return [String]
+        attr_accessor :public_ip_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_gateway = args[:default_gateway] if args.key?(:default_gateway)
+          @network_adapters = args[:network_adapters] if args.key?(:network_adapters)
+          @primary_ip_address = args[:primary_ip_address] if args.key?(:primary_ip_address)
+          @primary_mac_address = args[:primary_mac_address] if args.key?(:primary_mac_address)
+          @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
         end
       end
       
@@ -7501,6 +7788,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Disk partition details.
+        # Corresponds to the JSON property `diskPartitions`
+        # @return [Google::Apis::MigrationcenterV1alpha1::DiskPartitionDetails]
+        attr_accessor :disk_partitions
+      
         # Information from Guest-level collections.
         # Corresponds to the JSON property `guestOs`
         # @return [Google::Apis::MigrationcenterV1alpha1::GuestOsDetails]
@@ -7584,6 +7876,7 @@ module Google
         def update!(**args)
           @core_count = args[:core_count] if args.key?(:core_count)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @disk_partitions = args[:disk_partitions] if args.key?(:disk_partitions)
           @guest_os = args[:guest_os] if args.key?(:guest_os)
           @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
           @os_family = args[:os_family] if args.key?(:os_family)
