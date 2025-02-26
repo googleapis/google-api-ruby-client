@@ -3125,8 +3125,13 @@ module Google
         #   Required. The project to list all answer records for in reverse chronological
         #   order. Format: `projects//locations/`.
         # @param [String] filter
-        #   Optional. Filters to restrict results to specific answer records. For more
-        #   information about filtering, see [API Filtering](https://aip.dev/160).
+        #   Optional. Filters to restrict results to specific answer records. The
+        #   expression has the following syntax: [AND ] ... The following fields and
+        #   operators are supported: * conversation_id with equals(=) operator Examples: *
+        #   "conversation_id=bar" matches answer records in the projects/foo/locations/
+        #   global/conversations/bar conversation (assuming the parent is projects/foo/
+        #   locations/global). For more information about filtering, see [API Filtering](
+        #   https://aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of records to return in a single page. The server
         #   may return fewer records than this. If unspecified, we use 10. The maximum is
@@ -7481,8 +7486,13 @@ module Google
         #   Required. The project to list all answer records for in reverse chronological
         #   order. Format: `projects//locations/`.
         # @param [String] filter
-        #   Optional. Filters to restrict results to specific answer records. For more
-        #   information about filtering, see [API Filtering](https://aip.dev/160).
+        #   Optional. Filters to restrict results to specific answer records. The
+        #   expression has the following syntax: [AND ] ... The following fields and
+        #   operators are supported: * conversation_id with equals(=) operator Examples: *
+        #   "conversation_id=bar" matches answer records in the projects/foo/locations/
+        #   global/conversations/bar conversation (assuming the parent is projects/foo/
+        #   locations/global). For more information about filtering, see [API Filtering](
+        #   https://aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of records to return in a single page. The server
         #   may return fewer records than this. If unspecified, we use 10. The maximum is
@@ -9262,6 +9272,154 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Requests deletion of a `PhoneNumber`. The `PhoneNumber` is moved into the
+        # DELETE_REQUESTED state immediately, and is deleted approximately 30 days later.
+        # This method may only be called on a `PhoneNumber` in the ACTIVE state.
+        # @param [String] name
+        #   Required. The unique identifier of the `PhoneNumber` to delete. Format: `
+        #   projects//phoneNumbers/`. Format: `projects//locations//phoneNumbers/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_phone_number(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all phone numbers in the specified project.
+        # @param [String] parent
+        #   Required. The project to list all `PhoneNumber` resources from. Format: `
+        #   projects/`. Format: `projects//locations/`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return in a single page. The default
+        #   value is 100. The maximum value is 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous list request.
+        # @param [Boolean] show_deleted
+        #   Optional. Controls whether `PhoneNumber` resources in the DELETE_REQUESTED
+        #   state should be returned. Defaults to false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_phone_numbers(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta1/{+parent}/phoneNumbers', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified `PhoneNumber`.
+        # @param [String] name
+        #   Optional. The unique identifier of this phone number. Required for
+        #   PhoneNumbers.UpdatePhoneNumber method. Format: `projects//phoneNumbers/`.
+        #   Format: `projects//locations//phoneNumbers/`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber] google_cloud_dialogflow_v2beta1_phone_number_object
+        # @param [String] update_mask
+        #   Optional. The mask to control which fields get updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_phone_number(name, google_cloud_dialogflow_v2beta1_phone_number_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_phone_number_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancels the deletion request for a `PhoneNumber`. This method may only be
+        # called on a `PhoneNumber` in the DELETE_REQUESTED state.
+        # @param [String] name
+        #   Required. The unique identifier of the `PhoneNumber` to delete. Format: `
+        #   projects//phoneNumbers/`. Format: `projects//locations//phoneNumbers/`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest] google_cloud_dialogflow_v2beta1_undelete_phone_number_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_project_location_phone_number(name, google_cloud_dialogflow_v2beta1_undelete_phone_number_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_undelete_phone_number_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a SipTrunk for a specified location.
         # @param [String] parent
         #   Required. The location to create a SIP trunk for. Format: `projects//locations/
@@ -9640,6 +9798,154 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Requests deletion of a `PhoneNumber`. The `PhoneNumber` is moved into the
+        # DELETE_REQUESTED state immediately, and is deleted approximately 30 days later.
+        # This method may only be called on a `PhoneNumber` in the ACTIVE state.
+        # @param [String] name
+        #   Required. The unique identifier of the `PhoneNumber` to delete. Format: `
+        #   projects//phoneNumbers/`. Format: `projects//locations//phoneNumbers/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_phone_number(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all phone numbers in the specified project.
+        # @param [String] parent
+        #   Required. The project to list all `PhoneNumber` resources from. Format: `
+        #   projects/`. Format: `projects//locations/`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return in a single page. The default
+        #   value is 100. The maximum value is 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous list request.
+        # @param [Boolean] show_deleted
+        #   Optional. Controls whether `PhoneNumber` resources in the DELETE_REQUESTED
+        #   state should be returned. Defaults to false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_phone_numbers(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta1/{+parent}/phoneNumbers', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified `PhoneNumber`.
+        # @param [String] name
+        #   Optional. The unique identifier of this phone number. Required for
+        #   PhoneNumbers.UpdatePhoneNumber method. Format: `projects//phoneNumbers/`.
+        #   Format: `projects//locations//phoneNumbers/`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber] google_cloud_dialogflow_v2beta1_phone_number_object
+        # @param [String] update_mask
+        #   Optional. The mask to control which fields get updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_phone_number(name, google_cloud_dialogflow_v2beta1_phone_number_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_phone_number_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancels the deletion request for a `PhoneNumber`. This method may only be
+        # called on a `PhoneNumber` in the DELETE_REQUESTED state.
+        # @param [String] name
+        #   Required. The unique identifier of the `PhoneNumber` to delete. Format: `
+        #   projects//phoneNumbers/`. Format: `projects//locations//phoneNumbers/`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest] google_cloud_dialogflow_v2beta1_undelete_phone_number_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_project_phone_number(name, google_cloud_dialogflow_v2beta1_undelete_phone_number_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/{+name}:undelete', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_undelete_phone_number_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

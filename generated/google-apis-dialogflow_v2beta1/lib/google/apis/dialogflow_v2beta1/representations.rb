@@ -2836,6 +2836,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2909,6 +2915,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1Participant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1PhoneNumber
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3299,6 +3311,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1TrainAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8174,6 +8192,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :phone_numbers, as: 'phoneNumbers', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1PhoneNumber::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8298,6 +8325,16 @@ module Google
           property :name, as: 'name'
           property :obfuscated_external_user_id, as: 'obfuscatedExternalUserId'
           property :role, as: 'role'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1PhoneNumber
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_profile, as: 'conversationProfile'
+          property :lifecycle_state, as: 'lifecycleState'
+          property :name, as: 'name'
+          property :phone_number, as: 'phoneNumber'
         end
       end
       
@@ -8972,6 +9009,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1TrainAgentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
