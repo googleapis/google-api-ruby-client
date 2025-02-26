@@ -4015,6 +4015,7 @@ module Google
           property :excluded_illegal_downloads_risk, as: 'excludedIllegalDownloadsRisk'
           property :excluded_offensive_language_risk, as: 'excludedOffensiveLanguageRisk'
           property :excluded_violence_risk, as: 'excludedViolenceRisk'
+          collection :quality_sync_custom_segment_id, as: 'qualitySyncCustomSegmentId'
           property :traq_score_option, as: 'traqScoreOption'
           property :video_viewability, as: 'videoViewability'
         end
