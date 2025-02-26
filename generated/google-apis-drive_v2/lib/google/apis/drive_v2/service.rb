@@ -2220,6 +2220,8 @@ module Google
         #   The ID for the file or shared drive.
         # @param [String] permission_id
         #   The ID for the permission.
+        # @param [Boolean] enforce_expansive_access
+        #   Whether the request should enforce expansive access rules.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -2246,10 +2248,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_permission(file_id, permission_id, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_permission(file_id, permission_id, enforce_expansive_access: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{fileId}/permissions/{permissionId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
+          command.query['enforceExpansiveAccess'] = enforce_expansive_access unless enforce_expansive_access.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
@@ -2459,6 +2462,8 @@ module Google
         # @param [String] permission_id
         #   The ID for the permission.
         # @param [Google::Apis::DriveV2::Permission] permission_object
+        # @param [Boolean] enforce_expansive_access
+        #   Whether the request should enforce expansive access rules.
         # @param [Boolean] remove_expiration
         #   Whether to remove the expiration date.
         # @param [Boolean] supports_all_drives
@@ -2490,7 +2495,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_all_drives: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_permission(file_id, permission_id, permission_object = nil, enforce_expansive_access: nil, remove_expiration: nil, supports_all_drives: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'files/{fileId}/permissions/{permissionId}', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -2498,6 +2503,7 @@ module Google
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
+          command.query['enforceExpansiveAccess'] = enforce_expansive_access unless enforce_expansive_access.nil?
           command.query['removeExpiration'] = remove_expiration unless remove_expiration.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
@@ -2515,6 +2521,8 @@ module Google
         # @param [String] permission_id
         #   The ID for the permission.
         # @param [Google::Apis::DriveV2::Permission] permission_object
+        # @param [Boolean] enforce_expansive_access
+        #   Whether the request should enforce expansive access rules.
         # @param [Boolean] remove_expiration
         #   Whether to remove the expiration date.
         # @param [Boolean] supports_all_drives
@@ -2546,7 +2554,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_all_drives: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_permission(file_id, permission_id, permission_object = nil, enforce_expansive_access: nil, remove_expiration: nil, supports_all_drives: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'files/{fileId}/permissions/{permissionId}', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -2554,6 +2562,7 @@ module Google
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
+          command.query['enforceExpansiveAccess'] = enforce_expansive_access unless enforce_expansive_access.nil?
           command.query['removeExpiration'] = remove_expiration unless remove_expiration.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
