@@ -162,6 +162,103 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves a `Announcement` by its resource name.
+        # @param [String] name
+        #   Required. The resource name of the announcement to retrieve. Resource names
+        #   are schemeless URIs that follow the conventions in https://cloud.google.com/
+        #   apis/design/resource_names. For example: `projects/my-project/locations/us-
+        #   west1-a/announcements/announcement-uuid`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::Announcement] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::Announcement]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_announcement(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VmwareengineV1::Announcement::Representation
+          command.response_class = Google::Apis::VmwareengineV1::Announcement
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists `Announcements` for a given region and project
+        # @param [String] parent
+        #   Required. The resource name of the location to be queried for announcements.
+        #   Resource names are schemeless URIs that follow the conventions in https://
+        #   cloud.google.com/apis/design/resource_names. For example: `projects/my-project/
+        #   locations/us-west1-a`
+        # @param [String] filter
+        #   A filter expression that matches resources returned in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example,
+        #   if you are filtering a list of announcement runs, you can exclude the ones
+        #   named `example-announcement` by specifying `name != "example-announcement"`.
+        #   You can also filter nested fields. To filter on multiple expressions, provide
+        #   each separate expression within parentheses. For example: ``` (name = "example-
+        #   announcement") (createTime > "2021-04-12T08:15:10.40Z") ``` By default, each
+        #   expression is an `AND` expression. However, you can include `AND` and `OR`
+        #   expressions explicitly. For example: ``` (name = "announcement-1") AND (
+        #   createTime > "2021-04-12T08:15:10.40Z") OR (name = "announcement-2") ```
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, returned results are
+        #   ordered by `name` in ascending order. You can also sort results in descending
+        #   order based on the `name` value using `orderBy="name desc"`. Currently, only
+        #   ordering by `name` is supported.
+        # @param [Fixnum] page_size
+        #   The maximum number of announcements to return in one page. The service may
+        #   return fewer than this value. The maximum value is coerced to 1000. The
+        #   default value of this field is 500.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListAnnouncements` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListAnnouncements` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::ListAnnouncementsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::ListAnnouncementsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_announcements(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/announcements', options)
+          command.response_representation = Google::Apis::VmwareengineV1::ListAnnouncementsResponse::Representation
+          command.response_class = Google::Apis::VmwareengineV1::ListAnnouncementsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Grants the bind permission to the customer provided principal(user / service
         # account) to bind their DNS zone with the intranet VPC associated with the
         # project. DnsBindPermission is a global resource and location can only be
@@ -3637,6 +3734,161 @@ module Google
           command.response_representation = Google::Apis::VmwareengineV1::Operation::Representation
           command.response_class = Google::Apis::VmwareengineV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a private cloud `Upgrade` resource by its resource name.
+        # @param [String] name
+        #   Required. The name of the `Upgrade` resource to be retrieved. Resource names
+        #   are schemeless URIs that follow the conventions in https://cloud.google.com/
+        #   apis/design/resource_names. For example: `projects/my-project/locations/us-
+        #   west1-a/privateClouds/my-cloud/upgrades/my-upgrade`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::Upgrade] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::Upgrade]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_private_cloud_upgrade(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VmwareengineV1::Upgrade::Representation
+          command.response_class = Google::Apis::VmwareengineV1::Upgrade
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists past, ongoing and upcoming `Upgrades` for the given private cloud.
+        # @param [String] parent
+        #   Required. Query a list of `Upgrades` for the given private cloud resource name.
+        #   Resource names are schemeless URIs that follow the conventions in https://
+        #   cloud.google.com/apis/design/resource_names. For example: `projects/my-project/
+        #   locations/us-west1-a/privateClouds/my-cloud`
+        # @param [String] filter
+        #   A filter expression that matches resources returned in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example,
+        #   if you are filtering a list of upgrades, you can exclude the ones named `
+        #   example-upgrade1` by specifying `name != "example-upgrade1"`. You can also
+        #   filter nested fields. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (name = "example-upgrade") (
+        #   createTime > "2021-04-12T08:15:10.40Z") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (name = "upgrade-1") AND (createTime > "2021-04-
+        #   12T08:15:10.40Z") OR (name = "upgrade-2") ```
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, returned results are
+        #   ordered by `name` in ascending order. You can also sort results in descending
+        #   order based on the `name` value using `orderBy="name desc"`. Currently, only
+        #   ordering by `name` is supported.
+        # @param [Fixnum] page_size
+        #   The maximum number of `Upgrades` to return in one page. The service may return
+        #   fewer resources than this value. The maximum value is coerced to 1000. The
+        #   default value of this field is 500.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListUpgrades` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to `ListUpgrades` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::ListUpgradesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::ListUpgradesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_private_cloud_upgrades(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/upgrades', options)
+          command.response_representation = Google::Apis::VmwareengineV1::ListUpgradesResponse::Representation
+          command.response_class = Google::Apis::VmwareengineV1::ListUpgradesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the private cloud `Upgrade` resource. Only `schedule` field can updated.
+        # The schedule can only be updated when the upgrade has not started and
+        # schedule edit window is open. Only fields specified in `update_mask` are
+        # considered.
+        # @param [String] name
+        #   Output only. Identifier. The resource name of the private cloud `Upgrade`.
+        #   Resource names are schemeless URIs that follow the conventions in https://
+        #   cloud.google.com/apis/design/resource_names. For example: `projects/my-project/
+        #   locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade`
+        # @param [Google::Apis::VmwareengineV1::Upgrade] upgrade_object
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server guarantees that a request
+        #   doesn't result in creation of duplicate commitments for at least 60 minutes.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments. The request ID must be a valid
+        #   UUID with the exception that zero UUID is not supported (00000000-0000-0000-
+        #   0000-000000000000).
+        # @param [String] update_mask
+        #   Required. Field mask is used to specify the fields to be overwritten in the `
+        #   Upgrade` resource by the update. The fields specified in the `update_mask` are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. If the user does not provide a mask then all fields will be
+        #   overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_private_cloud_upgrade(name, upgrade_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::VmwareengineV1::Upgrade::Representation
+          command.request_object = upgrade_object
+          command.response_representation = Google::Apis::VmwareengineV1::Operation::Representation
+          command.response_class = Google::Apis::VmwareengineV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

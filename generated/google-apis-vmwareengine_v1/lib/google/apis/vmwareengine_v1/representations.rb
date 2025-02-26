@@ -22,6 +22,12 @@ module Google
   module Apis
     module VmwareengineV1
       
+      class Announcement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,12 @@ module Google
       end
       
       class Cluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Constraints
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,7 +142,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Interval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAnnouncementsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -233,6 +257,12 @@ module Google
       end
       
       class ListSubnetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUpgradesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,7 +466,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UndeletePrivateCloudRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Upgrade
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -448,10 +502,33 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmwareUpgradeComponent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpcNetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Announcement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activity_type, as: 'activityType'
+          property :cluster, as: 'cluster'
+          property :code, as: 'code'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          property :private_cloud, as: 'privateCloud'
+          property :state, as: 'state'
+          property :target_resource_type, as: 'targetResourceType'
+          property :update_time, as: 'updateTime'
+        end
       end
       
       class AuditConfig
@@ -523,6 +600,16 @@ module Google
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class Constraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_hours_day, as: 'minHoursDay'
+          property :min_hours_week, as: 'minHoursWeek'
+          property :reschedule_date_range, as: 'rescheduleDateRange', class: Google::Apis::VmwareengineV1::Interval, decorator: Google::Apis::VmwareengineV1::Interval::Representation
+      
         end
       end
       
@@ -652,12 +739,30 @@ module Google
         end
       end
       
+      class Interval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class IpRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :external_address, as: 'externalAddress'
           property :ip_address, as: 'ipAddress'
           property :ip_address_range, as: 'ipAddressRange'
+        end
+      end
+      
+      class ListAnnouncementsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :announcements, as: 'announcements', class: Google::Apis::VmwareengineV1::Announcement, decorator: Google::Apis::VmwareengineV1::Announcement::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -823,6 +928,16 @@ module Google
           collection :subnets, as: 'subnets', class: Google::Apis::VmwareengineV1::Subnet, decorator: Google::Apis::VmwareengineV1::Subnet::Representation
       
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListUpgradesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :upgrades, as: 'upgrades', class: Google::Apis::VmwareengineV1::Upgrade, decorator: Google::Apis::VmwareengineV1::Upgrade::Representation
+      
         end
       end
       
@@ -1132,6 +1247,20 @@ module Google
         end
       end
       
+      class Schedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraints, as: 'constraints', class: Google::Apis::VmwareengineV1::Constraints, decorator: Google::Apis::VmwareengineV1::Constraints::Representation
+      
+          property :edit_window, as: 'editWindow', class: Google::Apis::VmwareengineV1::Interval, decorator: Google::Apis::VmwareengineV1::Interval::Representation
+      
+          property :last_editor, as: 'lastEditor'
+          property :start_time, as: 'startTime'
+          collection :weekly_windows, as: 'weeklyWindows', class: Google::Apis::VmwareengineV1::TimeWindow, decorator: Google::Apis::VmwareengineV1::TimeWindow::Representation
+      
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1192,10 +1321,53 @@ module Google
         end
       end
       
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+        end
+      end
+      
+      class TimeWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day_of_week, as: 'dayOfWeek'
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime', class: Google::Apis::VmwareengineV1::TimeOfDay, decorator: Google::Apis::VmwareengineV1::TimeOfDay::Representation
+      
+        end
+      end
+      
       class UndeletePrivateCloudRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
+        end
+      end
+      
+      class Upgrade
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :component_upgrades, as: 'componentUpgrades', class: Google::Apis::VmwareengineV1::VmwareUpgradeComponent, decorator: Google::Apis::VmwareengineV1::VmwareUpgradeComponent::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :end_time, as: 'endTime'
+          property :estimated_duration, as: 'estimatedDuration'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :schedule, as: 'schedule', class: Google::Apis::VmwareengineV1::Schedule, decorator: Google::Apis::VmwareengineV1::Schedule::Representation
+      
+          property :start_version, as: 'startVersion'
+          property :state, as: 'state'
+          property :target_version, as: 'targetVersion'
+          property :type, as: 'type'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+          property :version, as: 'version'
         end
       end
       
@@ -1222,6 +1394,14 @@ module Google
           property :update_time, as: 'updateTime'
           collection :vpc_networks, as: 'vpcNetworks', class: Google::Apis::VmwareengineV1::VpcNetwork, decorator: Google::Apis::VmwareengineV1::VpcNetwork::Representation
       
+        end
+      end
+      
+      class VmwareUpgradeComponent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_type, as: 'componentType'
+          property :state, as: 'state'
         end
       end
       

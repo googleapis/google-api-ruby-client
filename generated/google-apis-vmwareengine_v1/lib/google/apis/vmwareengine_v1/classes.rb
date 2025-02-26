@@ -22,6 +22,94 @@ module Google
   module Apis
     module VmwareengineV1
       
+      # Announcement for the resources of Vmware Engine.
+      class Announcement
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Activity type of the announcement There can be only one active
+        # announcement for a given activity type and target resource.
+        # Corresponds to the JSON property `activityType`
+        # @return [String]
+        attr_accessor :activity_type
+      
+        # A Cluster resource name.
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Required. Code of the announcement. Indicates the presence of a VMware Engine
+        # related announcement and corresponds to a related message in the `description`
+        # field.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Output only. Creation time of this resource. It also serves as start time of
+        # notification.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Description of the announcement.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Additional structured details about this announcement.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Output only. The resource name of the announcement. Resource names are
+        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        # design/resource_names. For example: `projects/my-project/locations/us-west1-a/
+        # announcements/my-announcement-id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A Private Cloud resource name.
+        # Corresponds to the JSON property `privateCloud`
+        # @return [String]
+        attr_accessor :private_cloud
+      
+        # Output only. State of the resource. New values may be added to this enum when
+        # appropriate.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Target Resource Type defines the type of the target for the
+        # announcement
+        # Corresponds to the JSON property `targetResourceType`
+        # @return [String]
+        attr_accessor :target_resource_type
+      
+        # Output only. Last update time of this resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activity_type = args[:activity_type] if args.key?(:activity_type)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @code = args[:code] if args.key?(:code)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @private_cloud = args[:private_cloud] if args.key?(:private_cloud)
+          @state = args[:state] if args.key?(:state)
+          @target_resource_type = args[:target_resource_type] if args.key?(:target_resource_type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -374,6 +462,45 @@ module Google
           @stretched_cluster_config = args[:stretched_cluster_config] if args.key?(:stretched_cluster_config)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Constraints to be applied while editing a schedule. These constraints ensure
+      # that `Upgrade` specific requirements are met.
+      class Constraints
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Minimum number of hours must be allotted for the upgrade
+        # activities for each selected day. This is a minimum; the upgrade schedule can
+        # allot more hours for the given day.
+        # Corresponds to the JSON property `minHoursDay`
+        # @return [Fixnum]
+        attr_accessor :min_hours_day
+      
+        # Output only. The minimum number of weekly hours must be allotted for the
+        # upgrade activities. This is just a minimum; the schedule can assign more
+        # weekly hours.
+        # Corresponds to the JSON property `minHoursWeek`
+        # @return [Fixnum]
+        attr_accessor :min_hours_week
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `rescheduleDateRange`
+        # @return [Google::Apis::VmwareengineV1::Interval]
+        attr_accessor :reschedule_date_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_hours_day = args[:min_hours_day] if args.key?(:min_hours_day)
+          @min_hours_week = args[:min_hours_week] if args.key?(:min_hours_week)
+          @reschedule_date_range = args[:reschedule_date_range] if args.key?(:reschedule_date_range)
         end
       end
       
@@ -904,6 +1031,36 @@ module Google
         end
       end
       
+      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+      # Timestamp end (exclusive). The start must be less than or equal to the end.
+      # When the start equals the end, the interval is empty (matches no time). When
+      # both start and end are unspecified, the interval matches any time.
+      class Interval
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        # this interval will have to be before the end.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        # this interval will have to be the same or after the start.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # An IP range provided in any one of the supported formats.
       class IpRange
         include Google::Apis::Core::Hashable
@@ -937,6 +1094,38 @@ module Google
           @external_address = args[:external_address] if args.key?(:external_address)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ip_address_range = args[:ip_address_range] if args.key?(:ip_address_range)
+        end
+      end
+      
+      # Response message for VmwareEngine.ListAnnouncements
+      class ListAnnouncementsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of announcement runs.
+        # Corresponds to the JSON property `announcements`
+        # @return [Array<Google::Apis::VmwareengineV1::Announcement>]
+        attr_accessor :announcements
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # list of unreachable locations
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @announcements = args[:announcements] if args.key?(:announcements)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1459,6 +1648,38 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @subnets = args[:subnets] if args.key?(:subnets)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for VmwareEngine.ListUpgrades.
+      class ListUpgradesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of unreachable resources.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # A list of `Upgrades`.
+        # Corresponds to the JSON property `upgrades`
+        # @return [Array<Google::Apis::VmwareengineV1::Upgrade>]
+        attr_accessor :upgrades
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @upgrades = args[:upgrades] if args.key?(:upgrades)
         end
       end
       
@@ -2925,6 +3146,55 @@ module Google
         end
       end
       
+      # Schedule for the upgrade.
+      class Schedule
+        include Google::Apis::Core::Hashable
+      
+        # Constraints to be applied while editing a schedule. These constraints ensure
+        # that `Upgrade` specific requirements are met.
+        # Corresponds to the JSON property `constraints`
+        # @return [Google::Apis::VmwareengineV1::Constraints]
+        attr_accessor :constraints
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `editWindow`
+        # @return [Google::Apis::VmwareengineV1::Interval]
+        attr_accessor :edit_window
+      
+        # Output only. Output Only. Indicates who most recently edited the upgrade
+        # schedule. The value is updated whenever the upgrade is rescheduled.
+        # Corresponds to the JSON property `lastEditor`
+        # @return [String]
+        attr_accessor :last_editor
+      
+        # Required. The scheduled start time for the upgrade.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Required. Weekly time windows for upgrade activities. The server performs
+        # upgrade activities during these time windows to minimize disruptions.
+        # Corresponds to the JSON property `weeklyWindows`
+        # @return [Array<Google::Apis::VmwareengineV1::TimeWindow>]
+        attr_accessor :weekly_windows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraints = args[:constraints] if args.key?(:constraints)
+          @edit_window = args[:edit_window] if args.key?(:edit_window)
+          @last_editor = args[:last_editor] if args.key?(:last_editor)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @weekly_windows = args[:weekly_windows] if args.key?(:weekly_windows)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -3168,6 +3438,85 @@ module Google
         end
       end
       
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # Represents the time window to perform upgrade activities.
+      class TimeWindow
+        include Google::Apis::Core::Hashable
+      
+        # Required. Day of the week for this window.
+        # Corresponds to the JSON property `dayOfWeek`
+        # @return [String]
+        attr_accessor :day_of_week
+      
+        # Required. The duration of the window. The max allowed duration for any window
+        # is 24 hours.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::VmwareengineV1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day_of_week = args[:day_of_week] if args.key?(:day_of_week)
+          @duration = args[:duration] if args.key?(:duration)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Request message for VmwareEngine.UndeletePrivateCloud
       class UndeletePrivateCloudRequest
         include Google::Apis::Core::Hashable
@@ -3185,6 +3534,119 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Describes Private cloud Upgrade.
+      class Upgrade
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Output Only. The list of component upgrades.
+        # Corresponds to the JSON property `componentUpgrades`
+        # @return [Array<Google::Apis::VmwareengineV1::VmwareUpgradeComponent>]
+        attr_accessor :component_upgrades
+      
+        # Output only. Output Only. Creation time of this resource.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Output Only. The description of the upgrade. This is used to
+        # provide additional information about the private cloud upgrade, such as the
+        # upgrade's purpose, the changes included in the upgrade, or any other relevant
+        # information about the upgrade.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Output Only. End time of the upgrade.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Output Only. The estimated total duration of the upgrade. This
+        # information can be used to plan or schedule upgrades to minimize disruptions.
+        # Please note that the estimated duration is only an estimate. The actual
+        # upgrade duration may vary.
+        # Corresponds to the JSON property `estimatedDuration`
+        # @return [String]
+        attr_accessor :estimated_duration
+      
+        # The etag for the upgrade resource. If this is provided on update, it must
+        # match the server's etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. Identifier. The resource name of the private cloud `Upgrade`.
+        # Resource names are schemeless URIs that follow the conventions in https://
+        # cloud.google.com/apis/design/resource_names. For example: `projects/my-project/
+        # locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Schedule for the upgrade.
+        # Corresponds to the JSON property `schedule`
+        # @return [Google::Apis::VmwareengineV1::Schedule]
+        attr_accessor :schedule
+      
+        # Output only. Output Only. The start version
+        # Corresponds to the JSON property `startVersion`
+        # @return [String]
+        attr_accessor :start_version
+      
+        # Output only. The current state of the upgrade.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Output Only. The target version
+        # Corresponds to the JSON property `targetVersion`
+        # @return [String]
+        attr_accessor :target_version
+      
+        # Output only. Output Only. The type of upgrade.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. System-generated unique identifier for the resource.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Output Only. Last update time of this resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component_upgrades = args[:component_upgrades] if args.key?(:component_upgrades)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @estimated_duration = args[:estimated_duration] if args.key?(:estimated_duration)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @schedule = args[:schedule] if args.key?(:schedule)
+          @start_version = args[:start_version] if args.key?(:start_version)
+          @state = args[:state] if args.key?(:state)
+          @target_version = args[:target_version] if args.key?(:target_version)
+          @type = args[:type] if args.key?(:type)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3297,6 +3759,31 @@ module Google
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vpc_networks = args[:vpc_networks] if args.key?(:vpc_networks)
+        end
+      end
+      
+      # Per component upgrade resource
+      class VmwareUpgradeComponent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Type of component
+        # Corresponds to the JSON property `componentType`
+        # @return [String]
+        attr_accessor :component_type
+      
+        # Output only. Component's upgrade state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component_type = args[:component_type] if args.key?(:component_type)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
