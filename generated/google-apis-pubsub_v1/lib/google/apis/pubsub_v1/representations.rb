@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JavaScriptUdf
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSchemaRevisionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,12 @@ module Google
       end
       
       class MessageStoragePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageTransform
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -612,6 +624,14 @@ module Google
         end
       end
       
+      class JavaScriptUdf
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :function_name, as: 'functionName'
+        end
+      end
+      
       class ListSchemaRevisionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -678,6 +698,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_persistence_regions, as: 'allowedPersistenceRegions'
           property :enforce_in_transit, as: 'enforceInTransit'
+        end
+      end
+      
+      class MessageTransform
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :javascript_udf, as: 'javascriptUdf', class: Google::Apis::PubsubV1::JavaScriptUdf, decorator: Google::Apis::PubsubV1::JavaScriptUdf::Representation
+      
         end
       end
       
@@ -895,6 +924,8 @@ module Google
           property :filter, as: 'filter'
           hash :labels, as: 'labels'
           property :message_retention_duration, as: 'messageRetentionDuration'
+          collection :message_transforms, as: 'messageTransforms', class: Google::Apis::PubsubV1::MessageTransform, decorator: Google::Apis::PubsubV1::MessageTransform::Representation
+      
           property :name, as: 'name'
           property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1::PushConfig, decorator: Google::Apis::PubsubV1::PushConfig::Representation
       
@@ -943,6 +974,8 @@ module Google
           hash :labels, as: 'labels'
           property :message_retention_duration, as: 'messageRetentionDuration'
           property :message_storage_policy, as: 'messageStoragePolicy', class: Google::Apis::PubsubV1::MessageStoragePolicy, decorator: Google::Apis::PubsubV1::MessageStoragePolicy::Representation
+      
+          collection :message_transforms, as: 'messageTransforms', class: Google::Apis::PubsubV1::MessageTransform, decorator: Google::Apis::PubsubV1::MessageTransform::Representation
       
           property :name, as: 'name'
           property :satisfies_pzs, as: 'satisfiesPzs'
