@@ -64,6 +64,9 @@ module Google
       
         # The CSS/MC account's parent resource. CSS group for CSS domains; CSS domain
         # for MC accounts. Returned only if the user has access to the parent account.
+        # Note: For MC sub-accounts, this is also the CSS domain that is the parent
+        # resource of the MCA account, since we are effectively flattening the hierarchy.
+        # "
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -624,7 +627,9 @@ module Google
         attr_accessor :freshness_time
       
         # The name of the CSS Product input. Format: `accounts/`account`/
-        # cssProductInputs/`css_product_input``
+        # cssProductInputs/`css_product_input``, where the last section `
+        # css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId.
+        # Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

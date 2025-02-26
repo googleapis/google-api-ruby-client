@@ -1,5 +1,10 @@
 # Release history for google-apis-css_v1
 
+### v0.8.0 (2025-02-26)
+
+* Regenerated from discovery document revision 20250219
+* Regenerated using generator version 0.16.0
+
 ### v0.7.0 (2025-01-08)
 
 * Regenerated from discovery document revision 20250106
