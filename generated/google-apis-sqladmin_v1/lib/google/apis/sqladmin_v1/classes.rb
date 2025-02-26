@@ -181,6 +181,153 @@ module Google
         end
       end
       
+      # A backup resource.
+      class Backup
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `backupInterval`
+        # @return [Google::Apis::SqladminV1::Interval]
+        attr_accessor :backup_interval
+      
+        # Output only. Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
+        # Corresponds to the JSON property `backupKind`
+        # @return [String]
+        attr_accessor :backup_kind
+      
+        # Output only. The mapping to backup run resource used for IAM validations.
+        # Corresponds to the JSON property `backupRun`
+        # @return [String]
+        attr_accessor :backup_run
+      
+        # The description of this backup.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Database instance operation error.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::SqladminV1::OperationError]
+        attr_accessor :error
+      
+        # Backup expiration time. A UTC timestamp of when this backup expired.
+        # Corresponds to the JSON property `expiryTime`
+        # @return [String]
+        attr_accessor :expiry_time
+      
+        # The name of the source database instance.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # Output only. This is always `sql#backup`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Output only. This output contains the encryption configuration for a backup
+        # and the resource name of the KMS key for disk encryption.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Output only. This output contains the encryption status for a backup and the
+        # version of the KMS key that's used to encrypt the Cloud SQL instance.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
+        # The storage location of the backups. The location can be multi-regional.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Output only. The maximum chargeable bytes for the backup.
+        # Corresponds to the JSON property `maxChargeableBytes`
+        # @return [Fixnum]
+        attr_accessor :max_chargeable_bytes
+      
+        # Output only. The resource name of the backup. Format: projects/`project`/
+        # backups/`backup`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. This status indicates whether the backup satisfies PZI. The
+        # status is reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. This status indicates whether the backup satisfies PZS. The
+        # status is reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # Output only. The URI of this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. The status of this backup.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. This output contains a backup time zone. If a Cloud SQL for SQL
+        # Server instance has a different time zone from the backup's time zone, then
+        # restores to the instance won't happen.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        # Input only. The time-to-live (TTL) interval for this resource (in days). For
+        # example: ttlDays:7 means 7 days.
+        # Corresponds to the JSON property `ttlDays`
+        # @return [Fixnum]
+        attr_accessor :ttl_days
+      
+        # Output only. The type of this backup. The type can be "AUTOMATED", "ON_DEMAND"
+        # or “FINAL”.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_interval = args[:backup_interval] if args.key?(:backup_interval)
+          @backup_kind = args[:backup_kind] if args.key?(:backup_kind)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @description = args[:description] if args.key?(:description)
+          @error = args[:error] if args.key?(:error)
+          @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
+          @instance = args[:instance] if args.key?(:instance)
+          @kind = args[:kind] if args.key?(:kind)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
+          @location = args[:location] if args.key?(:location)
+          @max_chargeable_bytes = args[:max_chargeable_bytes] if args.key?(:max_chargeable_bytes)
+          @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @state = args[:state] if args.key?(:state)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @ttl_days = args[:ttl_days] if args.key?(:ttl_days)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Database instance backup configuration.
       class BackupConfiguration
         include Google::Apis::Core::Hashable
@@ -277,6 +424,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The name of the backup. Format: projects/`project`/backups/`backup`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -285,6 +437,7 @@ module Google
         def update!(**args)
           @backup_id = args[:backup_id] if args.key?(:backup_id)
           @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -903,6 +1056,14 @@ module Google
         # @return [Google::Apis::SqladminV1::GeminiInstanceConfig]
         attr_accessor :gemini_config
       
+        # Input only. Determines whether an in-place major version upgrade of replicas
+        # happens when an in-place major version upgrade of a primary instance is
+        # initiated.
+        # Corresponds to the JSON property `includeReplicasForMajorVersionUpgrade`
+        # @return [Boolean]
+        attr_accessor :include_replicas_for_major_version_upgrade
+        alias_method :include_replicas_for_major_version_upgrade?, :include_replicas_for_major_version_upgrade
+      
         # The instance type.
         # Corresponds to the JSON property `instanceType`
         # @return [String]
@@ -1112,6 +1273,7 @@ module Google
           @failover_replica = args[:failover_replica] if args.key?(:failover_replica)
           @gce_zone = args[:gce_zone] if args.key?(:gce_zone)
           @gemini_config = args[:gemini_config] if args.key?(:gemini_config)
+          @include_replicas_for_major_version_upgrade = args[:include_replicas_for_major_version_upgrade] if args.key?(:include_replicas_for_major_version_upgrade)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
@@ -1320,7 +1482,7 @@ module Google
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the replica's private key. The corresponsing public key
+        # PEM representation of the replica's private key. The corresponding public key
         # is encoded in the client's certificate. The format of the replica's private
         # key can be either PKCS #1 or PKCS #8.
         # Corresponds to the JSON property `clientKey`
@@ -1510,6 +1672,11 @@ module Google
         # @return [Google::Apis::SqladminV1::ExportContext::SqlExportOptions]
         attr_accessor :sql_export_options
       
+        # Optional. Export parameters specific to SQL Server TDE certificates
+        # Corresponds to the JSON property `tdeExportOptions`
+        # @return [Google::Apis::SqladminV1::ExportContext::TdeExportOptions]
+        attr_accessor :tde_export_options
+      
         # The path to the file in Google Cloud Storage where the export will be stored.
         # The URI is in the form `gs://bucketName/fileName`. If the file already exists,
         # the request succeeds, but the operation fails. If `fileType` is `SQL` and the
@@ -1531,6 +1698,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @offload = args[:offload] if args.key?(:offload)
           @sql_export_options = args[:sql_export_options] if args.key?(:sql_export_options)
+          @tde_export_options = args[:tde_export_options] if args.key?(:tde_export_options)
           @uri = args[:uri] if args.key?(:uri)
         end
         
@@ -1750,6 +1918,47 @@ module Google
               @clean = args[:clean] if args.key?(:clean)
               @if_exists = args[:if_exists] if args.key?(:if_exists)
             end
+          end
+        end
+        
+        # Optional. Export parameters specific to SQL Server TDE certificates
+        class TdeExportOptions
+          include Google::Apis::Core::Hashable
+        
+          # Required. Path to the TDE certificate public key in the form gs://bucketName/
+          # fileName. The instance must have write access to the bucket. Applicable only
+          # for SQL Server instances.
+          # Corresponds to the JSON property `certificatePath`
+          # @return [String]
+          attr_accessor :certificate_path
+        
+          # Required. Certificate name. Applicable only for SQL Server instances.
+          # Corresponds to the JSON property `name`
+          # @return [String]
+          attr_accessor :name
+        
+          # Required. Password that encrypts the private key.
+          # Corresponds to the JSON property `privateKeyPassword`
+          # @return [String]
+          attr_accessor :private_key_password
+        
+          # Required. Path to the TDE certificate private key in the form gs://bucketName/
+          # fileName. The instance must have write access to the location. Applicable only
+          # for SQL Server instances.
+          # Corresponds to the JSON property `privateKeyPath`
+          # @return [String]
+          attr_accessor :private_key_path
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @certificate_path = args[:certificate_path] if args.key?(:certificate_path)
+            @name = args[:name] if args.key?(:name)
+            @private_key_password = args[:private_key_password] if args.key?(:private_key_password)
+            @private_key_path = args[:private_key_path] if args.key?(:private_key_path)
           end
         end
       end
@@ -2064,6 +2273,11 @@ module Google
         # @return [Google::Apis::SqladminV1::ImportContext::SqlImportOptions]
         attr_accessor :sql_import_options
       
+        # Optional. Import parameters specific to SQL Server TDE certificates
+        # Corresponds to the JSON property `tdeImportOptions`
+        # @return [Google::Apis::SqladminV1::ImportContext::TdeImportOptions]
+        attr_accessor :tde_import_options
+      
         # Path to the import file in Cloud Storage, in the form `gs://bucketName/
         # fileName`. Compressed gzip files (.gz) are supported when `fileType` is `SQL`.
         # The instance must have write permissions to the bucket and read access to the
@@ -2085,6 +2299,7 @@ module Google
           @import_user = args[:import_user] if args.key?(:import_user)
           @kind = args[:kind] if args.key?(:kind)
           @sql_import_options = args[:sql_import_options] if args.key?(:sql_import_options)
+          @tde_import_options = args[:tde_import_options] if args.key?(:tde_import_options)
           @uri = args[:uri] if args.key?(:uri)
         end
         
@@ -2166,6 +2381,12 @@ module Google
             # @return [String]
             attr_accessor :cert_path
           
+            # Optional. Whether the imported file remains encrypted.
+            # Corresponds to the JSON property `keepEncrypted`
+            # @return [Boolean]
+            attr_accessor :keep_encrypted
+            alias_method :keep_encrypted?, :keep_encrypted
+          
             # Password that encrypts the private key
             # Corresponds to the JSON property `pvkPassword`
             # @return [String]
@@ -2185,6 +2406,7 @@ module Google
             # Update properties of this object
             def update!(**args)
               @cert_path = args[:cert_path] if args.key?(:cert_path)
+              @keep_encrypted = args[:keep_encrypted] if args.key?(:keep_encrypted)
               @pvk_password = args[:pvk_password] if args.key?(:pvk_password)
               @pvk_path = args[:pvk_path] if args.key?(:pvk_path)
             end
@@ -2302,6 +2524,47 @@ module Google
               @clean = args[:clean] if args.key?(:clean)
               @if_exists = args[:if_exists] if args.key?(:if_exists)
             end
+          end
+        end
+        
+        # Optional. Import parameters specific to SQL Server TDE certificates
+        class TdeImportOptions
+          include Google::Apis::Core::Hashable
+        
+          # Required. Path to the TDE certificate public key in the form gs://bucketName/
+          # fileName. The instance must have read access to the file. Applicable only for
+          # SQL Server instances.
+          # Corresponds to the JSON property `certificatePath`
+          # @return [String]
+          attr_accessor :certificate_path
+        
+          # Required. Certificate name. Applicable only for SQL Server instances.
+          # Corresponds to the JSON property `name`
+          # @return [String]
+          attr_accessor :name
+        
+          # Required. Password that encrypts the private key.
+          # Corresponds to the JSON property `privateKeyPassword`
+          # @return [String]
+          attr_accessor :private_key_password
+        
+          # Required. Path to the TDE certificate private key in the form gs://bucketName/
+          # fileName. The instance must have read access to the file. Applicable only for
+          # SQL Server instances.
+          # Corresponds to the JSON property `privateKeyPath`
+          # @return [String]
+          attr_accessor :private_key_path
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @certificate_path = args[:certificate_path] if args.key?(:certificate_path)
+            @name = args[:name] if args.key?(:name)
+            @private_key_password = args[:private_key_password] if args.key?(:private_key_password)
+            @private_key_path = args[:private_key_path] if args.key?(:private_key_path)
           end
         end
       end
@@ -2655,11 +2918,23 @@ module Google
       class InstancesRestoreBackupRequest
         include Google::Apis::Core::Hashable
       
+        # The name of the backup that's used to restore a Cloud SQL instance: Format:
+        # projects/`project-id`/backups/`backup-uid`. Only one of restore_backup_context,
+        # backup, backupdr_backup can be passed to the input.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
         # Database instance restore from backup context. Backup context contains source
         # instance id and project id.
         # Corresponds to the JSON property `restoreBackupContext`
         # @return [Google::Apis::SqladminV1::RestoreBackupContext]
         attr_accessor :restore_backup_context
+      
+        # A Cloud SQL instance resource.
+        # Corresponds to the JSON property `restoreInstanceSettings`
+        # @return [Google::Apis::SqladminV1::DatabaseInstance]
+        attr_accessor :restore_instance_settings
       
         def initialize(**args)
            update!(**args)
@@ -2667,7 +2942,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
           @restore_backup_context = args[:restore_backup_context] if args.key?(:restore_backup_context)
+          @restore_instance_settings = args[:restore_instance_settings] if args.key?(:restore_instance_settings)
         end
       end
       
@@ -2725,6 +3002,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @truncate_log_context = args[:truncate_log_context] if args.key?(:truncate_log_context)
+        end
+      end
+      
+      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+      # Timestamp end (exclusive). The start must be less than or equal to the end.
+      # When the start equals the end, the interval is empty (matches no time). When
+      # both start and end are unspecified, the interval matches any time.
+      class Interval
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        # this interval will have to be before the end.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        # this interval will have to be the same or after the start.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -2876,6 +3183,39 @@ module Google
         end
       end
       
+      # The response payload containing a list of the backups.
+      class ListBackupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of backups.
+        # Corresponds to the JSON property `backups`
+        # @return [Array<Google::Apis::SqladminV1::Backup>]
+        attr_accessor :backups
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, then there aren't subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # If a region isn't unavailable or if an unknown error occurs, then a warning
+        # message is returned.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::SqladminV1::ApiWarning>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backups = args[:backups] if args.key?(:backups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
       # Preferred location. This specifies where a Cloud SQL instance is located. Note
       # that if the preferred location is not available, the instance will be located
       # as close as possible within the region. Only one location may be specified.
@@ -2975,7 +3315,7 @@ module Google
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the replica's private key. The corresponsing public key
+        # PEM representation of the replica's private key. The corresponding public key
         # is encoded in the client's certificate.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
@@ -3080,7 +3420,7 @@ module Google
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the replica's private key. The corresponsing public key
+        # PEM representation of the replica's private key. The corresponding public key
         # is encoded in the client's certificate.
         # Corresponds to the JSON property `clientKey`
         # @return [String]

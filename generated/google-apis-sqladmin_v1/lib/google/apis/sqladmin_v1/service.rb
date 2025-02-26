@@ -51,6 +51,188 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a backup for a Cloud SQL instance. This API can be used only to create
+        # on-demand backups.
+        # @param [String] parent
+        #   Required. The parent resource where this backup is created. Format: projects/`
+        #   project`
+        # @param [Google::Apis::SqladminV1::Backup] backup_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_backup_backup(parent, backup_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/backups', options)
+          command.request_representation = Google::Apis::SqladminV1::Backup::Representation
+          command.request_object = backup_object
+          command.response_representation = Google::Apis::SqladminV1::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the backup.
+        # @param [String] name
+        #   Required. The name of the backup to delete. Format: projects/`project`/backups/
+        #   `backup`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_backup_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SqladminV1::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a resource containing information about a backup.
+        # @param [String] name
+        #   Required. The name of the backup to retrieve. Format: projects/`project`/
+        #   backups/`backup`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::Backup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::Backup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_backup_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SqladminV1::Backup::Representation
+          command.response_class = Google::Apis::SqladminV1::Backup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all backups associated with the project.
+        # @param [String] parent
+        #   Required. The parent that owns this collection of backups. Format: projects/`
+        #   project`
+        # @param [String] filter
+        #   Multiple filter queries are separated by spaces. For example, 'instance:abc
+        #   type:FINAL. You can filter by type, instance name, creation time or location.
+        # @param [Fixnum] page_size
+        #   The maximum number of backups to return per response. The service might return
+        #   fewer backups than this value. If a value for this parameter isn't specified,
+        #   then, at most, 500 backups are returned. The maximum value is 2,000. Any
+        #   values that you set, which are greater than 2,000, are changed to 2,000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListBackups` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to `ListBackups` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::ListBackupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::ListBackupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_backup_backups(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/backups', options)
+          command.response_representation = Google::Apis::SqladminV1::ListBackupsResponse::Representation
+          command.response_class = Google::Apis::SqladminV1::ListBackupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the retention period and description of the backup. You can use this
+        # API to update final backups only.
+        # @param [String] name
+        #   Output only. The resource name of the backup. Format: projects/`project`/
+        #   backups/`backup`
+        # @param [Google::Apis::SqladminV1::Backup] backup_object
+        # @param [String] update_mask
+        #   The list of fields that you can update. You can update only the description
+        #   and retention period of the final backup.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_backup_backup(name, backup_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SqladminV1::Backup::Representation
+          command.request_object = backup_object
+          command.response_representation = Google::Apis::SqladminV1::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the backup taken by a backup run.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -765,6 +947,15 @@ module Google
         #   Project ID of the project that contains the instance to be deleted.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Boolean] enable_final_backup
+        #   Flag to opt-in for final backup. By default, it is turned off.
+        # @param [String] final_backup_description
+        #   Optional. The description of the final backup.
+        # @param [String] final_backup_expiry_time
+        #   Optional. Final Backup expiration time. Timestamp in UTC of when this resource
+        #   is considered expired.
+        # @param [Fixnum] final_backup_ttl_days
+        #   Optional. Retention period of the final backup.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -782,12 +973,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_instance(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_instance(project, instance, enable_final_backup: nil, final_backup_description: nil, final_backup_expiry_time: nil, final_backup_ttl_days: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/projects/{project}/instances/{instance}', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['enableFinalBackup'] = enable_final_backup unless enable_final_backup.nil?
+          command.query['finalBackupDescription'] = final_backup_description unless final_backup_description.nil?
+          command.query['finalBackupExpiryTime'] = final_backup_expiry_time unless final_backup_expiry_time.nil?
+          command.query['finalBackupTtlDays'] = final_backup_ttl_days unless final_backup_ttl_days.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

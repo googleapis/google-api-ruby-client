@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Backup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -222,6 +228,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+        
+        class TdeExportOptions
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -297,6 +309,12 @@ module Google
           
             include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class TdeImportOptions
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -406,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Interval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IpConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +437,12 @@ module Google
       end
       
       class IpMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBackupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -781,6 +811,34 @@ module Google
         end
       end
       
+      class Backup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_interval, as: 'backupInterval', class: Google::Apis::SqladminV1::Interval, decorator: Google::Apis::SqladminV1::Interval::Representation
+      
+          property :backup_kind, as: 'backupKind'
+          property :backup_run, as: 'backupRun'
+          property :description, as: 'description'
+          property :error, as: 'error', class: Google::Apis::SqladminV1::OperationError, decorator: Google::Apis::SqladminV1::OperationError::Representation
+      
+          property :expiry_time, as: 'expiryTime'
+          property :instance, as: 'instance'
+          property :kind, as: 'kind'
+          property :kms_key, as: 'kmsKey'
+          property :kms_key_version, as: 'kmsKeyVersion'
+          property :location, as: 'location'
+          property :max_chargeable_bytes, :numeric_string => true, as: 'maxChargeableBytes'
+          property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :self_link, as: 'selfLink'
+          property :state, as: 'state'
+          property :time_zone, as: 'timeZone'
+          property :ttl_days, :numeric_string => true, as: 'ttlDays'
+          property :type, as: 'type'
+        end
+      end
+      
       class BackupConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -803,6 +861,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_id, :numeric_string => true, as: 'backupId'
           property :kind, as: 'kind'
+          property :name, as: 'name'
         end
       end
       
@@ -954,6 +1013,7 @@ module Google
           property :gce_zone, as: 'gceZone'
           property :gemini_config, as: 'geminiConfig', class: Google::Apis::SqladminV1::GeminiInstanceConfig, decorator: Google::Apis::SqladminV1::GeminiInstanceConfig::Representation
       
+          property :include_replicas_for_major_version_upgrade, as: 'includeReplicasForMajorVersionUpgrade'
           property :instance_type, as: 'instanceType'
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1::IpMapping, decorator: Google::Apis::SqladminV1::IpMapping::Representation
       
@@ -1101,6 +1161,8 @@ module Google
           property :offload, as: 'offload'
           property :sql_export_options, as: 'sqlExportOptions', class: Google::Apis::SqladminV1::ExportContext::SqlExportOptions, decorator: Google::Apis::SqladminV1::ExportContext::SqlExportOptions::Representation
       
+          property :tde_export_options, as: 'tdeExportOptions', class: Google::Apis::SqladminV1::ExportContext::TdeExportOptions, decorator: Google::Apis::SqladminV1::ExportContext::TdeExportOptions::Representation
+      
           property :uri, as: 'uri'
         end
         
@@ -1154,6 +1216,16 @@ module Google
               property :clean, as: 'clean'
               property :if_exists, as: 'ifExists'
             end
+          end
+        end
+        
+        class TdeExportOptions
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :certificate_path, as: 'certificatePath'
+            property :name, as: 'name'
+            property :private_key_password, as: 'privateKeyPassword'
+            property :private_key_path, as: 'privateKeyPath'
           end
         end
       end
@@ -1241,6 +1313,8 @@ module Google
           property :kind, as: 'kind'
           property :sql_import_options, as: 'sqlImportOptions', class: Google::Apis::SqladminV1::ImportContext::SqlImportOptions, decorator: Google::Apis::SqladminV1::ImportContext::SqlImportOptions::Representation
       
+          property :tde_import_options, as: 'tdeImportOptions', class: Google::Apis::SqladminV1::ImportContext::TdeImportOptions, decorator: Google::Apis::SqladminV1::ImportContext::TdeImportOptions::Representation
+      
           property :uri, as: 'uri'
         end
         
@@ -1261,6 +1335,7 @@ module Google
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :cert_path, as: 'certPath'
+              property :keep_encrypted, as: 'keepEncrypted'
               property :pvk_password, as: 'pvkPassword'
               property :pvk_path, as: 'pvkPath'
             end
@@ -1294,6 +1369,16 @@ module Google
               property :clean, as: 'clean'
               property :if_exists, as: 'ifExists'
             end
+          end
+        end
+        
+        class TdeImportOptions
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :certificate_path, as: 'certificatePath'
+            property :name, as: 'name'
+            property :private_key_password, as: 'privateKeyPassword'
+            property :private_key_path, as: 'privateKeyPath'
           end
         end
       end
@@ -1419,7 +1504,10 @@ module Google
       class InstancesRestoreBackupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
           property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqladminV1::RestoreBackupContext, decorator: Google::Apis::SqladminV1::RestoreBackupContext::Representation
+      
+          property :restore_instance_settings, as: 'restoreInstanceSettings', class: Google::Apis::SqladminV1::DatabaseInstance, decorator: Google::Apis::SqladminV1::DatabaseInstance::Representation
       
         end
       end
@@ -1448,6 +1536,14 @@ module Google
         end
       end
       
+      class Interval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class IpConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1473,6 +1569,17 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :time_to_retire, as: 'timeToRetire'
           property :type, as: 'type'
+        end
+      end
+      
+      class ListBackupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backups, as: 'backups', class: Google::Apis::SqladminV1::Backup, decorator: Google::Apis::SqladminV1::Backup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :warnings, as: 'warnings', class: Google::Apis::SqladminV1::ApiWarning, decorator: Google::Apis::SqladminV1::ApiWarning::Representation
+      
         end
       end
       
