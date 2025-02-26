@@ -1209,6 +1209,31 @@ module Google
         end
       end
       
+      # Native Build Info
+      class BuildInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Build key.
+        # Corresponds to the JSON property `buildKey`
+        # @return [String]
+        attr_accessor :build_key
+      
+        # Optional. Build value.
+        # Corresponds to the JSON property `buildValue`
+        # @return [String]
+        attr_accessor :build_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_key = args[:build_key] if args.key?(:build_key)
+          @build_value = args[:build_value] if args.key?(:build_value)
+        end
+      end
+      
       # A request to cancel a job.
       class CancelJobRequest
         include Google::Apis::Core::Hashable
@@ -2784,6 +2809,31 @@ module Google
         end
       end
       
+      # Native SQL Execution Data
+      class FallbackReason
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Fallback node information.
+        # Corresponds to the JSON property `fallbackNode`
+        # @return [String]
+        attr_accessor :fallback_node
+      
+        # Optional. Fallback to Spark reason.
+        # Corresponds to the JSON property `fallbackReason`
+        # @return [String]
+        attr_accessor :fallback_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fallback_node = args[:fallback_node] if args.key?(:fallback_node)
+          @fallback_reason = args[:fallback_reason] if args.key?(:fallback_reason)
+        end
+      end
+      
       # A Dataproc job for running Apache Flink applications on YARN.
       class FlinkJob
         include Google::Apis::Core::Hashable
@@ -2906,6 +2956,13 @@ module Google
         # @return [Google::Apis::DataprocV1::ReservationAffinity]
         attr_accessor :reservation_affinity
       
+        # Optional. Resource manager tags to add to all instances (see Resource manager
+        # tags resources (https://cloud.google.com/resource-manager/docs/tags/tags-
+        # creating-and-managing)).
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
         # Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/
         # concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (
         # also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/
@@ -2973,6 +3030,7 @@ module Google
           @node_group_affinity = args[:node_group_affinity] if args.key?(:node_group_affinity)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
@@ -5175,6 +5233,80 @@ module Google
         def update!(**args)
           @cluster_namespace = args[:cluster_namespace] if args.key?(:cluster_namespace)
           @target_gke_cluster = args[:target_gke_cluster] if args.key?(:target_gke_cluster)
+        end
+      end
+      
+      # 
+      class NativeBuildInfoUiData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Build class of Native.
+        # Corresponds to the JSON property `buildClass`
+        # @return [String]
+        attr_accessor :build_class
+      
+        # Optional. Build related details.
+        # Corresponds to the JSON property `buildInfo`
+        # @return [Array<Google::Apis::DataprocV1::BuildInfo>]
+        attr_accessor :build_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_class = args[:build_class] if args.key?(:build_class)
+          @build_info = args[:build_info] if args.key?(:build_info)
+        end
+      end
+      
+      # Native SQL Execution Data
+      class NativeSqlExecutionUiData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description of the execution.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Execution ID of the Native SQL Execution.
+        # Corresponds to the JSON property `executionId`
+        # @return [Fixnum]
+        attr_accessor :execution_id
+      
+        # Optional. Description of the fallback.
+        # Corresponds to the JSON property `fallbackDescription`
+        # @return [String]
+        attr_accessor :fallback_description
+      
+        # Optional. Fallback node to reason.
+        # Corresponds to the JSON property `fallbackNodeToReason`
+        # @return [Array<Google::Apis::DataprocV1::FallbackReason>]
+        attr_accessor :fallback_node_to_reason
+      
+        # Optional. Number of nodes fallen back to Spark.
+        # Corresponds to the JSON property `numFallbackNodes`
+        # @return [Fixnum]
+        attr_accessor :num_fallback_nodes
+      
+        # Optional. Number of nodes in Native.
+        # Corresponds to the JSON property `numNativeNodes`
+        # @return [Fixnum]
+        attr_accessor :num_native_nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @fallback_description = args[:fallback_description] if args.key?(:fallback_description)
+          @fallback_node_to_reason = args[:fallback_node_to_reason] if args.key?(:fallback_node_to_reason)
+          @num_fallback_nodes = args[:num_fallback_nodes] if args.key?(:num_fallback_nodes)
+          @num_native_nodes = args[:num_native_nodes] if args.key?(:num_native_nodes)
         end
       end
       
@@ -7420,7 +7552,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The resource name of the session.
+        # Identifier. The resource name of the session.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -8935,6 +9067,16 @@ module Google
         # @return [Google::Apis::DataprocV1::JobData]
         attr_accessor :job_data
       
+        # Native Build Info
+        # Corresponds to the JSON property `nativeBuildInfoUiData`
+        # @return [Google::Apis::DataprocV1::NativeBuildInfoUiData]
+        attr_accessor :native_build_info_ui_data
+      
+        # Native SQL Execution Data
+        # Corresponds to the JSON property `nativeSqlExecutionUiData`
+        # @return [Google::Apis::DataprocV1::NativeSqlExecutionUiData]
+        attr_accessor :native_sql_execution_ui_data
+      
         # Pool Data
         # Corresponds to the JSON property `poolData`
         # @return [Google::Apis::DataprocV1::PoolData]
@@ -9015,6 +9157,8 @@ module Google
           @executor_stage_summary = args[:executor_stage_summary] if args.key?(:executor_stage_summary)
           @executor_summary = args[:executor_summary] if args.key?(:executor_summary)
           @job_data = args[:job_data] if args.key?(:job_data)
+          @native_build_info_ui_data = args[:native_build_info_ui_data] if args.key?(:native_build_info_ui_data)
+          @native_sql_execution_ui_data = args[:native_sql_execution_ui_data] if args.key?(:native_sql_execution_ui_data)
           @pool_data = args[:pool_data] if args.key?(:pool_data)
           @process_summary = args[:process_summary] if args.key?(:process_summary)
           @rdd_operation_graph = args[:rdd_operation_graph] if args.key?(:rdd_operation_graph)
