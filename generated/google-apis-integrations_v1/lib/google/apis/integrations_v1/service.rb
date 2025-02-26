@@ -1156,6 +1156,9 @@ module Google
         # @param [String] name
         #   Required. The integration resource name. Format: projects/`gcp_project_id`/
         #   locations/`location`/integrations/`integration_id`
+        # @param [String] gcp_cloud_events_mode
+        #   Optional. LINT: LEGACY_NAMES The query parameter value for
+        #   __GCP_CloudEventsMode, set by the Eventarc service when configuring triggers.
         # @param [String] trigger_id
         #   Required. Id of the integration trigger config. The trigger_id is in the
         #   format: `integration_connector_trigger/projects/`gcp_project_id`/location/`
@@ -1177,11 +1180,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def execute_project_location_integration_event(name, trigger_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def execute_project_location_integration_event(name, gcp_cloud_events_mode: nil, trigger_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:executeEvent', options)
           command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteEventResponse::Representation
           command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaExecuteEventResponse
           command.params['name'] = name unless name.nil?
+          command.query['GCPCloudEventsMode'] = gcp_cloud_events_mode unless gcp_cloud_events_mode.nil?
           command.query['triggerId'] = trigger_id unless trigger_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

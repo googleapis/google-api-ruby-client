@@ -5862,6 +5862,26 @@ module Google
         end
       end
       
+      # Data enrichment configuration.
+      class GoogleCloudConnectorsV1EnrichmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Append ACL to the event.
+        # Corresponds to the JSON property `appendAcl`
+        # @return [Boolean]
+        attr_accessor :append_acl
+        alias_method :append_acl?, :append_acl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @append_acl = args[:append_acl] if args.key?(:append_acl)
+        end
+      end
+      
       # Eventing Configuration of a connection
       class GoogleCloudConnectorsV1EventingConfig
         include Google::Apis::Core::Hashable
@@ -5880,6 +5900,11 @@ module Google
         # Corresponds to the JSON property `deadLetterConfig`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfigDeadLetterConfig]
         attr_accessor :dead_letter_config
+      
+        # Data enrichment configuration.
+        # Corresponds to the JSON property `enrichmentConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EnrichmentConfig]
+        attr_accessor :enrichment_config
       
         # Optional. Enrichment Enabled.
         # Corresponds to the JSON property `enrichmentEnabled`
@@ -5923,6 +5948,7 @@ module Google
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @dead_letter_config = args[:dead_letter_config] if args.key?(:dead_letter_config)
+          @enrichment_config = args[:enrichment_config] if args.key?(:enrichment_config)
           @enrichment_enabled = args[:enrichment_enabled] if args.key?(:enrichment_enabled)
           @events_listener_ingress_endpoint = args[:events_listener_ingress_endpoint] if args.key?(:events_listener_ingress_endpoint)
           @listener_auth_config = args[:listener_auth_config] if args.key?(:listener_auth_config)
@@ -9928,10 +9954,34 @@ module Google
       class GoogleCloudIntegrationsV1alphaReplayExecutionRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The modified input parameters for replay. - Provide values for all
+        # the fields in the 'update_mask'. Any field not present in the 'update_mask'
+        # will be ignored and its value will be taken from the original execution. - If
+        # the 'update_mask' is not specified, all the parameters from original execution
+        # will be ignored and only the `modified_parameters` will be used.
+        # Corresponds to the JSON property `modifiedParameters`
+        # @return [Hash<String,Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType>]
+        attr_accessor :modified_parameters
+      
+        # Optional. The mode of the replay.
+        # Corresponds to the JSON property `replayMode`
+        # @return [String]
+        attr_accessor :replay_mode
+      
         # Required. The user provided reason for replaying the execution.
         # Corresponds to the JSON property `replayReason`
         # @return [String]
         attr_accessor :replay_reason
+      
+        # Optional. The list of parameters to be updated. - If the `update_mask` is not
+        # specified, all the parameters from original execution will be ignored and only
+        # the `modified_parameters` will be used. - It is an error to include a
+        # parameter in `update_mask` but not in `modified_parameters`. - Updating nested
+        # fields in a JSON parameter is not supported, please provide the complete JSON
+        # in the `modified_parameters`.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
       
         def initialize(**args)
            update!(**args)
@@ -9939,7 +9989,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @modified_parameters = args[:modified_parameters] if args.key?(:modified_parameters)
+          @replay_mode = args[:replay_mode] if args.key?(:replay_mode)
           @replay_reason = args[:replay_reason] if args.key?(:replay_reason)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       

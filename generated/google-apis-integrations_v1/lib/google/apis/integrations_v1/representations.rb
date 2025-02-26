@@ -850,6 +850,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudConnectorsV1EnrichmentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudConnectorsV1EventingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3431,6 +3437,13 @@ module Google
         end
       end
       
+      class GoogleCloudConnectorsV1EnrichmentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :append_acl, as: 'appendAcl'
+        end
+      end
+      
       class GoogleCloudConnectorsV1EventingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3439,6 +3452,8 @@ module Google
           property :auth_config, as: 'authConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig::Representation
       
           property :dead_letter_config, as: 'deadLetterConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfigDeadLetterConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfigDeadLetterConfig::Representation
+      
+          property :enrichment_config, as: 'enrichmentConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EnrichmentConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EnrichmentConfig::Representation
       
           property :enrichment_enabled, as: 'enrichmentEnabled'
           property :events_listener_ingress_endpoint, as: 'eventsListenerIngressEndpoint'
@@ -4593,7 +4608,11 @@ module Google
       class GoogleCloudIntegrationsV1alphaReplayExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :modified_parameters, as: 'modifiedParameters', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType::Representation
+      
+          property :replay_mode, as: 'replayMode'
           property :replay_reason, as: 'replayReason'
+          property :update_mask, as: 'updateMask'
         end
       end
       
