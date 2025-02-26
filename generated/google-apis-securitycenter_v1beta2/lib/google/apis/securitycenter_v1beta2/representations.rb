@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Allowed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Application
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,12 @@ module Google
       end
       
       class Database
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Denied
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -472,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2Allowed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Application
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -658,6 +676,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2Denied
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Detection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -743,6 +767,18 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Indicator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IpRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IpRules
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -838,6 +874,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2KernelRootkit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -892,6 +934,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2Network
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Node
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -941,6 +989,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2PolicyDriftDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2PortRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1090,6 +1144,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IpRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IpRules
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KernelRootkit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1138,6 +1210,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Network
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Node
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1181,6 +1259,12 @@ module Google
       end
       
       class PolicyDriftDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PortRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1378,6 +1462,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
+        end
+      end
+      
+      class Allowed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_rules, as: 'ipRules', class: Google::Apis::SecuritycenterV1beta2::IpRule, decorator: Google::Apis::SecuritycenterV1beta2::IpRule::Representation
+      
         end
       end
       
@@ -1711,6 +1803,14 @@ module Google
         end
       end
       
+      class Denied
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_rules, as: 'ipRules', class: Google::Apis::SecuritycenterV1beta2::IpRule, decorator: Google::Apis::SecuritycenterV1beta2::IpRule::Representation
+      
+        end
+      end
+      
       class Details
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1867,6 +1967,10 @@ module Google
       
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1beta2::Indicator, decorator: Google::Apis::SecuritycenterV1beta2::Indicator::Representation
       
+          property :ip_rules, as: 'ipRules', class: Google::Apis::SecuritycenterV1beta2::IpRules, decorator: Google::Apis::SecuritycenterV1beta2::IpRules::Representation
+      
+          property :job, as: 'job', class: Google::Apis::SecuritycenterV1beta2::Job, decorator: Google::Apis::SecuritycenterV1beta2::Job::Representation
+      
           property :kernel_rootkit, as: 'kernelRootkit', class: Google::Apis::SecuritycenterV1beta2::KernelRootkit, decorator: Google::Apis::SecuritycenterV1beta2::KernelRootkit::Representation
       
           property :kubernetes, as: 'kubernetes', class: Google::Apis::SecuritycenterV1beta2::Kubernetes, decorator: Google::Apis::SecuritycenterV1beta2::Kubernetes::Representation
@@ -1884,6 +1988,8 @@ module Google
           property :mute_initiator, as: 'muteInitiator'
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
+          collection :networks, as: 'networks', class: Google::Apis::SecuritycenterV1beta2::Network, decorator: Google::Apis::SecuritycenterV1beta2::Network::Representation
+      
           property :next_steps, as: 'nextSteps'
           property :notebook, as: 'notebook', class: Google::Apis::SecuritycenterV1beta2::Notebook, decorator: Google::Apis::SecuritycenterV1beta2::Notebook::Representation
       
@@ -2253,6 +2359,14 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2Allowed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_rules, as: 'ipRules', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IpRule, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IpRule::Representation
+      
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2Application
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2581,6 +2695,14 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2Denied
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_rules, as: 'ipRules', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IpRule, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IpRule::Representation
+      
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2Detection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2725,6 +2847,10 @@ module Google
       
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Indicator, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Indicator::Representation
       
+          property :ip_rules, as: 'ipRules', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IpRules, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IpRules::Representation
+      
+          property :job, as: 'job', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Job, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Job::Representation
+      
           property :kernel_rootkit, as: 'kernelRootkit', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2KernelRootkit, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2KernelRootkit::Representation
       
           property :kubernetes, as: 'kubernetes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Kubernetes, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Kubernetes::Representation
@@ -2742,6 +2868,8 @@ module Google
           property :mute_initiator, as: 'muteInitiator'
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
+          collection :networks, as: 'networks', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Network, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Network::Representation
+      
           property :next_steps, as: 'nextSteps'
           property :notebook, as: 'notebook', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Notebook, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Notebook::Representation
       
@@ -2806,6 +2934,29 @@ module Google
           collection :signatures, as: 'signatures', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ProcessSignature, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ProcessSignature::Representation
       
           collection :uris, as: 'uris'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IpRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :port_ranges, as: 'portRanges', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2PortRange, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2PortRange::Representation
+      
+          property :protocol, as: 'protocol'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IpRules
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed, as: 'allowed', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Allowed, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Allowed::Representation
+      
+          property :denied, as: 'denied', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Denied, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Denied::Representation
+      
+          collection :destination_ip_ranges, as: 'destinationIpRanges'
+          property :direction, as: 'direction'
+          collection :exposed_services, as: 'exposedServices'
+          collection :source_ip_ranges, as: 'sourceIpRanges'
         end
       end
       
@@ -2961,6 +3112,16 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2Job
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, as: 'errorCode'
+          property :location, as: 'location'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2KernelRootkit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3063,6 +3224,13 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2Network
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2Node
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3147,6 +3315,14 @@ module Google
           property :detected_value, as: 'detectedValue'
           property :expected_value, as: 'expectedValue'
           property :field, as: 'field'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2PortRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max, :numeric_string => true, as: 'max'
+          property :min, :numeric_string => true, as: 'min'
         end
       end
       
@@ -3408,6 +3584,39 @@ module Google
         end
       end
       
+      class IpRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :port_ranges, as: 'portRanges', class: Google::Apis::SecuritycenterV1beta2::PortRange, decorator: Google::Apis::SecuritycenterV1beta2::PortRange::Representation
+      
+          property :protocol, as: 'protocol'
+        end
+      end
+      
+      class IpRules
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed, as: 'allowed', class: Google::Apis::SecuritycenterV1beta2::Allowed, decorator: Google::Apis::SecuritycenterV1beta2::Allowed::Representation
+      
+          property :denied, as: 'denied', class: Google::Apis::SecuritycenterV1beta2::Denied, decorator: Google::Apis::SecuritycenterV1beta2::Denied::Representation
+      
+          collection :destination_ip_ranges, as: 'destinationIpRanges'
+          property :direction, as: 'direction'
+          collection :exposed_services, as: 'exposedServices'
+          collection :source_ip_ranges, as: 'sourceIpRanges'
+        end
+      end
+      
+      class Job
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, as: 'errorCode'
+          property :location, as: 'location'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class KernelRootkit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3496,6 +3705,13 @@ module Google
         end
       end
       
+      class Network
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class Node
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3569,6 +3785,14 @@ module Google
           property :detected_value, as: 'detectedValue'
           property :expected_value, as: 'expectedValue'
           property :field, as: 'field'
+        end
+      end
+      
+      class PortRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max, :numeric_string => true, as: 'max'
+          property :min, :numeric_string => true, as: 'min'
         end
       end
       
