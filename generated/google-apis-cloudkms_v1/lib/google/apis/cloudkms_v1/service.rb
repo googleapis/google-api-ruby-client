@@ -1690,6 +1690,12 @@ module Google
         # must be ASYMMETRIC_SIGN or ASYMMETRIC_DECRYPT.
         # @param [String] name
         #   Required. The name of the CryptoKeyVersion public key to get.
+        # @param [String] public_key_format
+        #   Optional. The PublicKey format specified by the user. This field is required
+        #   for PQC algorithms. If specified, the public key will be exported through the
+        #   public_key field in the requested format. Otherwise, the pem field will be
+        #   populated for non-PQC algorithms, and an error will be returned for PQC
+        #   algorithms.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1707,11 +1713,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_key_ring_crypto_key_crypto_key_version_public_key(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_key_ring_crypto_key_crypto_key_version_public_key(name, public_key_format: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/publicKey', options)
           command.response_representation = Google::Apis::CloudkmsV1::PublicKey::Representation
           command.response_class = Google::Apis::CloudkmsV1::PublicKey
           command.params['name'] = name unless name.nil?
+          command.query['publicKeyFormat'] = public_key_format unless public_key_format.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
