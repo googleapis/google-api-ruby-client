@@ -456,7 +456,7 @@ module Google
         attr_accessor :enforce
         alias_method :enforce?, :enforce
       
-        # Optional. Required for GMCs if parameters defined in constraints. Pass
+        # Optional. Required for managed constraints if parameters are defined. Passes
         # parameter values when policy enforcement is enabled. Ensure that parameter
         # value types match those defined in the constraint definition. For example: ` "
         # allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true `
@@ -464,12 +464,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :parameters
       
-        # Set multiple resource types for one policy, eg: resourceTypes: included: -
-        # compute.googleapis.com/Instance - compute.googleapis.com/Disk Constraint
-        # definition contains an empty resource type in order to support multiple
-        # resource types in the policy. Only support Google managed constriaint and
-        # method type is GOVERN_TAGS Refer go/multi-resource-support-force-tags-gmc to
-        # get more details.
+        # Set multiple resource types for one policy, for example: resourceTypes:
+        # included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk
+        # Constraint definition contains an empty resource type in order to support
+        # multiple resource types in the policy. Only supports managed constraints.
+        # Method type is `GOVERN_TAGS`. Refer go/multi-resource-support-force-tags-gmc
+        # to get more details.
         # Corresponds to the JSON property `resourceTypes`
         # @return [Google::Apis::SecuritypostureV1::ResourceTypes]
         attr_accessor :resource_types
@@ -1540,16 +1540,16 @@ module Google
         end
       end
       
-      # Set multiple resource types for one policy, eg: resourceTypes: included: -
-      # compute.googleapis.com/Instance - compute.googleapis.com/Disk Constraint
-      # definition contains an empty resource type in order to support multiple
-      # resource types in the policy. Only support Google managed constriaint and
-      # method type is GOVERN_TAGS Refer go/multi-resource-support-force-tags-gmc to
-      # get more details.
+      # Set multiple resource types for one policy, for example: resourceTypes:
+      # included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk
+      # Constraint definition contains an empty resource type in order to support
+      # multiple resource types in the policy. Only supports managed constraints.
+      # Method type is `GOVERN_TAGS`. Refer go/multi-resource-support-force-tags-gmc
+      # to get more details.
       class ResourceTypes
         include Google::Apis::Core::Hashable
       
-        # Optional. The resource type we currently support. cloud/orgpolicy/
+        # Optional. The resource types we currently support. cloud/orgpolicy/
         # customconstraintconfig/prod/resource_types.prototext
         # Corresponds to the JSON property `included`
         # @return [Array<String>]
