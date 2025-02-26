@@ -1395,10 +1395,13 @@ module Google
       
           collection :enabled_notification_types, as: 'enabledNotificationTypes'
           property :enterprise_display_name, as: 'enterpriseDisplayName'
+          property :enterprise_type, as: 'enterpriseType'
           property :google_authentication_settings, as: 'googleAuthenticationSettings', class: Google::Apis::AndroidmanagementV1::GoogleAuthenticationSettings, decorator: Google::Apis::AndroidmanagementV1::GoogleAuthenticationSettings::Representation
       
           property :logo, as: 'logo', class: Google::Apis::AndroidmanagementV1::ExternalData, decorator: Google::Apis::AndroidmanagementV1::ExternalData::Representation
       
+          property :managed_google_domain_type, as: 'managedGoogleDomainType'
+          property :managed_google_play_accounts_enterprise_type, as: 'managedGooglePlayAccountsEnterpriseType'
           property :name, as: 'name'
           property :primary_color, as: 'primaryColor'
           property :pubsub_topic, as: 'pubsubTopic'
