@@ -2111,7 +2111,7 @@ module Google
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
-        #   Required. Mutable fields include: display_name.
+        #   Optional. Mutable fields include: display_name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2562,7 +2562,7 @@ module Google
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
-        #   Required. Mutable fields include: display_name, hubs.
+        #   Optional. Mutable fields include: display_name, hubs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
