@@ -241,7 +241,7 @@ module Google
         # @return [String]
         attr_accessor :default_location
       
-        # 
+        # Configures various aspects of Dataform notebook runtime.
         # Corresponds to the JSON property `defaultNotebookRuntimeOptions`
         # @return [Google::Apis::DataformV1beta1::NotebookRuntimeOptions]
         attr_accessor :default_notebook_runtime_options
@@ -414,8 +414,8 @@ module Google
         # @return [Google::Apis::DataformV1beta1::CommitMetadata]
         attr_accessor :commit_metadata
       
-        # A map to the path of the file to the operation. The path is the full file path
-        # including filename, from repository root.
+        # Optional. A map to the path of the file to the operation. The path is the full
+        # file path including filename, from repository root.
         # Corresponds to the JSON property `fileOperations`
         # @return [Hash<String,Google::Apis::DataformV1beta1::FileOperation>]
         attr_accessor :file_operations
@@ -649,7 +649,7 @@ module Google
         # @return [String]
         attr_accessor :internal_metadata
       
-        # The notebook executed by this action.
+        # Represents a notebook.
         # Corresponds to the JSON property `notebook`
         # @return [Google::Apis::DataformV1beta1::Notebook]
         attr_accessor :notebook
@@ -737,7 +737,7 @@ module Google
       class DataEncryptionState
         include Google::Apis::Core::Hashable
       
-        # The KMS key version name with which data of a resource is encrypted.
+        # Required. The KMS key version name with which data of a resource is encrypted.
         # Corresponds to the JSON property `kmsKeyVersionName`
         # @return [String]
         attr_accessor :kms_key_version_name
@@ -1642,7 +1642,7 @@ module Google
         end
       end
       
-      # 
+      # Represents a notebook.
       class Notebook
         include Google::Apis::Core::Hashable
       
@@ -1707,7 +1707,7 @@ module Google
         end
       end
       
-      # 
+      # Configures various aspects of Dataform notebook runtime.
       class NotebookRuntimeOptions
         include Google::Apis::Core::Hashable
       
@@ -2520,7 +2520,7 @@ module Google
         # @return [Google::Apis::DataformV1beta1::Status]
         attr_accessor :error_status
       
-        # The timestamp of this execution attempt.
+        # Output only. The timestamp of this execution attempt.
         # Corresponds to the JSON property `executionTime`
         # @return [String]
         attr_accessor :execution_time
@@ -2565,7 +2565,7 @@ module Google
         # @return [Google::Apis::DataformV1beta1::Status]
         attr_accessor :error_status
       
-        # The timestamp of this release attempt.
+        # Output only. The timestamp of this release attempt.
         # Corresponds to the JSON property `releaseTime`
         # @return [String]
         attr_accessor :release_time
@@ -2750,17 +2750,17 @@ module Google
       class Target
         include Google::Apis::Core::Hashable
       
-        # The action's database (Google Cloud project ID) .
+        # Optional. The action's database (Google Cloud project ID) .
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
       
-        # The action's name, within `database` and `schema`.
+        # Optional. The action's name, within `database` and `schema`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The action's schema (BigQuery dataset ID), within `database`.
+        # Optional. The action's schema (BigQuery dataset ID), within `database`.
         # Corresponds to the JSON property `schema`
         # @return [String]
         attr_accessor :schema
@@ -2826,7 +2826,7 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Indicates the status of the file.
+        # Output only. Indicates the status of the file.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
