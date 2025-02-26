@@ -724,6 +724,7 @@ module Google
           property :id, as: 'id'
           property :image_media_metadata, as: 'imageMediaMetadata', class: Google::Apis::DriveV3::File::ImageMediaMetadata, decorator: Google::Apis::DriveV3::File::ImageMediaMetadata::Representation
       
+          property :inherited_permissions_disabled, as: 'inheritedPermissionsDisabled'
           property :is_app_authorized, as: 'isAppAuthorized'
           property :kind, as: 'kind'
           property :label_info, as: 'labelInfo', class: Google::Apis::DriveV3::File::LabelInfo, decorator: Google::Apis::DriveV3::File::LabelInfo::Representation
@@ -797,8 +798,10 @@ module Google
             property :can_copy, as: 'canCopy'
             property :can_delete, as: 'canDelete'
             property :can_delete_children, as: 'canDeleteChildren'
+            property :can_disable_inherited_permissions, as: 'canDisableInheritedPermissions'
             property :can_download, as: 'canDownload'
             property :can_edit, as: 'canEdit'
+            property :can_enable_inherited_permissions, as: 'canEnableInheritedPermissions'
             property :can_list_children, as: 'canListChildren'
             property :can_modify_content, as: 'canModifyContent'
             property :can_modify_content_restriction, as: 'canModifyContentRestriction'
@@ -1061,6 +1064,7 @@ module Google
           property :expiration_time, as: 'expirationTime', type: DateTime
       
           property :id, as: 'id'
+          property :inherited_permissions_disabled, as: 'inheritedPermissionsDisabled'
           property :kind, as: 'kind'
           property :pending_owner, as: 'pendingOwner'
           collection :permission_details, as: 'permissionDetails', class: Google::Apis::DriveV3::Permission::PermissionDetail, decorator: Google::Apis::DriveV3::Permission::PermissionDetail::Representation
