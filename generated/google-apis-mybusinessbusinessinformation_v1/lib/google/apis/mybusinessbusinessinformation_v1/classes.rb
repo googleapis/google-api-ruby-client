@@ -935,7 +935,8 @@ module Google
         attr_accessor :can_operate_health_data
         alias_method :can_operate_health_data?, :can_operate_health_data
       
-        # Output only. Indicates if the listing can manage local posts.
+        # Output only. Indicates if the listing can manage local posts. Deprecated: This
+        # field is no longer populated and will be removed in a future version.
         # Corresponds to the JSON property `canOperateLocalPost`
         # @return [Boolean]
         attr_accessor :can_operate_local_post
