@@ -208,11 +208,6 @@ module Google
       class GoogleFirebaseAppdistroV1alphaAiInstructions
         include Google::Apis::Core::Hashable
       
-        # Optional. Describes the app to give the AI some context
-        # Corresponds to the JSON property `appDescription`
-        # @return [String]
-        attr_accessor :app_description
-      
         # Required. Steps to be accomplished by the AI
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep>]
@@ -224,7 +219,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @app_description = args[:app_description] if args.key?(:app_description)
           @steps = args[:steps] if args.key?(:steps)
         end
       end
@@ -1429,6 +1423,40 @@ module Google
           @model = args[:model] if args.key?(:model)
           @orientation = args[:orientation] if args.key?(:orientation)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Customer quota information for `ReleaseTests`. Note: This quota only applies
+      # to tests with `AiInstructions` and is separate from the quota which might
+      # apply to the device time used by any tests.
+      class GoogleFirebaseAppdistroV1alphaTestQuota
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Maximum number of `ReleaseTests` allotted for the current month.
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        # Identifier. The name of the `TestQuota` resource. Format: `projects/`
+        # project_number`/testQuota`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Number of `ReleaseTests` run in the current month
+        # Corresponds to the JSON property `usage`
+        # @return [Fixnum]
+        attr_accessor :usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @limit = args[:limit] if args.key?(:limit)
+          @name = args[:name] if args.key?(:name)
+          @usage = args[:usage] if args.key?(:usage)
         end
       end
       
