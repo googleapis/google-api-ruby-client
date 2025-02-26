@@ -130,6 +130,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DriveDocumentIds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DriveDocumentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DriveExportOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +173,18 @@ module Google
       end
       
       class ExportStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeminiExportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeminiOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -584,6 +608,21 @@ module Google
         end
       end
       
+      class DriveDocumentIds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ids, as: 'ids'
+        end
+      end
+      
+      class DriveDocumentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_ids, as: 'documentIds', class: Google::Apis::VaultV1::DriveDocumentIds, decorator: Google::Apis::VaultV1::DriveDocumentIds::Representation
+      
+        end
+      end
+      
       class DriveExportOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -636,6 +675,8 @@ module Google
       
           property :drive_options, as: 'driveOptions', class: Google::Apis::VaultV1::DriveExportOptions, decorator: Google::Apis::VaultV1::DriveExportOptions::Representation
       
+          property :gemini_options, as: 'geminiOptions', class: Google::Apis::VaultV1::GeminiExportOptions, decorator: Google::Apis::VaultV1::GeminiExportOptions::Representation
+      
           property :groups_options, as: 'groupsOptions', class: Google::Apis::VaultV1::GroupsExportOptions, decorator: Google::Apis::VaultV1::GroupsExportOptions::Representation
       
           property :hangouts_chat_options, as: 'hangoutsChatOptions', class: Google::Apis::VaultV1::HangoutsChatExportOptions, decorator: Google::Apis::VaultV1::HangoutsChatExportOptions::Representation
@@ -654,6 +695,19 @@ module Google
           property :exported_artifact_count, :numeric_string => true, as: 'exportedArtifactCount'
           property :size_in_bytes, :numeric_string => true, as: 'sizeInBytes'
           property :total_artifact_count, :numeric_string => true, as: 'totalArtifactCount'
+        end
+      end
+      
+      class GeminiExportOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_format, as: 'exportFormat'
+        end
+      end
+      
+      class GeminiOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -912,9 +966,13 @@ module Google
       
           property :corpus, as: 'corpus'
           property :data_scope, as: 'dataScope'
+          property :drive_document_info, as: 'driveDocumentInfo', class: Google::Apis::VaultV1::DriveDocumentInfo, decorator: Google::Apis::VaultV1::DriveDocumentInfo::Representation
+      
           property :drive_options, as: 'driveOptions', class: Google::Apis::VaultV1::DriveOptions, decorator: Google::Apis::VaultV1::DriveOptions::Representation
       
           property :end_time, as: 'endTime'
+          property :gemini_options, as: 'geminiOptions', class: Google::Apis::VaultV1::GeminiOptions, decorator: Google::Apis::VaultV1::GeminiOptions::Representation
+      
           property :hangouts_chat_info, as: 'hangoutsChatInfo', class: Google::Apis::VaultV1::HangoutsChatInfo, decorator: Google::Apis::VaultV1::HangoutsChatInfo::Representation
       
           property :hangouts_chat_options, as: 'hangoutsChatOptions', class: Google::Apis::VaultV1::HangoutsChatOptions, decorator: Google::Apis::VaultV1::HangoutsChatOptions::Representation

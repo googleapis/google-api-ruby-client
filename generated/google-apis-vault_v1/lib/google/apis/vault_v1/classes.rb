@@ -537,6 +537,44 @@ module Google
         end
       end
       
+      # Specify Drive documents by document ID.
+      class DriveDocumentIds
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of Drive document IDs.
+        # Corresponds to the JSON property `ids`
+        # @return [Array<String>]
+        attr_accessor :ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ids = args[:ids] if args.key?(:ids)
+        end
+      end
+      
+      # The Drive documents to search.
+      class DriveDocumentInfo
+        include Google::Apis::Core::Hashable
+      
+        # Specify Drive documents by document ID.
+        # Corresponds to the JSON property `documentIds`
+        # @return [Google::Apis::VaultV1::DriveDocumentIds]
+        attr_accessor :document_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_ids = args[:document_ids] if args.key?(:document_ids)
+        end
+      end
+      
       # Options for Drive exports.
       class DriveExportOptions
         include Google::Apis::Core::Hashable
@@ -558,7 +596,7 @@ module Google
         end
       end
       
-      # Additional options for Drive search
+      # Additional options for Drive search.
       class DriveOptions
         include Google::Apis::Core::Hashable
       
@@ -715,6 +753,11 @@ module Google
         # @return [Google::Apis::VaultV1::DriveExportOptions]
         attr_accessor :drive_options
       
+        # The options for Gemini exports.
+        # Corresponds to the JSON property `geminiOptions`
+        # @return [Google::Apis::VaultV1::GeminiExportOptions]
+        attr_accessor :gemini_options
+      
         # Options for Groups exports.
         # Corresponds to the JSON property `groupsOptions`
         # @return [Google::Apis::VaultV1::GroupsExportOptions]
@@ -748,6 +791,7 @@ module Google
         def update!(**args)
           @calendar_options = args[:calendar_options] if args.key?(:calendar_options)
           @drive_options = args[:drive_options] if args.key?(:drive_options)
+          @gemini_options = args[:gemini_options] if args.key?(:gemini_options)
           @groups_options = args[:groups_options] if args.key?(:groups_options)
           @hangouts_chat_options = args[:hangouts_chat_options] if args.key?(:hangouts_chat_options)
           @mail_options = args[:mail_options] if args.key?(:mail_options)
@@ -784,6 +828,38 @@ module Google
           @exported_artifact_count = args[:exported_artifact_count] if args.key?(:exported_artifact_count)
           @size_in_bytes = args[:size_in_bytes] if args.key?(:size_in_bytes)
           @total_artifact_count = args[:total_artifact_count] if args.key?(:total_artifact_count)
+        end
+      end
+      
+      # The options for Gemini exports.
+      class GeminiExportOptions
+        include Google::Apis::Core::Hashable
+      
+        # The file format for exported messages.
+        # Corresponds to the JSON property `exportFormat`
+        # @return [String]
+        attr_accessor :export_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @export_format = args[:export_format] if args.key?(:export_format)
+        end
+      end
+      
+      # Additional options for Gemini search
+      class GeminiOptions
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1645,7 +1721,12 @@ module Google
         # @return [String]
         attr_accessor :data_scope
       
-        # Additional options for Drive search
+        # The Drive documents to search.
+        # Corresponds to the JSON property `driveDocumentInfo`
+        # @return [Google::Apis::VaultV1::DriveDocumentInfo]
+        attr_accessor :drive_document_info
+      
+        # Additional options for Drive search.
         # Corresponds to the JSON property `driveOptions`
         # @return [Google::Apis::VaultV1::DriveOptions]
         attr_accessor :drive_options
@@ -1655,6 +1736,11 @@ module Google
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # Additional options for Gemini search
+        # Corresponds to the JSON property `geminiOptions`
+        # @return [Google::Apis::VaultV1::GeminiOptions]
+        attr_accessor :gemini_options
       
         # The Chat spaces to search
         # Corresponds to the JSON property `hangoutsChatInfo`
@@ -1739,8 +1825,10 @@ module Google
           @calendar_options = args[:calendar_options] if args.key?(:calendar_options)
           @corpus = args[:corpus] if args.key?(:corpus)
           @data_scope = args[:data_scope] if args.key?(:data_scope)
+          @drive_document_info = args[:drive_document_info] if args.key?(:drive_document_info)
           @drive_options = args[:drive_options] if args.key?(:drive_options)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @gemini_options = args[:gemini_options] if args.key?(:gemini_options)
           @hangouts_chat_info = args[:hangouts_chat_info] if args.key?(:hangouts_chat_info)
           @hangouts_chat_options = args[:hangouts_chat_options] if args.key?(:hangouts_chat_options)
           @mail_options = args[:mail_options] if args.key?(:mail_options)
