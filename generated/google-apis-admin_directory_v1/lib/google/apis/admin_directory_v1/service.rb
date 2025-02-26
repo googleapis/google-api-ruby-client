@@ -4090,7 +4090,8 @@ module Google
         # @param [String] order_by
         #   Property to use for sorting results.
         # @param [String] page_token
-        #   Token to specify next page in the list
+        #   Token to specify next page in the list. The page token is only valid for three
+        #   days.
         # @param [String] projection
         #   What subset of fields to fetch for this user.
         # @param [String] query
