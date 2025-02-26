@@ -22,6 +22,18 @@ module Google
   module Apis
     module DataportabilityV1beta
       
+      class CancelPortabilityArchiveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelPortabilityArchiveResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelPortabilityArchiveRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CancelPortabilityArchiveResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -73,13 +97,16 @@ module Google
       class InitiatePortabilityArchiveRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
           collection :resources, as: 'resources'
+          property :start_time, as: 'startTime'
         end
       end
       
       class InitiatePortabilityArchiveResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_type, as: 'accessType'
           property :archive_job_id, as: 'archiveJobId'
         end
       end
@@ -87,7 +114,9 @@ module Google
       class PortabilityArchiveState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_time, as: 'exportTime'
           property :name, as: 'name'
+          property :start_time, as: 'startTime'
           property :state, as: 'state'
           collection :urls, as: 'urls'
         end
