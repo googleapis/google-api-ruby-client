@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppdistroV1alphaTestQuota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppdistroV1alphaTesterUdid
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -355,7 +361,6 @@ module Google
       class GoogleFirebaseAppdistroV1alphaAiInstructions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :app_description, as: 'appDescription'
           collection :steps, as: 'steps', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiStep::Representation
       
         end
@@ -730,6 +735,15 @@ module Google
           property :model, as: 'model'
           property :orientation, as: 'orientation'
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaTestQuota
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :limit, :numeric_string => true, as: 'limit'
+          property :name, as: 'name'
+          property :usage, :numeric_string => true, as: 'usage'
         end
       end
       
