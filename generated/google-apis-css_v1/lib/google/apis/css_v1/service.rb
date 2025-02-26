@@ -173,7 +173,9 @@ module Google
         # may take several minutes until the input is no longer available.
         # @param [String] name
         #   Required. The name of the CSS product input resource to delete. Format:
-        #   accounts/`account`/cssProductInputs/`css_product_input`
+        #   accounts/`account`/cssProductInputs/`css_product_input`, where the last
+        #   section `css_product_input` consists of 3 parts: contentLanguage~feedLabel~
+        #   offerId. Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123
         # @param [Fixnum] supplemental_feed_id
         #   The Content API Supplemental Feed ID. The field must not be set if the action
         #   applies to a primary feed. If the field is set, then product action applies to
@@ -256,7 +258,9 @@ module Google
         # minutes before the processed Css Product can be retrieved.
         # @param [String] name
         #   The name of the CSS Product input. Format: `accounts/`account`/
-        #   cssProductInputs/`css_product_input``
+        #   cssProductInputs/`css_product_input``, where the last section `
+        #   css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId.
+        #   Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123
         # @param [Google::Apis::CssV1::CssProductInput] css_product_input_object
         # @param [String] update_mask
         #   The list of CSS product attributes to be updated. If the update mask is
