@@ -22,7 +22,31 @@ module Google
   module Apis
     module WorkloadmanagerV1
       
+      class ApiLayerServer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentCommand
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvailabilityGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -40,7 +64,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Cluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Command
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComponentHealth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Database
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,13 +130,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FrontEndServer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GceInstanceFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Insight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Layer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDiscoveredProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoadBalancerServer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +245,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Product
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -185,6 +287,12 @@ module Google
       end
       
       class RunEvaluationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SapComponent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -244,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SapDiscoveryResourceInstancePropertiesDiskMount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SapDiscoveryWorkloadProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SapInstanceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SapValidation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +389,12 @@ module Google
       end
       
       class SapValidationValidationDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SapWorkload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlserverWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,13 +448,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ThreeTierWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TorsoValidation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpcomingMaintenanceEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ViolationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadProfileHealth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,11 +496,51 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApiLayerServer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :os_version, as: 'osVersion'
+          collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::CloudResource, decorator: Google::Apis::WorkloadmanagerV1::CloudResource::Representation
+      
+        end
+      end
+      
       class AgentCommand
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :command, as: 'command'
           hash :parameters, as: 'parameters'
+        end
+      end
+      
+      class AvailabilityGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :databases, as: 'databases'
+          property :name, as: 'name'
+          property :primary_server, as: 'primaryServer'
+          collection :secondary_servers, as: 'secondaryServers'
+        end
+      end
+      
+      class BackendServer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_file, as: 'backupFile'
+          property :backup_schedule, as: 'backupSchedule'
+          property :name, as: 'name'
+          property :os_version, as: 'osVersion'
+          collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::CloudResource, decorator: Google::Apis::WorkloadmanagerV1::CloudResource::Representation
+      
+        end
+      end
+      
+      class BackupProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latest_backup_status, as: 'latestBackupStatus'
+          property :latest_backup_time, as: 'latestBackupTime'
         end
       end
       
@@ -362,6 +558,24 @@ module Google
         end
       end
       
+      class CloudResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_properties, as: 'instanceProperties', class: Google::Apis::WorkloadmanagerV1::InstanceProperties, decorator: Google::Apis::WorkloadmanagerV1::InstanceProperties::Representation
+      
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+        end
+      end
+      
+      class Cluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodes, as: 'nodes'
+          property :witness_server, as: 'witnessServer'
+        end
+      end
+      
       class Command
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -369,6 +583,39 @@ module Google
       
           property :shell_command, as: 'shellCommand', class: Google::Apis::WorkloadmanagerV1::ShellCommand, decorator: Google::Apis::WorkloadmanagerV1::ShellCommand::Representation
       
+        end
+      end
+      
+      class ComponentHealth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component, as: 'component'
+          collection :component_health_checks, as: 'componentHealthChecks', class: Google::Apis::WorkloadmanagerV1::HealthCheck, decorator: Google::Apis::WorkloadmanagerV1::HealthCheck::Representation
+      
+          property :component_health_type, as: 'componentHealthType'
+          property :is_required, as: 'isRequired'
+          property :state, as: 'state'
+          collection :sub_component_healthes, as: 'subComponentHealthes', class: Google::Apis::WorkloadmanagerV1::ComponentHealth, decorator: Google::Apis::WorkloadmanagerV1::ComponentHealth::Representation
+      
+        end
+      end
+      
+      class Database
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_file, as: 'backupFile'
+          property :backup_schedule, as: 'backupSchedule'
+          property :host_vm, as: 'hostVm'
+          property :name, as: 'name'
+        end
+      end
+      
+      class DatabaseProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_properties, as: 'backupProperties', class: Google::Apis::WorkloadmanagerV1::BackupProperties, decorator: Google::Apis::WorkloadmanagerV1::BackupProperties::Representation
+      
+          property :database_type, as: 'databaseType'
         end
       end
       
@@ -449,10 +696,32 @@ module Google
         end
       end
       
+      class FrontEndServer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :os_version, as: 'osVersion'
+          collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::CloudResource, decorator: Google::Apis::WorkloadmanagerV1::CloudResource::Representation
+      
+        end
+      end
+      
       class GceInstanceFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :service_accounts, as: 'serviceAccounts'
+        end
+      end
+      
+      class HealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :metric, as: 'metric'
+          property :resource, as: 'resource', class: Google::Apis::WorkloadmanagerV1::CloudResource, decorator: Google::Apis::WorkloadmanagerV1::CloudResource::Representation
+      
+          property :source, as: 'source'
+          property :state, as: 'state'
         end
       end
       
@@ -468,6 +737,51 @@ module Google
           property :sqlserver_validation, as: 'sqlserverValidation', class: Google::Apis::WorkloadmanagerV1::SqlserverValidation, decorator: Google::Apis::WorkloadmanagerV1::SqlserverValidation::Representation
       
           property :torso_validation, as: 'torsoValidation', class: Google::Apis::WorkloadmanagerV1::TorsoValidation, decorator: Google::Apis::WorkloadmanagerV1::TorsoValidation::Representation
+      
+        end
+      end
+      
+      class Instance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :status, as: 'status'
+        end
+      end
+      
+      class InstanceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_number, as: 'instanceNumber'
+          property :machine_type, as: 'machineType'
+          property :role, as: 'role'
+          collection :roles, as: 'roles'
+          property :sap_instance_properties, as: 'sapInstanceProperties', class: Google::Apis::WorkloadmanagerV1::SapInstanceProperties, decorator: Google::Apis::WorkloadmanagerV1::SapInstanceProperties::Representation
+      
+          property :status, as: 'status'
+          property :upcoming_maintenance_event, as: 'upcomingMaintenanceEvent', class: Google::Apis::WorkloadmanagerV1::UpcomingMaintenanceEvent, decorator: Google::Apis::WorkloadmanagerV1::UpcomingMaintenanceEvent::Representation
+      
+        end
+      end
+      
+      class Layer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_type, as: 'applicationType'
+          property :database_type, as: 'databaseType'
+          collection :instances, as: 'instances', class: Google::Apis::WorkloadmanagerV1::Instance, decorator: Google::Apis::WorkloadmanagerV1::Instance::Representation
+      
+          property :sid, as: 'sid'
+        end
+      end
+      
+      class ListDiscoveredProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :workload_profiles, as: 'workloadProfiles', class: Google::Apis::WorkloadmanagerV1::WorkloadProfile, decorator: Google::Apis::WorkloadmanagerV1::WorkloadProfile::Representation
       
         end
       end
@@ -537,6 +851,14 @@ module Google
         end
       end
       
+      class LoadBalancerServer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip, as: 'ip'
+          property :vm, as: 'vm'
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -577,6 +899,14 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class Product
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :version, as: 'version'
         end
       end
       
@@ -646,6 +976,19 @@ module Google
         end
       end
       
+      class SapComponent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_properties, as: 'databaseProperties', class: Google::Apis::WorkloadmanagerV1::DatabaseProperties, decorator: Google::Apis::WorkloadmanagerV1::DatabaseProperties::Representation
+      
+          collection :ha_hosts, as: 'haHosts'
+          collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::CloudResource, decorator: Google::Apis::WorkloadmanagerV1::CloudResource::Representation
+      
+          property :sid, as: 'sid'
+          property :topology_type, as: 'topologyType'
+        end
+      end
+      
       class SapDiscovery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -658,6 +1001,7 @@ module Google
           property :project_number, as: 'projectNumber'
           property :system_id, as: 'systemId'
           property :update_time, as: 'updateTime'
+          property :use_dr_reconciliation, as: 'useDrReconciliation'
           property :workload_properties, as: 'workloadProperties', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryWorkloadProperties, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryWorkloadProperties::Representation
       
         end
@@ -703,6 +1047,7 @@ module Google
           property :database_type, as: 'databaseType'
           property :database_version, as: 'databaseVersion'
           property :instance_number, as: 'instanceNumber'
+          property :landscape_id, as: 'landscapeId'
           property :primary_instance_uri, as: 'primaryInstanceUri'
           property :shared_nfs_uri, as: 'sharedNfsUri'
         end
@@ -746,6 +1091,8 @@ module Google
           collection :app_instances, as: 'appInstances', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesAppInstance, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesAppInstance::Representation
       
           collection :cluster_instances, as: 'clusterInstances'
+          collection :disk_mounts, as: 'diskMounts', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesDiskMount, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResourceInstancePropertiesDiskMount::Representation
+      
           property :instance_number, :numeric_string => true, as: 'instanceNumber'
           property :instance_role, as: 'instanceRole'
           property :is_dr_site, as: 'isDrSite'
@@ -758,6 +1105,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :number, as: 'number'
+        end
+      end
+      
+      class SapDiscoveryResourceInstancePropertiesDiskMount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mount_point, as: 'mountPoint'
+          property :name, as: 'name'
         end
       end
       
@@ -789,6 +1144,13 @@ module Google
         end
       end
       
+      class SapInstanceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :numbers, as: 'numbers'
+        end
+      end
+      
       class SapValidation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -805,6 +1167,20 @@ module Google
           hash :details, as: 'details'
           property :is_present, as: 'isPresent'
           property :sap_validation_type, as: 'sapValidationType'
+        end
+      end
+      
+      class SapWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::WorkloadmanagerV1::SapComponent, decorator: Google::Apis::WorkloadmanagerV1::SapComponent::Representation
+      
+          property :architecture, as: 'architecture'
+          property :database, as: 'database', class: Google::Apis::WorkloadmanagerV1::SapComponent, decorator: Google::Apis::WorkloadmanagerV1::SapComponent::Representation
+      
+          hash :metadata, as: 'metadata'
+          collection :products, as: 'products', class: Google::Apis::WorkloadmanagerV1::Product, decorator: Google::Apis::WorkloadmanagerV1::Product::Representation
+      
         end
       end
       
@@ -852,6 +1228,20 @@ module Google
         end
       end
       
+      class SqlserverWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ags, as: 'ags', class: Google::Apis::WorkloadmanagerV1::AvailabilityGroup, decorator: Google::Apis::WorkloadmanagerV1::AvailabilityGroup::Representation
+      
+          property :cluster, as: 'cluster', class: Google::Apis::WorkloadmanagerV1::Cluster, decorator: Google::Apis::WorkloadmanagerV1::Cluster::Representation
+      
+          collection :databases, as: 'databases', class: Google::Apis::WorkloadmanagerV1::Database, decorator: Google::Apis::WorkloadmanagerV1::Database::Representation
+      
+          property :load_balancer_server, as: 'loadBalancerServer', class: Google::Apis::WorkloadmanagerV1::LoadBalancerServer, decorator: Google::Apis::WorkloadmanagerV1::LoadBalancerServer::Representation
+      
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -870,6 +1260,19 @@ module Google
         end
       end
       
+      class ThreeTierWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_layer, as: 'apiLayer', class: Google::Apis::WorkloadmanagerV1::ApiLayerServer, decorator: Google::Apis::WorkloadmanagerV1::ApiLayerServer::Representation
+      
+          property :backend, as: 'backend', class: Google::Apis::WorkloadmanagerV1::BackendServer, decorator: Google::Apis::WorkloadmanagerV1::BackendServer::Representation
+      
+          property :endpoint, as: 'endpoint'
+          property :frontend, as: 'frontend', class: Google::Apis::WorkloadmanagerV1::FrontEndServer, decorator: Google::Apis::WorkloadmanagerV1::FrontEndServer::Representation
+      
+        end
+      end
+      
       class TorsoValidation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -881,12 +1284,55 @@ module Google
         end
       end
       
+      class UpcomingMaintenanceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :maintenance_status, as: 'maintenanceStatus'
+          property :start_time, as: 'startTime'
+          property :type, as: 'type'
+        end
+      end
+      
       class ViolationDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :asset, as: 'asset'
           hash :observed, as: 'observed'
           property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class WorkloadProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::WorkloadmanagerV1::Layer, decorator: Google::Apis::WorkloadmanagerV1::Layer::Representation
+      
+          property :ascs, as: 'ascs', class: Google::Apis::WorkloadmanagerV1::Layer, decorator: Google::Apis::WorkloadmanagerV1::Layer::Representation
+      
+          property :database, as: 'database', class: Google::Apis::WorkloadmanagerV1::Layer, decorator: Google::Apis::WorkloadmanagerV1::Layer::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :refreshed_time, as: 'refreshedTime'
+          property :sap_workload, as: 'sapWorkload', class: Google::Apis::WorkloadmanagerV1::SapWorkload, decorator: Google::Apis::WorkloadmanagerV1::SapWorkload::Representation
+      
+          property :sqlserver_workload, as: 'sqlserverWorkload', class: Google::Apis::WorkloadmanagerV1::SqlserverWorkload, decorator: Google::Apis::WorkloadmanagerV1::SqlserverWorkload::Representation
+      
+          property :state, as: 'state'
+          property :three_tier_workload, as: 'threeTierWorkload', class: Google::Apis::WorkloadmanagerV1::ThreeTierWorkload, decorator: Google::Apis::WorkloadmanagerV1::ThreeTierWorkload::Representation
+      
+          property :workload_type, as: 'workloadType'
+        end
+      end
+      
+      class WorkloadProfileHealth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_time, as: 'checkTime'
+          collection :component_healthes, as: 'componentHealthes', class: Google::Apis::WorkloadmanagerV1::ComponentHealth, decorator: Google::Apis::WorkloadmanagerV1::ComponentHealth::Representation
+      
+          property :state, as: 'state'
         end
       end
       
