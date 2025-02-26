@@ -301,9 +301,9 @@ module Google
         # @param [String] name
         #   Required. The repository's name.
         # @param [Boolean] force
-        #   If set to true, any child resources of this repository will also be deleted. (
-        #   Otherwise, the request will only succeed if the repository has no child
-        #   resources.)
+        #   Optional. If set to true, any child resources of this repository will also be
+        #   deleted. (Otherwise, the request will only succeed if the repository has no
+        #   child resources.)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
