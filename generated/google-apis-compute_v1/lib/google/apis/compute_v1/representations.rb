@@ -586,6 +586,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BgpRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BgpRouteAsPath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BgpRouteNetworkLayerReachabilityInformation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4636,6 +4654,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RoutePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutePolicyPolicyTerm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Router
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4776,6 +4806,48 @@ module Google
       
       class RouterStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutersGetRoutePolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutersListBgpRoutes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutersListRoutePolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -7773,6 +7845,35 @@ module Google
         end
       end
       
+      class BgpRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :as_paths, as: 'asPaths', class: Google::Apis::ComputeV1::BgpRouteAsPath, decorator: Google::Apis::ComputeV1::BgpRouteAsPath::Representation
+      
+          collection :communities, as: 'communities'
+          property :destination, as: 'destination', class: Google::Apis::ComputeV1::BgpRouteNetworkLayerReachabilityInformation, decorator: Google::Apis::ComputeV1::BgpRouteNetworkLayerReachabilityInformation::Representation
+      
+          property :med, as: 'med'
+          property :origin, as: 'origin'
+        end
+      end
+      
+      class BgpRouteAsPath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asns, as: 'asns'
+          property :type, as: 'type'
+        end
+      end
+      
+      class BgpRouteNetworkLayerReachabilityInformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path_id, as: 'pathId'
+          property :prefix, as: 'prefix'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8744,6 +8845,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
+      
           property :parent, as: 'parent'
           property :region, as: 'region'
           property :rule_tuple_count, as: 'ruleTupleCount'
@@ -10978,6 +11081,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
+      
           property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
       
@@ -12833,7 +12938,6 @@ module Google
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
-          property :zone, as: 'zone'
         end
       end
       
@@ -12945,6 +13049,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
+      
           property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
       
@@ -13340,6 +13446,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :local_ssd_gb, as: 'localSsdGb'
+          property :max_vms, as: 'maxVms'
           property :memory_mb, as: 'memoryMb'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -14751,6 +14858,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
+      
+          property :priority, as: 'priority'
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
       
           property :type, as: 'type'
@@ -15305,6 +15415,29 @@ module Google
         end
       end
       
+      class RoutePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :name, as: 'name'
+          collection :terms, as: 'terms', class: Google::Apis::ComputeV1::RoutePolicyPolicyTerm, decorator: Google::Apis::ComputeV1::RoutePolicyPolicyTerm::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class RoutePolicyPolicyTerm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions', class: Google::Apis::ComputeV1::Expr, decorator: Google::Apis::ComputeV1::Expr::Representation
+      
+          property :match, as: 'match', class: Google::Apis::ComputeV1::Expr, decorator: Google::Apis::ComputeV1::Expr::Representation
+      
+          property :priority, as: 'priority'
+        end
+      end
+      
       class Router
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15635,6 +15768,82 @@ module Google
         end
       end
       
+      class RoutersGetRoutePolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::ComputeV1::RoutePolicy, decorator: Google::Apis::ComputeV1::RoutePolicy::Representation
+      
+        end
+      end
+      
+      class RoutersListBgpRoutes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :result, as: 'result', class: Google::Apis::ComputeV1::BgpRoute, decorator: Google::Apis::ComputeV1::BgpRoute::Representation
+      
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning, decorator: Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning::Datum, decorator: Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class RoutersListRoutePolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :result, as: 'result', class: Google::Apis::ComputeV1::RoutePolicy, decorator: Google::Apis::ComputeV1::RoutePolicy::Representation
+      
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::RoutersListRoutePolicies::Warning, decorator: Google::Apis::ComputeV1::RoutersListRoutePolicies::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::RoutersListRoutePolicies::Warning::Datum, decorator: Google::Apis::ComputeV1::RoutersListRoutePolicies::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class RoutersPreviewResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15732,6 +15941,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
           property :availability_domain, as: 'availabilityDomain'
+          property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :instance_termination_action, as: 'instanceTerminationAction'
           property :local_ssd_recovery_timeout, as: 'localSsdRecoveryTimeout', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
       

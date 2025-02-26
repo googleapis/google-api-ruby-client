@@ -5064,6 +5064,101 @@ module Google
         end
       end
       
+      # 
+      class BgpRoute
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] AS-PATH for the route
+        # Corresponds to the JSON property `asPaths`
+        # @return [Array<Google::Apis::ComputeV1::BgpRouteAsPath>]
+        attr_accessor :as_paths
+      
+        # [Output only] BGP communities in human-readable A:B format.
+        # Corresponds to the JSON property `communities`
+        # @return [Array<String>]
+        attr_accessor :communities
+      
+        # Network Layer Reachability Information (NLRI) for a route.
+        # Corresponds to the JSON property `destination`
+        # @return [Google::Apis::ComputeV1::BgpRouteNetworkLayerReachabilityInformation]
+        attr_accessor :destination
+      
+        # [Output only] BGP multi-exit discriminator
+        # Corresponds to the JSON property `med`
+        # @return [Fixnum]
+        attr_accessor :med
+      
+        # [Output only] BGP origin (EGP, IGP or INCOMPLETE)
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @as_paths = args[:as_paths] if args.key?(:as_paths)
+          @communities = args[:communities] if args.key?(:communities)
+          @destination = args[:destination] if args.key?(:destination)
+          @med = args[:med] if args.key?(:med)
+          @origin = args[:origin] if args.key?(:origin)
+        end
+      end
+      
+      # 
+      class BgpRouteAsPath
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] ASNs in the path segment. When type is SEQUENCE, these are
+        # ordered.
+        # Corresponds to the JSON property `asns`
+        # @return [Array<Fixnum>]
+        attr_accessor :asns
+      
+        # [Output only] Type of AS-PATH segment (SEQUENCE or SET)
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asns = args[:asns] if args.key?(:asns)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Network Layer Reachability Information (NLRI) for a route.
+      class BgpRouteNetworkLayerReachabilityInformation
+        include Google::Apis::Core::Hashable
+      
+        # If the BGP session supports multiple paths (RFC 7911), the path identifier for
+        # this route.
+        # Corresponds to the JSON property `pathId`
+        # @return [Fixnum]
+        attr_accessor :path_id
+      
+        # Human readable CIDR notation for a prefix. E.g. 10.42.0.0/16.
+        # Corresponds to the JSON property `prefix`
+        # @return [String]
+        attr_accessor :prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path_id = args[:path_id] if args.key?(:path_id)
+          @prefix = args[:prefix] if args.key?(:prefix)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -5493,29 +5588,33 @@ module Google
         end
       end
       
-      # Represents a regional Commitment resource. Creating a commitment resource
-      # means that you are purchasing a committed use contract with an explicit start
-      # and end time. You can create commitments based on vCPUs and memory usage and
-      # receive discounted rates. For full details, read Signing Up for Committed Use
-      # Discounts.
+      # Represents a regional resource-based commitment resource. Creating this
+      # commitment resource means that you are purchasing a resource-based committed
+      # use contract, with an explicit start and end time. You can purchase resource-
+      # based commitments for both hardware and software resources. For more
+      # information, read Resource-based committed use discounts
       class Commitment
         include Google::Apis::Core::Hashable
       
-        # Specifies whether to enable automatic renewal for the commitment. The default
-        # value is false if not specified. The field can be updated until the day of the
-        # commitment expiration at 12:00am PST. If the field is set to true, the
-        # commitment will be automatically renewed for either one or three years
-        # according to the terms of the existing commitment.
+        # Specifies whether to automatically renew the commitment at the end of its
+        # current term. The default value is false. If you set the field to true, each
+        # time your commitment reaches the end of its term, Compute Engine automatically
+        # renews it for another term. You can update this field anytime before the
+        # commitment expires. For example, if the commitment is set to expire at 12 AM
+        # UTC-8 on January 3, 2027, you can update this field until 11:59 PM UTC-8 on
+        # January 2, 2027.
         # Corresponds to the JSON property `autoRenew`
         # @return [Boolean]
         attr_accessor :auto_renew
         alias_method :auto_renew?, :auto_renew
       
-        # The category of the commitment. Category MACHINE specifies commitments
-        # composed of machine resources such as VCPU or MEMORY, listed in resources.
-        # Category LICENSE specifies commitments composed of software licenses, listed
-        # in licenseResources. Note that only MACHINE commitments should have a Type
-        # specified.
+        # The category of the commitment; specifies whether the commitment is for
+        # hardware or software resources. Category MACHINE specifies that you are
+        # committing to hardware machine resources such as VCPU or MEMORY, listed in
+        # resources. Category LICENSE specifies that you are committing to software
+        # licenses, listed in licenseResources. Note that if you specify MACHINE
+        # commitments, then you must also specify a type to indicate the machine series
+        # of the hardware resource that you are committing to.
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
@@ -5525,15 +5624,15 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # [Input Only] Optional, specifies the CUD end time requested by the customer in
-        # RFC3339 text format. Needed when the customer wants CUD's end date is later
+        # [Input Only] Optional, specifies the requested commitment end time in RFC3339
+        # text format. Use this option when the desired commitment's end date is later
         # than the start date + term duration.
         # Corresponds to the JSON property `customEndTimestamp`
         # @return [String]
         attr_accessor :custom_end_timestamp
       
-        # An optional description of this resource. Provide this property when you
-        # create the resource.
+        # An optional description of the commitment. You can provide this property when
+        # you create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -5543,11 +5642,7 @@ module Google
         # @return [String]
         attr_accessor :end_timestamp
       
-        # Specifies the already existing reservations to attach to the Commitment. This
-        # field is optional, and it can be a full or partial URL. For example, the
-        # following are valid URLs to an reservation: - https://www.googleapis.com/
-        # compute/v1/projects/project/zones/zone /reservations/reservation - projects/
-        # project/zones/zone/reservations/reservation
+        # 
         # Corresponds to the JSON property `existingReservations`
         # @return [Array<String>]
         attr_accessor :existing_reservations
@@ -5568,34 +5663,44 @@ module Google
         # @return [Google::Apis::ComputeV1::LicenseResourceCommitment]
         attr_accessor :license_resource
       
-        # List of source commitments to be merged into a new commitment.
+        # The list of source commitments that you are merging to create the new merged
+        # commitment. For more information, see Merging commitments.
         # Corresponds to the JSON property `mergeSourceCommitments`
         # @return [Array<String>]
         attr_accessor :merge_source_commitments
       
-        # Name of the resource. Provided by the client when the resource is created. The
-        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
-        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash.
+        # Name of the commitment. You must specify a name when you purchase the
+        # commitment. The name must be 1-63 characters long, and comply with RFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The plan for this commitment, which determines duration and discount rate. The
-        # currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3
-        # years).
+        # The minimum time duration that you commit to purchasing resources. The plan
+        # that you choose determines the preset term length of the commitment (which is
+        # 1 year or 3 years) and affects the discount rate that you receive for your
+        # resources. Committing to a longer time duration typically gives you a higher
+        # discount rate. The supported values for this field are TWELVE_MONTH (1 year),
+        # and THIRTY_SIX_MONTH (3 years).
         # Corresponds to the JSON property `plan`
         # @return [String]
         attr_accessor :plan
       
-        # [Output Only] URL of the region where this commitment may be used.
+        # [Output Only] URL of the region where the commitment and committed resources
+        # are located.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
-        # List of create-on-create reservations for this commitment.
+        # The list of new reservations that you want to create and attach to this
+        # commitment. You must attach reservations to your commitment if your commitment
+        # specifies any GPUs or Local SSD disks. For more information, see Attach
+        # reservations to resource-based commitments. Specify this property only if you
+        # want to create new reservations to attach. To attach existing reservations,
+        # specify the existingReservations property instead.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeV1::Reservation>]
         attr_accessor :reservations
@@ -5605,8 +5710,9 @@ module Google
         # @return [Google::Apis::ComputeV1::CommitmentResourceStatus]
         attr_accessor :resource_status
       
-        # A list of commitment amounts for particular resources. Note that VCPU and
-        # MEMORY resource commitments must occur together.
+        # The list of all the hardware resources, with their types and amounts, that you
+        # want to commit to. Specify as a separate entry in the list for each individual
+        # resource type.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ComputeV1::ResourceCommitment>]
         attr_accessor :resources
@@ -5616,7 +5722,8 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Source commitment to be split into a new commitment.
+        # The source commitment from which you are transferring resources to create the
+        # new split commitment. For more information, see Split commitments.
         # Corresponds to the JSON property `splitSourceCommitment`
         # @return [String]
         attr_accessor :split_source_commitment
@@ -5627,8 +5734,8 @@ module Google
         attr_accessor :start_timestamp
       
         # [Output Only] Status of the commitment with regards to eventual expiration (
-        # each commitment has an end date defined). One of the following values:
-        # NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+        # each commitment has an end date defined). Status can be one of the following
+        # values: NOT_YET_ACTIVE, ACTIVE, or EXPIRED.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -5638,10 +5745,19 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # The type of commitment, which affects the discount rate and the eligible
-        # resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply
-        # to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a
-        # commitment that will only apply to accelerator optimized machines.
+        # The type of commitment; specifies the machine series for which you want to
+        # commit to purchasing resources. The choice of machine series affects the
+        # discount rate and the eligible resource types. The type must be one of the
+        # following: ACCELERATOR_OPTIMIZED, ACCELERATOR_OPTIMIZED_A3,
+        # ACCELERATOR_OPTIMIZED_A3_MEGA, COMPUTE_OPTIMIZED, COMPUTE_OPTIMIZED_C2D,
+        # COMPUTE_OPTIMIZED_C3, COMPUTE_OPTIMIZED_C3D, COMPUTE_OPTIMIZED_H3,
+        # GENERAL_PURPOSE, GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2, GENERAL_PURPOSE_N2,
+        # GENERAL_PURPOSE_N2D, GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,
+        # GRAPHICS_OPTIMIZED, MEMORY_OPTIMIZED, MEMORY_OPTIMIZED_M3, MEMORY_OPTIMIZED_X4,
+        # STORAGE_OPTIMIZED_Z3. For example, type MEMORY_OPTIMIZED specifies a
+        # commitment that applies only to eligible resources of memory optimized M1 and
+        # M2 machine series. Type GENERAL_PURPOSE specifies a commitment that applies
+        # only to eligible resources of general purpose N1 machine series.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5945,7 +6061,7 @@ module Google
       class CommitmentsScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A list of commitments contained in this scope.
+        # [Output Only] The list of commitments contained in this scope.
         # Corresponds to the JSON property `commitments`
         # @return [Array<Google::Apis::ComputeV1::Commitment>]
         attr_accessor :commitments
@@ -9211,6 +9327,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A list of packet mirroring rules that belong to this policy.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
         # [Output Only] The parent of the firewall policy. This field is not applicable
         # to network firewall policies.
         # Corresponds to the JSON property `parent`
@@ -9276,6 +9397,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @parent = args[:parent] if args.key?(:parent)
           @region = args[:region] if args.key?(:region)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
@@ -18465,6 +18587,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] The packet mirroring rules that apply to the instance.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
         # [Output only] Priority of firewall policy association. Not applicable for type=
         # HIERARCHY.
         # Corresponds to the JSON property `priority`
@@ -18497,6 +18624,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @short_name = args[:short_name] if args.key?(:short_name)
@@ -21917,17 +22045,17 @@ module Google
       class LicenseResourceCommitment
         include Google::Apis::Core::Hashable
       
-        # The number of licenses purchased.
+        # The number of licenses you plan to purchase.
         # Corresponds to the JSON property `amount`
         # @return [Fixnum]
         attr_accessor :amount
       
-        # Specifies the core range of the instance for which this license applies.
+        # The number of cores per license.
         # Corresponds to the JSON property `coresPerLicense`
         # @return [String]
         attr_accessor :cores_per_license
       
-        # Any applicable license URI.
+        # The applicable license URI.
         # Corresponds to the JSON property `license`
         # @return [String]
         attr_accessor :license
@@ -26023,11 +26151,6 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # [Output Only] Zone to which the network is restricted.
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
         def initialize(**args)
            update!(**args)
         end
@@ -26043,7 +26166,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
-          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -26502,6 +26624,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] The packet mirroring rules that apply to the network.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
         # [Output only] Priority of firewall policy association. Not applicable for type=
         # HIERARCHY.
         # Corresponds to the JSON property `priority`
@@ -26531,6 +26658,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @short_name = args[:short_name] if args.key?(:short_name)
@@ -27968,6 +28096,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :local_ssd_gb
       
+        # [Output Only] Maximum number of VMs that can be created for this node type.
+        # Corresponds to the JSON property `maxVms`
+        # @return [Fixnum]
+        attr_accessor :max_vms
+      
         # [Output Only] The amount of physical memory available to the node type,
         # defined in MB.
         # Corresponds to the JSON property `memoryMb`
@@ -28004,6 +28137,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @local_ssd_gb = args[:local_ssd_gb] if args.key?(:local_ssd_gb)
+          @max_vms = args[:max_vms] if args.key?(:max_vms)
           @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -33370,6 +33504,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output only] The packet mirroring rules that apply to the network.
+        # Corresponds to the JSON property `packetMirroringRules`
+        # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
+        attr_accessor :packet_mirroring_rules
+      
+        # [Output only] Priority of firewall policy association. Not applicable for type=
+        # HIERARCHY.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
         # [Output only] The rules that apply to the network.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
@@ -33389,6 +33534,8 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
+          @priority = args[:priority] if args.key?(:priority)
           @rules = args[:rules] if args.key?(:rules)
           @type = args[:type] if args.key?(:type)
         end
@@ -34089,27 +34236,30 @@ module Google
         end
       end
       
-      # Commitment for a particular resource (a Commitment is composed of one or more
-      # of these).
+      # Commitment for a particular hardware resource (a commitment is composed of one
+      # or more of these).
       class ResourceCommitment
         include Google::Apis::Core::Hashable
       
-        # Name of the accelerator type resource. Applicable only when the type is
-        # ACCELERATOR.
+        # Name of the accelerator type or GPU resource. Specify this field only when the
+        # type of hardware resource is ACCELERATOR.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
       
-        # The amount of the resource purchased (in a type-dependent unit, such as bytes).
-        # For vCPUs, this can just be an integer. For memory, this must be provided in
-        # MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every
-        # vCPU.
+        # The quantity of the hardware resource that you want to commit to purchasing (
+        # in a type-dependent unit). - For vCPUs, you must specify an integer value. -
+        # For memory, you specify the amount of MB that you want. The value you specify
+        # must be a multiple of 256 MB, with up to 6.5 GB of memory per every vCPU. -
+        # For GPUs, you must specify an integer value. - For Local SSD disks, you must
+        # specify the amount in GB. The size of a single Local SSD disk is 375 GB.
         # Corresponds to the JSON property `amount`
         # @return [Fixnum]
         attr_accessor :amount
       
-        # Type of resource for which this commitment applies. Possible values are VCPU,
-        # MEMORY, LOCAL_SSD, and ACCELERATOR.
+        # The type of hardware resource that you want to specify. You can specify any of
+        # the following values: - VCPU - MEMORY - LOCAL_SSD - ACCELERATOR Specify as a
+        # separate entry in the list for each individual resource type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -35491,6 +35641,104 @@ module Google
         end
       end
       
+      # 
+      class RoutePolicy
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of route policy.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A fingerprint for the Route Policy being applied to this Router, which is
+        # essentially a hash of the Route Policy used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update Route Policy. You must always provide an up-to-
+        # date fingerprint hash in order to update or change labels. To see the latest
+        # fingerprint, make a getRoutePolicy() request to retrieve a Route Policy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # Route Policy name, which must be a resource ID segment and unique within all
+        # the router's Route Policies. Name should conform to RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # List of terms (the order in the list is not important, they are evaluated in
+        # order of priority). Order of policies is not retained and might change when
+        # getting policy later.
+        # Corresponds to the JSON property `terms`
+        # @return [Array<Google::Apis::ComputeV1::RoutePolicyPolicyTerm>]
+        attr_accessor :terms
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @terms = args[:terms] if args.key?(:terms)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class RoutePolicyPolicyTerm
+        include Google::Apis::Core::Hashable
+      
+        # CEL expressions to evaluate to modify a route when this term matches.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::ComputeV1::Expr>]
+        attr_accessor :actions
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `match`
+        # @return [Google::Apis::ComputeV1::Expr]
+        attr_accessor :match
+      
+        # The evaluation priority for this term, which must be between 0 (inclusive) and
+        # 2^31 (exclusive), and unique within the list.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @match = args[:match] if args.key?(:match)
+          @priority = args[:priority] if args.key?(:priority)
+        end
+      end
+      
       # Represents a Cloud Router resource. For more information about Cloud Router,
       # read the Cloud Router overview.
       class Router
@@ -35900,16 +36148,14 @@ module Google
       
         # List of export policies applied to this peer, in the order they must be
         # evaluated. The name must correspond to an existing policy that has
-        # ROUTE_POLICY_TYPE_EXPORT type. Note that Route Policies are currently
-        # available in preview. Please use Beta API to use Route Policies.
+        # ROUTE_POLICY_TYPE_EXPORT type.
         # Corresponds to the JSON property `exportPolicies`
         # @return [Array<String>]
         attr_accessor :export_policies
       
         # List of import policies applied to this peer, in the order they must be
         # evaluated. The name must correspond to an existing policy that has
-        # ROUTE_POLICY_TYPE_IMPORT type. Note that Route Policies are currently
-        # available in preview. Please use Beta API to use Route Policies.
+        # ROUTE_POLICY_TYPE_IMPORT type.
         # Corresponds to the JSON property `importPolicies`
         # @return [Array<String>]
         attr_accessor :import_policies
@@ -36105,9 +36351,9 @@ module Google
         # truncate the IP address, as it represents the IP address of the interface. -
         # For Internet Protocol version 6 (IPv6), the value must be a unique local
         # address (ULA) range from fdff:1::/64 with a mask length of 126 or less. This
-        # value should be a CIDR-formatted string, for example, fc00:0:1:1::1/112.
-        # Within the router's VPC, this IPv6 prefix will be reserved exclusively for
-        # this connection and cannot be used for any other purpose.
+        # value should be a CIDR-formatted string, for example, fdff:1::1/112. Within
+        # the router's VPC, this IPv6 prefix will be reserved exclusively for this
+        # connection and cannot be used for any other purpose.
         # Corresponds to the JSON property `ipRange`
         # @return [String]
         attr_accessor :ip_range
@@ -37015,6 +37261,287 @@ module Google
       end
       
       # 
+      class RoutersGetRoutePolicyResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::ComputeV1::RoutePolicy]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # 
+      class RoutersListBgpRoutes
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] Type of resource. Always compute#routersListBgpRoutes for lists
+        # of bgp routes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] A list of bgp routes.
+        # Corresponds to the JSON property `result`
+        # @return [Array<Google::Apis::ComputeV1::BgpRoute>]
+        attr_accessor :result
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @result = args[:result] if args.key?(:result)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class RoutersListRoutePolicies
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] Type of resource. Always compute#routersListRoutePolicies for
+        # lists of route policies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] A list of route policies.
+        # Corresponds to the JSON property `result`
+        # @return [Array<Google::Apis::ComputeV1::RoutePolicy>]
+        attr_accessor :result
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::RoutersListRoutePolicies::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @result = args[:result] if args.key?(:result)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::RoutersListRoutePolicies::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
       class RoutersPreviewResponse
         include Google::Apis::Core::Hashable
       
@@ -37425,6 +37952,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :availability_domain
       
+        # Specify the time in seconds for host error detection, the value must be within
+        # the range of [90, 330] with the increment of 30, if unset, the default
+        # behavior of host error recovery will be used.
+        # Corresponds to the JSON property `hostErrorTimeoutSeconds`
+        # @return [Fixnum]
+        attr_accessor :host_error_timeout_seconds
+      
         # Specifies the termination action for the instance.
         # Corresponds to the JSON property `instanceTerminationAction`
         # @return [String]
@@ -37506,6 +38040,7 @@ module Google
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
+          @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @local_ssd_recovery_timeout = args[:local_ssd_recovery_timeout] if args.key?(:local_ssd_recovery_timeout)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
@@ -40352,10 +40887,9 @@ module Google
       
         # [Output Only] The unique ID of the instant snapshot used to create this
         # snapshot. This value identifies the exact instant snapshot that was used to
-        # create this persistent disk. For example, if you created the persistent disk
-        # from an instant snapshot that was later deleted and recreated under the same
-        # name, the source instant snapshot ID would identify the exact instant snapshot
-        # that was used.
+        # create this snapshot. For example, if you created the snapshot from an instant
+        # snapshot that was later deleted and recreated under the same name, the source
+        # instant snapshot ID would identify the exact instant snapshot that was used.
         # Corresponds to the JSON property `sourceInstantSnapshotId`
         # @return [String]
         attr_accessor :source_instant_snapshot_id
@@ -43377,16 +43911,18 @@ module Google
         attr_accessor :private_ipv6_google_access
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION or
-        # PRIVATE_SERVICE_CONNECT. PRIVATE is the default purpose for user-created
-        # subnets or subnets that are automatically created in auto mode networks.
-        # Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are
-        # user-created subnetworks that are reserved for Envoy-based load balancers. A
-        # subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services
-        # using Private Service Connect. A subnet with purpose set to PEER_MIGRATION is
-        # used for subnet migration from one peered VPC to another. If unspecified, the
-        # subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported
-        # if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION,
+        # PRIVATE_SERVICE_CONNECT or PRIVATE_NAT. PRIVATE is the default purpose for
+        # user-created subnets or subnets that are automatically created in auto mode
+        # networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or
+        # REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for
+        # Envoy-based load balancers. A subnet with purpose set to
+        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
+        # Connect. A subnet with purpose set to PEER_MIGRATION is used for subnet
+        # migration from one peered VPC to another. A subnet with purpose set to
+        # PRIVATE_NAT is used for Private NAT IP address by Private NAT Gateway. If
+        # unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field
+        # isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
         # REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
@@ -48513,16 +49049,18 @@ module Google
         attr_accessor :network
       
         # The purpose of the resource. This field can be either PRIVATE,
-        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION or
-        # PRIVATE_SERVICE_CONNECT. PRIVATE is the default purpose for user-created
-        # subnets or subnets that are automatically created in auto mode networks.
-        # Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are
-        # user-created subnetworks that are reserved for Envoy-based load balancers. A
-        # subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services
-        # using Private Service Connect. A subnet with purpose set to PEER_MIGRATION is
-        # used for subnet migration from one peered VPC to another. If unspecified, the
-        # subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported
-        # if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
+        # GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PEER_MIGRATION,
+        # PRIVATE_SERVICE_CONNECT or PRIVATE_NAT. PRIVATE is the default purpose for
+        # user-created subnets or subnets that are automatically created in auto mode
+        # networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or
+        # REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for
+        # Envoy-based load balancers. A subnet with purpose set to
+        # PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
+        # Connect. A subnet with purpose set to PEER_MIGRATION is used for subnet
+        # migration from one peered VPC to another. A subnet with purpose set to
+        # PRIVATE_NAT is used for Private NAT IP address by Private NAT Gateway. If
+        # unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field
+        # isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or
         # REGIONAL_MANAGED_PROXY.
         # Corresponds to the JSON property `purpose`
         # @return [String]
