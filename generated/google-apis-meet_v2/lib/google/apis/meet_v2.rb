@@ -34,6 +34,9 @@ module Google
 
       # Read information about any of your Google Meet conferences
       AUTH_MEETINGS_SPACE_READONLY = 'https://www.googleapis.com/auth/meetings.space.readonly'
+
+      # Edit, and see settings for all of your Google Meet calls.
+      AUTH_MEETINGS_SPACE_SETTINGS = 'https://www.googleapis.com/auth/meetings.space.settings'
     end
   end
 end
