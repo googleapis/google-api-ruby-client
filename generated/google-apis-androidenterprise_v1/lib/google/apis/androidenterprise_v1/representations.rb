@@ -802,9 +802,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :administrator, as: 'administrator', class: Google::Apis::AndroidenterpriseV1::Administrator, decorator: Google::Apis::AndroidenterpriseV1::Administrator::Representation
       
+          property :enterprise_type, as: 'enterpriseType'
           property :google_authentication_settings, as: 'googleAuthenticationSettings', class: Google::Apis::AndroidenterpriseV1::GoogleAuthenticationSettings, decorator: Google::Apis::AndroidenterpriseV1::GoogleAuthenticationSettings::Representation
       
           property :id, as: 'id'
+          property :managed_google_domain_type, as: 'managedGoogleDomainType'
           property :name, as: 'name'
           property :primary_domain, as: 'primaryDomain'
         end
