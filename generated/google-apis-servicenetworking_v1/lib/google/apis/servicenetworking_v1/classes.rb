@@ -483,6 +483,33 @@ module Google
         end
       end
       
+      # Aspect represents Generic aspect. It is used to configure an aspect without
+      # making direct changes to service.proto
+      class Aspect
+        include Google::Apis::Core::Hashable
+      
+        # The type of this aspect configuration.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Content of the configuration. The underlying schema should be defined by
+        # Aspect owners as protobuf message under `apiserving/configaspects/proto`.
+        # Corresponds to the JSON property `spec`
+        # @return [Hash<String,Object>]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
       # Configuration for an authentication provider, including support for [JSON Web
       # Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
       class AuthProvider
@@ -740,6 +767,14 @@ module Google
         # @return [String]
         attr_accessor :jwt_audience
       
+        # The load balancing policy used for connection to the application backend.
+        # Defined as an arbitrary string to accomondate custom load balancing policies
+        # supported by the underlying channel, but suggest most users use one of the
+        # standard policies, such as the default, "RoundRobin".
+        # Corresponds to the JSON property `loadBalancingPolicy`
+        # @return [String]
+        attr_accessor :load_balancing_policy
+      
         # Deprecated, do not use.
         # Corresponds to the JSON property `minDeadline`
         # @return [Float]
@@ -790,6 +825,7 @@ module Google
           @deadline = args[:deadline] if args.key?(:deadline)
           @disable_auth = args[:disable_auth] if args.key?(:disable_auth)
           @jwt_audience = args[:jwt_audience] if args.key?(:jwt_audience)
+          @load_balancing_policy = args[:load_balancing_policy] if args.key?(:load_balancing_policy)
           @min_deadline = args[:min_deadline] if args.key?(:min_deadline)
           @operation_deadline = args[:operation_deadline] if args.key?(:operation_deadline)
           @overrides_by_request_protocol = args[:overrides_by_request_protocol] if args.key?(:overrides_by_request_protocol)
@@ -1651,9 +1687,8 @@ module Google
         # @return [Array<Google::Apis::ServicenetworkingV1::DocumentationRule>]
         attr_accessor :rules
       
-        # Specifies section and content to override boilerplate content provided by go/
-        # api-docgen. Currently overrides following sections: 1. rest.service.
-        # client_libraries
+        # Specifies section and content to override the boilerplate content. Currently
+        # overrides following sections: 1. rest.service.client_libraries
         # Corresponds to the JSON property `sectionOverrides`
         # @return [Array<Google::Apis::ServicenetworkingV1::Page>]
         attr_accessor :section_overrides
@@ -1707,7 +1742,7 @@ module Google
         attr_accessor :description
       
         # String of comma or space separated case-sensitive words for which method/field
-        # name replacement will be disabled by go/api-docgen.
+        # name replacement will be disabled.
         # Corresponds to the JSON property `disableReplacementWords`
         # @return [String]
         attr_accessor :disable_replacement_words
@@ -1994,6 +2029,15 @@ module Google
         attr_accessor :rest_async_io_enabled
         alias_method :rest_async_io_enabled?, :rest_async_io_enabled
       
+        # Disables generation of an unversioned Python package for this client library.
+        # This means that the module names will need to be versioned in import
+        # statements. For example `import google.cloud.library_v2` instead of `import
+        # google.cloud.library`.
+        # Corresponds to the JSON property `unversionedPackageDisabled`
+        # @return [Boolean]
+        attr_accessor :unversioned_package_disabled
+        alias_method :unversioned_package_disabled?, :unversioned_package_disabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2002,6 +2046,7 @@ module Google
         def update!(**args)
           @protobuf_pythonic_types_enabled = args[:protobuf_pythonic_types_enabled] if args.key?(:protobuf_pythonic_types_enabled)
           @rest_async_io_enabled = args[:rest_async_io_enabled] if args.key?(:rest_async_io_enabled)
+          @unversioned_package_disabled = args[:unversioned_package_disabled] if args.key?(:unversioned_package_disabled)
         end
       end
       
@@ -3617,7 +3662,7 @@ module Google
       class Page
         include Google::Apis::Core::Hashable
       
-        # The Markdown content of the page. You can use (== include `path` ==) to
+        # The Markdown content of the page. You can use ```(== include `path` ==)``` to
         # include content from a Markdown file. The content can be used to produce the
         # documentation page such as HTML format page.
         # Corresponds to the JSON property `content`
@@ -4399,6 +4444,17 @@ module Google
       class SelectiveGapicGeneration
         include Google::Apis::Core::Hashable
       
+        # Setting this to true indicates to the client generators that methods that
+        # would be excluded from the generation should instead be generated in a way
+        # that indicates these methods should not be consumed by end users. How this is
+        # expressed is up to individual language implementations to decide. Some
+        # examples may be: added annotations, obfuscated identifiers, or other language
+        # idiomatic patterns.
+        # Corresponds to the JSON property `generateOmittedAsInternal`
+        # @return [Boolean]
+        attr_accessor :generate_omitted_as_internal
+        alias_method :generate_omitted_as_internal?, :generate_omitted_as_internal
+      
         # An allowlist of the fully qualified names of RPCs that should be included on
         # public client surfaces.
         # Corresponds to the JSON property `methods`
@@ -4411,6 +4467,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @generate_omitted_as_internal = args[:generate_omitted_as_internal] if args.key?(:generate_omitted_as_internal)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
         end
       end
@@ -4439,6 +4496,14 @@ module Google
         # Corresponds to the JSON property `apis`
         # @return [Array<Google::Apis::ServicenetworkingV1::Api>]
         attr_accessor :apis
+      
+        # Configuration aspects. This is a repeated field to allow multiple aspects to
+        # be configured. The kind field in each ConfigAspect specifies the type of
+        # aspect. The spec field contains the configuration for that aspect. The schema
+        # for the spec field is defined by the backend service owners.
+        # Corresponds to the JSON property `aspects`
+        # @return [Array<Google::Apis::ServicenetworkingV1::Aspect>]
+        attr_accessor :aspects
       
         # `Authentication` defines the authentication configuration for API methods
         # provided by an API service. Example: name: calendar.googleapis.com
@@ -4719,6 +4784,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @apis = args[:apis] if args.key?(:apis)
+          @aspects = args[:aspects] if args.key?(:aspects)
           @authentication = args[:authentication] if args.key?(:authentication)
           @backend = args[:backend] if args.key?(:backend)
           @billing = args[:billing] if args.key?(:billing)
