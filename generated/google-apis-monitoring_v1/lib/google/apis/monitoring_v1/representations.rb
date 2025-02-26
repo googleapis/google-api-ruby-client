@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TemplateVariableCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Text
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +443,12 @@ module Google
       end
       
       class Type
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VisibilityCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -952,6 +964,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blank_view, as: 'blankView', class: Google::Apis::MonitoringV1::Empty, decorator: Google::Apis::MonitoringV1::Empty::Representation
       
+          collection :breakdowns, as: 'breakdowns', class: Google::Apis::MonitoringV1::Breakdown, decorator: Google::Apis::MonitoringV1::Breakdown::Representation
+      
           collection :dimensions, as: 'dimensions', class: Google::Apis::MonitoringV1::Dimension, decorator: Google::Apis::MonitoringV1::Dimension::Representation
       
           property :gauge_view, as: 'gaugeView', class: Google::Apis::MonitoringV1::GaugeView, decorator: Google::Apis::MonitoringV1::GaugeView::Representation
@@ -1043,6 +1057,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :shown_columns, as: 'shownColumns'
+        end
+      end
+      
+      class TemplateVariableCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comparator, as: 'comparator'
+          property :template_variable, as: 'templateVariable'
+          property :template_variable_value, as: 'templateVariableValue'
         end
       end
       
@@ -1166,6 +1189,14 @@ module Google
         end
       end
       
+      class VisibilityCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :template_variable_condition, as: 'templateVariableCondition', class: Google::Apis::MonitoringV1::TemplateVariableCondition, decorator: Google::Apis::MonitoringV1::TemplateVariableCondition::Representation
+      
+        end
+      end
+      
       class Widget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1195,6 +1226,8 @@ module Google
           property :time_series_table, as: 'timeSeriesTable', class: Google::Apis::MonitoringV1::TimeSeriesTable, decorator: Google::Apis::MonitoringV1::TimeSeriesTable::Representation
       
           property :title, as: 'title'
+          property :visibility_condition, as: 'visibilityCondition', class: Google::Apis::MonitoringV1::VisibilityCondition, decorator: Google::Apis::MonitoringV1::VisibilityCondition::Representation
+      
           property :xy_chart, as: 'xyChart', class: Google::Apis::MonitoringV1::XyChart, decorator: Google::Apis::MonitoringV1::XyChart::Representation
       
         end
