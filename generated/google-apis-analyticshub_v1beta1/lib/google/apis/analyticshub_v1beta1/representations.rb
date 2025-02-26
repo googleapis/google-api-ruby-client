@@ -482,6 +482,7 @@ module Google
           collection :linked_resources, as: 'linkedResources', class: Google::Apis::AnalyticshubV1beta1::LinkedResource, decorator: Google::Apis::AnalyticshubV1beta1::LinkedResource::Representation
       
           property :listing, as: 'listing'
+          property :log_linked_dataset_query_user_email, as: 'logLinkedDatasetQueryUserEmail'
           property :name, as: 'name'
           property :organization_display_name, as: 'organizationDisplayName'
           property :organization_id, as: 'organizationId'
