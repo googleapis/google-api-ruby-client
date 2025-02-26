@@ -22,60 +22,6 @@ module Google
   module Apis
     module GkehubV1alpha
       
-      # **Anthos Observability**: Spec
-      class AnthosObservabilityFeatureSpec
-        include Google::Apis::Core::Hashable
-      
-        # **Anthosobservability**: Per-Membership Feature spec.
-        # Corresponds to the JSON property `defaultMembershipSpec`
-        # @return [Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec]
-        attr_accessor :default_membership_spec
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @default_membership_spec = args[:default_membership_spec] if args.key?(:default_membership_spec)
-        end
-      end
-      
-      # **Anthosobservability**: Per-Membership Feature spec.
-      class AnthosObservabilityMembershipSpec
-        include Google::Apis::Core::Hashable
-      
-        # Use full of metrics rather than optimized metrics. See https://cloud.google.
-        # com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#
-        # optimized_metrics_default_metrics
-        # Corresponds to the JSON property `doNotOptimizeMetrics`
-        # @return [Boolean]
-        attr_accessor :do_not_optimize_metrics
-        alias_method :do_not_optimize_metrics?, :do_not_optimize_metrics
-      
-        # Enable collecting and reporting metrics and logs from user apps.
-        # Corresponds to the JSON property `enableStackdriverOnApplications`
-        # @return [Boolean]
-        attr_accessor :enable_stackdriver_on_applications
-        alias_method :enable_stackdriver_on_applications?, :enable_stackdriver_on_applications
-      
-        # the version of stackdriver operator used by this feature
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @do_not_optimize_metrics = args[:do_not_optimize_metrics] if args.key?(:do_not_optimize_metrics)
-          @enable_stackdriver_on_applications = args[:enable_stackdriver_on_applications] if args.key?(:enable_stackdriver_on_applications)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
       # Spec for App Dev Experience Feature.
       class AppDevExperienceFeatureSpec
         include Google::Apis::Core::Hashable
@@ -892,11 +838,6 @@ module Google
       class CommonFeatureSpec
         include Google::Apis::Core::Hashable
       
-        # **Anthos Observability**: Spec
-        # Corresponds to the JSON property `anthosobservability`
-        # @return [Google::Apis::GkehubV1alpha::AnthosObservabilityFeatureSpec]
-        attr_accessor :anthosobservability
-      
         # Spec for App Dev Experience Feature.
         # Corresponds to the JSON property `appdevexperience`
         # @return [Google::Apis::GkehubV1alpha::AppDevExperienceFeatureSpec]
@@ -947,7 +888,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @anthosobservability = args[:anthosobservability] if args.key?(:anthosobservability)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @cloudauditlogging = args[:cloudauditlogging] if args.key?(:cloudauditlogging)
           @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
@@ -4486,11 +4426,6 @@ module Google
       class MembershipFeatureSpec
         include Google::Apis::Core::Hashable
       
-        # **Anthosobservability**: Per-Membership Feature spec.
-        # Corresponds to the JSON property `anthosobservability`
-        # @return [Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec]
-        attr_accessor :anthosobservability
-      
         # **Cloud Build**: Configurations for each Cloud Build enabled cluster.
         # Corresponds to the JSON property `cloudbuild`
         # @return [Google::Apis::GkehubV1alpha::CloudBuildMembershipSpec]
@@ -4547,7 +4482,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @anthosobservability = args[:anthosobservability] if args.key?(:anthosobservability)
           @cloudbuild = args[:cloudbuild] if args.key?(:cloudbuild)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
@@ -6120,7 +6054,8 @@ module Google
         end
       end
       
-      # Condition being reported.
+      # Condition being reported. TODO b/395151419: Remove this message once the
+      # membership-level conditions field uses the common Condition message.
       class ServiceMeshCondition
         include Google::Apis::Core::Hashable
       
@@ -6214,6 +6149,45 @@ module Google
         end
       end
       
+      # Condition being reported. TODO b/395151419: This message should be used to
+      # replace the membership-level Condition message.
+      class ServiceMeshFeatureCondition
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier of the condition which describes the condition recognizable
+        # to the user.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A short summary about the issue.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Links contains actionable information.
+        # Corresponds to the JSON property `documentationLink`
+        # @return [String]
+        attr_accessor :documentation_link
+      
+        # Severity level of the condition.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub
       # Controller.
       class ServiceMeshFeatureState
@@ -6224,6 +6198,11 @@ module Google
         # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage>]
         attr_accessor :analysis_messages
       
+        # Output only. List of conditions reported for this feature.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshFeatureCondition>]
+        attr_accessor :conditions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6231,6 +6210,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analysis_messages = args[:analysis_messages] if args.key?(:analysis_messages)
+          @conditions = args[:conditions] if args.key?(:conditions)
         end
       end
       
@@ -6284,7 +6264,8 @@ module Google
         # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage>]
         attr_accessor :analysis_messages
       
-        # Output only. List of conditions reported for this membership.
+        # Output only. List of conditions reported for this membership. TODO b/395151419:
+        # Use the common Condition message.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshCondition>]
         attr_accessor :conditions
