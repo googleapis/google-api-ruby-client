@@ -2232,6 +2232,26 @@ module Google
         end
       end
       
+      # Data enrichment configuration.
+      class EnrichmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Append ACL to the event.
+        # Corresponds to the JSON property `appendAcl`
+        # @return [Boolean]
+        attr_accessor :append_acl
+        alias_method :append_acl?, :append_acl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @append_acl = args[:append_acl] if args.key?(:append_acl)
+        end
+      end
+      
       # EnumOption definition
       class EnumOption
         include Google::Apis::Core::Hashable
@@ -2341,6 +2361,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::EndPoint]
         attr_accessor :endpoint
       
+        # Pub/Sub message includes details of the Destination Pub/Sub topic.
+        # Corresponds to the JSON property `pubsub`
+        # @return [Google::Apis::ConnectorsV1::PubSub]
+        attr_accessor :pubsub
+      
         # Service account needed for runtime plane to trigger IP workflow.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -2358,6 +2383,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @pubsub = args[:pubsub] if args.key?(:pubsub)
           @service_account = args[:service_account] if args.key?(:service_account)
           @type = args[:type] if args.key?(:type)
         end
@@ -2473,6 +2499,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::DeadLetterConfig]
         attr_accessor :dead_letter_config
       
+        # Data enrichment configuration.
+        # Corresponds to the JSON property `enrichmentConfig`
+        # @return [Google::Apis::ConnectorsV1::EnrichmentConfig]
+        attr_accessor :enrichment_config
+      
         # Optional. Enrichment Enabled.
         # Corresponds to the JSON property `enrichmentEnabled`
         # @return [Boolean]
@@ -2515,6 +2546,7 @@ module Google
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @dead_letter_config = args[:dead_letter_config] if args.key?(:dead_letter_config)
+          @enrichment_config = args[:enrichment_config] if args.key?(:enrichment_config)
           @enrichment_enabled = args[:enrichment_enabled] if args.key?(:enrichment_enabled)
           @events_listener_ingress_endpoint = args[:events_listener_ingress_endpoint] if args.key?(:events_listener_ingress_endpoint)
           @listener_auth_config = args[:listener_auth_config] if args.key?(:listener_auth_config)
@@ -3310,6 +3342,12 @@ module Google
       class JsonSchema
         include Google::Apis::Core::Hashable
       
+        # Additional details apart from standard json schema fields, this gives
+        # flexibility to store metadata about the schema
+        # Corresponds to the JSON property `additionalDetails`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_details
+      
         # The default value of the field or object described by this schema.
         # Corresponds to the JSON property `default`
         # @return [Object]
@@ -3365,6 +3403,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_details = args[:additional_details] if args.key?(:additional_details)
           @default = args[:default] if args.key?(:default)
           @description = args[:description] if args.key?(:description)
           @enum = args[:enum] if args.key?(:enum)
@@ -4752,10 +4791,21 @@ module Google
         # @return [String]
         attr_accessor :demo_uri
       
+        # Output only. Has dynamic open api spec uri.
+        # Corresponds to the JSON property `hasDynamicSpecUri`
+        # @return [Boolean]
+        attr_accessor :has_dynamic_spec_uri
+        alias_method :has_dynamic_spec_uri?, :has_dynamic_spec_uri
+      
         # Required. Integration example templates for the custom connector.
         # Corresponds to the JSON property `integrationTemplates`
         # @return [String]
         attr_accessor :integration_templates
+      
+        # Output only. Local spec path. Required if has_dynamic_spec_uri is true.
+        # Corresponds to the JSON property `localSpecPath`
+        # @return [String]
+        attr_accessor :local_spec_path
       
         # Optional. Marketplace product name.
         # Corresponds to the JSON property `marketplaceProduct`
@@ -4817,7 +4867,9 @@ module Google
           @additional_comments = args[:additional_comments] if args.key?(:additional_comments)
           @confirm_partner_requirements = args[:confirm_partner_requirements] if args.key?(:confirm_partner_requirements)
           @demo_uri = args[:demo_uri] if args.key?(:demo_uri)
+          @has_dynamic_spec_uri = args[:has_dynamic_spec_uri] if args.key?(:has_dynamic_spec_uri)
           @integration_templates = args[:integration_templates] if args.key?(:integration_templates)
+          @local_spec_path = args[:local_spec_path] if args.key?(:local_spec_path)
           @marketplace_product = args[:marketplace_product] if args.key?(:marketplace_product)
           @marketplace_product_id = args[:marketplace_product_id] if args.key?(:marketplace_product_id)
           @marketplace_product_project_id = args[:marketplace_product_project_id] if args.key?(:marketplace_product_project_id)
@@ -5059,6 +5111,43 @@ module Google
         def update!(**args)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @resource_url = args[:resource_url] if args.key?(:resource_url)
+        end
+      end
+      
+      # Pub/Sub message includes details of the Destination Pub/Sub topic.
+      class PubSub
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Pub/Sub message attributes to be added to the Pub/Sub message.
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,String>]
+        attr_accessor :attributes
+      
+        # Optional. Configuration for configuring the trigger
+        # Corresponds to the JSON property `configVariables`
+        # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
+        attr_accessor :config_variables
+      
+        # Required. The project id which has the Pub/Sub topic.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The topic id of the Pub/Sub topic.
+        # Corresponds to the JSON property `topicId`
+        # @return [String]
+        attr_accessor :topic_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @config_variables = args[:config_variables] if args.key?(:config_variables)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @topic_id = args[:topic_id] if args.key?(:topic_id)
         end
       end
       
@@ -5341,7 +5430,7 @@ module Google
         # @return [String]
         attr_accessor :helper_text_template
       
-        # Optional. Prinicipal/Identity for whom the role need to assigned.
+        # Optional. Principal/Identity for whom the role need to assigned.
         # Corresponds to the JSON property `principal`
         # @return [String]
         attr_accessor :principal
@@ -5859,7 +5948,7 @@ module Google
       class Source
         include Google::Apis::Core::Hashable
       
-        # Field identifier. For example config vaiable name.
+        # Field identifier. For example config variable name.
         # Corresponds to the JSON property `fieldId`
         # @return [String]
         attr_accessor :field_id

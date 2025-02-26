@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnrichmentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnumOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -653,6 +659,12 @@ module Google
       end
       
       class ProvisionedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubSub
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1448,6 +1460,13 @@ module Google
         end
       end
       
+      class EnrichmentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :append_acl, as: 'appendAcl'
+        end
+      end
+      
       class EnumOption
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1480,6 +1499,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint, as: 'endpoint', class: Google::Apis::ConnectorsV1::EndPoint, decorator: Google::Apis::ConnectorsV1::EndPoint::Representation
+      
+          property :pubsub, as: 'pubsub', class: Google::Apis::ConnectorsV1::PubSub, decorator: Google::Apis::ConnectorsV1::PubSub::Representation
       
           property :service_account, as: 'serviceAccount'
           property :type, as: 'type'
@@ -1516,6 +1537,8 @@ module Google
           property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
       
           property :dead_letter_config, as: 'deadLetterConfig', class: Google::Apis::ConnectorsV1::DeadLetterConfig, decorator: Google::Apis::ConnectorsV1::DeadLetterConfig::Representation
+      
+          property :enrichment_config, as: 'enrichmentConfig', class: Google::Apis::ConnectorsV1::EnrichmentConfig, decorator: Google::Apis::ConnectorsV1::EnrichmentConfig::Representation
       
           property :enrichment_enabled, as: 'enrichmentEnabled'
           property :events_listener_ingress_endpoint, as: 'eventsListenerIngressEndpoint'
@@ -1731,6 +1754,7 @@ module Google
       class JsonSchema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_details, as: 'additionalDetails'
           property :default, as: 'default'
           property :description, as: 'description'
           collection :enum, as: 'enum'
@@ -2146,7 +2170,9 @@ module Google
           property :additional_comments, as: 'additionalComments'
           property :confirm_partner_requirements, as: 'confirmPartnerRequirements'
           property :demo_uri, as: 'demoUri'
+          property :has_dynamic_spec_uri, as: 'hasDynamicSpecUri'
           property :integration_templates, as: 'integrationTemplates'
+          property :local_spec_path, as: 'localSpecPath'
           property :marketplace_product, as: 'marketplaceProduct'
           property :marketplace_product_id, as: 'marketplaceProductId'
           property :marketplace_product_project_id, as: 'marketplaceProductProjectId'
@@ -2201,6 +2227,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_type, as: 'resourceType'
           property :resource_url, as: 'resourceUrl'
+        end
+      end
+      
+      class PubSub
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attributes, as: 'attributes'
+          collection :config_variables, as: 'configVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
+      
+          property :project_id, as: 'projectId'
+          property :topic_id, as: 'topicId'
         end
       end
       
