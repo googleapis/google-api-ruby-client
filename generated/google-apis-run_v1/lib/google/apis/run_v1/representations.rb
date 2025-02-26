@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1Dependency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1DeveloperConnectConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +317,18 @@ module Google
       end
       
       class GoogleDevtoolsCloudbuildV1GitSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1GitSourceDependency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1GitSourceRepository
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1236,6 +1254,8 @@ module Google
       
           property :build_trigger_id, as: 'buildTriggerId'
           property :create_time, as: 'createTime'
+          collection :dependencies, as: 'dependencies', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Dependency, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Dependency::Representation
+      
           property :failure_info, as: 'failureInfo', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FailureInfo, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FailureInfo::Representation
       
           property :finish_time, as: 'finishTime'
@@ -1307,6 +1327,7 @@ module Google
           property :machine_type, as: 'machineType'
           property :pool, as: 'pool', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1PoolOption, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1PoolOption::Representation
       
+          property :pubsub_topic, as: 'pubsubTopic'
           property :requested_verify_option, as: 'requestedVerifyOption'
           collection :secret_env, as: 'secretEnv'
           collection :source_provenance_hash, as: 'sourceProvenanceHash'
@@ -1363,6 +1384,15 @@ module Google
         end
       end
       
+      class GoogleDevtoolsCloudbuildV1Dependency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :empty, as: 'empty'
+          property :git_source, as: 'gitSource', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSourceDependency, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSourceDependency::Representation
+      
+        end
+      end
+      
       class GoogleDevtoolsCloudbuildV1DeveloperConnectConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1401,6 +1431,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dir, as: 'dir'
           property :revision, as: 'revision'
+          property :url, as: 'url'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1GitSourceDependency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :depth, :numeric_string => true, as: 'depth'
+          property :dest_path, as: 'destPath'
+          property :recurse_submodules, as: 'recurseSubmodules'
+          property :repository, as: 'repository', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSourceRepository, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSourceRepository::Representation
+      
+          property :revision, as: 'revision'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1GitSourceRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_connect, as: 'developerConnect'
           property :url, as: 'url'
         end
       end
@@ -2271,6 +2321,7 @@ module Google
           collection :containers, as: 'containers', class: Google::Apis::RunV1::Container, decorator: Google::Apis::RunV1::Container::Representation
       
           property :max_retries, as: 'maxRetries'
+          hash :node_selector, as: 'nodeSelector'
           property :service_account_name, as: 'serviceAccountName'
           property :timeout_seconds, :numeric_string => true, as: 'timeoutSeconds'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
