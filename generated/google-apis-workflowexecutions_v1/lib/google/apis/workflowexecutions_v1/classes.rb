@@ -200,11 +200,11 @@ module Google
         # @return [Google::Apis::WorkflowexecutionsV1::Error]
         attr_accessor :error
       
-        # Optional. Describes the level of the execution history feature to apply to
-        # this execution. If not specified, the level of the execution history feature
-        # will be determined by its workflow's execution history level. If the value is
-        # different from its workflow's value, it will override the workflow's execution
-        # history level for this exeuction.
+        # Optional. Describes the execution history level to apply to this execution. If
+        # not specified, the execution history level is determined by its workflow's
+        # execution history level. If the levels are different, the
+        # executionHistoryLevel overrides the workflow's execution history level for
+        # this execution.
         # Corresponds to the JSON property `executionHistoryLevel`
         # @return [String]
         attr_accessor :execution_history_level
