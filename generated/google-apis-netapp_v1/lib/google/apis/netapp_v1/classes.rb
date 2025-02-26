@@ -670,6 +670,24 @@ module Google
         # @return [String]
         attr_accessor :passphrase
       
+        # Optional. Name of the user's local source cluster to be peered with the
+        # destination cluster.
+        # Corresponds to the JSON property `peerClusterName`
+        # @return [String]
+        attr_accessor :peer_cluster_name
+      
+        # Optional. Name of the user's local source vserver svm to be peered with the
+        # destination vserver svm.
+        # Corresponds to the JSON property `peerSvmName`
+        # @return [String]
+        attr_accessor :peer_svm_name
+      
+        # Optional. Name of the user's local source volume to be peered with the
+        # destination volume.
+        # Corresponds to the JSON property `peerVolumeName`
+        # @return [String]
+        attr_accessor :peer_volume_name
+      
         # Optional. IP address of the subnet.
         # Corresponds to the JSON property `subnetIp`
         # @return [String]
@@ -684,6 +702,9 @@ module Google
           @command = args[:command] if args.key?(:command)
           @command_expiry_time = args[:command_expiry_time] if args.key?(:command_expiry_time)
           @passphrase = args[:passphrase] if args.key?(:passphrase)
+          @peer_cluster_name = args[:peer_cluster_name] if args.key?(:peer_cluster_name)
+          @peer_svm_name = args[:peer_svm_name] if args.key?(:peer_svm_name)
+          @peer_volume_name = args[:peer_volume_name] if args.key?(:peer_volume_name)
           @subnet_ip = args[:subnet_ip] if args.key?(:subnet_ip)
         end
       end
@@ -1030,6 +1051,37 @@ module Google
         end
       end
       
+      # ListQuotaRulesResponse is the response to a ListQuotaRulesRequest.
+      class ListQuotaRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of quota rules
+        # Corresponds to the JSON property `quotaRules`
+        # @return [Array<Google::Apis::NetappV1::QuotaRule>]
+        attr_accessor :quota_rules
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @quota_rules = args[:quota_rules] if args.key?(:quota_rules)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # ListReplicationsResponse is the result of ListReplicationsRequest.
       class ListReplicationsResponse
         include Google::Apis::Core::Hashable
@@ -1207,6 +1259,11 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. Supported flex performance in a location.
+        # Corresponds to the JSON property `supportedFlexPerformance`
+        # @return [Array<String>]
+        attr_accessor :supported_flex_performance
+      
         # Output only. Supported service levels in a location.
         # Corresponds to the JSON property `supportedServiceLevels`
         # @return [Array<String>]
@@ -1218,6 +1275,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @supported_flex_performance = args[:supported_flex_performance] if args.key?(:supported_flex_performance)
           @supported_service_levels = args[:supported_service_levels] if args.key?(:supported_service_levels)
         end
       end
@@ -1422,6 +1480,77 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # QuotaRule specifies the maximum disk space a user or group can use within a
+      # volume. They can be used for creating default and individual quota rules.
+      class QuotaRule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time of the quota rule
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the quota rule
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The maximum allowed disk space in MiB.
+        # Corresponds to the JSON property `diskLimitMib`
+        # @return [Fixnum]
+        attr_accessor :disk_limit_mib
+      
+        # Optional. Labels of the quota rule
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the quota rule. Format: `projects/`
+        # project_number`/locations/`location_id`/volumes/volumes/`volume_id`/quotaRules/
+        # `quota_rule_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the quota rule
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. State details of the quota rule
+        # Corresponds to the JSON property `stateDetails`
+        # @return [String]
+        attr_accessor :state_details
+      
+        # Optional. The quota rule applies to the specified user or group, identified by
+        # a Unix UID/GID, Windows SID, or null for default.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Required. The type of quota rule.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @disk_limit_mib = args[:disk_limit_mib] if args.key?(:disk_limit_mib)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @state_details = args[:state_details] if args.key?(:state_details)
+          @target = args[:target] if args.key?(:target)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
