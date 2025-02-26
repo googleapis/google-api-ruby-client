@@ -610,6 +610,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Imports data to the cluster. Imperative only.
+        # @param [String] name
+        #   Required. The resource name of the cluster.
+        # @param [Google::Apis::AlloydbV1alpha::ImportClusterRequest] import_cluster_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AlloydbV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AlloydbV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_cluster(name, import_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:import', options)
+          command.request_representation = Google::Apis::AlloydbV1alpha::ImportClusterRequest::Representation
+          command.request_object = import_cluster_request_object
+          command.response_representation = Google::Apis::AlloydbV1alpha::Operation::Representation
+          command.response_class = Google::Apis::AlloydbV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists Clusters in a given project and location.
         # @param [String] parent
         #   Required. The name of the parent resource. For the required format, see the
@@ -1741,6 +1774,9 @@ module Google
         #   unspecified, server will pick an appropriate default.
         # @param [String] page_token
         #   A token identifying a page of results the server should return.
+        # @param [String] scope
+        #   Optional. The scope for which supported flags are requested. If not specified,
+        #   default is DATABASE.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1758,13 +1794,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_supported_database_flags(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_supported_database_flags(parent, page_size: nil, page_token: nil, scope: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/supportedDatabaseFlags', options)
           command.response_representation = Google::Apis::AlloydbV1alpha::ListSupportedDatabaseFlagsResponse::Representation
           command.response_class = Google::Apis::AlloydbV1alpha::ListSupportedDatabaseFlagsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['scope'] = scope unless scope.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
