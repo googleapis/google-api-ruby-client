@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkCheckRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkCheckResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CertificateInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +65,12 @@ module Google
       end
       
       class Statement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatementTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -79,6 +97,28 @@ module Google
           property :android_app, as: 'androidApp', class: Google::Apis::DigitalassetlinksV1::AndroidAppAsset, decorator: Google::Apis::DigitalassetlinksV1::AndroidAppAsset::Representation
       
           property :web, as: 'web', class: Google::Apis::DigitalassetlinksV1::WebAsset, decorator: Google::Apis::DigitalassetlinksV1::WebAsset::Representation
+      
+        end
+      end
+      
+      class BulkCheckRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_relation, as: 'defaultRelation'
+          property :default_source, as: 'defaultSource', class: Google::Apis::DigitalassetlinksV1::Asset, decorator: Google::Apis::DigitalassetlinksV1::Asset::Representation
+      
+          property :default_target, as: 'defaultTarget', class: Google::Apis::DigitalassetlinksV1::Asset, decorator: Google::Apis::DigitalassetlinksV1::Asset::Representation
+      
+          collection :statements, as: 'statements', class: Google::Apis::DigitalassetlinksV1::StatementTemplate, decorator: Google::Apis::DigitalassetlinksV1::StatementTemplate::Representation
+      
+        end
+      end
+      
+      class BulkCheckResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bulk_error_code, as: 'bulkErrorCode'
+          collection :check_results, as: 'checkResults', class: Google::Apis::DigitalassetlinksV1::CheckResponse, decorator: Google::Apis::DigitalassetlinksV1::CheckResponse::Representation
       
         end
       end
@@ -112,6 +152,17 @@ module Google
       end
       
       class Statement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :relation, as: 'relation'
+          property :source, as: 'source', class: Google::Apis::DigitalassetlinksV1::Asset, decorator: Google::Apis::DigitalassetlinksV1::Asset::Representation
+      
+          property :target, as: 'target', class: Google::Apis::DigitalassetlinksV1::Asset, decorator: Google::Apis::DigitalassetlinksV1::Asset::Representation
+      
+        end
+      end
+      
+      class StatementTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :relation, as: 'relation'
