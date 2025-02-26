@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProvisionPosixAccountRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +130,13 @@ module Google
           property :system_id, as: 'systemId'
           property :uid, :numeric_string => true, as: 'uid'
           property :username, as: 'username'
+        end
+      end
+      
+      class ProvisionPosixAccountRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :regions, as: 'regions'
         end
       end
       
