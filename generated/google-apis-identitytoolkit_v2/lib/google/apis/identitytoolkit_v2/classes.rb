@@ -275,6 +275,11 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2ClientConfig]
         attr_accessor :client
       
+        # Output only. Default Firebase hosting site name
+        # Corresponds to the JSON property `defaultHostingSite`
+        # @return [String]
+        attr_accessor :default_hosting_site
+      
         # Configuration for settings related to email privacy and public visibility.
         # Settings in this config protect against email enumeration, but may make some
         # trade-offs in user-friendliness.
@@ -286,6 +291,11 @@ module Google
         # Corresponds to the JSON property `mfa`
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig]
         attr_accessor :mfa
+      
+        # Configuration mobile links.
+        # Corresponds to the JSON property `mobileLinksConfig`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig]
+        attr_accessor :mobile_links_config
       
         # Configuration related to monitoring project activity.
         # Corresponds to the JSON property `monitoring`
@@ -350,8 +360,10 @@ module Google
           @autodelete_anonymous_users = args[:autodelete_anonymous_users] if args.key?(:autodelete_anonymous_users)
           @blocking_functions = args[:blocking_functions] if args.key?(:blocking_functions)
           @client = args[:client] if args.key?(:client)
+          @default_hosting_site = args[:default_hosting_site] if args.key?(:default_hosting_site)
           @email_privacy_config = args[:email_privacy_config] if args.key?(:email_privacy_config)
           @mfa = args[:mfa] if args.key?(:mfa)
+          @mobile_links_config = args[:mobile_links_config] if args.key?(:mobile_links_config)
           @monitoring = args[:monitoring] if args.key?(:monitoring)
           @multi_tenant = args[:multi_tenant] if args.key?(:multi_tenant)
           @name = args[:name] if args.key?(:name)
@@ -1019,6 +1031,25 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tenants = args[:tenants] if args.key?(:tenants)
+        end
+      end
+      
+      # Configuration mobile links.
+      class GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig
+        include Google::Apis::Core::Hashable
+      
+        # Open code in app domain to use for app links and universal links.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
         end
       end
       
@@ -2009,6 +2040,11 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig]
         attr_accessor :mfa_config
       
+        # Configuration mobile links.
+        # Corresponds to the JSON property `mobileLinksConfig`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig]
+        attr_accessor :mobile_links_config
+      
         # Configuration related to monitoring project activity.
         # Corresponds to the JSON property `monitoring`
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig]
@@ -2061,6 +2097,7 @@ module Google
           @hash_config = args[:hash_config] if args.key?(:hash_config)
           @inheritance = args[:inheritance] if args.key?(:inheritance)
           @mfa_config = args[:mfa_config] if args.key?(:mfa_config)
+          @mobile_links_config = args[:mobile_links_config] if args.key?(:mobile_links_config)
           @monitoring = args[:monitoring] if args.key?(:monitoring)
           @name = args[:name] if args.key?(:name)
           @password_policy_config = args[:password_policy_config] if args.key?(:password_policy_config)
