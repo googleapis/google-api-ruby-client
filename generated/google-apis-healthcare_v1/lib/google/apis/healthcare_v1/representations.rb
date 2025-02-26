@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkExportGcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1228,6 +1234,13 @@ module Google
         end
       end
       
+      class BulkExportGcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri_prefix, as: 'uriPrefix'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1711,6 +1724,8 @@ module Google
       class FhirStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bulk_export_gcs_destination, as: 'bulkExportGcsDestination', class: Google::Apis::HealthcareV1::BulkExportGcsDestination, decorator: Google::Apis::HealthcareV1::BulkExportGcsDestination::Representation
+      
           property :complex_data_type_reference_parsing, as: 'complexDataTypeReferenceParsing'
           property :consent_config, as: 'consentConfig', class: Google::Apis::HealthcareV1::ConsentConfig, decorator: Google::Apis::HealthcareV1::ConsentConfig::Representation
       
