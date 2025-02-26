@@ -622,6 +622,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1GenericCaConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1GenericProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -683,6 +695,18 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1alpha1ChromeOsUserSession
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1alpha1GenericCaConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1alpha1GenericProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1797,6 +1821,10 @@ module Google
           property :chrome_os_user_session, as: 'chromeOsUserSession', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsUserSession, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeOsUserSession::Representation
       
           property :failure_message, as: 'failureMessage'
+          property :generic_ca_connection, as: 'genericCaConnection', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1GenericCaConnection, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1GenericCaConnection::Representation
+      
+          property :generic_profile, as: 'genericProfile', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1GenericProfile, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1GenericProfile::Representation
+      
           property :issued_certificate, as: 'issuedCertificate'
           property :name, as: 'name'
           property :profile_adapter_config_reference, as: 'profileAdapterConfigReference'
@@ -1869,6 +1897,20 @@ module Google
           property :device_type, as: 'deviceType'
           property :hostname, as: 'hostname'
           property :machine, as: 'machine'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1GenericCaConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_connection_adapter_config_reference, as: 'caConnectionAdapterConfigReference'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1GenericProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :profile_adapter_config_reference, as: 'profileAdapterConfigReference'
         end
       end
       
@@ -1967,6 +2009,10 @@ module Google
           property :chrome_os_user_session, as: 'chromeOsUserSession', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1ChromeOsUserSession, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1ChromeOsUserSession::Representation
       
           property :failure_message, as: 'failureMessage'
+          property :generic_ca_connection, as: 'genericCaConnection', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1GenericCaConnection, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1GenericCaConnection::Representation
+      
+          property :generic_profile, as: 'genericProfile', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1GenericProfile, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1alpha1GenericProfile::Representation
+      
           property :issued_certificate, as: 'issuedCertificate'
           property :name, as: 'name'
           property :profile_adapter_config_reference, as: 'profileAdapterConfigReference'
@@ -1994,6 +2040,20 @@ module Google
       
           property :user_directory_api_id, as: 'userDirectoryApiId'
           property :user_primary_email, as: 'userPrimaryEmail'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1alpha1GenericCaConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_connection_adapter_config_reference, as: 'caConnectionAdapterConfigReference'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1alpha1GenericProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :profile_adapter_config_reference, as: 'profileAdapterConfigReference'
         end
       end
       
