@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Address
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -548,6 +554,15 @@ module Google
         end
       end
       
+      class AddUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user, as: 'user', class: Google::Apis::MerchantapiAccountsV1beta::User, decorator: Google::Apis::MerchantapiAccountsV1beta::User::Representation
+      
+          property :user_id, as: 'userId'
+        end
+      end
+      
       class Address
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -634,6 +649,8 @@ module Google
           property :account, as: 'account', class: Google::Apis::MerchantapiAccountsV1beta::Account, decorator: Google::Apis::MerchantapiAccountsV1beta::Account::Representation
       
           collection :service, as: 'service', class: Google::Apis::MerchantapiAccountsV1beta::AddAccountService, decorator: Google::Apis::MerchantapiAccountsV1beta::AddAccountService::Representation
+      
+          collection :user, as: 'user', class: Google::Apis::MerchantapiAccountsV1beta::AddUser, decorator: Google::Apis::MerchantapiAccountsV1beta::AddUser::Representation
       
           collection :users, as: 'users', class: Google::Apis::MerchantapiAccountsV1beta::CreateUserRequest, decorator: Google::Apis::MerchantapiAccountsV1beta::CreateUserRequest::Representation
       
@@ -999,6 +1016,7 @@ module Google
           property :attribute, as: 'attribute'
           collection :changes, as: 'changes', class: Google::Apis::MerchantapiAccountsV1beta::ProductChange, decorator: Google::Apis::MerchantapiAccountsV1beta::ProductChange::Representation
       
+          property :event_time, as: 'eventTime'
           property :expiration_time, as: 'expirationTime'
           property :managing_account, as: 'managingAccount'
           property :resource, as: 'resource'
@@ -1101,6 +1119,9 @@ module Google
       
           property :label, as: 'label'
           property :policy, as: 'policy', class: Google::Apis::MerchantapiAccountsV1beta::Policy, decorator: Google::Apis::MerchantapiAccountsV1beta::Policy::Representation
+      
+          property :return_days, as: 'returnDays'
+          property :return_until_date, as: 'returnUntilDate', class: Google::Apis::MerchantapiAccountsV1beta::Date, decorator: Google::Apis::MerchantapiAccountsV1beta::Date::Representation
       
         end
       end
