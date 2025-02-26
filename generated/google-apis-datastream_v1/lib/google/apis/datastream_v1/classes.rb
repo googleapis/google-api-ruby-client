@@ -69,6 +69,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
         attr_accessor :postgresql_excluded_objects
       
+        # Salesforce organization structure.
+        # Corresponds to the JSON property `salesforceExcludedObjects`
+        # @return [Google::Apis::DatastreamV1::SalesforceOrg]
+        attr_accessor :salesforce_excluded_objects
+      
         # SQLServer database structure.
         # Corresponds to the JSON property `sqlServerExcludedObjects`
         # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
@@ -83,6 +88,7 @@ module Google
           @mysql_excluded_objects = args[:mysql_excluded_objects] if args.key?(:mysql_excluded_objects)
           @oracle_excluded_objects = args[:oracle_excluded_objects] if args.key?(:oracle_excluded_objects)
           @postgresql_excluded_objects = args[:postgresql_excluded_objects] if args.key?(:postgresql_excluded_objects)
+          @salesforce_excluded_objects = args[:salesforce_excluded_objects] if args.key?(:salesforce_excluded_objects)
           @sql_server_excluded_objects = args[:sql_server_excluded_objects] if args.key?(:sql_server_excluded_objects)
         end
       end
@@ -153,6 +159,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::AppendOnly]
         attr_accessor :append_only
       
+        # The configuration for BLMT.
+        # Corresponds to the JSON property `blmtConfig`
+        # @return [Google::Apis::DatastreamV1::BlmtConfig]
+        attr_accessor :blmt_config
+      
         # The guaranteed data freshness (in seconds) when querying tables created by the
         # stream. Editing this field will only affect new tables created in the future,
         # but existing tables will not be impacted. Lower values mean that queries will
@@ -185,6 +196,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @append_only = args[:append_only] if args.key?(:append_only)
+          @blmt_config = args[:blmt_config] if args.key?(:blmt_config)
           @data_freshness = args[:data_freshness] if args.key?(:data_freshness)
           @merge = args[:merge] if args.key?(:merge)
           @single_target_dataset = args[:single_target_dataset] if args.key?(:single_target_dataset)
@@ -240,6 +252,49 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The configuration for BLMT.
+      class BlmtConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud Storage bucket name.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Required. The bigquery connection. Format: ``project`.`location`.`name``
+        # Corresponds to the JSON property `connectionName`
+        # @return [String]
+        attr_accessor :connection_name
+      
+        # Required. The file format.
+        # Corresponds to the JSON property `fileFormat`
+        # @return [String]
+        attr_accessor :file_format
+      
+        # The root path inside the Cloud Storage bucket.
+        # Corresponds to the JSON property `rootPath`
+        # @return [String]
+        attr_accessor :root_path
+      
+        # Required. The table format.
+        # Corresponds to the JSON property `tableFormat`
+        # @return [String]
+        attr_accessor :table_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @connection_name = args[:connection_name] if args.key?(:connection_name)
+          @file_format = args[:file_format] if args.key?(:file_format)
+          @root_path = args[:root_path] if args.key?(:root_path)
+          @table_format = args[:table_format] if args.key?(:table_format)
         end
       end
       
@@ -323,7 +378,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # MySQL database profile. Next ID: 7.
+        # MySQL database profile.
         # Corresponds to the JSON property `mysqlProfile`
         # @return [Google::Apis::DatastreamV1::MysqlProfile]
         attr_accessor :mysql_profile
@@ -333,7 +388,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Oracle database profile. Next ID: 10.
+        # Oracle database profile.
         # Corresponds to the JSON property `oracleProfile`
         # @return [Google::Apis::DatastreamV1::OracleProfile]
         attr_accessor :oracle_profile
@@ -348,6 +403,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PrivateConnectivity]
         attr_accessor :private_connectivity
       
+        # Salesforce profile
+        # Corresponds to the JSON property `salesforceProfile`
+        # @return [Google::Apis::DatastreamV1::SalesforceProfile]
+        attr_accessor :salesforce_profile
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -360,7 +420,7 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # SQLServer database profile. Next ID: 8.
+        # SQLServer database profile.
         # Corresponds to the JSON property `sqlServerProfile`
         # @return [Google::Apis::DatastreamV1::SqlServerProfile]
         attr_accessor :sql_server_profile
@@ -394,6 +454,7 @@ module Google
           @oracle_profile = args[:oracle_profile] if args.key?(:oracle_profile)
           @postgresql_profile = args[:postgresql_profile] if args.key?(:postgresql_profile)
           @private_connectivity = args[:private_connectivity] if args.key?(:private_connectivity)
+          @salesforce_profile = args[:salesforce_profile] if args.key?(:salesforce_profile)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @sql_server_profile = args[:sql_server_profile] if args.key?(:sql_server_profile)
@@ -1253,6 +1314,25 @@ module Google
         end
       end
       
+      # MySQL GTID position
+      class MysqlGtidPosition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The gtid set to start replication from.
+        # Corresponds to the JSON property `gtidSet`
+        # @return [String]
+        attr_accessor :gtid_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gtid_set = args[:gtid_set] if args.key?(:gtid_set)
+        end
+      end
+      
       # MySQL log position
       class MysqlLogPosition
         include Google::Apis::Core::Hashable
@@ -1303,7 +1383,7 @@ module Google
         end
       end
       
-      # MySQL database profile. Next ID: 7.
+      # MySQL database profile.
       class MysqlProfile
         include Google::Apis::Core::Hashable
       
@@ -1515,6 +1595,39 @@ module Google
         end
       end
       
+      # OAuth2 Client Credentials.
+      class Oauth2ClientCredentials
+        include Google::Apis::Core::Hashable
+      
+        # Required. Client ID for Salesforce OAuth2 Client Credentials.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Optional. Client secret for Salesforce OAuth2 Client Credentials. Mutually
+        # exclusive with the `secret_manager_stored_client_secret` field.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Optional. A reference to a Secret Manager resource name storing the Salesforce
+        # OAuth2 client_secret. Mutually exclusive with the `client_secret` field.
+        # Corresponds to the JSON property `secretManagerStoredClientSecret`
+        # @return [String]
+        attr_accessor :secret_manager_stored_client_secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @secret_manager_stored_client_secret = args[:secret_manager_stored_client_secret] if args.key?(:secret_manager_stored_client_secret)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -1642,7 +1755,7 @@ module Google
         end
       end
       
-      # Configuration for Oracle Automatic Storage Management (ASM) connection. .
+      # Configuration for Oracle Automatic Storage Management (ASM) connection.
       class OracleAsmConfig
         include Google::Apis::Core::Hashable
       
@@ -1804,7 +1917,7 @@ module Google
         end
       end
       
-      # Oracle database profile. Next ID: 10.
+      # Oracle database profile.
       class OracleProfile
         include Google::Apis::Core::Hashable
       
@@ -1823,7 +1936,7 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
-        # Configuration for Oracle Automatic Storage Management (ASM) connection. .
+        # Configuration for Oracle Automatic Storage Management (ASM) connection.
         # Corresponds to the JSON property `oracleAsmConfig`
         # @return [Google::Apis::DatastreamV1::OracleAsmConfig]
         attr_accessor :oracle_asm_config
@@ -2516,6 +2629,166 @@ module Google
         end
       end
       
+      # Salesforce field.
+      class SalesforceField
+        include Google::Apis::Core::Hashable
+      
+        # The data type.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Field name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Indicates whether the field can accept nil values.
+        # Corresponds to the JSON property `nillable`
+        # @return [Boolean]
+        attr_accessor :nillable
+        alias_method :nillable?, :nillable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @name = args[:name] if args.key?(:name)
+          @nillable = args[:nillable] if args.key?(:nillable)
+        end
+      end
+      
+      # Salesforce object.
+      class SalesforceObject
+        include Google::Apis::Core::Hashable
+      
+        # Salesforce fields. When unspecified as part of include objects, includes
+        # everything, when unspecified as part of exclude objects, excludes nothing.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::DatastreamV1::SalesforceField>]
+        attr_accessor :fields
+      
+        # Object name.
+        # Corresponds to the JSON property `objectName`
+        # @return [String]
+        attr_accessor :object_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @object_name = args[:object_name] if args.key?(:object_name)
+        end
+      end
+      
+      # Salesforce data source object identifier.
+      class SalesforceObjectIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # Required. The object name.
+        # Corresponds to the JSON property `objectName`
+        # @return [String]
+        attr_accessor :object_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_name = args[:object_name] if args.key?(:object_name)
+        end
+      end
+      
+      # Salesforce organization structure.
+      class SalesforceOrg
+        include Google::Apis::Core::Hashable
+      
+        # Salesforce objects in the database server.
+        # Corresponds to the JSON property `objects`
+        # @return [Array<Google::Apis::DatastreamV1::SalesforceObject>]
+        attr_accessor :objects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @objects = args[:objects] if args.key?(:objects)
+        end
+      end
+      
+      # Salesforce profile
+      class SalesforceProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Domain endpoint for the Salesforce connection.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # OAuth2 Client Credentials.
+        # Corresponds to the JSON property `oauth2ClientCredentials`
+        # @return [Google::Apis::DatastreamV1::Oauth2ClientCredentials]
+        attr_accessor :oauth2_client_credentials
+      
+        # Username-password credentials.
+        # Corresponds to the JSON property `userCredentials`
+        # @return [Google::Apis::DatastreamV1::UserCredentials]
+        attr_accessor :user_credentials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @oauth2_client_credentials = args[:oauth2_client_credentials] if args.key?(:oauth2_client_credentials)
+          @user_credentials = args[:user_credentials] if args.key?(:user_credentials)
+        end
+      end
+      
+      # Salesforce source configuration
+      class SalesforceSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Salesforce organization structure.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::SalesforceOrg]
+        attr_accessor :exclude_objects
+      
+        # Salesforce organization structure.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::SalesforceOrg]
+        attr_accessor :include_objects
+      
+        # Required. Salesforce objects polling interval. The interval at which new
+        # changes will be polled for each object. The duration must be between 5 minutes
+        # and 24 hours.
+        # Corresponds to the JSON property `pollingInterval`
+        # @return [String]
+        attr_accessor :polling_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @polling_interval = args[:polling_interval] if args.key?(:polling_interval)
+        end
+      end
+      
       # Message represents the option where Datastream will enforce the encryption and
       # authenticate the server identity as well as the client identity.
       # ca_certificate, client_certificate and client_key must be set if user selects
@@ -2618,6 +2891,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlSourceConfig]
         attr_accessor :postgresql_source_config
       
+        # Salesforce source configuration
+        # Corresponds to the JSON property `salesforceSourceConfig`
+        # @return [Google::Apis::DatastreamV1::SalesforceSourceConfig]
+        attr_accessor :salesforce_source_config
+      
         # Required. Source connection profile resoource. Format: `projects/`project`/
         # locations/`location`/connectionProfiles/`name``
         # Corresponds to the JSON property `sourceConnectionProfile`
@@ -2638,6 +2916,7 @@ module Google
           @mysql_source_config = args[:mysql_source_config] if args.key?(:mysql_source_config)
           @oracle_source_config = args[:oracle_source_config] if args.key?(:oracle_source_config)
           @postgresql_source_config = args[:postgresql_source_config] if args.key?(:postgresql_source_config)
+          @salesforce_source_config = args[:salesforce_source_config] if args.key?(:salesforce_source_config)
           @source_connection_profile = args[:source_connection_profile] if args.key?(:source_connection_profile)
           @sql_server_source_config = args[:sql_server_source_config] if args.key?(:sql_server_source_config)
         end
@@ -2682,6 +2961,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlObjectIdentifier]
         attr_accessor :postgresql_identifier
       
+        # Salesforce data source object identifier.
+        # Corresponds to the JSON property `salesforceIdentifier`
+        # @return [Google::Apis::DatastreamV1::SalesforceObjectIdentifier]
+        attr_accessor :salesforce_identifier
+      
         # SQLServer data source object identifier.
         # Corresponds to the JSON property `sqlServerIdentifier`
         # @return [Google::Apis::DatastreamV1::SqlServerObjectIdentifier]
@@ -2696,6 +2980,7 @@ module Google
           @mysql_identifier = args[:mysql_identifier] if args.key?(:mysql_identifier)
           @oracle_identifier = args[:oracle_identifier] if args.key?(:oracle_identifier)
           @postgresql_identifier = args[:postgresql_identifier] if args.key?(:postgresql_identifier)
+          @salesforce_identifier = args[:salesforce_identifier] if args.key?(:salesforce_identifier)
           @sql_server_identifier = args[:sql_server_identifier] if args.key?(:sql_server_identifier)
         end
       end
@@ -2703,6 +2988,11 @@ module Google
       # CDC strategy to start replicating from a specific position in the source.
       class SpecificStartPosition
         include Google::Apis::Core::Hashable
+      
+        # MySQL GTID position
+        # Corresponds to the JSON property `mysqlGtidPosition`
+        # @return [Google::Apis::DatastreamV1::MysqlGtidPosition]
+        attr_accessor :mysql_gtid_position
       
         # MySQL log position
         # Corresponds to the JSON property `mysqlLogPosition`
@@ -2725,6 +3015,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @mysql_gtid_position = args[:mysql_gtid_position] if args.key?(:mysql_gtid_position)
           @mysql_log_position = args[:mysql_log_position] if args.key?(:mysql_log_position)
           @oracle_scn_position = args[:oracle_scn_position] if args.key?(:oracle_scn_position)
           @sql_server_lsn_position = args[:sql_server_lsn_position] if args.key?(:sql_server_lsn_position)
@@ -2851,7 +3142,7 @@ module Google
         end
       end
       
-      # SQLServer database profile. Next ID: 8.
+      # SQLServer database profile.
       class SqlServerProfile
         include Google::Apis::Core::Hashable
       
@@ -3320,6 +3611,54 @@ module Google
           @name = args[:name] if args.key?(:name)
           @source_object = args[:source_object] if args.key?(:source_object)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Username-password credentials.
+      class UserCredentials
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Password for the Salesforce connection. Mutually exclusive with the `
+        # secret_manager_stored_password` field.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Optional. A reference to a Secret Manager resource name storing the Salesforce
+        # connection's password. Mutually exclusive with the `password` field.
+        # Corresponds to the JSON property `secretManagerStoredPassword`
+        # @return [String]
+        attr_accessor :secret_manager_stored_password
+      
+        # Optional. A reference to a Secret Manager resource name storing the Salesforce
+        # connection's security token. Mutually exclusive with the `security_token`
+        # field.
+        # Corresponds to the JSON property `secretManagerStoredSecurityToken`
+        # @return [String]
+        attr_accessor :secret_manager_stored_security_token
+      
+        # Optional. Security token for the Salesforce connection. Mutually exclusive
+        # with the `secret_manager_stored_security_token` field.
+        # Corresponds to the JSON property `securityToken`
+        # @return [String]
+        attr_accessor :security_token
+      
+        # Required. Username for the Salesforce connection.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password = args[:password] if args.key?(:password)
+          @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
+          @secret_manager_stored_security_token = args[:secret_manager_stored_security_token] if args.key?(:secret_manager_stored_security_token)
+          @security_token = args[:security_token] if args.key?(:security_token)
+          @username = args[:username] if args.key?(:username)
         end
       end
       

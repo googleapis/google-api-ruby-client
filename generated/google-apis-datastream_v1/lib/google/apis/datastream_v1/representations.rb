@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BlmtConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MysqlGtidPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MysqlLogPosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +317,12 @@ module Google
       end
       
       class NextAvailableStartPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Oauth2ClientCredentials
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -455,6 +473,42 @@ module Google
       end
       
       class RunStreamRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SalesforceField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SalesforceObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SalesforceObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SalesforceOrg
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SalesforceProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SalesforceSourceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -616,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Validation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -661,6 +721,8 @@ module Google
       
           property :postgresql_excluded_objects, as: 'postgresqlExcludedObjects', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
       
+          property :salesforce_excluded_objects, as: 'salesforceExcludedObjects', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
+      
           property :sql_server_excluded_objects, as: 'sqlServerExcludedObjects', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
       
         end
@@ -688,6 +750,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :append_only, as: 'appendOnly', class: Google::Apis::DatastreamV1::AppendOnly, decorator: Google::Apis::DatastreamV1::AppendOnly::Representation
+      
+          property :blmt_config, as: 'blmtConfig', class: Google::Apis::DatastreamV1::BlmtConfig, decorator: Google::Apis::DatastreamV1::BlmtConfig::Representation
       
           property :data_freshness, as: 'dataFreshness'
           property :merge, as: 'merge', class: Google::Apis::DatastreamV1::Merge, decorator: Google::Apis::DatastreamV1::Merge::Representation
@@ -718,6 +782,17 @@ module Google
       class BinaryLogPosition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class BlmtConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :connection_name, as: 'connectionName'
+          property :file_format, as: 'fileFormat'
+          property :root_path, as: 'rootPath'
+          property :table_format, as: 'tableFormat'
         end
       end
       
@@ -759,6 +834,8 @@ module Google
           property :postgresql_profile, as: 'postgresqlProfile', class: Google::Apis::DatastreamV1::PostgresqlProfile, decorator: Google::Apis::DatastreamV1::PostgresqlProfile::Representation
       
           property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatastreamV1::PrivateConnectivity, decorator: Google::Apis::DatastreamV1::PrivateConnectivity::Representation
+      
+          property :salesforce_profile, as: 'salesforceProfile', class: Google::Apis::DatastreamV1::SalesforceProfile, decorator: Google::Apis::DatastreamV1::SalesforceProfile::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
@@ -1036,6 +1113,13 @@ module Google
         end
       end
       
+      class MysqlGtidPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gtid_set, as: 'gtidSet'
+        end
+      end
+      
       class MysqlLogPosition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1112,6 +1196,15 @@ module Google
       class NextAvailableStartPosition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Oauth2ClientCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :secret_manager_stored_client_secret, as: 'secretManagerStoredClientSecret'
         end
       end
       
@@ -1394,6 +1487,61 @@ module Google
         end
       end
       
+      class SalesforceField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_type, as: 'dataType'
+          property :name, as: 'name'
+          property :nillable, as: 'nillable'
+        end
+      end
+      
+      class SalesforceObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields', class: Google::Apis::DatastreamV1::SalesforceField, decorator: Google::Apis::DatastreamV1::SalesforceField::Representation
+      
+          property :object_name, as: 'objectName'
+        end
+      end
+      
+      class SalesforceObjectIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_name, as: 'objectName'
+        end
+      end
+      
+      class SalesforceOrg
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :objects, as: 'objects', class: Google::Apis::DatastreamV1::SalesforceObject, decorator: Google::Apis::DatastreamV1::SalesforceObject::Representation
+      
+        end
+      end
+      
+      class SalesforceProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :oauth2_client_credentials, as: 'oauth2ClientCredentials', class: Google::Apis::DatastreamV1::Oauth2ClientCredentials, decorator: Google::Apis::DatastreamV1::Oauth2ClientCredentials::Representation
+      
+          property :user_credentials, as: 'userCredentials', class: Google::Apis::DatastreamV1::UserCredentials, decorator: Google::Apis::DatastreamV1::UserCredentials::Representation
+      
+        end
+      end
+      
+      class SalesforceSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
+      
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
+      
+          property :polling_interval, as: 'pollingInterval'
+        end
+      end
+      
       class ServerAndClientVerification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1426,6 +1574,8 @@ module Google
       
           property :postgresql_source_config, as: 'postgresqlSourceConfig', class: Google::Apis::DatastreamV1::PostgresqlSourceConfig, decorator: Google::Apis::DatastreamV1::PostgresqlSourceConfig::Representation
       
+          property :salesforce_source_config, as: 'salesforceSourceConfig', class: Google::Apis::DatastreamV1::SalesforceSourceConfig, decorator: Google::Apis::DatastreamV1::SalesforceSourceConfig::Representation
+      
           property :source_connection_profile, as: 'sourceConnectionProfile'
           property :sql_server_source_config, as: 'sqlServerSourceConfig', class: Google::Apis::DatastreamV1::SqlServerSourceConfig, decorator: Google::Apis::DatastreamV1::SqlServerSourceConfig::Representation
       
@@ -1449,6 +1599,8 @@ module Google
       
           property :postgresql_identifier, as: 'postgresqlIdentifier', class: Google::Apis::DatastreamV1::PostgresqlObjectIdentifier, decorator: Google::Apis::DatastreamV1::PostgresqlObjectIdentifier::Representation
       
+          property :salesforce_identifier, as: 'salesforceIdentifier', class: Google::Apis::DatastreamV1::SalesforceObjectIdentifier, decorator: Google::Apis::DatastreamV1::SalesforceObjectIdentifier::Representation
+      
           property :sql_server_identifier, as: 'sqlServerIdentifier', class: Google::Apis::DatastreamV1::SqlServerObjectIdentifier, decorator: Google::Apis::DatastreamV1::SqlServerObjectIdentifier::Representation
       
         end
@@ -1457,6 +1609,8 @@ module Google
       class SpecificStartPosition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mysql_gtid_position, as: 'mysqlGtidPosition', class: Google::Apis::DatastreamV1::MysqlGtidPosition, decorator: Google::Apis::DatastreamV1::MysqlGtidPosition::Representation
+      
           property :mysql_log_position, as: 'mysqlLogPosition', class: Google::Apis::DatastreamV1::MysqlLogPosition, decorator: Google::Apis::DatastreamV1::MysqlLogPosition::Representation
       
           property :oracle_scn_position, as: 'oracleScnPosition', class: Google::Apis::DatastreamV1::OracleScnPosition, decorator: Google::Apis::DatastreamV1::OracleScnPosition::Representation
@@ -1648,6 +1802,17 @@ module Google
           property :source_object, as: 'sourceObject', class: Google::Apis::DatastreamV1::SourceObjectIdentifier, decorator: Google::Apis::DatastreamV1::SourceObjectIdentifier::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class UserCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password, as: 'password'
+          property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
+          property :secret_manager_stored_security_token, as: 'secretManagerStoredSecurityToken'
+          property :security_token, as: 'securityToken'
+          property :username, as: 'username'
         end
       end
       
