@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReplicationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Reservation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +238,17 @@ module Google
         end
       end
       
+      class ReplicationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::BigqueryreservationV1::Status, decorator: Google::Apis::BigqueryreservationV1::Status::Representation
+      
+          property :last_error_time, as: 'lastErrorTime'
+          property :last_replication_time, as: 'lastReplicationTime'
+          property :soft_failover_start_time, as: 'softFailoverStartTime'
+        end
+      end
+      
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -246,6 +263,8 @@ module Google
           property :name, as: 'name'
           property :original_primary_location, as: 'originalPrimaryLocation'
           property :primary_location, as: 'primaryLocation'
+          property :replication_status, as: 'replicationStatus', class: Google::Apis::BigqueryreservationV1::ReplicationStatus, decorator: Google::Apis::BigqueryreservationV1::ReplicationStatus::Representation
+      
           property :secondary_location, as: 'secondaryLocation'
           property :slot_capacity, :numeric_string => true, as: 'slotCapacity'
           property :update_time, as: 'updateTime'
