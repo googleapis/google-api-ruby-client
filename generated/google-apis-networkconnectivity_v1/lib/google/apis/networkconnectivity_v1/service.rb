@@ -1046,7 +1046,13 @@ module Google
         #   Required. The parent resource's name of the PolicyBasedRoute.
         # @param [Google::Apis::NetworkconnectivityV1::PolicyBasedRoute] policy_based_route_object
         # @param [String] policy_based_route_id
-        #   Required. Unique id for the policy-based route to create.
+        #   Required. Unique id for the policy-based route to create. Provided by the
+        #   client when the resource is created. The name must comply with https://google.
+        #   aip.dev/122#resource-id-segments. Specifically, the name must be 1-63
+        #   characters long and match the regular expression [a-z]([a-z0-9-]*[a-z0-9])?.
+        #   The first character must be a lowercase letter, and all following characters (
+        #   except for the last character) must be a dash, lowercase letter, or digit. The
+        #   last character must be a lowercase letter or digit.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server knows to ignore
